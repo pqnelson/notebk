@@ -1,0 +1,278 @@
+%%
+%% connectedSpaces.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Jun  7 17:58:50 2009 Alex Nelson
+%% Last update Sun Jun  7 17:58:50 2009 Alex Nelson
+%%
+\begin{prob}
+How can we tell if a space is ``connected'' or not? That is, if
+it's ``disconnected'', then we should be able to ``break it up''
+into independent pieces. How do we make this notion of
+``disconnectedness'' rigorous?
+\end{prob}
+\begin{defn}\label{defn:seperation}
+Let $X$ be a topological space. A \define{Seperation} of $X$ is a
+pair $U,V$ of disjoint, nonempty, open sets whose union is
+$X$. The space $X$ is said to be ``\define{Connected}'' if there
+is no seperation in it.
+\end{defn}
+\begin{rmk}
+Observe that we didn't really define connectedness. Instead we
+defined what it means for it to have a seperation, and then
+proceeded to define ``connected'' as ``not seperated''. So, to
+prove a topological space is connected is equivalent to
+disproving the existence of a seperation. Consequently, we will
+use proof by contradiction a lot when dealing with connectedness.
+\end{rmk}
+\begin{rmk}
+Observe that if $X$ is connected and $Y$ is homeomorphic to $X$,
+then $Y$ is necessarily connected.
+\end{rmk}
+\begin{rmk}
+A space $X$ is connected if and only if the only closed subsets
+of $X$ that are both open and closed are $X$ and
+$\emptyset$. Otherwise if we had some additional set $U$ that is
+closed and open, then $X-U$ is also closed and open. But $U$ and
+$X-U$ are disjoint, nonempty, open subsets of $X$ whose union is
+$X$. This couldn't happen if $X$ were connected, so $U$ needs to
+be empty or equal to all of $X$.
+\end{rmk}
+\begin{lem}\label{lemma:subspaceConnectedness}
+If $Y$ is a subspace of $X$, a seperation of $Y$ is a pair of
+disjoint nonempty sets $A$ and $B$ whose union is $Y$, neither of
+which contains a limit point of the other. The space $Y$ is
+connected if there exists no seperation of $Y$.
+\end{lem}
+\begin{proof}
+Let $A$, $B$ form a seperation of $Y$. We see that
+\begin{equation}%\label{eq:}
+A=\overline{A}\cap Y\subset Y
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+A^{C}=(\overline{A}\cap Y)^{C}=B,
+\end{equation}
+which implies
+\begin{equation}%\label{eq:}
+(\overline{A}\cap Y)\cap B=\emptyset.
+\end{equation}
+We can argue similarly for $(\overline{B}\cap Y)\cap A=\emptyset$.
+\end{proof}
+\begin{prop}%\label{prop:}
+Let $\mathcal{T}$, $\mathcal{T}'$ be two topologies on $X$. If
+$\mathcal{T}\subset\mathcal{T}'$, then
+\begin{enumerate}
+\item the existence of a seperation
+in $\mathcal{T}$ implies existence of a seperation in
+$\mathcal{T}'$;
+\item connectedness in $\mathcal{T}'$ implies connectedness in
+  $\mathcal{T}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\noindent\begin{enumerate}
+\item Observe that if $A$, $B$ forms a seperation in the
+  $\mathcal{T}$ topology, then
+  $A,B\in\mathcal{T}\subset\mathcal{T}'$. So the seperation is in
+  the $\mathcal{T}'$ topology too.
+\item Observe that if $X$ is connected in the $\mathcal{T}'$
+  topology, then there is no seperation (no pair $A,B$ that form
+  a seperation of $X$ that live in $\mathcal{T}'$). This means
+  that no such $A,B$ exist in $\mathcal{T}$, which implies there
+  is no seperation of $X$ in the $\mathcal{T}$ topology. So $X$
+  is connected in the $\mathcal{T}$ topology.
+\end{enumerate}
+\end{proof}
+\begin{prob}
+How can we \emph{construct} connected topological spaces? This
+seems especially daunting since we only can really know if a
+topological space is \emph{disconnected}.
+\end{prob}
+\begin{thm}%\label{thm:}
+If the sets $C$ and $D$ form a seperation of $X$, and if $Y$ is a
+connected subspace of $X$, then $Y$ lies entirely in $C$ or
+entirely in $D$.
+\end{thm}
+\begin{proof}
+Assume for contradiction that $Y$ can lie in both $C$ and
+$D$. Then we can observe that $C\cap Y$ and $D\cap Y$ are subsets
+of $Y$ that are both open and closed, as well as disjoint and
+their union would be $Y$. How can we see this last point? Well,
+we know since $C$ and $D$ form a seperation of $X$ that
+\begin{equation}%\label{eq:}
+C\cup D=X
+\end{equation}
+so it follows that
+\begin{equation}%\label{eq:}
+(C\cap Y)\cup(D\cap Y) = (C\cup D)\cap Y = X\cap Y = Y.
+\end{equation}
+We have our contradiction, it implies $Y$ has a seperation. We
+reject our assumption and say that $Y$ has to lie entirely in $C$
+or entirely in $D$.
+\end{proof}
+\begin{thm}%\label{thm:}
+The union of connected subspaces of $X$ with a common shared
+point is connected.
+\end{thm}
+\begin{proof}
+Let $\{A_{\alpha}\}$ be our collection of connected subspaces,
+\begin{equation}%\label{eq:}
+Y=\bigcup_{\alpha} A_{\alpha}
+\end{equation}
+be the subspace we are trying to show is connected,
+\begin{equation}%\label{eq:}
+\{y_0\} = \bigcap_{\alpha}A_{\alpha} 
+\end{equation}
+be the point common to all connected subspaces.
+
+Assume for contradiction $Y$ is disconnected. Then there exists a
+pair $C$, $D$ of disjoint, nonempty, open subsets of $Y$ whose
+union is $Y$. Since $A_\alpha$ is connected, by our previous
+theorem, it must lie entirely in $C$ or $D$. 
+
+Since all $A_\alpha$ share a common point, it implies that all
+$A_\alpha$ lie entirely in $C$ or they all lie entirely in
+$D$. If some lived entirely in $C$ while the rest entirely in
+$D$, there would be no shared point $y_0$ since $C$ and $D$ are
+disjoint. 
+
+So it follows that their union lies entirely in one. But this
+means that either $C=\emptyset$ and $D=Y$, or $C=Y$ and
+$D=\emptyset$, which is a contradiction of our assumption that
+$C\neq\emptyset$ and $D\neq\emptyset$.
+\end{proof}
+\begin{thm}%\label{thm:}
+Let $A$ be a connected subspace of $X$. If $A\subset
+B\subset\overline{A}$, then $B$ is connected.
+\end{thm}
+\begin{proof}
+Assume for contradiction that $B$ has a seperation. More
+precisely, there is a pair of nonempty disjoint open sets $C$,
+$D$ whose union is $B$. Since $A\subset B$, and $A$ is connected,
+then $A$ is contained entirely in $C$ or it is contained entirely
+in $D$. Suppose it is contained entirely in $C$, then
+\begin{equation}%\label{eq:}
+C\cup D\subset \overline{A}\;\Rightarrow\; D \subset A'
+\end{equation}
+where $A'$ is the set of limit points of $A$. Recall a limit
+point $x$ is such that 
+\begin{equation}%\label{eq:}
+x\in\overline{A-\{x\}}.
+\end{equation}
+But observe that
+\begin{equation}%\label{eq:}
+x\in\overline{A-\{x\}}\subset \overline{C-\{x\}}\subset\overline{C}
+\end{equation}
+but this implies that
+\begin{equation}%\label{eq:}
+A'\subset\overline{C}\; \Rightarrow\; B\subset\overline{A}\subset\overline{C}
+\end{equation}
+or equivalently, $D=\emptyset$ since we previously proven
+$D\cap\overline{C}=\emptyset$, which is a contradiction.
+\end{proof}
+\begin{thm}%\label{thm:}
+The image of a connected space under a continuous mapping is connected.
+\end{thm}
+\begin{proof}
+Let $f:X\to Y$ be continuous, $X$ be connected. Assume for
+contradiction there is a seperation (i.e. a pair $A,B$ of
+nonempty, open, disjoint subsets whose union is $Y$) in
+$Y$. Their preimage would be a seperation in $X$, which
+contradicts our hypothesis that $X$ is connected. We reject our
+assumption that $Y$ has a seperation and conclude it is connected.
+\end{proof}
+\begin{thm}%\label{thm:}
+A finite Cartesian product of connected spaces is connected.
+\end{thm}
+\begin{proof}
+We will do a sort of inductive proof by contradiction.
+
+\noindent\textbf{Base Case $(n=2)$:} Lets consider two connected
+spaces $X_1$ and $X_2$. Let
+\begin{equation}%\label{eq:}
+Y=X_1\times X_2.
+\end{equation}
+For contradiction, assume $Y$ is disconnected. Then there is a
+pair $A$, $B$ of disjoint, nonempty subsets of $Y$ whose union is
+$Y$. This means that either $\pi_{1}(A)$, $\pi_{1}(B)$ forms a
+seperation of $X_1$ or $\pi_{2}(A)$, $\pi_{2}(B)$ forms a
+seperation of $X_2$. But we assumed that $X_i$ ($i=1,2$) was
+connected. So we have a contradiction, reject our assumption that
+$Y$ is disconnected, and conclude $Y$ is connected.
+
+\noindent\textbf{Inductive Hypothesis (arbitrary $n$):} Suppose
+this works for
+\begin{equation}%\label{eq:}
+Y = X_1\times\cdots\times X_n.
+\end{equation}
+
+\noindent\textbf{Inductive Cast $(n+1)$:} Lets consider $X_1$,
+$\ldots$, $X_{n+1}$ connected spaces, let
+\begin{equation}%\label{eq:}
+X = X_1\times\cdots\times X_n
+\end{equation} 
+and
+\begin{equation}%\label{eq:}
+Y = X\times X_{n+1}.
+\end{equation}
+Then this is just the base case, and $Y$ was shown to be connected.
+\end{proof}
+\begin{defn}%\label{defn:}
+A space is ``\define{Totally Disconnected}'' if its only
+connected subspaces are one-point sets.
+\end{defn}
+\begin{thm}%\label{thm:}
+If $X$ is a topological space equipped with the discrete
+topology, then it is totally disconnected.
+\end{thm}
+\begin{proof}
+Since $X$ has the discrete topology, we see that every subset of
+$X$ is open and consequently its compliment (being a subset of
+$X$) is open, so every subset is also closed. The only subspaces
+of $X$ which has the only subsets be both open and closed would
+necessarily be the one-point sets. 
+
+(Observe that an arbitrary set $Y\subset X$ with more than one
+element could be partitioned into two subsets, which are both
+open and closed. This implies that $Y$ is not connected.)
+
+It then follows by definition that $X$ is totally disconnected.
+\end{proof}
+\begin{prop}%\label{prop:}
+Let $Y\subset X$, let $X$ and $Y$ be connected. If $A$ and $B$
+form a seperation of $X-Y$, then $A\cup Y$ and $B\cup Y$ are
+connected.
+\end{prop}
+\begin{proof} We will prove that if $A\cup Y$ has a seperation, it
+  means that $X$ has a seperation in the sense of a seperation in
+  a subspace (it is more general this way -- if $X$ isn't a
+  subspace, it's still a kosher seperation).
+\noindent\begin{enumerate}
+\item Let $A\cup B=X-Y$, assume for contradiction that
+  $Z:=A\cup Y$ has a seperation $C\cup D=Z$.
+\item We will show that $B$, $C\cup D$ form a seperation of
+  $X$. Observe first that $C\cup D=A\cup Y$.
+\item We see that $\overline{B}\cap A=B\cap\overline{A}=\emptyset$ since $A,B$ form
+  a seperation of $X-Y$.
+\item We see that $Y$ is closed since $X-Y=A\cup B$ is the union
+  of open sets (thus open).
+\item We see that $\overline{Y}\cap B=Y\cap B=\emptyset$.
+\item We see that $\overline{B}\subset X-Y$ so $\overline{B}\cap
+  Y=\emptyset$.
+\item Observe that 
+\begin{equation}%\label{eq:}
+\overline{Z}\cap B=(\overline{A\cup Y})\cap B = (\overline{A}\cup\overline{Y})\cap B=\emptyset
+\end{equation}
+and similarly
+\begin{equation}%\label{eq:}
+Z\cap\overline{B}=(A\cup Y)\cap\overline{B}=\emptyset.
+\end{equation}
+\item We see that $B$ and $Z=A\cup Y$ form a seperation of
+  $X$, implying $X$ is disconnected. This is a contradiction. We
+  have to reject the assumption that $Z$ has a seperation.
+\end{enumerate}
+A similar argument holds for $B\cup Y$ being connected.
+\end{proof}

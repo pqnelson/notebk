@@ -1,0 +1,73 @@
+%%
+%% orderTopology.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jun  2 19:01:59 2009 Alex Nelson
+%% Last update Tue Jun  2 19:01:59 2009 Alex Nelson
+%%
+\begin{prob}
+Topologies seem more or less abstract. Isn't there some way to
+simplify specifying open sets? We are going to introduce the
+notion of specifying open sets using open intervals. How do we
+specify open intervals? By using an order relation $a < b$, we
+can specify open intervals.
+\end{prob}
+
+If $X$ is a simply ordered set, there is a standard topology for
+it defined using the order relation. It's called the
+\define{order topology}.
+
+We should probably first generalize the notion of intervals
+familiar from real analysis. Since $X$ is a simply ordered set,
+there is a (simple) order relation $<$. So suppose we have
+$a,b\in X$ such that $a<b$, then we have 4 possible subsets of
+$X$:
+\begin{subequations}
+\begin{align}
+(a,b) &= \{x|a<x<b\}\label{eq:openInterval}\\
+(a,b] &= \{x|a<x\leq b\}\label{eq:clopenInterval}\\
+[a,b) &= \{x|a\leq x<b\}\label{eq:oposedInterval}\\
+[a,b] &= \{x|a\leq x\leq b\}\label{eq:closedInterval}.
+\end{align}
+\end{subequations}
+We call the eq \eqref{eq:openInterval} an ``open interval'', eqs
+\eqref{eq:clopenInterval} \eqref{eq:oposedInterval} ``clopen
+intervals'', and lastly eq \eqref{eq:closedInterval} a ``closed
+interval''.
+
+\begin{defn}\label{defn:orderTopology}
+Let $X$ be a set with a simple order relation. Suppose $X$ has
+more than one element. Let $\mathscr{B}$ be the collection of all
+sets of the following types:
+\begin{enumerate}
+\item All open intervals $(a,b)$ in $X$.
+\item All intervals of the form $[a_{0},b)$, where $a_0$ is the
+  smallest element (if any) of $X$.
+\item All intervals of the form $(a,b_{0}]$, where $b_{0}$ is the
+  largest element (if any) of $X$.
+\end{enumerate}
+The collection $\mathscr{B}$ is a basis for a topology on $X$,
+which is called the \define{order topology}.
+\end{defn}
+\begin{rmk}\label{rmk:onOrderTopology}
+If $X$ has no smallest element, there are no sets of type (2),
+and if $X$ has no largest element there are no sets of type (3).
+\end{rmk}
+
+\begin{defn}\label{defn:rays}
+If $X$ is an ordered set, and $a$ is an element of $X$, there are
+four subsets of $X$ that are called the \define{rays} determined
+by $a$. They are the following
+\begin{subequations}
+\begin{align}
+(a,+\infty) &= \{x|x>a\}\\
+(-\infty,a) &= \{x|x<a\}\\
+[a,+\infty) &= \{x|x\geq a\}\\
+(-\infty,a] &= \{x|x\leq a\}
+\end{align}
+\end{subequations}
+The first two are \define{open rays}, the last two are
+\define{closed rays}.
+\end{defn}

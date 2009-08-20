@@ -1,0 +1,111 @@
+
+\begin{prob}
+We defined what it means for a set to be ``open'' by just demanding it
+be in a topology on a space. So how do we define a set to be
+``closed''? Intuitively, it's an ``open set that contains its
+boundary'', but what is a ``boundary'' topologically?
+\end{prob}
+
+\begin{defn}
+Let $X$ be a topological space, $A\subset X$ be some subset. We say
+that $A$ is ``\define{Closed}'' if $X-A$ is open.
+\end{defn}
+\begin{rmk}
+This is kind of weaseling out of the problem, just define a set to be
+closed if its compliment is open. This doesn't seem intuitive or
+immediately clear why one would want to define it this way, but we
+will see why later on.
+\end{rmk}
+
+\begin{defn}
+Let $X$ be a topological space, $Y\subset X$.
+\begin{enumerate}
+\item The \define{Closure} of $Y$ (denoted $\overline{Y}$ or
+  $\operatorname{closure}(Y)$) is the intersection of all closed sets
+  containing $Y$.
+\item The \define{Interior} of $Y$ (denoted $Y^0$ or
+  $\operatorname{int}(Y)$) is the union of all open sets contained in
+  $Y$.
+\end{enumerate}
+\end{defn}
+\begin{rmk}
+Observe that the closure of a set is closed, the interior of a set is open.
+\end{rmk}
+\begin{rmk}
+The closure of a set is the ``smallest'' closed set containing it, but
+we conveniently avoided the problem of ``What do we mean by
+`smallest'?'' by using intersections of closed sets. Similarly, the
+interior of a set is the ``largest'' open set contained in it.
+\end{rmk}
+\begin{rmk}
+A set $Y$ is closed iff $Y=\overline{Y}$ and it is open iff $Y=Y^0$.
+\end{rmk}
+\begin{defn}
+Let $X$ be a topological space, $A\subset X$ be some subset. We define
+the ``\textbf{Boundary}'' of $A$ (denoted $\partial A$) to be
+\begin{equation}
+\overline{A}\cap\overline{(X-A)}
+\end{equation}
+the intersection of the closure of $A$ with the closure of the
+compliment of $A$.
+\end{defn}
+\begin{ex}
+Consider the set $X=\{a,b,c\}$. Consider the topology
+\begin{equation}
+\mathcal{T} = \left\{\emptyset,\;\{a\},\; \{b\},\; \{a,b\},\; X\right\}
+\end{equation}
+We see that $\{a,c\}$ is closed since its compliment $\{b\}$ is open,
+and we also see that $\{b,c\}$ is closed since its compliment $\{a\}$
+is open. The intersection of these two closed sets $\{c\}$ is closed,
+since its compliment is open and the intersection of closed sets is
+closed.
+
+Observe the closure of $\{a\}$ is given by the intersection of
+all closed sets containing $a$:
+\begin{equation}
+\{a,c\}\cap\{a,b,c\}=\{a,c\}
+\end{equation}
+and the closure of $\{b,c\}$ (that is, the compliment of $\{a\}$) is
+itself, i.e. $\{b,c\}$ is a closed set so its closure is itself. The
+boundary of $\{a\}$ is then the intersection of these two sets
+\begin{equation}
+\partial \{a\} = \{b,c\}\cap\{a,c\} = \{c\}
+\end{equation}
+which we could not have found if we didn't define the boundary in a
+topological way!
+\end{ex}
+\begin{rmk}
+Let $X$ be a topological space, $A\subset X$ be a subset. The definition
+of the boundary of $A$ is the same as the closure of $A$ minus its
+interior
+\begin{equation}
+\partial A = \overline{A}-A^0.
+\end{equation}
+How can we see this? Well, the interior of $A$ is the union of all
+open sets contained in $A$. Its compliment would be the closure of
+$X-A$. We see that the intersection of $\overline{(X-A)}$ with
+$\overline{A}$ is just the closure of $A$ intersected with the
+compliment of its interior, i.e.
+\begin{equation}
+\overline{A}\cap\overline{(X-A)}=\overline{A}\cap\left(A^0\right)^C =
+\overline{A}-A^0.
+\end{equation}
+This is by virtue of the property of compliments
+\begin{equation}
+(A-B)^C = A\cap B^C
+\end{equation}
+where $A$ and $B$ are subsets of some set $U$.
+\end{rmk}
+
+\begin{defn}
+Let $X$ be a topological space, $Y\subset X$. A point $x\in X$ is 
+a \define{Limit Point} of $Y$ if every neighborhood of $x$ intersects
+$Y-\{x\}$.
+\end{defn}
+\begin{rmk}
+This definition makes more sense given the notion of what a
+``continuous function'' is, since we defined continuity in the
+real analysis situation as the limit as $f(x)$ approaches
+$f(x_0)$. We take this notion, and use the topological notion of
+continuity to concoct a \emph{topological} notion of a limit.
+\end{rmk}

@@ -1,0 +1,120 @@
+\begin{prob}
+One of the interesting properties we had with functions in real
+analysis was the notion of continuity. Is there a way to generalize
+this notion to a topological setting?
+\end{prob}
+\begin{defn}{(Real Analysis Definition of Continuous)}
+Let $f:X\to Y$ be a function, $X$ and $Y$ be sets. We say that $f$ is
+``\define{Continuous}'' if for each $\varepsilon>0$ there is a
+corresponding $\delta>0$ such that
+\begin{equation}
+|x-x_{0}|<\delta\Rightarrow|f(x)-f(x_0)|<\varepsilon
+\end{equation}
+Or in other words, for each $\varepsilon$ neighborhood of $f(x_0)$,
+there is a $\delta$ neighborhood of $x_0$.
+\end{defn}
+\begin{rmk}
+Observe that what we are doing is specifying a neighborhood in the
+range of a certain size, then demanding there is a corresponding
+neighborhood in the domain of a certain size. We can do this in real
+analysis since the reals are sufficiently nice (they are a metric
+space which is a really really strong condition for a topological
+space). We want to generalize this for topological spaces so when we
+work with metric spaces we recover our previous notion of continuity.
+\end{rmk}
+\begin{defn}
+Let $X$, $Y$ be topological spaces, $f:X\to Y$ be a function. We say
+that ``\define{$f$ is continuous at $x_0$}'' if for every neighborhood
+$V$ of $f(x)$, there is a neighborhood $U$ of $x$ such that
+$f(U)\subset V$.
+\end{defn}
+\begin{rmk}
+This notion of continuity is nearly identical to the notion we
+previously introduced from real analysis. The difference is that we
+are not using a metric to keep track of every open neighborhood in the
+domain and the range.
+
+But observe we demand each open neighborhood $V$ of $f(x)$ has a
+corresponding neighborhood $U$ in the domain such that the image of
+$U$ is contained in $V$. This is precisely what we did in the real
+analysis case, we specified an $\varepsilon$ neighborhood, and
+demanded that for each $\varepsilon$ neighborhood there is a
+corrsponding $\delta$ neighborhood in the domain such that the image
+of the $\delta$ neighborhood is contained in the $\varepsilon$
+neighborhood.
+\end{rmk}
+
+\begin{thm}
+Let $X$ and $Y$ be topological spaces, if $f:X\to Y$ is such
+that for each open set $V\subset Y$ its preimage $f^{-1}(V)\subset X$
+is open, then $f$ is continuous.
+\end{thm}
+\begin{proof}
+Trivial.
+\end{proof}
+\begin{rmk}{(Inverse Functions)}
+Note that contrary to appearances \emph{continuity does not demand the
+  function be invertible!} The preimage of a set \emph{is not} the
+same as the function's inverse. Consider $f:X\to Y$, and $Z\subset Y$
+is some open set. Then
+\begin{equation}
+f^{-1}(Z) = \left\{x\in X:\; f(x)\in Z\right\}
+\end{equation}
+which does not say anything about the existence of an inverse for $f$.
+\end{rmk}
+
+\begin{defn}
+Let $X$, $Z$ be topological spaces, and $Y\subset X$ be a subspace. A
+map
+\begin{equation}
+\begin{array}{llll}
+i:& Y & \hookrightarrow& X\\
+  & x & \mapsto& i(x)=x
+\end{array}
+\end{equation}
+is defined as the ``\define{Inclusion Map}''. Similarly, a continuous map
+\begin{equation}
+\begin{array}{llll}
+r:& X & \hookrightarrow& Y\\
+  & x & \mapsto& r(x)=x\;\text{if }x\in Y
+\end{array}
+\end{equation}
+is defined as the ``\define{Retraction}'' if the retraction of $i$ to
+$Y$ is the identity on $A$.
+\end{defn}
+\begin{rmk}
+We use the inclusion map and the retraction to extend and restrict
+functions (respectively) by composing them with the functions of
+interest. Note that the restriction of a continuous function
+(i.e. composing it with a retraction) is the composition of two
+continuous functions and thus continuous.
+\end{rmk}
+\begin{defn}
+Let $X$, $Z$ be topological spaces, $Y\subset X$ be a subspace.
+If $f:X\to Z$ is a function, we can define the ``\define{Restriction
+  of $f$ to $Y$}'' as
+\begin{equation}
+f\circ r:X\to Z
+\end{equation}
+the composition of the retraction map (which is just
+$\operatorname{id_Y}$ on $Y$) with $f$. 
+\end{defn}
+\begin{rmk}
+Observe that the restriction of a function is just composition of
+functions.
+\end{rmk}
+\begin{lem}{(Pasting Lemma)}
+Let $X$ and $Y$ be topological spaces, and $U,$ $V$ be open sets in
+$X$ such that $X=U\cup V$. Suppose $f:U\to Y$ and $g:V\to Y$ are
+continuous and 
+\begin{equation}
+f(x)=g(x)\quad\text{for all }x\in U\cap V
+\end{equation}
+Then the function $h:X\to Y$ defined by
+\begin{equation}
+h(x) = \begin{cases} f(x),&\text{if }x\in U\\
+g(x),&\text{if }x\in V
+\end{cases}
+\end{equation}
+is continuous.
+\end{lem}

@@ -1,0 +1,137 @@
+%%
+%% topology.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun May 31 10:34:17 2009 Alex Nelson
+%% Last update Sun May 31 10:34:17 2009 Alex Nelson
+%%
+\begin{prob}
+The fundamental aim of topology, for all practical purposes, is
+to generalize real analysis to sets other than $\mathbb{R}$. We
+begin by generalising the notion of what an ``open set'' is. That
+is, previously we thought of an open set as a set that doesn't
+include its boundary, for example
+\begin{equation}
+S = \{x\in\mathbb{R}: -1<x<1\}
+\end{equation}
+is an open interval since it doesn't include -1 or 1. We wish to
+generalize this notion, so lets begin by introducing a collection
+of open subsets of a given set $X$ called a ``\emph{topology on $X$}''.
+\end{prob}
+
+\begin{defn}\label{defn:topology}
+A \define{Topology} on a set $X$ is a collection $\mathcal{T}$ of
+subsets of $X$ having the following properties:
+\begin{enumerate}
+\item $\emptyset$ and $X$ are in $\mathcal{T}$
+\item The union of the elements of any subcollection of
+  $\mathcal{T}$ is in $\mathcal{T}$
+\item The intersection of the elements of any finite
+  subcollection of $\mathcal{T}$ is in $\mathcal{T}$.
+\end{enumerate}
+A set $X$ for white a topology has $\mathcal{T}$ been specified
+is called a \define{topological space}.
+\end{defn}
+
+We generalize the notion of an open set to be any subset
+$U\subset X$ such that $U\in\mathcal{T}$. This ``weakens'' our
+previous notion of an open set, i.e. this topological definition
+includes our previous intuition about open sets and extends
+beyond it. We call elements of $X$ ``\emph{points}'' of the
+space. In fact, we will \emph{define} open sets as elements of
+$\mathcal{T}$:
+
+\begin{defn}\label{defn:openSets}
+  Let $(X,\mathcal{T})$ be a topological space. Then the members
+  of $\mathcal{T}$ are defined as \define{open sets}.
+\end{defn}
+
+Now this definition of a topological space is rather
+abstract. Lets consider a few examples using finite sets.
+\begin{ex}
+Consider the set $X=\{a,b\}$ where $a,b$ are arbitrary
+objects. The possible topologies on this are
+\begin{enumerate}
+\item $\left\{\emptyset,\{a,b\}\right\}$ This is trivially a
+  topology, since it includes $X$, $\emptyset$. Their union
+  $X\cup\emptyset=X$, their intersection
+  $X\cap\emptyset=\emptyset$ are both in the topology. This is
+  dubbed the ``\define{trivial topology}''. The only open sets are
+  empty and $X$.
+\item $\left\{\emptyset,\{a\},\{a,b\}\right\}$ This is also a
+  topology, since $\{a\}\cap\{a,b\}=\{a\}$, $\{a\}\cup X=X$,
+  $\{a\}\cup\emptyset=\{a\}$, $\{a\}\cap\emptyset=\emptyset$. All
+  of these are in the topology.
+\item $\left\{\emptyset,\{b\},\{a,b\}\right\}$ This is just
+  switching $a$ with $b$, which is also a topology.
+\item $\left\{\emptyset,\{a\},\{b\},\{a,b\}\right\}$ This is also
+  a topology, it's all possible subsets of $X$. This is given a
+  special name known as the ``\emph{power set}'' or
+  ``\define{discrete topology}''. Here, \emph{every} subset is open.
+\end{enumerate}  
+We can see a diagrammatic scheme of these topologies in fig \eqref{fig:img1}.
+\end{ex}
+
+\begin{figure}[t]
+\includegraphics{img.1}
+\caption{An example of all the possible topologies on the set
+  $X=\{a, b\}$ corresponding to (from top to bottom, left to right)
+  the discrete topology, $\{\emptyset,\{b\},X\}$,
+  $\{\emptyset,\{a\},X\}$, and the trivial topology.}\label{fig:img1}
+\end{figure}
+
+\begin{ex}
+This is a nonexample. Consider the set $X=\{a,b,c\}$. The collection
+\begin{equation}
+\mathcal{T} = \left\{\emptyset,\{a,b\},\{b,c\},X\right\}.
+\end{equation}
+Observe that
+\begin{equation}
+\{a,b\}\cap\{b,c\}=\{b\}\notin\mathcal{T}
+\end{equation}
+So it's not closed under finite intersections, so $\mathcal{T}$
+isn't a topology.
+\end{ex}
+
+\begin{prop}\label{prop:discreteTopologyFromSingletons}
+  If we have some topological space $(X,\mathcal{T})$, and for
+  each $x\in X$ we have $\{x\}\in\mathcal{T}$, then $\mathcal{T}$
+  is the discrete topology.
+\end{prop}
+\begin{proof}
+We want to show that $\mathcal{T}$ is the power set of $X$. We
+know that arbitrary unions of subsets of $X$ in $\mathcal{T}$ is
+also in $\mathcal{T}$, and by hypothesis all singletons are
+elements of $\mathcal{T}$. It follows that any arbitrary subset
+of $U\subset X$ can be written as an arbitrary union of
+singletons
+\begin{equation}
+U = \bigcup_{x\in U} \{x\}.
+\end{equation}
+Since this is any arbitrary subset of $X$, it follows that
+\emph{every} subset of $X$ is in $\mathcal{T}$. Thus
+$\mathcal{T}$ is the discrete topology.
+\end{proof}
+
+\begin{defn}\label{defn:comparisonTopologies}
+  Let $\mathcal{T}$, $\mathcal{T}'$ be two topologies on the same
+  set $X$. We say that
+\begin{equation}
+\mathcal{T}\supset\mathcal{T}'\iff\begin{cases}
+\mathcal{T}\text{ is \define{finer} than }\mathcal{T}'\\
+\mathcal{T}'\text{ is \define{coarser} than }\mathcal{T}.
+\end{cases}
+\end{equation}
+\end{defn}
+\begin{rmk}
+This notion of ``finer'' and ``coarser'' topologies are worthy of
+explanation. The typical explanation is to think of sand paper,
+or gravel. Munkres~\cite{munkres} gives the example of having a
+topology be visualized by a collection of large rocks. If we
+break it up into finer gravel, we can ``union'' them together to
+get back the ``coarser topology'' and it takes up less
+volume. Intuitively, this is a ``finer'' configuration of
+pebbles. 
+\end{rmk}
