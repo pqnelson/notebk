@@ -1,0 +1,201 @@
+%%
+%% admMetric.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Jun  5 17:27:58 2009 Alex Nelson
+%% Last update Fri Jun  5 17:27:58 2009 Alex Nelson
+%%
+So when turning to the canonical formalism, we need to split
+spacetime into space and time. Although this ``goes against the
+spirit of special relativity'', there is a theorem from Geroch~\cite{geroch1970dd}
+proving it's completely kosher:
+\begin{quotation}
+\textit{Property 7: Let $S$ be a Cauchy surface for the
+  space-time $M$. Then $M$ is topologically
+  $S\times\mathbb{R}$. In particular, if $M$ is connected, so is
+  $S$.}
+
+[...]
+
+\noindent\textit{Theorem 11: A spacetime $M$ is globally hyperbolic if and
+  only if it has a Cauchy surface.}\footnote{Or equivalently\begin{quote}\textit{If the spacetime is globally hyperbolic, then it is
+  necessarily topologically $M=\mathbb{R}\times S$, where $M$
+  is our spacetime manifold, $\mathbb{R}$ is ``time'' and
+  $S$ is our spatial hypersurface.}\end{quote}}
+\end{quotation}
+If it turns out that spacetime is indeed Lorentzian, it is
+necessarily hyperbolic. It follows that such a decomposition is
+always allowable, at least \emph{classically}. We need to
+``lift'' this condition to the quantum case, so there are no
+``rips'' or ``mending of holes'' in spatial hypersurfaces in the
+quantum case. We will not worry about that too much for now.
+
+Now that we know it's kosher to split spacetime up into space and
+time, lets start by considering a foliation of spacetime. Let $M$
+be the manifold we use for spacetime, $\Sigma_{t}:=X_{t}(S)$
+be (for each $t\in\mathbb{R}$) an embedding (a globally injective
+immersion) $X_{t}:S\to M$. So how this should appear intuitively,
+it's ``layering'' spacetime with ``spatial surfaces''
+(time slices) where time is constant. Each of these time
+slices has local coordinates $x_i$ and an induced metric
+$g_{ij}(x,t)$\footnote{We will denote the induced metric by latin
+ indices or ${}^{(3)}g_{ij}$.}. We can reconstruct all four dimensions by
+examining how one time slice described by $\Sigma_{t}$ to a
+nearby time slice $\Sigma_{t+dt}$ fit together. Consider a point
+$x^i$ on $\Sigma_t$ and displacing it in time by an infinitesimal
+amount in the direction of the normal of the surface. We write
+the resulting change in proper time as
+\begin{equation}%\label{eq:}
+d\tau = Ndt = \begin{pmatrix}$lapse$\ $of$\ $proper$\
+$time$\\ $between$\ $lower$\
+$and$\\ $upper$\ $hypersurfaces$
+\end{pmatrix} 
+\end{equation}
+where $N(t,x^{i})$ is called the ``lapse function''. Such a
+displacement is only a shift in the time coordinate, to be fully
+general we should consider a generic shift in both spatial and
+time coordinates. A general shift in spatial coordinates would be
+described by
+\begin{equation}%\label{eq:}
+x^{i}(t+dt) = x^{i}(t)-N^{i}dt,
+\end{equation}
+where $N^{i}(t,x^i)$ is the ``shift vector''. By the Lorentzian
+pythagorean theorem, we see graphically in figure~\ref{fig:lorentzPyth}, 
+the interval between $(t,x^i)$ and $(t+dt,x^i+dx^i)$ is
+\begin{eqnarray}%\label{eq:}
+ds^{2} &=& -N^2dt^2 + {}^{(3)}g_{ij}(dx^i + N^idt)(dx^j + N^jdt)\\
+&=&
+-\begin{pmatrix} $proper$\ $time$\ $from$\\
+$lower$\ $to$\ $upper$\\ $3-geometry$\end{pmatrix}^2
++\begin{pmatrix}$proper$\ $distance$\ $in$\\
+$base-3$\ $geometry$\end{pmatrix}^2
+\nonumber
+\end{eqnarray}
+This is the ADM form of the metric.
+\begin{figure}[t]
+\includegraphics{img.1}
+\caption{ADM decomposition of spacetime.}\label{fig:lorentzPyth}
+\end{figure}
+
+We can observe from
+\begin{equation}%\label{eq:}
+ds^2 = g_{\mu\nu}dx^{\mu}dx^{\nu} 
+\end{equation}
+that we can write the metric tensor in block form
+\begin{equation}%\label{eq:}
+g_{\mu\nu} = \begin{bmatrix}
+g_{00} & g_{0j}\\
+g_{i0} & g_{ij}
+\end{bmatrix} = \left[\begin{array}{c:c}
+(N_{i}N^{i}-N^{2}) & N_{j}\\\hdashline
+N_{i} & {}^{(3)}g_{ij}
+\end{array}\right]
+\end{equation}
+where $q_{ij}$ is the induced metric on the time slice. How to
+find the inverse of the four-metric using this decomposition? We
+can observe that we can find the inverse by
+\begin{equation}%\label{eq:}
+g_{\mu\nu}g^{\nu\rho} = \begin{bmatrix}
+(N_{i}N^{i}-N^{2}) & N_{j}\\
+N_{i} & {}^{(3)}g_{ij}
+\end{bmatrix}
+\begin{bmatrix}
+\alpha & \beta^{k}\\
+\beta^{j} & \gamma^{jk}
+\end{bmatrix} = {\delta^{\rho}}_{\mu}.
+\end{equation}
+We end up with, through matrix multiplication, four conditions
+\begin{subequations}
+\begin{align}
+\alpha N_i + {}^{(3)}g_{ij}\beta^{j} &= 0\label{eq:conOne}\\
+(N_iN^i - N^2)\beta^k + N_j \gamma^{jk} &= 0\label{eq:conTwo}\\
+(N_iN^i - N^2)\alpha + N_{j}\beta^{j} &= 1\label{eq:conThree}\\
+N_{i}\beta^{k} + {}^{(3)}g_{ij}\gamma^{jk} &= {\delta^{k}}_{i}\label{eq:conFour}
+\end{align}
+\end{subequations}
+Let ${}^{(3)}g^{ik}$ be the inverse of the induced metric, i.e.
+\begin{equation}%\label{eq:}
+{}^{(3)}g^{ik}{}^{(3)}g_{kj}={}^{(3)}{\delta^{i}}_{j}
+\end{equation}
+where ${}^{(3)}{\delta^{i}}_{j}$ is the 3 by 3 Kronecker delta. We
+find from eq \eqref{eq:conOne} that
+\begin{equation}%\label{eq:}
+\beta^{k} = -\alpha N_{i}{}^{(3)}g^{ik} = -\alpha N^{k}.
+\end{equation}
+We plug this into eq \eqref{eq:conThree} to find that
+\begin{equation}%\label{eq:}
+\alpha = \frac{-1}{N^2}.
+\end{equation}
+This implies 
+\begin{equation}%\label{eq:}
+\beta^{k} = \frac{N^{k}}{N^2}.
+\end{equation}
+We plug this into eq \eqref{eq:conFour} to find
+\begin{equation}%\label{eq:}
+{}^{(3)}g_{ij}\gamma^{jk}={\delta_{i}}^{k}-\frac{N_{i}N^{k}}{N^2}\Rightarrow \gamma^{kl}={}^{(3)}g^{kl}-\frac{N^lN^k}{N^2}
+\end{equation}
+by multiplying both sides by ${}^{(3)}g^{il}$. We can now recombine our
+results to find the inverse of the metric tensor to be
+\begin{equation}%\label{eq:}
+g^{\mu\nu} =\frac{1}{N^2} \left[\begin{array}{c:c}
+-1 & N^{k}\\\hdashline
+N^{j} & {}^{(3)}g^{jk}N^2 - (N^jN^k)
+\end{array}\right]
+\end{equation}
+Observe that there is a difference between the spatial component
+of the 4-metric ${}^{(4)}g^{ij}={}^{(3)}g^{ij}+\alpha N^{i}N^{j}$ and the inverse
+of the induced metric ${}^{(3)}g^{ij}$.
+
+Lets consider some geometry in this ADM form of the metric. Let
+$n_{\alpha}=-N\delta_{0\alpha}$ be the unit normal to the time
+slice. We define the first fundamental form as
+\begin{equation}%\label{eq:}
+q_{\mu\nu}:=g_{\mu\nu}+n_{\mu}n_{\nu}.
+\end{equation}
+Intuitively ${q^{\alpha}}_{\beta}$ be thought of as a sort of ``projection'',
+i.e. it projects any index into a ``purely spatial'' one (more
+precisely, a ``purely spatial'' index is one which -- when
+contracted with $n^\alpha$ or $n_\alpha$ -- vanishes). We then
+define the \marginpar{Extrinsic Curvature Tensor $K_{\alpha\beta}$} extrinsic curvature tensor
+\begin{equation}%\label{eq:}
+K_{\mu\nu} = {q_{\mu}}^{\rho}{q_{\nu}}^{\sigma}\nabla_{\rho}n_{\sigma}.
+\end{equation}
+We assert that $K_{\alpha\beta}$ is symmetric in its indices. How
+can we see this? From observing the Lie derivative of the metric
+along a vector in section \ref{sstn:lieDerivativeOfMetricAlongVector}
+ we see that
+\begin{equation}%\label{eq:}
+\mathscr{L}_{n}g_{\alpha\beta} = \nabla_{\alpha}n_{\beta}+\nabla_{\beta}n_{\alpha}.
+\end{equation}
+We see the left hand side is symmetric in its indices which
+implies the right hand side is symmetric in its indices. We see
+that
+\begin{equation}%\label{eq:}
+{q_{\mu}}^{\alpha}{q_{\nu}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta} = K_{\mu\nu}+K_{\nu\mu}\neq0.
+\end{equation}
+It's nonvanishing since $n_{\alpha}$ is not a Killing vector. We
+see that
+\begin{equation}%\label{eq:}
+{q_{\mu}}^{\alpha}{q_{\nu}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta}
+- K_{\nu\mu} = K_{\mu\nu}
+\end{equation}
+which implies
+\begin{equation}%\label{eq:}
+{q_{[\mu}}^{\alpha}{q_{\nu]}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta}
+- K_{[\nu\mu]} = K_{[\mu\nu]}.
+\end{equation}
+We also see that
+\begin{equation}%\label{eq:}
+{q_{\mu}}^{\alpha}{q_{\nu}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta}
+- 2K_{\nu\mu} = K_{\mu\nu}- K_{\nu\mu}
+\end{equation}
+Setting these two equations equal yields
+\begin{equation}%\label{eq:}
+{q_{\mu}}^{\alpha}{q_{\nu}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta}
+- 2K_{\nu\mu} = {q_{\mu}}^{\alpha}{q_{\nu}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta}
+- K_{\nu\mu} - {q_{\nu}}^{\alpha}{q_{\mu}}^{\beta}\mathscr{L}_{n}g_{\alpha\beta}
++ K_{\mu\nu}
+\end{equation}
+which

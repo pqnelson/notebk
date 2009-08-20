@@ -1,0 +1,199 @@
+%%
+%% 4April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 19 19:00:28 2008 Alex Nelson
+%% Last update Fri Dec 19 19:00:28 2008 Alex Nelson
+%%
+%
+%
+% Bessel Inequality
+%
+
+\begin{bessel}\index{Bessel Inequality}
+If $f$ is $2\pi$-periodic and Riemann integrable from $-\pi$
+to $\pi$, and $c_n$ are the Fourier coefficients of $f$,
+then 
+\begin{equation}
+\sum^{\infty}_{n=-\infty}|c_{n}|^2\leq\frac{1}{2\pi}\int^{\pi}_{-\pi}|f(\psi)|^2d\psi
+< +\infty
+\end{equation}
+\end{bessel}
+
+This is important because it allows us to create a bound for
+the Fourier series that guarantees convergence. It should be
+noted that equivalently it can be shown
+\begin{equation}
+\frac{1}{4}|a_0|^2 + \frac{1}{2}\sum^{\infty}_{n=1}|a_{n}|^2
++ |b_{n}|^{2} = \sum^{\infty}_{n=-\infty}|c_{n}|^{2} \leq \frac{1}{2\pi}\int^{\pi}_{-\pi}|f(\psi)|^2d\psi< +\infty.
+\end{equation}
+Why? Well, recall
+\begin{subequations}
+\begin{align}
+a_{0} &= 2c_{0} \\
+a_{n} &= c_{n} + c_{-n} \\ 
+b_{n} &= i(c_{n}-c_{-n})
+\end{align}
+\end{subequations}
+and also recall in complex analysis, $|z|^2 = z\bar{z}$ for
+$z\in\mathbb{C}$. We would like
+\begin{equation}
+|a_{n}|^{2}\to 0\qquad\text{as } |n|\to\infty
+\end{equation}
+or
+\begin{equation}\label{eq:4April2008:F1}
+c_{n}\to 0\quad\text{as }|n|\to\infty.
+\end{equation}
+\marginpar{Riemann integrable and periodic?}The question
+that arises is ``What kind of functions are Riemann
+integrable and $2\pi$-periodic?''
+
+Let us first review a number of definitions which will
+simplify our life quite a bit.
+
+\begin{defn} 
+Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Then the
+\textbf{left limit}\index{Limit!Left Limit} of $f$ at $x$ is
+\begin{equation}
+f(x^{-}) = \lim_{y\to x^{-}}f(y) = \lim_{y\uparrow x}f(y) 
+\end{equation}
+($y$ is increasing to $x$). The \textbf{right
+  limit}\index{Limit!Right Limit} of $f$ at $x$ is
+\begin{equation}
+f(x^{+}) = \lim_{y\to x^{+}}f(y) = \lim_{y\downarrow x}f(y)
+\end{equation}
+($y$ decreases to $x$).
+\end{defn}
+
+\begin{defn}
+Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Then $f$ is
+\textbf{continuous}\index{Continuity!Continuous}\index{Continuous|see{Continuity}}
+at $x$ if
+\begin{equation}
+\lim_{y\to x^{+}}f(y) = \lim_{y\to x^{-}}f(y) < \infty.
+\end{equation}
+More rigorously, for each $\varepsilon>0$ there is a
+$\delta>0$ such that
+\begin{equation}
+|y-x|<\delta\Rightarrow|f(y)-f(x)|<\varepsilon.
+\end{equation}
+\end{defn}
+
+Let us examine an example of the $\varepsilon-\delta$
+definition of the limit.
+
+\begin{ex}
+Let $f(x)=x^{3}$ and $x_{0}\in\mathbb{R}$. We have
+\begin{equation}
+|x-x_{0}|<\delta
+\end{equation}
+and in our function we have
+\begin{equation}
+|x^{3} - x_{0}^{3}| < \varepsilon.
+\end{equation}
+We need to determine $\delta$ in terms of $\varepsilon$. So
+we have
+\begin{equation}
+(x^2 + x_{0}x + x_{0}^{2})(x - x_{0}) = x^{3} - x_{0}^{3}
+\end{equation}
+so
+\begin{subequations}
+\begin{align}
+|x^{3} - x_{0}^{3}|&\leq |x^2 + x_{0}x + x_{0}^{2}||x-x_{0}|\\
+&\leq |x^2 + x_{0}x + x_{0}^{2}|\delta \\
+&< \varepsilon.
+\end{align}
+\end{subequations}
+Thus we set
+\begin{equation}
+\delta < \frac{\varepsilon}{|x^2 + x_{0}x + x_{0}^{2}|} <
+\frac{\varepsilon}{x_{0}^{2}}
+\end{equation}
+where the right hand side can be justified since we want the
+denominator to be as small as possible, so we have $x=x_{0}$
+and the denominator becomes $3x_{0}^{2}$ but this is less
+than $x_{0}^{2}$ so we have a good bound. Thus we set
+\begin{equation}\label{eq:4April2008:exAnswerOne}
+\delta = \frac{\varepsilon}{x_{0}^{2}}
+\end{equation}
+if $x_{0}\neq 0$. If $x_{0}=0$, then we have
+\begin{equation}\label{eq:4April2008:exAnswerTwo}
+\delta = \frac{\varepsilon}{x^2}
+\end{equation}
+which is a \emph{better} solution since it's \emph{more
+  general} than the first solution. That is, Eq
+\eqref{eq:4April2008:exAnswerTwo} contains the specific case
+of Eq \eqref{eq:4April2008:exAnswerOne}. But we have found a
+$\delta>0$ in terms of $\varepsilon>0$ that demonstrates
+continuity for arbitrary $x_0$.
+\end{ex}
+
+\begin{defn}
+Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Then $f$ has
+a \textbf{jump discontinuity}\index{Discontinuity!Jump Discontinuity} at $x_{0}$ if $f$ is
+discontinuous at $x_{0}$ but $f(x^+)$ and $f(x^-)$ both
+exist and are finite.
+\end{defn}
+
+\begin{defn}
+Let $f:\mathbb{R}\to\mathbb{R}$ be a function. Then we say
+$f$ is \textbf{piecewise continuous}\index{Continuity!Piecewise continuous} on $\mathbb{R}$ if on
+any bounded interval $[a,b]$, where $-\infty<a<b<+\infty$,
+$f$ has only jump discontinuities at finitely many
+points.\index{$PC(\mathbb{R})$|see{Piecewise Continuous}}
+\index{Piecewise Continuous|see{Continuity}}
+\end{defn}
+
+\begin{defn}
+Let $f:\mathbb{R}\to\mathbb{R}$ be a function. We say that
+$f$ is \textbf{piecewise smooth}\index{Smooth!Piecewise Smooth} 
+on $\mathbb{R}$ (denoted $PS(\mathbb{R}$\index{$PS(\mathbb{R})$|see{Piecewise Smooth}}) if both
+$f$ and $f'$ are piecewise continuous on $\mathbb{R}$
+(i.e. on $[a,b]$ both $f$ and $f'$ have only finitely many
+jump discontinuities).\index{Piecewise Smooth|see{Smooth}}
+\end{defn}
+
+These definitions are nothing really of interest, they are
+weaker than just being continuous, or just being
+smooth. Consequently, we will not review them in great
+detail.
+
+\subsection{Dirichlet Kernel}\index{Dirichlet Kernel}
+
+We want to consider partial sums of the Fourier series of a
+given function. To do this, we will introduce a mathematical
+object called the $N^{th}$ \textbf{Dirichlet Kernel}
+\begin{equation}
+D_{N}(\phi) = \frac{1}{2\pi}\sum^{N}_{n=-N}e^{in\phi}
+\end{equation}
+Observe that
+\begin{subequations}
+\begin{align}
+\int^{0}_{-\pi}D_{N}(\phi)d\phi &=
+\int^{0}_{-\pi}\left(\frac{1}{2\pi}\sum^{N}_{n=-N}e^{in\phi}\right)d\phi\\
+&= \frac{1}{2\pi}\phi +
+\frac{1}{\pi}\sum^{N}_{n=1}\frac{\sin(n\phi)}{n}\Big|^{0}_{-\pi}\\
+&=\frac{1}{2}+\frac{1}{\pi}\sum^{N}_{n=1}\frac{\sin(n\pi)}{n}\\
+&=\frac{1}{2}+0
+\end{align}
+\end{subequations}
+Similarly, we have
+\begin{equation}
+\int^{\pi}_{0}D_{N}(\phi)d\phi = \frac{1}{2}
+\end{equation}
+But let us now see something quite miraculous, we can
+evaluate the partial sums of the Fourier series using the
+Dirichlet kernel. Observe
+\begin{subequations}
+\begin{align}
+\frac{1}{2\pi}\int^{\pi}_{-\pi}f(\theta)D_{N}(\theta-\phi)d\theta
+&=
+\frac{1}{2\pi}\sum^{N}_{n=-N}e^{-in\phi}\int^{\pi}_{-\pi}f(\theta)e^{in\theta}d\theta\\
+&=\sum^{N}_{n=-N}e^{-in\phi}\left(\frac{1}{2\pi}\int^{\pi}_{-\pi}f(\theta)e^{in\theta}d\theta\right)\\
+&=\sum^{N}_{n=-N}e^{-in\phi}c_{-n}\\
+&=\sum^{N}_{n=-N}e^{in\phi}c_{n}
+\end{align}
+\end{subequations}
+which is precisely the $N^{th}$ partial sum of the Fourier series.

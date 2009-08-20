@@ -1,0 +1,418 @@
+%%
+%% 16April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 20 09:36:45 2008 Alex Nelson
+%% Last update Sat Dec 20 09:36:45 2008 Alex Nelson
+%%
+
+\subsection{Inner Products}
+
+Now we wish to speak of certain ``extra-structure'' on top
+of a vector space. What is this ``extra-structure'' of which
+I speak? Well, things like the norm, the inner product,
+these sort of ``extra goodies'' are the ``extra-structure''
+that I am going to discuss. Let us first consider the table
+of similarities between the $k$ dimensional vector space
+with complex entries (i.e. a vector space over the field
+$\mathbb{C}$ with $k$ dimensions denoted as $\mathbb{C}^k$
+which consists of an ordered ``$k$-tuple'' consisting of $k$
+components, with vector addition and scalar multiplication
+defined componentwise) with the piecewise continuous
+functions on $(a,b)$ (which we denote as $PC(a,b)$).
+
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}
+\hline 
+$\mathbb{C}^{k}$ & $PC(a,b)$ \\ 
+\hline
+$k$ dimensional & infinite dimensional \\ \hline
+$\vec{a} = (a_1,...,a_k)$ with $a_j\in\mathbb{C}$ & elements
+are functions that are piecewise continuous on
+$[a,b]$. \\ \hline
+Addition is done componentwise \newline $\vec{a}+\vec{b}=(a_1+b_1,...,a_n+b_n)$ & The
+``components'' are continuous, so we do addition
+``point-wise'' \newline $f(x)+g(x)$ \\ \hline
+Scalar multiplication done componentwise\newline
+$\alpha\vec{a}=(\alpha a_1,...,\alpha a_k)$ & Scalar
+multiplication is done in the naive way by merely
+multiplying by a constant
+$\alpha f(x)$ \\ \hline
+\end{tabular}
+
+Now we would like to consider the various ``extra
+structure'' that we can add to a vector space, and whether
+this can be generalized in the $PC(a,b)$ vector space.
+
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}
+\hline 
+$\mathbb{C}^{k}$ & $PC(a,b)$ \\ 
+\hline
+We sum up the entries componentwise\newline
+for the inner product\footnote{The dot product is a certain
+  version of the inner product, the inner product is then
+  the mathematical structure we would like to examine.}
+Mathematicians use the notation\newline
+$\<a,b\> = \sum^{k}_{j}a_{j}\bar{b}_{j}$\newline
+but physicists use Bra-Ket notation\newline
+$\<b|a\>=\<a,b\>$ is the translation between the two notations
+&
+We similarly sum up all the points for two functions\newline
+$\<f,g\> = \int^{b}_{a}f(x)\bar{g(x)}dx$ \\ \hline
+We have $\<\vec{0},\vec{u}\>=0$ for all
+$\vec{u}\in\mathbb{C}^k$ &
+$\<0,f\>=0$ for all $f\in PC(a,b)$. \\ \hline
+\end{tabular}
+
+Observe the consequences of defining the inner product for
+$PC(a,b)$ to be
+\begin{equation}
+\<f,g\> = \int^{b}_{a}f(x)\overline{g(x)}dx
+\end{equation}
+we have linearity in the first slot\index{Inner Product!Linearity In First Slot}
+\begin{equation}
+\<\alpha f + \beta g, h\> = \alpha\<f,h\> + \beta\<g,h\>
+\end{equation}
+for arbitrary $\alpha,\beta\in\mathbb{C}$. \marginpar{Linearity in first slot}We can see this
+by going back to the definition of the inner product and
+plugging it in
+\begin{subequations}
+\begin{align}
+\<\alpha f + \beta g, h\> &= \int^{b}_{a}(\alpha f(x) +
+\beta g(x))\overline{h(x)}dx \\
+&= \int^{b}_{a}\left(\alpha f(x)\overline{h(x)} + \beta
+g(x)\overline{h(x)}\right)dx\\
+&= \int^{b}_{a} \alpha f(x)\overline{h(x)}dx +
+\int^{b}_{a}\beta g(x)\overline{h(x)}dx\\
+&= \alpha\int^{b}_{a}f(x)\overline{h(x)}dx +
+\beta\int^{b}_{a}g(x)\overline{h(x)}dx\\
+&= \alpha\<f,h\> + \beta\<g,h\>.
+\end{align}
+\end{subequations}
+All we used was the distributivity of multiplication, the
+linearity of the integral (twice actually), and then we
+concluded with using the definition of the inner product on
+$PC(a,b)$.
+
+There is also a similar property for the second slot, but it
+is called \textbf{antilinear}\index{Inner Product!Antilinearity of Second Slot}
+This sounds bizarre, but using the same song and dance we
+see that
+\begin{equation}
+\<f,\alpha g\> = \bar{\alpha}\<f,g\>
+\end{equation}
+where $\bar{\alpha}$ is the complex conjugate of
+$\alpha$. However, we see that
+\begin{subequations}
+\begin{align}
+\<f,g+h\> &=
+\int^{b}_{a}f(x)(\overline{g(x)}+\overline{h(x)})dx \\
+&= \int^{b}_{a}(f(x)\overline{g(x)}+f(x)\overline{h(x)})dx \\
+&= \int^{b}_{a}f(x)\overline{g(x)}dx+\int^{b}_{a}f(x)\overline{h(x)}dx\\
+&= \<f,g\> + \<f,h\>.
+\end{align}
+\end{subequations}
+\marginpar{Antilinearity in second slot}Thus antilinearity in the second slot can be summed up as
+\begin{equation}
+\<f,\alpha g + \beta h\> = \bar{\alpha}\<f,g\> +
+\bar{\beta}\<f,h\>
+\end{equation}
+for $\alpha,\beta\in\mathbb{C}$.
+
+The last property of the inner product of interest is its
+Hermitian Symmetry\index{Inner Product!Hermitian Symmetric}. 
+That is to say that we have
+\begin{equation}
+\<f,g\> = \<g,f\>^{*}
+\end{equation}
+which is shorthand for
+\begin{equation}
+\<g,f\>^{*} = \overline{\<g,f\>}.
+\end{equation}
+For finite dimensional vector spaces, we need to also take
+the transpose. One of the peculiarities of the infinite
+dimensional vector spaces like $PC(a,b)$ is that we don't
+need (or even have well defined) a transpose operation.
+
+\subsection{Induced Norm}
+
+Let us review the case of the properties of the norm for
+finite dimensional vector spaces $V$ over $\mathbb{C}$. Once
+we have an inner product, we can define (invent, or
+``induce'') a norm\index{Norm!Induced from Inner Product}
+\begin{equation}
+\|n\| = \sqrt{\<n,n\>}.
+\end{equation}
+So in $\mathbb{C}^k$, this would be
+\begin{equation}
+\|\vec{a}\| = \sqrt{\sum^{k}_{j=1}|a_{j}|^{2}}
+\end{equation}
+but in $PC(a,b)$ we have
+\begin{equation}
+\|f\| = \left(\int^{b}_{a}|f(x)|^{2}dx\right)^{1/2}
+\end{equation}
+So the question arises: what are the properties of the norm?
+
+The norm has the property of
+homogeneity\index{Norm!Homogeneity} which means
+\begin{equation}
+\|\alpha\vec{u}\| = |\alpha|\|\vec{u}\|
+\end{equation}
+for all $\alpha\in\mathbb{C}$ and $\vec{u}\in V$.
+
+Additionally, there is the property of
+positivity\index{Norm!Positivity}
+\begin{equation}
+\|\vec{a}\|=0\iff \vec{a}=\vec{0},\quad\text{and
+}\|\vec{a}\|>0\quad\forall\vec{a}\neq\vec{0}
+\end{equation}
+or in other words, the norm of a vector is zero if and only
+if it is the zero vector. Otherwise, the norm of a vector is positive.
+
+Now, the condition of positivity is not strictly true for
+the vector space $PC(a,b)$. Consider, working on $PC(0,1)$,
+the function
+\begin{equation}
+f(x) = \begin{cases} x & \text{if }x=(1/4),(1/2),(3/4) \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+Then we see that
+\begin{subequations}
+\begin{align}
+\|f\|^2 &= \int^{1/4}_{0}(0)dx + \int^{1/2}_{1/4}(0)dx +
+\int^{3/4}_{1/2}(0)dx + \int^{1}_{3/4}(0)dx \\
+&= 0
+\end{align}
+\end{subequations}
+but $f(x)\neq 0$. 
+
+The convention we use is that in $PC(a,b)$ two functions are
+considered to be equal $f(x)=g(x)$ if they agree except at
+finitely many points. The motivation for this is, in finite
+dimensional vector space, if
+\begin{equation}
+\vec{u}=\vec{v}
+\end{equation}
+then
+\begin{equation}
+\vec{u}-\vec{v}=\vec{0}\Rightarrow\|\vec{u}-\vec{v}\|=0.
+\end{equation}
+So, this would mean that the two are equal. If there are
+only a finite number of points where $f(x)$ disagrees with
+$g(x)$, then the norm of the difference would vanish. So by
+the above scratch work, it would imply that $f(x)=g(x)$.
+
+\begin{lem}
+For any $u,v\in V$ (of arbitrary dimension), then
+\begin{equation}
+\|u+v\|^2 = \|u\|^2 + \|v\|^2 + 2\re\left(\<u,v\>\right).
+\end{equation}
+\end{lem}
+\begin{proof}
+It trivially follows from the Hermitian symmetry of the
+inner product (that is no proof, it should be
+noted). Observe that
+\begin{subequations}
+\begin{align}
+\|u+v\|^2 &= \<u+v,u+v\> \\
+&= \<u,v\>+\<v,u\>+\<u,u\>+\<v,v\> \\
+&=\re\left(\<u,v\>\right)+\|u\|^2+\|v\|^2
+\end{align}
+\end{subequations}
+which is an explicit calculation.
+\end{proof}\marginpar{Cauchy-Schwarz Inequality}\index{Norm!Cauchy-Schwarz Inequality}\index{Cauchy-Schwarz Inequlity|see{Norm}}
+\begin{lem}{(Cauchy-Schwarz Inequality)}
+Let $u,v\in V$ then
+\begin{equation}
+|\<u,v\>|\leq\|u\|\|v\|
+\end{equation}
+and it is an equality if and only if $u=\alpha v$ where
+$\alpha\in\mathbb{C}$.
+\end{lem}
+\begin{proof}
+For any real constant $t\in\mathbb{R}$,
+\begin{subequations}
+\begin{align}
+0&\leq\|u+tv\|^2 \\
+&\leq\|u\|^2+|t|^2\|v\|^2 + 2t\re\left(\<u,v\>\right)
+\end{align}
+\end{subequations}
+We can assume without loss of generality that $\|v\|\neq0$
+(otherwise the inequality holds trivially, a sixth grader
+could show it). We can form a quadratic equation in $t$
+\begin{equation}
+0 \leq q(t) = \frac{\|u\|^2}{\|v\|^2} +
+2\frac{\re(\<u,v\>)}{\|v\|^2}t + t^2
+\end{equation}
+We see that $q(t)$ is quadratic, so it has a minimum
+somewhere (since its coefficients are all positive). We take
+its derivative and set it to zero:
+\begin{equation}
+q'(t) = 2\left(\frac{\re(\<u,v\>)}{\|v\|^2} + t\right)
+\end{equation}
+We see when setting this to be zero that the minimum occurs when
+\begin{equation}
+t = -\frac{\re(\<u,v\>)}{\|v\|^2}.
+\end{equation}
+We plug this value of $t$ back into $q(t)$ to find
+\begin{equation}\label{eq:16April2008:stepInProofThatNeedsCitation}
+0\leq q\left( -\frac{\re(\<u,v\>)}{\|v\|^2}\right) = \|u\|^2 - \frac{[\re(\<u,v\>)]^2}{\|v\|^2}
+\end{equation}
+Without loss of generality, we may assume that
+$\<u,v\>\in\mathbb{R}$. Suppose it's really complex, then we
+can write it in polar form as
+\begin{equation}
+\<u,v\> = re^{i\theta}
+\end{equation}
+for $r,\theta\in\mathbb{R}$ such that $r>0$ and
+$0\leq\theta<2\pi$. Then we find that
+\begin{equation}
+|\<u,v\>|=r
+\end{equation}
+which is basic complex analysis. Thus plugging this into Eq
+\eqref{eq:16April2008:stepInProofThatNeedsCitation} we find
+that
+\begin{equation}
+0\leq \|u\|^2\|v\|^2 - |\<u,v\>|^2
+\end{equation}
+which implies
+\begin{equation}
+|\<u,v\>|^2\leq\|u\|^2\|v\|^2
+\end{equation}
+which is precisely the inequality!
+\end{proof}
+
+\begin{lem}{(Triangle Inequality)}
+Let $u,v\in V$, then
+\begin{equation}
+\|u\| + \|v\|\geq \|u+v\|
+\end{equation}
+and it is equal if $u=tv$ where $t\in\mathbb{R}$.
+\end{lem}
+\begin{defn}
+Two vectors $u,v\in V$ are said to be \textbf{orthogonal}\index{Orthogonal!Vectors}
+if $\<u,v\>=0$.
+\end{defn}
+\begin{lem}{(Pythagorean Theorem)}
+Let $u_1,\ldots,u_n$ be mutually orthogonal vectors, then
+\begin{equation}
+\|u_1+\cdots+u_n\|^2 = \|u_1\|^2 + \cdots + \|u_n\|^2.
+\end{equation}
+\end{lem}
+Now, we can think of the Fourier series of $f\in PC(a,b)$ as
+a sort of expansion with respect to a given basis.
+
+We know that $\{e^{in\theta}\}$ forms an orthogonal basis
+for all $n\in\mathbb{Z}$. Observe that
+\begin{equation}
+\<\exp(in\theta),\exp(in\theta)\> =
+\int^{\pi}_{-\pi}e^{in\theta}e^{-in\theta}d\theta = 2\pi
+\end{equation}
+and 
+\begin{equation}
+\<\exp(i(n+m)\theta),\exp(in\theta)\> =
+\int^{\pi}_{-\pi}e^{im\theta}d\theta =
+\frac{1}{im}\left(e^{im\pi}-e^{-im\pi}\right) = 0.
+\end{equation}
+So to form an orthonormal basis, we need to use the basis
+$\{\exp(in\theta)/\sqrt{2\pi}\}$ for all $n\in\mathbb{Z}$.
+
+So wait, why do we care so much about a basis? A vector is a
+vector is a vector, right? Well, no, it's time to review why
+basis vectors matter.
+
+\subsection{Basis Vectors Matter}
+
+In general, let $V$ be a vector space over
+$\mathbb{C}$. Given $n$ vectors $v_1,...,v_n\in V$, we have
+this set of all possible linear combinations of these
+vectors called the \textbf{linear space}\index{Linear Span}
+\begin{equation}
+\operatorname{span}(v_1,...,v_n) =
+\{a_1v_1+\cdots+a_nv_n:\forall a_1,...,a_n\in\mathbb{C}\}.
+\end{equation}
+Now, we can call a given collection of vectors $v_1,...,v_n$
+\textbf{linearly independent} if the only scalars
+$a_1,...,a_n\in\mathbb{C}$ that satisfy
+\begin{equation}
+a_1v_1 + \cdots + a_nv_n = 0
+\end{equation}
+are $a_1=\cdots=a_n=0$. This means that we cannot write any
+single vector in terms of a linear combination of the other
+$n-1$ vectors.
+
+It would be lovely if we could find some collection of
+linearly independent vectors whose span is equal to the
+entire vector space $V$, wouldn't it? (Yes, it would.) There
+is a special name we give to such collection of vectors, we
+call the set a \textbf{basis}\index{Basis} and the vectors
+are called (appropriately enough) \textbf{basis vectors}.
+
+There is also a way to write any given vector as a linear
+combination of a given basis. What we do is ``project'' the
+given vector $x$ onto the basis vector $v_j$, which is some
+scalar $\<x,v_j\>$ and then multiply the basis vector by
+this quantity. So we end up with a sum
+\begin{equation}
+x = \sum_{j}\<x,v_j\>v_j.
+\end{equation}
+Let us consider a few examples.
+
+\begin{ex}
+Consider the vector space $\mathbb{R}^2$ over the scalar
+field $\mathbb{R}$ with the usual dot produt. Let $e_1 =
+(1,1)/\sqrt{2}$, $e_2=(1,-1)/\sqrt{2}$ be an orthonormal
+basis (we see this because the dot product of a given basis
+vector with itself is 1, but dot them to each other results in
+0). Let $x=(3,7)$. Then we can write it as a linear
+combination of the basis
+\begin{equation}
+x = \<x,e_1\>e_1 + \<x,e_2\>e_2
+\end{equation}
+Observe
+\begin{equation}
+\<x,e_1\> = (3+7)/\sqrt{2}=5\sqrt{2},\qquad\text{and }\<x,e_2\>=(3-7)/\sqrt{2}=-2\sqrt{2}
+\end{equation}
+thus
+\begin{equation}
+x = (5\sqrt{2})e_1 + (-2\sqrt{2})e_2 = (5e_1-2e_2)\sqrt{2}
+\end{equation}
+which concludes this example. If one doesn't believe it,
+just plug it all back in
+\begin{equation}
+(5e_1-2e_2)\sqrt{2} = (5,5)+(-2,2) = (3,7).
+\end{equation}
+Woah, that's exactly $x$!
+\end{ex}
+
+\begin{rmk}
+If we have a basis that is not composed of unit vectors, we
+have to make them unit vectors \emph{BEFORE} trying to
+expand a given vector in terms of them.
+\end{rmk}
+
+\begin{rmk}
+The Fourier series is just an expansion in the basis
+$\{\exp(in\theta)\}$, and it is normalized silently by
+making the cofficients be
+\begin{equation}
+c_n =
+\frac{1}{2\pi}\int^{\pi}_{-\pi}f(\theta)e^{-in\theta}d\theta
+\end{equation}
+The basis is normalized as $\exp(in\theta)/\sqrt{2\pi}$ but
+then when we take the dot product of the new coefficient
+\begin{equation}
+\widetilde{c}_n =
+\int^{\pi}_{-\pi}f(\theta)\frac{e^{-in\theta}}{\sqrt{2\pi}}d\theta
+\end{equation}
+and there is an extra factor of $1/\sqrt{2\pi}$ in the basis
+vectors in the expansion, which yields the series being
+\begin{equation}
+f(\theta) =
+\sum^{\infty}_{n=-\infty}\frac{1}{2\pi}e^{in\theta}\int^{\pi}_{-\pi}f(\theta)e^{-in\theta}d\theta
+\end{equation}
+which is precisely what we have with our original Fourier
+coefficients and our original basis.
+\end{rmk}

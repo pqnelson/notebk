@@ -1,0 +1,65 @@
+\section{Maxwell's Equations in a Nutshell}
+
+Recall in classical electromagnetism we have it summed in Maxwell's equations~\cite{jackson}. In the presence of a charge density $\rho(\vec{x},t)$ and a 
+current density $\vec{j}(\vec{x},t)$, the electric and magnetic fields $\vec{E}$
+and $\vec{B}$ satisfy the equations
+\begin{subequations}\label{maxwellsEquations}
+\begin{align}
+\nabla\cdot\vec{E}&=\rho\label{gaussLaw}\\
+\nabla\times\vec{B}&=\frac{1}{c}\vec{j} + \frac{1}{c}\frac{\partial\vec{E}}{\partial t}\label{AmpereLaw}\\
+\nabla\cdot\vec{B} &= 0\label{GaussLawMagnet}\\
+\nabla\times\vec{E} &= -\frac{1}{c}\frac{\partial\vec{B}}{\partial t} \label{FaradayLaw}
+\end{align}
+\end{subequations}
+where cgs units are used.
+
+In the second pair of equations (Eqs \ref{GaussLawMagnet} and \ref{FaradayLaw})
+follows the existence of scalar and vector potentials $\phi(\vec{x},t)$ and
+$\vec{A}(\vec{x},t)$ defined by
+\begin{equation}
+\vec{B} = \nabla\times\vec{A},\quad\vec{E}=-\nabla\phi - \frac{1}{c}\frac{\partial\vec{A}}{\partial t}.
+\end{equation}
+However, this does not determine the system uniquely, since for an \emph{arbitrary}
+function $f(\vec{x},t)$ the transformation
+\begin{equation}\label{emGaugeTransformation}
+\phi\to\phi'=\phi + \frac{1}{c}\frac{\partial f}{\partial t},\quad\vec{A}\to\vec{A}' = \vec{A} - \nabla f
+\end{equation}
+leaves the fields $\vec{E}$ and $\vec{B}$ unaltered. The transformation (\ref{emGaugeTransformation})
+is known as a gauge transformation of the second kind\footnote{I.e. it is described
+mathematically in differential geometry as a connection form.}. Since all 
+observable quantities can be expressed in terms of 
+$\vec{E}$ and $\vec{B}$, it is a fundamental requirement of any theory
+formulated in terms of potentials that is gauge; i.e. the predictions for the 
+observable quantities are invariant under such gauge transformations.
+
+When we express Maxwell's equations in terms of potentials, the second pair
+are automatically satisfied. The first pair (\ref{gaussLaw} and \ref{AmpereLaw}) become
+\begin{subequations}
+\begin{align}
+-\nabla^2\phi - \frac{1}{c}\frac{\partial}{\partial t}(\nabla\cdot\vec{A}) = \Box\phi - \frac{1}{c}\frac{\partial}{\partial t}\left(\frac{1}{c}\frac{\partial\phi}{\partial t} + \nabla\cdot\vec{A}\right) = \rho\\
+\Box\vec{A} + \nabla\left(\frac{1}{c}\frac{\partial\phi}{\partial t} + \nabla\cdot\vec{A}\right) = \frac{1}{c}\vec{j}
+\end{align}
+\end{subequations}
+where
+\begin{equation}
+\Box \equiv \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2
+\end{equation}
+is called the ``D'Alembertian''.
+
+We can now consider the so-called ``free field'' case. That is, we have no
+charge or current so $\rho=0$ and $\vec{j}=0$. We can choose a gauge for the
+system such that
+\begin{equation}\label{radiationGauge}
+\nabla\cdot\vec{A} = 0.
+\end{equation}
+The condition (\ref{radiationGauge}) defines the \textbf{Coulomb or radiation gauge}. A vector field with vanishing divergence (ie satisfying Eq (\ref{radiationGauge})) is called a ``transverse field'' since for a wave
+\begin{equation}
+\vec{A}(\vec{x},t) = \vec{A}_0 \exp(i(\vec{k}\cdot\vec{x}-\omega t))
+\end{equation}
+gives
+\begin{equation}
+\vec{k}\cdot\vec{A} = 0,
+\end{equation}
+or in other words $\vec{A}$ is perpendicular to the direction of propagation 
+$\vec{k}$ of the wave. In the Coulomb gauge, the vector potential is a transverse
+vector.

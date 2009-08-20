@@ -1,0 +1,117 @@
+%%
+%% 12May2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 21 21:55:49 2008 Alex Nelson
+%% Last update Sun Dec 21 21:55:49 2008 Alex Nelson
+%%
+
+\begin{thm}
+Convolution has the same algebraic properties as
+multiplication
+\begin{enumerate}
+\item $f*(\alpha g+\beta h) = \alpha(f*g)+\beta(f*h)$
+\item $f*g=g*f$ to prove this, do a change of variables
+\begin{align*}
+(f*g)(x) &= \int f(x-y)g(y)dy,\quad\text{let }z=x-y\\
+&=\int f(z)g(x-z)dz\\
+&=(g*f)(x)
+\end{align*}
+\item $f*(g*h)=(f*g)*h$
+\end{enumerate}
+\end{thm}
+\begin{thm}{(Convolution increases Smoothness)}
+Suppose $f$ is differentiable, $f*g$ and $f'*g$ are well
+defined (i.e. exist), then $f*g$ is differentiable and
+\begin{equation}
+(f*g)' = f'*g
+\end{equation}
+\end{thm}
+\begin{proof}
+Observe
+\begin{equation}
+(f*g)'(x) = \frac{d}{dx}\int f(x-y)g(y)dy
+\end{equation}
+The integral converges for all $x$ and $x$ is not the
+variable of integration, so
+\begin{align*}
+\frac{d}{dx}\int f(x-y)g(y)dy &= \int\frac{d}{dx}\Big(f(x-y)g(y)\Big)dy\\
+&=\int f'(x-y)g(y)dy\\
+&=(f'*g)(x)
+\end{align*}
+which concludes our proof.
+\end{proof}
+
+\textbf{Implication:} $g$ may not have any derivatives, but
+if $g\in C^{\infty}(\mathbb{R})$, then we may form a new
+function $(f*g)$ which inherits all the smoothness of $g$,
+i.e. $(f*g)\in C^{\infty}$.
+
+\textbf{Three $C^\infty$ functions}
+\begin{enumerate}
+\item The Gaussian Kernel, which we have already seen,
+\begin{equation}
+G(x) = \frac{1}{\sqrt{\pi}}e^{-x^2}
+\end{equation}
+with the conditions that $\int G(x)dx=1$, it's even, and
+$G(x)\in C^{\infty}(\mathbb{R})$. Additionally, it's bounded!
+\item The standard Cauchy distribution is another good
+  choice
+\begin{equation}
+H(x) = \frac{1}{\pi}\frac{1}{1+x^2}
+\end{equation}
+$\int H(x)dx=1$, $H(x)\in C^{\infty}(\mathbb{R})$, $H(x)$ is
+even, it's bounded too.
+\item The last is
+\begin{equation}
+K(x) = \begin{cases} \frac{1}{c}e^{-1/(1-x^2)} &\text{when }|x|<1\\
+0&\text{otherwise}\end{cases}
+\end{equation}
+where $C=\int^{1}_{-1}\exp(-1/(1-x^2))dx$, $K(x)\in
+C^{\infty}(\mathbb{R})$, the only time we worry is at
+$x=\pm1$. But it's clear that $\exp(-1/(1-x^2))$ vanishes
+for all derivatives of it. It's bounded, vanishes outside
+the interval from $[-1,1]$.
+\end{enumerate}
+
+Suppose $g\in L^1$, $\int gdx=1$, dilates of $g$ are --- for
+any $\varepsilon>0$ ---
+\begin{equation}
+g_{\varepsilon}(x) =
+\frac{1}{\varepsilon}g\left(\frac{x}{\varepsilon}\right)
+\end{equation}
+If $g'(x)$ exists, then
+\begin{equation}
+g_{\varepsilon}'(x) =
+\frac{1}{\varepsilon^2}g'\left(\frac{x}{\varepsilon}\right).
+\end{equation}
+
+For the next theorem, let $\int g(x)dx=1$, 
+$$\alpha = \int^{0}_{-\infty}g(x)dx$$
+and
+$$\beta = \int^{\infty}_{0}g(x)dx$$
+so $\alpha+\beta=1$. If $g$ is even, then
+$$\alpha=\beta=\frac{1}{2}.$$
+\begin{thm}\label{thm:12May2008:thmUsedInInverseFourierTransform}
+Suppose $g\in L^1$, and $\int g(x)dx=1$. Suppose $f\in
+PC(\mathbb{R})$, and aso suppose either $|f(x)|\leq M$ for
+all $x\in\mathbb{R}$ or $g(x)=0$ for $x$ outside some finite
+interval, so $f*g$ is well defined. Then
+\begin{equation}
+\lim_{\varepsilon\to0}(f*g)_{\varepsilon}(x) = \alpha
+f(x^+)+\beta f(x^-)
+\end{equation}
+for all $x\in\mathbb{R}$. SO if $x$ is continuous at $x$
+then
+$\lim_{\varepsilon\to0}(f*g)_{\varepsilon}(x)=f(x)$. (This
+means that $|(f*g)_{\varepsilon}(x)-\alpha f(x^+)-\beta
+f(x^-)|<\delta$ for some $\delta>0$ when $\varepsilon$ is
+small enough; i.e. it's pointwise convergence.)
+
+\emph{Alternatively} (if additionally supposing that
+$|g(x)|\leq M$ for all $x$, and $f\in L^2$), then
+$(f*g)_{\varepsilon}\stackrel{(\varepsilon\to0)}{\longrightarrow}f$
+in norm.
+\end{thm}

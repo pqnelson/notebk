@@ -1,0 +1,461 @@
+%%
+%% quantizationScalarField.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jul 28 12:07:19 2009 Alex Nelson
+%% Last update Tue Jul 28 12:07:19 2009 Alex Nelson
+%%
+
+We will apply what we've learned about functional techniques of
+quantization to the scalar field. The real aim here is to
+demonstrate how to derive Feynman rules.
+
+\subsection{Generalizing from Particles to Fields}
+
+We recklessly claimed that eq
+\eqref{eq:functionalProductManyDimensions} holds for any quantum
+system (if not, we're claiming it now). So it should hold for a
+quantum field theory. In our situation --- the beloved 
+scalar field --- the position coordinates $q^i$ are replaced by
+the scalar field amplitudes $\phi(\bar{x})$, and the Hamiltonian
+is
+\begin{equation}%\label{eq:}
+H = \int[\frac{1}{2}\pi^{2}+\frac{1}{2}(\nabla\phi)^2+V(\phi)]d^{3}x.
+\end{equation}
+Thus making the suitable changes, our formula becomes
+\begin{equation}%\label{eq:}
+\begin{split}
+\<\phi_{b}(\bar{x})|&e^{-iHT}|\phi_{a}(\bar{x})\> = \\&\int\mathcal{D}\phi\mathcal{D}\pi\exp\left[i\int^{T}_{0}[\pi\dot{\phi}-\frac{1}{2}\pi^{2}-\frac{1}{2}(\nabla\phi)^{2}-V(\phi)]d^{4}x\right]
+\end{split}
+\end{equation}
+where the functions $\phi(x)$ over which we integrate are
+constrained to the specific configurations $\phi_a(\bar{x})$ at
+$x^0=0$ and $\phi_b(\bar{x})$ at $x^0=T$. We observe that the
+exponential is quadratic in $\pi$ (the canonically conjugate
+momenta to the field $\phi$), so we can complete the square and
+evaluate to find
+\begin{equation}\label{eq:pathIntegralForScalarFieldInGeneral}
+\<\phi_b(\bar{x})|e^{-iHT}|\phi_{a}(\bar{x})\> = \int\mathcal{D}\phi\exp\left[i\int^{T}_{0}\mathcal{L}d^{4}x\right],
+\end{equation}
+where $\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^{2}-V(\phi)$
+is the Lagrangian density. The masure $\mathcal{D}\phi$ here
+again involves odd constants.
+
+The time integral in the exponent of eq \eqref{eq:pathIntegralForScalarFieldInGeneral}
+goes from 0 to $T$ as determined by our choice of what transition
+function to computes is, in all other respects, ``manifestly
+Lorentz invariant'' \textbf{we claim without proof.} Any other
+symmetries that the Lagrangian has are also explicitly preserved
+by the functional integral (again, claimed without
+proof). Symmetries take an increasingly important role in quantum
+field theory, so we take the following (at first seemingly rash)
+step: \emph{completely abandon Hamiltonian dynamics} and claim
+that eq \eqref{eq:pathIntegralForScalarFieldInGeneral}
+\emph{DEFINES} the Hamiltonian dynamics. Any such formula
+corresponds to ``some'' Hamiltonian; and we can alsways
+differentiate with respect to $T$ to derive the Schrodinger
+equation to figure out which, as we did in the previous
+section. We can thus consider the Lagrangian $\mathcal{L}$ as the
+most fundamental specification of a quantum field
+theory\footnote{Although recently there has been some ``blasphemous'' dabbling in working \emph{sans} Lagrangian or Hamiltonian, see Kochan~\cite{Kochan:2008}.}
+We'll focus on working with the functional integral to compute
+from $\mathcal{L}$ directly, no dependence on $H$ at all.
+
+\subsection{Correlation Functions} In Quantum Field theories, we
+usually work with vacuum states denoted as $|0\>$ or sometimes
+$|\Omega\>$. There is a special function of interest which can be
+interpreted as the amplitude for proagation of a particle or
+excitation from $y$ to $x$, we call them ``\emph{Correlation Functions}''.
+Here we will often denote them by
+\begin{equation}%\label{eq:}
+\<\Omega|T\{\phi(x)\phi(y)\}|\Omega\>
+\end{equation}
+where $T\{-\}$ is the time ordering operator\footnote{The
+  interested reader is invited to read Ticciati page
+  83~\cite{Ticciati:1999qp}.}, we can remember what it does by
+the mnemonic ``Later goes to the left'':
+\begin{equation}%\label{eq:}
+T\{\phi(x)\phi(y)\} = \begin{cases}
+\phi(x)\phi(y)&\text{if }x^0>y^0\\
+\phi(y)\phi(x)&\text{if }y^0>x^0.
+\end{cases}
+\end{equation}
+This (the correlation function) is the standard tool we use in
+Feynman diagrams, which is used everywhere in quantum field
+theory.
+
+The first step therefore towards making direct use of functional
+integrals is to find a functional formula for computing
+correlation functions. To deduce what it should be consider the
+object
+\begin{equation}\label{eq:functionalIntegralCorrelationFunction}
+\int\mathcal{D}\phi(x)\phi(x_1)\phi(x_2)\exp\left[i\int^{T}_{-T}\mathcal{L}(\phi)d^{4}x\right],
+\end{equation}
+where the boundary conditions on the path integral are
+$\phi(-T,\bar{x})=\phi_{a}(\bar{x})$ and
+$\phi(T,\bar{x})=\phi_{b}(\bar{x})$ for some (specified)
+$\phi_a$, $\phi_b$. We want to relate this to the two-point
+correlation function
+\begin{equation}%\label{eq:}
+\<\Omega|T\{\phi_{H}(x_1)\phi_{H}(x_2)\}|\Omega\>
+\end{equation}
+where $\phi_H$ denotes the operator in the Heisenberg picture
+(contrasted with $\phi_S$ the operator in the Schrodinger
+picture). 
+
+First thing to do is to break up the functional integral in eq
+\eqref{eq:functionalIntegralCorrelationFunction} as follows:
+\begin{equation}%\label{eq:}
+\int\mathcal{D}\phi(x) =
+\int\mathcal{D}\phi_{1}(\bar{x})\int\mathcal{D}\phi_{2}(\bar{x})\int_{\substack{
+\phi(x^{0}_{1},\bar{x})=\phi_{1}(\bar{x})\\
+\phi(x^{0}_{2},\bar{x})=\phi_{2}(\bar{x})
+}}\mathcal{D}\phi(x)
+\end{equation}
+The main functional integral $\int\mathcal{D}\phi(x)$ is now
+constrained at times \todo[color=red!40]{\textbf{To Do:}\\ \small{Elaborate on these intermediate states}}$x^{0}_{1}$ and $x^{0}_{2}$ (in addition to
+the endpoints $-T$, $T$), but we must integrate seperately over
+the intermediate configurations $\phi_1(\bar{x})$,
+$\phi_{2}(\bar{x})$. The amplitude is now broken in three, each
+being a simple transition amplitude according to eq
+\eqref{eq:pathIntegralForScalarFieldInGeneral}. The times
+$x^{0}_{1}$, $x^{0}_{2}$ automatically fall into order; e.g. if
+$x^{0}_{1}<x^{0}_{2}$ then eq
+\eqref{eq:functionalIntegralCorrelationFunction} becomes
+\begin{equation}%\label{eq:}
+\int\mathcal{D}\phi_{1}(\bar{x})
+\int\mathcal{D}\phi_{2}(\bar{x})
+\phi_{1}(\bar{x})\phi_{2}(\bar{x})
+\<\phi_{b}|e^{-iH(T-x^{0}_{2})}|\phi_2\>
+\<\phi_2|e^{-iH(x^{0}_{2}-x^{0}_{1})}|\phi_{1}\>
+\<\phi_{1}|e^{-iH(x^{0}_{1}-T)}|\phi_{a}\>.
+\end{equation}
+We can turn the field $\phi_{1}(\bar{x})$ into a Schrodinger
+operator by
+\begin{equation}%\label{eq:}
+\phi_{S}(\bar{x}_{1})|\phi_{1}\> =
+\phi_{1}(\bar{x}_{1})|\phi_{1}\>.
+\end{equation}
+The completeness relations (which appears to be effectively just
+a generalization of the resolution of the identity) demands
+\begin{equation}%\label{eq:}
+\int\mathcal{D}\phi_{1}|\phi_{1}\>\<\phi_{1}| = \mathbf{1}
+\end{equation}
+which allows us to eliminate the intermediate state
+$|\phi_1\>$. A similar argument holds for eliminating the
+intermediate state $|\phi_{2}\>$, which allows us to obtain the
+final expression
+\begin{equation}%\label{eq:}
+\<\phi_b|e^{-iH(T-x^{0}_{2})}\phi_{S}(\bar{x}_2)e^{-iH(x^{0}_{2}-x^{0}_{1})}\phi_{S}(\bar{x}_{1})e^{-iH(x^{0}_{1}+T)}|\phi_{a}\>.
+\end{equation}
+We can now note most of the exponential factors cancel out to
+yield Heisenberg operators. In the case when
+$x^{0}_{1}>x^{0}_{2}$, the order of $x_1$ and $X_2$ would be
+interchanged! We conclude that eq
+\eqref{eq:functionalIntegralCorrelationFunction} is equal to
+\begin{equation}%\label{eq:}
+\<\phi_b|e^{-iHT}T\{\phi_{H}(x_1)\phi_{H}(x_2)\}e^{-iHT}|\phi_a\>.
+\end{equation}
+This expression is remarkably close to being correct.
+
+We need to consider the limit as $T\to\infty(1-i\varepsilon)$ for
+``small $\varepsilon$''. This trick picks out the vacuum state
+$|\Omega\>$ from $|\phi_a\>$ and $|\phi_b\>$ (provided that we
+have some overlap between the specified $|\phi\>$ and
+$|\Omega\>$, which we assume). For example, if we write
+$|\phi_a\>$ as a linear combination of eigenstates $|n\>$ of $H$
+we then have
+\begin{equation}%\label{eq:}
+e^{-iHT}|\phi_{a}\> = \sum_{n}e^{-iE_{n}T}|n\>\<n|\phi_a\>\xrightarrow[T\to\infty(1-i\varepsilon)]{}\<\Omega|\phi_a\>e^{-iE_{0}\cdot\infty(1-i\varepsilon)}|\Omega\>.
+\end{equation}
+Here this should be taken with a grain of salt, since we have ---
+in our usual hand wavy manner --- treated infinity ``as if'' it
+were a number. Now explicitly what we do is the following
+\begin{equation}%\label{eq:}
+\left(\<\phi_{b}|e^{-iHT}\right)T\{\phi(x_1)\phi(x_2)\}\left(e^{-iHT}|\phi_{a}\>\right)\xrightarrow[T\to\infty(1-i\varepsilon)]{}\<\phi_b|\Omega\>\<\Omega|\phi_a\>>e^{-iE_{0}\cdot\infty(1-i\varepsilon)}e^{iE_{0}\cdot\infty(1-i\varepsilon)}\<\Omega|T\{\phi(x_1)\phi(x_2)\}|\Omega\>
+\end{equation}
+We obtain awkward phase and overlap factors, but
+don't worry: this is actually a good thing! These factors cancel
+out if we divide them out. That is, we obtain the formula
+\begin{equation}\label{eq:functionalIntegralTwoPointCorrelationFunction}
+\begin{split}
+\<\Omega|&T\{\phi_{H}(x_1)\phi_{H}(x_2)\}|\Omega\> =\\& \lim_{T\to\infty(1-i\varepsilon)}\left(\frac{\displaystyle\int\mathcal{D}\phi(x)\phi(x_1)\phi(x_2)\exp[i\int^{T}_{-T}\mathcal{L}d^{4}x]}{\displaystyle\int\mathcal{D}\phi(x)\exp[i\int^{T}_{-T}\mathcal{L}d^{4}x]}\right)
+\end{split}
+\end{equation}
+This is our desired formula, we have the two-point correlation
+function purely from functional integration. We can ask ``What
+about higher-point correlation functions?'' The trick is simple,
+the numerator simply increases the number of $\phi(x_j)$ factors.
+
+\subsection*{Outline of the Derivation of Feynman Rules}
+
+So here's the general algorithm we'll use when deriving the
+Feynman rules: first we are going to define the measure
+$\mathcal{D}\phi$ by discretizing spacetime with a cubic lattice;
+then we will switch via a Fourier \emph{series} (yes, series, due
+to discretization) to change the field from $\phi(x_i)$ to
+$\phi(k^{\mu}_{n})$. This simplifies the evaluation of the
+discretized functional integral. We make use of analogies made
+with discrete vector calculus when considering a generalization
+of Gaussian integrals. This results in introducing the notion of
+a functional determinant. Although we will try to avoid the
+notion of the functional determinant for the most part (since it
+turns out it's canceled out in practice), the interested reader
+can refer to appendix \ref{appendix:functionDet}.
+
+The approach of implementing a discretized lattice then taking
+the continuum limit is clumsy, bulky, and inelegant, but it gives
+a good intuition about what's really going on mathematically. But
+that isn't a good reason to continue to do long, bulky
+calculations. We are going to consider a slicker way to compute
+the functional integral using a sort of generalization of the
+notion of a generating function. We'll consider this derivation
+of Feynman rules in its own subsection.
+
+\subsection{Feynman Rules}
+
+Our next task, to accomplish our dream of deriving Feynman rules
+in a functional manner, is to compute various correlation
+functions direclty from the RHS of eq \eqref{eq:functionalIntegralTwoPointCorrelationFunction}.
+In other words, we will use eq
+\eqref{eq:functionalIntegralTwoPointCorrelationFunction} to
+derive the Feynman rules for scalar field theory. We'll start
+slow, with the two-point function in the free Klein-Gordon
+theory, then proceed to generalize to higher
+correlations. Finally we'll consider the $\phi^{4}$ theory.
+
+\subsubsection{Free Scalar Field} Consider a noninteracting real
+scalar field
+\begin{equation}\label{eq:actionFreeScalarField}
+S_{0} = \int\mathcal{L}_{0}d^{4}x = \int[\frac{1}{2}(\partial_{\mu}\phi)^2-\frac{1}{2}m^{2}\phi^{2}]d^{4}x.
+\end{equation}
+Since $\mathcal{L}_{0}$ is quadratic in $\phi$, the functional
+integrals in eq
+\eqref{eq:functionalIntegralTwoPointCorrelationFunction} take the
+form of generalized Gaussian integrals. We will, for this
+situation, be able to calculate them exactly.
+
+\subsubsection{Discretization with Cubic Lattice} We want to
+define the integral $\mathcal{D}\phi$ over field
+configurations. The way we defined it for quantum mechanics was
+to consider the functional integral as the limit of a large
+number number of integrals. We take the number of integrals to go
+to infinity. But we were always working with the discrete setting
+(i.e. finitely many integrals) with a discretized path, i.e. the
+replacement 
+\begin{equation}%\label{eq:}
+x(t)\longmapsto x_{k}
+\end{equation}
+where $k$ indicates the time slice. We perform a similar ritual
+and replace the field operators
+\begin{equation}%\label{eq:}
+\phi(x)\longmapsto\phi(x_k)
+\end{equation}
+where $x_k$ is some point on the lattice\footnote{It should be
+  noted that the lattice shouldn't be pictured as a sort of
+  collection of wires, where we can consider values ``on the
+  wire'' and anything ``off the wire'' is zero, ignored, or
+  undefined. The intuition should be we have a discrete set of
+  points, and we specify the connectedness of these points by
+  some graph, or network, or something similar.}. Since we have
+assumed the lattice is cubic, the spacing is even in every
+dimension. For brevity, we will call the spacing
+$\varepsilon$. We will also let the four-dimensional volume of
+the spacetime region be denoted by $L^4$, and we will define
+\begin{equation}%\label{eq:}
+\mathcal{D}\phi = \prod_{j}d\phi(x_j)
+\end{equation}
+up to some constant.
+
+\subsubsection{Fourier Expansion} The field values $\phi(x_j)$
+can be represented by a ``discrete'' Fourier series (instead of a
+``continuous'' Fourier transform):
+\begin{equation}\label{eq:fourierSeriesField}
+\phi(x_j) = \frac{1}{V}\sum_{n}e^{-ik_{n}\cdot{x_{j}}}\tilde{\phi}(k_n)
+\end{equation}
+where $k^{\mu}_{n}=2\pi{n^{\mu}}/L$, with
+$n^{\mu}\in\mathbb{Z}^{3,1}$, $|k^{\mu}|<\pi/\varepsilon$, and
+$V=L^{4}$. The Fourier coefficients $\tilde{\phi}$ are
+complex. However, $\phi$ is real, which implies the coefficients
+are constrained by
+\begin{equation}%\label{eq:}
+\tilde{\phi}^{*}(k) = \phi(-k).
+\end{equation}
+We will consider the real and imaginary parts of $\tilde{\phi}(k_{n})$
+(with $k_n>0$) as independent variables. The change of variables
+from the $\phi(x_j)$ to the new $\tilde{\phi}(k_n)$ is a unitary
+transformation, enabling us to rewrite the integral as
+\begin{equation}%\label{eq:}
+\int\mathcal{D}\phi(x) = \prod_{k^{0}_{n}>0}\int
+d\re(\tilde{\phi}(k_{n}))
+d\im(\tilde{\phi}(k_{n})).
+\end{equation}
+Later we will take the limit as $L\to\infty$,
+$\varepsilon\to0$. The effect of the limit is to recover the
+continuum, it converts discrete sums over $k_n$ to continuous
+integrals over k:
+\begin{equation}%\label{eq:}
+\frac{1}{V}\sum_{n}\longmapsto\int\frac{d^{4}k}{(2\pi)^4}.
+\end{equation}
+In our discussion, this will produce Feynman perturbative theory;
+but we will not eliminate the ultraviolet and infrared
+divergences of Feynman diagrams. (Renormalization and
+Regularization is beyond the scope of this note.)
+
+\subsubsection{Action under Change of Variables} Having now
+defined the functional measure, somewhat simplified by our
+Fourier analysis, we can now compute the functional integral over
+$\phi$ (or more precisely $\tilde{\phi}$). The action for the
+free real scalar field \eqref{eq:actionFreeScalarField} can be
+rewritten in terms of the Fourier coefficients as
+\begin{subequations}
+\begin{align}
+\int[\frac{1}{2}(\partial_{\mu}\phi)^{2}-\frac{1}{2}m^{2}\phi^{2}]d^{4}x 
+&=
+\frac{-1}{V}\sum_{n}\frac{1}{2}(m^{2}-k_{n}^{2})|\tilde{\phi}(k_{n})|^{2}\\
+&= 
+\frac{-1}{V}\sum_{n}\frac{1}{2}(m^{2}-k_{n}^{2})[\re(\tilde{\phi}_{n})^{2}+\im(\tilde{\phi}_{n})^{2}]
+\end{align}
+\end{subequations}
+where we have introduced
+$\tilde{\phi}_{n}=\widetilde{\phi}(k_{n})$. The quantity
+\begin{equation}%\label{eq:}
+(m^{2}-k_{n}^{2}) = (m^{2}+\|\bar{k}_{n}\|^{2}-(k_{n}^{0})^{2})
+\end{equation}
+is positive provided that $k^{0}_{n}$ is ``not too large''. For
+the rest of our calculations, we will assume that this quantity
+is positive (i.e. we will evaluate it by analytic continuation
+from the region where $\|\bar{k}_{n}\|>k^{0}_{n}$).
+
+\subsubsection{The Gaussian Connection} The denominator of the
+two-point correlation function can be written as a product of
+Gaussian integrals:
+\begin{subequations}
+\begin{align}
+\int\mathcal{D}\phi e^{iS_{0}} &=
+\left(\prod_{k_{n}^{0}>0}\int d\re(\tilde{\phi}(k_{n}))
+d\im(\tilde{\phi}(k_{n}))\right)\nonumber\\
+\;\;&\times\exp\left[\frac{-i}{V}\sum_{k^{0}_{n}>0}(m^{2}-k_{n}^{2})\|\tilde{\phi}_{n}\|^{2}\right].\\
+&= \prod_{k^{0}_{n}>0}\left(\int d\tilde{\phi}_{n} \exp\left[\frac{-i}{V}(m^{2}-k_{n}^{2})\|\tilde{\phi}_{n}\|^{2}\right]\right)
+\end{align}
+\end{subequations}
+We can easily rewrite this by expanding the product, grouping the
+real and imaginary terms, yielding the expression
+\begin{equation}
+\begin{split}
+\int\mathcal{D}\phi e^{iS_{0}} =&  \prod_{k^{0}_{n}>0} 
+\left(\int d\re(\tilde{\phi}(k_{n}))\exp\left[\frac{-i}{V}(m^{2}-k_{n}^{2})\re(\tilde{\phi}_{n})^{2}\right]\right)\\
+&\times
+\left(\int d\im(\tilde{\phi}(k_{n}))\exp\left[\frac{-i}{V}(m^{2}-k_{n}^{2})\im(\tilde{\phi}_{n})^{2}\right]\right).
+\end{split}
+\end{equation}
+We can evaluate these integrals by using the usual Gaussian
+tricks which yields
+\begin{subequations}\label{eq:functionalIntegralAsProductOfGaussians}
+\begin{align}
+\int\mathcal{D}\phi e^{iS_{0}} =& \prod_{k^{0}_{n}>0}\sqrt{\frac{-i\pi{V}}{m^{2}-k_{n}^{2}}}\sqrt{\frac{-i\pi{V}}{m^{2}-k_{n}^{2}}}\\
+=& \prod_{\text{all } k_{n}}\sqrt{\frac{-i\pi{V}}{m^{2}-k_{n}^{2}}}.
+\end{align}
+\end{subequations}
+We used the Gaussian integration formula, but this really ought
+to be justified since functional integrals are a foreign beast.
+
+\subsubsection{Functional Determinant Detrimant.}
+Recall that before we had to rotate the contour of integration to
+$t\to t(1-i\varepsilon)$ to guarantee convergence for the time
+integral. This means we should really have to change $k^0\to
+k^{0}(1+i\varepsilon)$ in eq \eqref{eq:fourierSeriesField} and
+everything that follows from it. In particular, this means that
+\begin{equation}%\label{eq:}
+(k_{n}^{2}-m^{2})\to(k_{n}^{2}-m^{2}+i\varepsilon).
+\end{equation}
+The $i\varepsilon$ term gives the necessary convergence factor
+for the Gaussian integrals. It also defines the direction of the
+analytic continuation that might be necessary to define the
+squareroots in eq \eqref{eq:functionalIntegralAsProductOfGaussians}.
+
+Consider an analogous situation with the general Gaussian
+integral
+\begin{equation}%\label{eq:}
+\left(\prod_{k}\int d\xi_{k}\right)\exp[-\xi_{i}B^{ij}\xi_{j}]
+\end{equation}
+where $B$ is a symmetric matrix with eigenvalues $b_i$. To
+evaluate this integral, let $\xi_{i} = {A_{i}}^{j}x_{j}$ where
+${A_{i}}^{j}$ is an orthogonal matrix of eigenvectors that
+diagonalizes $B$. Changing variables from $\xi_i$ to $x_i$ we
+have
+\begin{subequations}
+\begin{align}
+\left(\prod_{k}\int d\xi_{k}\right)\exp[-\xi_{i}B^{ij}\xi_{j}] &= \left(\prod_{k}\int dx_{k}\right)\exp[-\sum_{j}b_{j}x_{j}^{2}]\\
+&= \prod_{k}\left(\int \exp[-b_{k}x_{k}^{2}]dx_{k}\right)\\
+&= \prod_{k}\sqrt{\pi/b_{k}}\\
+&= \operatorname{const}/\sqrt{\det(B)}.
+\end{align}
+\end{subequations}
+The astute reader should note that the numerator diverges, it is
+a constant that is of order $\mathcal{O}(k^{n/2})$ and we take
+the limit as $n\to\infty$. We typically overlook this
+inconvenient fact. Now we should apply this to our problem at hand.
+
+The analogy is made clearer if we first perofrm an integration by
+parts to write the Klein Gordon action as
+\begin{equation}%\label{eq:}
+S_{0}=\frac{1}{2}\int\phi(-\partial^{2}-m^{2})\phi d^{4}x +
+\text{boundary terms}.
+\end{equation}
+Thus the matrix $B$ corresponds to the operator
+$(m^2+\partial^2)$ and we can formally write our result as
+\begin{equation}%\label{eq:}
+\int\mathcal{D}\phi e^{iS_{0}} = (\text{const})[\det(m^2+\partial^2)]^{-1/2}.
+\end{equation}
+The object on the right hand side is called a ``\emph{functional
+  determinant}'', to see one way to calculate it refer to
+appendix \ref{appendix:functionDet}. It can, at first, look quite
+ill defined; but rest assured, the functional determinant usually
+cancels out.
+
+\subsubsection{Two Point Function} 
+
+Now consider the numerator of the two point function as defined
+by eq
+\eqref{eq:functionalIntegralTwoPointCorrelationFunction}. We need
+to Fourier-expand the two extra factors of $\phi$:
+\begin{equation}%\label{eq:}
+\phi(x_1)\phi(x_2) = \left(\frac{1}{V}\sum_{j}e^{-ik_{j}\cdot{x_1}}\tilde{\phi}_{j}\right)\left(\frac{1}{V}\sum_{l}e^{-ik_{l}\cdot{x_2}}\tilde{\phi}_{l}\right)
+\end{equation}
+We can plug this in to find the numerator:
+\begin{equation}%\label{eq:}
+\begin{split}
+&\left(\prod_{k^{0}_{n}>0}\int
+d\re(\tilde{\phi}_{n})d\im(\tilde{\phi}_{n})\right)\left(\frac{1}{V}\sum_{j}e^{-ik_{j}\cdot{x_1}}\tilde{\phi}_{j}\right)\\
+&\times\left(\frac{1}{V}\sum_{l}e^{-ik_{l}\cdot{x_2}}\tilde{\phi}_{l}\right)\exp\left[\frac{-i}{V}\sum_{k^{-}_{n}>0}(m^{2}-k_{n}^{2})\|\tilde{\phi}_{n}\|^{2}\right]\\
+&= \frac{1}{V^{2}}\sum_{m,l}e^{-i(k_{m}\cdot x_{1}+k_{l}\cdot
+  x_{2})}\\
+&\times\prod_{k^{0}_{n}>0}\left(\int
+d\re(\tilde{\phi}_{n})d\im(\tilde{\phi}_{n}) (\tilde{\phi}_{l}\tilde{\phi}_{m})\exp\left[\frac{-i}{V}(m^{2}-k_{n}^{2})\|\tilde{\phi}_{n}\|^{2}\right]\right)
+\end{split}
+\end{equation}
+\todo[color=red!40]{\textbf{To Do:}\\ \small{I am skeptical of these calculations, sometime when I have
+  the leisure of time to perform the calculations explicitly I
+  would love to make certain this reasoning is absolutely correct.}}Now, most of the time the integrand will be odd. There is an
+exception when $k_m = \pm k_l$. If $k_m = +k_l$ then the term
+involving $\re(\tilde{\phi}_m)^2$ is nonzero but it's exactly
+canceled by the term involving $\im(\tilde{\phi}_m)^2$. If
+$k_m=-k_l$, we take advantage of the relation
+$\tilde{\phi}^{*}(k)=\tilde{\phi}(-k)$. In this situation, the
+two terms add. When $k^{0}_{m}<0$, we obtain the following
+expression for the numerator:
+\begin{equation}%\label{eq:}
+\frac{1}{V^{2}}\sum_{m}e^{-ik_{m}\cdot(x_{1}+x_{2})}\left(\prod_{k^{0}_{n}}\frac{-i\pi{V}}{m^{2}-k_{n}^{2}}\right)\frac{-iV}{m^{2}-k_{m}^{2}+i\varepsilon}.
+\end{equation}
+Note the parenthetic term cancels with the denominator exactly,
+leaving us the Feynman propagator when we take the continuum limit.
+
+\todo[color=red!40]{\textbf{To Do:}\\ \small{Type up the
+    four-point correlation function calculation, and the
+    $\phi^{4}$ model in the discretization scheme.}}
+
+\subsection{Generating Functional Tricks}
+\input{tex/functionalScalarFieldSlick}

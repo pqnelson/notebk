@@ -1,0 +1,291 @@
+%%
+%% quantizationEM.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Aug  1 13:45:29 2009 Alex Nelson
+%% Last update Sat Aug  1 13:45:29 2009 Alex Nelson
+%%
+
+We assert the Feynman rule for the photon propagator to be
+\begin{equation}%\label{eq:}
+\parbox{20mm}{
+\begin{fmfgraph*}(50,25)\fmfpen{0.2mm}
+    \fmfleft{v1} \fmfright{v2}
+    \fmf{photon,label=$\scriptstyle{k}\to$}{v1,v2}
+\end{fmfgraph*}}
+ = \frac{-ig_{\mu\nu}}{k^{2} + i\varepsilon}.
+\end{equation}
+Now that we have the basic tools of functional quantization, lets
+try to prove it.
+
+Consider the functional integral 
+\begin{equation}%\label{eq:}
+\int \mathcal{D}A\;e^{iS[A]}
+\end{equation}
+where $S[A]$ is the action for the free electromagnetic
+field. The functional integral is taken over the four components,
+i.e. we have
+$\mathcal{D}A=\mathcal{D}A^{0}\mathcal{D}A^{1}\mathcal{D}A^{2}\mathcal{D}A^{3}$. We
+integrate by parts and Fourier expand to find the action to be
+\begin{subequations}
+\begin{align}
+S &= \int \left[\frac{-1}{4}F_{\mu\nu}F^{\mu\nu}\right]d^{4}x\\
+&= \frac{1}{2}\int A_{\mu}(x)\left[\partial^{2}g^{\mu\nu}-\partial^{\mu}\partial^{\nu}\right]A_{\nu}(x)d^{4}x\\
+&= \frac{-1}{2}\int\tilde{A}_{\mu}(k)\left[-k^{2}g^{\mu\nu}+k^{\mu}k^{\nu}\right]\tilde{A}_{\nu}(-k)\frac{d^{4}k}{(2\pi)^{4}}.
+\end{align}
+\end{subequations}
+Observe that if $\tilde{A}_{\mu}(k)=k_{\mu}\alpha(k)$ for some
+scalar function $\alpha$, the integrand becomes
+\begin{subequations}
+\begin{align}
+\tilde{A}_{\mu}(k)\left[-k^{2}g^{\mu\nu}+k^{\mu}k^{\nu}\right]\tilde{A}_{\nu}(-k)
+&=
+\alpha(k)k_{\mu}\left[-k^{2}g^{\mu\nu}+k^{\mu}k^{\nu}\right](-k_{\nu})(\alpha(-k))\\
+&=\alpha(k)\alpha(-k)\left[k_{\mu}k_{\nu}k^{2}g^{\mu\nu}-k_{\mu}k_{\nu}k^{\mu}k^{\nu}\right]\\
+&=\alpha(k)\alpha(-k)[0] = 0.
+\end{align}
+\end{subequations}
+This integrand vanishes for \textbf{any} choice of scalar
+function $\alpha$. In this situation, the integrand of the
+functional integral $\int \mathcal{D}A e^{iS[A]}$ is 1, which
+more importantly implies it is a badly divergent functional
+integral. We deduce that
+\begin{equation}\label{eq:photonPropagatorSingularity}
+\begin{split}
+&(\partial^{2}g_{\mu\nu}-\partial_{\mu}\partial_{\nu})D^{\nu\rho}_{F}(x-y)=i{\delta_{\mu}}^{\rho}\delta^{(4)}(x-y)\\
+&\text{or}\quad(-k^{2}g_{\mu\nu}+k_{\mu}k_{\nu})\tilde{D}^{\nu\rho}_{F}(k)=i{\delta_{\mu}}^{\rho}
+\end{split}
+\end{equation}
+(which importantly defines the Feynman propagator
+$D^{\mu\rho}_{F}$) has no solution. This shouldn't surprise
+anyone since $(-k^{2}g_{\mu\nu}+k_{\mu}k_{\nu})$ has a singularity.
+
+The real problem child here is gauge invariance. Recall that
+$F_{\mu\nu}$ (and thus $\mathcal{L}$) is invariant under a
+general U(1) gauge transformation of the form
+\begin{equation}%\label{eq:}
+A_{\mu}(x)\to A_{\mu}(x)+\frac{1}{e}\partial_{\mu}\alpha(x)
+\end{equation}
+where $\alpha(x)$ is any scalar function. This transformation
+means that potentials of the form
+$A_{\mu}(x)=\frac{1}{e}\partial_{\mu}\alpha(x)$ is gauge
+equivalent to 0. The functional integral is badly defined because
+we are redundantly integrating over a continuous infginity of
+physically equivalent field configurations. That is, we haven't
+gauge-fixed the action yet! We need to count each physically
+interesting state once.
+
+We can accomplish this gauge fixing by a method due to Faddeev
+and Popov (for the original paper,
+see~\cite{Faddeev:1967fc}). Let $G(A)$ be a sort of generalized
+``indicating functional'' which is zero for a certain gauge
+condition, e.g. for the Lorenz gauge we have 
+\begin{equation}%\label{eq:}
+G(A)=\partial_{\mu}A^{\mu}(x).
+\end{equation} 
+We can constrain the functional integral to be when $G(A)=0$ by
+using a delta function $\delta\left(G(A)\right)$. Geometrically
+we could have the intuition that we assign a delta function at
+each point $x$. To do this legally we insert 1 in the functional
+integral of the form
+\begin{equation}\label{eq:insertOne}
+1 = \int \mathcal{D}\alpha(x)
+\delta\left(G(A^{\alpha})\right)\det\left(\frac{\delta
+  G(A^{\alpha})}{\delta \alpha}\right)
+\end{equation}
+where we have $A^{\alpha}_{\mu}(x) = A_{\mu}(x) +
+\frac{1}{e}\partial_{\mu}\alpha(x)$. We see that this condition
+\eqref{eq:insertOne} generalizes the identity
+\begin{equation}%\label{eq:}
+1 = \left(\prod_{j}\int d a_{j}\right)
+\delta^{(n)}(\bar{g}(\bar{a}))\det(\partial g_{j}/\partial a_{k})
+\end{equation}
+for discrete $n$-dimensional vectors. In the Lorenz gauge we have 
+\begin{equation}%\label{eq:}
+G(A^{\alpha}) = \partial^{\mu}A_{\mu} + \frac{1}{e}\partial^{2}\alpha
+\end{equation}
+so the functional determinant in our situation (due to our case
+being the vacuum) is precisely $\det(\partial^{2}/e)$. For our
+situation the only  thing that matters is that the functional
+determinant is independent of $A$, i.e. that it's like a constant
+term in our functional integral.
+
+After inserting \eqref{eq:insertOne} the functional integral
+becomes
+\begin{equation}%\label{eq:}
+\det\left(\frac{\delta G(A^{\alpha})}{\delta \alpha}\right)\int
+\mathcal{D}\alpha\int\mathcal{D}A e^{iS[A]}\delta\left(G(A^{\alpha})\right)
+\end{equation}
+Now we will change the variable of integration from $A$ to
+$A^{\alpha}$. This is a simple shift so
+$\mathcal{D}A=\mathcal{D}A^{\alpha}$, and by gauge invariance
+$S[A]=S[A^{\alpha}]$. We then obtain
+\begin{equation}%\label{eq:}
+\int\mathcal{D}A e^{iS[A]} = \det\left(\frac{\delta G(A^{\alpha})}{\delta \alpha}\right)\int
+\mathcal{D}\alpha\int\mathcal{D}A^{\alpha} e^{iS[A^{\alpha}]}\delta\left(G(A^{\alpha})\right).
+\end{equation}
+The functional integral over $A$ is now restricted by the delta
+function to physically distinct inequivalent states, as
+desired. The infinity comes from a divergent integral over
+$\alpha(x)$ which simply gives an infinite multiplicative factor.
+
+To go any further in our investigation, we have to gauge fix
+$G(A)$. We choose the general class of functions
+\begin{equation}%\label{eq:}
+G(A) = \partial^{\mu}A_{\mu}(x) - \omega(x)
+\end{equation}
+where $\omega(x)$ is any scalar function. Setting this $G(A)$
+zero occurs as a generalization of the Lorenz gauge. The
+functional determinant is the same as in the Lorenz gauge
+\begin{equation}%\label{eq:}
+\det\left(\frac{\delta G(A^{\alpha})}{\delta\alpha}\right)=\det(\partial^{2}/e).
+\end{equation}
+Thus the functional integral becomes:
+\begin{equation}%\label{eq:}
+\int\mathcal{D}A e^{iS[A]} =
+\det(\partial^{2}/e)\left(\int\mathcal{D}\alpha\right)\left(\int
+\mathcal{D}A^{\alpha} e^{iS[A^{\alpha}]}\delta\left(\partial^{\mu}A^{\alpha}_{\mu}(x)-\omega(x)\right)\right).
+\end{equation}
+This equality holds for any $\omega(x)$, so it will hold if we
+replace the right hand side with any properly normalized linear
+combination involving different functions $\omega(x)$. Our final
+trick will be integrating over all $\omega(x)$ with a Gaussian
+weighting function centered at $\omega=0$. Our expression will
+become
+\begin{equation*}%\label{eq:}
+\begin{split}
+&N(\xi)\int\mathcal{D}\omega\;
+\exp\left[-i\int\frac{\omega^{2}}{2\xi}d^{4}x\right]\det(\frac{\partial^{2}}{e})\int\mathcal{D}\alpha\int\mathcal{D}A^{\alpha}\;e^{iS[A^{\alpha}]}\delta(\partial^{\mu}A_{\mu}^{\alpha}(x)-\omega(x))
+=\\
+&N(\xi)\det(\partial^{2}/e)\int\mathcal{D}\alpha\int\mathcal{D}A^{\alpha}\;e^{iS[A^{\alpha}]}\exp\left[-i\int\frac{(\partial^{\mu}A^{\alpha}_{\mu}(x))^{2}}{2\xi}d^{4}x\right]
+\end{split}
+\end{equation*}
+where $N(\xi)$ is a normalization constant and we have used the
+delta function to perform the integral over $\omega$. We can
+choose $\xi$ to be any finite constant. What we have really done
+is we've effectively added a new term
+$-(\partial^{\mu}A_{\mu}^{\alpha})^{2}/(2\xi)$ to the Lagrangian.
+
+What we have done thus far in our functional quantization of the
+electromagnetic field is we have worked with the denominator of
+our formula for the correlation functions:
+\begin{equation}%\label{eq:}
+\<\Omega|T\{\mathcal{O}(A)\}|\Omega\>=\lim_{T\to\infty(1-i\varepsilon)}\frac{\displaystyle\int\mathcal{D}A\;\mathcal{O}(A)\exp\left[-i\int^{T}_{-T}\mathcal{L}d^{4}x\right]}{\displaystyle\int\mathcal{D}A\;\exp\left[-i\int^{T}_{-T}\mathcal{L}d^{4}x\right]}.
+\end{equation}
+We can do the same manipulations for the numerator, provided that
+the operator $\mathcal{O}(A)$ is gauge invariant. (If it isn't,
+the change of variables trick $A\to A^{\alpha}$ won't work.)
+Assuming that the operator $\mathcal{O}(A)$ is in fact gauge
+invariant, we find that its correlation function becomes
+\begin{equation}%\label{eq:}
+\begin{split}
+&\<\Omega|T\{\mathcal{O}(A)\}|\Omega\>\\
+&\quad = \lim_{T\to\infty(1-i\varepsilon)}
+\frac{\displaystyle\int\mathcal{D}A\;\mathcal{O}(A)
+\exp\left[-i\int^{T}_{-T}\left(\mathcal{L}-\frac{1}{2\xi}(\partial^{\mu}A_{\mu})^{2}\right)d^{4}x\right]}
+{\displaystyle\int\mathcal{D}A\;\exp\left[-i\int^{T}_{-T}\left(\mathcal{L}-\frac{1}{2\xi}(\partial^{\mu}A_{\mu})^{2}\right)d^{4}x\right]}.
+\end{split}
+\end{equation}
+Mathemagically the awkward constants we had previously are all
+canceled out. The only trace left behind of our meddling is the
+extra $\xi$-term that is added to the action.
+
+We concluded that eq \eqref{eq:photonPropagatorSingularity}
+implies that it is not sensible to obtain a photon propagator
+from the action $S[A]$. With our new $\xi$-term, however, that
+equation becomes
+\begin{equation}%\label{eq:}
+(-k^{2}g_{\mu\nu}+(1-\frac{1}{\xi})k_{\mu}k_{\nu})\tilde{D}^{\nu\rho}_{F}(k)
+  = i {\delta_{\mu}}^{\rho},
+\end{equation}
+which has the solution
+\begin{equation}\label{eq:feynmanPropagatorFromFPprocedure}
+\tilde{D}^{\mu\nu}_{F}(k) = \frac{-i}{k^{2}+i\varepsilon}\left(g^{\mu\nu}-(1-\xi)\frac{k^{\mu}k^{\nu}}{k^{2}}\right).
+\end{equation}
+This is our desired expression for the photon propagator. The
+$i\varepsilon$ term in the denominator arises exactly in the same
+way as in the Klein-Gordon free field case.
+
+In practice, one usually chooses a specific value of $\xi$ to
+actually perform computations. Two choices that are often
+convenient are
+\begin{align*}
+\xi=0&\qquad\text{Landau Gauge}\\
+\xi=1&\qquad\text{Feynman Gauge}
+\end{align*}
+In our notes on the subject of Feynman diagrams, we have used the
+Feynman gauge.
+
+The Faddeev-Popov procedure guarantees the value of any
+correlation function of gauge invariant operators computed from
+Feynman diagrams \emph{will be independent of the value of $\xi$ used
+in the calculation} (provided the value of $\xi$ is used
+consistently; we can't do half of one computation using the
+Landau gauge, then finish up the rest in the Feynman gauge
+because it makes things nicer!). It's easy to show that in QED
+this assertion is true (I suspect due to the fact that it is an
+Abelian gauge group). Note in eq \eqref{eq:feynmanPropagatorFromFPprocedure}
+that $\xi$ multiplies a term in the photon propagator
+proportional to $k^{\mu}k^{\nu}$. According to the Ward-Takahashi
+identity, the replacement in a Green's function of any photon
+propagator by $k^{\mu}k^{\nu}$ yields zero, except for terms
+involving external off-shell fermions. These terms are equal and
+opposite for particle and anti-particle, and vanish when the
+fermions are grouped into gauge-invariant combinations.
+
+Now, QED isn't just photon propagators. We have
+something else we need to compute: S-matrix elements from
+correlation functions of non-gauge-invariant operators $\psi(x)$,
+$\overline{\psi}(x)$ and $A_{\mu}(x)$. We will assert that the
+S-matrix elements are correctly computed by this procedure. The
+S-matrix is really defined between asymptotic states, we can
+compute S-matrix elements in a formalism where the coupling
+constant is ``turned off'' some ``infinitely long time ago'' in
+the past and far in the future. In the zero coupling limit, there
+is a clean seperation between gauge-invariant and gauge-variant
+states. On the one hand, single-particle states containing one
+electron, one positron, or one transversely polzarized photon are
+gauge-invariant; while, on the other, states with timelike and
+longitudinal photon polarizations transform under gauge
+motions. We can thus define a gauge-invariant S-matrix in the
+following way: Let $S_{FP}$ be the S-matrix between general
+asymptotic states, computed from the Faddeev-Popov procedure. The
+matrix is unitary but not gauge invariant (proof?). Let $P_{0}$
+be a projection onto the subspace of the space of asymptotic
+states in which all particles are either electrons, positrons, or
+transverse photons. Let
+\begin{equation}\label{eq:SMatrixOnGaugeInvariantStates}
+S = P_{0} S_{FP} P_{0}.
+\end{equation}
+This S-matrix is gauge-invariant by construction, \emph{it is projected
+onto gauge-invariant states.} Now it is not obvious that it is
+unitary. 
+
+In a handwavy way, we'll summarize the reasoning that this matrix
+is in fact unitary. Any matrix element
+$\mathcal{M}^{\mu}\epsilon^{*}_{\mu}$ for photon emission
+satisfies
+\begin{equation}%\label{eq:}
+\sum_{i=1,2}\epsilon^{*}_{i\mu}\epsilon_{i\nu}\mathcal{M}^{\mu}\mathcal{M}^{*\nu}=(-g_{\mu\nu})\mathcal{M}^{\mu}\mathcal{M}^{*\nu},
+\end{equation}
+where the sum on the left hand side runs over transverse
+polarizations only. (The same argument applies if
+$\mathcal{M}^{\mu}$ and $\mathcal{M}^{*\nu}$ are distinct
+amplitudes, as long as they satisfy the Ward identity.) This is
+exactly the information we need to see that
+\begin{equation}%\label{eq:}
+SS^{\dag}=P_{0}S_{FP}P_{0}S_{FP}^{\dag}P_{0}=P_{0}S_{FP}S_{FP}^{\dag}P_{0}.
+\end{equation}
+Now, we can use the unitarity of $S_{FP}$ to see that $S$ is
+unitary, $SS^{\dag}=1$ on the subspace of gauge-invariant
+states. It is easy to check explicitly that the formula \eqref{eq:SMatrixOnGaugeInvariantStates}
+for the S-matrix is independent of $\xi$: \emph{the Ward identity
+implies that any QED matrix element with all external fermions
+on-shell is unchanged if we add to the photon propagator
+$D^{\mu\nu}(q)$ any term proportional to $q^{\mu}$}.
+
+
+
+

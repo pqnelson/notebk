@@ -1,0 +1,145 @@
+%%
+%% oneParticleState.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jul 21 12:54:12 2009 Alex Nelson
+%% Last update Tue Jul 21 12:54:12 2009 Alex Nelson
+%%
+
+The simplest system to consider is a single particle. The
+function space used to model quantum-mechanical states is a
+Hilbert Space $\mathcal{H}$ of square integrable functions on the
+physical space (denoted by $\mathcal{C}$):
+\begin{equation}%\label{eq:}
+L^{2}(\mathcal{C}) = \left\{f\,:\;\int_{\mathcal{C}}|f(\overline{x})|^{2}d^{3}\overline{x}<\infty\right\}
+\end{equation}
+Note that in all fairness, $\mathcal{H}$ can be written in either
+position coordinates $\overline{x}$ or momentum coordinates
+$\overline{p}$. The relationship between the position-space and
+momentum-space is precisely the familiar Fourier transform:
+\begin{equation}%\label{eq:}
+\mathcal{F}(f)(\overline{p}) \stackrel{\text{def}}{=} \int e^{i\overline{x}\cdot\overline{p}}f(\overline{x})d^{3}\overline{x}
+\end{equation}
+Despite the change of variables, $\mathcal{F}$ sends
+$\mathcal{H}$ to itself, so both $f$ and its Fourier transform
+$\mathcal{F}(f)$ are in $\mathcal{H}$.
+\begin{rmk}
+It should be emphasized that if $f$ is square-integrable, then
+$e^{i\overline{x}\cdot\overline{p}}f(\overline{x})$ is
+square-integrable \emph{but not necessarily integrable!} That is,
+we have no guarantee that
+$e^{i\overline{x}\cdot\overline{p}}f(\overline{x})\in L^{1}(\mathcal{C})$.
+
+To define the Fourier transform on $\mathcal{H}$, we should first
+define it on some suitably nice subspace of $\mathcal{H}$
+(e.g. the space of smooth functions with ``compact support'' ---
+i.e. they are zero outside of a compact subset of their
+domain). Then we observe that the Fourier transform is an
+isometry (up to some scale factor) on our nice subspace, so we
+extend this isometry from our nice subspace to all of $\mathcal{H}$.
+\end{rmk}
+
+We represent the observables by operators. More relevantly, the
+position operators $\widehat{x}_{m}$ and momentum operators
+$\widehat{p}_{m}$ are represented in position-space by
+multiplication by the coordinate fuhnctions $x_{m}$ and the
+partial derivative operators $-i\partial_{m}$
+(respectively). Observe also that the Fourier transform converts
+multiplication by $x_{m}$ on functions of $\overline{x}$ into the
+differential operators $-i\partial_{m}$ on functions of
+$\overline{p}$:
+\begin{equation}%\label{eq:}
+\mathcal{F}(x_{m}f)(\overline{p})=-i\partial_{m}\mathcal{F}(f)(\overline{p}).
+\end{equation}
+
+The natural question to ask is ``What are the eigenstates of
+these operators?'' Well, in position space, we find the position
+eigenstates are just delta functions
+\begin{subequations}
+\begin{align}
+(\widehat{x}_{m}\delta_{\overline{q}})(\overline{x}) &=
+  \widehat{x}_{m}\delta(\overline{x}-\overline{q})\\
+&= q_{m}\delta(\overline{x}-\overline{q})\\
+&= (q_{m}\delta_{\overline{q}})(\overline{x})
+\end{align}
+\end{subequations}
+Similarly, for the eigenstates of the momentum operators
+$\widehat{p}_{m}$, we see that the eigenstates in position-space
+are $e_{\overline{p}}(\overline{x})$:
+\begin{subequations}
+\begin{align}
+(\widehat{p}_{m}e_{\overline{p}})(\overline{x}) &= -i\partial_{m}\exp(i\overline{p}\cdot\overline{x})\\
+&= p_{m}\exp(i\overline{p}\cdot\overline{x})\\
+&= (p_{m}e_{\overline{p}})(\overline{x}).
+\end{align}
+\end{subequations}
+
+But we have just two minor problems: \begin{inparaenum}
+\item neither $\widehat{x}_{m}$ nor $\widehat{p}_{n}$ act on all
+  of $\mathcal{H}$, and
+\item $\mathcal{H}$ doesn't contain the eigenstates of either
+  operators.
+\end{inparaenum}
+We can solve the first problem fairly easily --- we'll consider
+the subspace $S\subset{\mathcal{H}}$ where the operators map $S$
+to itself. Similarly, we resolve the second problem by defining
+the kets as elements of $S^{*}$, the space of continuous
+antilinear functionals on $S$. Since $\widehat{p}_{n}$ acts on
+all functions of $S$, these functions must be infinitely
+differentiable, and so $S^{*}$ will contain the
+$\delta$-functions and all their derivatives. Similarly, by
+taking the Fourier Transform, since $\widehat{x}_{m}$ acts on
+$S$, it follows that $S^{*}$ will contain exponential functions
+$\exp(i\overline{p}\cdot\overline{x})$. 
+
+Instead of a single Hilbert space, we end up with a triple
+\begin{equation}%\label{eq:}
+S\subset{\mathcal{H}}\subset{S^{*}}
+\end{equation}
+The physical states live in $S$, and the operator eigenstates
+live in $S^{*}$. With appropriate demands on the space $S$, 
+this triple ends up being a \emph{Rigged Hilbert Space}~\cite{delamadrid}~\cite{Madrid:2004zy}. 
+In this context ``Rigged'' \emph{is  not} in the sense of ``This
+game is rigged'' but rather in the sense of ``equipped'' --- like
+how a boat is ``rigged'' or ``equipped to sail''. \linebreak
+
+
+\begin{ddanger}
+In fact, the triple $S\subset\mathcal{H}\subset{S^{*}}$ is a
+rigged Hilbert space if $S$ is a nuclear subspace of
+$\mathcal{H}$. See Gelfand~\cite{gelfandgeneralized} or
+Maurin~\cite{maurin} for rigorous details about the notion of
+nuclear spaces. We'll discuss one such criteria for $S$ to be
+nuclear. Specifically,
+\begin{enumerate}
+\item there exists a countable family $\|\cdot\|_{k}$ of norms on
+$S$ with respect to which convergence is defined
+by 
+\begin{equation}
+f_{n}\to{f}\quad\iff\quad\|f_{n}-f\|_{k}\to0\;\;\forall k\geq0;
+\end{equation}
+\item $S$ is complete with respect to this notion of
+  convergence; and 
+\item there exists a Hilbert-Schmidt operator on
+  $S$ with a continuous inverse.
+\end{enumerate}
+We'll leave the interested reader to refer to the cited sources.
+\end{ddanger}
+
+In a rigged Hilbert Space we have eigenfunction expansions. More
+precisely, consider a state $|f\>$ represented by the function
+$f$, let $|\overline{x}\>$ be the position eigenstate represented
+by the distribution $\delta_{\overline{x}}$. We assume the
+relationship between the functions and the kets is such that
+\begin{equation}%\label{eq:}
+f(\overline{x}) = \<\overline{x}|f\>.
+\end{equation}
+We can then expand the state $|f\>$ in terms of the position
+eigenstate $|\overline{x}\>$ which should be of the form
+\begin{equation}%\label{eq:}
+|f\> = \int |\overline{x}\>\,\<\overline{x}|f\>\,d^{3}\overline{x} = \int f(\overline{x})\,|\overline{x}\>\,d^{3}\overline{x}.
+\end{equation}
+The conditions on $S$ in a rigged Hilbert Space ensure that
+$f(\overline{x})|\overline{x}\>$ is integrable for all $f\in{S}$.

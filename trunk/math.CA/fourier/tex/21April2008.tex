@@ -1,0 +1,212 @@
+%%
+%% 21April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 20 20:51:48 2008 Alex Nelson
+%% Last update Sat Dec 20 20:51:48 2008 Alex Nelson
+%%
+%% We cover only the Criteria for orthonormal basis in
+%% $L^{2}(a,b)$ in this section
+
+\begin{defn}
+Let $f_n,f\in L^{2}(a,b)$, $f_n\to f$ \textbf{converges in
+  norm}\index{Convergence!In Norm}  $\|f_n-f\|\to0$ as
+$n\to\infty$ if and only if
+$\int^{b}_{a}|f_{n}(x)-f(x)|^2dx\to0$ as $n\to\infty$.
+\end{defn}
+
+\begin{rmk} 
+If one has the norm of two functions $\|f-g\|=0$, then $f=g$
+in $L^{2}(a,b)$ if and only if $f(x)=g(x)$ for $x$ (outside
+of sets of measure zero) in $[a,b]$.
+\end{rmk}
+
+\begin{defn}
+We say $f=g$ \textbf{almost everywhere} if $f(x)=g(x)$ for
+$x\in[a,b]-E$ where $E$ is measure 0.
+\end{defn}
+
+\begin{ex}
+Let
+\begin{equation}
+f(x) = \begin{cases} 0 & \text{if } x\in[0,1]\text{ is
+    irrational}\\
+1 & \text{if }x\in\mathbb{Q}\cap[0,1]\end{cases}
+\end{equation}
+then $f(x)=1$ almost everywhere.
+\end{ex}
+
+\begin{rmk}
+The pointwise convergence and convergence in norm do not
+imply each other.
+\end{rmk}
+
+\begin{thm}
+If $f_n\to f$ uniformly on an interval $[a,b]$, then $f_n\to
+f$ in norm.
+\end{thm}
+\begin{proof}
+Let $M_n = \sup_{x\in[a,b]}|f_{n}(x)-f(x)|\to 0$ as
+$n\to\infty$. Now
+$\|f_n-f\|^2=\int^{b}_{a}|f_{n}(x)-f(x)|^{2}dx\leq\int^{b}_{a}M_{n}^{2}dx=M_{n}^{2}(b-a)$. But
+$M_{n}\to 0$ so $M_{n}^{2}(b-a)\to 0$ too.
+\end{proof}
+
+\begin{defn}
+A sequence $\{a_{n}\}$ in a normed vector space $V$ (i.e. a
+vector space with a norm $\|\cdot\|$) is called a
+\textbf{Cauchy Sequence}\index{Cauchy Sequence}\index{Sequence!Cauchy} 
+if
+\begin{equation}
+\|a_m-a_n\|\to 0\quad \text{as }m,n\to\infty
+\end{equation}
+$V$ is \textbf{complete}\index{Complete Vector Space}
+if\index{Vector Space!Complete} every Cauchy sequence
+converges to a vector in $V$.
+\end{defn}
+\begin{ex}
+In $\mathbb{R}$, $a_n=1/n$, then
+\begin{align*}
+\|a_m - a_n\| &= \left|\frac{1}{m}-\frac{1}{n}\right| \\
+&= \left|\frac{n-m}{mn}\right|\to 0
+\end{align*}
+as $m,n\to\infty$. So $a_n$ is Cauchy and goes to zero.
+\end{ex}
+\index{$PC(\mathbb{R})$!Not Complete}\marginpar{$PC(a,b)$ is not complete}One can observe that $PC(a,b)$ is not complete by this
+counter-example to the claim. Consider $PC(0,1)$ and let
+\begin{equation}
+f_{n}(x) = \begin{cases} x^{-1/4}&\text{if }x>1/n\\
+0&\text{otherwise}\end{cases}
+\end{equation}
+If $m>n$, $f_m(x)-f_n(x)$ equals $x^{-1/4}$ when
+$m^{-1}<x\leq n^{-1}$ and equals 0 otherwise, so
+\begin{equation}
+\|f_m - f_n\|^2 = \int^{1/n}_{1/m}x^{-1/2}dx =
+2x^{1/2}|^{1/n}_{1/m} = 2(n^{-1/2}-m^{-1/2}),
+\end{equation}
+which tends to zero as $m,n\to\infty$. Thus the sequence
+$\{f_n\}$ is Cauchy; but clearly its limit (either pointwise
+or in norm) is
+\begin{equation}
+f(x) =\begin{cases} x^{-1/4}&\text{if }x>0\\
+0\text{if }x=0\end{cases}
+\end{equation}
+and this function does not belong to $PC(0,1)$ because it
+becomes unbounded as $x\to 0$.
+
+However, it is worthy of note that $L^{2}(a,b)$ is not only
+complete but the completion of $PC(a,b)$.
+
+Rudin's notion of completeness~\cite{rudinPrinciplesOfMathematicalAnalysis}
+\begin{thm}{(Rudin 11.42)}\index{$L^2$!Complete}
+If $\{f_{n}\}\in L^{2}(a,b)$ (n=1,2,...) is a Cauchy
+sequence, then there exists some function $f\in L^{2}(a,b)$
+such that $\{f_{n}\}$ converges to $f \in L^{2}(a,b)$.
+\end{thm}
+This says,in other words, that $L^{2}(a,b)$ is a
+\emph{complete} metric space.
+
+\begin{thm}{(Rudin's Theorem 11.38)}
+For all $f\in L^{2}(a,b)$, and for each $\varepsilon>0$,
+there is a $(b-a)$-periodic function and infinitely smooth
+$\widetilde{f}\in C^{\infty}(a,b)$ such that
+$\|f-\widetilde{f}\|<\varepsilon$.
+\end{thm}
+
+\begin{thm}
+If $\{\phi_n\}$ is an orthonormal set in $L^{2}(a,b)$, $f\in
+L^{2}(a,b)$ the Bessel inequality states\index{Bessel Inequality}: 
+\begin{equation}
+\sum^{\infty}_{n=1}|\<f,\phi_n\>|^2\leq\|f\|^2.
+\end{equation} 
+Thus
+\begin{equation}
+\sum^{M}_{N}|\<f,\phi_n\>|^2\to 0\quad\text{as }M,N\to\infty. 
+\end{equation}
+Further 
+\begin{equation}
+\|\sum^{N}_1 \<f,\phi_n\>\phi_n\|^2=\sum^{N}_{n=1}|\<f,\phi_n\>|^2
+\end{equation}
+by the Pythagorean theorem. It suffices to show that
+$\<f,\phi_n\>\phi_n$ is a Cauchys series
+\begin{equation}
+\|\sum^{N}_{M}\<f,\phi_n\>\phi_n\|^2\to 0.
+\end{equation}
+\end{thm}
+
+\begin{lem}
+If $f\in L^{2}(a,b)$, $\{\phi_{n}\}$ is an orthonormal set
+in $L^{2}(a,b)$, then
+\begin{equation}
+\sum^{\infty}_{n=1}\<f,\phi_n\>\phi_n
+\end{equation}
+converges in norm; moreover
+\begin{equation}
+\|\sum^{\infty}_{n=1}\<f,\phi_n\>\phi_n\|\leq\|f\|.
+\end{equation}
+\end{lem}
+
+\subsection{Criteria for an Orthonormal Basis in $L^{2}(a,b)$}
+
+\begin{thm}
+Let $\{\phi_n\}^{\infty}_{n=1}$ be an orthonormal set in
+$L^{2}(a,b)$, the following conditions are equivalent
+\begin{enumerate}
+\item if $\<f,\phi_n\>=0$ for all $n\in\mathbb{Z}$, then
+  $f=0$
+\item for all $f\in L^{2}(a,b)$,
+  $f=\sum^{\infty}_{n=1}\<f,\phi_n\>\phi_n$ (convergence in
+  norm)
+\item for all $f\in L^{2}(a,b)$, we have the
+  \textbf{Parseval equality}\index{Parseval Equality}
+\begin{equation}
+\|f\|^2=\sum^{\infty}_{n=1}|\<f,\phi_n\>|^2.
+\end{equation}
+\end{enumerate}
+\end{thm}
+\begin{proof}
+We'll prove that (1) implies (2), (2) implies (3), and (3)
+implies (1).
+
+\textbf{(1)$\Rightarrow$(2)} Suppose $\<f,\phi_n\>=0$ for
+all $n$. Let
+\begin{align*}
+g &= f-\sum^{\infty}_{n=1}\<f,\phi_n\>\phi_n\\
+\<g,\phi_m\> &=
+\<f,\phi_m\>-\sum^{\infty}_{n=1}\<f,\phi_n\>\<\phi_n,\phi_m\>\\
+&=\<f,\phi_m\>-\sum^{\infty}_{n=1}\<f,\phi_n\>\delta_{nm}\\
+&=\<f,\phi_m\> - \<f,\phi_m\>\\
+&=0
+\end{align*}
+for any $m$. Therefore $g=0$.
+
+\textbf{(2)$\Rightarrow$(3)} Suppose for any $f$, we have
+\begin{equation}
+f = \sum^{\infty}_{n=1}\<f,\phi_n\>\phi_n
+\end{equation}
+So
+\begin{align*}
+\|f\|^2 &= \<f,f\> =
+\|\sum^{\infty}_{n=1}\<f,\phi_n\>\phi_n\|^2\\
+&=\lim_{N\to\infty}\|\sum^{N}_{n=1}\<f,\phi_n\>\phi_n\|^2\\
+&=\lim_{N\to\infty}\sum^{N}_{n=1}|\<f,\phi_n\>|^2\quad\text{by Pythagorean thm}\\
+&=\sum^{\infty}_{n=1}|\<f,\phi_n\>|^2.
+\end{align*}
+
+\textbf{(3)$\Rightarrow$(1)} Suppose 
+\begin{equation}
+\|f\|^2 = \sum^{\infty}_{n=1}|\<f,\phi_n\>|^2
+\end{equation}
+Suppose $\<f,\phi_n\>=0$ for all $n$. Then $\|f\|^2=0$ which
+implies $f=0$ in $L^{2}(a,b)$.
+\end{proof}
+
+\begin{rmk}
+In $\mathbb{C}^k$ where $\vec{v}=(v_1,...,v_k)$, then
+\begin{equation}
+\|\vec{v}\|^2 = \sum^{k}_{j=1}|\<v,e_j\>|^2
+\end{equation}
+is the discrete version of Parseval equality.
+\end{rmk}

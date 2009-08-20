@@ -1,0 +1,36 @@
+\begin{center}
+\fcolorbox{white}{white}{
+  \begin{picture}(270,102) (21,9)
+    \SetWidth{0.5}
+    \SetColor{Black}
+    \ArrowLine(21,9)(51,55)
+    \ArrowLine(255,14)(244,54)
+    \ArrowLine(244,54)(256,96)
+    \ArrowLine(51,57)(25,96)
+    \ArrowLine(51,56)(105,56)
+    \ArrowLine(177,56)(241,56)
+    \ArrowArc(140.5,48.12)(35.89,12.99,167.01)
+    \ArrowArc(140.5,62.27)(35.89,-167.39,-12.61)
+    \Vertex(51,55){2.83}
+    \Vertex(106,57){2.83}
+    \Vertex(177,55){2.83}
+    \Vertex(242,56){2.83}
+    \Text(25,9)[lb]{$A$}
+	\Text(25,30)[lb]{$p_1$}
+    \Text(245,17)[lb]{$A$}
+	\Text(252,35)[lb]{$p_2$}
+    \Text(244,92)[lb]{$B$}
+	\Text(254,75)[lb]{$p_4$}
+    \Text(31,95)[lb]{$B$}
+	\Text(43,75)[lb]{$p_3$}
+    \Text(70,45)[lb]{$C$}
+	\Text(70,59)[lb]{$q_1$}
+    \Text(199,45)[lb]{$C$}
+	\Text(199,59)[lb]{$q_4$}
+    \Text(132,15)[lb]{$A$}
+	\Text(132,29)[lb]{$q_2$}
+    \Text(132,88)[lb]{$B$}
+	\Text(132,74)[lb]{$q_3$}
+  \end{picture}
+}
+\end{center}

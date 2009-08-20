@@ -1,0 +1,77 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{cartier2006functional}
+P.~Cartier and C.~DeWitt-Morette, {\em {Functional integration: action and
+  symmetries}}.
+\newblock Cambridge University Press, 2006.
+
+\bibitem{Ticciati:1999qp}
+R.~Ticciati, {\em {Quantum field theory for mathematicians}}.
+\newblock Cambridge University Press, 1999.
+
+\bibitem{Peskin:1995ev}
+M.~E. Peskin and D.~V. Schroeder, {\em {An Introduction to quantum field
+  theory}}.
+\newblock Addison-Wesley, 1995.
+
+\bibitem{Wise:2005mp}
+D.~K. Wise, ``{Lattice p-form electromagnetism and chain field theory},''
+\href{http://arxiv.org/abs/gr-qc/0510033}{{\tt arXiv:gr-qc/0510033}}.
+%%CITATION = GR-QC/0510033;%%.
+
+\bibitem{Faddeev:1967fc}
+L.~D. Faddeev and V.~N. Popov, ``{Feynman diagrams for the Yang-Mills field},''
+\href{http://dx.doi.org/10.1016/0370-2693(67)90067-6}{{\em Phys. Lett.} {\bf
+  B25} (1967)  29--30}.
+%%CITATION = PHLTA,B25,29;%%.
+
+\bibitem{Elizalde:1999zy}
+E.~Elizalde, ``{On the concept of determinant for the differential operators of
+  quantum physics},'' {\em JHEP} {\bf 07} (1999)  015,
+\href{http://arxiv.org/abs/hep-th/9906229}{{\tt arXiv:hep-th/9906229}}.
+%%CITATION = HEP-TH/9906229;%%.
+
+\bibitem{DewittMorette:1974ht}
+C.~Dewitt-Morette, ``{Feynman path integrals. 1. linear and affine techniques.
+  2. the feynman-green function},''
+\href{http://dx.doi.org/10.1007/BF01646034}{{\em Commun. Math. Phys.} {\bf 37}
+  (1974)  63--81}.
+%%CITATION = CMPHA,37,63;%%.
+
+\bibitem{DeWittMorette:1977eq}
+C.~DeWitt-Morette, B.~Nelson, and A.~Maheshwari, ``{Path Integration in Phase
+  Space},''
+\href{http://dx.doi.org/10.1007/BF00756309}{{\em Gen. Rel. Grav.} {\bf 8}
+  (1977)  581--593}.
+%%CITATION = GRGVA,8,581;%%.
+
+\bibitem{DeWittMorette:1979zz}
+C.~DeWitt-Morette, A.~Maheshwari, and B.~Nelson, ``{Path integration in
+  non-relativistic quantum mechanics},''
+{\em Phys. Rept.} {\bf 50} (1979)  255--372.
+%%CITATION = PRPLC,50,255;%%.
+
+\bibitem{DeWittMorette:1984du}
+C.~DeWitt-Morette and T.~R. Zhang, ``{PATH INTEGRALS AND CONSERVATION LAWS},''
+\href{http://dx.doi.org/10.1103/PhysRevD.28.2503}{{\em Phys. Rev.} {\bf D28}
+  (1983)  2503--2516}.
+%%CITATION = PHRVA,D28,2503;%%.
+
+\bibitem{DeWitt:2004xz}
+B.~DeWitt and C.~DeWitt-Morette, ``{From the Peierls bracket to the Feynman
+  functional integral},''
+\href{http://dx.doi.org/10.1016/j.aop.2004.07.005}{{\em Ann. Phys.} {\bf 314}
+  (2004)  448--463}.
+%%CITATION = APNYA,314,448;%%.
+
+\bibitem{Elizalde:1993ue}
+E.~Elizalde, ``{Zeta function regularization in uniquely defined and well},''
+  {\em J. Phys.} {\bf A27} (1994)  L299--L304,
+\href{http://arxiv.org/abs/hep-th/9308028}{{\tt arXiv:hep-th/9308028}}.
+%%CITATION = HEP-TH/9308028;%%.
+
+\bibitem{Kochan:2008}
+D.~Kochan, ``Does path integral really need a Lagrangian/Hamiltonian?,''
+  \href{http://arxiv.org/abs/0812.0678}{{\tt arXiv:0812.0678 [quant-ph]}}.
+
+\end{thebibliography}\endgroup

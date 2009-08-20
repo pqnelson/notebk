@@ -1,0 +1,229 @@
+%%
+%% 28April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 20 17:48:34 2008 Alex Nelson
+%% Last update Sat Dec 20 17:48:34 2008 Alex Nelson
+%%
+%% This section just covers two things: 1) weighted
+%% $L^{2}_{\omega}(a,b)$ space; 2) eigenvalues,
+%% eigenfunctions of regular Sturm-Liouville problem
+
+Recall we just introduced $L^{2}_{\omega}(a,b) = \{
+f:(a,b)\to\mathbb{R} |
+\int^{b}_{a}|f(x)|^{2}\omega(x)dx<\infty\}$. For us, in
+practice, we'll often have $\omega(x)>0$ and it's continuous
+on $[a,b]$. We have weighted inner products and weighted
+norms on $L^{2}_{\omega}(a,b)$ is defined as follows:
+\begin{eqnarray}
+\<f,g\>_{\omega} &=& \int^{b}_{a}f(x)\overline{g(x)}\omega(x)dx\\
+\|f\|_{\omega} &=& \sqrt{\<f,f\>_{\omega}} = \left(\int^{b}_{a}|f(x)|^{2}\omega(x)dx\right)^{1/2}
+\end{eqnarray}
+
+Let demonstrate the weighted inner product\index{Weighted Inner Product}\index{Inner Product!Weighted} 
+and weighted norm\index{Norm!Weighted Norm}\index{Weighted Norm}
+satisfy the fundamental properties of the inner product and
+norm (respectively).
+\begin{enumerate}[(i)]
+\item $\<f,0\>_{\omega}=0$, this is trivial (it really is,
+  unlike all those other times I said something was trivial)
+\item Linear in the first slot \marginpar{Linearity in First Slot}
+\begin{align*}
+\<\alpha f+\beta g,h\>_{\omega} &= \int^{b}_{a} (\alpha f(x)+\beta g(x))\overline{h(x)}\omega(x)dx\\
+&=\int^{b}_{a} \alpha f(x)\overline{h(x)}\omega(x)dx +
+\int^{b}_{a} \beta g(x)\overline{h(x)}\omega(x)dx\\
+&= \alpha\<f,g\>_{\omega} + \beta\<g,h\>_{\omega}
+\end{align*}
+\item Antilinear in the second slot \marginpar{Antilinear in Second Slot} \begin{align*}
+\<f,\alpha g+\beta h\>_{\omega} &=
+\int^{b}_{a}f(x)\overline{[\alpha g(x)+\beta h(x)]}\omega(x)dx\\
+&=\int^{b}_{a} f(x)\overline{\alpha h(x)}\omega(x)dx +
+\int^{b}_{a} g(x)\overline{\beta h(x)}\omega(x)dx\\
+&=\bar{\alpha}\<f,g\>_{\omega} + \bar{\beta}\<f,g\>_{\omega}
+\end{align*}
+\item Hermitian symmetric
+\begin{align*}
+\<f,g\>_{\omega} &=\int^{b}_{a}f(x)\overline{g(x)}\omega(x)dx\\
+&=\overline{\int^{b}_{a}\overline{f(x)}g(x)\omega{x}dx},\qquad\omega:\mathbb{C}\to\mathbb{R}\\
+&=\overline{\<g,f\>}_{\omega}
+\end{align*}
+\end{enumerate}
+
+Those are the fundamental properties of the inner product,
+so let us now consider the fundamental properties of the norm.
+
+\begin{enumerate}[(a)]
+\item{(Homogeneity)} $\|\alpha f\|_{\omega} =
+  |\alpha|\|f\|_{\omega}$ (this is trivial).
+\item{(Positivity)} $\|f\|_{\omega}\geq 0$ and
+  $\|f\|_{\omega}=0$ if and only if $f=0$.
+\end{enumerate}
+Observe
+\begin{align}
+\|f\|^{2}_{\omega} =
+\int^{b}_{a}&\underbracket[0.5pt]{|f(x)|^{2}\omega(x)}dx\\
+&\text{always positive }\Rightarrow\text{ nonzero integral}\nonumber
+\end{align}
+If $\omega(x)=0$ on a small interval from
+$[\alpha,\beta]\subset[a,b]$, then if $f(x)\neq0$ on
+$f[\alpha,\beta]$ and $f(x)=0$ otherwise, but the norm
+vanishes
+\begin{equation}
+\|f\|_{\omega} = \int^{b}_{a}|f(x)|^{2}\omega(x)dx = \int^{\beta}_{\alpha}|f(x)|^{2}\omega(x)dx=0.
+\end{equation}
+So
+\begin{equation}
+\omega(x)>0\qquad\forall x\in[a,b]
+\end{equation}
+is needed for the positivity of the norm. Therefore all
+properties of the norm also hold. 
+
+\begin{rmk}
+The weighted inner product
+\begin{equation}
+\<f,g\>_{\omega} = \int^{b}_{a}f(x)\overline{g(x)}\omega(x)dx
+\end{equation}
+can be translated into the standard inner product
+\begin{equation}
+\<f\omega,g\>=\<f,\omega g\>=\<f,g\>_{\omega}
+\end{equation}
+because $\omega$ is real valued,
+i.e. $\overline{\omega(x)}=\omega(x)$ for all
+$x\in[a,b]$. We see that
+\begin{equation}
+0<m=\min_{x\in[a,b]}\omega(x)\leq\omega(x)\leq M=\max_{x\in[a,b]}\omega(x)
+\end{equation}
+which implies
+\begin{equation}
+0<m|f(x)|^2\leq\omega(x)|f(x)|^{2}\leq M|f(x)|^2
+\end{equation}
+and
+\begin{align}
+\overbracket[0.5pt]{\hphantom{m\int^{b}_{a}|f(x)|^{2}dx\leq\int^{b}_{a}|f(x)|^{2}\omega(x)dx}}^{\text{if $f\in L^{2}_{\omega}$, then the $L^2$ norm is bounded by this}} \hphantom{\leq M\int^{b}_{a}|f(x)|^{2}dx}\nonumber\\
+m\int^{b}_{a}|f(x)|^{2}dx\leq\int^{b}_{a}|f(x)|^{2}\omega(x)dx\leq M\int^{b}_{a}|f(x)|^{2}dx\\
+\hphantom{m\int^{b}_{a}|f(x)|^{2}dx}\underbracket[0.5pt]{\hphantom{\int^{b}_{a}|f(x)|^{2}\omega(x)dx\leq M\int^{b}_{a}|f(x)|^{2}dx}}_{\text{if $f\in L^{2}_{\omega}$, then the norm is finite}}\nonumber
+\end{align}
+Thus $L^{2}_{\omega}(a,b) = L^{2}(a,b)$. In fact, if
+$\{\phi_{n}\}^{\infty}_{1}$ is an orthonormal basis for
+$L^{2}(a,b)$, then we may obtain a basis
+$\{\psi_{n}\}^{\infty}_{1}$ for $L^{2}_{\omega}(a,b)$ where 
+\begin{equation}
+\psi_{n}(x) = \frac{1}{\sqrt{\omega(x)}}\phi_{n}(x).
+\end{equation}
+The other way holds too, given $\psi_{n}$ we find
+\begin{equation}
+\phi_{n} = \sqrt{\omega(x)}\psi_{n}
+\end{equation}
+as an orthonormal basis for $L^{2}$.
+\end{rmk}
+We can use this to solve the regular Sturm-Liouville
+problem. We want to prove the Sturm-Liouville problme has
+its eigenfunctions form an orthonormal basis of
+$L^{2}(a,b)$. Recall the linear operator we're working with is
+\begin{align}
+L(f)+\lambda\underbracket[0.5pt]{\omega(x)}&f(x)=[r(x)f'(x)]'+p(x)f(x)+\lambda\underbracket[0.5pt]{\omega(x)}f(x)=0\\
+ &\!\!\!\!\!\!\!\uparrow \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad \!\!\!\!\uparrow \nonumber\\
+ &\!\!\!\!\!\!\!\!\! \text{$\omega(x)$\;  used\;  in\;  the\;  weighted\;  inner\;  product} \nonumber
+\end{align}
+The self-adjoint boundary conditions:
+\begin{subequations}
+\begin{align}
+B_{1}(f) &= \alpha_{1}f(a) + \alpha_{2}f'(a) + \beta_{1}f(b)+ \beta_{2}f'(b) = 0\\
+B_{2}(f) &= \alpha_{3}f(a) + \alpha_{4}f'(a) + \beta_{3}f(b)+ \beta_{4}f'(b) = 0
+\end{align}
+\end{subequations}
+For any $\lambda$, $f$ is a solution (a nontrivial solution,
+read: nonzero solution) of the Sturm-Liouville problem, then
+$\lambda$ is called an
+\textbf{eigenvalue}\index{Eigenvalue}\index{Sturm-Liouville!Eigenvalues}\index{Differential Operator!Eigenvalues} 
+and $f$ is called the
+\textbf{eigenfunction}\index{Eigenfunction}\index{Sturm-Liouville!Eigenfunction}\index{Differential Operator!Eigenfunction} of the Sturm-Liouville problem.
+
+\begin{rmk}
+Note that we have
+\begin{equation}
+\<L(f),f\>=\<f,L(f)\>
+\end{equation}
+The boundary conditions make all other terms vanish. If both
+$f$ and $g$ satisfy the boundary conditions, then 
+\begin{equation}
+\<L(f),g\> = \<f,L(g)\>.
+\end{equation}
+\end{rmk}
+
+\subsection[Properties of Sturm-Liouville Problem]{Some Properties of Eigenvalues and Eigenfunctions of the Sturm-Liouville Problem}
+
+\begin{thm}\label{thm:28April2008:thm3.9}
+For the regular Sturm-Liouville problem, there are three
+properties that hold:
+\begin{enumerate}
+\item All eigenvalues are real
+\item Eigenfunctions corresponding to distinct eigenvalues
+  are orthogonal with respect to the weighted inner product
+\item For any eigenvalue $\lambda$, the eigenspace is at
+  most two-dimensional (there are at most 2 linearly
+  independent eigenfunctions associated with $\lambda$).
+\end{enumerate}
+Moreover, if the boundary conditions are seperated
+(i.e. $B_{1}(f)$ focuses on one endpoint and $B_{2}(f)$
+focuses on the other, e.g.
+\begin{align*}
+B_{1}(f) &= \alpha_{1}f(a) + \alpha_{2}f'(a)\\
+B_{2}(f) &= \beta_{1}f(a) + \beta_{2}f'(a)
+\end{align*}
+then for any eigenvalue $\lambda$, the eigenspace associated
+to $\lambda$ is one dimensional.
+\end{thm}
+\begin{proof}
+\begin{enumerate}
+\item We showed for Hermitian matrices, eigenvalues are
+  real, so lets take the same steps. Let $\lambda$, $f$ be
+  an eigenvalue/eigenfunction pair, then
+\begin{align*}
+\lambda\|f\|^{2}_{\omega} &= \<\lambda
+f,f\>_{\omega}\quad\text{$\lambda$ is real}\\
+&=\<\lambda\omega f,f\>\quad\text{by relation of $L^2$ to $L^{2}_{\omega}$}\\
+&=\<-L(f),f\>\quad\text{by Sturm-Liouville equation}\\
+&=\<-f,L(f)\>\quad\text{by Self-Adjointness of $L$}\\
+&=\<f,-L(f)\>\\
+&=\<f,\lambda\omega f\>\quad\text{by S-L eigenproblem}\\
+&=\<f,\lambda f\>_{\omega}\quad\text{by relation of $L^2$ to $L^{2}_{\omega}$}\\
+&=\bar{\lambda}\|f\|^{2}_{\omega}\quad\text{by Antilinearity}\\
+\lambda=\bar{\lambda}&\Rightarrow\lambda\in\mathbb{R}
+\end{align*}
+\item Suppose $f,g$ are eigenfunctions corresponding to
+  eigenvalues $\lambda,\mu$ where $\lambda\neq\mu$. Then we
+  take the inner product
+\begin{align*}
+\lambda\<f,g\>_{\omega} &= \<\lambda\omega f,g\> \\
+&= \<-L(f),g\>\\
+&= \<f,-L(g)\>\quad\text{both are eigenfunctions, boundary and terms vanish}\\
+&= \<f,\mu\omega g\>\quad\text{by S-L problem}\\
+&= \mu\<f,g\>_{\omega}\\
+\Rightarrow (\lambda-\mu)\<f,g\>_{\omega} &=0
+\end{align*}
+but $\lambda-\mu\neq0$ so it implies $\<f,g\>_{\omega}=0$.
+\item Apply the existence of solution theorem to the
+  Sturm-Liouville problem (For $L(f)+\lambda\omega f=0$ is a
+  second order ODE with boundary conditions $f(a)=c_1$,
+  $f(b)=c_2$, then there exists a unique solution.) For us,
+\begin{align*}
+B_{1}(f) &= \alpha_{1}f(a) + \alpha_{2}f'(a) +\beta_{1}f(b)+\beta_{2}f'(b)=0\\
+B_{2}(f) &= \alpha_{3}f(a) + \alpha_{4}f'(a) +\beta_{3}f(b)+\beta_{4}f'(b)=0
+\end{align*}
+with two free variables (i.e. two degrees of freedom). There
+are 4 unknowns and two equations imposed on them, so we have
+2 degrees of freedom. There are then at most 2 linearly
+independent eigenfunctions. When the boundary conditions are
+set:
+\begin{equation}
+\begin{array}{l}
+B_{1}(f) = \alpha_{1}f(a) + \alpha_{2}f'(a)\\
+B_{2}(f) = \beta_{1}f(b) + \beta_{2}f'(b)
+\end{array}\bigg\}\Rightarrow \text{only one degree of freedom}
+\end{equation}
+\end{enumerate}
+Which concludes our proof.
+\end{proof}

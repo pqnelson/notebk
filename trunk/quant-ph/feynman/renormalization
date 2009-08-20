@@ -1,0 +1,40 @@
+\section{Renormalization}
+
+You can go ahead and try to calculate out the integral in Eq (\ref{divergentSonOfAGun}) but I will tell you right now that it's not easy or finite.
+One could write the four-dimensional volume element as
+\begin{equation}
+d^4 q = q^3dqd\Omega
+\end{equation}
+(where $d\Omega$ is the angular part; just like in two dimensions we have
+$rdrd\theta$ and in three dimensions $r^2dr\sin\theta d\theta d\phi$).
+At large $q$ the integrand is essentially $1/q^4$, so the $q$ integral
+has the form
+\begin{equation}
+\int_{0}^{\infty}\frac{1}{q^4}q^3dq=\ln(q)\Big|^{q=\infty}_{q=0} = \infty.
+\end{equation}
+This is terrible! So what to do? \marginpar{The field of Renormalization consists of (1) regularization, and (2) radiative corrections.} The first step is to \emph{regularize} the integral using some sort of ``cut off'' procedure that renders the integral finite without losing Lorentz invariance. So we introduce
+a factor into the Eq (\ref{divergentSonOfAGun}) of
+\begin{equation}
+\frac{-M^2c^2}{q^2 - M^2c^2}
+\end{equation}
+under the integral sign. The \emph{cutoff mass} $M$ is assumed to be ``very 
+large'' and will be taken to infinity when we are done (also observe that our 
+fudge factor goes to 1 as $M\to\infty$). We can now calculate out the integral and 
+seperate it into two terms: a finite term (one independent of $M$), and one (in 
+this case) that is the logarithm of $M$ (which goes to $\infty$ as $M\to\infty$).
+
+At this point something rather magical happens: all the divergent, $M$-dependent terms appear in the final answer in the fomr of \emph{additions to the masses and the coupling constant.} This means (if taken seriously) that the \emph{physical} masses and couplings are not the $m$'s and $g$'s that appeared in the original Feynman rules but rather the ``renormalized'' ones, containing extra factors:
+\begin{equation}
+m_{\textrm{physical}} = m + \delta m,\quad g_{\textrm{physical}} = g + \delta g.
+\end{equation}
+The fact that $\delta m$ and $\delta g$ are infinite (in the limit of $M\to\infty$)
+is disturbing but not lethal...we never measure them anyways! All we ever see
+in the lab are \emph{physical} values, and these are trivially finite. As a practical
+matter, we take account of the infinities by using the \emph{physical} values of $m$ and $g$ in Feynman rules, and then systematically ignoring the divergent
+contributions from higher-order diagrams.
+
+Meanwhile, there were the finite contributions from the loop diagrams that we
+kinda were neglecting. They too lead to modifications in $m$ and $g$ (perfectly
+calculable in this case) -- which are functions of the four-momentum of the line in which the loop is inserted (in our example, $p_1 - p_3$). This means that the
+\emph{effective} masses and coupling constants actually depend on the \emph{energies}
+of the particles involved; we call them ``running'' masses and ``running'' coupling constants. The dependence is typically rather slight, at least at low energies. They can be ignored but they are observable effects, such as the Lamb shift (in QED) and asymptotic freedom (in QCD).

@@ -1,0 +1,56 @@
+\section{Some Notes on Spinor Technology}
+
+It was mentioned that the Dirac spinor does not transform as a four-vector when
+one changes from one inertial reference frame to another. So how exactly do they
+transform? Well, it's quite a bit of work to do, but we will simply quote the
+result. If we go to a system moving with speed $v$ in the $x$ direction, the
+transformation rule is
+\begin{equation}
+\psi\to\psi' = S\psi
+\end{equation}
+where $S$ is the $4\times 4$ matrix
+\begin{equation}
+S = a_+ + a_- \gamma^0\gamma^1 = \begin{bmatrix} a_+ & a_-\sigma_1 \\
+a_-\sigma_1 & a_+\end{bmatrix}
+\end{equation}
+with
+\begin{equation}
+a_{\pm} = \pm\sqrt{(\gamma\pm 1)/2}
+\end{equation}
+and $\gamma = 1/\sqrt{1-v^2/c^2}$ is the Lorentz factor as usual.
+
+Suppose we want to construct a scalar quantity out of a spinor $\psi$ (we can
+do this with vectors, it's just the dot product). It would be reasonable to
+follow suite with the dot product and try the following:
+\begin{equation}
+\psi^\dag\psi = \begin{bmatrix}\psi^{*}_1 & \psi^{*}_2 & \psi^{*}_3 & \psi^{*}_4\end{bmatrix}
+\begin{bmatrix}
+\psi_1\\
+\psi_2\\
+\psi_3\\
+\psi_4
+\end{bmatrix} = |\psi_1|^2 + |\psi_2|^2 + |\psi_3|^2 + |\psi_4|^2.
+\end{equation}
+Unfortunately this doesn't quite work as well as we would like. We can illustrate
+this by transforming coordinates:
+\begin{equation}
+(\psi^\dag\psi)' = (\psi')^\dag\psi' = \psi^\dag S^\dag S\psi\ne (\psi^\dag\psi)
+\end{equation}
+In fact
+\begin{equation}
+S^\dag S = S^2 = \gamma \begin{bmatrix} 1 & -v\sigma_1/c\\
+-v\sigma_1/c & 1\end{bmatrix} \ne 1.
+\end{equation}
+Of course we shouldn't expect this to be invariant, with 4-vectors we have
+(if we are particle physicists) the time component squared minus the sum of the
+space components squared. We see now that we can introduce a notion of \emph{adjointness}, 
+that is an adjoint spinor:
+\begin{equation}
+\bar{\psi} \equiv \psi^\dag\gamma^0 = \begin{bmatrix}\psi^*_1 & \psi^*_2 & -\psi^*_3 & -\psi^*_4\end{bmatrix}
+\end{equation}
+We can see that
+\begin{equation}
+\bar{\psi}\psi = \psi^\dag\gamma^0\psi = |\psi_1|^2 + |\psi_2|^2 - |\psi_3|^2 - |\psi_4|^2
+\end{equation}
+is a relativistic invariant. Why? Well, $S^\dag\gamma^0 S=\gamma^0$ so we avoid
+the problems from our first attempt.

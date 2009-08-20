@@ -1,0 +1,219 @@
+%%
+%% 25April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 21 12:40:34 2008 Alex Nelson
+%% Last update Sun Dec 21 12:40:34 2008 Alex Nelson
+%%
+%% We are going to start investigating the regular
+%% Sturm-Liouville problem
+
+Let us first consider an example of a regular
+Sturm-Liouville problem:
+\begin{ex}
+Heat diffusion through an inhomogeneous thin rod is
+described by
+\begin{equation}
+\omega(x)\partial_{t}u(x,t) =
+\partial_{x}[r(x)\partial_{x}u(x,t)] + p(x)u(x,t)
+\end{equation}
+with non-uniform material properties, where $r(x)$ is the
+speed of propagation of heat, $p(x)$ is the source of heat
+at the point $x$, but specifically we require $r(x)$ and
+$\omega(x)$ be positive, and $u(x,t)$ is the temperature at
+point $x$ and time $t$.
+\end{ex}
+
+We can solve this using the seperation of
+variables\index{Seperation of Variables!Regular Sturm-Liouville Problem}
+so we have $u(x,t)=X(x)T(t)$ and plug this back into the
+equation to find
+\begin{equation}
+\omega(x)X(x)T'(t)=T(t)\partial_{x}[r(x)X'(x)]+p(x)X(x)T(t)
+\end{equation}
+we divide both sides by $\omega(x)X(x)T(t)$ and set it equal
+to some constant $-\lambda$:
+\begin{equation}
+\frac{T'(t)}{T(t)} = \frac{\partial_{x}[r(x)X'(x)]}{\omega(x)X(x)}+\frac{p(x)}{X(x)}=-\lambda.
+\end{equation}
+We get two equations
+\begin{equation}
+T'+\lambda T=0\Rightarrow T(t)=T_{0}e^{-\lambda t}
+\end{equation}
+where $T_{0}$ is a constant dependent on the initial
+conditions, and
+\begin{equation}\label{eq:25April2008:sturmLiouville}
+\partial_{x}[r(x)X'(x)]+p(x)X(x)+\lambda\omega(x)X(x)=0.
+\end{equation}
+Solving this equation is equivalent to solving the
+Sturm-Liouville problem. Similarly, if we try to solve the
+wave equation we get to boil it down to the same problem.
+
+\begin{defn}\index{Differential Operator!Linear}
+Let $L$ be a map
+\begin{equation*}
+L: C^{2}(a,b)\to L^{2}(a,b)
+\end{equation*}
+be a \textbf{linear differential operator} given by
+\begin{align*}
+L(f) &= [rf']' + pf\\
+&= rf''+r'f' + pf
+\end{align*}
+where $r(x)$, $r'(x)$, $p(x)$ are all continuous and
+real-valued on $[a,b]$, and $r(x)>0$ on $[a,b]$.
+\end{defn}
+
+\begin{rmk}
+From \eqref{eq:25April2008:sturmLiouville} it is really
+equivalent to
+\begin{equation}
+L(f) + \lambda\omega(x)f(x)=0
+\end{equation}
+We can verify that $L$ is linear, or in other words
+\begin{equation}
+L(c_1f+c_2g) = c_1L(f)+c_2L(g)
+\end{equation}
+where $c_1,c_2$ are real constants, $f,g\in L^{2}(a,b)$. So
+if $f,g$ satisfy the equation, then so does $c_1f+c_2g$.
+\end{rmk}
+So really we have $L(f)=-\lambda\omega(x)f(x)$. This looks
+remarkably like an eigenvalue problem from Linear Algebra
+(ahem hint hint, wink wink, nudge nudge). If we can
+show that $L$ is adjoint, then we can show that the
+eigenfunctions $f$ form an orthonormal basis.
+
+\textbf{Question:} What is the adjoint of $L$? To find out
+we need to find what $\<L(f),g\>$ is, and see what
+$\<f,L(g)\>$ is.
+
+Let $f,g\in C^{2}(a,b)$, then
+\begin{subequations}
+\begin{align}
+\<L(f),g\> &= \int^{b}_{a}\left(\partial_{x}[r(x)f'(x)]+p(x)f(x)\right)\overline{g(x)}dx\\
+&=\int^{b}_{a}\partial_{x}[r(x)f'(x)]\overline{g(x)}dx + \int^{b}_{a}p(x)f(x)\overline{g(x)}dx
+\end{align}
+\end{subequations}
+Now we can integrate by parts to find
+\begin{align}
+\int^{b}_{a}\partial{x}[r(x)f'(x)]\overline{g(x)}dx&=r(x)f'(x)g(x)|^{b}_{a}
+- \int^{b}_{a}r(x)f'(x)\overline{g'(x)}dx
+\end{align}
+So we can put this back in to find
+\begin{align}
+\<L(f),g\> &= r(x)f'(x)g(x)|^{b}_{a}-\int^{b}_{a}r(x)f'(x)\overline{g'(x)}dx+\int^{b}_{a}p(x)f(x)\overline{g(x)}dx
+\end{align}
+By integration by parts again we find
+\begin{multline}
+ r(x)f'(x)\overline{g(x)}|^{b}_{a}-\int^{b}_{a}r(x)f'(x)\overline{g'(x)}dx+\int^{b}_{a}p(x)f(x)\overline{g(x)}dx\\
+=r(x)f'(x)\overline{g(x)}|^{b}_{a}-r(x)\overline{g'(x)}f(x)|^{b}_{a}-\int^{b}_{a}[r(x)\overline{g'(x)}]'f(x)dx+\int^{b}_{a}p(x)f(x)\overline{g(x)}dx
+\end{multline}
+We can clean this up a little to find that
+\begin{equation}
+\<L(f),g\> =
+\int^{b}_{a}f(x)\left(\partial_{x}[r(x)\overline{g'(x)}]+g(x)\overline{g(x)}\right)dx+\underbracket{\left[r(x)f'(x)\overline{g(x)}-r(x)f(x)\overline{g'(x)}\right]}_{\text{boundary terms!}}
+\end{equation}
+We can write now
+\begin{equation}
+\<L(f),g\> =
+\int^{b}_{a}f(x)\overline{\left(\partial_{x}[r(x)\overline{g'(x)}]+g(x)\overline{g(x)}\right)}dx+\text{bdry terms}
+\end{equation}
+where ``bdry terms'' are the boundary terms, or more simply
+\begin{equation}
+\<L(f),g\>=\<f,L(g)\>+\text{bdry terms}.
+\end{equation}
+
+\begin{defn}\index{Formally Self Adjoint}\index{Self Adjoint!Formally Self Adjoint}\index{Lagrange Identity!Self Adjoint Linear Differential Operator}\index{Linear Differential Operator!Lagrange Identity}
+$L$ is called \textbf{formally self-adjoint} because 
+\begin{equation}
+\<L(f),g\>=\<f,L(g)\>+\text{boundary terms}
+\end{equation}
+this is sometimes called the ``Lagrange identity''.
+\end{defn}
+
+\begin{rmk}
+If the boundary conditions make
+\begin{equation}
+[r(x)(f'(x)\overline{g(x)}-f(x)\overline{g'(x)})]^{b}_{a}=0
+\end{equation}
+then $L$ is self-adjoint. Such boundary conditions we call
+self-adjoint boundary conditions (we will formally define it
+below).
+\end{rmk}
+
+If we expand this out we find
+\begin{equation}
+[r(f'\bar{g}-f\bar{g}')]^{b}_{a} = r(b)(f'(b)\bar{g}(b)-f(b)\bar{g}(b)') - r(a)(f'(a)\bar{g}(a)-f(a)\bar{g}(a)')
+\end{equation}
+This gives us a set of two boundary conditions
+\begin{align*}
+B_{1}(f)&=\alpha_1f(a)+\alpha_2f'(a)+\beta_1f(b)+\beta_2f'(b)=0\\
+B_{2}(f)&=\alpha_3f(a)+\alpha_4f'(a)+\beta_3f(b)+\beta_4f'(b)=0
+\end{align*}
+where the $\alpha$'s and $\beta$'s are constants.
+
+\begin{defn}\index{Self Adjoint!Boundary Conditions}\index{Boundary Conditions!Self Adjoint}
+The boundary conditions $B_1$, $B_2$ are called
+\textbf{self-adjoint} with respect to the operator $L$ if
+\begin{equation}
+[r(x)(f'(x)\overline{g(x)}-f(x)\overline{g'(x)})]^{b}_{a}=0
+\end{equation}
+for $f,g$ satisfy $B_{1}(f)=0$, $B_{2}(f)=0$, $B_{1}(g)=0$, $B_{2}(g)=0$.
+\end{defn}
+\begin{ex}
+There are several famous boundary conditions used all the
+time:
+\begin{enumerate}
+\item\index{Boundary Conditions!Dirichlet}\index{Dirichlet Boundary Conditions} The
+Dirichlet boundary conditions $f(a)=f(b)=0$;
+\item\index{Boundary Conditions!Neumann}\index{Neumann Boundary Conditions} The
+Neumann boundary conditions $f'(a)=f'(b)=0$;
+\item\index{Boundary Conditions!Periodic}\index{Periodic Boundary Conditions} The
+periodic boundary conditions $f(a)=f(b)$ and $f'(a)=f'(b)$.
+\end{enumerate}
+\end{ex}
+\begin{defn}{(Regular Sturm Liouville Problem)}\index{Sturm-Liouville!Regular Problem}
+Find all solutions of the boundary value problem
+\begin{align*}
+L(f) + \lambda\omega(x)f(x) &= 0\\
+B_{1}(f)=0,\, B_{2}(f)&=0
+\end{align*}
+where $\lambda$ is an arbitrary constant and
+\begin{enumerate}[i)]
+\item $L(f)=[rf']'+pf$ where $r(x)$, $r'(x)$, $p(x)$ are
+  real and continuous on $[a,b]$, and $r(x)>0$ on $[a,b]$.
+\item $B_{1}(f)=B_{2}(f)=0$ are self-adjoint with respect to
+  $L$
+\item $\omega(x)$ is positive and continuous on $[a,b]$.
+\end{enumerate}
+\end{defn}
+\begin{rmk}\index{Wave Equation!From Regular Sturm-Liouville Problem}
+If $r(x)=1$ and $p(x)=0$ and $\omega(x)=1$, then we get
+\begin{equation}
+f''(x)+\lambda f(x)=0
+\end{equation}
+or in other words, we have the wave equation on an elastic string.
+\end{rmk}
+\begin{defn}\index{Eigenvalue}\index{Eigenfunction}
+For $\phi$ a solution of Sturm-Liouville problem
+corresponding to some constant $\lambda$, with
+$\phi\neq0$m we call $\phi$ the \textbf{eigenvector} (or
+more often \textbf{eigenfunction}) corresponding to the
+\textbf{eigenvalue} $\lambda$
+\end{defn}
+Note this definition is because
+\begin{equation*}
+L(f)=-\omega(x)\lambda
+f(x)\Rightarrow\frac{1}{\omega(x)}L(f)=-\lambda f(x)
+\end{equation*}
+so $\lambda$ is an eigenvalue of the linear operator
+$M(f)=L(f)/\omega(x)$ and eigenfunction $f(x)$.
+\begin{defn}\index{$L^{2}$!Weighted Space}\index{Weighted $L^{2}$-Space}
+Suppose that $\omega(x)$ is integrable on $[a,b]$ and
+$\omega(x)>0$ almost everywhere on $[a,b]$, then the
+\textbf{weighted $L^{2}$-Space} is defined as the set
+\begin{equation}
+L^{2}_{\omega}(a,b) = \{ f: \int^{b}_{a}|f(x)|^2\omega(x)dx < \infty\}
+\end{equation}
+\end{defn}

@@ -1,0 +1,95 @@
+%%
+%% main.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 10 10:28:56 2009 Alex Nelson
+%% Last update Wed Jun 10 10:28:56 2009 Alex Nelson
+%%
+\documentclass{amsart}
+\usepackage{url}
+\usepackage{manfnt}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{array}
+\numberwithin{equation}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{ex}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{sch}{Scholium}
+\newtheorem{axm}{Axiom}
+\newtheorem*{prob}{Problem}
+
+\def\re{\operatorname{Re}}
+\def\tr{\operatorname{Tr}}
+\def\<{\langle}
+\def\>{\rangle}
+
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\def\rd{\noindent\begingroup\hangindent=3pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox
+  to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+%%
+% This command allows you to write stuff in small font size and
+% use the
+% bourbaki ``dangerous bend'' so it's great when you want to
+% ramble on 
+% about some extra stuff!
+%%
+\newcommand{\danger}[1] {\rd{\small {#1}}}
+
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\def\ddbend{\dbend\kern1pt\dbend}
+
+\def\rdd{\noindent\begingroup\hangindent=4pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox
+  to0pt{\hskip-\hangindent\ddbend\hfill}\ignorespaces}
+
+% make the margin sexy
+\setlength{\marginparwidth}{1.2in}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+
+% macros
+\def\({\left(}
+\def\){\right)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ddanger}[1] {\rdd{\small {#1}}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\define}[1] {\textbf{#1}\index{#1}}
+\setlength{\extrarowheight}{0.15cm}
+\title{Complex Analysis Cheat Sheet Cont'd}
+\date{June 10, 2009}
+\email{pqnelson@gmail.com}
+\author{Alex Nelson}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Laplace Transform}
+\input{laplace}
+\section{Gamma Function}
+\input{gamma}
+\section{Zeta Function}
+\input{zeta}
+\nocite{*}
+\bibliographystyle{utcaps}
+\bibliography{main}
+\end{document}

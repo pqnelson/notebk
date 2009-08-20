@@ -1,0 +1,183 @@
+%%
+%% 11April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 19 22:14:44 2008 Alex Nelson
+%% Last update Fri Dec 19 22:14:44 2008 Alex Nelson
+%%
+
+Here is a deep concept that we will re-examine in Lie Groups
+(perhaps if we get there): any periodic function can be
+considered a function on a circle. (In a hand-wavy way, we
+can change the period to be from $p$ to $2\pi$ by a change
+of coordinates, then we've got from the Fourier Series a
+linear combination of functions on the circle $\exp(inx)$
+which are all linearly independent.)
+\begin{defn}
+Let $k\in\mathbb{N}$. A function $f:\mathbb{R}\to\mathbb{R}$
+is of class $C^k$\index{$C^k$}, $f\in C^k$, if $f$ has derivatives up to
+order $k$ and (in addition to the derivatives existing) they
+are continuous. When we discuss \textbf{smoothness}\index{Smooth}, we are
+discussing the existence of derivatives.
+\end{defn}
+At first it may seem useless to introduce such a definition,
+but the strength in having such a system is that all
+$C^{k+1}$ functions are also $C^{k}$ functions. It provides
+a clear hierarchy of ``nice'' functions.\marginpar{$C^0$ are continuous functions}But also note, if a function is
+continuous, then it is necessarily $C^0$. 
+
+But let us reiterate what we have done before we
+continue. Let $f$ be a $2\pi$ periodic, piecewise smooth and
+continuous. This means $f\in C^0$ and $f'\in
+PC(\mathbb{R})$. This means that $f(\theta)=\sum
+c_{n}e^{in\theta}$ $\forall \theta$. This series \emph{converges
+absolutely and uniformly}.\index{Convergence!Fourier Series} Also, the derivative of $f$ is
+equal to the termwise derivatives of its Fourier series
+\begin{equation}
+f'(\theta) = \sum^{\infty}_{n=-\infty}inc_{n}e^{in\theta} =
+\sum n(-a_{n}\sin(n\theta)+b_{n}\cos(n\theta))
+\end{equation}
+at $\theta$ where $f'$ is continuous. If we apply the Bessel
+Inequality, we have the following inequality on $f'$:
+\begin{equation}
+\sum
+|nc_{n}|^{2}\leq\frac{1}{2\pi}\int^{\pi}_{-\pi}|f'(\theta)|^{2}d\theta
+< \infty
+\end{equation}
+So it follows that
+\begin{equation}
+nc_{n}\to 0\quad\text{as }n\to\infty
+\end{equation}
+Similarly we can argue that $\sum|na_{n}|^{2}$ and $\sum
+|nb_{n}|^{2}$ are finite. So $na_{n}\to 0$ and $nb_{n}\to 0$
+as $n\to\infty$.
+
+So this implies $a_n, b_n\sim 1/n^k$ where $k>1$. If $f\in
+C^1$ and $f''\in PC^{1}(\mathbb{R})$, then we can apply the
+same result again
+\begin{equation}
+\sum |nc_{n}|^{2}\leq
+\frac{1}{2\pi}\int^{\pi}_{-\pi}|f''(\theta)|^{2}d\theta <
+\infty
+\end{equation}
+So $n^2c_n$, $n^2a_n$, $n^2b_n\to 0$ as $n\to\infty$. There
+is a general pattern which is beginning to emerge here.
+
+\begin{thm}
+Let $f$ be $2\pi$-periodic, if $f\in C^{k-1}$ and
+$f^{(k)}\in PC(\mathbb{R})$, then
+\begin{equation}
+\sum|c_{n}n^k|^2\leq\frac{1}{2\pi}\int^{\pi}_{-\pi}|f^{(k)}(\theta)|^{2}d\theta<\infty
+\end{equation}
+which implies $n^kc_n\to 0$ as $n\to\infty$. Thus
+\begin{equation}
+|c_n|\leq\frac{\text{(constant)}}{n^k +
+  \varepsilon_{n}},\qquad\text{where }\varepsilon_{n}>0.
+\end{equation}
+\end{thm}
+On the other hand, if we compute the Fourier coefficients of
+a function and $|c_n|\leq c/|n|^{k+\alpha}$ where $c>0$,
+$\alpha>0$, we may say that $f$ is $C^{k-1}$.
+
+\subsection{Fourier Series on Arbitrary Interval}
+
+Fourier series on an interval $[a,b]$ where $a<b$. How is
+this done? Well, usually, as a rule of thumb, we don't work
+all of $\mathbb{R}$ (so $-\infty<a<b<+\infty$). For
+instance, the heat distribution
+\begin{eqnarray*}
+f(x) &= \text{temperature distribution along a rod of length
+  $L$} \\
+&f:[0,L]\to\mathbb{R}
+\end{eqnarray*}
+More generally, let $s(t)$ be a signal generated over a time
+interval $[0,T]$.
+
+The strategy is to first change variables to make the domain
+from $[0,\pi]$; then we extend our (odd or even) Fourier
+coefficients to make $f$ defined on $[-\pi,\pi]$. Then we
+can just make it periodic to extend it to all of
+$\mathbb{R}$. If one examines any Fourier expansion table,
+the functions are usually defined on the interval
+$[-\pi,\pi]$ (or $[0,2\pi]$). They are periodic extensions
+of functions defined on $[-\pi,\pi]$ to $\mathbb{R}$. 
+
+\begin{defn}
+Let $f:[-\pi,\pi)\to\mathbb{C}$, then
+  $f_{ext}:\mathbb{R}\to\mathbb{C}$ is defined by
+  $f_{ext}(\theta+2\pi)=f(\theta)$ for all
+  $\theta\in[-\pi,\pi]$ is the \textbf{periodic extension of
+    $f$ to $\mathbb{R}$}\index{Periodic Extension}.
+\end{defn}
+
+\textbf{CAUTION:} $f_{ext}$ may be discontinuous and
+nondifferentiable at $\theta=(2n-1)\pi$ where
+$n\in\mathbb{Z}$. So $f_{ext}$ is continuous at
+$\theta=(2n-1)\pi$ if and only if
+$f(-\pi)=f(\pi^{-})$. Similarly, $f_{ext}^{(k)}((2n-1)\pi)$
+exists if and only if $f^{(j)}(\pi^{-})=f^{(j)}(-\pi^{+})$
+where $j=0,1,2,...,k$.
+
+\begin{ex}
+Consider $f(\theta)=\theta^2$ where
+$\theta\in[-\pi,\pi)$. We have $f:[a,b]\to\mathbb{C}$, then
+  we change variable
+\begin{equation}
+\theta = \pi\left(\frac{x-a}{b-a}\right),\qquad
+0\leq\theta\leq\pi
+\end{equation}
+Observe what is going on, we rearrange these terms given
+arbitrary $a$ and $b$ to find some change of variables from
+the interval $[a,b]$ to a new interval. It is seen to be
+\begin{equation}
+g(\theta) = f(x) = f\left(\frac{b-a}{\pi}\theta +
+a\right),\quad g:[0,\pi]\to\mathbb{C}
+\end{equation}
+So we can see a fairly clean and orderly scheme of how to
+change the interval.
+\end{ex}
+
+\begin{defn}
+Let $f:[0,\pi]\to\mathbb{C}$, then the \textbf{odd
+  extension}\index{Periodic Extension!Odd Extension} of $f$ to $[-\pi,\pi]$ is
+\begin{subequations}
+\begin{align}
+f_{odd}(-\theta) &= -f(\theta), \quad 0<\theta<\pi\\
+f_{odd}(0) &= 0
+\end{align}
+\end{subequations}
+and the \textbf{even extension}\index{Periodic Extension!Even Extension} of $f$ to $[-\pi,\pi]$ is 
+\begin{equation}
+f_{even}(-\theta) = f(\theta),\qquad 0\leq\theta\leq\pi
+\end{equation}
+(note the possible values for $\theta$ differ for even and
+odd extensions).
+\end{defn}
+
+So what about the Fourier Series of Periodically Extended
+functions?\index{Periodic Extension!Fourier Series} It's
+fairly straightforward to find for odd extensions:
+\begin{subequations}
+\begin{align}
+a_{n} &=
+\frac{1}{\pi}\int^{\pi}_{0}f_{odd}(\theta)\cos(n\theta)d\theta
+= 0\\
+b_{n} &=
+\frac{1}{\pi}\int^{\pi}_{0}f_{odd}(\theta)\sin(n\theta)d\theta\\
+\Rightarrow \sum^{\infty}_{n=1}b_{n}\sin(n\theta) &=
+\text{``Fourier Sine Series''}
+\end{align}
+\end{subequations}
+and for even extensions:
+\begin{subequations}
+\begin{align}
+a_{n} &=
+\frac{1}{\pi}\int^{\pi}_{0}f_{even}(\theta)\cos(n\theta)d\theta\\
+b_{n} &=
+\frac{1}{\pi}\int^{\pi}_{0}f_{even}(\theta)\sin(n\theta)d\theta=0\\
+\Rightarrow \sum^{\infty}_{n=1}a_{n}\cos(n\theta) &=
+\text{``Fourier Cosine Series''}
+\end{align}
+\end{subequations}

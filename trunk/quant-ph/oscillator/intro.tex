@@ -1,0 +1,72 @@
+%%
+%% intro.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun  3 16:30:09 2009 Alex Nelson
+%% Last update Wed Jun  3 16:30:09 2009 Alex Nelson
+%%
+Recall for classical mechanics, the Harmonic oscillator potential
+is
+\begin{equation}%\label{eq:}
+V(x) = \frac{1}{2}kx^2 = \frac{1}{2}m\omega^{2}x^{2}
+\end{equation}
+where $\omega$ is the angular velocity. We plug this into
+Schrodinger's equation
+\begin{equation}%\label{eq:}
+\left[\frac{-\hbar^2}{2m}\frac{\partial^{2}}{\partial x^{2}}+\frac{1}{2}kx^{2}\right]|\psi\>=E|\psi\>.
+\end{equation}
+How to solve this? Well, there are two ways: the smart way and
+the stupid way. We'll do it the smart way.
+
+We introduce a change of variable\footnote{Note that this is done
+  \emph{classically}, that is \emph{before} quantization. After
+  quantization changing coordinates is always a fuzzy
+  subject. These two steps are done tacitly in most derivations,
+  but it should be known in the back of one's mind what's going on.}:
+\begin{equation}%\label{eq:}
+Q = \sqrt{\frac{m\omega}{2\hbar}},\qquad
+\widehat{P}=\frac{\partial}{\partial Q}=\sqrt{\frac{-1}{2m\omega\hbar}}\widehat{p}.
+\end{equation}
+Note these are dimensionless and simplify computations
+significantly. We can factor the Hamiltonian, since in these new
+variables we have
+\begin{equation}%\label{eq:}
+\hbar\omega\left[Q^{2}-\frac{\partial^2}{\partial Q^2}\right] = \widehat{H}.
+\end{equation}
+We want to use the coordinates
+\begin{equation}%\label{eq:}
+a=\left[Q+\frac{\partial}{\partial Q}\right],\qquad a^{\dag}=\left[Q-\frac{\partial}{\partial Q}\right]
+\end{equation}
+which we call ``\define{annihilation and creation operators}''
+respectively.
+
+Observe that
+\begin{subequations}
+\begin{align}
+2a^{\dag}a &= \left[Q+\frac{\partial}{\partial
+    Q}\right]\left[Q-\frac{\partial}{\partial Q}\right]\\
+&= Q^2 + \frac{\partial}{\partial Q} Q -
+Q\frac{\partial}{\partial Q} - \frac{\partial^{2}}{\partial
+  Q^{2}}\\
+&= Q^{2}-\frac{\partial^2}{\partial Q^2} + [\widehat{P},Q].
+\end{align}
+\end{subequations}
+All computation is by definition and substitution. Nothing too
+fancy so far. We can now write the Hamiltonian operator as
+\begin{equation}%\label{eq:}
+\widehat{H} = \hbar\omega\left(a^{\dag}a+\frac{1}{2}[Q,\widehat{P}]\right)
+\end{equation}
+Observe that
+\begin{equation}%\label{eq:}
+[Q,\widehat{P}] = 1
+\end{equation}
+since $Q$ and $\widehat{P}$ are the dimensionless counterparts to
+$x$ and $\widehat{p}$ which implies we set $\hbar\to1$. We
+end up with the form of the Hamiltonian operator
+\begin{equation}%\label{eq:}
+\widehat{H} = \hbar\omega\left(a^{\dag}a+\frac{1}{2}\right).
+\end{equation}
+It would then be logical to investigate how these creation and
+annihilation operators behave.

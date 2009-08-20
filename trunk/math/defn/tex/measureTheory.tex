@@ -1,0 +1,42 @@
+%%
+%% measureTheory.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Aug  7 11:54:31 2009 Alex Nelson
+%% Last update Fri Aug  7 11:54:31 2009 Alex Nelson
+%%
+
+\begin{defn}%\label{defn:}
+Let $X$ be a set. A \define{$\sigma$-Algebra} over $X$ consists of
+\begin{itemize}
+\item a collection $\Sigma$ of subsets of $X$
+\end{itemize}
+such that
+\begin{itemize}
+\item $\Sigma$ is nonempty,
+\item if $x\in\Sigma$, the $x^{C}\in\Sigma$,
+\item let $I$ be a finite indexing set, then
+$$\left(\bigcup_{i \in I} E_i\right) \in\Sigma$$
+ for countably many $E_i\in\Sigma$.
+\end{itemize}
+\end{defn}
+
+It allows us to introduce the notion of a measure:
+
+\begin{defn}%\label{defn:}
+Let $X$ be some set, $\Sigma$ be a $\sigma$-algebra over $X$. A
+\define{measure} $\mu$ consists of
+\begin{itemize}
+\item a function $\mu:\Sigma\to[-\infty,\infty]$
+\end{itemize}
+such that
+\begin{itemize}
+\item $\mu(E)\geq0$ for all $E\in\Sigma$;
+\item $\mu(\emptyset)=0$;
+\item if $\{E_{i}\}_{i\in{I}}$ is a countable collection of
+  pairwise disjoint sets in $\Sigma,$ then
+$$ \mu\left(\bigcup_{i \in I} E_i\right) = \sum_{i \in I} \mu(E_i).$$
+\end{itemize}
+\end{defn}

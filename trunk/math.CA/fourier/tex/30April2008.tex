@@ -1,0 +1,196 @@
+%%
+%% 30April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 21 14:00:22 2008 Alex Nelson
+%% Last update Sun Dec 21 14:00:22 2008 Alex Nelson
+%%
+%% We cover two things in this note, we 1) finish the
+%% sturm-liouville problem; 2) apply the regular
+%% sturm-liouville problem to solve the heat equation
+\subsection[Existence Theorem for Sturm-Liouville]{Existence of Eigenfunctions for the Regular Sturm-Liouville Problem}
+
+\begin{thm}\label{thm:30April2008:thm3.10}
+For the regular Sturm-Liouville problem,
+\begin{enumerate}[a)]
+\item There is ano orthonormal basis $\{\phi_n\}^{\infty}_{1}$ of
+$L^{2}_{\omega}(a,b)$ consisting of the eigenfunctions of
+the regular Sturm-Liouville problem.
+\item The eigenvalues satisfy  $\lim_{n\to\infty}\lambda_{n}=\infty$
+\item If $f\in C^{2}(a,b)$ and $f$ satisfies the boundary
+  conditions $B_1(f)=B_2(f)=0$, then
+\begin{equation*}
+\sum\<f,\phi_n\>_{\omega}\phi_{n}\to f\text{  uniformly}
+\end{equation*}
+\end{enumerate}
+\end{thm}
+
+\textbf{Implications of Theorems \eqref{thm:28April2008:thm3.9} and \eqref{thm:30April2008:thm3.10}:}
+Regular Sturm-Liouville problem has a solution $\phi$ if and
+only if $\lambda\in\mathbb{R}$ (it has real eigenvalues) and
+for only countably many $\lambda_{n}$.
+
+\begin{rmk}\index{Eigenvalues!Determined by Boundary Conditions}
+The eigenvalues are determined by the boundary condition
+\end{rmk}
+
+\textbf{Applications:} Strategy for solving the heat
+diffusion problem is as follows
+\begin{align}
+\omega(x)\partial_{t}u(x,t) =
+\partial_{x}[r(x)\partial_{x}u(x,t)] + p(x)u(x,t) &+
+\underbracket[0.5pt]{\text{ 0 }} \\
+ & {\text{\small{no external force or source}}} \nonumber
+\end{align}
+with boundary conditions $B_{1}(u)=B_{2}(u)=0$. This is a
+boundary value problem; the initial value problem has
+$u(x,0)=f(x)$ which determines the initial distribution of
+heat. With these conditions we have an initial value
+problem.
+
+\textbf{Step 1)} Apply seperation of variables
+$u(x,t)=X(x)T(t)$
+\begin{align*}
+\Rightarrow T'(t)+\lambda T(t) = 0 &\Rightarrow T(t)=T_{0}e^{-\lambda t}\\
+\Rightarrow L(X(x))+\lambda \omega(x)X(x)&=0\text{ (Sturm-Liouville Problem!)}
+\end{align*}
+
+\textbf{Step 2)} Find \textbf{all} eigenvalues and
+normalized eigenfunctions for the Sturm-Liouville
+problem. For each pair $(\lambda_n,\phi_n)$ we get one
+solution to boundary value problem
+\begin{equation}
+u_{n}(x,t) = c_{n}e^{-\lambda_{n}t}\phi_{n}(x)
+\end{equation}
+so $u(x,t) =
+\sum^{\infty}_{n=1}c_{n}\exp(-\lambda_{n}t)\phi_{n}(x)$ is
+also a solution to the boundary value problem.
+
+\textbf{Step 3)} Insert the initial value:
+\begin{equation}
+\sum^{\infty}_{n=1}c_{n}\phi_{n} = u(x,0) = f(x)
+\end{equation}
+So $c_n = \<f,\phi_n\>_{\omega}$, we conclude the solution
+to the initial value problem is
+\begin{equation}
+u(x,t) =
+\sum^{\infty}_{n=1}\<f,\phi_{n}\>_{\omega}e^{-\lambda_{n}t}\phi_{n}(x)
+\end{equation}
+
+(In practice, finding the eigenvalues $\lambda$ is always
+the hardest part!)
+
+\begin{ex}
+Consider the one-dimensional heat flow
+\begin{figure}[t]
+  \begin{center}
+    \input{$HOME/book/fourier/img/30April2008img1.tex}
+  \end{center}
+\caption{A thin insulated metal rod of length $L$}
+\label{fig:30April2008:img1}
+\end{figure}
+The rod is insulated and of uniform material property. So
+\begin{equation}
+\partial_{t}u(x,t) = k\partial_{x}^{2}u(x,t)
+\end{equation}
+where $k$ is the conductance of the material. We have
+\begin{equation}
+\text{bdry conditions  }\bigg\{\begin{array}{rl}
+\partial_{x}u(0,t) &= \alpha u(0,t),\,\,\alpha>0\\
+\partial_{x}u(L,t) &= -\alpha u(L,t)
+\end{array}
+\end{equation}
+and our initial value problem is
+\begin{equation}
+u(x,0) = f(x)\in L^{2}(0,1)
+\end{equation}
+What's the eigenvalues and eigenfunctions? Well, the
+seperation of variables gives us
+\begin{equation}
+\frac{T'(t)}{T(t)} = \frac{kX''(x)}{X(x)} = \underbracket[0.5pt]{-k\nu^{2}}_{\text{constant}}
+\end{equation}
+We have two equations
+\begin{subequations}
+\begin{align}
+T'(t)+k\nu^{2}T(t)&=0\\
+kX''(x)+k\nu^{2}X(x)&=0
+\end{align}
+\end{subequations}
+with the second equation be such that $X'(0)=\alpha X(0)$,
+$X'(L)=-\alpha X(L)$. But the second equation is the regular
+Sturm-Liouville problem with $\omega(x)=r(x)=1$,
+$p(x)=0$. This is the usual $L^{2}(0,L)$ space.
+
+So what are the eigenvalues $\lambda=\nu^{2}$ and what are
+the eigenfunctions? Well, there are two cases:
+
+\textbf{Case 1} $\nu^2=0$ which implies $X''(0)=0$ and
+$\alpha X(0)=X'(0)$. So $X(x)=c_1 + c_2$ but $X'(0)=\alpha
+X(0)$, thus $c_2 = \alpha c_1$. And $X'(L)=-\alpha X(L)$
+implies $c_2 = \alpha(c_1 + c_2 L)$. Thus 
+$$2c_2+\alpha c_2L=0=(2+\alpha L)c_2 $$
+but $2+\alpha L>0$ so $c_2=0$, which implies trivially
+$X(x)=0$.
+
+\textbf{Case 2} We know what Theorem
+\eqref{thm:28April2008:thm3.9} says about eigenvalues, so
+$\lambda\in\mathbb{R}$. So either \begin{inparaenum}\item
+  $\nu^2>0$ which implies $\nu>0$ \comment{really? Wouldn't
+    it just imply that $\nu\in\mathbb{R}$ and
+    $\nu\neq0$?}, \item $\nu^2<0$ which implies $\nu=i\mu$
+  where $\mu\in\mathbb{R}$ and $\mu>0$.\end{inparaenum} For
+\begin{equation} 
+X''(x)+\nu^2X(x) = 0
+\end{equation}
+the characteristic equation is
+\begin{equation}
+r^2 + \nu = 0\Rightarrow \nu=\pm i\mu
+\end{equation}
+So the general solution is
+\begin{equation}
+X(x) = c_{1}\cos(\nu x) + c_{2}\sin(\nu x)
+\end{equation}
+By the boundary conditions
+\begin{align*}
+X'(0) &= \alpha X(0)\\
+\Rightarrow c_{2}\nu &= c_{1}\alpha\Rightarrow c_{2} = \frac{\alpha}{\nu}c_{1}
+\end{align*}
+multiply the equation by $\nu/c_1$ we get
+\begin{equation}
+X(x) = \nu\cos(\nu x) + \alpha\sin(\nu x)
+\end{equation}
+which corresponds to eigenvalues of $\nu^2$. So all we need
+to do is find $\nu$, so lets apply the second boundary
+equation
+\begin{subequations}
+\begin{align}
+X'(L) &= -\alpha X(L)\\
+\Rightarrow -\nu^2\sin(\nu L)+\alpha\nu\cos(\nu L) &=
+-\alpha\left(\nu\cos(\nu L)+\alpha\nu\sin(\nu L)\right)\\
+\Rightarrow 2\alpha\nu\cos(\nu L) &=
+(\nu^2-\alpha^2)\sin(\nu L)\\
+\Rightarrow \tan(\nu L) &= \frac{2\alpha\nu}{\nu^2-\alpha^2}
+\end{align}
+\end{subequations}
+\end{ex}
+
+\begin{rmk}
+Note that $\nu$ cannot possibly equal $i\mu$ because we can
+plug it back in to what we just found to see that
+\begin{equation}
+\tan(\nu L) = \tan(i\mu L) =
+\frac{i2\alpha\mu}{-\mu^2-\alpha^2}
+\end{equation}
+but from complex analysis we should remember that
+\begin{equation}
+\tan(i\theta) = i\tanh(\theta) = i\frac{e^{\theta}-e^{-\theta}}{e^{\theta}+e^{-\theta}}
+\end{equation}
+Thus
+\begin{equation}
+i\tanh(\mu L) = -i\frac{2\alpha\mu}{\mu^2+\alpha^2}
+\end{equation}
+but since $\mu>0$, $\tanh(\mu L)>0$ so we have a
+contradiction. 
+\end{rmk}

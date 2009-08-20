@@ -1,0 +1,40 @@
+\contentsline {part}{I\hspace {1em}Fourier Series}{3}{part.1}
+\contentsline {section}{\numberline {1}Differential Equations: A Motivation for Fourier Series}{3}{section.1}
+\contentsline {section}{\numberline {2}A First Look at Fourier Series}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Derivation of Definition of Fourier Series}{9}{subsection.2.1}
+\contentsline {section}{\numberline {3}Bessel's Inequality}{12}{section.3}
+\contentsline {subsection}{\numberline {3.1}Dirichlet Kernel}{15}{subsection.3.1}
+\contentsline {section}{\numberline {4}Convergence, Termwise Calculus}{16}{section.4}
+\contentsline {subsection}{\numberline {4.1}Convergence of Fourier Series}{16}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Termwise Integration of Fourier Series}{19}{subsection.4.2}
+\contentsline {section}{\numberline {5}Decay of Coefficients, Arbitrary Intervals}{21}{section.5}
+\contentsline {subsection}{\numberline {5.1}Fourier Series on Arbitrary Interval}{23}{subsection.5.1}
+\contentsline {section}{\numberline {6}A Review of Vector Spaces}{24}{section.6}
+\contentsline {subsection}{\numberline {6.1}Inner Products}{25}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Induced Norm}{27}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Basis Vectors Matter}{30}{subsection.6.3}
+\contentsline {section}{\numberline {7}$L^{2}$ spaces}{32}{section.7}
+\contentsline {section}{\numberline {8}Orthonormal Basis for $L^2$}{36}{section.8}
+\contentsline {subsection}{\numberline {8.1}Criteria for an Orthonormal Basis in $L^{2}(a,b)$}{38}{subsection.8.1}
+\contentsline {section}{\numberline {9}More on Orthonormal Basis, Spectral Theorem}{40}{section.9}
+\contentsline {subsection}{\numberline {9.1}Summary on Convergence of Fourier Series}{41}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Some Advanced Linear Algebra}{41}{subsection.9.2}
+\contentsline {section}{\numberline {10}The Regular Sturm-Liouville Problem}{42}{section.10}
+\contentsline {section}{\numberline {11}Properties of Weighted Inner Products}{46}{section.11}
+\contentsline {subsection}{\numberline {11.1}Properties of Sturm-Liouville Problem}{49}{subsection.11.1}
+\contentsline {section}{\numberline {12}Solving the Heat Equation using Sturm-Liouville Problem}{50}{section.12}
+\contentsline {subsection}{\numberline {12.1}Existence Theorem for Sturm-Liouville}{50}{subsection.12.1}
+\contentsline {section}{\numberline {13}Using Fourier Series to Solve the Heat Equation}{53}{section.13}
+\contentsline {part}{II\hspace {1em}Fourier Transforms}{59}{part.2}
+\contentsline {section}{\numberline {14}A Review of $L^{2}$ and an Introduction to the Fourier Transform}{59}{section.14}
+\contentsline {subsection}{\numberline {14.1}Derivation of Fourier Transform}{61}{subsection.14.1}
+\contentsline {section}{\numberline {15}Convolution}{63}{section.15}
+\contentsline {section}{\numberline {16}Examples and Basic Properties of Fourier Transform}{68}{section.16}
+\contentsline {section}{\numberline {17}Inverse Fourier Transform, Fourier Transform on $L^2$}{72}{section.17}
+\contentsline {subsection}{\numberline {17.1}Consequences of the Inversion Theorem}{74}{subsection.17.1}
+\contentsline {subsection}{\numberline {17.2}Fourier Transform on $L^2$}{75}{subsection.17.2}
+\contentsline {subsection}{\numberline {17.3}Applications of the Fourier Transform}{78}{subsection.17.3}
+\contentsline {part}{III\hspace {1em}Discrete Fourier Transforms}{81}{part.3}
+\contentsline {section}{\numberline {18}Sampling Theorem}{81}{section.18}
+\contentsline {section}{\numberline {19}Uncertainty Principle}{83}{section.19}
+\contentsline {section}{References}{83}{equation.19.3}

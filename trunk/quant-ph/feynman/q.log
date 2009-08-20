@@ -1,0 +1,1269 @@
+This is MetaPost, Version 0.993 (Web2C 7.5.6) (mem=mpost 2008.11.1)  1 FEB 2009 16:17
+**.mp
+(/usr/share/texmf-texlive/fonts/source/public/levy/q.mf
+! Interruption.
+<to be read again> 
+                   unknown
+l.1 if unknown
+               gen_sigma : readfrom("gen_sigma") fi
+? quit
+OK, entering batchmode...
+! Extra tokens will be flushed.
+<to be read again> 
+                   def
+l.3 def
+        ital = 0 enddef;
+I've just read as much of that statement as I could fathom,
+so a semicolon should have been next. It's very puzzling...
+but I'll try to get myself back together, by ignoring
+everything up to the next `;'. Please insert a semicolon
+now in front of anything that you don't want me to delete.
+(See Chapter 27 of The METAFONTbook for an example.)
+
+>> cmchar
+! Isolated expression.
+<to be read again> 
+                   "Lowercase chi"
+l.22 cmchar "Lowercase chi"
+                           ;
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+! Extra tokens will be flushed.
+<to be read again> 
+                   "Lowercase chi"
+l.22 cmchar "Lowercase chi"
+                           ;
+I've just read as much of that statement as I could fathom,
+so a semicolon should have been next. It's very puzzling...
+but I'll try to get myself back together, by ignoring
+everything up to the next `;'. Please insert a semicolon
+now in front of anything that you don't want me to delete.
+(See Chapter 27 of The METAFONTbook for an example.)
+
+>> beginchar
+! Isolated expression.
+<to be read again> 
+                   (
+l.23 beginchar(
+               "q",dims);
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+! Extra tokens will be flushed.
+<to be read again> 
+                   (
+l.23 beginchar(
+               "q",dims);
+I've just read as much of that statement as I could fathom,
+so a semicolon should have been next. It's very puzzling...
+but I'll try to get myself back together, by ignoring
+everything up to the next `;'. Please insert a semicolon
+now in front of anything that you don't want me to delete.
+(See Chapter 27 of The METAFONTbook for an example.)
+
+>> this_letter
+! Isolated expression.
+<to be read again> 
+                   ;
+l.24 this_letter;
+                  penlabels(1,2,3,7,8); endchar;
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+>> (x1l-3.87437,y1l-3.45926,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x1l
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y1l
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x2l-3.87437,y2l-3.45926,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x2l
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y2l
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x3l-3.87437,y3l-3.45926,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x3l
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y3l
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x7l-3.87437,y7l-3.45926,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x7l
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y7l
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x8l-3.87437,y8l-3.45926,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x8l
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y8l
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0)l,z(SUFFIX0)l);
+                                               ENDFOR
+<for(l)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x1-2.49068,y1-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x1
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y1
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x2-2.49068,y2-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x2
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y2
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x3-2.49068,y3-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x3
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y3
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x7-2.49068,y7-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x7
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y7
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x8-2.49068,y8-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x8
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y8
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0),z(SUFFIX0));
+                                             ENDFOR
+<for()> ...label(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x1r-4.4417,y1r-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x1r
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y1r
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(1)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x2r-4.4417,y2r-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x2r
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y2r
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(2)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x3r-4.4417,y3r-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x3r
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y3r
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(3)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x7r-4.4417,y7r-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x7r
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y7r
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(7)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> (x8r-4.4417,y8r-3.21019,1,0,0,1)
+! Transform components aren't all known.
+<to be read again> 
+                   endgroup
+dotlabel->...group.label(SUFFIX2)((EXPR3),(EXPR4))
+                                                  (TEXT5);interim.linecap:=r...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I'm unable to apply a partially specified transformation
+except to a fully known pair or transform.
+Proceed, and I'll omit the transformation.
+
+>> x8r
+! Undefined x coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' x value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> y8r
+! Undefined y coordinate has been replaced by 0.
+<to be read again> 
+                   withpen
+draw->...:also(EXPR0)else:doublepath(EXPR0)withpen
+                                                  .currentpen.fi._op_
+<to be read again> 
+                   withpen
+dotlabel->...m.linecap:=rounded;draw(EXPR4)withpen
+                                                  .pencircle.scaled.dotlabel...
+<to be read again> 
+                   ;
+<for(8)> makelabel(str(SUFFIX0)r,z(SUFFIX0)r);
+                                               ENDFOR
+<for(r)> ...abel(str$(SUFFIX0),z$(SUFFIX0));endfor
+                                                   ENDFOR
+penlabels->...UFFIX2)(str$ $$,z$ $$);endfor.endfor
+                                                  .endgroup
+l.24 this_letter; penlabels(1,2,3,7,8)
+                                      ; endchar;
+I need a `known' y value for this part of the path.
+The value I found (see above) was no good;
+so I'll try to keep going by using zero instead.
+(Chapter 27 of The METAFONTbook explains that
+you might want to type `I ???' now.)
+
+>> endchar
+! Isolated expression.
+<to be read again> 
+                   ;
+l.24 this_letter; penlabels(1,2,3,7,8); endchar;
+                                                
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+>> cmchar
+! Isolated expression.
+<to be read again> 
+                   "Lowercase sigma followed by chi"
+l.28 cmchar "Lowercase sigma followed by chi"
+                                             ;
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+! Extra tokens will be flushed.
+<to be read again> 
+                   "Lowercase sigma followed by chi"
+l.28 cmchar "Lowercase sigma followed by chi"
+                                             ;
+I've just read as much of that statement as I could fathom,
+so a semicolon should have been next. It's very puzzling...
+but I'll try to get myself back together, by ignoring
+everything up to the next `;'. Please insert a semicolon
+now in front of anything that you don't want me to delete.
+(See Chapter 27 of The METAFONTbook for an example.)
+
+>> begindoublechar
+! Isolated expression.
+<to be read again> 
+                   (
+l.29 begindoublechar(
+                     oct"021",dim_sigma);
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+! Extra tokens will be flushed.
+<to be read again> 
+                   (
+l.29 begindoublechar(
+                     oct"021",dim_sigma);
+I've just read as much of that statement as I could fathom,
+so a semicolon should have been next. It's very puzzling...
+but I'll try to get myself back together, by ignoring
+everything up to the next `;'. Please insert a semicolon
+now in front of anything that you don't want me to delete.
+(See Chapter 27 of The METAFONTbook for an example.)
+
+>> mid_sigma
+! Isolated expression.
+<to be read again> 
+                   ;
+l.30 mid_sigma;
+                middoublechar(dims); this_letter; endchar;
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+>> middoublechar
+! Isolated expression.
+<to be read again> 
+                   (
+l.30 mid_sigma; middoublechar(
+                              dims); this_letter; endchar;
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+! Extra tokens will be flushed.
+<to be read again> 
+                   (
+l.30 mid_sigma; middoublechar(
+                              dims); this_letter; endchar;
+I've just read as much of that statement as I could fathom,
+so a semicolon should have been next. It's very puzzling...
+but I'll try to get myself back together, by ignoring
+everything up to the next `;'. Please insert a semicolon
+now in front of anything that you don't want me to delete.
+(See Chapter 27 of The METAFONTbook for an example.)
+
+>> this_letter
+! Isolated expression.
+<to be read again> 
+                   ;
+l.30 mid_sigma; middoublechar(dims); this_letter;
+                                                  endchar;
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+>> endchar
+! Isolated expression.
+<to be read again> 
+                   ;
+l.30 ...middoublechar(dims); this_letter; endchar;
+                                                  
+I couldn't find an `=' or `:=' after the
+expression that is shown above this error message,
+so I guess I'll just ignore it and carry on.
+
+)
+! Emergency stop.
+<*> .mp
+       
+*** (job aborted, no legal end found)
+
+

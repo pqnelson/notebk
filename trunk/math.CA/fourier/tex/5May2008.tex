@@ -1,0 +1,212 @@
+%%
+%% 5May2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 21 19:01:05 2008 Alex Nelson
+%% Last update Sun Dec 21 19:01:05 2008 Alex Nelson
+%%
+%% We will review the function space $L^{2}$ and $L^{1}$,
+%% and we will introduce the Fourier transform
+
+Note that for short hand usage we will write
+$L^{2}=L^{2}(-\infty,\infty)$. More generally, we have
+\begin{equation}
+L^{p} = \{f\text{ defined on }\mathbb{R}:
+\int^{\infty}_{-\infty}|f(x)|^pdx\}
+\end{equation}
+where $p\in\mathbb{N}$. In a very special case, when $p=2$,
+we have a Hilbert space with an inner product defined by
+\begin{equation}
+\<f,g\> = \int^{\infty}_{-\infty}f(x)\overline{g(x)}dx
+\end{equation}
+and an induced norm
+\begin{equation}
+\|f\| = \sqrt{\<f,f\>}
+\end{equation}
+All of the fundamental properties of the inner product and
+the norm still hold for arbitrary end points, so they still
+hold here.
+
+The Cauchy-Schwarz inequality still holds
+\begin{equation}
+|\<f,g\>|\leq\|f\|\|g\|
+\end{equation}
+or equivalently
+\begin{equation}
+|\int f(x)\overline{g(x)}dx|\leq\left(\int|f(x)|^2dx\right)^{1/2}\left(\int|g(x)|^2dx\right)^{1/2}
+\end{equation}
+This is not as useful as
+\begin{equation}
+\<|f|,|g|\>=\int|f(x)g(x)|dx\leq\|f\|\|g\|
+\end{equation}
+which some (e.g~\cite{textbook}) refer to as the Cauchy-Schwarz.
+
+Now, if we examine $L^{1}$,\index{$L^{1}$} it doesn't really have an inner
+product, but it has a norm defined on it
+\begin{equation}
+\|f\|_{1} = \int|f(x)|dx.
+\end{equation}
+
+\begin{rmk}
+Observe that $L^{2}(a,b)\subset L^{1}(a,b)$ for intervals,
+but this is not true for $L^{2}$ and $L^{1}$. There are
+$f\in L^2$ but $f\notin L^{1}$, and similarly there are
+$g\in L^{1}$ but $g\notin L^{2}$.
+\end{rmk}
+
+\begin{ex}
+Let
+\begin{equation}
+f(x) = \begin{cases}x^{-2/3}&\text{when }x>1\\
+0&\text{otherwise}\end{cases}
+\end{equation}
+Now
+\begin{subequations}
+\begin{align}
+\int^{\infty}_{1}|f(x)|dx &= \int^{\infty}_{1}x^{-2/3}dx\\
+&= \lim_{b\to\infty}3x^{1/3}|^{b}_{1}\\
+&= 3(\lim_{b\to\infty}b^{1/3}-1)=\infty
+\end{align}
+\end{subequations}
+which means that $f\notin L^{1}$. But
+\begin{subequations}
+\begin{align}
+\int^{\infty}_{1}|f(x)|^{2}dx &=
+\int^{\infty}_{1}x^{-4/3}dx\\
+&= \lim_{b\to\infty}-3x^{-1/3}|^{b}_{1}\\
+&= -3(\lim_{b\to\infty}b^{-1/3}-1)\\
+&= -3(-1) = 3
+\end{align}
+\end{subequations}
+Thus $f\in L^2$. So $L^1$ functions go to zero but not as
+fast as $L^2$ functions.
+\end{ex}
+
+Similarly we may show that
+\begin{equation}
+g(x) = \begin{cases} x^{-2/3} &\text{if }0< x<1\\
+0 &\text{otherwise}\end{cases}
+\end{equation}
+Then we may show that $g\in L^1$ but $g\notin L^2$.
+
+We will now give a list of useful facts without proofs.
+
+\begin{enumerate}
+\item If $f\in L^1$ and $|f(x)|\leq M$ for all
+  $x\in\mathbb{R}$, then $f\in L^2$. So
+\begin{equation}
+\int |f(x)|^2dx\leq M\int|f(x)|dx<\infty
+\end{equation}
+thus $f\in L^2$. In other words, $L^{1}\cap L^{2}$ (the set
+of functions in both $L^1$ and $L^2$) contains bounded
+functions in both spaces.
+\item If $f\in L^{2}$, and $f(x)=0$ for $x$ outside the
+  interval $[a,b]$, then $f\in L^{1}$. Consider
+\begin{equation}
+\int|f(x)|dx = \int^{b}_{a}|f(x)|dx =
+\int^{b}_{a}1\cdot|f(x)|dx
+\end{equation}
+then by the Cauchy-Schwarz inequality
+\begin{subequations}
+\begin{align}
+\int^{b}_{a}1\cdot|f(x)|dx&\leq\left(\int^{b}_{a}|f(x)|^2dx\right)\left(\int^{b}_{a}1^{2}dx\right)^{1/2}\\
+&\leq\sqrt{b-a}\|f(x)\|^{1/2}_{2}<\infty
+\end{align}
+\end{subequations}
+\end{enumerate}
+
+\begin{defn}\index{Fourier Transform}
+Let $f$ be a function defined on the whole real line. Then
+the \textbf{Fourier transform} is
+\begin{subequations}
+\begin{align}
+\widehat{f}(\xi) &= \int^{\infty}_{\infty}f(x)e^{-ix\xi}dx\\
+&=\<f,e^{i\xi x}\>
+\end{align}
+\end{subequations}
+for all $\xi\in\mathbb{R}$. This is the continuous analog
+for the Fourier series coefficients.
+\end{defn}
+
+The inversion formula is, if $f\in L^2$, 
+\begin{equation}
+f(x) = \int \widehat{f}(\xi)e^{ix\xi}d\xi
+\end{equation}
+for $x\in\mathbb{R}$.
+
+\subsection{Derivation of Fourier Transform}
+On $L^{2}(-\pi,\pi)$, we have the orthogonal basis
+$\{\exp(inx)\}^{\infty}_{-\infty}$. If we have $f\in
+L^{2}(-\pi,\pi)$, we may write it in the basis
+\begin{equation}
+f(x) = \sum c_{n}e^{inx}
+\end{equation}
+where
+\begin{equation}
+c_{n} = \frac{1}{2\pi}\int^{\pi}_{-\pi}f(x)e^{-inx}dx
+\end{equation}
+If $f$ is $2\pi$-periodic then the expansion is defined
+almost everwhere (at least it's defined on the interval
+$[-\pi,\pi]$).
+
+We may scale this to the interval $f\in L^{2}(-\ell,\ell)$
+where $\ell>0$, then the basis becomes
+\begin{equation}
+\exp(inx)\to\exp\left(\frac{in\pi}{\ell}\right).
+\end{equation}
+The Fourier expansion then becomes
+\begin{equation}
+f(x) = \sum
+\widetilde{c}_{n}e^{ix(n\pi/\ell)},\quad\text{where
+}\widetilde{c}_n=\frac{1}{2\ell}\int^{\ell}_{-\ell}f(y)e^{-iny\pi/\ell}dy
+\end{equation}
+For $f$ defined on $\mathbb{R}$, we want to expand $f$ as a
+superposition of $\exp(i\xi x)$...\textbf{HOW TO DO IT?!?}
+
+For $[-\ell,\ell]$ when $\ell>0$. The Fourier expansion on
+$[-\ell,\ell]$ and take the limit as $\ell\to\infty$:
+\begin{equation}
+f(x) = \sum^{\infty}_{-\infty}\frac{c_n}{2\ell}e^{in\pi
+  x/\ell}
+\end{equation}
+where
+\begin{equation}
+c_n = \<f,e^{inx\pi/\ell}\> =
+\int^{\ell}_{-\ell}f(x)e^{-inx\pi/\ell}dx
+\end{equation}
+We'll now turn this into a Riemann sum\index{Fourier Transform!Derived Using Riemann Sums}, let
+\begin{equation}
+\Delta\xi = \pi/\ell
+\end{equation}
+then subdividing the interval from $-\pi$ to $\pi$ into
+\marginpar{Note interpretation of $\xi_n$ as boundaries of subintervals}$2\ell$ intervals. Let
+\begin{equation}
+\xi_n = n\Delta \xi = \frac{n\pi}{\ell} = \text{ endpoints of subintervals of }[-\pi,\pi]\index{$\xi_n$!As Dual To $x$}
+\end{equation}
+Then
+\begin{subequations}
+\begin{align}
+f(x) &= \sum\frac{c_n}{2\ell}e^{in\pi x/\ell}\\
+&=\sum c_n\frac{1}{2\ell}\cdot1\cdot e^{in\pi x/\ell}\\
+&= \sum c_n\left(\frac{1}{2\ell}\right)\left(\frac{\Delta \xi}{\pi/\ell}\right)e^{i\xi_nx}\\
+&= \sum c_n\left(\frac{1}{2\ell}\frac{\Delta \xi}{\pi/\ell}\right)e^{i\xi_nx}\\
+&= \sum \frac{c_n}{2\pi}e^{i\xi_nx}\Delta \xi
+\end{align}
+\end{subequations}
+where 
+\begin{equation}
+c_n = \int^{\ell}_{-\ell}f(y)\exp(-i\xi_{n}y)dy
+\end{equation}
+which when we take $\ell\to\infty$ is approximately
+\begin{equation}
+c_n\approx\int^{\infty}_{-\infty}f(y)e^{-i\xi_{n}y}dy
+\end{equation}
+provided $f$ vanishes rapidly as $y\to\pm\infty$. But this
+is the definition of $\widehat{f}(\xi_n)$. We then make this
+change to find $\Delta \xi\to d\xi$:
+\begin{equation}
+f(x)\approx \int^{\infty}_{-\infty}\frac{\widehat{f}(\xi_n)}{2\pi}e^{i\xi_nx}d\xi_n.
+\end{equation}
+Thus we finish our derivation of the Fourier transform.

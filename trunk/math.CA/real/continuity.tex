@@ -1,0 +1,184 @@
+%%
+%% continuity.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu May 28 20:16:21 2009 Alex Nelson
+%% Last update Thu May 28 20:16:21 2009 Alex Nelson
+%%
+
+
+\begin{defn} 
+Let $f:D\to\mathbb{R}$ be a real valued function whose domain is a subset of
+$D\subset\mathbb{R}$. Then $f$ is said to be
+\textbf{continuous at}\index{Continuous!function of a single variable} 
+$x_{0}\in D$ iff for each $\varepsilon>0$ there is a
+corresponding $\delta>0$ such that
+\begin{equation}
+|x-x_0|<\delta\;\text{ implies }\;|f(x)-f(x_0)|<\varepsilon.
+\end{equation}
+\end{defn}
+\begin{rmk}
+The intuition behind this definition is if we ``wiggle'' around
+in the range by some amount less than $\varepsilon$ about $f(x_0)$, then
+we should ``wiggle'' about in the domain by some amount less than
+$\delta$. If we end up have $\delta$ be too large as
+$\varepsilon$ gets too small, there is a discontinuity (a jump
+permitting a lot of wiggling). We can see a diagram illustrating
+this point in fig \eqref{img1}. Observe that in the diagram, as
+we make $|f(x)-f(x_{0})|$ decrease, $|x-x_{0}|$ decreases
+faster. In general, we just want a relationship expressing some positive
+$\delta$ in terms of a given $\varepsilon>0$. This relationship
+should be injective(?) and such that as $\varepsilon$ decreases,
+$\delta$ decreases too. So we can have an arbitrarily small
+$\varepsilon$, and $\delta$ goes to zero as well. This is
+fundamentally all a limit really is.
+\end{rmk}
+\begin{figure}
+\includegraphics{img.1}
+\caption{An example of the notion of continuity. The yellow
+  region is the $\delta$ neighborhood of $x_{0}$, the blue region
+  is the $\varepsilon$ neighborhood of $f(x_{0})$.}\label{img1}
+\end{figure}
+
+There is an alternate definition using sequences which is less
+intuitive.
+
+\begin{defn}
+Let $f$ be a real function, we say $f$ is \text{continuous at
+  $x_{0}$} if for every sequence ($x_{n}$) that converges to
+$x_{0}$, then
+\begin{equation}
+\lim_{n\to\infty}f(x_n)=f(x_{0}).
+\end{equation}
+(We assume that the sequence all belongs to the domain of $f$.)
+\end{defn}
+\begin{rmk}
+This can be worded slightly differently as ``\emph{Continuity
+  preserves convergence of sequences.}''
+\end{rmk}
+\begin{ex} We will show that $f(x)=2x^{2}+1$ is continuous. So, we
+  want to write $\delta$ in terms of $\varepsilon$. This will allow
+  us to state ``For each $\varepsilon$, there is a $\delta$ such
+  that...'' which implies continuity. So, let $x_0$ be some
+  arbitrary real number, we have
+\begin{equation}
+|f(x)-f(x_{0})| = |\left[2x^2+1\right]-\left[2x_{0}^{2}+1\right]|
+= 2|x^2-x_{0}^{2}|<\varepsilon
+\end{equation}
+We can rewrite this as
+\begin{equation}
+2|x^{2}-x_{0}^{2}|\leq 2|x-x_{0}||x+x_{0}|<2\delta|x+x_{0}|
+\end{equation}
+We also have a bound that $|x|<|x_{0}|+\delta$. We plug this in,
+we set the result equal to $\varepsilon$ so
+\begin{equation}
+2\delta|x+x_{0}|\leq2\delta(|x|+|x_0|)<2\delta(2|x_{0}|+\delta)=\varepsilon.
+\end{equation}
+We rearrange terms to find
+\begin{equation}
+\delta^{2}+2|x_{0}|\delta - \frac{1}{2}\varepsilon = 0.
+\end{equation}
+As we learned from primary school, this is a quadratic equation
+which has precisely two solutions, we choose the positive one:
+\begin{equation}
+\delta = \sqrt{x_{0}^{2}+\frac{1}{2}\varepsilon}-|x_{0}|.
+\end{equation}
+This is always greater than zero provided $\varepsilon>0$,
+$x_{0}\in\mathbb{R}$. Thus $f$ is continuous. QEF.
+\end{ex}
+\begin{ex}
+Consider 
+\begin{equation}
+g(x) = \begin{cases} x^{2}\sin\left(\frac{1}{x}\right), & x\neq0\\
+0, & x=0.\end{cases}
+\end{equation}
+We can ``see'' that when $x\neq0$, $g$ is continuous. At $x=0$,
+we need to prove it's continuous. So, we see that for each
+$\varepsilon>0$ there is a corresponding $\delta>0$ such that
+\begin{equation}
+|x-0|<\delta\;\Rightarrow\;|g(x)-0|<\varepsilon.
+\end{equation}
+We can rewrite the relations to be (since $\sin(x)\leq1$)
+\begin{equation}
+|g(x)|\leq x^2 = (x)^2 < \delta^2 = \varepsilon.
+\end{equation}
+So $\delta=\sqrt{\varepsilon}$ is always positive and
+nonzero. Thus $g(x)$ is continuous at $x=0$. QEF.
+\end{ex}
+\begin{thm}
+Let 
+\begin{equation}
+f:D\to\mathbb{R}
+\end{equation}
+where $D\subseteq\mathbb{R}$. If $f$ is continuous at $x_{0}\in
+D$, then $|f|$ and $kf$ are continuous at $x_{0}$ (where
+$k\in\mathbb{R}$ is arbitrary).
+\end{thm}
+\begin{proof}
+Since $f$ is continuous, then for each $\varepsilon>0$ there is a
+corresponding $\delta>0$ such that
+\begin{equation}
+|x-x_{0}|<\delta\;\Rightarrow\;|f(x)-f(x_{0})|<\varepsilon.
+\end{equation}
+We see that
+\begin{equation}
+|kf(x)-kf(x_{0})|=|k||f(x)-f(x_{0})|<|k|\varepsilon
+\end{equation}
+so we choose $\varepsilon'=|k|\varepsilon$ for nonzero $k$. We
+see then that for each $\varepsilon'>0$ there is a corresponding
+$\delta>0$ such that
+\begin{equation}
+|x-x_{0}|<\delta\;\Rightarrow\;|kf(x)-kf(x_{0})|<\varepsilon'
+\end{equation}
+which is necessarily true if $f$ is continuous.
+
+Observe that, for some $a,b\in\mathbb{R}$,
+\begin{equation}
+|b|\leq|a|+|b-a|.
+\end{equation}
+Let $b=f(x)$, $a=f(x_{0})$, then
+\begin{equation}
+|f(x)|<|f(x_{0})|+\varepsilon
+\end{equation}
+Similarly
+\begin{equation}
+|a|\leq|b|+|a-b|\Rightarrow|f(x_{0})|<|f(x)|+\varepsilon
+\end{equation}
+We have
+\begin{equation}
+-\varepsilon<|f(x)|-|f(x_{0}|<\varepsilon
+\end{equation}
+which implies
+\begin{equation}
+||f(x)|-|f(x_{0})||<\varepsilon.
+\end{equation}
+This implies continuity.
+\end{proof}
+\begin{thm}
+Let $f,g$ be real functions continuous at $x_{0}$. Then $f+g$,
+$fg$ and (if $g(x_{0})\neq0$) $f/g$ are continuous at $x_{0}$.
+\end{thm}
+\begin{proof}
+Let $\varepsilon_{1},\delta_{1}$ be for $f$,
+$\varepsilon_{2},\delta_{2}$ be for $g$. So for each
+$\varepsilon_{1}>0$ and $\varepsilon_{2}>0$ there is a
+corresponding $\delta_{1}>0$ and $\delta_{2}>0$ such that
+\begin{equation}
+|x-x_{0}|<\delta_{1}\Rightarrow|f(x)-f(x_{0})|<\varepsilon_{1}
+\end{equation}
+and
+\begin{equation}
+|x-x_{0}|<\delta_{2}\Rightarrow|g(x)-g(x_{0})|<\varepsilon_{2}.
+\end{equation}
+Since $\varepsilon_{i}$ ($i=1,2$) is arbitrary, we will impose the condition that $\varepsilon_{i}<1$.
+We see that by the triangle inequality
+\begin{equation}
+|(f(x)+g(x))-(f(x_{0})+g(x_{0}))|\leq|f(x)-f(x_{0})|+|g(x)-g(x_{0})|<\varepsilon_{1}+\varepsilon_{2}
+\end{equation}
+We can also see that
+\begin{equation}
+|f(x)g(x)-f(x_{0})g(x_{0})|<|f(x_{0})|\varepsilon_{2} + |g(x)|
+\end{equation}
+\end{proof}

@@ -1,0 +1,83 @@
+%%
+%% functionalScalar.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Aug 15 13:06:34 2009 Alex Nelson
+%% Last update Sat Aug 15 13:06:34 2009 Alex Nelson
+%%
+
+We would like to generalize our functional methods to field
+theory by generalizing the parametrization from a 1 dimensional
+parameter (time $t$) to a 4 dimensional parametrization
+$x^{\mu}$. So this means that
+\begin{align*}
+t&\to x^{\mu}\\
+\frac{d}{dt}&\to \partial_{\mu}\\
+q(t)&\to \varphi(x^{\mu})
+\end{align*}
+In fact we can set up a dictionary for our generalization
+\begin{center}
+\begin{tabular}{|c|c|}\hline
+mechanics          & field theory\\\hline
+$q(t)$             & $\varphi(\bar{x},t)$\qquad{classical field}\\
+$\widehat{Q}$      & $\varphi(\bar{x},t)$\qquad{operator field}\\
+$f(t)$             & $J(\bar{x},t)$\qquad{classical source}\\\hline
+\end{tabular}
+\end{center}
+We can write the Hamiltonian density for the free scalar field as
+\begin{equation}%\label{eq:}
+\mathcal{H}_{0} = 
+\underbracket[0.25pt]{\frac{1}{2}\Pi^{2} +
+\frac{1}{2}(\nabla\varphi)^{2}}_{\mathclap{\substack{=\partial^{\mu}\varphi\partial_{\mu}\varphi\\
+=\text{kinetic energy}}}}+
+\underbracket[0.25pt]{\frac{1}{2}m^{2}\varphi^{2}}_{\mathclap{\text{potential}}}
+\end{equation}
+The trick we've employed so many times before using
+infinitesimals is done precisely the same way using the
+Hamiltonian density. That is,
+$\mathcal{H}_{0}\mapsto(1-i\varepsilon)\mathcal{H}_{0}$. For
+simplicity, we tacitly assume we always mean
+$(1-i\varepsilon)m^{2}$ whenever we write $m^{2}$, it's
+completely equivalent to
+$\mathcal{H}_{0}\mapsto(1-i\varepsilon)\mathcal{H}_{0}$. 
+
+Consider the functional integral
+\begin{equation}%\label{eq:}
+Z[J] = \<0|0\>_{J} = \int\mathcal{D}\varphi\exp\left[i\int[\mathcal{L}_{0}+J\varphi]d^{4}x\right]
+\end{equation}
+where
+\begin{equation}%\label{eq:}
+\mathcal{L}_{0} =
+\frac{1}{2}\partial^{\mu}\varphi\partial_{\mu}\varphi - \frac{1}{2}m^{2}\varphi^{2}
+\end{equation}
+is the Lagrangian density and
+\begin{equation}%\label{eq:}
+\mathcal{D}\varphi\propto
+\prod_{\mathclap{\substack{
+\text{space-}\\
+\text{time}\\
+\text{points $x$}}}}
+d\varphi(x)
+\end{equation}
+is the functional measure.
+
+\subsubsection{Remark on Peskin and Schroeder's ``Derivation''.}
+In Chapter 9 of Peskin and Schroeder~\cite{Peskin:1995ev} there
+is a ``derivation'' of the functional quantization of the scalar
+field using the limit of a discrete lattice. There is some
+mathematically dubious aspects of this derivation, for one they
+use a Fourier series when they should be using a discrete Fourier
+transform. What difference does this make? Well, the intuition of
+the discrete Fourier transform is that the field exists only on
+the nodes of the lattice; the intuition of a Fourier series is
+that it exists everywhere continuously in a finite universe. The
+latter is not in spirit with taking the continuum limit! In fact,
+this beautifully motivates us to read the paper by Wise on chain field
+theory~\cite{Wise:2005mp}, which resolves this problem by a
+topological approach which yields the correct continuum limit by
+taking advantage of recent work on discrete differential geometry.
+
+\subsection{Slick Method of Computing Correlation Functions}
+\input{tex/functionalScalarFieldSlick}

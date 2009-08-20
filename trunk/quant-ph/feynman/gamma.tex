@@ -1,0 +1,149 @@
+\section{Gamma Matrices}
+
+For an extensive reference, see~\cite{Borodulin:1995xd}. The defining property for the gamma matrices is that they form a Clifford algebra with the anticommutation relations
+\begin{equation}\label{anticommutator}
+\{\gamma^{\mu},\gamma^{\nu}\} = \gamma^{\mu}\gamma^{\nu} + \gamma^{\nu}\gamma^{\mu} = 2\eta^{\mu\nu}I
+\end{equation}
+where $\eta^{\mu\nu}$ is the Minkowski metric with signature (+---) and $I$ is the unit (identity) matrix.
+
+We can also define covariant gamma matrices by
+\begin{equation}
+\gamma_\mu = \eta_{\mu \nu} \gamma^\nu = \left(\gamma^0, -\gamma^1, -\gamma^2, -\gamma^3 \right)
+\end{equation}
+where Einstein summation is used.
+
+\begin{rmk}
+We may define a fifth element of our Clifford algebra,
+\begin{equation}
+ \gamma^5 := i\gamma^0\gamma^1\gamma^2\gamma^3
+\end{equation}
+or equivalently
+\begin{equation}
+ \gamma^5 = \frac{i}{4!} \epsilon_{\mu \nu \alpha \beta} \gamma^{\mu} \gamma^{\nu} \gamma^{\alpha} \gamma^{\beta} 
+\end{equation}
+which is true due to the anticommutation relations (\ref{anticommutator}). It has the following properties:
+\begin{enumerate}
+\item{(Hermitian)} $(\gamma^5)^\dagger = \gamma^5 \,$
+\item{(Eigenvalues are $\pm1$)} $\left\{ \gamma^5,\gamma^\mu \right\} =\gamma^5 \gamma^\mu + \gamma^\mu \gamma^5 = 0 \,$
+\item{(Anticommutes with other 4 generators)} $\left\{ \gamma^5,\gamma^\mu \right\} =\gamma^5 \gamma^\mu + \gamma^\mu \gamma^5 = 0 \,$
+\end{enumerate}
+\end{rmk}
+
+\begin{rmk}
+We can project a Dirac field onto its left-handed and right-handed components by
+\begin{equation}
+\psi_L= \frac{1-\gamma^5}{2}\psi, \qquad\psi_R= \frac{1+\gamma^5}{2}\psi 
+\end{equation}
+which is often useful when dealing with chirality in a quantum mechanical setting.
+\end{rmk}
+
+We should think of the tuple $\gamma^{\mu} = \left(\gamma^0, \gamma^1, \gamma^2, -\gamma^3 \right) = \gamma^{0}e^0 + \gamma^1e^1 + \gamma^2e^2 + \gamma^3e^3$ sort of as a 4-vector (where $e^\mu$ is the basis vectors). But this is misleading! We should view the $\gamma^\mu$ as a mapping operator that ``eats up'' a 4-vector $a^\mu$ and ``spits out'' the corresponding vector in the Clifford representation.
+
+Such a result would be represented by the \textbf{Feynman Slash}
+\begin{equation}
+\slashchar{a} := \gamma^\mu a_\mu. 
+\end{equation}
+It should be noted that this beast, $\slashchar{a}$, ``lives'' in the Clifford space so any changes to the basis vectors are irrelevant.
+
+A quick review of some of the properties of the Dirac Gamma matrices!
+
+\begin{property}{(Normalisation)}
+Due to the anticommutation relations (\ref{anticommutator}), we can show
+\begin{equation}
+\left(\gamma^0\right)^\dag = \gamma^0\qquad\textrm{and }\left(\gamma^0\right)^2 = I
+\end{equation}
+and for the other gamma matrices (for $k=1,2,3$) we have
+\begin{equation}
+\left(\gamma^k\right)^\dag = -\gamma^k\qquad\textrm{and }\left(\gamma^k\right)^2 = -I
+\end{equation}
+which results in a generalized relationship which encapsulates all this information:
+\begin{equation}
+\left( \gamma^\mu \right)^\dagger = \gamma^0 \gamma^\mu \gamma^0.
+\end{equation}
+\end{property}
+
+\begin{rmk}
+These relationships described below, and the property described above, are in the (+---) signature; if we used the (-+++) signature, things would be different.
+\end{rmk}
+
+We also have a list of identities the Gamma matrices obey:
+\begin{enumerate}
+\item $\displaystyle\gamma^\mu\gamma_\mu = 4I$,
+\item $\displaystyle\gamma^\mu\gamma^\nu\gamma_\mu=-2\gamma^\nu$,
+\item $\displaystyle\gamma^\mu\gamma^\nu\gamma^\rho\gamma_\mu=4\eta^{\nu\rho} I$,
+\item $\displaystyle\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma_\mu=-2\gamma^\sigma\gamma^\rho\gamma^\nu$.
+\end{enumerate}
+Similarly, there are 5 trace identities the Gamma matrices obey
+\begin{enumerate}
+\item The trace of the product of an odd number of $\gamma$ is 0,
+\item $\operatorname{tr} (\gamma^\mu\gamma^\nu) = 4\eta^{\mu\nu}$,
+\item $\operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)=4(\eta^{\mu\nu}\eta^{\rho\sigma}-\eta^{\mu\rho}\eta^{\nu\sigma}+\eta^{\mu\sigma}\eta^{\nu\rho})$,
+\item $\operatorname{tr}(\gamma^5)=\operatorname{tr} (\gamma^\mu\gamma^\nu\gamma^5) = 0$,
+\item $\operatorname{tr} (\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5) = -4i\epsilon^{\mu\nu\rho\sigma}$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Representations of the Gamma Matrices}\label{Representations of the Gamma Matrices}
+
+We can represent the gamma matrices in various different ways that satisfy the anticommutation relations and all the above identities and properties. First recall the Pauli matrices, as they will prove useful in our discussion:
+\begin{equation}
+\sigma_1 = \sigma_x = \begin{bmatrix} 0&1\\ 1&0 \end{bmatrix}
+\end{equation}
+\begin{equation}
+\sigma_2 = \sigma_y = \begin{bmatrix} 0&-i\\ i&0 \end{bmatrix}
+\end{equation}
+\begin{equation}
+\sigma_3 = \sigma_z = \begin{bmatrix} 1&0\\ 0&-1 \end{bmatrix}.
+\end{equation}
+We will let the 2 by 2 identity be denoted by $I_{2}$ in this section.
+
+One representation is the \textbf{Dirac Basis}
+\begin{equation}
+\gamma^0 = \begin{bmatrix} I & 0 \\ 0 & -I \end{bmatrix},\quad \gamma^i = \begin{bmatrix} 0 & \sigma^i \\ -\sigma^i & 0 \end{bmatrix},\quad \gamma^5 = \begin{bmatrix} 0 & I \\ I & 0 \end{bmatrix}.
+\end{equation}
+
+Another common one used is the \textbf{Weyl (chiral) basis} which basically changes the ``temporal'' gamma matrix while leaving the others the same. This causes the $\gamma^5$ quantity to change too. We can succinctly describe it as:
+\begin{equation}
+\gamma^0 = \begin{bmatrix} 0 & I \\ I & 0 \end{bmatrix},\quad \gamma^i = \begin{bmatrix} 0 & \sigma^i \\ -\sigma^i & 0 \end{bmatrix},\quad \gamma^5 = \begin{bmatrix} -I & 0 \\ 0 & I \end{bmatrix}.
+\end{equation}
+This has the advantage that the chiral projections are merely
+\begin{equation}
+\psi_L=\begin{bmatrix} I & 0 \\0 & 0 \end{bmatrix}\psi,\quad \psi_R=\begin{bmatrix} 0 & 0 \\0 & I \end{bmatrix}\psi.
+\end{equation}
+By slightly abusing notation, we can identify
+\begin{equation}
+\psi=\begin{bmatrix} \psi_L \\ \psi_R \end{bmatrix},
+\end{equation}
+where $\psi_L$ and $\psi_R$ are left-handed and right-handed two-component Weyl spinors.
+
+The third, and for our investigations last, basis is the Majorana basis, in which all the Dirac matrices are imaginary. We can write them as
+\begin{equation*}
+\gamma^0 = \begin{bmatrix} 0 & \sigma^2 \\ \sigma^2 & 0 \end{bmatrix}, \quad \gamma^1 = \begin{bmatrix} i\sigma^3 & 0 \\ 0 & i\sigma^3 \end{bmatrix}
+\end{equation*}
+\begin{equation}
+\gamma^2 = \begin{bmatrix} 0 & -\sigma^2 \\ \sigma^2 & 0 \end{bmatrix}, \quad \gamma^3 = \begin{bmatrix} -i\sigma^1 & 0 \\ 0 & -i\sigma^1 \end{bmatrix}, \quad \gamma^5 = \begin{bmatrix} \sigma^2 & 0 \\ 0 & -\sigma^2 \end{bmatrix}.
+\end{equation}
+
+\subsection{Euclidean Representation}
+
+Oftentimes in path integral approaches, we can Wick Rotate from Minkowski to Euclidean spacetime by making time imaginary\footnote{Not as in ``eleventeen is an imaginary number'' but as in $\sqrt{-5}$ is an imaginary number.}. We then are forced to work with Euclidean gamma matrices. There are two major representations in the Euclidean framework for them.
+
+The first is the chiral representation, defined by
+\begin{equation}
+\gamma^{1,2,3} = \begin{bmatrix} 0 & -i \sigma^{1,2,3} \\ i \sigma^{1,2,3} & 0 \end{bmatrix}, \quad \gamma^4=\begin{bmatrix} 0 & I \\ I & 0 \end{bmatrix}.
+\end{equation}
+This is different from the Minkowski set by the relation
+\begin{equation}
+\gamma^{5} = \gamma^1\gamma^2\gamma^3\gamma^4 = \gamma^{5+}.
+\end{equation}
+So in a Chiral basis we have
+\begin{equation}
+\gamma^5 = \begin{bmatrix} I & 0 \\ 0 & -I \end{bmatrix} .
+\end{equation}
+
+The other form is the nonrelativistic form, which is succinctly described by
+\begin{equation}
+\gamma^{1,2,3} = \begin{bmatrix} 0 & -i \sigma^{1,2,3} \\ i \sigma^{1,2,3} & 0 \end{bmatrix}, \quad \gamma^4=\begin{bmatrix} I & 0 \\ 0 & -I \end{bmatrix}, \quad  \gamma^5=\begin{bmatrix} 0 & -I \\ -I & 0 \end{bmatrix}.
+\end{equation}
+

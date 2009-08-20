@@ -1,0 +1,102 @@
+\subsection{Moller Scattering}
+
+Moller scattering is the scattering of electrons
+\begin{equation}
+e^{-} + e^- \to e^- + e^-.
+\end{equation}
+We have two diagrams to consider this time! In fact, from here on out, we will
+always have two diagrams to consider (the exception being one third order example,
+which is the most important third order example because it explains the 
+anamolous magnetic moment of an electron -- we'll burn that bridge when we get
+to it).
+
+\textbf{Step One:} The first diagram to consider is the
+following:
+
+
+
+\strut
+\begin{center}
+\begin{fmffile}{mollerImg1}
+  \begin{fmfgraph*}(50,25)  \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$p_{1},s_{1}$}{i1}
+    \fmflabel{$p_{3},s_{3}$}{o1} %
+    \fmflabel{$p_{2},s_{2}$}{i2} %
+    \fmflabel{$p_{4},s_{4}$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+    \fmf{fermion}{i1,v1} %
+    \fmf{fermion}{v1,o1}
+    \fmf{fermion}{i2,v2} %
+    \fmf{fermion}{v2,o2} %
+    \fmf{boson,label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+This is precisely the electron-muon diagram with the exception that the muon
+has been replaced by an electron. Thus we will simply use the \textbf{exact
+same steps} we did in the first example; we will copy/paste the results here.
+
+The integrand should take the form
+\begin{eqnarray}
+\quad&&[(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))]\frac{-ig_{\mu\nu}}{q^2}[(\bar{u}(s_4,p_4))(ig_{e}\gamma^\nu)(u(s_2, p_2))] (2\pi)^{8}\nonumber\\
+& &\times \delta^{(4)}(p_1 - p_3 - q)\delta^{(4)}(p_2 + q - p_4) d^4q. \nonumber
+\end{eqnarray}
+This has the contribution to the total probability amplitude that this process
+will happen of
+\begin{equation}
+\mathcal{M}_1 = \frac{-g_{e}^2}{(p_1 - p_3)^2} [(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))][(\bar{u}(s_4,p_4))(ig_{e}\gamma_\mu)(u(s_2, p_2))]
+\end{equation}
+We will add it to the probability amplitude from the other graph to get the total
+probability amplitude of the process happening.
+
+The second diagram is odd:
+
+\strut
+\begin{center}
+\begin{fmffile}{mollerImg2}
+  \begin{fmfgraph*}(25,50)  \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i2,o2}
+    \fmfright{i1,o1}
+    \fmf{fermion}{i1,v1}
+    \fmf{phantom}{v1,o1} % Invisible rubber band
+    \fmf{fermion}{i2,v2}
+    \fmf{phantom}{v2,o2} % also invisible rubber band
+    \fmf{photon,label=$q$}{v1,v2}
+    % These are visible, but have no tension.
+    \fmf{fermion,tension=0}{v1,o2}
+    \fmf{fermion,tension=0}{v2,o1}
+    \fmfdot{v1,v2}
+    \fmflabel{$p_2,s_2$}{i1}
+    \fmflabel{$p_1,s_1$}{i2}
+    \fmflabel{$p_3,s_3$}{o1}
+    \fmflabel{$p_4,s_4$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+We make the switch of $(s_3,p_3)\iff (s_4,p_4)$ for this diagram, and low and
+behold we have a rule that takes care of this!
+
+\textbf{Step Eight:} (Yes we are hopping right along!) We have by the eighth rule
+a change in signs. So the probability amplitude from this second diagram is
+(when we make the switches of $p_3\mapsto p_4$, $p_4\mapsto p_3$, $s_3\mapsto s_4$, $s_4\mapsto s_3$)
+\begin{equation}
+\mathcal{M}_2 = \frac{g_{e}^2}{(p_1 - p_4)^2} [(\bar{u}(s_4,p_4))(ig_{e}\gamma^\mu)(u(s_1, p_1))][(\bar{u}(s_3,p_3))(ig_{e}\gamma_\mu)(u(s_2, p_2))]
+\end{equation}
+So the total probability amplitude is then
+\begin{eqnarray*}
+\mathcal{M} &=& \frac{-g_{e}^2}{(p_1 - p_3)^2} [(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))][(\bar{u}(s_4,p_4))(ig_{e}\gamma_\mu)(u(s_2, p_2))] \\
+&&+ \frac{g_{e}^2}{(p_1 - p_4)^2} [(\bar{u}(s_4,p_4))(ig_{e}\gamma^\mu)(u(s_1, p_1))][(\bar{u}(s_3,p_3))(ig_{e}\gamma_\mu)(u(s_2, p_2))].
+\end{eqnarray*}

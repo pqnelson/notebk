@@ -1,0 +1,255 @@
+%%
+%% 18April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 20 15:23:28 2008 Alex Nelson
+%% Last update Sat Dec 20 15:23:28 2008 Alex Nelson
+%%
+%% The topics of this file are really just two thing: 1) the
+%% normed vector space $L^{2}(a,b)$, its definition and some
+%% prospects; 2) a look at $\{\exp(inx)/\sqrt{2\pi}\}$ is an
+%% orthonormal basis in $\mathbb{R}^2\cong\mathbb{C}$.
+
+Before beginning just a few definitions on the various types
+of convergences.
+
+\begin{defn}
+Suppose $\{f_n\}$ is a sequence of functions in $L^2(a,b)$.
+\begin{enumerate}
+\item We say that $f_n$ converges to $f$ \textbf{pointwise}\index{Convergence!Pointwise}
+if for each $x\in[a,b]$,
+\begin{equation}
+f_{n}(x)\to f(x)\text{ as }n\to\infty
+\end{equation}
+(.e. $|f_n(x)-f(x)|\to0$ as $n\to\infty$). This means for
+any $\varepsilon>0$ and any $x\in[a,b]$ there is an integers
+$N_{\varepsilon,x}>0$ which depends on $\varepsilon$ and $x$
+such that
+\begin{equation}
+|f_{n}(x)-f(x)|<\varepsilon\quad\text{for all }n>N_{\varepsilon,x}
+\end{equation}
+\item We say that $f_n$ converges to $f$ \textbf{uniformly}\index{Convergence!Uniform}
+if
+\begin{equation}
+\sup_{a\leq x\leq b}|f_{n}(x)-f(x)|\to0\text{ as }n\to\infty
+\end{equation}
+which means for each $\varepsilon>0$ there is an integer
+$N>0$ such that
+\begin{equation}
+|f_{n}(x)-f(x)|<\varepsilon\quad\text{for all }n>N
+\end{equation}
+which is a stronger condition than pointwise convergence
+since $N$ depends only on the choice of $\varepsilon$.
+\item We say that $f_{n}$ converges to $f$ \textbf{in norm}\index{Convergence! In Norm}
+if
+\begin{equation}
+\|f_n-f\|\to0\quad\text{as }n\to\infty
+\end{equation}
+where $\|\cdot\|$ is the norm on the vector space
+$L^{2}(a,b)$. By the definition of the norm this means
+\begin{equation}
+\int^{b}_{a}|f_n(x)-f(x)|^2dx\to 0\quad\text{as }n\to\infty
+\end{equation}
+\end{enumerate}
+\end{defn}
+
+\textbf{Motivation:} We know that
+\begin{align*}
+\<\frac{1}{\sqrt{2\pi}}e^{imx},\frac{1}{\sqrt{2\pi}}e^{inx}\>
+&= \frac{1}{2\pi}\int^{\pi}_{-\pi}e^{i(m-n)x}dx\\
+&= \begin{cases}1&m=n\\
+0&m\neq n\end{cases}
+\end{align*}
+So the set $\{\exp(inx)/\sqrt{2\pi}\}^{\infty}_{-\infty}$ is
+an orthonormal set. We would like to make it an orthonormal
+basis.
+
+Recall in $\mathbb{C}^k$: any set $\{u_1,\ldots,u_k\}$ that
+is orthonormal forms a basis for $\mathbb{C}^k$. It has two
+properties of relevance
+\begin{enumerate}
+\item For any $v\in\mathbb{C}^k$, $v=\sum_j
+  \<v,u_j\>u_k$. In other words, any vector can be written
+  as a linear combination of the vectors $u_j$, $j=1,\ldots,k$.
+\item the sum $\sum_{j}\alpha_{j}u_{j}$ (for all
+  $\alpha_j\in\mathbb{C}$) forms some vector in $\mathbb{C}^k$.
+\end{enumerate}
+
+We want to mirror this for our $L^{2}(a,b)$ space; however,
+the second property is not true for any orthonormal set
+because $PC(a,b)$ is not ``complete''. 
+
+So we move to a bigger space, $L^{2}$\index{$L^2$}, which is
+defined as the set of all functions satisfying
+\begin{equation}
+L^{2}(a,b) = \{ \text{$f$ on $[a,b]$ s.t. }
+\int^{b}_{a}|f(x)|^{2}dx<\infty \}
+\end{equation}
+where we use the Lebesgue integral\index{Lebesgue Integration}\index{Integration!Lebesgue Integral}. \marginpar{Don't Stress over the Lebesgue
+  integral, it really is nothing special...just integration
+  done in the way taught in math 21 B, but the only time we
+  run into problems is with wacky functions and bizarre
+  domains (e.g. domains with only a single point).}What the hell's the
+Lebesgue integral, and why do we use it? The simplest
+explanation is that it's the area between the $x$-axis and
+the curve (one may ask ``But isn't that a Riemann
+integral?'' And that's kind of true, but one typically has
+vertical rectangles in the Riemann sum, whereas one would
+have e.g. vertical rectangles in the Lebesgue integral).
+
+If $f\in PC(a,b)$ then
+$\int^{b}_{a}|f(x)|^{2}dx<\infty$...so $f\in L^{2}(a,b)$. So
+this implies $PC(a,b)\subset L^{2}(a,b)$. Improper Riemann
+integrable functions are also in $L^{2}(a,b)$. Lebesgue
+integration is, to a physics undergrad, just ``really clever
+integration'' (or integration done in the usual way being
+careful about infinities).
+
+\begin{ex}
+Let $f(x)=x^{-1/3}$ on $[-1,1]$. This is not piecewise
+continuous on $[-1,1]$ since it blows up around $0$. But
+observe
+\begin{align*}
+\int^{1}_{-1}|f(x)|^{2}dx &= \int^{1}_{-1}x^{-2/3}dx\\
+&=\lim_{\alpha\to 0^{-}}\int^{\alpha}_{-1}x^{-2/3}dx +
+\lim_{\beta\to0^{+}}\int^{1}_{\beta}x^{-2/3}dx\\
+&=\lim_{\alpha\to0^{-}}(3\alpha^{1/3}+3)+\lim_{\beta\to0^{+}}(3-3\beta^{1/3})\\
+&= 6
+\end{align*}
+So $f\in L^{2}(-1,1)$.
+\end{ex}
+
+\begin{defn}
+Let $E\subset\mathbb{R}$, $E$ is \textbf{(Lebesgue) measure
+  zero}\index{Lebesgue Measure Zero} if for any
+$\varepsilon>0$, there exists a set of intervals
+$\{I_1,\ldots\}$ of length $\ell_1$, $\ldots$ such that
+\begin{equation}
+E\subset\cup_{j=1}I_{j}\quad\text{and
+}\sum^{\infty}_{j=1}\ell_{j}<\infty
+\end{equation}
+Let $\Delta>0$, then $\int^{\Delta}_{0}1dx\neq 0$. For $E$
+of measure zero, $\int_{E}1dx=0$.
+\end{defn}
+
+\begin{rmk}
+Some functions with no Riemann integral have Lebesgue
+integral.
+\end{rmk}
+
+\begin{ex}
+Let $\{r_1,\ldots\}$ be enumeration of the rational numbers,
+then it has Lebesgue measure zero. Let
+\begin{equation}
+f(x) = \begin{cases}1&\text{if $x$ is
+    irrational}\\0&\text{otherwise}\end{cases}
+\end{equation}
+be defined on $[0,1]$. Then $f=0$ on a set of measure
+zero. THe Riemann integral of $f$ does not exist, the upper
+sum of $f$ is
+\begin{equation}
+\sum 1 \Delta x
+\end{equation}
+where $\Delta x$ is the width of the intervals, and the
+lower sums are
+\begin{equation}
+\sum 0\Delta x = 0
+\end{equation}
+Thus
+\begin{equation}
+\lim_{\Delta x\to 0}\sum 1\Delta x = \sum 0\Delta
+x\Rightarrow 1=0
+\end{equation}
+which is known to be wrong! However, for the Lebesgue
+integral
+\begin{equation}
+\int^{1}_{0}|f(x)|^{2}dx = 1\Rightarrow f(x)\in L^{2}(0,1).
+\end{equation}
+\end{ex}
+
+\textbf{Question:} \emph{Can we extend the definition of the
+  inner product $\<\cdot,\cdot\>$ from $PC(a,b)$ to
+  $L^{2}(a,b)$?}''
+
+Well, we very generally defined the inner product to be
+\begin{equation}
+\<f,g\> = \int^{b}_{a}f(x)\overline{g(x)}dx
+\end{equation}
+If $\int f(x)\overline{g(x)}dx$ exists, for all $f,g\in
+L^{2}(a,b)$, then $\<\cdot,\cdot\>$ is well defined.
+
+Let $f,g$ be two functions in $L^{2}(a,b)$. Then
+\begin{equation}
+|\<f,g\>|\leq \int^{b}_{a}|f(x)\overline{g(x)}|dx
+\end{equation}
+So $|f(x)\overline{g(x)}|\leq|f(x)||g(x)|$ we know for
+$s,t\in\mathbb{R}$
+\begin{equation*}
+0\leq (s-t)^{2} = s^{2} + t^{2} - 2st
+\end{equation*}
+if and only if
+\begin{equation*}
+\frac{1}{2}(s^2+t^2)\geq st \quad\forall s,t\in\mathbb{R}
+\end{equation*}
+Since $|f(x)|$ and $|g(x)|$ are both real (even if $f(x)$
+and $g(x)$ are complex, their absolute value (aka their
+modulus) returns the ``radial length'' which is a real
+number), we see that
+\begin{equation}
+\frac{1}{2}\left(|f(x)|^2 + |g(x)|^2\right)\geq|f(x)||g(x)|
+\end{equation}
+so
+\begin{equation}
+|\<f,g\>|\leq\frac{1}{2}\int |f(x)|^2 + |g(x)|^2dx<\infty.
+\end{equation}
+Thus we may extend the inner product $\<\cdot,\cdot\>$ from
+$PC(a,b)$ to $L^{2}(a,b)$. All properties of the inner
+product and the norm still hold.
+
+Three is one more property that also holds that we have been
+trying to prove.
+
+\begin{bessel}\index{Bessel Inequality}
+If $\{\phi_{n}\}^{\infty}_{n=1}$ is an orthonormal set in
+$L^{2}(a,b)$, and if $f\in L^{2}(a,b)$, then
+\begin{equation}
+\sum^{\infty}_{n=1}|\<f,\phi_{n}\>|^{2} \leq
+\|f\|^2\qquad\text{in $L^{2}(a,b)$}
+\end{equation}
+\end{bessel}
+\begin{proof}
+Let $N$ be any positive integer,
+\begin{align*}
+0 &\leq \|f - \sum^{N}_{n=1}\<f,\phi_n\>\phi_n\|^2\\
+&=\|f\|^2 - 2\re(\<f,\sum^{N}_{1}\<f,\phi_n\>\phi_n) +
+\|\sum^{N}_{n=1}\<f,\phi_{n}\>\phi_{n}\|^{2}
+\end{align*}
+We can expand out
+\begin{align*}
+\<f,\sum^{N}_{n=1}\<f,\phi_n\>\phi_n\> &= \sum^{N}_{n=1}
+\<f,\<f,\phi_n\>\phi_n\>\\
+&= \sum^{N}_{n=1}\overline{\<f,\phi_n\>}\<f,\phi_n\>\\
+&= \sum^{N}_{n=1}|\<f,\phi_n\>|^{2}
+\end{align*}
+We put all this together to get
+\begin{align*}
+0 &\leq \|f\| - \sum^{N}_{n=1}\<f,\phi_n\>\phi_n\|^2\\
+&\leq \|f\|^2 - \sum^{N}_{n=1}|\<f,\phi_n\>|^2
+\end{align*}
+for all $N$.
+\end{proof}
+\marginpar{Some intuition of distance}Now, for something completely different. Recall back in one
+real dimension, we measure distance by taking the absolute
+value of the difference between two numbers. We generalize
+this in multiple dimensions, from the Pythagorean theorem,
+to be the norm of the difference between two vectors. We
+generalize this still to be the norm of the difference
+between two functions for having some intuition of distance
+in $L^{2}$ (i.e. for $f,g\in L^{2}(a,b)$, $\|f-g\|$ measures
+the ``distance'' between $f$ and $g$), we also say that
+$f_n$ converges to $f\in L^2(a,b)$ \textbf{in norm}\index{Convergence!In Norm} if
+\begin{equation}
+\|f_n - f\|\to 0\quad\text{as }n\to\infty.
+\end{equation}

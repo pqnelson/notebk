@@ -1,0 +1,63 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{geroch1970dd}
+R.~Geroch, ``{Domain of dependence},'' {\em Journal of Mathematical Physics}
+  {\bf 11} (1970)  437. \url{http://link.aip.org/link/?JMAPAQ/11/437/1}.
+
+\bibitem{Pirant:1952zz}
+F.~A.~E. Pirant, A.~Schild, and R.~Skinner, ``{Quantization of Einstein's
+  Gravitational Field Equations. 2},''
+  \href{http://dx.doi.org/10.1103/PhysRev.87.452}{{\em Phys. Rev.} {\bf 87}
+  (1952)  452--454}.
+\url{http://link.aps.org/doi/10.1103/PhysRev.87.452}.
+%%CITATION = PHRVA,87,452;%%.
+
+\bibitem{Kiriushcheva:2008fn}
+N.~Kiriushcheva, S.~V. Kuzmin, C.~Racknor, and S.~R. Valluri, ``{Diffeomorphism
+  Invariance in the Hamiltonian formulation of General Relativity},''
+  \href{http://dx.doi.org/10.1016/j.physleta.2008.05.081}{{\em Phys. Lett.}
+  {\bf A372} (2008)  5101},
+\href{http://arxiv.org/abs/0808.2623}{{\tt arXiv:0808.2623 [gr-qc]}}.
+%%CITATION = 0808.2623;%%.
+
+\bibitem{Dirac:1958sc}
+P.~A.~M. Dirac, ``{The Theory of gravitation in Hamiltonian form},''
+{\em Proc. Roy. Soc. Lond.} {\bf A246} (1958)  333--343.
+%%CITATION = PRSLA,A246,333;%%.
+
+\bibitem{Kuchar:1993ne}
+K.~V. Kuchar, ``{Canonical quantum gravity},''
+\href{http://arxiv.org/abs/gr-qc/9304012}{{\tt arXiv:gr-qc/9304012}}.
+%%CITATION = GR-QC/9304012;%%.
+
+\bibitem{Arnowitt:1962hi}
+R.~L. Arnowitt, S.~Deser, and C.~W. Misner, ``{The dynamics of general
+  relativity},''
+\href{http://arxiv.org/abs/gr-qc/0405109}{{\tt arXiv:gr-qc/0405109}}.
+%%CITATION = GR-QC/0405109;%%.
+
+\bibitem{misner1973g}
+C.~W. Misner, K.~S. Thorne, and J.~A. Wheeler, {\em {Gravitation}}.
+\newblock WH Freeman \& Company, 1973.
+
+\bibitem{Franke:2007ux}
+V.~A. Franke, ``{Different canonical formulations of Einstein's theory of
+  gravity},'' \href{http://dx.doi.org/10.1007/s11232-006-0096-3}{{\em Theor.
+  Math. Phys.} {\bf 148} (2006)  995--1010},
+\href{http://arxiv.org/abs/0710.4953}{{\tt arXiv:0710.4953 [gr-qc]}}.
+%%CITATION = 0710.4953;%%.
+
+\bibitem{Giulini:2006xi}
+D.~Giulini and C.~Kiefer, ``{The canonical approach to quantum gravity: General
+  ideas and geometrodynamics},''
+  \href{http://dx.doi.org/10.1007/978-3-540-71117-9_8}{{\em Lect. Notes Phys.}
+  {\bf 721} (2007)  131--150},
+\href{http://arxiv.org/abs/gr-qc/0611141}{{\tt arXiv:gr-qc/0611141}}.
+%%CITATION = GR-QC/0611141;%%.
+
+\bibitem{Thiemann:2001yy}
+T.~Thiemann, ``{Introduction to modern canonical quantum general relativity},''
+\href{http://arxiv.org/abs/gr-qc/0110034}{{\tt arXiv:gr-qc/0110034}}.
+%%CITATION = GR-QC/0110034;%%.
+
+\end{thebibliography}\endgroup

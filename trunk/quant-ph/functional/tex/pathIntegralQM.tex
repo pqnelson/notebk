@@ -1,0 +1,465 @@
+%%
+%% pathIntegralQM.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Jul 27 17:17:38 2009 Alex Nelson
+%% Last update Mon Jul 27 17:17:38 2009 Alex Nelson
+%%
+
+\subsection{Definition via Unitary Time Evolution}
+Consider a nonrelativistic particle in one dimension. The
+Hamiltonian for this system is generically given as
+\begin{equation}%\label{eq:}
+H = \frac{p^{2}}{2m} + V(x).
+\end{equation}
+Suppose we want to consider the probability amplitude for this
+particle moving from $x_0$ to $x_1$ in some time interval
+$T$. We'll denote such an amplitude $U(x_0,x_1;T)$. It is the
+position representation of the Schrodinger time-evolution
+operator. In the canonical Hamiltonian formalism, $U$ is computed
+by the expression
+\begin{equation}\label{eq:canonicalUnitaryTimeEvolution}
+U(x_0,x_1;T) = \<x_1|e^{-i\widehat{H}T/\hbar}|x_0\>.
+\end{equation}
+The right hand side is read from right to left, like Chinese, and
+the is interpreted as ``The quantum process moving from some
+initial state $|x_0\>$ to some final state $\<x_1|$ by means of
+the physical process described by the operator
+$\exp(-i\hat{H}T/\hbar)$''. In the path integral formalism,
+however, our expression for $U$ is remarkably different. We'll
+try to give a motivation of the path integral expression of $U$
+and then prove it is equal to \eqref{eq:canonicalUnitaryTimeEvolution}.
+
+The fundamental principle that we will be using in the derivation
+of the path integral formalism is the superposition
+principle. What do we mean by this? Well, we take the observation
+summed up thus:
+\begin{description}
+\item[Superposition Principle] when a process can take place in
+  more than one way, its total probability amplitude is the
+  ``coherent sum'' of the amplitudes of each possible way.
+\end{description}
+A simple, nontrivial example is the double slit experiment. The
+amplitude for an electron to arrive at the detector from the
+source is the sum of the amplitudes of the two paths drawn in
+figure \eqref{fig:doubleSlit}. As the two paths differ in length,
+there is necessarily interference.
+
+
+\begin{figure}[t]
+\includegraphics{img/img.1}
+\caption{The double slit experiment.}\label{fig:doubleSlit}
+\end{figure}
+
+For a general quantum system, we might try to write the total
+amplitude for traveling from $x_a$ to $x_b$ as:
+\begin{equation}\label{eq:defnOfPathIntegral}
+U(x_a,x_b;T) = \sum_{\substack{
+\text{all paths}\\
+\text{from}\\
+\text{$x_a$ to $x_b$}
+}} e^{i\cdot(\text{phase})}
+= \int\mathcal{D}x(t) e^{i\cdot(\text{phase})}.
+\end{equation}
+Now the physicist's explanation is the following: to be
+democratic, we have each path be written as a pure phase, so
+there is no interference and thus no path is ``more important
+than others''. There is probably some kernel of truth to this,
+but it's unrigorous --- there's little sign that \emph{a priori}
+nature is either fair or democratic. A probably more realistic
+explanation is that any two distinct paths are ``orthogonal'' in
+some sense, so they are each different ``ways'' from the initial
+state to the final state. Note that the symbol $\int\mathcal{D}x(t)$
+should be intuitively interpreted as ``sum over all paths''. For
+our example, all paths that start at $x_a$ and ends at
+$x_b$. This sum (in our situation) is a continuous one, i.e. an
+integral.
+
+Recall that a ``\emph{functional}'' is a mathematical gadget that
+``eats in'' a function and ``spits out'' a number. The integrand
+in \eqref{eq:defnOfPathIntegral} is a functional, since it ``eats
+in'' a path $x(t)$ and it ``spits out'' a complex number. The
+argument of a functional will be written in square brackets
+e.g. $F[x(t)]$, it usually is convention to do so. And just as a
+function $y(t)$ can be integrated over a set of points, a
+functional can be integrated  over a set of functions. The
+measure of such a ``functional integral'' is notationally written
+with a prefix $\mathcal{D}$. We can also differentiate a
+functional with respect to its argument, and this ``functional
+derivative'' is denoted by $\delta F/\delta x(t)$. 
+
+\subsection{Functional Derivatives} 
+
+Lets take some time to develop these notions a bit
+further. We'll set up the analogous situation in vector
+calculus. Consider the following differential situations
+\begin{equation}%\label{eq:}
+\frac{\partial}{\partial x_{i}}x_{j}=\delta_{ij},\quad\text{or}\quad\frac{\partial}{\partial x_{i}}\sum_{j}x_{j}k_{j} = k_{i}.
+\end{equation}
+When we think of a vector as a function from a discrete (usually
+finite) set of ordinal numbers, we see that the indices are sort
+of analogous to variables. Now consider the functional $F[x]$
+where $x$ is either a single variable or a vector of variables,
+it doesn't matter (the generalization to many variables is
+straightforward). We expect by analogy that (in four dimensions)
+\begin{equation}%\label{eq:}
+\frac{\delta}{\delta f(x)}f(y) = \delta^{(4)}(x-y),\quad\text{or}\quad\frac{\delta}{\delta f(x)}\int f(y)\phi(y)d^{4}y = \phi(x).
+\end{equation}
+This gives us some intuitive understanding of the functional
+derivative. The notion of a functional integral is questionable
+in terms of mathematical rigor, but a good reference on the
+subject is DeWitt-Morette et al.~\cite{cartier2006functional}
+
+Now we have the bothersome problem that should be plaguing us: in
+\eqref{eq:defnOfPathIntegral} what the devil is that ``phase''
+term?! In answering this question, we should bear in mind we want
+some limit which will reproduce classical mechanics. We thus
+expect that only one path --- the classical one --- contributes
+to the total amplitude. We may hope to evaluate the functional
+integral by method of stationary phase, identifying the classical
+path $x_{cl}(t)$ by the stationary condition
+\begin{equation}%\label{eq:}
+\left.\frac{\delta}{\delta x(t)}\left(\operatorname{phase}[x(t)]\right)\right|_{x_{cl}}=0.
+\end{equation}
+But the classical path is the one that satisfies the principle of
+least action
+\begin{equation}%\label{eq:}
+\left.\frac{\delta}{\delta x(t)}\left(S[x(t)]\right)\right|_{x_{cl}} = 0,
+\end{equation}
+where $S=\int Ldt$ is the classical action. It is very tempting
+to say that the phase is just $S$ up to some constant. Since the
+stationary-phase approximation should be valid in the classical
+limit --- i.e. when $S\gg\hbar$ --- we need to demand that the
+phase is $S/\hbar$...or at least that's what we will use. We end
+up with the conclusion that unitary time evolution in the path
+integral formalism should thus be
+\begin{equation}%\label{eq:}
+U(x_a,x_b;T) = \left\<x_b\left|e^{i\widehat{H}t/\hbar}\right|x_a\right\> = \int \mathcal{D}x(t)e^{iS[x(t)]/\hbar}
+\end{equation}
+based off of our hand-wavy reasoning involving orthogonal
+democratic paths and the superposition principle.
+
+\subsection{Connecting Back to Canonical Formalism}
+
+Now, we should be worried that this hand-waviness is complete hog
+wash. We need to check somehow that we're on the right track, and
+the usual way we do this is by recovering something from the
+usual theory (i.e. the Hamiltonian formalism of quantum
+mechanics). Consider our favorite double slit experiment as in
+figure \ref{fig:doubleSlit}. The action for both paths would be
+$(1/2)mv^{2}t$, the kinetic energy multiplied by time. For path
+1, once it gets to the slit, it has to travel a distance $D$ in
+time $t$, so it has a velocity 
+\begin{equation}%\label{eq:}
+v_{1} \approx \frac{D}{t}
+\end{equation}
+so the phase would thus be
+\begin{equation}%\label{eq:}
+S\approx\frac{mD^{2}}{2\hbar{t}}.
+\end{equation}
+For path 2, it travels a distance $d+D$ from the slit in time
+$t$, so it has velocity
+\begin{equation}%\label{eq:}
+v_{2}\approx\frac{D+d}{t},
+\end{equation}
+and similarly the phase would be
+\begin{equation}%\label{eq:}
+S\approx\frac{m(D+d)^{2}}{2\hbar{t}}.
+\end{equation}
+We may assume for argument's sake that $d\ll D$ so that
+\begin{equation}%\label{eq:}
+(D+d)^{2} = D^{2}+2dD+\mathcal{O}(d^{2})\approx D^{2}+2dD
+\end{equation}
+and moreover $v_{1}\approx v_{2}$. But in our approximation, the
+excess phase for path 2 is ``merely''
+\begin{equation}%\label{eq:}
+\frac{mDd}{\hbar{t}}=\left(\frac{mD}{t}\right)\frac{d}{\hbar}\approx\frac{pd}{\hbar}
+\end{equation}
+where $p$ is momentum. This is exactly what we should expect from
+the de Broglie wave relations 
+\begin{equation}%\label{eq:}
+p = \frac{h}{\lambda}
+\end{equation}
+which is a good sign that we're on to something!
+
+
+\begin{figure}[t]
+\includegraphics{img/img.2}
+\caption{The discretized approximation of the path integral}\label{fig:pathIntegralApprox}
+\end{figure}
+
+
+\subsection{Limit of Discretized Scheme.}
+Recall for the usual integral, when it is first introduced in
+college, we partition the domain of integration thus breaking the
+integral up into a discrete sum. To further investigate the
+functional integral, we'll do a similar discretization of the
+time interval $[0,T]$. We actually did this albeit it sloppily,
+we split it in two and demanded that there are only two possible
+physical processes (through slit 1 or slit 2). By generalizing to
+finitely many possible time steps and continuously many
+positions, we expect to obtain more information of how the
+functional integral works. We will divide the time interval into
+$N$ intervals of duration $\varepsilon$, and approximate the
+trajectory $x(t)$ by a sequence of straight lines (one line that
+starts and ends at each time slice). Upon discretization, the
+action becomes
+\begin{equation}%\label{eq:}
+S=\int^{T}_{0}\left(\frac{m}{2}\dot{x}^{2}-V(x)\right)dt\mapsto\sum_{k}\left[\frac{m}{2}\frac{(x_{k+1}-x_{k})^{2}}{\varepsilon^{2}}-V\left(\frac{x_{k+1}+x_{k}}{2}\right)\right]\varepsilon
+\end{equation}
+We then define the path integral by taking the limit
+$\varepsilon\to0$ of
+\begin{equation}\label{eq:limitDefinitionFunctionalIntegral}
+\int\mathcal{D}x(t)\equiv\frac{1}{C(\varepsilon)}\int\frac{dx_{1}}{C(\varepsilon)}\int\frac{dx_{2}}{C(\varepsilon)}(\cdots)\int\frac{dx_{N-1}}{C(\varepsilon)}=\frac{1}{C(\varepsilon)}\prod_{k}\int\frac{dx_{k}}{C(\varepsilon)}
+\end{equation}
+where $C(\varepsilon)$ is some constant we'll worry about
+later. We see this discretization depicted in figure
+\ref{fig:pathIntegralApprox}. This scheme of setting up a
+discretized partition then taking the continuum limit is used a
+lot in functional quantization.
+
+
+
+\subsection{Equivalence of Definitions}
+Now the astute reader should be asking themselves ``Wait, we have
+defined the function integral twice, what's up with that?'' This
+is true, we first defined it in \eqref{eq:defnOfPathIntegral} as
+\begin{equation*}
+U(x_a,x_b;T) = \sum_{\substack{
+\text{all paths}\\
+\text{from}\\
+\text{$x_a$ to $x_b$}
+}} e^{i\cdot(\text{phase})}
+= \int\mathcal{D}x(t) e^{i\cdot(\text{phase})}.
+\end{equation*}
+and again in eq
+\eqref{eq:limitDefinitionFunctionalIntegral}. Using the second
+definition, we will prove the validity of the first. Here's the
+sketch of the proof: we'll show that both are obtained by
+integrating the same differential equation with the same initial
+condition. How we'll do this is by considering an individual
+subinterval in our partition of time as we take the
+$\varepsilon\to0$ limit. 
+
+To derive the differential equation in question, we'll start by
+considering the last time slice in our discrete approximation to
+the path integral. According to both of our definitions, we
+expect to have
+\begin{equation}\label{eq:lastTimeSlice}
+\begin{split}
+U(x_a,x_b;T) = \int^{\infty}_{-\infty}\frac{dx'}{C(\varepsilon)}
+\exp\left(\frac{i}{\hbar}\frac{m(x_b-x')^{2}}{2\varepsilon}-\frac{i\varepsilon}{\hbar}
+V\left(\frac{x_{b}+x'}{2}\right)\right)\\
+\times{U(x_a,x';T-\varepsilon)}
+\end{split}
+\end{equation}
+The integral over $x'$ is just the contribution from the last
+time slice, while the exponential is from the $e^{iS/\hbar}$ of
+that slice. The contributions from the prior slices are contained
+in $U(x_a,x';T-\varepsilon)$.
+
+Now, we take the $\varepsilon\to0$ limit, and as we do so the
+rapid oscillations of the first term in the exponential
+constrains $x'$ to be ``very close'' to $x_b$. We can expand eq
+\eqref{eq:lastTimeSlice} to be
+\begin{equation}\label{eq:expansionOfLastTimeSliceAsEpsilonToZero}
+\begin{split}
+U(x_a,x_b;t) =
+\int^{\infty}_{-\infty}\frac{dx'}{C(\varepsilon)}\exp\left(\frac{i}{\hbar}\frac{m(x_b-x')^{2}}{2\varepsilon}\right)[1-\frac{i\varepsilon}{\hbar}V(x_b)+\cdots]\\
+\times [1  + (x'- x_b)\frac{\partial}{\partial x_{b}} + \frac{1}{2}(x'- x_b)^{2}\frac{\partial^{2}}{\partial x_{b}^{2}}+\cdots]U(x_a,x_b;T-\varepsilon) 
+\end{split}
+\end{equation}
+Observe that we make use of Taylor expanding
+$U(x_a,x_b;T-\varepsilon)$ on the right hand side, since
+$x_b-x'\ll1$. We then look up a few Gaussian integrals
+\begin{equation}%\label{eq:}
+\int e^{-b\xi^{2}}d\xi = \sqrt{\frac{\pi}{b}},\quad\int\xi
+e^{-b\xi^{2}}d\xi=0,\quad\int \xi^{2} e^{-b\xi^{2}}d\xi = \frac{1}{2b}\sqrt{\frac{\pi}{b}}
+\end{equation}
+and then apply these to our time slice to find
+\begin{equation}%\label{eq:}
+\begin{split}
+U(x_a,x_b;T) =
+\left(\frac{1}{C(\varepsilon)}\sqrt{\frac{2\pi\hbar\varepsilon}{-im}}\right)\left[1
+  - \frac{i\varepsilon}{\hbar}V(x_b) +
+  \frac{i\varepsilon\hbar}{2m}\frac{\partial^{2}}{\partial
+    x_{b}^{2}} + \mathcal{O}(\varepsilon^2)\right]\\
+\times U(x_a,x_b;T-\varepsilon).
+\end{split}
+\end{equation}
+Observe that the parenthetic term causes problems as we take the
+limit $\varepsilon\to0$. We demand that
+\begin{equation}%\label{eq:}
+C(\varepsilon) = \sqrt{\frac{2\pi\hbar\varepsilon}{-im}}
+\end{equation}
+so the parenthetic term becomes unity, and the rest of the
+expression is well defined. If we now compare terms of order
+$\varepsilon$ and multiply both sides by $i\hbar$ we find
+\begin{subequations}
+\begin{align}
+i\hbar\frac{\partial}{\partial T}U(x_a,x_b;T)
+&= \left[\frac{-\hbar^{2}}{2m}\frac{\partial^{2}}{\partial
+    x_{b}^{2}}+V(x_{b})\right]U(x_{a},x_{b};T)\\
+&= \hat{H}U(x_{a},x_{b};T).
+\end{align}
+\end{subequations}
+This is the Schrodinger equation! This is great news, we have
+another connection to canonical Quantum Mechanics. Observe that
+$U$ as defined in eq \eqref{eq:canonicalUnitaryTimeEvolution}
+satisfies the same Schrodinger equation.
+
+As $T\to0$ the left hand side of \eqref{eq:defnOfPathIntegral}
+tends to $\delta(x_a-x_b)$. Compare this to how our other
+definition behaves in this limit, specifically in the case of one
+time slice:
+\begin{equation}%\label{eq:}
+\frac{1}{C(\varepsilon)}\exp\left[\frac{i}{\hbar}\frac{m(x_b-x_a)^{2}}{2\varepsilon}+\mathcal{O}(\varepsilon)\right]
+\end{equation}
+This is just the peaked exponential of eq \eqref{eq:expansionOfLastTimeSliceAsEpsilonToZero}
+\begin{equation*}%\label{eq:}
+\begin{split}
+U(x_a,x_b;t) =
+\int^{\infty}_{-\infty}\frac{dx'}{C(\varepsilon)}\exp\left(\frac{i}{\hbar}\frac{m(x_b-x')^{2}}{2\varepsilon}\right)[1-\frac{i\varepsilon}{\hbar}V(x_b)+\cdots]\\
+\times [1  + (x'- x_b)\frac{\partial}{\partial x_{b}} + \frac{1}{2}(x'- x_b)^{2}\frac{\partial^{2}}{\partial x_{b}^{2}}+\cdots]U(x_a,x_b;T-\varepsilon) 
+\end{split}
+\end{equation*}
+and it also tends to $\delta(x_a-x_b)$ as $\varepsilon\to0$. Thus
+we have both of our definitions of the path integral satisfy the
+same differential equation with the same initial condition, which
+necessarily implies they are the same. Moreover, we have shown
+that the canonical expression with the Hamiltonian yields the
+same results, so we have an explicit connection from the path
+integral formalism back to the canonical formalism.
+
+\subsection{Generalization to Multiple Dimensions} We have
+considered thus far working in one dimension, but that was purely
+for simplicity (the physics shouldn't change if we work in one or
+one million dimensions; the math is just simpler in one). We are
+now going to generalize the path integral to arbitrarily many
+coordinates and momenta. We have $q^i$ for the position, and
+$p_i$ for the momentum. We denote the Hamiltonian by $H(q,p).$
+Note that when we don't use indices like this, it's to indicate
+that we are working with all of the position or momenta
+(depending on the context). The transition amplitude in the
+canonical formalism should be
+\begin{equation}%\label{eq:}
+U(q_a,q_b;T) = \<q_b|e^{-i\widehat{H}T}|q_a\>.
+\end{equation}
+\textbf{Note:} we have been remarkably careful about explicitly
+stating $\hbar$, we will now use the standard lazy convention of
+setting $\hbar=1$.
+
+We perform the same song and dance, beginning with a
+discretization in time, specifically $N$ slices of duration
+$\varepsilon$. We can write
+\begin{equation}%\label{eq:}
+e^{-i\widehat{H}T} = e^{-i\sum\varepsilon\widehat{H}} =
+\underbrace{e^{-i\varepsilon\widehat{H}}e^{-i\varepsilon\widehat{H}}\cdots
+  e^{-i\varepsilon\widehat{H}}}_{\text{($N$ times)}}
+\end{equation}
+The trick is to insert a complete set of intermediate states
+between each of these factors. Here ``complete'' in the sense
+that
+\begin{equation}%\label{eq:}
+\mathbf{1} = \left(\prod_{j}\int dq^{j}_{k}\right)|q_{k}\>\<q_{k}|.
+\end{equation}
+Note that subscripts refer to the time slice, and superscripts
+refer to the components of the vector.
+Inserting these factors for $k=1,\ldots,N-1$, we are left with a
+product of factors of the form 
+\begin{equation}\label{eq:factorsOfMatrixForHamiltonian}
+\<q_{k+1}|e^{-i\widehat{H}\varepsilon}|q_{k}\>\xrightarrow[\varepsilon\to0]{}\<q_{k+1}|1-i\varepsilon\hat{H}+\mathcal{O}(\varepsilon^2)|q_{k}\>.
+\end{equation}
+To express the first and last factors as this form, we define
+$q_0=q_a$ and $q_N=q_b$.
+
+Now we will investigate $\hat{H}$. Specifically, we are concerned
+with what terms it contains. The simplest Hamiltonian to consider
+is when it is a function of position only, not of momenta. The
+matrix element of such a term would be
+\begin{equation}%\label{eq:}
+\<q_{k+1}|f(q)|q_{k}\> = f(q_{k})\prod_{j}\delta(q^{j}_{k}-q^{j}_{k+1}).
+\end{equation}
+It'd be convenient to write this as
+\begin{equation}%\label{eq:}
+\<q_{k+1}|f(q)|q_{k}\> = f\left(\frac{q_{k}+q_{k+1}}{2}\right)\left(\prod_{j}\int\frac{dp^{j}_{k}}{2\pi}\right)\exp[i\sum_{j}p^{j}_{k}(q^{j}_{k+1}-q^{j}_{k})],
+\end{equation}
+for reasons that will hopefully be obvious soon.
+
+We will, for the sake of symmetry, consider a Hamiltonian which
+is purely a function of momenta. We introduce a complete set of
+momentum eigenstates to obtain
+\begin{equation}%\label{eq:}
+\<q_{k+1}|f(p)|q_{k}\> = \left(\prod_{j}\int\frac{dp^{j}_{k}}{2\pi}\right)f(p_{k})\exp[i\sum_{j}p^{j}_{k}(q^{j}_{k+1}-q^{j}_{k})]
+\end{equation}
+So if $\hat{H}$ contains only terms of the form $f(q)$ and
+$f(p)$, its matrix element can be written
+\begin{equation}\label{eq:matrixElementForHamiltonianGuessOne}
+\begin{split}
+&\<q_{k+1}|\hat{H}(q,p)|q_{k}\> = \\ &
+\left(\prod_{j}\int\frac{dp^{j}_{k}}{2\pi}\right)\hat{H}
+\left(\frac{q_{k+1}+q_{k}}{2},p_{k}\right)
+\exp[i\sum_{j}p^{j}_{k}(q^{j}_{k+1}-q^{j}_{k})].
+\end{split}
+\end{equation}
+
+In general, eq \eqref{eq:matrixElementForHamiltonianGuessOne} is
+wrong. We usually have mixed terms of order
+$\mathcal{O}(q^{\alpha}p^{\beta})$ in the Hamiltonian. So why
+bother considering Hamiltonians of such a form? Because we can
+pick a sufficiently nice ordering that makes it true in
+general. For example, this combination
+\begin{equation}%\label{eq:}
+\<q_{k+1}|\frac{1}{4}(q^{2}p^{2}+2qp^{2}q+p^{2}q^{2})|q_{k}\>=\left(\frac{q_{k+1}+q-{k}}{2}\right)^{2}\<q_{k+1}|p^{2}|q^{k}\>
+\end{equation}
+works out as desired. This is due to the $q$'s appearing
+symmetrically on the left hand side and the right hand side in
+just the right way. When this happens, we say that the
+Hamiltonian is ``\emph{Weyl ordered}''\index{Weyl Ordering}. Any
+Hamiltonian can be Weyl ordered by commuting $p$'s and $q$'s; in
+general this procedure will introduce extra terms which need to
+be put on the right hand side of eq \eqref{eq:matrixElementForHamiltonianGuessOne}.
+For more on Weyl ordering, see Ticciatic~\cite{Ticciati:1999qp}
+(specifically pages 335 et seq.).
+
+Supposing that from now on (unless explicitly states otherwise)
+$\hat{H}$ is Weyl ordered, our typical matrix element from \eqref{eq:factorsOfMatrixForHamiltonian}
+can be expressed as
+\begin{equation}%\label{eq:}
+\<q_{k+1}|e^{-i\varepsilon\widehat{H}}|q_{k}\> = \left(\prod_{j}\int\frac{dp^{j}_{k}}{2\pi}\right)\exp\left[-i\varepsilon\hat{H}\left(\frac{q_{k+1}+q_{k}}{2},p_{k}\right)\right]\exp[i\sum_{j}p^{j}_{k}(q^{j}_{k+1}-q^{j}_{k})].
+\end{equation}
+(We use the well known that that as $\epsilon\to0$,
+$\epsilon\ll1$.) To obtain $U(q_a,q_b;T)$ we multiply $N$ such
+factors together (one for each $k$) and integrate on our
+intermediate coordinates $q_{k}$:
+\begin{equation}%\label{eq:}
+\begin{split}
+U(q_0,q_N;T) &= \left(\prod_{j,k}\int
+dq^{j}_{k}\int\frac{dp^{j}_{k}}{2\pi}\right)\\
+&\times\exp\left[i\sum_{k}\left(\sum_{j}p^{j}_{k}(q^{j}_{k+1}-q^{j}_{k})-\varepsilon\hat{H}(\frac{q_{k+1}+q_{k}}{2},p_{k})\right)\right].
+\end{split}
+\end{equation}
+There is one momentum integral for each $k$ from 0 to $N-1$, and
+one coordinate integral for each $k$ from 1 to $N-1$.
+
+This expression, we deduce, is the discretized form of
+\begin{equation}\label{eq:functionalProductManyDimensions}
+U(q_a,q_b;T) = \left(\prod_{j}\int\mathcal{D}q(t)\mathcal{D}p(t)\right)\exp\left[i\int^{T}_{0}(\dot{q}^{i}p_{i}-H(q,p))dt\right],
+\end{equation}
+where the functions $q(t)$ are constrained at the endpoints, but
+the functions $p(t)$ are not. Note that we don't have any whacky
+constants in the integration measure $\mathcal{D}q$, unlike the
+situation in one dimension. The functional measure in eq
+\eqref{eq:functionalProductManyDimensions} is just the product of
+the standard integral over the phase space
+\begin{equation}%\label{eq:}
+\prod_{j}\int\frac{dq^{j}dp_{j}}{2\pi}
+\end{equation}
+at each point in time. We can conclude that eq
+\eqref{eq:functionalProductManyDimensions} is the most general
+formula for computing transition amplitudes via functional
+integration for practical purposes.
+
+%\subsection

@@ -1,0 +1,109 @@
+%%
+%% commutationRelations.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Jun  7 14:39:34 2009 Alex Nelson
+%% Last update Sun Jun  7 14:39:34 2009 Alex Nelson
+%%
+We have the operators $\widehat{X}$ and $\widehat{N}$ such that
+\begin{equation}%\label{eq:}
+[\widehat{N},\widehat{X}]=c\widehat{X}
+\end{equation}
+where $c$ is a scalar value. We have the eigenstates of
+$\widehat{N}$ such that
+\begin{equation}%\label{eq:}
+\widehat{N}|n\> = n|n\>
+\end{equation}
+where we have abused notation letting $|n\>$ be a vector and $n$
+be a scalar (the eigenvalue of the $|n\>$ vector). We see that
+\begin{subequations}
+\begin{align}
+\widehat{N}\widehat{X}|n\> &= \left(\widehat{X}\widehat{N}+[\widehat{N},\widehat{X}]\right)|n\>\\
+&=\left(\widehat{X}\widehat{N}+c\widehat{X}\right)|n\>\\
+&=\widehat{X}\widehat{N}|n\>+c\widehat{X}|n\>\\
+&=\widehat{X}n|n\>+c\widehat{X}|n\>\\
+&=(n+c)\widehat{X}|n\>.
+\end{align}
+\end{subequations}
+This means that if $|n\>$ is an eigenstate of $\widehat{N}$ with
+eigenvalue $n$, then $(\widehat{X}|n\>)$ is an eigenstate of
+$\widehat{N}$ with eigenvalue $n+c$. If $c>0$ then $n+c>n$, so
+the operator $\widehat{X}$ is called the ``\define{Creation Operator}''. 
+
+If $\widehat{N}$ is a physical observable, it's necessarily self
+adjoint. This implies that $c$ is real, since $n$ is real and
+$n+c$ is an eigenvalue of a self-adjoint operator. We should
+remember from linear algebra the eigenvalues of a self-adjoint
+operator is always real. The Hermitian adjoint of $\widehat{X}$
+satisfies
+\begin{equation}%\label{eq:}
+[\widehat{N},\widehat{X}^{\dag}]=-c\widehat{X}^{\dag}
+\end{equation}
+We call $\widehat{X}^\dag$ an ``\define{Annihilation Operator}''
+if $\widehat{X}$ is a creation operator.
+
+\begin{prop}
+Let $\widehat{A}$, $\widehat{B}$, $\widehat{C}$ be
+operators. Then
+\begin{equation}%\label{eq:}
+[\widehat{A},\widehat{B}\widehat{C}]=[\widehat{A},\widehat{B}]\widehat{C}+\widehat{B}[\widehat{A},\widehat{C}].
+\end{equation}
+\end{prop}
+\begin{proof}
+We see by direct computation
+\begin{subequations}
+\begin{align}
+[\widehat{A},\widehat{B}\widehat{C}]&=\widehat{A}\widehat{B}\widehat{C}-\widehat{B}\widehat{C}\widehat{A}\\
+\widehat{B}[\widehat{A},\widehat{C}]&=\widehat{B}(\widehat{A}\widehat{C}-\widehat{C}\widehat{A})
+\label{eq:eqTwo}\\
+[\widehat{A},\widehat{B}]\widehat{C}&=(\widehat{A}\widehat{B}-\widehat{B}\widehat{A})\widehat{C}\label{eq:eqThree}
+\end{align}
+\end{subequations}
+so when we add equation \eqref{eq:eqTwo} to equation \eqref{eq:eqThree} we get
+\begin{equation}%\label{eq:}
+\widehat{A}\widehat{B}\widehat{C}-\widehat{B}\widehat{C}\widehat{A}
+= [\widehat{A},\widehat{B}\widehat{C}]
+\end{equation}
+as desired.
+\end{proof}
+\begin{prop}\label{prop:vanishingCommutators}
+Let $\widehat{A}$, $\widehat{B}$ be operators. If their
+commutator vanishes
+\begin{equation}%\label{eq:}
+[\widehat{A},\widehat{B}] = 0
+\end{equation}
+then the two operators are equal up to a constant.
+\end{prop}
+\begin{proof}
+Trivial.
+\end{proof}
+\begin{prop}
+Given these two propositions and the commutations relations, we
+can find that
+\begin{equation}%\label{eq:}
+[\widehat{N},\widehat{X}\widehat{X}^\dag]=0.
+\end{equation}
+Or equivalently
+\begin{equation}%\label{eq:}
+\widehat{N}=\widehat{X}^{\dag}\widehat{X}
+\end{equation}
+up to some constant.
+\end{prop}
+\begin{proof}
+How to prove this? By direct computation
+\begin{subequations}
+\begin{align}
+[\widehat{N},\widehat{X}^\dag\widehat{X}]&=[\widehat{N},\widehat{X}^\dag]\widehat{X}+\widehat{X}^{\dag}[\widehat{N},\widehat{X}]\\
+&=(-c\widehat{X}^\dag)\widehat{X}+\widehat{X}^\dag(c\widehat{X})\\
+&=(c-c)\widehat{X}^\dag\widehat{X}\\
+&=0.
+\end{align}
+\end{subequations}
+This means, up to some constant and ordering,
+\begin{equation}%\label{eq:}
+\widehat{N}=\widehat{X}^\dag\widehat{X}
+\end{equation}
+just as desired.
+\end{proof}

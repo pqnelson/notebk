@@ -1,0 +1,9 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{Wise:2006kg}
+D.~K. Wise, ``{p-form electromagnetism on discrete spacetimes},''
+\href{http://dx.doi.org/10.1088/0264-9381/23/17/004}{{\em Class. Quant. Grav.}
+  {\bf 23} (2006)  5129--5176}.
+%%CITATION = CQGRD,23,5129;%%.
+
+\end{thebibliography}\endgroup

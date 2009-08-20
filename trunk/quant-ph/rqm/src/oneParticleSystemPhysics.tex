@@ -1,0 +1,74 @@
+%%
+%% oneParticleSystemPhysics.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jul 21 15:55:44 2009 Alex Nelson
+%% Last update Tue Jul 21 15:55:44 2009 Alex Nelson
+%%
+
+We're interested in a toy model of relativistic quantum
+mechanics, so we begin with a single particle. All we really
+need, truth be told, is a state space plus a Hamiltonian
+operator. We should remember, from Special Relativity, the
+energy-momentum four-vector $\widehat{p}_{\mu}$ has as its time component the
+Hamiltonian $\widehat{p}_{0}=\widehat{H}$. For convenience, we'll
+work in the momentum space with the momentum operator eigenbasis
+\begin{equation}%\label{eq:}
+\widehat{p}_{m}|\overline{k}\>=k_{m}|\overline{k}\>
+\end{equation}
+We assume the states are normalized thus
+\begin{equation}%\label{eq:}
+\<\overline{k}|\overline{k}'\>=\delta^{(3)}(\overline{k}-\overline{k}').
+\end{equation}
+This means that the length of a ket is undefined. It is,
+nonetheless, a normalization suitable for integration over
+momentum. As an added bonus, we also get the resolution of the
+identity
+\begin{equation}%\label{eq:}
+\mathbf{1}=\int\,|\overline{k}\>\,\<\overline{k}|\,d^{3}\overline{k}
+\end{equation}
+
+Since energy-momentum is a four-vector, we demand that
+\begin{equation}%\label{eq:}
+\widehat{p}^{\mu}\widehat{p}_{\mu} = \widehat{H}^{2}-|\widehat{p}_{m}\widehat{p}^{m}|
+\end{equation}
+needs to be constant on the orbits of the Poincar\'e
+group. Further if $|\overline{k}\>$ and $|\overline{k}\,'\>$ are
+two states of a single particle, then there exists a Lorentz
+boost from one to the other (up to scale). Hence we assume the
+existence of a scalar quantity $\mu$ (the particle mass) which
+satisfies
+\begin{equation}%\label{eq:}
+(\widehat{H}^{2} - \widehat{p}_{m}\widehat{p}^{m})|\overline{k}\>
+= \mu^{2}|\overline{k}\>
+\end{equation}
+This implies that the Hamiltonian operator $\widehat{H}$ is
+diagonal in the momentum eigenbasis (i.e. the basis of
+eigenstates of the momentum operator):
+\begin{equation}%\label{eq:}
+\widehat{H}|\overline{k}\> = \left(\|\overline{k}\|^{2}+\mu^{2}\right)^{1/2}|\overline{k}\>
+\end{equation}
+The eigenvalues of the Hamiltonian operator come up enough times
+that we introduce the shorthand for it:
+\begin{equation}%\label{eq:}
+\omega(\overline{k}) \stackrel{\text{def}}{=} \left(\|\overline{k}\|^{2}+\mu^{2}\right)^{1/2}
+\end{equation}
+(This should be vaguely reminiscent of the de Broglie relations
+$E=\hbar\omega$.)
+
+\begin{rmk}
+Observe that this entire scheme we've devised is equivalent to
+taking the limit of the state space for a cube of side $L$ under
+periodic boundary conditions, i.e. the particle in a box
+situation. In such a cube, we should recall the spectrum of the
+momentum operator is discrete and the normalization is given by
+the Kronecker delta:
+\begin{equation}%\label{eq:}
+\overline{k}=\frac{2\pi}{L}(n_x,n_y,n_z),\quad\text{and}\quad\<\overline{k}|\overline{k}\,'\>=\delta_{\,\overline{k}\, ,\,\overline{k}\,'}
+\end{equation}
+This observation is taken advantage of when deriving the
+differential transition probability per unit time for particle
+scattering.
+\end{rmk}

@@ -1,0 +1,191 @@
+%%
+%% positionOperator.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 25 14:17:02 2009 Alex Nelson
+%% Last update Sat Jul 25 14:17:02 2009 Alex Nelson
+%%
+
+The astute reader would probably have realized by now we
+``implemented'' relativity in the momentum space. The question
+that naturally presents itself is ``Why not try to implement
+relativity in position-space, as we usually do when introducing
+relativity classically?'' In this section, we'll answer that
+question. 
+
+The short answer is that it turns out to be inconsistent. We can
+sketch out the general scheme and its problem in this paragraph
+too. Consider putting a particle (of mass $m$) into a box whose
+sides are small compared to the Compton wavelength $\lambda$,
+then the uncertainty in position satisfies
+\begin{equation}%\label{eq:}
+\Delta x<<<\lambda
+\end{equation}
+and the uncertainty in momentum satisfies
+\begin{equation}%\label{eq:}
+\Delta p>>> m.
+\end{equation}
+But this makes the range of energies so large that pair
+production becomes possible. Hence, from first principles, the
+position of a one-particle system is not so well defined. We'll
+show (slightly more rigorously) that the notion of Lorentz
+causality is violated by measuring the position operator.
+
+We first set up the axioms for (properties satisfied by) the
+position operator $\widehat{x}^{m}$. We want:
+\begin{description}
+\item[Axiom 1] $\widehat{x}=\widehat{x}^{\dag}$ (i.e. it's
+  self-adjoint, so it has real eigenvalues);
+\item[Axiom 2] If $\Delta_{a}$ is a spatial translation, then
+  $U(\Delta_{a})^{\dag}\widehat{x}^{m}U(\Delta_{a}) = \widehat{x}^{m}+a^{m}$
+\item[Axiom 3] If $R$ is a spatial rotation, then
+  $U(R)^{\dag}\widehat{x}^{m}U(R) = {R^{m'}}_{m}\widehat{x}^{m}$.
+\end{description}
+From axiom 2 and $U(\Delta_{a}) = \exp(ia^{m}\widehat{P}_{m})$,
+we deduce
+\begin{equation}%\label{eq:}
+e^{ia^{m}\widehat{p}_{m}}\widehat{x}^{n}e^{-ia^{m}\widehat{p}_{m}}=\widehat{x}^{n}+a^{n}.
+\end{equation}
+(Note that the sign in the exponent reflects the relationship
+between the Lorentz dot product and the Euclidean dot product of
+3-vectors.) Differentiating both sides with respect to the
+component $a^{n}$ of $a$ then setting $a^{m}=\vec{0}$, we recover
+the usual commutation relations:
+\begin{equation}\label{eq:recoveryCanonicalCommutationRelations}
+[i\widehat{p}_{n},\widehat{x}^{m}] = {\delta^{m}}_{n}.
+\end{equation}
+
+\begin{comment}
+Although $\widehat{p}_{n}$ is unbdefined on $|x^{m}\>$, the
+axioms for the position operator imply that the exponential
+$\exp(-ia^{m}\widehat{p}_{m})$ must be defined on these states:
+\begin{equation}%\label{eq:}
+e^{-ia^{m}\widehat{p}_{m}}|x^{n}\> = |x^{n}+a^{n}\>.
+\end{equation}
+Also, if $\<\overline{k}|\overline{x}=\overline{0}\>=1$, then
+$\<\overline{k}|\overline{a}\>=\exp(-ia^{m}k_{m})$. 
+\end{comment}
+
+\begin{rmk}
+The position operator is ``essentially'' unique. That is to say,
+it's unique up to unitarity. Suppose we have two operators
+$\widehat{y}^{m'}$, $\widehat{x}^{m}$ that satisfy our
+axioms. We'll demonstrate that there exists a unitary operator
+$U$ such that $\widehat{y}^{m}=U^{\dag}\widehat{x}^{m}U$.
+
+Assume that $\widehat{y}^{m}$ is the position operator with
+respect to the basis $|\overline{k}\>$. The canonical commutation
+relations eq \eqref{eq:recoveryCanonicalCommutationRelations}
+shows that $\widehat{p}_{n}$ commutes with
+$\widehat{x}^{n}-\widehat{y}^{n}$. Therefore, supposing any operator can
+be expressed using $\widehat{x}^{m}$ and $\widehat{p}_{n}$, we
+have
+\begin{equation}%\label{eq:}
+\widehat{y}^{m} = \widehat{x}^{m}+f^{m}(\widehat{p}).
+\end{equation}
+Axiom 3 however implies that $f^{m}(\widehat{p})\sim
+g(\|\widehat{p}\|^{2})\widehat{p}_{m}$. This vector-valued
+function of a vector has zero curl and thus may be written as the
+gradient of a scalar function. Lets denote this scalar function
+as $\phi(\|\widehat{p}\|^{2})$ where 
+\begin{equation}%\label{eq:}
+\phi(\xi)\stackrel{\text{def}}{=}\int^{\xi}_{0}g(\eta)d\eta
+\end{equation}
+If we define our new kets using a unitary operator $U$ to change
+phases
+\begin{equation}%\label{eq:}
+|\overline{k}\>_{\text{new}}\stackrel{\text{def}}{=}U|\overline{k}\>\stackrel{\text{def}}{=}\exp(-i\phi(\|\overline{k}\|^{2}))|\overline{k}\>,
+\end{equation}
+then since
+\begin{equation}%\label{eq:}
+\<\psi'|\widehat{y}^{m}|\psi\> = {}_\text{new}\<\psi'|U\widehat{y}^{m}U^{\dag}|\psi\>_\text{new}
+\end{equation}
+the new operators are $U\widehat{y}^{m}U^{\dag}$. Writing
+$U^{\dag}=e^{A}$ we find
+\begin{subequations}
+\begin{align}
+U\widehat{y}^{m}U^{\dag} &= U\left(U^{\dag}\widehat{y}^{m}+[\widehat{y}^{m},U^{\dag}]\right)\\
+&= \widehat{y}^{m} +
+U[\widehat{y}^{m},1+A+\frac{1}{2}A^{2}+\cdots]\\
+&= \widehat{y}^{m} + U(1+A+\frac{1}{2}A^{2}+\cdots)[\widehat{y}^{m},A]\\
+&= \widehat{y}^{m} +
+[\widehat{y}^{m},i\phi(\|\widehat{p}\|^{2})]\\
+&= \widehat{y}^{m} - g(\|\widehat{p}\|^{2})\widehat{p}_{m}\\
+&= \widehat{x}^{m}.
+\end{align}
+\end{subequations}
+We therefore conclude that any two sets of position operators
+$\widehat{x}^{m}$, $\widehat{y}^{n}$ are related by a change of
+basis. We also note since $U$ is a function of the momentum
+operators, the new momentum operators $U\widehat{p}_{m}U^{\dag}$
+are precisely the old ones $\widehat{p}_{m}$. This shows that the
+axioms determining the position operator uniquely up to a choice
+of phase in the momentum eigenstates, and this concludes our remark.
+\end{rmk}
+
+The simplest inconsistency emerges when we consider a state
+initially localized at the origin and see whether it can be
+detected outside the forward lightcone of the origin.
+
+Suppose we have a position operator $\widehat{x}^{m}$. Let
+$|\overline{x}\>$ be a basis of position eigenstates. Then, form
+our knowledge of nonrelativistic quantum mechanics, we can choose
+the normalization of these kets to be such that
+\begin{equation}%\label{eq:}
+\<\overline{x}|\overline{k}\> = \exp(i\overline{x}\cdot\overline{k}).
+\end{equation}
+Now consider the evolution $|\psi\>$ of a state $|\psi_{0}\>$
+initially localized at the origin:
+\begin{equation}%\label{eq:}
+\psi_{0}(\overline{x})\stackrel{\text{def}}{=}(2\pi)^{3}\delta^{(3)}(\overline{x})\,\Rightarrow\,\widehat{\psi}_{0}(\overline{k})=1\,\Rightarrow\,|\psi_{0}\>=\int|k\>d^{3}\overline{k},
+\end{equation}
+where $\widehat{\psi}_{0}$ is the Fourioer transform of
+$\psi_{0}$. The evolution of this state is given by:
+\begin{subequations}
+\begin{align}
+\psi(t,\overline{x}) &= \<\overline{x}|e^{-iHt}|\psi_{0}\>\\
+&= \int \<\overline{x}|e^{-iHt}|\overline{k}\>d^{3}\overline{k}\\
+&= \int
+\<\overline{x}|e^{-i\omega(\overline{k})t}|\overline{k}\>d^{3}\overline{k}\\
+&= \int e^{-i\omega(\overline{k})t}e^{i\overline{x}\cdot\overline{k}}d^{3}\overline{k}.
+\end{align}
+\end{subequations}
+If the theorey is relativistic, then a state initially localized
+at the origin should have zero amplitude outside the lightcone
+(otherwise, there is a positive probability that something could
+travel faster than light). We therefore proceed to estimate
+$\psi(t,\overline{x})$ outside the light cone. Using spherical
+coordinates, letting $k=\|\overline{k}\|$, $r=\|\overline{x}\|$,
+we find that
+\begin{subequations}
+\begin{align}
+\psi(t,\overline{x}) &=
+\int^{1}_{-1}d(\cos\theta)\int^{2\pi}_{0}d\phi\int^{\infty}_{0}k^{2}e^{-it\sqrt{k^{2}+\mu^{2}}}e^{ikr\cos\theta}dk\\
+&=\frac{2\pi}{ir}\int^{\infty}_{0}ke^{-it\sqrt{k^{2}+\mu^{2}}}(e^{ikr}-e^{-ikr})dk\\
+&=\frac{2\pi}{ir}\int^{\infty}_{-\infty}ke^{-it\sqrt{k^{2}+\mu^{2}}}e^{ikr}dk.
+\end{align}
+\end{subequations}
+We can use complex analysis to evaluate this integral when $r>t$,
+we deform the contour of integration from $\mathbb{R}$ to the
+first principal branch cut from $i\mu$ to $i\infty$. Substituting
+$k=iz$, we find
+\begin{equation}%\label{eq:}
+\psi(t,\overline{x}) = \frac{4\pi i}{r}\int^{\infty}_{\mu}z\sinh(t\sqrt{z^{2}-\mu^{2}})e^{-zr}dz
+\end{equation}
+which is clearly nonzero.
+
+\begin{rmk}
+The integral we've been manipulating is actually divergent. This
+is a consequence of the extreme nature of the initial state
+$|\psi_{0}\>$. If we had started with a physical state instaead
+of a position eigenstate, there would be no convergence
+problem. The moral of the story is to treat integrals which arise
+in such situations as defining distributions.
+\end{rmk}
+
+The outcome is that a position operator is inconsistent with
+relativity. This compels us to find another way of modeling
+localization of events. In field theory, we do this by making
+observable operators dependent on position in spacetime.

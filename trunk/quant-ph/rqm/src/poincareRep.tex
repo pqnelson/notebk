@@ -1,0 +1,104 @@
+%%
+%% poincareRep.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jul 22 12:09:17 2009 Alex Nelson
+%% Last update Wed Jul 22 12:09:17 2009 Alex Nelson
+%%
+
+The Lorentz transformation is usually ``represented'' by a matrix
+$\Lambda$ which, when written explicitly, is
+\begin{equation}%\label{eq:}
+(\Lambda x)^{\mu} = {\Lambda^{\mu}}_{\nu}x^{\nu}
+\end{equation}
+where Einstein convention is used (implicit sum over $\nu$
+occurs). We have that the matrix ${\Lambda^{\mu}}_{\nu}$ must
+satisfy
+\begin{equation}%\label{eq:}
+{\Lambda^{\lambda}}_{\mu}{\Lambda_{\lambda}}_{\nu} = \eta_{\mu\nu}
+\end{equation}
+where $\eta_{\mu\nu}$ is the Minkowski metric (metric for flat
+spacetime).
+
+Now, the Poincar\'e group is the set of Lorentz transformations
+and space-time translations, so the element of the group would be
+$(\Lambda,a)$ such that
+\begin{equation}%\label{eq:}
+x^{\mu}\to y^{\mu} = {\Lambda^{\mu}}_{\nu}x^{\nu}+a^{\mu}.
+\end{equation}
+The group multiplication law is then just
+\begin{equation}%\label{eq:}
+(\Lambda_{2},a_{2})(\Lambda_{1},a_{1}) = (\Lambda_{2}\Lambda_{1},\Lambda_{2}a_{1}+a_{2}).
+\end{equation}
+We are interested in irreducible unitary representations $U(\cdot)$ of our
+group, all we need to worry about are the generators.
+
+The translations, rotations, and boosts of the Poincar\'e group
+must act on the space of states. A Poincar\'e group element $g$
+acts as a unitaruy operator $U(g)$ on the state space. The action
+must satisfy a multipication condition
+\begin{equation}%\label{eq:}
+U(gh)=U(g)U(h)
+\end{equation}
+for all $g,h$ in the Poincar\'e group.
+
+Translation of spacetime by a four-vector $a^{\mu}$ is defined by
+\begin{equation}%\label{eq:}
+\Delta_{a}(x) = x+a.
+\end{equation}
+Translation of a state $\psi$, on the other hand, should be
+moving the graph by $a$. This means that
+$\Delta_{a}\psi(x)=\psi(x-a)$. The unitary representation
+$U(\Delta_{a})$ of $\Delta_{a}$ must thus be defined by
+\begin{equation}%\label{eq:}
+U(\Delta_{a})|\psi\>=|\Delta_{a}\psi\>.
+\end{equation}
+We'd like to find an expression for $U(\Delta_a)$ in terms of the
+energy-momentum four-vector $\widehat{p}_{\mu}$.
+
+Evolution in time is translation of the observer forward in time,
+or (equivalently) translation of the system backwards in time:
+\begin{equation}%\label{eq:}
+\exp(-it\widehat{H})|\psi(x)\> = |\psi(x_{0}+t,\overline{x})\>.
+\end{equation}
+Let $\tau^{\mu}=(-t,\vec{0})$ be a four-vector, then we can
+rewrite our translation in time as
+\begin{equation}%\label{eq:}
+\exp(i\tau^{\mu}\widehat{p}_{\mu})|\psi\> = |\Delta_{\tau}\psi\>.
+\end{equation}
+Lorentz invariance implies that this equation is true whenever
+$\tau$ is timelike, and the additivity of translations then shows
+this to be true for all four-vectors $\tau$. From this definition
+of $U(\Delta_{a})$ we can therefore deduce that
+\begin{equation}%\label{eq:}
+U(\Delta_a) = \exp(ia^{\mu}\widehat{p}_{\mu}).
+\end{equation}
+
+Although this unitary representation is derived in the
+position-space formulation of quantum mechanics, it works equally
+well in the momentum-space formulation. We can deduce that the
+unitary representation of translations on momentum eigenstates is
+given by
+\begin{equation}%\label{eq:}
+U(\Delta_{a})|\overline{k}\> =
+\exp(ia^{\mu}\widehat{p}_{\mu})|\overline{k}\> = \exp(ia^{\mu}k_{\mu})|\overline{k}\>
+\end{equation}
+where $k_{0} = \omega(\overline{k})$.
+
+\begin{rmk}
+Recall Taylor's theorem in real analysis can be formulated as
+\begin{equation}%\label{eq:}
+f(x+h) =
+\left(\sum_{n=0}^{\infty}h^{n}\frac{d^{n}}{dx^{n}}\right)f(x) = \exp\left(h\frac{d}{dx}\right)f(x)
+\end{equation}
+which should look familiar: we just deduced the unitary
+representation of spacetime translations should be
+\begin{equation}%\label{eq:}
+\exp(i\tau^{\mu}\widehat{p}_{\mu})|\psi\> = U(\Delta_{\tau})|\psi\>.
+\end{equation}
+If we don't distinguish $|\psi\>$ from $\psi(x)$, we see that
+Taylor's theorem guarantees our representation to be of spacetime
+translations.
+\end{rmk}

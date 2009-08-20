@@ -1,0 +1,61 @@
+%%
+%% algebra.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Aug  7 12:32:43 2009 Alex Nelson
+%% Last update Fri Aug  7 12:32:43 2009 Alex Nelson
+%%
+One of the basic algebraic tools:
+\begin{defn}%\label{defn:}
+Let $S$ be some set. A \define{Law of Composition}
+$f:S\times{S}\to{S}$ consists of
+\begin{itemize}
+\item a pair of sets $\operatorname{dom}(f)=S\times{S}$, and $\operatorname{cod}((f)=S$
+\end{itemize}
+equipped with
+\begin{itemize}
+\item a set $f\subseteq\operatorname{dom}(f)\times\operatorname{cod}(f)$
+\end{itemize}
+such that
+\begin{itemize}
+\item for each $x\times{y}\in\operatorname{dom}(f)$, there is a corresponding
+  $z\in{\operatorname{cod}(f)}$ such that $(x\times{y},z)\in{f}$.
+\end{itemize}
+\end{defn}
+We can use it to introduce various mathematical objects, e.g.
+\begin{defn}%\label{defn:}
+A \define{Monoid} consists of
+\begin{itemize}
+\item a set $M$
+\end{itemize}
+equipped with
+\begin{itemize}
+\item a law of composition $*:M\times{M}\to{}M$
+\item an identity element $e\in{M}$
+\end{itemize}
+such that
+\begin{itemize}
+\item the law of composition is associative,
+  i.e. $(x*y)*z=x*(y*z)$ for all $x,y,z\in{M}$;
+\item closure under the law of composition, i.e. $(x*y)\in{M}$
+  for all $x,y\in{M}$;
+\item the identity satisfies $e*x=x*e=x$ for all $x\in{M}$.
+\end{itemize}
+\end{defn}
+
+\begin{defn}%\label{defn:}
+A \define{Group} $G$ consists of
+\begin{itemize}
+\item a monoid $G$
+\end{itemize}
+equipped with
+\begin{itemize}
+\item an inversion operator $(\cdot{})^{-1}:G\to{G}$
+\end{itemize}
+such that
+\begin{itemize}
+\item $x^{-1}*x=x*x^{-1}=e$ for all $x\in{G}$.
+\end{itemize}
+\end{defn}

@@ -1,0 +1,58 @@
+%%
+%% gamma.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 10 11:35:15 2009 Alex Nelson
+%% Last update Wed Jun 10 11:35:15 2009 Alex Nelson
+%%
+So for $n$ a positive integer, we have
+\begin{equation}%\label{eq:}
+\Gamma(n)=(n-1)!
+\end{equation}
+\subsection{List of Properties of the Gamma Function}
+Remember that it is defined as
+\begin{equation}%\label{eq:}
+\Gamma(z)=\int^{\infty}_{0}t^{z-1}e^{-t}dt.
+\end{equation}
+or equivalently as an infinite product
+\begin{equation}%\label{eq:}
+\Gamma(z) = \frac{1}{ze^{\gamma z}\left[\prod^{\infty}_{n=1}\(1+\frac{z}{n}\)e^{-z/n}\right]}
+\end{equation}
+where
+\begin{equation}%\label{eq:}
+\begin{split}
+\gamma &=
+\lim_{n\to\infty}\(1+\frac{1}{2}+\cdots+\frac{1}{n}-\ln(n)\)\\
+&\approx 0.577215664901532860606512090082
+\end{split}
+\end{equation}
+
+It has the following properties:
+\begin{enumerate}
+\item $\Gamma$ is meromorphic with simple poles at $0,$ $-1,$
+  $-2,$ \ldots
+\item $\ds\Gamma(z+1)=z\Gamma(z)$ for $z\neq 0,-1,-2,\ldots$
+\item $\Gamma(n+1)=n!$ for $n=0,1,\ldots$
+\item $\ds \Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)}$
+\item $\ds \Gamma(z)\neq 0$ for all $z$
+\item $\ds \Gamma\(\frac{1}{2}\)=\sqrt{\pi}$,
+  $\ds\Gamma\(n+\frac{1}{2}\)=\frac{1\cdot3\cdot(\cdots)\cdot(2n-1)}{2n}\sqrt{\pi}$
+\item $\ds\Gamma(z)=\frac{1}{z}\prod^{\infty}_{n=1}\left[\(1+\frac{1}{n}\)^z\(1+\frac{z}{n}\)^{-1}\right]$
+\item
+  $\ds\Gamma(z)=\lim_{n\to\infty}\frac{n!n^z}{z(z+1)(\cdots)(z+n)}$
+\item $\ds\Gamma(z)\Gamma\(z+\frac{1}{n}\)(\cdots)\Gamma\(z+\frac{n-1}{n}\)=(2\pi)^{(n-1)/2}n^{(1/2)-nz}\Gamma(nz)$
+\item $\ds 2^{2z-1}\Gamma(z)\Gamma\(z+\frac{1}{2}\)=\sqrt{\pi}\Gamma(2z)$
+\item The residue of $\Gamma(z)$ at $z=-m$ is equals
+  $(-1)^{m}/m!$
+\item (Euler's Integral) $\ds \Gamma(z)=\int^{\infty}_{0}t^{z-1}e^{-t}dt$ for $\re(z)>0$. The
+  convergence is uniform and absolute for
+  $-\pi/2+\delta\leq\arg(z)\leq\pi/2+\delta$ ($\delta>0$) and for
+  $\varepsilon\leq|z|\leq R$ where $0<\varepsilon<R$.
+\item $\ds\frac{\Gamma'(z)}{\Gamma(z)}=-\gamma-\frac{1}{z}+\sum_{n=1}^{\infty}\(\frac{1}{n}-\frac{1}{z+n}\)=\int^{\infty}_{0}\(\frac{e^{-t}}{t}-\frac{e^{-zt}}{1-e^{-t}}\)dt.$
+\item $\ds \pi^{-z/2} \; \Gamma\left(\frac{z}{2}\right) \zeta(z) = \pi^{-\frac{1-z}{2}} \; \Gamma\left(\frac{1-z}{2}\right) \; \zeta(1-z).$
+(Where $\zeta(s)$ is the Riemann zeta function)
+\item $\ds \zeta(z) \; \Gamma(z) = \int_{0}^{\infty} \frac{u^{z-1}}{e^u - 1} \; du $ which holds for $\re(z)>1$.
+\end{enumerate}
+

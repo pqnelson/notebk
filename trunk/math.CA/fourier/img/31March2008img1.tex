@@ -1,0 +1,23 @@
+%%
+%% 31March2008img1.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Dec 17 12:41:25 2008 Alex Nelson
+%% Last update Wed Dec 17 12:41:25 2008 Alex Nelson
+%% 2.1875in
+\setlength{\unitlength}{0.0125in}
+\begin{picture}(175,50)(0,-20)
+\thinlines
+\put(20,20){\circle{9}} % one end of the rod
+\put(150,20){\arc{10}{5}{1}} % the other end of the rod
+\drawline(0,0)(165,0) % the x axis
+\drawline(21,24)(152,25) % the top of the rod
+\drawline(21,16)(152,15) % the bottom of the rod
+\dottedline{3}(20,16)(20,0) % the dashed bit to $x=0$
+\dottedline{3}(152,16)(152,0) % dashed bit to $x=L$
+\put(17,-10){\makebox(0,0)[lb]{\raisebox{0pt}[0pt][0pt]{\twltt $0$}}}
+\put(147,-10){\makebox(0,0)[lb]{\raisebox{0pt}[0pt][0pt]{\twltt $L$}}}
+\put(170,-3){\makebox(0,0)[lb]{\raisebox{0pt}[0pt][0pt]{\twltt $x$}}}
+\end{picture}

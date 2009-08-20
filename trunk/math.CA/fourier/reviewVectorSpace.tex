@@ -1,0 +1,87 @@
+%%
+%% reviewVectorSpace.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Dec 17 14:54:08 2008 Alex Nelson
+%% Last update Wed Dec 17 14:54:08 2008 Alex Nelson
+%%
+%%\section{A Review of Vector Spaces}\index{Vector Space}
+Remember that the real numbers (denoted as $\mathbb{R}$) and
+the complex numbers (denoted as $\mathbb{C}$) are usually
+the scalars we work with in linear algebra (there are other
+neurotic examples that mathematicians love, but since this
+is for physicists, we won't examine them). We will generally
+call this set of scalars, equipped with scalar
+multiplication and scalar addition, a
+``\textbf{field}''\index{Scalar Field}. We
+will denote a generic field of scalars as $\mathbb{F}$.
+
+Now, a \textbf{vector space} $V$ is always given as being ``over'' a
+field of scalars $\mathbb{F}$. It is equipped with only two
+operations:
+\begin{enumerate}\index{Vector Space!Axioms}
+\item Vector Addition, $+:V\times V\to V$ which is denoted
+  as $\mathbf{v}+\mathbf{w}$, where
+  $\mathbf{v},\mathbf{w}\in V$,
+\item Scalar Multiplication, $*:\mathbb{F}\times V\to V$,
+  denoted usually by $\alpha\mathbf{v}$ for all
+  $\alpha\in\mathbb{F}$ and $\mathbf{v}\in V$
+\end{enumerate}
+It \emph{DOES NOT} have a cross product, or a dot product,
+or any other sort of fun stuff. These \emph{ARE NOT}
+properties of a vector space. The \emph{ONLY} properties are
+scalar multiplication and vector addition. 
+
+We need to specify several properties of vector addition and
+scalar multiplication. There are four axioms of vector
+addition
+\begin{enumerate}\index{Vector Space!Vector Addition}
+\item Vector addition is associative: for all
+  $\mathbf{u},\mathbf{v},\mbf{w}\in V$, we have
+  $\mbf{u}+(\mbf{v}+\mbf{w})=(\mbf{u}+\mbf{v})+\mbf{w}$;
+\item Vector Addition is commutative: for all
+  $\mbf{v},\mbf{w}\in V$, we have
+  $\mbf{v}+\mbf{w}=\mbf{w}+\mbf{v}$;
+\item Vector addition has an identity element: there exists
+  an element $\mbf{0}\in V$ (dubbed the \textbf{zero
+    vector}) such that $\mbf{v}+\mbf{0}=\mbf{v}$ for all
+  $\mbf{v}\in V$;
+\item Vector Addition has inverse elements: For all
+  $\mbf{v}\in V$ there exists an element $\mbf{w}\in V$,
+  called the \textbf{additive inverse} of $\mbf{v}$, such
+  that $\mbf{v}+\mbf{w}=\mbf{0}$.
+\end{enumerate}
+Now, it is important to note that the zero vector is
+unique. Observe a short proof: suppose we have two zero
+vectors $\mbf{0}$ and $\widetilde{\mbf{0}}$, then for some
+$\mbf{v}$ and its additive inverse $\mbf{w}$ we have
+\begin{subequations}
+\begin{align}
+\mbf{v}+\mbf{w} &= \mbf{0} \\
+&= \widetilde{\mbf{0}} \\
+\Rightarrow \mbf{0} &= \widetilde{\mbf{0}}
+\end{align}
+\end{subequations}
+Which implies the uniqueness of the zero vector.
+
+There are similarly four axioms of scalar multiplication:
+\begin{enumerate}\index{Vector Space!Scalar Multiplication}
+\item Distributivity holds forscalar multiplication over
+  vector addition:
+  $\alpha(\mbf{v}+\mbf{w})=\alpha\mbf{v}+\alpha\mbf{w}$ for
+  all $\alpha\in\mathbb{F}$, $\mbf{v},\mbf{w}\in V$;
+\item Distributivity holds for scalar multiplication over
+  field addition (ie. adding two scalars and multiplying by
+  their sum):
+  $(\alpha+\beta)\mbf{v}=\alpha\mbf{v}+\beta\mbf{w}$ for all
+  $\alpha,\beta\in\mathbb{F}$ and $\mbf{v}\in V$.
+\item Scalar multipication is compatible with multipocation
+  in the sense of the field of scalars:
+  $\alpha(\beta\mbf{v})=(\alpha\beta)\mbf{v}$ for all
+  $\alpha,\beta\in\mathbb{F}$ and $\mbf{v}\in V$.
+\item Scalar multiplication has an identity element:
+  $\mbf{1}\mbf{v}=\mbf{v}$ for all $\mbf{v}\in V$ and the
+  multiplicative identity of $\mathbb{F}$: $\mbf{1}$. 
+\end{enumerate}
