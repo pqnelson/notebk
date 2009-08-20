@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fly}[2009/08/06 Customizations to make the style superfly]
+
+\usepackage{amsmath,amssymb,amsfonts,amscd}
+\RequirePackage{amsthm}
+\RequirePackage{framed}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+\usepackage{comment}
+\usepackage[colorinlistoftodos, shadow]{todonotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We customize theorem styles...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{Defn}{Definition}
+\newtheorem{Thm}[Defn]{Theorem}
+\newtheorem{rmk}{Remark}
+\newtheorem{Lem}[Defn]{Lemma}
+\newtheorem{Cor}[Defn]{Corollary}
+\newtheorem{ex}{Example}
+\newtheorem{nonex}[ex]{NON-Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{sch}{Scholium}
+\newtheorem{axm}{Axiom}
+\newtheorem*{prob}{Problem}
+
+\newenvironment{defn}{\noindent\begin{Defn}\noindent}{\end{Defn}}
+%\newenvironment{defn}{\begin{framed}\begin{Defn}}{\end{Defn}\end{framed}}
+\newenvironment{thm}{\begin{framed}\begin{Thm}}{\end{Thm}\end{framed}}
+\newenvironment{lem}{\begin{framed}\begin{Lem}}{\end{Lem}\end{framed}}
+\newenvironment{cor}{\begin{framed}\begin{Cor}}{\end{Cor}\end{framed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We also customize commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\iso}{\cong}
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+
+\newcommand{\define}[1] {\textbf{#1}\index{#1}}
+\newcommand{\cov}[2]{{#1}_{#2}}
+\newcommand{\contrav}[2]{{#1}^{#2}}
