@@ -1,0 +1,66 @@
+%%
+%% sets.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun May 31 13:51:53 2009 Alex Nelson
+%% Last update Sun May 31 13:51:53 2009 Alex Nelson
+%%
+
+Just a review of a few properties of sets, and some basic
+approaches to proofs.
+
+\begin{prop}\label{prop:emptySets}
+  For any set $A$
+\begin{enumerate}
+\item The empty set is a subset of $A$:
+\begin{equation*}
+  \emptyset\subseteq A,\qquad\forall A.
+\end{equation*}
+\item The union of $A$ with the empty set is $A$
+\begin{equation*}
+  A\cup\emptyset=A,\qquad\forall A.
+\end{equation*}
+\item The intersection of $A$ with the empty set is the empty et
+\begin{equation*}%\label{eq:}
+  A\cap\emptyset=\emptyset,\qquad\forall A.
+\end{equation*}
+\item The Cartesian product of $A$ and the empty set is empty
+\begin{equation*}%\label{eq:}
+  A\times\emptyset=\emptyset,\qquad\forall A.
+\end{equation*}
+\item The only subset of the empty set is itself
+\begin{equation*}%\label{eq:}
+  A\subseteq\emptyset\Rightarrow A=\emptyset,\qquad\forall A
+\end{equation*}
+\item The power set of the empty set is a set containing only the
+  empty set
+\begin{equation*}%\label{eq:}
+  2^{\emptyset}=\{\emptyset\}
+\end{equation*}
+\item The empty set has cardinality zero (it has zero
+  elements). Moreover, the empty set is finite
+\begin{equation*}%\label{eq:}
+  |\emptyset|=0.
+\end{equation*}
+\end{enumerate}
+\end{prop}
+
+Given some statement
+\begin{equation}%\label{eq:}
+\text{If }P,\text{ then }Q.
+\end{equation}
+its \define{contrapositive} is 
+\begin{equation}%\label{eq:}
+\text{If }Q\text{ is not true, then }P\text{ is not true.} 
+\end{equation}
+Its \define{converse} is 
+\begin{equation}%\label{eq:}
+\text{If }P\text{, then }Q.
+\end{equation}
+Sometimes it's easier to prove the converse than to prove a given
+proposition.
+
+To show that two sets $A, B$ are equal, we need to show $A\subset
+B$ and $B\subset A$.
