@@ -1,0 +1,216 @@
+%%
+%% 31March2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Dec 17 12:33:29 2008 Alex Nelson
+%% Last update Sat Jan  3 16:35:11 2009 Alex Nelson
+%%
+
+\begin{ex}{(Diffusion of heat in solid body)}
+
+The initial motivation behind Fourier series was to solve the
+heat equation. The specific problem was trying to model the flow
+of heat in a thin metal rod, such as the one seen in figure
+\eqref{fig:31March2008img1}. The equation describing it requires
+us first to consider several variables. For simplicity, consider
+only a one dimensional ``thing'' insulated metal rod with length
+$L$. 
+
+\begin{figure}[h!]
+  \begin{center}
+    \input{$HOME/book/fourier/img/31March2008img1.tex}
+  \end{center}
+\caption{A thin insulated metal rod of length $L$}
+\label{fig:31March2008img1}
+\end{figure}
+
+We can describe the problem with some conditions\index{Heat Equation}
+\begin{subequations}
+\begin{align}
+u(x,t) &= \text{temperature at point $x$ and time $t$} \\
+u(x,0) &= f(x)\quad (\text{temperature at time $t=0$, initial
+  condition}) \\
+u(0,t) = u(L,t) &= 0 \quad(\text{boundary condition})
+\end{align}
+\end{subequations}
+Observe that we hold the temperature at the endpoints fixed to be
+zero at all time. This is weird physically, because we rarely see
+such a system. So we can describe the heat flow in a thin metal
+rod by the equation
+\begin{equation}\label{eq:31March2008:HeatEqn}
+\frac{\partial u}{\partial t} = k\frac{\partial^{2}u}{\partial
+  x^{2}}
+\end{equation}
+where $k$ is the diffusitivity of the rod (how quickly heat can
+spread), and this is known as the heat equation. Now that we have
+described the dynamics of the heat flow for this thin metal rod,
+solving it should be trivial...right? 
+
+Well, without
+the boundary conditions and initial conditions, one can struggle
+\marginpar{Skip work, here's answer}for a long long long time to find that
+\begin{equation}\label{eq:31March2008:solution}
+u(x,t) = t^{-1/2}\exp\left(\frac{-x^{2}}{4kt}\right)
+\end{equation}
+is a solution for $t>0$. So we would just need to solve the
+boundary value problem. This is not as trivial as it seems.
+\end{ex}
+
+Our toolkit from taking basic differential equations (which is:
+``Guess really really good!'') is inadequate to solve this
+problem. We need to introduce a new
+technique\marginpar{seperation of variables} which we call
+\textbf{seperation of variables}. What we do is we assume we can
+write the function $u(x,t)$ as
+\begin{equation}\label{eq:31March2008:seperationOfVariables}
+u(x,t)=X(x)T(t)
+\end{equation}
+This usually works but not always\footnote{It should be noted
+  that this is a coordinate-choice, so there are a finite number
+  of coordinate systems we can do this in (e.g. Morse et
+  al.~\cite{morseVolTwo} point out that the Hemholtz equation,
+  for example, can only be solved via seperation of variables in
+  11 coordinate systems).}. We will not investigate it here but
+it should be noted that it may not always work.
+
+The second step to the ``seperation of
+variables''\index{Seperation of Variables} technique is
+to plug in \eqref{eq:31March2008:seperationOfVariables} into the
+differential equation
+\begin{subequations}
+\begin{align}
+\partial_{t} u(x,t) &= k\partial_{x}^{2}u(x,t) \\
+\partial_{t} (X(x)T(t)) &= k\partial_{x}^{2}(X(x)T(t)) \\
+X(x)T'(t) &= kX''(x)T(t)
+\end{align}
+\end{subequations}
+and at first this seems useless. What do we do with this result?
+Well, we divide both sides by $kX(x)T(t)$ and set it to be equal
+to some constant\marginpar{Don't believe it? Note the left
+  equation is independent of $x$, the middle equation is
+  independent of $t$, so take the $t$ derivative of
+  everything and you get the middle equation being 0,
+  similar results for the $x$ derivative imply that they're
+  equal to some constant.}
+\begin{equation}
+\frac{T'(t)}{kT(t)} = \frac{X''(x)}{X(x)}
+= \begin{pmatrix}$some$\ $constant$\\$to$\ $be$\ $determined$\end{pmatrix}
+\end{equation}
+Observe that we have on the left hand side a function of $t$
+only, it is independent of $x$. Similarly, the middle term is
+independent of $t$. That is, we note
+\begin{equation*}
+\underbracket[0.5pt]{\frac{T'(t)}{kT(t)}}_{\text{independent of $x$}} =
+\underbracket[0.5pt]{ \frac{X''(x)}{X(x)}}_{\text{independent of $t$}} =  \begin{pmatrix}$some$\ $constant$\\$to$\ $be$\ $determined$\end{pmatrix}
+\end{equation*}
+Now, we can solve for the general solution of $T(t)$
+\begin{equation}
+\frac{T'(t)}{T(t)}=kA\Rightarrow \log|T(t)|=kAt +
+c_{1}\Rightarrow T(t)=T_{0}e^{kAt}
+\end{equation}
+where $T_{0}=T(0)$ is some constant.                            
+
+Now, for solving $X(x)$, we have a bit more difficult of a
+problem. The differential equation of relevance is
+\begin{equation}
+\frac{X''(x)}{X(x)} = A\Rightarrow X''(x) - AX(x) = 0
+\end{equation}
+Recall for general second order differential equations
+\begin{equation}
+y'' + ay' + by = 0
+\end{equation}
+we have the \textbf{characteristic equation}\index{Characteristic Equation!Differential Equations}
+\begin{equation}
+r^{2} + ar + b = 0.
+\end{equation}
+It has two roots, by the fundamental theorem of
+Algebra\marginpar{Fundamental Thm Of Algebra: A polynomial
+  of degree $n$ has exactly $n$ complex roots}. So we have
+the two roots $r_{1}$ and $r_{2}$ which gives us that
+general solution
+\begin{equation}
+y(x) = c_{1}e^{r_{1}x} + c_{2}e^{r_{2}x}.
+\end{equation}
+For us, we have a simple characteristic equation
+\begin{equation}
+r^{2} - A = 0\Rightarrow r = \pm\sqrt{A}
+\end{equation}
+thus the general solution is
+\begin{equation}
+X(x) = c_{1}e^{x\sqrt{A}} + c_{2}e^{-x\sqrt{A}}
+\end{equation}
+\marginpar{What's $A$?}So now we have a new problem: what
+values of $A$ give nonzero solutions? That is, which ones
+satisfy the boundary conditions
+\begin{equation}
+X(0)=X(L)=0
+\end{equation}
+without $X(x)$ being trivial (i.e. $X(x)=0$).
+
+If $A>0$, then we have by one boundary condition
+\begin{equation}
+X(0)=c_1 + c_2=0\Rightarrow c_1 = -c_2.
+\end{equation}
+And by the other boundary condition
+\begin{equation}
+X(L) = c_{1}e^{L\sqrt{A}}+c_{2}e^{-L\sqrt{A}} = 0\Rightarrow
+c_{1}e^{2L\sqrt{A}}+c_{2}=0
+\end{equation}
+and by putting these two together we find
+\begin{equation}
+c_{1}(1 - e^{2L\sqrt{A}}) = 0
+\end{equation}
+which requires either $c_1=0$ or $\exp(2L\sqrt{A})=1$. The
+latter implies either $L=0$ or $A=0$. We assumed that $L>0$
+and $A>0$. So that implies $c_1=0$. Thus the general
+solution is
+\begin{equation}
+X(x) = c_{2}e^{-x\sqrt{A}}
+\end{equation}
+which is really just exponential decay.
+
+For the $A<0$ case, the general solution can be written as
+\begin{equation}
+X(x) = c_{1}\cos(\lambda x) + c_{2}\sin(\lambda x)
+\end{equation}
+where $\lambda=\sqrt{-A}$. We plug in the boundary
+conditions
+\begin{equation}
+X(0) = c_1 = 0
+\end{equation}
+and
+\begin{equation}
+X(L) = c_{2}\sin(\lambda L) = 0\Rightarrow \lambda L = n\pi
+\Rightarrow \lambda = \frac{n\pi}{L}
+\end{equation}
+where $n\in\mathbb{Z}$. So here we have $A=-n^{2}\pi^{2}/L^{2}$.
+
+Putting this all together, the general solution to the
+boundary value problem is
+\begin{equation}
+u_{n}(x,t) =
+\left(c_{0}\exp(-k\frac{n^{2}\pi^{2}}{L^{2}}t)\right)\left(c_{1}\sin(\frac{n\pi}{L}x\right)
+\end{equation}
+But also observe that \emph{any linear combinations} of
+these solutions \emph{are also solutions} to the boundary
+value problem. So the general solution is
+\begin{equation}\label{eq:31March2008:generalSolutionUsingSeries}
+u(x,t) =
+\sum^{\infty}_{n=1}a_{n}e^{-kn^{2}\pi^{2}t/L^{2}}\sin\left(\frac{n\pi}{L}x\right)
+\end{equation}
+where $a_{n}$ are arbitrary constants.
+
+``\emph{How to make $u(x,t)$ satisfy the initial condition
+  $u(x,0)=f(x)$?}'' Well, we have a small substitution to
+make, we just set
+\eqref{eq:31March2008:generalSolutionUsingSeries} equal to
+the given boundary condition
+\begin{equation}
+\sum^{\infty}_{n=1}a_{n}\sin\left(\frac{n\pi}{L}x\right) =
+f(x)
+\end{equation}
+\emph{This is where Fourier works his magic, expanding a
+  function in terms of sines and cosines.} \marginpar{Point
+  to ponder}Is it possible to find an expansion for \emph{any} heat distribution?

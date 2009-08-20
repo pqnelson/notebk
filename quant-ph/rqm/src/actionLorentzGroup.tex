@@ -1,0 +1,190 @@
+%%
+%% actionLorentzGroup.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jul 22 13:01:36 2009 Alex Nelson
+%% Last update Wed Jul 22 13:01:36 2009 Alex Nelson
+%%
+
+The space of particle states is three dimensional. The energy
+$k_0$ of a particle with momentum $\overline{k}$ is constrained
+by
+\begin{equation}%\label{eq:}
+k_{0}\geq0
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+k^{2} = k_{\mu}k^{\mu} = \mu^{2}.
+\end{equation}
+Therefore the possible energy-momentum vectors lie on a
+hyperbolic sheet in $k$-space, the mass hyperboloid. We need an
+integration measure on this hyperboloid if we want to do Lorentz
+invariant computations.
+
+Let $\theta(t)$ be the Heaviside step function
+\begin{equation}%\label{eq:}
+\theta(t) = \begin{cases} 0 &\text{if }t<0\\
+1 & \text{if }t>0
+\end{cases}
+\end{equation}
+Define an integration $d\lambda(k)$ on the positive hyperboloid
+as follows:
+\begin{equation}%\label{eq:}
+d\lambda(k) \stackrel{\text{def}}{=} d^{4}k \delta(k^{2}-\mu^{2})\theta(k_{0})
+\end{equation}
+The Lebesgue measure $d^{4}k$ is Lorentz invariant due to the
+Lorentz transformation having unit determinant. Here since
+$k^{2}-\mu^{2}$ is Lorentz invariant, the $\delta$ function is
+Lorentz invariant. Similar reasoning holds for $\theta(k_{0})$
+being Lorentz invariant.
+
+We can take advantage of the identity
+\begin{equation}%\label{eq:}
+\delta(f(k)) = \sum_{\{k:f(k)=0\}}\frac{1}{\|f'(k)\|}\delta(k)
+\end{equation}
+and  the fact that
+\begin{subequations}
+\begin{align}
+k^{2}-\mu^{2} &= (k_{0}^{2}-\|\overline{k}\|^{2})-\mu^{2}\\
+&= k_{0}^{2} - (\|\overline{k}\|^{2} + \mu^{2}) \\
+&= k_{0}^{2} - \omega(\overline{k})^{2} \\
+&= (k_{0} - \omega(\overline{k}))(k_{0} + \omega(\overline{k}))
+\end{align}
+\end{subequations}
+to deduce that
+\begin{subequations}
+\begin{align}
+\delta(k^{2}-\mu^{2})\theta(k_{0}) &= \delta\left((k_{0} - \omega(\overline{k}))(k_{0} + \omega(\overline{k}))\right)\theta(k_0)\\
+&=\frac{1}{2\omega(\overline{k})}(\delta(k_0-\omega(\overline{k}))\theta(k_0)+\delta(k_0+\omega(\overline{k}))\theta(k_0))\\
+&=\frac{1}{2\omega(\overline{k})}\delta(k_0-\omega(\overline{k}))\theta(k_0)
+\end{align}
+\end{subequations}
+since $\delta(k_0+\omega(\overline{k}))$ requires $k_0<0$ which
+then demands that $\theta(k_0)=0$, so that term drops out completely.
+Observe that this means we can effectively eliminate $k_0$ from
+any integral with respect to $\omega(\overline{k})$ as follows:
+\begin{subequations}
+\begin{align}
+\int f(k)d\lambda(k) &= \int f(k)\left(\frac{\delta(k_{0}-\omega(\overline{k}))}{2\omega(\overline{k})}\theta(k_{0})d^{3}\overline{k}dk_{0}\right)\\
+&= \int f\left(\omega(\overline{k}),\overline{k}\right)\frac{d^{3}\overline{k}}{2\omega(\overline{k})}
+\end{align}
+\end{subequations}
+This integral and the arbitrary function $f$ are commonly
+eliminated from this result, leaving an equality of measures
+\begin{equation}%\label{eq:}
+d\lambda(k) = \frac{d^{3}\overline{k}}{2\omega(\overline{k})}
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+k_{0} = \omega(\overline{k}).
+\end{equation}
+
+\begin{comment}
+\begin{ddanger}We can now ask if the measure
+%\begin{equation}%\label{eq:}
+$d^{3}\overline{k}/2\omega(\overline{k})$
+%\end{equation}
+is Lorentz invariant or not. We expect it to be so, but lets try
+to demonstrate it explicitly by computing the Jacobian of a
+Lorentz boost $\Lambda$. Without loss of generality, we can
+assume that we are working with Cartesian coordinates. Note we
+can factorize an Lorentz boost as
+\begin{equation}%\label{eq:}
+{\Lambda^{\mu}}_{\nu} = {L^{\mu}}_{\alpha}{R^{\alpha}}_{\nu}
+\end{equation}
+where $L$ is a rotation in the $t-x$ plane, and $R$ is an
+arbitrary spatial rotation. We know from Euler's theorem that
+\begin{equation}%\label{eq:}
+\det(R)=1
+\end{equation}
+so that means that
+\begin{equation}%\label{eq:}
+\det(\Lambda)=\det(L).
+\end{equation}
+But we can write in block form
+\begin{equation}%\label{eq:}
+{L^{\mu}}_{\alpha} = \begin{bmatrix} L & 0\\ 0 & I_{2} \end{bmatrix}
+\end{equation}
+which means that 
+\begin{equation}%\label{eq:}
+\det({L^{\mu}}_{\alpha}) = {L^{0}}_{0}{L^{1}}_{1} - {L^{1}}_{0}{L^{0}}_{1}.
+\end{equation}
+This means, without loss of generality, we can write
+${\Lambda^{\mu}}_{\nu}={L^{\mu}}_{\nu}$. We make the switch
+$k^{0}=\omega(\overline{k})$, so our transformation
+yields the coordinates
+\begin{subequations}
+\begin{align}
+l^{0} &= {L^{0}}_{0}\omega(\overline{k}) - {L^{0}}_{1}k^{1}\\
+l^{1} &= {L^{1}}_{0}\omega(\overline{k}) - {L^{1}}_{1}k^{1}\\
+l^{2} &= k^{2}\\
+l^{3} &= k^{3}
+\end{align}
+\end{subequations}
+One may be at first alarmed by the switch to
+$\omega(\overline{k})$ but it is invariant under spatial
+rotations, and we've seen that $k^0=\omega(\overline{k})$ so it
+is kosher. By Lorentz invariance, we demand further that
+\begin{equation}%\label{eq:}
+l^{\mu}l_{\mu} = k^{\mu}k_{\mu} = \mu^{2}
+\end{equation}
+which in turn implies that
+\begin{equation}%\label{eq:}
+l^{0}l_{0} = \|\overline{l}\|^{2} + \mu^{2}\;\Rightarrow\; l^{0}
+= \omega(\overline{l})
+\end{equation}
+all by Lorentz invariance.
+\end{ddanger}
+\end{comment}
+
+If we define Lorentz-normalized kets $|k\>$ by
+\begin{equation}%\label{eq:}
+|k\> = \left(2\omega(\overline{k})\right)^{1/2}(2\pi)^{3/2}|\overline{k}\>
+\end{equation}
+with $k_{0}=\omega(\overline{k})$, then the new normalization
+conditions is
+\begin{equation}%\label{eq:}
+\<k|k'\> = 2\omega(\overline{k})(2\pi)^{3}\delta^{(3)}(\overline{k}-\overline{k}')
+\end{equation}
+and the resolution of the identity is based on the Lorentz
+invariant measure:
+\begin{equation}%\label{eq:}
+\mathbf{1} = \int|k\>\<k|\frac{d^{3}\overline{k}}{(2\pi)^{3}2\omega(\overline{k})}.
+\end{equation}
+With these Lorentz-normalized states, we can define the unitary
+representation of the Lorentz group simply:
+\begin{thm}%\label{thm:}
+If we define $U(\Lambda)$ by $U(\Lambda)|k\>=|\Lambda k\>$, then
+$U$ is a unitary representation of the Lorentz group.
+\end{thm}
+\begin{proof}
+The multiplications property
+$U(\Lambda\Lambda')=U(\Lambda)U(\Lambda')$ follows immediately
+from definition. To show that the representation is unitary, we
+use the resolution of the identity
+\begin{subequations}
+\begin{align}
+U(\Lambda)U(\Lambda)^{\dag} &= \int U(\Lambda)|k\>\<k|U(\Lambda)^{\dag}\frac{d^{3}\overline{k}}{(2\pi)^{3}2\omega(\overline{k})}\\
+&= \int |\Lambda k\>\<\Lambda k|\frac{d^{3}\overline{k}}{(2\pi)^{3}2\omega(\overline{k})}\\
+&= \mathbf{1}
+\end{align}
+\end{subequations}
+since the measure is Lorentz-invariant.
+\end{proof}
+It is mildly surprising that $U(\Lambda)$ defined in our theorem
+is a unitary operator due to $|k\>$ and $|\Lambda k\>$ appear to
+have different lengths when $\Lambda$ is a boost. \emph{However,}
+$\delta^{(3)}(0)$ is undefined, so the normalization of the kets
+does not determine a length. We regard the uniformly unlocalized
+state described by $|k\>$ as \emph{unphysical}. The physical
+states have the form 
+\begin{equation}%\label{eq:}
+|\psi\>\stackrel{\text{def}}{=} \int \psi(\overline{k})|k\>\frac{d^{3}\overline{k}}{(2\pi)^{3}2\omega(\overline{k})}
+\end{equation}
+where the measure is structured so
+$\<k|\psi\>=\psi(\overline{k})$. We can check that the length of
+$|\psi\>$ is well defined whenever $\psi(\overline{k})$ is
+square-integrable and that our definition of $U(\Lambda)$ makes
+the representation unitary on the space of physical states.

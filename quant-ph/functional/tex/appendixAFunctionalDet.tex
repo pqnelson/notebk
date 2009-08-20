@@ -1,0 +1,224 @@
+%%
+%% appendixAFunctionalDet.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jul 28 12:49:49 2009 Alex Nelson
+%% Last update Tue Jul 28 12:49:49 2009 Alex Nelson
+%%
+\subsection{Introduction}
+
+We review the zeta regularisation approach to calculating the functional
+determinant of differential operators. First we review a few
+properties of the finite dimensional determinant. These include
+the `exp(tr(A)) = det(exp(A))' identity, and the usefulness of
+eigenvalues when calculating determinants. 
+
+We move on to the general case of infinite dimensions. We
+generalize the determinant ``definition'' as the infinite product
+series, and use the aforementioned identity to use the Riemann
+zeta function in calculating determinants of differential
+operators.
+
+Then we compute a few examples from various fields. First, the
+example of the heat equation. Then we compute the determinant of
+the Hamiltonian for a quantum Harmonic oscillator. 
+
+The interested reader can refer to
+Elizalde~\cite{Elizalde:1999zy} for a similar review with more
+references. 
+
+\subsection{Review of Finite Dimensional Determinants}
+
+Recall that given a (square) $n\times n$ matrix $A$, we can write it as
+\begin{equation}
+A = P^{-1}DP
+\end{equation}
+where $D$ is a diagonal matrix with entries being eigenvalues,
+and $P$ is an orthogonal matrix whose columns are the
+corresponding eigenvectors. We find its determinant to be:
+\begin{equation}
+\begin{split}
+\det{(A)}  =& \det{(P^{-1}DP)}\\
+ =&  \det{(P^{-1})}\det{(D)}\det{(P)}\\
+ =&  \det{(D)}\\
+ =&  \prod_{j=1}^{n} \lambda_{j}
+\label{eq:det}
+\end{split}
+\end{equation}
+where $\lambda_{j}$ is the $j^{\text{th}}$ eigenvalue of $A$. 
+
+There is one identity that would be nice to cover before we move
+on (because I am most familiar with the so-called
+`zeta-regularisation' scheme, this is a necessary identity). If
+we represent $A$ with the diagonalized matrix $D$, we find that
+\begin{equation}
+\text{trace}(\ln(D)) = \ln(\lambda_{1}) + (\ldots) +\ln(\lambda_{n})
+\end{equation}
+and we find
+\begin{equation}
+\begin{split}
+\exp{(\text{trace}(\ln(D)))}  = &  \exp{(\ln(\lambda_{1}) + \ln(\ldots) + \ln(\lambda_{n}))}\\
+ = & \lambda_{1}(\ldots)\lambda_{n} \\
+ \stackrel{\text{def}}{=} & \det{(A)}.
+\end{split}
+\label{eq:id}
+\end{equation}
+One may see this and say ``Huh, that's neat but seemingly useless'' and you would be right! Well, so far you would be, but you will see that it's useful!
+
+\subsection{Zeta-Regularisation Scheme}
+
+Recall from differential equations, that we may treat a derivative as an ``infinite dimensional'' linear operator (and recall from linear algebra all linear operators may be represented as a square matrix!). So we may apply Eq. (\ref{eq:det}) to a differential operator in general. The first thought that comes to my mind is ``You're crazy, man! That would diverge like...a...divergent product series!'' That is true, if we naively write
+\begin{equation}
+\det{(\mathcal{D})} = \prod^{\infty}_{n=1}\lambda_{n}.
+\end{equation}
+(Where $\mathcal{D}$ is a differential operator). But as we have just seen, we may use the identity derived in Eq. (\ref{eq:id}) to find:
+\begin{equation}
+\exp{(\text{trace}(\ln(\mathcal{D})))} := \det{(\mathcal{D})}
+\end{equation}
+so the question is to find an equation that gives us
+\begin{equation}
+(\text{trace}(\ln(\mathcal{D}))) = \sum^{\infty}_{n=0}\ln{(\lambda_{n})}.
+\end{equation}
+
+Let us now introduce the Riemann zeta function
+\begin{equation}
+\zeta_{R}(s) = \sum^{\infty}_{n=1}n^{-s} \mbox{  with  } \text{Re}(s)>1.
+\end{equation}
+It is something well studied in number theory, modern analysis, and a number of other subjects. Note that
+\begin{equation}
+\zeta^{\prime}_{R}(s) = -\sum^{\infty}_{n=1}\frac{\ln{(n)}}{n^{s}}
+\end{equation}
+and what physicists like to do is then set $s=0$, so we find
+\begin{equation}
+\zeta^{\prime}_{R}(0) = -\sum^{\infty}_{n=1}\ln{(n)}.
+\end{equation}
+This is remarkably similar to what we're looking for!
+
+What we do is we take the so-called ``zeta-trace'' of our differential operator $\mathcal{D}$:
+\begin{equation}
+\zeta_{D}(s) =\sum^{\infty}_{n=1}\frac{1}{\lambda_{n}^{s}}.
+\end{equation}
+Then we just take its derivative and set $s=0$. Usually we'd want to write this in terms of the Riemann zeta function, since we know a lot more about the Riemann zeta function in general (such as what its value of its derivative at 0 is!). 
+
+\subsection{Example: Heat Equation}
+
+Recall the infamous heat equation
+\begin{equation}
+\frac{\partial^{2}}{\partial x^{2}}U(x,t) = \frac{\partial}{\partial t}U(x,t)
+\end{equation}
+with the boundary conditions
+\begin{equation}
+\begin{split}
+U(x,0)=&f(x)\quad\forall x\in[0,L]\\
+U(0,t)=&U(L,t)=0\quad\forall t>0
+\end{split}
+\end{equation}
+By the famous calculation, we seperate the variables and we are know dealing with a sort of eigenvalue problem
+\begin{equation}
+\frac{\partial^{2}}{\partial x^{2}}u(x) = -\lambda u(x)
+\end{equation}
+which tells us that
+\begin{equation}
+\begin{split}
+u(x)  = & B\sin{(\sqrt{\lambda}x)}  \\
+\lambda_{n}  = & (n\pi/L)^2 \quad \forall n\in\mathbb{N}
+\end{split}
+\end{equation}
+So lets figure out its determinant!
+
+Well, we first note that the zeta trace of the differential operator is
+\begin{equation}
+\zeta_{A}(s) = \sum^{\infty}_{n=1} \frac{L^{2s}}{(n\pi)^{2s}}
+\label{eq:detA}
+\end{equation}
+We can factor this out to be
+\begin{equation}
+\zeta_{A}(s) = \frac{L^{2s}}{\pi^{2s}}\sum^{\infty}_{n=1} n^{-2s}
+\end{equation}
+which is tricky to work with, but we'd really like to write it in terms of the Riemann zeta function! We find:
+\begin{equation}
+\zeta_{A}(s) = \left(\frac{L}{\pi}\right)^{2s}\zeta_{R}(2s)
+\end{equation}
+and thus
+\begin{equation}
+\zeta_{A}^{\prime}(s) = -2\ln(L/\pi)\left(\frac{L}{\pi}\right)^{2s}\zeta_{R}(2s) + 2\left(\frac{L}{\pi}\right)^{2s}\zeta_{R}^{\prime}(2s).
+\end{equation}
+We find
+\begin{equation}
+\zeta_{A}^{\prime}(0) = -2\ln(L/\pi)\zeta_{R}(0) + 2\zeta_{R}^{\prime}(0).
+\end{equation}
+Because I don't know the Riemann Zeta Function like the back of my hand (unfortunately), I look up its values\footnote{From \url{http://mathworld.wolfram.com/RiemannZetaFunction.html}}:
+\begin{equation}
+\begin{split}
+\zeta_{R}(0)  = & \frac{-1}{2}\\
+\zeta_{R}^{\prime}(0)  = & -\frac{1}{2}\ln(2\pi)
+\end{split}
+\end{equation}
+So we find then
+\begin{equation}
+\zeta_{A}^{\prime}(0) = \ln(L/\pi) - \ln(2\pi).
+\end{equation}
+and then, by defintion, the determinant of our operator $A$ is
+\begin{equation}
+\det{(A)} := \exp{(-\zeta_{A}^{\prime}(0))} = \frac{2\pi^2}{L}.
+\end{equation}
+This concludes this section.
+
+\subsection{Example: Quantum Harmonic Oscillator}
+
+In the one dimensional case, a particle of mass $m$ has the potential
+\begin{equation}
+V(x) = \frac{1}{2}m\omega^2x^2
+\end{equation}
+where $m\omega^2=k$ is called the ``spring stiffness coefficient'' or sometimes the ``force constant'', and $\omega$ is the circular frequency. We find the Hamiltonian to be
+\begin{equation}
+H = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2
+\end{equation}
+and so the Schrodinger equation is
+\begin{equation}
+\frac{-\hbar^2}{2m}\frac{d^2}{dx^2} + \frac{1}{2}m\omega^2x^2 |\psi\rangle = E |\psi\rangle.
+\end{equation}
+We will not show all the work, but through solving this differential equation, the eigenvalues for the Hamiltonian are
+\begin{equation}
+E_{n} = \hbar\omega(n + \frac{1}{2}) \mbox{    with    }\forall n\in\mathbb{N}
+\end{equation}
+which will be used in our computation of the determinant of the Hamiltonian.
+
+We find that the zeta trace of the Hamiltonian is thus
+\begin{equation}
+\zeta_{H}(s) = \sum^{\infty}_{n=1}E_{n}^{-s} = (\hbar\omega)^{-s}\sum^{\infty}_{n=1}(n+\frac{1}{2})^{-s}
+\end{equation}
+and we find this to be
+\begin{equation}
+\zeta_{H}(s) = (\hbar\omega)^{-s}\sum^{\infty}_{n=1}(n+\frac{1}{2})^{-s} = (\hbar\omega/2)^{-s}\sum^{\infty}_{n=1}(2n+1)^{-s}.
+\end{equation}
+We can refer to the Hurwitz zeta-function
+\begin{equation}
+\zeta(s,q) = \sum^{\infty}_{k=0}(k+q)^{-s}
+\end{equation}
+and rewrite our zeta trace for the Hamiltonian to be
+\begin{equation}
+\zeta_{H}(s) = (\hbar\omega/2)^{-s}\left(\zeta(s,3)-2\zeta(s,1)+2^{-s}\right).
+\end{equation}
+Again, referring to a table\footnote{More precisely, Eqs (9) and (16) of \url{http://mathworld.wolfram.com/HurwitzZetaFunction.html}} we find
+\begin{equation}
+\begin{array}{c}
+\zeta(0,a)=\frac{1}{2}-a\\
+\frac{d}{ds}\zeta(0,a) = \ln(\Gamma(a))-\frac{1}{2}\ln(2\pi)
+\end{array}
+\end{equation}
+So we have
+\begin{equation}
+\begin{split}
+\zeta_{H}^{\prime}(0) & =  -\ln(\hbar\omega/2)\left(\zeta(0,3)-2\zeta(0,1)+1\right) + \left(\ln(6)+\frac{1}{2}\ln(2\pi)-\ln(2)\right) \\
+& =  -\ln(\hbar\omega/2)\left(\frac{-1}{2}\right) + \left(\ln(6)+\frac{1}{2}\ln(2\pi)-\ln(2)\right) \\
+& =  \ln(\sqrt{\hbar\omega/2}) + \ln(3) + \ln(\sqrt{2\pi})
+\end{split}
+\end{equation}
+We can now compute
+\begin{equation}
+\det{(\hat{H})} =  \exp{(-\zeta_{H}^{\prime}(0))} =  \frac{1}{3}\sqrt{\frac{1}{2\pi\hbar\omega}}
+\end{equation}
+which is the determinant of the above differential operator.

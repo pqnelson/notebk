@@ -1,0 +1,157 @@
+%%
+%% 23April2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 21 12:44:51 2008 Alex Nelson
+%% Last update Sun Dec 21 12:44:51 2008 Alex Nelson
+%%
+\begin{thm}
+The set $\{\exp(inx)/\sqrt{2\pi}\}^{\infty}_{-\infty}$ is an
+orthonormal basis in $L^{2}(-\pi,\pi)$. (Equivalently,
+\begin{equation*}
+\left\{\frac{1}{\sqrt{2\pi}}\right\}\cup\left\{\frac{\cos(nx)}{\sqrt{\pi}}\right\}^{\infty}_{1}\cup\left\{\frac{\sin(nx)}{\sqrt{\pi}}\right\}^{\infty}_{1}
+\end{equation*}
+is an orthonormal basis in $L^{2}(-\pi,\pi)$.)
+\end{thm}
+
+\begin{proof}
+Fix an arbitrary $f\in L^{2}(a,b)$. Let $\psi_n(x) =
+\exp(inx)/\sqrt{2\pi}$. $\alpha_n=\<f,\psi_n\>$. We want to
+show that 
+$$\|f-\sum^{N}_{n=-N}\alpha_{n}\psi_{n}\|\to0\text{ as
+}n\to\infty$$
+(Note that $\sum \alpha_n\psi_n$ is the Fourier series of
+$f$).
+Let $\varepsilon>0$ be given. We will show that there exists
+an $N\in\mathbb{N}$ such that for all $M\geq N$ the norm
+\begin{equation}
+\|f-\sum^{M}_{n=-m}\alpha_n\psi_n\|<\varepsilon
+\end{equation}
+\begin{enumerate}
+\item There is an $\widetilde{f}$ $2\pi$-periodic,
+  infinitely smooth function such that
+  $\|f-\widetilde{f}\|<\varepsilon/3$
+\item The fourier series
+  $\sum^{\infty}_{-\infty}\widetilde{\alpha}_n\psi_n\to\widetilde{f}$
+  uniformly, hence it converges in norm, so there is an
+  $N\in\mathbb{N}$ such that for all $M\geq N$,
+  $\|\widetilde{f}-\sum^{M}_{-M}\widetilde{\alpha}_n\psi_n\|<\varepsilon/3$
+\item So
+\begin{align*}
+\|\sum^{M}_{-M}(\widetilde{\alpha}_n-\alpha_n)\psi\|^2 &=
+\sum^{M}_{-M}|\widetilde{\alpha}_n-\alpha_n\|^2\text{ (Pythagorean thm)}\\
+&\leq\sum^{\infty}_{n=-\infty}|\widetilde{\alpha}_n-\alpha_n|^2\\
+&\leq|\widetilde{f}-f|^2\text{ (Bessel Inequality)}
+\end{align*}
+\end{enumerate}
+Because $\widetilde{\alpha}_n - \alpha_n = \<\widetilde{f}-f,\psi_{n}\>$.
+
+Finally for any $M\geq N$,
+\begin{align*}
+\|f-\sum^{M}_{-M}\alpha_n\psi_n\| &= \|f-\widetilde{f}+\widetilde{f}-\sum^{M}_{-M}\widetilde{\alpha}_n\psi_n+\sum^{M}_{-M}\widetilde{\alpha}_n\psi_n-\sum^{M}_{-M}\alpha_n\psi_n\|\\
+&\leq \|f-\widetilde{f}\| + \|\widetilde{f}-\sum^{M}_{-M}\widetilde{\alpha}_n\psi_n\|+\|\sum^{M}_{-M}(\widetilde{\alpha}_n-\alpha_n)\psi_n\|\\
+&< (\varepsilon/3) + (\varepsilon/3) + (\varepsilon/3)\\
+&< \varepsilon.
+\end{align*}
+\end{proof}
+
+\subsection{Summary on Convergence of Fourier Series}
+
+\begin{enumerate}
+\item The series converges unifrmly and absolutely if $f$ is
+  continuous and piecewise smooth.
+\item The series converges pointwise and in norm if $f$ is
+  piecewise continuous and piecewise smooth.
+\item It converges in norm if $f\in L^{2}(a,b)$
+\end{enumerate}
+
+\begin{parseval}\index{Parseval Equality}
+Let $\{\psi_n\}^{\infty}_{-\infty}$ be an orthonormal basis
+in $L^{2}(a,b)$, for any $f\in L^{2}(a,b)$, then
+\begin{equation}
+\|f\|^2 = \sum^{\infty}_{-\infty}|\<f,\psi_n\>|^2.
+\end{equation}
+\end{parseval}
+
+\subsection{Some Advanced Linear Algebra}
+
+\begin{defn}\index{Hilbert Space}
+A vector space $V$ (over some field of scalars $\mathbb{F}$)
+with an inner product $\<\cdot,\cdot\>$ and an induced norm
+$\|\cdot\|$ if it is complete under convergence in norm
+(meaning that every series of vectors converges in norm to
+some vector in $V$) is a \textbf{Hilbert Space}.
+\end{defn}
+\begin{ex}
+Just a few examples, $L^{2}(a,b)$ is a Hilbert space,
+$\mathbb{C}^k$ is a Hilbert space too, and $\mathbb{R}^n$ is
+a Hilbert space as well.
+\end{ex}
+
+\begin{defn}\index{Linear Transformation|see{Linear Operator}}\index{Linear Operator}\index{Adjoint|see{Linear  Operator}}\index{Linear Operator!Adjoint}\index{Self Adjoint|see{Linear Operator}}\index{Linear Operator!Self Adjoint}\index{Linear Operator!Linear Transformation}
+Let $W_1$, $W_2$ be subspaces of a Hilbert space. A
+\textbf{linear transformation} $T:W_1\to W_2$ is a linear
+map from $W_1$ to $W_2$. The \textbf{adjoint} of $T$ is
+defined by
+\begin{equation}
+\<T\vec{a},\vec{b}\>=\<\vec{a},T^{\dag}\vec{b}\>
+\end{equation}
+And $T$ is \textbf{self-adjoint} if $T=T^{\dag}$.
+\end{defn}
+\begin{ex}
+In $\mathbb{C}^k$, we can represent operators by square
+matrices $T=[t_{ij}]$ ($i,j=1,...,k$). The adjoint is
+$T^{\dag}=[\overline{t}_{ji}]$. Or if one prefers, this is the
+complex conjugate transpose of the matrix. In
+$\mathbb{R}^k$, self-adjoint is equivalent to being
+symmetric.
+\end{ex}
+
+Now one should recall that the eigenvalues/eigenvectors of
+$T$ are
+\begin{equation}
+T\vec{a}=\lambda\vec{a}
+\end{equation}
+where $\lambda$ is the eigenvalue, and $\vec{a}$ is the
+eigenvector. The way to think of this is that the
+eigenvectors are only ``stretched'' by the operator by a
+factor of $\lambda$.
+
+For self-adjoint operators, the eigenvalues are necessarily
+real\index{Self Adjoint!Real Eigenvalues}. To see this, let
+$\lambda$, $\vec{a}$ be the eigenvalue and eigenvector of a
+self-adjoint operator $T$. So
+\begin{align*}
+\<T\vec{a},\vec{a}\> &= \<\vec{a},T\vec{a}\> \\
+&= \<\lambda\vec{a},\vec{a}\>\\
+&= \<\vec{a},\lambda\vec{a}\>\\
+&= \bar{\lambda}\<\vec{a},\vec{a}\> =
+\lambda\<\vec{a},\vec{a}\>\\
+\Rightarrow \lambda &=\bar{\lambda}\\
+\Rightarrow &\lambda\in\mathbb{R}
+\end{align*}
+\marginpar{Eigenvectors of self-adjoint operator form
+  orthonormal basis}
+\begin{thm}{(Spectral Theorem)}\index{Spectral Theorem}
+(For the finite dimensional case, specifically
+  $\mathbb{C}^k$ or $\mathbb{R}^k$) For any self-adjoint
+  operator $T$, there is an orthonormal basis of
+  $\mathbb{C}^k$ (or $\mathbb{R}^k$) consisting of
+  eigenvectors of $T$.
+\end{thm}
+
+Now one can ask ``What the hell good is this?'' Well, to
+solve $T\vec{x}=\vec{b}$ where $\vec{b}$ is a given
+vector. Suppose $\{u_1,\ldots,u_k\}$ are eigenvectors of $T$
+forming an orthonormal basis of $\mathbb{C}^k$ and the
+corresponding eigenvalues are
+$\lambda_1,\ldots,\lambda_k$. We can expand
+\begin{equation}
+\vec{b}=\sum^{k}_{j=1}\beta_{j}\vec{u_{j}}
+\end{equation}
+where $\beta_{j}=\<\vec{b},\vec{u}_j\>$. Let $x_j =
+\<\vec{x},\vec{u}_j\>$ then $\vec{x}=\sum
+x_{j}\vec{u}_{j}$. Then just by associating each eigenvector
+to each eigenvector, we have $x_j=\beta_j$.

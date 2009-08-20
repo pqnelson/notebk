@@ -1,0 +1,40 @@
+\BOOKMARK [0][-]{part.1}{I Fourier Series}{}
+\BOOKMARK [1][-]{section.1}{Differential Equations: A Motivation for Fourier Series}{part.1}
+\BOOKMARK [1][-]{section.2}{A First Look at Fourier Series}{part.1}
+\BOOKMARK [2][-]{subsection.2.1}{Derivation of Definition of Fourier Series}{section.2}
+\BOOKMARK [1][-]{section.3}{Bessel's Inequality}{part.1}
+\BOOKMARK [2][-]{subsection.3.1}{Dirichlet Kernel}{section.3}
+\BOOKMARK [1][-]{section.4}{Convergence, Termwise Calculus}{part.1}
+\BOOKMARK [2][-]{subsection.4.1}{Convergence of Fourier Series}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Termwise Integration of Fourier Series}{section.4}
+\BOOKMARK [1][-]{section.5}{Decay of Coefficients, Arbitrary Intervals}{part.1}
+\BOOKMARK [2][-]{subsection.5.1}{Fourier Series on Arbitrary Interval}{section.5}
+\BOOKMARK [1][-]{section.6}{A Review of Vector Spaces}{part.1}
+\BOOKMARK [2][-]{subsection.6.1}{Inner Products}{section.6}
+\BOOKMARK [2][-]{subsection.6.2}{Induced Norm}{section.6}
+\BOOKMARK [2][-]{subsection.6.3}{Basis Vectors Matter}{section.6}
+\BOOKMARK [1][-]{section.7}{L2 spaces}{part.1}
+\BOOKMARK [1][-]{section.8}{Orthonormal Basis for L2}{part.1}
+\BOOKMARK [2][-]{subsection.8.1}{Criteria for an Orthonormal Basis in L2\(a,b\)}{section.8}
+\BOOKMARK [1][-]{section.9}{More on Orthonormal Basis, Spectral Theorem}{part.1}
+\BOOKMARK [2][-]{subsection.9.1}{Summary on Convergence of Fourier Series}{section.9}
+\BOOKMARK [2][-]{subsection.9.2}{Some Advanced Linear Algebra}{section.9}
+\BOOKMARK [1][-]{section.10}{The Regular Sturm-Liouville Problem}{part.1}
+\BOOKMARK [1][-]{section.11}{Properties of Weighted Inner Products}{part.1}
+\BOOKMARK [2][-]{subsection.11.1}{Properties of Sturm-Liouville Problem}{section.11}
+\BOOKMARK [1][-]{section.12}{Solving the Heat Equation using Sturm-Liouville Problem}{part.1}
+\BOOKMARK [2][-]{subsection.12.1}{Existence Theorem for Sturm-Liouville}{section.12}
+\BOOKMARK [1][-]{section.13}{Using Fourier Series to Solve the Heat Equation}{part.1}
+\BOOKMARK [0][-]{part.2}{II Fourier Transforms}{}
+\BOOKMARK [1][-]{section.14}{A Review of L2 and an Introduction to the Fourier Transform}{part.2}
+\BOOKMARK [2][-]{subsection.14.1}{Derivation of Fourier Transform}{section.14}
+\BOOKMARK [1][-]{section.15}{Convolution}{part.2}
+\BOOKMARK [1][-]{section.16}{Examples and Basic Properties of Fourier Transform}{part.2}
+\BOOKMARK [1][-]{section.17}{Inverse Fourier Transform, Fourier Transform on L2}{part.2}
+\BOOKMARK [2][-]{subsection.17.1}{Consequences of the Inversion Theorem}{section.17}
+\BOOKMARK [2][-]{subsection.17.2}{Fourier Transform on L2}{section.17}
+\BOOKMARK [2][-]{subsection.17.3}{Applications of the Fourier Transform}{section.17}
+\BOOKMARK [0][-]{part.3}{III Discrete Fourier Transforms}{}
+\BOOKMARK [1][-]{section.18}{Sampling Theorem}{part.3}
+\BOOKMARK [1][-]{section.19}{Uncertainty Principle}{part.3}
+\BOOKMARK [1][-]{equation.19.3}{References}{part.3}

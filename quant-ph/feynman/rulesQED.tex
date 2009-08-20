@@ -1,0 +1,69 @@
+\subsection{The Rules to the Game}
+
+So we want to calculate out the probability amplitude $\mathcal{M}$ associated
+with a particular Feynman diagram, we proceed as follows:
+\begin{enumerate}
+\item{(Notation)} We must be more careful here! We label the incoming and 
+outgoing four-momenta $p_1$, $p_2$, \ldots, $p_n$ and the corresponding spins
+$s_1$, $s_2$, \ldots, $s_n$. We label the inernal four-momenta $q_1$, $q_2$, \ldots.
+Assign arrows to the lines as follows: the arrows on \emph{external} fermion lines 
+indicates whether it is an electron or positron (if the arrow points forward in 
+time, it is an electron; backwards in time it is a positron); arrows on
+\emph{internal} fermion lines are assigned so that the ``direction of the flow''
+through the diagram is preserved (i.e. every vertex must have at least one arrow
+entering and one arrow leaving). The arrows on photon lines (which is optional,
+since arrows are used to indicate whether the particle is an antiparticle or not;
+bosons are their own antipartners) point ``forward'' in time.
+
+\item{(External Lines)} External lines contribute factors as follows:
+\begin{equation*}
+\mbox{Electrons: } \begin{cases} \mbox{Incoming: } u\\
+\mbox{Outgoing: }\bar{u} \end{cases}
+\end{equation*}
+\begin{equation*}
+\mbox{Positrons: } \begin{cases} \mbox{Incoming: } \bar{v}\\
+\mbox{Outgoing: }v\end{cases}
+\end{equation*}
+\begin{equation*}
+\mbox{Photons: } \begin{cases} \mbox{Incoming: }\epsilon^\mu \\
+\mbox{Outgoing: }(\epsilon^\mu)^* \end{cases}
+\end{equation*}
+
+\item{(Vertex Factors)} Each vertex contributes a factor
+\begin{equation}
+ig_{e}\gamma^\mu
+\end{equation}
+The dimensionless coupling constant $g_e$ is related to the charge of the
+positron $g_e$ = $e\sqrt{4\pi/\hbar c}$ = $\sqrt{4\pi\alpha_E}$\footnote{Here
+$\alpha_E$ is the coupling constant of the electromagnetic force. In \emph{general},
+the QED coupling is $-q\sqrt{4\pi/\hbar c}$ where $q$ is the charge of the \emph{particle}
+(as opposed to antiparticle). For electrons $q=-e$, for an up quark $q=(2/3)e$.}
+\item{(Propagators)} Each internal line contributes a factor as follows
+\begin{equation}
+\mbox{Electrons and Positrons: }\frac{i\gamma^\mu q_\mu + mc}{q^2 - m^2c^2}
+\end{equation}
+\begin{equation}
+\mbox{Photons: }\frac{-ig_{\mu\nu}}{q^2}
+\end{equation}
+\item{(Conservation of Energy and Momentum)} For each vertex, write a delta 
+function of the form
+\begin{equation}
+(2\pi)^4\delta^{(4)}(k_1 + k_2 + k_3)
+\end{equation}
+This enforces the conservation of momentum at the vertex.
+\item{(Integrate Over Internal Momenta)} For each internal momentum $q$, write
+a factor
+\begin{equation}
+\frac{d^4 q}{(2\pi)^4}
+\end{equation}
+and integrate.
+\item{(Cancel the Delta Function)} The result will include a factor
+\begin{equation}
+(2\pi)^4\delta^{(4)}(p_1 + p_2 + \cdots - p_n)
+\end{equation}
+which corresponds to the overall energy-momentum conservation. Cancel this factor,
+and we get $-i\mathcal{M}$.
+\item{(Antisymmetrization)} Include a minus sign between diagrams that differ
+only in the interchange of two incoming (or outgoing) electrons (or positrons),
+or of an incoming electron with an outgoing positron (or vice versa).
+\end{enumerate}

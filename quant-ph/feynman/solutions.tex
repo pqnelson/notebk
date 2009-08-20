@@ -1,0 +1,346 @@
+\subsection{Solutions to the Dirac Equation}
+
+The easiest approach to find solutions to the Dirac equation is to insist that
+the solution is independent of spatial position:
+\begin{equation}
+\frac{\partial\psi}{\partial x} = \frac{\partial\psi}{\partial y} = \frac{\partial\psi}{\partial z} = 0.
+\end{equation}
+This really describes a particle with zero momentum, since the momentum operator
+is $i\hbar\partial_\mu$ and all the spatial eigenvalues vanish. The Dirac 
+equation simplifies to
+\begin{equation}
+\frac{i\hbar}{c}\gamma^0\frac{\partial\psi}{\partial t} - mc\psi = 0
+\end{equation}
+or equivalently
+\begin{equation}
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+\partial\psi_A/\partial t\\
+\partial\psi_B/\partial t
+\end{bmatrix}
+= -i\frac{mc^2}{\hbar}
+\begin{bmatrix}
+\psi_A \\
+\psi_B
+\end{bmatrix}
+\end{equation}
+where
+\begin{equation}
+\psi_A = \begin{bmatrix}
+\psi_1\\
+\psi_2
+\end{bmatrix}
+\end{equation}
+carries the upper two components and 
+\begin{equation}
+\psi_B = \begin{bmatrix}
+\psi_3\\
+\psi_4
+\end{bmatrix}
+\end{equation}
+carries the lower two components. Thus
+\begin{equation}
+\frac{\partial\psi_A}{\partial t} = -i\left(\frac{mc^2}{\hbar}\right)\psi_A,\quad -\frac{\partial\psi_B}{\partial t} = -i\left(\frac{mc^2}{\hbar}\right)\psi_B
+\end{equation}
+and the solutions are
+\begin{equation}
+\psi_A(t) = \exp[-i(mc^2/\hbar)t]\psi_A(0),\quad\psi_B(t)=\exp[i(mc^2/\hbar)t]\psi_B(0).
+\end{equation}
+We should know that in Quatum mechanics, the term
+\begin{equation}
+\exp(-iEt/\hbar)
+\end{equation}
+is the characteristic for time dependence of a quantum state with energy $E$. It
+follows that at rest with $\bold{p}=0$, the energy of the particle is $E=mc^2$.
+So $\psi_A$ is what we expect.
+
+What about $\psi_B$? It has negative energy! What the heck?! This is a famous
+disaster, and Dirac's response was like the Hindenberg of physics. He suggested
+something called the Hole theory, we will not discuss it here. 
+
+We interpret these ``negative'' energy particles as \emph{antiparticles} with
+\emph{positive} energy. So for us in our Dirac equation, $\psi_B$ describes
+positrons (or antielectrons if one prefers to be outlandish) and $\psi_A$ 
+describes electrons. Each of them is a 2 component spinor (a 2 column vector).
+This is ideal as such a mathematical object describes a spin 1/2 particle. So,
+to sum up, we have 2 particles that are each 2 solutions for a grand total of
+4 independent solutions with momentum $\bold{p}=0$:
+\begin{equation}
+\psi^{(1)} = \exp(i(mc^2/\hbar)t)\begin{bmatrix}
+1\\
+0\\
+0\\
+0
+\end{bmatrix}\quad\psi^{(2)} = \exp(i(mc^2/\hbar)t)\begin{bmatrix}
+0\\
+1\\
+0\\
+0
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\psi^{(3)} = \exp(-i(mc^2/\hbar)t)\begin{bmatrix}
+0\\
+0\\
+1\\
+0
+\end{bmatrix}\quad\psi^{(4)} = \exp(-i(mc^2/\hbar)t)\begin{bmatrix}
+0\\
+0\\
+0\\
+1
+\end{bmatrix}
+\end{equation}
+describing (respectively) an electron with spin up, an electron with spin
+down, a positron with spin up and an electron with spin down.
+
+So to look at this from the perspective of solving differential equations, we
+have a solution to the homogeneous equation and we will use the method of variation
+of parameters to get solutions to the Dirac equation. What does this mean? Well,
+it means we are looking for ``plane wave solutions'' that look like
+\begin{equation}
+\psi(\bold{r},t) = ae^{-i(Et-\bold{p}\cdot\bold{r})/\hbar}u(E,\bold{p})
+\end{equation}
+where $a$ is a normalization constant (so probabilities add up to 1). We want to
+solve for $u(E,\bold{p})=u(p)$ (we will use $p=(E/c,\bold{p})$ which is a 4 vector, and
+similarly $x=(ct,\bold{x}$), which is a mathematical object called a ``bispinor''.
+We don't want any old bispinor, we want one that will solve Dirac's equation!
+We have $x$ dependence only in the exponent, so we find
+\begin{equation}
+\partial_\mu\psi = \frac{-i}{\hbar}p_\mu a e^{-(i/hbar)x^\mu p_\mu}u
+\end{equation}
+By plugging this into Dirac's equation, we get
+\begin{equation}
+\gamma^\mu p_\mu a e^{-(i/\hbar)x\cdot p}u - mcae^{-(i/\hbar)x\cdot p}u = 0
+\end{equation}
+or if we want a neater and cleaner way to present it
+\begin{equation}\label{momentumSpaceDiracEquation}
+(\gamma^\mu p_\mu - mc)u = 0.
+\end{equation}
+This is the ``momentum space Dirac equation'' (which we get by taking the
+Fourier Transform of the Dirac equation we all know and love). Notice this is
+purely algebraic, no derivatives! That's the beauty of Fourier transforms in
+solving differential equations! If $u$ satisfies (\ref{momentumSpaceDiracEquation})
+then $\psi$ satisfies the Dirac equation.
+
+Now to \emph{prove} this (because an assertion is always meaningless without a
+rigorous proof -- take note of this social ``scientists'') we need to use a lot
+of gamma matrix manipulations. Remember all representations are ``equivalent''
+in the sense that they are related by unitary transformations. First we have
+\begin{equation}
+\gamma^\mu p_\mu = \gamma^0 p^0 - \bold{\gamma}\cdot\bold{p} = \frac{E}{c}\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+- \bold{p}\cdot\begin{bmatrix}
+0 & \sigma \\
+-\sigma & 0 
+\end{bmatrix}
+=
+\begin{bmatrix}
+E/c & -\bold{p}\cdot\bold{\sigma} \\
+\bold{p}\cdot\bold{\sigma} & -E/c
+\end{bmatrix}
+\end{equation}
+SO it follows that
+\begin{eqnarray*}
+(\gamma^\mu p_\mu - mc)u &=& \begin{bmatrix}
+\left(\frac{E}{c}-mc\right) & -\bold{p}\cdot\sigma \\
+\bold{p}\cdot\sigma & \left(\frac{-E}{c}-mc\right)
+\end{bmatrix}
+\begin{bmatrix}
+u_A \\
+u_B
+\end{bmatrix} \\
+&=& \begin{bmatrix}
+\left(\frac{E}{c}-mc\right)u_A & -\bold{p}\cdot\sigma u_B\\
+\bold{p}\cdot\sigma u_A & \left(\frac{-E}{c}-mc\right) u_B
+\end{bmatrix}
+\end{eqnarray*}
+where the subscript $A$ is for the upper two components and the $B$ stands for
+the lower two. In order to satisfy the momentum space Dirac equation, we
+must have
+\begin{equation}\label{stepTowardsSolutions}
+u_A = \frac{c}{E - mc^2}(\bold{p}\cdot\sigma)u_B,\quad u_B = \frac{c}{E + mc^2}(\bold{p}\cdot\sigma) u_A
+\end{equation}
+We substitute the second into the first to give us
+\begin{equation}
+u_A =\frac{c^2}{E^2 - m^2c^4}(\bold{p}\cdot\sigma)^2 u_A
+\end{equation}
+Observe
+\begin{eqnarray*}
+\bold{p}\cdot\sigma &=& p_x\begin{bmatrix}
+0 & 1\\
+1 & 0 
+\end{bmatrix}
++ p_{y}\begin{bmatrix}
+0 & -i\\
+i & 0
+\end{bmatrix}
++ p_{z}\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix} \\
+&=& \begin{bmatrix}
+p_{z} & (p_{x} - ip_{y}) \\
+(p_{x} + ip_{y}) & -p_{z}
+\end{bmatrix}
+\end{eqnarray*}
+We find then by matrix multiplication (we will not calculate this out with every
+detail, but we will show the result):
+\begin{equation}
+(\bold{p}\cdot\sigma)^2 = \begin{bmatrix} p_{z}^2 + (p_x - ip_{y})(p_{x} + ip_{y}) & p_{z}(p_{x} - ip_{y}) - p_{z}(p_{x} - ip_{y}) \\
+p_{z}(p_{x} + ip_{y}) - p_{z}(p_{x} + ip_{y}) & (p_{x} + ip_{y})(p_{x} - ip_{y}) + p_{z}^2
+\end{bmatrix} = \bold{p}^2 I
+\end{equation}
+where $I$ is the 2 by 2 identity matrix. We see then that by plugging this into our equation for $u_A$
+\begin{equation}
+u_A = \frac{\bold{p}^2c^2}{E^2 - m^2c^4}u_A
+\end{equation}
+which can be rearranged to be
+\begin{eqnarray*}
+(E^2 - m^2c^4)u_A &=& \bold{p}^2c^2 u_A \\
+\Rightarrow (E^2 - \bold{p}^2c^2)u_A &=& m^2c^4 u_A
+\end{eqnarray*}
+and thus
+\begin{equation}
+E^2 - \bold{p}^2c^2 = m^2c^4
+\end{equation}
+which is the famous Einstein equation we all know and love. This tells us that
+in order to satisfy the Dirac equation, we have to obey the mass shell constraint.
+This admits two solutions for $E$:
+\begin{equation}
+E = \pm\sqrt{m^2 c^4 + \bold{p}^2c^2}
+\end{equation}
+where the positive root is associated with particle states, and the negative
+root with antiparticle states.
+
+Using Eq (\ref{stepTowardsSolutions}), it is straightforward to calculate out
+the solutions to the Dirac equation (ignoring normalization constants):
+\begin{equation*}
+\mbox{Pick } u_A = \begin{bmatrix} 1\\0\end{bmatrix}\quad\mbox{then } 
+u_B = \frac{c}{E + mc^2}(\bold{p}\cdot\sigma)\begin{bmatrix}1\\0\end{bmatrix} 
+= \frac{c}{E + mc^2}\begin{bmatrix} p_{z}\\ p_{x}+ip_{y}\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+\mbox{Pick } u_A = \begin{bmatrix} 0\\1\end{bmatrix}\quad\mbox{then } 
+u_B = \frac{c}{E + mc^2}(\bold{p}\cdot\sigma)\begin{bmatrix}0\\1\end{bmatrix} 
+= \frac{c}{E + mc^2}\begin{bmatrix} p_{x}-ip_{y}\\ -p_{z}\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+\mbox{Pick } u_B = \begin{bmatrix} 1\\0\end{bmatrix}\quad\mbox{then } 
+u_A = \frac{c}{E - mc^2}(\bold{p}\cdot\sigma)\begin{bmatrix}1\\0\end{bmatrix} 
+= \frac{c}{E - mc^2}\begin{bmatrix} p_{z}\\ p_{x}+ip_{y}\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+\mbox{Pick } u_B = \begin{bmatrix} 0\\1\end{bmatrix}\quad\mbox{then } 
+u_A = \frac{c}{E - mc^2}(\bold{p}\cdot\sigma)\begin{bmatrix}0\\1\end{bmatrix} 
+= \frac{c}{E - mc^2}\begin{bmatrix} p_{x}-ip_{y}\\-p_{z}\end{bmatrix}
+\end{equation*}
+For the first two of these, we must use the positive energy otherwise we have
+division by zero, and if you divide by zero you go to hell. For the same reason,
+the energy in the latter two are negative. It is convenient to ``normalize'' these
+spinors in such a way that
+\begin{equation}
+u^\dag u = 2|E|/c
+\end{equation}
+where the dagger indicates the transpose conjugate (``Hermitian conjugate'') is
+used:
+\begin{equation*}
+u = \begin{bmatrix}a\\b\\c\\d\end{bmatrix}\Rightarrow\quad u^\dag = (a^*, b^*, c^*, d^*)
+\end{equation*}
+so that
+\begin{equation}
+u^\dag u = |a|^2 + |b|^2 + |c|^2 + |d|^2.
+\end{equation}
+So we find that the four solutions are:
+\begin{equation}
+u^{(1)} = N\begin{bmatrix}1\\0\\\frac{\displaystyle cp_{z}}{\displaystyle E+mc^2}\\ \frac{\displaystyle c(p_{x}+ip_{y})}{\displaystyle E+mc^2}\end{bmatrix}
+\end{equation}
+\begin{equation}
+u^{(2)} = N\begin{bmatrix}0\\1\\ \frac{\displaystyle c(p_{x}-ip_{y})}{\displaystyle E+mc^2}\\\frac{\displaystyle -cp_{z}}{\displaystyle E+mc^2}\end{bmatrix}
+\end{equation}
+with $E = +\sqrt{m^2c^4 + \bold{p}^2c^2}$
+\begin{equation}
+u^{(3)} = N\begin{bmatrix}\frac{\displaystyle cp_{z}}{\displaystyle E-mc^2}\\ \frac{\displaystyle c(p_{x}+ip_{y})}{\displaystyle E-mc^2}\\1\\0\end{bmatrix}
+\end{equation}
+\begin{equation}
+u^{(4)} = N\begin{bmatrix} \frac{\displaystyle c(p_{x}-ip_{y})}{\displaystyle E-mc^2}\\\frac{\displaystyle c(-p_{z})}{\displaystyle E-mc^2}\\ 0\\1\end{bmatrix}
+\end{equation}
+with $E = -\sqrt{m^2c^4 + \bold{p}^2c^2}$, and the normalization constant is
+\begin{equation}
+N = \sqrt{(|E|+mc^2)/c}.
+\end{equation}
+Now we are really tempted to say that $u^{(1)}$ is an electron with spin up,
+and $u^{(2)}$ is an electron with spin down, and so on, but this is not quite so.
+For Dirac Particles, the spin matrices are
+\begin{equation}
+S = \frac{\hbar}{2}\Sigma\quad\mbox{with }\Sigma\equiv\begin{bmatrix}\sigma & 0\\0 & \sigma\end{bmatrix}
+\end{equation}
+and it's easy to check that $u^{(1)}$ is \emph{not} an eigenstate of $\Sigma$.
+However, if we orient the $z$ axis so it points along the direction of motion
+(in which case $p_x = p_y = 0$) then $u^{(1)}$, $u^{(2)}$, $u^{(3)}$, and $u^{(4)}$
+are eigenspinors of $S_z$; $u^{(1)}$ and $u^{(3)}$ are spin up, and
+$u^{(2)}$ and $u^{(4)}$ are spin down\footnote{It is actually mathematically
+impossible to construct spinors that satisfies the momentum Dirac equation and
+are simultaneously eigenspinors of $S_z$ (except for the special case $\bold{p}$ = $p_z\hat{z}$).
+The reason is that $S$ by itself is \emph{not a conserved quantity.} Only the
+\emph{total} angular momentum $L+S$ is conserved. It is possible to construct
+eigenspinors of \emph{helicity}, $\Sigma\cdot\hat{p}$ (there's no \emph{orbital}
+angular momentum about the direction of motion), but these are cumbersome and in
+practice we like to work with the spinors we have constructed, even though it is
+difficult to have a physical intuition to what they mean. In the end, all that
+really matters is that we have a complete set of solutions.}
+
+Now we have to discuss the importance of $E$ and $\bold{p}$, which are mathematical
+parameters which correspond physically to energy and momentum. At least, this is
+true for the electron states $u^{(1)}$ and $u^{(2)}$; but in $u^{(3)}$ and 
+$u^{(4)}$ the $E<0$...so it \emph{cannot} represent positron energy. All free
+particles -- electrons and positrons alike -- carry \emph{positive} energy.
+The ``negative-energy'' solutions must be reinterpreted as \emph{positive}
+energy \emph{antiparticle} states. To express these solutions in terms of 
+the \emph{physical} energy and momentum of the positron, we flip the signs of
+$E$ and $\bold{p}$:
+\begin{equation}
+\psi(\bold{r},t) = ae^{i/\hbar(Et - \bold{p}\cdot\bold{r})}u(-E,-\bold{p})
+\end{equation}
+for solutions (3) and (4) of course. These are the same solutions, we just have
+changed the signs of two parameters so it is physically appealing. It is 
+customary to use $v$ for positron states, expressed in terms of the physical
+energy and momentum:
+\begin{equation}
+v^{(1)}(E,\bold{p}) = u^{(4)}(-E,-\bold{p}) = N\begin{bmatrix} 
+\frac{\displaystyle c(p_x - ip_y)}{\displaystyle E + mc^2}\\
+\frac{\displaystyle c(-p_z)}{\displaystyle E + mc^2}\\
+0\\
+1\end{bmatrix}
+\end{equation}
+\begin{equation}
+v^{(2)}(E,\bold{p}) = u^{(4)}(-E,-\bold{p}) = N\begin{bmatrix} 
+\frac{\displaystyle c(p_z)}{\displaystyle E + mc^2}\\
+\frac{\displaystyle c(p_x + ip_y)}{\displaystyle E + mc^2}\\
+1\\
+0\end{bmatrix}
+\end{equation}
+(with $E=\sqrt{m^2c^4 + \bold{p}^2c^2}$).
+
+So we will no longer be working with $u^{(3)}$ and $u^{(4)}$; instead, the
+set of solutions we will be working with are $u^{(1)}$, $u^{(2)}$ (representing
+the two spin states of an electron with energy $E$ and momentum $\bold{p}$),
+and $v^{(1)}$, $v^{(2)}$ (representing the two spin states of a positron with
+energy $E$ and momentum $\bold{p}$). Notice that whereas the $u$'s satisfy the
+momentum space Dirac equation in the form
+\begin{equation}
+(\gamma^\mu p_\mu - mc)u = 0
+\end{equation}
+the $v$'s obey the equation with the sign of $p_\mu$ reversed:
+\begin{equation}
+(\gamma^\mu p_\mu + mc)v = 0.
+\end{equation}
+Sure this is interesting, but it's only the special case of plane waves. Why
+bother? Well, they are of interest because they describe particles with 
+specified energies and momenta, and in a typical experiment that's what we
+control and measure.

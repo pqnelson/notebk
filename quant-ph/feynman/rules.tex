@@ -1,0 +1,75 @@
+\section{Feynman Rules in a Nutshell with a Toy Model}
+
+
+We will work in a toy model\footnote{It is commonly referred to as the $\phi^4$ 
+model in the literature.} with massive spinless particles (so we won't have to 
+worry about spin). This is the easiest nontrivial example of the use of Feynman 
+diagrams. The basic ritual of Feynman diagrams is outlined thus:
+\begin{enumerate}
+\item{(Notation)} Label the incoming and outgoing four-momenta $p_1$, $p_2$,
+$\ldots$, $p_n$. Label the internal momenta $q_1$, $q_2$, $\ldots$. Put an
+arrow on each line, keeping track of the ``positive'' direction (antiparticles
+move ``backward'' in time).
+
+\item{(Coupling Constant)} At each vertex, write a factor of
+\begin{equation*}
+-ig
+\end{equation*}
+where $g$ is called the ``\textbf{coupling constant}''; it specifies the
+strength of the interaction. In our toy model, $g$ will have dimensions of
+momentum, but in the real world it is dimensionless.
+
+\item{(Propagator)} For each internal line, write a factor
+\begin{equation*}
+\frac{i}{q_{j}^{2} - m_{j}^2c^2}
+\end{equation*}
+where $q_j$ is the four-momentum of the line ($q_j^2=q_{j}^{\mu}q_{j\mu}$; i.e.
+$j$ is just a label keeping track of which internal line we are dealing with)
+and $m_j$ is the mass of the particle the line describes. (Note that for
+virtual particles, we don't have the $E^2 - \vec{p}\cdot\vec{p}=m^2c^2$ relation
+that's for external legs only!)
+
+\item{(Conservation of Momentum)} For each vertex, write a delta function of
+the form
+\begin{equation*}
+(2\pi)^4\delta^{(4)}(k_1+k_2+k_3)
+\end{equation*}
+where the $k$'s are the three four-momenta coming \emph{into} the vertex (if
+the arrow leads outward, then $k$ is \emph{minus} the four-momentum of that
+line). This factor imposes conservation of energy and momentum at each vertex,
+since the delta function is zero unless the sum of the incoming momenta equals
+the sum of the outgoing momenta.
+
+\item{(Integration over Internal Momenta)} For each internal line, write down
+a factor
+\begin{equation*}
+\frac{1}{(2\pi)^4}d^{4}q_{j}
+\end{equation*}
+and integrate over all internal momenta.
+
+\item{(Cancel the Delta Function)} The result will include a delta function
+\begin{equation*}
+(2\pi)^4\delta^{(4)}(p_1 + p_2 + \cdots - p_n)
+\end{equation*}
+enforcing overall conservation of energy and momentum. Erase this factor, and
+what remains is $i\mathcal{M}$ that is $-i$ times the contribution to the 
+amplitude from this process.
+\end{enumerate}
+
+What we do with these rules is we form an integrand by multiplying everything
+together, so at the end it should look something like this:
+\begin{equation}
+i\mathcal{M} \textrm{ ``='' } \begin{pmatrix}$coupling$\\
+$constants$
+\end{pmatrix}
+\int
+\begin{pmatrix}
+$propagators$
+\end{pmatrix}
+\begin{pmatrix}
+$delta$\\ $functions$
+\end{pmatrix}d
+\begin{pmatrix}
+$internal$\\ $lines$
+\end{pmatrix}
+\end{equation}

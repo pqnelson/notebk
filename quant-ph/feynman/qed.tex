@@ -1,0 +1,69 @@
+\subsection*{Please Take Note!}
+
+We will be covering everything relevant here, and when the time comes we will
+be performing in excrutiating detail every Feynman diagram of significance in
+QED.
+
+\input{em}
+
+\section{A Comically Brief Review}
+The following is a table summarizing the properties of the solutions of the 
+Dirac equation.
+
+\begin{tabular}{|p{3cm}|c|c|}
+\hline
+Property & Electrons & Positrons\\ \hline
+Spinor components & $\psi(x)=au^{(s)}(p)\exp[-(i/\hbar)p\cdot x]$ & $\psi(x)=av^{(s)}(p)\exp[-(i/\hbar)p\cdot x]$\\ \hline
+Momentum Space Dirac Equation & $(\gamma^\mu p_\mu - mc)u = 0$ & $(\gamma^\mu p_\mu + mc)v = 0$ \\ \hline
+Adjoint Dirac Equation & $\bar{u}(\gamma^\mu p_\mu - mc) = 0$ & $\bar{v}(\gamma^\mu p_\mu + mc) = 0$ \\ \hline
+Orthogonality & $\bar{u}^{(1)}u^{(2)} = 0$ & $\bar{v}^{(1)}v^{(2)} = 0$ \\ \hline
+Normalization & $\bar{u}u = 2mc$ & $\bar{v}v = -2mc$ \\ \hline
+Complete & $\sum_{s} u^{(s)}\bar{u}^{(s)} = (\gamma^\mu p_\mu + mc)$ & $\sum_{s} v^{(s)}\bar{v}^{(s)} = (\gamma^\mu p_\mu - mc)$ \\ \hline
+\end{tabular}
+
+A free photon, on the other hand, of momentum $p = (E/c, \bold{p})$ with
+$E = |\bold{p}|c$ is represented by the wave function
+\begin{equation}
+A^{\mu}(x) = ae^{-(i/\hbar)p\cdot x}\epsilon^\mu_{(s)}
+\end{equation}
+where $\epsilon^\mu$ is a spin dependent vector, $s=1,2$ for the two polarizations
+(``spin states'') of the photon. The polarization vectors $\epsilon^\mu_{(s)}$
+satisfy the \emph{momentum space Lorentz condition:}
+\begin{equation}
+\epsilon^\mu p_\mu = 0.
+\end{equation}
+ They are orthogonal in the sense that 
+\begin{equation}
+\epsilon_{\mu(1)}^{*}\epsilon^{\mu}_{(2)} = 0.
+\end{equation}
+They are further normalized
+\begin{equation}
+\epsilon^{*}_{\mu}\epsilon^{\mu} = 1.
+\end{equation}
+In the Coulomb gauge
+\begin{equation}
+\epsilon^0=0,\quad \epsilon\cdot p = 0
+\end{equation}
+and the polarization three-vectors obey the completeness relation
+\begin{equation}
+\sum_{s=1,2} (\epsilon_{(s)})_i (\epsilon^{*}_{(s)})_j = \delta_{ij} - \hat{p}_{i}\hat{p}_{j}.
+\end{equation}
+
+\section{Quantum Electrodynamics}
+\input{rulesQED}
+\section{Elastic Processes}
+
+An elastic (relativistic) process is one where kinetic energy, rest energy, and
+mass are all conserved. We will explore such examples in QED.
+
+\input{QEDexOne}
+\input{moller}
+
+%
+% \section{Inelastic Processes}
+% An inelastic (relativistic) process is one where kinetic energy, rest energy,
+% or mass are not conserved. We will explore such examples in QED.
+
+% % Anamolous magnetic moment for the electron
+% \input{thirdOrderEx}
+%

@@ -1,0 +1,65 @@
+%%
+%% ladder.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun  3 16:59:03 2009 Alex Nelson
+%% Last update Wed Jun  3 16:59:03 2009 Alex Nelson
+%%
+
+We see first of all that there is a state $|0\>$ which we will
+call the ``\define{vacuum state}''. It is such that
+\begin{equation}%\label{eq:}
+a|0\>=0|0\>=0.
+\end{equation}
+That is, it is the lowest energy eigenstate. We find that in
+explicit coordinates the function $f(Q)$ that does this is
+\begin{subequations}
+\begin{align}
+\<Q|a|0\> &= a(f) \\
+&= \left[Q+\frac{\partial}{\partial Q}\right]f(Q)\\
+\Rightarrow -Qf(Q) &= f'(Q)\\
+\Rightarrow -Q &= \frac{f'(Q)}{f(Q)}\\
+\Rightarrow C_{1} - \frac{Q^{2}}{2} &= \ln(f(Q))\\
+\Rightarrow f(Q) &= c\exp(-Q^{2}/2)
+\end{align}
+\end{subequations}
+where $c$, $C_{1}$ are constants of integration. We find by
+normalization
+\begin{equation}%\label{eq:}
+\<0|0\>=1\quad\iff\quad f(Q)= \<Q|0\> = \frac{1}{\sqrt[4]{\pi}}e^{-Q^{2}/2}.
+\end{equation}
+The energy of this eigenstate is then open to question. We would
+\emph{like} it to be zero, as this is the vacuum, but we need to
+\emph{prove} it.
+
+First we should define the \define{Number Operator} as
+\begin{equation}%\label{eq:}
+N = a^{\dag}a.
+\end{equation}
+We see that
+\begin{equation}%\label{eq:}
+N|n\> = n|n\>
+\end{equation}
+and note the abuse of notation here: $n|n\>$ is the scalar $n$
+multiplied with the ket $|n\>$. We chose this notation for the
+ket because it gives us complete information about its number
+eigenvalue (the scalar number $n$).
+
+We can rewrite the Hamiltonian operator in terms of the number
+operator
+\begin{equation}%\label{eq:}
+\widehat{H} = \hbar\omega\left(N+\frac{1}{2}\right).
+\end{equation}
+Observe then that the energy eigenvalue of the vacuum is
+\begin{equation}%\label{eq:}
+\widehat{H}|0\> = \frac{\hbar\omega}{2}|0\>.
+\end{equation}
+This is not really too good, since the \emph{vacuum has positive
+  energy.} But what it also means is that we can write the energy
+eigenvalues as
+\begin{equation}%\label{eq:}
+E_{n} = \hbar\omega\left(n+\frac{1}{2}\right)
+\end{equation}
+where ($n=0,1,2,\ldots$).

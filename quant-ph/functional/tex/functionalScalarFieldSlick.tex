@@ -1,0 +1,256 @@
+%%
+%% functionalScalarFieldSlick.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Aug  1 12:23:40 2009 Alex Nelson
+%% Last update Sat Aug  1 12:23:40 2009 Alex Nelson
+%%
+\subsubsection{Outline}
+As promised, we'll introduce a slicker way to compute Feynman
+rules using functional derivatives. It's a lot more
+mathematically rigorous (and simpler) than the discretization
+scheme. The method uses a mathematical gadget which generalizes
+the notion of a generating function --- the generating
+\emph{functional}. Recall the generating function is used to
+compute constants and other useful numbers by taking its
+$n^{\text{th}}$ derivative and evaluating it at 0. We
+\emph{functionally} do the same thing, take the functional
+derivative of the generating functional and evaluate it at 0.
+
+
+\subsubsection{Properties of the Functional Derivative}
+First lets try to review the properties of the functional
+$\delta/\delta J(x)$. The functional derivative obeys the basic
+property (in four dimensions)
+\begin{equation}%\label{eq:}
+\frac{\delta}{\delta J(x)}J(y)=\delta^{(4)}(x-y),
+\quad\text{or}\quad
+\frac{\delta}{\delta J(x)}\int J(y)\phi(y)d^{4}y = \phi(x).
+\end{equation}
+This can be viewed as a continuous generalization of the vector
+calculus derivative 
+\begin{equation}%\label{eq:}
+\frac{\partial}{\partial x_i}x_j = \delta_{ij}
+\quad\text{or}\quad
+\frac{\partial}{\partial x_i}\sum_{j}x_{j}k_{j}=k_{i}.
+\end{equation}
+To take the functional derivatives of more complicated
+situations, we use the basic properties of the chain rule and the
+product rule. \textbf{Warning:} we \textbf{assume without proof}
+that these properties hold, we'll not divulge into the proof
+here. So we have situations like the following:
+\begin{equation}%\label{eq:}
+\frac{\delta}{\delta J(x)}\exp\left[i\int J(y)\phi(y)d^{4}y\right]
+=i\phi(x)\exp\left[i\int J(y)\phi(y)d^{4}y\right].
+\end{equation}
+When the functional depends on the derivative of $J$ we integrate
+by parts --- and for all practical purposes, we always can
+integrate by parts in quantum field theory --- then apply the
+functional derivative as follows:
+\begin{equation}%\label{eq:}
+\frac{\delta}{\delta J(x)}\int V^{\mu}(y)\partial_{\mu}J(y)d^{4}y
+=
+\frac{\delta}{\delta J(x)}\left(
+\operatorname{bdry terms} + 
+\int J(y)\partial_{\mu}V^{\mu}(y)d^{4}y
+\right)
+= - \partial_{\mu}V^{\mu}(x).
+\end{equation}
+This concludes our review of basic properties that we'll use
+later on.
+
+\subsubsection{Generating Functional}
+
+As alluded to earlier, the basic object of interest is the
+generating functional of correlation functions. We denote this
+object of interest by $Z[J]$. In a scalar field theory, it's
+defined as
+\begin{equation}\label{eq:scalarFieldTheoryGeneratingFunctional}
+Z[J] \stackrel{\text{def}}{=}\int\mathcal{D}\phi\exp\left[
+i\int[\mathcal{L}+J(x)\phi(x)]d^{4}x
+\right].
+\end{equation}
+This is a functional integral over $\phi$. We've merely added to
+$\mathcal{L}$ in the exponent an extra term $J(x)\phi(x)$, which
+we usually refer to as the ``\emph{source term}''.
+
+\subsubsection{Derivation of Correlation Function}
+Now we use it to compute the generating functions for the
+Klein-Gordon field (the free scalar field). For example the
+two-point function is
+\begin{equation}%\label{eq:}
+\<0|T\{\phi(x_1)\phi(x_2)\}|0\> = \left.\frac{1}{Z_0}
+\left(-i\frac{\delta}{\delta J(x_{1})}\right)
+\left(-i\frac{\delta}{\delta J(x_{2})}\right)
+Z[J]\right|_{J=0}
+\end{equation}
+where $Z_0=Z[0]$. Each functional derivative brings down a factor
+of $\phi$ in the numerator of $Z[J]$; setting $J=0$ we recover
+our desired expression. In more explicit detail, we can compute
+\begin{subequations}
+\begin{align}
+\frac{\delta}{\delta J(x_2)}Z[J] &= \frac{\delta}{\delta J(x_2)}
+\int\mathcal{D}\phi\exp\left[
+i\int[\mathcal{L}+J(x)\phi(x)]d^{4}x
+\right] \\
+&= \int\mathcal{D}\phi\frac{\delta}{\delta J(x_2)}
+\exp\left[
+i\int[\mathcal{L}+J(x)\phi(x)]d^{4}x
+\right] \\
+&= \int\mathcal{D}\phi i\phi(x_2)
+\exp\left[
+i\int[\mathcal{L}+J(x)\phi(x)]d^{4}x
+\right]
+\end{align}
+\end{subequations}
+This is the effect of one functional derivative, we multiply by
+$-i$ to finish one functional operation. We need to do another to
+get the expression
+\begin{equation}%\label{eq:}
+\left(-i\frac{\delta}{\delta J(x_{1})}\right)
+\left(-i\frac{\delta}{\delta J(x_{2})}\right)
+Z[J]
+= \int\mathcal{D}\phi \phi(x_1)\phi(x_2)
+\exp\left[
+i\int[\mathcal{L}+J(x)\phi(x)]d^{4}x
+\right].
+\end{equation}
+To get the final expression, we need to divide by $Z_0$ and
+evaluate at $J=0$ to get
+\begin{equation*}%\label{eq:}
+\left.\frac{1}{Z_0}
+\left(-i\frac{\delta}{\delta J(x_{1})}\right)
+\left(-i\frac{\delta}{\delta J(x_{2})}\right)
+Z[J]\right|_{J=0} =\displaystyle{
+\frac{\displaystyle\int\mathcal{D}\phi\; \phi(x_1)\phi(x_2)\exp\left[i\int[\mathcal{L}]d^{4}x\right]}
+{\displaystyle\int\mathcal{D}\phi\exp\left[i\int\mathcal{L}d^{4}x\right]}}
+\end{equation*}
+which is precisely what is expected.
+
+\subsubsection{Slicker Way to Compute Correlation Functions}
+We've seen that eq
+\eqref{eq:scalarFieldTheoryGeneratingFunctional} recovers the
+expected expression for two-point functions. It's pretty nifty
+for us since the free scalar field can be written fairly
+easily. It's explicitly written after integrating by parts (on
+the first term)
+\begin{equation}\label{eq:slickPartialIntegration}
+\int[\mathcal{L}_{0}(\phi)+J\phi]d^{4}x 
+= 
+\int[\frac{1}{2}\phi(-\partial^{2}-m^{2}+i\varepsilon)\phi+J\phi]d^{4}x.
+\end{equation}
+The factor of $i\varepsilon$ is to guarantee convergence. We
+complete the square by introducing a shifted scalar field
+\begin{equation}%\label{eq:}
+\phi'(x)\stackrel{\text{def}}{=}\phi(x)-i\int D_{F}(x-y)J(y)d^{4}y
+\end{equation}
+where $D_{F}(x-y)$ is the Feynman propagator --- i.e. the Green's
+function of the Klein-Gordon operator, we find that our original
+expression \eqref{eq:slickPartialIntegration} becomes
+\begin{equation}%\label{eq:}
+\begin{split}
+\int[&\mathcal{L}_{0}(\phi)+J\phi]d^{4}x =\\
+&\int[\frac{1}{2}\phi'(-\partial^{2}-m^{2}+i\varepsilon)\phi']d^{4}x
+-\int\frac{1}{2}J(x)\left[-iD_{F}(x-y)\right]J(y)d^{4}y.
+\end{split}
+\end{equation}
+More symbolically, we could rewrite the change of variables as
+\begin{equation}%\label{eq:}
+\phi'\stackrel{\text{def}}{=}\phi+(-\partial^{2}-m^{2}+i\varepsilon)^{-1}J,
+\end{equation}
+and the result becomes
+\begin{equation}%\label{eq:}
+\int[\mathcal{L}_0 + J\phi]d^{4}x = 
+\int\left[\frac{1}{2}\phi'(-\partial^{2}-m^{2}+i\varepsilon)\phi'-\frac{1}{2}J(-\partial^{2}-m^{2}+i\varepsilon)^{-1}J\right]d^{4}x.
+\end{equation}
+This looks nasty, but we are not done yet. We have a few tricks
+left.
+
+When we change variables from $\phi$ to $\phi'$, it's just a
+shift, so the Jacobian in the functional integral definition of
+$Z[J]$ is the identity. The result is
+\begin{equation}%\label{eq:}
+\underbrace{\int\mathcal{D}\phi'
+\exp\left[i\int\mathcal{L}_{0}(\phi')d^{4}x\right]}_{Z_{0}}
+\underbrace{\exp\left[-i\int\frac{1}{2}J(x)[-iD_{F}(x-y)J(y)]d^{4}xd^{4}y\right]}_{\text{independent of }\phi'}
+\end{equation}
+As noted, the second integral is independent of $\phi'$ and the
+first is precisely $Z_{0}$. The generating functional of the free
+scalar field is thus
+\begin{equation}\label{eq:generatingFunctionPostManip}
+Z[J] = Z_{0}\exp\left[\frac{-1}{2}\int J(x)D_{F}(x-y)J(y)d^{4}xd^{4}y\right]
+\end{equation}
+Lets use \eqref{eq:scalarFieldTheoryGeneratingFunctional} and
+\eqref{eq:generatingFunctionPostManip} to compute some
+correlation functions. The two-point function is by definition
+\begin{equation}%\label{eq:}
+\<0|T\{\phi(x_1)\phi(x_2)\}|0\>
+=\left.
+\frac{-\delta}{\delta J(x_{1})}
+\frac{\delta}{\delta J(x_{2})}
+\exp\left[\frac{-1}{2}\int J(x)D_{F}(x-y)J(y)d^{4}xd^{4}y\right]\right|_{J=0}
+\end{equation}
+We can evaluate one functional derivative to find
+\begin{equation}%\label{eq:}
+\<0|T\{\phi(x_1)\phi(x_2)\}|0\>
+=\left.
+\frac{-\delta}{\delta J(x_{1})}
+\left[\frac{-1}{2}\int D_{F}(x_{2}-y)J(y)d^{4}y 
+-\frac{1}{2}\int J(x)D_{F}(x-x_{2})d^{4}x
+\right]
+\frac{Z[J]}{Z_{0}}\right|_{J=0}
+\end{equation}
+\begin{comment}
+We can see that the negatives cancel out nicely, we end up with 2
+terms that effectively look like
+\begin{equation*}%\label{eq:}
+\frac{-\delta}{\delta J(x_{1})}
+\left[\frac{-1}{2}\int D_{F}(x_{2}-y)J(y)d^{4}y 
+-\frac{1}{2}\int J(x)D_{F}(x-x_{2})d^{4}x
+\right]
+\propto
+\frac{\delta}{\delta J(x_1)}\int D_{F}(x_2-y)J(y)d^{4}y
+\end{equation*}
+\end{comment}
+We can see that this is just what happens after evaluating one
+functional derivative of the definition of the two-point
+function, which allows us to conclude that
+\begin{equation}%\label{eq:}
+\<0|T\{\phi(x_1)\phi(x_2)\}|0\> = D_{F}(x_1-x_2).
+\end{equation}
+This is good because it connects back to what we should already know.
+
+\subsubsection{Example: Four Point Correlation Functions}
+
+This is a rather space-consuming computation, so we need to
+introduce some abbreviations. Namely we'll use the conventions
+that arguments of functions are subscripts: $\phi_1 = \phi(x_1)$,
+$J_x=J(x)$, $D_{x4}=D_{F}(x-x_{4})$, etc. Repeated subscripts
+will be integrated over implicitly (like a continuous Einstein's
+summation convention). The four-point function is thus
+\begin{subequations}
+\begin{align}
+\<0|T\{\phi_1\phi_2\phi_3\phi_4\}|0\> 
+&=\left. \frac{\delta}{\delta J_{1}}
+\frac{\delta}{\delta J_{2}}
+\frac{\delta}{\delta J_{3}}
+[-J_{x}D_{x4}]e^{-\frac{1}{2}J_{x}D_{xy}J_{y}}\right|_{J=0}\\
+&=\left. \frac{\delta}{\delta J_{1}}
+\frac{\delta}{\delta J_{2}}
+[-D_{34}+J_{x}D_{x4}J_{y}D_{y3}]e^{-\frac{1}{2}J_{x}D_{xy}J_{y}}\right|_{J=0}\\
+=&\left. \frac{\delta}{\delta J_{1}}
+[D_{34}J_{x}D_{x2}+D_{24}J_{y}D_{y3}+J_{x}D_{x4}J_{y}D_{23}]e^{-\frac{1}{2}J_{x}D_{xy}J_{y}}\right|_{J=0}\\
+&=D_{34}D_{12}+D_{24}D_{13}+D_{14}D_{23}
+\end{align}
+\end{subequations}
+which is precisely what we expect by Wick's theorem.
+
+\subsubsection{The Beauty of the Generating Functional}
+
+The beauty of the situation is that these calculations are
+completely independent of whether things are free or
+interacting. The catch is the $Z[J=0]$ factor is not trivial in
+the interacting situation. It gives us the sum of the vacuum
+diagrams.

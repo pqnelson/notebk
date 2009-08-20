@@ -1,0 +1,7 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{marsden}
+J.~E. Marsden and M.~J. Hoffman, {\em Basic Complex Analysis}.
+\newblock W. H. Freeman, third~ed., 1998.
+
+\end{thebibliography}\endgroup

@@ -1,0 +1,74 @@
+%%
+%% lieDerivativeOfMetricAlongVector.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Jun  5 13:49:18 2009 Alex Nelson
+%% Last update Fri Jun  5 13:49:18 2009 Alex Nelson
+%%
+The Lie derivative of the metric along a vector $\xi^{a}$ is
+\begin{equation}\label{eq:lieDerivativeOfMetric}
+\mathscr{L}_{\xi}g_{ab} =
+g_{ac}\partial_{b}\xi^{c} + 
+g_{bc}\partial_{a}\xi^{c} +
+\xi^{c}\partial_{c}g_{ab}.
+\end{equation}
+Observe that
+\begin{equation}\label{eq:covariantDerivativeContraction}
+g_{bc}\nabla_{a}\xi^{c} = g_{bc}(\partial_a\xi^c + \Gamma^{c}_{ad}\xi^{d})
+\end{equation}
+where $\Gamma$ is the Christoffel symbol, $\nabla$ is the
+covariant derivative. We specifically find
+\begin{equation}\label{eq:firstManipulation}
+g_{bc}\Gamma^{c}_{ad}\xi^{d} = \Gamma_{bad}\xi^{d}.
+\end{equation}
+For the affine connection, we have
+\begin{equation}\label{eq:affineConnectionConditions}
+\partial_{c}g_{ab} = \Gamma_{acb} + \Gamma_{bca} = 0.
+\end{equation}
+So we plug this into eq \eqref{eq:lieDerivativeOfMetric} to find
+\begin{equation}\label{eq:lieDerivativeMutatisMutandi}
+\mathscr{L}_{\xi}g_{ab} =
+g_{ac}\partial_{b}\xi^{c} + 
+g_{bc}\partial_{a}\xi^{c} +
+\xi^{c}\left(\Gamma_{acb} + \Gamma_{bca}\right)
+\end{equation}
+By the properties of the Christoffel symbol, specifically
+\begin{equation}%\label{eq:}
+\Gamma_{cab} = \Gamma_{cba}
+\end{equation}
+we can rewrite eq \eqref{eq:covariantDerivativeContraction}
+as
+\begin{equation}%\label{eq:}
+g_{bc}\nabla_{a}\xi^{c} = g_{bc}\partial_a\xi^c + \Gamma_{bad}\xi^{d}.
+\end{equation}
+Now observe the Lie derivative of the metric along our vector
+$\xi^{a}$ can be grouped in terms
+\begin{equation}%\label{eq:}
+\mathscr{L}_{\xi}g_{ab} =
+(g_{ac}\partial_{b}\xi^{c} + \Gamma_{abc}\xi^{c}) + 
+(g_{bc}\partial_{a}\xi^{c} + \Gamma_{bac}\xi^{c})
+\end{equation}
+since the $c$ index is summed over, it's a dummy index. We can
+rewrite this in more familiar terms
+\begin{equation}%\label{eq:}
+\mathscr{L}_{\xi}g_{ab} =
+(g_{ac}\partial_{b}\xi^{c} + \Gamma_{abd}\xi^{d}) + 
+(g_{bc}\partial_{a}\xi^{c} + \Gamma_{bad}\xi^{d})
+\end{equation}
+thus
+\begin{equation}%\label{eq:}
+\mathscr{L}_{\xi}g_{ab} = g_{ac}\nabla_{b}\xi^{c} + g_{bc}\nabla_{a}\xi^{c}.
+\end{equation}
+Since the connection is metric compatible, we can ``bring the
+metric inside the derivative''
+\begin{equation*}%\label{eq:}
+g_{ab}\nabla_{c}(\cdots) \to \nabla_{c}(g_{ab}\cdots)
+\end{equation*}
+since $\nabla g_{ab} = 0$. Now we can rewrite our Lie derivative
+as
+\begin{equation}%\label{eq:}
+\mathscr{L}_{\xi}g_{ab} = \nabla_{b}\xi_{a} + \nabla_{a}\xi_{b}.
+\end{equation}
+This is precisely the Killing equation.

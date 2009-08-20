@@ -1,0 +1,99 @@
+%%
+%% actionPoincareGroup.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 25 14:01:05 2009 Alex Nelson
+%% Last update Sat Jul 25 14:01:05 2009 Alex Nelson
+%%
+
+We really want to find a unitary representation of the Poincar\'e
+group, which is the Lorentz group plus spacetime translations
+(i.e. rotations, Lorentz boosts, and space-time translations). We
+have the representation condition $U(gh)=U(g)U(h)$ must hold for
+all $g,h$ in the Poincar\'e group. We've seen what happens when
+both $g,h$ are in the Lorentz group, and when both $g,h$ are
+space-time translations. We now need to ask: what happens when
+one is a translation and the other is a boost?
+
+We can uniquely factor any element $g$ of the Poincar\'e group as
+the product
+\begin{equation}%\label{eq:}
+g = \Delta_{a}\Lambda
+\end{equation}
+where $\Lambda$ is in the Lorentz group, and $\Delta_a$ is a
+translation. Multiplication in the Poincar\'e group depends on
+multiplication in the Lorentz group and addition of translations
+through an interchange in the order of the two facts:
+\begin{subequations}
+\begin{align}
+gh &= \Delta_{a}\Lambda\Delta_{b}M\\
+&= \Delta_{a}(\Lambda\Delta_{b}\Lambda^{-1})\Lambda M\\
+&= \Delta_{a}\Delta_{\Lambda b}\Lambda M
+\end{align}
+\end{subequations}
+where we have used the identity
+\begin{equation}%\label{eq:}
+\Lambda\Delta_{b}\Lambda^{-1} = \Delta_{\Lambda b}
+\end{equation}
+a relation trivially verified when we act on a 4-vector $x$.
+
+Our definition of $U$ so far covers translations and Lorentz
+group elements only; when we extend to the Poincar\'e group, we
+do so through the definition
+\begin{equation}%\label{eq:}
+U(\Delta_{a}\Lambda) \stackrel{\text{def}}{=} U(\Delta_{a})U(\Lambda)
+\end{equation}
+We can now see that $U$ is a representation of the Poincar\'e
+group if and only if $U$ preserves the action
+$\Lambda\Delta_{b}\Lambda^{-1}=\Delta_{\Lambda b}$ of Lorentz
+group elements on translations:
+\begin{subequations}
+\begin{align}
+ & U(\Delta_{a}\Lambda)U(\Delta_{b}M) =
+  U(\Delta_{a}\Delta_{\Lambda b}\Lambda M) \\
+\iff & U(\Delta_{a})U(\Lambda)U(\Delta_{b})U(M) =
+U(\Delta_{a})U(\Delta_{\Lambda b})U(\Lambda)U(M)\\
+\iff & U(\Lambda)U(\Delta_{b}) = U(\Delta_{\Lambda b})U(\Lambda)\\
+\iff & U(\Lambda)U(\Delta_{b})U(\Lambda)^{\dag} = U(\Delta_{\Lambda b})
+\end{align}
+\end{subequations}
+We verify the final condition by evaluating both sides on some
+test state $|k\>$. From the right hand side, we have
+\begin{equation}%\label{eq:}
+U(\Delta_{\Lambda b})|k\> = \exp(i\Lambda b^{\mu}k_{\mu})|k\>
+\end{equation}
+and from the left hand side
+\begin{subequations}
+\begin{align}
+U(\Lambda)U(\Delta_{b})U(\Lambda)^{\dag}|k\> &=
+U(\Lambda)U(\Delta_{b})|\Lambda^{-1}k\>\\
+&=
+U(\Lambda)\exp(ib^{\mu}{\Lambda_{\mu}}^{\nu}k_{\nu})|\Lambda^{-1} k\>\\
+&=\exp(ib^{\mu}{\Lambda_{\mu}}^{\nu}k_{\nu})|k\>.
+\end{align}
+\end{subequations}
+The equality of the two sides follows from the Lorentz-invariance
+of the inner product.
+
+We can now summarize our results of $U$ in the following theorem:
+\begin{thm}%\label{thm:}
+The map $U$ from the Poincar\'e group to operators on the state
+space defined by
+\begin{subequations}
+\begin{align}
+U(\Delta_{a})|k\> &= e^{ia^{\mu}k_{\mu}}|k\>\\
+U(\Lambda)|k\> &= |\Lambda k\>\\
+U(\Delta_{a}\Lambda) &= U(\Delta_{a})U(\Lambda) 
+\end{align}
+\end{subequations}
+is a unitary representation of the Poincar\'e group.
+\end{thm}
+
+The unitary representation $U$ is often boasted to successfully
+combines the principle (as represented by the Poincar\'e group)
+with the principles of quantum mechanics (as represented by
+unitary operators and state-space formalisms). This combined
+structure of a one-particle state space provides the foundation
+for the many-particle state space used in all quantum field theories.

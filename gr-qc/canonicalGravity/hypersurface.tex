@@ -1,0 +1,104 @@
+%%
+%% hypersurface.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jun  6 14:24:25 2009 Alex Nelson
+%% Last update Sat Jun  6 14:24:25 2009 Alex Nelson
+%%
+
+Lets briefly turn our attention to the geometry of hypersurfaces
+in four dimensions. In a four dimensional manifold, a
+hypersurface is a three dimensional submanifold that can be
+timelike, spacelike, or null. We may consider a particular
+hypersurface $\Sigma$ by restricting the coordinates
+\begin{equation}%\label{eq:}
+C(x^{\alpha})=0
+\end{equation}
+or by parametrizing the coordinates
+\begin{equation}%\label{eq:}
+x^{\alpha} = x^{\alpha}(y^a)
+\end{equation}
+where $y^a$ ($a=1,$ 2, 3) are the coordinates intrinsic to the
+hypersurface. Think of the sphere in three dimensions, we can
+specify it by the restriction of the coordinates
+\begin{equation}%\label{eq:}
+C(x,y,z) = R^2-x^2-y^2-z^2 = 0
+\end{equation}
+or in parametric form
+\begin{subequations}
+\begin{align}
+x(\theta,\phi) &= R\sin(\theta)\cos(\phi)\\
+y(\theta,\phi) &= R\sin(\theta)\sin(\phi)\\
+z(\theta,\phi) &= R\cos(\theta)
+\end{align}
+\end{subequations}
+where $\theta$, $\phi$ are the coordinates intrinsic to the sphere.
+
+\marginpar{Unit normal} Now, if we consider the vector $\partial_{\alpha}C$, it is normal
+to the hypersurface. This is due to the observation the only
+value of $C$ changes in a direction orthogonal to $\Sigma$. If
+the surface is not null, we can introduce the unit normal
+$n_{\alpha}$ defined such that
+\begin{equation}%\label{eq:}
+n^{\alpha}n_{\alpha} = s = \begin{cases}+1,&\text{if $\Sigma$ is timelike}\\
+-1,&\text{if $\Sigma$ is spacelike.}\end{cases}
+\end{equation}
+We demand the condition that $n^\alpha$ point in the direction of
+increasing $C$,
+\begin{equation}%\label{eq:}
+n^{\alpha}\partial_{\alpha} C > 0.
+\end{equation}
+We see that given this condition on the sign of the unit normal,
+and the fact that $\partial_{\alpha}C$ points in the direction of
+the unit normal, that
+\begin{equation}%\label{eq:}
+n_{\alpha} = \frac{s\partial_{\alpha}C}{|g^{\mu\nu}\partial_{\mu}C\partial_{\nu}C|^{1/2}}
+\end{equation}
+provided that the hypersurface is not null (i.e. it must be
+either timelike or spacelike). If it were null, then the
+denominator vanishes:
+\begin{equation}%\label{eq:}
+g^{\mu\nu}\partial_{\mu}C\partial_{\nu}C=0
+\end{equation}
+which is bad.
+
+\marginpar{Induced Metric}The metric intrinsic to
+the hypersurface is obtained by restricting the line element $ds^2$ to
+displacements confined to the hypersurface. Remember we
+parametrized the four dimensional coordinates of the surface by
+the equations
+\begin{equation}\label{eq:intrinsicRelations}
+x^{\alpha}=x^{\alpha}(y^a).
+\end{equation}
+We see that the vectors
+\begin{equation}%\label{eq:}
+{e^{\alpha}}_{a} = \frac{\partial x^{\alpha}}{\partial y^a}
+\end{equation}
+are tangent to the curves contained in $\Sigma$. Why? Well, the
+relations described by Eq \eqref{eq:intrinsicRelations} describe
+curves contained entirely in $\Sigma$, parametrized in $y^a$, so
+differentiating with respect to the parameters would yield the
+tangent vectors.
+
+Now, for displacements contained in $\Sigma$, we can write the
+infinitesimal line element as
+\begin{equation}%\label{eq:}
+ds_{\Sigma}^{2} = g_{\alpha\beta}dx^{\alpha}dx^{\beta} =
+g_{\alpha\beta}\left(\frac{\partial x^{\alpha}}{\partial y^{a}}dy^{a}\right)\left(\frac{\partial x^{\beta}}{\partial y^{b}}dy^{b}\right)
+= h_{ab}dy^ady^b.
+\end{equation}
+where
+\begin{equation}%\label{eq:}
+h_{ab} = g_{\alpha\beta}\frac{\partial x^{\alpha}}{\partial
+  y^{a}}\frac{\partial x^{\beta}}{\partial y^{b}} = g_{\alpha\beta}{e^{\alpha}}_{a}{e^{\beta}}_{b}
+\end{equation}
+is called the ``induced metric''. It behaves as a scalar when we
+change coordinates $x^{\mu}\to x^{\mu'}$ but it behaves as a
+tensor when we change coordinates $y^{m}\to y^{m'}$ intrinsic to
+the surface. We'll call such things ``\define{three-tensors}''. 
+
+\subsection{Lie Derivative of the Metric Along a Vector}\label{sstn:lieDerivativeOfMetricAlongVector}
+\input{lieDerivativeOfMetricAlongVector}
+

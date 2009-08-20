@@ -1,0 +1,262 @@
+\section{Klein-Gordon Review}
+
+Recall that the Schrodinger equation for the free nonrelativistic particle is
+\begin{equation}
+\frac{-\hbar^2}{2m}\nabla^2 \ket{\psi} = -i\hbar\partial_{t}\ket{\psi}
+\end{equation}
+which corresponds to a sort of quantized Newton's second law
+\begin{equation}
+\frac{p^2}{2m} \approx E.
+\end{equation}
+However, in special relativity we have the mass shell constraint
+\begin{equation}\label{massShell}
+p^\mu p_\mu = E^2 - \bold{p}\cdot\bold{p} = m^2
+\end{equation}
+(when $c=1$) using Einstein summation convention. If we naively quantize this, we end up with
+\begin{equation}\label{KGeqn}
+\partial_{\mu}\partial^{\mu} - m^2 \ket{\psi} = 0
+\end{equation}
+by moving the mass term onto the left hand side. This is the Klein-Gordon equation, it is plagued by problems such as negative probabilities, etc.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Dirac takes it up a notch...bam!}
+
+Naively, we want something simpler than this. We can rewrite Eq (\ref{massShell}) to be
+\begin{equation}
+E^2 = \bold{p}\cdot\bold{p} + m^2\Rightarrow E = \sqrt{\bold{p}\cdot\bold{p} + m^2}
+\end{equation}
+then quantize it to be
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\ket{\psi} = \sqrt{-\hbar^2\nabla^2 + m^2}\ket{\psi}.
+\end{equation}
+We end up being forced to use pseudo-differential operators, unfortunately, and it turns out that this results in nonlocality\footnote{In general, whenever there is a squareroot quantity, there is nonlocality.}. For further details see Laemmerzahl~\cite{pseudodifferentialKG}.
+
+The approach Dirac takes is basically taking the squareroot of the operator, but he does it with class. He uses a clifford algebra with generators $\gamma^\mu$\footnote{If the reader is unfamiliar with the Gamma Matrices, see the appendix A and/or CORE~\cite{Borodulin:1995xd}.} such that the squareroot of the Klein Gordon equation breaks into two equations:
+\begin{equation}\label{diracEqn}
+(i\hbar\gamma^\mu\partial_\mu - m)\psi(x) = 0
+\end{equation}
+where $\psi(x)$ is a spinor wave function with 4 components. The adjoint field $\bar{\psi}(x)$ is defined by 
+\begin{equation}
+\bar{\psi}(x) = \psi^{\dag}(x)\gamma^0
+\end{equation}
+and satisfies the \emph{adjoint} Dirac equation
+\begin{equation}\label{adjointEqn}
+\bar{\psi}(x)(i\hbar\gamma^\mu\partial_\mu + m) = 0.
+\end{equation}
+It is to be understood here the differential operator $\partial^\mu$ acts on the left. Observe that when we multiply the two operators together we get
+\begin{equation}
+(i\hbar\gamma^\mu\partial_\mu + m)(i\hbar\gamma^\mu\partial_\mu - m) = -\hbar^{2}\left(\gamma^\mu\right)^2\partial_{\mu}\partial^{\mu} - m^2 = \hat{p}^\mu\hat{p}_\mu - m^2 
+\end{equation}
+which is \emph{precisely} the Klein-Gordon operator (\ref{KGeqn})! We should be content now with the connection back to what we already know. \notetoself{And an added advantage is that the Dirac equation is a first order partial differential equation, whereas the Klein-Gordon equation is a second order one!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{A Somewhat Rigorous Derivation of the Dirac Equation}
+
+We want the squareroot of the wave operator thus
+\begin{equation}
+\nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} = (A \partial_x + B \partial_y + C \partial_z + \frac{i}{c}D \partial_t)(A \partial_x + B \partial_y + C \partial_z + \frac{i}{c}D \partial_t)
+\end{equation}
+We see multiplying out the right hand side all the cross-terms must vanish. To have this we want
+\begin{equation}
+AB + BA = 0, 
+\end{equation}
+and so on for all cross-term coefficients, with the property that
+\begin{equation}
+A^2 = B^2 = C^2 = D^2 = 1.
+\end{equation}
+Dirac had previously worked out rigorous results with Heisenberg's matrix mechanics, and concluded that these conditions could be met if $A, B,\ldots$ were \emph{matrices} which has the implication that the wave function has \emph{multiple components}. 
+
+In the mean time, Pauli had been working on quantum mechanics as well. Pauli had a model with two-component wave functions that was involved in a phenomenological theory of spin. At this point in time, spin was not well understood. 
+
+Given the factorization of these matrices, one can now write down immediately an equation
+\begin{equation}
+(A\partial_x + B\partial_y + C\partial_z + \frac{i}{c}D\partial_t)\psi = \kappa\psi
+\end{equation}
+with $\kappa$ to be determined. Applying the same operation on either side yields
+\begin{equation}
+(\nabla^2 - \frac{1}{c^2}\partial_{t}^2)\psi = \kappa^2\psi.
+\end{equation}
+If one take $\kappa = mc/\hbar$ we find that all the components of the wave function \emph{individually} satisfy the mass-shell relation (\ref{massShell}). Thus we have a first order differential equation in both space and time described by
+\begin{equation}
+(A\partial_x + B\partial_y + C\partial_z + \frac{i}{c}D\partial_t - \frac{mc}{\hbar})\psi = 0
+\end{equation}
+where $(A,B,C)=i\beta\alpha_k$ and $D=\beta$, which is precisely the Dirac equation for a spin-1/2 particle of rest mass $m$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{A Comparison to the Pauli Theory}
+
+The necessity of introducing half-integer spin goes back experimentally to the results of the Stern-Gerlach experiment. \notetoself{A beam of atoms is run through a strong inhomogeneous magnetic field, which then splits into N parts depending on the intrinsic angular momentum of the atoms. It was found that for silver atoms, the beam was split in two - the ground state therefore could not be integral, because even if the intrinsic angular momentum of the atoms were as small as possible, 1, the beam would be split into 3 parts, corresponding to atoms with $L_z = -1, 0, +1$. The conclusion is that silver atoms have net intrinsic angular momentum of 1/2.} Pauli set up a model which explained the splitting by introducing a two-component wave-function and a corresponding correction term in the Hamiltonian(representing a semiclassical coupling of this wave function to an applied magnetic field) as
+\begin{equation}
+H = \frac{1}{2m}(\sigma^{I}_{i}(p^{i} - \frac{e}{c}A^{i})\sigma_{Ij}(p^{j} - \frac{e}{c}A^{j})) + e A^0 \qquad (i,j,I=1,2,3).
+\end{equation}
+We have here $A^\mu$ is the magnetic potential, and the van Warden symbols $\sigma^{J}_{j}$ which translates a vector into the Pauli matrix basis (if one is unfamiliar with Pauli matrices, see \S\ref{Representations of the Gamma Matrices}), $e$ is the electric charge of the particle (here $e=-e_0$ for the electron), and $m$ is the mass of the particle. Now we have just described the Hamiltonian of our system by a 2 by 2 matrix. The Schrodinger equation based on it
+\begin{equation}
+H \phi = i\hbar \frac{\partial\phi}{\partial t}
+\end{equation}
+must use a two-component wave function. (If you're like me you're too lazy to flip to the appendix, so I'll reproduce some of it here)\marginpar{SU(2) is the set of all 2 by 2 matrices that is self-adjoint and has a determinant of 1} Pauli used the SU(2) matrices
+\begin{equation}\label{Pauli}
+\sigma_k = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix},\begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix},\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
+\end{equation}
+due to \emph{phenomenological reasons} (explaining the Gerlach experiment). Dirac now has a \emph{theoretical argument} that implies spin is a \emph{consequence} of introducing special relativity into quantum theory.
+
+The Pauli matrices share the same properties as the Dirac matrices -- they are all self-adjoint, when squared are equal to the identity, and they anticommute. We can now use the Pauli matrices Eq (\ref{Pauli}) to describe a representation of the Dirac matrices:
+\begin{equation}
+\alpha_k = \begin{bmatrix} 0 & \sigma_k \\ \sigma_k & 0 \end{bmatrix}\qquad \beta = \begin{bmatrix} 1_2 & 0 \\ 0 & -1_2 \end{bmatrix}.
+\end{equation}
+We now may write the Dirac equation as an equation coupling two-component spinors:
+\begin{equation}
+\begin{bmatrix} mc^2 & c\sigma\cdot p \\ c\sigma\cdot p & -mc^2 \end{bmatrix} \begin{bmatrix} \phi_+ \\ \phi_- \end{bmatrix} = i\hbar\frac{\partial}{\partial t}\begin{bmatrix} \phi_+ \\ \phi_- \end{bmatrix}.
+\end{equation}
+Observe that we have on the diagonal the rest mass. If we bring the particle to rest, we have
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\begin{pmatrix} \phi_+ \\ \phi_- \end{pmatrix} = \begin{pmatrix} mc^2 & 0 \\ 0 & -mc^2 \end{pmatrix} \begin{pmatrix} \phi_+ \\ \phi_- \end{pmatrix}.
+\end{equation}
+The equations for the individual two-spinors are now decoupled, and we see that the ``spin-up'' and ``spin-down'' (or ``right-handed'' and ``left-handed'', ``positive frequency'' and ``negative frequency'' respectively) are individual eigenfunctions \snote{Eigenspinors?} of the energy with eigenvalues equal to $\pm$ the rest energy. The appearence of \emph{negative} energy should not be alarming, it is completely consistent with relativity.
+
+\textbf{Note} that this seperation is in the rest frame and \textbf{is not an invariant statement} -- the bottom component does not generally represent antimatter. The \emph{entire} four-component spinor represents an \emph{irreducible whole} -- in general states will have an admixture of positive \emph{and} negative energy components.
+
+\subsection{Covariant Form and Relativistic Invariance}
+
+The explicity covariant form of the Dirac Equation is (using Einstein summation convention)
+\begin{equation}
+i\hbar\gamma^\mu\partial_\mu\psi - mc\psi = 0,
+\end{equation}
+where $\gamma^\mu$ are the Dirac gamma matrices. We have
+\begin{equation}
+\gamma^0 = \beta \qquad \gamma^k = \gamma^0\alpha_k.
+\end{equation}
+See the appendix for more details on this representation.
+
+The Dirac equation may be interpreted as an eigenvalue expression, where the rest mass is proportional to an eigenvalue of the 4-momentum operator, the proportion being $c$:
+\begin{equation}
+\hat{P}\psi = mc\psi.
+\end{equation}
+In practice we often work in units where we set $\hbar$ and $c$ to be 1. The equation is multiplied by $-i$ and takes the form
+\begin{equation}
+\left(\gamma^\mu\partial_\mu + im \right)\psi = 0.
+\end{equation}
+We may employ the Feynman slash notation to simplify this to
+\begin{equation}
+(\slashchar{\partial} + im)\psi = 0. 
+\end{equation}
+For any two representations of the Dirac Gamma matrices, they are related by a unitary transformation. Likewise, the solutions in the two representations are related by the same way.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Conservation Laws and Canonical Structure}
+
+Recall the Dirac equation and its adjoint version, Eqns (\ref{diracEqn}) and (\ref{adjointEqn}). We notice from the definition of the adjoint
+\begin{equation*}
+\bar{\psi} = \psi^\dag\gamma^0
+\end{equation*}
+that
+\begin{equation}
+\left(\gamma^\mu\right)^\dag\gamma^0 = \gamma^0\gamma^\mu
+\end{equation}
+we can obtain the Hermitian conjugate of the Dirac equation and multiplying from the right by $\gamma^0$  we get its adjoint version:
+\begin{equation*}
+\bar{\psi}(\gamma^\mu\overleftarrow{\partial}_\mu - im) = 0
+\end{equation*} 
+where $\overleftarrow{\partial}_\mu$ acts on the left. When we multiply the Dirac equation by $\bar{\psi}$ from the left
+\begin{equation}
+\bar{\psi}(\gamma^\mu\overrightarrow{\partial}_\mu + im)\psi = 0
+\end{equation}
+(where $\overrightarrow{\partial}_\mu$ acts on the right) and multiply the adjoint equation by $\psi$ on the right
+\begin{equation}
+\bar{\psi}(\gamma^\mu\overleftarrow{\partial}_\mu - im)\psi = 0
+\end{equation}
+then add the two together we get\marginpar{Conservation Law of Dirac Current}
+\begin{equation}
+\bar{\psi}(\gamma^\mu\overrightarrow{\partial}_\mu + im)\psi + \bar{\psi}(\gamma^\mu\overleftarrow{\partial}_\mu - im)\psi = \partial(\bar{\psi}\gamma^\mu\psi) = \partial_\mu J^\mu 0
+\end{equation}
+(where $J^\mu$ is the Dirac Current) which is the law of conservation of the Dirac current in covariant form. We see the huge advantage this has over the Klein-Gordon equation: this has conserved probability current desnity as required by relativistic invariance...only now its temporal component is \emph{positive definite}:
+\begin{equation}
+J^0 = \bar{\psi}\gamma^0\psi = \bar{\psi}\psi.
+\end{equation}
+From this we can find a conserved charge
+\begin{equation}
+Q = q\int \psi^\dag(\bold{x})\psi(\bold{x})d^3x
+\end{equation}
+where $q$ is to be thought of as ``charge''.
+
+We can now see that the Dirac equation (and its adjoint) are the Euler-Lagrange equations of motion of the four dimensional invariant action
+\begin{equation}
+S = \int \mathcal{L}d^4x
+\end{equation}
+where the Dirac Lagrangian density $\mathcal{L}$ is given by
+\begin{equation}
+\mathcal{L} = c\bar{\psi}(x)\Big[ i\hbar\gamma^\mu\partial_\mu - mc \Big]\psi(x)
+\end{equation}
+and for purposes of variation, $\psi$ and $\bar{\psi}$ are considered to be independent fields. Relativistic invariance follows from the variational principle.
+
+\marginpar{Canonical Structure, Hamiltonian and Momentum operators}We can find the canonically conjugate momenta to the fields $\psi$ and $\bar{\psi}$:
+\begin{equation}
+\pi(x) = \frac{\partial\mathcal{L}}{\partial\dot{\psi}} = i\hbar\psi^\dag\qquad\bar{\pi}(x) = \frac{\partial\mathcal{L}}{\partial\dot{\bar{\psi}}} = 0.
+\end{equation}
+We can find the Hamiltonian of the Dirac field
+\begin{equation}\label{Hamiltonian}
+H = \int d^{3}x( \pi_{\alpha}(x)\dot{\psi}^{\alpha}(x) - \mathcal{L} ) = \int d^{3}x \bar{\psi}(x)[-i\hbar c\gamma^{j}\partial_{j} + mc]\psi(x).
+\end{equation}
+Similarly, the momentum of some field $\phi$ to be given by
+\begin{equation*}
+cP^\alpha \equiv \int d^3x\mathcal{T}^{0\alpha} = \int d^{3}x\left[c\pi_r(x)\frac{\partial\phi_r(x)}{\partial x_{\alpha}} - \mathcal{L}\eta^{0\alpha}\right]
+\end{equation*}
+where $\mathcal{T}^{\alpha\beta}$ is the stress-energy density tensor of the field $\phi$. Recall that we define the stress-energy density tensor by the equation
+\begin{equation}
+\mathcal{T}^{\alpha\beta}\equiv \frac{\partial\mathcal{L}}{\partial\phi_{r,\alpha}}\frac{\partial\phi_r}{\partial x_\beta} - \mathcal{L}\eta^{\alpha\beta}.
+\end{equation}
+Using this, we can find the momentum of the Dirac Field to be
+\begin{equation}
+\bold{P} = -i\hbar\int d^3x\psi^\dag(x)\nabla\psi(x).
+\end{equation}
+Of course, the Hamiltonian given by (\ref{Hamiltonian}) could have been discovered by finding the Hamiltonian density applied to the current case.
+
+We\marginpar{Angular Momentum} can similarly find the angular momentum of the Dirac Field by simply following the scheme of finding the angular momentum for a general field. That is, an infinitesmal transformation of the coordinates
+\begin{equation}
+x_\alpha\to x'_\alpha\equiv x_\alpha + \delta x_\alpha = x_\alpha + \varepsilon_{\alpha\beta}x^\beta + \delta_\alpha
+\end{equation}
+(where $\delta_\alpha$ is an infinitesmal displacement and $\varepsilon_{\alpha\beta}$ is an infinitesmal antisymmetric tensor to ensure invariance of $x_\alpha x^\alpha$ under homogeneous Lorentz transformations, i.e. ones with $\delta_\alpha=0$) induces an infinitesmal transformation of the field $\phi$:
+\begin{equation}
+\phi_r(x)\to\phi'_r(x') = \phi_r(x) + \frac{1}{2}\varepsilon_{\alpha\beta}S^{\alpha\beta}_{rs}\phi_{s}(x).
+\end{equation}
+Here the coefficients $S^{\alpha\beta}_{rs}$ are antisymmetric in $\alpha$ and $\beta$, like $\varepsilon_{\alpha\beta}$, and are determined by the transformation properties of the fields.
+
+For a rotation (i.e. $\delta_\alpha=0$) we have the continuity equation
+\begin{equation}
+\frac{\partial\mathcal{M}^{\alpha\beta\gamma}}{\partial x^{\alpha}} = 0
+\end{equation}
+where
+\begin{equation}
+\mathcal{M}^{\alpha\beta\gamma}\equiv\frac{\partial\mathcal{L}}{\partial\phi_{r,\alpha}}S^{\beta\gamma}_{rs}\phi_{s}(x) + [x^{\beta}\mathcal{T}^{\alpha\gamma} - x^{\gamma}\mathcal{T}^{\alpha\beta}],
+\end{equation}
+(note that $\mathcal{M}^{\alpha\beta\gamma}=-\mathcal{M}^{\alpha\gamma\beta}$) and the six conserved quantities are\marginpar{We interpret $M^{\alpha\beta}$ as angular momentum}
+\begin{eqnarray}
+cM^{\alpha\beta} &=& \int d^3x \mathcal{M}^{0\alpha\beta} \nonumber\\
+&=& \int d^3x \Big( [x^{\beta}\mathcal{T}^{0\alpha} - x^{\beta}\mathcal{T}^{0\alpha}] + c\pi_r(x)S^{\alpha\beta}_{rs}\phi_{s}(x) \Big).\label{angMom}
+\end{eqnarray}
+We have stated that $\mathcal{T}^{0i}/c$ is the momentum density of the field, so we interpret the square brackets of Eq (\ref{angMom}) as the orbital momentum, and the last term as the intrinsic spin angular momentum.
+
+We can apply similar technqiues to the Dirac field. The transformation of the Dirac field under an infinitesmal Lorentz transformation is given by
+\begin{equation}
+\psi_{\alpha}\to\psi'_{\alpha}(x') = \psi_{\alpha}(x) - \frac{i}{4}\epsilon_{\mu\nu}\sigma^{\mu\nu}_{\alpha\beta}\psi_{\beta}(x),
+\end{equation}
+where summation over $\mu,\nu=0,\ldots,3$ and $\beta=1,\ldots,4$ is implied, and where $\sigma^{\mu\nu}_{\alpha\beta}$ is the $(\alpha,\beta)$ matrix element of the $4\times 4$ matrix
+\begin{equation}
+\sigma^{\mu\nu}\equiv\frac{i}{2}[\gamma^{\mu},\gamma^{\nu}].
+\end{equation}
+ We can now ``plug and chug'' to find the angular momentum of the Dirac field
+\begin{equation}\label{diracAngMom}
+\bold{M} = \int d^{3}x \psi^{\dag}(x)[\bold{x}\wedge(-i\hbar\nabla)]\psi(x) + \int d^{3}x\psi^{\dag}\left(\frac{\hbar}{2}\bold{\sigma}\right)\psi(x)
+\end{equation}
+where
+\begin{equation}
+\bold{\sigma} = (\sigma^{23},\sigma^{31},\sigma^{12})
+\end{equation}
+are 4$\times$4 matrices generalizing Pauli matrices. We also observe that Eq (\ref{diracAngMom}) represent the orbital and spin angular momentum of particles of spin 1/2.
+
+\input{solutions}

@@ -1,0 +1,36 @@
+%%
+%% realAnalysis.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu May 28 20:09:52 2009 Alex Nelson
+%% Last update Thu May 28 20:09:52 2009 Alex Nelson
+%%
+\documentclass{amsart}
+\usepackage{graphicx}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{ex}[thm]{Example}
+
+\title{Notes on Real Analysis}
+\author{Alex Nelson}
+\date{May 28, 2009}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Properties of Real Numbers}
+\input{properties}
+\section{Continuity}
+\input{continuity}
+
+\nocite{kennethRoss}
+\bibliographystyle{plain}
+\bibliography{realAnalysis}
+\end{document}

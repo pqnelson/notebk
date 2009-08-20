@@ -1,0 +1,64 @@
+\subsection{Solutions to the Dirac Equation}
+
+We are going to perform second quantization in the next section, so we will need to find solutions to the Dirac equation!
+
+As is usual in quantum theory, we will put the system in a cube box of volume
+$V$ with periodic boundary conditions\footnote{Periodic Boundary Conditions are
+used so we may use Fourier Series and thus find eigenvalues of our differential
+operators.}. A complete set of plane wave states can be defined as follows. For
+each momentum $\bold{p}$ allowed by the periodic boundary conditions and the
+positive energy
+\begin{equation}
+cp_0 = E_{\bold{p}} = + (m^2c^4 + c^2\bold{p}\cdot\bold{p})^{1/2},
+\end{equation}
+the Dirac equation posses four independent solutions. These can be written as
+\begin{equation}\label{solutions}
+u_{r}(\bold{p})\frac{\exp(-ip^\mu x_\mu/\hbar)}{\sqrt{V}},\quad v_{r}(\bold{p})\frac{\exp(ip^\mu x_\mu/\hbar)}{\sqrt{V}},\quad r=1,2.
+\end{equation}
+We require some knowledge of $u_{r}(\bold{p})$ and $v_{r}(\bold{p})$, so we have
+them be constant spinors that satisfy the equations
+\begin{equation}
+(\slashchar{p}-mc)u_r(\bold{p}) = 0,\quad (\slashchar{p}+mc)v_r(\bold{p}) = 0, \quad r=1,2.
+\end{equation}
+Here (again) we use the convenience of the Feynman slash:
+\begin{equation}
+\slashchar{A} \equiv \gamma^\mu A_\mu.
+\end{equation}
+Due to their time dependence, the solutions in Eq (\ref{solutions}) involving $u_r$ and
+$v_r$ are  referred to as the positive and negative energy solutions respectively.
+(Sometimes the phrases ``positive frequency'' and ``negative frequency'' are used
+instead of ``positive energy'' and ``negative energy''.)
+
+Now the question arises: ``What use is the index $r$ in these solutions?'' Ah
+good question! The so-called ``two-fold degeneracies'' of the two positive and
+two negative energy solutions for a given momentum $\bold{p}$ result from the
+possible spin orientations. With us and our Dirac equation, only longitudinal
+spin components (i.e. parallel to $\pm\bold{p}$) are constants of motion, and
+we shall choose these spin eigenstates for the solutions in Eq (\ref{solutions}).
+We denote
+\begin{equation}
+\sigma_{\bold{p}} = \frac{\bold{\sigma}\cdot\bold{p}}{|\bold{p}|}
+\end{equation}
+(where $\bold{\sigma}$ are the Pauli matrices), we can then choose the spinors
+in Eq (\ref{solutions}) such that
+\begin{equation}
+\sigma_{\bold{p}}u_r(\bold{p}) = (-1)^{r+1}u_{r}(\bold{p}),
+\quad\sigma_{\bold{p}}v_{r}(\bold{p}) = (-1)^{r}v_{r}(\bold{p}),
+\quad r=1,2.
+\end{equation}
+The asymmetry in labelling $u$ and $v$ spinors will be convenient for labelling
+the spin properties of particles and antiparticles.
+
+We can normalize our spinors $u_r$ and $v_r$ such that
+\begin{equation}
+u_{r}^{\dag}(\bold{p})u_{r}(\bold{p}) = v_{r}^{\dag}(\bold{p})v_{r}(\bold{p})=\frac{E_{\bold{p}}}{mc^2}.
+\end{equation}
+It follows that they satisfy the orthonormality relations
+\begin{equation}
+\begin{array}{rcl}
+u_{r}^{\dag}(\bold{p})u_{s}(\bold{p}) = v_{r}^{\dag}(\bold{p})v_{s}(\bold{p}) &=& (E_{\bold{p}}/mc^2)\delta_{rs} \\
+u^{\dag}_{r}(\bold{p})v_{s}(-\bold{p}) &=& 0
+\end{array}
+\end{equation}
+and the states form a complete orthonormal set of solutions of the free particle
+Dirac equation, normalized to $E_{\bold{p}}/mc^2$ in a volume $V$.

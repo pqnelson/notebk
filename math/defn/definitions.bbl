@@ -1,0 +1,7 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{rudin1964principles}
+W.~Rudin, {\em {Principles of mathematical analysis}}.
+\newblock McGraw-Hill New York, 1964.
+
+\end{thebibliography}\endgroup

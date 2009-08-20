@@ -1,0 +1,253 @@
+\subsection{Electron-Muon Scattering}
+
+We draw the diagram (note the use of $\mu$ and $\nu$ at the vertices, which are 
+used to sum over in the integral):
+
+\strut
+
+\begin{center}
+\begin{fmffile}{QEDexOneImg1}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$p_{1},s_{1}$}{i1}
+    \fmflabel{$p_{3},s_{3}$}{o1} %
+    \fmflabel{$p_{2},s_{2}$}{i2} %
+    \fmflabel{$p_{4},s_{4}$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+    \fmf{fermion}{i1,v1,o1} %
+    \fmf{dbl_plain_arrow}{i2,v2,o2} %
+    \fmf{boson,label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+We will now evaluate it in a haphazard manner. Observe how it is
+done when spinors are in the game.
+
+\textbf{Step One:} We will evaluate the part emboldened in Red
+first.
+
+
+\strut
+\begin{center}
+\begin{fmffile}{QEDexOneImg2}
+  \begin{fmfgraph*}(50,25)  \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$p_{1},s_{1}$}{i1}
+    \fmflabel{$p_{3},s_{3}$}{o1} %
+    \fmflabel{$p_{2},s_{2}$}{i2} %
+    \fmflabel{$p_{4},s_{4}$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+    \fmf{fermion,fore=red}{i1,v1,o1} %
+    \fmf{dbl_plain_arrow}{i2,v2,o2} %
+    \fmf{boson,label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+We will now analyze it in careful detail so we will ``pull it
+out'' and ``dissect'' it carefully.
+
+We evaluate it in the following manner: since we write quantum mechanics like
+we write chinese (from right to left), we begin with 
+\begin{equation}
+\Diagram{\vertexlabel^{p_3,s_3}\\
+fd \\
+& g\vertexlabel_{\mu,q}\\
+\vertexlabel_{p_1,s_1} {\color{red}fu}\\
+} = u(s_1,p_1),
+\qquad
+\Diagram{\vertexlabel^{p_3,s_3}\\
+fd \\
+& {\color{red}g}\vertexlabel_{\mu,q}\\
+\vertexlabel_{p_1,s_1} fu\\
+} = (ig_{e}\gamma^{\mu})u(s_1,p_1)
+\end{equation}
+We have one last step to do
+\begin{equation}
+\Diagram{\vertexlabel^{p_3,s_3}\\
+{\color{red}fd} \\
+  & g\vertexlabel_{\mu,q} \\
+\vertexlabel_{p_1,s_1} fu\\
+} = \bar{u}(s_3,p_3)(ig_{e}\gamma^{\mu})u(s_1,p_1)
+\end{equation}
+So this contributes
+\begin{equation}\label{exOneElectronTerm}
+(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))
+\end{equation}
+to the integrand. Our integrand is going to take the form
+\begin{equation}
+[(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))]\begin{pmatrix} $photon$\\$propagator$\end{pmatrix}\begin{pmatrix}$muon$\\$terms$\end{pmatrix} \begin{pmatrix}$conservation$\ $of$\\
+$momentum$\ $delta$\\
+$functions$\end{pmatrix}
+\end{equation}
+We will now move on to step two.
+
+\textbf{Step Two:} We will consider the photon propagator, which corresponds to
+the red line in the following diagram
+
+
+\strut
+\begin{center}
+\begin{fmffile}{QEDexOneImg3}
+  \begin{fmfgraph*}(50,25)  \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$p_{1},s_{1}$}{i1}
+    \fmflabel{$p_{3},s_{3}$}{o1} %
+    \fmflabel{$p_{2},s_{2}$}{i2} %
+    \fmflabel{$p_{4},s_{4}$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+    \fmf{fermion}{i1,v1,o1} %
+    \fmf{dbl_plain_arrow}{i2,v2,o2} %
+    \fmf{boson,label=$q$,fore=red}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+This corresponds to the term
+\begin{equation}
+\frac{-ig_{\mu\nu}}{q^2}
+\end{equation}
+giving our integrand to be
+\begin{equation}
+[(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))]\frac{-ig_{\mu\nu}}{q^2}\begin{pmatrix}$muon$\\$terms$\end{pmatrix} \begin{pmatrix}$conservation$\ $of$\\
+$momentum$\ $delta$\\
+$functions$\end{pmatrix}.
+\end{equation}
+
+\textbf{Step Three and Four:} Moving right along to the Muon terms, we have exactly a term
+analagous to Eq (\ref{exOneElectronTerm}). Muons are fermions with spin 1/2,
+with the same electric charge as an electron. So translating this into Feynman
+diagram terms, it is translated in the exact same fashion we translated the
+electron terms. So we have a contribution of
+\begin{equation}
+(\bar{u}(s_4,p_4))(ig_{e}\gamma^\nu)(u(s_2, p_2)).
+\end{equation}
+Our integrand now becomes
+\begin{equation}
+[(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))]\frac{-ig_{\mu\nu}}{q^2}[(\bar{u}(s_4,p_4))(ig_{e}\gamma^\nu)(u(s_2, p_2))] \begin{pmatrix}$conservation$\ $of$\\
+$momentum$\ $delta$\\
+$functions$\end{pmatrix}.
+\end{equation}
+
+\textbf{Step Five:} We kind of ``fudged up'' steps 1 through 4 because they are
+so interconnected it is hard to seperate them out from each other. We are now
+safely onto step 5 of the Feynman rules of QED: conservation of momentum! We
+have two places to do this (at the $\mu$ and $\nu$ vertices). We have for $\mu$
+(chosen randomly) the input momentum in red and output momentum in blue:
+
+
+\strut
+\begin{center}
+\begin{fmffile}{QEDexOneImg4}
+  \begin{fmfgraph*}(50,25)  \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$p_{1},s_{1}$}{i1}
+    \fmflabel{$p_{3},s_{3}$}{o1} %
+    \fmflabel{$p_{2},s_{2}$}{i2} %
+    \fmflabel{$p_{4},s_{4}$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+    \fmf{fermion,fore=red}{i1,v1} %
+    \fmf{fermion,fore=blue}{v1,o1}
+    \fmf{dbl_plain_arrow}{i2,v2,o2} %
+    \fmf{boson,label=$q$,fore=blue}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+This corresponds to the conservation of momentum
+\begin{equation}
+p_1 = p_3 + q \quad\Rightarrow\quad p_1 - p_3 - q = 0
+\end{equation}
+which gives us the delta function
+\begin{equation}\label{exOneTermToTakeAdvantageOf}
+(2\pi)^{4}\delta^{(4)}(p_1 - p_3 - q).
+\end{equation}
+We have another conservation of momentum point, which is at the
+vertex $\nu$:
+
+
+
+\strut
+\begin{center}
+\begin{fmffile}{QEDexOneImg5}
+  \begin{fmfgraph*}(50,25)  \fmfpen{0.2mm}
+    \fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$p_{1},s_{1}$}{i1}
+    \fmflabel{$p_{3},s_{3}$}{o1} %
+    \fmflabel{$p_{2},s_{2}$}{i2} %
+    \fmflabel{$p_{4},s_{4}$}{o2}
+    \fmflabel{$\mu$}{v1}
+    \fmflabel{$\nu$}{v2}
+    \fmf{fermion}{i1,v1} %
+    \fmf{fermion}{v1,o1}
+    \fmf{dbl_plain_arrow,fore=red}{i2,v2} %
+    \fmf{dbl_plain_arrow,fore=blue}{v2,o2} %
+    \fmf{boson,label=$q$,fore=red}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+Which corresponds to a conservation of momentum 
+\begin{equation}
+p_2 + q = p_4\quad\Rightarrow\quad p_2 + q - p_4 = 0
+\end{equation}
+and thus contributes the delta function term
+\begin{equation}
+(2\pi)^4 \delta^{(4)}(p_2 + q - p_4)
+\end{equation}
+rendering our integrand to be
+\begin{eqnarray}
+\quad&&[(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))]\frac{-ig_{\mu\nu}}{q^2}[(\bar{u}(s_4,p_4))(ig_{e}\gamma^\nu)(u(s_2, p_2))] (2\pi)^{8}\nonumber\\
+& &\times \delta^{(4)}(p_1 - p_3 - q)\delta^{(4)}(p_2 + q - p_4) d^4q. \nonumber
+\end{eqnarray}
+
+\textbf{Step Six:} We integrate over the internal momenta (in our case the photon's momentum), so we have the integral expression:
+\begin{eqnarray}
+i\mathcal{M} &\textrm{``=''}& (2\pi)^{4} \int [(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))]\frac{-ig_{\mu\nu}}{q^2}[(\bar{u}(s_4,p_4))(ig_{e}\gamma^\nu)(u(s_2, p_2))] \nonumber\\
+& &\times \delta^{(4)}(p_1 - p_3 - q)\delta^{(4)}(p_2 + q - p_4) d^4q. \nonumber
+\end{eqnarray}
+Observe this is harder than it looks because we are taking the trace of gamma
+matrices! That is the whole point of having the metric tensor $g^{\mu\nu}$ here.
+So it is a bit tricky to compute...
+
+We will integrate over $q$ and take advantage of the delta function term (\ref{exOneTermToTakeAdvantageOf})
+to make the switch
+\begin{equation*}
+q\to p_1 - p_3
+\end{equation*}
+giving us the result from the integral
+\begin{equation}\label{exOneIntegralResult}
+(2\pi)^{4} \frac{ig_{e}^2}{(p_1 - p_3)^2} [(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))][(\bar{u}(s_4,p_4))(ig_{e}\gamma_\mu)(u(s_2, p_2))]\delta^{(4)}(p_2 + p_1 - p_3 - p_4).
+\end{equation}
+
+\textbf{Step Seven:} We simply set Eq (\ref{exOneIntegralResult}) to be equal
+to $-i\mathcal{M}\delta^{(4)}(p_2 + p_1 - p_3 - p_4)$, and we solve to find
+\begin{equation}
+\mathcal{M} = \frac{-g_{e}^2}{(p_1 - p_3)^2} [(\bar{u}(s_3,p_3))(ig_{e}\gamma^\mu)(u(s_1, p_1))][(\bar{u}(s_4,p_4))(ig_{e}\gamma_\mu)(u(s_2, p_2))]
+\end{equation}
+is the probability amplitude. In spite of this nightmarish appearence, with 
+four spinors and eight $\gamma$ matrices, this is still just a number. We can
+figure it out when the spins are specified.

@@ -1,0 +1,149 @@
+%%
+%% functionalHarmonicOscillator.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Aug 15 12:02:21 2009 Alex Nelson
+%% Last update Sat Aug 15 12:02:21 2009 Alex Nelson
+%%
+
+The functional quantization of the Harmonic oscillator provides a
+powerful example when generalizing to fields, so it is worth
+while to first study it in detail. Recall the Hamiltonian of the
+Harmonic oscillator is
+\begin{equation}%\label{eq:}
+H = \frac{p^{2}}{2m} + \frac{m}{2}\omega^{2}q^{2}
+\end{equation}
+In the presence of an external force, this yeilds the path
+integral expression
+\begin{equation}%\label{eq:}
+\<0|0\>_{f} = \int\mathcal{D}p\mathcal{D}q\exp\left[i\int^{\infty}_{-\infty}(p\dot{q}-(1-i\varepsilon)H+fq)dt\right]
+\end{equation}
+where $\varepsilon$ is an ``infinitesimal'' quantity. We see by
+inspection that multiplication of $H$ by $(1-i\varepsilon)$ is
+completely equivalent as \emph{BOTH}
+\begin{subequations}
+\begin{align}
+m^{-1}&\mapsto(1-i\varepsilon)m^{-1}\\
+\frac{m}{2}\omega^{2}q^{2}&\mapsto\frac{(1-i\varepsilon)m}{2}\omega^{2}q^{2}.
+\end{align}
+\end{subequations}
+So this means that
+\begin{equation}%\label{eq:}
+\frac{p^{2}}{2m}=\frac{m}{2}\dot{q}^{2}\mapsto \frac{(1+i\varepsilon)m}{2}\dot{q}^{2}
+\end{equation}
+thus transforming the path integral expression to be
+\begin{equation}\label{eq:pathIntegralExpressionForHarmonicOscillator}
+\<0|0\>_{f} =  \int\mathcal{D}q\exp\left[i\int^{\infty}_{-\infty}(\frac{m}{2}(1-i\varepsilon)\dot{q}^{2}-(1-i\varepsilon)\frac{m}{2}\omega^{2}q^{2}+fq)dt\right].
+\end{equation}
+We will henceforth set $m=1$.
+
+We find the Fourier transformed quantities
+\begin{equation}%\label{eq:}
+\widetilde{q}(E) = \int^{\infty}_{-\infty}q(t)e^{iEt}dt,\qquad q(t)=\int^{\infty}_{-\infty}\widetilde{q}(E)e^{-iEt}\frac{dE}{2\pi}
+\end{equation}
+Thus we can compute
+\begin{subequations}
+\begin{align}
+q(t)^{2} &= \left(\int^{\infty}_{-\infty}\widetilde{q}(E)e^{iEt}\frac{dE}{2\pi}\right)\left(\int^{\infty}_{-\infty}\widetilde{q}(E')e^{iE't}\frac{dE'}{2\pi}\right)\\
+&= \int^{\infty}_{-\infty}\int^{\infty}_{-\infty} e^{-i(E+E')t}\widetilde{q}(E)\widetilde{q}(E')\frac{dE}{2\pi}\frac{dE'}{2\pi}
+\end{align}
+\end{subequations}
+and
+\begin{equation}%\label{eq:}
+\dot{q}(t)^{2} = \int^{\infty}_{-\infty} -EE'e^{-i(E+E')t}\widetilde{q}(E)\widetilde{q}(E')\frac{dE}{2\pi}\frac{dE'}{2\pi}.
+\end{equation}
+We also compute
+\begin{subequations}
+\begin{align}
+f(t)q(t) &= \frac{1}{2}(f(t)q(t)+q(t)f(t))\\
+&= \frac{1}{2}\int\left(\widetilde{f}(E)\widetilde{q}(E')+\widetilde{f}(E')\widetilde{q}(E)\right)e^{-i(E+E')t}\frac{dE}{2\pi}\frac{dE'}{2\pi}.
+\end{align}
+\end{subequations}
+We can plug these into eq \eqref{eq:pathIntegralExpressionForHarmonicOscillator}
+to find
+\begin{subequations}
+\begin{alignat}{3}
+\<0|0\>_{f} &=&
+\int\mathcal{D}q\exp\Big[
+\int[\left(\frac{(1+i\varepsilon)m}{2}(-EE')-\frac{(1-i\varepsilon)m\omega^{2}}{2}\right)\widetilde{q}(E)\widetilde{q}(E')\nonumber\\
+& &+ \frac{1}{2}\left(\widetilde{f}(E)\widetilde{q}(E')+\widetilde{f}(E')\widetilde{q}(E)\right)]\underbrace{e^{-i(E+E')t}dt}_{=\delta(E+E)}\frac{dE}{2\pi}\frac{dE'}{2\pi}
+\Big]\\
+&=&
+\int\mathcal{D}q\exp\Big[
+\int[\left(\frac{(1+i\varepsilon)m}{2}(-EE')-\frac{(1-i\varepsilon)m\omega^{2}}{2}\right)\widetilde{q}(E)\widetilde{q}(E')\nonumber\\
+& &+ \frac{1}{2}\left(\widetilde{f}(E)\widetilde{q}(E')+\widetilde{f}(E')\widetilde{q}(E)\right)]\delta(E+E')\frac{dE}{2\pi}\frac{dE'}{2\pi}
+\Big]\\
+&=&
+\int\mathcal{D}q\exp\left[
+\int[\left(\frac{(1+i\varepsilon)m}{2}(E^{2})-\frac{(1-i\varepsilon)m\omega^{2}}{2}\right)\widetilde{q}(E)^{2}
+  + \frac{1}{2}\widetilde{f}(E)\widetilde{q}(E)]\frac{dE}{2\pi}
+\right]
+\end{alignat}
+\end{subequations}
+This simplifies things slightly.
+
+Lets make a change of variables:
+\begin{equation}%\label{eq:}
+\widetilde{x}(E) = \widetilde{q}(E) + \frac{\widetilde{f}(E)}{E^{2}-\omega^{2}+i\varepsilon}
+\end{equation}
+which allows us to write the action as
+\begin{equation}%\label{eq:}
+S = \frac{1}{2}\int^{\infty}_{-\infty}\left[\widetilde{x}(E)(E^{2}-\omega^{2}+i\varepsilon)\widetilde{x}(-E)-\frac{\widetilde{f}(E)\widetilde{f}(-E)}{E^{2}-\omega^{2}+i\varepsilon}\right]\frac{dE}{2\pi}
+\end{equation}
+But how does this change the measure? Well, according to
+mathematica, if we suppose that the expression for the external
+force looks like
+\begin{equation}%\label{eq:}
+\widetilde{f}(E) = const
+\end{equation}
+then the measure changes by 
+\begin{equation}%\label{eq:}
+dx = \left(1+\frac{d|q|}{dq}e^{\sqrt{-\sgn(k)} k |q|} \sqrt{-\frac{pi}{2k^{2}}}\right)dq
+\end{equation}
+which is just a shift by a constant really. So we find that
+\begin{equation}%\label{eq:}
+\mathcal{D}x = \mathcal{D}q.
+\end{equation}
+We see that this makes the path integral expression
+\begin{equation}%\label{eq:}
+\<0|0\>_{f} =
+\underbracket[0.25pt]{\exp\left[\frac{-i}{2}\int^{\infty}_{-\infty}\frac{\widetilde{f}(E)\widetilde{f}(-E)}{E^{2}-\omega^{2}+i\varepsilon}\right]}_{\text{dependent on $\widetilde{f}(E)$, external force}}
+\underbracket[0.25pt]{\int\mathcal{D}x\exp\left[\frac{i}{2}\int^{\infty}_{-\infty}\widetilde{x}(E)(E^{2}-\omega^{2}+i\varepsilon)\widetilde{x}(-E)\frac{dE}{2\pi}\right]}_{\text{independent of external force}}
+\end{equation}
+So here's the trick: we have two factors, one dependent of the
+external force, the other independent of the external force. So
+in a vacuum (i.e. a free Harmonic oscillator) one has $f=0$. This
+occurs for $\<0|0\>_{f}$. But a Harmonic oscillator that is not
+acted on by an external force remains in its ground state
+$\<0|0\>_{f}=1$. Thus we find
+\begin{equation}%\label{eq:}
+\<0|0\>_{f} = \exp\left[\frac{-i}{2}\int^{\infty}_{-\infty}\frac{\widetilde{f}(E)\widetilde{f}(-E)}{E^{2}-\omega^{2}+i\varepsilon}\right].
+\end{equation}
+We want a more intuitive interpretation of this, so it requires
+performing the Fourier transform to the time domain, yielding
+\begin{equation}%\label{eq:}
+\<0|0\>_{f} = \exp\left[\frac{i}{2}\int f(t)G(t-t')f(t')dt~dt'\right]
+\end{equation}
+where we have introduced the shorthand notation
+\begin{equation}%\label{eq:}
+G(t-t') = \int\frac{e^{-iE(t-t')}}{E^{2}-\omega^{2}+i\varepsilon}\frac{dE}{2\pi}
+\end{equation}
+which is the Green's function for the Harmonic oscillator
+equation of motion. That is, it satisfies
+\begin{equation}%\label{eq:}
+\left(\frac{d^{2}}{dt^{2}}+\omega^{2}\right)G(t-t') = \delta(t-t'),
+\end{equation}
+which can be computed and verified by direct substitution, then
+taking the $\varepsilon\to0$ limit. We can also use the method of
+residues to find
+\begin{equation}%\label{eq:}
+G(t-t')=2\pi
+i\lim_{E\to\omega}(E-\omega)\frac{1}{2\pi}\frac{e^{-iE(t-t')}}{(E+\omega)(E-\omega)}
+= \frac{i}{2\omega}\exp\big[-i\omega|t-t'|\big].
+\end{equation}
+The trick with plugging this into the Harmonic oscillator
+equation of motion is that the absolute value, when
+differentiated, yields the Step function...which when
+differentiated yields a delta function.

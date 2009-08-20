@@ -1,0 +1,156 @@
+%%
+%% quantizationSpinor.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Aug 15 11:54:58 2009 Alex Nelson
+%% Last update Sat Aug 15 11:54:58 2009 Alex Nelson
+%%
+
+The functional methods we have considered so far allows us to
+compute correlation functions of fields obeying the canonical
+commutation relations. To generalize to spinor fields (i.e. ones
+obeying canonical anticommutation relations) we must do something
+different: we must represent even the classical fields by
+anticommuting (``fermionic'') numbers. Lets first review some of
+the properties of these fermionic numbers.
+
+\subsection{Fermionic Numbers}
+
+We will define ``Fermionic'' numbers (or \emph{Grassmann numbers}) 
+by giving algebraic properties for their manipulation. 
+
+The basic feature for Grassmannians is that they
+\emph{anticommute}. For any two such numbers $\theta,\eta$,
+\begin{equation}%\label{eq:}
+\theta\eta=-\eta\theta.
+\end{equation}
+In particular this implies for $\eta=\theta$ that
+\begin{equation}%\label{eq:}
+\theta^{2} = 0.
+\end{equation}
+A product of two Grassmannians $(\theta\eta)$ commutes with other
+Grassmannians. We really have a so-called $\mathbb{Z}$-grading,
+and the commuting terms are the ``even'' terms, the anticommuting
+ones are the ``odd'' terms (corresponding to bosonic and
+fermionic notions, respectively).
+
+We can define integrals of Grassmannians. A function $f(\theta)$
+of one Grassmannian is really of the form
+\begin{equation}%\label{eq:}
+f(\theta)=f(0)+f'(0)\theta
+\end{equation}
+by Taylor expansion. This presupposes we have some notion of
+``differentiation'' of Grassmannians. We really do, it's simply
+\begin{equation}%\label{eq:}
+\frac{d}{d\theta}(\eta\theta)=\frac{d}{d\theta}(-\theta\eta)=-\eta.
+\end{equation}
+Integration is ``dually''
+\begin{equation}%\label{eq:}
+\int f(\theta)d\theta = \int \Big(f(0)+f'(0)\theta\Big)d\theta = f'(0)
+\end{equation}
+which is curious, as
+\begin{equation}%\label{eq:}
+\frac{d}{d\theta}f(\theta) =
+\frac{d}{d\theta}\Big(f(0)+f'(0)\theta\Big) = f'(0).
+\end{equation}
+In this situation, as in complex analysis, we can write the
+derivative in terms of the integral. We adopt the convention
+\begin{equation}%\label{eq:}
+\int d\theta\int d\eta ~\eta\theta = +1
+\end{equation}
+performing the innermost integral first, as is usual in calculus.
+
+When we have the Dirac field, we need to introduce complex
+Grassmannians. We think of them as sort of like operators, so
+complex conjugation ``acts like'' Hermitian conjugation:
+\begin{equation}%\label{eq:}
+(\theta\eta)^{*}\stackrel{\text{def}}{=}\eta^{*}\theta^{*}=-\theta^{*}\eta^{*}.
+\end{equation}
+To integrate over complex Grassmannians, lets define
+\begin{equation}%\label{eq:}
+\theta=\frac{\theta_{1}+i\theta_{2}}{\sqrt{2}},\qquad\theta^{*}=\frac{\theta_{1}-i\theta_{2}}{\sqrt{2}}.
+\end{equation}
+We can treat $\theta,\theta^{*}$ as independent Grassmann
+numbers, and use the convention $\int d\theta^{*}d\theta
+~(\theta\theta^{*})=1$.
+
+We can consider a Grassmann Gaussian
+\begin{equation}%\label{eq:}
+\int d\theta^{*}d\theta e^{-\theta^{*}b\theta} = \int
+d\theta^{*}d\theta(1-\theta^{*}b\theta)=\int d\theta^{*}d\theta
+-(-\theta\theta^{*})b = b.
+\end{equation}
+If $\theta$ were some ordinary, everyday complex number, this
+integral would instead be $2\pi/b$. The factor of $2\pi$ is more
+or less unimportant, the main difference is the fact that one is
+the inverse of the other (more or less). However, observe that by
+adding another factor of $\theta\theta^{*}$, we find
+\begin{equation}%\label{eq:}
+\int d\theta^{*}d\theta ~\theta\theta^{*}e^{-\theta^{*}b\theta} = 1.
+\end{equation}
+So now, the extra factor of $\theta\theta^{*}$ ``cancels'' the
+$b$ factor, which should look familiar from our regular,
+old-fashioned Gaussian integrals.
+
+To perform higher dimensional Grassmann Gaussian integrals, we
+first have to observe the behavior of unitary transformations
+acting on Grassmannians. Consider $n$ complex Grassmannians
+$\theta_{i}$, and a unitary matrix $U={U_{j}}^{i}$. Let $\theta_{i}'={U_{i}}^{j}\theta_{j}$. Then
+\begin{subequations}
+\begin{align}
+\prod_{i}{U_{i}}^{j}\theta_{j} &= \frac{1}{n!}\epsilon^{ij\ldots~l}\theta_{i}'\theta_{j}'(\cdots)\theta_{l}'\\
+&= \frac{1}{n!}\epsilon^{ij(\cdots)l}({U_{i}}^{i'}\theta_{i'})({U_{j}}^{j'}\theta_{j'})(\cdots)({U_{l}}^{l'}\theta_{l'})\\
+&= \frac{1}{n!}\epsilon^{ij(\cdots)l}{U_{i}}^{i'}{U_{j}}^{j'}(\cdots){U_{l}}^{l'}\epsilon_{i'j'(\cdots)l'}\left(\prod_{i}\theta_{i}\right)\\
+&= \det(U)\left(\prod_{i}\theta_{i}\right).
+\end{align}
+\end{subequations}
+In general, we find that
+\begin{equation}%\label{eq:}
+\left(\prod_{i}\int d\theta^{*}_{i}d\theta_{i}\right)f(\theta),
+\end{equation}
+the only term that survives is proportional to $(\prod
+\theta_{i})(\prod \theta^{*}_{i})$. If we replace $\theta$ by
+$U\theta$, we end up with an extra factor of
+$\det(U)\det(U)^{*}=1$, which doesn't change anything.
+
+We can evaluate a general Grassmann Gaussian involving a
+Hermitian matrix $B$ with eigenvalues $b_{i}$:
+\begin{equation}%\label{eq:}
+\left(\prod_{i}\int d\theta^{*}_{i}d\theta_{i}\right)
+e^{-\theta^{*}_{i}B^{ij}\theta_{j}} = \left(\prod_{i}\int
+d\theta^{*}_{i}d\theta_{i}\right)e^{-\Sigma_{i}\theta^{*}_{i}b_{i}\theta_{i}}
+= \prod_{i}b_{i} = \det(B).
+\end{equation}
+Similarly we can see that
+\begin{equation}%\label{eq:}
+\left(\prod_{i}\int d\theta^{*}_{i}d\theta_{i}\right)\theta_{k}\theta^{*}_{l}e^{-\theta^{*}_{i}B^{ij}\theta_{j}}=\Big(\det(B)\Big)(B^{-1})_{kl}
+\end{equation}
+where $(B^{-1})_{kl}$ is a component from the inverse for $B$. As
+a general rule of thumb, Gaussian Grassmann integrals behave
+similar to Gaussian integrals, with the exception that the
+determinant is in the numerator (as opposed to the denominator).
+
+\subsection{Dirac Propagator}
+
+A Grassmann \emph{field} is a function of spacetime whose values
+are anticommuting numbers. More precisely we can define a
+Grassmann field $\psi(x)$ in terms of any set of orthonormal
+basis functions:
+\begin{equation}%\label{eq:}
+\psi(x) = \sum_{i} \psi_{i}\phi_{i}(x)
+\end{equation}
+where the basis functions $\phi_{i}(x)$ are ordinary functions,
+while the coefficients $\psi_{i}$ are Grassmann numbers. To
+describe the Dirac field, we take the $\phi_{i}$ to be a basis of
+four-component spinors.
+
+Surprisingly enough, we have enough tools to start evaluating
+functional integrals (and thus correlations functions) involving
+fermions. Consider, for example, the two-point function given by
+\begin{equation}%\label{eq:}
+\<0|T\{\psi(x_{1})\bar{\psi}(x_{2})\}|0\> = \frac{\int\mathcal{D}\bar{\psi}\mathcal{D}\psi\exp\left[i\int\bar{\psi}(i\slash{\partial}-m)\psi~d^{4}x\right]\psi(x_{1})\bar{\psi}(x_{2})}{\int\mathcal{D}\bar{\psi}\mathcal{D}\psi\exp[i\int\bar{\psi}(i\slash{\partial}-m)\psi~d^{4}x]}
+\end{equation}
+Note that $\mathcal{D}\bar{\psi}$ is unitarily equivalent to
+$\mathcal{D}\psi^{*}$. 

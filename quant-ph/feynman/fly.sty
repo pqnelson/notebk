@@ -1,0 +1,136 @@
+\usepackage{manfnt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{slashed}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,%
+  pdfauthor={Alex Nelson},
+  pdftitle={Notes on Feynman Diagrams},
+  citecolor=black,%
+  filecolor=black,%
+  linkcolor=black,%
+  urlcolor=black
+}
+
+\def\identity\mathbbm{1}
+
+
+\author{Alex Nelson}
+\date{\today}
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{axm}{Axiom}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{property}{Property}
+
+
+\setlength{\parskip}{2pt}
+\def\tr{\operatorname{Tr}}
+\def\vect{\operatorname{Vect}}
+\def\Vect{\operatorname{Vect}}
+
+\numberwithin{equation}{section}
+
+
+%%
+% This macro defines the ``dbar'' variable
+%%
+\def\dbar{{\textrm{\dh}}}
+
+
+%%
+% This macro header is what controls the ``dangerous bend'' paragraph
+%%
+\def\rd{\noindent\begingroup\hangindent=2pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+%%
+% This command allows you to write stuff in small font size and use the
+% bourbaki ``dangerous bend'' so it's great when you want to ramble on 
+% about some extra stuff!
+%%
+\newcommand{\danger}[1] {\rd{\small {#1}}}
+%%
+% Don't forget that \alpha_E^{-1} = 137.035999665008
+% so \alpha_{S} = 16\alpha_E = 16/137.035999665008
+%%
+
+
+%%
+% This macro header is what controls the ``dangerous bend'' paragraph
+%%
+\def\ddbend{\dbend\kern1pt\dbend}
+
+\def\rdd{\noindent\begingroup\hangindent=3pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox to0pt{\hskip-\hangindent\ddbend\hfill}\ignorespaces}
+
+\newcommand{\ddanger}[1] {\rdd{\small {#1}}}
+
+\setlength{\marginparwidth}{1.2in}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+
+\newcommand{\notetoself}[1] {$\langle${\it Note to self: {#1}}$\rangle$}
+\newcommand{\snote}[1] {$\langle${\it \small{#1}}$\rangle$}
+%%
+% This macro defines the CG coefficients
+%%
+
+% Example usuage:
+% \cg{m_1}{j_1}{m_2}{j_2}{M}{J}
+% produces:
+% < m_1 & m_2 | M 
+%   j_1 & j_2 | J>
+
+\newcommand{\cg}[6]{
+  \left<
+  \begin{array}{cc|c}
+  #1 & #3 & #5 \\
+  #2 & #4 & #6
+  \end{array}
+  \right>
+}
+
+%%
+% This macro defines time ordering symbol
+%%
+
+\newcommand{\T}[1]{ T\left\{#1\right\} }
+
+%%
+% This macro defines the bra-ket notation
+%%
+%
+% These are fine for ``small'' states
+%
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+%
+% This braket command is fine when we are taking the inner product of only
+% two things; for the expectation value of something use Braket
+%
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+%
+% The Bra Kets here are for large vectors
+%
+\def\Bra#1{\left<#1\right|}
+\def\Ket#1{\left|#1\right>}
+%
+% The \Braket command is when we have <a|operator|b>
+%
+\newcommand{\Braket}[3]{\left<#1\right|#2\left|#3\right>}
+%
+% This is used for the expectation value of something, i.e. <a|operator|a>
+%
+\newcommand{\expect}[1]{\left<#1\right>}
+
+\newcommand{\vacuum}[1]{\Braket{0}{#1}{0}}

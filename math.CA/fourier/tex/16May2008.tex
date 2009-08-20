@@ -1,0 +1,165 @@
+%%
+%% 16May2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 26 18:15:38 2008 Alex Nelson
+%% Last update Fri Dec 26 18:15:38 2008 Alex Nelson
+%%
+%% Fourier inversion formula, applications
+
+\begin{lem}
+If $f\in L^{1}$, then $\widehat{f}$ is continuous.
+\end{lem}
+\begin{proof}
+Observe by direct computation
+\begin{align*}
+|\widehat{f}(\xi)-\widehat{f}(\eta)| &=
+\left|\int\left(e^{-i\xi x}-e^{-i\eta
+  x}\right)f(x)dx\right|\\
+&\leq 2\int|f(x)|dx\quad\forall\eta,\xi\\
+&\leq \int\left|e^{-i\xi x}-e^{-i\eta x}\right||f(x)|dx
+\end{align*}
+But as $\xi\to\eta$, $e^{-i\xi x}-e^{-i\eta x}\to 1-1=0$, so
+the quantity
+\begin{equation}
+\int\left|e^{-i\xi x}-e^{-i\eta x}\right||f(x)|dx\to 0
+\end{equation}
+which concludes our proof.
+\end{proof}
+The Fourier transform so far has been shown to be one way,
+mapping functions of $x$ to functions of $\xi$. Can we go
+the other way? That is to say, is the Fourier transform
+invertible\marginpar{Inverse Fourier Transform}?
+
+\begin{invFourier}\index{Fourier Inversion Theorem}\index{Fourier Transform!Inverse}\index{Inverse Fourier Transform}
+Suppose $f\in L^{1}$ and $f\in PC(\mathbb{R})$, then
+\begin{equation}
+\lim_{\varepsilon\to0}\frac{1}{2\pi}\int e^{i\xi x}e^{-\varepsilon^2\xi^2/2}\widehat{f}(\xi)d\xi=\frac{1}{2}\left[f(x^+)+f(x^-)\right]
+\end{equation}
+for all $x\in\mathbb{R}$. Moreover if both $f,\widehat{f}\in
+L^{1}$, then $f$ is continuous, and
+\begin{equation}
+f(x) = \frac{1}{2\pi}\int e^{i\xi x}\widehat{f}(\xi)d\xi
+\end{equation}
+for all $x\in\mathbb{R}$.
+\end{invFourier}
+\begin{proof}
+We have
+\begin{equation}
+\frac{1}{2\pi}\int e^{i\xi x}e^{-\varepsilon^2\xi^2/2}\widehat{f}(\xi)d\xi = \frac{1}{2\pi}\int e^{i\xi x}e^{-\varepsilon^{2}\xi^2/2}\int e^{-i\xi y}f(y)dyd\xi
+\end{equation}
+We can interchange the variables of integration, thus
+\begin{align*}
+\frac{1}{2\pi}\int e^{i\xi x}e^{-\varepsilon^{2}\xi^2/2}\int e^{-i\xi y}f(y)dyd\xi
+&= \frac{1}{2\pi}\int\int e^{-i\xi(x-y)}e^{-\varepsilon^2\xi^2/2}f(y)d\xi dy\\
+&= \frac{1}{2\pi}\int f(y)\left[\int e^{-i\xi(y-x)}e^{-\varepsilon^{2}\xi^2/2} \right]dy\\
+&= \frac{1}{2\pi}\int f(y)\left[\sqrt{\frac{2\pi}{\varepsilon^2}}e^{-(y-x)^2/2\varepsilon^2}\right]dy\\
+&= \frac{1}{\varepsilon\sqrt{2\pi}}\int f(y)e^{-(y-x)^{2}/2\varepsilon^2}dy\\
+&=(f*\phi_{\varepsilon})(x)
+\end{align*}
+It turns out that $\phi(x) = \exp(-x^2/2)/\sqrt{2\pi}$ is
+the Gaussian. This function is even, and integral is
+evaluated to one. So it's $C^\infty$. By theorem \eqref{thm:12May2008:thmUsedInInverseFourierTransform},
+$f*\phi_{\varepsilon}(x)\to\frac{1}{2}[f(x^-)+f(x^+)]$.
+
+Suppose $f\in L^{1}$, then we need to show $f$ is
+continuous. Since
+\begin{equation}
+|e^{i\xi x}e^{-\varepsilon^2\xi^2/2}\widehat{f}(\xi)|\leq|\widehat{f}(\xi)|
+\end{equation}
+for all $\xi$. We see that $|\exp(-\varepsilon^2\xi^2/2)|<1$
+and $|\exp(i\xi x)|=1$. So
+\begin{equation}
+\int e^{i\xi
+  x}e^{-\varepsilon^2\xi^2/2}\widehat{f}(\xi)d\xi\leq
+\int|\widehat{f}(\xi)|d\xi = \|\widehat{f}\|_{L^1}
+\end{equation}
+for all $\varepsilon>0$. So
+\begin{align*}
+\mathcal{F}\{\widehat{f}\}(-x) &= \frac{1}{2\pi}\int e^{i\xi x}\widehat{f}(\xi)d\xi\\
+&=\frac{1}{2\pi}\int e^{i\xi x}\left(\lim_{\varepsilon\to0}e^{-\varepsilon^2\xi^2/2}\right)\widehat{f}(\xi)d\xi\\
+&=\lim_{\varepsilon\to0}\frac{1}{2\pi}\int e^{i\xi x}e^{-\varepsilon^2\xi^2/2}\widehat{f}(\xi)d\xi\\
+&=\frac{1}{2}[f(x^+)+f(x^+)]\\
+&= f(x)
+\end{align*}
+where we justify the last step since $f$ is continuous. So
+$\mathcal{F}\{\widehat{f}\}(-x)$ is continuous since
+$\widehat{f}\in L^1$, therefore $f$ is continuous so we're done.
+\end{proof}
+
+\begin{rmk}
+If $f\in L^{1}$ and $f\in PC$, then $\widehat{f}$ may not be
+in $L^1$. So we only have an approximation, which is the
+first part of the theorem, then
+\begin{equation*}
+\underbracket[0.5pt]{e^{-\varepsilon^2\xi^2/2}\widehat{f}(\xi)}_{\text{approx
+    of }\widehat{f}}=\underbracket[0.5pt]{\mathcal{F}\left\{f*\left(\frac{1}{\sqrt{2\pi}\varepsilon}e^{-(x/\varepsilon)^2/2}\right)\right\}}_{\text{approaches $f$ as $\varepsilon\to0$}}
+\end{equation*}
+\end{rmk}
+
+\subsection{Consequences of the Inversion Theorem}
+
+\begin{enumerate}
+\item If $\widehat{f}=\widehat{g}$, then
+  $\widehat{F}\{f-g\}=\widehat{f}-\widehat{g}=0$ which
+  implies $f=g$. Thus the Fourier transform is
+  unique\index{Fourier Transform!Uniqueness}. Further
+  $\mathcal{F}^{-1}$ is well defined exactly by the
+  inversion formula.
+\item We have $\phi(x) = \exp(-x^2/2)/\sqrt{2\pi}$ in the
+  inversion formula can be replaced by any (normalized)
+  $g\in L^1$ with $\widehat{g}\in L^1$.
+\item If $f\in L^1$, $\widehat{f}\in L^1$, then $f$ is
+  continuous and $f\in L^2$. So
+\begin{equation}
+\int |f(x)|^2dx = \int|f(x)|\left|\int e^{i\xi x}\widehat{f}(\xi)d\xi\right|dx
+\end{equation}
+but
+\begin{align*}
+\left|\int e^{i\xi x}\widehat{f}(\xi)d\xi\right| &\leq
+\int\left|e^{i\xi x}\widehat{f}(\xi)\right|d\xi\\
+&\leq\int|\widehat{f}(\xi)|d\xi
+\end{align*}
+thus
+\begin{align*}
+\int|f(x)|^2dx &\leq \int|f(x)||\widehat{f}(\xi)|d\xi dx\\
+&\leq \int|\widehat{f}(\xi)|d\xi\int|f(x)|dx.
+\end{align*}
+\end{enumerate}
+
+\subsection{Fourier Transform on $L^2$}
+
+Let $f\in L^2$, then $\widehat{f}(\xi)=\int\exp(-i\xi
+x)f(x)dx$ converges in $L^2$ norm. This exists for almost
+every $\xi$. Similarly
+\begin{equation}
+f(x) = \frac{1}{2\pi}\int e^{i\xi x}\widehat{f}(\xi)d\xi
+\end{equation}
+for almost every $x$.
+
+\begin{plancherel}\index{Plancherel's Theorem}\index{Fourier Transform!In $L^2$}\index{Fourier Transform!Plancherel's Theorem}
+The Fourier Transform is an operator
+\begin{equation}
+\mathcal{F}:L^2\to L^2
+\end{equation}
+and $\<\widehat{f},\widehat{g}\>=2\pi\<f,g\>$. If this is
+the case, this implies 
+\begin{equation}
+\|\widehat{f}\|^{2} = 2\pi\|f\|^2.
+\end{equation}
+This is our Parseval identity in the continuous
+case.\index{Parseval Equality!Fourier Transform}
+\end{plancherel}
+\begin{proof}
+We see by direct computation
+\begin{align*}
+2\pi\<f,g\> &= 2\pi\int f(x)\overline{g(x)}dx\\
+&=\frac{2\pi}{2\pi}\int
+f(x)\overline{\int\widehat{g}(\xi)e^{i\xi x}d\xi}dx\\
+&=\int f(x)\int\overline{\widehat{g}(\xi)}e^{-i\xi x}d\xi dx\\
+&= \int \widehat{f}(\xi)\overline{\widehat{g}(\xi)}d\xi\\
+&=\<\widehat{f},\widehat{g}\>
+\end{align*}
+\end{proof}

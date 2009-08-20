@@ -1,0 +1,108 @@
+%%
+%% zeta.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 10 11:57:19 2009 Alex Nelson
+%% Last update Wed Jun 10 11:57:19 2009 Alex Nelson
+%%
+The definition for the Riemann zeta function is
+\begin{equation}%\label{eq:}
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}=\frac{1}{1^s} + \frac{1}{2^s} + \frac{1}{3^s} + \cdots
+\end{equation}
+It is holomorphic everwhere except for a simple pole at $s=1$
+with residue 1.
+
+For any positive even integer $2n$, we have
+\begin{equation}%\label{eq:}
+\zeta(2n) = (-1)^{n+1}\frac{B_{2n}(2\pi)^{2n}}{2(2n)!}
+\end{equation}
+where $B_{2n}$ is a Bernoulli number, and for negative integers
+we have
+\begin{equation}%\label{eq:}
+\zeta(-n)=\frac{-B_{n+1}}{n+1}
+\end{equation}
+for $n\geq1$.
+
+Let
+\begin{equation}%\label{eq:}
+f(x) = \frac{x}{e^x-1}
+\end{equation}
+then the Bernoulli numbers may be found from
+\begin{equation}%\label{eq:}
+ B_n=\lim_{x\to0}\frac{d^n}{dx^n}\frac{x}{(e^x-1)}. 
+\end{equation}
+Observe that for $n=1$
+\begin{equation}%\label{eq:}
+f'(x) = \left({{1}\over{e^{x}-1}}\right)\left(1-\frac{f(x)}{e^x-1}\right)
+\end{equation}
+and now observe that
+\begin{equation}%\label{eq:}
+\frac{d}{dx}\left(\frac{1}{e^x-1}\right) = -e^x\left({{1}\over{e^{x}-1}}\right)^2
+\end{equation}
+and we can use the product rule to find all of our favorite
+Bernoulli numbers.
+
+We have a table of the first few Bernoulli numbers:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$n$ & $B_n$\\\hline
+0 & 1\\\hline
+1 & -1/2\\\hline
+2 & 1/6\\\hline
+4 & -1/30\\\hline
+6 & 1/42\\\hline
+8 & -1/30\\\hline
+10& 5/66$\approx$ 0.07575757576\\\hline
+12& -691/2730$\approx$-0.25311355311\\\hline
+14& 7/6\\\hline
+16& -3617/510$\approx$ -7.09125686275\\\hline
+18& 43867/798$\approx$ 54.9711779448\\\hline
+\end{tabular}
+\end{center}
+
+The zeta function satisfies the functional equation
+\begin{equation}%\label{eq:}
+\zeta(s) = 2^s\pi^{s-1}\ \sin\left(\frac{\pi s}{2}\right)\ \Gamma(1-s)\ \zeta(1-s) \!,
+\end{equation}
+valid for all $s\in\mathbb{C}$. An equivalent relationship may be
+expressed as a sum
+\begin{equation}%\label{eq:}
+\zeta(s)(1-{2^{1-s}})= \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n^s}.\!
+\end{equation}
+
+
+\subsection{Mellin Transform}
+
+The Mellin transform of a function $f(x)$ is defined as
+\begin{equation}%\label{eq:}
+ \int_0^\infty f(x)x^{s-1}\, dx,\!
+\end{equation}
+when defined. We can relate the zeta function to one million and
+one things this way, we have
+\begin{equation}%\label{eq:}
+\Gamma(s)\zeta(s) =\int_0^\infty\frac{x^{s-1}}{\exp(x)-1}dx,\!
+\end{equation}
+where $\Gamma$ is our favorite gamma function, and
+\begin{equation}%\label{eq:}
+2\sin(\pi s)\Gamma(s)\zeta(s) =i\oint_{C}\frac{(-x)^{s-1}}{\exp(x)-1}dx\!
+\end{equation}
+for all $s$ where the contour $C$ begins and ends at $+\infty$
+and circles the origin once.
+
+\subsection{Laurent Series}
+
+Since the zeta function has a single simple pole at $s=1$ we can
+expand it around the singular point. The series is
+\begin{equation}%\label{eq:}
+\zeta(s)=\frac{1}{s-1}+\sum_{n=0}^\infty \frac{(-1)^n}{n!} \gamma_n \; (s-1)^n.
+\end{equation}
+where $\gamma_n$ are the Stieltjes constants, defined by the
+limit
+\begin{equation}%\label{eq:}
+ \gamma_n = \lim_{m \rightarrow \infty} {\left(\left(\sum_{k = 1}^m \frac{(\log k)^n}{k}\right) - \frac{(\log m)^{n+1}}{n+1}\right)}.
+\end{equation}
+where the constant $n=0$ term in the Laurent series is just
+$\gamma_0$ the Euler-Mascheroni constant.

@@ -1,0 +1,174 @@
+%%
+%% laplace.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 10 10:30:18 2009 Alex Nelson
+%% Last update Wed Jun 10 10:30:18 2009 Alex Nelson
+%%
+\begin{defn}{(Laplace Transform)}
+The \define{Laplace Transform} of a function $f(t)$ (for $t\geq
+0$) is the function $\widetilde{f}(z)$ defined by
+\begin{equation}%\label{eq:}
+\widetilde{f}(z) = \mathcal{L}\{f\}(z) = \int^{\infty}_{0}e^{-zt}f(t)dt
+\end{equation}
+where $z$ is complex.
+\end{defn}
+\begin{prop}{(Asymptotic Behavior of Laplace Transform) }%\label{prop:}
+Suppose $g$ is analytic in a region containing the positive real
+axis and is bounded on the positve real axis. Let the Taylor
+series for $g$ centered at 0 be
+\begin{equation}%\label{eq:}
+\sum^{\infty}_{n=0} a_{n}z^{n}
+\end{equation}
+and let
+\begin{equation}%\label{eq:}
+\widetilde{g}(z) = \int^{\infty}_{0}e^{-zt}g(t)dt.
+\end{equation}
+Then
+\begin{equation}%\label{eq:}
+\widetilde{g}(z)\sim \frac{a_0}{z}+\frac{a_1}{z^2}+\frac{2a_2}{z^3}+\cdots+\frac{n!a_n}{z^{n+1}}+\cdots
+\end{equation}
+as $z\to\infty$, $\operatorname{arg}(z)=0$.
+\end{prop}
+\begin{prop}%\label{prop:}
+Suppose $g$ is infinitely differnetiable on the positive real
+axis and that $g$ and each of its derivatives are of exponential
+order. That is, there are constants $A_n$ and $B_n$ such that
+\begin{equation}%\label{eq:}
+|g^{(n)}(t)|\leq A_{n}e^{B_{n}t}
+\end{equation}
+for $t\geq0$. Let
+\begin{equation}%\label{eq:}
+\widetilde{g}(z) = \int^{\infty}_{0}e^{-zt}g(t)dt.
+\end{equation}
+Then
+\begin{equation}%\label{eq:}
+\widetilde{g}(z)\sim  \frac{g(0)}{z}+\frac{g'(0)}{z^2}+\frac{g''(0)}{z^3}+\cdots+\frac{g^{(n)}(0)}{z^{n+1}}+\cdots
+\end{equation}
+as $z\to\infty$, $\operatorname{arg}(z)=0$.
+\end{prop}
+\begin{thm}{(Convergence Theorem for Laplace Transform) }%\label{thm:}
+Assume
+\begin{equation}%\label{eq:}
+f:(0,\infty)\to\mathbb{C}
+\end{equation}
+is of exponential order and let
+\begin{equation}%\label{eq:}
+\widetilde{f}(z) = \int^{\infty}_{0}e^{-zt}f(t)dt.
+\end{equation}
+There exists a unique number $\sigma$, $-\infty\leq\sigma<\infty$
+such that this integral converges if $\re(z)>\sigma$ and diverges
+if $\re(z)<\sigma$. Furthermore if $\widetilde{f}$ is analytic on
+the set
+\begin{equation}%\label{eq:}
+A = \{z|\re(z)>\sigma\}
+\end{equation}
+and we have
+\begin{equation}%\label{eq:}
+\frac{d}{dz}\widetilde{f}(z) = -\int^{\infty}_{0}te^{-zt}f(t)dt
+\end{equation}
+for $\re(z)>\sigma$. The number $\sigma$ is called the
+``\define{Abscissa of Convergence}'' and if we\marginpar{define $\rho$} define the number
+$\rho$ by 
+\begin{equation}%\label{eq:}
+\rho=\inf\{B\in\mathbb{R}|\text{there exists an }A>0\text{ such
+  that }|f(t)|\leq Ae^{Bt}\}
+\end{equation}
+then $\sigma\leq\rho$.
+\end{thm}
+\begin{thm}{(Laplace Transforms)}
+Suppose that the functions $f$ and $h$ are continuous and that
+$\widetilde{f}(z)=\widetilde{h}(z)$ for $\re(z)>\gamma_0$ for
+some $\gamma_0$. Then $f(t)=h(t)$ for all $t\in(0,\infty)$.
+\end{thm}
+\begin{prop}%\label{prop:}
+Let $f(t)($ be continuous on $(0,\infty)$ and piecewise
+$C^1$. Then for $\re(z)>\rho$
+\begin{equation}%\label{eq:}
+\widetilde{\left(\frac{df}{dt}\right)}(z)=z\widetilde{f}(z)-f(0).
+\end{equation}
+\end{prop}
+\begin{prop}%\label{prop:}
+Let
+\begin{equation}%\label{eq:}
+g(t)=\int^{t}_{0}f(\tau)d\tau
+\end{equation}
+Then for $\re(z)>\max[0,\rho(f)]$,
+\begin{equation}%\label{eq:}
+\wt{g}(z) = \frac{\wt{f}(z)}{z}.
+\end{equation}
+\end{prop}
+\begin{thm}{(First Shifting Theorem)}%\label{thm:}
+Fix $a\in\mathbb{C}$ and let $g(t)=e^{-at}f(t)$. Then for
+$\re(z)>\sigma(f)-\re(a)$, we have
+\begin{equation}%\label{eq:}
+\wt{g}(z)=\wt{f}(z+a).
+\end{equation}
+\end{thm}
+
+\begin{thm}{(Second Shifting Theorem)}%\label{thm:}
+Let $H(t)=0$ if $t<0$ and $H(t)=1$ if $t\geq1$ be the
+\define{Step Function} or \define{Heaviside Step Function}. Let
+$a\geq0$ and let $g(t)=f(t-a)H(t-a)$; that is, $g(t)=0$ if $t<a$
+while $g(t)=f(t-a)$ if $t\geq a$. Then for $\re(z)>0$ we have
+\begin{equation}%\label{eq:}
+\wt{g}(z)=e^{-az}\wt{f}(z).
+\end{equation}
+\end{thm}
+\begin{defn}{(Convolution)}%\label{defn:}
+The ``\define{Convolution}'' of two functions $f(t)$ and $g(t)$
+is defined for $t\geq0$ by
+\begin{equation}%\label{eq:}
+(f*g)(t)=\int^{\infty}_{0}f(t-\tau)g(\tau)d\tau
+\end{equation}
+where we set $f(t)=0$ if $t<0$.
+\end{defn}
+\begin{thm}{(Convolution Theorem)}%\label{thm:}
+The equalities
+\begin{equation}%\label{eq:}
+(f*g)(t) = (g*f)(t)
+\end{equation}
+whenever $\re(z)>\max[\rho(f),\rho(g)]$.
+\end{thm}
+
+
+
+
+\subsection{Table of Properties of the Laplace Transform}
+Let $u(t)$ be the Heaviside step function.
+\begin{equation}%\label{eq:}
+u(t) = \int^{t}_{-\infty}\delta(\tau)d\tau
+\end{equation}
+where $\delta$ is the delta function we all know and love.
+\\
+
+\begin{tabular}{|p{3cm}|l|l|}
+\hline
+%&&\\
+Linearity & $af\left(t\right)+bg\left(t\right)$ & $a\wt{f}\(z\)+b\wt{g}\(z\)$\\\hline
+Frequency Differentiation & $tf\(t\)$ & $-\wt{f}'\(z\)$\\\hline
+Frequency Differentiation & $t^nf\(t\)$ & $(-1)^{n}\wt{f}^{n}\(z\)$\\\hline
+Differentiation & $f'\(t\)$ & $z\wt{f}\(z\)-f\(0\)$\\\hline
+Differentiation & $f''\(t\)$ & $z^2\wt{f}\(z\)-zf\(0\)-f'\(0\)$\\\hline
+Differentiation & $f^{(n)}(t)$ & $z^n\wt{f}(z) - z^{n-1}f(0) -
+\cdots - f^{(n-1)}(0)$\\\hline
+Frequency Integration & $f(t)/t$ & $\int^{\infty}_{z}\wt{f}(\omega)d\omega$\\\hline
+Integration & $\int^{t}_{0}f(\tau)d\tau=(u*f)(t)$ & $\wt{f}(z)/z$\\\hline
+Scaling & $f(at)$ & $\wt{f}(z/a)/|a|$\\\hline
+Frequency Shifting & $e^{at}f(t)$ & $\wt{f}(z-a)$\\\hline
+Time shifting & $f(t-a)u(t-a)$ & $e^{-az}\wt{f}(z)$\\\hline
+Convolution & $(f*g)(t)$ & $\wt{f}(z)\wt{g}(z)$\\\hline
+Periodic Function & $f(t)$ & $(\int^{T}_{0}e^{-zt}f(t)dt)/(1-e^{-Tz})$\\\hline
+\end{tabular}
+\subsection{List of Properties of the Laplace Transform}
+\textbf{Definition}
+\begin{equation}%\label{eq:}
+\wt{f}(z)=\int^{\infty}_{0}e^{-zt}f(t)dt.
+\end{equation}
+\begin{enumerate}
+\item $\displaystyle \wt{g}(z)=-\frac{d}{dz}\wt{f}(z)$ where $g(t)=tf(t)$.
+\item $\ds \mathcal{L}\bigl\{af+bg\bigr\} = a\wt{f}+b\wt{g}$
+\item $\ds \wt{\left(\frac{df}{dt}\right)}(z)=z\wt{f}(z)-f(0)$.
+\end{enumerate}

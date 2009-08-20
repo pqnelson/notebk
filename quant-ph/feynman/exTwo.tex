@@ -1,0 +1,432 @@
+\subsection{A Slightly More Complicated Example}
+
+This example will teach you that any idiot can complicate a simple scheme, consider
+the following diagram:
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exTwoImg1}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+\textbf{Step One:} We drew it carefully and made special care of the notation used.
+
+\textbf{Step Two:} We need to take note of how many vertices we have, so we have
+them enlarged in red to see how many:
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exTwoImg2}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+    \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,fore=red}{v1,v2,v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+we have 4 vertex terms, that is we have
+\begin{equation*}
+(-ig)^4
+\end{equation*}
+in the integrand so far.
+
+\textbf{Step Three:} We need to take care of the internal lines now, so we will
+see which lines those are exactly:
+
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exTwoImg3}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$,fore=red}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5,fore=red}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5,fore=red}{v3,v2}
+    \fmf{plain,label=$C,,q_4$,fore=red}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+Since we are being pedagogical, we will go through one by one and indicate which
+line we are dealing with and what we evaluate it to be. We will begin in any
+old arbitrary manner we please with this particular example, \textbf{it won't
+be that way in general!} We will first consider:
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg4}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$,fore=red}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+We evaluate this to be the propagator described by
+\begin{equation*}
+\frac{i}{q_{1}^2 - m_{C}^2c^2}
+\end{equation*}
+so we multiply it into the integrand. The integrand is then
+\begin{equation}
+(-ig)^4 \frac{i}{q_{1}^2 - m_{C}^2c^2}.
+\end{equation}
+We continue on and we see the term given by the internal line in
+red
+
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg5}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5,fore=red}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This corresponds to the propagator described by
+\begin{equation*}
+\frac{i}{q_{2}^2 - m_{A}^2c^2}.
+\end{equation*}
+We multiply this into our integrand now and we get
+\begin{equation}
+(-ig)^4 \frac{i}{q_{1}^2 - m_{C}^2c^2}\frac{i}{q_{2}^2 - m_{A}^2c^2} = -g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}.
+\end{equation}
+Similarly we can do likewise for the other part of the loop in
+red:
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg6}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5,fore=red}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This corresponds to the propagator
+\begin{equation*}
+\frac{i}{q_{3}^2 - m_{B}^2c^2}
+\end{equation*}
+and we just multiply it into the integrand, which becomes
+\begin{equation}
+-g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}\frac{i}{q_{3}^2 - m_{B}^2c^2}.
+\end{equation}
+We have one last internal line left! We highlight it in red:
+
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg7}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$,fore=red}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This corresponds to the propagator
+\begin{equation*}
+\frac{i}{q_{4}^2-m_{C}^2c^2}
+\end{equation*}
+and we multiply it into the integrand, which becomes
+\begin{equation}
+-g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}\frac{i}{q_{3}^2 - m_{B}^2c^2}\frac{i}{q_{4}^2-m_{C}^2c^2} = g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}\frac{1}{q_{3}^2 - m_{B}^2c^2}\frac{1}{q_{4}^2-m_{C}^2c^2}.
+\end{equation}
+
+\textbf{Step Four:} We need to enfore the conservation of momentum, so what do
+we do? We simply go back to our graph and go one vertex at a time and enforce
+conservation of momentum. At the first vertex, the input momentum is in red
+and the output momentum is in blue:
+
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg8}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain,fore=red}{i1,v1} %
+    \fmf{plain,fore=blue}{v1,o1}
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$,fore=blue}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+So we want to have momentum here conserved, i.e.
+\begin{equation}
+p_1 = p_3 + q_1
+\end{equation}
+so we multiply the integrand by the term
+\begin{equation*}
+(2\pi)^{4}\delta^{(4)}(p_{1}-p_{3}-q_{1}).
+\end{equation*}
+Our integrand, which is ever expanding, is then
+\begin{equation}
+g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}\frac{1}{q_{3}^2 - m_{B}^2c^2}\frac{1}{q_{4}^2-m_{C}^2c^2}(2\pi)^{4}\delta^{(4)}(p_{1}-p_{3}-q_{1}).
+\end{equation}
+There are three other vertices which we must impose conservation laws on, so we
+will move right along to the next vertex; again the input momentum is in red,
+and the output momentum is in blue:
+
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg9}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1} %
+    \fmf{plain}{v1,o1}
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$,fore=red}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5,fore=blue}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5,fore=blue}{v3,v2}
+    \fmf{plain,label=$C,,q_4$}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This corresponds to a conservation of momentum of 
+\begin{equation}
+q_1 \approx q_2 + q_3
+\end{equation}
+which corresponds to the dirac delta function term of
+\begin{equation*}
+(2\pi)^4\delta^{(4)}(q_1 - q_2 - q_3).
+\end{equation*}
+Multiplying this into our integrand, we get
+\begin{equation}
+(2\pi)^8g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}\frac{1}{q_{3}^2 - m_{B}^2c^2}\frac{1}{q_{4}^2-m_{C}^2c^2}\delta^{(4)}(p_{1}-p_{3}-q_{1})\delta^{(4)}(q_1 - q_2 - q_3).
+\end{equation}
+Two vertices down, two to go! We simply move right along to find the next
+conservation of momentum to be at the next vertex. The input momentums are in
+red, and the output momentum is in blue:
+
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg10}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1} %
+    \fmf{plain}{v1,o1}
+    \fmf{plain}{i2,v4,o2} %
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5,fore=red}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5,fore=red}{v3,v2}
+    \fmf{plain,label=$C,,q_4$,fore=blue}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This corresponds to the conservation
+\begin{equation}
+q_2 + q_3 \approx q_4
+\end{equation}
+which means we have a delta function of the form
+\begin{equation*}
+(2\pi)^4\delta^{(4)}(q_2 + q_3 - q_4).
+\end{equation*}
+Our integrand becomes
+\begin{equation}
+(2\pi)^{12}g^4\frac{1}{q_{1}^2 - m_{C}^2c^2}\frac{1}{q_{2}^2 - m_{A}^2c^2}\frac{1}{q_{3}^2 - m_{B}^2c^2}\frac{1}{q_{4}^2-m_{C}^2c^2}\delta^{(4)}(p_{1}-p_{3}-q_{1})\delta^{(4)}(q_1 - q_2 - q_3)\delta^{(4)}(q_2 + q_3 - q_4).
+\end{equation}
+\snote{As we can see, this is getting really really messy! God help us when
+we try to feebly evaluate this beast!} Thank god only one vertex left! This
+is the last term to add prior to integration. The input momentums are in
+red and the output momentum is in blue:
+
+
+\strut
+\begin{center}
+\begin{fmffile}{exTwoImg10}
+  \begin{fmfgraph*}(70,25)  \fmfpen{0.1mm}
+
+    \fmfleft{i1,o1} 
+    \fmfright{i2,o2} 
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1} %
+    \fmf{plain}{v1,o1}
+    \fmf{plain,fore=red}{i2,v4} %
+    \fmf{plain,fore=blue}{v4,o2}
+    \fmf{plain,label=$C,,q_1$}{v1,v2}
+    \fmf{plain,left,label=$B,,q_3$,tension=0.5}{v2,v3}
+    \fmf{plain,left,label=$A,,q_2$,tension=0.5}{v3,v2}
+    \fmf{plain,label=$C,,q_4$,fore=red}{v3,v4}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+This has the conservation of
+\begin{equation}
+q_4 + p_2\approx p_4
+\end{equation}
+which takes the delta form of
+\begin{equation}
+(2\pi)^4\delta^{(4)}(q_4 + p_2 - p_4)
+\end{equation}
+and our integrand finally becomes
+\begin{equation}
+(2\pi)^{16}g^4\frac{\delta^{(4)}(p_{1}-p_{3}-q_{1})}{q_{1}^2 - m_{C}^2c^2}\frac{\delta^{(4)}(q_1 - q_2 - q_3)}{q_{2}^2 - m_{A}^2c^2}\frac{\delta^{(4)}(q_2 + q_3 - q_4)}{q_{3}^2 - m_{B}^2c^2}\frac{\delta^{(4)}(q_4 + p_2 - p_4)}{q_{4}^2-m_{C}^2c^2} 
+\end{equation}
+At this point, if I were a professor, I would say ``This is trivial...bye!'' But
+I am no professor!
+
+\textbf{Step Five:} We then integrate over the internal lines. This is the fun 
+part, like when the dentist says he needs to give you a root canal and he's
+all outta Novocaine! We integrate over $q_1$, $q_2$, $q_3$, $q_4$. We notice
+that the factors of $2\pi$ completely cancel out which is nice, so all we have
+is
+\begin{equation}
+g^4\int\frac{\delta^{(4)}(p_{1}-p_{3}-q_{1})}{q_{1}^2 - m_{C}^2c^2}\frac{\delta^{(4)}(q_1 - q_2 - q_3)}{q_{2}^2 - m_{A}^2c^2}\frac{\delta^{(4)}(q_2 + q_3 - q_4)}{q_{3}^2 - m_{B}^2c^2}\frac{\delta^{(4)}(q_4 + p_2 - p_4)}{q_{4}^2-m_{C}^2c^2}d^{4}q_{1}d^{4}q_{2}d^{4}q_{3}d^{4}q_{4}.
+\end{equation}
+We will take this slow and step by step, we see that in the first delta function
+we have the replacement of $q_1$ by $p_1-p_3$ which is nice! We make this move:
+\begin{equation}
+\frac{g^4}{(p_1-p_3)^2 - m_{C}^2c^2}\int\frac{\delta^{(4)}(p_1-p_3 - q_2 - q_3)}{q_{2}^2 - m_{A}^2c^2}\frac{\delta^{(4)}(q_2 + q_3 - q_4)}{q_{3}^2 - m_{B}^2c^2}\frac{\delta^{(4)}(q_4 + p_2 - p_4)}{q_{4}^2-m_{C}^2c^2}d^{4}q_{2}d^{4}q_{3}d^{4}q_{4}.
+\end{equation}
+Similarly, we find the our last delta function allows us to make the switcheroo
+of $q_4$ for $p_2 - p_4$, so we make it so:
+\begin{equation}
+\frac{g^4}{(p_1-p_3)^2 - m_{C}^2c^2}\frac{1}{(p_2 - p_4)^2-m_{C}^2c^2}\int\frac{\delta^{(4)}(p_1-p_3 - q_2 - q_3)}{q_{2}^2 - m_{A}^2c^2}\frac{\delta^{(4)}(q_2 + q_3 - p_2 - p_4)}{q_{3}^2 - m_{B}^2c^2}d^{4}q_{2}d^{4}q_{3}.
+\end{equation}
+The term $\delta^{(4)}(p_1-p_3 - q_2 - q_3)$ tells us $q_2$ is replaced by
+$p_1 - p_3 - q_3$ so our last delta function (after monkeying around with
+integration) becomes
+\begin{equation*}
+\delta^{(4)}(p_1 + p_2 - p_3 - p_4).
+\end{equation*}
+We are left with
+\begin{eqnarray}
+\frac{g^4}{(p_1-p_3)^2 - m_{C}^2c^2}\frac{1}{(p_2 - p_4)^2-m_{C}^2c^2} \nonumber \\
+\quad\times\int
+\frac{1}{(p_1 - p_3 - q_3)^2 - m_{A}^2c^2}
+\frac{\delta^{(4)}(p_1 - p_3 + p_2 - p_4)}{q_{3}^2 - m_{B}^2c^2}d^{4}q_{3}.
+\end{eqnarray}
+So we can skip ahead to rule 6 and assert: our contribution to the probability
+amplitude from this diagram is
+\begin{eqnarray}\label{divergentSonOfAGun}
+\mathcal{M} &=& i\left(\frac{g}{2\pi}\right)^4\frac{1}{[(p_1-p_3)^2 - m_{C}^2c^2][(p_2 - p_4)^2-m_{C}^2c^2]} \nonumber\\
+&&\times \int\frac{1}{[(p_1 - p_3 - q_3)^2 - m_{A}^2c^2][q_{3}^2 - m_{B}^2c^2]}d^{4}q_{3}.
+\end{eqnarray}

@@ -1,0 +1,41 @@
+%%
+%% lagrangian.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Jun  5 12:03:19 2009 Alex Nelson
+%% Last update Fri Jun  5 12:03:19 2009 Alex Nelson
+%%
+Recall that for General Relativity, the Einstein Hilbert action
+is
+\begin{equation}%\label{eq:}
+I = \frac{1}{16\pi G_{N}}\int d^{4}x\sqrt{|g|}R
+\end{equation}
+where $G_N$ is Newton's constant, $g$ is the determinant of the
+metric, and $R$ is the Ricci scalar. We demand the action
+vanishes upon variation of the metric
+\begin{equation}%\label{eq:}
+g_{\mu\nu}\to g_{\mu\nu}+\delta g_{\mu\nu}
+\end{equation}
+and we obtain Einstein's field equations this way. We use a very
+specific variation in the metric, namely a diffeomorphism
+invariant variation
+\begin{equation}%\label{eq:}
+\delta g_{\mu\nu} = \nabla_{\nu}\xi_{\mu}+\nabla_{\mu}\xi_{\nu}
+\end{equation}
+which is precisely the killing equation for diffeomorphism
+invariance.
+
+Naively, one could suppose that we can do the canonical formalism
+in a covariant way by sleight of hand. We just pretend the
+canonical position is the 4 metric $g_{\mu\nu}$ and find its time
+derivative, then apply Dirac's constrained dynamics scheme. This
+was the approach of Pirant, Schild, and Skinner~\cite{Pirant:1952zz}. Their
+analysis was not complete, as Kiriushcheva et al noted~\cite{Kiriushcheva:2008fn}
+the time development of secondary constraints were not
+considered. Neither was the closure of the Dirac procedure
+demonstrated. Dirac attacked this problem~\cite{Dirac:1958sc} and
+came to the conclusion that four dimensions should be split into
+three plus one dimensions.
+

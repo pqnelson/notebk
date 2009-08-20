@@ -1,0 +1,52 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{delamadrid}
+R.~{de la Madrid}, ``The role of the rigged Hilbert space in Quantum
+  Mechanics,'' {\em EUR.J.PHYS.} {\bf 26} (2005)  287,
+  \href{http://arxiv.org/abs/quant-ph/0502053}{{\tt quant-ph/0502053}}.
+
+\bibitem{Madrid:2004zy}
+R.~de~la Madrid, ``{The rigged Hilbert space of the algebra of the one-
+  dimensional rectangular barrier potential},''
+  \href{http://dx.doi.org/10.1088/0305-4470/37/33/011}{{\em J. Phys.} {\bf A37}
+  (2006)  8129--8157},
+\href{http://arxiv.org/abs/quant-ph/0407195}{{\tt arXiv:quant-ph/0407195}}.
+%%CITATION = QUANT-PH/0407195;%%.
+
+\bibitem{gelfandgeneralized}
+I.~Gel-fand and G.~Shilov, {\em {Generalized functions}}, vol.~4.
+\newblock Academic Press, 1964.
+
+\bibitem{maurin}
+K.~Maurin, {\em {Generalized Eigenfunction Expansions and Unitary
+  Representations of Topological Groups}}.
+\newblock Polish Scientific Publishers, 1968.
+
+\bibitem{Gambini:2001pq}
+R.~Gambini and R.~A. Porto, ``{Relational Reality in Relativistic Quantum
+  Mechanics},'' \href{http://dx.doi.org/10.1016/S0375-9601(02)00043-9}{{\em
+  Phys. Lett.} {\bf A294} (2002)  129--133},
+\href{http://arxiv.org/abs/quant-ph/0105146}{{\tt arXiv:quant-ph/0105146}}.
+%%CITATION = QUANT-PH/0105146;%%.
+
+\bibitem{ticciati}
+R.~Ticciati, {\em Quantum Field Theory for Mathematicians}.
+\newblock Cambridge University Press, 1999.
+
+\bibitem{Bohm:1974ie}
+A.~Bohm, ``{The Rigged Hilbert Space and Quantum Mechanics},''. CPT-205-TEXAS.
+
+\bibitem{Cosgrove:1996gy}
+R.~Cosgrove, ``{A Single Particle Interpretation of Relativistic Quantum
+  Mechanics},''
+\href{http://arxiv.org/abs/gr-qc/9602051}{{\tt arXiv:gr-qc/9602051}}.
+%%CITATION = GR-QC/9602051;%%.
+
+\bibitem{Strocchi:2004cb}
+F.~Strocchi, ``{Relativistic quantum mechanics and field theory},''
+  \href{http://dx.doi.org/10.1023/B:FOOP.0000019625.30165.35}{{\em Found.
+  Phys.} {\bf 34} (2004)  501--527},
+\href{http://arxiv.org/abs/hep-th/0401143}{{\tt arXiv:hep-th/0401143}}.
+%%CITATION = HEP-TH/0401143;%%.
+
+\end{thebibliography}\endgroup

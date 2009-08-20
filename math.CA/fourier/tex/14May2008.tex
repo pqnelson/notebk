@@ -1,0 +1,201 @@
+%%
+%% 14May2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 26 17:02:27 2008 Alex Nelson
+%% Last update Fri Dec 26 17:02:27 2008 Alex Nelson
+%%
+%% Fourier transforms
+
+Let us consider a few examples computing the Fourier
+transform of a function. Remember the Fourier transform is
+\begin{equation}
+\widehat{f}(\xi) = \int f(x)e^{-i\xi x}dx.
+\end{equation}
+
+\begin{ex}
+Let
+\begin{equation}
+\chi_a(x) = \begin{cases} 1 & \text{if }|x|<a\\
+0 & \text{otherwise}\end{cases}
+\end{equation}
+be a characteristic function. Then
+\begin{subequations}
+\begin{align}
+\widehat{\chi}_{a}(\xi) &= \int^{a}_{-a}\xi_{a}(x)e^{-i\xi
+  x}dx\\
+&= \int^{a}_{-a}e^{-i\xi x}dx\\
+&= \frac{i}{\xi}(e^{ia\xi}-e^{-ia\xi})\\
+&= -2\frac{\sin(a\xi)}{\xi}.
+\end{align}
+\end{subequations}
+\end{ex}
+\begin{ex}
+Consider
+\begin{equation}
+\mathcal{F}\left[e^{-ax^{2}/2}\right] = \sqrt{\frac{2\pi}{a}}e^{-\xi^{2}/2a}
+\end{equation}
+where $\mathcal{F}[\cdot]$ is the fourier transform. We can
+see that
+\begin{subequations}
+\begin{align}
+\mathcal{F}\left[e^{-ax^{2}/2}\right] &= \int
+e^{-ax^{2}/2-i\xi x}dx\\
+&=\int e^{-y^2+(\xi^{2}/a)}\left(\frac{2}{\sqrt{a}}\right)dy \quad\text{where } y=x\sqrt{a/2}+i\xi/\sqrt{2a}\\
+&=\sqrt{\frac{2}{a}}e^{-\xi^{2}/2a}\int e^{-y^2}dy\\
+&=\sqrt{\frac{2\pi}{a}}e^{-\xi^{2}/2a}.
+\end{align}
+\end{subequations}
+Since we know that 
+\begin{equation}
+\int e^{-x^2}dx = \sqrt{\pi}.
+\end{equation}
+\end{ex}
+
+Now let us consider some of the basic properties of the
+Fourier transform.
+\begin{enumerate}
+\item{(Shifting the Fourier Transform\index{Fourier Transform!Shift})} For $a\in\mathbb{R}$, 
+\begin{align*}
+\mathcal{F}\left[f(x-a)\right] &=
+e^{-ia\xi}\mathcal{F}[f(x)]\\
+&= e^{-a\xi}\widehat{f}(\xi)
+\end{align*}
+\item{(Dilation\index{Fourier Transform!Dilation})} For $\delta>0$, $f_{\delta}(x) = f(x/\delta)/\delta$,
+  then $\mathcal{F}(f_{\delta}) =
+  \widehat{f}(\delta\xi)$. If $\delta>1$, we're shrinking
+  the width of $f$, but expanding the width of
+  $\widehat{f}$. We also have
+\begin{equation}
+\mathcal{F}\left[f(\delta x)\right] =
+\widehat{f}_{\delta}(\xi)
+\end{equation}
+\item\marginpar{Most important property of Fourier Transform!} If
+$f$ is continuous, its first derivative $f'(x)\in
+  PC(\mathbb{R})$ is piecewise continuous, and $f\in L^{1}$,
+  then
+\begin{equation}
+\mathcal{F}\left[\frac{d}{dx}f(x)\right](\xi) = i\xi\widehat{f}(\xi).
+\end{equation}
+This should be familiar, recall that fo the Fourier series
+we have $f$ has coefficients $c_n$ and $f'$ has coefficients
+$inc_n$. On the other hand, if $xf(x)\in L^{1}$, then
+\begin{equation}
+\mathcal{F}\left[xf(x)\right](\xi) = i\frac{d}{d\xi}\widehat{f}(\xi).
+\end{equation}
+\item If both $f,g\in L^{1}$, then
+\begin{equation}
+\mathcal{F}[f*g](\xi) = \widehat{f}(\xi)\widehat{g}(\xi)
+\end{equation}
+\end{enumerate}
+The last property is the most important as it lets us change
+a given differential equation into an algebraic equation.
+\begin{proof}
+\begin{enumerate}
+\item{(Shift)} We see that
+\begin{align*}
+\mathcal{F}[f(x-a)] &= \int f(x-a)e^{-ix\xi}dx \\
+&= \int f(y)e^{-i\xi(y+a)}dy\quad\text{where }y=x-a\\
+&= e^{-ia\xi}\int f(y)e^{-i\xi y}dy\\
+&= e^{-a\xi}\widehat{f}(\xi).
+\end{align*}
+\item{(Dilation)} Again by direct computation we see that
+\begin{align*}
+\mathcal{F}[f_{\delta}](\xi) &= \int \frac{1}{\delta}f\left(\frac{x}{\delta}\right)e^{-ix\xi}dx\\
+&=\int f(y)e^{-i\delta y\xi}dy,\quad\text{with }y=x/\delta\\
+&=\int f(y)e^{-iy(\delta\xi)}dy\\
+&=\mathcal{F}[f(x)](\delta\xi) = \widehat{f}(\delta\xi)
+\end{align*}
+\item{(Differentiation)} Observe, once more by direct
+  computation
+\begin{align*}
+\mathcal{F}\left[\frac{d}{dx}f(x)\right] &= \int
+f'(x)e^{-ix\xi}dx\\
+&=f(x)e^{-ix\xi}|^{\infty}_{-\infty} - \int
+f(x)\frac{d}{dx}e^{-i\xi x}dx 
+\end{align*}
+where we have just done integration by parts in the second
+step. We see that since $f\in L^1$ that $f(x)\to 0$ as
+$x\to\pm\infty$. So
+\begin{align*}
+f(x)e^{-ix\xi}|^{\infty}_{-\infty} - \int
+f(x)\frac{d}{dx}e^{-i\xi x}dx  &= -\int
+f(x)\frac{d}{dx}e^{-i\xi x}dx\\
+&= \int f(x)i\xi e^{-ix\xi}dx\\
+&= i\xi \int f(x)e^{-ix\xi}dx\\
+&= i\xi \widehat{f}(\xi)
+\end{align*}
+Similarly, we see that 
+\begin{equation}
+xe^{-ix\xi} = i\frac{d}{d\xi}e^{-ix\xi}
+\end{equation}
+so
+\begin{align*}
+\mathcal{F}[xf(x)] &= \int xf(x)e^{-ix\xi}dx\\
+&= \int \left(i\frac{d}{d\xi}e^{-i\xi x}\right)f(x)dx\\
+&= i\frac{d}{d\xi}\int f(x)e^{-ix\xi}dx\\
+&= i\frac{d}{d\xi}\widehat{f}(\xi)
+\end{align*}
+\item If 
+\begin{align*}
+\mathcal{F}[f*g](\xi) &= \int\left(\int f(x-y)g(y)dy\right)e^{-ix\xi}dx\\
+&= \int\int f(x-y)g(y)e^{-ix\xi}dxdy
+\end{align*}
+Let $z=x-y$, then
+\begin{align*}
+\int\int f(x-y)g(y)e^{-ix\xi}dxdy&=\int\int f(z)e^{-i\xi(z+y)}dz g(y)dy\\
+&=\int\left(\int f(z)e^{-i\xi(z+y)}dz\right)g(y)dy\\
+&=\int\left(\int f(z)e^{-i\xi z}e^{-iy\xi}dz\right)g(y)dy\\
+&=\int\left(\int f(z)e^{-iz\xi}dz\right)g(y)e^{-iy\xi}dy\\
+&=\int\widehat{f}(\xi)e^{-iy\xi}g(y)dy\\
+&=\widehat{f}(\xi)\int g(y)e^{-iy\xi}dy\\
+&=\widehat{f}(\xi)\widehat{g}(\xi)
+\end{align*}
+which concludes our proof.
+\end{enumerate}
+\end{proof}
+
+\begin{riemleb}
+If $f\in L^{1}$, then $\mathcal{F}[f](\xi)\to0$ as $\xi\to\pm\infty$.
+\end{riemleb}
+\begin{sketch}
+Intuitively we see
+\begin{align*}
+\widehat{f}(\xi) &= \int e^{-i\xi x}f(x)dx\\
+&= \int e^{-iz}f(z)\frac{dz}{\xi}\\
+|\widehat{f}(\xi)| &\leq
+\int\left|f\left(\frac{z}{\xi}\right)\right|\frac{dz}{|\xi|}
+= \frac{1}{|\xi|}\int\left|f\left(\frac{z}{\xi}\right)\right|dz\\
+&\leq \frac{1}{|\xi|}k
+\end{align*}
+where $k$ is a constant, since $f\in L^{1}$. So
+\begin{equation}
+\lim_{\xi\to\pm\infty}f(\xi)\leq\lim_{\xi\to\pm\infty}\frac{1}{|\xi|}k
+= 0.
+\end{equation}
+This concludes our sketch of the proof.
+\end{sketch}
+%%%%%%%%
+%%%%%%%%
+%%%% This is supposed to be part of 16 May 2008
+%%%% 
+%%%%%%%%
+%%%%%%%%
+What's the implication of the Riemann-Lebesgue lemma? Well,
+in addition to the property (3) of the Fourier transform, it
+implies the following:
+\begin{quote}
+If $f$ is smooth, $\widehat{f}$ decays quickly. If
+$\widehat{f}$ decays fast, then $f$ is smooth.
+\end{quote}
+\begin{ex}
+If $f\in C^{(k-1)}$, $f^{(k)}\in PC(\mathbb{R})$ and
+$f^{(k)}\in L^{1}$, then we have
+\begin{equation}
+\mathcal{F}[f^{(k)}] = (i\xi)^{k}\widehat{f}(\xi).
+\end{equation}
+The Riemann-Lebesgue lemma says
+$(i\xi)^{k}\widehat{f}(\xi)\to -$ as $|\xi|\to\infty$.
+\end{ex}

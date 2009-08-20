@@ -1,0 +1,62 @@
+%%
+%% canonicalAction.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Jun  5 12:08:09 2009 Alex Nelson
+%% Last update Fri Jun  5 12:08:09 2009 Alex Nelson
+%%
+Now, we can write the action in terms of our new canonical
+variables as
+\begin{equation}%\label{eq:}
+I = \int dt\; d^{3}x \left[\pi^{ij}\dot{q}_{ij} - N\mathscr{H} - N_{i}\mathscr{H}^{i}\right]
+\end{equation}
+where
+\begin{equation}\label{eq:admHamiltonian}
+\mathscr{H} = \frac{16\pi
+  G_{N}}{\sqrt{q}}\left(\pi^{ij}\pi_{ij}-\pi^{2}\right) -
+\frac{\sqrt{q}}{16\pi G_{N}}\sqrt{q}{}^{(3)}R
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+\mathscr{H}^{i} = -2 D_{j}\pi^{ij}.
+\end{equation}
+Eq \eqref{eq:admHamiltonian} is a Hamiltonian for General
+Relativity based off of a certain set of variables -- the metric
+for a spatial hypersurface as the position variable, and its time
+derivative as the canonically conjugate momenta.
+
+We now find the dynamics in the usual way, by using the Poisson
+bracket. We see that
+\begin{equation}%\label{eq:}
+\{ q_{ij}(x), \pi^{kl}(x') \} = \frac{1}{2}\left(\delta^{k}_{i}\delta^{l}_{j}+\delta^{k}_{j}\delta^{l}_{i}\right)\tilde{\delta}^{(3)}(x-x')
+\end{equation}
+where $\widetilde{\delta}^{(3)}$ is the densitized delta
+function, i.e. the delta function such that
+\begin{equation}%\label{eq:}
+\int\tilde{\delta}^{(3)}(x)d^{3}x = 1
+\end{equation}
+so we won't need $\sqrt{q}$. Now, this is a completely
+constrained system, with the momentum constraints generating
+spatial change of coordinates. Consider the Poisson bracket of
+the momentum constraints with the spatial metric:
+\begin{subequations}
+\begin{align}
+\left\{\int\xi^{i}\mathscr{H}_{i}(x)d^{3}x,\; q_{kl}(x')\right\} &=  
+\left\{-2\int\xi^{i}D^{j}\pi_{ij}(x)d^{3}x,\; q_{kl}(x')\right\}\\
+&= \left\{\int(D_{i}\xi_{j}+D_{j}\xi_{i})\pi^{ij}(x)d^{3}x,\; q_{kl}(x')\right\}\\
+&= -(D_{k}\xi_{l}+D_{l}\xi_{k})\\
+&= -\mathscr{L}_{\xi}q_{kl}
+\end{align}
+\end{subequations}
+where $\mathscr{L}_{\xi}$ is the Lie derivative. This means that
+$\mathscr{H}_{i}$ are the generators of spatial coordinate
+transformations. The Poisson bracket for the momentum constraints
+and the $\pi^{ij}$ are a bit more complicated.
+
+We are working on spatial hypersurfaces, so the question of \emph{what
+``$\mathscr{H}$ generates time translations'' means} needs to be
+investigated. Again, the easy Poisson bracket to consider is with
+the spatial metric. Technically, these are ``spatial
+deformations'' yielded by such a bracket.

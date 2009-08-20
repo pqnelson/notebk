@@ -1,0 +1,253 @@
+\subsection{Example}
+
+We will consider the process $A+A\to B+B$, which is represented by the following
+Feynman diagram (note that the x axis is the spatial dimension, the y axis is
+the time dimension):
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exOneImg1}
+  \begin{fmfgraph*}(50,25)  \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v2,o2} %
+    \fmf{plain,label=$C,,q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+\textbf{Step One:} We drew it careful about notation (note the internal momentum line $q$ and the external lines $p_j$). 
+
+
+
+\textbf{Step Two:} We have to worry about the vertices, at each one we have to
+award a term of 
+\begin{equation*}
+-ig
+\end{equation*}
+So here is the Feynman diagram with the vertices enlarged in red:
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exOneImg2}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v2,o2} %
+    \fmf{plain,label=$C,,q$}{v1,v2}    
+    \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,fore=red}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}\\
+\end{center}
+
+\strut
+
+
+We see that there are two vertices, one where $A$ emits
+$C$ and becomes $B$:
+
+\strut
+
+
+\begin{center}
+\strut
+\begin{fmffile}{exOneImg3}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v2,o2} %
+    \fmf{plain,label=$C,,q$}{v1,v2}    
+    \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,fore=red}{v1}
+  \end{fmfgraph*}
+\end{fmffile}
+\strut
+\end{center}
+\strut
+\\
+ and the other where $A$ receives $C$ and turns into $B$:
+\strut
+\\
+\begin{center}
+\strut
+\begin{fmffile}{exOneImg4}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v2,o2} %
+    \fmf{plain,label=$C,,q$}{v1,v2}    
+    \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,fore=red}{v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+
+By our rules, this means we get two factors of 
+\begin{equation*}
+-ig.
+\end{equation*}
+That is to say, our integrand is thus
+\begin{equation}
+(-ig)^2
+\end{equation}
+and we will add even more to it!
+
+\textbf{Step Three:} (Let $m_{C}$ be the mass of a $C$ particle.) We also need a propagator for the internal line; we have below the Feynman diagram with the 
+internal line in red:
+\strut
+
+\begin{center}
+\begin{fmffile}{exOneImg5}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain}{i2,v2,o2} %
+    \fmf{plain,label=$C,,q$,fore=red}{v1,v2}    
+
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This means we have a factor of
+\begin{equation*}
+\frac{i}{q^2 - m^{2}_{C}c^2}.
+\end{equation*}
+We multiply this into our integrand which becomes
+\begin{equation}
+(-ig)^2\frac{i}{q^2 - m^{2}_{C}c^2}.
+\end{equation}
+
+
+\textbf{Step Four:} Now conservation of momentum demands two delta functions;
+we see that the momentum has to be conserved at the vertices, so we have two
+diagrams in color this time. At one vertex, we have the input momentum (the red line be)
+equal to the sum of the output momentum (blue lines):
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exOneImg6}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain,fore=red}{i1,v1} %
+    \fmf{plain,fore=blue}{v1,o1}
+    \fmf{plain}{i2,v2,o2} %
+    \fmf{plain,label=$C,,q$,fore=blue}{v1,v2}    
+
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This means we have the conservation of momentum:
+\begin{equation}
+p_1 = p_3 + q.
+\end{equation}
+This corresponds to the delta function of
+\begin{equation*}
+(2\pi)^4\delta^{(4)}(p_1 - p_3 - q)
+\end{equation*}
+(i.e. the left vertex has momentum conserved). We multiply this into the integrand,
+which becomes
+\begin{equation}
+(2\pi)^4(-ig)^2\frac{i}{q^2 - m^{2}_{C}c^2}\delta^{(4)}(p_1 - p_3 - q).
+\end{equation}
+We have another vertex too,
+which we have the ``input momenta lines'' in red summed to have the same momentum 
+as the ``output momenta lines'' in blue:
+
+\strut
+
+\begin{center}
+\begin{fmffile}{exOneImg7}
+  \begin{fmfgraph*}(50,25) \fmfpen{0.1mm}
+%     \\fmfset{arrow_len}{4mm}\\fmfset{arrow_ang}{10}
+    \fmfleft{i1,o1} % change i2->o1 
+    \fmfright{i2,o2} % change o1->i2
+    \fmflabel{$A,p_{1}$}{i1}
+    \fmflabel{$B,p_{3}$}{o1} %
+    \fmflabel{$A,p_{2}$}{i2} %
+    \fmflabel{$B,p_{3}$}{o2}
+    \fmf{plain,fore=red}{i2,v2} %
+    \fmf{plain,fore=blue}{v2,o2}
+    \fmf{plain}{i1,v1,o1} %
+    \fmf{plain,label=$C,,q$,fore=red}{v1,v2}    
+
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\strut
+
+This corresponds to the conservation of momentum
+\begin{equation}
+p_2 + q = p_4\Rightarrow p_2 + q - p_4 = 0
+\end{equation}
+and this corresponds to a delta function of
+\begin{equation*}
+(2\pi)^4\delta^{(4)}(p_{2}+q-p_{4})
+\end{equation*}
+(i.e. the right vertex has momentum conserved). The integrand becomes
+\begin{equation}
+(2\pi)^8(-ig)^2\frac{i}{q^2 - m^{2}_{C}c^2}\delta^{(4)}(p_1 - p_3 - q)\delta^{(4)}(p_{2}+q-p_{4}).
+\end{equation}
+
+\textbf{Step Five:} We integrate over the internal lines, luckily we only have one! We have one integration thus one term
+\begin{equation*}
+\frac{1}{(2\pi)^4}d^{4}q.
+\end{equation*}
+Combining rules 1 through 5 gives us the final expression
+\begin{equation}
+-i(2\pi)^4g^2\int\frac{1}{q^2-m_{C}^2c^2}\delta^{(4)}(p_1 - p_3 - q)\delta^{(4)}(p_{2}+q-p_{4}).
+\end{equation}
+The second delta function serves to pick out the value of everything else at the
+point $q=p_4-p_2$, so we have
+\begin{equation}
+-ig^2\frac{1}{(p_4-p_2)^2-m_{C}^2c^2}(2\pi)^4\delta^{(4)}(p_1+p_2-p_3-p_4).
+\end{equation}
+And we have one last delta function which tells us that we conserved the
+overall energy and momentum. We erase it by rule 6 and we get the amplitude for
+this particular process to be
+\begin{equation}
+\mathcal{M} = \frac{g^2}{(p_4-p_2)^2 - m_{C}^2c^2}.
+\end{equation}
+This particular process is called a ``\textbf{tree diagram}'' because we
+do not have any internal loops. Lets consider such an example next.

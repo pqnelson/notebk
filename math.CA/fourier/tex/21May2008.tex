@@ -1,0 +1,112 @@
+%%
+%% 21May2008.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 27 17:17:37 2008 Alex Nelson
+%% Last update Sat Dec 27 17:17:37 2008 Alex Nelson
+%%
+
+Oftentimes in signal processing, we have to work with
+discrete packets instead of continuous signals. Because of
+this, we often use a discretized Fourier transform. We will
+introduce a few notions first before getting to the Discrete
+Fourier transform.
+
+\begin{defn}\index{Signal!Bandlimited}
+A signal $f(t)$ is \textbf{bandlimited} if
+$\widehat{f}(\omega)$ vanishes for all $|\omega|>\Omega$
+where $\Omega$ is a constant called the \textbf{bandwidth}.
+\end{defn}
+
+\begin{samplingthm}\index{Sampling Theorem}
+Suppose $f\in L^2$ and $\widehat{f}(\omega)=0$ for
+$|\omega|>\Omega$.\marginpar{So we can have a function defined on
+  the real line, and can be reconstructed from countably many
+  values we know about it, \emph{despite} it having uncountably
+  many values.} Then
+\begin{equation}
+f(t) =
+\sum^{\infty}_{n=-\infty}f\left(\frac{n\pi}{\Omega}\right)\frac{\sin(\Omega t - n\pi)}{\Omega t - n\pi}.
+\end{equation}
+We may interpret the sine function as the orthogonal basis in
+$L^2$ where $\{\widehat{f}(\omega)=0$ for $|\omega|>\Omega\}$ is
+a subspace of $L^{2}$ (i.e. it is closed under function addition
+and scalar multiplication).
+\end{samplingthm}
+\begin{proof}
+Since $f\in L^2$, $\widehat{f}\in L^2(-\Omega,\Omega)$ so we
+may expand $\widehat{f}$ in a Fourier series! We have to
+extend $\widehat{f}$ to be periodic, and then look at the
+particular interval of interest $(-\Omega,\Omega)$. Now the
+Fourier series of the function is
+\begin{equation}
+\widehat{f}(\omega) = \sum^{\infty}_{n=-\infty}c_{-n}e^{-in\omega\pi/\Omega}
+\end{equation}
+and further
+\begin{subequations}
+\begin{align}
+c_{-n} &= \frac{1}{2\Omega}\int^{\Omega}_{-\Omega}\widehat{f}(\omega)e^{in\omega\pi/\Omega}d\omega\\
+&=
+\frac{1}{2\Omega}\int^{\infty}_{-\infty}\widehat{f}(\omega)e^{in\omega\pi/\Omega}d\omega\text{  (extending from $[-\Omega,\Omega]$ to $\mathbb{R}$)}\\
+&= \frac{\pi}{\Omega}\left(\frac{1}{2\pi}\int^{\infty}_{-\infty}\widehat{f}(\omega)e^{in\omega\pi/\Omega}d\omega\right)\\
+&=\frac{\pi}{\Omega}\left[f\left(\frac{n\pi}{\Omega}\right)\right]
+= \frac{\pi}{\Omega}f\left(\frac{n\pi}{\Omega}\right)
+\end{align}
+\end{subequations}
+which is really just the inverse Fourier Transform. Thus we have
+\begin{equation}
+\widehat{f}(\omega) = \sum^{\infty}_{n=-\infty}\frac{\pi}{\Omega}f\left(\frac{n\pi}{\Omega}\right)e^{-in\omega\pi/\Omega}
+\end{equation}
+We then perform the inverse Fourier transform to get
+\begin{subequations}
+\begin{align}
+f(t) &=
+\frac{1}{2\pi}\int^{\Omega}_{-\Omega}\widehat{f}(\omega)e^{i\omega t}d\omega\\
+&=\frac{1}{2\Omega}\int^{\Omega}_{-\Omega}\left(\sum^{\infty}_{n=-\infty}f\left(\frac{n\pi}{\Omega}\right)e^{-in\omega\pi/\Omega}\right)e^{i\omega t}d\omega\\
+&=\frac{1}{2\Omega}\sum f\left(\frac{n\pi}{\Omega}\right)\int^{\Omega}_{-\Omega}e^{i\omega(t-n\pi/\Omega)}d\omega\\
+&=\frac{1}{2\Omega}\sum f\left(\frac{n\pi}{\Omega}\right)
+\Omega\left[
+\frac{e^{i(\Omega t-n\pi)}-e^{-i(\Omega t-n\pi)}}{i(\Omega t-n\pi)}
+\right]\\
+&=\sum f\left(\frac{n\pi}{\Omega}\right)\frac{\sin(\Omega t-n\pi)}{(\Omega t-n\pi)}
+\end{align}
+\end{subequations}
+This concludes our proof.
+\end{proof}
+Here we must emphasize\marginpar{\Huge{NOTE!\\$\star\star\star\star\star$}}
+\begin{equation}
+  \addtolength{\fboxsep}{5pt}
+   \boxed{
+   \begin{gathered}
+     \widehat{f}(\omega) = \sum\frac{\pi}{\Omega}f\left(\frac{n\pi}{\Omega}\right)e^{-in\omega\pi/\Omega}
+   \end{gathered}
+   }
+\end{equation}
+If we sample at $N$ points equally distanced from each
+other, letting $t_n = n(\pi/\Omega)$, we have
+\begin{equation}
+\widehat{f}(\omega) = \frac{\pi}{\Omega}\sum f(t_n)e^{-it_n\omega}
+\end{equation}
+We assume the sample points are periodic.
+
+\subsection*{Dual Formulation For Sampling Frequency}
+
+Suppose we have a signal $f\in L^2$ such that $f(t)=0$ for
+$|t|>L>0$. Then we say the signal is \textbf{time
+  limited}\index{Time Limited}\index{Signal!Time Limited}. Then
+\begin{equation}
+\widehat{f}(\omega) = \sum^{\infty}_{-\infty}\widehat{f}\left(\frac{n\pi}{L}\right)\frac{\sin(L\omega-n\pi)}{(L\omega-n\pi)}.
+\end{equation}
+We then have a small modification to the Sampling Theorem.
+
+\begin{thm}{\textbf{(Modified Sampling Theorem)}}
+Suppose we have $f\in L^2$ and $\widehat{f}(\omega)=0$ for
+$\omega$ outside of $[a,b]$. Then
+\begin{equation}
+f(t) = \sum f\left(\frac{2\pi n}{b-a}\right)e^{-i\left(\frac{a+b}{b-a}\right)n\pi t}
+\left[\frac{\sin\left(\left(\frac{b-a}{2}\right)t-n\pi\right)}{\left(\frac{b-a}{2}\right)t-n\pi}\right]
+\end{equation}
+\end{thm}
+

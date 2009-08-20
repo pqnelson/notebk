@@ -1,0 +1,59 @@
+\documentclass{amsart}
+\usepackage{feyn}
+\usepackage{fly}
+\usepackage{color}
+\usepackage{feynmp}
+
+\def\slashchar#1{\setbox0=\hbox{$#1$}           % set a box for #1
+   \dimen0=\wd0                                 % and get its size
+   \setbox1=\hbox{/} \dimen1=\wd1               % get size of /
+   \ifdim\dimen0>\dimen1                        % #1 is bigger
+      \rlap{\hbox to \dimen0{\hfil/\hfil}}      % so center / in box
+      #1                                        % and print #1
+   \else                                        % / is bigger
+      \rlap{\hbox to \dimen1{\hfil$#1$\hfil}}   % so center #1
+      /                                         % and print /
+   \fi}                                         % 
+
+
+\pagestyle{plain} 
+
+
+\title{Notes on Feynman Diagrams}
+\date{August 04, 2008}
+\begin{document}\setlength{\unitlength}{1mm}
+\begin{abstract}
+We introduce in a pedagogical manner how to compute probability amplitudes
+from Feynman diagrams, starting with $\phi^4$ model. We introduce the notion of
+renormalization in this model at the one-loop level. Then we review the Dirac
+equation, and introduce QED. We then perform several example calculations in
+QED. The appendices gives a survey of Gamma matrices and use of Feynman diagrams
+in computing decay rates.
+\end{abstract}
+\maketitle\footnotetext{Last Updated: \today}
+
+
+%\tableofcontents
+\input{rules} % done
+\input{exOne} % done
+\input{exTwo} % done
+\input{renormalization} % done
+\section*{Before Going to QED...}
+
+Before we can go ahead to Quantum Electrodynamics, we need to first introduce
+(or in some cases, review) the Dirac equation. We will proceed to do that now...
+For a more thorough treatment, see Dyson~\cite{Dyson:2006cp}. Note for the most
+part, the inspiration of this entire article can be found in Griffiths~\cite{griffiths}.
+It is a good introductory text on general particle physics too.
+
+\input{prequantum} % done
+\input{spinors} % done
+\input{qed} % done
+\input{conclusion}
+\appendix
+\input{gamma}
+\input{decay}
+\nocite{thaller1992de}\nocite{mandlShaw}\nocite{peskinSchroeder}
+\bibliographystyle{utphys}
+\bibliography{feynman}
+\end{document}

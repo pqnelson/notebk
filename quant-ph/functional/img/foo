@@ -1,0 +1,57 @@
+input boxes;
+u:=0.5cm;
+
+verbatimtex
+%&latex
+\documentclass{amsart}
+\newcommand{\klein}{\sffamily\scriptsize}
+\newcommand{\stk}[2]{$\begin{matrix}#1\cr#2\cr\end{matrix}$}
+\let\cal\mathcal
+\begin{document}
+etex
+
+vardef cuta(suffix a,b) expr p =
+  drawarrow p cutbefore bpath.a cutafter bpath.b;
+  point .5*length p of p
+enddef;
+
+vardef cutd(suffix a,b) expr p =
+  drawarrow p cutbefore bpath.a cutafter bpath.b dashed evenly;
+  point .5*length p of p
+enddef;
+
+vardef self@# expr p =
+  cuta(@#,@#) @#.c{curl0}..@#.c+p..{curl0}@#.c enddef;
+
+beginfig(1);
+  maxY=13*u;
+  maxX=16*u;
+  % draw the source
+  label.top("Source", (3*u,5*u));
+  draw (3*u,4*u)--(3*u,5*u)--(4*u,5*u)--(4*u,4*u)--cycle;
+
+  % draw the barrier
+  draw (7*u,0*u)--(7*u,3*u)--(7.5*u,3*u)--(7.5*u,0*u);
+  draw (7*u,4*u)--(7*u,8*u)--(7.5*u,8*u)--(7.5*u,4*u)--cycle;
+  draw (7.5*u,maxY)--(7.5*u,9*u)--(7*u,9*u)--(7*u,maxY);
+
+  % draw the detector
+  label.bot("Detector", (14*u, 12.5*u));
+  draw (14*u,10.5*u)--(14*u,11.5*u)--(15*u,11.5*u)--(15*u,10.5*u)--cycle;
+
+  % draw path 1
+  draw (4*u,4.5*u)--(7.25*u,8.5*u)--(14*u,11*u);
+  drawdot(7.25*u,8.5*u) withpen pencircle scaled 4pt;
+
+  % draw path 2
+  draw (4*u,4.5*u)--(7.25*u,3.5*u)--(14*u,11*u);
+  drawdot(7.25*u,3.5*u) withpen pencircle scaled 4pt;
+  
+  % draw the dashed line from path 1 to path 2
+  % f(x) = 15.025 - (6.75/7.5)*x 
+  draw (7.25*u,8.5*u)--(9.74*u,6.3*u) dashed withdots scaled 0.45;
+
+  draw (4*u,4.5*u)--(9.74*u,6.3*u) withpen pencircle scaled 2pt;
+  label (btex d etex, (4.5*u,5*u));
+endfig;
+end;

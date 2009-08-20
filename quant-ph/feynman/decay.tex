@@ -1,0 +1,48 @@
+\section{Decay Rates and Feynman Diagrams}
+
+Remember if we have some collection of particles (e.g. Muons) and they decay,
+the decay rate $\Gamma$ (the probability per unit time that any given muon will
+disintegrate) satisfies a particular relation. If $N(t)$ is the number of particles
+at time $t$, the infinitesmal change in $N$ from $t$ to $t+dt$ is
+\begin{equation}
+dN = -\Gamma N(t)dt
+\end{equation}
+which tells us the number is decreasing when we move forward in time. It follows
+that
+\begin{eqnarray*}
+\frac{1}{N}dN &=& -\Gamma dt\\
+\int\frac{1}{N}dN &=& -\int\Gamma dt\\
+\ln(N(t)) &=& -\Gamma t + C \\
+N(t) &=& \exp(-\Gamma t)\exp(C) \\
+&=& N(0)\exp(-\Gamma t)
+\end{eqnarray*}
+where $N(0)$ is the initial number of particles, and $C$ is the constant of
+integration. 
+
+The \textbf{mean lifetime} of the particle is simply the reciprocal of the 
+decay rate
+\begin{equation}
+\tau = \frac{1}{\Gamma}.
+\end{equation}
+If there are several different ways for the particle decay, each with different
+decay rates, the total decay rate is given by the sum of the individual rates:
+\begin{equation}
+\Gamma_\textrm{tot} = \sum_{j=1}^{n} \Gamma_{j}
+\end{equation}
+and the mean lifetime is the reciprocal of this quantity
+\begin{equation}
+\tau = \frac{1}{\Gamma_\textrm{tot}}.
+\end{equation}
+
+\subsection{Fermi's Golden Rule}
+
+Suppose we have one particle that decays into several others
+\begin{equation}
+1\to 2+3+\cdots+n
+\end{equation}
+If $\mathcal{M}$ is the total probability amplitude from the various Feynman
+diagram representations of this process, then the infinitesmal decay rate is
+given by
+\begin{equation}
+d\Gamma = |\mathcal{M}|^2 \frac{S}{2\hbar m_1}\left[\left(\frac{cd^3p_2}{(2\pi)^32E_2}\right)\left(\frac{cd^3p_3}{(2\pi)^32E_3}\right) \cdots \left(\frac{cd^3p_n}{(2\pi)^32E_n}\right) \right]\times (2\pi)^4 \delta^{(4)}(p_1 - (p_2 + p_3 + \cdots + p_n))
+\end{equation}
