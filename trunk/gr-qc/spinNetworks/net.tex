@@ -1,0 +1,195 @@
+%%
+%% net.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat May 16 15:29:19 2009 Alex Nelson
+%% Last update Sat May 16 15:29:19 2009 Alex Nelson
+%%
+
+\begin{figure}
+\includegraphics{img.1}
+\caption{A Simple Spin Network.}\label{fig:img1}
+\end{figure}
+
+Consider the simplest spin network, we need two nodes and three
+edges (if we had two nodes and two edges, it'd be an
+identity). This simplest nontrivial spin network is shown in
+figure \eqref{fig:img1}. We don't want to have spin 0 for an
+edge, if we did the propagator would be the identity. For each of
+these lines (which we labeled $c_1$, $c_2$, and $c_3$ for
+reference) we have the Wilson line 
+\begin{equation}
+\mathcal{U}=\mathcal{P}\exp\left[-\int A\right]
+\end{equation}
+We have the Wilson lines for each of these edges:
+$\mathcal{U}^{m_{1}}_{1,n_{1}}$,
+$\mathcal{U}^{m_{2}}_{2,n_{2}}$,
+$\mathcal{U}^{m_{3}}_{3,n_{3}}$. The $\mathcal{U}$'s tell us
+how a spin-half state rotates in the spin space. We have
+$m_{1}=-1/2$, $1/2$ for spin up and spin down (respectively). We
+see $m_{2}$ is also spin half, but $m_{3}$ is spin 1 with
+possible values of -1, 0, 1. We can now use Clebsch-Gordon
+Coefficients
+\begin{equation}
+\< j\,m|j_{1}\,m_{1},\; j_{2}\,m_{2}\>
+\end{equation}
+and find
+\begin{equation}
+\sum_{\substack{ m_1, m_2, m_3\\
+n_1, n_2, n_3}} \mathcal{U}^{m_{1}}_{1,n_{1}}\mathcal{U}^{m_{2}}_{2,n_{2}}\mathcal{U}^{m_{3}}_{3,n_{3}}\<1\,m_{3}|\frac{1}{2}\,m_{1},\;\frac{1}{2}\,m_{2}\>\<1\,n_{3}|\frac{1}{2}\,n_{1},\;\frac{1}{2}\,n_{2}\>
+\end{equation}
+which is a function of $A$.
+
+\begin{figure}
+\includegraphics{img.2}
+\caption{A spin network edge piercing a ``small'' surface.}\label{fig:img2}
+\end{figure}
+Now, we can take a surface $\Sigma$ and ask ``What is the area of
+this surface?'' Suppose we have some spin network that ``goes
+through'' our surface $\Sigma$. We won't consider any edge of the
+spin networking ``grazing'' the surface (that it, just touching
+it in one spot) or lying on the surface, we will only suppose
+that the edges pierce the surface. We will only really consider a
+simple example choosing a surface where $x^3=0$. The area of the
+surface would be classically 
+\begin{equation}
+A = \int_{\Sigma}\sqrt{{}^{(2)}g}
+\end{equation}
+where ${}^{(2)}g$ is the determinant of the metric induced on the
+surface. We see that
+\begin{equation}
+{}^{(2)}g = g_{11}g_{22}-g_{12}^{2} =
+gg^{33}=\widetilde{E}^{3}_{\hat{I}}\widetilde{E}^{3\hat{I}}.
+\end{equation}
+So the area is
+\begin{equation}
+A = \int_{\Sigma} \sqrt{\widetilde{E}^{3}_{\hat{I}}\widetilde{E}^{3\hat{I}}}.
+\end{equation}
+Consider a more general surface with intrinsic coordinates
+$\sigma^1$, $\sigma^2$. Then in this general setting, we have the
+correspondence
+\begin{equation}
+\widetilde{E}^{3}_{\hat{I}}\to\varepsilon_{ijk}\frac{\partial
+  x^{i}}{\partial \sigma^{1}}\frac{\partial x^{j}}{\partial
+  \sigma^{2}}\widetilde{E}^{k}_{\hat{I}}.
+\end{equation}
+Lets define
+\begin{equation}
+\widetilde{E}_{\hat{I}}:=\int_{\text{small
+    region}}d\sigma^{1}d\sigma^{2}\varepsilon_{ijk}\frac{\partial
+  x^i}{\partial \sigma^1}\frac{\partial x^j}{\partial
+  \sigma^2}\widetilde{E}^{k}_{\hat{I}}
+\end{equation}
+In the classical arena, the notion of a ``small region'' is ill
+defined. However, in the quantum world, it's just a region where
+one edge of a spin network pierces it. We can turn this into an
+operator
+\begin{equation}
+\widetilde{E}_{\hat{I}}:=\int_{\text{small
+    region}}d\sigma^{1}d\sigma^{2}\varepsilon_{ijk}\frac{\partial
+  x^i}{\partial \sigma^1}\frac{\partial x^j}{\partial
+  \sigma^2}\frac{\delta}{\delta A^{\hat{I}}_{k}}
+\end{equation}
+We need to consider 
+\begin{equation}
+\frac{\delta}{\delta A^{\hat{I}}_{k}}\mathcal{U}=???
+\end{equation}
+So we remember
+\begin{equation}
+\mathcal{U} = \mathcal{P}\exp\left[-\int A^{\hat{I}}_{i}\tau_{\hat{I}}\frac{dx^i}{ds}ds\right]
+\end{equation}
+If we didn't have the path ordering, this would be trivial, but
+we need to be more careful since things don't commute. Consider
+the path as shown in figure \eqref{fig:img3}. We have
+\begin{subequations}
+\begin{align}
+\mathcal{U}(s_2,s_1) &= \mathcal{U}(s_2,s)\mathcal{U}(s,s_1)\\
+&= \mathcal{U}(s_2,s+\varepsilon)\mathcal{U}(s+\varepsilon,s-\varepsilon)\mathcal{U}(s-\varepsilon,s_1)
+\end{align}
+\end{subequations}
+If $\varepsilon$ is ``small enough'', we have
+\begin{equation}
+\frac{\delta}{\delta A^{\hat{I}}_{i}(s)}\mathcal{U}(s_2,s_1) =
+\mathcal{U}(s_2,s)\left(-\tau_{\hat{I}}\frac{dx^i}{ds}\right)\mathcal{U}(s,s_1)
+\end{equation}
+More generally we can write
+\begin{equation}
+\frac{\delta}{\delta A^{\hat{I}}_{i}(x)}\mathcal{U}(s_2,s_1) =
+\int ds \delta^{(3)}(C(s),x)\mathcal{U}(s_2,s)\left(-\tau_{\hat{I}}\frac{dx^i}{ds}\right)\mathcal{U}(s,s_1)
+\end{equation}
+where $C(s)$ is our path parametrized by $s$, we see this is 0 if
+$x$ is not on the path. We see now that
+\begin{equation}
+E_{\hat{I}}\mathcal{U}(s_2,s_1) = 8\pi G\gamma \int d\sigma^1 d\sigma^2 ds \varepsilon_{ijk}\frac{\partial
+  x^i}{\partial \sigma^1}\frac{\partial x^j}{\partial
+  \sigma^2}\frac{\partial x^k}{\partial s}\delta^{(3)}(C(s),x)\mathcal{U}(s_2,s)\left(-\tau_{\hat{I}}\frac{dx^i}{ds}\right)\mathcal{U}(s,s_1)
+\end{equation}
+We also see that
+\begin{equation}
+\int d\sigma^1 d\sigma^2 ds \varepsilon_{ijk}\frac{\partial
+  x^i}{\partial \sigma^1}\frac{\partial x^j}{\partial
+  \sigma^2}\frac{\partial x^k}{\partial s}\delta^{(3)}(C(s),x)
+\end{equation}
+is called the ``oriented circle number'' (it's $\pm1$ if $C(s)$
+intersects $\Sigma$, 0 otherwise).
+\begin{figure}
+\includegraphics{img.3}
+\caption{An example path.}\label{fig:img3}
+\end{figure}
+
+The moral of the story is that the oriented intersection number
+$I(C,\Sigma)$ is used to find $E_{\hat{I}}\mathcal{U}(s_2,s_1) =
+k I(C,\Sigma)\mathcal{U}(s_2,s)\tau_{\hat{I}}\mathcal{U}(s,s_1)$
+where $s$ is the point of intersection, and $k=8\pi\gamma G$.
+
+Lets consider 
+\begin{equation}
+E_{\hat{I}}E^{\hat{I}}\mathcal{U}(s_2,s_1)=(8\pi\gamma G)^{2} \mathcal{U}(s_2,s)\tau_{\hat{I}}\tau^{\hat{I}}\mathcal{U}(s,s_1)
+\end{equation}
+We see that for SU(2), $\tau_{\hat{I}}\tau^{\hat{I}}$ is the
+quadratic Casimir (it's not too surprising, it's kind of like
+$J^2$ from quantum mechanics). So we can plug in $j(j+1)$ instead
+and we end up with
+\begin{equation}
+E_{\hat{I}}E^{\hat{I}}\mathcal{U}(s_2,s_1)=(8\pi\gamma G)^{2}j(j+1) \mathcal{U}(s_2,s_1).
+\end{equation}
+This is assuming there is an intersection, of course. We can
+write a spin network state $|s\rangle$ so
+\begin{equation}
+E_{\hat{I}}E^{\hat{I}}|s\rangle = \sum_{\text{intersections}}(8\pi\gamma G)^{2}j(j+1)|s\rangle
+\end{equation}
+We can now define the area operator
+\begin{equation}
+\widehat{A} = \sum_{\text{small regions of
+  }\Sigma}\sqrt{E_{\hat{I}}E^{\hat{I}}}
+\end{equation}
+Classically we had
+\begin{equation}
+A = \int (E^{3}_{\widehat{I}}E^{3\widehat{I}})^{1/2}
+\end{equation}
+and an integral is nothing more than a continuous sum, so we see
+that this is a sensible definition in the classical limit. Given
+this area operator, we see that when it acts on a spin network
+that
+\begin{equation}
+\widehat{A}_{\Sigma}|s\rangle =
+\sum_{\text{intersections}}8\pi\gamma G\sqrt{j(j+1)}|s\rangle
+\end{equation}
+The spectrum of the area is discrete ($j$ comes in half integer
+values). The spacing between the high $j$'s is ``smaller'' than
+the spacing between the low $j$'s. There are some attempts at a
+number theoretic explanation.
+
+The volume operator can also be defined similarly using the
+product of 3 $\widetilde{E}$'s instead of 2, but its construction
+is horrible. The area operator has contributions from edges, but
+the volume operator has contributions from vertices ``with enough
+edges'' (4 edges at a node should be viewed as dual to a
+tetrahedron, 3 edges has area but no volume). At this point, the
+volume spectrum is not well understood.
+
+If we have a cubic network, if we have too many edges the metric
+``looks flat''. There are angle operators with fairly odd
+properties. One fairly old but beautiful reference is~\cite{Rovelli:1998gg}.
