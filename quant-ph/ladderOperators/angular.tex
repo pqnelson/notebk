@@ -1,0 +1,75 @@
+%%
+%% angular.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Mar 30 11:07:25 2009 Alex Nelson
+%% Last update Mon Mar 30 11:07:25 2009 Alex Nelson
+%%
+
+In classical mechanics, we described the angular momentum of a
+body by 
+\begin{equation}
+\vec{x}\times\vec{p}=\vec{L}.
+\end{equation}
+In quantum mechanics, we do the same thing more or less, but we
+need to make the replacement
+\begin{equation}
+p\to\widehat{p}=\frac{\hbar}{i}\frac{\partial}{\partial x}
+\end{equation}
+and so on. We will recklessly switch notations at random between
+using hats to denote operators and not using hats. It is
+understood, unless otherwise specified, we will work henceforth
+with operators.
+
+Here it is convenient to note that we can write the cross product
+in a slick way using matrix multiplication. Observe
+\begin{equation}
+\vec{a}\times\vec{b} = \begin{bmatrix}0 & a_3 & -a_2\\
+-a_3 & 0 & a_1\\
+a_2 & -a_1 &
+0\end{bmatrix}\begin{bmatrix}b_1\\b_2\\b_3\end{bmatrix}.
+\end{equation}
+Also observe that
+\begin{equation}
+\begin{bmatrix}0 & a_3 & -a_2\\
+-a_3 & 0 & a_1\\
+a_2 & -a_1 &
+0\end{bmatrix}^2 = - \begin{bmatrix} a_{2}^{2}+a_{3}^{2} & -a_1a_2 & -a_1a_3\\
+-a_1a_2 & a_{1}^{2}+a_{3}^{2} & -a_{2}a_{3}\\
+-a_{1}a_{3} & -a_{2}a_{3} & a_{1}^{2}+a_{2}^{2}
+0\end{bmatrix}.
+\end{equation}
+If we perform that computations, we find that (using, apologies
+to the physicists struggling with it, abstract index notation)
+\begin{subequations}
+\begin{align}
+L^{2} &= \vec{L}\cdot\vec{L}\\
+&=
+\sum_{i,j,k,m,n}\epsilon^{ijk}\epsilon^{imn}x^{j}p_{k}x^{m}p_{n}\\
+&= \sum_{i,j,k,m,n}(\delta^{jm}\delta^{kn}-\delta^{jn}\delta^{km})x^{j}p_{k}x^{m}p_{n}\\
+&= \sum_{i,j,k,m,n}x^{j}p_{k}x^{j}p_{k} - x^{j}p_{k}x^{k}p_{j}.
+\end{align}
+\end{subequations}
+We can using the commutation relations
+\begin{equation}
+[\widehat{x}^{i},\widehat{p}_{j}]=i{\delta^{i}}_{j}
+\end{equation}
+to reorder terms, for example
+\begin{subequations}
+\begin{align}
+p_{k}x_{j} &= x_{j}p_{k}-i\delta_{kj}\\
+x_{j}p_{k} &= p_{k}x_{j}+i\delta_{kj}.
+\end{align}
+\end{subequations}
+We can rewrite the angular momentum squared as
+\begin{subequations}
+\begin{align}
+L^2 &= x^{j}(x{j}p_{k} -
+i{\delta^{j}}_{k})p_{k}-(p_{k}x^{j}+i{\delta^{j}}_{k})x_{k}p_{j}\\
+&=
+x^{j}x_{j}p^{k}p_{k}-ix^{j}p_{j}-p_{k}x^{k}x^{j}p_{j}-ix^{j}p_{j}\\\
+&=x^{j}x_{j}p^{k}p_{k}-2ix^{j}p_{j}-(x^{k}p_{k}-i{\delta^{k}}_{k})x^{j}p_{j}.
+\end{align}
+\end{subequations}

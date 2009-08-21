@@ -1,0 +1,120 @@
+%%
+%% rotations.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Mar 30 10:41:53 2009 Alex Nelson
+%% Last update Mon Mar 30 10:41:53 2009 Alex Nelson
+%%
+
+Recall in 2 dimensions, we can use complex analysis to simplify
+rotations. That is, due to Euler's formula
+\begin{equation}
+e^{i\theta}=\cos(\theta)+i\sin(\theta)
+\end{equation}
+where $i^2=-1$, we can write any ordered pair $(x,y)$ as
+\begin{equation}
+x+iy=re^{i\theta_0}.
+\end{equation}
+If we want to rotate by some angle $\theta$ anticlockwise, we
+simply multiply by $\exp(i\theta)$ to find
+\begin{equation}
+(x+iy)e^{i\theta} = (x\cos(\theta)-y\sin(\theta))+i(x\sin(\theta)+y\cos(\theta)).
+\end{equation}
+We can write this in matrix form as
+\begin{equation}
+\begin{bmatrix}
+x'\\y'
+\end{bmatrix}
+=\begin{bmatrix} \cos(\theta) & -\sin(\theta)\\
+\sin(\theta) & \cos(\theta)\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}.
+\end{equation}
+We denote the rotated coordinates with primes.
+
+For three dimensions, we can rotate about the $x$, $y$, or $z$
+axis. These have similar forms as their two dimensional
+counterparts. Namely a rotation about the $x$ axis demands
+$x'=x$, so
+\begin{equation}
+R_{x}(\alpha) = \begin{bmatrix}1 & 0 & 0\\
+0 & \cos(\alpha) & -\sin(\alpha)\\
+0 & \sin(\alpha) & \cos(\alpha)\end{bmatrix}\end{equation}
+which is intuitively clear since we treat the $y-z$ plane as a
+two dimensional plane and ``rotate in it''. Similarly, for the
+rotation about the $z$ axis we have for anticlockwise rotations
+by an angle $\gamma$
+\begin{equation}
+R_{z}(\gamma) = \begin{bmatrix}\cos(\gamma) & -\sin(\gamma) & 0\\
+\sin(\gamma) & \cos(\gamma) & 0\\
+0 & 0 & 1\end{bmatrix}.
+\end{equation}
+For rotations about the $y$ axis, it is a bit more tricky if we
+wish to maintain sign. That is, the sign of the sine changes,
+otherwise we'd do a clockwise rotation. (Read twice, and prove
+this important fact to yourself. It will become evident later
+on.) For an anticlockwise rotation about the $y$ axis by an angle
+$\beta$ we have
+\begin{equation}
+R_{y}(\beta) = \begin{bmatrix}\cos(\beta) & 0 & \sin(\beta)\\
+0 & 1 & 0\\
+-\sin(\beta) & 0 & \cos(\beta)\end{bmatrix}
+\end{equation}
+Observe the change of signs on sine. Remember too that
+$\sin(-x)=-\sin(x)$ for a huge hint why.
+
+An additional property of rotations that are worthy of note is
+that we may compose them. That is
+\begin{equation}
+R(\alpha)R(\beta)=R(\alpha+\beta)
+\end{equation}
+for some rotation $R(\cdot)$. This means we can write a rotation
+by an angle $\theta$ as
+\begin{equation}
+R(\theta) = \left[R\left(\frac{\theta}{N}\right)\right]^{N}
+\end{equation}
+for some $N\in\mathbb{N}$. For large $N$ we make the
+approximations
+\begin{subequations}
+\begin{align}
+\cos(\theta/N)&\approx 1\\
+\sin(\theta/N)&\approx \frac{\theta}{N}.
+\end{align}
+\end{subequations}
+So we can rewrite our rotation matrices as the sum of two
+matrices
+\begin{subequations}
+\begin{align}
+R_{x}\left(\frac{\alpha}{N}\right) &= \left[I +
+\left(\frac{\alpha}{N}\right)T_{x}\right]^{N}\\
+R_{y}\left(\frac{\beta}{N}\right) &= \left[I +
+\left(\frac{\beta}{N}\right)T_{y}\right]^{N}\\
+R_{z}\left(\frac{\gamma}{N}\right) &= \left[I +
+\left(\frac{\gamma}{N}\right)T_{z}\right]^{N}
+\end{align}
+\end{subequations}
+where we have silently introduced the matrices
+\begin{subequations}
+\begin{align}
+T_{x} &= \begin{bmatrix}0 & 0 & 0\\
+0 & 0 & -1\\
+0 & 1 & 0\end{bmatrix}\\
+T_{y} &= \begin{bmatrix}0 & 0 & 1\\
+0 & 0 & 0\\
+-1 & 0 & 0\end{bmatrix}\\
+T_{z} &= \begin{bmatrix}0 & -1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 0\end{bmatrix}.
+\end{align}
+\end{subequations}
+Observe that by formally taking the limit $N\to\infty$, we have
+for some rotation operator $R$
+\begin{equation}
+R(\theta) = \lim_{N\to\infty}\left[I+\frac{\theta}{N}T\right]^{N}=\exp(\theta
+T)
+\end{equation}
+where $\exp(\cdot)$ here is matrix exponentiation. We simply plug
+in the matrix into the Taylor series of $e^x$, using matrix
+multiplication and matrix addition. 
+
+
