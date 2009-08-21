@@ -1,0 +1,68 @@
+\section{The Notion of An Algebra}
+
+First let us recall that a vector space is really nothing more than a set of
+``things'' called ``vectors'' that we can add together resulting in a vector and
+multiply by a (``scalar'') constant and we get a vector. In other words, it is
+``closed'' under vector addition, and ``closed'' under scalar multiplication.
+
+\begin{ex}
+Let $S$ be the set of all functions defined on $\mathbb{R}^3$. If we have two
+functions $f$ and $g$, then add them together, we receive a function $(f+g)$
+defined on $\mathbb{R}^3$. Similarly, if we multiply a function by a constant
+we get a function. Therefore, the set $S$ forms a vector space over the field
+(in this case) $\mathbb{R}$. QEF.
+\end{ex}
+
+\begin{rmk}
+Vector fields are always ``over'' a field $\mathbb{F}$. The field is what
+values the entries of the vectors can be, and what values the scalars can be.
+\end{rmk}
+
+\begin{rmk}
+The previous example is not rigorous enough, if one really wanted to do this,
+one would need to prove: \begin{inparaenum}
+\item Vector addition is associative;
+\item Vector addition is commutative;
+\item Vector addition has an identity element;
+\item Vector addition has inverse elements;
+\item Distributivity holds for scalar multiplication over vector addition;
+\item Distributivity holds for scalar multiplication over field addition;
+\item Scalar multiplication is compatible with multiplication in the field of scalars; and 
+\item Scalar multiplication has an identity element.
+\end{inparaenum}
+Since we are trying to convey the concept rather than the grocery-list mathematical version, it is sufficient to argue that
+\begin{equation}
+\alpha\vec{v}+\beta\vec{w}\textrm{ is a vector}
+\end{equation}
+where $\alpha,\beta$ are scalars from the field.
+\end{rmk}
+
+Observe that all we need for a vector space is just vector addition and scalar
+multiplication! We don't require that we know how to multiply vectors.
+
+\begin{rmk}
+There can be two types of multiplication of vectors, one which gives a scalar
+value (e.g. dot product) and one which gives a vector (e.g. cross product). For
+our purposes, we only give a damn about the latter case and refer to 
+``multiplication of vectors'' as a sort of binary operation that ``eats in'' two
+vectors and ``spits out'' a single vector.
+\end{rmk}
+
+\begin{defn}
+A vector space $V$ (over the field $\mathbb{F}$) equipped with a binary operation
+\begin{equation}
+\star: V\times V\to V
+\end{equation}
+(which is generally written as $\vec{v}\star\vec{w}$ where $\vec{v},\vec{w}$ are
+vectors in $V$) which distributes over vector addition, and all those nice 
+things, is called an \textbf{algebra}.
+\end{defn}
+
+\begin{ex}
+Recall in one dimensional classical Hamiltonian mechanics (also known as ``canonical mechanics'') we have two variables: the position $x$, and the momentum $p$. We have the \emph{Poisson Bracket} which is a binary operator
+\begin{equation}
+\left\{ f(x,p), g(x,p) \right\} = \frac{\partial f}{\partial x}\frac{\partial g}{\partial p} - \frac{\partial g}{\partial x}\frac{\partial f}{\partial p}
+\end{equation}
+for arbitrary differentiable functions $f,g$. We may think of this as a ``multiplication operator''. Thus the space of all functions of position and momentum forms an algebra called a \textbf{Poisson Algebra}. QEF.
+\end{ex}
+

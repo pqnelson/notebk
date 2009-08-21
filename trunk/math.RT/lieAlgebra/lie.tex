@@ -1,0 +1,76 @@
+\documentclass{amsart}
+\usepackage{fly,cancel}
+\usepackage{amsmath,amscd}
+\usepackage{sidecap}
+\title{Notes on Lie Groups and Algebras}
+\DeclareMathOperator{\lie}{Lie}
+\date{July 27, 2008}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Introduction}
+
+We follow an approach similar to Artin~\cite{ArtinBk01}.
+
+\input{tangent.tex}
+\input{infinitesimal.tex}
+
+\section{Tangent Vectors and Infinitesimals Together}
+
+Recall Lemma (\ref{lemma1}) that tangent vectors are orthogonal to $\nabla f(x)$.
+Given a point $x$ of $\mathbb{R}^n$ and a vector $\vec{v}\in\mathbb{R}^n$, the
+sum $x + \vec{v}\varepsilon$ is a vector with infinitesimal entries which we
+think of intuitively as \emph{an infinitesimal change in $x$ in the direction of
+$\vec{v}$.} Observe the Taylor expansion of $f(x + \vec{v}\varepsilon)$ yields by
+Eq (\ref{classicTaylor})
+\begin{equation}
+f(x + \vec{v}\varepsilon) = f(x) + \varepsilon\vec{v}\cdot\nabla f(x)
+\end{equation}
+since higher order terms vanish by our use of infinitesimal generator $\varepsilon$.
+
+We want to find tangent vectors to some point $x\in\mathbb{R}^n$, that is vectors such that
+\begin{equation}
+\vec{v}\cdot\nabla f(x) = 0.
+\end{equation}
+If we demand that $x\in S$ is part of the algebraic set, then we necessarily
+have
+\begin{equation}\label{algebraicSet}
+f(x) = 0
+\end{equation}
+since we specifically defined algebraic sets to be the sets of zeros of 
+polynomials.
+
+If we notice these two things, we have
+\begin{equation}
+f(x + \vec{v}\varepsilon) = f(x) + \varepsilon\vec{v}\cdot\nabla f(x) = \varepsilon\vec{v}\cdot\nabla f(x)
+\end{equation}
+since by Eq (\ref{algebraicSet}) we have $f(x)=0$ we are left with the right
+hand side. Since we want to find all such vectors $\vec{v}$ that are orthogonal
+to the gradient of $f$, we then can find it through the relationship
+\begin{equation}
+f(x + \vec{v}\varepsilon) = 0
+\end{equation}
+instead of solving a differential system of equations. We will be using this 
+property a lot to find tangent vectors.
+
+Here we must reiterate the beauty of this system. To find tangent vectors, we 
+simply are looking for vectors $\vec{v}$ such that
+\begin{equation}
+f(x + \varepsilon\vec{v}) = 0
+\end{equation}
+where $f(x)=0$ generates an algebraic set $S$. By taylor expanding, we see that
+\begin{equation}
+f(x + \varepsilon\vec{v}) = \cancelto{0}{f(x)} + \varepsilon\vec{v}\cdot\nabla f(x)
+\end{equation}
+and moreover, if this is zero then we have found the tangent vectors to the
+point $x\in S$!
+
+\input{matrixgrps}
+\input{lieAlgebra}
+
+\appendix
+\input{groups}
+\input{matrix}
+\bibliographystyle{utcaps}
+\bibliography{liebib}
+\end{document}

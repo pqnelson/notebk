@@ -1,0 +1,102 @@
+\section{Matrix Groups}
+
+If the reader is unfamiliar with either group theory or matrices, it is advised 
+to refer to the appropriate appendix first. Whenever we discuss matrices, it is
+assumed to be a square matrix.
+
+Allow us to first introduce the \emph{general linear group}. If we have two 
+matrices which are invertible $A$ and $B$, then their product is invertible.
+We know this because if $\det(A)\neq 0$ then $A$ is invertible, and
+\begin{equation}
+\det(AB)=\det(A)\det(B).
+\end{equation}
+Thus the only way that $AB$ is not invertible would be if
+\begin{equation}\label{necessaryConditionInvertibility}
+\det(AB) = 0
+\end{equation}
+but
+\begin{equation}
+\det(A)\neq 0 \quad\textrm{and}\quad\det(B)\neq 0
+\end{equation}
+which means that Eq (\ref{necessaryConditionInvertibility}) is no longer true.
+Thus we have a contradiction.
+
+We therefore conclude the product of two invertible matrices is invertible. We
+have a group! The identity element is the identity matrix, and the binary
+operation is matrix multiplication. This group is called the \textbf{general
+linear group} of $n\times n$ matrices over the field $\mathbb{F}$, or more
+succinctly just $GL_{n}(\mathbb{F})$. We usually have $\mathbb{F}=\mathbb{R}$ or
+$\mathbb{C}$.
+
+\marginpar{Meaning of ``special''}We can then normalize the matrices by a simple
+trick. If we have an $n\times n$ matrix $A$ with a determinant not equal to one,
+we can simply map it to
+\begin{equation}
+A\mapsto\frac{1}{\sqrt[n]{\det(A)}}A
+\end{equation}
+which preserves the property of unit determinant. The subgroup of $GL_{n}(\mathbb{F})$
+with this extra condition is called the \textbf{special linear group} and denoted
+$SL_{n}(\mathbb{F})$.
+
+The next property of matrices that we can investigate would be orthogonality. 
+That is, when we diagonalize a matrix $X$, we end up multiplying it by $AXA^{-1}$.
+The property of orthogonal matrices that we are interested in simply is
+\begin{equation}
+A^\textrm{T} = A^{-1}.
+\end{equation}
+The subgroup of $GL_{n}(\mathbb{F})$ that satisfies such a property is the
+\textbf{orthogonal group} denoted as $O_{n}(\mathbb{F})$. And similarly, the
+subgroup of $SL_{n}(\mathbb{F})$ that satisfies the orthogonality property is
+the \textbf{special orthogonal group} denoted $SO_{n}(\mathbb{F})$.
+
+The favorite property of quantum physicists, unitarity (``self-adjointness''), 
+also forms a group. The basic property is this, for an $n\times n$ matrix $A$
+with complex entries, we have
+\begin{equation}
+\bar{A}^\textrm{T} = A^{-1}
+\end{equation}
+the complex conjugate of the transpose is the inverse of $A$. This forms the
+\textbf{unitary group} denoted as $U_{n}(\mathbb{C})$. We can form the 
+\textbf{special unitary group} by the normalization routine outlined above, and
+we denote this group as $SU_{n}(\mathbb{C})$. 
+
+The most bizarre condition on a $2n\times 2n$ matrix $M$ (note even dimensions!) is that of being symplectic. What does it mean anyways? It means that $M$ satisfies
+\begin{equation}
+M^\textrm{T} \Omega M = \Omega
+\end{equation}
+where (typically)
+\begin{equation}\label{usualSuspect}
+\Omega = \begin{bmatrix} 0 & I_n \\ -I_n & 0 \\ \end{bmatrix}.
+\end{equation} 
+What is the consequenec of this? Well, it's a bit stronger than orthogonality because
+\begin{equation}
+M^{-1} = \Omega^{-1}M^\textrm{T}\Omega
+\end{equation}
+holds. We can form $M$ into block matrix form where
+\begin{equation}
+M = \begin{bmatrix}A & B \\ C & D\end{bmatrix}
+\end{equation}
+where $A,B,C,D$ are all $n\times n$ matrices satisfying the following properties:
+\begin{subequations}
+\begin{align}
+A^\textrm{T}D - C^\textrm{T}B &= I \\
+A^\textrm{T}C &= C^\textrm{T}A \\
+D^\textrm{T}B &= B^\textrm{T}D.
+\end{align}
+\end{subequations}
+The symplectic property of matrices is not as well known as the orthogonality condition or self-adjointness.
+
+We have this neat little table of matrix groups:
+\begin{center}
+  \begin{tabular}{ | l | l | }
+\hline
+$GL_{n}(\mathbb{R})$ & all invertible matrices with real entries \\ \hline
+$SL_{n}(\mathbb{R})$ & all matrices in $GL_{n}(\mathbb{R})$ with determinant 1 \\ \hline
+$O_{n}(\mathbb{R})$ & all matrices with their inverse equal to their transpose \\ \hline
+$SO_{n}(\mathbb{R})$ & all matrices in $O_{n}(\mathbb{R})$ with determinant 1 \\ \hline
+$U_{n}$ & all unitary $n\times n$ matrices \\ \hline
+$SU_{n}$ & all matrices in $SL_{n}(\mathbb{C})$ and in $U_{n}$. \\ \hline
+$SP_{2n}(\mathbb{R})$ & $P\in GL_{2n}(\mathbb{R})$ such that $P^\textrm{T}JP = J$\\
+ & for a given antisymmetric matrix $J$ (usually the one in Eq (\ref{usualSuspect})) \\ \hline
+  \end{tabular}
+\end{center} 

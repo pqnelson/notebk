@@ -1,0 +1,77 @@
+\section{An Introduction to Infinitesimals}
+
+\subsection{A Brief Aside on Complex Numbers}
+
+Recall with complex numbers (the set $\mathbb{C}$) we are dealing with a new
+``number''
+\begin{equation}\label{root}
+i^2 + 1 = 0\quad\Rightarrow\quad i = \sqrt{-1}
+\end{equation}
+and so we have a new number system with elements of the form
+\begin{equation}
+(x + iy)\in\mathbb{C}\quad\textrm{where }x,y\in\mathbb{R}.
+\end{equation}
+We can formally define multiplication using the polynomial multiplication:
+\begin{equation}
+(a + ib)(x + iy) = (ax - by) + i(ay + bx)
+\end{equation}
+which results in a complex number.
+
+\subsection{And Now For Something Slightly Different}
+
+Suppose instead of Eq (\ref{root}) we worked with
+\begin{equation}
+\varepsilon^2 = 0\quad\textrm{and}\quad\varepsilon\neq 0
+\end{equation}
+which means we have elements called \textbf{infinitesimals} of the form
+\begin{equation*}
+x + \varepsilon y.
+\end{equation*}
+We can formally define multiplication in the same way we did for complex 
+numbers
+\begin{equation}
+(a + b\varepsilon)(x+y\varepsilon) = ax + (xb + ya)\varepsilon + \cancelto{0}{by\varepsilon^2}.
+\end{equation}
+Note that $\varepsilon^2=0$ is the defining characteristic of our infinitesimal element!
+
+Observe what mayhem we may do with this. We have some favorite Taylor series
+\begin{equation}
+f(x + h) = \sum_{n=0}^{\infty}\frac{f^{(n)}(x)}{n!}h^n
+\end{equation}
+which becomes with infinitesimals
+\begin{equation}\label{classicTaylor}
+f(x + \varepsilon) = f(x) + f'(x)\varepsilon + \cancelto{0}{\mathcal{O}(\varepsilon^2)}.
+\end{equation}
+Similarly for
+\begin{equation}
+\frac{1}{1 + x} = \sum_{n=0} (-x)^n = 1 - x + x^2 - \ldots
+\end{equation}
+we get
+\begin{equation}
+\frac{1}{1 + \varepsilon} = 1 - \varepsilon.
+\end{equation}
+For the famous euler's constant
+\begin{equation}
+e^x = \sum_{n=0}\frac{x^n}{n!}
+\end{equation}
+we get
+\begin{equation}
+e^\varepsilon = 1 + \varepsilon + \cancelto{0}{\mathcal{O}(\varepsilon^2/2)}.
+\end{equation}
+For trigonometric functions, which can be obtained by Euler's identity
+\begin{equation}
+e^{ix} = \cos(x) + i\sin(x)
+\end{equation}
+we deduce both
+\begin{equation}
+\cos(\varepsilon) = 1 + \cancelto{0}{\mathcal{O}(\varepsilon^2)}
+\end{equation}
+and
+\begin{equation}
+\sin(\varepsilon) = \varepsilon + \cancelto{0}{\mathcal{O}(\varepsilon^3)}.
+\end{equation}
+Thus we find that in this instance
+\begin{equation}
+\tan(\varepsilon) = \frac{\sin(\varepsilon)}{\cos(\varepsilon)} = \varepsilon/1
+\end{equation}
+which is remarkable!

@@ -1,0 +1,255 @@
+\section{A Few Remarks On Groups}
+
+We will follow Dummit and Foote~\cite{dummitFoote} here when introducing groups
+to be as general as possible. 
+
+\begin{defn}
+A \textbf{binary operation} $\star$ on a set $G$ is a function
+\begin{equation}
+\star: G\times G\to G.
+\end{equation}
+For any $a,b\in G$ we shall write $a\star b$ instead of $\star(a,b)$.
+\end{defn}
+
+\begin{ex}
+The operator of addition defined on integers is a binary operation.
+\end{ex}
+
+\begin{defn}
+A binary operation $\star$ on $G$ is \textbf{associative} if for all $a,b,c\in G$
+we have 
+\begin{equation}
+a\star(b\star c)=(a\star b)\star c.
+\end{equation}
+\end{defn}
+\begin{rmk}
+Associativity means we can screw around with the order of evaluation, or more to
+the point we can screw around with parentheses as we please. Most things (the
+vast majority of things) are associative in math.
+\end{rmk}
+
+\begin{defn}
+If $\star$ is a binary operation on a set $G$ we say elements $a,b$ of $G$
+\textbf{commute} if
+\begin{equation}
+a\star b = b\star a.
+\end{equation}
+We say $\star$ (or $G$) is \textbf{commutative} if this holds for all $a,b\in G$.
+\end{defn}
+
+\begin{rmk}
+Let $\star$ be a binary operation defined on $G$ and $H\subset G$ be a subset.
+If for all $a,b\in H$ we have $a\star b\in H$, then $H$ is said to be \textbf{closed}
+under $\star$. Observe further that if $\star$ is associative on $G$, then
+necessarily it is associative on $H$.
+\end{rmk}
+
+\begin{defn}
+A \textbf{group} is an ordered pair $(G,\star)$ where $G$ is a set and $\star$ 
+is a binary operation on $G$ satisfying:
+\begin{enumerate}
+\item $(a\star b)\star c = a\star(b\star c)$ for all $a,b,c\in G$, i.e. $\star$ is
+associative;
+\item There exists an element $e\in G$ called the \textbf{identity} of $G$ such
+that for all $a\in G$ we have $a\star e = e\star a = a$;
+\item For each $a\in G$ there is an element $a^{-1}\in G$ called the \textbf{inverse} of $a$ such that $a\star a^{-1} = a^{-1}\star a = e$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Let $(G,\star)$ be a group. If 
+\begin{equation}
+a\star b = b\star a
+\end{equation}
+holds for all $a,b\in G$, then the group is called \textbf{abelian}.
+\end{defn}
+
+\begin{rmk}
+Abelian merely means the group has a commutative binary operation, or equivalently
+the group is commutative.
+\end{rmk}
+
+\begin{thm}
+Let $G$ be a group with the operation $\star$, then
+\begin{enumerate}
+\item The identity of $G$ is unique;
+\item For each $a\in G$, $a^{-1}$ is unique;
+\item $(a^{-1})^{-1}=a$ for all $a\in G$;
+\item $(a\star b)^{-1}=(b^{-1})\star(a^{-1})$
+\item For any $a_1,\ldots,a_n\in G$, the expression $a_1\star\ldots\star a_n$ is
+independent of how the expression is bracketed (``generalized associativity law'').
+\end{enumerate}
+\end{thm}
+
+\marginpar{Change of Notation}Note that the notation $a\star b$ gets tedious to write, so we instead just
+write $a\cdot b$ or $ab$. 
+
+\begin{thm}
+Let $G$ be a group and $a,b\in G$. The equations $ax = b$ and $ya = b$ have
+unique solutions for $x,y\in G$. In particular, the left and right cancellation
+laws hold in $G$, i.e.
+\begin{enumerate}
+\item if $au = av$, then $u=v$, and
+\item if $ub = vb$, then $u=v$.
+\end{enumerate}
+\end{thm}
+
+\begin{defn}
+For $G$ a group and $x\in G$, the \textbf{order} of $x$ is defined to be the
+smallest positive integer $n$ such that 
+\begin{equation}
+x^n = 1
+\end{equation}
+and denote this integer by $|x|$. In this case, $x$ is said to be of order $n$.
+If no positive power of $x$ is the identity, the order of $x$ is defined to be 
+infinity and $x$ is said to be of infinite order.
+\end{defn}
+
+This last definition is useful only when dealing with finite groups, which we
+may possibly deal with.
+
+\begin{defn}
+Let $G = \{g_1,\ldots,g_n\}$ be a finite group with $g_1=e$. The \textbf{multiplication table} or \textbf{group table} of $G$ is the $n\times n$ matrix
+whose $i,j$ entry is the group element $g_ig_j$.
+\end{defn}
+
+\begin{ex}
+Let our group be $\mathbb{Z}_2 = \{0,1\}$ with the usual multiplication. Then
+the multiplication table is
+\begin{equation}
+\begin{array}{c|cc}
+\times & 0 & 1 \\ \hline
+0 & 0 & 0 \\
+1 & 0 & 1 
+\end{array}
+\end{equation}
+\end{ex}
+
+\begin{defn}
+Let $G$ be a group. If $H\subset G$ is closed under the binary operator $\star$,
+and $H$ satisfies all the axioms of a group, then $H$ is called a \textbf{subgroup}.
+\end{defn}
+
+\begin{defn}
+The binary operation on $G$ defined by the map $G\times G\to G$ defined by
+\begin{equation}
+(g,x)\mapsto gxg^{-1}
+\end{equation}
+is called \textbf{conjugation}.
+\end{defn}
+
+\begin{defn}
+A subgroup $N$ of $G$ is called a \textbf{normal subgroup} if it has the
+following property: For every $a\in N$ and every $b\in G$, the conjugate
+$bab^{-1}$ is in $N$.
+\end{defn}
+
+\subsection{Homomorphisms and Isomorphisms}
+
+\begin{defn}
+Let $(G,\star)$ and $(H,\Diamond)$ be groups. A map $\varphi:G\to H$ such that
+\begin{equation}
+\varphi(x\star y) = \varphi(x)\Diamond\varphi(y)
+\end{equation}
+(for all $x,y\in G$) is called a \textbf{homomorphism}.
+\end{defn}
+
+\begin{ex}
+The map
+\begin{equation}
+\{x^i,p_j\}=\delta^{i}_{j} \mapsto [\hat{x}^i,\hat{p}_j] = i\hbar\delta^{i}_{j}
+\end{equation}
+used in quantization of classical systems is an example of a homomorphism.
+\end{ex}
+
+\begin{defn}
+A Homomorphism $\varphi:G\to H$ is a \textbf{isomorphism} if and only if $\varphi$ is bijective.
+We say $G$ and $H$ are \textbf{isomorphic} and denote it as $G\cong H$.
+\end{defn}
+
+\begin{rmk}
+An isomorphism is a homorphism that can be undone. We can think of it as a sort
+of equivalence relation. That is, if $G\cong H$ then we can intuitively think
+of $G$ and $H$ as being ``equivalent''.
+\end{rmk}
+
+\begin{defn}
+The \textbf{kernel of a linear operator} $T$ is the set of all arguments which
+are mapped to zero, i.e. the additive identity.
+\end{defn}
+
+\begin{defn}
+The \textbf{kernel of a homomorphism} $\varphi: G\to G'$ is the set of elements
+of $G$ mapped to the identity in $G'$:
+\begin{equation}
+\ker(\varphi) = \{ a\in G : \varphi(a) = 1 \}
+\end{equation}
+which can be described as $\varphi^{-1}(1)$ -- the inverse image of the identity.
+The kernel is a subgroup because (for $a,b\in G$)
+\begin{equation}
+\varphi(ab)=\varphi(a)\varphi(b)=1\cdot 1 = 1
+\end{equation}
+thus $ab\in\ker(\varphi)$.
+\end{defn}
+
+\subsection{Centralizers, Normalizers, Stabilizers, etc.}
+
+\begin{defn}
+Let $H$ be a subgroup of $G$. A \textbf{left coset} is a subset of the form
+\begin{equation}
+aH = \{ ah : h\in H \}.
+\end{equation}
+Observe that the subgroup $H$ itself is a coset, i.e. $H=1H$.
+\end{defn}
+
+\begin{ex}
+If we have a collection of vectors over the field $\mathbb{F}_2$ such that they
+all satisfy some system of equations (they are eigenvectors of a given operator),
+then we may construct a coset by adding some constant vector $\vec{v}$ to all
+of these vectors.
+\end{ex}
+
+\begin{cor}
+The left cosets of a subgroup partition the group.
+\end{cor}
+
+
+
+It is customary to denote the set of cosets of a normal subgroup $N$ of $G$ by
+the notation
+\begin{equation}
+G/N = \textrm{set of cosets of }N\textrm{ in }G.
+\end{equation}
+We will also use the symbols $\bar{G} = G/N$.
+
+We can now study a set $S$ on which the group $G$ operates, then decompose
+$S$ into ``orbits'' which we will now define.
+
+\begin{defn}
+The \textbf{orbit} of $s\in S$ is the set
+\begin{equation}
+O_{s} = \{ gs : g\in G\}.
+\end{equation}
+It is a subset of $S$.
+\end{defn}
+
+\begin{defn}
+The \textbf{stabilizer} of an element $s\in S$ is the subgroup $G_{s}$ of $G$ of
+elements leaving $s$ fixed
+\begin{equation}
+G_{s} = \{ g\in G : gs = s \}.
+\end{equation}
+\end{defn}
+
+
+
+
+
+\begin{defn}
+The stabilizer of an element $x\in G$ for the operation of conjugation is called
+the \textbf{centralizer} of $x$ and is denoted $Z(x)$:
+\begin{equation}
+Z(x) = \{ g\in G: gxg^{-1} = x\} = \{ g\in G: gx = xg\}.
+\end{equation}
+The centralizer is the set of group elements which commute with $x$.
+\end{defn}
