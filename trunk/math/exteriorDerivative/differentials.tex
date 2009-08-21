@@ -1,0 +1,34 @@
+\appendix
+\section{A Note on Differentials}
+
+We have seen that
+\begin{equation}
+d = \sum_{i}\varepsilon^{i}\frac{\partial}{\partial x^i}
+\end{equation}
+but how exactly do we end up with $dx$, $dy$, $dz$, etc.?
+
+Well, we take in this case
+\begin{equation}
+\varepsilon^i = dx^i
+\end{equation}
+and we can rewrite the exterior derivative as
+\begin{equation}
+d = \sum_{i}dx^{i}\frac{\partial}{\partial x^i}.
+\end{equation}
+A $k$-form is then
+\begin{equation}
+\omega = \partial_{i_1}\ldots\partial_{i_k}f\varepsilon^{i_1}\ldots\varepsilon^{i_k}
+\end{equation}
+and integration of a one form is simply
+\begin{equation}
+\int \omega d^nx d^n\varepsilon = \int \partial_{i_1}\ldots\partial_{i_n}fd^nx.
+\end{equation}
+Furthermore change of coordinates is absolutely trivial, if
+\begin{equation}
+x^i = \psi^i(\tilde{x})
+\end{equation}
+then
+\begin{equation}
+\int f(x)dx^1\ldots dx^n = \int f(\psi(\tilde{x}))\underbrace{\prod(\frac{\partial x^i}{\partial\tilde{x}^j}d\tilde{x}^j)}_\textrm{Super-Jacobian} = \int f(\psi(\tilde{x}))d^{n}\tilde{x}.
+\end{equation}
+Note that the super Jacobian is 1.
