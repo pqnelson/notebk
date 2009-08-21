@@ -1,0 +1,217 @@
+\section{A Review of Matrices}\label{appendixMatrix}
+
+
+\subsection{Matrix Operations}
+
+There are two main matrix operations: matrix addition and matrix multiplication. Both are interesting.
+
+First a digression. When working with matrices, we usually have the components represented by a value. We also want to be as general as possible, so these values are represented by variables. But the English language only has 26 letters...so anything beyond a 5 by 5 matrix is beyond hope of representation if we just use $a,b,\ldots,x,y,z$. What to do? We will use \textbf{indices} to indicate what entry we are talking about! So each matrix has only one letter, and two indices. For example, a 2 by 2 matrix could be represented by
+\begin{equation}
+A = [a_{ij}] = \left[
+\begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{array}
+\right]
+\end{equation}
+where the $i$ index tracks the \textbf{rows} and the $j$ index tracks the \textbf{columns}. \marginpar{Indices are dummy variables}\textbf{NOTE NOTE NOTE} that the indices are \emph{dummy variables}! This means that $b_{ij}$ can be rewritten as $b_{mn}$ (or with any other pair of letters one would like) and it would refer to the same thing.
+
+So a 3 by 3 matrix can be represented by
+\begin{equation}
+B = [b_{kl}] =
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33}
+\end{bmatrix}
+\end{equation}
+and so on and so forth. It is increasingly common to see in Differential Geometry simply $b_{kl}$ to be used instead of $B$, so we can explicitly calculate things out.
+
+Matrix addition is merely componentwise addition. So if $A = [a_{ij}]$ and $B = [b_{kl}]$ then
+\begin{equation}
+A + B = [a_{ij} + b_{ij}] = \begin{bmatrix}
+a_{11}+b_{11} & \ldots \\
+\vdots & \ddots
+\end{bmatrix}.
+\end{equation}
+Matrix addition is straightforward, it's done component-wise.
+
+The other operation, matrix multiplication, is a bit trickier! If $A$ is an m-by-n matrix and $B$ is an n-by-p matrix, then their product $C=AB$ is an m-by-p matrix defined component wise by
+\begin{equation}
+C = [c_{ij}] = [\sum_{k}^{n} a_{ik}b_{kj}]
+\end{equation}
+where $A=[a_{ij}]$ and $B=[b_{kj}]$.
+
+Also note that we may think of a matrix as being composed of column vectors or row vectors. Why should we think of it like this? Well, matrix multiplication drastically simplifies 100 fold. Observe that it suddenly becomes little more than finding the dot product of the $i^\textrm{th}$ row of $A$ with the $j^\textrm{th}$ column of $B$ to find the component $c_{ij}$.\footnote{The rule I always remember is ``row-dot-column''.}
+
+
+\begin{SCfigure}
+  \centering
+  \includegraphics[width=0.5\textwidth]%
+    {mult.png}% picture filename
+  \caption{ The ``row dot column'' technique of matrix multiplication illustrated. }
+\end{SCfigure}
+
+For a generalized example, consider the following illustration:
+\begin{equation}
+\mathbf{AB} =   \begin{bmatrix}    A_1 \\    A_2 \\    A_3 \\    \vdots \end{bmatrix} * \begin{bmatrix} B_1 & B_2 & B_3 & \dots \end{bmatrix} =  \begin{bmatrix} (A_1 \cdot B_1) & (A_1 \cdot B_2) & (A_1 \cdot B_3) & \dots \\ (A_2 \cdot B_1) & (A_2 \cdot B_2) & (A_2 \cdot B_3) & \dots \\ (A_3 \cdot B_1) & (A_3 \cdot B_2) & (A_3 \cdot B_3) & \dots \\ \vdots & \vdots & \vdots & \ddots  \end{bmatrix}.
+\end{equation}
+where $A_{i}$ are row vectors and $B_{k}$ are column vectors.
+
+We will explicitly compute an example of matrix multiplication
+\begin{equation}
+ \begin{bmatrix}      1 & 0 & 2 \\       -1 & 3 & 1   \end{bmatrix} \cdot   \begin{bmatrix}      3 & 1 \\      2 & 1 \\      1 & 0   \end{bmatrix} = \begin{bmatrix}    1 \times 3 + 0 \times 2 + 2 \times 1 & 1 \times 1 + 0 \times 1 + 2 \times 0 \\   -1 \times 3 + 3 \times 2 + 1 \times 1 & -1 \times 1 + 3 \times 1 + 1 \times 0  \end{bmatrix} = \begin{bmatrix}     5 & 1 \\     4 & 2 \end{bmatrix}
+\end{equation}
+
+\begin{ex}
+Given two vectors $\vec{a}=a_i,\vec{b}=b_j$ their dot product is explained through the use of matrix multiplication
+\begin{equation}
+\vec{a}\cdot \vec{b} = \sum_{i=1}^n a_ib_i = a_1b_1 + a_2b_2 + \cdots + a_nb_n 
+\end{equation}
+or more generally, if we are using complex-valued vectors
+\begin{equation}
+\vec{a}\cdot \vec{b} = \sum_{i=1}^n a_i\bar{b}_i
+\end{equation}
+where $\bar{b}_i$ are the complex conjugate components of $\vec{b}$. QEF.
+\end{ex}
+
+Let us note some properties of Matrix multiplication: it is associative
+\begin{equation}
+A(BC) = (AB)C
+\end{equation}
+it is distributive
+\begin{equation}
+A(B+C) = AB + AC
+\end{equation}
+and
+\begin{equation}
+(A+B)C = AC + BC.
+\end{equation}
+It is compatible with scalar multiplication too (let $c$ be a scalar)
+\begin{equation}
+\begin{array}{cc}
+c(AB) &= (cA)B\\
+(Ac)B &= A(cB)\\
+(AB)c &= A(Bc).
+\end{array}
+\end{equation}
+
+\subsection{Euclidean and Einstein Summation Conventions}
+
+There is a convention which Einstein invented (or so I am told, I may be completely wrong!) where repeated indices are summed over. This occurs if and only if at least one of the repeating indices is a subscript and at least one is a superscript. For example, the dot product is represented as
+\begin{equation}
+\vec{a}\cdot\vec{b} = a_{i}b^{i} = \sum_{i}a_{i}b^{i}.
+\end{equation}
+Do not confuse the superscripted $b$ vector for ``$b$ to the $i^\textrm{th}$ power''! It is used to indicate which vectors are \textbf{covariant} and which vectors are \textbf{contravariant}.\footnote{There is some confusion and debate about the use of these terms in higher mathematics, since in category theory they mean the exact opposite of what they mean in the physics application of differential geometry. We will use the physics conventions here.} Here covariant vectors are linear functionals (see \S 4). Covariant vectors are denoted by the subscript indices, and contravariant vectors are denoted by the superscript indices.
+
+We will resist the urge to go into details about the notion of covariance and contravariance until \S 4, feel free to skip ahead to find out more about it.
+
+On the other hand, if we just sum whenever we see two indices of any kind with the same variable, this is called \textbf{Euclidean Summation Convention}\footnote{The origin of this phrase is, as far as the author is aware, from Misner, Thorne, and Wheeler's \emph{Gravitation}, Chapter 12.3, page 294: ``(`Euclidean' index conventions; repeated space indices to be summed even if both are down; dot denotes time derivative)''.}. For instance
+\begin{equation}
+a_{ijk}b_{klm} = \sum_{k}a_{ijk}b_{klm}
+\end{equation}
+is done by Euclidean convention, but this would never happen in Einstein convention!
+
+\begin{rmk}
+Most of the time, Euclidean summation convention and Einstein summation convention are both used in physics and math texts. Care should be used in the future!
+\end{rmk}
+
+\subsection{Transposes of Matrices}
+
+When we have a matrix $A$, we can take its transpose, which is (for a 2 by 2 matrix)
+\begin{equation}
+\left[\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right]^{\mathrm{T}}
+= 
+\left[\begin{array}{cc}
+a & c\\
+b & d
+\end{array}\right].
+\end{equation}
+Note how the diagonal entries stay the same as we swap the off diagonal components. 
+
+We can take the transpose of rectangular matrices too. Observe
+\begin{equation}
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix}^{\mathrm{T}}  = \begin{bmatrix} 1 & 3 & 5\\ 2 & 4 & 6 \end{bmatrix}. 
+\end{equation}
+
+Recall that we represent vectors as a column vector, which is a column matrix with 1 entry per row. That is, for a 2 dimensional vector we have
+\begin{equation}
+\vec{v} = \begin{bmatrix}
+a \\
+b
+\end{bmatrix}
+\end{equation}
+and a 3 dimensional vector:
+\begin{equation}
+\vec{w} = \begin{bmatrix}
+a \\
+b \\
+c
+\end{bmatrix}.
+\end{equation}
+We too can take their transposes, and we end up with a \emph{row vector!}
+
+There are some important things to remember about transposes. First of all, it's an involution. What does this mean? Well, if you do it twice, you get back the original matrix. That is
+\begin{equation}
+(A^{\textrm{T}})^{\textrm{T}} = A.
+\end{equation}
+Go ahead and try to prove this one for yourself.
+
+Secondly, it's \textbf{linear!} That is, given two matrices $A$ and $B$, we have
+\begin{equation}
+(A + B)^{\textrm{T}} = A^{\textrm{T}} + B^{\textrm{T}}
+\end{equation}
+which is trivial but an example will be given:
+\begin{equation}
+\left(
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix} + 
+\begin{bmatrix}
+w & x\\
+y & z
+\end{bmatrix}
+\right)^{\textrm{T}} = 
+\left(
+\begin{bmatrix}
+a+w & b+x \\
+c+y & d+z
+\end{bmatrix}\right)^{\textrm{T}} = \begin{bmatrix}
+a+w & c+y \\
+b+x & d+z
+\end{bmatrix}
+\end{equation}
+and 
+\begin{equation}
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}^{\textrm{T}} + 
+\begin{bmatrix}
+w & x\\
+y & z
+\end{bmatrix}^{\textrm{T}} = 
+\begin{bmatrix}
+a & c \\
+b & d
+\end{bmatrix} + 
+\begin{bmatrix}
+w & y\\
+x & z
+\end{bmatrix} =
+\begin{bmatrix}
+a+w & c+y\\
+x+b & d+z
+\end{bmatrix}
+\end{equation}
+which is precisely what we just got for $(A+B)^\textrm{T}$! So we find it holds true for $2\times 2$ matrices.
+
+Now, there is a rather counter-intuitive property that
+\begin{equation}
+(AB)^\textrm{T} = B^\textrm{T}A^\textrm{T}.
+\end{equation}
+This is precisely the property that we want to see!
