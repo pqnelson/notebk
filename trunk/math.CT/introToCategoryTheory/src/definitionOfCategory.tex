@@ -1,0 +1,269 @@
+The motivating problem is that we want to look at mappings 
+between mathematical objects, but it may not always make sense.
+So we want to have two things: (1) mappings between objects, and 
+(2) a setting where it make sense.
+
+The heart of mathematics is definitions, so we will begin by
+bluntly defining a category:
+\begin{framed}
+\begin{defn}\label{defn:category}
+A \define{Category} $\ms{C}$ consists of
+\begin{enumerate}
+\item a collection $\ob{\ms{C}}$ of \define{Objects};
+\item for any pair of objects $x,y\in\ob{\ms{C}}$, we have a set
+  $\hom(x,y)$ of \define{morphisms} from $x$ to $y$ (so if
+  $f\in\hom(x,y)$, then $f:x\to y$)
+\end{enumerate}
+equipped with
+\begin{enumerate}
+\item for any object $x\in\ob{\ms{C}}$, an \define{identity morphism}
+  $\id{x}:x\to x$;
+\item for any pair of morphisms $f:x\to y$ and $g:y\to z$, a
+  morphism $g\circ f:x\to z$ called the \define{composition} of
+  $f$ and $g$ (note it's written and read from right to left,
+  like Chinese, to confuse undergraduates)
+\end{enumerate}
+such that
+\begin{enumerate}
+\item for any morphism $f:x\to y$, the \define{left and right
+  unit laws} hold: $f\circ\id{x}=f=\id{y}\circ f$;
+\item for any triple of morphisms $f:w\to x$, $g:x\to y$, $h:y\to
+  z$, the \define{associative law} holds: $(h\circ g)\circ f=h\circ(g\circ f)$.
+\end{enumerate}
+\end{defn}
+\end{framed}
+This is not all too enlightening, at least immediately. It'd be a
+pity to end here, state ``We will not insult the intelligence of
+the reader with examples or theorems, since everything follows
+immediately'', and pronounce the reader a \emph{bona fide} expert
+category theorist. We will gently introduce various examples before
+moving on to start thinking categorically.
+
+\begin{rmk}
+The composition of morphisms $g\circ f$ should be read from right
+to left (like Chinese or bra-ket notation in quantum mechanics)
+and it should be intuitively regarded as
+\begin{equation}%\label{eq:}
+\text{first do } f \text{ then do }g.
+\end{equation}
+So do not confuse it with everyday multiplication, \emph{order matters here!}
+\end{rmk}
+
+\begin{rmk}
+With the arrows, or ``morphisms", we have
+\begin{equation}%\label{eq:}
+\operatorname{Source}(f)\xrightarrow{\;\;f\;\;}\operatorname{Target}(f)
+\end{equation}
+or (more categorically, with \hyperref[dualityPrinciple]{duality} in mind) 
+\begin{equation}%\label{eq:}
+\operatorname{Domain}(f)\xrightarrow{\;\;f\;\;}\operatorname{Codomain}(f)
+\end{equation}
+where $f$ is a morphism, and the domain/source of $f$ is an
+object, the target/codomain of $f$ is also an object.
+\end{rmk}
+
+% If this is the first time one has been introduced to
+% categories, or if one feels insecure with the nature of
+% commutative diagrams, it is suggested to skip ahead to the
+% appendix on the calculus of commutative diagrams.
+
+Wait, we just gave a definition! We can show, as with our conjecture
+that everything ``is-a'' mathematical object, that a category and
+a morphism both are mathematical objects! We will only show that a
+category is an object for now (something to bear in mind: what's a 
+morphism \emph{between} categories?).
+
+We want to have a taxonomy of morphisms, so we begin very simply
+by supposing what happens when we have the domain be the
+codomain.
+\begin{defn}%\label{defn:}
+Let $\ms{C}$ be a category, and $x\in\ob{\ms{C}}$. We define an
+\define{endomorphism} to be a morphism $f\in\hom(x,x)$. That is
+\begin{equation}%\label{eq:}
+f:x\to x
+\end{equation}
+so its domain is its codomain.
+\end{defn}
+
+Now, intuitively the notion of composition of morphisms should be
+likened to multiplication. We have a notion of an inverse operation for
+multiplication, we call it division. What about the notion of an
+inverse for a morphism? That is, given some category
+$\ms{C}$, some objects $x,y\in\ms{C}$, and a morphism
+$f\in\hom(x,y)$, can we find a $g:y\to x$ such that
+\begin{equation}\label{eq:rightInverse}
+f\circ g = \id{y}
+\end{equation}
+and if so, is it true that
+\begin{equation}\label{eq:leftInverse}
+g\circ f = \id{x}?
+\end{equation}
+Here the analogy to commutative multiplication should be discarded. The
+morphisms represent processes, and the order of processes
+matter. Consider for example $h$ being the morphism of mixing the
+ingredients of a cake, and $i$ being the process of pouring the
+contents of the mixing bowl into a pan and placing the pan in an
+oven preheated to 350 degrees Fehrenheit. Well, $i\circ h$ is
+baking the normal way, $h\circ i$ is putting the pan in the oven,
+and then mixing the ingredients together.
+
+Consequently we don't expect Eq \eqref{eq:rightInverse} to necessarily imply
+Eq \eqref{eq:leftInverse} (nor do we expect Eq
+\eqref{eq:leftInverse} to necessarily imply Eq \eqref{eq:rightInverse}). We
+have two new definitions:
+\begin{defn}%\label{defn:}
+Let $\ms{C}$ be a category, $x,y\in\ob{\ms{C}}$,
+$f\in\hom(x,y)$. Then we define:
+\begin{enumerate}
+\item $f$ be a \define{monomorphism} (or \define{monic}) if for
+  morphisms $g_{1},g_{2}:x\to \omega$ we have $f\circ g_1=f\circ
+  g_2$ imply $g_1=g_2$;
+\item a \define{epimorphism} (or \define{epic}) if for morphisms
+  $g_{1},g_{2}:z\to x$ we have $g_1\circ f=g_2\circ f$ imply $g_1=g_2$;
+\item the \define{left inverse} or \define{retraction of $f$} to be a morphism
+  $g\in\hom(y,x)$ such that $g\circ f=\id{x}$; 
+\item the \define{right inverse} or \define{section of $f$} to be a morphism
+  $h\in\hom(y,x)$ such that $f\circ h=\id{y}$.
+\end{enumerate}
+\end{defn}
+\begin{rmk}
+Epic is more general than having a right inverse, and monic is
+more general than having a left inverse. Consider the following
+situation: we have a category with two objects $A$, $B$, three
+morphisms (the identity morphisms $\id{A}$, $\id{B}$, and $f:A\to
+B$). The morphism $f$ is epic since it can be composed on the
+left by exactly one morphism --- $\id{B}$. Similarly, when it can
+be composed on the right by exactly one morphism $\id{A}$. This
+is more or less a trivial situation that is true when we can only
+compose by the identity on the left or on the right. Whenever
+this is not true, and a morphism is both epic and monic, it has
+left and right inverses.
+\end{rmk}
+
+There is one last important type of morphism to consider, it's a
+way to state that two objects are ``the same'' in some sense. The
+idea is if there is an invertible morphism between two objects,
+it's necessarily ``equivalent'' in some sense. Why should this be
+so? Well, an invertible mapping requires having the left and
+right inverses (a) exist and (b) be the same. 
+
+\begin{defn}%\label{defn:}
+Let $\ms{A}$ be a category, $X,Y\in\ob{\ms{A}}$, and $f:X\to
+Y$. We say $f$ is an \define{isomorphism} if there is a morphism
+$g:Y\to X$ such that $g\circ f=\id{X}$ and $f\circ g=\id{Y}$.
+\end{defn}
+
+We also have an invertible endomorphism being given a special name:
+
+\begin{defn}%\label{defn:}
+Let $\ms{A}$ be a category, $X\in\ob{\ms{A}}$, and $f:X\to
+X$ be an isomorphism. Then $f$ is called an \define{automorphism}.
+\end{defn}
+
+To summarize this section, we have this handy table of morphism
+properties: 
+
+\begin{table}[H]
+\begin{tabular}{| p{3.5cm} | p{6cm} |}
+\hline
+\textbf{Morphism Property} & \textbf{What it means}\\\hline
+Automorphism & Invertible endomorphism. \\\hline
+Endomorphism & The domain and codomain are the same.\\ \hline
+Epimorphism & Generalization of having a right inverse.\\ \hline
+Isomorphism & Generalization of equivalence of domain with codomain.\\\hline
+Monomorphism & Generalization of having a left inverse.\\ \hline
+Retraction of $f$ & Left Inverse of $f$\\ \hline
+Section of $f$ & Right Inverse of $f$\\\hline
+\end{tabular}
+\caption{A Table of Morphism Properties}\label{tab:morphisms}
+\end{table}
+
+\subsection{Categories Are Also Mathematical Objects} 
+
+It seems trivial to demonstrate that categories are mathematical
+objects, but for the sake of rigor we will demonstrate it. 
+\begin{description}
+\item[Stuff] What is the stuff? Well, there is the collection of
+  objects. Additionally, for any pair of objects, we have a set
+  of morphisms.
+\item[Structure] The structure of a category is simply this: 1) for
+  any object, we have an identity morphism; 2) for any pair of
+  morphisms, we have a composition of morphisms.
+\item[Properties] Each component of our structure has a property
+  to satisfy. The identity morphism satisfies the left and right
+  unit laws. The composition of morphisms satisfies the
+  associativity law. We demand nothing more, nothing less.
+\end{description}
+\noindent This is precisely a mathematical object description of
+a category.
+
+\subsection{A Grocery List of Examples}
+
+\begin{ex}We have a few examples to start with that are all pretty similar.
+
+$\ms{0}$ the category with zero objects and zero morphisms. Well,
+it's trivially a category, albeit a really boring one.
+
+$\ms{1}$ the category with a single object, and a single morphism
+(the identity morphism), is a category.
+
+$\ms{2}$ the category with two objects $a$ and $b$, and just one 
+morphism $a\to{}b$ that \emph{is not} an identity.
+
+$\ms{3}$ the category with three objects $a$, $b$, and $c$ whose 
+morphisms are $a\to{}b$, $b\to{}c$ and $c\to{}a$ (none are identities).
+
+$\downdownarrows$ the category with two objects $a,b$ and 
+two morphisms $a\rightrightarrows b$ that aren't the identity.
+\end{ex}
+
+A few properties of categories are worth noting here and now.
+
+\begin{defn}\label{defn:thin}
+A category is said to be \define{Thin} if there is at most one 
+morphism from an object to another.
+\end{defn}
+\begin{defn}\label{defn:discrete}
+A category is said to be \define{Discrete} if every morphism is
+an identity.
+\end{defn}
+Discrete categories are really just sets since each object has
+exactly one morphism, and aside from that there are no additional
+morphisms.
+
+We can continue introducing examples, one large class of examples
+that the reader may be inclined to notice is that we have a lot of
+mathematical objects that are ``sets equipped with structure'', so
+why not have a category of such ``sets equipped with the same 
+structure''? Like the category of all groups, or of all rings, or
+of all sets? Such categories are called ``constructs'' or ``concrete''
+depending on the author.
+
+\begin{defn}\label{defn:concreteCategory}
+A category $\ms{C}$ is called \define{Concrete} iff there is a functor
+$U:\ms{C}\to\ms{Set}$ to the underlying sets of $\ms{C}$ called the
+\define{Forgetful Functor} (it is faithful, we'll come back to this 
+later).
+\end{defn}
+
+\begin{ex}\label{ex:Mon}
+Consider \cat{Mon}, the category whose objects are monoids, and whose
+morphisms are monoidal homomorphisms. It is concrete.
+\end{ex}
+\begin{ex}\label{ex:Grp}
+Consider \cat{Grp}, the category whose objects are groups and whose
+morphisms are group homomorphisms. It is concrete.
+\end{ex}
+\begin{ex}\label{ex:Set}
+Consider \cat{Set}, the category whose objects are sets and whose
+morphisms are functions. It is concrete trivially.
+\end{ex}
+
+We can also describe a group using category theory. That is given
+some group, we can turn it into a category defined by a single
+object and the elements of the group become morphisms in the
+category. We'll give a few examples of these.
+\subsection{Example: Complex Group}
+\input{src/complexGroupEx}
+\subsection{Example: Quaternion Group}
+\input{src/quaternionGroupEx}

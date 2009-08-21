@@ -1,0 +1,550 @@
+Consider this: we have morphisms be generalizations of mappings
+from one object to another, and we have categories be a
+mathematical object. What is a mapping from one category to
+another? We call such things \emph{functors} and they encode
+mathematical procedures, or assigning information to objects and
+morphisms.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEFINITION OF FUNCTOR, COMPOSITION OF FUNCTORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defn}\label{defn:functor}
+Given categories $\ms{C},\ms{D}$ a \define{functor}
+$F:\ms{C}\to\ms{D}$ consists of
+\begin{itemize}
+\item a function $F:\ob{\ms{C}}\to\ob{\ms{D}}$;
+\item for any pair of objects $X,Y\in\ob{\ms{C}}$, a function
+  $F:\hom(X,Y)\to\hom(F(X),F(Y))$;
+\end{itemize}
+such that 
+\begin{description}
+\item[$F$ preserves identities] for any $X\in\ms{C}$,
+  $F(1_{X})=1_{F(X)}$;
+\item[$F$ preserves composition] for any pair of morphisms
+  $f:X\to Y$ and $g:Y\to{}Z$ in $\ms{C}$, $F(fg)=F(f)F(g)$.
+\end{description}
+\end{defn}
+\begin{rmk}
+It is not uncommon to see expressions like
+\begin{equation}
+F\left(X\xrightarrow{\;\;f\;\;}Y\right) = F(X)\xrightarrow{\;\;F(f)\;\;}F(Y)
+\end{equation}
+in practice, which tells us how the functor behaves.
+
+We can compose two functors in the obvious way, if
+$F:\ms{B}\to\ms{C}$ and $G:\ms{C}\to\ms{D}$, then
+$G\circ{}F:\ms{B}\to\ms{D}$ is defined by
+\begin{equation}
+G\circ{}F\left(X\xrightarrow{\;\;f\;\;}Y\right) = (G\circ{}F)(X)\xrightarrow{\;\;(G\circ{}F)(f)\;\;}(G\circ{}F)(Y)
+\end{equation}
+componentwise composition of the functor on objects and the
+functor on morphisms.
+
+Also, we have the intuition that a functor is a ``morphism
+between categories''. So we'll often use the adjectives and
+definitions for morphisms for functors, e.g. an endofunctor has
+its codomain and domain be the same category, an isomorphism
+between categories is an invertible functor, etc.
+\end{rmk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUNCTORS PRESERVE ISOMORPHISMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thm}
+Let $F:\ms{C}\to\ms{D}$ be a functor, and $f:A\to{}B$ be an
+isomorphism in $\ms{C}$. Then $F(f)$ is an isomorphism in $\ms{D}$
+\end{thm}
+\begin{proof}
+The proof is straightforward, we see that
+\begin{subequations}
+\begin{align}
+F(f)\circ{}F(f^{-1}) &= F(f\circ{}f^{-1})\\
+&= F(\id{B}) = \id{F(B)}
+\end{align}
+\end{subequations}
+and similarly $F(f^{-1})\circ{}F(f)=\id{F(A)}$ which implies that
+$F(f^{-1})$ is the two-sided inverse of $F(f)$ --- i.e. $F(f)$ is
+an isomorphism in $\ms{D}$.
+\end{proof}
+
+This is a powerful tool, since we often will take the approach in
+disproving something is a functor by showing that $f$ is an
+isomorphism but $F(f)$ is not.
+
+NOTE: just because $F(k)$ may be an isomorphism, it \emph{in no way implies ANYTHING} about $k$ being an isomorphism. It may
+possibly be an isomorphism, it may not. This property ($F(k)$ is
+an iso $\Rightarrow$ $k$ is an iso) is called ``reflection'' of
+isomorphisms, it is not necessarily true for functors. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IDENTITY FUNCTORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We have a number of examples and properties of functors. The most
+important example to consider is the identity functor.
+\begin{ex}\label{ex:identityFunctor}
+Let $\ms{C}$ be some category, with $X,Y\in\ms{C}$ and
+$f:X\to{}Y$. Let $F=\id{\ms{C}}:\ms{C}\to\ms{C}$ be the identity
+functor. Then
+\begin{equation}
+F\left(X\xrightarrow{\;\;f\;\;}Y\right) = X\xrightarrow{\;\;f\;\;}Y
+\end{equation}
+just as one expects.
+\end{ex}
+Why is this an important example? Well, we can introduce the
+notion of inverse functors now. That is, if $F:\ms{C}\to\ms{D}$
+we can ask if there is a $G:\ms{D}\to\ms{C}$ such that
+$G\circ{}F=\id{\ms{C}}$ and $F\circ{}G=\id{\ms{D}}$? If we can
+find such a $G$ then $F$ is invertible or more precisely an
+``\emph{isomorphism}''. How do we know when we are dealing with
+isomorphisms? Well, the intuition to have is that they are
+analogies. That is, we can set up tables of objects corresponding
+uniquely to objects, and morphisms corresponding uniquely to
+morphisms. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ISOMORPHISM FUNCTOR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}\label{defn:isomorphismFunctor}
+Let $F:\ms{C}\to\ms{D}$ be a functor such that there is a functor
+$F^{-1}:\ms{D}\to\ms{C}$ satisfying (1)
+$F^{-1}\circ{}F=\id{\ms{C}}$, (2)
+$F\circ{}F^{-1}=\id{\ms{D}}$. Then we define $F$ to be an
+\define{Isomorphism} and say that $\ms{C}$ is \define{isomorphic}
+to $\ms{D}$.
+\end{defn}
+
+Note that isomorphic categories are ``essentially the same''. We
+have analogous objects and analogous morphisms between them. The
+intuition one should have is that an isomorphism functor sets up
+an analogy between two categories.
+
+\begin{ex}\label{ex:pointAsFunctor}
+We have a functor $X:\ms{1}\to\ms{C}$ be a \define{point}, that
+is it picks out a single object $X(*)\in\ms{C}$. Most of the
+times, we use the notation that $X(*)=X$ the point's name is the
+object it points out. We then have an interesting point of view
+that \emph{an object is a functor}.
+\end{ex}
+\begin{ex}\label{ex:morphismAsFunctor}
+We have $F:\ms{2}\to\ms{C}$ be a functor which is then just
+defined by
+\begin{equation}
+F\left(a\xrightarrow{\;\;f\;\;}b\right)=F(a)\xrightarrow{\;\;F(f)\;\;}F(b)
+\end{equation}
+which just specifies a morphism in $\ms{C}$. So the morphisms
+from $\ms{2}$ to $\ms{C}$ picks out morphisms.
+\end{ex}
+\begin{ex}\label{ex:morphismAsFunctor}
+We have $F:\ms{3}\to\ms{C}$ be a functor. What does it do? Well,
+it takes in the category with 3 objects and 3 distinct,
+non-identity morphisms, and it spits out at most 3 objects and 3
+morphisms in $\ms{C}$. The functor has to obey the composition of
+morphisms, so this specifies one composite morphism in
+$\ms{C}$. It is then just defined by
+\begin{equation}
+F\left(a\xrightarrow{\;\;f\;\;}b\xrightarrow{\;\;g\;\;}c\right)=F(a)\xrightarrow{\;\;F(f)\;\;}F(b)\xrightarrow{\;\;F(g)\;\;}F(c)
+\end{equation}
+which just specifies a morphism in $\ms{C}$. This defines a
+composite morphism $F(g)\circ{}F(f):F(a)\to{}F(c)$. So the morphisms
+from $\ms{3}$ to $\ms{C}$ picks out composite morphisms and its components.
+\end{ex}
+\begin{ex}\label{ex:homFunctor}
+Consider some arbitrary category $\ms{C}$. We can construct a
+functor from $\ms{C}\to\ms{Set}$ by choosing some object
+$C\in\ms{C}$ and then considering
+\begin{equation}
+\hom_{\ms{C}}(C,-)\left(A\xrightarrow{\;\;f\;\;}B\right)=\hom(C,A)\xrightarrow{\;\;\hom(C,f)\;\;}\hom(C,B)
+\end{equation}
+where $\hom(C,A)$ and $\hom(C,B)$ are sets of morphisms from $C$
+to $A$ (resp. $B$) and $\hom(C,f)$ is a function given by
+$g\mapsto f\circ{}g$ for each $g\in\hom(C,A)$. The functor
+$\hom(C,-):\ms{C}\to\ms{Set}$ is called the \define{Hom-functor}.
+\end{ex}
+
+We have a few useful definitions we should cover before getting
+to examples. Our taxonomy of functors are:
+\begin{defn}%\label{defn:}
+Let $F:\ms{A}\to\ms{B}$ be a functor. $F$ is called an
+\define{embedding} provided that $F$ is injective on morphisms.
+\end{defn}
+\begin{rmk}
+This is for the obvious reason. If we think of a directed
+subgraph embedded in a directed graph, there is an injective
+relation between the edges of the subgraph to the graph.
+\end{rmk}
+\begin{defn}%\label{defn:}
+Let $F:\ms{A}\to\ms{B}$ be a functor. $F$ is called
+\define{faithful} provided that all the hom-set restrictions
+\begin{equation}%\label{eq:}
+F:\hom_{\ms{A}}(A,A')\to\hom_{\ms{B}}(F(A),F(A'))
+\end{equation}
+are injective.
+\end{defn}
+\begin{defn}%\label{defn:}
+Let $F:\ms{A}\to\ms{B}$ be a functor. $F$ is called \define{full}
+provided all the hom-set restrictions are surjective.
+\end{defn}
+\begin{defn}%\label{defn:}
+Let $F:\ms{A}\to\ms{B}$ be a functor. $F$ is called
+\define{amnestic} provided that an $\ms{A}$-isomorphism $f$ is an
+identity whenever $F(f)$ is an identity.
+\end{defn}
+\begin{prop}%\label{prop:}
+Observe that a functor is:
+\begin{enumerate}
+\item an embedding if and only if it is injective on
+objects and it is faithful;
+\item an isomorphism if and only if it is bijective on objects,
+  full, and faithful. 
+\end{enumerate}
+\end{prop}
+\begin{cor}
+A embedding $F$ is an isomorphism iff it is surjective on objects
+and full.
+\end{cor}
+
+We can also specify functors as covariant or contravariant. Most
+of the times it's covariant, it's as we defined it. When it's
+contravariant, the domain is the dual category. That is
+$F:\ms{C}\to\ms{D}$ is covariant, then $F':\ms{C}^{op}\to\ms{D}$
+is contravariant. In other words, we can define it thus:
+\begin{defn}\label{defn:contravariantFunctor}
+A \define{Contravariant Functor}\index{Functor!Contravariant} is
+a functor $F:\ms{C}^{op}\to\ms{D}$.
+\end{defn}
+So to each morphism $f:Y\to X$  in $\ms{C}$, we have
+$F(f):F(X)\to F(Y)$ in $\ms{D}$. We also have the compositions go
+the other way, that is for $f:X\to Y$, $g:Y\to Z$, we have
+$F(g\circ f)=F(f)\circ F(g)$.
+
+We summarize our taxonomy of functors in the following table:
+\begin{table}[h]
+\begin{tabular}{| p{3.5cm} | p{6cm} |}
+\hline
+\textbf{Functor Property} & \textbf{What it means}\\\hline
+Amnestic & Reflects identities.\\ \hline
+Equivalence & Full, Faithful, and essentially surjective.\\\hline
+Embedding & Injective on morphisms.\\ \hline
+Essentially Surjective & For each object $B$ in the codomain,
+there is an $A$ in the domain s.t. $F(A)$ is
+isomorphic to $B$.\\\hline
+Faithful & Hom-set restrictions are injective\\ \hline
+Full & Hom-set restrictions are surjective\\ \hline
+Isomorphism & Bijective on morphisms and objects.\\\hline
+& (Alternatively) It's invertible. \\ \hline
+& (Alternatively) It's an equivalence relation on the
+conglomerate of all categories (i.e. the domain and codomain are
+``essentially the same'').\\ \hline
+\end{tabular}
+\caption{A Table of Functor Properties.}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUNCTORS ARE MATHEMATICAL PROCEDURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Functors are Mathematical Procedures}
+To give an example of how a functor encodes mathematical
+procedures, consider the following:
+\begin{ex}\label{ex:powersetFunctor}
+Consider $\mathcal{P}:\ms{Set}\to\ms{Set}$ be the powerset
+functor. That is, it takes objects (sets) to sets of all possible
+subsets of it, and functions $f:A\to{}B$ to functions between
+the powersets $\mathcal{P}(A)$ and $\mathcal{P}(B)$. It's a
+functor since (1) it maps the identity of $A$ to the identity
+$\mathcal{P}(A)$, and (2) it maps the composition to the
+composition of morphisms in the obvious way.
+\end{ex}
+
+\begin{ex}\label{ex:freeMonoidFunctor}
+Consider $F:\ms{Set}\to\ms{Mon}$ the functor which associates to
+each set $S\in\ms{Set}$ the monoid freely generated by it
+$F(S)\in\ms{Mon}$. What happens is if we have a set $\{a,b\}$,
+the monoid freely generated by it consists of strings whose
+letters are $a$ or $b$, the operator concatenates two strings
+together. That is it takes one string $(aababbbaababa)$ and another
+$(bbabbaabbaa)$ and the operator then
+\begin{equation}
+(aababbbaababa)*(bbabbaabbaa)=(aababbbaabababbabbaabbaa)
+\end{equation}
+just glues the two strings together in the obvious way. The
+identity element is just the empty string $()$ since
+\begin{equation}
+(ababaabbaaa)*() = (ababaabbaaa)
+\end{equation}
+attaches nothing to the end of the string, and it attaches
+nothing to the end of every string, so it ``does nothing''.
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUNCTORS ASSIGN INFORMATION TO OBJECTS AND
+% INFORMATION-PRESERVING MORPHISMS TO MORPHISMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Functors as Assigning Information: Sheaves as Example}
+
+This is one use of functors, to embody mathematical
+procedures. The other use is to assign information to each object
+in a category. This could be viewed as one particular
+mathematical procedure, the intuition should be the same as that
+of a vector field assigning a vector to each point in a
+space. The most famous generalization of this is known as
+``sheaves'' and ``presheaves''.
+
+Recall in topology~\cite{alexTopology}, we defined a topology (in
+an example in subsection~\ref{ex:topologyAsObject}) $\mathcal{T}$
+over a set $X$ to be a sufficiently nice collection of subsets of
+a given set. We defined these subsets to be ``open subsets'' and
+elements of $X$ to be ``points'' of $X$.
+
+Our real aim is to generalize the notion of a vector field (a
+mathematical object that assigns to each point of
+$\mathbb{R}^{n}$ a vector). We need to use the aforementioned
+notions from topology to generalize ``where'' we assign
+mathematical objects. That is, we proceed in our generalization
+by assigning to each open subset $U$ of our space $X$ some
+``local data'' i.e. mathematical object defined on $U$.
+
+As this is a collection of notes on category theory, we will
+approach the problem categorically. First we realize that open
+subsets $V\subseteq U\subseteq X$ we have an inclusion mapping
+\begin{equation}%\label{eq:}
+i_{V,U}:V\to U
+\end{equation}
+which is continuous.
+
+Now, what would assign a mathematical object to an open subset?
+Well, we conveniently used insight that an open subset is an
+object in a category $\ms{O}(X)$ which is our topological space as a
+category. Why not claim that a functor $F:\ms{O}(X)\to\ms{V}$
+assigns to each open subset $U\in\ms{O}(X)$ some information $F(U)$?
+We have to be careful about consistency problems. It would be bad
+if two local regions that overlap end up having inconsistent data
+on the overlap\footnote{It'd be unimaginable, for example, that
+  upon hearing the temperature throughout California ranges from
+  80 to 100 degrees that Davis, California is 110 degrees. We
+  don't have consistency on the overlap!}. We then specify that
+for each inclusion of open sets $V\subseteq U$, we need a
+restriction morphism
+\begin{equation}%\label{eq:}
+\rho_{V,U}:F(U)\to F(V)
+\end{equation}
+in the category $\ms{V}$. This morphism has two properties of
+importance:
+\begin{enumerate}
+\item for each open $U\subseteq X$, the restriction morphism
+  $\rho_{U,U}:F(U)\to F(U)$ is the identity morphism on $F(U)$; 
+\item if we have $W\subseteq V\subseteq U$ open, then
+  $\rho_{W,V}\circ\rho_{V,U} = \rho_{W,U}$.
+\end{enumerate}
+This is a step towards ensuring consistency on overlaps.
+
+\emph{BUT This means that our first attempt at a definition is WRONG!} 
+Observe the arrows \emph{go the wrong way in the codomain!} This
+means that our functor is really a \emph{contravariant} functor
+$F:\ms{O}(X)^{op}\to\ms{V}$, but we did this rather quickly and
+subtle details are swept under the rug so lets explain why this
+is a good definition. First observe a contravariant functor
+behaves as follows:
+\begin{equation}%\label{eq:}
+F\left(U\xrightarrow{\;\;f\;\;}V\right) = F(V)\xrightarrow{\;\;F(f)\;\;}F(U)
+\end{equation}
+which is not good, \emph{UNLESS} we reverse the arrow again! That
+is, we have in our category $\ms{O}(X)$ a term
+\begin{equation*}%\label{eq:}
+U\xrightarrow{\;\;f\;\;}V
+\end{equation*}
+so if we first reverse this arrow by using the category dual to
+it $\ms{O}(X)^{op}$ we have our arrows be
+\begin{equation*}%\label{eq:}
+V\xrightarrow{\;\;f\;\;}U
+\end{equation*}
+which means a contravariant functor would behave thusly:
+\begin{equation}%\label{eq:}
+F\left(V\xrightarrow{\;\;f\;\;}U\right) = F(U)\xrightarrow{\;\;F(f)\;\;}F(V)
+\end{equation}
+which is precisely what is desired! The cost, however, is to have
+the functor take in the dual category as its domain. But we are
+rich enough to pay.
+
+We can now define a presheaf on some general category thus:
+\begin{defn}\label{defn:presheaf}
+Let $\ms{V}$ be some category, then a $\ms{V}$-valued
+\define{Presheaf} $F$ on a category $\ms{C}$ is a functor
+\begin{equation}%\label{eq:}
+F:\ms{C}^{op}\to\ms{V}.
+\end{equation}
+If we restrict our attention to the category $\ms{O}(X)$ of open
+subsets of $X$, we recover the intuitive generalization of vector
+fields we introduced in this section.
+\end{defn}
+\begin{comment}
+\begin{rmk}
+A presheaf with consistency on overlaps is precisely a sheaf. We
+are uninterested in such things for several reasons. First, it
+would be an insult to dedicated a few meager paragraphs to the
+subject when it deserves a book in its own right. Second, we can
+do a number of nifty things with presheaves in category theory,
+which is all we care about at the moment.
+\end{rmk}
+\end{comment}
+
+If $F$ is a $\ms{V}$-valued presheaf on $X$, and $U$ is an open
+subset of $X$, then we call $F(U)$ the \define{sections of $F$
+  over $U$}. If $\ms{V}$ is a concrete category, then each
+element of $F(U)$ is called a \define{section}. A section over
+$X$ is called a \define{global section}. We adopt the notion that
+the restriction of a section
+\begin{equation}%\label{eq:}
+\rho_{V,U}(s)=s|_{V}
+\end{equation}
+This is somewhat similar to sections with fiber bundles.
+
+We will now quickly define a sheaf in the most intuitively appealing
+way:
+\begin{defn}\label{defn:sheaf}
+A \define{sheaf with value in a concrete category $\ms{V}$} is a
+presheaf with values in $\ms{V}$ such that
+\begin{enumerate}
+\item{(Normalization)} $F(\emptyset)$ is the terminal object of
+  $\ms{V}$;
+\item{(Local Identity)} If ($U_i$) is an open covering of an open
+set $U$, and if $s,t\in F(U)$ are such that when restricted on
+each $U_i$ of the open covering $s|_{U_i}=t|_{U_i}$, then $s=t$;
+and
+\item{(Gluing)} If $(U_i)$ is an open covering of an open set
+  $U$, and if for each $i$ there is a section $s_i$ of $F$ over
+  $U_i$ such that for each pair $U_i$, $U_j$ of the covering
+  sets, the restrictions $s_i$ and $s_j$ agree on the overlaps
+  $s_{i}|_{U_{i}\cap U_{j}}=s_{j}|_{U_{i}\cap U_{j}}$, then there
+  is a section $s\in F(U)$ such that $s|_{U_i}=s_i$ for each $i$.
+\end{enumerate}
+\end{defn}
+This definition is really not as general as it could be, since
+the normalization property assumes the objects are open subsets
+in a topology.
+
+At any rate, the section $s$ whose existence is guaranteed by the
+third property is usually called the ``gluing'',
+``concatenation'', or ``collation'' of the section $s_{i}$. We
+see that it is unique (by our local identity property). Sections
+$s_{i}$ satisfying the condition of gluing property are often called
+\define{compatible}; so when we look at the gluing and local
+identity properties, we can summarise their meaning thus:
+\emph{compatible sections can be uniquely glued together.} This
+guarantees consistency on overlap.
+
+\subsection{Quantization (Elaborate Non-Example of a Functor)}
+
+(For finite dimensional symplectic vector spaces over finite
+fields, there actually is a quantization
+functor~\cite{gurevich-2007}. But for the general case in
+physics, there is no such functor -- there is a no go theorem due
+to Groenewald and van Hove. The interested reader is referred to~\cite{ali-2005-17,gotay-1996-6}.)
+
+Consider the canonical procedure to quantizing classical
+systems. Mathematically, we describe classical systems by
+symplectic manifolds, and quantum systems by Hilbert spaces. So,
+quantization should naively be a functor
+\begin{equation}%\label{eq:}
+\mathcal{Q}:\mathbf{Symp}\to\mathbf{Hilb}
+\end{equation}
+where $\mathbf{Symp}$ is the category of symplectic manifolds whose
+morphisms are symplectic maps (or in the jargon of Hamiltonian
+mechanics, ``canonical transformations''); $\mathbf{Hilb}$ is the
+category of Hilbert spaces, whose morphisms are unitary mappings.
+
+This should seem somewhat unnatural for a host of reasons. First,
+classical mechanics should be \emph{obtained from quantum mechanics} 
+in some appropriate limit. Why would would expect to obtain a
+unique quantum theory from a given classical description of a
+system? 
+
+Ignoring this, we have a problem that requires some
+explanation. Suppose we had such a functor. Let $u^{i}=(q,p)$ be
+a choice of variables for an object in $\mathbf{Symp}$ with
+symplectic structure $\omega_{ij}$. Recall the symplectic
+structure is such that
+\begin{equation}%\label{eq:}
+\{u_i,u_j\}=\omega_{ij}\quad
+\Rightarrow\quad\{f,g\}=\frac{\partial f}{\partial
+  u_i}\omega_{ij}\frac{\partial g}{\partial u_{j}}
+\end{equation}
+where $\{-,-\}$ is the Poisson bracket. Then we have some
+properties for $\mathcal{Q}$:
+\begin{enumerate}
+\item{(Linearity)} $\mathcal{Q}(c_{1}f+c_{2}g)=c_{1}\mathcal{Q}(f)+c_{2}\mathcal{Q}(g)$;
+\item{(Identity Preserved)} $\mathcal{Q}(1)=I$;
+\item{(Poisson Bracket)} $\displaystyle\mathcal{Q}\left(\{f,g\}\right)=(-i/\hbar)[\mathcal{Q}(f),\mathcal{Q}(g)]$;
+\item{(Irreducible)} the operators
+  $\mathcal{Q}(\mathbf{x})$ and $\mathcal{Q}(\mathbf{p})$ are
+  irreducibly represented.
+\end{enumerate}
+The domain of such a mapping is called the ``\emph{space of quantizable observables}''.
+The irreducibility condition is somewhat enigmatic. It can be
+reworded as:
+\begin{quote}
+Let $\mathcal{H}$ be the Hilbert space $\mathcal{Q}(\mathbf{x})$
+and $\mathcal{Q}(\mathbf{p})$ act on. Then there are no subspaces
+$\mathcal{H}_{0}\subset\mathcal{H}$ (other than $\{0\}$ and
+$\mathcal{H}$ itself) that are stable under the action of all the
+operators $\mathcal{Q}(\mathbf{x})$ and $\mathcal{Q}(\mathbf{p})$.
+\end{quote}
+
+Now, here comes the problems: lets work in 1 dimension, and let
+\begin{equation}%\label{eq:}
+f(p,q) = p^{2}q^{2} = (pq)^2
+\end{equation}
+We can write
+\begin{equation}%\label{eq:}
+(p+q)^{2} = 2pq + p^{2}+q^{2}\quad\Rightarrow\quad pq = \frac{(p+q)^{2}-p^{2}-q^{2}}{2}.
+\end{equation}
+When we quantize $\mathcal{Q}(pq)$ we can quantize this: 
+\begin{subequations}
+\begin{align}
+\mathcal{Q}(pq)
+&=\frac{1}{2}\left((\mathcal{Q}(p)+\mathcal{Q}(q))(\mathcal{Q}(p)+\mathcal{Q}(q))-\mathcal{Q}(q)^{2}-\mathcal{Q}(p)^{2}\right)\\
+&= \frac{\mathcal{Q}(p)\mathcal{Q}(q)+\mathcal{Q}(q)\mathcal{Q}(p)}{2}.
+\end{align}
+\end{subequations}
+Similarly we can write
+\begin{equation}%\label{eq:}
+p^{2}q^{2} = \frac{(p^{2}+q^{2})^{2}-p^{4}-q^{4}}{2}\quad\Rightarrow\quad p^{2}q^{2} = \frac{(p^{2}+q^{2})^{2}-p^{4}-q^{4}}{2}.
+\end{equation}
+and by the same reasoning as before, when quantized we get
+\begin{equation}%\label{eq:}
+\mathcal{Q}(p^{2}q^{2}) = \frac{\mathcal{Q}(p^{2})\mathcal{Q}(q^{2})+\mathcal{Q}(q^{2})\mathcal{Q}(p^{2})}{2}
+\end{equation}
+Now, our argument is summarized in the following diagram
+\begin{equation*}
+\vcenter{\xymatrix{
+p^{2}q^{2} \ar[dd]_{\mathcal{Q}}\ar[rr]^{id}&& (pq)^{2}\ar[dd]^{\mathcal{Q}}\\
+&&\\
+\displaystyle\left(\frac{(\mathcal{Q}(p)^{2}+\mathcal{Q}(q)^{2})^{2}-\mathcal{Q}(p)^{4}-\mathcal{Q}(q)^{4}}{2}\right)&&\displaystyle\left(\frac{\mathcal{Q}(p)\mathcal{Q}(q)+\mathcal{Q}(q)\mathcal{Q}(p)}{2}\right)^{2}
+}}
+\end{equation*}
+\noparskip\noindent where $id$ is just the identity
+morphism. Equivalently, we could write
+\begin{multline}
+\mathcal{Q}\left(
+\frac{(p^{2}+q^{2})^{2}-p^{4}-q^{4}}{2}
+\xrightarrow{\;\;id\;\;}
+\left[\frac{pq+qp}{2}\right]^{2}
+\right)\\
+=
+\left(\frac{(\mathcal{Q}(p)^{2}+\mathcal{Q}(q)^{2})^{2}-\mathcal{Q}(p)^{4}-\mathcal{Q}(q)^{4}}{2}\right)
+\xrightarrow{\;\;???\;\;}
+\left(\frac{\mathcal{Q}(p)\mathcal{Q}(q)+\mathcal{Q}(q)\mathcal{Q}(p)}{2}\right)^{2}
+\end{multline}
+What is the morphism on the right hands side of this equation?
+
+By our specification of quantization, we should expect an
+identity morphism to make the diagram commute. But clearly
+\begin{equation}%\label{eq:}
+ \frac{\mathcal{Q}(p^{2})\mathcal{Q}(q^{2})+\mathcal{Q}(q^{2})\mathcal{Q}(p^{2})}{2}
+ \neq \left(\frac{\mathcal{Q}(p)\mathcal{Q}(q)+\mathcal{Q}(q)\mathcal{Q}(p)}{2}\right)^{2}
+\end{equation}
+In other words, our diagram doesn't commute! So the property
+\begin{equation}%\label{eq:}
+\mathcal{Q}(id)=id
+\end{equation}
+doesn't always hold, which is a critical property of a
+functor. We then conclude that quantization \emph{is not a functor.} 

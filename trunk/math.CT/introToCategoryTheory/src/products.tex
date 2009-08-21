@@ -1,0 +1,98 @@
+%%
+%% products.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Jul 20 12:44:22 2009 Alex Nelson
+%% Last update Mon Jul 20 12:44:22 2009 Alex Nelson
+%%
+
+\begin{prob}
+We wish to introduce some notion of a ``product'' of two
+categories $\ms{A}$ and $\ms{B}$, which has the intuition that
+the objects are ``ordered pairs'' of objects from $\ms{A}$ and
+$\ms{B}$ respectively, and whose morphisms are ``ordered pairs''
+of morphisms from $\ms{A}$ and $\ms{B}$
+respectively. Composition, and everything in general, is done
+componentwise --- at least, intuitively. We would like to abandon
+the use of set theory, and exclusively use category theory instead.
+\end{prob}
+
+We'll begin by leading by misexample and use set theoretic terms
+to make our intuitions more precise.
+
+Lets first begin by introducing a set theoretic definition of
+product categories:
+\begin{defn}%\label{defn:}
+Given two categories $\ms{A}$ and $\ms{B}$, we defined the
+\define{Product Category} $\ms{A}\times\ms{B}$ consisting of
+\begin{enumerate}
+\item all pairs of objects $(X_{A},Y_{B})$ where
+  $X_{A}\in\ob{\ms{A}}$, $Y_{B}\in\ob{\ms{B}}$, and
+\item all pairs of objects $(X_{A},Y_{B})$, $(X_{A}',Y_{B}')$ a
+  set of morphisms $(f,g)$ where $f:X_{A}\to X_{A}'$, $g:Y_{B}\to Y_{B}'$.
+\end{enumerate}
+equipped with
+\begin{enumerate}
+\item for any object $(X_{A},Y_{B})$, an identity morphism
+  $(\id{X_{A}},\id{Y_{B}})$;
+\item for any pair of morphisms 
+$$(T,U)\xrightarrow{\;\;(f,g)\;\;}(T',U')\xrightarrow{\;\;(f',g')\;\;}(T'',U'')$$
+we have a morphism
+$$(T,U)\xrightarrow{\;\;(f',g')\circ(f,g)\;\;}(T'',U'')$$
+which is calculated componentwise $(f',g')\circ(f,g)=(f'\circ
+f,g'\circ g)$.
+\end{enumerate}
+\end{defn}
+
+Now that we have introduced the notion of taking the ``product''
+of two categories, we can introduce ``projection functors'' to
+recover the components of the product.
+
+\begin{defn}%\label{defn:}
+Let $\ms{A},$ $\ms{B}$ be two categories. We define the
+\define{Projection Functors}\index{Functor!Projection} $P,Q$ to
+be given by
+\begin{equation}%\label{eq:}
+\ms{A}\xleftarrow{\;\;P\;\;}\ms{A}\times\ms{B}\xrightarrow{\;\;Q\;\;}\ms{B}
+\end{equation}
+which is specified by
+\begin{equation*}%\label{eq:}
+P\left((X,Y)\xrightarrow{\;\;(f,g)\;\;}(X',Y')\right) = X\xrightarrow{\;\;f\;\;}X'
+\end{equation*}
+and
+\begin{equation*}%\label{eq:}
+Q\left((X,Y)\xrightarrow{\;\;(f,g)\;\;}(X',Y')\right) = Y\xrightarrow{\;\;g\;\;}Y'.
+\end{equation*}
+\end{defn}
+
+Now we want to generalize this notion of a product to a more
+general setting, and in a more category theoretic manner. We have
+the product category for $\ms{Set}\times\ms{Set}$ defined as
+above, the Cartesian product of elements and morphisms with
+everything done componentwise. This is too set theoretic. We
+would like to relax the notion of a product a wee bit.
+
+\begin{defn}%\label{defn:}
+Let $\ms{C}$ be a category, $X_{1},X_{2}\in\ms{C}$, we define the
+\define{product} of $X_1$ and $X_2$ to be an object $P\in\ms{C}$
+with two morphisms $\pi_{1}:P\to X_{1}$ and $\pi_{2}:P\to X_{2}$
+such that for every object $C\in\ms{C}$ equipped with the
+morphisms
+\begin{equation}%\label{eq:}
+f_{1}:C\to X_{1},\quad\text{and}\quad f_{2}:C\to X_{2}
+\end{equation}
+we have that there is a unique function $f:C\to P$ such that the
+following diagram commute:
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+&\ar[dl]_{f_{2}}C\ar@{-->}[d]_{f}\ar[dr]^{f_{1}}&\\
+X_{2}&\ar[l]^{\pi_{2}}P\ar[r]_{\pi_{1}}&X_{1}
+}}
+\end{equation}
+\noindent Sometimes we denote $P=X_{1}\times X_{2}$ and $f=\<f_{1},f_{2}\>$.
+\end{defn}
+This may possibly seem like an arbitrary condition to let such a
+diagram hold, but it secretly contains two lifting problems
+whose solution is $f$.

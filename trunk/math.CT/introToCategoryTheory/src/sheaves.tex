@@ -1,0 +1,194 @@
+%%
+%% sheaves.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Jul  2 13:41:50 2009 Alex Nelson
+%% Last update Thu Jul  2 13:41:50 2009 Alex Nelson
+%%
+
+Recall in topology~\cite{alexTopology}, we defined a topology (in
+an example in subsection~\ref{ex:topologyAsObject}) $\mathcal{T}$
+over a set $X$ to be a sufficiently nice collection of subsets of
+a given set. We defined these subsets to be ``open subsets'' and
+elements of $X$ to be ``points'' of $X$.
+
+Our real aim is to generalize the notion of a vector field (a
+mathematical object that assigns to each point of
+$\mathbb{R}^{n}$ a vector). We need to use the aforementioned
+notions from topology to generalize ``where'' we assign
+mathematical objects. That is, we proceed in our generalization
+by assigning to each open subset $U$ of our space $X$ some
+``local data'' i.e. mathematical object defined on $U$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+As this is a collection of notes on category theory, we will
+approach the problem categorically. First we realize that each open
+set $U\subseteq X$ has an inclusion mapping $i_{U}:U\to X$. This
+is continuous, so it is a morphism in the category of topological
+spaces. We can actually turn the topology into a category
+$\ms{C}$ by making the objects open subsets of $X$ and the
+morphisms inclusion mappings.
+
+Now, what would assign a mathematical object to an open subset?
+Well, we conveniently used insight that an open subset is an
+object in a category $\ms{X}$ which is our topological space as a
+category. Why not claim that a functor $F:\ms{X}\to\ms{C}$
+assigns to each open subset $U\in\ms{X}$ some information $F(U)$?
+We have to be careful about consistency problems. We have an
+inclusion mapping being
+\begin{equation}%\label{eq:}
+i_{A}: A\to B
+\end{equation}
+where $A\subseteq B$. Conversely, we also have a restriction
+mapping
+\begin{equation}%\label{eq:}
+\rho_{A}:B\to A
+\end{equation}
+which may be more useful.
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+As this is a collection of notes on category theory, we will
+approach the problem categorically. First we realize that open
+subsets $V\subseteq U\subseteq X$ we have an inclusion mapping
+\begin{equation}%\label{eq:}
+i_{V,U}:V\to U
+\end{equation}
+which is continuous.
+
+Now, what would assign a mathematical object to an open subset?
+Well, we conveniently used insight that an open subset is an
+object in a category $\ms{O}(X)$ which is our topological space as a
+category. Why not claim that a functor $F:\ms{O}(X)\to\ms{V}$
+assigns to each open subset $U\in\ms{O}(X)$ some information $F(U)$?
+We have to be careful about consistency problems. It would be bad
+if two local regions that overlap end up having inconsistent data
+on the overlap\footnote{It'd be unimaginable, for example, that
+  upon hearing the temperature throughout California ranges from
+  80 to 100 degrees that Davis, California is 110 degrees. We
+  don't have consistency on the overlap!}. We then specify that
+for each inclusion of open sets $V\subseteq U$, we need a
+restriction morphism
+\begin{equation}%\label{eq:}
+\rho_{V,U}:F(U)\to F(V)
+\end{equation}
+in the category $\ms{V}$. This morphism has two properties of
+importance:
+\begin{enumerate}
+\item for each open $U\subseteq X$, the restriction morphism
+  $\rho_{U,U}:F(U)\to F(U)$ is the identity morphism on $F(U)$; 
+\item if we have $W\subseteq V\subseteq U$ open, then
+  $\rho_{W,V}\circ\rho_{V,U} = \rho_{W,U}$.
+\end{enumerate}
+This is a step towards ensuring consistency on overlaps.
+
+\emph{BUT This means that our first attempt at a definition is WRONG!} 
+Observe the arrows \emph{go the wrong way in the codomain!} This
+means that our functor is really a \emph{contravariant} functor
+$F:\ms{O}(X)^{op}\to\ms{V}$, but we did this rather quickly and
+subtle details are swept under the rug so lets explain why this
+is a good definition. First observe a contravariant functor
+behaves as follows:
+\begin{equation}%\label{eq:}
+F\left(U\xrightarrow{\;\;f\;\;}V\right) = F(V)\xrightarrow{\;\;F(f)\;\;}F(U)
+\end{equation}
+which is not good, \emph{UNLESS} we reverse the arrow again! That
+is, we have in our category $\ms{O}(X)$ a term
+\begin{equation*}%\label{eq:}
+U\xrightarrow{\;\;f\;\;}V
+\end{equation*}
+so if we first reverse this arrow by using the category dual to
+it $\ms{O}(X)^{op}$ we have our arrows be
+\begin{equation*}%\label{eq:}
+V\xrightarrow{\;\;f\;\;}U
+\end{equation*}
+which means a contravariant functor would behave thusly:
+\begin{equation}%\label{eq:}
+F\left(V\xrightarrow{\;\;f\;\;}U\right) = F(U)\xrightarrow{\;\;F(f)\;\;}F(V)
+\end{equation}
+which is precisely what is desired! The cost, however, is to have
+the functor take in the dual category as its domain. But we are
+rich enough to pay.
+
+We can now define a presheaf on some general category thus:
+\begin{defn}\label{defn:presheaf}
+Let $\ms{V}$ be some category, then a $\ms{V}$-valued
+\define{Presheaf} $F$ on a category $\ms{C}$ is a functor
+\begin{equation}%\label{eq:}
+F:\ms{C}^{op}\to\ms{V}.
+\end{equation}
+If we restrict our attention to the category $\ms{O}(X)$ of open
+subsets of $X$, we recover the intuitive generalization of vector
+fields we introduced in this section.
+\end{defn}
+\begin{comment}
+\begin{rmk}
+A presheaf with consistency on overlaps is precisely a sheaf. We
+are uninterested in such things for several reasons. First, it
+would be an insult to dedicated a few meager paragraphs to the
+subject when it deserves a book in its own right. Second, we can
+do a number of nifty things with presheaves in category theory,
+which is all we care about at the moment.
+\end{rmk}
+\end{comment}
+
+If $F$ is a $\ms{V}$-valued presheaf on $X$, and $U$ is an open
+subset of $X$, then we call $F(U)$ the \define{sections of $F$
+  over $U$}. If $\ms{V}$ is a concrete category, then each
+element of $F(U)$ is called a \define{section}. A section over
+$X$ is called a \define{global section}. We adopt the notion that
+the restriction of a section
+\begin{equation}%\label{eq:}
+\rho_{V,U}(s)=s|_{V}
+\end{equation}
+This is somewhat similar to sections with fiber bundles.
+
+We will now quickly define a sheaf in the most intuitively appealing
+way:
+\begin{defn}\label{defn:sheaf}
+A \define{sheaf with value in a concrete category $\ms{V}$} is a
+presheaf with values in $\ms{V}$ such that
+\begin{enumerate}
+\item{(Normalization)} $F(\emptyset)$ is the terminal object of
+  $\ms{V}$;
+\item{(Local Identity)} If ($U_i$) is an open covering of an open
+set $U$, and if $s,t\in F(U)$ are such that when restricted on
+each $U_i$ of the open covering $s|_{U_i}=t|_{U_i}$, then $s=t$;
+and
+\item{(Gluing)} If $(U_i)$ is an open covering of an open set
+  $U$, and if for each $i$ there is a section $s_i$ of $F$ over
+  $U_i$ such that for each pair $U_i$, $U_j$ of the covering
+  sets, the restrictions $s_i$ and $s_j$ agree on the overlaps
+  $s_{i}|_{U_{i}\cap U_{j}}=s_{j}|_{U_{i}\cap U_{j}}$, then there
+  is a section $s\in F(U)$ such that $s|_{U_i}=s_i$ for each $i$.
+\end{enumerate}
+\end{defn}
+This definition is really not as general as it could be, since
+the normalization property assumes the objects are open subsets
+in a topology.
+
+At any rate, the section $s$ whose existence is guaranteed by the
+third property is usually called the ``gluing'',
+``concatenation'', or ``collation'' of the section $s_{i}$. We
+see that it is unique (by our local identity property). Sections
+$s_{i}$ satisfying the condition of gluing property are often called
+\define{compatible}; so when we look at the gluing and local
+identity properties, we can summarise their meaning thus:
+\emph{compatible sections can be uniquely glued together.} This
+guarantees consistency on overlap.
+
+Now we keep the intuition that a presheaf assigns to each object
+$C\in\ms{C}$ some ``local information'' $F(C)\in\ms{V}$. We pose
+the following problem as motivation for the next section:
+\begin{prob}
+If we have two categories, say $\ms{W}$ and $\ms{V}$ where we
+have some natural notion of changing objects of $\ms{W}$ into
+objects of $\ms{V}$ (e.g. once differentiable functions can be
+differentiated into continuous functions), how can we describe
+such a ``natural transformation''?
+\end{prob}

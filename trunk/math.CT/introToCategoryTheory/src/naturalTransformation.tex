@@ -1,0 +1,285 @@
+%%
+%% naturalTransformation.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 24 14:40:20 2009 Alex Nelson
+%% Last update Wed Jun 24 14:40:20 2009 Alex Nelson
+%%
+
+We might start thinking: we had objects and morphisms between
+them. We had categories and morphisms (called ``functors'')
+between them. Now we have functors, do we have morphisms between
+them? It turns out we can, this is the importance of natural
+transformations. Before getting to them, it should be noted that
+Category Theory was invented to investigate natural
+transformations. It is more useful than functors, but it is
+trickier to start thinking in terms of them.
+
+\begin{defn}%\label{defn:}
+Given two functors $S,T:\ms{A}\to\ms{B}$, a \define{Natural Transformation} 
+is a function $\tau:S\Rightarrow T$ which assigns to each object
+$X\in\ob{\ms{A}}$ an arrow $\tau_{X}=\tau(X):S(X)\to T(X)$ of
+$\ms{B}$ in such a way that every arrow $f:X\to Y$ in $\ms{A}$
+yields a diagram
+\begin{equation}\label{eq:naturalityCondition}
+\vcenter{\xymatrix{
+S(X)\ar[d]^{\tau_{X}} \ar[r]^{S(f)} & S(Y)\ar[d]^{\tau_{Y}}\\
+T(X)\ar[r]^{T(f)} & T(Y)
+}}
+\end{equation}
+which is commutative. This condition that the diagram described
+by eq \eqref{eq:naturalityCondition} is commutative is called the
+\define{naturality condition}; when this holds, we also say that
+$\tau_{X}:S(X)\to T(X)$ is \define{natural} in $X$. We call
+$\tau_{X}$, $\tau_{Y}$ the \define{components} of  the natural
+transformation. 
+\end{defn}
+
+\begin{rmk}[Notation]
+We have a natural transformation $\tau:F\Rightarrow G$ usually
+denoted with the $F\Rightarrow G$ instead of $F\to G$.
+\end{rmk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NATURAL TRANSFORMATION AS ANALOGOUS TO HOMOTOPY DEFORMATION OF FUNCTORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+There are probably more than two ways to picture a natural
+transformation. We'll focus on the two obvious ones: as a
+deformation of one functor into another, or --- if we view functors
+as assigning information to objects of a category --- as a
+natural way to transform information assigned to objects of a
+category.
+
+One way is as a ``deformation'' (in the homotopy-theoretic sense
+of the word) of one functor into another. But recall with a
+homotopy, we had specified one path
+$\gamma_{1}:[0,1]\to\mathbb{C}$ is homotopic to another
+$\gamma_{2}:[0,1]\to\mathbb{C}$ if we have a continuous function
+\begin{equation}
+H(s,t)=(1-s)\gamma_{1}(t)+s\gamma_{2}(t)
+\end{equation}
+such that $H(0,t)=\gamma_{1}(t)$ and $H(1,t)=\gamma_{2}(t)$. To
+construct an analogous deformation, we need some category
+analogous to the $s\in[0,1]$ term. This is precisely $\ms{2}$
+category. But a natural transformation from $F:\ms{C}\to\ms{D}$
+to $G:\ms{C}\to\ms{D}$ becomes a functor
+\begin{equation}
+\alpha:\ms{C}\times\ms{2}\to\ms{D}
+\end{equation}
+where $\ms{2}$ is the categorical analog to the
+``interval''. 
+
+An aside on product categories, if the reader is unfamiliar with
+them, one should envision the objects of $\ms{C}\times\ms{2}$
+being ordered pairs $(C,0)$ and $(C,1)$ for all
+$C\in\ms{C}$. That is, we end up with two copies of the category
+$\ms{C}$. The morphisms are also ordered pairs $(g,f)$ where
+$f:0\to{}1$ and $g:C\to{}D$. We can ``break them up'' in the
+sense that the diagram
+\begin{equation}
+\vcenter{\xymatrix{
+(C,0)\ar[d]_{(\id{C},f)}\ar[drr]_{(g,f)}\ar[rr]^{(g,\id{0})}&&(D,0)\ar[d]^{(\id{D},f)}\\
+(C,1)\ar[rr]_{(g,\id{1})}&&(D,1)
+}}
+\end{equation}
+commutes. So $(id,f)$ transaltes from one copy to the other, and
+$(g,\id)$ acts on one copy.
+
+Observe that if we let $0,1\in\ms{2}$ and
+$f:0\to{}1$ so for some fixed object denoted by $(\cdot)$ we have 
+$\alpha(\cdot,0)=F(\cdot)$, $\alpha(\cdot,1)=G(\cdot)$, and
+\begin{equation}
+\alpha(\cdot,0\xrightarrow{\;\;f\;\;}1)=F(\cdot)\xrightarrow{\;\;\alpha(\cdot,f)\;\;}G(\cdot)
+\end{equation}
+which should begin looking vaguely familiar. We shouldn't be too
+surprised since the category really looks like
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+\ms{C}\times{}0 & \cdot\ar[d]_{f}\ar[r] & \cdot\ar[d]^{f} \\
+\ms{C}\times{}1 & \cdot\ar[r] &\cdot
+}}
+\end{equation}
+which is two copies of $\ms{C}$. We have specifically, since it's
+a functor, we see how it acts on the diagram
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+\alpha(\ms{C}\times{}0) & F(X)\ar[d]_{\alpha(X,f)}\ar[r]^{F(g)} & F(Y)\ar[d]^{\alpha(Y,f)} \\
+\alpha(\ms{C}\times{}1) & G(X)\ar[r]^{G(g)} &G(Y)
+}}
+\end{equation}
+which is precisely a naturality condition! It's not too far a
+stretch to state that $\alpha(X,f)$ and $\alpha(Y,f)$ are
+components of the natural transformation.
+\begin{comment}
+%\begin{equation}
+%\alpha(X\xrightarrow{\;\;g\;\;}Y,0\xrightarrow{\;\;f\;\;}1)=F(X\xrightarrow{\;\;g\;\;}Y)\xrightarrow{\;\;\alpha(X\xrightarrow{\;\;g\;\;}Y,f)\;\;}G(X\xrightarrow{\;\;g\;\;}Y)
+%\end{equation}
+which should behave like a natural transformation. We just don't
+know how $\alpha(X\xrightarrow{\;\;g\;\;}Y,f)$ behaves
+exactly. We expect it to ``break up'' into three parts:
+$\alpha(X,f)$, $\alpha(g,f)$, and $\alpha(Y,f)$. We suspect that
+$\alpha(X,f)$ and $\alpha(Y,f)$ correspond to the components
+$\alpha_X$ and $\alpha_Y$ of the natural transformation, but the
+remaining bit $\alpha(g,f)$ remains a mystery. Intuitively, it
+should either map $\alpha_X\to\alpha_Y$ or map $F(g)\to G(g)$. We
+just don't have a good intuition of ``morphisms of morphisms''! 
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NATURAL TRANSFORMATIONS AS MORPHISMS OF SHEAVES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The other intuition to have is to think of a functor as assigning
+some mathematical object to each object of its domain. We have
+some intuition of how to transform objects into other objects via
+morphisms and functors. A natural transformation, then, is
+nothing more than changing the information assigned to each
+object in the domain. But this is done in some ``natural''
+way. It's specifically natural if it satisfies the naturality
+condition.
+
+Think for a moment about the importance of the diagram
+commuting. What this means is that
+\begin{equation}%\label{eq:}
+T(f)\circ\tau_{X} = \tau_{Y}\circ S(f)
+\end{equation}
+or intuitively ``translate how to assign information, then
+translate information = translate information, then translate how
+to assign information.'' This means the result of a mathematical
+process from one category translated into another category is the
+same as translating the ``ingredients'' from one category then
+applying the other process. Or, in terms of our problem, both
+recipes yield cake.
+
+Now, we can think of categories as consisting of diagrams. The
+above definition gives us instructions how to ``translate'' from
+a morphism in the category described by $S(\ms{A})$ to the
+corresponding morphism in the category described by
+$T(\ms{A})$. This is precisely what the intuition behind the
+definition of a natural transformation as a functor from
+$S(\ms{A})\times\ms{2}\to{}T(\ms{A})$ is!
+
+We have diagrams ``built'' from morphisms, and we know how to
+``translate'' each morphism individually, so it's not too hard of
+a stretch to figure out how to ``translate'' a diagram. We can
+also have the intuition that a natural transformation is a
+``\emph{morphism of functors}''.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXAMPLE OF NATURAL TRANSFORMATION AS EVALUATION OF A FUNCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ex}\label{ex:naturalTransformation}
+Let $S$ be a fixed set, $X^{S}$ be the set of all functions
+$h:S\to X$. We want to show
+\begin{enumerate}
+\item $X\mapsto X^{S}$ is the object function of a functor
+  $\ms{Set}\to\ms{Set}$, and that
+\item evaluation $e_{X}:X^{S}\times S\to X$ (defined by
+  $e(h,s)=h(s)$) is a natural transformation.
+\end{enumerate}
+The overall scheme of things is we wish to assign some
+information on each set in $\ms{Set}$. We wish to assign on
+$X\in\ms{Set}$ the information $\hom(S,X)\times\id{S}$ on the one
+hand, and $X$ itself on the other. We wish to go from the first
+to the second in the ``natural'' way of evaluating functions. It
+seems that this should be a natural transformation, but we should
+show it in two steps.
+
+(1) Consider the category of sets \cat{Set}. The Covariant-Hom
+functor (recall example \ref{ex:homFunctor}) is:
+\begin{equation}%\label{eq:}
+\hom(S,-):\ms{Set}\to\ms{Set}
+\end{equation}
+defined by
+\begin{equation}%\label{eq:}
+\hom(S,-)\left(B\xrightarrow{\;\;f\;\;}C\right)=\hom(S,B)\xrightarrow{\;\;\hom(S,f)\;\;}\hom(S,C)
+\end{equation}
+maps $X\mapsto X^{S}$ where $X^{S}=\hom(S,X)$.
+
+\noindent(2) We wish to show that evaluation of a function in the
+obvious way is a natural transformation. The naive way to set up
+the commutative diagram describing our naturality condition would
+be thus:
+\begin{equation}
+\vcenter{
+\xymatrix{
+S(X)\ar[d]^{\tau_{X}} \ar[r]^{S(f)} & S(Y)\ar[d]^{\tau_{Y}}\\
+T(X)\ar[r]^{T(f)} & T(Y)
+}}
+\end{equation}
+\noindent This is assuming, of course, that the functor in
+question is $\hom(S,-)\times\id{S}$. What would be the codomain
+of our natural transformation? Well, we would have to describe
+evaluation as
+\begin{equation}%\label{eq:}
+e:\hom(S,-)\times\id{S}\to\id{\ms{Set}}
+\end{equation}
+but this is precisely a natural transformation. This concludes
+our example
+\end{ex}
+
+\begin{rmk}
+Observe that here our natural transformation was really just
+transforming information on each set $X\in\ms{Set}$ assigned via
+the functors $\hom(S,X)\times\id{S}$ and $\id{\ms{Set}}$. The
+first functor assigns all functions mapping $S$ to $X$ and the
+set $S$, the second is just the identity. What's the natural
+thing to do? Simply take a function and ``feed in'' $S$. This
+transforms the first functor into the second.
+\end{rmk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NATURAL EQUIVALENCE, WEAK INVERSE DEFINED
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}%\label{defn:}
+Let $F,G:\ms{A}\to\ms{B}$ be functors, a natural transformation
+$\tau:F\Rightarrow G$ with every component $\tau(X)$ invertible
+in $\ms{B}$ is called a \define{Natural Equivalence} or (better)
+a \define{Natural Isomorphism}. We denote this with the special
+symbol $\tau: F\cong G$. In such a case, $(\tau(Y))^{-1}$ in
+$\ms{B}$ are the components of a natural transformation
+$\tau^{-1}:G\Rightarrow F$.
+\end{defn}
+
+\begin{defn}%\label{defn:}
+We wish to give a natural transformation definition for an
+\define{equivalence}. That is, a functor $F:\ms{A}\to\ms{B}$ is
+an ``equivalence'' if it has a \define{weak inverse}\index{Inverse!Weak}, 
+i.e. a functor $G:\ms{B}\to\ms{A}$ such that there exists natural
+isomorphisms $\alpha:G\circ F\cong 1_\ms{A}$, $\beta:F\circ G\cong 1_\ms{B}$.
+\end{defn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CONSTRUCTION OF NATURAL TRANSFORMATION AS ``COMPOSED'' WITH A FUNCTOR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can also introduce several ways to construct more natural
+transformations:
+\begin{prop}\label{prop:composeFunctorsAndNaturalTransformations}
+Given functors $F,G:\ms{C}\to\ms{D},$ $H:\ms{D}\to\ms{E},$
+$K:\ms{B}\to\ms{C}$, and natural transformation
+$\eta:F\Rightarrow G$, we can construct:
+\begin{itemize}
+\item a natural transformation $H\eta:HF\Rightarrow{}HG$ by
+  defining $(H\eta)_{X}=H_{\eta(X)}$;
+\item a natural transformation $\eta K:FK\Rightarrow{}GK$ by
+  defining $(\eta K)_{X}=\eta_{K(X)}$.
+\end{itemize} 
+\end{prop}
+This turns out to be used a number of times later on in category
+theory. The intuition is that we can ``compose'' a natural
+transformation with a functor ``componentwise'' (i.e. with the
+domain and codomain functors), resulting with a natural transformation.
+
+We can also compose natural transformations with natural
+transformations ``in the obvious way'' (componentwise). More
+precisely, we can sketch it out in a proposition:
+\begin{prop}%\label{prop:}
+Let $F,G,H:\ms{C}\to\ms{D}$ be functors,
+$\varepsilon:F\Rightarrow{}G$ and $\eta:G\Rightarrow{}H$ be
+natural transformations. Then we can compose the natural
+transformations to be $\eta\circ\varepsilon:F\Rightarrow{}H$
+whose components are
+$(\eta\circ\varepsilon)_{X}=\eta_{X}\circ\varepsilon_{X}$
+componentwise composed.
+\end{prop}

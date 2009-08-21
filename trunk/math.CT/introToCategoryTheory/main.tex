@@ -1,0 +1,207 @@
+\documentclass{amsart}
+%\documentclass{amsbook}
+\usepackage{ifthen}
+\newboolean{isBook}
+%\setboolean{isBook}{true} % set true if using amsbook
+\setboolean{isBook}{false} % set true if using amsbook
+% TODO:
+%       introduce reviews of each movement,
+%       monads and algebras of monads,
+%       monoidal categories,
+%       groupoids?,
+%       categorification (which I think would be a natural way to
+%       introduce n-categories), 
+%       introduce more examples and applications (I've got an
+%       appendix on the calculus of commutative diagrams that
+%       needs to be typed up too),
+\usepackage{manfnt}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+\usepackage{amsthm,amsmath,amssymb,amsfonts}
+\usepackage{float,graphicx}
+\usepackage{mathrsfs} % for mathscr used in defining a basis
+\usepackage{verbatim}
+\usepackage{paralist}
+\usepackage{framed}
+\usepackage[all,cmtip]{xy}
+
+
+
+
+\theoremstyle{plain}
+\newtheorem*{dual}{Dual Principle for Categories}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{rmk}[defn]{Remark}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{ex}[defn]{Example}
+\newtheorem{nonex}[defn]{Non-Example}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{sch}[defn]{Scholium}
+\newtheorem{con}[defn]{Conjecture}
+\newtheorem*{prob}{Problem}
+\newtheorem*{quest}{Question}
+\newtheorem*{defn*}{Definition}
+\newtheorem*{yoneda}{Yoneda Lemma}
+
+\def\re{\operatorname{Re}}
+\def\tr{\operatorname{Tr}}
+\def\<{\langle}
+\def\>{\rangle}
+
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\def\rd{\noindent\begingroup\hangindent=3pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox
+  to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+%%
+% This command allows you to write stuff in small font size and
+% use the
+% bourbaki ``dangerous bend'' so it's great when you want to
+% ramble on 
+% about some extra stuff!
+%%
+\newcommand{\danger}[1] {\rd{\small {#1}}}
+
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\def\ddbend{\dbend\kern1pt\dbend}
+
+\def\rdd{\noindent\begingroup\hangindent=4pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox
+  to0pt{\hskip-\hangindent\ddbend\hfill}\ignorespaces}
+\newcommand{\ddanger}[1] {\rdd{\small {#1}}}
+
+% if using amsmidx
+%\let\oldindex\index
+%\renewcommand{\index}{\oldindex{Index}}
+
+\newcommand{\define}[1]{``\textbf{#1}''\index{#1}}
+\newcommand{\id}[1]{\operatorname{id}_{#1}}
+\newcommand{\ob}[1]{\operatorname{Ob}(#1)}
+\newcommand{\cat}[1]{\textbf{#1}\index{Category!#1}}
+\newcommand{\nat}[1]{\operatorname{Nat}(#1)}
+\let\ms\mathbf
+
+
+\setlength{\marginparwidth}{1.2in}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+\let\noparskip\relax 
+
+\setlength{\parskip}{0cm}
+
+\ifthenelse{\boolean{isBook}}
+{\numberwithin{equation}{chapter}}
+{\numberwithin{equation}{section}}
+
+\ifthenelse{\boolean{isBook}}{}
+{\let\chapter\part}
+
+\renewcommand{\hom}{\operatorname{Hom}}
+\let\Hom\hom
+\let\ss\scriptsize
+%\let\oldxymatrix\xymatrix
+%\renewcommand{\xymatrix}[1]{\vcenter{\oldxymatrix{#1}}}
+\title{Notes on Category Theory}
+\date{June 12, 2009} % patched together from various notes from
+                     % the end of school, so it started June 12
+                     % in my book...
+\email{pqnelson@gmail.com}
+\author{Alex Nelson}
+\begin{document}
+\maketitle\footnotetext{Last Updated: \today}
+\tableofcontents
+\listoftables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INTRO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\input{src/intro}
+
+\ifthenelse{\boolean{isBook}}{\part{Introducing Categories for Mathematicians}}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A MATHEMATICIAN'S APPROACH (OVERTURE)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{A Mathematician's Approach (\emph{Overture})}
+\section{Mathematical Objects: Stuff, Structure, and Properties}
+\input{src/mathematicalObject}
+\section{Examples of Mathematical Objects}
+\input{src/examplesOfMathematicalObjects}
+\section{Quick and Painful Introduction to Categories}
+\input{src/definitionOfCategory}
+\section{Functors}
+\input{src/functors}
+\section{Natural Transformations}
+\input{src/naturalTransformation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A MATHEMATICIAN'S APPROACH PART ONE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{A Mathematician's Approach (Movement One \emph{Allegretto})}
+\section{Adjunctions and Adjoints}
+\input{src/adjointFunctors}
+\section{Product Categories}
+\input{src/products}
+%\section{Quotient Categories}
+%\input{src/quotients}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A MATHEMATICIAN'S APPROACH PART TWO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{A Mathematician's Approach (Movement Two \emph{Andante})}
+\section{Introduction to Movement Two: Constructions in Categories}
+\input{src/introMovtTwo}
+\section{Duality Principle}
+\input{src/duality}
+\section{Initial and Terminal Objects}
+\input{src/initialTerminalObjects}
+\section{Comma Category}
+\input{src/commaCategory}
+\section{Universal Arrows}
+\input{src/universalArrows}
+\section{Yoneda Lemma}
+\input{src/yonedaLemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A MATHEMATICIAN'S APPROACH PART THREE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{A Mathematician's Approach (Movement Three \emph{Minuet})}
+\section{Introduction: Constructions with Cones and Limits}
+\input{src/introMovtThree}
+\section{Diagrams, Cones, and Limits}
+\input{src/cones}
+\section{Pullbacks and Pushouts}
+\input{src/pullbackPushout}
+
+
+
+%\ifthenelse{\boolean{isBook}}{\part{Using Categories in Mathematics}}{}
+%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part*{Appendix}
+\begin{appendix}
+\section{Grocery List of Categories}
+\input{src/groceryListOfCats}
+\nocite{*}
+\bibliographystyle{utcaps}
+\bibliography{main}
+\end{appendix}
+
+\end{document}

@@ -1,0 +1,71 @@
+%%
+%% initialTerminalObjects.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 18 12:03:44 2009 Alex Nelson
+%% Last update Sat Jul 18 12:03:44 2009 Alex Nelson
+%%
+
+The notions of initial and terminal objects are very useful later
+on when thinking about universal arrows --- that is, whenever we
+have phrases like ``\ldots\emph{there exists} a \emph{unique}
+function such that\ldots'' should ring an alarm that we're
+working with a universal arrow, which is an initial object in
+some category.
+
+\begin{defn}%\label{defn:}
+An object $0\in\ms{C}$ is called an \define{Initial Object} if, for every
+object $A\in\ms{C}$, there is exactly one arrow $0\xrightarrow{\;\;!\;\;}A$.
+\end{defn}
+
+This is fairly simple as a definition: an initial object is
+mapped to every object in the category, including itself (by the
+identity morphism).
+
+\begin{defn}%\label{defn:}
+An object $1\in\ms{C}$ is called a \define{Terminal Object} if, for every
+object $A\in\ms{C}$, there is exactly one arrow from $A\xrightarrow{\;\;!\;\;}1$.
+\end{defn}
+
+Note we denote morphisms to initial (respectively, from terminal)
+objects by $!$.
+
+
+\begin{ex}
+In $\ms{Set}$, the empty set $\emptyset=\{\}$ is the only initial
+object. For every set $S$, the empty function is the unique
+function from $\emptyset\to S$.
+
+In $\ms{Set}$, each one-element set is a terminal object. Why?
+Well, for each set $S\in\ms{Set}$ there is a function from $S$ to
+a one element set $\{x\}$ mapping every element of $S$ to $x$
+(the constant function).
+\end{ex}
+
+\begin{ex}
+In $\ms{Grp}$, the trivial group $G=\{e\}$ is the initial object,
+since there is exactly one group homomorphism from $G$ to every
+group $G'\in\ms{Grp}$. 
+\end{ex}
+
+\begin{ex}
+In $\ms{Cat}$, the category $\ms{0}$ is the initial object and
+$\ms{1}$ is the terminal object for the exact same reasoning that
+$\emptyset$ and $\{x\}\in\ms{Set}$ are initial (terminal) objects
+(respectively).  
+\end{ex}
+
+\begin{ex}
+If we think of a topological space $(X,T)$ (where $T$ is a
+topology on $X$) as a category whose objects are open sets
+$U\in{}T$, we have the morphisms be inclusions --- i.e. $U\to{}V$
+iff $U\subseteq{}V$. Then $\emptyset$ is an initial object, and
+$X$ is a terminal object.
+\end{ex}
+
+\begin{defn}%\label{defn:}
+If $C\in\ms{C}$ is both an initial and a terminal object, then it
+is called a \define{Null Object}.
+\end{defn}

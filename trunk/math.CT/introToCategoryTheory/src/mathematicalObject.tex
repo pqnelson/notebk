@@ -1,0 +1,140 @@
+%%
+%% object.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 17 15:28:51 2009 Alex Nelson
+%% Last update Wed Jun 17 17:43:46 2009 Alex Nelson
+%%
+\begin{prob}
+Suppose we wanted to describe all of math by some common
+``meta-structure''. How would we do it? It has to be general enough to
+encompass all of the diverse aspects of every mathematical field,
+but the danger is becoming \emph{too general}. This scares the
+physicists. 
+
+An alternate way to think of the problem is perhaps
+this programming problem: we want to program an object oriented
+computer algebra system with a common base class, with
+functions/homomorphisms/operators/etc as instances of a 
+{\tt function} class which extends our base class. Is there an
+elegant way to solve this problem?
+\end{prob}
+
+So, to answer the initial problem, how can we describe some
+generic mathematical object? We will follow the examples of
+Baez~\cite{Baez:2004pa}, Baez and Wise~\cite{BaezWise:2004ln},
+Baez and Shulman~\cite{baez-2006}, and Baez and Dolan~\cite{baez-2001-1} in
+the answer to this question. Well, in linear algebra when we
+introduce the notion of a vector space, it is defined as the set
+of vectors. Similarly, in abstract algebra, a group is defined as
+a set with a binary operator with various properties. The
+recurring theme appears to be that there is some set underlying
+the mathematical object, but lets not be so strict. Lets instead
+give the following proposition:
+\begin{prop}%\label{prop:}
+A \define{Mathematical Object} is defined by at least specifying
+some underlying ``\emph{stuff}'' (e.g. a set, several sets, etc.).
+\end{prop}
+Well, returning to our example of a vector space, what else makes
+this set a vector space? There is some ``extra structure'' that
+makes it so. Specifically we can do two things: 1) we can add two
+vectors together to get a third vector, 2) we can multiply a
+vector by a scalar to get another vector. These are binary
+operators, which really are just functions
+\begin{equation}%\label{eq:}
+f:X\times Y\to Z
+\end{equation}
+where $X$, $Y$, and $Z$ are the underlying sets, $f$ is the
+binary operator in question. It's just that in practice, it looks
+kinda funny writing $+(\vec{x},\vec{y})$ for vector addition.
+This suggestion of binary operators as functions is -- at first
+glance -- foreign. So, being general (again), we suggest that
+there are functions, relations, some specified elements, etc. all
+fit in this ``extra structure'' description. In e.g. a topology
+or a sigma algebra, we are worried about collections of subsets,
+which should be taken into account as ``extra structure'' as well
+since we are working with distinguished subsets. So to be fully
+general we propose the following revised proposition
+\begin{prop}%\label{prop:}
+A \define{Mathematical Object} is defined by at least specifying
+\begin{enumerate}
+\item some underlying ``\emph{stuff}'' (e.g. a set, several sets, etc.)
+\item equipping this ``stuff'' with some ``\emph{structure}''
+  (e.g. functions, binary operators, collections of subsets,
+  distinguished elements, etc.).
+\end{enumerate}
+\end{prop}
+This still is not enough. We can't just have any old
+``structure'', we need to specify conditions our desired
+structure satisfies. If we are considering a binary operator, is
+our ``stuff'' closed under this binary operator? Is there some
+identity element $e$ so when we consider the binary operator
+applied to $e$ and some $x$ (i.e. $f(e,x)$) we end up with our
+$x$? If so, does every $x$ in our stuff have an inverse? And so
+on, the list is endless.
+
+These conditions are really just demanding certain equations (or
+in some cases inequalities or inclusions) holds. These are just
+algebraically described as ``\emph{properties}'' of our
+structure. This is enough to give a fully general account of a
+mathematical object:
+\begin{framed}
+\begin{defn}\label{defn:object}
+\addcontentsline{toc}{section}{*\quad\;Definition: Mathematical Object}
+A \define{Mathematical Object} is defined by:
+\begin{enumerate}
+\item specifying some underlying ``\emph{stuff}'' (e.g. a set, several sets, etc.)
+\item equipping this ``stuff'' with some ``\emph{structure}''
+  (e.g. functions, binary operators, collections of subsets,
+  distinguished elements, etc.).
+\item with this ``structure'' satisfying certain
+  ``\emph{properties}'' (e.g. equations, inequalities, etc.).
+\end{enumerate}
+\end{defn}
+\end{framed}
+This is a sufficient generalized notion of a mathematical
+object. We can use this in the definition of a category.
+
+\begin{rmk}
+If one really pushed, I doubt that any of these conditions can be
+rigorously defined (what do you mean by ``equations''?
+``functions''? etc.). The point is, as with every definition, to
+give some intuition behind the concept as well as some defining
+characteristics of the object. But if one really pushed, I
+suspect this is where Godel's incompleteness comes into play.
+\end{rmk}
+
+\begin{rmk}
+As Baez and Wise point out~\cite{BaezWise:2004ln}, we can always
+\emph{check} the properties -- they are either true or false. We
+can also \emph{choose} structures from a set of
+possibilities. And we can \emph{choose} stuff from a category of
+possibilities. But each step depends on the following
+ones. Structure depends on stuff, and properties depends on
+structure. This should be somewhat intuitive, we can't demand
+conditions on structure we don't have, nor can we have structure
+depend on stuff we don't have.
+\end{rmk}
+
+\begin{prop}
+Every definition in math is defining one of the following: a
+mathematical object, some ``stuff'', some ``structure'', or some
+``property''.
+\end{prop}
+\begin{con} In relating definitions to mathematical objects, we
+  conjecture:
+\begin{enumerate}
+\item The definition of some ``stuff'' or ``structure'' can be
+  reformulated as a definition of a mathematical object.
+\item The definition of some ``property'' can be reformulated as
+  a definition of some ``structure''; moreover, it can be
+  reformulated as a definition of a mathematical object.
+\end{enumerate}
+Or every definition defines a mathematical
+object --- defining a mathematical object is sometimes more
+circuitous and not as interesting or useful. 
+\end{con}
+This conjecture is summarized in the single phrase
+``\emph{everything defined in math is-a mathematical object}''.

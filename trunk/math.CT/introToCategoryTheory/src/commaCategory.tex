@@ -1,0 +1,134 @@
+%%
+%% commaCategory.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 18 13:57:26 2009 Alex Nelson
+%% Last update Sat Jul 18 13:57:26 2009 Alex Nelson
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CATEGORY OVER-B AND UNDER-A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Category of objects over $B$ and under $A$}
+If $B\in\ms{C}$ is an object, we can construct a \define{Category of Objects Under $B$}
+is the category $(B\downarrow{}\ms{C})$ with:
+\begin{itemize}
+\item objects be ordered pairs $(f,C)$ where $f:B\to{}C$;
+\item arrows $h:(f,C)\to(f',C')$ where $h:C\to{}C'$ is such that $h\circ{}f=f'$/
+\end{itemize}
+In other words, the objects are arrows from $B$ to $C\in\ms{C}$,
+and arrows are commutative triangles with the top vertex be
+$B$. Or diagramatically
+\begin{equation}%\label{eq:}
+\text{Objects }(f,C):\vcenter{\xymatrix{
+B\ar[d]^{f}\\
+C
+}}\quad
+\text{Arrows }(f,C)\xrightarrow{\;\;h\;\;}(f',C'):
+\vcenter{\xymatrix{
+& \ar[dl]_{f}B\ar[dr]^{f'}&\\
+C\ar[rr]^{h}&&C'
+}}
+\end{equation}
+The composition of arrows in $(B\downarrow\ms{C})$ is just the
+composition in $\ms{C}$ of the base arrows $h$ of these triangles.
+
+\begin{ex}
+Consider any one-point set denoted by $*$, let
+$X\in\ms{Set}$. Well, each function $*\to{}X$ is an element of
+$X$; hence the category of objects under $*$,
+$(*\downarrow\ms{Set})$, is the category of pointed sets.
+\end{ex}
+
+We can similarly (letting $A\in\ms{C}$ be an object in a category
+$\ms{C}$) define a \define{Category of Objects Over $A$} denoted
+by $(\ms{C}\downarrow{}A)$ as sort of dual to
+$(A\downarrow\ms{C})$. We diagramatically note that it has
+\begin{equation}%\label{eq:}
+\text{Objects }(f,C):\vcenter{\xymatrix{
+C\ar[d]^{f}\\
+A
+}}\quad
+\text{Arrows }(f,C)\xrightarrow{\;\;h\;\;}(f',C'):
+\vcenter{\xymatrix{
+%& \ar[dl]_{f}B\ar[dr]^{f'}&\\
+C\ar[dr]_{f}\ar[rr]^{h}&&\ar[dl]^{f'}C'\\
+&A&
+}}
+\end{equation}
+This is ``dual'' in the sense that it has its objects be arrows
+with \emph{codomain} $A$ as opposed to \emph{domain} $B$.
+
+\begin{ex}
+In $\ms{Set}$, one-point sets $*$ are terminal, so there is
+exactly one arrow from each object $S\in\ms{Set}$ to $*$. That
+is, $S\to{}*$ is unique. So $(\ms{Set}\downarrow{}*)$ is
+isomorphic to $\ms{Set}$.
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CATEGORY F-UNDER B AND G-OVER A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Category of Objects $F$-Under $B$ and $G$-Over $A$}
+If $B\in\ms{C}$ is an object of the category $\ms{C}$, and
+$F:\ms{D}\to\ms{C}$ is a functor, we can introduce the notion of
+a \define{Category of Objects $F$-Under $B$} which has as
+\begin{itemize}
+\item objects all ordered pairs $(f,D)$ where $D\in\ms{D}$ and $f:B\to{}F(D)$;
+\item arrows $h:(f,D)\to{}(f',D')$ all arrows $h:D\to{}D'$ in
+  $\ms{D}$ for which $f'=S(h)\circ{}f$.
+\end{itemize}
+In pretty pictures, we can write them as
+\begin{equation}%\label{eq:}
+\text{Objects: }\vcenter{\xymatrix{
+B\ar[d]^{f}\\
+F(D)
+}}\quad
+\text{Arrows: }
+\vcenter{\xymatrix{
+& \ar[dl]_{f}B\ar[dr]^{f'}&\\
+F(D)\ar[rr]^{F(h)}&&F(D')
+}}
+\end{equation}
+As before, arrow composition takes place in $\ms{D}$.
+
+If $A\in\ms{C}$ is an object of the category $\ms{C}$ and
+$G:\ms{D}\to\ms{C}$ is a functor, we can analogously construct
+the \define{Category of Objects $G$-Over $A$}. We leave it as an
+exercise to the reader.
+
+\subsection{Comma Categories}
+
+We'll describe the basic construction. Given functors and
+categories
+\begin{equation}%\label{eq:}
+\ms{E}\xrightarrow{\;\;T\;\;}\ms{C}\xleftarrow{\;\;S\;\;}\ms{D}
+\end{equation}
+the \define{Comma Category} $(T\downarrow{}S)$ --- also written
+sometimes as $(T,S)$ --- has as
+\begin{itemize}
+\item objects all triples $(E,D,f)$ with $E\in\ms{E}$, $D\in\ms{D}$ and $f:T(E)\to{}S(D)$
+\item arrows $(E,D,f)\to(E',D',f')$ all pairs $(k,h)$ of arrows
+  $k:E\to E'$ in $\ms{E}$ and $h:D\to D'$ in $\ms{D}$, such that $f'\circ{}T(k)=S(h)\circ{}f$.
+\end{itemize}
+In prettier pictures
+\begin{equation}
+\text{Objects }(D,E,f):\vcenter{\xymatrix{ T(E)\ar[d]^{f}\\ S(D)}}\quad
+\text{Arrows }(k,h):\vcenter{\xymatrix{
+T(E)\ar[d]^{f}\ar[r]^{T(k)}&T(E')\ar[d]^{f'}\\
+S(D)\ar[r]_{S(h)}& S(D')
+}}
+\end{equation}
+with the square commutative. The composition of arrows is done
+componentwise $(k',h')\circ(k,h)=(k'\circ{}k,h'\circ{}h)$, when
+defined.
+
+Note that this notion of a comma category is more general than
+the notions previously introduced, and actually embodies them
+quite naturally. Any object $C\in\ms{C}$ can be considered as a
+functor from $C:\ms{1}\to\ms{C}$. So we can construct, easily,
+the category of objects over $C$, or under $C$, or $S$-under $C$
+or $T$-over $C$. The comma category embodies it all quite
+naturally.

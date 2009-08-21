@@ -1,0 +1,98 @@
+%%
+%% quaternionGroupEx.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jun 30 23:51:16 2009 Alex Nelson
+%% Last update Tue Jun 30 23:51:16 2009 Alex Nelson
+%%
+Consider the quaternions, which were characterized by the
+equation
+\begin{equation}%\label{eq:}
+i^2 = j^2 = k^2 = ijk = -1
+\end{equation}
+We have the multiplication table
+\begin{equation}%\label{eq:}
+\begin{array}{c|cccccccc}
+\times &  1  & -1  &  i  & -i  &  j  & -j  &  k  &  -k\\\hline
+1      &  1  & -1  &  i  & -i  &  j  & -j  &  k  &  -k\\
+-1     & -1  &  1  & -i  &  i  & -j  &  j  & -k  &   k\\
+i      &  i  & -i  & -1  &  1  &  k  & -k  & -j  &   j\\
+-i     & -i  &  i  &  1  & -1  & -k  &  k  &  j  &  -j\\
+j      &  j  & -j  & -k  &  k  & -1  &  1  &  i  &  -i\\
+-j     & -j  &  j  &  k  & -k  &  1  & -1  & -i  &   i\\
+k      &  k  & -k  &  j  & -j  & -i  &  i  & -1  &   1\\
+-k     & -k  &  k  & -j  &  j  &  i  & -i  &  1  &  -1
+\end{array}
+\end{equation}
+We have various ways to encode the information in the quaternions
+into diagrams, e.g.
+%% \begin{equation}%\label{eq:}
+%% jk=i\quad\iff\quad
+%% \begindc{0}[5]
+%% \obj(0,10){$*$}
+%% \obj(0,0){$*$}
+%% \obj(10,0){$*$}
+%% \mor(0,10)(0,0){\scriptsize{$j$}}
+%% \mor(0,0)(10,0){\scriptsize{$k$}}
+%% \mor(0,10)(10,0){\scriptsize{$i$}}
+%% \enddc
+%% \end{equation}
+\begin{equation}%\label{eq:}
+jk=i\quad\iff\quad
+\vcenter{
+\xymatrix{
+\txt{*}\ar[d]_{j}\ar[dr]^{i} & \\
+\txt{*}\ar[r]_{k} & \txt{*}
+}}
+\end{equation}
+We can cycle through the rest of the identities, or we can skip
+ahead to the final diagram
+\begin{equation}
+\vcenter{
+\xymatrix{            &                              & \\
+\txt{*} \ar@/^2pc/[uurrdd]^{-1}
+\ar[d]_{j} 
+\ar[dr]_{k} 
+\ar[r]^{i}       & \txt{*} \ar[r]^{i} \ar[d]_{j} & \txt{*}  \\
+\txt{*}\ar@/_3pc/[dddrruuuu]_{j}             & \txt{*}\ar[l]^{i}   \ar[ur]_{k}          &
+  }}
+\end{equation}
+%% \begin{equation}%\label{eq:}
+%% \begindc{0}[5]
+%% \obj(0,20){$*$}
+%% \obj(10,20){$*$}
+%% \obj(20,20){$*$}
+%% \obj(10,10){$*$}
+%% \obj(0,10){$*$}
+%% \mor(0,20)(10,20){\scriptsize{$i$}}
+%% \mor(10,20)(20,20){\scriptsize{$i$}}
+%% \mor(0,20)(0,10){\scriptsize{$j$}}
+%% \mor(0,20)(10,10){\scriptsize{$k$}}
+%% \mor(10,10)(0,10){\scriptsize{$i$}}
+%% \mor(10,20)(10,10){\scriptsize{$j$}}
+%% \mor(10,10)(20,20){\scriptsize{$k$}}
+%% \cmor((0,22)(3,25)(10,26)(17,25)(20,22))
+%%   \pdown(10,27){\scriptsize{$-1$}}
+%% \cmor((0,9)(3,5)(10,5)(16,9)(20,18))
+%%   \pup(6,3){\scriptsize{$j$}}
+%% \enddc
+%% \end{equation}
+With the understanding that $-1\circ-1=1\equiv\id{*}$.
+%% \begin{equation}%\label{eq:}
+%% \begindc{0}[5]
+%% \obj(0,20){$*$}
+%% \obj(10,20){$*$}
+%% \obj(0,10){$*$}
+%% \obj(10,10){$*$}
+%% \obj(0,0){$*$}
+%% \mor(0,20)(0,10){\scriptsize{$i$}}
+%% \mor(0,20)(10,20){\scriptsize{$j$}}
+%% \mor(0,20)(10,10){\scriptsize{$k$}}
+%% \mor(10,10)(10,20){\scriptsize{$i$}}
+%% \mor(0,10)(0,0){\scriptsize{$i$}}
+%% \mor(10,10)(0,0){\scriptsize{$k$}}
+%% \mor(0,10)(10,10){\scriptsize{$j$}}
+%% \enddc
+%% \end{equation}
