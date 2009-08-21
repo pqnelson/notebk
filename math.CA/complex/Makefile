@@ -8,3 +8,4 @@ all:
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
+	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).out $(MAIN).toc $(MAIN).log

@@ -1,5 +1,5 @@
 MAIN=functionalQFT
-TEX=latex
+TEX=pdflatex
 BIB=bibtex
 MPOST=mpost
 
@@ -8,9 +8,9 @@ all:
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	dvips $(MAIN).dvi
-	ps2pdf $(MAIN).ps
-	rm $(MAIN).dvi
+	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).out
+	rm $(MAIN).log $(MAIN).toc
+
 diag:
 	$(TEX) $(MAIN)
 	mpost --output-directory=img img/feynmanDiags.mp
@@ -19,7 +19,9 @@ diag:
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	dvips $(MAIN).dvi
-	ps2pdf $(MAIN).ps
-	rm $(MAIN).dvi
+	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).out
+	rm $(MAIN).log $(MAIN).toc
+	rm *.log
+	rm *.mp
+	rm *.t1
 #	mpost *.mp

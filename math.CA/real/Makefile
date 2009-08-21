@@ -17,5 +17,7 @@ all: img
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
+	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).out $(MAIN).log $(MAIN).toc
 img:
 	$(MPOST) img.mp
+	rm img.log img.mpx

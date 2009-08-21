@@ -1,12 +1,16 @@
 FILE=feynman
-
+LATEX=pdflatex
 all:
-	latex $(FILE) 
-#	mpost *.mp
-	bash mpost.sh
+	$(LATEX) $(FILE) 
 	bibtex $(FILE) 
-	latex $(FILE) 
-	latex $(FILE) 
-	dvips $(FILE).dvi
-	ps2pdf $(FILE).ps
-#	rm *.dvi *.ps
+	$(LATEX) $(FILE) 
+	$(LATEX) $(FILE) 
+	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).out
+	rm $(MAIN).log $(MAIN).toc
+
+img:
+	bash mpost.sh
+	rm *.log
+	rm *.mp
+	rm *.t1
+	rm *.t1

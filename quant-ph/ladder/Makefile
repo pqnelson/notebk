@@ -8,7 +8,7 @@
 ## Last update Sun Jun  7 14:38:21 2009 Alex Nelson
 ## 
 MAIN=ladder
-TEX=latex
+TEX=pdflatex
 BIB=bibtex
 MPOST=mpost
 
@@ -17,6 +17,4 @@ all:
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	dvips $(MAIN).dvi
-	ps2pdf $(MAIN).ps
-	rm $(MAIN).dvi
+	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).log 
