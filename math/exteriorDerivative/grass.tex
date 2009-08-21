@@ -1,0 +1,26 @@
+\section{An Introduction To Grassmann Variables}
+
+We want to have variables which satisfy the relation
+\begin{equation}\label{generalizationOfCliffordAlgebras}
+\varepsilon^i\varepsilon^j=-\varepsilon^j\varepsilon^i
+\end{equation}
+which implies when $i=j$ that
+\begin{equation}\label{ourCondition}
+(\varepsilon^i)^2=0.
+\end{equation}
+So we basically will have variables that look like
+\begin{equation}
+a_{0} + \sum_{i}b_{i}\varepsilon^{i} + \sum{i,j}c_{ij}\varepsilon^{i}\varepsilon^{j} + \ldots
+\end{equation}
+where $a_0$, $b_i$, $c_ij$, etc. are coefficients. By our condition (\ref{ourCondition})
+we see that we can have at most, with n different grassmann ``generators''
+(meaning we have $\varepsilon^i$ and $i=1,...,n$), we can have 
+\begin{equation}
+1 + \begin{pmatrix}n\\1\end{pmatrix} + \begin{pmatrix}n\\2\end{pmatrix} + \ldots
+= n^2
+\end{equation}
+terms total, where
+\begin{equation}
+\begin{pmatrix}n\\k\end{pmatrix} = \frac{n!}{(n-k)!k!}
+\end{equation}
+is the binomial coefficients.

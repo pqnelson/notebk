@@ -1,0 +1,62 @@
+\section{Exterior Derivative}
+
+With $n$ grassmann generators, we can write
+\begin{equation}
+d = \sum_{i}\varepsilon^{i}\frac{\partial}{\partial x^i}
+\end{equation}
+where in cartesian coordinates $x^1=x$, $x^2=y$, $x^3=z$, etc. Observe that
+by direct computation we find
+\begin{equation}
+d^2 = \left(\sum_{i}\varepsilon^{i}\frac{\partial}{\partial x^i} \right)^2.
+\end{equation}
+We will perform a proof by induction that
+\begin{equation}
+d^2 = 0.
+\end{equation}
+We will use the notation
+\begin{equation}
+\partial_{i} = \frac{\partial}{\partial x^i}.
+\end{equation}
+
+\begin{proof}
+\noindent\textbf{Base Case} We see that with
+\begin{subequations}
+\begin{align}
+\left(\varepsilon^1\partial_1 + \varepsilon^2\partial_2 \right)^2 &= (\varepsilon^1\partial_1)^2 + (\varepsilon^2\partial_2)^2 + (\varepsilon^1\varepsilon^2\partial_1\partial_2) + (\varepsilon^2\varepsilon^1\partial_1\partial_2)\\
+&= (0) + (0) + (\varepsilon^1\varepsilon^2+\varepsilon^2\varepsilon^1)\partial_1\partial_2 \\
+&= (0)\partial_1\partial_2\\
+&= 0.
+\end{align}
+\end{subequations}
+So it is true with $n=2$.
+
+\noindent\textbf{Inductive Hypothesis} We assume that it works with $n$.
+
+\noindent\textbf{Inductive Case} With $n+1$ we see that
+\begin{equation}
+\left(\varepsilon^1\partial_1 +\ldots+\varepsilon^n\partial_n+ \varepsilon^{n+1}\partial_{n+1} \right)^2 = (z + \varepsilon^{n+1}\partial_{n+1})^2
+\end{equation}
+where we define
+\begin{equation}
+z = \varepsilon^1\partial_1 +\ldots+\varepsilon^n\partial_n.
+\end{equation}
+By the inductive hypothesis, we assumed that
+\begin{equation}
+z^2 = 0
+\end{equation}
+so we find
+\begin{equation}
+(z + \varepsilon^{n+1}\partial_{n+1})^2 = \cancelto{0}{z^2} + \cancelto{0}{(\varepsilon^{n+1}\partial_{n+1})^2} + z\varepsilon^{n+1}\partial_{n+1} + \varepsilon^{n+1}\partial_{n+1}z.
+\end{equation}
+So we have a simple expression, and it's one we all know and love! It's simply
+\begin{equation}
+z\varepsilon^{n+1}\partial_{n+1} + \varepsilon^{n+1}\partial_{n+1}z = \left(\sum_{i=1}^{n}\varepsilon{i}\partial_{i}\right)\varepsilon^{n+1}\partial_{n+1} + \varepsilon^{n+1}\partial_{n+1}\left(\sum_{i=1}^{n}\varepsilon{i}\partial_{i}\right)
+\end{equation}
+but by our expression (\ref{generalizationOfCliffordAlgebras}), we see that
+these two terms cancel each other out! That is, we get a number of expressions
+of the form
+\begin{equation}
+\sum_{i=1}^{n}\varepsilon^{n+1}\varepsilon^{i} + \varepsilon^{i}\varepsilon^{n+1} = \sum_{i=1}^{n}(0) = 0.
+\end{equation}
+This completes our proof by induction!
+\end{proof}
