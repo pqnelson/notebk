@@ -1,0 +1,104 @@
+%%
+%% cones.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Jul 20 13:51:20 2009 Alex Nelson
+%% Last update Mon Jul 20 13:51:20 2009 Alex Nelson
+%%
+
+\subsection{Diagrams}
+
+We have an intuition in our heart of hearts of what a diagram in
+category theory is, but is there a rigorous way to describe it?
+The answer is ``Yes, there is a rigorous way to describe it.''
+What we do is we typically have a category which describes the
+shape of the diagram. It is typically finite (or at least small),
+we shall denote the shape category by $\mathbb{I}$.
+
+Now, the diagram is actually a functor which embeds the shape
+into our category $\ms{C}$. That is, a diagram
+$$ D:\mathbb{I}\to\ms{C} $$
+is a functor that identifies the diagram in $\ms{C}$.
+
+\subsection{Cones}
+
+We need to first introduce the constant functor before leaping to
+cones. Consider a functor $\Delta_{U}:\mathbb{I}\to\ms{C}$ be
+such that
+\begin{equation}%\label{eq:}
+\Delta_{U}\left(A\xrightarrow{\;\;f\;\;}B\right) = U\xrightarrow{\;\;\id{U}\;\;}U
+\end{equation}
+or in other words, every object is mapped to $U$ and every
+morphism is mapped to $\id{U}$. This shouldn't be too surprising
+behavior for a functor dubbed ``the constant functor''!
+
+Now, we can define a cone:
+\begin{defn}%\label{defn:}
+Let $D:\mathbb{I}\to\ms{C}$ be a diagram in $\ms{C}$ and
+$\Delta_{U}:\mathbb{I}\to\ms{C}$ be the constant functor.
+A \define{Cone over $D$ with Vertex $U$} is a natural
+transformation $\Delta_{U}\Rightarrow{D}$ with components (for
+all $I\in\mathbb{I}$)
+\begin{equation}\label{eq:coneNaturalityCondition}
+\vcenter{\xymatrix{
+U\ar[d]_{\id{U}}\ar[r]^{P_{I}}&D(I)\ar[d]^{D(f)}\\
+U\ar[r]_{P_{I'}}&D(I')
+}}
+\end{equation}
+Observe that this is secretly a triangle with vertex $U$! The
+naturality condition encodes all the information about the cone.
+\end{defn}
+
+(We can also have the notion of a \emph{cocone} which is dual to
+the cone; we just have the \emph{target} of the arrows be $U$
+instead of having the \emph{source} of the arrows be $U$.)
+
+Now, the reason for calling it a cone is somewhat clear, it
+secretly is a triangle with vertex $U$ after all. But the reason
+why it's important is not so clear at the moment. What happens is
+that we have a diagram and an object $U$. We basically have
+morphisms from $U$ to each object in the diagram, and demand the
+resulting larger diagram commutes. But this larger diagram can be
+broken up into many smaller diagrams similar to eq
+\eqref{eq:coneNaturalityCondition}. Why is this a good thing? Why
+should we care about such a gadget that has morphisms from $U$ to
+each object in a diagram? It turns out that we can express many
+notions (structures we can equip a category with) in category
+theory as a cone (or more precisely, a ``limit''). We will now
+turn our focus to limits.
+
+\subsection{Limits}
+
+Now in analysis, we typically have limits of sequences of numbers
+\begin{equation}%\label{eq:}
+\lim_{n\to\infty}x_{n}=x
+\end{equation}
+or we have a limit of a function
+\begin{equation}%\label{eq:}
+\lim_{x\to{x_{0}}}f(x)=L.
+\end{equation}
+We (should) have a good intuition about these procedures. But in
+category theory, what can we take the limit of? How about taking
+the limit \emph{of diagrams?}
+
+It turns out that a limit for a diagram in $\ms{C}$ is a
+universal cone. What do we mean by a ``universal cone''? Well,
+universal objects usually means that every other object ``factors
+uniquely'' through it. So what would this mean for our precious
+cone? It means that if we have a universal cone with vertex $U$,
+and another cone with vertex $V$, that $V$ factors through $U$,
+i.e. there is a unique morphism $h:V\to{U}$ such that
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+V\ar[dr]_{f}\ar@{-->}[rr]^{h}&&\ar[dl]^{g}U\\
+&X&
+}}
+\end{equation}
+commutes for all $X$. This might seem innocent enough, but it
+turns out that many many important notions in category theory can
+be expressed as limits or colimits over some vertex and some
+simple diagram. We will turn our attention to the rest of the
+chapter to examples.
+

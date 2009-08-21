@@ -1,0 +1,103 @@
+%%
+%% universalArrows.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 18 14:43:46 2009 Alex Nelson
+%% Last update Sat Jul 18 14:43:46 2009 Alex Nelson
+%%
+
+As previously mentioned, universal arrows arise whenever phrases
+like ``\ldots\emph{there exists} a \emph{unique} function such
+that\ldots'' occur. We're concerned about (1) existence, and (2)
+uniqueness. We'll start by defining a universal arrow.
+
+\begin{defn}%\label{defn:}
+If $F:\ms{D}\to\ms{C}$ is a functor and $C\in\ms{C}$ is an
+object, a \define{Universal Arrow from $C$ to $F$} is a pair
+$(D,u)$ consisting of
+\begin{itemize}
+\item an object $D\in\ms{D}$;
+\item an arrow $u:C\to F(D)$ of $\ms{C}$;
+\end{itemize}
+such that
+\begin{itemize}
+\item to every pair $(D',f)$ with $D'\in\ms{D}$ and $f:C\to
+  F(D')$ an arrow of $\ms{C}$, there is a unique arrow $f':D\to
+  D'$ with $F(f')\circ{}u=f$.
+\end{itemize}
+Or in other words, every arrow $f$ to $F$ factors uniquely
+through the universal arrow $u$ as in the commutative diagram
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+C\ar@{=}[d]\ar[r]^{u}&F(D)\ar@{-->}[d]^{F(f')}&D\ar@{-->}[d]^{f'}\\
+C\ar[r]^{f}&F(D')&D'
+}}
+\end{equation}
+\end{defn}
+As previously mentioned, we can come up with an equivalent
+definition using initial objects instead. We say that $u:C\to
+F(D)$ is universal from $C$ to $F$ when the pair $(D,u)$ is
+an initial object in the comma category $(C\downarrow{}F)$ whose
+objects are arrows $C\to{} F(D')$. As with any initial object, it
+turns out that $(D,u)$ is unique up to isomorphism in
+$(C\downarrow{}F)$. This is the typical use of the comma
+categories.
+
+Like most of category theory, this definition is best illuminated
+with many novel examples.
+
+\begin{ex}[Tensor Algebra]\index{Functor!Example!Tensor Algebra}
+Let $V$ be a vector space over $\mathbb{K}$, and $A$ be an
+algebra over $\mathbb{K}$. To construct the tensor algebra over
+$V$ we typically do a mathematical procedure, let:
+\begin{equation}%\label{eq:}
+T^kV = V^{\otimes k} = V\otimes V \otimes \cdots \otimes V. 
+\end{equation}
+then we can define the tensor algebra over $V$ as
+\begin{equation}%\label{eq:}
+T(V)= \bigoplus_{k=0}^\infty T^kV = K\oplus V \oplus (V\otimes V) \oplus (V\otimes V\otimes V) \oplus \cdots.
+\end{equation}
+Our intuition about category theoretic descriptions of
+mathematical procedures should be alerted: we have $T(V)$ as a
+mathematical procedure! It's a \emph{functor!} 
+
+Now, the question that should come to mind next is \emph{Suppose the Tensor Algebra is a functor, what categories are its domain and codomain?}
+Excellent question! We should suspect since it acts on $V$, a
+finite dimensional vector space over $\mathbb{K}$, that its
+domain category should be $\ms{Vect}_{\mathbb{K}}$ and its
+codomain category is yet to be known. It wouldn't be too much of
+a stretch to suppose its codomain category would be the category
+of graded algebras over $\mathbb{K}$. Why
+graded? Well, observe that our direct sum is taken
+over $\mathbb{N}$, so thinking of it as a graded algebra is
+natural. So we can state that
+\begin{equation}
+T:\ms{Vect}_{\mathbb{K}}\to\ms{Alg}_{\mathbb{K}}
+\end{equation}
+is a functor encoding our procedure.
+
+Lets stop and think for a second: we have a functor $T$ and an
+object $V\in\ms{Vect}_{\mathbb{K}}$. How can we construct a
+universal arrow with this information? Well, we can rephrase the
+question thus: what is an initial object in the comma category $(V\downarrow{}T)$?
+
+Any linear transformation $f:V\to{}A$ can be uniquely extended to
+an algebra homomorphism $\widetilde{f}$ from $T(V)$ to $A$, diagramatically
+depicted as
+\begin{equation}\label{eq:universalPropertyForTensorAlgebra}
+\vcenter{\xymatrix{
+V\ar[dr]_{f}\ar[r]^{i} & T(V)\ar@{-->}[d]^{\widetilde{f}}\\
+& A
+}}
+\end{equation}
+where $i$ is the canonical inclusion of $V$ into $T(V)$. Or to
+phrase it in the more familiar manner: for each linear
+transformation $f:V\to{}A$ \emph{there exists} an \emph{unique} algebra
+homomorphism $\widetilde{f}:T(V)\to{}A$ \emph{such that} the
+diagram in eq \eqref{eq:universalPropertyForTensorAlgebra}
+commutes. Note this uniqueness is upto isomorphism. This
+concludes our lengthy example.
+\end{ex}
+

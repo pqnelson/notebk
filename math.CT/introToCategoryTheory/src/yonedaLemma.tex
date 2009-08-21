@@ -1,0 +1,201 @@
+%%
+%% yonedaLemma.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Jul 19 12:20:25 2009 Alex Nelson
+%% Last update Sun Jul 19 12:20:25 2009 Alex Nelson
+%%
+
+We can rephrase the notion of universality with hom-sets, which
+we summarize in the following proposition:
+\begin{prop}\label{prop:firstPropositionInYonedaLemma}
+For a functor $F:\ms{D}\to\ms{C}$ a pair $(D,u:C\to{}F(D))$ is
+universal from $C$ to $F$ iff the function sending each
+$f':D\to{}D'$ into $S(f')\circ{}u:C\to{}F(D)$ is a bijection of
+hom-sets
+\begin{equation}\label{eq:alternateConditionUniversalityWithHomSets}
+\hom_{\ms{D}}(D,D')\cong\hom_{\ms{C}}(C,F(D')).
+\end{equation}
+This bijection is natural in $D'$. Conversely, given $D$ and $C$,
+any natural isomorphism \eqref{eq:alternateConditionUniversalityWithHomSets} is determined in this way by a
+unique arrow $u:C\to{}F(D)$ such that $(D,u)$ is universal from
+$C$ to $F$.
+\end{prop}
+\begin{proof}
+The statement that $(D,u)$ is universal is basically the same as
+$f'\mapsto{}F(f')\circ{}u=f$ is bijective. Why can we state this?
+Well, for each $f$ there is a corresponding $f'$ such that
+$F(f')\circ{}u=f$. This is a one-to-one correspondence, implying
+there is a bijection. This is also natural in $D$, what does this
+mean? Well, if we had a $g:D'\to{}D''$, then we would have
+$F(g\circ{}f')\circ{}u=F(g)\circ{}(F(f')\circ{}u)$. 
+
+Conversely, a natural isomorphism
+\eqref{eq:alternateConditionUniversalityWithHomSets} gives for
+each $D'\in\ms{D}$ a bijection
+$\varphi_{D'}:\hom_{\ms{D}}(D,D')\cong{}\hom_{\ms{C}}(C,F(D'))$. In
+particular, choosing $D'=D$, we end up with
+$\varphi_{D}:\hom_{\ms{D}}(D,D)\cong{}\hom_{\ms{C}}(C,F(D))$ and
+we know there is a special element of $\hom_{\ms{D}}(D,D)$ ---
+the identity $\id{D}\in\hom_{\ms{D}}(D,D)$! This means there is a
+corresponding special element in $\hom_{\ms{C}}(C,F(D))$, by our
+natural isomorphism! Lets consider what happens in our naturality
+condition, for any $f':D\to{}D''$ the diagram
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+\hom_{\ms{D}}(D,D)\ar[d]_{\hom_{\ms{D}}(D,f')}\ar[rr]^{\varphi_{D}}
+&& \hom_{\ms{C}}(C,F(D))\ar[d]^{\hom_{\ms{C}}(C,F(f'))}\\
+\hom_{\ms{D}}(D,D'')\ar[rr]_{\varphi_{D''}} && \hom_{\ms{C}}(C,F(D''))
+}}
+\end{equation}
+commutes by the naturality of $\varphi$. But by the top right of
+the diagram, $\id{D}$ is mapped to $F(f')\circ{}u$, and to the
+bottom left of the diagram it's mapped to
+$\varphi_{D''}(f')$. Since $\varphi$ is a bijection, this states
+that each $f:C\to{}F(D)$ has the form $f=F(f')\circ{}u$ for some
+corresponding (unique) $f'$. This is precisely stating $(D,u)$ is
+universal, so this concludes our proof.
+\end{proof}
+
+Note that this technique, when we have a natural isomorphism from
+$\hom_{\ms{C}}(X,X')$ to $\hom_{\ms{D}}(Y,F(X'))$, to pick $X=X'$
+and have the insight to deduce that there is a special element in
+$\hom_{\ms{D}}(Y,F(X))$ corresponding to
+$\id{X}\in\hom_{\ms{C}}(X,X)$ is one recurring pattern in
+category theoretic proofs.
+
+Observe if $\ms{C}$, $\ms{D}$ have small hom-sets, then our
+proposition is precisely stating that the functor
+$\hom_{\ms{C}}(C,F(-)):\ms{D}\to\ms{Set}$ is naturally isomorphic
+to a covariant hom-functor
+$\hom(D,-):\ms{D}\to{}\ms{Set}$. Before we can really say ``Woah,
+awesome!'' we should really introduce a new notion:
+
+\begin{defn}%\label{defn:}
+Let $\ms{D}$ have small hom-sets. A \define{Representation of a Functor} 
+$K:\ms{D}\to\ms{Set}$ is a pair $(D,\psi)$ with $D\in\ms{D}$ and
+\begin{equation}%\label{eq:}
+\psi:\hom_{\ms{D}}(D,-)\cong{}K
+\end{equation}
+a natural isomorphism. The object $D$ is called the
+\define{Representing Object}. The functor $K$ is said to be
+\define{Representable} when such a representation exists.
+\end{defn}
+
+Up to isomorphism, a representable functor is just a covariant
+hom-functor $\hom_{\ms{D}}(D,-)$. Very interesting, we began with
+universal arrows, and ended up with a notion of representations
+of functors. Perhaps we can make the connection more explicit?
+
+\begin{prop}%\label{prop:}
+Let $*$ be any one-point set, $\ms{D}$ have small hom-sets. If
+$(D,u:*\to{}K(D))$ is a universal arrow from $*$ to
+$K:\ms{D}\to{}\ms{Set}$, then
+\begin{enumerate}
+\item the function $\psi$ which (for each $D'\in\ms{D}$) sends
+  the arrow $f':D\to{}D'$ to $K(f')(u*)\in{}K(D')$ is a
+  representation of $K$;
+\item every representation of $K$ is obtained this way from
+  exactly one such universal arrow.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+For any set $X$, the function $f:*\to{}X$ is determined by the
+element $f(*)\in{}X$. The correspondence $f\mapsto{}f(*)$ is a
+bijection $\hom_{\ms{Set}}(*,X)\to{}X$, natural in
+$X\in\ms{Set}$. How can we see this claim? Well,
+$\hom_{\ms{Set}}(*,X)$ is the set of all function
+$f:*\to{}X$. These are in one-to-one correspondence to each
+element of $X$. This means there is such a bijection. 
+
+Now, we can compose with $K$ to obtain a natural isomorphism
+\begin{equation}%\label{eq:}
+\hom_{\ms{Set}}(*,K(-))\cong{}K.
+\end{equation}
+This should be fairly straightforward to see, by proposition \ref{prop:composeFunctorsAndNaturalTransformations}.
+
+This together with the representation $\psi$ gives (by definition
+of a representation of a functor):
+\begin{equation}%\label{eq:}
+\hom_{\ms{Set}}(*,K(-))\cong{}K\cong{}\hom_{\ms{D}}(D,-).
+\end{equation}
+A representation of $K$ amounts to a natural isomorphism
+$\hom_{\ms{Set}}(*,K(-))\cong{}\hom_{\ms{D}}(D,-)$. The rest of
+the proposition holds from proposition \ref{prop:firstPropositionInYonedaLemma}.
+\end{proof}
+
+These propositions allows us to consider one of the most
+important lemmas in category theory: the Yoneda Lemma. It
+basically states that, when studying a small category $\ms{D}$,
+we should study the category of all functors from $\ms{D}$ to
+$\ms{Set}$. That is, the objects are functors
+$F,F':\ms{D}\to\ms{Set}$ and the morphisms are natural
+transformations $\alpha:F\Rightarrow{F'}$. This notion (that the
+functors from $\ms{D}\Rightarrow\ms{Set}$ determines everything
+of interest about $\ms{D}$) is similar to the remark we made
+earlier, about having expressions like
+$\hom_{\ms{C}}(C,C')\cong{\hom_{\ms{D}}(D,F(C'))}$ be determined
+completely by choosing $C'=C$ and figuring out what happens to $\id{C}$.
+
+\begin{framed}
+\begin{yoneda}\index{Yoneda Lemma}\addcontentsline{toc}{section}{*** Important Concept: Yoneda Lemma}
+If $K:\ms{D}\to\ms{Set}$ is a functor from $\ms{D}$, and
+$D\in\ms{D}$ is an object in a category $\ms{D}$ with small
+hom-sets, then there is a bijection
+\begin{equation}\label{eq:yonedaMap}
+y:\nat{\hom_{\ms{D}}(D,-),K}\cong{}K(D)
+\end{equation}
+which sends each natural transformation
+$\alpha:\hom_{\ms{D}}(D,-)\Rightarrow{}K$ to $\alpha_{D}\id{D}$,
+the image of the identity $D\to D$.
+\end{yoneda}
+\end{framed}
+\begin{proof}
+Trivial, it follows from the commutative diagram
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+\hom_{\ms{D}}(D,D)\ar[rr]^{\alpha_{D}}\ar[d]_{f_{*}=\hom_{\ms{D}}(D,f)}
+&& K(D)\ar[d]^{K(f)}  & D\ar[d]_{f}\\
+\hom_{\ms{D}}(D,D')\ar[rr]^{\alpha_{D'}}
+&& K(D'), & D'.
+}}
+\end{equation}
+\end{proof}
+
+\begin{cor}%\label{cor:}
+For objects $A,B\in\ms{D}$, each natural transformation
+$$\hom_{\ms{D}}(A,-)\Rightarrow{\hom_{\ms{D}}(B,-)}$$ has the form
+$\hom_{\ms{D}}(h,-)$ for a unique arrow $h:B\to{A}$.
+\end{cor}
+
+First remark to make about the Yoneda Lemma: note the Yoneda
+mapping $y$ basically states the natural
+transformations $$\hom_{\ms{D}}(D,-)\Rightarrow{}K$$ is ``the same as'' 
+(naturally isomorphic to) $K(D)$. It may be hard to read ``on the
+fly'', so one should digest it here.
+
+Now, the Yoneda map $y$ is ``natural'' in $K$ and $D$. To be more
+precise, consider $K\in\ms{Set}^{\ms{D}}$ as an object in the
+functor category. We basically want to show that ``evaluation''
+as a functor $E:\ms{Set}^{\ms{D}}\times{\ms{D}}\to\ms{Set}$ and
+natural transformations as a functor
+$N:\ms{Set}^{\ms{D}}\times{\ms{D}}\to\ms{Set}$ (it maps each
+object $(K,D)$ in its domain to the set of natural
+transformations $\nat{\hom_{\ms{D}}(D,-),K}$) are naturally isomorphic.
+
+Consider further both the domain and codomain of the map $y$ as
+functors of the pair $(K,D)$, and consider this pair as an object
+in the category $\ms{Set}^{\ms{D}}\times{\ms{D}}$. The codomain
+of $y$ is then merely the evaluation functor $E$ which maps
+$(K,D)$ to the value $K(D)$ of $K$ at $D$. The domain is the
+functor $N$ which maps the object $(K,D)$ to the set
+$\nat{\hom_{\ms{D}}(D,-),K}$ of all natural transformations from
+$\hom_{\ms{D}}(D,-)$ to $K$ and which maps arrows $F:K\to{K'}$,
+$f:D\to{D'}$, to $\nat{\hom_{\ms{D}}(f,-),F}$. With these
+observations, we may prove an addendum to the Yoneda Lemma:
+\begin{lem}%\label{lem:}
+The bijection in eq \eqref{eq:yonedaMap} is a natural isomorphism
+$y:N\cong{E}$ between the functors $E,N:\ms{Set}^{\ms{D}}\times{\ms{D}}\to\ms{Set}$.
+\end{lem}

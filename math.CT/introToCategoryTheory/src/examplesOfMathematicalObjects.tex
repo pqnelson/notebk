@@ -1,0 +1,79 @@
+%%
+%% examples.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jun 17 17:18:17 2009 Alex Nelson
+%% Last update Wed Jun 17 18:02:44 2009 Alex Nelson
+%%
+
+Now that we have introduced the notion of a ``mathematical
+object'', perhaps we should start examining
+mathematical objects. Well, it turns out that it's all of math, so perhaps we
+should consider certain examples. It's only really necessary to
+look at a few examples, it turns out that in categories the
+objects play second fiddle to the morphisms.
+
+\subsection{A Topology on a Set}\label{ex:topologyAsObject}
+
+Topologies are interesting, they specify the open subsets of a
+given set $X$. Recall that a topology $\mathcal{T}$ on $X$ is a
+collection of subsets of $X$ having the following properties:
+\begin{enumerate}
+\item $\emptyset$ and $X$ are in $\mathcal{T}$
+\item The union of the elements of any subcollection of
+  $\mathcal{T}$ are in $\mathcal{T}$
+\item The intersection of the elements of any finite
+  subcollection of $\mathcal{T}$ is in $\mathcal{T}$.
+\end{enumerate}
+This is the definition of a topology on $X$.
+
+Now we want to demonstrate that it is a mathematical object.
+\begin{description}
+\item[Stuff] The underlying set $X$ is the stuff topologies are
+  made of...
+\item[Structure] We have some extra structure by considering a
+  collection of subsets of $X$.
+\item[Properties] We just listed what the properties of this
+  structure should be! It's closed under arbitrary union of
+  elements of $\mathcal{T}$, finite closure of elements of $\mathcal{T}$, and the collection
+  contains both the empty set and $X$ itself.
+\end{description}
+\noindent So we see that a topology is a mathematical object.
+
+\subsection{Binary Operator on a Set}
+
+Let $S$ be a set, a binary operation on $S$ is a binary relation
+that maps elements of the Cartesian product $S\times S$ to $S$:
+\begin{equation}%\label{eq:}
+f:S\times S\to S.
+\end{equation}
+The underlying argument is a generalization of the argument that
+a function is a mathematical object. In fact, the argument is
+exactly the same replacing $X$ with $S\times S$, and $Y$ with
+$S$. But since a function was demonstrated as the first example
+of a mathematical object in this paper, it follows that a binary
+operator on a set is a mathematical object.
+
+\subsection{Groups}
+
+Let $(G,\cdot)$ be a group with elements $G$ and binary operator
+represented as multiplication. A group is closed under its binary
+operator and necessarily has inverses exist. We will show that
+this is clearly a mathematical object:
+
+\begin{description}
+\item[Stuff] The underlying set $G$ is the stuff.
+\item[Structure] The binary operator acting on $G$ is our
+  structure.
+\item[Properties] We demand certain properties hold. First for
+  any $x\in G$, there is a unique $e\in G$ such that
+  $xe=ex=x$. Second, for each $x\in G$, there is a corresponding
+  $y\in G$ such that $xy=yx=e$. Third, for each $x,y\in G$, we
+  demand that $xy\in G$.
+\end{description}
+\noindent The pattern is kind of clear how to get from a
+definition to our grocery list of ``stuff-structure-properties''.
+This is how most people do abstract math, with such grocery
+lists.

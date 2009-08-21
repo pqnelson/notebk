@@ -1,0 +1,122 @@
+%%
+%% duality.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 18 12:15:08 2009 Alex Nelson
+%% Last update Sat Jul 18 12:15:08 2009 Alex Nelson
+%%
+Duality is a very useful notion in category theory. We use it to
+get ``two objects for the price of one definition''. 
+
+\begin{defn}%\label{defn:}
+Given a category $\ms{A}$, we can define a \define{dual category of $\ms{A}$}
+consists of
+\begin{enumerate}
+\item a collection of objects $\ob{\ms{A}}$, and
+\item for each pair of objects $X,Y\in\ob{\ms{A}}$ the set
+  $\hom_{\ms{A}^{op}}(A,B)=\hom_{\ms{A}}(B,A)$.
+\end{enumerate}
+All the structure and properties of a dual category are inherited
+from a category in the obvious way (loosely, ``by reversing the arrows'').
+\end{defn}
+
+\noindent Usually, we use the prefix \emph{co-} for dual objects, hence why
+we use codomain --- when we reverse the direction of $f$, we get
+\begin{equation}%\label{eq:}
+f^{\text{op}}:y\to x
+\end{equation}
+where $f^{\text{op}}$ is the dual to $f$, and $y$ is the domain
+of the dual to $f$ \emph{or the ``codomain''}.
+
+
+\begin{rmk}
+Observe that the dual some property $\mathcal{P}^{\text{op}}$ is
+$\mathcal{P}$ (reversing the direction of reversed arrows returns
+the original direction, kind of like squaring -1 yields 1).
+\end{rmk}
+
+We will give the general procedure for finding the dual of a
+property about objects $X$ in $\ms{A}$:
+
+\begin{ex}
+Consider the property of objects $X$ in $\ms{A}$:
+\begin{align*}
+\mathcal{P}_{\ms{A}}(X) \equiv&\text{\emph{ For any }}\ms{A}\text{\emph{-object }}
+A\text{\emph{ there exists is exactly one}}\\
+ &\ms{A}\text{\emph{-morphism }}f:A\to X
+\end{align*}
+Step 1: In $\mathcal{P}_{\ms{A}}(X)$, replace all occurrences of
+$\ms{A}$ by $\ms{A}^{op}$, thus yielding the property
+\begin{align*}
+\mathcal{P}_{\ms{A}^{op}}(X) \equiv&\text{\emph{ For any }}\ms{A}^{op}\text{\emph{-object }}
+A\text{\emph{ there exists is exactly one}}\\
+ &\ms{A}^{op}\text{\emph{-morphism }}f:A\to X
+\end{align*}
+Step 2: ``Translate it into the logically equivalent statment.''
+That is translate it into the equivalent statement, translating
+the dual category into the original category, dual morphisms into
+the original ones, etc.:
+\begin{align*}
+\mathcal{P}^{op}_{\ms{A}}(X) \equiv&\text{\emph{ For any }}\ms{A}\text{\emph{-object }}
+A\text{\emph{ there exists is exactly one}}\\
+ &\ms{A}\text{\emph{-morphism }}f:X\to A.
+\end{align*}
+\end{ex}
+
+Similarly, there is a procedure for finding the dual for a
+property about morphisms:
+\begin{ex}
+Consider the property for a morphism $X\xrightarrow{\;\;f\;\;}Y$ in $\ms{A}$
+\begin{align*}
+\mathcal{Q}_{\ms{A}}(f) \equiv&\text{\emph{There exists an
+}}\ms{A}\text{\emph{-morphism
+}}Y\xrightarrow{\;\;g\;\;}X\\
+&\text{\emph{ with }}X\xrightarrow{\;\;f\;\;}Y\xrightarrow{\;\;g\;\;}X=X\xrightarrow{\;\;id\;\;}X
+\end{align*}
+Step 1: In $\mathcal{P}_{\ms{A}}(X)$, replace all occurrences of
+$\ms{A}$ by $\ms{A}^{op}$, thus yielding the property
+\begin{align*}
+\mathcal{Q}_{\ms{A}^{op}}(f) \equiv&\text{\emph{There exists an
+}}\ms{A}^{op}\text{\emph{-morphism
+}}Y\xrightarrow{\;\;g\;\;}X\\
+&\text{\emph{ with }}X\xrightarrow{\;\;f\;\;}Y\xrightarrow{\;\;g\;\;}X=X\xrightarrow{\;\;id\;\;}X
+\end{align*}
+Step 2: Translate $\mathcal{Q}_{\ms{A}^{op}}(f)$ into the
+logically equivalent statement:
+\begin{align*}
+\mathcal{ Q}_{\ms{A}}^{op}(f) \equiv&\text{\emph{There exists an
+}}\ms{A}\text{\emph{-morphism
+}}X\xrightarrow{\;\;g\;\;}Y\\
+&\text{\emph{ with }}Y\xrightarrow{\;\;g\;\;}X\xrightarrow{\;\;f\;\;}Y=Y\xrightarrow{\;\;id\;\;}Y
+\end{align*}
+\end{ex}
+
+We now introduce one of the most foundational concepts in
+category theory:
+
+\begin{framed}
+\begin{dual}\addcontentsline{toc}{section}{*** Important Concept: Duality Principle}
+\label{dualityPrinciple}
+Whenever a property $\mathcal{P}$ holds for all categories, then
+the property $\mathcal{P}^{op}$ holds for all categories.
+\end{dual}
+\end{framed}
+
+We can observe several properties,
+\begin{enumerate}
+\item $(\ms{A}^{op})^{op}=\ms{A}$, and
+\item $\mathcal{P}^{op}(\ms{A})$ holds iff $\mathcal{P}(\ms{A}^{op})$ holds.
+\end{enumerate}
+Further, we say a property $\mathcal{P}$ is \define{Self-Dual} if
+$\mathcal{P}^{op}=\mathcal{P}$.
+%% \begin{framed}
+%% \begin{dual}\addcontentsline{toc}{mysubsection}{*** Important Concept: Duality Principle}
+%% \label{dualityPrinciple}
+%% Given a category $\ms{C}$ with some property $\mathcal{P}$, 
+%% we can find its dual (denoted by $\ms{C}^{\text{op}}$) by
+%% simply reversing the direction of its morphisms. The dual
+%% category has the dual property $\mathcal{P}^{\text{op}}$.
+%% \end{dual}
+%% \end{framed}

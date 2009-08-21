@@ -1,0 +1,49 @@
+\mysubsection{A Morphism is a Mathematical Object}
+
+Now what is a morphism? Well, one would suspect that it's
+something else that's not an object. That would require defining
+something in math that isn't a mathematical object, which is a
+contradiction. So here we must be clever. We really just had the
+condition that, let $\ms{C}$ be a category, $X,Y\in\ob{\ms{C}}$, a morphism
+$f\in\hom(X,Y)$ is such that
+\begin{equation}%\label{eq:}
+f:X\to Y
+\end{equation}
+which might mean something to the reader, it might not. It
+doesn't mean a thing to the author, so lets make our notion of a
+morphism mathematically rigorous! 
+
+Naively, one would normally do the following: check to see for
+similar examples, try to generalize them, then call it a day. We
+see that Baez and Wise~\cite{BaezWise:2004ln} give the following
+example for a function as a mathematical object:
+\begin{ex}
+We will go through the list of criteria for a mathematical object
+to demonstrate a function is in fact a mathematical object. We
+can specify a function as:
+\begin{description}
+\item[Stuff] a pair of sets $X,$ $Y$;
+\item[Structure] equipped with $f\subseteq X\times Y$;
+\item[Properties] such that for each $x\in X$ there is exactly
+  one corresponding $y\in Y$ such that $(x,y)\in f$.
+\end{description}
+\noindent Thus a function $f$ is a mathematical object. QEF.
+\end{ex}
+
+This more or less defined a function by a set of ordered pairs
+$(x,y)$ specified by (as a physicist could understand it)
+$y=f(x)$. Now, can we generalize this notion to from a pair of
+sets to a pair of arbitrary mathematical objects?
+
+We want it to be more of a ``black box'' than a function. That 
+is, we want it to be the following:
+\begin{description}
+\item[Stuff] We see that we have a pair of mathematical objects 
+  $f=(X,Y)$ (where $X,Y\in\ob{\ms{C}}$)
+\item[Structure] equipped with two functions $Dom(f), Cod(f)$
+\item[Properties] such that $Dom(f)=X$ and $Cod(f)=Y$.
+\end{description}
+Observe this preserves the structure of the object since both 
+objects are in the same category. 
+
+

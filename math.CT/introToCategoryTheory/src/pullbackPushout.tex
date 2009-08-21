@@ -1,0 +1,45 @@
+%%
+%% pullbackPushout.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Jul 20 14:21:40 2009 Alex Nelson
+%% Last update Mon Jul 20 14:21:40 2009 Alex Nelson
+%%
+
+We can describe pullbacks (and its dual, pushouts) using limits
+(respectively colimits). We'll unfortunately have to dance around
+the intuitive notion of a pullback, its rigorous definition, and
+various examples (hence why it's in the Minuet chapter!). 
+
+\subsection{Limit Point of View}
+
+Consider the situation when we have a pair of morphisms
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+            & B\ar[d]^{g}\\
+A\ar[r]_{f} & C
+}}
+\end{equation}
+A \define{Pullback} is a universal cone with vertex $U$ over this
+diagram. That means we have a pair of projection maps $p:U\to{A}$
+and $q:U\to{B}$ such that
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix{
+U\ar[d]_{p}\ar[r]^{q}   & B \ar[d]^{g}\\
+A \ar[r]_{f}           & C
+}}
+\end{equation}
+commutes. This is sort of like a product, at least intuitively,
+but if we have another object $V$ and pair of projection
+morphisms $t:V\to{B}$ and $s:V\to{A}$, then we see we have to demand
+\begin{equation}%\label{eq:}
+\vcenter{\xymatrix@C+2em@R+2em{
+   V \ar@/_10pt/[ddr]_{s} \ar@/^10pt/[drr]^{t} \ar@{-->}[dr]^{\scriptstyle !} & & \\
+   & U \ar[d]_(0.4){p} \ar[r]^(0.4){q} & B \ar[d]^{g}\\
+   & A \ar[r]_{f} & C
+}}
+\end{equation}
+commutes. We denote this pullback by $A\times_{C}B$. It's
+sometimes known as a fibred product or a Cartesian square.

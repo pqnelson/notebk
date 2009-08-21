@@ -1,0 +1,58 @@
+%%
+%% groceryListOfCats.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Jun 19 12:24:01 2009 Alex Nelson
+%% Last update Fri Jun 19 12:24:01 2009 Alex Nelson
+%%
+
+We have categorical description of the various different
+mathematical objects, here's some selected examples:
+\begin{enumerate}
+\item[(Concrete)] If the category's objects are ``sets with
+  structure'' (e.g. $\ms{Mon}$ has monoids, $\ms{Top}$ has
+  topological spaces, etc.), then the category is ``concrete''. 
+\item[(Discrete Categories)] The only morphisms are identity
+  morphisms.
+\item[(Groups)] If the category is a monoid with the extra
+  condition the morphisms are invertible.
+\item[(Monoids)] The category has just one object, so it's completely
+  determined by its morphisms.
+\item[(Thin)] If there is at most one morphism from an object to another.
+\end{enumerate}
+
+Here we simply give a grocery list of categories that common come
+up. The following are commonly used categories, given by their
+shorthand notation commonly used in the literature.
+\begin{description}
+\item[0] is the empty category (no objects, no arrows).
+\item[1] is the singleton category, with one object and only one
+  arrow -- the identity morphism.
+\item[2] is the category with two objects $a,b$ and exactly one
+  morphism $a\to b$ which is not the identity.
+\item[3] is the category with three objects $a,b,c$ and exactly
+  three morphisms $a\to{}b$, $b\to{}c$, $c\to{}a$, none identities.
+\item[$\downdownarrows$] is the category with two objects $a,b$ and
+  two morphisms $a\rightrightarrows{}b$ none identities.
+\item[Mat$_\text{K}$] Matrices over a commutative ring $K$, we
+  have objects be positive integers $m,n,\ldots$ and each
+  $m\times n$ matrix $A$ eats in a vector in $K^n$ and spits out
+  a vector in $K^m$, so it's a morphism $A:n\to m$.
+\item[Set] Objects are all small sets, and morphisms are
+  functions between them.
+\item[Cat] Objects are all small categories, and morphisms are
+  functors.
+\item[Mon] Objects are small monoids, morphisms are morphisms of monoids.
+\item[Grp] Objects are small groups, morphisms are morphisms of groups.
+\item[Ab] Objects are small Abelian groups, morphisms are
+  morphisms between them.
+\item[Rng] Objects are small rings, morphisms are morphisms of rings.
+\item[CRng] Objects are small commutative rigns, morphisms are
+  morphisms between them.
+\item[$R$-Mod] All small left modules over the ring $R$, with
+  linear maps.
+\item[Mod-$R$] Small right $R$-modules.
+\item[Top] Small topological spaces and continuous maps.
+\end{description}
