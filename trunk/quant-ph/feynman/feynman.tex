@@ -1,26 +1,17 @@
 \documentclass{amsart}
-\usepackage{feyn}
 \usepackage{fly}
-\usepackage{color}
-\usepackage{feynmp}
+\usepackage{feyn,color,feynmp}
 
-\def\slashchar#1{\setbox0=\hbox{$#1$}           % set a box for #1
-   \dimen0=\wd0                                 % and get its size
-   \setbox1=\hbox{/} \dimen1=\wd1               % get size of /
-   \ifdim\dimen0>\dimen1                        % #1 is bigger
-      \rlap{\hbox to \dimen0{\hfil/\hfil}}      % so center / in box
-      #1                                        % and print #1
-   \else                                        % / is bigger
-      \rlap{\hbox to \dimen1{\hfil$#1$\hfil}}   % so center #1
-      /                                         % and print /
-   \fi}                                         % 
+\newtheorem{property}{Property}
 
-
-\pagestyle{plain} 
-
+\newcommand{\notetoself}[1] {$\langle${\it Note to self: {#1}}$\rangle$}
+\newcommand{\snote}[1] {$\langle${\it \small{#1}}$\rangle$}
+\def\ket#1{\left|{#1}\right\rangle}
 
 \title{Notes on Feynman Diagrams}
+\author{Alex Nelson}
 \date{August 04, 2008}
+
 \begin{document}\setlength{\unitlength}{1mm}
 \begin{abstract}
 We introduce in a pedagogical manner how to compute probability amplitudes

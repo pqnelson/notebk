@@ -5,12 +5,22 @@ all:
 	bibtex $(FILE) 
 	$(LATEX) $(FILE) 
 	$(LATEX) $(FILE) 
-	rm $(MAIN).aux $(MAIN).blg $(MAIN).bbl $(MAIN).out
-	rm $(MAIN).log $(MAIN).toc
+	rm $(FILE).aux $(FILE).blg $(FILE).bbl $(FILE).out
+	rm $(FILE).log 
+	rm *.mp
 
 img:
-	bash mpost.sh
+	$(LATEX) $(FILE) 
+	bibtex $(FILE) 
+	bash -c 'for a in *.mp; do mpost $$a; done'
+	$(LATEX) $(FILE) 
+	$(LATEX) $(FILE) 
 	rm *.log
+	rm $(FILE).aux $(FILE).blg $(FILE).bbl $(FILE).out
 	rm *.mp
 	rm *.t1
+clean:
+	rm *.log
+	rm $(FILE).aux $(FILE).blg $(FILE).bbl $(FILE).out
+	rm *.mp
 	rm *.t1
