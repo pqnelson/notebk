@@ -1,0 +1,260 @@
+%%
+%% characterTableEx.tex
+%% 
+%% Made by alex
+%% Login   <alex@ubuntu>
+%% 
+%% Started on  Fri Jan 30 12:21:55 2009 alex
+%% Last update Fri Jan 30 15:07:59 2009 alex
+%%
+
+\textbf{NOTE!} We will be working with irreps over a finite
+dimensional vector space $V$ over the field $\mathbb{C}$ of
+complex numbers.
+
+%% \subsection{The Character Table for $S_{3}$}
+
+%% Consider the symmetric group $S_3$. We have 
+%% \begin{equation}
+
+%% \end{equation}
+
+\subsection{The Character Table for $D_3$}
+
+Consider the group $D_3$ the symmetries of a regular
+triangle. It has 6 elements, and the presentation
+\begin{equation}
+\<x,y|x^3=y^2=1,yx=x^{-1}y\>.
+\end{equation}
+It has, as mentioned, 6 elements
+\begin{equation}
+D_{3} = \{1,x,x^2,y,yx,yx^2\}.
+\end{equation}
+It has the multiplication table
+\begin{equation}
+\begin{array}{c|cccccc}
+\times & 1   & x  & x^2 & y & yx & yx^2\\
+\hline
+1      & 1   & x  & x^2 & y & yx & yx^2\\
+x^2    & x^2  & 1 & x   & yx & yx^2 & y\\ 
+x      & x   & x^2 & 1 & yx^2 & y & yx\\
+y      & y   & yx & yx^2 & 1 & x & x^2\\
+yx     & yx  & yx^2 & y & x^2 & 1 & x\\
+yx^2   & yx^2 & y & yx & x & x^2 & 1
+\end{array}
+\end{equation}
+We find the cosets of the group
+\begin{subequations}
+\begin{align}
+C(x) &= \{x^{k}xx^{-k}=x,
+yxy=x^{-1},yx^{k}xyx^{k}=x^{-1}\}\\
+&=\{x,x^2\}\\
+C(y) &= \{x^kyx^{-k}=yx^{-2k}, yyy=y,
+yx^{k}yyx^{k}=x^{-k}yx^{k}=yx^{2k}\}\\
+&=\{y,yx,yx^2\}
+\end{align}
+\end{subequations}
+Observe that $(x^2)^2=x^4=x$ in our group. Refer to the
+multiplication table if in doubt. We can set up the
+character table. We expect there to be some number of
+irreducible representations $k$ such that the sum of the
+squares of the dimensions of the irrep $\rho_k$ is the size
+of the group. That is to say, 
+\begin{equation}
+d_{1}^{2} + d_{2}^{2} + \cdots + d_{k}^{2} = 6
+\end{equation}
+How many ways are there to do this? Well, observe $1^2=1<6$,
+so $d_i$ can be at least 1. Further, $2^2=4<6$, so 2 is a
+possible dimension. But $3^2=9>6$, so we can only have 1 or
+2 dimensional irreps. How many different combinations are
+there to write this? Trivially, two different ways
+\begin{equation}
+1^2+1^2+1^2+1^2+1^2+1^2=6,\quad\text{or }1^2+1^2+2^2=6.
+\end{equation}
+Those are the only two ways to write it! Further, we expect
+the character table to be a square matrix, we have three
+cosets: $C(1)$ (or as I denote it $C(e)$), $C(x)$, and
+$C(y)$. That means we expect there to be three terms in our
+sum of squares, and the only formula with three terms is
+\begin{equation}
+1^2+1^2+2^2=1+1+4=6.
+\end{equation} 
+So we have a good idea of how many irreps there are for
+$D_3$. Let us now construct the character table:
+\begin{equation}
+\begin{array}{c|cccc}
+\text{size of coset} & (1) & (2) & (3) \\
+\text{coset rep} & 1 & x & y\\ \hline
+\chi_1           &   &   &  \\ 
+\chi_2           &   &   &  \\
+\chi_3           &   &   & 
+\end{array}
+\end{equation}
+Observe that we have the number of elements, which is
+\emph{not standard} in character tables. I just like to add
+them in as a reminder for quick reference. Now the first
+column is the character of the irrep $\rho_i$. The first
+irrep $\rho_1$ is always the trivial representation, it maps
+everything to the identity in 1 dimension.
+\begin{equation}
+\begin{array}{c|cccc}
+\text{size of coset} & (1) & (2) & (3) \\
+\text{coset rep} & 1 & x & y\\ \hline
+\chi_1           & 1 & 1 & 1\\ 
+\chi_2           &   &   &  \\
+\chi_3           &   &   & 
+\end{array}
+\end{equation}
+Now we should remember that the character of the identity is
+always the number of dimensions of the irrep. So we can fill
+in the second column.
+\begin{equation}
+\begin{array}{c|cccc}
+\text{size of coset} & (1) & (2) & (3) \\
+\text{coset rep} & 1 & x & y\\ \hline
+\chi_1           & 1 & 1 & 1\\ 
+\chi_2           & 1 &   &  \\
+\chi_3           & 2 &   & 
+\end{array}
+\end{equation}
+We also have orthogonality of the rows (in a weighted inner
+product), and orthonormality of the columns. So we can
+\textbf{guess} the second row will be something of the form
+\begin{equation}
+\begin{array}{c|cccc}
+\text{size of coset} & (1) & (2) & (3) \\
+\text{coset rep} & 1 & x & y\\ \hline
+\chi_1           & 1 & 1 & 1\\ 
+\chi_2           & 1 & a & b\\
+\chi_3           & 2 &   & 
+\end{array}
+\end{equation}
+where $a,b\in\mathbb{C}$ are to be determined. We know that
+the inner product between two characters is
+\begin{equation}
+\<\chi_i,\chi_j\> =
+\frac{1}{n}\sum_{g}\overline{\chi_{j}(g)}\chi_{i}(g) = \delta_{ij}
+\end{equation}
+where $g$ is a coset representative and $\delta_{ij}$ is the
+Kronecker delta, $\chi_i$ is the character for the irrep $\rho_i$. So we have
+\begin{subequations}
+\begin{align}
+\<\chi_1,\chi_2\> = 1(1\cdot1) + 2(1\cdot\bar{a})+3(1\cdot\bar{b}) &= 0\\
+\<\chi_2,\chi_1\> = 1(1)+2(a)+3(b) &= 0\\
+\<\chi_2,\chi_2\> = 1(1\cdot1) + 2(a\cdot\bar{a})+3(b\cdot\bar{b}) &= 6.
+\end{align}
+\end{subequations}
+So from the first two of these equations, we find $a,b$ are
+real. We know that characters of irreps of finite groups are
+integer combinations of roots of unity, so that means that
+$a,b\in\mathbb{Z}$. From the condition that
+\begin{equation}
+1+2a+3b=0
+\end{equation}
+we find that
+\begin{equation}
+a=1,\;\; b=-1.
+\end{equation}
+So, we plug these into our character table
+\begin{equation}
+\begin{array}{c|cccc}
+\text{size of coset} & (1) & (2) & (3) \\
+\text{coset rep} & 1 & x & y\\ \hline
+\chi_1           & 1 & 1 & 1\\ 
+\chi_2           & 1 & 1 & -1\\
+\chi_3           & 2 &   & 
+\end{array}
+\end{equation}
+The orthonormality of the columns then demand that the rest
+of the character table is trivially
+\begin{equation}
+\begin{array}{c|cccc}
+\text{size of coset} & (1) & (2) & (3) \\
+\text{coset rep} & 1 & x & y\\ \hline
+\chi_1           & 1 & 1 & 1\\ 
+\chi_2           & 1 & 1 & -1\\
+\chi_3           & 2 & -1  & 0
+\end{array}
+\end{equation}
+How do we see this? Take the first two columns and take
+their inner product
+\begin{equation}
+1\cdot1+1\cdot1+2\cdot(-1)=0
+\end{equation}
+and similarly for the first and third column
+\begin{equation}
+1\cdot1-1\cdot1+0\cdot2=1-1=0.
+\end{equation}
+The second and third column are trivially orthogonal.
+
+This is then the full character table for $D_3$. 
+
+%% Let us try to construct the two dimensional irrep for
+%% $D_3$. It is sufficient to do so for the coset
+%% representatives I think. So we have $\rho_{3}(e)=I_{2}$ be
+%% the two by two identity matrix, and for $\rho_{3}(x)$,
+%% $\rho_{3}(y)$ -- since we do not know what they are! -- we
+%% set up the matrices with unknown quantities we are solving
+%% for. We know that $\chi_{3}(x)=-1$ and $\chi_{3}(y)=0$, so
+%% that tells us that $\rho_{3}(x)$ has a trace of -1 and
+%% $\rho_{3}(y)$ has a trace of 0 (it's traceless!). We set up
+%% the matrices 
+%% \begin{equation}
+%% x = \begin{bmatrix}a & b\\ c & -(1+a)\end{bmatrix},\quad
+%% y = \begin{bmatrix}\alpha & \beta\\ \gamma & -\alpha\end{bmatrix}.
+%% \end{equation}
+%% We can calculate the other elements of the group in our
+%% representation by matrix multiplication
+%% \begin{equation}
+%% x^2 = \begin{bmatrix}a^2+bc & -b\\ -c & bc+(1+a)^2\end{bmatrix}
+%% \end{equation}
+%% so we find
+%% \begin{equation}
+%% yx = \begin{bmatrix} a\alpha+c\beta & b\alpha - (1+a)\beta\\
+%% a\gamma-c\alpha & b\gamma+(1+a)\alpha\end{bmatrix}
+%% \end{equation}
+%% and
+%% \begin{equation}
+%% yx^2=xy=\begin{bmatrix}a\alpha+b\gamma & a\beta-b\alpha\\
+%% c\alpha-(1+a)\gamma & c\beta+(1+a)\gamma\end{bmatrix}.
+%% \end{equation}
+%% From our character table, we demand that $yx$ and $yx^2$ are
+%% traceless, and $x^2$ has a trace of -1. We have one more
+%% condition worth mentioning, namely that $\rho_{3}(y)^2=I$
+%% and $\rho_{3}(x)^3=I$, or in equation form
+%% \begin{equation}
+%% y^2 = \begin{bmatrix}\alpha^2+\beta\gamma & 0\\0 &
+%%   \alpha^2+\beta\gamma\end{bmatrix} = I
+%% \end{equation}
+%% Similarly, an equation is derived from $x^3=I$ but we will
+%% simplify our expression for $x$ first.
+
+%% So we have a system of equations we need to solve
+%% \begin{subequations}
+%% \begin{align}
+%% \tr(x^2) = 1+2a+2a^2+2bc &= -1\\
+%% \tr(yx) = (1+2a)\alpha+(\beta+\gamma)c &= 0\\
+%% \tr(yx^2) = (1+2a)\alpha+b\gamma+c\beta &= 0\\
+%% (y^2=I) \;\; \alpha^2+\beta\gamma &= 1
+%% \end{align}
+%% \end{subequations} 
+%% We can subtract the second from the third to find
+%% \begin{equation}
+%% b\gamma-c\gamma=0\Rightarrow b=c
+%% \end{equation}
+%% Plug this into the first equation we find
+%% \begin{equation}
+%% 1+a+a^2+b^2=0\Rightarrow b^2=a-(1+a)^2
+%% \end{equation}
+%% Things are getting slightly better, but now we can write the
+%% matrix  representation of $x$ in a more convenient form
+%% \begin{equation}
+%% x = \begin{bmatrix}a & b\\b & -(1+a)\end{bmatrix}
+%% \end{equation}
+%% so
+%% \begin{equation}
+%% x^3 = \begin{bmatrix} a(a^2+b^2)-b^3 & -ab+b^3+b(1+a)^2\\
+%% b(a^2+b^2)+(1+a)b & -b^2-(1+a)^3-b^{2}(1+a)\end{bmatrix} = I.
+%% \end{equation}
+%% This gives us an additional 4 equations.
+

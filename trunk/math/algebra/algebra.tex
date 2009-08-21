@@ -1,0 +1,48 @@
+%%
+%% algebra.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 22 11:28:40 2008 Alex Nelson
+%% Last update Mon Dec 22 11:28:40 2008 Alex Nelson
+%%
+\documentclass[10pt]{article}
+% for usuage of conditionals see http://zyliu2005.blogspot.com/2007/06/latex-how-to-use-conditional.html
+\usepackage{ifthen}
+\newboolean{useIndex}
+\setboolean{useIndex}{false}
+%\setboolean{useIndex}{true}
+\usepackage{fly}
+\ifthenelse{\boolean{useIndex}}
+{
+\usepackage{makeidx} % for the index e.g. \index{key}
+\makeindex
+}
+{\renewcommand{\index}[1]{ }}
+\theoremstyle{definition}
+\newtheorem*{sketch}{Sketch Of Proof}
+\def\qef{$\blacksquare$}
+\def\aut{\operatorname{Aut}}
+\def\ker{\operatorname{Ker}}
+\def\imag{\operatorname{Im}}
+\title{Notes on Abstract Algebra}
+\date{December 22, 2008}
+\begin{document}
+\maketitle
+\tableofcontents
+\listoffigures
+\section*{Introduction}
+\begin{rmk}
+Just a prefatory note, to indicate an example has ended I
+will use either `QEF' or \qef ~and for the end of a proof, I
+will use an empty square; to show that a sketch of a proof
+has ended I will use a spade $\spadesuit$.
+\end{rmk}
+\input{tex/algebraIndex.tex}
+\ifthenelse{\boolean{useIndex}}{
+\printindex}{}
+\nocite{*}
+\bibliographystyle{utcaps}
+\bibliography{algebra}
+\end{document}

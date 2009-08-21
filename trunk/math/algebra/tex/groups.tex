@@ -1,0 +1,423 @@
+%%
+%% groups.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Dec 24 14:35:51 2008 Alex Nelson
+%% Last update Wed Dec 24 14:35:51 2008 Alex Nelson
+%%
+
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics{img/img.1}
+\end{center}
+\caption[Relation between Monoids and Groups]{A Venn Diagram
+  to illustrate the relation of the monoids and the
+  groups. Observe all groups are monoids, but not all
+  monoids are groups. Similarly, all trout are fish, but not
+  all fish are trouts.}
+\end{figure}
+A \textbf{group}\index{Group} $G$ is a monoid with some
+extra structure. Namely, for each element $x\in G$ there is
+an element $y\in G$ such that
+\begin{equation}
+xy = yx = e.
+\end{equation}
+This element $y$ is called an
+\textbf{inverse}\index{Inverse} for $x$. Such an inverse is
+unique, a simple proof to illustrate this: suppose that
+there are two inverses $y,y'$ of $x$, then
+\begin{equation}
+y' = y'e = y'(xy) = (y'x)y = ey = y.
+\end{equation}
+For multiplication, we denote the inverse of $x$ by
+$x^{-1}$, and for addition the inverse of $x$ is denoted by
+$-x$. The \textbf{order}\index{Group!Order} of a group is
+the number of elements in the group, the size of the set so
+to speak.
+
+It is probably worth going on without saying that $e$ is its
+own inverse. But if we have (an identity $e$) an element $x$ and its inverse
+$x^{-1}$ and a given law of composition, then we can create
+a group consisting of the elements
+\begin{equation}
+G = \{ (x^{-1})^{n}:n\in\mathbb{N}\}\cup\{(x)^{n}:n\in\mathbb{N}\}\cup\{e\}
+\end{equation}
+which is trivial. 
+
+\begin{ex}
+Consider the matrix
+\begin{equation}
+z = \begin{bmatrix}1 & 0 \\0 & -1\end{bmatrix}
+\end{equation}
+observe that $z^2=I$. That tells us that $\{I,z\}$ is a
+matrix group under matrix multiplication. \qef
+\end{ex}
+
+Notice we are being a bit ambiguous here in specifying
+``inverses'' and ``unit elements''. E.g. with matrices, it makes
+a difference if we multiply by the right or by the left
+(e.g. $X$ multiplied on the right by $Y$ is $XY$ but
+multiplied on the left is $YX$, and in general $XY-YX\neq0$
+-- if it is zero, then $X$, $Y$ are diagonal matrices). But
+we have been sufficiently general so left inverses and left
+identity elements are also inverses and identity
+elements. We can be precise in specification and prove it
+too:
+\begin{prop}
+Let $G$ be a set with an associative law of composition, let
+$e$ be a left unit for that law, and assume that every
+element has a left inverse. Then $e$ is a unit and each left
+inverse is also an inverse. In particular, $G$ is a group.
+\end{prop}
+\begin{proof}
+Let $b\in G$ and let $a\in G$ be such that $ba=e$. Then
+\begin{equation}
+bab = eb = b.
+\end{equation} 
+This much should be trivial, it's just substitution. We can
+see that
+\begin{equation}
+abab = a(ba)b = aeb = ab
+\end{equation}
+which is equivalent to
+\begin{equation}
+(ab)^2 = ab.
+\end{equation}
+We can multiply both sides by $(ab)^{-1}$ on the left to see
+that
+\begin{equation}
+(ab) = e
+\end{equation}
+which implies that $a$ is the left inverse for $b$, or
+equivalently that $b$ is the right inverse for $a$. We then
+see that
+\begin{equation}
+aba = a(e) = (e)a
+\end{equation}
+which implies the left identity $e$ is a ``bi''-identity
+(i.e. both a left and right identity).
+\end{proof}
+\begin{ex}
+Let $G$ be a group, and $S$ be some nonempty set. The set of
+maps from $S$ to $G$, denoted $M(S,G)$, is itself a
+group. That is, for two maps $f,g:S\to G$, we define $fg$ to
+be the map such that
+\begin{equation}\label{eq:groups:exLawOfComposition}
+(fg)(x) = f(x)g(x)
+\end{equation}
+The inverse $f^{-1}$ multiplied by $f$ is equal to the
+identity element in the group $\mathbb{1}$. That means,
+$f^{-1}(x)=f(x)^{-1}$. If $f(x)^{-1}$ is well defined,
+meaning that $f(x)$ -- an element of the group $G$ -- has an
+inverse, which is necessarily true because that's the
+definition of a group, then each element of $M(S,G)$ has an
+inverse under the law of composition defined by Eq
+\eqref{eq:groups:exLawOfComposition}. We also have for
+arbitrary $f\in M(S,G)$ the product of it well defined too
+since $f(x)$ is an element in the group, so $f(x)^n$ is an
+element in the group raised to the $n^{th}$ power -- which
+is well defined because it's a monoid! So it is a group.\qef
+\end{ex}
+\begin{ex}
+Let $S$ be a non-empty set. Let $G$ be the set of bijections
+from $S$ to $S$. Then we see that, making the composition of
+mappings the law of composition, $G$ is a group. (Remember a
+bijection is invertible, so each map has an inverse and we
+have the identity defined in the obvious way as the identity
+map of $S$.) The elements of $G$ are called
+\textbf{permutations}\index{Permutations} of $S$. We denote
+$G$ by $\operatorname{Perm}(S)$. \qef
+\end{ex}
+\begin{ex}
+Consider the group $\mathbb{Z}_{2}$, which consists of two
+elements $0$ and $1$. One can imagine this as a ``bit'' or a
+binary digit. It has the operation of addition
+\begin{equation}
+0+0=1+1=0,\quad 0+1=1+0=1
+\end{equation}
+which is commutative. It is a cyclic group.\index{Group!Cyclic}\index{Cyclic Group} We can further
+generalize this to $\mathbb{Z}_{3}$ with 3 elements: 0, 1,
+and 2. It has the laws of addition
+\begin{equation}
+0+0=1+2=2+1=0,\quad 0+1=1+0=2+2=1,\quad 0+2=2+0=1+1=2
+\end{equation}
+which is also commutative. We have inverses well defined,
+etc. etc. etc. We can generalize this to $\mathbb{Z}_{n}$
+where $n\in\mathbb{N}$. This is a family of finite groups. \qef
+\end{ex}
+\begin{rmk}
+Typically we ``represent'' a number $p$ in a cyclic group
+$\mathbb{Z}_{n}$ (where $0\leq p<n$ is some integer) by
+$\exp[i2\pi (p/n)]$. In this ``representation'', we have
+instead of addition simple multiplication. Note that the
+``generator'' of the group (the only element we really need
+that we can subject to the law of composition of the group
+to) is the primitive $n^{th}$ root of unity
+$\exp[i2\pi/n]$. So $p$``=''$(\exp[i2\pi/n])^p$.
+\end{rmk}
+\begin{ex}
+Let $G_1$, $G_2$ be groups. Let $G_1\times G_2$ be the
+\textbf{direct product}\index{Direct Product!Groups}\index{Group!Direct Product}
+which is similar to the direct product of sets, so
+$G_1\times G_2$ is the set of all pairs $(x_1, x_2)$ with
+$x_1\in G_1$ and $x_2\in G_2$. We define the product
+componentwise by
+\begin{equation}
+(x_1,x_2)(y_1,y_2) = (x_1y_1,x_2y_2).
+\end{equation}
+We see that $G_1\times G_2$ is a group, with unit element
+$(e_1, e_2)$ (where $e_1$ is the unit of $G_1$, and $e_2$ is
+the unit of $G_2$). We can do this for $n$ groups, with
+componentwise multiplication. \qef
+\end{ex}
+
+Let $G$ be a group. A \textbf{subgroup}\index{Group!Subgroup}\index{Subgroup} $H$
+of $G$ is a subset of $G$ containing theunit element, and
+such that $H$ is closed under the law of composition and
+inverse (or equivalently, it is a submonoid such that if
+$x\in H$ then $x^{-1}\in H$). A subgroup is
+\textbf{trivial}\index{Subgroup!Trivial} if it consists of
+the unit element alone. And trivially, the intersection of
+an arbitrary non-empty family of subgroups is a subgroup.
+
+Let $G$ be a group and $S\subset G$ be a subset. We say that
+$S$ \textbf{generates} $G$ or that $S$ is a set of
+\textbf{generators} for $G$ if every element of $G$ can be
+expressed as a product of elements of $S$ or inverses of
+elements of $S$, i.e. as a product $x_1\cdots x_n$ where
+each $x_i$ or $x_{i}^{-1}$ is in $S$. It is clear that the
+set of al such products is a subgroup of $G$ (remember,
+$x^0=e$) and is the smallest subgroup of $G$ containing
+$S$. What the hell does this mean? Well, $S$ generates $G$
+if and only if the smallest subgroup of $G$ containing $S$
+is $G$ itself. 
+
+Let's stop and reiterate what we have just introduced. We
+have a subgroup $S$ of a group $G$ is a submonoid that is a
+group. So the submonoid contains inverses for each element.
+We have some finite subset $S'$ of a group $G$ which is such that
+any element of $G$ can be written as a product of any finite
+number of elements of $S'$. This is a bit vague, so perhaps
+an example is needed. 
+
+\begin{ex}
+Consider the quaternions, which have elements
+\begin{equation}
+i^2=j^2=k^2=ijk=-1
+\end{equation}
+We see that
+\begin{align*}
+i(ijk) &= i(-1)\\
+\Rightarrow jk &= i\\
+\Rightarrow (jk)k &= ik\\
+\Rightarrow -j &= ik\\
+\Rightarrow ij &= k
+\end{align*}
+So from $i$ and $j$, we can get $1=(-1)^2=(i)^4=(j)^4$ as
+well as $k=ij$. All we need are two elements to have the
+rest of the quaternions. \qef
+\end{ex}
+
+Note typically, if $G$ is a group, and $S$ is a set of
+generators, then we write $G=\<S\>$. \marginpar{cyclic group has one generator}By 
+definition, a cyclic group is a group which has one
+generator.
+
+\begin{ex} 
+There are two non-abelian groups of order 8. One is the
+quaternions which we already say, the other is the
+\textbf{symmetries of the square},\index{Symmetries of Square}\index{Symmetry!Square}\index{Square!Symmetry} generated
+by two elements $\sigma$, $\tau$ such that
+\begin{equation}
+\sigma^4 = \tau^2 = e,\quad\text{and }\tau\sigma\tau^{-1} =
+\sigma^{3}
+\end{equation}
+We see that
+\begin{align*}
+(\tau\sigma\tau^{-1})\tau &=
+\sigma^{3}\tau\\
+&= \tau\sigma
+\end{align*}
+but also that
+\begin{equation}
+\sigma^{-1} = \sigma^{3}\Rightarrow \sigma^{-1}\sigma = e =
+\sigma^4
+\end{equation}
+and
+\begin{equation}
+\tau^{-1} = \tau\Rightarrow \tau\sigma\tau=\sigma^3.
+\end{equation}
+So that means that
+\begin{equation}
+\tau\sigma\tau = \sigma^{-1}
+\end{equation}
+and
+\begin{equation}
+\tau\sigma^{-1}\tau = \sigma.
+\end{equation}
+But doesn't this imply
+\begin{equation}
+\tau = \sigma\tau\sigma
+\end{equation}
+by multiplying by the right by $\tau\sigma$. So we can write
+the inverses in terms of $\sigma$ and $\tau$ alone. \qef
+\end{ex}
+\begin{ex}
+The quaternion group is more generally the group generated
+by two elements $i$, $j$ and setting $ij=k$ and $m=i^2$, we
+have
+\begin{equation}
+i^4 = j^4 = k^4 = e,\quad\text{and }i^2=j^2=k^2=m,\; ij=mji
+\end{equation}
+but observe that as we introduced it before, it works
+perfectly fine setting $m=-1$ and $e=1$. \qef
+\end{ex}
+
+Let $G,G'$ be monoids. A \textbf{monoid-homomorphism} (or
+simply \textbf{homomorphism}\index{Homomorphism}) of $G$
+into $G'$ is a mapping $f:G\to G'$ such that
+$f(xy)=f(x)f(y)$ for all $x,y\in G$ and mapping the unit
+element of $G$ into that of $G'$. If additionally $G,G'$ are
+groups, the mapping is given a special name called a
+\textbf{group-homomorphism}. 
+
+\begin{ex}
+Consider the monoid $\mathbb{N}$, a map
+\begin{equation}
+f:\mathbb{N}\to\mathbb{Z}_2
+\end{equation}
+is a homomorphism defined such that
+\begin{equation}
+f(n) = \begin{cases}0 &\text{$n$ is even}\\
+1 &\text{otherwise}\end{cases}
+\end{equation}
+Then $f$ is a homomorphism. It maps the 0 element to the 0
+element, and it maps 
+\begin{align*}
+f(m+n) &= f(m)+f(n)
+\end{align*} 
+trivially (odd+odd=even, even+even=even, even+odd=odd, and
+1+1=0, 0+0=0, 0+1=1 respectively). \qef
+\end{ex}
+\begin{ex}
+Let $V$, $W$ be arbitrary vector spaces. Let
+\begin{equation}
+f:V\to W
+\end{equation}
+be a linear transformation. Trivially it is a homomorphism,
+as
+\begin{equation}
+f(u+v)=f(u)+f(v)
+\end{equation} 
+and by the definition of a linear transformation, we have
+\begin{equation}
+f(0)=0.
+\end{equation}
+Why? Well, it's trivial, observe
+\begin{equation}
+f(0+0)=f(0)+f(0)=f(0)\Rightarrow f(0)=0.
+\end{equation}
+So it preserves vector addition, and it maps the identity of
+vector addition to the identity of vector addition. \qef
+\end{ex}
+
+Observe that for a group homomorphism $f:G\to G'$, we have
+\begin{align*}
+f(xx^{-1}) &= f(e)\text{ since }xx^{-1}=e\\
+&= f(x)f(x^-1)\text{ since $f$ is a homomorphism}\\
+&= e'\text{ since $f$ is a homomorphism}\\
+\Rightarrow \left(f(x)\right)^{-1}f(e) &= f(x^{-1})\\
+&= f(x)^{-1}.
+\end{align*}
+It's trivial.
+
+\begin{ex}
+Let $G$ be a commutative group. Then for $x\in G$,
+\begin{equation}
+x\mapsto x^n
+\end{equation}
+for some fixed integer $n$, is a homomorphism called the
+\textbf{$n$-th power map}\index{Homomorphism!$n$-th Power Map}. \qef
+\end{ex}
+\begin{ex}
+Let $G_i$ be some collection of groups, and $i\in I$ be an
+element of some indexing set. Let
+\begin{equation}
+G = \prod G_{i}
+\end{equation}
+be direct product of all $G_i$, for all $i\in I$. So an
+element of $G$ would be a tuple consisting of components
+from each of the $G_i$. Let
+\begin{equation}
+p_i:G\to G_i
+\end{equation}
+be the projection of the $i^{th}$ factor. It selects the
+component of the tuples in $G$ which corresponds to the
+contribution from the group $G_i$. Then $p_i$ is a
+homomorphism. \qef
+\end{ex}\begin{quote}\begin{thm}
+Let $G$, $G'$ be groups, and $S$  be a set of generators of
+$G$. Let
+\begin{equation}
+f:S\to G'
+\end{equation}
+be a map. If there exists a homomorphism $\widetilde{f}:G\to
+G'$ such that when we restrict $G$ to be $S$,
+$\widetilde{f}=f$, then there exists only one
+$\widetilde{f}$. 
+\end{thm}
+\end{quote}
+In other words, $f$ has at most one extension to a
+homomorphism of $G$ into $G'$. 
+
+Let $f:G\to G'$ and $g:G'\to G''$ be two
+group-homomorphisms. Then the composition $g\circ f$ is also
+a group homomorphism. If $f,g$ are isomorphisms then so is
+$g\circ f$. Further, $f^{-1}:G'\to G$ is also an
+isomorphism. In particular, the set of all automorphisms of
+$G$ is itself a group, denoted as $\aut(G)$.
+\begin{defn}
+Let $f:G\to G'$ be a group homomorphism. Let $e,e'$ be the
+respective unit elements of $G,G'$. We can then define the
+\textbf{kernel}\index{Kernel!Group Homomorphism} of $f$ to
+be the subset of $G$ consisting of all elements $x$ such
+that $f(x)=e'$.
+\end{defn}
+We immediately see that the kernel forms a subgroup of $G$,
+since for any two $x,y\in\ker(f)$, we have
+\begin{align*}
+f(x+y) &= f(x)+f(y)\\
+&= e'+e'\\
+&= e'.
+\end{align*}
+Furthermore, since $f$ is a homomorphism, we have $f(e)=e'$
+and
+\begin{equation}
+f(e) = f(xx^{-1}) = f(x)f(x)^{-1} = e'f(x^{-1})=e'
+\end{equation}
+which implies $f(x^{-1})=e'$. So $x^{-1}$ is in $\ker(f)$.
+\begin{prop}
+Let $f:G\to G'$ be a group homomorphism. Let $H'$ be the
+\textbf{image}\index{Homomorphism!Image} of $f$. Then $H'$
+is a subgroup of $G'$.
+\end{prop}
+\begin{proof}
+Observe that for $x,y\in G$, that
+\begin{equation}
+f(xy)=f(x)f(y)\in H'.
+\end{equation}
+Further, since $f(e)=e'\in H'$ (so $H'$ has an identity
+element), we see
+\begin{equation}
+f(xx^{-1})=f(x)f(x^{-1})=e'\Rightarrow f(x^{-1})\in H'.
+\end{equation}
+So the inverse of an arbitrary element is in $H'$, as is the
+identity element, which is sufficient for $H'$ to be a
+subgroup. 
+\end{proof}
+\begin{rmk}
+The kernel and image of $f$ are denoted by $\ker(f)$ and
+$\imag(f)$ respectively.
+\end{rmk}

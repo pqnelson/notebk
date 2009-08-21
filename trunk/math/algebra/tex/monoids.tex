@@ -1,0 +1,401 @@
+%%
+%% monoids.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 22 11:22:31 2008 Alex Nelson
+%% Last update Mon Dec 22 11:22:31 2008 Alex Nelson
+%%
+
+Let $S$ be some set. A mapping
+\begin{equation}
+S\times S\to S
+\end{equation}
+is sometimes called a \textbf{law of composition}\index{Law Of Composition} (of $S$
+into itself). If $x,y$ are elements of $S$, the image of the
+pair $(x,y)$ under this mapping is also called their
+\textbf{product}\index{Product} under the law of composition. It will be
+denoted as $xy$.
+\begin{ex}
+In $\mathbb{R}^3$, our favorite vector space from calculus
+21 C, an example of a noncommutative law of composition is
+the \textbf{cross product}\index{Cross Product}
+\begin{subequations}
+\begin{align}
+\vec{u}\times\vec{v} &= \begin{vmatrix}\hat{x} & \hat{y} & \hat{z}\\
+u_{x} & u_{y} & u_{z}\\
+v_{x} & v_{y} & v_{z}
+\end{vmatrix}\\
+&= (u_{y}v_{z}-u_{z}v_{y})\hat{x} +
+(u_{z}v_{x}-u_{x}v_{z})\hat{y} + (u_{x}v_{y}-u_{y}v_{x})\hat{z}
+\end{align}
+\end{subequations}
+Observe that the dot product does not really satisfy the
+criteria for the composition, because the dot product
+``takes in'' two vectors and it ``spits out'' a scalar. But
+for a composition, it needs to ``take in'' two of the same
+object, and it ``spits out'' the same object. The cross
+product does this, it ``takes in'' two 3-vectors and it
+``spits out'' a 3-vector. \qef
+\end{ex}
+\begin{ex}
+Consider multiplication of complex numbers
+\begin{equation}
+(t + iu)(x + iy) = (xt - yu) + i(ux + ty)
+\end{equation}
+It takes in two complex numbers, and it returns a complex
+number. It is commutative. \qef
+\end{ex}
+\begin{ex}
+Consider an arbitrary vector space $V$ over some field
+$\mathbb{F}$. Given any two vectors $\vec{u}$, $\vec{v}\in
+V$, we have the commutative composition operation of vector
+addition
+\begin{equation}
+(\vec{u}+\vec{v})\in V
+\end{equation}
+which means that we have a law of composition for vector
+spaces. \qef
+\end{ex}
+\begin{ex}
+Let $W$ be a vector space over the field
+$\mathbb{F}$. Consider two linear operators: 
+\begin{equation}
+T,U:W\to W
+\end{equation}
+then we may compose the linear operators into a new linear
+operator
+\begin{equation}
+V = T\circ U
+\end{equation}
+so when acting on some element $\vec{w}\in W$ we have
+\begin{equation}
+V(\vec{w}) = T\Big(U(\vec{w})\Big)
+\end{equation}
+which is also a linear operator. \qef
+\end{ex}
+Similarly, for more general (not necessarily commutative, but possibly
+commutative) operations, we use the symbol `$\cdot$' and
+write $x\cdot y$ (or more generally just $xy$).
+
+Now in general, if the composition is commutative (so
+$xy=yx$) then we usually use the symbol `+' to indicate this
+and generically call it ``\textbf{addition}''\index{Addition}. So when
+$x+y=y+x$ (i.e. when the operation is commutative) we use
+the generic term ``addition'' and the symbol `+' to indicate
+this. 
+
+But to be fully general, a generic law of composition is
+dubbed ``multiplication'', and if it is commutative we call
+it ``addition''. We use the corresponding terminology
+(e.g. ``the sum of $x$ and $y$ is $x+y$'', ``given $u$ and
+$v$, their product is $uv$'').
+
+Now let us consider a set $S$ with a law of composition. If
+$x,y,z$ are elements of $S$, we can write their product in
+two ways: $(xy)z$ and $x(yz)$. \marginpar{Screw with the
+  parenthese, i.e. order of operating doesn't matter,
+  operation is associative}If $(xy)z=x(yz)$ for all
+$x,y,z\in S$, then we say that their law of composition is ``\textbf{associative}''\index{Associativity}.
+
+An element $e$ of $S$ such that
+\begin{equation}
+ex = xe = x
+\end{equation}
+for all $x\in S$ is called a \textbf{unit element}\index{Unit Element}.
+(When the law of composition is written additively, the unit
+element is denoted by 0, and is \textbf{zero element}\index{Zero Element}.) 
+A unit element is unique, suppose that there is another unit
+element $e'$ distinct from $e$, then
+\begin{equation}
+e = ee' = e'
+\end{equation}
+by assumption. In most cases, the unit element is written
+simply as 1 (instead of $e$). It is a generalization of the
+notion of the identity element with respect to some given
+``Law of Composition''. For most of this section, we'll use
+$e$ for clarity when specifying the basic properties.
+
+Now, a \textbf{monoid}\index{Monoid} is a set $G$ with a law
+\marginpar{Monoid: a set of elements equipped with some law of composition, that is closed under said law of composition}of composition which is associative, and
+having a unit element (which implies that $G$ is never
+empty). Note that there is nothing about being finite or
+infinite, nor is there any specification about the law of
+composition possessing an inverse.
+
+\begin{ex}
+Consider the natural numbers with 0\footnote{The author, not
+  being French, doesn't believe 0 is either natural or a number.},
+that is
+$\mathbb{N}\cup\{0\}$. We have the law of composition
+defined by addition in the usual way (so $1+0=1$, $2+4=6$,
+etc.) and we have the additive identity $0$. If we didn't
+have 0, we'd be a bit out of luck as there is no additive
+identity in $\mathbb{N}$. So all by itself, $\mathbb{N}$ is
+not a monoid, but the union $\mathbb{N}\cup\{0\}$ is a
+monoid as it has the additive identity. \qef
+\end{ex}
+\begin{ex}
+Let $V$ be a vector space over the field $\mathbb{F}$. Let
+$\mathcal{L}(V)$ be the set of linear operators on
+(``endomorphisms of'') $V$. Then $\mathcal{L}(V)$ is a
+monoid in two different ways: one is with the law of
+composition being matrix addition with the unit element
+being the zero matrix; the other is with the law of
+composition being matrix multiplication with the unit
+element being the identity matrix. \qef
+\end{ex}
+
+Let $G$ be a monoid, and $x_1,\ldots,x_n$ be elements of $G$
+\marginpar{Remember, we have the law of composition generically referred to as ``multiplication''}(where $n>1$ is some integer). We can define their product
+inductively:
+\begin{equation}
+\prod^{n}_{\nu=1}x_{\nu}=x_1\cdots x_n = (x_1\cdots
+x_{n-1})x_n.
+\end{equation}
+Now, don't jump to conclusions! It is very tempting to think
+of this as just the usual product series as we learned from
+analysis, but this is more general due to this just being a
+way to iterate the law of composition on a sequence of
+elements in $G$. Note that we did define it to be careful
+about the order of operating. 
+
+\marginpar{Extended associativty for an arbitary number of elements}We can also observe that we have the following rule
+\begin{equation}
+\prod^{m}_{\mu=1}x_{\mu}\prod^{n}_{\nu=1}x_{m+\nu}=\prod^{m+n}_{\nu=1}x_{\nu}
+\end{equation}
+which essentially asserts \emph{that we can insert
+  parentheses in any manner in our product without changing
+  its value}. This is actually relatively trivial since
+monoids have their law of composition be associative.
+\begin{sketch}
+We can do this proof by induction on $m$. So for an
+arbitrary positive integer, we have
+\textbf{Base Case:} $m=2$ Observe that
+\begin{subequations}
+\begin{align}
+\prod^{m}_{\mu=1}x_{\mu}\cdot\prod^{n}_{\nu=1}x_{m+\nu}
+&= (x_1\cdot x_2)\cdot(x_3\cdot(\cdots)\cdot x_{2+n})\\
+&= x_1\cdot x_2 \cdot x_3 \cdot (\cdots)\cdot x_{2+n}\text{ (by Associativity)}\\
+&= \prod^{2+n}_{\nu=1}x_{\nu}
+\end{align}
+\end{subequations}
+where we justify the last step by just grouping terms by
+associativity of the law of composition.
+
+\textbf{Inductive Hypthotesis:} Assume this works for
+arbitrary $m$.
+
+\textbf{Inductive Case:} For $m+1$ we have
+\begin{subequations}
+\begin{align}
+\prod^{m+1}_{\mu=1}x_{\mu}\cdot\prod^{n}_{\nu=1}x_{\nu+m+1} &= 
+\left(\prod^{m}_{\mu=1}x_{\mu}\right)\cdot x_{m+1}\cdot\left(\prod^{n}_{\mu=1}x_{\mu+m+1}\right)\\
+&= \left(\prod^{m}_{\mu=1}x_{\mu}\right)\cdot\left(\prod^{n}_{\mu=1}x_{\mu+m}\right)
+\end{align}
+\end{subequations}
+where we justify that last step by, again, the associativity
+of the law of composition, since we're using a monoid. Then
+we see that this is precisely the case for $m$ which we
+assumed worked! So that concludes our proof by induction. $\spadesuit$
+\end{sketch}
+
+Also note just a few standards\index{Product!Conventions} we have with the product. For
+instance, we have
+\begin{equation}
+\prod^{m+n}_{m+1}x_{\nu}\text{  instead of  }
+\prod^{n}_{\nu}x_{m+\nu}
+\end{equation}
+and we \emph{define}
+\begin{equation}
+\prod^{0}_{\nu=1}x_\nu = e.
+\end{equation}
+
+It should be possible to define more general laws of
+composition, that is to say maps $S_{1}\times S_{2}\to
+S_{3}$ where $S_1,S_2,S_3$ are arbitrary sets. One can then
+express associativity and commutativity in any setting where
+they make sense to express them (it will make more sense
+that than sentence just written). For instance, to have
+commutativity we need the law of composition take the form
+of 
+\begin{equation}
+f: S\times S\to T
+\end{equation}
+where the two sets that are ``eaten'' by $f$ are necessarily
+the same. \textbf{Commutativity}\index{Commutativity} then
+means that $f(x,y)=f(y,x)$ (or omitting $f$, $xy=yx$). 
+
+For associativity, when would it make sense? There are 8 possible
+cases one can imagine
+\begin{equation*}
+\begin{array}{ccc}
+S\times S\to S & S\times T\to S & T\times S\to S\\
+T\times T\to T & S\times T\to T & T\times S\to T\\
+S\times S\to T & T\times T\to S & 
+\end{array}
+\end{equation*}
+To have associativity, we need to have 
+\begin{equation}
+f(f(a,b),c) = f(f(a,c),b)\text{ or } f(a,f(b,c))=f(b,f(a,c))
+\end{equation}
+so that means that $b,c$ are both elements of the same
+set. That automatically rules out two possibilities
+\begin{equation*}
+S\times S\to T\quad\text{and}\quad T\times T\to S.
+\end{equation*}
+By symmetry, we can see that if $S\times S\to S$ is
+associative, then $T\times T\to T$ is also
+associative. Similarly, if $S\times T\to S$ is associative,
+then $T\times S\to T$ is also associative. Commuting the
+position of the arguments doesn't change anything either, so
+if $S\times T\to S$ is associative then $T\times S\to S$ is
+also associative. So the only cases that can be associative
+\marginpar{When associativity could make sense}are
+\begin{equation}
+\begin{array}{ccc}
+S\times S\to S & S\times T\to S & T\times S\to S\\
+T\times T\to T & S\times T\to T & T\times S\to T
+\end{array}
+\end{equation}
+and all others cannot be associative.
+
+Now, if the law of composition of $G$ is commutative, we say
+that $G$ is \textbf{commutative} (or more often \textbf{Abelian}\index{Abelian!Module}\index{Module!Abelian}).
+
+\begin{prop}
+Let $G$ be a commutative monoid, and $x_1$, $\ldots$, $x_n$
+be elements of $G$. Let $\psi$ be a bijection of the set of
+integers $(1,\ldots,n)$ onto itself (in other words, it's a
+permutation of $(1,\ldots,n)$). Then
+\begin{equation}
+\prod^{n}_{\nu=1}x_{\psi(\nu)} = \prod^{n}_{\nu=1}x_{\nu}
+\end{equation}
+\end{prop}
+\begin{proof}
+First let us show by induction that we can reorder a product
+of a sequence of elements in arbitrary order.
+\textbf{Base Case:} $n=2$ So
+\begin{equation}
+xy = yx
+\end{equation}
+which is trivially true from the definition of a commutative
+monoid.
+
+\textbf{Inductive Hypothesis:} Assume this works for
+arbitrary $n$.
+
+\textbf{Inductive Step:} We can show that since the law of
+composition maps $G\times G\to G$ that
+\begin{equation}
+\prod^{n}_{\nu=1}x_{\psi(\nu)} = y
+\end{equation}
+and by the inductive hypothesis we have
+\begin{equation}
+\prod^{n}_{\nu=1}x_{\nu} = y
+\end{equation}
+thus
+\begin{equation}
+yx_{n+1} = x_{n+1}y
+\end{equation}
+by commuting $x_{n+1}$ through all of the elements in the
+product. Thus we cover arbitrary permutations of
+$(1,\ldots,n+1)$ onto itself.
+\end{proof}
+
+Let $G$ be a commutative monoid, let $I$ be a set, and let
+$f:I\to G$ be a mapping such that $f(i)=e$ for almost all
+$i\in I$. (Here and thereafter, \textbf{almost all}\index{Almost All} 
+means \emph{all but a finite number}.) Let $I_{0}$ be the
+subset of $I$ consisting of those $i$ such that $f(i)\neq
+e$. By
+\begin{equation}
+\prod_{i\in I}f(i)
+\end{equation}
+we shall mean the product
+\begin{equation}
+\prod_{i\in I_{0}}f(i)
+\end{equation}
+taken in any order. 
+
+(When $G$ is written additively, then instead of a product
+sign, we write the sum $\sum$ instead of the product $\prod$.)
+
+We can continue rattling off a grocery list of properties
+that the product has. But it would be a pain in the rear to
+do, and not all that educational. \marginpar{note notation}
+We will, out of laziness, write
+\begin{equation}
+\prod f(i)
+\end{equation}
+omitting the $i\in I$ bit, since we have just seen the order
+doesn't matter. Another matter of convention, we use the
+exponent to indicate the number of times the operation of a
+set is used on a given element. So
+\begin{equation*}
+x^n = \prod^{n}_{i=1}x
+\end{equation*}
+This allows us to have $x^0=e$ and $x^1=x$. We are content
+with this convention, since it allows us to use familiar
+notation making anything to the zeroeth power be the
+identity element.
+
+\begin{ex}
+Consider the set of all invertibe matrices of a given vector
+space $V$ on a field $\mathbb{F}$. This is typically denoted
+as $GL(V)$, and for an arbitrary element $X\in GL(V)$ we
+have
+\begin{equation}
+X^0 = I
+\end{equation}
+where $I$ is the identity matrix. \qef
+\end{ex}
+
+Let $S$, and $S'$ be two subsets of a monoid $G$, then we
+define $SS'$ to be the subset consisting of all elements
+$xy$ with $x\in S$ and $y\in S'$. Inductively, we can define
+the product of a finite number of subsets, and we have
+associativity. Why? How can we see this assertion? Well,
+consider three subsets $S,S',S''$ of $G$. Then we can write
+$(SS')S''=S(S'S'')$. \marginpar{Remember law of compositions map $G\times G\to G$}Observe that we can say $GG=G$ since
+$G$ has a unit element. If $x\in G$, then we can define $xS$
+to be $\{x\}S$ where $\{x\}$ is the set with a single
+element $x$ (this is sort of like a coset). Thus $xS$
+consists of all elements $xy$ with $y\in S$.
+
+\begin{ex}
+Consider all the square matrices on the vector space
+$V=\mathbb{C}^2$ over the scalar field $\mathbb{C}$. Let 
+\begin{equation}
+z = \begin{bmatrix}1&0\\0&-1\end{bmatrix}
+\end{equation}
+and let $S$ be the set of all traceless operators acting on
+$V$. Then
+\begin{equation}
+zS = \{ zy:y\in S\} = \left\{\begin{bmatrix}0&\beta\\-\alpha&0\end{bmatrix}:\alpha,\beta\in\mathbb{C} \right\}
+\end{equation}
+is the, uh, ``comonoid''.\qef
+\end{ex}
+
+We can specify a monoid which is a subset of a given monoid.
+We call it a \textbf{submonoid}\index{Monoid!Submonoid}\index{Submonoid}
+of $G$. To be fully clear, a submonoid of $G$ is a subset
+$H$ of $G$ containing the unit element $e$, and such that --
+if $x,y\in H$ then $xy\in H$ -- or in other words, $H$ is
+\textbf{closed} under the law of composition. Well, by the
+definition of a monoid, we see that $H$ is also a monoid.
+
+We can see a trivial example of a submonoid given a monoid
+is just the powers of an arbitrary element. What does this
+mean? Well, choose some element $x$. What can we do with
+this? Well, we have the law of composition, so we can
+multiply it to itself to get $x^2$. We can then multiply
+this by $x$ again to get $x^3$. We can keep going and going
+for arbitrary $n\in\mathbb{N}$ have the set of $x^n$. But
+this alone is not a monoid. Why? There is no identity
+element, which isn't nice. So we copy the French, and have
+$n\in\{0\}\cup\mathbb{N}$, then $\{x^n:
+n\in\{0\}\cup\mathbb{N}\}$ is a monoid and its closed under
+the law of composition. We see that it is commutative and
+associative. So it's a really nice monoid! 
