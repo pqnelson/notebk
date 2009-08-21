@@ -1,0 +1,126 @@
+%%
+%% geodesicEquation.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Apr  4 13:33:51 2009 Alex Nelson
+%% Last update Sat Apr  4 13:33:51 2009 Alex Nelson
+%%
+
+Geometrically, we wish to find the shortest distance between two
+given points. That is the point of the geodesic equation, it is a
+differential equation that has solutions which are the shortest
+distance between two points! So, how can we do this? Well, we
+usually write the distance between two neighboring points (that
+is the distance between $x^\mu$ and $x^\mu + dx^\mu$) as
+\begin{equation}
+ds^2 = g_{\mu\nu}dx^{\mu}dx^{\nu}
+\end{equation}
+where $g_{\mu\nu}$ is the metric tensor. This is almost what we
+are looking for, kind of, but this relation holds for
+\emph{neighboring points!} What if the distance is greater than
+$dx^{\mu}$? We need to do something else.
+
+Being physicists (or mathematical physicists, or ``even just''
+mathematicians) we can find the desired trajectories from a
+Lagrangian approach. We demand that
+\begin{equation}
+I = \int ds = \int \sqrt{ds^2}
+\end{equation}
+vanish under arbitrary variations. We let
+\begin{equation}
+\mathcal{L} = E^{1/2} =
+\sqrt{g_{\mu\nu}\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}}
+\end{equation}
+be our Lagrangian, and $\lambda$ be an ``affine parametrization''
+of the trajectory. To physicists, this means $\lambda=a\tau+b$
+where $a,b\in\mathbb{R}$, $\tau$ is the proper time, and
+$a\neq0$. We find that our integral becomes
+\begin{equation}
+I = \int\mathcal{L}d\lambda
+\end{equation}
+and it has variation
+\begin{subequations}
+\begin{align}
+\delta I &= \delta\int\mathcal{L}d\lambda\\
+&=\frac{1}{2}\int E^{-1/2}\delta Ed\lambda
+\end{align}
+\end{subequations}
+Let $dx^{\mu}/d\lambda=\dot{x}^{\mu}$. We find that the variation
+of $E$ is explicitly 
+\begin{subequations}
+\begin{align}
+\delta E &=
+\delta\left(g_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}\right)\\
+&= (\delta g_{\mu\nu})\dot{x}^{\mu}\dot{x}^{\nu} +
+g_{\mu\nu}\left(\frac{d\delta x^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}+\frac{dx^{\mu}}{d\lambda}\frac{d\delta x^{\nu}}{d\lambda}\right)\\
+&= (\delta g_{\mu\nu})\dot{x}^{\mu}\dot{x}^{\nu} +
+2g_{\mu\nu}\frac{d\delta
+  x^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}
+\end{align}
+\end{subequations}
+We justify the last step by index gymnastics. 
+
+We find that the variation of the metric along the curve is
+\begin{subequations}
+\begin{align}
+\delta g_{\mu\nu} &= \left(\frac{\partial}{\partial
+  x^{\sigma}}g_{\mu\nu}\right)\delta x^{\sigma}\quad\text{(Chain Rule)}\\
+&= \partial_{\sigma}g_{\mu\nu}\delta x^{\sigma}.
+\end{align}
+\end{subequations}
+We now have
+\begin{equation}
+\delta E = 2g_{\mu\nu}\frac{d\delta x^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}
++\delta x^{\sigma}(\partial_{\sigma}g_{\mu\nu})\dot{x}^{\mu}\dot{x}^{\nu}
+\end{equation}
+We plug this expression back into our variation of the integral,
+and perform integration by parts on the first term to find
+\begin{subequations}
+\begin{align}
+\delta I &= \frac{1}{2}\int\left[-2\delta
+  x^{\mu}\frac{d}{d\lambda}\left(E^{-1/2}g_{\mu\nu}\frac{dx^{\nu}}{d\lambda}\right)+E^{-1/2}\delta
+  x^{\mu}\dot{x}^{\alpha}\dot{x}^{\beta}\partial_{\mu}g_{\alpha\beta}\right]\\
+&= 0
+\end{align}
+\end{subequations}
+where we have changed indices on the second term to make the
+variations of $x$ both have the same index, so we can factor it
+out. We then end up with the Geodesic equations
+\begin{equation}
+\frac{d}{d\lambda}\left(E^{-1/2}g_{\mu\nu}\frac{dx^{\nu}}{d\lambda}\right)
+-
+\frac{1}{2}E^{-1/2}\partial_{\mu}g_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}
+= 0.
+\end{equation}
+Since the parametrization was chosen with some $\lambda$, we can
+choose $\lambda=s$ so $E=1$ giving us
+\begin{equation}
+\boxed{
+  \frac{d}{ds}\left(g_{\alpha\beta}\frac{dx^{\beta}}{ds}\right) -
+  \frac{1}{2}\partial_{\alpha}g_{\beta\gamma}\frac{dx^{\beta}}{ds}\frac{dx^{\gamma}}{ds}=0}
+\end{equation}
+We see that
+\begin{subequations}
+\begin{align}
+\frac{d}{ds}\left(g_{\alpha\beta}\frac{dx^{\beta}}{ds}\right) &=
+\frac{dg_{\alpha\beta}}{ds}\frac{dx^{\beta}}{ds}+g_{\alpha\beta}\frac{d^{2}x^{\beta}}{ds^2}\\
+&= \partial_{\gamma}g_{\alpha\beta}\frac{dx^{\beta}}{ds}\frac{dx^{\gamma}}{ds}+g_{\alpha\beta}\frac{d^{2}x^{\beta}}{ds^{2}}\\
+&= \frac{1}{2}\left(\partial_{\beta}g_{\alpha\gamma}+\partial_{\gamma}g_{\alpha\beta}\right)\frac{dx^{\beta}}{ds}\frac{dx^{\gamma}}{ds}+g_{\alpha\beta}\frac{d^{2}x^{\beta}}{ds^{2}}
+\end{align}
+\end{subequations}
+by the product rule, chain rule, and index gymnastics
+respectively. We plug this into the geodesic equation to find
+\begin{equation}
+g_{\alpha\beta}\frac{d^{2}x^{\beta}}{ds^{2}} +
+\frac{1}{2}(\partial_{\gamma}g_{\alpha\beta}+\partial_{\beta}g_{\alpha\gamma}-\partial_{\alpha}g_{\beta\gamma})\frac{dx^{\beta}}{ds}\frac{dx^{\gamma}}{ds}=0.
+\end{equation}
+We can identify the parenthetic term as the Christoffel symbol
+$\Gamma_{\alpha\beta\gamma}$, multiply through by $g^{\alpha\mu}$
+to get
+\begin{equation}
+\boxed{ \frac{d^{2}x^{\mu}}{ds^{2}} +
+  {\Gamma^{\mu}}_{\beta\gamma}\frac{dx^{\beta}}{ds}\frac{dx^{\gamma}}{ds}=0}
+\end{equation}
+which is the famous geodesic equation.
