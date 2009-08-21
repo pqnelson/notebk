@@ -8,7 +8,7 @@
 %% Last update Wed Jun 10 10:30:18 2009 Alex Nelson
 %%
 \begin{defn}{(Laplace Transform)}
-The \define{Laplace Transform} of a function $f(t)$ (for $t\geq
+The \textbf{Laplace Transform} of a function $f(t)$ (for $t\geq
 0$) is the function $\widetilde{f}(z)$ defined by
 \begin{equation}%\label{eq:}
 \widetilde{f}(z) = \mathcal{L}\{f\}(z) = \int^{\infty}_{0}e^{-zt}f(t)dt
@@ -70,7 +70,7 @@ and we have
 \frac{d}{dz}\widetilde{f}(z) = -\int^{\infty}_{0}te^{-zt}f(t)dt
 \end{equation}
 for $\re(z)>\sigma$. The number $\sigma$ is called the
-``\define{Abscissa of Convergence}'' and if we\marginpar{define $\rho$} define the number
+``\textbf{Abscissa of Convergence}'' and if we\marginpar{define $\rho$} define the number
 $\rho$ by 
 \begin{equation}%\label{eq:}
 \rho=\inf\{B\in\mathbb{R}|\text{there exists an }A>0\text{ such
@@ -110,7 +110,7 @@ $\re(z)>\sigma(f)-\re(a)$, we have
 
 \begin{thm}{(Second Shifting Theorem)}%\label{thm:}
 Let $H(t)=0$ if $t<0$ and $H(t)=1$ if $t\geq1$ be the
-\define{Step Function} or \define{Heaviside Step Function}. Let
+\textbf{Step Function} or \textbf{Heaviside Step Function}. Let
 $a\geq0$ and let $g(t)=f(t-a)H(t-a)$; that is, $g(t)=0$ if $t<a$
 while $g(t)=f(t-a)$ if $t\geq a$. Then for $\re(z)>0$ we have
 \begin{equation}%\label{eq:}
@@ -118,7 +118,7 @@ while $g(t)=f(t-a)$ if $t\geq a$. Then for $\re(z)>0$ we have
 \end{equation}
 \end{thm}
 \begin{defn}{(Convolution)}%\label{defn:}
-The ``\define{Convolution}'' of two functions $f(t)$ and $g(t)$
+The ``\textbf{Convolution}'' of two functions $f(t)$ and $g(t)$
 is defined for $t\geq0$ by
 \begin{equation}%\label{eq:}
 (f*g)(t)=\int^{\infty}_{0}f(t-\tau)g(\tau)d\tau
@@ -143,7 +143,6 @@ u(t) = \int^{t}_{-\infty}\delta(\tau)d\tau
 \end{equation}
 where $\delta$ is the delta function we all know and love.
 \\
-
 \begin{tabular}{|p{3cm}|l|l|}
 \hline
 %&&\\

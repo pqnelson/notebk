@@ -5,6 +5,7 @@
 \RequirePackage{amsthm}
 \RequirePackage{framed}
 \usepackage{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
 \usepackage{mathrsfs}
 \usepackage{hyperref}
 \hypersetup{
@@ -54,3 +55,11 @@
 \newcommand{\define}[1] {\textbf{#1}\index{#1}}
 \newcommand{\cov}[2]{{#1}_{#2}}
 \newcommand{\contrav}[2]{{#1}^{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We also make the marin notes look prettier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\marginparwidth}{1.2in}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}

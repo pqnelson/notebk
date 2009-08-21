@@ -1,5 +1,5 @@
 MAIN=main
-TEX=latex
+TEX=pdflatex
 BIB=bibtex
 MPOST=mpost
 
@@ -8,6 +8,3 @@ all:
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	dvips $(MAIN).dvi
-	ps2pdf $(MAIN).ps
-	rm $(MAIN).dvi

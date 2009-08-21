@@ -8,7 +8,7 @@
 ## Last update Thu May 28 20:06:39 2009 Alex Nelson
 ## 
 MAIN=realAnalysis
-TEX=latex
+TEX=pdflatex
 BIB=bibtex
 MPOST=mpost
 
@@ -17,8 +17,5 @@ all: img
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	dvips $(MAIN).dvi
-	ps2pdf $(MAIN).ps
-	rm $(MAIN).dvi
 img:
 	$(MPOST) img.mp
