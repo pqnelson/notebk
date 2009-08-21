@@ -8,22 +8,9 @@
 %% Last update Mon Jul 27 16:55:06 2009 Alex Nelson
 %%
 \documentclass{amsart}
-\usepackage{comment}
-\usepackage{fly}
+\usepackage{fly,brackets}
 \usepackage{feyn,color,feynmp}
-\usepackage{brackets}
 \numberwithin{equation}{section}
-
-\def\slashchar#1{\setbox0=\hbox{$#1$}           % set a box for #1
-   \dimen0=\wd0                                 % and get its size
-   \setbox1=\hbox{/} \dimen1=\wd1               % get size of /
-   \ifdim\dimen0>\dimen1                        % #1 is bigger
-      \rlap{\hbox to \dimen0{\hfil/\hfil}}      % so center / in box
-      #1                                        % and print #1
-   \else                                        % / is bigger
-      \rlap{\hbox to \dimen1{\hfil$#1$\hfil}}   % so center #1
-      /                                         % and print /
-   \fi}                                         % 
 
 
 \newcommand{\sgn}{\operatorname{{\mathrm sgn}}}
