@@ -64,6 +64,9 @@ for time evolution is
 \begin{subequations}
 \begin{align}
 \<\phi,Z(m)\psi\> &= \int_{\mathcal{A}(m)}\overline{\phi(A|_{S})}\psi(A|_{S})e^{-S(A)}\mathcal{D}A\\
-&= \int e^{-ikA_{3}}e^{ikA_{1}}e^{ikA_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-1}{2e^{2}V}(F+2n\pi)^{2}}\mathcal{D}A
+&= \int_{\mathcal{A}(m)}
+e^{-ikA_{3}}e^{ikA_{1}}e^{ikA_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-1}{2e^{2}V}(F+2n\pi)^{2}}\mathcal{D}A\\
+&= \iiint^{2\pi}_{0}
+e^{-ikA_{3}}e^{ikA_{1}}e^{ikA_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-e^{2}Vn^{2}}{2}}e^{iFn} \frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}
 \end{align}
 \end{subequations}
