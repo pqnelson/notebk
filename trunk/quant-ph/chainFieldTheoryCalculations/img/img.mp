@@ -1,4 +1,11 @@
 u:=0.5cm;
+verbatimtex
+\documentclass{amsart}
+\usepackage[T1]{fontenc}
+\begin{document}
+etex
+
+
 % upside down trousers diagram 1
 beginfig(5)
   path p[];
@@ -21,11 +28,14 @@ beginfig(5)
   draw p[2];
   draw p[3];
   draw p[4];
+  drawarrow (0,11*u)..(10,11*u-1);
+  drawarrow (10*u,11*u)..(10*u+10,11*u-1);
   draw p[5] dashed evenly;
   draw p[6];
   draw p[7];
   draw p[8];
   draw p[9];
+  drawarrow (5*u,-u)..(5*u-10,-u+1);
   drawdot z[1] withpen pencircle scaled 2;
   drawdot z[2] withpen pencircle scaled 2;
   drawdot z[3] withpen pencircle scaled 2;
@@ -37,5 +47,9 @@ beginfig(5)
   label.bot(btex $v_{3}$ etex, z[3]);
   label.top(btex $v_{1}$ etex, z[1]);
   label.top(btex $v_{2}$ etex, z[2]);
+  label.lrt(btex $e_{4}$ etex, (3.15*u,5*u));
+  label.llft(btex $e_{5}$ etex, (6.85*u,5*u));
 endfig;
+
+verbatimtex \end{document} etex
 end;
