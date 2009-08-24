@@ -1,0 +1,49 @@
+%%
+%% cup.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Aug 24 16:23:59 2009 Alex Nelson
+%% Last update Mon Aug 24 16:23:59 2009 Alex Nelson
+%%
+
+\begin{wrapfigure}{l}{1.3in}
+\includegraphics{img/img.7}
+\end{wrapfigure}
+
+For the next situation, we'll consider the doodle on the
+left. That is, it's...well, a cup. Dual to the picture before,
+where from the void there came about a cap, here from a cup
+begath the void. We expect this to be remarkably similar to the
+calculation we just performed. We should consider the initial
+state to be described by the chain
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{n_{v}}\leftarrow \mathbb{Z}^{n_{e}}
+\end{equation}
+where $n_v$, $n_e$ are the number of vertices and edges
+(respectively). The final state is the vacuous one
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{\emptyset}\leftarrow\mathbb{Z}^{\emptyset}
+\end{equation}
+since there are no edges or vertices, we have to work with the
+empty set! Putting together everything we know, we get the chain
+complex
+\begin{equation}%\label{eq:}
+\begin{CD}
+\mathbb{Z}^{1} @<<< \mathbb{Z}^{1}\\
+@VVV                 @VVV\\
+\mathbb{Z}^{1} @<<< \mathbb{Z}^{1} @<<< \mathbb{Z}^{1}\\
+@AAA                 @AAA\\
+\mathbb{Z}^{\emptyset} @<<< \mathbb{Z}^{\emptyset}.
+\end{CD}
+\end{equation}
+Where we have taken advantage of the obvious: there is one vertex
+and one edge in the initial state.
+
+We see that the Hilbert spaces describing the initial and the
+final states are precisely those from the corresponding component
+from the previous computation. That is, the initial state is
+$L^{2}(U(1))$ and the final state is described by the Hilbert
+space $\mathbb{C}$. We can similarly choose our favorite states
+from each space ($e^{ikA}$ and 1 respectively).

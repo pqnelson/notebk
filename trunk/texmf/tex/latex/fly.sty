@@ -5,7 +5,9 @@
 \usepackage{amsthm}
 \usepackage{framed}
 \usepackage[final]{graphicx}
-%\DeclareGraphicsRule{*}{mps}{*}{}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
 \usepackage{mathrsfs}
 \usepackage[final]{hyperref}
 \hypersetup{
