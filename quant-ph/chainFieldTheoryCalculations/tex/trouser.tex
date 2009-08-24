@@ -254,8 +254,11 @@ Similarly for $L^{2}(U(1))^{\otimes 2}$ we have a
 ``tensor product'' of two such functions yielding one that looks
 like
 \begin{equation}%\label{eq:}
-\phi(A_{1},A_{2}) = \exp(ikA_{1})\exp(ikA_{2}).
+\phi(A_{1},A_{2}) = \exp(ik_{1}A_{1})\exp(ik_{2}A_{2}).
 \end{equation}
+Note that $k_{1},k_{2}$ are two distinct parameters, but for
+simplicity we'll just denote it by $k$ in this calculation (it
+does make a difference as we will see in the next example!).
 We will use such functions to figure out the components of the
 operator in question.
 
@@ -296,13 +299,24 @@ our case becomes
 \mathcal{D}A = \frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}\frac{dA_{4}}{2\pi}\frac{dA_{5}}{2\pi}
 \end{equation}
 To calculate the action, we need to pick an orientation for the
-manifold. We do this in figure \ref{fig:img4}, and we calculate
+manifold. 
+
+We do this in figure \ref{fig:img4}. Explicitly, it's like 
+peeling the ``skin'' from the tent by cutting it. We cut it by
+starting at $v_{3}$ and moving against the orientation of $e_{3}$
+(contributing a term $-A(e_{3})$), then down $e_{4}$
+(contributing a term $+A(e_{4})$), then around $e_{1}$ in its
+orientation (contributing a term $+A(e_{1})$), then back up
+$e_{4}$ (contributing a term $-A(e_{4})$), then down $e_{5}$
+(contributing a term $+A(e_{5})$), then around $e_{2}$ in its
+orientation (contributing a term $+A(e_{2})$), then up $e_{5}$ to
+where we started (contributing a term $-A(e_{5})$). We thus calculate
 the curvature of the entire manifold to be:
 \begin{equation}%\label{eq:}
 \begin{split}
 F =&
-A(e_{3})-A(e_{4})+A(e_{1})+A(e_{4})-A(e_{5})+A(e_{2})+A(e_{5}) \\
-=& A(e_{3})+A(e_{1})+A(e_{2})
+-A(e_{3})-A(e_{4})+A(e_{1})+A(e_{4})-A(e_{5})+A(e_{2})+A(e_{5}) \\
+=& -A(e_{3})+A(e_{1})+A(e_{2})
 \end{split}
 \end{equation}
 We end up with the integrand being
@@ -341,16 +355,11 @@ curvature, we end up with
 %\begin{subequations}
 \begin{align*}
 \<\phi,Z(M)\psi\> &= \iiint^{2\pi}_{0}e^{-ikA_{1}}e^{-ikA_{2}}e^{ikA_{3}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-e^{2}Vn^{2}}{2}\right)\exp(inF)\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}\\
-&=\iint^{2\pi}_{0}e^{-ikA_{1}}e^{-ikA_{2}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-e^{2}Vn^{2}}{2}\right)\exp(inA_{1}+inA_{2})\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\color{red}{\underbracket[0.25pt]{\int^{2\pi}_{0}e^{i(n+k)A_{3}}\frac{dA_{3}}{2\pi}}_{\text{not quite right...}}}
+&=\iint^{2\pi}_{0}e^{-ikA_{1}}e^{-ikA_{2}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-e^{2}Vn^{2}}{2}\right)\exp(inA_{1}+inA_{2})\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\int^{2\pi}_{0}e^{i(-n+k)A_{3}}\frac{dA_{3}}{2\pi}
 \end{align*}
 %\end{subequations}
-Note that the term in red on that last line is not quite
-right. The only explanation I could find is that I botched the
-curvature calculation, it should be
-\begin{equation}%\label{eq:}
-F = A_{1}+A_{2}-A_{3}
-\end{equation}
-which then produces the correct expression, yielding for our calculations
+We see that our careful studying of the curvature yields a factor
+which turns out to be the Kronecker delta! We explicitly obtain for our calculations
 \begin{equation}%\label{eq:}
 \<\phi,Z(M)\psi\> = \iint^{2\pi}_{0}e^{-ikA_{1}}e^{-ikA_{2}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-e^{2}Vn^{2}}{2}\right)\exp(inA_{1}+inA_{2})\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\underbracket[0.25pt]{\int^{2\pi}_{0}e^{i(n-k)A_{3}}\frac{dA_{3}}{2\pi}}_{\delta_{k,n}}
 \end{equation}

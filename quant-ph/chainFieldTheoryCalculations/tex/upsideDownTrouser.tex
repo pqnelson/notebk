@@ -52,7 +52,7 @@ Z(\mathbb{Z}^{2})\cong L^{2}(U(1))^{\otimes 2}.
 We pick out some basis vectors in the initial and final states,
 specifically
 \begin{equation}%\label{eq:}
-\psi = e^{ikA_{1}}e^{ikA_{2}}
+\psi = e^{ik_{1}A_{1}}e^{ik_{2}A_{2}}
 \end{equation}
 for the initial state, and
 \begin{equation}%\label{eq:}
@@ -65,13 +65,40 @@ for time evolution is
 \begin{align}
 \<\phi,Z(m)\psi\> &= \int_{\mathcal{A}(m)}\overline{\phi(A|_{S})}\psi(A|_{S})e^{-S(A)}\mathcal{D}A\\
 &= \int_{\mathcal{A}(m)}
-e^{-ikA_{3}}e^{ikA_{1}}e^{ikA_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-1}{2e^{2}V}(F+2n\pi)^{2}}\mathcal{D}A\\
+e^{-ikA_{3}}e^{ik_{1}A_{1}}e^{ik_{2}A_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-1}{2e^{2}V}(F+2n\pi)^{2}}\mathcal{D}A\\
 &= \iiint^{2\pi}_{0}
-e^{-ikA_{3}}e^{ikA_{1}}e^{ikA_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-e^{2}Vn^{2}}{2}}e^{iFn} \frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}
+e^{-ikA_{3}}e^{ik_{1}A_{1}}e^{ik_{2}A_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-e^{2}Vn^{2}}{2}}e^{iFn} \frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}
 \end{align}
 \end{subequations}
 where $F$ is the curvature (field strength tensor),
-$\mathcal{A}(m)$ is the space of connections on $m$.
+$\mathcal{A}(m)$ is the space of connections on $m$, and the last
+line is (of course) up to some constant.
 
 To compute the field strength we need to calculate the curvature
-of the connection cochains.
+of the connection cochains. If we start at $v_1$, go against the
+orientation of $e_1$ (add term of $-A(e_{1})$), then down $e_4$
+(add term of $+A(e_{4})$), around $e_3$ in the direction towards
+its orientation (add a term of $+A(e_{3})$), up $e_{3}$ (add a
+factor of $-A(e_{5})$), around $e_{2}$ against its orientation
+(add a term of $-A(e_{2})$), back down $e_{5}$ (add a term of
+$+A(e_{5})$), then up $e_{4}$ (add a term of $-A(e_{4})$) to end our computation.
+This results in the curvature being
+\begin{equation}%\label{eq:}
+F = A_{3}-A_{1}-A_{2}
+\end{equation}
+where $A_{i}=A(e_{i})$. We plug this into our calculations to find
+\begin{subequations}%\label{eq:}
+\begin{align}
+\<\phi,Z(m)\psi\> &= \int_{\mathcal{A}(m)}\overline{\phi(A|_{S})}\psi(A|_{S})e^{-S(A)}\mathcal{D}A\nonumber\\
+&=  \iiint^{2\pi}_{0}
+e^{-ikA_{3}}e^{ik_{1}A_{1}}e^{ik_{2}A_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-e^{2}Vn^{2}}{2}}e^{i(A_{3}-A_{1}-A_{2})n} \frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}\\
+&= \int e^{-ikA_{3}}\sum_{n\in\mathbb{Z}} e^{inA_{3}}e^{-e^{2}Vn^{2}/2}\left(\int^{2\pi}_{0}e^{i(n-k_{1})A_{1}}\frac{dA_{1}}{2\pi}\right)\left(\int^{2\pi}_{0}e^{i(n-k_{2})A_{2}}\frac{dA_{2}}{2\pi}\right)\frac{dA_{3}}{2\pi}\\
+&= \int e^{-ikA_{3}}\sum_{n\in\mathbb{Z}} e^{inA_{3}} e^{-e^{2}Vn^{2}/2}\delta_{k_{1},n}\delta_{k_{2},n}\frac{dA_{3}}{2\pi}
+\end{align}
+\end{subequations}
+It's easy to tell by inspection that we expect
+\begin{equation}%\label{eq:}
+Z(m):e^{ik_{1}A_{1}}e^{ik_{2}A_{2}}\mapsto e^{inA_{3}} e^{-e^{2}Vn^{2}/2}\delta_{k_{1},n}\delta_{k_{2},n}
+\end{equation}
+to be how basis vectors in $L^{2}(U(1))^{\otimes 2}$ behave, just
+as we desire.
