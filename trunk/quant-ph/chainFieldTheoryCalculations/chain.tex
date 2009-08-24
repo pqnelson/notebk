@@ -7,25 +7,16 @@
 %% Started on  Sun Aug 16 10:43:51 2009 Alex Nelson
 %% Last update Sun Aug 16 10:43:51 2009 Alex Nelson
 %%
-\documentclass[draft]{amsart}
-\usepackage{url}
-\usepackage{manfnt}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amscd}
-\usepackage{graphicx}
+\documentclass{amsart}
+%\documentclass{article}
 \usepackage{brackets,fly,danger}
 \usepackage{wrapfig}
 \numberwithin{equation}{section}
 
-%\newcommand{\define}[1] {\textbf{#1}\index{#1}}
 \title{Notes on Chain Field Theory}
 %\date{August 16, 2009}
 \email{pqnelson@gmail.com}
-\author{Alex Nelson}
+\author{Alex Nelson (16 August 2009)}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -135,13 +126,14 @@ we know:
 \end{CD}\end{equation}
 We need to deduce what $\mathcal{M}_{2}$ is.
 
-\begin{wrapfigure}{r}{0.55\textwidth}
+\begin{figure}[h]%{0.50\textwidth}
   \begin{center}
-    \includegraphics[width=0.55\textwidth]{img/img3.eps}
+    \includegraphics[width=0.48\textwidth]{img/img3.eps}
   \end{center}
-  \caption{All edges highlighted.}
-\end{wrapfigure}
-Doodled on the right is the diagram with \emph{all} of the edges
+  \caption{All edges highlighted.}\label{fig:img3}
+%  \end{center}
+\end{figure}
+Doodled above in figure \eqref{fig:img3} is the diagram with \emph{all} of the edges
 highlighted. The initial edge is in red, the terminal edge is in
 blue, and the intermediate edges are in purple. We see that there
 is a total of 1+2+2=5 edges, which allows us to deduce that
@@ -212,26 +204,43 @@ We have the following isomorphism
 \end{equation}
 \end{prop}
 \begin{proof}
+We see that for $\varphi\in\hom(\mathbb{Z},U(1))$ that
+\begin{equation}%\label{eq:}
+\varphi(1)=\alpha\quad\Rightarrow\quad \varphi(n)=a^{n}
+\end{equation}
+since $n=1+\cdots+1$ which uses the law of composition in
+$\mathbb{Z}$ as a free group. This is preserved by a homomorphism
+$\varphi$ and becomes multiplication (the law of composition) in
+the group U(1). Since the choice of $a=\exp(i\theta)$ is
+arbitrary (for some $\theta\in[0,2\pi)$), we can choose a
+  different $\varphi$ for each $\theta$ mapping all of
+  $\mathbb{Z}$ to all of U(1).
+\end{proof}
+\begin{comment}
+\begin{proof}
 The proof is more or less roundabout. We know that an element of
 $U(1)$ looks like $\exp(i\theta)$ for some
 $\theta\in\mathbb{R}$. We know we can construct $\mathbb{R}$ from
 $\mathbb{Q}$, and we can construct $\mathbb{Q}$ from
 $\mathbb{Z}$. So we consider a family of homomorphisms
 \begin{equation}%\label{eq:}
-\phi_{m}(n)\in\hom(\mathbb{Z},U(1))
+\phi_{m}(n)=\exp(in/m)\in\hom(\mathbb{Z},U(1))
 \end{equation}
 which really gives us two degrees of freedom to play around with:
-$m$ and $n$. This allows us to embed 
+$m$ and $n$. This is precisely just $(n/m)\in\mathbb{Q}$. This
+allows us to embed
 \begin{equation}%\label{eq:}
 \hom(\mathbb{Q},U(1))\subseteq\hom(\mathbb{Z},U(1))
 \end{equation}
-and by constructing the slice category of \textbf{Grp} over U(1),
-we see that there is an isomorphism from $\hom(\mathbb{Q},U(1))$
-to $\hom(\mathbb{R},U(1))$. Thus by our deduction, there is an
+We can construct from $\mathbb{Q}$ the reals, which allows us to
+have an isomorphism
+$\hom(\mathbb{Q},U(1))\cong\hom(\mathbb{R},U(1))$ but this is
+precisely $U(1)$. Thus by our deduction, there is an
 isomorphism from $\hom(\mathbb{R},U(1))$ to a subset of
 $\hom(\mathbb{Z},U(1))$, and there is the obvious isomorphism
 $\hom(\mathbb{R},U(1))\cong U(1)$ which proves the hypothesis.
 \end{proof}
+\end{comment}
 
 By our proposition, we have that
 \begin{equation}%\label{eq:}
@@ -245,7 +254,93 @@ Thus our cobordism give the time evolution by the functor
 \begin{equation}%\label{eq:}
 Z(M): L^{2}(U(1))\to L^{2}\Big(U(1)\otimes U(1)\Big).
 \end{equation}
-The question we want to answer is: \emph{how exactly does it work?}
+The question we want to answer is: \emph{how exactly does it
+  work?}
+
+The strategy is that we'll consider the object $Z(M)$ as a
+mathematical operator, and we recall from linear algebra to
+compute the entries of an operator we have to compute how it acts
+on basis elements. 
+
+First we need to pick some elements of $L^{2}(U(1))$ and
+$L^{2}(U(1))^{\otimes 2}$. Remember that we are working
+with connections, i.e. functions from $C_{p}$ to $U(1)$. So we
+should choose for $L^{2}(U(1))$ functions of the form
+\begin{equation}%\label{eq:}
+\psi(A) = \exp(ikA).
+\end{equation}
+Similarly for $L^{2}(U(1))^{\otimes 2}$ we have a
+``tensor product'' of two such functions yielding one that looks
+like
+\begin{equation}%\label{eq:}
+\phi(A_{1},A_{2}) = \exp(ikA_{1})\exp(ikA_{2}).
+\end{equation}
+We will use such functions to figure out the components of the
+operator in question.
+
+\begin{prop}%\label{prop:}
+We have by Fourier expansion:
+\begin{equation}%\label{eq:}
+\sum_{n\in\mathbb{Z}}\exp\left(\frac{-1}{2e^{2}V}(A+2n\pi)^{2}\right)
+= \sum_{n\in\mathbb{Z}}\exp\left(\frac{-e^{2}Vn^{2}}{2}\right)e^{inA}
+\end{equation}
+\end{prop}
+
+\begin{figure}[t]
+\includegraphics{img/img4.eps}
+\caption{The manifold with orientation picked arbitrarily. The
+  curvature calculations depend on the parts of the figure
+  colored in. Red contributions are positive, blue contributions
+  are negative}\label{fig:img4}
+\end{figure}
+
+Well, we find by eq (16) of \cite{Wise:2006kg} that
+\begin{equation}%\label{eq:}
+\<{\color{red}\!\!\overbracket[0.25pt]{~\phi~}^{\mathrlap{\;\;\;\;\;\;\;\;\in L^{2}(U(1))^{\otimes 2}}}\!\!},Z(M){\color{blue}\!\underbracket[0.25pt]{\,\,\psi~}_{\mathrlap{\;\;\;\;\;\;\in L^{2}(U(1))}}\!\!}\> =
+\int_{{\substack{\text{connections}\\\text{on $\mathcal{M}$}}}}\overline{\phi(A|_{S'})}\psi(A|_{S}) e^{-S(A)}\mathcal{D}A
+\end{equation}
+where $S(A)$ is the action. This allows us to compute entries in
+$Z(M)$, kind of like how we compute entries in the $S$-matrix. We
+see in section 7 (et seq) of \cite{Wise:2006kg} that the path integral
+should consider
+\begin{equation}%\label{eq:}
+\begin{pmatrix}p$-connections$\\
+$on$\ \mathcal{M}\end{pmatrix}
+=U(1)^{X_{p}}.
+\end{equation}
+For us $p=1$ and $|X_{1}|=5$, so the measure $\mathcal{D}A$ in
+our case becomes
+\begin{equation}%\label{eq:}
+\mathcal{D}A = \frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}\frac{dA_{4}}{2\pi}\frac{dA_{5}}{2\pi}
+\end{equation}
+To calculate the action, we need to pick an orientation for the
+manifold. We do this in figure \ref{fig:img4}, and we calculate
+the curvature of the entire manifold to be:
+\begin{equation}%\label{eq:}
+\begin{split}
+F =&
+A(e_{3})-A(e_{4})+A(e_{1})+A(e_{4})-A(e_{5})+A(e_{2})+A(e_{5}) \\
+=& A(e_{3})+A(e_{1})+A(e_{2})
+\end{split}
+\end{equation}
+We end up with the integrand being
+\begin{equation}%\label{eq:}
+\overline{\phi(A|_{S'})}\psi(A|_{S}) e^{-S(A)}=e^{-ikA_{1}}e^{-ikA_{2}}e^{ikA_{3}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-h}{2e^{2}}(F+2\pi n)^{2}\right)
+\end{equation}
+where we sum over $\mathbb{Z}^{X_{p+1}}=\mathbb{Z}^{1}$. We can
+now rewrite our integral to be
+\begin{equation}%\label{eq:}
+\begin{split}
+\<\phi,Z(M)\psi\> &=
+\iint^{2\pi}_{0}\frac{dA_{4}}{2\pi}\frac{dA_{5}}{2\pi}
+\iiint^{2\pi}_{0}e^{-ikA_{1}}e^{-ikA_{2}}e^{ikA_{3}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-h}{2e^{2}}(F+2\pi n)^{2}\right)\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}\\
+&= \iiint^{2\pi}_{0}e^{-ikA_{1}}e^{-ikA_{2}}e^{ikA_{3}}\sum_{n\in\mathbb{Z}}\exp\left(\frac{-h}{2e^{2}}(F+2\pi n)^{2}\right)\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\frac{dA_{3}}{2\pi}
+\end{split}
+\end{equation}
+The factor $\iint dA_{4}dA_{5}$ end up contributing a factor
+of 1.
+
+
 
 \nocite{*}
 \bibliographystyle{utcaps}
