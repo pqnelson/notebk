@@ -310,5 +310,21 @@ beginfig(6)
   label.llft(btex $e_{5}$ etex, (6.5*u,5*u));
 endfig;
 
+beginfig(7)
+  path p[];
+  p[0] = (-2u,0)..(0,-u)..(2u,0);
+  p[1] = (-2u,0)..(0,u)..(2u,0);
+  p[2] = (-2u,0)..(0,3u);
+  p[3] = (2u,0)..(0,3u);
+  draw p[0];
+  draw p[1] dashed evenly;
+  draw halfcircle xscaled 4u yscaled 6u;
+  drawdot (0,-u) withpen pencircle scaled 2;
+  label.bot(btex $v_{1}$ etex, (0,-u));
+  label.lft(btex $e_{1}$ etex, (-2u,0));
+  label.top(btex  etex, (0,5u));
+  drawdot (0,5u) withcolor white;
+endfig;
+
 verbatimtex \end{document} etex
 end;
