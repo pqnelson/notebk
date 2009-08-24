@@ -1,9 +1,5 @@
 u:=0.5cm;
-verbatimtex
-\documentclass{amsart}
-\usepackage[T1]{fontenc}
-\begin{document}
-etex
+verbatimtex \documentclass{amsart}\usepackage[T1]{fontenc}\begin{document}  etex
 
 
 % upside down trousers diagram 1
@@ -41,14 +37,16 @@ beginfig(5)
   drawdot z[3] withpen pencircle scaled 2;
   draw z[1]..(7*u,5*u)..z[3];
   draw z[2]..(3*u,5*u)..z[3];
+  drawarrow (3*u,5*u)..(3*u+5.25,5*u-10);
+  drawarrow (7*u,5*u)..(7*u-5.25,5*u-10);
   label.rt(btex $e_{1}$ etex, (12*u,10*u));
   label.lft(btex $e_{2}$ etex, (-2*u,10*u));
   label.lft(btex $e_{3}$ etex, (3*u,0));
   label.bot(btex $v_{3}$ etex, z[3]);
   label.top(btex $v_{1}$ etex, z[1]);
   label.top(btex $v_{2}$ etex, z[2]);
-  label.lrt(btex $e_{4}$ etex, (3.15*u,5*u));
-  label.llft(btex $e_{5}$ etex, (6.85*u,5*u));
+  label.lrt(btex $e_{4}$ etex, (3.5*u,5*u));
+  label.llft(btex $e_{5}$ etex, (6.5*u,5*u));
 endfig;
 
 verbatimtex \end{document} etex
