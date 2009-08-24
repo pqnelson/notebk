@@ -1,0 +1,69 @@
+%%
+%% upsideDownTrouser.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Mon Aug 24 10:37:32 2009 Alex Nelson
+%% Last update Mon Aug 24 10:37:32 2009 Alex Nelson
+%%
+
+\begin{figure}[t]
+\includegraphics{img/img.5}
+\caption{The upside down trousers diagram.}
+\label{fig:img5}
+\end{figure}
+
+This is nearly identical to the rightside up trousers. However,
+since the initial state has two (disjoint) circles, and the final
+state  has one circle, the chain diagram becomes
+\begin{equation}%\label{eq:}
+\begin{CD}
+\mathbb{Z}^{2} @<<< \mathbb{Z}^{2} \\
+@VVV                 @VVV\\
+\mathcal{M}_{1} @<<< \mathcal{M}_{2} @<<< \mathcal{M}_{3} \\
+@AAA                 @AAA\\
+\mathbb{Z}      @<<< \mathbb{Z}    
+\end{CD}
+\end{equation}
+In fact we can fill in the missing  pieces using the same
+arguments as for the rightside up trousers:
+\begin{equation}%\label{eq:}
+\begin{CD}
+\mathbb{Z}^{2} @<<< \mathbb{Z}^{2} \\
+@VVV                 @VVV\\
+\mathbb{Z}^{3} @<<< \mathbb{Z}^{5} @<<< \mathbb{Z} \\
+@AAA                 @AAA\\
+\mathbb{Z}      @<<< \mathbb{Z}    
+\end{CD}
+\end{equation}
+since there are 3 vertices, 5 edges, and 1 3-cell.
+
+We use the same reasoning to suggest that the time evolution
+operator is described by
+\begin{equation}%\label{eq:}
+Z(m):Z(\mathbb{Z}^{2})\to Z(\mathbb{Z})
+\end{equation}
+where (by the same arguments as last time)
+\begin{equation}%\label{eq:}
+Z(\mathbb{Z})\cong L^{2}(U(1)),\quad\text{and}\quad
+Z(\mathbb{Z}^{2})\cong L^{2}(U(1))^{\otimes 2}.
+\end{equation}
+We pick out some basis vectors in the initial and final states,
+specifically
+\begin{equation}%\label{eq:}
+\psi = e^{ikA_{1}}e^{ikA_{2}}
+\end{equation}
+for the initial state, and
+\begin{equation}%\label{eq:}
+\phi = e^{ikA_{3}}
+\end{equation}
+for the final state (where we use shorthand $A_{i}=A(e_{i})$). We
+calculate the transition probability to deduce what the operator
+for time evolution is
+\begin{subequations}
+\begin{align}
+\<\phi,Z(m)\psi\> &= \int_{\mathcal{A}(m)}\overline{\phi(A|_{S})}\psi(A|_{S})e^{-S(A)}\mathcal{D}A\\
+&= \int e^{-ikA_{3}}e^{ikA_{1}}e^{ikA_{2}}\sum_{n\in\mathbb{Z}}e^{\frac{-1}{2e^{2}V}(F+2n\pi)^{2}}\mathcal{D}A
+\end{align}
+\end{subequations}
