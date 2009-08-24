@@ -258,60 +258,6 @@ endfig;
 
 beginfig(6)
   path p[];
-  z[0] = (0,0);
-  z[1] = (10*u,9*u);
-  z[2] =(0*u,9*u);
-  z[3] = (5*u,-u);
-  p[0] = (2*u,10*u)..(0,9*u)..(-2*u,10*u);
-  p[1] = (2*u,10*u)..(0,11*u)..(-2*u,10*u);
-  p[2] = (8*u,10*u)..(10*u,9*u)..(12*u,10*u);
-  p[3] = (8*u,10*u)..(10*u,11*u)..(12*u,10*u);
-  p[4] = (3*u,0)..(5*u,-u)..(7*u,0);
-  p[5] = (3*u,0)..(5*u,u)..(7*u,0);
-  p[6] = (-2*u,10*u){down}..(2.5*u,5*u)..(3*u,0);
-  p[7] = (12*u,10*u){down}..(7.5*u,5*u)..(7*u,0);
-  p[8] = (2*u,10*u){down}..(5*u,5*u);
-  p[9] = (8*u,10*u){down}..(5*u,5*u);
-  % top left circle
-  draw p[0] withcolor red;
-  draw p[1] withcolor red;
-  drawarrow (0,11*u)..(10,11*u-1) withcolor red;
-  drawdot z[2] withpen pencircle scaled 2 withcolor red;
-  label.lft(btex $e_{2}$ etex, (-2*u,10*u)) withcolor red;
-  label.top(btex $v_{2}$ etex, z[2]) withcolor red;
-  % top right circle
-  draw p[2];
-  draw p[3];
-  drawarrow (10*u,11*u)..(10*u+10,11*u-1);
-  drawdot z[1] withpen pencircle scaled 2;
-  label.rt(btex $e_{1}$ etex, (12*u,10*u));
-  label.top(btex $v_{1}$ etex, z[1]);
-
-  % middle circle
-  draw p[4];
-  draw p[5] dashed evenly;
-  drawarrow (5*u,-u)..(5*u-10,-u+1);
-  drawdot z[3] withpen pencircle scaled 2;
-  label.lft(btex $e_{3}$ etex, (3*u,0));
-  label.bot(btex $v_{3}$ etex, z[3]);
-
-  % draw the outline of the pants
-  draw p[6];
-  draw p[7];
-  draw p[8];
-  draw p[9];
-  
-  % draw intermediate edges
-  draw z[1]..(7*u,5*u)..z[3];
-  draw z[2]..(3*u,5*u)..z[3];
-  drawarrow (3*u,5*u)..(3*u+5.25,5*u-10);
-  drawarrow (7*u,5*u)..(7*u-5.25,5*u-10);
-  label.lrt(btex $e_{4}$ etex, (3.5*u,5*u));
-  label.llft(btex $e_{5}$ etex, (6.5*u,5*u));
-endfig;
-
-beginfig(7)
-  path p[];
   p[0] = (-2u,0)..(0,-u)..(2u,0);
   p[1] = (-2u,0)..(0,u)..(2u,0);
   p[2] = (-2u,0)..(0,3u);
@@ -324,6 +270,22 @@ beginfig(7)
   label.lft(btex $e_{1}$ etex, (-2u,0));
   label.top(btex  etex, (0,5u));
   drawdot (0,5u) withcolor white;
+endfig;
+
+beginfig(7)
+  path p[];
+  p[0] = (-2u,4u)..(0,3u)..(2u,4u);
+  p[1] = (-2u,4u)..(0,5u)..(2u,4u);
+  p[2] = (-2u,0)..(0,3u);
+  p[3] = (2u,0)..(0,3u);
+  draw p[0];
+  draw p[1];
+  draw halfcircle xscaled 4u yscaled 6u rotated 180 shifted (0,4u);
+  drawdot (0,3u) withpen pencircle scaled 2;
+  label.bot(btex $v_{1}$ etex, (0,3u));
+  label.lft(btex $e_{1}$ etex, (-2u,4u));
+  label.top(btex  etex, (0,5u));
+  drawdot (0,-2u) withcolor white;
 endfig;
 
 verbatimtex \end{document} etex
