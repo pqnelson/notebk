@@ -288,5 +288,30 @@ beginfig(7)
   drawdot (0,-2u) withcolor white;
 endfig;
 
+beginfig(8)
+  path p[];
+  p[0] = (-2u,0)..(0,-u)..(2u,0);
+  p[1] = (-2u,0)..(0,u)..(2u,0);
+  p[2] = (-2u,0)..(0,3u);
+  p[3] = (2u,0)..(0,3u);
+  p[4] = (-2u,4u)..(0,3u)..(2u,4u);
+  p[5] = (-2u,4u)..(0,5u)..(2u,4u);
+  p[6] = (0,3u)--(0,-u);
+  draw p[0];
+  draw p[1] dashed evenly;
+  draw p[4];
+  draw p[5];
+  draw p[6];
+  draw (-2u,0)--(-2u,4u);
+  draw (2u,0)--(2u,4u);
+  drawdot (0,3u) withpen pencircle scaled 2;
+  drawdot (0,-u) withpen pencircle scaled 2;
+  label.top(btex $v_{1}$ etex, (0,3u));
+  label.bot(btex $v_{2}$ etex, (0,-u));
+  label.lft(btex $e_{1}$ etex, (-2u,4u));
+  label.lft(btex $e_{2}$ etex, (-2u,0));
+  label.rt(btex $e_{3}$ etex, 0.25[(0,3u),(0,-u)]);
+endfig;
+
 verbatimtex \end{document} etex
 end;
