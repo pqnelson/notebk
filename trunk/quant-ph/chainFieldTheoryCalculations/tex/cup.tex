@@ -18,14 +18,14 @@ where from the void there came about a cap, here from a cup
 begath the void. We expect this to be remarkably similar to the
 calculation we just performed. We should consider the initial
 state to be described by the chain
-\begin{equation}%\label{eq:}
+\begin{equation*}%\label{eq:}
 \mathbb{Z}^{n_{v}}\leftarrow \mathbb{Z}^{n_{e}}
-\end{equation}
+\end{equation*}
 where $n_v$, $n_e$ are the number of vertices and edges
 (respectively). The final state is the vacuous one
-\begin{equation}%\label{eq:}
+\begin{equation*}%\label{eq:}
 \mathbb{Z}^{\emptyset}\leftarrow\mathbb{Z}^{\emptyset}
-\end{equation}
+\end{equation*}
 since there are no edges or vertices, we have to work with the
 empty set! Putting together everything we know, we get the chain
 complex
@@ -46,4 +46,39 @@ final states are precisely those from the corresponding component
 from the previous computation. That is, the initial state is
 $L^{2}(U(1))$ and the final state is described by the Hilbert
 space $\mathbb{C}$. We can similarly choose our favorite states
-from each space ($e^{ikA}$ and 1 respectively).
+from each space ($e^{ikA}$ and 1 respectively). We describe the
+time evolution operator as 
+\begin{equation}%\label{eq:}
+Z(\varepsilon):L^{2}(U(1))\to\mathbb{C}.
+\end{equation}
+To do so we need to consider the inner product
+\begin{equation}%\label{eq:}
+\<\phi,Z(\varepsilon)\psi\> = \int_{\mathcal{A}(\varepsilon)} \overline{\phi(A|_{S})}\psi(A|_{S'})e^{-S(A)}\mathcal{D}A
+\end{equation}
+where $\phi\in\mathbb{C}$ and $\psi\in L^{2}(U(1))$.
+
+We can plug in our choices $\phi=1$ and $\psi=\exp(ikA)$:
+\begin{equation}%\label{eq:}
+\<1,Z(\varepsilon)e^{ikA}\> = \int_{\mathcal{A}(\varepsilon)}1\cdot e^{ikA}e^{-S(A)}\mathcal{D}A
+\end{equation}
+To compute the action, we need the curvature but the curvature is
+simply $F=A$. We can plug this into the result of our proposition
+2 to find
+\begin{equation}%\label{eq:}
+\<1,Z(\varepsilon)e^{ikA}\> = \int_{\mathcal{A}(\varepsilon)}1\cdot e^{ikA}\sum_{n\in\mathbb{Z}}e^{\frac{-e^{2}n^{2}V}{2}}e^{inA}\mathcal{D}A
+\end{equation}
+up to a constant. We see that
+\begin{equation}%\label{eq:}
+\mathcal{D}A = \frac{dA}{2\pi}
+\end{equation}
+and rearranging terms we can find
+\begin{equation}%\label{eq:}
+\<1,Z(\varepsilon)e^{ikA}\> = \sum_{n\in\mathbb{Z}}e^{\frac{-e^{2}n^{2}V}{2}}\underbracket[0.25pt]{\int^{2\pi}_{0}e^{i(n+k)A}\frac{dA}{2\pi}}_{\delta_{-k,n}}
+\end{equation}
+where the underbracketed factor turns out to be the Kronecker
+delta, as noted in the equation. Rearranging terms we find that
+\begin{equation}%\label{eq:}
+Z(\varepsilon)e^{ikA} =
+\sum_{n\in\mathbb{Z}}e^{-e^{2}n^{2}V/2}\delta_{-k,n} = \exp\left(\frac{-e^{2}k^{2}V}{2}\right)
+\end{equation}
+This is precisely what we desire to deduce.
