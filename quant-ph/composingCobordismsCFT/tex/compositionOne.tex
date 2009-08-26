@@ -1,0 +1,58 @@
+%%
+%% compositionOne.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Aug 26 11:30:52 2009 Alex Nelson
+%% Last update Wed Aug 26 11:30:52 2009 Alex Nelson
+%%
+
+\begin{figure}[ht]
+\includegraphics{img/img.0}
+\caption{Composition of trousers with upside down trousers}\label{fig:img0}
+\end{figure}
+
+Consider the composition as doodled in figure \ref{fig:img0}. We
+can consider the time evolution operation described by
+$Z(m)\circ{Z(\Delta)}$, or --- read from right to left --- ``the
+time evolution operator for the rightside up trousers followed by
+the time evolution operator for the upside down trousers''. We
+see that this behavior is determined by
+\begin{equation}%\label{eq:}
+\<\phi,Z(m)\circ{Z(\Delta)}\psi\> = \int ... \mathcal{D}A
+\end{equation}
+where $\phi,\psi\in L^{2}(U(1))$ describes the initial and final
+state vectors, respectively. We recall that
+\begin{equation}%\label{eq:}
+Z(\Delta):e^{ikA}\mapsto e^{-k^{2}e^{2}V/2}e^{ikA_{1}}e^{ikA_{2}}
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+Z(m):e^{ikA_{1}}e^{ikA_{2}}\mapsto \delta_{k_{1},k}\delta_{k_{2},k}e^{-k^{2}e^{2}V/2}e^{ikA}
+\end{equation}
+so it would logically seem that
+\begin{subequations}
+\begin{align}
+[Z(m)\circ Z(\Delta)](e^{ikA}) &= Z(m)\left(e^{-k^{2}e^{2}V/2}e^{ikA_{1}}e^{ikA_{2}}\right)\\
+&= e^{-k^{2}e^{2}V/2}Z(m)\left(e^{ikA_{1}}e^{ikA_{2}}\right)\\
+&= e^{-k^{2}e^{2}V/2}\delta_{k_{1},k}\delta_{k_{2},k}e^{-k^{2}e^{2}V/2}e^{ikA}\\
+&= e^{-k^{2}e^{2}V}e^{ikA}\delta_{k_{1},k}\delta_{k_{2},k} \label{eq:compositionOne}
+\end{align}
+\end{subequations}
+where we justify the second step by linearity.
+
+Compare this to the time evolution operator described by the
+cylinder with the same amount of volume, i.e. $2V$. We see that
+\begin{equation}%\label{eq:}
+[Z(C)]\left(e^{ikA}\right) = e^{-k^{2}e^{2}(2V)/2}e^{ikA} = e^{-k^{2}e^{2}V}e^{ikA}
+\end{equation}
+which looks surprisingly familiar (hint hint). In fact the only
+difference between \eqref{eq:compositionOne} and our cylinder is
+a factor of $\delta_{k_{1},k}\delta_{k_{2},k}$, should this be
+interpreted as a residue of topological origin? Some sign that
+there was a ``hole''? The answer is, unsurprisingly, no. It
+wouldn't be testable. Its contributions would be either 1 or 0,
+and in the case of the former it matches exactly with the
+cylinder. In the case of the latter, we wouldn't know anything
+happened. So it is as though that factor is 1.
