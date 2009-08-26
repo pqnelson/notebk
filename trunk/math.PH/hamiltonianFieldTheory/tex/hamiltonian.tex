@@ -1,0 +1,189 @@
+%%
+%% hamiltonian.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Aug 26 12:36:25 2009 Alex Nelson
+%% Last update Wed Aug 26 12:36:25 2009 Alex Nelson
+%%
+
+If we want to begin the canonical treatment of fields, we need to
+start by finding the canonically conjugate momenta. We need to
+first ``foliate'' spacetime into space and time. Why do we do
+this? Well, we are concerned about the time derivatives of the
+field (how it changes in time), and we need to foliate spacetime
+into constant-time surfaces to have this be meaningful in the
+obvious way. 
+
+Let $\phi$ be a (column) vector of scalar fields. So
+to find the canonically conjugate momenta to  $\phi^{a}$, we
+follow our nose to find
+\begin{equation}%\label{eq:}
+\Pi_{a} = \frac{\partial\mathcal{L}}{\partial(\partial_{0}\phi^{a})}.
+\end{equation}
+We will write $\Pi$ for the row vector
+$\Pi=(\Pi_{1},\Pi_{2},\ldots,\Pi_{n})$. If the mapping
+\begin{equation}%\label{eq:}
+(\phi,\partial_{0}\phi,\partial_{1}\phi,\partial_{2}\phi,\partial_{3}\phi)\mapsto(\Pi,\phi,\partial_{1}\phi,\partial_{2}\phi,\partial_{3}\phi)
+\end{equation}
+is invertible (bijective, but when wouldn't it be?\footnote{The
+  condition of this being invertible is equivalent to Henneaux
+  and Teiteilboim's criteria of ``regularity'' it seems...}),
+then we define the Hamiltonian density  function by
+\begin{equation}%\label{eq:}
+\mathcal{H}(\Pi,\phi,\partial_{1}\phi,\partial_{2}\phi,\partial_{3}\phi)
+= \Pi\cdot\partial_{0}\phi-\mathcal{L}
+\end{equation}
+which is a generalization of the Legendre transformation.
+
+By direct computation we can find Hamilton's equations to be
+\begin{equation}%\label{eq:}
+\dot{\phi}^{a} =
+\frac{\partial\mathcal{H}}{\partial\Pi_{a}},\quad\text{and}\quad\dot{\Pi}_{a}
+= -\frac{\partial\mathcal{H}}{\partial\phi^{a}}+\frac{d}{dx^{m}}\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi^{m})}
+\end{equation}
+where the equation on the right hand side has an implicit sum
+over $m=1,2,3$. These equations naturally folow from Hamilton's
+principle applied to
+\begin{equation}%\label{eq:}
+S = \int(\Pi\cdot\partial_{0}\phi-\mathcal{H})d^{4}x
+\end{equation}
+the action in canonical form.
+
+\begin{ex}\begin{small}
+(Working in the East coast convention $-+++$) Consider the Lagrangian density
+\begin{equation}%\label{eq:}
+\mathcal{L} = \frac{1}{2}\partial^{\mu}\phi\partial_{\mu}\phi + \frac{\mu^{2}}{2}\phi^{2}
+\end{equation}
+where $\mu$ is some ``mass'' scalar. We find the equations of
+motion being
+\begin{equation}%\label{eq:}
+\frac{\delta S}{\delta \phi}=0
+\;\Rightarrow\;
+\frac{\partial\mathcal{L}}{\partial\phi}
+-\partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}
+= 0.
+\end{equation}
+We find by direct computation
+\begin{subequations}
+\begin{align}
+\frac{\partial\mathcal{L}}{\partial\phi} &= +\mu^{2}\phi\\
+\partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}
+&= \partial_{\mu}\left(\partial^{\mu}\phi\right)=\partial^{2}\phi 
+\end{align}
+\end{subequations}
+which yields the equations of motion to be
+\begin{equation}%\label{eq:}
+\left(\partial^{\mu}\partial_{\mu}+\mu^{2}\right)\phi = 0.
+\end{equation}
+This is precisely the Klein-Gordon equation!
+
+We find that the canonically conjugate momenta is
+\begin{equation}%\label{eq:}
+\Pi = \frac{\partial\mathcal{L}}{\partial(\partial_{0}\phi)} =
+\partial^{0}\phi = -\partial_{0}\phi.
+\end{equation}
+Thus we can find the Hamiltonian density to be
+\begin{subequations}
+\begin{align}
+\mathcal{H} &= \Pi\cdot\partial_{0}\phi-\mathcal{L}\\
+&= -\partial^{0}\phi\partial_{0}\phi -
+\left(\frac{1}{2}\partial^{\mu}\phi\partial_{\mu}\phi+\frac{\mu^{2}}{2}\phi^{2}\right) \\
+&=\frac{-1}{2}\partial^{0}\phi\partial_{0}\phi-\frac{1}{2}\vec{\nabla}\phi\cdot\vec{\nabla}\phi-\frac{\mu^{2}}{2}\phi^{2}\\
+&=-\frac{1}{2}\left(\Pi\cdot\Pi+\vec{\nabla}\phi\cdot\vec{\nabla}\phi+\mu^{2}\phi^{2}\right)
+\end{align}
+\end{subequations}
+Note our convention makes the sign of the $\mu^{2}$ term
+different than what is conventionally used in most particle
+physics texts. Because of this choice of signature convention,
+our energy is \emph{negative}.
+
+We can find Hamilton's equations for the Klein Gordon scalar
+field quite easily. One we already found accidentally, it is
+\begin{equation}%\label{eq:}
+\Pi = \frac{\partial\mathcal{L}}{\partial(\partial_{0}\phi)} =
+\partial^{0}\phi = -\partial_{0}\phi.
+\end{equation}
+The other is more interesting, it is
+\begin{subequations}
+\begin{align}
+\dot{\Pi} &= -\frac{\partial\mathcal{H}}{\partial\phi}+\frac{d}{dx^{m}}\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi)}\\
+&= -\mu^{2}\phi - \partial_{m}(\partial^{m}\phi)\\
+&= -(\mu^{2}+\nabla^{2})\phi
+\end{align}
+\end{subequations}
+Note that the sign of our results differs from what we derived
+due to our choice of signature convention!
+\end{small}\end{ex}
+
+Now the Hamiltonian approach to fields, as previously mentioned,
+is slightly diffferent because we work with a one-parameter
+family of spatial hypersurfaces instead of spacetime. To consider
+the scalar field $\phi(x)$ in this setting, we let it become
+$\phi(\bar{x};t)$ where we use the semicolon to remind ourselves
+that we are working with ``some parameter'' $t$. We obtain the
+Hamiltonian simply by integrating the density over all space
+\begin{equation}%\label{eq:}
+H(\Pi,\phi) = \int_{\text{all space}}\mathcal{H}(\Pi,\phi,\partial_{1}\phi,\partial_{2}\phi,\partial_{3}\phi)d^{3}\bar{x}.
+\end{equation}
+We need to consider how the functional derivative behaves under
+this change from spacetime to ``space plus time''. The functional
+derivative with respect to $\phi(\bar{x};t)$ is
+\begin{equation}%\label{eq:}
+\frac{\delta A[\phi(\bar{y};t)]}{\delta\phi(\bar{x};t)} = \lim_{\varepsilon\to0}\frac{1}{\varepsilon}\left(A[\phi_{t}+\delta^{(3)}_{\bar{x}}]-A[\phi_{t}]\right)
+\end{equation}
+where $\phi_{t}(\bar{y})=\phi(\bar{y};t)=\phi_{t}$, and $\delta^{(3)}_{\bar{x}}=\delta^{(3)}(\bar{x}-\bar{y})$.
+
+We obtain the equations of motion from the principle of
+stationary action applied to the canonical form of the
+action. The Euler-Lagrange equations encoded in the canonical
+formalism are
+\begin{equation}%\label{eq:}
+\dot{\phi}^{a} =
+\frac{\partial\mathcal{H}}{\partial\Pi_{a}},\quad\text{and}\quad\dot{\Pi}_{a}
+= -\frac{\partial\mathcal{H}}{\partial\phi^{a}}+\frac{d}{dx^{m}}\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi^{m})}
+\end{equation}
+as we previously mentioned.
+
+We can directly compute that
+\begin{subequations}
+\begin{align}\allowdisplaybreaks
+\frac{\delta H}{\delta\phi(\bar{x};t)} &= \int \frac{\delta\mathcal{H}}{\delta\phi(\bar{x};t)}d^{4}y\\
+&= \lim_{\varepsilon\to0}\frac{1}{\varepsilon}\int\left[\mathcal{H}(\Pi,\phi_{t}+\varepsilon\delta^{(3)}_{\bar{x}},\partial_{k}\phi_{t}+\varepsilon\partial_{k}\delta^{(3)}_{\bar{x}})-\mathcal{H}(\Pi,\phi_{t},\partial_{m}\phi_{t})\right]d^{3}\bar{y}\\
+&=\lim_{\varepsilon\to0}\frac{1}{\varepsilon}\int\left[\mathcal{H}(\Pi,\phi_{t},\partial_{m}\phi_{t})+\varepsilon\frac{\partial\mathcal{H}}{\partial\phi}\delta_{\bar{x}}^{(3)}+\varepsilon\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi)}\partial_{m}\delta_{\bar{x}}^{(3)}\right.\\\nonumber
+&\left.\phantom{\lim_{\varepsilon\to0}\frac{1}{\varepsilon}\int\qquad}
++\mathcal{O}(\varepsilon^{2})-\mathcal{H}(\Pi,\phi_{t},\partial_{m}\phi_{t})\right]d^{3}\bar{y}\\
+&=\int\left[\frac{\partial\mathcal{H}}{\partial\phi}\delta^{(3)}_{\bar{x}}+\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi)}\partial_{m}\delta^{(3)}_{\bar{x}}\right]d^{3}\bar{y}\\
+&=\int\left[\frac{\partial\mathcal{H}}{\partial\phi}-\partial_{m}\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi)}\right]\delta^{(3)}_{\bar{x}}d^{3}\bar{y}\\
+&=-\int\left[-\frac{\partial\mathcal{H}}{\partial\phi}+\partial_{m}\frac{\partial\mathcal{H}}{\partial(\partial_{m}\phi)}\right]\delta^{(3)}_{\bar{x}}d^{3}\bar{y}\\
+&=-\int\dot{\Pi}\delta^{(3)}_{\bar{x}}d^{3}\bar{y}\\
+&=-\dot{\Pi}(x).
+\end{align}
+\end{subequations}
+This is precisely one of Hamilton's equations, and by similar
+reasoning we find
+\begin{equation}%\label{eq:}
+\dot{\phi} = \frac{\delta
+  H}{\delta\Pi_{t}(\bar{x})},\quad\text{and}\quad\dot{\Pi}_{t}(\bar{x})=-\frac{\delta H}{\delta\phi_{t}(\bar{x})}
+\end{equation}
+are both generalizations of Hamilton's equations to field
+theoretic setting. This motivates us to define an analogous
+Poisson bracket:
+\begin{equation}%\label{eq:}
+\{A,B\}\eqdef\int\left(\frac{\delta A}{\delta\phi_{t}(\bar{x})}\frac{\delta B}{\delta\Pi_{t}(\bar{x})}-\frac{\delta B}{\delta\phi_{t}(\bar{x})}\frac{\delta A}{\delta\Pi_{t}(\bar{x})}\right)d^{3}\bar{x}.
+\end{equation}
+This allows us to recover the equations of motion in a familiar
+way
+\begin{equation}%\label{eq:}
+\{A,H\} = \int\left(\frac{\delta A}{\delta\phi_{t}(\bar{x})}\dot{\phi}_{t}(\bar{x})+\dot{\Pi}_{t}(\bar{x})\frac{\delta A}{\delta\Pi_{t}(\bar{x})}\right)d^{3}\bar{x}.
+\end{equation}
+Similarly, the canonical commutation relations hold classically
+as
+\begin{equation}%\label{eq:}
+\{\phi^{a}(\bar{x};t),\Pi_{b}(\bar{y};t)\} = {\delta^{a}}_{b}\delta^{(3)}(\bar{x}-\bar{y}).
+\end{equation}
+Note that this only makes sense if the two variables are
+considered on the same time slice. If we were to consider two
+different timeslices, we'd necessarily have the commutation
+relations vanish due to locality constraints.

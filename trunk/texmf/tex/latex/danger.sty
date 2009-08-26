@@ -1,14 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{danger}[2009/08/06 Danger and Double Danger Environments]
-\RequirePackage{manfnt}
+\usepackage{manfnt}
 %%
 % This macro header is what controls the ``dangerous bend''
 % paragraph
 %%
-\newcommand{\rd}{\noindent\begingroup\hangindent=3pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\font\manual=manfnt
+\def\dbend{{\manual\char127}} % dangerous bend sign
 
-\newcommand{\rdd}{\noindent\begingroup\hangindent=4pc\hangafter=-2\def\par{\endgraf\endgroup}\hbox to0pt{\hskip-\hangindent\ddbend\hfill}\ignorespaces}
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\begin{footnotesize}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{footnotesize}\end{trivlist}}
 
-\newenvironment{danger}{\rd\begin{footnotesize}\noindent}{\end{footnotesize}\newline}
+% Danger! Danger!
+\def\ddanger{\begin{trivlist}\begin{footnotesize}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\par\end{footnotesize}\end{trivlist}}
 
-\newenvironment{ddanger}{\rdd\begin{footnotesize}}{\end{footnotesize}\newline}
+
