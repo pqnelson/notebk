@@ -1,0 +1,103 @@
+%%
+%% lagrangian.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Aug 26 12:02:16 2009 Alex Nelson
+%% Last update Wed Aug 26 12:02:16 2009 Alex Nelson
+%%
+
+As with Hamiltonian mechanics, wherein one begins by taking the
+Legendre transform of the Lagrangian, in Hamiltonian field theory
+we ``transform'' the Lagrangian field treatment. So lets review
+the calculations in Lagrangian field theory.
+
+Consider the classical fields $\phi^{a}(t,\bar{x})$. We use the
+index $a$ to indicate which field we are talking about. We should
+think of $\bar{x}$ as another index, except it is \emph{continuous}.
+We will use the confusing short hand notation $\phi$ for the
+column vector $\phi^{1},\ldots,\phi^{n}$. Consider the Lagrangian
+\begin{equation}%\label{eq:}
+L(\phi) = \int_{\mathclap{\text{all space}}}\mathcal{L}(\phi,\partial_{\mu}\phi)d^{3}\bar{x}
+\end{equation}
+where $\mathcal{L}$ is the \emph{Lagrangian density}. Hamilton's
+principle of stationary action is still used to determine the
+equations of motion from the action
+\begin{equation}%\label{eq:}
+S[\phi] = \int L(\phi,\partial_{\mu}\phi)dt
+\end{equation}
+where we find the Euler-Lagrange equations of motion for the field
+\begin{equation}%\label{eq:}
+\frac{d}{dx^{\mu}}\frac{\partial\mathcal{L}}{\partial (\partial_{\mu}\phi^{a})}=\frac{\partial\mathcal{L}}{\partial\phi^{a}}
+\end{equation}
+where we note these are evil second order partial differential
+equations. We also note that we are using Einstein summation
+convention, so there is an implicit sum over $\mu$ but not over
+$a$. So that means there are $n$ independent second order
+partial differential equations we need to solve.
+
+But how do we really know these are the correct equations? How do
+we really know these are the Euler-Lagrange equations for
+classical fields?  We can obtain it directly from the action $S$
+by functional differentiation with respect to the field. Taking
+$\phi$ to be a single scalar field (for simplicity's sake, it
+doesn't change anything if we work with $n$ fields), functional
+differentiation can be defined by
+\begin{equation}%\label{eq:}
+\frac{\delta S}{\delta\phi(x)}\eqdef
+\lim_{\varepsilon\to0}\frac{1}{\varepsilon}\left(S\left[\phi(y)+\varepsilon\delta^{(4)}(x-y)\right]-S\left[\phi(y)\right]\right)
+\end{equation}
+where $\delta^{(4)}(y-x)$ is the 4-dimensional densitized Dirac
+delta function. Note that we will often use the shorthand
+notation $\delta^{(4)}_{x}=\delta^{(4)}(y-x)$. Applying this to the action yields
+\begin{subequations}
+\begin{align}
+\frac{\delta S}{\delta\phi(x)} &= \lim_{\varepsilon\to0}\frac{1}{\varepsilon}\int\left[\mathcal{L}\left(\phi+\varepsilon\delta^{(4)}_{x},\partial_{\mu}\phi+\varepsilon\partial_{\mu}\delta^{(4)}_{x}\right)-\mathcal{L}(\phi,\partial_{\mu}\phi)\right]d^{4}y\\
+&=\lim_{\varepsilon\to0}\frac{1}{\varepsilon}\int\left[\mathcal{L}(\phi,\partial_{\mu}\phi)+\frac{\partial\mathcal{L}}{\partial\phi}\delta^{(4)}_{x}\varepsilon+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\partial_{\mu}\delta^{(4)}_{x}\varepsilon+\mathcal{O}(\varepsilon^{2})-\mathcal{L}(\phi,\partial_{\mu}\phi)\right]d^{4}y\\
+&= \lim_{\varepsilon\to0}\int\left[\frac{\partial\mathcal{L}}{\partial\phi}\delta^{(4)}_{x}+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\partial_{\mu}\delta^{(4)}_{x}+\mathcal{O}(\varepsilon)\right]d^{4}y\\
+&=\int\left[\frac{\partial\mathcal{L}}{\partial\phi}\delta^{(4)}_{x}+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\partial_{\mu}\delta^{(4)}_{x}\right]d^{4}y\\
+&=\int\left[\frac{\partial\mathcal{L}}{\partial\phi}-\partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\right]\delta^{(4)}_{x}d^{4}y
+\end{align}
+\end{subequations}
+Where we justify the second line by Taylor expanding to first
+order, then in the third line we factor through by the
+$(1/\varepsilon)$ factor, in the fourth line we take the limit,
+and integrate by parts to yield the last line. Note also that we
+factored out the delta function to make the last line
+prettier. Now the last line is zero if and only if
+\begin{equation}%\label{eq:}
+\frac{\partial\mathcal{L}}{\partial\phi^{a}}-\frac{d}{dx^{\mu}}\frac{\partial\mathcal{L}}{\partial (\partial_{\mu}\phi^{a})}=0
+\end{equation}
+which is precisely the Euler-Lagrange equations of motion!
+
+\begin{ddanger}
+Why are we working with these delta functions? Well, we are
+working  with something a little more than just time. We are
+working with points in space. Locality means, mathematically, we
+work with vectors sharing the same base point. Or in the jargon
+of differential geometry, we are working in the tangent space
+$T_{p}\mathcal{M}$ where $\mathcal{M}$ is our manifold, and
+$p\in\mathcal{M}$ is our base point. If we work with multiple
+base points at a time, not only is it mathematically not well
+defined, but it is \emph{nonlocal} which results in \emph{a loss of causality!}
+Needless to say this is bad, so we try to work with the evolution
+of the field at a specified (but arbitrary) tangent space. If
+time permits, we will revisit this notion of spatial coordinates
+as an ``index'' in the appendix.
+
+More precisely, we have the ``base space'' be the manifold
+$\mathcal{M}$ representing spacetime. We have our fields assign
+to each point $p\in\mathcal{M}$ some ``physical information''
+$\phi(x)$. The question presents itself ``Where does this
+`information' live?'' It lives in a generalization of the tangent
+space, called the ``fiber''. In the Lagrangian setting, we work
+with ordered pairs $(x^{\mu},\phi(x^{\mu}))$ which is actually
+something called the ``section'' of the fiber bundle. That is,
+the field is a mapping
+\begin{equation}%\label{eq:}
+\phi:\mathcal{M}\to\mathcal{M}\times{F}
+\end{equation}
+where $F$ is ``where'' the fields ``live'', i.e. it's the fiber.
+\end{ddanger}
+
