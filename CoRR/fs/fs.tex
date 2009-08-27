@@ -1,0 +1,58 @@
+\documentclass{amsart}
+\usepackage{fly,danger,brackets}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+
+
+\newcommand{\courier}[1]{{\fontfamily{pcr}\fontseries{m}\fontshape{n}\selectfont #1}}
+\numberwithin{algorithm}{section}
+
+\renewcommand{\algorithmiccomment}[1]{(#1)}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\algsetup{indent=2em}
+
+\title{Notes on the File System in Unix}
+\author{Alex Nelson}
+\email{pqnelson@gmail.com}
+\date{26 August 2009}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{File Hierarchy}
+\input{tex/hierarchy}
+
+\section{Test section}
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Calculate $y = x^n$}          % give the algorithm a caption
+\label{alg1}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}                    % enter the algorithmic environment
+\REQUIRE $n \geq 0 \vee x \neq 0$
+\ENSURE $y = x^n$
+\STATE $y \Leftarrow 1$
+\IF{$n < 0$}
+\STATE $X \Leftarrow 1 / x$
+\STATE $N \Leftarrow -n$
+\ELSE
+\STATE $X \Leftarrow x$
+\STATE $N \Leftarrow n$
+\ENDIF
+\WHILE{$N \neq 0$}
+\IF{$N$ is even}
+\STATE $X \Leftarrow X \times X$
+\STATE $N \Leftarrow N / 2$
+\ELSE[$N$ is odd]
+\STATE $y \Leftarrow y \times X$
+\STATE $N \Leftarrow N - 1$
+\ENDIF
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\nocite{*}
+\bibliographystyle{utcaps}
+\bibliography{fs}
+\end{document}
