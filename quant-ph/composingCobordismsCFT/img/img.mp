@@ -56,6 +56,28 @@ beginfig(0)
   label.rt(btex $e_{4}$ etex, (7*u,-10*u));
   drawarrow (5*u+20,-10*u-8)..(5*u+15,-10*u-10);
 endfig;
-
+beginfig(1)
+  path p[];
+  p[0] = (-2u,0)..(0,-u)..(2u,0);
+  p[1] = (-2u,0)..(0,0.5u)..(2u,0);
+  p[2] = (-2u,0)..(0,3u);
+  p[3] = (2u,0)..(0,3u);
+  draw p[0];
+  draw p[1] dashed evenly;
+  draw halfcircle xscaled 4u yscaled 6u;
+  drawdot (0,-u) withpen pencircle scaled 2;
+  label.top(btex  etex, (0,5u));
+  drawdot (0,5u) withcolor white;
+  p[4] = (-2u,4u)..(0,3u)..(2u,4u);
+  p[5] = (-2u,4u)..(0,5u)..(2u,4u);
+  draw p[4] shifted (0,5u);
+  draw p[5] shifted (0,5u);
+  draw halfcircle xscaled 4u yscaled 6u rotated 180 shifted (0,9u);
+  drawdot (0,8u) withpen pencircle scaled 2;
+  label.top(btex $v_{1}$ etex, (0,8u));
+  label.lft(btex $e_{1}$ etex, (-2u,9u));
+  label.bot(btex $v_{2}$ etex, (0,-u));
+  label.lft(btex $e_{2}$ etex, (-2u,0));
+endfig;
 verbatimtex \end{document} etex
 end;

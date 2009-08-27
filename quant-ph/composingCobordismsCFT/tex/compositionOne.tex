@@ -20,7 +20,7 @@ time evolution operator for the rightside up trousers followed by
 the time evolution operator for the upside down trousers''. We
 see that this behavior is determined by
 \begin{equation}%\label{eq:}
-\<\phi,Z(m)\circ{Z(\Delta)}\psi\> = \int ... \mathcal{D}A
+\<\phi,Z(m)\circ{Z(\Delta)}\psi\> = \int (\cdots) \mathcal{D}A
 \end{equation}
 where $\phi,\psi\in L^{2}(U(1))$ describes the initial and final
 state vectors, respectively. We recall that
@@ -49,10 +49,32 @@ cylinder with the same amount of volume, i.e. $2V$. We see that
 \end{equation}
 which looks surprisingly familiar (hint hint). In fact the only
 difference between \eqref{eq:compositionOne} and our cylinder is
-a factor of $\delta_{k_{1},k}\delta_{k_{2},k}$, should this be
+a factor of $\delta_{k_{1},k}\delta_{k_{2},k}$; should this be
 interpreted as a residue of topological origin? Some sign that
 there was a ``hole''? The answer is, unsurprisingly, no. It
 wouldn't be testable. Its contributions would be either 1 or 0,
 and in the case of the former it matches exactly with the
 cylinder. In the case of the latter, we wouldn't know anything
-happened. So it is as though that factor is 1.
+happened. So it is as though that factor is 1. 
+
+\begin{figure}[ht]
+\includegraphics{img/img.1}
+\caption{A cup followed by a cap}\label{fig:img1}
+\end{figure}
+
+We can also compare this to the cobordism described by figure
+\ref{fig:img1}. We consider how the operator
+$Z(\iota)\circ{}Z(\varepsilon)$ acts on a basis state vector
+$\exp(ik'A)$. We see that
+\begin{subequations}
+\begin{align}
+\<e^{ikA_{2}},Z(\iota)\circ{}Z(\varepsilon)e^{ik'A_{1}}\> &= \int e^{-ikA_{2}}e^{ik'A_{1}}\sum_{n}e^{-n^{2}e^{2}(2V)/2}e^{in(A_{2}-A_{1})}\mathcal{D}A\\
+&= \int^{2\pi}_{0} e^{-ikA_{2}}\sum_{n}e^{-n^{2}e^{2}(2V)/2}e^{inA_{2}}\int^{2\pi}_{0}e^{i(k'-n)A_{2}}\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}\\
+&= \int^{2\pi}_{0} e^{-ikA_{2}}\sum_{n}e^{-n^{2}e^{2}(2V)/2}e^{inA_{2}}\delta_{n,k'}\frac{dA_{2}}{2\pi}\\
+&= \int^{2\pi}_{0} e^{-ikA_{2}}e^{-(k')^{2}e^{2}(2V)/2}e^{ik'A_{2}}\frac{dA_{2}}{2\pi}
+\end{align}
+\end{subequations}
+which implies that
+\begin{equation}%\label{eq:}
+Z(\iota)\circ{}Z(\varepsilon):\exp(ik'A)\mapsto e^{-(k')^{2}e^{2}V}\exp(ik'A).
+\end{equation}
