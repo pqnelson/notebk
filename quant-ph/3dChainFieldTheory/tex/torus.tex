@@ -14,4 +14,49 @@
   same, and the remaining pair of sides as the same.}\label{fig:img0}
 \end{figure}
 
+Consider the Torus. We will construct it by considering a cube,
+which has 6 faces, 12 edges, and 8 vertices. We will identify
+opposite pairs of faces as being ``the same'' (glued
+together). We will consider what this looks like as far as the
+vertices, edges, and faces are concerned.
 
+If we start by examining the vertices, we will cheat and identify
+the top face with the bottom face. We are left with 4 distinct
+vertices, as seen in figure \ref{fig:img0}. We then identify one
+pair of opposite faces as the same, then the other pair of
+opposite faces as the same. This is precisely what we do in
+figure \ref{fig:img0}. We see that there is thus only one vertex
+for the 3-torus.
+
+Now, with regard to the edges, this is a bit trickier. Lets begin
+with something easier: faces. We identify opposite pairs of faces
+as being ``the same''. There are 6 faces, thus 3 such pairs. We
+have 3 faces in the 3-torus (if one is unsatisfied with this
+quick construction, one can pull out a regular six sided die and
+observe that the each opposite face sums to 7; there are 3
+distinct ways to add positive integers up to be 7, precisely 1+6,
+2+5, and 3+4).
+
+We have 3 faces, 1 vertex, and now the hard part: edges. We see
+in figure \ref{fig:img1} that the distinct faces are colorized,
+with the duplicate faces removed. We only, therefore, have to
+worry about the edges which are drawn in black. This means that
+there are 3 distinct edges. The others are duplicates.
+
+\begin{figure}[t]
+\includegraphics{img/img.1}
+\caption{The distinct faces for the 3-torus are colorized, with the duplicate faces removed.}\label{fig:img1}
+\end{figure}
+
+We can now start considering the chain complex for the
+3-torus. We see that there are 1 vertex, 3 edges, 3 faces, and 1
+3-cell. This implies the chain complex should look like
+\begin{equation}%\label{eq:}
+\mathbb{Z}\xleftarrow{\partial_{0}}\mathbb{Z}^{3}\xleftarrow{\partial_{1}}\mathbb{Z}^{3}\xleftarrow{\partial_{2}}\mathbb{Z}.
+\end{equation}
+We would like to consider what exactly the boundary maps
+$\partial$ are as matrices. We need more information, we need to
+pick some orientations for the faces, edges, and the
+3-cell. \comment{We would also like to calculate that
+  $\partial^{2}=0$ to make certain we're on the right track!}
+We will use the orientation indicated in figure \ref{fig:img1}.
