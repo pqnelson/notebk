@@ -7,7 +7,7 @@
 %% Started on  Sat Aug 29 12:56:09 2009 Alex Nelson
 %% Last update Sat Aug 29 12:56:09 2009 Alex Nelson
 %%
-\begin{figure}[th]
+\begin{figure}[ht]
 \includegraphics{img/img.0}
 \caption{Identifying the top of the cube with the bottom, we are
   then left to identify one pair of sides of the cube as the
@@ -43,7 +43,7 @@ with the duplicate faces removed. We only, therefore, have to
 worry about the edges which are drawn in black. This means that
 there are 3 distinct edges. The others are duplicates.
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \includegraphics{img/img.1}
 \caption{The distinct faces for the 3-torus are colorized, with the duplicate faces removed.}\label{fig:img1}
 \end{figure}
@@ -59,4 +59,61 @@ $\partial$ are as matrices. We need more information, we need to
 pick some orientations for the faces, edges, and the
 3-cell. \comment{We would also like to calculate that
   $\partial^{2}=0$ to make certain we're on the right track!}
-We will use the orientation indicated in figure \ref{fig:img1}.
+We will use the orientation indicated in figure \ref{fig:img1}. 
+
+We will consider the operator
+$\partial_{0}:\mathbb{Z}^{3}\to\mathbb{Z}$. Since there is only
+one vertex, that means all edges have \emph{the same} source and
+target. This means that the operator $\partial_{0}(e)=t(e)-s(e)$
+would be zero, since $t(e)=s(e)$.
+
+If we consider $\partial_{1}:\mathbb{Z}^{3}\to\mathbb{Z}^{3}$
+which takes faces to edges, we have something more interesting.
+If we let
+\begin{equation}%\label{eq:}
+af_{1}+bf_{2}+cf_{3} = \begin{bmatrix}a\\b\\c\end{bmatrix},\quad\text{and}\quad
+ae_{1}+be_{2}+ce_{3} = \begin{bmatrix}a\\b\\c\end{bmatrix}
+\end{equation}
+(where $a,b,c\in\mathbb{Z}$), we can consider the $\partial_{1}$
+boundary operator as a square matrix. Consider face $f_{1}$ as
+drawn in figure \ref{fig:img2}. Since there's only one distinct
+vertex, we see travelling along the path in red gets us back to
+where we started. This means that
+\begin{equation}%\label{eq:}
+\partial_{1}\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right) = \begin{bmatrix}1\\1\\0\end{bmatrix}
+\end{equation}
+since both $e_{1}$, $e_{2}$ are moving ``along'' the orientation
+chosen for $f_{1}$. Referring to figure \ref{fig:img1}, we see
+that the other faces are similar. This allows us to explicitly compute
+\begin{equation}%\label{eq:}
+\partial_{1}\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right) = \begin{bmatrix}1\\0\\1\end{bmatrix}\quad\text{and}\quad
+\partial_{1}\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right) = \begin{bmatrix}0\\1\\1\end{bmatrix}.
+\end{equation}
+But this \emph{completely determines} what $\partial_{1}$ must
+be, explicitly as a linear operator it is ``merely''
+\begin{equation}%\label{eq:}
+\partial_{1} = \begin{bmatrix}1 & 1 & 0\\
+1 & 0 & 1\\
+0 & 1 & 1\end{bmatrix}
+\end{equation}
+which is a curious operator in its own right. It's also a good
+hint that our value for $\partial_{0}$ is correct, since
+$\det(\partial_{1})=-2\neq0$ implies $\partial_{1}$ has a trivial
+kernel. The only way $\partial_{0}\circ\partial_{1}=0$ is iff
+$\partial_{0}=[0,0,0]$.
+
+\begin{figure}[t]
+\includegraphics{img/img.2}
+\caption{The face $f_{1}$ of the 3-torus, boundary edges $e_{1}$
+  and $e_{2}$ are drawn in. The path we use for the chain complex
+  is drawn in red.}\label{fig:img2}
+\end{figure}
+
+We now are stuck with our last operator $\partial_{2}$. We can
+cheat, and use the same argument for $\partial_{0}=[0,0,0]$
+to deduce that
+\begin{equation}%\label{eq:}
+\partial_{2} = \begin{bmatrix}0\\0\\0\end{bmatrix}.
+\end{equation}
+I have a feeling the preferred route would be to prove that it
+must be this via picking a preferred orientation, etc.

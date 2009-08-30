@@ -1,0 +1,99 @@
+%%
+%% sphere.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Aug 29 16:03:43 2009 Alex Nelson
+%% Last update Sat Aug 29 16:03:43 2009 Alex Nelson
+%%
+
+Observe the inductive procedure to constructing an $n$-sphere. We
+start with $B^{0}$, the 0-ball, which is just a humble point. We
+have $S^{0}$, the 0-sphere, which consists of 2 points. The
+1-ball is a line segment between 2 points. Now here is the first
+inductive case study: the 1-sphere is a circle. It consists of 2
+$B^{1}$ with their boundaries glued together: 
+\begin{figure}[h]
+\begin{center}
+\includegraphics{img/img.3}
+\end{center}
+\end{figure}
+The region whose boundary is $S^{1}$ is precisely $B^{2}$. We
+should consider the chain complex describing $S^{1}$ before
+moving on. We have already drawn in the orientation of the edges
+(and labeled them too!), so we need to pick an orientation of the
+face itself. We see first of all that there are 2 edges and 2
+vertices. This allows us to set up the chain complex as
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}
+\end{equation}
+We have picked an orientation for the edges. We see that
+\begin{equation}%\label{eq:}
+ae_{1}+be_{2}=\begin{bmatrix}a\\b\end{bmatrix}\quad\text{and}\quad 
+av_{1}+bv_{2}=\begin{bmatrix}a\\b\end{bmatrix}
+\end{equation}
+We can describe the boundary operator by
+\begin{equation}%\label{eq:}
+\partial_{0}\left(\begin{bmatrix}1\\0\end{bmatrix}\right)=\begin{bmatrix}-1\\1\end{bmatrix}\quad\text{and}\quad
+\partial_{0}\left(\begin{bmatrix}0\\1\end{bmatrix}\right)=\begin{bmatrix}1\\-1\end{bmatrix}
+\end{equation}
+which means that
+\begin{equation}%\label{eq:}
+\partial_{0}:\begin{bmatrix}a\\b\end{bmatrix}\mapsto\begin{bmatrix}b-a\\a-b\end{bmatrix}
+\end{equation}
+describes the behavior of the boundary operator.
+
+We can now similarly construct $S^{2}$. We have 2 $B^{2}$ and glue their
+boundaries together, or diagrammaticaly:
+\begin{figure}[H]
+\includegraphics{img/img.4}
+\end{figure}
+\noindent We should consider now the chain complex that describes
+$S^{3}$. Observe that the two vertices on each of the boundaries
+of the $B^{2}$ are identified to be the same. We are thus left
+with two vertices for $S^{3}$ (as doodled on the right hand side
+of our figure). The two edges for the boundary of $B^{2}$ are
+likewise identified to be the same. We have, however, two
+\emph{distinct faces} for $S^{3}$ which corresponds to the two
+distinct $B^{2}$. This produces the following chain
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}
+\end{equation}
+now we are left to deduce the boundary operators. This demands a
+choice of orientation of edges, and faces. We have picked an
+orientation for the edges as drawn in our figure, let $e_{1}$
+begin at $v_{1}$ and end at $v_{2}$; $e_{2}$ begin at $v_{2}$ and
+end at $v_{1}$. We then let
+\begin{equation}%\label{eq:}
+ae_{1}+be_{2}=\begin{bmatrix}a\\b\end{bmatrix}\quad\text{and}\quad 
+av_{1}+bv_{2}=\begin{bmatrix}a\\b\end{bmatrix}
+\end{equation}
+and then deduce that
+\begin{equation}%\label{eq:}
+\partial_{0}\left(\begin{bmatrix}1\\0\end{bmatrix}\right)=\begin{bmatrix}-1\\1\end{bmatrix}\quad\text{and}\quad
+\partial_{0}\left(\begin{bmatrix}0\\1\end{bmatrix}\right)=\begin{bmatrix}-1\\1\end{bmatrix}
+\end{equation}
+which implies that
+\begin{equation}%\label{eq:}
+\partial_{0}:\begin{bmatrix}a\\b\end{bmatrix}\mapsto\begin{bmatrix}-a-b\\a+b\end{bmatrix}
+\end{equation}
+determines one of the boundary operators completely. To determine
+the other, we can cheat and figure out what square matrix $A$ is such
+that
+\begin{equation}%\label{eq:}
+\begin{bmatrix} -1 & -1\\1 & 1\end{bmatrix}A = 0
+\end{equation}
+so the desired relation $\partial^{2}=0$ holds. This would
+determine $A$ up to an arbitrary sign (which is determined by the
+orientation of the faces). We see that
+\begin{equation}%\label{eq:}
+A = \begin{bmatrix}a & b\\
+-a & -b\end{bmatrix}
+\end{equation}
+is the structure of $\partial_{1}$. This in fact implies $(\partial_{0})^{2}=0$.
+
+The inductive ritual should be clear: we take two copies of
+$B^{n}$ and glue the boundaries, the $S^{n-1}$, together to
+create a $S^{n}$. For our intentions however, we need to consider
+two $B^{3}$, and glue their boundaries together!
