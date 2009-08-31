@@ -7,98 +7,14 @@
 %% Started on  Wed Dec 17 14:47:32 2008 Alex Nelson
 %% Last update Sat Jan  3 16:59:46 2009 Alex Nelson
 %%
-\documentclass[10pt,twoside,draft]{article}
+\documentclass[10pt,draft,twoside]{article}
 \usepackage{makeidx} % for the index e.g. \index{key}
 \makeindex
-\usepackage[final]{graphicx}
-\usepackage{mathtools}
-\usepackage{verbatim} % for the \comment{}
-\usepackage{paralist}
-\usepackage{manfnt}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{amsxtra}
-\usepackage{bbm}
-\usepackage{slashed}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\hypersetup{
-   colorlinks,%
-   citecolor=black,%
-   filecolor=black,%
-   linkcolor=black,%
-   urlcolor=black
-}
-\usepackage{feyn}
-\usepackage{color}
-\usepackage{float}
-\usepackage{subfigure}
-\usepackage{epic}
-\usepackage{eepic}
-\usepackage{enumerate}
+\usepackage{fly,brackets}
+\usepackage{subfigure,plain}
 \usepackage{wrapfig} % used for wrapping figures!
-\usepackage{stackrel}
-\usepackage[normalem]{ulem}  
-\addtolength{\marginparsep}{10pt}
-\addtolength{\marginparwidth}{0.5in}
-\addtolength{\oddsidemargin}{-0.25in} % Increase inner margins by 1in
-\addtolength{\evensidemargin}{0.25in} % 
 
-\theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
-\newtheorem{ex}{Example}[section]
-\newtheorem{prop}{Proposition}[section]
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}{Lemma}[section]
-\newtheorem{axm}{Axiom}[section]
-\newtheorem{rmk}{Remark}[section]
-\newtheorem{cor}{Corollary}[section]
-\newtheorem{property}{Property}
-\newtheorem*{bessel}{Bessel Inequality}
-\newtheorem*{assume}{Assumption}
-\newtheorem*{parseval}{Parseval Equality}
-\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
-\newtheorem*{invFourier}{Fourier Inversion Theorem}
-\newtheorem*{plancherel}{Plancherel Theorem}
-\newtheorem*{samplingthm}{Sampling Theorem}
-\theoremstyle{remark}
-\newtheorem*{sketch}{Sketch Of Proof}
-
-\let\oldmarginpar\marginpar
-\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\emph{#1}]%
-{\raggedright\emph{#1}}}
-
-\setlength{\unitlength}{1mm}
-\parskip=6pt plus 1pt minus 1pt
-\itemsep=0pt
-\makeatletter
-\def\docspecials{\do\ \do\$\do\&%
-  \do\#\do\^\do\^^K\do\_\do\^^A\do\%\do\~}
-
-\def\alltt{\trivlist \item[]\if@minipage\else\vskip\parskip\fi
-\leftskip\@totalleftmargin\rightskip\z@
-\parindent\z@\parfillskip\@flushglue\parskip\z@
-\@tempswafalse \def\par{\if@tempswa\hbox{}\fi\@tempswatrue\@@par}
-\obeylines \tt \catcode``=13 \@noligs \let\do\@makeother \docspecials
- \frenchspacing\@vobeyspaces}
-
-\let\endalltt=\endtrivlist
-\makeatother
-\ifx\twltt\undefined \font\twltt=cmtt10 scaled \magstep1\fi
-
-
-\setlength{\parskip}{0.05in}
-\def\tr{\operatorname{Tr}}
-\def\vect{\operatorname{Vect}}
-\def\Vect{\operatorname{Vect}}
-\def\cliff{\operatorname{C\ell}}
-\def\re{\operatorname{Re}}
-\def\<{\langle}
-\def\>{\rangle}
-\newcommand\mbf[1]{\mathbf{#1}} % simplify writing in math
-                                % bold font
-\numberwithin{equation}{section}
+\newcommand\mbf[1]{\mathbf{#1}} % simplify writing in math bold font
 \numberwithin{figure}{section}
 \title{Notes on Fourier Analysis}
 \date{December 17, 2008}
