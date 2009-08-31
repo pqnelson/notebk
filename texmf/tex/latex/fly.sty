@@ -1,8 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fly}[2009/08/06 Customizations to make the style superfly]
 
-\usepackage{amsmath,amssymb,amsfonts,amscd}
-\usepackage{amsthm}
+\usepackage{amsmath,amsfonts,amsthm,amscd}
+\usepackage{amssymb}
+\usepackage{epic,eepic}
+\usepackage{float}
+% the following is the TeXbook's exact specifications
+%\usepackage[textheight=38pc,headsep=10pc,top=16pc,textwidth=30pc,inner=6pc,marginparwidth=8pc,marginparsep=1cm]{geometry}
+% the following is OUR preferred specifications!
+\usepackage[top=6pc,textwidth=30pc,inner=6pc,marginparwidth=10pc,marginparsep=1cm]{geometry}
+\pagestyle{headings}
 \usepackage{framed}
 \usepackage{ifpdf}
 \usepackage[final]{graphicx}
@@ -21,7 +28,9 @@
 \usepackage{comment}
 \usepackage[colorinlistoftodos, shadow]{todonotes}
 \usepackage{slashed}
+\usepackage{paralist}
 \usepackage[T1]{fontenc}
+\usepackage{marginnote}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % We customize theorem styles...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,6 +46,14 @@
 \newtheorem{sch}{Scholium}
 \newtheorem{axm}{Axiom}
 \newtheorem*{prob}{Problem}
+\newtheorem*{bessel}{Bessel Inequality}
+\newtheorem*{assume}{Assumption}
+\newtheorem*{parseval}{Parseval Equality}
+\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
+\newtheorem*{invFourier}{Fourier Inversion Theorem}
+\newtheorem*{plancherel}{Plancherel Theorem}
+\newtheorem*{samplingthm}{Sampling Theorem}
+\newtheorem*{sketch}{Sketch Of Proof}
 
 \newenvironment{defn}{\begin{Defn}}{\end{Defn}}
 \newenvironment{thm}{\begin{Thm}}{\end{Thm}}
@@ -46,6 +63,29 @@
 %\newenvironment{thm}{\begin{framed}\begin{Thm}}{\end{Thm}\end{framed}}
 %\newenvironment{lem}{\begin{framed}\begin{Lem}}{\end{Lem}\end{framed}}
 %\newenvironment{cor}{\begin{framed}\begin{Cor}}{\end{Cor}\end{framed}}
+\allowdisplaybreaks
+
+
+\normalbaselineskip=12pt
+\baselineskip=12pt
+\abovedisplayskip=6pt plus 3pt minus 1pt
+\belowdisplayskip=6pt plus 3pt minus 1pt
+\abovedisplayshortskip=0pt plus 3pt
+\belowdisplayshortskip=4pt plus 3pt
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyheadoffset[OR,EL]{8pc}
+\else
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{8pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % We also customize commands
@@ -58,15 +98,19 @@
 \renewcommand{\>}{\rangle}
 \newcommand{\iso}{\cong}
 \newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
-\newcommand{\eqdef}{\equalsdef}
+\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
 \newcommand{\define}[1] {\textbf{#1}\index{#1}}
 \newcommand{\cov}[2]{{#1}_{#2}}
 \newcommand{\contrav}[2]{{#1}^{#2}}
-\allowdisplaybreaks
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % We also make the marin notes look prettier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength{\marginparwidth}{1.2in}
-\let\oldmarginpar\marginpar
-\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
-{\raggedright\footnotesize #1}}
+%\setlength{\marginparwidth}{1.2in}
+
+
+\if@twoside
+\renewcommand\marginpar[1]{\-\marginnote{\footnotesize{\emph{#1}}}}
+\else
+\renewcommand\marginpar[1]{\-\marginnote{\raggedright\footnotesize{\emph{#1}}}}%
+\fi

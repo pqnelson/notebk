@@ -14,7 +14,7 @@ all:
 	dvips $(FILE).dvi
 	ps2pdf $(FILE).ps
 	rm $(FILE).dvi
-
+	rm $(FILE).aux $(FILE).bbl $(FILE).blg $(FILE).idx $(FILE).ilg $(FILE).ind $(FILE).log $(FILE).out $(FILE).lof $(FILE).toc
 withsage:
 	$(SAGE) $(FILE).sage
 clean:

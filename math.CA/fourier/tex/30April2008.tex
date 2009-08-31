@@ -10,11 +10,12 @@
 %% We cover two things in this note, we 1) finish the
 %% sturm-liouville problem; 2) apply the regular
 %% sturm-liouville problem to solve the heat equation
-\subsection[Existence Theorem for Sturm-Liouville]{Existence of Eigenfunctions for the Regular Sturm-Liouville Problem}
+%\subsection[Existence Theorem for Sturm-Liouville]{Existence of Eigenfunctions for the Regular Sturm-Liouville Problem}
+\subsection{Existence of Eigenfunctions for the Regular Sturm-Liouville Problem}
 
 \begin{thm}\label{thm:30April2008:thm3.10}
 For the regular Sturm-Liouville problem,
-\begin{enumerate}[a)]
+\begin{enumerate}%[a)]
 \item There is ano orthonormal basis $\{\phi_n\}^{\infty}_{1}$ of
 $L^{2}_{\omega}(a,b)$ consisting of the eigenfunctions of
 the regular Sturm-Liouville problem.
@@ -86,7 +87,7 @@ the hardest part!)
 Consider the one-dimensional heat flow
 \begin{figure}[t]
   \begin{center}
-    \input{$HOME/book/fourier/img/30April2008img1.tex}
+    \input{img/30April2008img1.tex}
   \end{center}
 \caption{A thin insulated metal rod of length $L$}
 \label{fig:30April2008:img1}
@@ -134,12 +135,12 @@ $$2c_2+\alpha c_2L=0=(2+\alpha L)c_2 $$
 but $2+\alpha L>0$ so $c_2=0$, which implies trivially
 $X(x)=0$.
 
+
 \textbf{Case 2} We know what Theorem
 \eqref{thm:28April2008:thm3.9} says about eigenvalues, so
-$\lambda\in\mathbb{R}$. So either \begin{inparaenum}\item
-  $\nu^2>0$ which implies $\nu>0$ \comment{really? Wouldn't
-    it just imply that $\nu\in\mathbb{R}$ and
-    $\nu\neq0$?}, \item $\nu^2<0$ which implies $\nu=i\mu$
+$\lambda\in\mathbb{R}$. So either \begin{inparaenum}
+\item $\nu^2>0$ which implies $\nu>0$%\comment{really? Wouldn't it just imply that $\nu\in\mathbb{R}$ and $\nu\neq0$?}
+, \item $\nu^2<0$ which implies $\nu=i\mu$
   where $\mu\in\mathbb{R}$ and $\mu>0$.\end{inparaenum} For
 \begin{equation} 
 X''(x)+\nu^2X(x) = 0
@@ -167,10 +168,8 @@ equation
 \begin{subequations}
 \begin{align}
 X'(L) &= -\alpha X(L)\\
-\Rightarrow -\nu^2\sin(\nu L)+\alpha\nu\cos(\nu L) &=
--\alpha\left(\nu\cos(\nu L)+\alpha\nu\sin(\nu L)\right)\\
-\Rightarrow 2\alpha\nu\cos(\nu L) &=
-(\nu^2-\alpha^2)\sin(\nu L)\\
+\Rightarrow -\nu^2\sin(\nu L)+\alpha\nu\cos(\nu L) &= -\alpha\left(\nu\cos(\nu L)+\alpha\nu\sin(\nu L)\right)\\
+\Rightarrow 2\alpha\nu\cos(\nu L) &= (\nu^2-\alpha^2)\sin(\nu L)\\
 \Rightarrow \tan(\nu L) &= \frac{2\alpha\nu}{\nu^2-\alpha^2}
 \end{align}
 \end{subequations}

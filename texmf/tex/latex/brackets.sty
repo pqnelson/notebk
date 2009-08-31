@@ -21,6 +21,7 @@
 
 
 \def\underbracket{%
+%  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
   \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
 }
 \def\@underbracket[#1]{%

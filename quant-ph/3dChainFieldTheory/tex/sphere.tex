@@ -91,9 +91,56 @@ orientation of the faces). We see that
 A = \begin{bmatrix}a & b\\
 -a & -b\end{bmatrix}
 \end{equation}
-is the structure of $\partial_{1}$. This in fact implies $(\partial_{0})^{2}=0$.
+is the structure of $\partial_{1}$. This in fact implies
+$(\partial_{0})^{2}=0$. We are forced to pick orientations for
+the actual open balls $B^{2}$, but open doing so we see that it's
+simply one $B^{2}$ minus the other, implying that (up to a sign
+determined by orientation!) $a=b=\pm1$.
 
 The inductive ritual should be clear: we take two copies of
 $B^{n}$ and glue the boundaries, the $S^{n-1}$, together to
-create a $S^{n}$. For our intentions however, we need to consider
+create a $S^{n}$. More formally, we present it as a theorem.
+
+\begin{thm}%\label{thm:}
+Consider the sphere $S^{n}$. Then the chain complex describing it
+is
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{2} \xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}
+\end{equation}
+where $\partial_{i}$ are the boundary operators.
+\end{thm}
+\begin{proof}
+\noindent\textbf{Base Case (n=1):} We have already done this, two $B^{1}$
+(line segments) glued together at their boundary $S^{0}$ (two
+points) results in the chain complex
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}
+\end{equation}
+where
+\begin{equation}%\label{eq:}
+\partial_{0} = \begin{bmatrix}-1 & -1\\1 & 1\end{bmatrix}
+\end{equation}
+up to a sign determined by orientation.
+
+\noindent\textbf{Inductive Hypothesis:} assume this works for arbitrary
+$n$. That is, we have
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}
+\end{equation}
+for our chain complex.
+
+\noindent\textbf{Inductive Case (n+1):} We have the boundaries of the
+$B^{n+1}$, which takes care of the first $n-1$ boundary operators
+and the first $n$ $\mathbb{Z}^{2}$ components of the chain. We
+are still left with two copies of the \emph{interior} of
+$B^{n+1}$. This constitutes an additional $\mathbb{Z}^{2}$
+component in the chain diagram, and implies that the chain
+complex looks like
+\begin{equation}%\label{eq:}
+\underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}\right)}_{\text{inductive hypothesis}}\xleftarrow{\partial_{n}}\mathbb{Z}^{2}
+\end{equation}
+where $\partial$ is the boundary operator. This concludes the
+inductive case, and the proof.
+\end{proof}
+For our intentions however, we need to consider
 two $B^{3}$, and glue their boundaries together!

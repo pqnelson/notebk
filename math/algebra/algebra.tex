@@ -8,7 +8,7 @@
 %% Last update Mon Dec 22 11:28:40 2008 Alex Nelson
 %%
 \documentclass[10pt,draft]{article}
-\usepackage{bbm}
+\usepackage{bbm,fly}
 % for usuage of conditionals see http://zyliu2005.blogspot.com/2007/06/latex-how-to-use-conditional.html
 \usepackage{ifthen}
 \newboolean{useIndex}
@@ -36,6 +36,7 @@
 \listoffigures
 \section*{Introduction}
 \begin{rmk}
+\the\maxdimen
 Just a prefatory note, to indicate an example has ended I
 will use either `QEF' or \qef ~and for the end of a proof, I
 will use an empty square; to show that a sketch of a proof
