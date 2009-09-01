@@ -1,0 +1,34 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{exercises}[2009/08/06 LaTeX version of exercise macros from the TeXbook]
+\usepackage{manfnt}
+% todo: take an optional parameter to number exercises in different
+%       section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Exercise Environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{exno}
+\setcounter{exno}{0}
+\newcounter{ansno}
+\setcounter{ansno}{1}
+\newcommand{\exercise}{\medbreak%\medbreak %
+  \refstepcounter{exno}%\manfntsymbol
+  \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \thesection.\arabic{exno}}}\\%
+  \noindent}
+\newcommand{\dexercise}{%
+  \refstepcounter{exno}%\manfntsymbol
+  \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \thesection.\arabic{exno}}}\\%
+  \noindent}
+\newcommand{\dangerexercise}{\dbend \dexercise}
+\newcommand{\ddangerexercise}{\dbend\dbend \dexercise}
+
+%%%%%%%%%%%%%%
+% Answer
+%%%%%%%%%%%%%%
+\newwrite\ans
+\immediate\openout\ans=answers % file for answers to exercises
+\newcommand{\answer}[1]{\par%\medbreak%
+  \immediate\write\ans{}
+  \immediate\write\ans{\string\arabic{ansno}\thesection.\arabic{exno}:}
+  \immediate\write\ans{\detokenize{#1}}}

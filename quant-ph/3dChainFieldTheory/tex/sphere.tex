@@ -47,7 +47,9 @@ describes the behavior of the boundary operator.
 We can now similarly construct $S^{2}$. We have 2 $B^{2}$ and glue their
 boundaries together, or diagrammaticaly:
 \begin{figure}[H]
+\begin{center}
 \includegraphics{img/img.4}
+\end{center}
 \end{figure}
 \noindent We should consider now the chain complex that describes
 $S^{3}$. Observe that the two vertices on each of the boundaries
@@ -109,7 +111,7 @@ is
 \end{equation}
 where $\partial_{i}$ are the boundary operators.
 \end{thm}
-\begin{proof}
+\begin{sketch}
 \noindent\textbf{Base Case (n=1):} We have already done this, two $B^{1}$
 (line segments) glued together at their boundary $S^{0}$ (two
 points) results in the chain complex
@@ -140,7 +142,21 @@ complex looks like
 \underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}\right)}_{\text{inductive hypothesis}}\xleftarrow{\partial_{n}}\mathbb{Z}^{2}
 \end{equation}
 where $\partial$ is the boundary operator. This concludes the
-inductive case, and the proof.
-\end{proof}
+inductive case, and the proof. 
+\end{sketch}
 For our intentions however, we need to consider
-two $B^{3}$, and glue their boundaries together!
+two $B^{3}$, and glue their boundaries together! We see the
+scheme presented mildly formally, the boundaries of the two
+$B^{3}$ provide the vertices, edges, and faces in the chain
+complex:
+\begin{equation}%\label{eq:}
+\underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}\right)}_{\text{from $\partial{B^{3}}$}}\xleftarrow{\partial}\cdots
+\end{equation}
+and the rest of the chain complex comes from the interior of the
+open balls. We have two distinct interiors, so that contributes
+$\mathbb{Z}^{2}$ and nothing more. This implies our chain complex
+becomes
+\begin{equation}%\label{eq:}
+\underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}\right)}_{\text{from $\partial{B^{3}}$}}\xleftarrow{\partial_{2}}\mathbb{Z}^{2}
+\end{equation}
+where $\partial_{i}$ are the boundary operators (as usual).
