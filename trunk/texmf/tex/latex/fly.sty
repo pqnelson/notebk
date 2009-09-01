@@ -1,5 +1,20 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fly}[2009/08/06 Customizations to make the style superfly]
+\usepackage[final]{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+% automatically generate the author information
+\expandafter\ifx\csname amsart.sty\endcsname\relax
+\author{Alex Nelson\\\texttt{Email: \href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}
+\else
+\author{Alex Nelson}
+\email{pqnelson@gmail.com}
+\fi
 
 \usepackage{amsmath,amsfonts,amsthm,amscd}
 \usepackage{amssymb}
@@ -17,14 +32,6 @@
 \DeclareGraphicsRule{*}{mps}{*}{}
 \fi
 \usepackage{mathrsfs}
-\usepackage[final]{hyperref}
-\hypersetup{
-    colorlinks,%
-    citecolor=black,%
-    filecolor=black,%
-    linkcolor=black,%
-    urlcolor=black
-}
 \usepackage{comment}
 \usepackage[colorinlistoftodos, shadow]{todonotes}
 \usepackage{slashed}
@@ -35,17 +42,17 @@
 % We customize theorem styles...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \theoremstyle{definition}
-\newtheorem{Defn}{Definition}
-\newtheorem{Thm}[Defn]{Theorem}
-\newtheorem{rmk}{Remark}
-\newtheorem{Lem}[Defn]{Lemma}
-\newtheorem{Cor}[Defn]{Corollary}
-\newtheorem{ex}{Example}
-\newtheorem{nonex}[ex]{NON-Example}
-\newtheorem{prop}{Proposition}
-\newtheorem{sch}{Scholium}
-\newtheorem{axm}{Axiom}
-\newtheorem*{prob}{Problem}
+\newtheorem{@defn}{Definition}
+\newtheorem{@thm@}[@defn]{Theorem}
+\newtheorem{rmk}[@defn]{Remark}
+\newtheorem{@lem}[@defn]{Lemma}
+\newtheorem{@cor}[@defn]{Corollary}
+\newtheorem{ex}[@defn]{Example}
+\newtheorem{nonex}[@defn]{NON-Example}
+\newtheorem{prop}[@defn]{Proposition}
+\newtheorem{sch}[@defn]{Scholium}
+\newtheorem{axm}[@defn]{Axiom}
+\newtheorem{prob}[@defn]{Problem}
 \newtheorem*{bessel}{Bessel Inequality}
 \newtheorem*{assume}{Assumption}
 \newtheorem*{parseval}{Parseval Equality}
@@ -53,12 +60,13 @@
 \newtheorem*{invFourier}{Fourier Inversion Theorem}
 \newtheorem*{plancherel}{Plancherel Theorem}
 \newtheorem*{samplingthm}{Sampling Theorem}
-\newtheorem*{sketch}{Sketch Of Proof}
-
-\newenvironment{defn}{\begin{Defn}}{\end{Defn}}
-\newenvironment{thm}{\begin{Thm}}{\end{Thm}}
-\newenvironment{lem}{\begin{Lem}}{\end{Lem}}
-\newenvironment{cor}{\begin{Cor}}{\end{Cor}}
+\theoremstyle{remark}
+\newtheorem*{@sketch}{Sketch Of Proof}
+\newenvironment{sketch}{\begin{@sketch}}{\qed\end{@sketch}}
+\newenvironment{defn}{\begin{@defn}}{\end{@defn}}
+\newenvironment{thm}{\begin{@thm@}}{\end{@thm@}}
+\newenvironment{lem}{\begin{@lem}}{\end{@lem}}
+\newenvironment{cor}{\begin{@cor}}{\end{@cor}}
 %\newenvironment{defn}{\begin{framed}\begin{Defn}}{\end{Defn}\end{framed}}
 %\newenvironment{thm}{\begin{framed}\begin{Thm}}{\end{Thm}\end{framed}}
 %\newenvironment{lem}{\begin{framed}\begin{Lem}}{\end{Lem}\end{framed}}
@@ -80,12 +88,13 @@
 \fancyhead[LE,RO]{\thepage}
 \fancyheadoffset[OR,EL]{8pc}
 \else
+\fancyhead[L]{\S\thesection~\nouppercase{\rightmark}}
 \fancyhead[R]{\thepage}
 \fancyheadoffset[R]{8pc}
+\renewcommand{\sectionmark}[1]{\markboth{}{#1}}
 \fi
 \cfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % We also customize commands
@@ -107,7 +116,6 @@
 % We also make the marin notes look prettier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\setlength{\marginparwidth}{1.2in}
-
 
 \if@twoside
 \renewcommand\marginpar[1]{\-\marginnote{\footnotesize{\emph{#1}}}}

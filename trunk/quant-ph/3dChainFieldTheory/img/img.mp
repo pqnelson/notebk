@@ -1,6 +1,6 @@
 u:=0.5cm;
 
-verbatimtex \documentclass{amsart}\usepackage{fly}\usepackage{brackets}\usepackage{danger}\begin{document} etex;
+verbatimtex \documentclass{article}\usepackage{fly}\usepackage{brackets}\usepackage{danger}\begin{document} etex;
 
 beginfig(0)
   z[0] = (0,0);
@@ -180,6 +180,62 @@ beginfig(4)
     label.lrt(btex $v_{2}$ etex, (point 0 of halfcircle xscaled 4u yscaled -u rotated -45 shifted (6u,u))) withcolor red;
     label.ulft(btex $v_{1}$ etex, point length (halfcircle xscaled 4u yscaled -u rotated -45 shifted (6u,u)) of halfcircle xscaled 4u yscaled -u rotated -45 shifted (6u,u)) withcolor red;
     );
+endfig;
+beginfig(5)
+  path p[];
+  z[0] = (0,0);
+  z[1] = (5u,5u);
+  z[2] = (7.5u,0);
+  drawarrow z[0]--0.5[z[0],z[1]];
+  draw 0.5[z[0],z[1]]--z[1];
+  drawarrow z[1]--0.5[z[1],z[2]];
+  draw 0.5[z[1],z[2]]--z[2];
+  drawarrow z[0]--0.5[z[0],z[2]];
+  draw 0.5[z[0],z[2]]--z[2];
+  label.llft(btex $e_{1}$ etex, z[0]);
+  label.top(btex $e_{2}$ etex, z[1]);
+  label.lrt(btex $e_{3}$ etex, z[2]);
+  label.bot(btex $f_{2}$ etex, 0.5[z[0],z[2]]);
+  label.urt(btex $f_{3}$ etex, 0.5[z[1],z[2]]);
+  label.ulft(btex $f_{1}$ etex, 0.5[z[0],z[1]]);
+  p[0] = fullcircle scaled 2u;
+  p[1] = subpath (0,length(p[0])-u) of p[0] rotated 140;
+  drawarrow p[1] shifted (4.5u,2u);
+  label(btex $V$ etex, (4.5u,2u));
+endfig;
+beginfig(6)
+  path B;
+  picture mypic;
+  B := fullcircle yscaled 2u xscaled 4u;
+  mypic := image(
+      path p[];
+    p[0] = (-9.5u,-4u)--(-4.5u,4u);
+    fill (B) withcolor 0.9[black,white];
+    for i=0 upto 36:
+      draw p[0] shifted (i*0.25u,0) withcolor 0.5[black,white];
+    endfor;
+    draw B withcolor red;
+    clip currentpicture to B;
+    drawdot (-2u,0) withpen pencircle scaled 2 withcolor red;
+    drawdot (2u,0) withpen pencircle scaled 2 withcolor red;
+    p[1] = fullcircle xscaled 2u yscaled u;
+    p[2] = subpath (0,length(p[0])-.52u) of p[1] rotated 180;
+    drawarrow p[2];
+    );
+  draw mypic;
+  label.lft(btex $f_{1}$ etex, (-4u,1.8u));
+  label.lft(btex $f_{2}$ etex, (-4u,0));
+  draw mypic shifted (0,1.8u);
+  drawarrow subpath (4.5,-3) of (fullcircle xscaled 6u yscaled 3u) shifted (0,1.8u)  withcolor 0.5[black,green];
+  z[0] = (point -3 of ((fullcircle xscaled 6u yscaled 3u) shifted (0,1.8u)))-(0,4pt);
+  z[1] = z[0]-(0,1.35u);
+  z[2] = (point 4.5 of ((fullcircle xscaled 6u yscaled 3u) shifted (0,1.8u)))-(0,4pt);
+  z[3] = z[2]-(0,1.25u);
+  drawarrow z[0]--z[1] withcolor 0.5[black,green];
+  draw subpath (-3,1.225) of (fullcircle xscaled 6u yscaled 3u) withcolor 0.5[black,green];
+  draw subpath (1.225,2.75) of (fullcircle xscaled 6u yscaled 3u) dashed evenly withcolor 0.5[black,green];
+  drawarrow subpath (2.75,4.65) of (fullcircle xscaled 6u yscaled 3u) withcolor 0.5[black,green];
+  drawarrow z[3]--z[2] withcolor 0.5[black,green];
 endfig;
 verbatimtex \end{document} etex
 end;
