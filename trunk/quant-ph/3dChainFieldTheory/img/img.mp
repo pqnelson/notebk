@@ -1,5 +1,5 @@
 u:=0.5cm;
-
+Pi:=3.14159265;
 verbatimtex \documentclass{article}\usepackage{fly}\usepackage{brackets}\usepackage{danger}\begin{document} etex;
 
 beginfig(0)
@@ -237,5 +237,31 @@ beginfig(6)
   drawarrow subpath (2.75,4.65) of (fullcircle xscaled 6u yscaled 3u) withcolor 0.5[black,green];
   drawarrow z[3]--z[2] withcolor 0.5[black,green];
 endfig;
+
+beginfig(7)
+  path p[];
+  z[0] = (0,0);
+  z[1] = (2u*Pi,0);
+  z[2] = (2u*Pi,2u*Pi);
+  z[3] = (0,2u*Pi);
+  p[0] = z[0]--z[1]--z[2]--z[3]--z[0];
+  draw p[0];
+  p[1] = (-2u,-2u)--(2u*Pi + 3u, 2u*Pi + 3u);
+  drawdblarrow p[1];
+  p[2] = (-2u,2u)--(2u,-2u);
+  drawdblarrow p[2];
+  drawdblarrow (-3u,0)--(2u*Pi + 4u,0) withcolor 0.125[red,black];
+  drawdblarrow (0,-3u)--(0,2u*Pi + 4u) withcolor 0.125[red,black];
+  label.top(btex $A_{1}$ etex, z[1]+(3u,0)) withcolor 0.125[red,black];
+  label.rt(btex $A_{2}$ etex, z[3]+(0,3u)) withcolor 0.125[red,black];
+  label.rt(btex $z$ etex, (2u*Pi + 3u, 2u*Pi + 3u));
+  label.lft(btex $\bar{z}$ etex, (-2u,2u));
+  drawdot z[1] withpen pencircle scaled 2;
+  drawdot z[3] withpen pencircle scaled 2;
+  label.bot(btex $(2\pi,0)$ etex, z[1]);
+  label.lft(btex $(0,2\pi)$ etex, z[3]);
+endfig;
+
+
 verbatimtex \end{document} etex
 end;

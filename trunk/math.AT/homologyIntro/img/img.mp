@@ -95,7 +95,7 @@ beginfig(3)
     drawdot z[j] withpen pencircle scaled 2;
   endfor;
   p[4] = (subpath (length(fullcircle)-0.8,0.2) of fullcircle) rotated 180;
-  drawarrow p[4] scaled u shifted (0.5[point (0.5*length(p[3])) of p[3],point (0.5*length(p[1])) of p[1]]) withcolor 0.5[black,green];
+  drawarrow p[4] scaled 1.2u shifted (0.5[point (0.5*length(p[3])) of p[3],point (0.5*length(p[1])) of p[1]]) withcolor 0.5[black,green];
 endfig;
 
 verbatimtex \end{document} etex;
