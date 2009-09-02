@@ -8,4 +8,5 @@ all:
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	rm $(MAIN).aux $(MAIN).bbl $(MAIN).blg $(MAIN).log $(MAIN).out
+clean:
+	rm $(MAIN).aux $(MAIN).bbl $(MAIN).blg $(MAIN).log $(MAIN).out $(MAIN).toc

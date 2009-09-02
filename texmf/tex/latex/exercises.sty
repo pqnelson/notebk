@@ -1,34 +1,84 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{exercises}[2009/08/06 LaTeX version of exercise macros from the TeXbook]
+%%%%%%
+% Options: number within either the chapter or the part
+%          default is to number the exercises/answers via sections
+%%%%%%%%
+\newif\if@dump
+\@dumpfalse
+\newif\if@section
+\newif\if@ch@pter
+\newif\if@p@rt
+\@sectiontrue\@ch@pterfalse\@p@rtfalse
+\DeclareOption{chapter}{\@sectionfalse\@ch@ptertrue\@p@rtfalse}
+\DeclareOption{part}{\@sectionfalse\@ch@pterfalse\@p@rttrue}
+\def\dump@nswer{0}
+\DeclareOption{dump}{\@dumptrue}
+\ProcessOptions\relax
+
 \usepackage{manfnt}
-% todo: take an optional parameter to number exercises in different
-%       section
+
+
+\newcounter{sectionCtr}
+\newcounter{exno}
+\setcounter{exno}{0}
+
+
+\refstepcounter{sectionCtr}
+\if@section
+\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{section}%
+\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{section}}\fi}
+\else\if@ch@pter%
+\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{chapter}
+\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{chapter}}\fi}
+\else\if@p@rt%
+\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{part}%
+\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{part}}\fi}
+\else\@sectiontrue\setcounter{exno}{1}\setcounter{sectionCtr}{\value{section}}
+\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{section}%
+\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{section}}\fi}
+\fi\fi\fi
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Exercise Environment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcounter{exno}
-\setcounter{exno}{0}
-\newcounter{ansno}
-\setcounter{ansno}{1}
-\newcommand{\exercise}{\medbreak%\medbreak %
-  \refstepcounter{exno}%\manfntsymbol
+\newcommand{\exercise}[1][\upd@teCtr\thesection.\arabic{exno}]{\medbreak%
   \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
-  \small{\textbf{EXERCISE \thesection.\arabic{exno}}}\\%
+  \small{\textbf{EXERCISE #1}}\\%
   \noindent}
-\newcommand{\dexercise}{%
-  \refstepcounter{exno}%\manfntsymbol
+\newcommand{\dexercise}[1][\upd@teCtr\thesection.\arabic{exno}]{\medbreak\upd@teCtr%
   \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
-  \small{\textbf{EXERCISE \thesection.\arabic{exno}}}\\%
+  \small{\textbf{EXERCISE #1}}\\%
   \noindent}
 \newcommand{\dangerexercise}{\dbend \dexercise}
 \newcommand{\ddangerexercise}{\dbend\dbend \dexercise}
 
-%%%%%%%%%%%%%%
-% Answer
-%%%%%%%%%%%%%%
-\newwrite\ans
-\immediate\openout\ans=answers % file for answers to exercises
-\newcommand{\answer}[1]{\par%\medbreak%
-  \immediate\write\ans{}
-  \immediate\write\ans{\string\arabic{ansno}\thesection.\arabic{exno}:}
-  \immediate\write\ans{\detokenize{#1}}}
+
+% formatting macro
+\if@dump
+  \def\ansno#1.#2:{\medbreak\noindent%
+    \hbox to\parindent{\bf\hss(Answer to #1.#2)\enspace}\ignorespaces}
+\else
+  \def\ansno#1.#2:{\medbreak\noindent%
+    \hbox to \parindent{\bf\hss #1.#2.\enspace}\ignorespaces}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Answers Command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if@dump % if we are dumping the answers directly where they're placed
+  \def\ans{} % ans is defined as nothing
+  \newcommand{\answer}[2][\arabic{sectionCtr}.\arabic{exno}]{\par\medbreak % \answer simply
+      \ansno#1: \\% prints directly
+      #2} % out when it's called 
+  \newcommand{\dumpanswers}{} % \dumpanswers is empty
+\else % else we are dumping it into a file
+  \newwrite\ans%
+  \immediate\openout\ans=answers % file for answers to exercises
+  \newcommand{\answer}[2][\arabic{sectionCtr}.\arabic{exno}]{\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno#1:}%
+    \immediate\write\ans{ \detokenize{#2}}}
+  \newcommand{\dumpanswers}{\immediate\closeout\ans\input{answers}}
+\fi
+
