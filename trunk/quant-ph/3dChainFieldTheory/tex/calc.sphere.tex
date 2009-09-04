@@ -1,0 +1,100 @@
+%%
+%% calc.sphere.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Sep  3 13:26:42 2009 Alex Nelson
+%% Last update Thu Sep  3 13:26:42 2009 Alex Nelson
+%%
+
+Consider the path integral expression for the 3-sphere, which
+requires us to first consider the cobordism
+\begin{equation}%\label{eq:}
+\begin{CD}
+\{0\}         @<<<     \{0\}     @<<<     \{0\}\\
+@VVV                   @VVV                @VVV\\
+\mathbb{Z}^{2}@<<<     \mathbb{Z}^{2}     @<<<     \mathbb{Z}^{2} @<<< \mathbb{Z}^{2}\\
+@VVV                   @VVV                @VVV\\
+\{0\}         @<<<     \{0\}     @<<<     \{0\}
+\end{CD}
+\end{equation}
+
+For the sphere, we have the time evolution operator be described
+by
+\begin{equation}%\label{eq:}
+Z(S):\mathbb{C}\to\mathbb{C}.
+\end{equation}
+We consider the path integral expression
+\begin{equation}%\label{eq:}
+\<1,Z(S)\cdot1\>=\int_{\mathcal{A}(S)}e^{-S(A)}\mathcal{D}A
+\end{equation}
+where the action term is (as we have 2 $X^{p+1}$ cells)
+\begin{equation}%\label{eq:}
+e^{-S(A)}=\sum_{n^{i}\in\mathbb{Z}^{2}}e^{-(F_{i}+2\pi n_{i})(F^{i}+2\pi n^{i})/(2e^{2}V)}.
+\end{equation}
+%\marginpar{We see that this exponential really has the exponent be $(F_{1}+2\pi n)^{2}+(F_{2}+2\pi m)^{2}-(F_{1}-F_{2})\pi(m-n)$ but we see $F_{2}=F_{1}$ so that extra term vanishes.}
+This is equivalent to
+\begin{equation}%\label{eq:}
+e^{-S(A)} = \sum_{m,n\in\mathbb{Z}}e^{-(F_{1}+2\pi
+  m)^{2}/2e^{2}V}e^{-(F_{2}+2\pi n)^{2}/2e^{2}V}
+\end{equation}
+which turns our expression into
+\begin{equation}%\label{eq:}
+\<1,Z(S)\cdot1\> = \int^{2\pi}_{0}\int^{2\pi}_{0}\sum_{m,n}e^{-m^{2}e^{2}V/2}e^{-n^{2}e^{2}V/2}e^{i(m+n)(A_{2}-A_{1})}\frac{dA_{1}}{2\pi}\frac{dA_{2}}{2\pi}.
+\end{equation}
+We see this becomes
+\begin{equation}%\label{eq:}
+\<1,Z(S)\cdot1\> = \int^{2\pi}_{0}\sum_{m,n}e^{-m^{2}e^{2}V/2}e^{-n^{2}e^{2}V/2}e^{i(m+n)(-A_{1})}\delta_{-m,n}\frac{dA_{1}}{2\pi}.
+\end{equation}
+But we see, setting $m:=-n$ and summing over $n$, that
+\begin{equation}%\label{eq:}
+\<1,Z(S)\cdot1\>=\sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V/2}e^{-n^{2}e^{2}V/2}\int^{2\pi}_{0}\frac{dA_{1}}{2\pi}
+\end{equation}
+This reduces to
+\begin{equation}%\label{eq:}
+\<1,Z(S)\cdot1\>=\sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V}
+\end{equation}
+and thus
+\begin{equation}%\label{eq:}
+Z(S):1\mapsto\sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V}
+\end{equation}
+describes our time evolution operator.
+
+
+
+
+\begin{comment}
+We see that by expanding this out, and referring to Eq (13) of \S
+2.325 of Gradshteyn and Ryzhik~\cite{gradshteyn2000table} (which is:
+\begin{equation}%\label{eq:}
+\int e^{-(ax^{2}+bx+c)}dx = \frac{1}{2}\sqrt{\frac{\pi}{a}}\exp\left(\frac{b^{2}-ac}{a}\right)\erf\left(\frac{b}{\sqrt{a}}+\sqrt{a}x\right)
+\end{equation}
+reproduced for reference) we have our path integral expression become 
+\begin{equation}%\label{eq:}
+\<1,Z(S)1\>=\sum_{n\in\mathbb{Z}}e^{-4\pi^{2}n^{2}}\int\left[\int
+  e^{-(x^{2}+2[2\pi n+y]x + [y^{2}-4\pi ny])}\frac{dx}{2\pi}\right]\frac{dy}{2\pi}.
+\end{equation}
+We can either carry out this integral, or use the results from Eq \eqref{eq:cheatEqn}
+in our last section to conclude that
+\begin{equation}%\label{eq:}
+\begin{split}
+&\int^{2\pi}_{0}e^{-\left[A_{1}^{2}+2(-2\pi-A_{2})A_{1}+(A_{2}^{2}+4n^{2}\pi^{2}-4nA_{2}\pi)\right]}dA_{1}\\
+&=\frac{\sqrt{e^{2}V\pi }}{2}  \left(\erf\left(\frac{2 \pi 
+    n+A_{2}}{e \sqrt{V}}\right)-\erf\left(\frac{2 \pi  (n-1)+A_{2}}{e
+    \sqrt{V}}\right)\right).
+\end{split}
+\end{equation}
+In this situation, we have the following result (omitting the
+forgotten factors of $1/2\pi$)
+\begin{align}
+Z(T):1\mapsto &\frac{1}{2} e^{-4 (n-1)^2 \pi ^2/e^2 V} V e^2
+-e^{-4 n^2 \pi^2/e^2 V} V e^2
++\frac{1}{2} e^{-4 (n+1)^2 \pi ^2/e^2 V} V e^2\nonumber\\
+&+n\pi ^{3/2} \sqrt{V} \erf\left(\frac{2 (n-1) \pi }{e \sqrt{V}}\right) e
+-\pi ^{3/2} \sqrt{V} \erf\left(\frac{2 (n-1) \pi }{e\sqrt{V}}\right) e\nonumber\\
+&-2 n \pi ^{3/2} \sqrt{V} \erf\left(\frac{2 n \pi }{e \sqrt{V}}\right) e
++n \pi ^{3/2} \sqrt{V} \erf\left(\frac{2 (n+1) \pi }{e \sqrt{V}}\right) e\nonumber\\
+&+\pi ^{3/2} \sqrt{V} \erf\left(\frac{2 (n+1) \pi }{e \sqrt{V}}\right) e
+\end{align}
+\end{comment}

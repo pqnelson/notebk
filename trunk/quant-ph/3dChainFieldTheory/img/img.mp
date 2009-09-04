@@ -252,10 +252,10 @@ beginfig(7)
   drawdblarrow p[2];
   drawdblarrow (-3u,0)--(2u*Pi + 4u,0) withcolor 0.125[red,black];
   drawdblarrow (0,-3u)--(0,2u*Pi + 4u) withcolor 0.125[red,black];
-  label.top(btex $A_{1}$ etex, z[1]+(3u,0)) withcolor 0.125[red,black];
-  label.rt(btex $A_{2}$ etex, z[3]+(0,3u)) withcolor 0.125[red,black];
-  label.rt(btex $z$ etex, (2u*Pi + 3u, 2u*Pi + 3u));
-  label.lft(btex $\bar{z}$ etex, (-2u,2u));
+  label.top(btex $A_{2}$ etex, z[1]+(3u,0)) withcolor 0.125[red,black];
+  label.rt(btex $A_{3}$ etex, z[3]+(0,3u)) withcolor 0.125[red,black];
+  label.rt(btex $\widetilde{A}_{2}$ etex, (2u*Pi + 3u, 2u*Pi + 3u));
+  label.lft(btex $\widetilde{A}_{3}$ etex, (-2u,2u));
   drawdot z[1] withpen pencircle scaled 2;
   drawdot z[3] withpen pencircle scaled 2;
   label.bot(btex $(2\pi,0)$ etex, z[1]);

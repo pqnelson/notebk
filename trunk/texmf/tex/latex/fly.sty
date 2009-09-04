@@ -10,21 +10,23 @@
 }
 % automatically generate the author information
 \expandafter\ifx\csname amsart.sty\endcsname\relax
-\author{Alex Nelson\\\texttt{Email: \href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\author{Alex Nelson\footnote{\texttt{Email: \href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}}%~\footnote{This is a page from \url{http://code.google.com/p/notebk/}}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
 \else
 \author{Alex Nelson}
 \email{pqnelson@gmail.com}
 \fi
 
+% the following is the TeXbook's exact specifications
+%\usepackage[textheight=38pc,headsep=10pc,top=16pc,textwidth=30pc,inner=6pc,marginparwidth=8pc,marginparsep=1cm]{geometry}
+% the following is OUR preferred specifications!
+\usepackage[top=6pc,textwidth=30pc,inner=6pc,%
+marginparwidth=10pc,marginparsep=1cm]{geometry}
 \usepackage{amsmath,amsfonts,amsthm,amscd}
 \usepackage{amssymb}
 \usepackage{epic,eepic}
 \usepackage{float}
-% the following is the TeXbook's exact specifications
-%\usepackage[textheight=38pc,headsep=10pc,top=16pc,textwidth=30pc,inner=6pc,marginparwidth=8pc,marginparsep=1cm]{geometry}
-% the following is OUR preferred specifications!
-\usepackage[top=6pc,textwidth=30pc,inner=6pc,marginparwidth=10pc,marginparsep=1cm]{geometry}
-\pagestyle{headings}
 \usepackage{framed}
 \usepackage{ifpdf}
 \usepackage[final]{graphicx}
@@ -82,16 +84,17 @@
 \belowdisplayshortskip=4pt plus 3pt
 
 \usepackage{fancyhdr}
-
 \pagestyle{fancy}
 \if@twoside
 \fancyhead[LE,RO]{\thepage}
 \fancyheadoffset[OR,EL]{8pc}
 \else
-\fancyhead[L]{\S\thesection~\nouppercase{\rightmark}}
+\fancyhead[L]{\S\nouppercase{\leftmark}}
+%\fancyhead[L]{\S\thesection~\sectionname}
+%\fancyhead[L]{\S\thesection~\nouppercase{\sectionmark}}
 \fancyhead[R]{\thepage}
 \fancyheadoffset[R]{8pc}
-\renewcommand{\sectionmark}[1]{\markboth{}{#1}}
+%\renewcommand{\sectionmark}[1]{\markright{\S\thesection #1}}
 \fi
 \cfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -99,10 +102,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % We also customize commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\re}{\operatorname{Re}}
-\newcommand{\im}{\operatorname{Im}}
-\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\re}{\mathop{\rm Re}}
+\newcommand{\im}{\mathop{\rm Im}}
+\newcommand{\tr}{\mathop{\rm Tr}}
+\renewcommand{\ker}{\mathop{\rm Ker}}
+\newcommand{\coker}{\mathop{\rm Coker}}
+\newcommand{\erfi}{\mathop{\rm erfi}}
+\newcommand{\erf}{\mathop{\rm erf}}
 \newcommand{\<}{\langle}
 \renewcommand{\>}{\rangle}
 \newcommand{\iso}{\cong}

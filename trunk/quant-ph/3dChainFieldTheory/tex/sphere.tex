@@ -51,7 +51,15 @@ boundaries together, or diagrammaticaly:
 \includegraphics{img/img.4}
 \end{center}
 \end{figure}
-\noindent We should consider now the chain complex that describes
+\noindent The chain complex describing the 2-sphere would consist
+of 2 vertices, 2 edges, and 2 faces:
+\begin{equation}%\label{eq:}
+\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}
+\end{equation}
+We will skip the calculation of the 2-sphere (or at least typing
+it up for the time being).
+
+We should consider now the chain complex that describes
 $S^{3}$. Observe that the two vertices on each of the boundaries
 of the $B^{2}$ are identified to be the same. We are thus left
 with two vertices for $S^{3}$ (as doodled on the right hand side
@@ -60,13 +68,20 @@ likewise identified to be the same. We have, however, two
 \emph{distinct faces} for $S^{3}$ which corresponds to the two
 distinct $B^{2}$. This produces the following chain
 \begin{equation}%\label{eq:}
-\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}
+\underbracket[0.5pt]{\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}}_{=\partial{B^{3}}}\xleftarrow{\partial_{2}}\mathbb{Z}^{2}
 \end{equation}
 now we are left to deduce the boundary operators. This demands a
-choice of orientation of edges, and faces. We have picked an
-orientation for the edges as drawn in our figure, let $e_{1}$
-begin at $v_{1}$ and end at $v_{2}$; $e_{2}$ begin at $v_{2}$ and
-end at $v_{1}$. We then let
+choice of orientation of edges, and faces. 
+ 
+We have picked an orientation for the edges as drawn in our
+figure, let 
+\begin{subequations}
+\begin{align}
+e_{1} &= [v_{1} \quad v_{2}]\\
+e_{2} &= [v_{1} \quad v_{2}].
+\end{align}
+\end{subequations}
+We then let
 \begin{equation}%\label{eq:}
 ae_{1}+be_{2}=\begin{bmatrix}a\\b\end{bmatrix}\quad\text{and}\quad 
 av_{1}+bv_{2}=\begin{bmatrix}a\\b\end{bmatrix}
@@ -80,7 +95,9 @@ which implies that
 \begin{equation}%\label{eq:}
 \partial_{0}:\begin{bmatrix}a\\b\end{bmatrix}\mapsto\begin{bmatrix}-a-b\\a+b\end{bmatrix}
 \end{equation}
-determines one of the boundary operators completely. To determine
+determines one of the boundary operators completely. 
+
+To determine
 the other, we can cheat and figure out what square matrix $A$ is such
 that
 \begin{equation}%\label{eq:}
@@ -99,64 +116,62 @@ the actual open balls $B^{2}$, but open doing so we see that it's
 simply one $B^{2}$ minus the other, implying that (up to a sign
 determined by orientation!) $a=b=\pm1$.
 
-The inductive ritual should be clear: we take two copies of
-$B^{n}$ and glue the boundaries, the $S^{n-1}$, together to
-create a $S^{n}$. More formally, we present it as a theorem.
+To verify our cheating, we pick an orientation for the faces. We
+pick
+\begin{subequations}
+\begin{align}
+f_{1} &= [e_{2} \quad e_{1}]\\
+f_{2} &= [e_{2} \quad e_{1}]
+\end{align}
+\end{subequations}
+which implies that
+\begin{subequations}
+\begin{align}
+\partial_{1}f_{1} &= e_{1} - e_{2}\\
+\partial_{1}f_{2} &= e_{1} - e_{2}.
+\end{align}
+\end{subequations}
+Thus the expression for our boundary operator would be
+\begin{equation}%\label{eq:}
+\partial_{1} = \begin{bmatrix}1 & 1\\
+-1 & -1\end{bmatrix}
+\end{equation}
+which, by our cheating we know, satisfies the relation
+$\partial^{2}=0$.
 
-\begin{thm}%\label{thm:}
-Consider the sphere $S^{n}$. Then the chain complex describing it
-is
+We have one last boundary operator to consider: the boundary of
+the 3-sphere itself! There's only one 3-sphere, so it's a
+homomorphism
 \begin{equation}%\label{eq:}
-\mathbb{Z}^{2} \xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}
+\partial_{2}:\mathbb{Z}^{2}\to\mathbb{Z}^{2}.
 \end{equation}
-where $\partial_{i}$ are the boundary operators.
-\end{thm}
-\begin{sketch}
-\noindent\textbf{Base Case (n=1):} We have already done this, two $B^{1}$
-(line segments) glued together at their boundary $S^{0}$ (two
-points) results in the chain complex
+We pick an orientation
+\begin{subequations}
+\begin{align}
+c_{1} &= [f_{1} \quad f_{2}]\\
+c_{2} &= [f_{1} \quad f_{2}]
+\end{align}
+\end{subequations}
+and find thus
+\begin{subequations}
+\begin{align}
+\partial_{2}c_{1} &= f_{2}-f_{1}\\
+\partial_{2}c_{2} &= f_{2}-f_{1}
+\end{align}
+\end{subequations}
+This is represented by the linear operator
 \begin{equation}%\label{eq:}
-\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}
+\partial_{2} = \begin{bmatrix} -1 & -1\\1 & 1\end{bmatrix}.
 \end{equation}
-where
-\begin{equation}%\label{eq:}
-\partial_{0} = \begin{bmatrix}-1 & -1\\1 & 1\end{bmatrix}
-\end{equation}
-up to a sign determined by orientation.
 
-\noindent\textbf{Inductive Hypothesis:} assume this works for arbitrary
-$n$. That is, we have
+This means that the curvature is
 \begin{equation}%\label{eq:}
-\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}
+F = \begin{bmatrix}-A(f_{1})+A(f_{2})\\ -A(f_{1})+A(f_{2})\end{bmatrix}
+%F = \begin{bmatrix}-A(f_{1})- A(f_{2})\\ A(f_{1})+A(f_{2})\end{bmatrix} 
 \end{equation}
-for our chain complex.
+where $A$ is the connection.
 
-\noindent\textbf{Inductive Case (n+1):} We have the boundaries of the
-$B^{n+1}$, which takes care of the first $n-1$ boundary operators
-and the first $n$ $\mathbb{Z}^{2}$ components of the chain. We
-are still left with two copies of the \emph{interior} of
-$B^{n+1}$. This constitutes an additional $\mathbb{Z}^{2}$
-component in the chain diagram, and implies that the chain
-complex looks like
-\begin{equation}%\label{eq:}
-\underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\cdots\xleftarrow{\partial_{n-1}}\mathbb{Z}^{2}\right)}_{\text{inductive hypothesis}}\xleftarrow{\partial_{n}}\mathbb{Z}^{2}
-\end{equation}
-where $\partial$ is the boundary operator. This concludes the
-inductive case, and the proof. 
-\end{sketch}
-For our intentions however, we need to consider
-two $B^{3}$, and glue their boundaries together! We see the
-scheme presented mildly formally, the boundaries of the two
-$B^{3}$ provide the vertices, edges, and faces in the chain
-complex:
-\begin{equation}%\label{eq:}
-\underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}\right)}_{\text{from $\partial{B^{3}}$}}\xleftarrow{\partial}\cdots
-\end{equation}
-and the rest of the chain complex comes from the interior of the
-open balls. We have two distinct interiors, so that contributes
-$\mathbb{Z}^{2}$ and nothing more. This implies our chain complex
-becomes
-\begin{equation}%\label{eq:}
-\underbracket[0.25pt]{\left(\mathbb{Z}^{2}\xleftarrow{\partial_{0}}\mathbb{Z}^{2}\xleftarrow{\partial_{1}}\mathbb{Z}^{2}\right)}_{\text{from $\partial{B^{3}}$}}\xleftarrow{\partial_{2}}\mathbb{Z}^{2}
-\end{equation}
-where $\partial_{i}$ are the boundary operators (as usual).
+
+
+
+

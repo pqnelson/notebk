@@ -65,61 +65,62 @@ pick some orientations for the faces, edges, and the
 % $\partial^{2}=0$ to make certain we're on the right track!
 We will use the orientation indicated in figure \ref{fig:img1}. 
 
-We will consider the operator
-$\partial_{0}:\mathbb{Z}^{3}\to\mathbb{Z}$. Since there is only
-one vertex, that means all edges have \emph{the same} source and
-target. This means that the operator $\partial_{0}(e)=t(e)-s(e)$
-would be zero, since $t(e)=s(e)$.
+We will use the notation if $v$ is our vertex, then
+\begin{equation}%\label{eq:}
+e_{1} = [v \quad v]
+\end{equation}
+is the directed edge starting from $[v$ and ending at $v]$
+(in the future we'll write $v$ for $[v$ and $v$ for $v]$ but that'd
+be confusing for our situation). We see that
+\begin{equation}%\label{eq:}
+\partial_{0}e_{1} = v] - [v = 0
+\end{equation}
+and similar results hold for $\partial_{0}e_{2}$ and
+$\partial_{0}e_{3}$.
 
-If we consider $\partial_{1}:\mathbb{Z}^{3}\to\mathbb{Z}^{3}$
-which takes faces to edges, we have something more interesting.
-If we let
+We are now concerned about the faces. They are oriented and we
+have 
+\begin{subequations}
+\begin{align}
+f_{1} &= [e_{2}\quad e_{1}\quad e^{-1}_{2}\quad e^{-1}_{1}]\\
+f_{2} &= [e_{1}\quad e_{3}\quad e^{-1}_{1}\quad e^{-1}_{3}]\\
+f_{3} &= [e_{2}\quad e_{3}\quad e^{-1}_{2}\quad e^{-1}_{3}]
+\end{align}
+\end{subequations}
+where we used the notation $e^{-1}=-e$. We see that
+\begin{subequations}
+\begin{align}
+\partial_{1}f_{1} &= e_{1}-e_{2}-e_{1}+e_{2} = 0\\
+\partial_{1}f_{2} &= e_{3}-e_{1}+e_{1}-e_{3} = 0\\
+\partial_{1}f_{3} &= e_{3}-e_{2}+e_{2}-e_{3} = 0
+\end{align}
+\end{subequations}
+which implies
 \begin{equation}%\label{eq:}
-af_{1}+bf_{2}+cf_{3} = \begin{bmatrix}a\\b\\c\end{bmatrix},\quad\text{and}\quad
-ae_{1}+be_{2}+ce_{3} = \begin{bmatrix}a\\b\\c\end{bmatrix}
+\partial_{1} = 0.
 \end{equation}
-(where $a,b,c\in\mathbb{Z}$), we can consider the $\partial_{1}$
-boundary operator as a square matrix. Consider face $f_{1}$ as
-drawn in figure \ref{fig:img2}. Since there's only one distinct
-vertex, we see travelling along the path in red gets us back to
-where we started. This means that
-\begin{equation}%\label{eq:}
-\partial_{1}\left(\begin{bmatrix}1\\0\\0\end{bmatrix}\right) = \begin{bmatrix}1\\1\\0\end{bmatrix}
-\end{equation}
-since both $e_{1}$, $e_{2}$ are moving ``along'' the orientation
-chosen for $f_{1}$. Referring to figure \ref{fig:img1}, we see
-that the other faces are similar. This allows us to explicitly compute
-\begin{equation}%\label{eq:}
-\partial_{1}\left(\begin{bmatrix}0\\1\\0\end{bmatrix}\right) = \begin{bmatrix}1\\0\\1\end{bmatrix}\quad\text{and}\quad
-\partial_{1}\left(\begin{bmatrix}0\\0\\1\end{bmatrix}\right) = \begin{bmatrix}0\\1\\1\end{bmatrix}.
-\end{equation}
-But this \emph{completely determines} what $\partial_{1}$ must
-be, explicitly as a linear operator it is ``merely''
-\begin{equation}%\label{eq:}
-\partial_{1} = \begin{bmatrix}1 & 1 & 0\\
-1 & 0 & 1\\
-0 & 1 & 1\end{bmatrix}
-\end{equation}
-which is a curious operator in its own right. It's also a good
-hint that our value for $\partial_{0}$ is correct, since
-$\det(\partial_{1})=-2\neq0$ implies $\partial_{1}$ has a trivial
-kernel. The only way $\partial_{0}\circ\partial_{1}=0$ is iff
-$\partial_{0}=[0,0,0]$.
 
-\begin{figure}[t]
-\begin{center}
-\includegraphics{img/img.2}
-\end{center}
-\caption{The face $f_{1}$ of the 3-torus, boundary edges $e_{1}$
-  and $e_{2}$ are drawn in. The path we use for the chain complex
-  is drawn in red.}\label{fig:img2}
-\end{figure}
-
-We now are stuck with our last operator $\partial_{2}$. We can
-cheat, and use the same argument for $\partial_{0}=[0,0,0]$
-to deduce that
+We have one last boundary operator to consider. The cell itself
+is oriented
 \begin{equation}%\label{eq:}
-\partial_{2} = \begin{bmatrix}0\\0\\0\end{bmatrix}.
+%     +           -          +            -              +                -
+c = [f_{1} \quad f_{3} \quad f_{2} \quad f^{-1}_{3}\quad f^{-1}_{2}\quad f^{-1}_{1}]
 \end{equation}
-I have a feeling the preferred route would be to prove that it
-must be this via picking a preferred orientation, etc.
+thus
+\begin{equation}%\label{eq:}
+\partial_{2}c = -f_{1}-f_{2}+f_{3}+f_{2}-f_{3}+f_{1} = 0.
+\end{equation}
+Observe the \emph{homology} group requires us to consider the
+expression
+\begin{equation}%\label{eq:}
+H_{2}(S) = \ker(\partial_{1})/\im(\partial_{2})
+\end{equation}
+We see that the kernel of $\partial_{1}$ is \emph{precisely} the
+image of $\partial_{2}$, which means that the homology group is
+\emph{trivial}.
+
+This permits us to consider the curvature of 2-cells. We see that
+\begin{equation}%\label{eq:}
+F = 0.
+\end{equation}
+is the curvature.
