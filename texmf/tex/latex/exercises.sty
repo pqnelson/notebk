@@ -12,55 +12,50 @@
 \@sectiontrue\@ch@pterfalse\@p@rtfalse
 \DeclareOption{chapter}{\@sectionfalse\@ch@ptertrue\@p@rtfalse}
 \DeclareOption{part}{\@sectionfalse\@ch@pterfalse\@p@rttrue}
-\def\dump@nswer{0}
 \DeclareOption{dump}{\@dumptrue}
 \ProcessOptions\relax
 
 \usepackage{manfnt}
 
-
-\newcounter{sectionCtr}
-\newcounter{exno}
-\setcounter{exno}{0}
-
-
-\refstepcounter{sectionCtr}
 \if@section
-\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{section}%
-\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{section}}\fi}
+\newcounter{exercise}[section]
+\renewcommand{\theexercise}{\thesection.\arabic{exercise}}
 \else\if@ch@pter%
-\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{chapter}
-\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{chapter}}\fi}
+\newcounter{exercise}[chapter]
+\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
 \else\if@p@rt%
-\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{part}%
-\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{part}}\fi}
-\else\@sectiontrue\setcounter{exno}{1}\setcounter{sectionCtr}{\value{section}}
-\newcommand{\upd@teCtr}{\ifnum \value{sectionCtr}=\value{section}%
-\refstepcounter{exno}\else\setcounter{exno}{1}\setcounter{sectionCtr}{\value{section}}\fi}
+\newcounter{exercise}[part]
+\renewcommand{\theexercise}{\thepart.\arabic{exercise}}
+\else
+\newcounter{exercise}[section]
+\renewcommand{\theexercise}{\thesection.\arabic{exercise}}
 \fi\fi\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Exercise Environment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\exercise}[1][\upd@teCtr\thesection.\arabic{exno}]{\medbreak%
+%\newcommand{\exercise}[1][\theexercise]{\refstepcounter{exercise}\medbreak%
+%  \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
+%  \small{\textbf{EXERCISE #1}}\\%
+%  \noindent}
+\newenvironment{exercise}[1][\theexercise]{\refstepcounter{exercise}\medbreak%
   \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
   \small{\textbf{EXERCISE #1}}\\%
-  \noindent}
-\newcommand{\dexercise}[1][\upd@teCtr\thesection.\arabic{exno}]{\medbreak\upd@teCtr%
+  \noindent}{}
+\newcommand{\dexercise}[1][\refstepcounter{exercise}\theexercise]{\medbreak\upd@teCtr%
   \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
   \small{\textbf{EXERCISE #1}}\\%
   \noindent}
 \newcommand{\dangerexercise}{\dbend \dexercise}
 \newcommand{\ddangerexercise}{\dbend\dbend \dexercise}
 
-
 % formatting macro
 \if@dump
-  \def\ansno#1.#2:{\medbreak\noindent%
-    \hbox to\parindent{\bf\hss(Answer to #1.#2)\enspace}\ignorespaces}
+  \def\ansno#1:{\medbreak\noindent%
+    \hbox to\parindent{\bf\hss(Answer to #1)\enspace}\ignorespaces}
 \else
-  \def\ansno#1.#2:{\medbreak\noindent%
-    \hbox to \parindent{\bf\hss #1.#2.\enspace}\ignorespaces}
+  \def\ansno#1:{\medbreak\noindent%
+    \hbox to \parindent{\bf\hss #1.\enspace}\ignorespaces}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,14 +63,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if@dump % if we are dumping the answers directly where they're placed
   \def\ans{} % ans is defined as nothing
-  \newcommand{\answer}[2][\arabic{sectionCtr}.\arabic{exno}]{\par\medbreak % \answer simply
+  \newcommand{\answer}[2][\theexercise]{\par\medbreak % \answer simply
       \ansno#1: \\% prints directly
       #2} % out when it's called 
   \newcommand{\dumpanswers}{} % \dumpanswers is empty
 \else % else we are dumping it into a file
   \newwrite\ans%
   \immediate\openout\ans=answers % file for answers to exercises
-  \newcommand{\answer}[2][\arabic{sectionCtr}.\arabic{exno}]{\par\medbreak
+  \newcommand{\answer}[2][\theexercise]{\par\medbreak
     \immediate\write\ans{}%
     \immediate\write\ans{\string\ansno#1:}%
     \immediate\write\ans{ \detokenize{#2}}}

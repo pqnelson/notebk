@@ -1,0 +1,53 @@
+%%
+%% calc.torus.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Sep  3 13:26:37 2009 Alex Nelson
+%% Last update Thu Sep  3 13:26:37 2009 Alex Nelson
+%%
+
+We will consider the time evolution operator for the 3-torus. We
+see that the complex for spacetime is
+\begin{equation}%\label{eq:}
+\begin{CD}
+\{0\}         @<<<     \{0\}     @<<<     \{0\}\\
+@VVV                   @VVV                @VVV\\
+\mathbb{Z}    @<0<<     \mathbb{Z}^{3}     @<0<<     \mathbb{Z}^{3} @<0<< \mathbb{Z}\\
+@VVV                   @VVV                @VVV\\
+\{0\}         @<<<     \{0\}     @<<<     \{0\}
+\end{CD}
+\end{equation}
+This means the corresponding initial and final states are
+described by the Hilbert space $\mathbb{C}$ and $\mathbb{C}$
+(respectively). The time evolution operator for the torus is thus
+\begin{equation}%\label{eq:}
+Z(T):\mathbb{C}\to\mathbb{C}.
+\end{equation}
+We pick out the basis state vectors $1\in\mathbb{C}$ for the
+initial and final state and evaluate the expression
+\begin{equation}%\label{eq:}
+\<1,Z(T)\cdot1\> = \int_{\mathcal{A}(T)}e^{-S(A)}\mathcal{D}A
+\end{equation}
+where $\mathcal{A}(T)$ is the space of connections on the torus.
+
+We can calculate the action expression to be
+\begin{equation}%\label{eq:}
+e^{-S(A)} = \sum_{n\in\mathbb{Z}}\exp\left(\frac{-1}{e^{2}V}[2n\pi]^{2}\right).
+\end{equation}
+We find that our integral expression simplifies when we see that
+the curvature (field strength quantity) $F=0$
+\begin{equation}%\label{eq:}
+e^{-S(A)} = \sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V/2}e^{in(0)}
+\end{equation}
+thus
+\begin{equation}%\label{eq:}
+\<1,Z(T)\cdot 1\> = \iiint
+\sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V/2}\mathcal{D}A = \sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V/2}
+\end{equation}
+is our expression. We deduce that
+\begin{equation}%\label{eq:}
+Z(T):1\to \sum_{n\in\mathbb{Z}}e^{-n^{2}e^{2}V/2}
+\end{equation}
+is precisely the time evolution operator.

@@ -19,13 +19,30 @@
 \begin{document}
 \maketitle
 
+\section{Notational Warning!}
+
+We will use slightly odd notation for oriented $p+1$ cells
+$X_{p+1}$. We will denote it and its orientation in one fell
+swoop by
+\begin{equation}%\label{eq:}
+X_{p+1} = [X_{p} \quad X^{\prime}_{p}]
+\end{equation}
+as being oriented \emph{from} $X_{p}$ directed \emph{towards} $X^{\prime}_{p}$.
+Also we'll use the notation
+\begin{equation}%\label{eq:}
+e^{-1}_{n}=-e_{n}
+\end{equation}
+i.e. inverses as such for edges, vertices, faces, $p$-cells, are
+actually additive inverses. We can easily deduce how the boundary
+operator behaves, since the orientation and boundaries are clearly noted.
+
 \section{The 3-Torus}
 \input{tex/torus}
 \section{The 3-Sphere}
 \input{tex/sphere}
 
 \section{Chain Field Theoretic Calculations}
-\input{tex/chain}
+\input{tex/calc}
 
 \nocite{*}
 \bibliographystyle{utcaps}
