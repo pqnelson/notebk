@@ -23,8 +23,7 @@
 % the following is OUR preferred specifications!
 \usepackage[top=6pc,textwidth=30pc,inner=6pc,%
 marginparwidth=10pc,marginparsep=1cm]{geometry}
-\usepackage{amsmath,amsfonts,amsthm,amscd}
-\usepackage{amssymb}
+\usepackage{amsmath,amsfonts,amsthm,amscd,amssymb}
 \usepackage{epic,eepic}
 \usepackage{float}
 \usepackage{framed}
@@ -40,21 +39,22 @@ marginparwidth=10pc,marginparsep=1cm]{geometry}
 \usepackage{paralist}
 \usepackage[T1]{fontenc}
 \usepackage{marginnote}
+\usepackage{bbm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % We customize theorem styles...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \theoremstyle{definition}
-\newtheorem{@defn}{Definition}
-\newtheorem{@thm@}[@defn]{Theorem}
-\newtheorem{rmk}[@defn]{Remark}
-\newtheorem{@lem}[@defn]{Lemma}
-\newtheorem{@cor}[@defn]{Corollary}
-\newtheorem{ex}[@defn]{Example}
-\newtheorem{nonex}[@defn]{NON-Example}
-\newtheorem{prop}[@defn]{Proposition}
-\newtheorem{sch}[@defn]{Scholium}
-\newtheorem{axm}[@defn]{Axiom}
-\newtheorem{prob}[@defn]{Problem}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{rmk}[defn]{Remark}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{ex}[defn]{Example}
+\newtheorem{nonex}[defn]{NON-Example}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{sch}[defn]{Scholium}
+\newtheorem{axm}[defn]{Axiom}
+\newtheorem{prob}[defn]{Problem}
 \newtheorem*{bessel}{Bessel Inequality}
 \newtheorem*{assume}{Assumption}
 \newtheorem*{parseval}{Parseval Equality}
@@ -63,16 +63,7 @@ marginparwidth=10pc,marginparsep=1cm]{geometry}
 \newtheorem*{plancherel}{Plancherel Theorem}
 \newtheorem*{samplingthm}{Sampling Theorem}
 \theoremstyle{remark}
-\newtheorem*{@sketch}{Sketch Of Proof}
-\newenvironment{sketch}{\begin{@sketch}}{\qed\end{@sketch}}
-\newenvironment{defn}{\begin{@defn}}{\end{@defn}}
-\newenvironment{thm}{\begin{@thm@}}{\end{@thm@}}
-\newenvironment{lem}{\begin{@lem}}{\end{@lem}}
-\newenvironment{cor}{\begin{@cor}}{\end{@cor}}
-%\newenvironment{defn}{\begin{framed}\begin{Defn}}{\end{Defn}\end{framed}}
-%\newenvironment{thm}{\begin{framed}\begin{Thm}}{\end{Thm}\end{framed}}
-%\newenvironment{lem}{\begin{framed}\begin{Lem}}{\end{Lem}\end{framed}}
-%\newenvironment{cor}{\begin{framed}\begin{Cor}}{\end{Cor}\end{framed}}
+\newtheorem*{sketch}{Sketch Of Proof}
 \allowdisplaybreaks
 
 
@@ -90,11 +81,8 @@ marginparwidth=10pc,marginparsep=1cm]{geometry}
 \fancyheadoffset[OR,EL]{8pc}
 \else
 \fancyhead[L]{\S\nouppercase{\leftmark}}
-%\fancyhead[L]{\S\thesection~\sectionname}
-%\fancyhead[L]{\S\thesection~\nouppercase{\sectionmark}}
 \fancyhead[R]{\thepage}
 \fancyheadoffset[R]{8pc}
-%\renewcommand{\sectionmark}[1]{\markright{\S\thesection #1}}
 \fi
 \cfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -105,6 +93,7 @@ marginparwidth=10pc,marginparsep=1cm]{geometry}
 \newcommand{\re}{\mathop{\rm Re}}
 \newcommand{\im}{\mathop{\rm Im}}
 \newcommand{\tr}{\mathop{\rm Tr}}
+\newcommand{\aut}{\mathop{\rm Aut}}
 \renewcommand{\ker}{\mathop{\rm Ker}}
 \newcommand{\coker}{\mathop{\rm Coker}}
 \newcommand{\erfi}{\mathop{\rm erfi}}

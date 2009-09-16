@@ -8,24 +8,22 @@
 %% Last update Mon Dec 22 11:28:40 2008 Alex Nelson
 %%
 \documentclass[10pt,draft]{article}
-\usepackage{bbm,fly}
+\usepackage{fly}
 % for usuage of conditionals see http://zyliu2005.blogspot.com/2007/06/latex-how-to-use-conditional.html
-\usepackage{ifthen}
 \newboolean{useIndex}
 \setboolean{useIndex}{false}
 %\setboolean{useIndex}{true}
 \usepackage{fly}
-\ifthenelse{\boolean{useIndex}}
-{
+\ifthenelse{\boolean{useIndex}}%
+{%
 \usepackage{makeidx} % for the index e.g. \index{key}
-\makeindex
-}
+\makeindex%
+}%
 {\renewcommand{\index}[1]{ }}
-\theoremstyle{definition}
-\def\qef{$\blacksquare$}
-\def\aut{\operatorname{Aut}}
-\def\ker{\operatorname{Ker}}
-\def\imag{\operatorname{Im}}
+\def\slug{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+%\def\qef{~\rule[-1.25pt]{3pt}{8pt}}
+\let\qef=\slug
+\let\imag=\im
 \title{Notes on Abstract Algebra}
 \author{Alex Nelson}
 \date{December 22, 2008}

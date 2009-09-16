@@ -38,13 +38,13 @@
 %  \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
 %  \small{\textbf{EXERCISE #1}}\\%
 %  \noindent}
-\newenvironment{exercise}[1][\theexercise]{\refstepcounter{exercise}\medbreak%
+\newenvironment{exercise}{\refstepcounter{exercise}\medbreak%
   \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
-  \small{\textbf{EXERCISE #1}}\\%
+  \small{\textbf{EXERCISE \theexercise}}\\%
   \noindent}{}
-\newcommand{\dexercise}[1][\refstepcounter{exercise}\theexercise]{\medbreak\upd@teCtr%
+\newcommand{\dexercise}{\refstepcounter{exercise}\medbreak\upd@teCtr%
   \noindent\llap{\mantriangleright\kern.15em}% triangle in margin
-  \small{\textbf{EXERCISE #1}}\\%
+  \small{\textbf{EXERCISE \theexercise}}\\%
   \noindent}
 \newcommand{\dangerexercise}{\dbend \dexercise}
 \newcommand{\ddangerexercise}{\dbend\dbend \dexercise}
@@ -55,7 +55,7 @@
     \hbox to\parindent{\bf\hss(Answer to #1)\enspace}\ignorespaces}
 \else
   \def\ansno#1:{\medbreak\noindent%
-    \hbox to \parindent{\bf\hss #1.\enspace}\ignorespaces}
+    \hbox to\parindent{\bf\hss #1.\enspace}\ignorespaces}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,17 +63,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if@dump % if we are dumping the answers directly where they're placed
   \def\ans{} % ans is defined as nothing
-  \newcommand{\answer}[2][\theexercise]{\par\medbreak % \answer simply
-      \ansno#1: \\% prints directly
-      #2} % out when it's called 
+  \newcommand{\answer}[1]{\par\medbreak % \answer simply
+      \ansno\theexercise: \\% prints directly
+      #1} % out when it's called 
   \newcommand{\dumpanswers}{} % \dumpanswers is empty
 \else % else we are dumping it into a file
   \newwrite\ans%
   \immediate\openout\ans=answers % file for answers to exercises
-  \newcommand{\answer}[2][\theexercise]{\par\medbreak
+  \newcommand{\answer}[1]{\par\medbreak
     \immediate\write\ans{}%
-    \immediate\write\ans{\string\ansno#1:}%
-    \immediate\write\ans{ \detokenize{#2}}}
+    \immediate\write\ans{\string\ansno\theexercise:}%
+    \immediate\write\ans{ \detokenize{#1}}}
   \newcommand{\dumpanswers}{\immediate\closeout\ans\input{answers}}
 \fi
 
