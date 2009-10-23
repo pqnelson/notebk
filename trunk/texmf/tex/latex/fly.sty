@@ -1,13 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fly}[2009/08/06 Customizations to make the style superfly]
-\usepackage[final]{hyperref}
-\hypersetup{
-    colorlinks,%
-    citecolor=black,%
-    filecolor=black,%
-    linkcolor=black,%
-    urlcolor=black
-}
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+            citecolor=black,
+            filecolor=black,
+            menucolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            bookmarksopen=true]{hyperref}
 % automatically generate the author information
 \expandafter\ifx\csname amsart.sty\endcsname\relax
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
@@ -37,7 +37,7 @@ marginparwidth=10pc,marginparsep=1cm]{geometry}
 \usepackage[colorinlistoftodos, shadow]{todonotes}
 \usepackage{slashed}
 \usepackage{paralist}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{marginnote}
 \usepackage{bbm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
