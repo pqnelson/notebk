@@ -1,0 +1,394 @@
+%%
+%% tangentSpace.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 14 10:55:25 2010 Alex Nelson
+%% Last update Fri Jan 15 18:26:43 2010 Alex Nelson
+%%
+\section{Tangent Vectors and Differential Expressions}
+We will present a purely (or mostly) algebraic formulation of
+tangent vectors and differential expressions. It is completely
+foreign to the unsuspecting observer, something phenomenally
+alien. We will begin very slowly by analyzing the components
+involved very slowly. 
+
+\subsection{Germs}
+Let $M$ be a $\diff$ manifold of dimension $m$. We want to
+consider smooth functions on the open subsets of $M$. What can be
+said of the local properties of these functions? That is, how can
+we tell if two functions $f,g\in\diff(U)$ (for some $U\subseteq
+M$) have the same ``local properties''? This is the problem we
+wish to consider as motivation for studying germs.
+
+Namely, there is a problem we haven't really considered: what if two
+distinct functions agree everywhere on some open subset
+$U\subseteq M$? That is, if $f,g\colon U\to \Bbb{R}$ and
+\begin{equation}
+f(x)=g(x)\qquad\forall x\in U,
+\end{equation}
+are the functions ``different'' in $\diff(U)$? Working within
+some coordinate system, we could Taylor expand and find they have
+\emph{identical} Taylor series within $U$. So they have
+\emph{locally} the same properties.
+
+Well, in the obvious way they are ``equivalent.'' That is, we
+have an equivalence relation for all $f,g\in\diff(U)$ specified
+by
+\begin{equation}\label{eq:germEquivRel}
+f\sim g\quad\iff\quad f(x)=g(x)\quad\forall x\in U.
+\end{equation}
+The \emph{distinct functions} determined by their distinct values
+are specified by equivalence classes of $\diff(U)$. That is,
+if $f\sim g$ on $U$, then we can form a collection of functions
+that are equivalent to $f$. They have the same value as $f$ on
+$U$, so without loss of generality we may intuitively think of
+them as ``the same.'' We specify such equivalence classes by
+\begin{equation}\label{eq:germEquivClass}
+\eqclass{f}{x}=\left\{g\in\diff(U)|\;\;g\sim f\right\}
+\end{equation}
+where we are working in a neighborhood $U$ of $x$ (an open subset
+which contains $x\in U\subseteq M$). The equivalence class of a
+given function in a neighborhood of $x\in M$ \emph{share all
+  local properties} (e.g. continuity, differentiability, etc.).
+
+So to summarize, we were concerned about local properties of
+functions. We want to study the local properties, but the first
+maneuver to do so is to consider the equivalence classes of
+functions. That is to say, we consider ``equivalent functions''
+on the domain $U\subseteq M$ by finding equivalence classes of
+functions. And now for something quite dramatic: \emph{we can study all
+local properties of a function by studying its equivalence class!}
+This should be a complete surprise, there has yet been motivation
+as to \emph{why} this could even be considered!
+
+\begin{defn}
+Let $M$ be a smooth manifold, let $x\in M$ be a point, then
+\define{Germs of $\diff$ Functions at $x$} consist of equivalence
+classes given by the relation described by Eq \eqref{eq:germEquivRel}.
+\end{defn}
+
+So a germ is just an \emph{alias} for an equivalence class
+$\eqclass{f}{x}$. Each germ corresponds to a different
+equivalence class.\marginpar{Notation for Germs at $x$: $D_{x}$}
+We will use the notation that $D_{x}$ is the germs at $x$.
+
+Now, it should be noted that we can \emph{induce} a
+differentiable structure on the germs in ``the obvious way.''
+That is, germs are working with functions in $\diff(U)$, so if we
+simply work with the differentiable structure $\diff(U)$ for
+each ``germ representative'' (the $f$ for the germ
+$\eqclass{f}{x}$) we get for free a differentiable
+structure. This is the induced differentiable structure. This
+induced structure is quite dramatic, \emph{it converts germs at
+  $x$ into an associative unital algebra!} Moreover that makes it
+a vector space.
+
+\subsection{Tangent Space From Germs}
+
+Recall that we have, for any vector space $V$ over a field
+$\Bbb{F}$, a so-called ``dual'' vector space $V^{*}$ which
+consists of ``covectors''. That is, mappings from $V$ to
+$\Bbb{F}$. So if $\omega\in V^{*}$, then we know that
+\begin{equation}
+\omega\colon V\to\Bbb{F}
+\end{equation}
+is a ``linear mapping.'' More or less, for finite dimensional
+vector spaces, $V^{*}$ is the ``row-vector'' space, and acts on
+$V$ by matrix multiplication.
+
+We just introduced the notion of germs at a point $x\in M$ for
+some smooth manifold $M$. It turned out to be a vector space
+(strong still, an associative unital algebra). The natural
+question is: what is the structure of its dual space? 
+
+Lets try to deduce its structure from what little we know about
+dual spaces and $D_{x}$. We know that $D_{x}$ is a vector space
+over $\Bbb{R}$, so it would logically follow that its dual space
+$D_{x}^{*}$\marginpar{Notation: dual space of $D_{x}$ is denoted $D_{x}^{*}$}
+would ``eat in'' elements of $D_{x}$ and ``spit out'' real
+numbers. So these gadgets map, at least ethically, functions to
+numbers. It is straightforward and possible to generalize the
+codomain of these gadgets from $\Bbb{R}$ to $\Bbb{C}$ complex numbers.
+If $v\in D_{x}^{*}$, then we want to consider all such $v$ which
+satisfy
+\begin{equation}\label{eq:productRuleForTangentVectors}
+v(fg)=v(f)\cdot g(x)+f(x)\cdot v(g)
+\end{equation}
+which should make the reader think of the product rule for
+derivatives! 
+
+However, note that derivatives are mappings of the form
+\begin{equation}
+\partial\colon\diff(\Bbb{R})\to\diff(\Bbb{R})
+\end{equation}
+which map functions to functions. Compare this with the covectors
+$D_{x}^{*}$ of the form
+\begin{equation}
+v\colon\diff(U)\to\Bbb{R}
+\end{equation}
+which map differentiable functions to numbers ``somehow.''
+
+\medbreak
+
+\EX [M10]\label{ex:tangentSpaceIsVectorSpace} Prove that the
+subset of elements of $D_{x}^{*}$ which satisfy the property
+\eqref{eq:productRuleForTangentVectors} form a linear subspace of
+$D_{x}^{*}$. 
+
+\begin{answer}[{\it M10}\/]\kern6pt
+We see that we can simply write any two $v$, $w$ which satisfy
+the product rule into a linear combination
+\equation
+(c_{1}v+c_{2}w)f=c_{1}v(f)+c_{2}w(f).
+\endequation
+We can then deduce that this linear combination also satisfies
+the product rule\refstepcounter{equation}
+\equation
+\array{rcl}
+(c_{1}v+c_{2}w)(fg)&=&c_{1}v(fg)+c_{2}w(fg)\cr
+&=&c_{1}\left[v(f)g(x)+f(x)v(g)\right]+c_{2}\left[w(f)g(x)+f(x)w(g)\right]\cr
+&=&[(c_{1}v+c_{2}w)(f)]g(x)+f(x)[(c_{1}v+c_{2}w)(g)]
+\endarray
+\endequation
+since each term on the right hand side obeys the product
+rule. This is sufficient to show that a linear combination of
+elements of $D_{x}^{*}$ (which obey the product rule) also obeys the
+product rule. It follows that this subset of elements obeying the
+product rule is a subspace of $D_{x}^{*}$ as a vector space.
+\end{answer}
+
+\medbreak
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics{img/img.0}
+\end{center}
+\caption{Functions in different local coordinates.}\label{fig:img0}
+\end{figure}
+
+The reader, upon proving exercise
+\ref{ex:tangentSpaceIsVectorSpace}, should realize that we are
+working with a vector space. We will denote this vector space by
+$T_{x}M$. \marginpar{Tangent Vector Space $T_{x}M$}We will dub
+this space the \define{Tangent Space of $M$ at $x$} This is
+another alias, we have qualitatively analysed its elements which
+we will call (appropriately enough) \define{Tangent Vectors at $x$}.
+
+This surprise is probably more than unwelcome, as there is no
+logical reason why anyone in their rightmind would ever consider
+this. However, it does have advantages. For one thing, we have a
+\emph{purely algebraic} formulation of tangent vectors. It allows
+for generalization to other settings.
+
+If we consider an example to solidify our understanding of this
+notion of tangent vectors, we should consult figure \ref{fig:img0}.
+We have a smooth manifold $M$, and some open subset $U\subseteq
+M$. We have some chart $\varphi\colon U\to \widetilde{U}\subseteq\Bbb{R}^{n}$.
+This is local coordinates describing our open subset $U\subseteq M$.
+We have a function $f\colon U\to\Bbb{R}$ be described ``locally''
+within ``local coordinates'' as
+$\widetilde{f}\colon\widetilde{U}\to\Bbb{R}$. That is
+\begin{equation}
+f = \widetilde{f}\circ\varphi
+\end{equation}
+or equivalently, the diagram described by figure \ref{fig:img0}
+is a commutative diagram. We want to consider a maps
+\begin{equation}
+f=\widetilde{f}\circ\varphi\mapsto\left.\left(\frac{\partial\widetilde{f}}{\partial\widetilde{x}_{j}}\right)\right|_{\widetilde{x}_{j}=x_{j}(x)}
+\end{equation}
+induces a map from $D_{x}\to\Bbb{C}$ as we are evaluating the
+derivative at the point $x$. It's a map $\diff(U)\to\Bbb{C}$. We
+see that this induces a map on the germs $D_{x}$ at $x$ to
+$\Bbb{C}$. These mappings obey the product rule, which is
+precisely the property of particular interest with tangent
+vectors. It follows that
+\begin{equation}
+\left.\frac{\partial}{\partial\widetilde{x}_{j}}\right|_{\widetilde{x}_{j}=x_{j}(x)}
+=\frac{\partial}{\partial x_{j}}
+\end{equation}
+form a basis of $T_{x}M$.
+
+\subsection{Generalizations, Differential Expressions}
+
+We want to generalize the notion of a tangent vector. This is a
+long and involved process that may seem roundabout and needlessly
+complicated, but it provides a nice generalization of the
+concept. We will first study the set of functions with roots at $x_{0}$.
+
+We first want to consider the element $1_{x}\in D^{*}_{x}$ by
+\begin{equation}
+1_{x}(f)=f(x)\qquad\forall f\in D_{x}.
+\end{equation}
+We see $1_{x}$ is real and linearly independent of $T_{x}M$.
+\ex [HM15] Prove that $1_{x}$ is real and linearly independent of $T_{x}M$.
+\begin{answer}[{\it HM15}\/]\kern6pt
+We see that $f(x)\in\Bbb{R}$, so it follows that $1_{x}$ is
+real. We need to show that it is linearly independent of
+$T_{x}M$. Well, if $1_{x}\in T_{x}M$, i.e. if it is linearly
+\emph{dependent} of $T_{x}M$, then it would obey the property
+that $$1_{x}(fg)=1_{x}(f)g(x)+f(x)1_{x}(g)$$ but we see by
+definition that this is $$1_{x}(fg)=f(x)g(x).$$ If we set these two
+equal we see that $$1_{x}(f)g(x)+f(x)1_{x}(g)=f(x)g(x)$$ if and
+only if $$2f(x)g(x)=f(x)g(x)$$ or equivalently $$f(x)g(x)=0$$ for all
+$f,g\in D_{x}$. As this is not true, we have a contradiction, and
+thus $1_{x}\not\in T_{x}M$.
+\end{answer}
+\noindent However, observe that if we have an element $v\in
+D^{*}_{x}$ to belong to the complex linear span of $1_{x}$ and
+$T_{x}M$, it is necessary and sufficient that $v(f_1f_2)=0$ for
+all $f_1$, $f_2\in D_{x}$ which vanish at $x$.
+\EX [HM20] Why?
+\begin{answer}[{\it HM20}\/]\kern6pt
+Consider any $f_1$, $f_2\in D_{x}$. Let $u\in T_{x}M$, and write\refstepcounter{equation}
+\equation
+v=c_{1}u+c_{2}1_{x}
+\endequation
+where $c_{1},c_{2}\in\Bbb{C}$. We see by direct computation\refstepcounter{equation}
+\equation
+v(f_1f_2)=c_{1}u(f_{1})f_{2}(x)+c_{1}f_{1}(x)u(f_{2})+c_{2}f_{1}(x)f_{2}(x)
+\endequation
+which we can rewrite as\refstepcounter{equation}
+\equation
+v(f_1f_2)=\left[c_{1}u(f_{2})+c_{2}f_{2}(x)\right]f_{1}(x)+c_{1}u(f_{1})f_{2}(x)
+\endequation
+which vanishes iff $f_{1}(x)=f_{2}(x)=0$ or $c_{1}=c_{2}=0$.
+\end{answer}
+\noindent\textbf{N.B.:} this is what leads us to a natural
+generalization of the notion of a tangent vector.
+
+We will introduce notation for the collection of functions with a
+zero at $x$, that is to say the germs $f\in D_{x}$ such that
+$f(x)=0$. 
+\begin{notation}
+Let\marginpar{Note: $J_{x}$ is the set of all germs which vanish
+  at the point $x$}
+\begin{equation}
+J_{x}=\{f\suchthat\;f\in D_{x},\;f(x)=0\}
+\end{equation}
+be the collection of germs which vanish at the point $x$.
+\end{notation}
+\EX [M10]\label{exercise:jIsIdeal} Prove that $J_{x}$ is an ideal in $D_{x}$.
+\begin{answer}[{\it M10}\/]\kern6pt
+We see that for any $g\in D_{x}$ and $f\in J_{x}$ that
+\refstepcounter{equation}
+\equation
+(fg)(x)=f(x)g(x)=0\cdot g(x)=0
+\endequation
+so $fg\in J_{x}$ for any $f\in J_x$ and $g\in D_x$. Thus by
+definition $J_x$ is an ideal.
+\end{answer}
+\ex [10] Show that any $f\in J_{x_{0}}$ is of the form
+$(x-x_{0})^{r}g(x)$ for some function $g\in D_{x_{0}}$ and
+positive integer $r\in\Bbb{N}$.
+\begin{answer}[{\it 10}\/]\kern6pt
+It is obvious. By using the induced differentiable structure, we
+can Taylor expand
+\refstepcounter{equation}
+\equation
+f(x)=f(x_{0})+f'(x_{0})(x-x_{0})+\frac{1}{2}f''(x_{0})(x-x_{0})^{2}+\cdots
+\endequation
+and find when $f^{(r)}(x_{0})\not=0$. We can factorize then set\refstepcounter{equation}
+\equation
+f(x)=(x-x_{0})^{r}\left(f^{(r)}(x_{0})+\cdots\right)=(x-x_{0})^{r}g(x)
+\endequation
+where we just define $g(x)$ as the parenthetic
+term.
+\end{answer}
+\begin{answer}
+(Alternate answer)
+It is obvious immediately from the fundamental theorem of algebra
+that it must be of this form, if we work with $\Bbb{C}$ or if we
+embed $\Bbb{R}$ into $\Bbb{C}$.
+\end{answer}
+
+Now, let us review what we have just done. We have considered the
+germs which vanish at a given point $x_{0}$. Collectively these
+germs form a set $J_{x_{0}}\subset D_{x_{0}}$. These germs form an ideal
+(\hyperref[exercise:jIsIdeal]{exercise \ref{exercise:jIsIdeal}}). 
+Moreover, they are of the form (in some local coordinates)
+\begin{equation}
+f(x)=(x-x_{0})^{r}g(x)
+\end{equation}
+where $r$ is a positive integer called the ``multiplicity'' of
+$x_{0}$, $g\in D_{x_{0}}$, and $f\in J_{x_{0}}$. We can introduce
+notation to specify the multiplicity of the root,
+namely\marginpar{Notation: $J^{p}_{x}$ are germs with zeros at
+  $x$ with multiplicity $p$}
+\begin{equation}
+J^{p}_{x_{0}}=\{f_{1}\cdots f_{p}\suchthat\;f_{1},\ldots,f_{p}\in J^{p}_{x_{0}}\}
+\end{equation}
+for an integer $p\geq 1$. This is another way of saying that the
+multiplicity of the root $x_{0}$ is \emph{at least} $p$.
+
+\ex [03] Prove that $J_{x_{0}}^{p}$ is an ideal in $D_{x_{0}}$ for
+any $p\in\Bbb{N}$.
+\begin{answer}[{\it03}\/]\kern6pt
+We see that by the exact same reasoning as for 
+\hyperref[exercise:jIsIdeal]{exercise \ref{exercise:jIsIdeal}}
+that $J_{x_{0}}^{p}$ is an ideal in $D_{x_{0}}$.
+\end{answer}
+
+Now, so far, the keen observer will note we have just been
+discussing functions which vanish at $x_{0}$. So far no attempt
+to generalize tangent vectors has been made. The critical
+property of tangent vectors that deserves generalization is, if
+$v\in T_{x}M$ and $f,g\in D_{x}$,
+\begin{equation}
+v(fg)=v(f)g(x)+f(x)v(g)
+\end{equation}
+but observe now if we restrict our attention to $f,g\in J_{x}$ we
+get
+\begin{equation}
+v(fg)=v(f)g(x)+f(x)v(g)=0+0=0.
+\end{equation}
+This is precisely the property we use as grounds for
+generalization. 
+
+\begin{defn}
+Let $r\geq0$ be an integer. A \define{Differential Expression of
+  Order $\leq r$} consists of
+\begin{enumerate}
+\item an element $v\in D^{*}_{x}$
+\end{enumerate}
+such that
+\begin{enumerate}
+\item for each $f\in J^{r+1}_{x}$, $v(f)=0$.
+\end{enumerate}
+\end{defn}
+
+Now why is this a good generalization? Well, we see by the notion
+of a differential expression of order $r$ satisfies this very
+property by the product rule. In fact, we have
+\begin{equation}
+\frac{d^{r}}{dx^{r}}\left[\vphantom{\frac{d}{d}}(x-x_{0})^{r+1}g(x)\right]=(r+1)!(x-x_{0})g(x)+\mathcal{O}([x-x_{0}]^{2})
+\end{equation}
+which vanishes at $x_{0}$. So in other words,
+\begin{equation}
+\left.\frac{d^{r}}{dx^{r}}f(x)\right|_{x=x_{0}}=0\qquad\forall f\in J^{r+1}_{x_{0}}
+\end{equation}
+is precisely the property that we generalize. 
+
+\EX [M12] Show that the collection of differential expressions of
+order $\leq r$ form a linear subspace of $D_{x}^{*}$.
+\begin{answer}[{\it M12}\/]\kern6pt
+We see that if $u,v$ are both differential expressions of order
+$\leq r$, and if $c_{1}$, $c_{2}\in\Bbb{R}$ are constants,
+then\refstepcounter{equation}
+\equation
+(c_{1}u+c_{2}v)(f)=c_{1}u(f)+c_{2}v(f)=0
+\endequation
+for all $f\in J^{r+1}_{x}$. Thus the linear combination is also a
+differential expression of order $\leq r$, and thus the
+collection of all such expressions form a linear subspace of $D^{*}_{x}$.
+\end{answer}
+
+So to review, we generalize the notion of derivatives by simply
+generalizing the product rule. This notion that $v\in D^{*}_{x}$
+is a differential expression if
+\begin{equation}
+v(f)=0
+\end{equation}
+for all $f\in J^{r+1}_{x}$ is \emph{more general than} (i.e. extends
+beyond) the basic notion of a derivative in usual calculus.

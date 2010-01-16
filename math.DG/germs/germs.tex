@@ -1,0 +1,57 @@
+%%
+%% germs.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Tue Jan  5 11:34:11 2010 Alex Nelson
+%% Last update Fri Jan 15 17:52:54 2010 Alex Nelson
+%%
+\documentclass{article}
+\usepackage{notebk}
+\let\Bbb\mathbb
+
+\def\eqclass#1#2{[#1]_{#2}}
+\def\diff{\mathop{\rm Diff}\nolimits}
+\let\suchthat\mid
+%===========================================
+% exercise macros
+\newcounter{exercise}
+\font\manfnt=manfnt
+\def\ex [#1]{\refstepcounter{exercise}
+  \ifnum \value{exercise}>1 \smallbreak\fi
+  \noindent{\bf Exercise \theexercise. }[{\it#1\/}]\kern6pt}
+\def\EX [#1]{\refstepcounter{exercise}
+  \ifnum \value{exercise}>1 \smallbreak\fi
+  \noindent{\llap{\manfnt x\hskip3pt}\bf{{Exercise \theexercise}}.} [{\it#1\/}]\kern6pt}
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\ansno#1:{\medbreak\noindent%
+  {{\bf #1. }\ignorespaces}}
+\newwrite\ans%
+\immediate\openout\ans=answers % file for answers to exercises
+\newcommand{\myanswer}[1]{\par\medbreak
+  \immediate\write\ans{}%
+  \immediate\write\ans{\string\ansno {Exercise \theexercise}:}%
+  \immediate\write\ans{ \detokenize{#1}}}
+\newcommand{\dumpanswers}{\immediate\closeout\ans\input{answers}}
+\def\answer#1\end{\myanswer{#1}\end}
+%===========================================
+
+\title{Notes on An Algebraic Formulation of Tangent Spaces}
+\date{January 5, 2009}
+\begin{document}
+\maketitle
+\tableofcontents
+\immediate\write\ans{\detokenize{\pagebreak\section{Solution to Exercises}}}
+\input{tex/differentiableStructure}
+\input{tex/tangentSpace}
+
+
+
+
+\dumpanswers{}
+\pagebreak
+\nocite{*}
+\bibliographystyle{elements}
+\bibliography{germs}\addcontentsline{toc}{section}{References}
+\end{document}

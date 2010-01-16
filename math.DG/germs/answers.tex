@@ -1,0 +1,25 @@
+\pagebreak \section {Solution to Exercises}
+
+\ansno{Exercise 1}:
+ [{\it M10}\/]\kern 6pt We see that we can simply write any two $v$, $w$ which satisfy the product rule into a linear combination \equation (c_{1}v+c_{2}w)f=c_{1}v(f)+c_{2}w(f). \endequation We can then deduce that this linear combination also satisfies the product rule\refstepcounter {equation} \equation \array {rcl} (c_{1}v+c_{2}w)(fg)&=&c_{1}v(fg)+c_{2}w(fg)\cr &=&c_{1}\left [v(f)g(x)+f(x)v(g)\right ]+c_{2}\left [w(f)g(x)+f(x)w(g)\right ]\cr &=&[(c_{1}v+c_{2}w)(f)]g(x)+f(x)[(c_{1}v+c_{2}w)(g)] \endarray \endequation since each term on the right hand side obeys the product rule. This is sufficient to show that a linear combination of elements of $D_{x}^{*}$ (which obey the product rule) also obeys the product rule. It follows that this subset of elements obeying the product rule is a subspace of $D_{x}^{*}$ as a vector space. 
+
+\ansno{Exercise 2}:
+ [{\it HM15}\/]\kern 6pt We see that $f(x)\in \Bbb {R}$, so it follows that $1_{x}$ is real. We need to show that it is linearly independent of $T_{x}M$. Well, if $1_{x}\in T_{x}M$, i.e. if it is linearly \emph {dependent} of $T_{x}M$, then it would obey the property that $$1_{x}(fg)=1_{x}(f)g(x)+f(x)1_{x}(g)$$ but we see by definition that this is $$1_{x}(fg)=f(x)g(x).$$ If we set these two equal we see that $$1_{x}(f)g(x)+f(x)1_{x}(g)=f(x)g(x)$$ if and only if $$2f(x)g(x)=f(x)g(x)$$ or equivalently $$f(x)g(x)=0$$ for all $f,g\in D_{x}$. As this is not true, we have a contradiction, and thus $1_{x}\not \in T_{x}M$. 
+
+\ansno{Exercise 3}:
+ [{\it HM20}\/]\kern 6pt Consider any $f_1$, $f_2\in D_{x}$. Let $u\in T_{x}M$, and write\refstepcounter {equation} \equation v=c_{1}u+c_{2}1_{x} \endequation where $c_{1},c_{2}\in \Bbb {C}$. We see by direct computation\refstepcounter {equation} \equation v(f_1f_2)=c_{1}u(f_{1})f_{2}(x)+c_{1}f_{1}(x)u(f_{2})+c_{2}f_{1}(x)f_{2}(x) \endequation which we can rewrite as\refstepcounter {equation} \equation v(f_1f_2)=\left [c_{1}u(f_{2})+c_{2}f_{2}(x)\right ]f_{1}(x)+c_{1}u(f_{1})f_{2}(x) \endequation which vanishes iff $f_{1}(x)=f_{2}(x)=0$ or $c_{1}=c_{2}=0$. 
+
+\ansno{Exercise 4}:
+ [{\it M10}\/]\kern 6pt We see that for any $g\in D_{x}$ and $f\in J_{x}$ that \refstepcounter {equation} \equation (fg)(x)=f(x)g(x)=0\cdot g(x)=0 \endequation so $fg\in J_{x}$ for any $f\in J_x$ and $g\in D_x$. Thus by definition $J_x$ is an ideal. 
+
+\ansno{Exercise 5}:
+ [{\it 10}\/]\kern 6pt It is obvious. By using the induced differentiable structure, we can Taylor expand \refstepcounter {equation} \equation f(x)=f(x_{0})+f'(x_{0})(x-x_{0})+\frac {1}{2}f''(x_{0})(x-x_{0})^{2}+\cdots \endequation and find when $f^{(r)}(x_{0})\not =0$. We can factorize then set\refstepcounter {equation} \equation f(x)=(x-x_{0})^{r}\left (f^{(r)}(x_{0})+\cdots \right )=(x-x_{0})^{r}g(x) \endequation where we just define $g(x)$ as the parenthetic term. 
+
+\ansno{Exercise 5}:
+  (Alternate answer) It is obvious immediately from the fundamental theorem of algebra that it must be of this form, if we work with $\Bbb {C}$ or if we embed $\Bbb {R}$ into $\Bbb {C}$. 
+
+\ansno{Exercise 6}:
+ [{\it 03}\/]\kern 6pt We see that by the exact same reasoning as for \hyperref [exercise:jIsIdeal]{exercise \ref {exercise:jIsIdeal}} that $J_{x_{0}}^{p}$ is an ideal in $D_{x_{0}}$. 
+
+\ansno{Exercise 7}:
+ [{\it M12}\/]\kern 6pt We see that if $u,v$ are both differential expressions of order $\leq r$, and if $c_{1}$, $c_{2}\in \Bbb {R}$ are constants, then\refstepcounter {equation} \equation (c_{1}u+c_{2}v)(f)=c_{1}u(f)+c_{2}v(f)=0 \endequation for all $f\in J^{r+1}_{x}$. Thus the linear combination is also a differential expression of order $\leq r$, and thus the collection of all such expressions form a linear subspace of $D^{*}_{x}$. 

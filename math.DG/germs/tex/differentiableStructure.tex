@@ -1,0 +1,129 @@
+%%
+%% differentiableStructure.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 14 10:54:21 2010 Alex Nelson
+%% Last update Thu Jan 14 10:54:46 2010 Alex Nelson
+%%
+\section{Differentiable Structures}
+
+We want to consider a so-called ``differentiable structure'' that
+we can equip a topological space with. The intuition already
+should be that this is a mapping of some sort, where for our
+topological space $M$ we have a mapping
+\begin{equation}
+U\mapsto \diff(U)
+\end{equation}
+where $U\subseteq M$ is open. As we are working with a
+topological space, we demand consistancy on overlaps, so if
+$U\cap V\not=\emptyset$ and $U,V\subseteq M$ are open, then we
+would want
+\begin{equation}
+\diff(U\cap V)=\diff(\left.U\right|_{U\cap V})=\diff(\left.V\right|_{U\cap V})
+\end{equation}
+that is to say, if we restrict our attention of $\diff(U)$ on the overlap
+$\diff(\left.U\right|_{U\cap V})$, it should be equal to the
+differentiable structure on the overlap. 
+
+But what exactly is this ``differentiable structure'' we are
+assigning to each open subset of $M$? Already it sounds like a
+presheaf or sheaf, so intuitively we can think of it as a
+generalization of a vector space. Instead of assigning a vector
+at each point of $M$, it assigns something ``smooth'' to each
+point in such a way that varies ``nicely'' as we vary the
+base-point. We will use something that we know very well: an
+algebra of smooth functions.
+
+So basically, given some topological space $M$, we have
+\begin{equation}
+\diff:U\mapsto C^{\infty}(U).
+\end{equation}
+That is, for each open subset $U$ of $M$, we assign an algebra of
+$C^{\infty}$ functions (i.e. infinitely differentiable functions)
+which includes the unit function $1(x)=1$. \marginpar{Notation
+  Change! $\diff(U)$ changed to $C^{\infty}(U)$}\textbf{N.B:} we will
+\emph{change notation} to use instead of $\diff(U)$ the
+mathematically clearer $C^{\infty}(U)$.\def\diff{C^{\infty}}
+
+Is it enough to assign ``any old'' algebra of smooth functions to
+open subsets $U\subseteq M$? Well, we should make some
+restrictions. Namely, we want it to be ``consistent on
+overlaps''. So let $U,V\subseteq M$ are open, $U\cap
+V\not=\emptyset$, and $f\in\diff(U)$. We will denote the
+restriction mapping as 
+\begin{equation}
+r_{U\cap V,U}:U\to U\cap V
+\end{equation}
+we then \emph{demand}
+\begin{equation}
+f\circ r_{U\cap V,U}\in\diff(U\cap V)
+\end{equation}
+that $f$ restricted to the overlap lie in the differentiable
+structure assigned to the overlap. This is the naive way to
+demand consistency on overlaps.
+
+So we have a ``differentiable structure'' be an assignment of
+``sufficiently nice'' unital algebras of smooth functions to open
+subsets of a topological space, but is that all? Well, for
+starters, how do we define a derivative? It requires a choice of
+some coordinates! This is a bit of a problem, so we need to equip
+each open subset $U\subseteq M$ some extra information which
+permits some notion of coordinates. Locally each open subset
+$U\subseteq M$ is ``the same'' as $\Bbb{R}^{n}$ (for some fixed
+$n\in\Bbb{N}$ called the \define{Dimension of
+  $M$}\index{Dimension!Of Manifold}\marginpar{Notion of dimension}).  What does this rigorously translate to? How can
+we rigorously translate the ``sameness'' of two topological
+spaces? Well, we use a mapping. From the category theoretic
+perspective, it should be an isomorphism. But for topological
+spaces that is a \emph{homeomorphism} (a continuous map with a
+continuous inverse --- so we can translate open subsets of the
+domain into open subsets of the codomain and vice-versa). So we
+equip each open subset $U\subseteq M$ with a homeomorphism
+\begin{equation}
+\varphi\colon U\to\Bbb{R}^{n}
+\end{equation}
+specified by components
+\begin{equation}
+\varphi\colon y\mapsto (x_{1}(y), x_{2}(y), \ldots, x_{n}(y))
+\end{equation}
+where $y\in U$, $x_{1},\ldots,x_{n}\in\diff(U)$. These functions
+$x_{i}\in\diff(U)$ are called the \define{Coordinate Functions}.
+
+So we just introduced some extra structure, some special
+functions defined for each open subset $U\subseteq M$ called the
+coordinate functions on $U$, which allows us to solve the problem
+of specifying differentiability! Why? Well, observe that the
+coordinate function is invertible, so
+\begin{equation}
+\varphi^{-1}\colon\Bbb{R}^{n}\to U
+\end{equation}
+can be composed with a function with domain $U$. Why is this
+important? Well, if 
+\begin{equation}
+f\colon U\to\Bbb{R},
+\end{equation}
+then the composition
+\begin{equation}
+f\circ\varphi^{-1}\colon\Bbb{R}^{n}\to\Bbb{R}
+\end{equation}
+can be differentiable. That is, \emph{we can use the familiar
+ notion of differentiability from ordinary calculus!} We just
+work ``locally'' in $\Bbb{R}^{n}$ when differentiating.
+
+So to reiterate our specification of a differentiable structure,
+it is a mapping from a topological space $M$ to a unital associative
+algebra of smooth $\diff$ functions on $M$. This mapping is
+``sufficiently nice'' on overlaps of open subsets of $M$. Further
+it has preferred functions which are the ``coordinate functions,'' 
+whose \emph{raison d'\^{e}tre} is to permit differentiation in
+the obvious way. This is precisely sufficient information to have
+some notion of ``smoothness'' in $M$.
+
+\begin{rmk}
+The pair $(M,{\rm Diff})$ is often referred to as a 
+\define{Smooth Manifold}. However, we will abuse language and
+simply refer to $M$ as the smooth manifold with the understanding
+that it really is equipped with a smooth structure.
+\end{rmk}
