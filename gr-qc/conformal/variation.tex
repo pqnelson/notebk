@@ -1,0 +1,53 @@
+%%
+%% variation.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec  7 12:10:36 2008 Alex Nelson
+%% Last update Sun Dec  7 13:53:06 2008 Alex Nelson
+%%
+
+Before beginning, note that the quantity~\cite{Kazanas:1988qa}
+\begin{equation}
+\sqrt{-g}\left(R_{\alpha\beta\mu\nu}R^{\alpha\beta\mu\nu} -
+4R_{\alpha\beta}R^{\alpha\beta} + R^{2}\right)
+\end{equation}
+is a total divergence.
+
+Now, De Witt~\cite{dewitt1964} explicitly calculates out the
+equations of motion for two Lagrangians:
+\begin{equation}
+L_{2} = \sqrt{-g}R^{2},\qquad\text{and}\qquad L_{1}=\sqrt{-g}R^{\mu\nu}R_{\mu\nu}
+\end{equation}
+Our Lagrangian is a linear combination of these two, so we use a
+linear combination of the variation of their respective actions
+\begin{equation}
+\delta S_{2}/\delta g_{\mu\nu} = \frac{1}{2}
+g_{\mu\nu} \nabla^{\beta}\nabla_{\beta}({R^{\alpha}}_{\alpha})  +
+\nabla^{\beta}\nabla_{\beta}R_{\mu\nu}  -
+\nabla_{\beta}\nabla_{\nu}{R_{\mu}}^{\beta} - \nabla_{\beta}\nabla_{\mu}{R_{\nu}}^{\beta}
+-2R_{\mu\beta}{R_{\nu}}^{\beta} + g_{\mu\nu}R_{\alpha\beta}R^{\alpha\beta}/2
+\end{equation}
+(where $\nabla_{\mu}$ is the covariant derivative operator) and
+\begin{equation}
+\delta S_{1}/\delta g_{\mu\nu} =
+2g_{\mu\nu}\nabla^{\beta}\nabla_{\beta}{R^{\alpha}}_{\alpha}
+-2\nabla_{\mu}\nabla_{\nu}{R^{\alpha}}_{\alpha} -
+2{R^{\alpha}}_{\alpha}R_{\mu\nu} + g_{\mu\nu}R^{2}/2
+\end{equation}
+where $S_1$ and $S_2$ are the actions of the Lagrangians $L_1$
+and $L_2$ respectively. In the literature, these two quantities
+are typically referred to as $W^{(2)}_{\mu\nu} = \delta
+S_{2}/\delta g_{\mu\nu}$ and $W^{(1)}_{\mu\nu} = \delta
+S_{1}/\delta g_{\mu\nu}$. From them, we can construct the quantity
+\begin{equation}
+2\alpha_{g}W_{\mu\nu} = 2\alpha(W^{(2)}_{\mu\nu} -
+\frac{1}{3}w^{(1)}_{\mu\nu})
+\end{equation}
+which is precisely the variation of the conformal action. So we
+end up with the field equations being
+\begin{equation}
+4\alpha_{g}W_{\mu\nu} = T_{\mu\nu}
+\end{equation}
+where $T_{\mu\nu}$ is the stress-energy tensor we all know and love.

@@ -1,0 +1,132 @@
+%%
+%% action.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  ??? Dec  ? ??:??:?? 2008 Alex Nelson
+%% Last update Wed Dec 10 02:03:11 2008 Alex Nelson
+%%
+
+One begins with the conformally-invariant fourth order action
+\begin{equation}\label{conformalAction}
+I_{W} = -\alpha_{g}\int
+d^{4}x\sqrt{-g}C_{\alpha\beta\gamma\delta}C^{\alpha\beta\gamma\delta}
+\end{equation}
+where $\alpha_{g}$ is the coupling constant and
+$C_{\alpha\beta\gamma\delta}$ is the Weyl tensor. This action is
+invariant under conformal transformations of the metric
+\begin{equation*}
+g_{\mu\nu}(x)\to e^{2\alpha(x)}g_{\mu\nu}(x)
+\end{equation*}
+(Originally Weyl considered $\alpha$ in the action
+\eqref{conformalAction} to be used for the both the conformal and
+the electromagnetic gauge transformations. This way one has for the
+covariant derivative $\nabla_{\mu}g_{\alpha\beta} =
+A_{\mu}g_{\alpha\beta}$ where $A_{\mu}$ is the electromagnetic
+4-potential. The problem with this approach is that conformal
+invariance implied the particles are massless, which is observably
+false.) We can now simplify this Lagrangian a bit.
+
+By plugging in the definition of the Riemann tensor, and recalling
+that any contraction of any pair of indices of the Weyl tensor
+vanishes, we see
+\begin{equation}
+R_{\mu\nu\alpha\beta}R^{\mu\nu\alpha\beta} =
+C_{\mu\nu\alpha\beta}C^{\mu\nu\alpha\beta} + 2R_{\mu\nu}R^{\mu\nu} - \frac{1}{3}R^{2}
+\end{equation}
+where $R$ is the Ricci scalar. Rearranging terms, we have
+\begin{equation}
+C_{\mu\nu\alpha\beta}C^{\mu\nu\alpha\beta} =
+R_{\mu\nu\alpha\beta}R^{\mu\nu\alpha\beta} -  2R_{\mu\nu}R^{\mu\nu} + \frac{1}{3}R^{2}.
+\end{equation}
+
+
+Before beginning, note that the quantity~\cite{Kazanas:1988qa,Lanczos:1938sf}
+\begin{equation}
+\sqrt{-g}\left(R_{\alpha\beta\mu\nu}R^{\alpha\beta\mu\nu} -
+4R_{\alpha\beta}R^{\alpha\beta} + R^{2}\right)
+\end{equation}
+is a total divergence. So instead of having our Lagrangian be
+\begin{equation}
+L = \sqrt{-g}C_{\alpha\beta\mu\nu}C^{\alpha\beta\mu\nu}
+\end{equation}
+we can \emph{equivalently} use the Lagrangian
+\begin{equation}
+L = -2\sqrt{-g}(R_{\alpha\beta}R^{\alpha\beta} - R^{2}/3)
+\end{equation}
+since we would be working with an extra term (by Stoke's theorem a surface
+integral), and by demanding the variation vanishes on the boundary
+the only nonzero contribution would be this Lagrangian.
+
+Now, De Witt~\cite{dewitt1964} explicitly calculates out the
+equations of motion for two Lagrangians:
+\begin{equation}
+L_{2} = \sqrt{-g}R^{2},\qquad\text{and}\qquad L_{1}=\sqrt{-g}R^{\mu\nu}R_{\mu\nu}
+\end{equation}
+Our Lagrangian is a linear combination of these two, so we use a
+linear combination of the variation of their respective actions
+\begin{equation}
+\frac{\delta S_{2}}{\delta g^{\mu\nu}} = \frac{g_{\mu\nu}}{2}
+\nabla^{\beta}\nabla_{\beta}({R^{\alpha}}_{\alpha})  +
+\nabla^{\beta}\nabla_{\beta}R_{\mu\nu}  -
+\nabla_{\beta}\nabla_{\nu}{R_{\mu}}^{\beta} - \nabla_{\beta}\nabla_{\mu}{R_{\nu}}^{\beta}
+-2R_{\mu\beta}{R_{\nu}}^{\beta} + \frac{g_{\mu\nu}}{2}R_{\alpha\beta}R^{\alpha\beta}
+\end{equation}
+(where $\nabla_{\mu}$ is the covariant derivative operator) and
+\begin{equation}
+\frac{\delta S_{1}}{\delta g^{\mu\nu}} =
+2g_{\mu\nu}\nabla^{\beta}\nabla_{\beta}{R^{\alpha}}_{\alpha}
+-2\nabla_{\mu}\nabla_{\nu}{R^{\alpha}}_{\alpha} -
+2{R^{\alpha}}_{\alpha}R_{\mu\nu} + g_{\mu\nu}R^{2}/2
+\end{equation}
+where $S_1$ and $S_2$ are the actions of the Lagrangians $L_1$
+and $L_2$ respectively. In the literature, these two quantities
+are typically referred to as $W^{(2)}_{\mu\nu} = \delta
+S_{2}/\delta g_{\mu\nu}$ and $W^{(1)}_{\mu\nu} = \delta
+S_{1}/\delta g_{\mu\nu}$. From them, we can construct the quantity
+\begin{equation}
+2\alpha_{g}W_{\mu\nu} = 2\alpha(W^{(2)}_{\mu\nu} -
+\frac{1}{3}W^{(1)}_{\mu\nu})
+\end{equation}
+which is precisely the variation of the conformal action. So we
+end up with the field equations being
+\begin{equation}
+4\alpha_{g}W_{\mu\nu} = T_{\mu\nu}
+\end{equation}
+where $T_{\mu\nu}$ is the stress-energy tensor we all know and love.
+
+%%
+% Break this part up into a new section on the non-uniqueness of the
+% Schwarzschild metric?
+%%
+Although this is an intimidating system of coupled fourth order,
+nonlinear partial differential equations, there are a few
+solutions calculated out. Mannheim and
+Kazanas~\cite{Mannheim:1988dj} have computed the exact solution
+exterior to a static, spherically symmetric gravitating source,
+which is
+\begin{equation}
+-g_{00} = 1/g_{rr} = 1 - \frac{\beta(2 - 3\beta\gamma)}{r} - 3\beta\gamma
++ \gamma r - kr^2
+\end{equation}
+where the parameters $\beta$, $\gamma$ and $k$ are three
+dimensionful integrations constants which appear in the solution
+but not in the equations of motion. They spontaneously break the
+scale symmetry. This should look familiar as it resembles the
+Schwarzschild solution with a cosmological constant
+\begin{equation}\label{exteriorMetric}
+-g_{00} = 1/g_{rr} = 1 + \frac{\Lambda}{3}r^{2} - \frac{2m}{r}
+\end{equation}
+in units where $G_{N} = 1$ and $c=1$. The only difference is a
+constant term and a term that linearly depends on $r$.
+
+Here we need to reiterate so one appreciates the beauty of the
+situation. \marginpar{\footnotesize{Breaking symmetry gives information about cosmological constant}} In a Lagrangian of
+the form \eqref{conformalAction} which has no boundary term or
+constant term added in by hand, makes no assumptions about the
+cosmological constant, one can solve for the spherically
+symmetry, static gravitating body and one \emph{naturally} gets a
+term which yields information about the cosmological constant and
+a term which breaks symmetry to give masses to the massless
+particles. 

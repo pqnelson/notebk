@@ -1,0 +1,141 @@
+%%
+%% cosmology.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec  7 19:30:38 2008 Alex Nelson
+%% Last update Wed Dec 10 02:01:26 2008 Alex Nelson
+%%
+
+We begin by thinking about breaking symmetry differently (read:
+in the naive way) by considering\footnote{Note that this is for
+  De-Sitter spacetime, to make this anti-de-Sitter spacetime we
+  need to change the sign of the $\phi^{4}$ term. This has been
+  calculated in \cite{Edery:2006hg}.} the Lagrangian of matter
+  conformally coupled to gravity~\cite{Mannheim:1999nc,Mannheim:2007ki} 
+\begin{equation}\label{symmetryBreakingAction}
+I_{M} = -\int
+d^{4}x\sqrt{-g}\left[\underbrace{\frac{1}{2}\nabla^{\mu}\phi\nabla_{\mu}\phi -
+  \frac{1}{12}\phi^{2}R + \lambda \phi^{4}}_{\text{scalar}} +
+  \underbrace{i\bar{\psi}\gamma^{\mu}(x)[\partial_{\mu} +
+    \Gamma_{\mu}(x)]\psi}_{\text{fermion}} - \underbrace{g\phi\bar{\psi}\psi}_{\text{interaction}}\right]
+\end{equation}
+where $\Gamma_{\mu}(x)$ is the fermion spin connection, $\lambda$ and
+$g$ are the dimensionless coupling constants, $\phi(x)$ is the (symmetry
+breaking) scalar field and $\psi$ is a fermionic field. 
+
+We will demonstrate that the scalar spontaneously breaks
+symmetry. Observe that the potential term for the scalar field is 
+\begin{equation}
+V(\phi) = \frac{\phi^{2}R}{12} - \lambda\phi^{4}
+\end{equation}
+we take its derivative 
+\begin{equation}
+V'(\phi) = \frac{\phi R}{6} - 4\lambda\phi^3
+\end{equation}
+then set it to zero and solve for $\phi$. The resulting value is
+\begin{equation}
+v = \pm\sqrt{\frac{R}{24\lambda}}
+\end{equation}
+then we plug it back into the potential to find
+\begin{equation}
+V\left(\pm\sqrt{\frac{R}{24\lambda}}\right)
+= \left(\frac{R}{24\lambda}\right)\frac{R}{12} - \lambda\left(\frac{R}{24\lambda}\right)^{2} = \frac{R^2}{576\lambda}
+\end{equation}
+which is nonzero, which implies that symmetry is spontaneously
+broken. Note that if we included the fermion-scalar interaction term,
+the results would not have changed as it would have been equivalent to
+adding a term linear in $\phi$ into the potential (for explicit
+calculations refer to appendix B). (Observe the dependence on $R$ is
+directly proportional too.)
+
+When the scalar field $\phi(x)$ in $I_M$ obtains a nonzero mass (which
+we are free to rotate to some ``spacetime constant'' $\phi_{0}$ due to
+conformal invariance), the fermion then obeys the curved space Dirac
+equations
+\begin{equation}
+i\hbar\overline{\psi}\gamma^{\mu}(x)(\partial_{\mu}
++ \Gamma_{\mu}(x))\psi = \hbar g\phi_{0}\psi
+\end{equation}
+and acquires a mass $\hbar g\phi_{0}$. The scalar field's equation of
+motion is
+\begin{equation}
+\nabla_{\mu}\nabla^{\mu} \phi + \frac{\phi R}{6} - 4\lambda \phi^{3} +
+g\bar{\psi}\psi = 0.
+\end{equation}
+
+The corresponding stress-energy tensor to \eqref{symmetryBreakingAction} is
+\begin{eqnarray}
+T^{\mu\nu} &=& \hbar\Big[i\bar{\psi}\gamma^\mu(\partial^\nu
++ \Gamma^\nu)\psi + \frac{2}{3}\nabla^{\mu}\phi\nabla^{\nu}\phi
+- \frac{g^{\mu\nu}}{6}\nabla^{\alpha}\phi\nabla_{\alpha}\phi
+-\frac{\phi\nabla^{\mu}\nabla_{\nu}\phi}{3} \nonumber\\
+& & + \frac{g^{\mu\nu}\phi\nabla^{\alpha}\nabla_{\alpha}\phi}{3}
+- \frac{\phi^2}{6}(R^{\mu\nu} -\frac{g^{\mu\nu}}{2}R) - g^{\mu\nu}\lambda\phi^{4}\Big]
+\end{eqnarray}
+which can be rewritten grouping terms in a more elegant manner. If we
+think of 
+\begin{equation}
+\rho u^\mu u^\nu = i\hbar\bar{\psi}\gamma^\mu(\partial^\nu
++ \Gamma^\nu)\psi + \frac{\hbar}{2}\nabla^{\mu}\phi\nabla^{\nu}\phi
+\end{equation}
+where $\rho$ is the ``pressure'' of an ideal fluid, $u^\mu$ is thought of
+as the worldline (so it satisfies $g_{\mu\nu}u^\mu u^\nu=-1$), and
+\begin{equation}
+pu^\mu u^\nu = \frac{-\hbar}{3}\phi\nabla^{\mu}\nabla^{\nu}\phi + \frac{\hbar}{6}\nabla^{\mu}\phi\nabla^{\nu}\phi
+\end{equation}
+where $p$ is the ``pressure'' of an ideal fluid, then the stress
+energy tensor may be written as
+\begin{equation}\label{stressEnergyTensorConformalCosmology}
+T_{\mu\nu} = (\rho + p)U_{\mu}U_{\nu} + pg_{\mu\nu} -
+\frac{1}{6}\phi_{0}^{2}\left(R_{\mu\nu} -
+\frac{\hbar}{2}g_{\mu\nu}R\right) - g_{\mu\nu}\hbar\lambda \phi_{0}^{4}.
+\end{equation}
+This is the right hand side of our fourth order field equations.
+
+By working in an isotropic and homogeneous geometry, the left hand side of
+\eqref{stressEnergyTensorConformalCosmology} necessarily
+vanishes, giving us the equation
+\begin{equation}
+\frac{1}{6}\phi^{2}\left(R_{\mu\nu} -
+\frac{1}{2}g_{\mu\nu}R\right) = (\rho + p)U_{\mu}U_{\nu} +
+pg_{\mu\nu}  - g_{\mu\nu}\lambda \phi^{4}
+\end{equation}
+Thus conformal cosmology looks like the standard cosmology with a
+perfect matter fluid and a nonzero cosmological constant with the
+\marginpar{\footnotesize{Replace Newton's $G_{N}$ with an effective
+one}}important exception that Newton's constant has been replaced by
+an ``effective'' constant of the form 
+\begin{equation}
+G_\text{eff} = \frac{-3}{4\pi \phi_{0}^{2}}.
+\end{equation}
+\emph{This is not Newton's constant as Cavendish measured, but instead
+a term which we identify to be analagous to the Newton gravitational
+constant!} Observe that as we change scales, $G_\text{eff}$ changes in inverse
+proportion. 
+
+We can also identify the\marginpar{\footnotesize{Cosmological Constant Emerges}} $\Lambda = \lambda \phi_{0}^{4}$ term as being a
+cosmological constant. Note that this term really is effectively a
+cosmological constant since it is a homogeneous and isotropic global
+scalar field. Observe that this cosmological constant
+is \begin{inparaenum}
+\item scale dependent (that is, quartic in $\phi$),
+\item always positive (that is, we have de Sitter spacetime, so
+gravity is repulsive \emph{but at this scale}).
+\end{inparaenum}
+The notion that the cosmological constant is scale dependent is novel,
+but the important change is that the sign explains how gravity is
+repulsive instead of attractive. Due to the sign, there is no initial
+singularity in this model. Instead the universe expands from a finite
+minimum radius, and is not subject to the same problems that one
+encounters in the standard cosmological model.
+
+Despite finding gravity being globally repulsive, it is locally
+attractive. This reconciles the use of the fourth order Poisson
+equation \eqref{fourthOrderPoisson} which merely adds an extra term linear in $r$
+(radial distance) to the gravitational potential that would be
+negligible at \emph{local} scales. It turns out that Mannheim et
+al~\cite{Mannheim:1996jt} demonstrate the empirical strength of such a
+proposition at the galactic level, but that is beyond the scope of
+this article to review it too.

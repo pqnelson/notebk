@@ -1,0 +1,88 @@
+Recall, in General Relativity, a heuristic derivation usually begins
+with the Newtonian gravity's Poisson equation
+\begin{equation}\label{newtonPoisson}
+\nabla^{2}\Phi_{N} = 4\pi G_{N}\rho
+\end{equation}
+where $\Phi_{N}$ is the Newtonian potential, $G_{N}$ is the
+gravitation constant, and $\rho$ is the mass-density. It has a
+solution of
+\begin{equation}\label{generalSolutionSecondOrder}
+\Phi_{N}(r) = \frac{c_{0}}{r}
+\end{equation}
+where $c_{0}$ is constant.
+From here, one typically identifies the right hand side of Eq
+(\ref{newtonPoisson}) as the time-time component of stress-energy
+tensor, and the left hand side is identified as the time-time
+component of the Ricci tensor. This is how most approaches to gravity begin.
+
+In conformal gravity, we begin with a different Poisson
+equation. Instead of a second order one, we begin with a fourth order
+one~\cite{Mannheim:1994ph}
+\begin{equation}\label{fourthOrderPoisson}
+\nabla^{4}B(r) = f(r)
+\end{equation}
+which has the general solution for a spherical source
+\begin{equation}\label{generalSolutionFourthOrder}
+B(r) = \frac{-r}{2}\int^{R}_{0}dxf(x)x^{2} -
+\frac{1}{6r}\int^{R}_{0}dxf(x)x^{4} = \widetilde{c}_{0}r + \frac{\widetilde{c}_{1}}{r}.
+\end{equation}
+Observe that when $r\ll 1$, Eq (\ref{generalSolutionFourthOrder}) has
+$\widetilde{c}_{1}/r$ be the dominant term and
+$\widetilde{c}_{0}r\to 0$. Thus for small $r$, we can recover the
+Newtonian Poisson equation (\ref{newtonPoisson}).
+
+At first, this may be startling to see Eq
+(\ref{generalSolutionFourthOrder}) as being proposed for the
+gravitational potential. It is counter-intuitive to propose adding an
+$\mathcal{O}(r)$ term, as we don't observe it at ``small'' scales
+(dropping an apples behaves as being in a $\mathcal{O}(1/r)$
+potential!). However, at such scales, the potential for
+a fourth order Poisson equation behaves as the potential for a second
+order one. Additionally, there is observational problems with gravity
+that departs from a second order Poisson equation at \emph{large}
+distances. So the fourth order approach modifies only what is expected
+at \emph{large} distances, and agrees with what we expect at
+\emph{small} distances.
+
+Here, we must intervene and confess that there is a terribly strong
+no-go theorem: Ostrogradski's theorem (for a beautiful introduction,
+see section 2 of Woodard~\cite{Woodard:2006nt}). With
+Lagrangians involving terms of second order (or higher) time
+derivatives of the position term is unstable. Woodard notes that in
+Lagrangians of the form $L(q_{i},\dot{q}_{j},\ddot{q}_{k})$ ``there is
+not even any barrier to decay''. Adding insult to injury, the
+situation does not improve if we add in higher order derivatives!
+
+However, Adler~\cite{adler1982} has proposed recovering
+Einstein's General Relativity from Spontaneous Symmetry
+Breaking\footnote{In all fairness, Mannheim credits Adler's work
+  with recovering Einstein's general relativity, but it appears
+  that Adler's paper is more related to the role of spontaneous
+  symmetry breaking in the context of avoiding some problems in
+  induced gravity like the logarithmic and quadratic divergence
+  of the effective Gravitation constant.}
+and Zee~\cite{1983AnPhy.151..431Z} has proposed using
+spontaneously breaking conformal invariance to give rise to
+masses in Weyl gravity. This is very much analogous to how
+spontaneous symmetry breaking in the weak force generates the
+Fermi constant. The aim of Adler and Zee is that in breaking
+symmetry, there is a sort of ``macroscopic/low energy'' limit in
+which we can recover Newtonian gravity (or some generalization of
+it). 
+
+If instead we consider conformal gravity as a theory in and of
+itself, as Mannheim suggests, we find that -- from the solution for
+a static, spherically symmetric body -- scale invariance is
+spontaneously broken to give rise to a nonzero cosmological
+constant term. Further, if we consider working with a stress
+energy tensor involving a spontaneous symmetry breaking boson
+(which is to be expected if the standard model of particle
+physics is correct), we get a sort of ``induced conformal
+cosmology'' model which avoids a Big Bang singularity. So the plan is
+to first examine the case of the static, spherically symmetric
+gravitating body which resembles (up to some negligibly small terms at
+the solar-system level) the Schwarzschild solution. Then we will
+proceed to consider symmetry breaking at the cosmological
+scale and review the consequences in conformal cosmology. Included is
+an appendix which constitutes an extremely brief (``five-minute'')
+introduction to spontaneous symmetry breaking. 

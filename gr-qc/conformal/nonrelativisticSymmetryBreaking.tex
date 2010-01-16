@@ -1,0 +1,60 @@
+%%
+%% nonrelativisticSymmetryBreaking.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec  7 14:49:33 2008 Alex Nelson
+%% Last update Sun Dec  7 16:38:38 2008 Alex Nelson
+%%
+
+Mannheim notes~\cite{Mannheim:1993rs} that from the fourth order
+Poisson equation
+\begin{equation}
+\nabla^{4}B(r) = f(r)
+\end{equation} 
+where for a spherical source its exact exterior solution is
+\begin{equation}
+B(r>R) = \frac{-r}{2}\int^{R}_{0}d\rho f(\rho)\rho^2 -
+\frac{1}{6r}\int^{R}_{0}d\rho f(\rho)\rho^4
+\end{equation}
+we can use the non-relativistic potential
+\begin{equation}
+V(r) = \frac{-\beta}{r} + \frac{\gamma}{2}r.
+\end{equation}
+(Numerically the $\beta\gamma$ term is negligible.) It turns
+out~\cite{Mannheim:1994ph} that we can write the spherically
+symmetric source function as
+\begin{equation}
+f(r) = \frac{3({T^{0}}_{0} - {T^{r}}_{r})}{4\alpha B(r)}
+\end{equation}
+which allows us to see, since the radial piece of
+$\nabla^{4}B(r)$ is $(rB)''''/r$, that the exterior metric
+\eqref{exteriorMetric} emerges as the most general solution to
+the fourth order Laplace equation $\nabla^4 B(r)=0$ More
+importantly, this lets us write
+\begin{equation}
+\gamma = \frac{-1}{2}\int^{R}_{0}d\rho f(\rho) \rho^2
+\end{equation}
+and
+\begin{equation}
+\beta(2-3\beta\gamma) = \frac{1}{6}\int^{R}_{0}d\rho
+f(\rho)\rho^{4}
+\end{equation}
+which means that $\gamma$ is some negative constant and $\beta$
+is some positive constant for a body with positive $f(r)$ (it
+also has to be positive so the potential contains the correct
+Newtonian limit).
+
+We see then that
+\begin{equation}
+\frac{d}{dr}V(r) = \frac{\beta}{r^2} + \frac{\gamma}{2}
+\end{equation}
+has extrema at
+\begin{equation}
+r_{0} = \pm\sqrt{\frac{-2\beta}{\gamma}}
+\end{equation}
+which is nonzero for massive bodies. (Also, don't be fooled by
+the negative in the squareroot, $\gamma$ is negative so the two
+become positive thus $r_0\in\mathbb{R}$.) This is an indicator
+that symmetry is spontaneously broken even nonrelativistically!
