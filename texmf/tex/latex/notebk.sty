@@ -1,0 +1,277 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{notebk}[2009/08/06 Customizations to make the style superfly]
+\usepackage{sidecap}
+\usepackage{cancel}
+\usepackage{xmpincl}
+\usepackage{arydshln} % for the dashed lines in the ADM metric
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+            citecolor=black,
+            filecolor=black,
+            menucolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            bookmarksopen=true,
+            pdfauthor={Alex Nelson},
+            unicode=false]{hyperref}
+% automatically generate the author information
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\author{Alex Nelson\\\texttt{Email:\enspace\href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}
+\footnote{This is a page from \url{http://code.google.com/p/notebk/}\hfil\break Compiled:\enspace\today}}
+
+\usepackage[top=6pc,textwidth=32pc,inner=6pc,%
+marginparwidth=9.5pc,marginparsep=1cm]{geometry}
+\usepackage{amsmath,amsfonts,amscd,amssymb}
+%\usepackage{epic,eepic}
+\usepackage{arydshln} % for the dashed lines in the ADM metric
+\usepackage{float}
+\usepackage{framed}
+\usepackage{ifpdf}
+\usepackage[final]{graphicx}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage[colorinlistoftodos, shadow]{todonotes}
+\usepackage{slashed}
+\usepackage{paralist}
+\usepackage{marginnote}
+\usepackage{subfigure}
+\usepackage{wrapfig} % used for wrapping figures!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font used...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\manual=manfnt
+\font\sectionfont=cmssbx10 at 12pt
+\font\subsectionfont=cmssbx10 %at 12pt
+\def\upbf#1#2{\textbf{#1\uppercase{{\footnotesize#2}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We customize theorem styles...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{thedefinition}
+\setcounter{thedefinition}{0}
+\newenvironment{proclaim}[1]{\medbreak\noindent{\textbf{#1.}\enspace}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+
+\def\thedefinition{\textbf{D\uppercase{{\footnotesize efinition}}}}
+\def\thetheorem{\textbf{T\uppercase{{\footnotesize heorem}}}}
+\def\theremark{\textbf{R\uppercase{{\footnotesize emark}}}}
+\def\thecorollary{\textbf{C\uppercase{{\footnotesize orollary}}}}
+\def\theexample{\textbf{E\uppercase{{\footnotesize example}}}}
+\def\thenonexample{\textbf{NON-E\uppercase{{\footnotesize example}}}}
+\def\theproposition{\textbf{P\uppercase{{\footnotesize roposition}}}}
+\def\thescholium{\textbf{S\uppercase{{\footnotesize cholium}}}}
+\def\theaxiom{\textbf{A\uppercase{{\footnotesize xiom}}}}
+\def\theproblem{\textbf{P\uppercase{{\footnotesize roblem}}}}
+\def\theconjecture{\textbf{C\uppercase{{\footnotesize onjecture}}}}
+\def\thenotation{\textbf{N\uppercase{{\footnotesize otation}}}}
+%\def\the{\textbf{D\uppercase{{\footnotesize efinition}}}}
+
+\newenvironment{defn}{\refstepcounter{thedefinition}\begin{proclaim}{\thedefinition{} \arabic{thedefinition}}\bgroup\sl}{\egroup\end{proclaim}}
+\newenvironment{thm}{\refstepcounter{thedefinition}\begin{proclaim}{\thetheorem{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{rmk}{\refstepcounter{thedefinition}\begin{proclaim}{\theremark{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{lem}{\refstepcounter{thedefinition}\begin{proclaim}{\thelemma{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{cor}{\refstepcounter{thedefinition}\begin{proclaim}{\thecorollary{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{ex}{\refstepcounter{thedefinition}\begin{proclaim}{\theexample{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{nonex}{\refstepcounter{thedefinition}\begin{proclaim}{\thenonexample{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{prop}{\refstepcounter{thedefinition}\begin{proclaim}{\theproposition{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{sch}{\refstepcounter{thedefinition}\begin{proclaim}{\thescholium{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{axm}{\refstepcounter{thedefinition}\begin{proclaim}{\theaxiom{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{prob}{\refstepcounter{thedefinition}\begin{proclaim}{\theproblem{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{con}{\refstepcounter{thedefinition}\begin{proclaim}{\theconjecture{} \arabic{thedefinition}}}{\end{proclaim}}
+\newenvironment{notation}{\begin{proclaim}{\thenotation{}}}{\end{proclaim}}
+
+\newenvironment{bessel}{\begin{proclaim}{Bessel Inequality}}{\end{proclaim}}
+\newenvironment{assume}{\begin{proclaim}{\upbf A{ssumption}}}{\end{proclaim}}
+\newenvironment{parseval}{\begin{proclaim}{Parseval Equality}}{\end{proclaim}}
+\newenvironment{riemleb}{\begin{proclaim}{Riemann-Lebesgue Theorem}}{\end{proclaim}}
+\newenvironment{invFourier}{\begin{proclaim}{Fourier Inversion Theorem}}{\end{proclaim}}
+\newenvironment{plancherel}{\begin{proclaim}{Plancherel Theorem}}{\end{proclaim}}
+\newenvironment{samplingthm}{\begin{proclaim}{Sampling Theorem}}{\end{proclaim}}
+\newenvironment{dual}{\begin{proclaim}{Dual Principle for Categories}}{\end{proclaim}}
+\newenvironment{quest}{\begin{proclaim}{\upbf Q{uestion}}}{\end{proclaim}}
+\newenvironment{yoneda}{\begin{proclaim}{Yoneda Lemma}}{\end{proclaim}}
+
+
+\newenvironment{sketch}{\medbreak\noindent{\sc Sketch of Proof:\enspace}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
+\newenvironment{proof}{\medbreak\noindent{\sc Proof:\enspace}}{\slugonright\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\allowdisplaybreaks
+
+%\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+
+\normalbaselineskip=12pt
+\baselineskip=12pt
+\abovedisplayskip=6pt plus 3pt minus 1pt
+\belowdisplayskip=6pt plus 3pt minus 1pt
+\abovedisplayshortskip=0pt plus 3pt
+\belowdisplayshortskip=4pt plus 3pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyheadoffset[OR,EL]{8pc}
+\else
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{8pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We also customize commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\re}{\mathop{\rm Re}\nolimits}
+\newcommand{\im}{\mathop{\rm Im}\nolimits}
+\newcommand{\tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\aut}{\mathop{\rm Aut}\nolimits}
+\renewcommand{\ker}{\mathop{\rm Ker}\nolimits}
+\newcommand{\coker}{\mathop{\rm Coker}\nolimits}
+\newcommand{\erfi}{\mathop{\rm erfi}\nolimits}
+\newcommand{\erf}{\mathop{\rm erf}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
+\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
+\newcommand{\cov}[2]{{#1}_{#2}}
+\newcommand{\contrav}[2]{{#1}^{#2}}
+\newcommand{\lie}{\mathop{\rm Lie}\nolimits}
+\renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
+\renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\rm id}_{#1}}
+\newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
+\newcommand{\cat}[1]{\mathop{\bf#1}\nolimits}
+\newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)}
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We also make the marin notes look prettier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if@twoside
+\renewcommand\marginpar[1]{\-\marginnote{\footnotesize{\emph{#1}}}}
+\else
+\renewcommand\marginpar[1]{\-\marginnote{\raggedright\footnotesize{\emph{#1}}}}%
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bracket macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
+[\@bracketheight]}}
+\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
+{\@over@bracket[#1][0.3em]}}
+\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
+\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
+\nointerlineskip }\downbracketfill {#1}{#2}
+                              \crcr \noalign {\kern 3\p@ }
+                              \crcr  $\hfil \displaystyle {#3}\hfil $%
+                              \crcr} }}\limits}
+\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+\downbracketend{#1}{#2}$}
+\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
+
+
+\def\underbracket{%
+  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
+}
+\def\@underbracket[#1]{%
+  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
+}
+\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
+ \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
+ \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
+       \crcr \noalign {\kern 3\p@ }}}}\limits}
+\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
+	              {#1}{#2}$}
+\def\bracketend#1#2{\vrule height #2 width #1\relax}
+\makeatother
+
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dangerous bend macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\def\dbend{{\manual\char127}} % dangerous bend sign
+
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\begin{footnotesize}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{footnotesize}\end{trivlist}}
+
+% Danger! Danger!
+\def\ddanger{\medbreak\noindent\begin{footnotesize}%
+\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\end{footnotesize}\par}
+
+%==============================================================================
+% section commands
+
+\makeatletter
+\def\specialsection{\@startsection{section}{1}%
+  \z@{\baselineskip\@plus\baselineskip}{.25\baselineskip}%
+  {\sectionfont}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\subsectionfont}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\subsectionfont}}
+\renewenvironment{thebibliography}[1]
+     {\pagebreak\section*{\refname}\addcontentsline{toc}{section}{\refname} %
+      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
+
+\renewenvironment{enumerate}%
+  {\begin{list}{\arabic{enumi}.}%
+     {\topsep=0in\itemsep=0in\parsep=0in\partopsep=0in\usecounter{enumi}}%
+   }{\end{list}}
