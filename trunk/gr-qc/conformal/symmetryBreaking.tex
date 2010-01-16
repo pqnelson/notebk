@@ -1,0 +1,55 @@
+%%
+%% symmetryBreaking.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Nov 29 13:34:02 2008 Alex Nelson
+%% Last update Sun Dec  7 15:27:16 2008 Alex Nelson
+%%
+
+\section{Spontaneous Symmetry Breaking}
+
+Spontaneous symmetry breaking occurs whenever a given field in a given
+Lagrangian has a nonzero vacuum expectation value. Why exactly is this
+``breaking'' the symmetry? Well, the Lagrangian appears symmetric
+under a symmetry group, but its vacuum state fails to be
+symmetric. The system no longer behaves symmetrically. So we went from
+symmetry to no symmetry due to a nonzero vacuum expectation value. It
+came about from condensed matter physics (see~\cite{wen} for
+applications of it in condensed matter physics) but has
+since been applied to quantum field theory and particle physics
+(see~\cite{peskinSchroeder} for examples in particle physics).
+
+Consider the scalar Lagrangian given by
+\begin{equation}
+\mathcal{L} =
+\underbrace{\frac{1}{2}(\partial_{\mu}\phi)^2}_{\text{``kinetic term''}} +
+\underbrace{\frac{1}{2}\mu^{2}\phi^{2} -
+  \frac{\lambda}{4!}\phi^{4}}_{\text{``potential term''}}
+\end{equation}
+where $\phi$ is the scalar field, $\mu$ is a sort of ``mass''
+parameter, and $\lambda$ is the coupling. Observe that there is a
+symmetry of $\phi\to-\phi$ (a discrete symmetry).  We can think of the
+potential as being
+\begin{equation}
+V(\phi) = -\frac{1}{2}\mu^{2}\phi^2 + \frac{\lambda}{4!}\phi^{4}
+\end{equation}
+which has extrema when its derivative is zero. There are two, given by
+\begin{equation}
+\phi_{0} = \pm v = \pm \mu\sqrt{\frac{6}{\lambda}}
+\end{equation}
+where the constant $v$ is the ``\textbf{vacuum expectation value}''.
+
+We can then write
+\begin{equation}
+\phi(x) = v + \sigma(x)
+\end{equation}
+and then rewrite the Lagrangian as
+\begin{equation}
+\mathcal{L} = \frac{1}{2}(\partial_{\mu}\sigma)^{2} -
+\frac{1}{2}(2\mu^2)\sigma^2 - \sqrt{\frac{\lambda}{6}}\mu\sigma^3 -
+\frac{\lambda}{4!}\sigma^{4}
+\end{equation}
+where we dropped the constant terms. We see that the symmetry
+$\phi\to-\phi$ is no longer identifiable. 

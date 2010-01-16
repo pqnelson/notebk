@@ -1,0 +1,54 @@
+
+
+Recall, in General Relativity, a heuristic derivation usually begins
+with the Newtonian gravity's Poisson equation
+\begin{equation}\label{newtonPoisson}
+\nabla^{2}\Phi_{N} = 4\pi G_{N}\rho
+\end{equation}
+where $\Phi_{N}$ is the Newtonian potential, $G_{N}$ is the
+gravitation constant, and $\rho$ is the mass-density. It has a
+solution of
+\begin{equation}\label{generalSolutionSecondOrder}
+\Phi_{N}(r) = \frac{c_{0}}{r}
+\end{equation}
+where $c_{0}$ is constant.
+From here, one typically identifies the right hand side of Eq
+(\ref{newtonPoisson}) as the time-time component of stress-energy
+tensor, and the left hand side is identified as the time-time
+component of the Ricci tensor. This is how most approaches to gravity begin.
+
+In conformal gravity, we begin with a different Poisson
+equation. Instead of a second order one, we begin with a fourth order
+one~\cite{Mannheim:1994ph}
+\begin{equation}\label{fourthOrderPoisson}
+\nabla^{4}B(r) = f(r)
+\end{equation}
+which has the general solution for a spherical source
+\begin{equation}\label{generalSolutionFourthOrder}
+B(r) = \frac{-r}{2}\int^{R}_{0}dxf(x)x^{2} - \frac{1}{6r}\int^{R}_{0}dxf(x)x^{4}.
+\end{equation}
+Observe that when $r\ll 1$, Eq (\ref{generalSolutionFourthOrder}) has
+$c_{1}/r$ be the dominant term and $c_{2}r\to 0$. Thus for small $r$,
+we can recover the Newtonian Poisson equation (\ref{newtonPoisson}).
+
+At first, this may be startling to see Eq
+(\ref{generalSolutionFourthOrder}) as being proposed for the
+gravitational potential. It is counter-intuitive to propose adding an
+$\mathcal{O}(r)$ term, we don't observe it at ``small'' scales
+(dropping an apples behaves as being in a $\mathcal{O}(1/r)$
+potential!). However, at such scales, the potential for
+a fourth order Poisson equation behaves as the potential for a second
+order one. Additionally, there is observational problems with gravity
+that departs from a second order Poisson equation at \emph{large}
+distances. So the fourth order approach modifies only what is expected
+at \emph{large} distances, and agrees with what we expect at
+\emph{small} distances.
+
+Here, we must intervene and confess that there is a terribly strong
+no-go theorem: Ostrogradski's theorem (for a beautiful introduction,
+see section 2 of Woodard~\cite{Woodard:2006nt}). With
+Lagrangians involving terms of second order (or higher) time
+derivatives of the position term is unstable. Woodard notes that in
+Lagrangians of the form $L(q_{i},\dot{q}_{j},\ddot{q}_{k})$ ``there is
+not even any barrier to decay''. Adding insult to injury, the
+situation does not improve if we add in higher order derivatives!
