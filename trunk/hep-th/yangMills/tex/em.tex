@@ -1,0 +1,972 @@
+%%
+%% em.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Sep 18 12:06:10 2009 Alex Nelson
+%% Last update Fri Sep 18 12:06:10 2009 Alex Nelson
+%%
+%% TODO: the canonical formalism,
+
+We begin our analysis with classical electromagnetism. Consider
+Maxwell's equations
+\begin{subequations}\label{eq:maxwell}
+\begin{align}
+\nabla\cdot\vec{E}&=\frac{\rho}{\varepsilon_{0}}\label{eq:gauss}\\
+\nabla\cdot\vec{B}&=0\label{eq:gaussMag}\\
+\nabla\times\vec{E}&=-\frac{\partial\vec{B}}{\partial t}\label{eq:faraday}\\
+\nabla\times\vec{B}&=\mu_{0}\vec{J}+\mu_{0}\varepsilon_{0}\frac{\partial\vec{E}}{\partial t}\label{eq:ampere}
+\end{align}
+\end{subequations}
+where $\vec{E}$ is the electric field vector, $\vec{B}$ is the
+magnetic field, $\vec{J}$ is the total current density,
+$\varepsilon_{0}$ is the permittivity of free space, and
+$\mu_{0}$ is the permeability of free space.
+
+From eq \eqref{eq:gaussMag} we can deduce that
+\begin{equation}%\label{eq:}
+\vec{B} = \nabla\times\vec{A}
+\end{equation}
+since we necessarily have the identity
+\begin{equation}%\label{eq:}
+\nabla\cdot\nabla\times\vec{A} = 0
+\end{equation}
+for any $\vec{A}$. We call $\vec{A}$ the (vector) magnetic
+potential. We plug this into eq \eqref{eq:faraday} to find
+\begin{subequations}
+\begin{align}
+\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}\\
+\nabla\times\vec{E}+\frac{\partial}{\partial t}\left(\nabla\times\vec{A}\right) = 0\label{eq:potential:stepTwo}\\
+\nabla\times\vec{E}+\nabla\times\left(\frac{\partial}{\partial t}\vec{A}\right) = 0\label{eq:potential:stepThree}\\
+\nabla\times\left(\vec{E}+\frac{\partial\vec{A}}{\partial t}\right) = 0.\label{eq:potential:stepFour}
+\end{align}
+\end{subequations}
+We justify the step from \eqref{eq:potential:stepTwo} to
+\eqref{eq:potential:stepThree} by assuming that $\vec{A}$ is at least twice
+differentiable, which allows us to change the order of
+differentiation. By Hemholtz theorem, we see that the general
+form of the solution to \eqref{eq:potential:stepFour} is 
+\begin{equation}%\label{eq:}
+\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla \varphi
+\end{equation} 
+where $\varphi$ is the (scalar) electric potential. This implies then that
+\begin{equation}%\label{eq:}
+\vec{E} = -\frac{\partial \vec{A}}{\partial t} -\nabla \varphi
+\end{equation}
+which allows us to write the electric and magnetic fields in
+terms of electric and magnetic potentials.
+
+\ssn{Index Gymnastics} We are going to
+introduce a slightly foreign way to express the same results. We
+are going to use tensors, which behave in a particular way when
+we change coordinates. We have vectors, which are essentially a
+``list'' of components. We will start by writing 4-vectors with
+indices. When familiarity with indices in Linear Algebra is
+established, we'll move on to matrices and then general
+tensors. Exercises are provided in this section to establish
+familiarity with index gymnastics.
+
+Indices can be a bit daunting at first, especially since everyone
+uses different conventions. We will try to use the conventions
+established in Misner, Thorne, and
+Wheeler~\cite{MisnerThorneWheeler}. Namely, lowercase Latin indices refer
+to spatial components of a four-vector, and lowercase Greek
+indices refer to the spacetime components of a four-vector. When
+we have multiple indices, that's a generalization of a matrix. A
+quantity with two indices is precisely a matrix.
+
+A four-vector can be written as
+\begin{equation}%\label{eq:}
+x^{\mu}(\tau) = \left(x^{0}(\tau),x^{i}(\tau)\right)= (ct,\vec{x}),\qquad(i=1,2,3)
+\end{equation}
+where $\tau$ is the proper time, $c$ is the speed of light, $t$
+is the \emph{time coordinate}, $x^{0}=ct$ is the time component,
+$x^{i}$ is the spatial components. We can similarly write the
+electric potential and vector potential as a single four-vector:
+\begin{equation}%\label{eq:}
+A^{\mu} = (A^{0},A^{i}) = (\varphi,\vec{A}).
+\end{equation}
+We can write the four-gradient as
+\begin{equation}%\label{eq:}
+\partial_{\mu} = (\partial_{0},\partial_{i}),\qquad(i=1,2,3)
+\end{equation}
+where $\partial_{\mu}=\partial/\partial x^{\mu}$ is a partial
+derivative.
+
+Now, we can write indices ``upstairs'' (e.g. $x^{\alpha}$) or
+``downstairs'' (e.g. $\partial_{\beta}$). What's the difference?
+The difference is when we change coordinates. We see by the chain
+rule that
+\begin{subequations}
+\begin{align}
+\partial_{\alpha'} &= \frac{\partial}{\partial x^{\alpha'}}\\
+&= \frac{\partial x^{\alpha}}{\partial
+  x^{\alpha'}}\frac{\partial}{\partial x^{\alpha}}
+\end{align}
+\end{subequations}
+where summation is implied over $\alpha$. Note that the new
+coordinates $x^{\alpha'}$ have derivatives that transform
+``ethically'' as
+\begin{equation}%\label{eq:}
+\begin{pmatrix}
+$derivatives$\ $with$\\
+$respect$\ $to$\ $new$\\
+$coordinates$
+\end{pmatrix} =
+\begin{pmatrix}
+$derivatives$\ $of$\ $old$\\
+$coordinates$\ $with$\\
+$respect$\ $to$\ $new$\\
+$coordinates$
+\end{pmatrix}
+\begin{pmatrix}
+$derivatives$\ $with$\\
+$respect$\ $to$\ $old$\\
+$coordinates$
+\end{pmatrix}
+\end{equation}
+This is all by the chain rule. Whenever we multiply by a factor
+of ``$d$ (old coordinates)/ $d$ (new coordinates)'' we call these
+type of indices something special: \textbf{covariant
+  indices}. They transform precisely by multiplying by $d$(old)/$d$(new).
+
+On the other hand we have indices ``upstairs''. These transform
+by the complete opposite way, that is 
+\begin{equation}%\label{eq:}
+A^{\alpha'}=\frac{\partial y^{\alpha'}}{\partial x^{\alpha}}A^{\alpha}
+\end{equation}
+where we have changed coordinates $x^{\alpha}\to
+y^{\alpha'}$. These indices upstairs always transform in this
+manner, and are called \textbf{contravariant indices.}
+
+We can consider matrices using this abstract index notation. For
+instance, the inner produce between two vectors $x^{\alpha}$ and
+$y^{\beta}$ can be written using a matrix $\eta_{\alpha\beta}$ as
+\begin{equation}%\label{eq:}
+\<x,y\> = \sum_{\alpha=0}^{4}\sum_{\beta=0}^{4}
+\eta_{\alpha\beta}x^{\alpha}y^{\beta} = \eta_{\alpha\beta}x^{\alpha}y^{\beta}
+\end{equation}
+where we have used the Einstein summation formula, i.e. we sum
+over $\alpha$ and we sum over $\beta$. We can write the Lorentz
+transformation as a change of coordinates (i.e. a Jacobian):
+\begin{equation}%\label{eq:}
+\frac{\partial x^{\alpha'}}{\partial x^{\beta}} = {\Lambda^{\alpha'}}_{\beta}
+\end{equation}
+where $x^{\alpha'}$ is the new set of coordinates, and
+$x^{\beta}$ is the old coordinates. To change the electromagnetic
+four-potential we use the matrix ${\Lambda^{\alpha'}}_{\beta}$ to
+translate expressions in the ``old coordinates'' into
+corresponding expressions in the ``new coordinates''. That is
+\begin{equation}%\label{eq:}
+A^{\alpha'} = \sum_{\beta} {\Lambda^{\alpha'}}_{\beta}A^{\beta} = {\Lambda^{\alpha'}}_{\beta}A^{\beta}
+\end{equation}
+where $A^{\beta}$ is the four-potential in the old coordinates,
+and $A^{\alpha'}$ is the four-potential in the new coordinates.
+
+One important matrix that must be noted is the Kronecker
+delta\marginpar{Kronecker Delta} ${\delta_{\alpha}}^{\beta}$. It
+is precisely the identity matrix (i.e. the diagonal components
+are 1, all others are zero). More formally we can write it as
+\begin{equation}%\label{eq:}
+{\delta_{\alpha}}^{\beta} = \begin{cases} 1 & \alpha=\beta\\
+0 & \text{otherwise.}\end{cases}
+\end{equation}
+Why is this important? Well, we use it all the time in math. In
+special relativity, however, we use something slightly
+different. We use the Minkowski metric $\eta^{\alpha\beta}$. In
+the Cartesian coordinates it looks like
+\begin{equation}%\label{eq:}
+\eta^{\alpha\beta} = \begin{pmatrix} -1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+where we have chosen this signature to be in agreement with
+relativists (we could have multiplied this matrix by -1, to be in
+agreement with particle physicists; but the author is partial to
+Misner, Thorne and Wheeler's conventions, so we use their
+signature). We ``raise'' and ``lower'' indices with the Minkowski
+metric. That is
+\begin{equation}%\label{eq:}
+x_{\beta} = \eta_{\alpha\beta}x^{\alpha}
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+S^{\mu} = \eta^{\mu\nu}S_{\nu}.
+\end{equation}
+When we take the inner produce, as noted, we contract the indices
+using the Minkowski metric. If this were flat Euclidean space
+(i.e. nonrelativistic physics), we could use the Kronecker delta
+for our metric when using Cartesian coordinates.
+
+If we take this tensor point of view, how can we express Maxwell's
+equations? We use a mathematical tool called the field strength
+tensor. It's a matrix with components described by
+\begin{equation}%\label{eq:}
+F_{\alpha\beta} = \partial_{\alpha}A_{\beta}-\partial_{\beta}A_{\alpha} 
+\end{equation}
+where $A_{\mu}=\eta_{\mu\nu}A^{\nu}$. How is this useful? It's a
+completely abstract piece of gibberish. 
+
+Observation: the field strength tensor is antisymmetric. That is,
+if we consider $F_{\alpha\beta}$ we know its value is
+\begin{subequations}
+\begin{align}
+F_{\beta\alpha} &= \partial_{\beta}A_{\alpha} -
+\partial_{\alpha}A_{\beta}\\
+&= -\Big(-\partial_{\beta}A_{\alpha} +
+\partial_{\alpha}A_{\beta}\Big)\\
+&= -F_{\alpha\beta}
+\end{align}
+\end{subequations}
+so in particular when $\alpha=\beta$, we find that
+$F_{\alpha\alpha}=0$. This eliminates 4 components. We have 16-4=12
+left. But we just deduced that there are duplicate copies, so we
+have 12/2=6 independent components.
+
+So lets consider the components of this field strength tensor. We
+see that the temporal components of the field strength tensor are
+\begin{equation}%\label{eq:}
+F_{0j} = \partial_{0}A_{j} - \partial_{j}A_{0}
+\end{equation}
+or in other words we have written this as
+\begin{equation}%\label{eq:}
+F_{0j} =  \frac{\partial\vec{A}}{\partial t} - \nabla\varphi .
+\end{equation}
+We previously deduced that this corresponds to the electric field
+vector $\vec{E}$. Similarly, for the other three components we
+find that
+\begin{subequations}
+\begin{align}
+F_{12} &= \partial_{1}A_{2} - \partial_{2}A_{1}\\
+F_{23} &= \partial_{2}A_{3} - \partial_{3}A_{2}\\
+F_{31} &= \partial_{3}A_{1} - \partial_{1}A_{3}
+\end{align}
+\end{subequations}
+which amounts to (up to some sign)
+$\nabla\times\vec{A}=\vec{B}$. The other three (spatial) components of the
+field strength tensor corresponds to the magnetic field.
+
+Observe that its components can be written as
+\begin{equation}%\label{eq:}
+F_{\mu\nu} = \begin{bmatrix} 
+  0    & -E_x/c & -E_y/c & -E_z/c \\
+ E_x/c & 0      & B_z    & -B_y   \\ 
+ E_y/c & -B_z   & 0      & B_x    \\ 
+ E_z/c & B_y & -B_x & 0 \end{bmatrix}
+\end{equation}
+where we have used $(-+++)$ for the metric signature, and $E_{i}$
+are the components of the electric field vector, $B_{j}$ are the
+components of the magnetic field vector.
+
+\begin{exercise}
+Let ${\delta_{a}}^{b}$ be the Kronecker delta in $n$
+dimensions. Find ${\delta_{a}}^{a}$.
+\end{exercise}
+\answer{We find that \begin{equation}{\delta_{a}}^{a} =
+    \sum_{a=1}^{n}{\delta_{a}}^{a}=\sum^{n}_{a=1}1=n\end{equation}
+    by simply using the Einstein summation convention.}
+\begin{exercise}\label{exercise:two}
+Suppose that $S_{ab}$ is symmetric (that is $S_{ab}=S_{ba}$) and
+$A^{ab}$ is anyisymmetric (that is $A^{ab}=-A^{ba}$). Show that $S_{ab}A^{ab}=0$.
+\end{exercise}
+\answer{We find that we can write the matrix $A^{ab}$ as
+\begin{equation}
+A^{ab} = \frac{1}{2}(A^{ab}-A^{ba})
+\end{equation}
+so in particular, we can plug this into the question and find
+\begin{subequations}
+\begin{align}
+S_{ab}A^{ab} &= \frac{1}{2}\sum_{a,b}S_{ab}(A^{ab}-A^{ba})\\
+ &= \frac{1}{2}\sum_{a,b}(S_{ab}A^{ab}-S_{ab}A^{ba})\\
+ &=\frac{1}{2}\sum_{a,b}(S_{ab}A^{ab}-S_{ba}A^{ba})\\
+ &=\frac{1}{2}\sum_{a,b}(S_{ab}A^{ab}-S_{ab}A^{ab})\\
+ &= 0.
+\end{align}
+\end{subequations}
+We justify the second to last step by noting we are summing over
+\emph{dummy indices}, so we can relabel them how we want.}
+\begin{exercise}
+For $A^{ab}$ (as we considered in exercise \ref{exercise:two})
+and for an arbitrary tensor $T_{ab}$, show that
+\begin{equation}
+A^{ab}T_{ab} = \frac{1}{2}A^{ab}(T_{ab}-T_{ba}).
+\end{equation}
+(Hint: one way is to observe we can write any tensor as the sum
+of a symmetric tensor and an antisymmetric tensor.)
+\end{exercise}
+\answer{We find by definition that
+\begin{subequations}
+\begin{align}
+A^{ab}T_{ab} &= \frac{1}{2}(A^{ab}-A^{ba})T_{ab}\\
+&=\frac{1}{2}(A^{ab}T_{ab}-A^{ba}T_{ab})\\
+&=\frac{1}{2}(A^{ab}T_{ab}-A^{ab}T_{ba})\\
+&=\frac{1}{2}A^{ab}(T_{ab}-T_{ba})
+\end{align}
+\end{subequations}
+where we once again use the fact that we can switch dummy indices
+when we contract over them. Alternatively, we can observe that we
+can write
+\begin{equation}%\label{eq:}
+T_{ab} = \frac{1}{2}(T_{ab}+T_{ba})+\frac{1}{2}(T_{ab}-T_{ba})
+\end{equation}
+that is, any arbitrary tensor can be written as the sum of a
+symmetric tensor (first term) and an antisymmetric tensor (second
+term). Upon this realization, we find that the first term
+contracted with $A^{ab}$ is --- by the previous exercise! ---
+precisely zero. We are left with
+\begin{equation}%\label{eq:}
+A^{ab}T_{ab} = 0 + \frac{1}{2}A^{ab}(T_{ab}-T_{ba})
+\end{equation}
+precisely as desired.}
+\begin{exercise}
+Show that under a change of coordinates, the Kronecker delta
+${\delta_{\beta}}^{\alpha}$ transforms as a tensor.
+\end{exercise}
+\answer{We transform coordinates by $x^{\alpha}\mapsto
+  y^{\alpha'}$ and then we find
+\begin{subequations}
+\begin{align}
+{\delta_{\beta}}^{\alpha} \mapsto& \left[\frac{\partial x^{\beta}}{\partial
+  y^{\beta'}}\frac{\partial y^{\alpha'}}{\partial x^{\alpha}}\right]{\delta_{\beta}}^{\alpha}\\
+&= \frac{\partial x^{\alpha}}{\partial
+  y^{\beta'}}\frac{\partial y^{\alpha'}}{\partial x^{\alpha}}\\
+&= \delta^{\alpha}_{\beta'}{\delta_{\alpha}}^{\alpha'}\\
+&= {\delta_{\beta'}}^{\alpha'}
+\end{align}
+\end{subequations}
+precisely as desired.}
+\begin{exercise}
+Show that the derivative $\partial_{a}v^{b}$ of the components of
+a vector \emph{does not} transform as a tensor under coordinate
+changes.
+\end{exercise}
+\answer{We find that the partial derivatives transform
+  covariantly
+\begin{equation}%\label{eq:}
+\partial_{a'} = \frac{\partial x^{a}}{\partial y^{a'}}\partial_{a}
+\end{equation}
+and the components of a vector transform contravariantly
+\begin{equation}%\label{eq:}
+v^{b'} = \frac{\partial y^{b'}}{\partial x^{b}}v^{b}.
+\end{equation}
+When we plug these into our expected equation we find
+\begin{subequations}
+\begin{align}
+\partial_{a'}v^{b'} &= \left(\frac{\partial x^{a}}{\partial y^{a'}}\partial_{a}\right)\left(\frac{\partial y^{b'}}{\partial x^{b}}v^{b}\right)\\
+&= \frac{\partial x^{a}}{\partial y^{a'}}\left(v^{b}\partial_{a}\frac{\partial y^{b'}}{\partial x^{b}}
++ \frac{\partial y^{b'}}{\partial x^{b}}\partial_{a}v^{b}\right)
+\end{align}
+\end{subequations}
+which we see has some extra term involving the derivatives of the
+Jacobian matrix.}
+\begin{exercise}
+Does the antisymmetrized derivative
+$\partial_{a}v_{b}-\partial_{b}v_{a}$ of the components of a
+one-form (covariant vector) transform as a tensor under
+coordinate changes?
+\end{exercise}
+\answer{We see from the previous exercise that
+\begin{equation}%\label{eq:}
+\partial_{a'}v^{b'} = \frac{\partial x^{a}}{\partial y^{a'}}\left(v^{b}\partial_{a}\frac{\partial y^{b'}}{\partial x^{b}}
++ \frac{\partial y^{b'}}{\partial x^{b}}\partial_{a}v^{b}\right)
+\end{equation}
+so we find that
+\begin{equation}%\label{eq:}
+\partial_{a'}v_{b'} = \frac{\partial x^{a}}{\partial y^{a'}}\left(v_{b}\partial_{a}\frac{\partial x^{b}}{\partial y^{b'}}
++ \frac{\partial x^{b}}{\partial y^{b'}}\partial_{a}v_{b}\right)
+\end{equation}
+Then by antisymmetrization we find that
+\begin{subequations}
+\begin{align}
+\partial_{a'}v_{b'}-\partial_{b'}v_{a'} &= \frac{\partial x^{a}}{\partial y^{a'}}\left(v_{b}\partial_{a}\frac{\partial x^{b}}{\partial y^{b'}}
++ \frac{\partial x^{b}}{\partial y^{b'}}\partial_{a}v_{b}\right) \nonumber\\
+& - \frac{\partial x^{b}}{\partial
+  y^{b'}}\left(v_{a}\partial_{b}\frac{\partial x^{a}}{\partial y^{a'}}+\frac{\partial x^{a}}{\partial y^{a'}}\partial_{b}v_{a}\right)
+\end{align}
+\end{subequations}
+We see that by index gymnastics the expression
+\begin{equation}%\label{eq:}
+\frac{\partial x^{a}}{\partial y^{a'}}v_{b}\partial_{a}\frac{\partial x^{b}}{\partial y^{b'}}-\frac{\partial x^{b}}{\partial
+  y^{b'}} v_{a}\partial_{b}\frac{\partial x^{a}}{\partial y^{a'}}
+= 0
+\end{equation}
+identically, since we are subtracting out one thing from
+itself. (Again, justified by switching dummy indices.) This then
+implies we get the expression
+\begin{equation}%\label{eq:}
+\partial_{a'}v_{b'}-\partial_{b'}v_{a'} = \frac{\partial
+  x^{a}}{\partial y^{a'}}\frac{\partial x^{b}}{\partial y^{b'}}\partial_{a}v_{b}
+ - \frac{\partial x^{b}}{\partial y^{b'}}\frac{\partial x^{a}}{\partial y^{a'}}\partial_{b}v_{a}
+\end{equation}
+which transforms precisely as a covariant tensor with two indices.}
+
+\ssn{Recovering Maxwell's Equations} We
+can recover Maxwell's equations by, well, several techniques. One
+is to consider the symmetries of the field strength tensor and
+then show mathemagically\footnote{Bear in mind ``mathemagically''
+  here refers to the fact that this ``miraculously'' works out,
+  or at least to the unsuspecting observer it appears
+  as\ldots{magic}.} this is equivalent to Maxwell's
+equations. Conversely, we can begin with Maxwell's equations and
+deduce their form using the Field Strength tensor. We'll take
+this approach, i.e. beginning with Maxwell's equations and
+demonstrate what their form would be using the Field Strength
+tensor.
+
+Lets first analyze electrostatics and electrodynamics. We see that Gauss' Law is
+\begin{equation}%\label{eq:}
+\nabla\cdot\vec{E} = \partial_{i}E^{i} = \partial_{i}F^{0i} = \rho
+\end{equation}
+where we set $\varepsilon_{0}=1$ since it's just a constant (and
+doesn't really affect the underlying physics here). Without loss
+of generality since $F^{00}=0$ we can rewrite this as
+\begin{equation}%\label{eq:}
+\partial_{\mu}F^{0\mu} = \rho.
+\end{equation}
+This is precisely the Gauss' Law for relativistic
+electromagnetism. From Ampere's Law, we can find
+\begin{equation}%\label{eq:}
+(\nabla\times\vec{B})^{k} = \partial_{m}F^{km}
+\end{equation}
+where we have ``forced'' the index $k$ on the left hand side,
+i.e. we specify the components of the resulting vector by
+$k$. The rest of Ampere's Law is defined as
+\begin{equation}%\label{eq:}
+\mu_{0}J^{k}+\underbracket[0.5pt]{\mu_{0}\varepsilon_{0}\partial_{0}F^{0k}}_{=\mu_{0}\varepsilon_{0}\partial\vec{E}/\partial{t}}
+\end{equation}
+Thus putting it all together, we get
+\begin{equation}%\label{eq:}
+\partial_{m}F^{km} = 4\pi J^{k} + \partial_{0}F^{0k}
+\end{equation}
+or by rearranging terms we have thus
+\begin{equation}%\label{eq:}
+\partial_{0}F^{k0}+\partial_{m}F^{km} = \partial_{\mu}F^{k\mu} = 4\pi J^{k}.
+\end{equation}
+We can summarize\marginpar{Electrodynamics and electrostatics in terms of the field strength tensor}
+the laws of electrostatics and electrodynamics in terms of the
+field strength tensor thus
+\begin{equation}%\label{eq:}
+\partial_{\beta}F^{\alpha\beta}=4\pi J^{\alpha}
+\end{equation}
+where we introduce the four-current
+\begin{equation}%\label{eq:}
+J^{\alpha} = \left(\frac{\rho}{4\pi},J^{k}\right).
+\end{equation}
+We thus have half of Maxwell's equations contained in one.
+
+What about magnetism? We have magnetostatics and
+magnetodynamics. Magnetostatics is Gauss' Law for Magnetism:
+\begin{equation}%\label{eq:}
+\nabla\cdot\vec{B} = 0.
+\end{equation}
+First lets consider the magnetic field vector in terms of the
+field strength tensor. We know that
+\begin{equation}%\label{eq:}
+B^{k} = (A_{3,2}-A_{2,3}, A_{1,3}-A_{3,1},A_{2,1}-A_{1,2}) = (F_{23},F_{31},f_{12})
+\end{equation}
+where we use shorthand $x_{j,k} = \partial_{k}x_{j}$. We have
+thus\marginpar{Gauss Law for Magnetism}
+\begin{equation}%\label{eq:}
+\partial_{k}B^{k}=\partial_{1}F_{23}+\partial_{2}F_{31}+\partial_{3}F_{12}=0.
+\end{equation}
+What about magnetodynamics? We consider the Faraday's Law:
+\begin{equation}%\label{eq:}
+\nabla\times\vec{E}=-\frac{\partial\vec{B}}{\partial t}
+\end{equation}
+or equivalently we can write
+\begin{equation}%\label{eq:}
+-\partial_{0}B_{j}=\partial_{0}(F_{32},F_{13},F_{21})
+\end{equation}
+where we used the antisymmetry of the Field Strenght tensor to
+absorb the sign. We can write the curl of the electric field by
+considering it componentwise
+\begin{subequations}
+\begin{align}
+(\nabla\times\vec{E})^{1} &= \partial_{2}E_{3}-\partial_{3}E_{2}\\
+(\nabla\times\vec{E})^{2} &= \partial_{3}E_{1}-\partial_{1}E_{3}\\
+(\nabla\times\vec{E})^{3} &= \partial_{1}E_{2}-\partial_{2}E_{1}
+\end{align}
+\end{subequations}
+So inspecting this componentwise we get that
+\begin{subequations}
+\begin{align}
+\partial_{2}F_{03}+\partial_{3}F_{20}+\partial_{0}F_{23}=0\\
+\partial_{3}F_{01}+\partial_{1}F_{30}+\partial_{0}F_{31}=0\\
+\partial_{1}F_{02}+\partial_{2}F_{10}+\partial_{0}F_{12}=0.
+\end{align}
+\end{subequations}
+Combining everything together, we find that we can rewrite these
+two equations as one single equation:
+\begin{equation}%\label{eq:}
+\partial_{\alpha}F_{\beta\gamma}+\partial_{\beta}F_{\gamma\alpha}+\partial_{\gamma}F_{\alpha\beta}=0
+\end{equation}
+which encodes the laws of magnetism.
+
+Thus Maxwell's equations can be written by two important
+equations:
+\begin{equation}
+\boxed{\begin{array}{c}\displaystyle\partial_{\beta}F^{\alpha\beta}=4\pi J^{\alpha}\\
+\displaystyle\partial_{\alpha}F_{\beta\gamma}+\partial_{\beta}F_{\gamma\alpha}+\partial_{\gamma}F_{\alpha\beta}=0\end{array}}
+\end{equation}
+
+\ssn{Gauge Freedom} We have just reduced Maxwell's equations from
+4 to 2 in a rather beautiful way. Now the question is: are the
+four-potential vectors unique? That is, if we have some solution
+$A^{\mu}$, will everyone agree on its value?
+
+Suppose we had some other four vector, call it
+\begin{equation}%\label{eq:}
+\bar{A}^{\mu} = A^{\mu} + a^{\mu}
+\end{equation}
+where $a^{\mu}$ is some four-vector. If we can show that
+$a^{\mu}=0$ identically, then the solution is unique. That is,
+everyone agrees that $A^{\mu}=\bar{A}^{\mu}$. So no matter what
+reference frame you are in, you see the same thing.
+
+Consider the simple situation, when $a^{\mu}=\partial^{\mu}a$ is
+just the gradient of ``some scalar function''. The field strength
+tensor would read
+\begin{subequations}
+\begin{align}
+\bar{F}_{\mu\nu}&=\partial_{\nu}\bar{A}_{\mu}-\partial_{\mu}\bar{A}_{\nu}\\
+&=\partial_{\nu}(A_{\mu}+\partial_{\mu}a)-\partial_{\mu}(A_{\nu}+\partial_{\nu}a)\\
+&=\partial_{\nu}A_{\mu}-\partial_{\mu}A_{\nu}+(\partial_{\nu}\partial_{\mu}-\partial_{\mu}\partial_{\nu})a\\
+&=F_{\mu\nu}+0
+\end{align}
+\end{subequations}
+which is not good! Two clearly distinct four-potentials give the
+same answer! They only differ by some term
+$\partial^{\mu}a$. This is scary, because we have no
+uniqueness. What to do?
+
+What's happening here mathematically speaking is we have too many
+degrees of freedom. That is, we have to basically say ``Given two
+different potentials $A^{\mu}_{(1)}$ and $A^{\mu}_{(2)}$, they're
+really equivalent if we can write
+$A^{\mu}_{(1)}=A^{\mu}_{(2)}+\partial^{\mu}f$ for some function
+$f$''. Or we can look at it slightly differently saying we can
+``change coordinates (potentials)'' by a transformation
+\begin{equation}%\label{eq:}
+A^{\mu}\to\bar{A}^{\mu}=A^{\mu}+\partial^{\mu}f
+\end{equation}
+where $f$ is ``some scalar function''. This sort of
+transformation is known as a \textbf{gauge
+  transformation}. Formally speaking, the component
+$\partial^{\mu}f$ of the transformation should be seen as an
+element of the space of one forms
+\begin{equation}%\label{eq:}
+dx^{\mu}\partial_{\mu}f\in\Omega^{1}\left(M,\mathfrak{u}(1)\right)
+\end{equation}
+where $M$ is spacetime, $\mathfrak{u}(1)$ is the Lie Algebra of $U(1)$ (the unitary
+one-by-one matrices), $\Omega^{1}(M,\mathfrak{u}(1))$ is the
+space of one forms that ``eat in'' points of spacetime $M$ and
+``spits out'' values in the Lie algebra $\mathfrak{u}(1)$. This
+should really be viewed as a one form $df$ times an element of
+the Lie algebra $\mathfrak{u}(1)$. For more on Lie Algebras, see
+the author's notes~\cite{notesOnLieAlgebras}.
+
+Now, to avoid this problem, we can do several things depending on
+the formalism. Usually, with a few exceptions, in the canonical
+formalism (i.e. the Hamiltonian field theory formalism) we use
+first class constraints for gauge theories. These will be
+reviewed in a forthcoming note by the
+author~\cite{constraints}. The other approach is to ``fix the
+gauge''. We usually do this by demanding some additional
+equation holds, among many of the choices the favorites are
+\begin{subequations}
+\begin{align}
+\partial_{\mu}A^{\mu} = 0 &&& \text{Lorenz Gauge}\\
+\partial_{i}A^{i} = 0 &&& \text{Coulomb Gauge}\\
+x^{\mu}A_{\mu} = 0 &&& \text{Fock-Schwinger Gauge}\\
+\varphi = 0 &&& \text{Weyl Gauge}\\
+x^{i}A_{i} = 0 &&& \text{Multipolar Gauge}
+\end{align}
+\end{subequations}
+and so on.
+
+\ssn{Action Principle, Lagrangian Formalism} We will now shift our focus to derive the Maxwell
+equations from an action principle. This will focus on the
+Lagrangian formalism, we will turn our attention to the
+Hamiltonian formalism next. We should remember when working with
+field theory we work with \emph{densities}. That is, instead of
+working with a Lagrangian we work with a \emph{Lagrangian density}.
+The reader is invited to review classical field theory in the
+author's notes~\cite{hamiltonianFieldTheory}. We will use the
+convention from Misner, Thorne, and
+Wheeler~\cite{MisnerThorneWheeler} and write the action as
+\begin{equation}%\label{eq:}
+I = \int \frac{-1}{16\pi}F_{\mu\nu}F^{\mu\nu}d^{4}x
+\end{equation}
+where $I$ is the action (this convention is chosen to be
+consistent with the rest of my other notes). This is the
+Lagrangian density for the ``free electromagnetic field''.
+
+The only problem that may come to mind immediately, if one is
+unfamiliar with classical field theory, is ``What plays the role
+of `position' and `velocity' here?'' For the Lagrangian
+formalism, we work with $A^{\mu}$ as the positions, and
+$\partial_{\nu}A^{\mu}$ as the velocities. We first compute
+\begin{subequations}
+\begin{align}
+F^{\mu\nu}F_{\mu\nu} &= F^{\mu\nu}(\partial_{\nu}A_{\mu}-\partial_{\mu}A_{\nu})\\
+&=F^{\mu\nu}\partial_{\nu}A_{\mu}-F^{\mu\nu}\partial_{\mu}A_{\nu}\\
+&=F^{\mu\nu}\partial_{\nu}A_{\mu}-F^{\nu\mu}\partial_{\nu}A_{\mu}\\
+&=F^{\mu\nu}\partial_{\nu}A_{\mu}-(-F^{\mu\nu})\partial_{\nu}A_{\mu}\\
+&=2F^{\mu\nu}\partial_{\nu}A_{\mu}
+\end{align}
+\end{subequations}
+so we plug this into the action to find
+\begin{subequations}
+\begin{align}
+I &= \frac{-1}{16\pi}\int F_{\mu\nu}F^{\mu\nu}d^{4}x\\
+&= \frac{-1}{16\pi}\int2F^{\mu\nu}\partial_{\nu}A_{\mu}d^{4}x
+\end{align}
+\end{subequations}
+where we used integration by parts to get to the third step, and
+one of Maxwell's equations to get the last step. We then find
+that
+\begin{equation}%\label{eq:}
+\frac{\delta I[A^{\mu}(x')]}{\delta A^{\nu}(x)} =
+\frac{1}{8\pi}{\delta^{\mu}}_{\nu}\delta^{(4)}(x'-x)\partial_{\nu}F^{\mu\nu}(x') = \frac{1}{8\pi}\partial_{\nu}F^{\mu\nu}(x).
+\end{equation}
+and the variation of the boundary terms vanish (i.e. are zero).
+Since there is no source (this is the free electromagnetic field,
+after all) this is set to zero. In other words, the current is
+zero for the free electromagnetic field, as desired (and
+expected!). If we had any sources, we would have to add a term
+into the Lagrangian density accounting for them. Such a term
+resembles
+\begin{equation}%\label{eq:}
+\frac{1}{2}A_{\alpha}J^{\alpha} = \mathcal{L}_{int}
+\end{equation}
+for the ``interaction Lagrangian density''
+$\mathcal{L}_{int}$. We would get the variation of the action
+giving us
+\begin{equation}%\label{eq:}
+\frac{\delta I[A^{\mu}(x')]}{\delta A^{\nu}(x)} = 0\quad\Rightarrow\quad
+\frac{1}{8\pi}\partial_{\nu}F^{\mu\nu}(x) - \frac{1}{2}J^{\mu} = 0.
+\end{equation}
+This is merely the law of electricity.
+
+And what of magnetism? Well, it follows trivially from an
+identity the field strength tensor obeys called the ``Jacobi
+Identity''. That is, the field strength tensor always obeys
+\begin{equation}%\label{eq:}
+\partial_{\alpha}F_{\beta\gamma}+
+\partial_{\beta}F_{\gamma\alpha}+
+\partial_{\gamma}F_{\alpha\beta}=0.
+\end{equation}
+This is an identity, it's \emph{identically zero!}
+
+\ssn{Action Principle, Hamiltonian Formalism.} Let's consider the
+slightly less intuitive Hamiltonian formalism. It is a little
+more involved, but it is mathematically richer (at least in the
+author's humble opinion). We will try to show calculations as
+explicitly as possible, but this is done only to the best of the
+author's abilities.
+
+The first step is to first find the canonically conjugate momenta:
+\begin{equation}%\label{eq:}
+\Pi^{j} = \frac{\partial\mathcal{L}}{\partial(\partial_{t}A_{j})}.
+\end{equation}
+When working with the free electric field, we've got
+\begin{subequations}
+\begin{align}
+\Pi^{j} &=\frac{-1}{16\pi} \frac{\partial}{\partial(\partial_{t}A_{j})}\left(F_{\mu\nu}F^{\mu\nu}\right)\\
+&= \frac{-2}{16\pi}F^{\mu\nu}\frac{\partial F_{\mu\nu}}{\partial(\partial_{t}A_{j})}\\
+&=
+\frac{-2}{16\pi}F^{\mu\nu}({\delta_{\mu}}^{t}{\delta_{\nu}}^{j} - {\delta_{\mu}}^{j}{\delta_{\nu}}^{t})\\
+&= \frac{-1}{8\pi}(F^{tj}-F^{jt}) = \frac{1}{4\pi}E^{j}
+\end{align}
+\end{subequations}
+In other words, the electric field\footnote{Here sadly the jargon
+  becomes confusing. The ``field'' is the potential --- usually
+  called the ``gauge field''. The ``conjugate momenta'' is not
+  usually referred to as the field.} is the ``conjugate momenta'' to
+the ``position'' potential.
+
+We construct the Hamiltonian density\marginpar{Hamiltonian density} by the Legendre transform:
+\begin{equation}%\label{eq:}
+\mathcal{H} = E^{j}\partial_{t}A_{j} - \mathcal{L}.
+\end{equation}
+To get this expression in terms of the field $A_{j}$ and its
+conjugate momenta $E^{j}$ we need to first reconsider the
+Lagrangian density expression. We find the expression for the
+Lagrangian density for the free electric field reads
+\begin{equation}%\label{eq:}
+16\pi\mathcal{L} = F_{0\nu}F^{0\nu} + F_{i\nu}F^{i\nu} =
+F_{0\nu}F^{0\nu} + F_{i0}F^{i0} + F_{ij}F^{ij} = 2E^{j}E_{j}-2B^{j}B_{j}
+\end{equation}
+We see that we can write the electric field part as the conjugate
+momenta, and the magnetic field part as the derivatives of the
+position variable. We find that we can write
+\begin{equation}%\label{eq:}
+B_{i} = \frac{1}{2}\varepsilon_{ijk}F^{jk}
+\end{equation}
+where $\varepsilon_{ijk}$ is the Levi-Civita symbol, thus
+\begin{equation}%\label{eq:}
+B_{i}B^{i} = \frac{1}{4}\left(\varepsilon_{ijk}F^{jk}\right)\left(\varepsilon^{imn}F_{mn}\right)
+\end{equation}
+We use the contracted epsilon identity for the Levi-Civita symbol
+\begin{equation}%\label{eq:}
+ \varepsilon_{ijk}\varepsilon^{imn} = {\delta_{j}}^{m}{\delta_{k}}^{n} - {\delta_{j}}^{n}{\delta_{k}}^{m}.
+\end{equation}
+Thus
+\begin{subequations}
+\begin{align}
+B_{i}B^{i} &= \frac{1}{4}({\delta_{j}}^{m}{\delta_{k}}^{n} - {\delta_{j}}^{n}{\delta_{k}}^{m})F^{jk}F_{mn}\\
+&= \frac{1}{4}(F^{mn}-F^{nm})F_{mn}\\
+&= \frac{1}{2}F^{mn}F_{mn}
+\end{align}
+\end{subequations}
+We thus verify what has been done so far.
+
+We can write the magnetic field using the Levi-Civita symbol as
+\begin{equation}%\label{eq:}
+B_{i} = \varepsilon_{ijk}\partial^{j}A^{k}
+\end{equation}
+thus the Lagrangian density becomes
+\begin{equation}%\label{eq:}
+8\pi\mathcal{L} = E^{j}E_{j}-B^{j}B_{j} 
+\end{equation}
+We plug this back into the Hamiltonian density
+\begin{equation}%\label{eq:}
+\mathcal{H} = \Pi^{j}\partial_{t}A_{j}-\frac{1}{8\pi}\left[E^{j}E_{j}-B^{j}B_{j} \right]
+\end{equation}
+We observe that
+\begin{equation}%\label{eq:}
+%\partial_{t}A_{j} = 0
+\partial_{t}A_{j} = E_{j} + \partial_{j}A_{t}
+\end{equation}
+thus
+\begin{subequations}
+\begin{align}
+\mathcal{H} &= \frac{1}{8\pi}\left[E^{j}E_{j}+B^{j}B_{j}\right] + \Pi^{j}\partial_{j}A_{t}\\
+&= \frac{1}{8\pi}\left[E^{j}E_{j}+B^{j}B_{j}\right] +
+\partial_{j}(\Pi^{j}A_{t}) - A_{t}\partial_{j}\Pi^{j}
+\end{align}
+\end{subequations}
+%\begin{equation}%\label{eq:}
+%\mathcal{H} = \frac{1}{8\pi}\left[E^{j}E_{j}+B^{j}B_{j}\right] + \Pi^{j}\partial_{j}A_{t}
+%\end{equation}
+is the expression for the Hamiltonian (energy) density. However,
+the $\partial_{j}(\Pi A_{t})$ term is a boundary term, which
+doesn't affect the principle of stationary action, so we can drop
+it. We are left with
+\begin{equation}%\label{eq:}
+\mathcal{H} = \frac{1}{8\pi}\left[E^{j}E_{j}+B^{j}B_{j}\right] - A_{t}\partial_{j}\Pi^{j}
+\end{equation}
+as our Hamiltonian density.
+
+We should consider how to interpret this
+expression\marginpar{Gauss' Law is a constraint}
+$A_{t}\partial_{j}\Pi^{j}$. We see that this is roughly equal to
+\begin{equation}%\label{eq:}
+A_{t}\partial_{j}\Pi^{j} \approx A_{t}\partial_{j}E^{j}
+\end{equation}
+up to some factor of $4\pi$. We are working with the free
+electromagnetic field, so this should be zero. \emph{But that's
+  only because the field is sourceless!} Lets add some source
+term and see how the expression changes. To do this we take the
+interaction Lagrangian density
+\begin{equation}%\label{eq:}
+\mathcal{L}_{int} = \frac{1}{2}A_{\mu}J^{\mu}
+\end{equation}
+and we find that it has no conjugate momenta. So we end up with
+\begin{equation}%\label{eq:}
+\mathcal{H} = \frac{1}{8\pi}\left[E^{j}E_{j}+B^{j}B_{j}\right] - A_{t}(\partial_{j}\Pi^{j}+\frac{1}{2}J^{t})-\frac{1}{2}A_{j}J^{j}
+\end{equation}
+Our equation becomes --- magically enough! --- merely Gauss' Law
+\begin{equation}%\label{eq:}
+A_{t}(\partial_{j}\Pi^{j}+\frac{1}{2}J^{t})\approx 0
+\end{equation}
+Here we use the ``weak equality'' $\approx$ to indicate this is a
+constraint. Now, we should ask if it is first class (i.e. it
+commutes with the Hamiltonian in the Poisson bracket) or if it is
+second class (it doesn't commute).
+
+\marginpar{Poisson Bracket} We will now start
+considering the Poisson bracket of the terms involving $A_{j}$,
+$\Pi^{k}$, $B_{l}$, $\mathcal{H}$. (Indeed, finding the
+constraint which generates gauge transformations \emph{requires}
+us to be comfortable with the Poisson bracket; we're looking for
+something that commutes with the Hamiltonian in the Poisson
+bracket, but is nonzero.) The Poisson bracket, for our situation,
+should resemble
+\begin{equation}%\label{eq:}
+\{A,B\}\eqdef\int\left(\frac{\delta A}{\delta
+  A^{j}(\bar{x})}\frac{\delta
+  B}{\delta\Pi_{j}(\bar{x})}-\frac{\delta B}{\delta A^{j}(\bar{x})}\frac{\delta A}{\delta\Pi_{j}(\bar{x})}\right)d^{3}\bar{x}.
+\end{equation}
+Here the $\bar{x}$ is used to indicate that we are working with
+the spatial components of the four-vectors, and not the entire
+four-vector. We are using ``equal-time commutators''. That is,
+the integral is taken over a ``slice'' of spacetime with fixed
+time, i.e. a ``constant time slice''.
+
+We find, first of all, that the commutation relations hold. That
+is
+\begin{equation}%\label{eq:}
+\{A_{j}(x),A_{k}(x')\}=\{\Pi^{j}(x),\Pi^{k}(x')\}=0
+\end{equation}
+and
+\begin{equation}%\label{eq:}
+\{A_{j}(x),\Pi^{k}(x')\} = {\delta^{k}}_{j}\delta^{(3)}(x-x')
+\end{equation}
+where $\delta^{(3)}(x-x')$ is the Dirac delta for spatial
+vectors, ${\delta^{k}}_{j}$ is our favorite Kronecker delta matrix.
+
+\begin{comment}
+Now there are 5 interesting combinations we can look at, but we
+don't want to look at combinations involving the Hamiltonian
+right away. That leaves merely 2 combinations. One is the Poisson
+bracket of $A_{j}$ with $B_{l}$, the other is $\Pi^{k}$ with $B_{l}$.
+We see that 
+\begin{subequations}
+\begin{align}
+\{A_{m}(x),B_{i}(x')\} &=
+\varepsilon_{ijk}\{A_{m}(x),\partial^{j}A^{k}(x')\}\\
+&= \varepsilon_{ijk}\int\left({\delta_{m}}^{n}\delta^{(3)}(y-x)\frac{\delta\partial^{j}A^{k}(x')}{\delta\Pi^{n}(y)}\right)d^{3}x\\
+&= \varepsilon_{ijk}\int\left({\delta_{m}}^{n}\delta^{(3)}(y-x)\partial^{j}\frac{\delta
+  A^{k}(x')}{\delta\Pi^{n}(y)}\right)d^{3}x\\
+&= 0.
+\end{align}
+\end{subequations}
+Well\ldots that was anticlimactic.
+
+With regards to the other combination, we find that we end up
+with
+\begin{subequations}
+\begin{align}
+\{B_{i}(x),\Pi^{l}(x')\} &=
+\varepsilon_{ijk}\int\left({\delta_{n}}^{l}\delta^{(3)}(y-x')\frac{\delta\partial^{j}A^{k}(x)}{\delta A_{n}(y)}\right)d^{3}y.
+\end{align}
+\end{subequations}
+To solve this tricky situation, we let
+\begin{equation}%\label{eq:}
+F[A^{k}(x)] = \int \partial^{j}A^{k}(x) d^{3}x.
+\end{equation}
+Then we use the definition of the functional derivative to find
+\begin{subequations}
+\begin{align}
+\lim_{\varepsilon\to0}\frac{1}{\varepsilon}\left(F[A^{k}(x)+\varepsilon\delta^{(3)}(x-y)]-F[A^{k}(x)]\right)
+&= \lim_{\varepsilon\to0}\frac{1}{\varepsilon}\int \partial^{j}\left(A^{k}(x)+\varepsilon\delta^{(3)}(x-y)-A^{k}(x)\right)d^{3}x\\
+&= \lim_{\varepsilon\to0}\int \partial^{j}\left(\delta^{(3)}(x-y)\right)d^{3}x\\
+&= \partial^{j}\int\delta^{(3)}(x-y)d^{3}y\\
+&= -\delta^{(3)}(y-x).
+\end{align}
+\end{subequations}
+We plug this into our Poisson bracket equation to find that
+\begin{equation}%\label{eq:}
+\{B_{i}(x),\Pi^{l}(x')\} \sim {\delta_{n}}^{l}{\delta^{kn}}\varepsilon_{ijk}\delta^{(3)}(x-x')
+= \delta^{kl}\varepsilon_{ijk}\delta^{(3)}(x-x')
+\end{equation}
+where we have some fudge factors due to the derivative of the
+Dirac delta function.
+\end{comment}
+
+Now, just for the sake of curiosity, what happens to the Gauss
+law (which we determined was a constraint) in the Poisson bracket
+with the Hamiltonian? Note the difference between the Hamiltonian
+and the Hamiltonian density, we can write the Hamiltonian $H$ in
+terms of the density $\mathcal{H}$ by the following:
+\begin{equation}%\label{eq:}
+H = \int \mathcal{H} d^{3}x
+\end{equation}
+where we integrate over a constant time slice. Let
+\begin{equation}%\label{eq:}
+C(x) = (\partial_{j}\Pi^{j}(x)+\frac{1}{2}J^{t}(x))
+\end{equation}
+denote our constraint. (We can deduce that, since constraints are
+``enforced'' by a Lagrange multiplier, $A_{t}$ must be the
+Lagrange multiplier to $C$.) We see that
+\begin{subequations}
+\begin{align}
+\left\{\int C(x')d^{3}x',~H\right\} &= \partial_{t}\int C(x')d^{3}x'\\
+&= \int\left(\frac{\delta\int C(x')d^{3}x'}{\delta
+  A_{j}(y)}\frac{\delta H}{\delta \Pi^{j}(y)} -\frac{\delta H}{\delta
+  A_{j}(y)}\frac{\delta \int C(x')d^{3}x'}{\delta \Pi^{j}(y)} \right) d^{3}y \\
+&= \int\left(\frac{\delta C}{\delta
+  A_{j}(y)}\partial_{t}A_{j} +\partial_{t}\Pi^{j}
+\frac{\delta \int C(x')d^{3}x'}{\delta \Pi^{j}(y)} \right) d^{3}y\\
+&= \int\left(\partial_{t}\Pi^{j}\frac{\delta \int C(x')d^{3}x'}{\delta \Pi^{j}(y)}\right) d^{3}y\\
+&= 0.
+\end{align}
+\end{subequations}
+This should be intuitively appealing (we don't expect Gauss' Law
+to change as time goes on). This means that the constraint is
+first class, and generates a gauge symmetry. By shear
+coincidence, we noted that there is a gauge symmetry in our
+$A^{\mu}$ variables!
+
+The natural question is ``Will \marginpar{Gauss' Law generates gauge symmetries?} Gauss' Law (as a constraint)
+generate the gauge symmetries of our field theory?'' We should
+investigate this possibility. We want to show that
+\begin{subequations}
+\begin{align}
+\left\{\int \Lambda(x)C(x)d^{3}x,~ A_{i}(x')\right\} &= \partial_{i}\Lambda(x')\\
+\left\{\int \Lambda(x)C(x)d^{3}x,~ E^{j}(x')\right\} &= 0
+\end{align}
+\end{subequations}
+are both true for some arbitrary function $\Lambda(x)$. This
+corresponds to the gauge transformation described by
+\begin{equation}%\label{eq:}
+A_{i}(x)\mapsto A_{i'}(x) = A_{i}(x) + \partial_{i}\Lambda(x).
+\end{equation}
+For simplicity we will consider the free field case, i.e. when
+there are no sources. Having made this simplifying condition, our
+constraint becomes ``merely'' $C(x) = \partial_{j}\Pi^{j}$. The
+second condition is easy to show, we see that by direct
+computation
+\begin{subequations}
+\begin{align}
+\left\{\int \Lambda(x)\partial_{k}\Pi^{k}(x)d^{3}x,~ \Pi^{j}(x')\right\}
+&=\left\{-\int \Pi^{k}(x)\partial_{k}\Lambda(x)d^{3}x,~ \Pi^{j}(x')\right\}\\
+&=-\int\left(\underbracket[0.5pt]{\frac{\delta\int \Pi^{k}(x)\partial_{k}\Lambda(x)d^{3}x}{\delta
+  A_{l}(y)}}_{=0}\frac{\delta \Pi^{j}(x')}{\delta
+  \Pi^{l}(y)}\right.\nonumber\\
+&\phantom{-\int}\left. -\underbracket[0.5pt]{\frac{\delta \Pi^{j}(x')}{\delta
+  A_{l}(y)}}_{=0}\frac{\delta \int
+  \Pi^{k}(x)\partial_{k}\Lambda(x)d^{3}x}{\delta \Pi^{l}(y)}
+\right) d^{3}y \\
+&= -\int\left(0\right)d^{3}y = 0.
+\end{align}
+\end{subequations}
+The first step, which may be subtle, is through integration by
+parts. We end up with a constant plus the term in the first slot
+of the Poisson bracket. The Poisson bracket of a constant with
+the canonical momenta (or position) vanishes identically (similar
+to how the derivative of a constant is zero identically). The
+last step was by virtue of the fact that our constraint is
+independent of $A_{j}$.
+
+So we just have to consider the case when we have the Poisson
+bracket of our constraint (multiplied by some function) together
+with our ``gauge field'' $A_{j}$. This is also fairly easy (in
+the source-free case):
+\begin{subequations}
+\begin{align}
+\left\{\int \Lambda(x)\partial_{i}\Pi^{i}(x)d^{3}x,~ A_{j}(x')\right\}
+&=-\left\{\int \Pi^{i}(x)\partial_{i}\Lambda(x)d^{3}x,~ A_{j}(x')\right\}
+\\
+&= -\int\left(\frac{\delta\int
+  \Pi^{i}(x)\partial_{i}\Lambda(x)d^{3}x}{\delta~A_{k}(y)}\frac{\delta~A_{j}(x')}{\delta\Pi^{k}(y)}\right.\\\nonumber
+&\phantom{-\int\left(\frac{}{}\right.~}\left.-\frac{\delta~A_{j}(x')}{\delta~A_{k}(y)}\frac{\delta\int \Pi^{i}(x)\partial_{i}\Lambda(x)d^{3}x}{\delta\Pi^{k}(y)} \right)d^{3}y\\
+&=-\int\left(0-\frac{\delta~A_{j}(x')}{\delta~A_{k}(y)}\frac{\delta\int \Pi^{i}(x)\partial_{i}\Lambda(x)d^{3}x}{\delta\Pi^{k}(y)} \right)d^{3}y\\
+&=\int\left(\delta^{(3)}(x'-y){\delta^{k}}_{j}{\delta_{k}}^{i}\partial_{i}\Lambda(y)\right)d^{3}y\\
+&=\partial_{j}\Lambda(x').
+\end{align}
+\end{subequations}
+This is precisely what we wanted to show.
+
+\begin{exercise}
+Carefully double check these computations.
+\end{exercise}
+\begin{exercise}
+Reperform these calculations when one source is present. Then
+consider the case when multiple sources are present.
+\end{exercise}
+
