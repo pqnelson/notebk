@@ -5,26 +5,22 @@
 %% Login   <alex@tomato>
 %% 
 %% Started on  Fri Jun  5 11:50:17 2009 Alex Nelson
-%% Last update Fri Jun  5 11:50:17 2009 Alex Nelson
+%% Last update Sat Jan 16 11:15:15 2010 Alex Nelson
 %%
 \documentclass[10pt,draft]{article}
-\usepackage{fly}
-\usepackage{brackets}
-\usepackage{danger}
-\usepackage{arydshln} % for the dashed lines in the ADM metric
+\usepackage{notebk}
 \numberwithin{equation}{section}
 
 \title{Notes on Canonical Gravity}
-\date{June 05, 2009}
-%\email{pqnelson@gmail.com}
-\author{Alex Nelson}
+\date{June 5, 2009}
 \begin{document}
 \maketitle
+\tableofcontents
 \begin{abstract}
 A review of the ADM Hamiltonian formalism for classical General
 Relativity.
 \end{abstract}
-
+\bigbreak
 Just a few remarks on notation. Latin indices $i,j,\ldots$ will
 be for spatial components of four-tensors, Greek indices
 $\alpha,\beta,\ldots$ will be for spacetime components of
@@ -53,6 +49,6 @@ Relativity, both the Hamiltonian and Momentum constraints.
 \input{canonicalAction}
 
 \nocite{*}
-\bibliographystyle{utcaps}
+\bibliographystyle{elements}\footnotesize
 \bibliography{canonicalGravity}
 \end{document}
