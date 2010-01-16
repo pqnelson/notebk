@@ -1,0 +1,48 @@
+%%
+%% yangMills.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Sep 18 11:33:33 2009 Alex Nelson
+%% Last update Fri Sep 18 11:33:33 2009 Alex Nelson
+%%
+%% TODO:
+% * need to reperform the Poisson Bracket of the Gauss Constraint with the Hamiltonian
+% * need to start expanding some more on the general Yang-Mills situation
+\documentclass{article}
+\usepackage{notebk,exercises}
+
+
+\newcommand{\ssn}[1]{\medbreak\refstepcounter{subsection}\addcontentsline{toc}{subsection}{\thesubsection~#1}\noindent\ignorespaces\textbf{\thesubsection~#1.}~}
+
+\hypersetup{pdftitle={Notes on the Yang Mills Theory},
+            pdfauthor={Alex Nelson},
+            pdfcreator={Alex Nelson},
+            pdfsubject={File Systems},
+            unicode={false}}
+\title{Notes on the Yang Mills Theory}
+\date{September 18, 2009}
+\begin{document}
+\maketitle
+\begin{abstract}
+We review classical electromagnetism in relativity. We consider
+generalizing the notion to ``general gauge groups'' which is
+precisely Yang-Mills theory. We will consider everything in the
+classical domain, quantization is not discussed.
+\end{abstract}
+\tableofcontents
+
+\section{From Maxwell to Tensors}
+\input{tex/em}
+\pagebreak
+\section{General Gauge Group: Introducing the Yang-Mills Theory}
+\input{tex/rules}
+\pagebreak
+\section{Answers to Selected Exercises}
+\dumpanswers
+\pagebreak
+\nocite{*}
+\bibliographystyle{utcaps}\addcontentsline{toc}{section}{References}
+\bibliography{yangMills}
+\end{document}

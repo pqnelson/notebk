@@ -1,0 +1,55 @@
+%%
+%% rules.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Sep 18 11:35:51 2009 Alex Nelson
+%% Last update Fri Sep 18 11:35:51 2009 Alex Nelson
+%%
+
+Now, we wish to outline the ``rules'' to constructing some Yang-Mills
+theory. The basic principle is really quite simple, but we would like
+to make certain that we are really generalizing electromagnetism. To
+check that we are, we will consider the situation when the gauge 
+group has the Lie algebra $\mathfrak{u}(1)$ --- the gauge group 
+corresponding to electromagnetism's. If we get back Maxwell's 
+equations, then we're golden and our generalization is
+``correct''.
+
+The general structure of this section is thus a presentation of
+the basic set up, followed by a demonstration that we recover
+Maxwell's equations when we choose $\mathfrak{u}(1)$ for our
+gauge group's Lie Algebra. Then we will consider the Canonical
+(i.e. Hamiltonian) formalism applied to the Yang-Mills
+situation. We will also try to present the Yang-Mills equations
+in vector calculus form, analogous to Maxwell's equations.
+
+We will have to introduce slightly odd notation. At first it will
+seem incredibly foreign, but it should become more familiar the
+more one works with it. We will use capital Latin letters for
+group indices. When working with electromagnetism, our gauge
+group was $U(1)$ which is precisely the roots of unity,
+i.e. looked like $\exp(i\lambda)$ for some
+$\lambda\in\mathbb{R}$. But when working with e.g. $SU(2)$, we
+have 2 by 2 matrices be our group elements (that have determinant
+one, and are equal to its complex conjugate transpose). We had 2
+indices for a matrix, so a group element would look like
+$g_{II'}$. The notation is borrowed from Penrose and Rindler~\cite{penroseRindlerOne,penroseRindlerTwo}.
+
+\ssn{Basic Setup}
+Let $\mathfrak{g}$ be a Lie Algebra. The gauge field $A$ is a 1-form
+on spacetime $M$ with values in $\mathfrak{g}$ we write this as
+$A\in\Omega^{1}(M,\mathfrak{g})$. We have its curvature be the
+field strength
+\begin{equation}%\label{eq:}
+F=(d+A)\wedge A=dA+\frac{1}{2}[A,A]=\frac{1}{2}F_{\mu\nu}dx^{\mu}dx^{\nu}\in\Omega^{2}(M,\mathfrak{g}),
+\end{equation}
+and the Yang-Mills action
+\begin{equation}
+S_{YM}[A] =
+\frac{-1}{2}\int_{M}(F,*F)=\frac{-1}{2g^{2}_{n}}\int_{M}\tr(F^{*}_{\mu\nu}F^{\mu\nu})dV.
+\end{equation}
+We can quantize this using the various tools of the quantization
+of gauge theory (see Henneaux and Teitelboim~\cite{Henneaux:1985kr} and
+Henneaux~\cite{Henneaux:1992ig} for details on this fascinating topic).
