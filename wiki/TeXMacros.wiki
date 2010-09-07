@@ -1,0 +1,29 @@
+#summary A Repository of TeX and LaTeX Macros.
+
+= Introduction =
+
+There's a large number of macros that are useful for specific things, and I'd like to collect them all here for future reference.
+
+
+= Code =
+
+== Dangerous Bend ==
+
+This produces a simple dangerous bend environment. I prefer this to the alternatives out there, since this permits me to ramble on for paragraphs (as opposed to exactly 1 paragraph).
+
+{{{
+\font\manual=manfnt
+\def\dbend{{\manual\char127}} % dangerous bend sign
+
+% Danger, Will Robinson!
+\newenvironment{danger}{\begin{small}\hangindent=2pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}%
+  {\end{small}}
+
+% Danger! Danger!
+\newenvironment{ddanger}{\begin{small}\hangindent=3pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}%
+  {\end{small}}
+}}}
