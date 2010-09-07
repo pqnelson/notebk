@@ -59,4 +59,12 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
 \newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
 \newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+
+\def\Set{\cat{Set}} % category of sets
+\def\FinSet{\cat{FinSet}} % category of finite sets
+\def\Cat{\cat{Cat}} % category of categories
+\def\Vect{\cat{Vect}} % category of vector spaces
+\def\Top{\cat{Top}} % category of topological spaces
+\def\Grp{\cat{Grp}} % category of groups
+\def\Gpd{\cat{Gpd}} % category of groupoids
 }}}
