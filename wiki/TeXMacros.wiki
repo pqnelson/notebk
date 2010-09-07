@@ -1,5 +1,7 @@
 #summary A Repository of TeX and LaTeX Macros.
 
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 There's a large number of macros that are useful for specific things, and I'd like to collect them all here for future reference.
