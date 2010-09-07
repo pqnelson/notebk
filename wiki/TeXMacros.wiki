@@ -47,14 +47,12 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
 \newcommand{\eqdef}{\stackrel{\text{def}}{=}}
 \newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
-\newcommand{\cov}[2]{{#1}_{#2}}
-\newcommand{\contrav}[2]{{#1}^{#2}}
 \newcommand{\lie}{\mathop{\rm Lie}\nolimits}
 \renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
 \renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
 \let\Hom\hom
 \def\noparskip{}
-\newcommand{\id}[1]{\mathop{\rm id}_{#1}}
+\newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
 \newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
 \newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
 \newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
