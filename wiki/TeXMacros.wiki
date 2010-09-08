@@ -74,7 +74,7 @@ I prefer defining macros that specify the notation for mathematical operators. T
 I always loved how Knuth wrote Algorithms --- to me they read as mathematical proofs. At any rate, I wanted to use the same macros. Somehow I found {{{taocpmac.tex}}} online somewhere, which are Knuth's macros for TAOCP. The LaTeX version of the relevant macros are thus:
 
 {{{
-% These macros are borrowed from Knuth's TAOCPMAC.tex
+% These macros are borrowed from TAOCPMAC.tex
 \newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
 \def\xskip{\hskip 7pt plus 3pt minus 4pt}
 \newdimen\algindent
@@ -88,7 +88,7 @@ I always loved how Knuth wrote Algorithms --- to me they read as mathematical pr
   \hskip-\parindent\fi
   \hbox to\algindent{\bf\hfil #1.\kern.25em}%
   \hangindent=\algindent\hangafter=1\ignorespaces}
-% end of borrowed Knuth's macros
+% end of borrowed macros
 
 % For Example, with less than 10 steps:
 % \algbegin X (Multiplication). blah blah blah blah...
