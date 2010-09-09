@@ -25,7 +25,7 @@ This produces a simple dangerous bend environment. I prefer this to the alternat
 
 % Danger! Danger!
 \newenvironment{ddanger}{\medbreak\noindent\begin{small}\hangindent=3pc\hangafter=-2%
-  \clubpenalty=10000%
+  \clubpenalty=10000\parindent=0pt\parskip=0.5pc%
   \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}%
   {\end{small}\par}
 }}}
@@ -97,3 +97,47 @@ I always loved how Knuth wrote Algorithms --- to me they read as mathematical pr
 }}}
 
 The {{{\slug}}} places the Tombstone to indicate the algorithm is finished. I also use it for the QED symbol.
+
+== Exercises ==
+
+Sometimes it is useful to have exercises to make the reader learn the subject far better. I am admittedly fond of Knuth's approach trying to indicate the difficulty of the exercise, so I have tried to adopt it.
+
+{{{
+\def\textindent#1{\indent \llap {#1\enspace }\ignorespaces}
+\newcounter{exercise}
+\def\exercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\textbf{\theexercise.}}[\textit{#1\/}]\kern6pt}
+\def\suggestedExercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\llap{\manual x\hskip3pt}\bf{\hbox to
+     \ifnum \value{exercise}>99 1.5em\else 1em\fi{\hfil\theexercise}}.}[\textit{#1\/}]\kern6pt}
+
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+
+\newenvironment{exercises}{\medskip\noindent\ignorespaces\textbf{EXERCISES}%
+	\vspace{-0.35pc}\parindent=0pt%
+	\setcounter{exercise}{0}}{}
+}}}
+
+The suggested exercises have a triangle in the margins, to differentiate them from the usual exercises.
+
+One can alternatively change the first line of the {{{exercises}}} environment to make it a subsection:
+
+{{{
+\newenvironment{exercises}{\subsection*{Exercises}%
+        \vspace{-0.35pc}\parindent=0pt%
+	\setcounter{exercise}{0}}{}
+}}}
+
+Whichever one prefers. The next set of macros to consider is one which allows me to write the answers to a file, but this will be tricky (and presumably memory intensive) so I will delay that for the time being.
+
+How one would use this, for example, would be:
+
+{{{
+\begin{exercises}
+\exercise [05] What is the meaning of life?
+% \answer{The answer is naturally 42.}
+\exercise [50\HM] Solve the Riemann conjecture.
+\suggestedExercise [45\HM] Prove Fermat's last Theorem.
+\end{exercises}
+}}}
