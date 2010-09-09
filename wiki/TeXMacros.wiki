@@ -141,3 +141,66 @@ How one would use this, for example, would be:
 \suggestedExercise [45\HM] Prove Fermat's last Theorem.
 \end{exercises}
 }}}
+
+== Changing Section Fonts ==
+
+I think that the section, subsection, etc., fonts are rather ugly. I decided to change this to make them somewhat prettier.
+
+{{{
+\font\sectionfont=cmssbx10 %at 12pt
+\font\subsectionfont=cmssbx10
+\makeatletter
+\def\specialsection{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\subsectionfont}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\subsectionfont}}
+\makeatother
+}}}
+
+== Chapter Macro ==
+
+I decided to also redefine the Chapter macro to make it better. Of course, that's when I am working within the {{{book.cls}}}. In other document classes, it causes errors.
+
+{{{
+\font\chapterfont=cmssbx10 scaled\magstep3
+\font\twelvess=cmss12
+\makeatletter
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \chapterfont \hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+}}}
+
+This is, again, in the spirit of Knuth's TAOCP.
