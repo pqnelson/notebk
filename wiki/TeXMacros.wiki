@@ -30,45 +30,6 @@ This produces a simple dangerous bend environment. I prefer this to the alternat
   {\end{small}\par}
 }}}
 
-== Mathematical Operators ==
-
-I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
-
-{{{
-\newcommand{\re}{\mathop{\rm Re}\nolimits}
-\newcommand{\im}{\mathop{\rm Im}\nolimits}
-\newcommand{\tr}{\mathop{\rm Tr}\nolimits}
-\newcommand{\aut}{\mathop{\rm Aut}\nolimits}
-\renewcommand{\ker}{\mathop{\rm Ker}\nolimits}
-\newcommand{\coker}{\mathop{\rm Coker}\nolimits}
-\newcommand{\erfi}{\mathop{\rm erfi}\nolimits}
-\newcommand{\erf}{\mathop{\rm erf}\nolimits}
-\let\<\langle
-\let\>\rangle
-\let\iso\cong
-\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
-\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
-\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
-\newcommand{\lie}{\mathop{\rm Lie}\nolimits}
-\renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
-\renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
-\let\Hom\hom
-\def\noparskip{}
-\newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
-\newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
-\newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
-\newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
-\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
-
-\def\Set{\cat{Set}} % category of sets
-\def\FinSet{\cat{FinSet}} % category of finite sets
-\def\Cat{\cat{Cat}} % category of categories
-\def\Vect{\cat{Vect}} % category of vector spaces
-\def\Top{\cat{Top}} % category of topological spaces
-\def\Grp{\cat{Grp}} % category of groups
-\def\Gpd{\cat{Gpd}} % category of groupoids
-}}}
-
 == Algorithms ==
 
 I always loved how Knuth wrote Algorithms --- to me they read as mathematical proofs. At any rate, I wanted to use the same macros. Somehow I found {{{taocpmac.tex}}} online somewhere, which are Knuth's macros for TAOCP. The LaTeX version of the relevant macros are thus:
@@ -204,3 +165,44 @@ I decided to also redefine the Chapter macro to make it better. Of course, that'
 }}}
 
 This is, again, in the spirit of Knuth's TAOCP.
+
+== Mathematical Operators ==
+
+I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
+
+{{{
+\newcommand{\re}{\mathop{\rm Re}\nolimits}
+\newcommand{\im}{\mathop{\rm Im}\nolimits}
+\newcommand{\tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\aut}{\mathop{\rm Aut}\nolimits}
+\renewcommand{\ker}{\mathop{\rm Ker}\nolimits}
+\newcommand{\coker}{\mathop{\rm Coker}\nolimits}
+\newcommand{\erfi}{\mathop{\rm erfi}\nolimits}
+\newcommand{\erf}{\mathop{\rm erf}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
+\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
+\newcommand{\lie}{\mathop{\rm Lie}\nolimits}
+\renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
+\renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
+\newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
+\newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+
+\def\Set{\cat{Set}} % category of sets
+\def\FinSet{\cat{FinSet}} % category of finite sets
+\def\Cat{\cat{Cat}} % category of categories
+\def\Vect{\cat{Vect}} % category of vector spaces
+\def\Top{\cat{Top}} % category of topological spaces
+\def\Grp{\cat{Grp}} % category of groups
+\def\Gpd{\cat{Gpd}} % category of groupoids
+
+\def\weak={\approx} % weak equality when working in classical gauge theory
+}}}
