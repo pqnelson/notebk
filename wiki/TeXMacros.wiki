@@ -103,6 +103,48 @@ How one would use this, for example, would be:
 \end{exercises}
 }}}
 
+== Answers ==
+
+The only way to make LaTeX write verbatim to a file was to use the {{{verbatim}}} package. And to make {{{answer}}} into an environment.
+
+{{{
+\usepackage{verbatim}
+\newwrite\ans%
+\immediate\openout\ans=tex/answers % file for answers to exercises
+
+\makeatletter
+\newenvironment{answer}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\theexercise:}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+
+%% Sometimes there's an alternate way to solve the problem
+%% TODO: Make this include an optional argument specifying how it
+%%       was done, so one can use the following code snippet
+%% \begin{altAns}[Using Complex Analysis]
+%% ...
+%% \end{altAns}
+\newenvironment{altAns}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\theexercise (Alternate):}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+\makeatother 
+}}}
+
+One should probably rewrite the {{{exercises}}} environment to include writing to the {{{tex/answers.tex}}} file various extra information (e.g. which section the answers correspond to, etc.).
+
 == Changing Section Fonts ==
 
 I think that the section, subsection, etc., fonts are rather ugly. I decided to change this to make them somewhat prettier.
