@@ -248,3 +248,27 @@ I prefer defining macros that specify the notation for mathematical operators. T
 
 \def\weak={\approx} % weak equality when working in classical gauge theory
 }}}
+
+== Sketch of Proof ==
+
+I like to sometimes provide a __sketch__ of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used {{{amsthm}}}'s proof environment as inspiration:
+
+{{{
+\renewcommand{\qedsymbol}{\slug}
+
+\makeatletter
+\providecommand{\sketchname}{Sketch of Proof}
+\newenvironment{sketch}[1][\sketchname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+}}}
+
+Remember the {{{\slug}}} is the code borrowed from Knuth, it's just a particular version of the Halmos tombstone.
