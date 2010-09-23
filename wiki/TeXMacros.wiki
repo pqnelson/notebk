@@ -59,6 +59,27 @@ I always loved how Knuth wrote Algorithms --- to me they read as mathematical pr
 
 The {{{\slug}}} places the Tombstone to indicate the algorithm is finished. I also use it for the QED symbol.
 
+I have not tried this, but it seems to me that a preferable way to deal with things is to do something that incorporates an automatic counter. That is to say, have something like
+{{{
+\newcounter{algorithm}
+\def\algorithm#1(#2). {% 
+  \gdef\algprefix{#1}
+  \setcounter{algorithm}{0}
+  \def\step{ %
+    \refstepcounter{algorithm} %
+    \algstep{\algprefix{}\thealgorithm}. %
+    }
+  \alg#1(#2).
+  }
+}}}
+This way, in theory (*I HAVE NOT TESTED THIS CODE!*) one could simply write
+{{{
+\algorithm X (Multiplication). We do multiplication the old fashioned way.
+\step [{\it Do stuff\/}] Blah blah blah.
+\step [{\it Clean up\/}] Terminate the algorithm.\quad\slug
+}}}
+It would also be nice if we could turn it into an environment somehow...
+
 == Exercises ==
 
 Sometimes it is useful to have exercises to make the reader learn the subject far better. I am admittedly fond of Knuth's approach trying to indicate the difficulty of the exercise, so I have tried to adopt it.
@@ -208,47 +229,6 @@ I decided to also redefine the Chapter macro to make it better. Of course, that'
 
 This is, again, in the spirit of Knuth's TAOCP.
 
-== Mathematical Operators ==
-
-I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
-
-{{{
-\newcommand{\re}{\mathop{\rm Re}\nolimits}
-\newcommand{\im}{\mathop{\rm Im}\nolimits}
-\newcommand{\tr}{\mathop{\rm Tr}\nolimits}
-\newcommand{\aut}{\mathop{\rm Aut}\nolimits}
-\renewcommand{\ker}{\mathop{\rm Ker}\nolimits}
-\newcommand{\coker}{\mathop{\rm Coker}\nolimits}
-\newcommand{\erfi}{\mathop{\rm erfi}\nolimits}
-\newcommand{\erf}{\mathop{\rm erf}\nolimits}
-\let\<\langle
-\let\>\rangle
-\let\iso\cong
-\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
-\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
-\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
-\newcommand{\lie}{\mathop{\rm Lie}\nolimits}
-\renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
-\renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
-\let\Hom\hom
-\def\noparskip{}
-\newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
-\newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
-\newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
-\newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
-\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
-
-\def\Set{\cat{Set}} % category of sets
-\def\FinSet{\cat{FinSet}} % category of finite sets
-\def\Cat{\cat{Cat}} % category of categories
-\def\Vect{\cat{Vect}} % category of vector spaces
-\def\Top{\cat{Top}} % category of topological spaces
-\def\Grp{\cat{Grp}} % category of groups
-\def\Gpd{\cat{Gpd}} % category of groupoids
-
-\def\weak={\approx} % weak equality when working in classical gauge theory
-}}}
-
 == Sketch of Proof ==
 
 I like to sometimes provide a __sketch__ of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used {{{amsthm}}}'s proof environment as inspiration:
@@ -272,3 +252,120 @@ I like to sometimes provide a __sketch__ of a proof instead of the full blown pr
 }}}
 
 Remember the {{{\slug}}} is the code borrowed from Knuth, it's just a particular version of the Halmos tombstone.
+
+== Bracket Macros ==
+
+I forgot where I found these macros, but I claim *no credit* for them. They were released into the public domain, so licensing really isn't an issue. Here are the lovely macros:
+
+{{{
+\makeatletter
+\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
+[\@bracketheight]}}
+\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
+{\@over@bracket[#1][0.3em]}}
+\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
+\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
+\nointerlineskip }\downbracketfill {#1}{#2}
+                              \crcr \noalign {\kern 3\p@ }
+                              \crcr  $\hfil \displaystyle {#3}\hfil $%
+                              \crcr} }}\limits}
+\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+\downbracketend{#1}{#2}$}
+\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
+
+
+\def\underbracket{%
+  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
+}
+\def\@underbracket[#1]{%
+  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
+}
+\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
+ \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
+ \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
+       \crcr \noalign {\kern 3\p@ }}}}\limits}
+\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
+	              {#1}{#2}$}
+\def\bracketend#1#2{\vrule height #2 width #1\relax}
+\makeatother
+
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+}}}
+
+They function like the {{{\underbrace}}} and {{{\overbrace}}} macros, except they take in an optional argument for the width of the bracket. I prefer using {{{[0.5pt]}}} for my brackets.
+
+== Mathematical Operators ==
+
+I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
+
+{{{
+\newcommand{\re}{\mathop{\rm Re}\nolimits}
+\newcommand{\im}{\mathop{\rm Im}\nolimits}
+\newcommand{\tr}{\mathop{\rm Tr}\nolimits}
+\newcommand{\aut}{\mathop{\rm Aut}\nolimits}
+\renewcommand{\ker}{\mathop{\rm Ker}\nolimits}
+\newcommand{\coker}{\mathop{\rm Coker}\nolimits}
+\newcommand{\erfi}{\mathop{\rm erfi}\nolimits}
+\newcommand{\erf}{\mathop{\rm erf}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
+\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
+\newcommand{\lie}{\mathop{\rm Lie}\nolimits}
+\let\Lie\lie
+\renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
+\renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
+\newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
+\newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
+\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
+\newcommand{\mat}{\mathop{\rm Mat}\nolimits}
+\newcommand{\der}{\mathop{\rm Der}\nolimits}
+\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
+\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+
+\let\propersubset\subsetneq
+\let\propersupset\supsetneq
+
+%% Lie groups frequently used
+\def\GL#1{{\rm GL}(#1)}
+\def\SL#1{{\rm SL}(#1)}
+\def\SO#1{{\rm SO}(#1)}
+\def\O#1{{\rm O}(#1)}
+\def\U#1{{\rm U}(#1)}
+\def\SU#1{{\rm SU}(#1)}
+\def\Sp#1{{\rm Sp}(#1)}
+
+%% Differential Geometry refers to these quantities frequently as well
+\def\diff{{\rm Diff}}
+\def\vect{{\rm Vect}}
+
+%% Categories frequently used
+\def\Set{\cat{Set}} % category of sets
+\def\FinSet{\cat{FinSet}} % category of finite sets
+\def\Cat{\cat{Cat}} % category of categories
+\def\Vect{\cat{Vect}} % category of vector spaces
+\def\Top{\cat{Top}} % category of topological spaces
+\def\Grp{\cat{Grp}} % category of groups
+\def\Gpd{\cat{Gpd}} % category of groupoids
+\def\Alg{\cat{Alg}} % category of algebras over a field
+
+\def\weak={\approx} % weak equality when working in classical gauge theory
+}}}
