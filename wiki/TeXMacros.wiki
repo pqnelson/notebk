@@ -80,6 +80,17 @@ This way, in theory (*I HAVE NOT TESTED THIS CODE!*) one could simply write
 }}}
 It would also be nice if we could turn it into an environment somehow...
 
+== Lecture Notes ==
+
+I often type up lecture notes, so I have macros that replace the {{{\section{...}}}} macro. 
+
+{{{
+\newcommand{\lecture}[1][]{\refstepcounter{section}\bigbreak\renewcommand{\leftmark}{Lecture \thesection}
+\noindent{\addcontentsline{toc}{section}{Lecture \thesection#1}\sectionfont Lecture \thesection#1}\medbreak}
+}}}
+
+Instead of the section {{{\section{Foobar}}}} being typewritten as "3. Foobar", we have {{{\lecture{Foobar}}}} be typeset as "Lecture 3 Foobar". Of course, one is free to improve upon this as one likes...
+
 == Exercises ==
 
 Sometimes it is useful to have exercises to make the reader learn the subject far better. I am admittedly fond of Knuth's approach trying to indicate the difficulty of the exercise, so I have tried to adopt it.
