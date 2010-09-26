@@ -273,6 +273,8 @@ This is, again, in the spirit of Knuth's TAOCP.
 I use the {{{amsthm}}} package, even though I am torn about it. It's not bad enough for me to write my own macros in frustration, at least not yet! So here are the macros I use to customize my theorems.
 
 {{{
+\usepackage{amsthm}
+
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}[thm]{Proposition}
