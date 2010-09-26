@@ -9,6 +9,34 @@ There's a large number of macros that are useful for specific things, and I'd li
 
 = Code =
 
+== Fix the Skip and Break Amounts ==
+
+I have noticed for some reason the {{{\medbreak}}} (etc.) commands give odd spacing. To fix this I just redefined things using the plain.tex macros:
+
+{{{
+\makeatletter
+
+\setlength\parindent{20pt}
+\setlength\parskip{0pt plus 1pt}
+\newskip\smallskipamount \smallskipamount=3pt plus 1pt minus 1pt
+\newskip\medskipamount \medskipamount=6pt plus 2pt minus 2pt
+\newskip\bigskipamount \bigskipamount=12pt plus 4pt minus 4pt
+\def\smallskip{\vskip\smallskipamount}
+\def\medskip{\vskip\medskipamount}
+\def\bigskip{\vskip\bigskipamount}
+\def\removelastskip{\ifdim\lastskip=\z@\else\vskip-\lastskip\fi}
+\def\smallbreak{\par\ifdim\lastskip<\smallskipamount
+  \removelastskip\penalty-50\smallskip\fi}
+\def\medbreak{\par\ifdim\lastskip<\medskipamount
+  \removelastskip\penalty-100\medskip\fi}
+\def\bigbreak{\par\ifdim\lastskip<\bigskipamount
+  \removelastskip\penalty-200\bigskip\fi}
+
+\makeatother
+}}}
+
+If you don't make this change, you may end up with problems when doing e.g. the suggested exercises using the macros below.
+
 == Dangerous Bend ==
 
 This produces a simple dangerous bend environment. I prefer this to the alternatives out there, since this permits me to ramble on for paragraphs (as opposed to exactly 1 paragraph).
