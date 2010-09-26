@@ -268,6 +268,45 @@ I decided to also redefine the Chapter macro to make it better. Of course, that'
 
 This is, again, in the spirit of Knuth's TAOCP.
 
+== Theorems ==
+
+I use the {{{amsthm}}} package, even though I am torn about it. It's not bad enough for me to write my own macros in frustration, at least not yet! So here are the macros I use to customize my theorems.
+
+{{{
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem*{DiracConjecture}{Dirac's Conjecture}
+\newtheorem*{bessel}{Bessel Inequality}
+\newtheorem*{parseval}{Parseval Equality}
+\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
+\newtheorem*{invFourier}{Fourier Inversion Theorem}
+\newtheorem*{plancherel}{Plancherel Theorem}
+\newtheorem*{samplingthm}{Sampling Theorem}
+\newtheorem*{dual}{Dual Principle for Categories}
+\newtheorem*{yoneda}{Yoneda Lemma}
+\newtheorem*{schur}{Schur's Lemma}
+\newtheorem*{implicitFunctionThm}{Implicit Function Theorem}
+\newtheorem*{minNum}{Minimal Number Principle}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{nonex}[thm]{NON-Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{fact}{Experimental Fact}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem*{notation}{Notation}
+\newtheorem*{assume}{Assumption}
+\newtheorem*{quest}{Question}
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{sch}[thm]{Scholium}
+}}}
+
 == Sketch of Proof ==
 
 I like to sometimes provide a __sketch__ of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used {{{amsthm}}}'s proof environment as inspiration:
