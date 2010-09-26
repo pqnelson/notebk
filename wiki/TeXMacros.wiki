@@ -309,6 +309,8 @@ I use the {{{amsthm}}} package, even though I am torn about it. It's not bad eno
 \newtheorem{sch}[thm]{Scholium}
 }}}
 
+*TODO* It is important to write my own theorem macros because {{{amsthm.sty}}} is incompatible with too many things.
+
 == Sketch of Proof ==
 
 I like to sometimes provide a __sketch__ of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used {{{amsthm}}}'s proof environment as inspiration:
