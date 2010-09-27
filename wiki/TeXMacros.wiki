@@ -450,4 +450,5 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \def\Alg{\cat{Alg}} % category of algebras over a field
 
 \def\weak={\approx} % weak equality when working in classical gauge theory
+\def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
 }}}
