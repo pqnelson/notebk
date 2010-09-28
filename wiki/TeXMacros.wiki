@@ -6,6 +6,25 @@
 
 There's a large number of macros that are useful for specific things, and I'd like to collect them all here for future reference.
 
+= To Do =
+
+There are a variety of macros that I have in my mind that needs to be articulated, they basically amount to the following grocery list. The actual code is in the next section.
+
+== Local and Global Coordinates ==
+
+It would be nice to have some sort of code that would allow me to set up some way of doing calculations locally and globally...right next to each other. I'm still trying to envision what this _should_ look like.
+
+== Tracks ==
+
+Another thing that would be nice is to have "tracks" _à la_ Misner, Thorne, and Wheeler. I am going to (one day) assemble all my notes together into one cohesive whole, who knows maybe it'll even be published as a book.
+
+== Book ==
+
+We have {{{\part}}}, {{{\chapter}}}, then sections...but it would be nice if we could add a {{{\book}}} that's weight -2. This should be trivial, but I don't have the time to do it at this very moment (it won't be necessary *until* I'm making this into a cohesive whole).
+
+== Boxes ==
+
+This doesn't seem too hard, the {{{framed.sty}}} package has done most of the work for me. But it would be nice to make the box slightly larger, again _à la_ Misner, Thorne, and Wheeler; and have the boxes be environments which are numbered.
 
 = Code =
 
@@ -411,12 +430,14 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \let\Lie\lie
 \renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
 \renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
+\def\fun{\mathop{\rm Fun}\nolimits} % like \hom but for categories
+\def\nat{\mathop{\rm Nat}\nolimits} % like \hom but for functors
 \let\Hom\hom
 \def\noparskip{}
 \newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
 \newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
 \newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
-\newcommand{\nat}[1]{\mathop{\rm Nat}\nolimits(#1)} 
+
 \newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
 \newcommand{\mat}{\mathop{\rm Mat}\nolimits}
 \newcommand{\der}{\mathop{\rm Der}\nolimits}
