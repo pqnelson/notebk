@@ -473,3 +473,68 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \def\weak={\approx} % weak equality when working in classical gauge theory
 \def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
 }}}
+
+= Homework Macros =
+
+Here are my macros I use (typically) when doing homework.
+
+{{{
+\documentclass{article}
+\usepackage[top=6pc,textwidth=32pc,inner=6pc,%
+marginparwidth=9.5pc,marginparsep=1cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{marginnote}
+\font\manual=manfnt
+
+\newcounter{exercise}
+\newenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  {\bf A\uppercase{{\footnotesize nswer to}} #1:\enspace}\ignorespaces}
+\newcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+\numberwithin{equation}{exercise}
+\let\Bbb\mathbb
+\let\frak\mathfrak
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\hwmark}{}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyheadoffset[OR,EL]{8pc}
+\else
+\fancyhead[L]{\nouppercase{\hwmark}}
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{8pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{Math 261a Homework\#6} %%% XXX: replace this
+\title{Math 261A Homework 6} %%% XXX: replace this with current homework and class data
+\begin{document}
+
+\maketitle
+
+\begin{exercise}
+Let $V$ be the fundamental representation of $\frak{sl}(n)$. Let
+$V^{*}$ be the representation dual to $V$. Find  the
+decomposition of $V\otimes V$ and $V\otimes V^{*}$ into the
+direct sum of irreducible representations.
+\end{exercise}
+
+\answer Well, we first see that if
+\begin{equation}
+\rho\colon\frak{sl}(n)\to \frak{gl}(V)
+\end{equation}
+is our representation morphism and... % rest not shown
+
+\end{document}
+
+}}}
