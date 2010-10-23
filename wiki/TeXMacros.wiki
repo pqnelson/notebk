@@ -249,7 +249,7 @@ I think that the section, subsection, etc., fonts are rather ugly. I decided to 
 
 == Chapter Macro ==
 
-I decided to also redefine the Chapter macro to make it better. Of course, that's when I am working within the {{{book.cls}}}. In other document classes, it causes errors.
+I decided to also redefine the Chapter macro to make it better. Of course, that's when I am working within the {{{book.cls}}}. In other document classes (ahem {{{memoir.cls}}}), it causes errors.
 
 {{{
 \font\chapterfont=cmssbx10 scaled\magstep3
@@ -328,7 +328,44 @@ I use the {{{amsthm}}} package, even though I am torn about it. It's not bad eno
 \newtheorem{sch}[thm]{Scholium}
 }}}
 
-*TODO* It is important to write my own theorem macros because {{{amsthm.sty}}} is incompatible with too many things.
+*TODO* It is important to write my own theorem macros because {{{amsthm.sty}}} is incompatible with too many things. Here is a preliminary version:
+
+{{{
+\makeatletter
+\newcounter{defn}
+\setcounter{defn}{0}
+\newenvironment{proclaim}[1]{\medbreak\noindent{\textbf{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\newenvironment{@@thm}[1]{\begin{proclaim}{#1}\sl}{\end{proclaim}}
+\newenvironment{@defn}[1]{\begin{proclaim}{#1}}{\end{proclaim}}
+\newenvironment{@rmk}[1]{\medbreak\noindent{\textit{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+
+\newenvironment{thm}{\refstepcounter{defn}\begin{@@thm}{Theorem \arabic{defn}}}{\end{@@thm}}
+\newenvironment{lem}{\refstepcounter{defn}\begin{@@thm}{Lemma \arabic{defn}}}{\end{@@thm}}
+\newenvironment{cor}{\refstepcounter{defn}\begin{@@thm}{Corollary \arabic{defn}}}{\end{@@thm}}
+\newenvironment{prop}{\refstepcounter{defn}\begin{@@thm}{Proposition \arabic{defn}}}{\end{@@thm}}
+\newenvironment{prob}{\refstepcounter{defn}\begin{@@thm}{Problem \arabic{defn}}}{\end{@@thm}}
+
+\newenvironment{defn}{\refstepcounter{defn}\begin{@defn}{Definition \arabic{defn}}}{\end{@defn}}
+\newenvironment{fact}{\refstepcounter{defn}\begin{@defn}{Experimental Fact \arabic{defn}}}{\end{@defn}}
+\newenvironment{ex}{\refstepcounter{defn}\begin{@defn}{Example \arabic{defn}}}{\end{@defn}}
+\newenvironment{nonex}{\refstepcounter{defn}\begin{@defn}{NON-Example \arabic{defn}}}{\end{@defn}}
+\newenvironment{conjecture}{\refstepcounter{defn}\begin{@defn}{Conjecture \arabic{defn}}}{\end{@defn}}
+\newenvironment{axm}{\refstepcounter{defn}\begin{@defn}{Axiom \arabic{defn}}}{\end{@defn}}
+\newenvironment{notation}{\begin{@defn}{Notation}}{\end{@defn}}
+\newenvironment{assume}{\begin{@defn}{Assumption}}{\end{@defn}}
+\newenvironment{quest}{\begin{@defn}{Question}}{\end{@defn}}
+
+\newenvironment{rmk}{\refstepcounter{defn}\begin{@rmk}{Remark \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
+\newenvironment{sch}{\refstepcounter{defn}\begin{@rmk}{Scholium \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
+
+
+\let\pffont\textit
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
+\newenvironment{sketch}{\smallbreak\noindent\pffont{Sketch of Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
+\newenvironment{proof}{\smallbreak\noindent\pffont{Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
+\makeatother
+}}}
 
 == Sketch of Proof ==
 
