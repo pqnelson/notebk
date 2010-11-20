@@ -65,16 +65,16 @@ This produces a simple dangerous bend environment. I prefer this to the alternat
 \def\dbend{{\manual\char127}} % dangerous bend sign
 
 % Danger, Will Robinson!
-\newenvironment{danger}{\medbreak\noindent\begin{small}\hangindent=2pc\hangafter=-2%
+\newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
   \clubpenalty=10000%
-  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}%
-  {\end{small}\par}
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
 
 % Danger! Danger!
-\newenvironment{ddanger}{\medbreak\noindent\begin{small}\hangindent=3pc\hangafter=-2%
-  \clubpenalty=10000\parindent=0pt\parskip=0.5pc%
-  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}%
-  {\end{small}\par}
+\newenvironment{ddanger}{\medbreak\noindent\hangindent=3pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
 }}}
 
 == Algorithms ==
