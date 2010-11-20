@@ -1,0 +1,23 @@
+#summary Notes concerning the Springer-Verlag monograph documentclass.
+
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+You can find the `SVMono.cls` file in the package provided to Springer-Verlag authors, which is available [http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip?SGWID=0-0-45-491898-0 here] I hope.
+
+I'm just writing a few notes concerning how to use this thing. The intended goal is to eventually have a cohesive set of notes, so that I can compile it all into one fancy "book". This documentclass seems most sophisticated, so I decided to use it.
+
+= Details =
+
+I am actually going to have to create some macros which translate my macros to the Springer-Verlag macros, e.g.
+
+{{{
+\newenvironment{thm}{\begin{theorem}}{\end{theorem}}
+}}}
+
+Additionally there is the matter of getting stuff done quickly. It is actually better, I think, to do something like the following: create a folder `~/docs/` then start creating subdirectories `~/docs/001/` which are "galley proofs". That is to say, they are written as articles and depend only on the stuff _before_ it (so 006 can depend on 001 through 005). In this manner, you organize your notes in a logical and cohesive manner. You also write more and faster since writing an article can be done in nearly no time at all. 
+
+To be consistent with notation, have a single file for macros (aptly referred to as `~/docs/macros.tex`) so you have consistent notation throughout.
+
+What I tend to do is also include a `~/docs/ref/` directory which then has a number of other people's `PDF`'s that are references to my notes.
