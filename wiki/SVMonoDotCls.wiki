@@ -28,6 +28,31 @@ What I tend to do is also include a `~/docs/ref/` directory which then has a num
 
 It appears that the package to use is `type1cm.sty` which automagically scales fonts, and it doesn't look horrible.
 
+=== Special Symbols (Math) ===
+
+Starting on line 822 of `svmono.cls` we see that:
+
+{{{
+%
+%  special signs and characters
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\E}{\mathrm{e}}
+\let\eul=\E
+\newcommand{\I}{{\rm i}}
+\let\imag=\I
+}}}
+
+This defines a few special macros for the usual constants (well, e and i) and for the differential `\D`. This seems almost pathological however...
+
+The `\tens` macro which is used for tensors (apparently) is defined on line 892--893 of `svmono.cls` as
+
+{{{
+% tensor
+\def\tens#1{\relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi}
+}}}
+
+Which is peculiar! Using Sans Serif font for tensors, how unique!
+
 == QED Symbol ==
 
 We have the following code:
