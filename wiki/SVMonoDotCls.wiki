@@ -21,3 +21,54 @@ Additionally there is the matter of getting stuff done quickly. It is actually b
 To be consistent with notation, have a single file for macros (aptly referred to as `~/docs/macros.tex`) so you have consistent notation throughout.
 
 What I tend to do is also include a `~/docs/ref/` directory which then has a number of other people's `PDF`'s that are references to my notes.
+
+== Fonts ==
+
+It appears that the package to use is `type1cm.sty` which automagically scales fonts, and it doesn't look horrible.
+
+== QED Symbol ==
+
+We have the following code:
+
+{{{
+\newcommand\slug{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\renewcommand\qedsymbol{\slug}
+}}}
+
+Alternatively we may simply write
+
+{{{
+\renewcommand\qedsymbol{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+}}}
+
+The rest appears to be taken care of.
+
+=== Proof Environment ===
+
+Although the given code for theorem environments is cute (to say the least), I do not like it. One has to manually add the `\qed` which is irritating. I think I should probably write my own macros...
+
+== Page Size ==
+
+We are told in the "Author Instructions for Monographs" (`instruct.pdf`) in 2.2 that:
+
+  This will set the text area to a `\textwidth` of 117 mm or 27.75
+  pica and a `\textheight` of 191 mm or 45.166667 pica plus a
+  `\headsep` of 12 pt (space between the running head and text). 
+  
+  _N.B._ Trim size (physical paper size) is 155 × 235 mm or 6.125
+  × 9.25 in. 
+
+Good to know. The exact code comes from lines 232--239 of `svmono.cls`:
+
+{{{
+\setlength{\textwidth}{117mm}
+%\setlength{\textheight}{12pt}\multiply\textheight by 45\relax
+\setlength{\textheight}{191mm}
+\setlength{\topmargin}{0cm}
+\setlength\oddsidemargin   {63\p@}
+\setlength\evensidemargin  {63\p@}
+\setlength\marginparwidth{90\p@}
+\setlength\headsep   {12\p@}
+}}}
+
+The next set of lines sets `\parindent` to be equal to 12pt (lines 241--243), it also sets `\parskip` to be `\z@ \@plus \p@` (line 244) and modifies `\hfuzz` and `\arraycolsep`. French spacing is apparently used.
