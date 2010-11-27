@@ -16,6 +16,8 @@ I am actually going to have to create some macros which translate my macros to t
 \newenvironment{thm}{\begin{theorem}}{\end{theorem}}
 }}}
 
+*Remark:* Actually, if one uses the `nospthms` options for the `svmono.cls`, then one can use one's own theorem macros. This would probably be the better approach for me.
+
 Additionally there is the matter of getting stuff done quickly. It is actually better, I think, to do something like the following: create a folder `~/docs/` then start creating subdirectories `~/docs/001/` which are "galley proofs". That is to say, they are written as articles and depend only on the stuff _before_ it (so 006 can depend on 001 through 005). In this manner, you organize your notes in a logical and cohesive manner. You also write more and faster since writing an article can be done in nearly no time at all. 
 
 To be consistent with notation, have a single file for macros (aptly referred to as `~/docs/macros.tex`) so you have consistent notation throughout.
@@ -47,6 +49,8 @@ The rest appears to be taken care of.
 
 Although the given code for theorem environments is cute (to say the least), I do not like it. One has to manually add the `\qed` which is irritating. I think I should probably write my own macros...
 
+*Remark:* Actually, it seems wiser to use one's own customized theorem macros rather than some "God given" set of theorem macros.
+
 == Page Size ==
 
 We are told in the "Author Instructions for Monographs" (`instruct.pdf`) in 2.2 that:
@@ -65,10 +69,10 @@ Good to know. The exact code comes from lines 232--239 of `svmono.cls`:
 %\setlength{\textheight}{12pt}\multiply\textheight by 45\relax
 \setlength{\textheight}{191mm}
 \setlength{\topmargin}{0cm}
-\setlength\oddsidemargin   {63\p@}
-\setlength\evensidemargin  {63\p@}
+\setlength\oddsidemargin{63\p@}
+\setlength\evensidemargin{63\p@}
 \setlength\marginparwidth{90\p@}
-\setlength\headsep   {12\p@}
+\setlength\headsep{12\p@}
 }}}
 
 The next set of lines sets `\parindent` to be equal to 12pt (lines 241--243), it also sets `\parskip` to be `\z@ \@plus \p@` (line 244) and modifies `\hfuzz` and `\arraycolsep`. French spacing is apparently used.
