@@ -20,17 +20,17 @@ Another thing that would be nice is to have "tracks" _à la_ Misner, Thorne, and
 
 == Book ==
 
-We have {{{\part}}}, {{{\chapter}}}, then sections...but it would be nice if we could add a {{{\book}}} that's weight -2. This should be trivial, but I don't have the time to do it at this very moment (it won't be necessary *until* I'm making this into a cohesive whole).
+We have `\part`, `\chapter`, then sections...but it would be nice if we could add a `\book` that's weight -2. This should be trivial, but I don't have the time to do it at this very moment (it won't be necessary *until* I'm making this into a cohesive whole).
 
 == Boxes ==
 
-This doesn't seem too hard, the {{{framed.sty}}} package has done most of the work for me. But it would be nice to make the box slightly larger, again _à la_ Misner, Thorne, and Wheeler; and have the boxes be environments which are numbered.
+This doesn't seem too hard, the `framed.sty` package has done most of the work for me. But it would be nice to make the box slightly larger, again _à la_ Misner, Thorne, and Wheeler; and have the boxes be environments which are numbered.
 
 = Code =
 
 == Fix the Skip and Break Amounts ==
 
-I have noticed for some reason the {{{\medbreak}}} (etc.) commands give odd spacing. To fix this I just redefined things using the plain.tex macros:
+I have noticed for some reason the `\medbreak` (etc.) commands give odd spacing. To fix this I just redefined things using the plain.tex macros:
 
 {{{
 \makeatletter
@@ -79,7 +79,7 @@ This produces a simple dangerous bend environment. I prefer this to the alternat
 
 == Algorithms ==
 
-I always loved how Knuth wrote Algorithms --- to me they read as mathematical proofs. At any rate, I wanted to use the same macros. Somehow I found {{{taocpmac.tex}}} online somewhere, which are Knuth's macros for TAOCP. The LaTeX version of the relevant macros are thus:
+I always loved how Knuth wrote Algorithms --- to me they read as mathematical proofs. At any rate, I wanted to use the same macros. Somehow I found `taocpmac.tex` online somewhere, which are Knuth's macros for TAOCP. The LaTeX version of the relevant macros are thus:
 
 {{{
 % These macros are borrowed from TAOCPMAC.tex
@@ -104,7 +104,7 @@ I always loved how Knuth wrote Algorithms --- to me they read as mathematical pr
 % \algstep X2. Terminate the algorithm.\quad\slug
 }}}
 
-The {{{\slug}}} places the Tombstone to indicate the algorithm is finished. I also use it for the QED symbol.
+The `\slug` places the Tombstone to indicate the algorithm is finished. I also use it for the QED symbol.
 
 I have not tried this, but it seems to me that a preferable way to deal with things is to do something that incorporates an automatic counter. That is to say, have something like
 {{{
@@ -129,14 +129,14 @@ It would also be nice if we could turn it into an environment somehow...
 
 == Lecture Notes ==
 
-I often type up lecture notes, so I have macros that replace the {{{\section{...}}}} macro. 
+I often type up lecture notes, so I have macros that replace the `\section{...}` macro. 
 
 {{{
 \newcommand{\lecture}[1][]{\refstepcounter{section}\bigbreak\renewcommand{\leftmark}{Lecture \thesection}
 \noindent{\addcontentsline{toc}{section}{Lecture \thesection#1}\sectionfont Lecture \thesection#1}\medbreak}
 }}}
 
-Instead of the section {{{\section{Foobar}}}} being typewritten as "3. Foobar", we have {{{\lecture{Foobar}}}} be typeset as "Lecture 3 Foobar". Of course, one is free to improve upon this as one likes...
+Instead of the section `\section{Foobar}` being typewritten as "3. Foobar", we have `\lecture{Foobar}` be typeset as "Lecture 3 Foobar". Of course, one is free to improve upon this as one likes...
 
 == Exercises ==
 
