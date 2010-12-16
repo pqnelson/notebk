@@ -449,53 +449,53 @@ They function like the {{{\underbrace}}} and {{{\overbrace}}} macros, except the
 I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
 
 {{{
-\newcommand{\re}{\mathop{\rm Re}\nolimits}
-\newcommand{\im}{\mathop{\rm Im}\nolimits}
-\newcommand{\tr}{\mathop{\rm Tr}\nolimits}
-\newcommand{\aut}{\mathop{\rm Aut}\nolimits}
-\renewcommand{\ker}{\mathop{\rm Ker}\nolimits}
-\newcommand{\coker}{\mathop{\rm Coker}\nolimits}
-\newcommand{\erfi}{\mathop{\rm erfi}\nolimits}
-\newcommand{\erf}{\mathop{\rm erf}\nolimits}
+\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\aut}{\mathop{\mathrm{Aut}}\nolimits}
+\renewcommand{\ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\coker}{\mathop{\mathrm{Coker}}\nolimits}
+\newcommand{\erfi}{\mathop{\mathrm{erfi}}\nolimits}
+\newcommand{\erf}{\mathop{\mathrm{erf}}\nolimits}
 \let\<\langle
 \let\>\rangle
 \let\iso\cong
 \newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
 \newcommand{\eqdef}{\stackrel{\text{def}}{=}}
 \newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
-\newcommand{\lie}{\mathop{\rm Lie}\nolimits}
+\newcommand{\lie}{\mathop{\mathrm{Lie}}\nolimits}
 \let\Lie\lie
-\renewcommand{\arctan}{\mathop{\rm ArcTan}\nolimits}
-\renewcommand{\hom}{\mathop{\rm Hom}\nolimits}
-\def\fun{\mathop{\rm Fun}\nolimits} % like \hom but for categories
-\def\nat{\mathop{\rm Nat}\nolimits} % like \hom but for functors
+\renewcommand{\arctan}{\mathop{\mathrm{ArcTan}}\nolimits}
+\renewcommand{\hom}{\mathop{\mathrm{Hom}}\nolimits}
+\def\fun{\mathop{\mathrm{Fun}}\nolimits} % like \hom but for categories
+\def\nat{\mathop{\mathrm{Nat}}\nolimits} % like \hom but for functors
 \let\Hom\hom
 \def\noparskip{}
-\newcommand{\id}[1]{\mathop{\rm id}\nolimits_{#1}}
-\newcommand{\ob}[1]{\mathop{\rm Ob}\nolimits(#1)}
-\newcommand{\cat}[1]{\mathop{\bf#1}\nolimits} % notation for a category, e.g. $\cat{Set}$
+\newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathop{\mathrm{Ob}}\nolimits(#1)}
+\newcommand{\cat}[1]{\mathop{\mathbf{#1}}\nolimits} % notation for a category, e.g. $\cat{Set}$
 
-\newcommand{\sgn}{\mathop{\rm sgn}\nolimits}
-\newcommand{\mat}{\mathop{\rm Mat}\nolimits}
-\newcommand{\der}{\mathop{\rm Der}\nolimits}
-\newcommand{\Ad}{\mathop{\rm Ad}\nolimits}
-\newcommand{\ad}{\mathop{\rm ad}\nolimits}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+\newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
+\newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
+\newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
+\newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
 
 \let\propersubset\subsetneq
 \let\propersupset\supsetneq
 
 %% Lie groups frequently used
-\def\GL#1{{\rm GL}(#1)}
-\def\SL#1{{\rm SL}(#1)}
-\def\SO#1{{\rm SO}(#1)}
-\def\O#1{{\rm O}(#1)}
-\def\U#1{{\rm U}(#1)}
-\def\SU#1{{\rm SU}(#1)}
-\def\Sp#1{{\rm Sp}(#1)}
+\def\GL#1{\mathrm{GL}(#1)}
+\def\SL#1{\mathrm{SL}(#1)}
+\def\SO#1{\mathrm{SO}(#1)}
+\def\ORTH#1{\mathrm{O}(#1)}
+\def\U#1{\mathrm{U}(#1)}
+\def\SU#1{\mathrm{SU}(#1)}
+\def\Sp#1{\mathrm{Sp}(#1)}
 
 %% Differential Geometry refers to these quantities frequently as well
-\def\diff{{\rm Diff}}
-\def\vect{{\rm Vect}}
+\def\diff{\mathrm{Diff}}
+\def\vect{\mathrm{Vect}}
 
 %% Categories frequently used
 \def\Set{\cat{Set}} % category of sets
@@ -509,7 +509,19 @@ I prefer defining macros that specify the notation for mathematical operators. T
 
 \def\weak={\approx} % weak equality when working in classical gauge theory
 \def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
+
+\def\ClassicalGroup#1{\mathsf{#1}}
+
+\let\oldemptyset\emptyset
+\let\varemptyset\varnothing
+
+% Notation used for algebraic topology
+\let\homotopic\sim
 }}}
+
+The `\ClassicalGroup` macro is used to write the classical Lie groups using a particular font. This way, when working with finite groups, we can tell the difference between the Dihedral group and the `D_{n}` family of simple Lie groups. 
+
+I am "on the fence" about the empty set notation. There are two versions of it, and I cannot decide which is preferable --- the one that is standard in LaTeX, the other which is `\varnothing` in the AMS-symb package.
 
 = Homework Macros =
 
