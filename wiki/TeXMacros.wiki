@@ -510,7 +510,8 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \def\weak={\approx} % weak equality when working in classical gauge theory
 \def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
 
-\def\ClassicalGroup#1{\mathsf{#1}}
+\newcommand\ClassicalGroup[1]{\mathsf{#1}}
+\newcommand\Antisymmetric{{\textstyle\bigwedge\nolimits}}
 
 \let\oldemptyset\emptyset
 \let\varemptyset\varnothing
@@ -522,6 +523,8 @@ I prefer defining macros that specify the notation for mathematical operators. T
 The `\ClassicalGroup` macro is used to write the classical Lie groups using a particular font. This way, when working with finite groups, we can tell the difference between the Dihedral group and the `D_{n}` family of simple Lie groups. 
 
 I am "on the fence" about the empty set notation. There are two versions of it, and I cannot decide which is preferable --- the one that is standard in LaTeX, the other which is `\varnothing` in the AMS-symb package.
+
+The `\Antisymmetric` macro was written because I must confess to not being fond of using `\Lambda` but I would prefer to use something bigger than `\wedge`. The text style of `\bigwedge` seemed ideal, so I just defined a new macro to make it so.
 
 = Homework Macros =
 
