@@ -1,0 +1,10 @@
+#summary Some remarks on Bourbaki's _Theory of Sets_
+
+= Introduction =
+
+I once tried to read Bourbaki's _Theory of Sets_ but found it utterly incoherent. It turns out that really, only the "Summary of Results" are necessary for understanding set theory. But I found out a beautiful project translating Bourbaki's _Theory of Sets_ into `Coq` code (for the automatic theorem prover [http://en.wikipedia.org/wiki/Coq `Coq`]).
+
+  # J. Grimm, "Implementation of Bourbaki's Elements of Mathematics in Coq: Part One, Theory of Sets" [http://hal.archives-ouvertes.fr/docs/00/40/81/43/PDF/RR-6999.pdf ePrint (PDF)] --- note it is 204 pages.
+  # J. Grimm, "Implementation of Bourbaki's Elements of Mathematics in Coq: Part Two; Ordered Sets, Cardinals, Integers" [http://hal.archives-ouvertes.fr/docs/00/44/07/86/PDF/RR-7150.pdf ePrint (pdf)] --- note it is 307 pages long.
+
+Mr Grimm kindly explains the frustratingly cryptic notation and terms used by Bourbaki.
