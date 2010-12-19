@@ -1,0 +1,19 @@
+#summary Just some notes on packages dealing with references in other documents.
+
+= Introduction =
+
+Frequently I will set up my notes to be such that I have references to other notes I have written. So, e.g., my notes on infinite-dimensional Lie Algebras may refer to theorems and definitions from my notes on Lie Groups, Lie Algebras, and Representations. What to do? 
+
+One way we can deal with "external references" is to use `xr`, `xref` or `zref`. This was noted on the [http://www.tex.ac.uk/cgi-bin/texfaq2html?label=extref TeX FAQ] page.
+
+= Details =
+
+After fiddling around a little, it seems that `xr-hyper`. It is designed to work specifically with `hyperref` and `PDFLaTeX`. The example usage:
+
+{{{
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\externaldocument[V1-]{volume1}[http://mybook.com/volume1.pdf]
+...
+... the \nameref{V1-introduction})...
+}}}
