@@ -472,18 +472,35 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \let\Hom\hom
 \def\noparskip{}
 \newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
-\newcommand{\ob}[1]{\mathop{\mathrm{Ob}}\nolimits(#1)}
-\newcommand{\cat}[1]{\mathop{\mathbf{#1}}\nolimits} % notation for a category, e.g. $\cat{Set}$
+\newcommand{\ob}[1]{\mathrm{Ob}(#1)}
+\newcommand{\cat}[1]{\mathbf{#1}} % notation for a category, e.g. $\cat{Set}$
+\newcommand\powerset[1]{\mathcal{P}(#1)}
 
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
 \newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
 \newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
 \newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
 \newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
-
-\let\propersubset\subsetneq
-\let\propersupset\supsetneq
-
+%% Frequently used set theory notation
+\let\logic\texttt
+\newcommand\CC{\mathbb{C}}
+\newcommand\FF{\mathbb{F}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\OO{\mathbb{O}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\let\oldsetminus\setminus
+\def\setminus{-}
+\newcommand\universe{\mathcal{U}}
+\newcommand\domain{\mathop{\mathrm{dom}}\nolimits}
+\newcommand\codomain{\mathop{\mathrm{cod}}\nolimits}
+\let\propersubset\subset
+\let\propersupset\supset
+\let\oldsubset\subset
+\let\oldsupset\supset
+\let\subset\subseteq
+\let\supset\supseteq
 %% Lie groups frequently used
 \def\GL#1{\mathrm{GL}(#1)}
 \def\SL#1{\mathrm{SL}(#1)}
@@ -498,14 +515,15 @@ I prefer defining macros that specify the notation for mathematical operators. T
 \def\vect{\mathrm{Vect}}
 
 %% Categories frequently used
-\def\Set{\cat{Set}} % category of sets
-\def\FinSet{\cat{FinSet}} % category of finite sets
-\def\Cat{\cat{Cat}} % category of categories
-\def\Vect{\cat{Vect}} % category of vector spaces
-\def\Top{\cat{Top}} % category of topological spaces
-\def\Grp{\cat{Grp}} % category of groups
-\def\Gpd{\cat{Gpd}} % category of groupoids
-\def\Alg{\cat{Alg}} % category of algebras over a field
+\newcommand\Set{\cat{Set}} % category of sets
+\newcommand\FinSet{\cat{FinSet}} % category of finite sets
+\newcommand\Cat{\cat{Cat}} % category of categories
+\newcommand\Vect{\cat{Vect}} % category of vector spaces
+\newcommand\Top{\cat{Top}} % category of topological spaces
+\newcommand\Grp{\cat{Grp}} % category of groups
+\newcommand\Gpd{\cat{Gpd}} % category of groupoids
+\newcommand\Alg{\cat{Alg}} % category of algebras over a field
+\newcommand\Magm{\cat{Magm}} % category of Magmas
 
 \def\weak={\approx} % weak equality when working in classical gauge theory
 \def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
