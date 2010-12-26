@@ -26,6 +26,27 @@ We have `\part`, `\chapter`, then sections...but it would be nice if we could ad
 
 This doesn't seem too hard, the `framed.sty` package has done most of the work for me. But it would be nice to make the box slightly larger, again _à la_ Misner, Thorne, and Wheeler; and have the boxes be environments which are numbered.
 
+Here is the first attempt using the `framed.sty` package:
+
+{{{
+\newcounter{boxed}[section]
+\newenvironment{Boxed}[1]{\refstepcounter{boxed}\MakeFramed {\advance\hsize 2pc\FrameRestore}\noindent{\subsectionfont Box \theboxed. #1}\vskip .125\baselineskip}{\endMakeFramed}
+}}}
+
+Example usage:
+
+{{{
+\begin{Boxed}{Soliloqui}
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+\end{Boxed}
+}}}
+
+The disadvantage, which is glaringly obvious, is that it is necessary to have an argument for the `Boxed` environment. It'd be better if this could be modified to have it be an optional argument...
+
 = Code =
 
 == Fix the Skip and Break Amounts ==
