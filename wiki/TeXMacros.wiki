@@ -98,6 +98,52 @@ This produces a simple dangerous bend environment. I prefer this to the alternat
   {\medbreak\par}
 }}}
 
+== Quotes From Others ==
+
+Knuth has these wonderful quotes from other authors. I wanted to use his macros in an environment setting. So here's my modified version of his macros:
+
+{{{
+\newenvironment{quotes}{\font\eightss=cmssq8
+  \font\eightssi=cmssqi8
+  \font\sixss=cmssq8 scaled 800
+  \baselineskip 10pt
+  \parfillskip \z@
+  \interlinepenalty 10000
+  \leftskip \z@ plus 40pc minus \parindent
+  \let\rm=\eightss \let\sl=\eightssi \let\adbcfont=\sixss
+  \everypar{\sl}
+  \def\\{\hskip.05em} % can say 3\\:\\16
+  \obeylines}{}
+\def\Author#1(#2){\par\nobreak\smallskip\noindent\rm--- #1\unskip\enspace(#2)}
+}}}
+
+How are they used? Well, here's an example:
+
+{{{
+%\vfill
+\begin{quotes}
+...each problem solved was a rule 
+which served in the discovery
+  of subsequent ones... 
+\Author Ren\'e Descartes, {\sl Discourse on Method} (1637)
+\bigskip
+
+Socrates thought that if all our problems were laid in one common
+heap, whence every one must take an equal portion, most persons
+would be contented to take their own and depart. 
+\Author Plutarch, {\sl Consolation to Apollonius} (????)
+\bigskip
+
+The lyf so short, the craft so longe to lerne.
+Th' assay so hard, so sharp the conquerynge,
+The dredful joye, alwey that slit so yerne;
+Al this mene I be love. 
+\Author Geoffrey Chaucer, {\sl Parlement of Foules} (1382)
+\end{quotes}
+}}}
+
+Uncomment the `\vfill` if you want the quotes to be at the bottom of the page.
+
 == Algorithms ==
 
 I always loved how Knuth wrote Algorithms --- to me they read as mathematical proofs. At any rate, I wanted to use the same macros. Somehow I found `taocpmac.tex` online somewhere, which are Knuth's macros for TAOCP. The LaTeX version of the relevant macros are thus:
