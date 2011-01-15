@@ -354,6 +354,105 @@ I decided to also redefine the Chapter macro to make it better. Of course, that'
 
 This is, again, in the spirit of Knuth's TAOCP.
 
+== Structured Proofs ==
+
+Lamport's "[ How to Write a Proof]" article outlines some notion of a "structured proof." Sadly, his macros are rather dated. Moreover, one cannot use a simple list!
+
+What we have here is the collection of macros that uses a _stack_ to keep track of the steps as we increase and decrease the level. That way, only two counters are used!
+
+Moreover, the macros are fairly robust...they work with `amsthm`, and every other macro defined on this webpage, at least.
+
+{{{
+\makeatletter
+
+
+\newcounter{pfLevel}
+\newcounter{pfStep}[pfLevel]
+
+\renewcommand\thepfLevel{$\langle$\arabic{pfLevel}$\rangle$}
+\renewcommand\thepfStep{\thepfLevel\arabic{pfStep}}
+\def\emptystack{:}
+\let\stack=\emptystack
+\def\push#1{\edef\stack{#1.\stack}}
+\def\topaux#1.#2:{#1}
+\def\topstack{\expandafter\topaux\stack}
+\def\popaux#1.#2:{\gdef\stack{#2:}}
+\def\pop{\expandafter\popaux\stack}
+
+\def\@sproof{\expandafter\push{\arabic{pfStep}}%
+  \bgroup
+  \parindent=0pt
+  \leftskip = \value{pfLevel}em
+  \advance\leftskip\value{pfLevel}em
+  \refstepcounter{pfLevel}%
+  }
+\def\@endsproof{\egroup%
+  \addtocounter{pfLevel}{-1}
+  \leftskip = \value{pfLevel}em
+  \advance\leftskip\value{pfLevel}em
+  }
+\def\sproof{\par
+  \@sproof}
+\def\endsproof{\par\@endsproof
+  \setcounter{pfStep}{\topstack}
+  \pop 
+  \ifnum\value{pfLevel}=0\medbreak%\parindent=\oldparindent
+  \fi}
+
+
+\def\step{\par\refstepcounter{pfStep}\thepfStep.\enspace}
+\def\assume{\par\phantomsection\textsc{Assume:}\enspace}
+\def\prove{\par\phantomsection\textsc{Prove:}\enspace}
+\def\assumption{\par\phantomsection$\hphantom{\textsc{Assume:}}$\enspace}
+\def\pf{\par\phantomsection$\hphantom{\textsc{\thepfStep.\enspace}}$\textsc{Proof:}\enspace}
+\def\pfsketch{\par\phantomsection\textsc{Sketch of Proof:}\enspace}
+\def\pflet{\par\phantomsection\textsc{Let:}\enspace}
+
+\makeatother
+}}}
+
+How do we use these particular macros? Well, here's some example code:
+
+{{{
+\begin{thm}
+  There does not exist $r$ in $\QQ$ such that $r^{2}=2$.
+\end{thm}
+\begin{sproof}
+\pfsketch We assume $r^{2}=2$ for $r\in\QQ$ and obtain a contradiction.
+Writing $r=m/n$, where $m$ and $n$ have no common divisors,
+we deduce from $(m/n)^{2}=2$  and the lemma that both $m$ and $n$
+must be divisible by 2.
+\assume 1. $r\in\QQ$\label{assume:1}
+\assumption 2. $r^{2}=2$
+\prove{False}
+\step\label{pf:step:1.1} Choose $m$, $n$ in $\ZZ$ such that
+\par\hskip 2.75em 1. $\gcd(m,n) =1$
+\par\hskip 2.75em 2. $r = (m/n)$
+\begin{sproof}
+  \step\label{pf:step:2.1} Choose $p$, $q$ in $\ZZ$ such that $q\neq 0$ and $r=p/q$.
+    \pf\ By assumption \ref{assume:1}:1.
+
+  \pflet{$m$ $:=$ $p/\gcd(p,q)$\\
+        $\phantom{\textsc{Let: }}$ $n$ $:=$ $q/\gcd(p,q)$}
+
+  \step $m,n\in \ZZ$
+    \pf\ \ref{pf:step:2.1} and definition of $m$ and $n$.
+  \step $r=m/n$
+    \pf\ We have the following chain of reasoning:
+\begin{eqnarray*}
+m/n &=& \displaystyle\frac{p/\gcd(p,q)}{q/\gcd(p,q)}\\
+    &=& p/q\\
+    &=& r
+\end{eqnarray*}
+\begin{sproof}
+\step But it really is obvious
+\end{sproof}
+\step No, really, it is obvious.
+\end{sproof}
+\step $\gcd(m,n)=1$
+\end{sproof}
+}}}
+
 == Theorems ==
 
 I use the {{{amsthm}}} package, even though I am torn about it. It's not bad enough for me to write my own macros in frustration, at least not yet! So here are the macros I use to customize my theorems.
