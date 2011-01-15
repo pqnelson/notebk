@@ -371,15 +371,17 @@ Moreover, the macros are fairly robust...they work with `amsthm`, and every othe
 
 \renewcommand\thepfLevel{$\langle$\arabic{pfLevel}$\rangle$}
 \renewcommand\thepfStep{\thepfLevel\arabic{pfStep}}
-\def\emptystack{:}
-\let\stack=\emptystack
-\def\push#1{\edef\stack{#1.\stack}}
-\def\topaux#1.#2:{#1}
-\def\topstack{\expandafter\topaux\stack}
-\def\popaux#1.#2:{\gdef\stack{#2:}}
-\def\pop{\expandafter\popaux\stack}
 
-\def\@sproof{\expandafter\push{\arabic{pfStep}}%
+
+\def\@pf@emptystack{:}
+\let\@pf@stack=\@pf@emptystack
+\def\@pf@push#1{\edef\@pf@stack{#1.\@pf@stack}}
+\def\@pf@topaux#1.#2:{#1}
+\def\@pf@topstack{\expandafter\@pf@topaux\@pf@stack}
+\def\@pf@popaux#1.#2:{\gdef\@pf@stack{#2:}}
+\def\@pf@pop{\expandafter\@pf@popaux\@pf@stack}
+
+\def\@sproof{\expandafter\@pf@push{\arabic{pfStep}}%
   \bgroup
   \parindent=0pt
   \leftskip = \value{pfLevel}em
@@ -391,13 +393,14 @@ Moreover, the macros are fairly robust...they work with `amsthm`, and every othe
   \leftskip = \value{pfLevel}em
   \advance\leftskip\value{pfLevel}em
   }
-\def\sproof{\par
+\def\sproof{%\par
   \@sproof}
 \def\endsproof{\par\@endsproof
-  \setcounter{pfStep}{\topstack}
-  \pop 
+  \setcounter{pfStep}{\@pf@topstack}
+  \@pf@pop 
   \ifnum\value{pfLevel}=0\medbreak%\parindent=\oldparindent
   \fi}
+
 
 
 \def\step{\par\refstepcounter{pfStep}\thepfStep.\enspace}
