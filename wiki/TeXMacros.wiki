@@ -417,9 +417,9 @@ Moreover, the macros are fairly robust...they work with `amsthm`, and every othe
 How do we use these particular macros? Well, here's some example code:
 
 {{{
-\begin{thm}
+\begin{prop}\label{prop:exDemonstrating a structured proof}
   There does not exist $r$ in $\QQ$ such that $r^{2}=2$.
-\end{thm}
+\end{prop}
 \begin{sproof}
 \pfsketch We assume $r^{2}=2$ for $r\in\QQ$ and obtain a contradiction.
 Writing $r=m/n$, where $m$ and $n$ have no common divisors,
@@ -427,32 +427,60 @@ we deduce from $(m/n)^{2}=2$  and the lemma that both $m$ and $n$
 must be divisible by 2.
 \assume 1. $r\in\QQ$\label{assume:1}
 \assumption 2. $r^{2}=2$
-\prove{False}
+\prove We have a contradiction.
 \step\label{pf:step:1.1} Choose $m$, $n$ in $\ZZ$ such that
-\par\hskip 2.75em 1. $\gcd(m,n) =1$
+\par\hskip 2.75em 1. $\gcd(m,n)=1$
 \par\hskip 2.75em 2. $r = (m/n)$
 \begin{sproof}
-  \step\label{pf:step:2.1} Choose $p$, $q$ in $\ZZ$ such that $q\neq 0$ and $r=p/q$.
-    \pf\ By assumption \ref{assume:1}:1.
+  \step Choose $p$ and $q$ in $\ZZ$ such that $q\not=0$ and
+  $r=p/q$.\label{pf:example:step:2.1}
+  \pf By assumption \hyperref[assume:1]{$\<0\>$:1}.
+  \pflet\label{pf:example:defnOfMAndN} $m:=p/\gcd(p,q)$\\
+  $\hphantom{\textsc{Let:\enspace}}$ $n:=q/\gcd(p,q)$.
+  \step $m,n\in\ZZ$.
+  \pf By \ref{pf:example:step:2.1} and by definition of $m$ and $n$.
+  \step We have $r=m/n$ since
+  \begin{subequations}
+    \begin{align}
+\mbox{\textsc{Proof:}}\quad m/n &=
+\frac{p/\gcd(p,q)}{q/\gcd(p,q)}&&\quad[\mbox{\hyperref[pf:example:defnOfMAndN]{\textsc{Definition} of $m$ and $n$}}]\\
+&= p/q&&\quad [\mbox{Simple algebra}]\\
+&= r  &&\quad [\mbox{By \ref{pf:example:step:2.1}}]
+    \end{align}
+  \end{subequations}
+  \step $\gcd(m,n)=1$ by definition of the greatest common
+  divisor, it suffices to:
 
-  \pflet{$m$ $:=$ $p/\gcd(p,q)$\\
-        $\phantom{\textsc{Let: }}$ $n$ $:=$ $q/\gcd(p,q)$}
+  \begin{sproof}
+    \assume \label{pf:example:assume2:1}1. $s$ divides $m$;
+    \assumption \label{pf:example:assume2:2}2. $s$ divides $n$.
+    \prove $s=\pm1$.
+    \step\label{pf:example:step3.1} $s\cdot\gcd(p,q)$ divides $p$, by assumption \hyperref[pf:example:assume2:1]{$\<2\>$:1}
+    and \hyperref[pf:example:defnOfMAndN]{\textsc{Definition of} $m$}.
+    \step\label{pf:example:step3.2} $s\cdot\gcd(p,q)$ divides $q$, by assumption \hyperref[pf:example:assume2:2]{$\<2\>$:2}
+    and \hyperref[pf:example:defnOfMAndN]{\textsc{Definition of} $n$}.
+    \step This implies that $s=\pm1$ by steps
+    \ref{pf:example:step3.1}, \ref{pf:example:step3.2}, and by
+    the definition of the greatest common divisor.
+  \end{sproof}
 
-  \step $m,n\in \ZZ$
-    \pf\ \ref{pf:step:2.1} and definition of $m$ and $n$.
-  \step $r=m/n$
-    \pf\ We have the following chain of reasoning:
-\begin{eqnarray*}
-m/n &=& \displaystyle\frac{p/\gcd(p,q)}{q/\gcd(p,q)}\\
-    &=& p/q\\
-    &=& r
-\end{eqnarray*}
-\begin{sproof}
-\step But it really is obvious
+  \step Thus we have constructed $m$ and $n$ with the desired properties.
 \end{sproof}
-\step No, really, it is obvious.
-\end{sproof}
-\step $\gcd(m,n)=1$
+\step $2$ divides $m$.
+\pf $m/n=2\implies m=2n\implies$ 2 divides $m$ 
+\step $2$ divides $n$. 
+\pf Let $m=2t$, then 
+\begin{subequations}
+\begin{align}
+(m/n)^{2} &= 2\\
+&= (4t^{2})/n^{2}\\
+\implies 4t^{2} &= 2n^{2}\\
+\implies 2t^{2} &= n^{2}\\
+\implies \,\hphantom{2}n&\mbox{ is even}
+\end{align}
+\end{subequations}
+\step This contradicts the property
+$\gcd(m,n)=1$ in step \ref{pf:step:1.1}.\quad\slug
 \end{sproof}
 }}}
 
