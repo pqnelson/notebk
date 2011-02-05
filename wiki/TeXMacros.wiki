@@ -403,13 +403,16 @@ Moreover, the macros are fairly robust...they work with `amsthm`, and every othe
 
 
 
-\def\step{\par\refstepcounter{pfStep}\thepfStep.\enspace}
-\def\assume{\par\phantomsection\textsc{Assume:}\enspace}
-\def\prove{\par\phantomsection\textsc{Prove:}\enspace}
-\def\assumption{\par\phantomsection$\hphantom{\textsc{Assume:}}$\enspace}
-\def\pf{\par\phantomsection$\hphantom{\textsc{\thepfStep.\enspace}}$\textsc{Proof:}\enspace}
-\def\pfsketch{\par\phantomsection\textsc{Sketch of Proof:}\enspace}
-\def\pflet{\par\phantomsection\textsc{Let:}\enspace}
+\def\step{\nobreak\vskip0pt\nobreak\refstepcounter{pfStep}\thepfStep.\enspace}
+\def\assume{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Assume:}\enspace}
+\def\prove{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Prove:}\enspace}
+\def\assumption{\nobreak\vskip0pt\nobreak\phantomsection$\hphantom{\textsc{Assume:}}$\enspace}
+\def\pf{\nobreak\vskip0pt\nobreak\phantomsection$\hphantom{\textsc{\thepfStep.\enspace}}$\textsc{Proof:}\enspace}
+\def\pfsketch{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Sketch of Proof:}\enspace}
+\def\pflet{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Let:}\enspace}
+\def\inductiveHypothesis{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Inductive Hypothesis:}\enspace}
+\def\baseCase{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Base Case:}\enspace}
+\def\inductiveCase{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Inductive Case:}\enspace}
 
 \makeatother
 }}}
