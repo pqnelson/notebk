@@ -6,7 +6,11 @@ This is just a collection of resources on formal mathematics. Formal mathematics
 
 It would be nice if someone could write a proof checker for structured proofs (*cough*hint*hint*cough*)...
 
+Of course, what would be ideal --- if it turns out the author is too lazy to learn Coq, Mizar, Isar, etc. --- is to figure out how to translate a structured proof easily into a declarative proof. That way, it would be trivial (almost mechanical) translating structured proofs into a machine-checkable program.
+
 = Links =
 
   * [http://www.cs.ru.nl/~freek/projects/ Freek Wiedijk's Problems in Formalized Mathematics]
   * [http://people.pwf.cam.ac.uk/mg262/ A Language for Mathematics]
+  * [http://www.cs.ru.nl/~freek/notes/mv.pdf The Mathematical Vernacular (pdf)] *Abstract.* A "mathematical vernacular" is a formal language for writing mathematical proofs which resembles the natural language from mathematical texts. A number of systems (Hyperproof, Mizar, Isabelle/Isar) all basically have the same proof language. It consists of the combination of natural deduction with first order inference steps. In this note we compare these three languages and present a simplified common version. (9 pp.) 
+  * [http://www.cs.ru.nl/~freek/notes/newman.pdf The formal proof sketch challenge (pdf)] *Abstract.* A _formal proof sketch_ is a way to present a formal proof in a style that is close to an informal proof, but which also is a skeleton of the full formal proof (this makes it easy to relate the presentation to the detailed formalization.) Recently to us every informal proof has started to feel like a _challenge_, to write down the corresponding formal proof sketch. We take on this challenge for the informal proof of _Newman's lemma_ from Henk Barendregt's book about lambda-calculus. The specific difficulty of that proof is its main part, which just is a pair of diagrams without any explanation. (15 pp.) 
