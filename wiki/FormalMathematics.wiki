@@ -1,0 +1,12 @@
+#summary Notes and web-resources on Formal Mathematics.
+
+= Introduction =
+
+This is just a collection of resources on formal mathematics. Formal mathematics is basically mathematics presented in a purely "symbolic way." So, imagine we had some programming language that we use to express mathematics...that's formalized mathematics in a nutshell.
+
+It would be nice if someone could write a proof checker for structured proofs (*cough*hint*hint*cough*)...
+
+= Links =
+
+  * [http://www.cs.ru.nl/~freek/projects/ Freek Wiedijk's Problems in Formalized Mathematics]
+  * [http://people.pwf.cam.ac.uk/mg262/ A Language for Mathematics]
