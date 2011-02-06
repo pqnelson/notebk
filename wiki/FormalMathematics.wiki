@@ -1,5 +1,7 @@
 #summary Notes and web-resources on Formal Mathematics.
 
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 This is just a collection of resources on formal mathematics. Formal mathematics is basically mathematics presented in a purely "symbolic way." So, imagine we had some programming language that we use to express mathematics...that's formalized mathematics in a nutshell.
@@ -7,6 +9,12 @@ This is just a collection of resources on formal mathematics. Formal mathematics
 It would be nice if someone could write a proof checker for structured proofs (*cough*hint*hint*cough*)...
 
 Of course, what would be ideal --- if it turns out the author is too lazy to learn Coq, Mizar, Isar, etc. --- is to figure out how to translate a structured proof easily into a declarative proof. That way, it would be trivial (almost mechanical) translating structured proofs into a machine-checkable program.
+
+== Mathematical Vernacular ==
+
+Frank Wiedijk wrote a short [http://www.cs.ru.nl/~freek/notes/mv.pdf note (pdf)] on what de Bruijn called "mathematical vernacular". The idea is kind of similar to a structured proof, in the sense [http://research.microsoft.com/en-us/um/people/lamport/pubs/pubs.html#lamport-how-to-write Lamport]. 
+
+Wiedijk introduces a formal grammar for certain "[http://en.wikipedia.org/wiki/Reserved_word Reserved Words]" which indicate some rule of inference (take from natural deduction). It is tempting to start using such "vernacular" in structured proofs, but...well, it's something to think about.
 
 = Links =
 
