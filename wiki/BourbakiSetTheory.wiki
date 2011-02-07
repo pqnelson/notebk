@@ -7,4 +7,11 @@ I once tried to read Bourbaki's _Theory of Sets_ but found it utterly incoherent
   # J. Grimm, "Implementation of Bourbaki's Elements of Mathematics in Coq: Part One, Theory of Sets" [http://hal.archives-ouvertes.fr/docs/00/40/81/43/PDF/RR-6999.pdf ePrint (PDF)] --- note it is 204 pages.
   # J. Grimm, "Implementation of Bourbaki's Elements of Mathematics in Coq: Part Two; Ordered Sets, Cardinals, Integers" [http://hal.archives-ouvertes.fr/docs/00/44/07/86/PDF/RR-7150.pdf ePrint (pdf)] --- note it is 307 pages long.
 
-Mr Grimm kindly explains the frustratingly cryptic notation and terms used by Bourbaki.
+Mr Grimm kindly explains the frustratingly cryptic notation and terms used by Bourbaki. For example
+
+  Bourbaki defines (∃x)R as (τ,,x,,(R)|x)R. Write y instead of τ,,x,,(R). Our 
+  expression is (y|x)R. It does not contain the variable x, since x is not in y. 
+  If (∃x)R is true, then R is true for at least one object, namely y. 
+  This object is explicit: we do not need to introduce a specific axiom of choice. 
+  Axiom scheme S5 states the converse: if for some T, (T|x) R is true, then 
+  (∃x)R is true. (Part 1, page 11)
