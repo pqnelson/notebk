@@ -16,7 +16,39 @@ Frank Wiedijk wrote a short [http://www.cs.ru.nl/~freek/notes/mv.pdf note (pdf)]
 
 Wiedijk introduces a formal grammar for certain "[http://en.wikipedia.org/wiki/Reserved_word Reserved Words]" which indicate some rule of inference (take from natural deduction). It is tempting to start using such "vernacular" in structured proofs, but...well, it's something to think about.
 
-It appears to me that `take x;` is the usual declaration of a variable `x`. How do we initialize it to some value? Well, `consider x such that ...;` is how to initialize a variable. I may be wrong, but that appears how the mathematical vernacular is set up...
+It appears to me that "`take x;`" is the usual declaration of a variable "`x`". How do we initialize it to some value? Well, "`consider x such that ...;`" is how to initialize a variable. I may be wrong, but that appears how the mathematical vernacular is set up...
+
+Although Lamport's idea is beautiful, there is something indescribably tempting in Wiedijk's version of the "mathematical vernacular".
+
+If one wanted to typeset it, a poor man's version would be:
+
+{{{
+\usepackage{listings}
+\lstdefinelanguage{mv} {%
+  basicstyle=\ttfamily,%
+  keywordstyle=\bfseries,
+  mathescape=true,
+  flexiblecolumns=false,
+  xleftmargin=1pc,
+  emph={[1]let,assume,consider,such that,take,per cases,suppose,thus,proof,by,end},%
+  emphstyle={[1]\scshape},%
+  showstringspaces=false
+}
+\lstnewenvironment{proof}
+{\lstset{language=mv}}
+{\smallskip}
+
+%% example usage
+%% \begin{code}
+%% $\forall x(A\land B\Rightarrow C\land D)$
+%% proof
+%%   let $a$;
+%%   assume L4: $A\land B$;
+%%   thus $C$ by L1,L4;
+%%   thus $D$ by L2,L4;
+%% end;
+%% \end{code}
+}}}
 
 = Links =
 
