@@ -1,4 +1,4 @@
-#summary LaTeX macros for the literate Hhaskell style.
+#summary LaTeX macros for the literate Haskell style.
 
 = Introduction =
 
