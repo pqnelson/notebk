@@ -16,6 +16,8 @@ Frank Wiedijk wrote a short [http://www.cs.ru.nl/~freek/notes/mv.pdf note (pdf)]
 
 Wiedijk introduces a formal grammar for certain "[http://en.wikipedia.org/wiki/Reserved_word Reserved Words]" which indicate some rule of inference (take from natural deduction). It is tempting to start using such "vernacular" in structured proofs, but...well, it's something to think about.
 
+It appears to me that `take x;` is the usual declaration of a variable `x`. How do we initialize it to some value? Well, `consider x such that ...;` is how to initialize a variable. I may be wrong, but that appears how the mathematical vernacular is set up...
+
 = Links =
 
   * [http://www.cs.ru.nl/~freek/projects/ Freek Wiedijk's Problems in Formalized Mathematics]
