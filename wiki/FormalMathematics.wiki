@@ -50,6 +50,43 @@ If one wanted to typeset it, a poor man's version would be:
 %% \end{code}
 }}}
 
+=== Term and Formula ===
+
+I have been wondering about this, the grammar for Wiedijk's mathematical vernacular says that (pp 5--6):
+
+  _step_ =
+  
+  ...
+  
+  | `consider` _variable_ {`,` _variable_} `such that` _proposition_ _justification_ `;`
+  
+  | `take` _term_ {`,` _term__} `;`
+
+So what exactly is the grammatical difference between a variable and a term?
+
+In first order logic, a term is either a variable or a function of finitely many terms...perhaps that is what is meant.
+
+Although `take` is needed to prove an existential fact. The example is generally:
+{{{
+⟨proof of ∃x.P(x)⟩ ≡
+    ⟨preliminary steps⟩
+    take a;
+    ⟨proof of P(a)⟩
+}}}
+It is described as existential introduction. But an existential introduction allows us to replace any number of occurrences of a constant with a free variable, and prefix the resulting sentence with an existential quantifier.
+
+The `consider` step is used to apply an existential fact. It is used:
+{{{
+⟨proof of A⟩ ≡
+    ⟨preliminary steps⟩
+    consider x such that P(x) by ...;
+    ⟨proof of A⟩
+}}}
+This is supposed to remove an existential quantifier...although I don't exactly see how.
+
+*Remark.* Perhaps a more accurate statement is that `consider ... such that ...;`
+really initializes the variable, but we cannot use it until we `take` it. So the difference is that when we `consider` things, it is as though we are discussing constants (FAPP), whereas if we `take` them...it is a variable in the sense of programming.
+
 = Links =
 
   * [http://www.cs.ru.nl/~freek/projects/ Freek Wiedijk's Problems in Formalized Mathematics]
