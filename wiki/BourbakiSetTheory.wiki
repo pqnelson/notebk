@@ -15,3 +15,5 @@ Mr Grimm kindly explains the frustratingly cryptic notation and terms used by Bo
   This object is explicit: we do not need to introduce a specific axiom of choice. 
   Axiom scheme S5 states the converse: if for some T, (T|x) R is true, then 
   (∃x)R is true. (Part 1, page 11)
+
+This turns out to be Bourbaki's bizarre formulation of [http://en.wikipedia.org/wiki/Epsilon_calculus Epsilon Calculus] which has become more or less antiquated.
