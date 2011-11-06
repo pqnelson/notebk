@@ -87,8 +87,12 @@ This is supposed to remove an existential quantifier...although I don't exactly 
 *Remark.* Perhaps a more accurate statement is that `consider ... such that ...;`
 really initializes the variable, but we cannot use it until we `take` it. So the difference is that when we `consider` things, it is as though we are discussing constants (FAPP), whereas if we `take` them...it is a variable in the sense of programming.
 
-= Links =
+*Remark.* Wiedijk suggests in papers written after his "Mathematical Vernacular" note to use a "formal proof sketch" which is language dependent. That is to say, pick some declarative theorem prover _X_ and write up your proof in its language. It will be close to what you would've written, because it is declarative, but it won't compile (it's too ambiguous). Nevertheless, it's a "sketch" of what the formal proof looks like, and indeed after filling-in-the-details it's a correct proof. 
 
+(Personally, I think the formal language specified by the "mathematical vernacular" is the better route...)
+
+= Links =
+  * John Harrison, "Formalized Mathematics." Eprint: [http://www.cl.cam.ac.uk/~jrh13/papers/form-math3.html online]. Technical Report 36, Turku Centre for Computer Science (TUCS) 
   * [http://www.cs.ru.nl/~freek/projects/ Freek Wiedijk's Problems in Formalized Mathematics]
   * [http://people.pwf.cam.ac.uk/mg262/ A Language for Mathematics]
   * [http://www.cs.ru.nl/~freek/notes/mv.pdf The Mathematical Vernacular (pdf)] *Abstract.* A "mathematical vernacular" is a formal language for writing mathematical proofs which resembles the natural language from mathematical texts. A number of systems (Hyperproof, Mizar, Isabelle/Isar) all basically have the same proof language. It consists of the combination of natural deduction with first order inference steps. In this note we compare these three languages and present a simplified common version. (9 pp.) 
