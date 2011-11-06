@@ -95,7 +95,21 @@ What I realized early on was that macros are critically important. What I realiz
 
 This allows one to reuse portions of notes, and change one line of LaTeX code.
 
-That's the only advice I have to give. Oh, and perhaps Misner, Thorne, and Wheeler's _Gravitation_ is a good source of typographical ideas.
+That's the only advice I have to give. 
+
+Oh, and perhaps Misner, Thorne, and Wheeler's _Gravitation_ is a good source of typographical ideas.
+
+If you find a document on arXiv with some fancy typography you'd like to emulate, you can download it's source code and find what they did.
+
+== Learn Metapost ==
+
+I would also urge the aspiring writer to learn Metapost. This is the program Knuth uses for diagrams in his _Art of Computer Programming_. 
+
+Also keep one file full of common examples (e.g., plotting a function, drawing an undirected graph, etc. etc. etc.). 
+
+When you do something more (e.g., doodles in differential geometry), be sure to update your "list of examples".
+
+You can draw maps with metapost too. I have been pondering for a while how to best do this. I think it would be best to write a program that would obtain the coastal coordinates, and pick out one point every _x_ miles. This spares a lot of memory for metapost.
 
 = Failing? =
 
