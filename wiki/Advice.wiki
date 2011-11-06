@@ -1,0 +1,81 @@
+#summary Advice on writing based on experience.
+
+= Introduction =
+
+  _I see it all perfectly; there are two possible situations — 
+  one can either do this or that. My honest opinion and my friendly advice is this:
+  do it or do not do it — you will regret both._ 
+  — Soren Kierkegaard, _Either/Or_ (1843)
+
+I have been thinking about what advice I should give based on my experience writing mathematics and physics notes. It may not be much, but I figure it may help someone.
+
+<wiki:toc max_depth="3" />
+
+= How much to write =
+
+This is a difficult problem. I kind of followed the pattern of Medieval scholars, who copied down everything they could (because they probably would never be able to return to the book in their lifetime). This is not a bad approach, depending on who you are or what you are doing.
+
+The problem I have found is trying to organize the notes into books. Writing too much into one paper scares people away.
+
+It is far better to write something that is mostly self-contained, and about precisely one thing. For example, write about the convergence of sequences in real analysis. This could take about 20 pages. Include plenty of detailed examples. Write up your own exercises. This may take up 40 pages altogether. 
+
+This is better than beginning with the definition of a set, and moving on from there. It is better to begin with a really quick review of the relevant set theory _in an appendix_ and if so possessed write up some more notes on set theory, then reference them.
+
+= What to Write =
+
+Typically it is better to write about stuff no one else has. For example, my notes on Feynman diagrams algorithmically go through the calculations of Feynman diagrams in φ^4^ theory and QED. It goes through many examples, points out step-by-step what to do, makes everything crystal clear.
+
+On the other hand, what not to write, is probably a book (e.g., my _Elements_ fascicles 0). I don't think anyone has the patience for it. It's actually worse for the author, because you get trapped into a field that you may not want to study (e.g., foundations of mathematics!).
+
+However, if one were to write a book, the best thing to do is treat it like a doctoral thesis: write it all down, type it all up, then parcel it out bit by bit.
+
+It's not hard to write 3 to 10 pages of mathematics notes in each "parcel". Then you do this for a long time, and you have a book ready. That's what Terry Tao did with his blog (and still continues to do it!).
+
+== Getting the Scope Right ==
+
+This is the hardest bit of writing notes. It's too easy to get lost in a downward spiral, and instead of writing about Lie algebras you end up on some random topic.
+
+A good rule of thumb is, periodically compile the LaTeX document. Every 5 pages of pdf, ask yourself: is this as concise and to the heart as possible?
+
+It's probably best if you begin with a very narrow topic or question in mind (e.g., how do I get a number out of a Feynman diagram?), which turns out to be more useful.
+
+Again, this can be problematical if the question is too vague (e.g., what's a von Neumann algebra?). It's better to read up on it a little, then ask specific questions (e.g., how do I get a von Neumann algebra from a C{{{*}}}-algebra?).
+
+_Overly Specific questions are better than overly general questions._
+
+  _Either write things worth reading,
+  Or do things worth the writing._
+  — Ben Franklin, _Poor Richard's Almanack_ (1738)
+
+  _You write with ease to show your breeding,
+  But easy writing's curst hard reading._
+  — Richard Brinsley Sheridan, _Clio's Protest_ (1819).
+
+= Distributing Notes =
+
+It's better to have thousands of downloads of notes on specific questions, than one pdf on each field of mathematics. 
+
+Consequently, Google Code is not the ideal format for distributing notes. I wouldn't know what could be better, but just having a chronological list of documents is not ideal.
+
+  _The moment a man sets his thoughts down on paper, however secretly, 
+  he is in a sense writing for publication._
+  — Raymond Chandler, _Raymond Chandler Speaking_ (1962)
+
+= LaTeX Macros =
+
+What I realized early on was that macros are critically important. What I realized late was: notation should be a macro.
+
+This allows one to reuse portions of notes, and change one line of LaTeX code.
+
+That's the only advice I have to give. Oh, and perhaps Misner, Thorne, and Wheeler's _Gravitation_ is a good source of typographical ideas.
+
+= Failing? =
+
+I think it's common to spend a lot of energy writing something, and finding (_x_ months later) that is has only 2 downloads. 
+
+One should be writing for _one's self_ and not for an audience. The same reason why one does math for one's own pleasure.
+
+Avoid thinking you've failed because no one downloads your stuff.
+
+  _It is hard to fail, but it is worse never to have tried to succeed._
+  — Theodore Roosevelt, _Speech at the Hamilton Club_ (1899).
