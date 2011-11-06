@@ -111,6 +111,22 @@ Oh, and perhaps Misner, Thorne, and Wheeler's _Gravitation_ is a good source of 
 
 If you find a document on arXiv with some fancy typography you'd like to emulate, you can download it's source code and find what they did.
 
+== Commutative Diagrams ==
+
+This is always a sticky subject "How to do commutative diagrams in LaTeX?"
+
+The laziest solution is probably the commutative diagrams package {{{diagrams.tex}}} which must be renamed to {{{diagrams.sty}}}. It is pretty good, but it has some shortcomings (e.g., no curved arrows).
+
+Some prefer {{{xy-pic}}} instead, which is more robust. Note that {{{xy-pic}}} is not as well documented despite being more powerful.
+
+*NOTE* the internal diagram pictures in Lawvere's books _Conceptual Mathematics_ and _Set Theory for Mathematicians_ was drawn up using {{{xy-pic}}}, so it is incredibly useful and robust!
+
+I think I just need to learn more from the [http://www.tug.org/applications/Xy-pic/ xy-pic home page]...
+
+== Spectral Sequences ==
+
+Spectral sequences may be drawn using commutative diagrams. There is a package {{{sseq.sty}}} which type sets spectral sequences, but sadly it is a bit bloated...
+
 == Learn Metapost ==
 
 I would also urge the aspiring writer to learn Metapost. This is the program Knuth uses for diagrams in his _Art of Computer Programming_. 
