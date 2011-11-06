@@ -79,6 +79,16 @@ _Overly Specific questions are better than overly general questions._
   But easy writing's curst hard reading._
   — Richard Brinsley Sheridan, _Clio's Protest_ (1819).
 
+== Keep a List ==
+
+One thing that is worth mentioning, that I've learned from a course in General Relativity. We had to write a term paper that was 7 to 10 pages long on a subject, and the professor gave us a list of 60 topics in General Relativity to talk about.
+
+This gave me a valuable lesson: keep a list of topics to write about. You can add more stuff as you learn more stuff.
+
+Each item on the list should be explainable in 7 to 10 pages, and you can divide up tasks into smaller chunks.
+
+I always write as if I had to explain it to myself six months ago, which enables me to figure out what heuristics and intuitions to convey.
+
 = Distributing Notes =
 
 It's better to have thousands of downloads of notes on specific questions, than one pdf on each field of mathematics. 
