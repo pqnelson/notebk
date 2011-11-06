@@ -21,6 +21,34 @@ It is far better to write something that is mostly self-contained, and about pre
 
 This is better than beginning with the definition of a set, and moving on from there. It is better to begin with a really quick review of the relevant set theory _in an appendix_ and if so possessed write up some more notes on set theory, then reference them.
 
+== What I've Learned ==
+
+For me, writing about general relativity (and physics, in general) has always been _writing addenda for Misner, Thorne, and Wheeler._
+
+That is to say, write self-contained expositions explaining the physics which is in a similar format as Misner, Thorne, and Wheeler's _Gravitation_.
+
+For example, if I were to write about classical mechanics. What to do? First, I would write up notes on the differential geometry of curves.
+
+Then I would write up a chapter on Newton's equations.
+
+Then I would show, in multiple ways (picking one "obvious" way for the text, and sticking the rest in a "Boxed" environment) how to derive Newton's equations from the differential geometry of curves.
+
+This naturally leads us to formulating Newton's second law as _trying to find a curve which satisfies this relationship._ It's a variational problem! Beautiful, we have connections back to the math we introduced.
+
+But what's more, we have Lagrangian mechanics! We should probably consider other variational approaches either in its own chapter or in a box.
+
+We can exhaustively study classical mechanics as a sort of "prelude" to _Gravitation_.
+
+== Caveats for Mathematics ==
+
+Let me give a concrete example of the peculiarities of mathematical writing. The biggest problem is the number of examples, and how much to do in an example.
+
+While studying Finite Groups, the notion of the [http://en.wikipedia.org/wiki/Wreath_product Wreath Product] was presented without any examples. So being an industrious student, I write a few examples.
+
+This has the problem of "picking good examples". I believe (perhaps naively) that this matures with time.
+
+But that is something that ought to be done. As a rule of thumb, people remember around 7 things...so have at least 7 examples for each concept.
+
 = What to Write =
 
 Typically it is better to write about stuff no one else has. For example, my notes on Feynman diagrams algorithmically go through the calculations of Feynman diagrams in φ^4^ theory and QED. It goes through many examples, points out step-by-step what to do, makes everything crystal clear.
