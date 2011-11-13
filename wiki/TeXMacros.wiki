@@ -98,6 +98,19 @@ This produces a simple dangerous bend environment. I prefer this to the alternat
   {\medbreak\par}
 }}}
 
+== Links to ArXiv ==
+
+When referring to an eprint from arXiv, the suggested syntax is something like {{{arXiv:gr-qc/xxxxxx}}} or (nowadays) {{{arXiv:xxx.yyy [gr-qc]}}}. One approach to do this is
+
+{{{
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+}}}
+
+So to cite the modern way, one could write {{{\arXiv[gr-qc]{xxx.yyy}}}}
+which formats it correctly. The older way, {{{\arXiv{gr-qc/xxxxxx}}}} would also be formatted correctly. Plus, they are links to the article!
+
 == Quotes From Others ==
 
 Knuth has these wonderful quotes from other authors. I wanted to use his macros in an environment setting. So here's my modified version of his macros:
