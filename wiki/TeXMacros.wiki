@@ -249,6 +249,59 @@ How one would use this, for example, would be:
 \end{exercises}
 }}}
 
+=== Without Predetermined Placement ===
+
+From [http://tex.stackexchange.com/questions/13635/exercises-in-lecture-notes-without-predetermined-placement TeX stackexchange], if one wanted to have exercises without predetermined placement, the general idea is to use the following:
+
+{{{
+\documentclass{article}
+\usepackage{amsthm}
+
+\theoremstyle{remark}
+\newtheorem{ExInternal}{Exercise}[section]
+
+\makeatletter
+\let\@exercises\@empty%
+\newcommand\exercise[2][]{%
+    \g@addto@macro\@exercises{%
+        \begin{ExInternal}[#1]%
+            #2%
+        \end{ExInternal}%
+    }%
+}
+
+\newcommand\exerciseshere{%
+    \subsection*{Exercises}
+    \@exercises%
+    \global\let\@exercises\@empty%
+}
+\makeatother
+\begin{document}
+
+\section{Prime Numbers}
+
+A \emph{prime number} is a positive integer other than $1$ that is only divisible by $1$ and itself.
+
+\exercise[Euclid's Theorem]{\label{ex:euclid}Show that there are infinitely many prime numbers.}
+
+As you will show in Exercise \ref{ex:euclid}, there are infinitely many primes.
+The number of primes that are smaller than a given natural number $n$ is denoted $\pi(n)$.
+\exercise{Find an asymptotic formula for $\pi(n)$. \emph{Hint:} You might find Exercise \ref{ex:zeta} helpful.}
+
+\exerciseshere
+
+\section{Zeta function}
+
+The zeta function is given by $\zeta(s) = \sum_{n=1}^\infty n^{-s}$, where $s$ is a complex number with real part bigger than $1$.
+\exercise{\label{ex:zeta}Extend $\zeta$ as far as possible and find all zeros of the function.}%
+For example $\zeta(2) = \frac{\pi^2}{6}$.
+
+
+\exerciseshere
+\end{document}
+}}}
+It would not be hard to modify this appropriately...
+
 == Answers ==
 
 The only way to make LaTeX write verbatim to a file was to use the {{{verbatim}}} package. And to make {{{answer}}} into an environment.
