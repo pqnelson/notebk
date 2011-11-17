@@ -77,6 +77,32 @@ I have noticed for some reason the `\medbreak` (etc.) commands give odd spacing.
 
 If you don't make this change, you may end up with problems when doing e.g. the suggested exercises using the macros below.
 
+== Text dimensions ==
+
+Text dimensions are interesting to change. For example, {{{amsart}}} has the dimensions
+{{{
+\textheight=50.5pc \topskip=10pt
+\textwidth=30pc
+\columnsep=10pt \columnseprule=0pt
+\marginparwidth=90pt
+\marginparsep=11pt
+}}}
+On the other hand, {{{svmono}}} (Springer's monograph class) has
+{{{
+\setlength{\textwidth}{117mm} % or 27.75pc
+\setlength{\textheight}{191mm} % roughly 45.17pc
+}}}
+Most of my notes use the {{{geometry}}} package:
+{{{
+\usepackage[top=6pc,%
+  textheight=8.9in,% or 53.4pc, compared to svmono's 45pc or amsart's 50.5pc
+  textwidth=33pc,%
+  inner=6pc,%
+  marginparwidth=9pc,%
+  marginparsep=1.5pc]{geometry}
+}}}
+I think a good sized margin is useful for scribbling.
+
 == Dangerous Bend ==
 
 This produces a simple dangerous bend environment. I prefer this to the alternatives out there, since this permits me to ramble on for paragraphs (as opposed to exactly 1 paragraph).
