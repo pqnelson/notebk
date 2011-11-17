@@ -49,6 +49,13 @@ This has the problem of "picking good examples". I believe (perhaps naively) tha
 
 But that is something that ought to be done. As a rule of thumb, people remember around 7 things...so have at least 7 examples for each concept.
 
+=== Two Things to do for Mathematics ===
+
+Whenever writing mathematics, be sure to frequently ask yourself:
+  # What have I just done?
+  # What do I _need_ to do?
+In both situations, also ask _Why?_ This helps yourself immensely, it is sometimes fitting for exposition, and should be omitted from research papers.
+
 = What to Write =
 
 Typically it is better to write about stuff no one else has. For example, my notes on Feynman diagrams algorithmically go through the calculations of Feynman diagrams in φ^4^ theory and QED. It goes through many examples, points out step-by-step what to do, makes everything crystal clear.
@@ -136,6 +143,60 @@ Also keep one file full of common examples (e.g., plotting a function, drawing a
 When you do something more (e.g., doodles in differential geometry), be sure to update your "list of examples".
 
 You can draw maps with metapost too. I have been pondering for a while how to best do this. I think it would be best to write a program that would obtain the coastal coordinates, and pick out one point every _x_ miles. This spares a lot of memory for metapost.
+
+= Examples =
+
+Mathematics consists of definitions, theorems, and proofs. But sometimes examples are useful for demonstrating a concept.
+
+Bagchi and Wells' "Varieties of Mathematical Prose" ([http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.52.5540 eprint]) notes a number of different types of examples: easy examples, motivating and delimiting examples, deceptive non-example, elucidatory example, grocery-list of examples.
+
+But there is also the matter of _how much detail_ to give in an example. Is it sufficient to write one sentence: "_X_ is a gadget."?
+
+In expository mathematics, yes; and in research mathematics, yes.
+
+On the other hand, notes and (undergraduate) textbooks require more. They may be _worked examples_ where we provide the _proof_ that _X_ really is such a gadget, because it has the same structure and satisfies the same properties. 
+
+What we can do is write in our LaTeX document:
+
+{{{
+\begin{example}
+We have $X$ be a gadget.
+\begin{soln}
+Observe that \dots % proof not shown
+\end{soln}
+\end{example}
+}}}
+
+This enables us to set a parameter, pass an option, whatever to enable the {{{soln}}} environment to be hidden (more precisely, just an alias for the {{{comment}}} environment) or exposed.
+
+== Structure of an Example ==
+
+The structure really depends on what you want your notes to do. If you are trying to show how a mathematician thinks, it might be better to consider working with "Question/Answer" environments. 
+
+One could be a little more formal, and do this in three steps:
+  # *Problem* is _X_ really a gadget, does it satisfy some property, etc.
+  # *Scratch Work* where we experiment and fiddle around.
+  # *Solution* where we present the rigorous mathematical statements proving _X_ satisfies some property or not.
+
+Again, we may encode each of these into environments which may be turned into {{{comment}}} environments in the header of the LaTeX document.
+
+*Question:* When should a problem, scratch work, or solution be shown? 
+
+*Answer:* When it would be instructive for the particular audience. Unfortunately, there is no definite algorithm to determine this. 
+
+Heuristically, the more pedantic and pedagogical the text is intended to be, the more needs to be shown.
+
+== Citing Examples? ==
+
+The golden rule of academia: cite too much. If you get an example from somewhere, be sure to cite it:
+
+{{{
+\begin{example}[{Hungerdunger, Hungerdunger, Hungerdunger, and McCormick~\cite{hhhm1}}]
+...
+\end{example}
+}}}
+
+If we come up with an example, and later find out that someone else found it first...I would be inclined to cite it or note afterwards "It was shown to us that Hungerdunger, Hungerdunger, Hungerdunger, and McCormick{{{~\cite{hhhm1}}}} considered this example independent of us."
 
 = Failing? =
 
