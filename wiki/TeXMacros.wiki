@@ -836,6 +836,17 @@ I am "on the fence" about the empty set notation. There are two versions of it, 
 
 The `\Antisymmetric` macro was written because I must confess to not being fond of using `\Lambda` but I would prefer to use something bigger than `\wedge`. The text style of `\bigwedge` seemed ideal, so I just defined a new macro to make it so.
 
+===Clifford Algebra Notation===
+
+Being fond of Lawson and Michelsohn's _Spin Geometry_, I adopted their notation:
+{{{
+\def\Cliff{\mathrm{C}\ell}  % for real clifford algebras
+\def\CCliff{\CC\ell}        % for complex clifford algebras
+\DeclareOperator{\Spin}{Spin} % spin groups
+\DeclareOperator{\Pin}{Pin}   % pin groups
+}}}
+Perhaps also some notation for Dirac operators?
+
 = Homework Macros =
 
 Here are my macros I use (typically) when doing homework.
