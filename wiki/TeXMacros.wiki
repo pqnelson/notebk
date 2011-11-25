@@ -12,6 +12,8 @@ There are a variety of macros that I have in my mind that needs to be articulate
 
 == Local and Global Coordinates ==
 
+This problem came up while working on symplectic geometry in Hamiltonian mechanics:
+
 It would be nice to have some sort of code that would allow me to set up some way of doing calculations locally and globally...right next to each other. I'm still trying to envision what this _should_ look like.
 
 == Tracks ==
@@ -21,6 +23,8 @@ Another thing that would be nice is to have "tracks" _à la_ Misner, Thorne, and
 == Book ==
 
 We have `\part`, `\chapter`, then sections...but it would be nice if we could add a `\book` that's weight -2. This should be trivial, but I don't have the time to do it at this very moment (it won't be necessary *until* I'm making this into a cohesive whole).
+
+I am tempted to deprecate this, and use Springer's `svmono` documentclass.
 
 == Boxes ==
 
@@ -45,7 +49,7 @@ Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah.
 \end{Boxed}
 }}}
 
-The disadvantage, which is glaringly obvious, is that it is necessary to have an argument for the `Boxed` environment. It'd be better if this could be modified to have it be an optional argument...
+The disadvantage, which is glaringly obvious, is that it is necessary to have an argument for the `Boxed` environment. It'd be better if this could be modified to have it be an optional argument...but it works well in a `book` or `svmono` document class.
 
 = Code =
 
@@ -108,8 +112,10 @@ I think a good sized margin is useful for scribbling.
 This produces a simple dangerous bend environment. I prefer this to the alternatives out there, since this permits me to ramble on for paragraphs (as opposed to exactly 1 paragraph).
 
 {{{
-\font\manual=manfnt
-\def\dbend{{\manual\char127}} % dangerous bend sign
+% usepackage{manual} or use the following:
+\@ifundefined{dbend}{\font\manual=manfnt %
+  \def\dbend{{\manual\char127}} % dangerous bend sign
+  }{}
 
 % Danger, Will Robinson!
 \newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
@@ -446,6 +452,393 @@ I decided to also redefine the Chapter macro to make it better. Of course, that'
 
 This is, again, in the spirit of Knuth's TAOCP.
 
+== Theorems ==
+
+I use the {{{amsthm}}} package, even though I am torn about it. It's not bad enough for me to write my own macros in frustration, at least not yet! So here are the macros I use to customize my theorems.
+
+{{{
+\usepackage{amsthm}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{criteria}[thm]{Criteria}
+\newtheorem*{DiracConjecture}{Dirac's Conjecture}
+\newtheorem*{bessel}{Bessel Inequality}
+\newtheorem*{parseval}{Parseval Equality}
+\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
+\newtheorem*{invFourier}{Fourier Inversion Theorem}
+\newtheorem*{plancherel}{Plancherel Theorem}
+\newtheorem*{samplingthm}{Sampling Theorem}
+\newtheorem*{dual}{Dual Principle for Categories}
+\newtheorem*{yoneda}{Yoneda Lemma}
+\newtheorem*{schur}{Schur's Lemma}
+\newtheorem*{implicitFunctionThm}{Implicit Function Theorem}
+\newtheorem*{minNum}{Minimal Number Principle}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{nonex}[thm]{NON-Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{fact}{Experimental Fact}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{con}[thm]{Conjecture} % if one wants a definition-like conjecture
+\newtheorem*{assume}{Assumption}
+\newtheorem*{quest}{Question}
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{sch}[thm]{Scholium}
+\newtheorem*{notation}{Notation}
+\newtheorem*{note}{Note}
+\newtheorem*{summary}{Summary}
+\newtheorem*{conclude}{Conclusion}
+}}}
+
+
+
+===Examples with QEF===
+I've been studying other subjects (e.g., biology, chemistry, physics, etc.) where examples _are_ the main thing studied. Moreover, this typically takes the form, in LaTeX, as:
+
+{{{
+\begin{ex} % example format
+Consider this problem\dots
+
+\noindent\textbf{Identify:\enspace} We want to find\dots, we have given\dots.
+
+\noindent\textbf{Set Up:\enspace} We will use these equations\dots
+
+\noindent\textbf{Execute:\enspace} We perform the calculations\dots
+
+\noindent\textbf{Evaluate:\enspace} How does it work? What's the key idea?
+\end{ex}
+}}}
+
+Consequently it is hard to tell when an example _ends_ unless one has a grocery list of examples. So, inspired by Euclid, we use a special QEF symbol:
+
+{{{
+% if \qedsymbol is \square...
+\newcommand\qefsymbol{\ensuremath\blacksquare}
+\newenvironment{example}{\begin{ex} %
+  \let\qedsymbol\qefsymbol % this is a temporary "let"
+  \pushQED{\qedsymbol}}%
+  {\popQED\end{ex}}
+}}}
+
+
+== Sketch of Proof ==
+
+I like to sometimes provide a __sketch__ of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used {{{amsthm}}}'s proof environment as inspiration:
+
+{{{
+\renewcommand{\qedsymbol}{\slug}
+
+\makeatletter
+\providecommand{\sketchname}{Sketch of Proof}
+\newenvironment{sketch}[1][\sketchname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+}}}
+
+Remember the {{{\slug}}} is the code borrowed from Knuth, it's just a particular version of the Halmos tombstone.
+
+== Bracket Macros ==
+
+I forgot where I found these macros, but I claim *no credit* for them. They were released into the public domain, so licensing really isn't an issue. Here are the lovely macros:
+
+{{{
+\makeatletter
+\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
+[\@bracketheight]}}
+\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
+{\@over@bracket[#1][0.3em]}}
+\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
+\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
+\nointerlineskip }\downbracketfill {#1}{#2}
+                              \crcr \noalign {\kern 3\p@ }
+                              \crcr  $\hfil \displaystyle {#3}\hfil $%
+                              \crcr} }}\limits}
+\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+\downbracketend{#1}{#2}$}
+\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
+
+
+\def\underbracket{%
+  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
+}
+\def\@underbracket[#1]{%
+  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
+}
+\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
+ \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
+ \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
+       \crcr \noalign {\kern 3\p@ }}}}\limits}
+\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
+	              {#1}{#2}$}
+\def\bracketend#1#2{\vrule height #2 width #1\relax}
+\makeatother
+
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+}}}
+
+They function like the {{{\underbrace}}} and {{{\overbrace}}} macros, except they take in an optional argument for the width of the bracket. I prefer using {{{[0.5pt]}}} for my brackets.
+
+== Mathematical Operators ==
+
+I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
+
+{{{
+\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\coker}{\mathop{\mathrm{Coker}}\nolimits}
+\newcommand{\erfi}{\mathop{\mathrm{erfi}}\nolimits}
+\newcommand{\erf}{\mathop{\mathrm{erf}}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
+\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
+\renewcommand{\arctan}{\mathop{\mathrm{ArcTan}}\nolimits}
+
+%% Differential Geometry refers to these quantities frequently as well
+\def\diff{\mathrm{Diff}}
+\def\vect{\mathrm{Vect}}
+
+\def\weak={\approx} % weak equality when working in classical gauge theory
+\def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
+
+
+
+% Notation used for algebraic topology
+\let\homotopic\sim
+}}}
+===Set Theory Notation===
+Here's the set theory notation I use:
+
+{{{
+%% Frequently used set theory notation
+\let\logic\texttt
+\newcommand\powerset[1]{\mathcal{P}(#1)}
+\newcommand\CC{\mathbb{C}}
+\newcommand\FF{\mathbb{F}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\OO{\mathbb{O}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\let\oldsetminus\setminus
+\def\setminus{-}
+\newcommand\universe{\mathcal{U}}
+\newcommand\domain{\mathop{\mathrm{dom}}\nolimits}
+\newcommand\codomain{\mathop{\mathrm{cod}}\nolimits}
+\let\propersubset\subset
+\let\propersupset\supset
+\let\oldsubset\subset
+\let\oldsupset\supset
+\let\subset\subseteq
+\let\supset\supseteq
+
+\let\oldemptyset\emptyset
+\let\varemptyset\varnothing
+}}}
+===Abstract Algebra Notation===
+This includes category theory, etc.
+
+{{{
+\newcommand{\tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\aut}{\mathop{\mathrm{Aut}}\nolimits}
+\renewcommand{\ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\lie}{\mathop{\mathrm{Lie}}\nolimits}
+\let\Lie\lie
+\renewcommand{\hom}{\mathop{\mathrm{Hom}}\nolimits}
+\def\fun{\mathop{\mathrm{Fun}}\nolimits} % like \hom but for categories
+\def\nat{\mathop{\mathrm{Nat}}\nolimits} % like \hom but for functors
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathrm{Ob}(#1)}
+\newcommand{\cat}[1]{\mathbf{#1}} % notation for a category, e.g. $\cat{Set}$
+
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+\newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
+\newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
+\newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
+\newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
+
+%% Lie groups frequently used
+\def\GL#1{\mathrm{GL}(#1)}
+\def\SL#1{\mathrm{SL}(#1)}
+\def\SO#1{\mathrm{SO}(#1)}
+\def\ORTH#1{\mathrm{O}(#1)}
+\def\U#1{\mathrm{U}(#1)}
+\def\SU#1{\mathrm{SU}(#1)}
+\def\Sp#1{\mathrm{Sp}(#1)}
+
+%% Categories frequently used
+\newcommand\Set{\cat{Set}} % category of sets
+\newcommand\FinSet{\cat{FinSet}} % category of finite sets
+\newcommand\Cat{\cat{Cat}} % category of categories
+\newcommand\Vect{\cat{Vect}} % category of vector spaces
+\newcommand\Top{\cat{Top}} % category of topological spaces
+\newcommand\Grp{\cat{Grp}} % category of groups
+\newcommand\Gpd{\cat{Gpd}} % category of groupoids
+\newcommand\Alg{\cat{Alg}} % category of algebras over a field
+\newcommand\Magm{\cat{Magm}} % category of Magmas
+
+\newcommand\ClassicalGroup[1]{\mathsf{#1}}
+\newcommand\Antisymmetric{{\textstyle\bigwedge\nolimits}}
+}}}
+
+===Remarks===
+The `\ClassicalGroup` macro is used to write the classical Lie groups using a particular font. This way, when working with finite groups, we can tell the difference between the Dihedral group and the `D_{n}` family of simple Lie groups. 
+
+I am "on the fence" about the empty set notation. There are two versions of it, and I cannot decide which is preferable --- the one that is standard in LaTeX, the other which is `\varnothing` in the AMS-symb package.
+
+The `\Antisymmetric` macro was written because I must confess to not being fond of using `\Lambda` but I would prefer to use something bigger than `\wedge`. The text style of `\bigwedge` seemed ideal, so I just defined a new macro to make it so.
+
+===Clifford Algebra Notation===
+
+Being fond of Lawson and Michelsohn's _Spin Geometry_, I adopted their notation:
+{{{
+\def\Cliff{\mathrm{C}\ell}  % for real clifford algebras
+\def\CCliff{\CC\ell}        % for complex clifford algebras
+\DeclareOperator{\Spin}{Spin} % spin groups
+\DeclareOperator{\Pin}{Pin}   % pin groups
+}}}
+Perhaps also some notation for Dirac operators?
+
+= Homework Macros =
+
+Here are my macros I use (typically) when doing homework.
+
+{{{
+\documentclass{article}
+\usepackage[top=6pc,textwidth=32pc,inner=6pc,%
+marginparwidth=9.5pc,marginparsep=1cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{marginnote}
+\font\manual=manfnt
+
+\newcounter{exercise}
+\newenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  {\bf A\uppercase{{\footnotesize nswer to}} #1:\enspace}\ignorespaces}
+\newcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+\numberwithin{equation}{exercise}
+\let\Bbb\mathbb
+\let\frak\mathfrak
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\hwmark}{}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyheadoffset[OR,EL]{8pc}
+\else
+\fancyhead[L]{\nouppercase{\hwmark}}
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{8pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{Math 261a Homework\#6} %%% XXX: replace this
+\title{Math 261A Homework 6} %%% XXX: replace this with current homework and class data
+\begin{document}
+
+\maketitle
+
+\begin{exercise}
+Let $V$ be the fundamental representation of $\frak{sl}(n)$. Let
+$V^{*}$ be the representation dual to $V$. Find  the
+decomposition of $V\otimes V$ and $V\otimes V^{*}$ into the
+direct sum of irreducible representations.
+\end{exercise}
+
+\answer Well, we first see that if
+\begin{equation}
+\rho\colon\frak{sl}(n)\to \frak{gl}(V)
+\end{equation}
+is our representation morphism and... % rest not shown
+
+\end{document}
+
+}}}
+
+= Deprecated Macros =
+
+Just in case someone is using these macros.
+
+*TODO* It is important to write my own theorem macros because {{{amsthm.sty}}} is incompatible with too many things. Here is a preliminary version:
+
+{{{
+\makeatletter
+\newcounter{defn}
+\setcounter{defn}{0}
+\newenvironment{proclaim}[1]{\medbreak\noindent{\textbf{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\newenvironment{@@thm}[1]{\begin{proclaim}{#1}\sl}{\end{proclaim}}
+\newenvironment{@defn}[1]{\begin{proclaim}{#1}}{\end{proclaim}}
+\newenvironment{@rmk}[1]{\medbreak\noindent{\textit{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+
+\newenvironment{thm}{\refstepcounter{defn}\begin{@@thm}{Theorem \arabic{defn}}}{\end{@@thm}}
+\newenvironment{lem}{\refstepcounter{defn}\begin{@@thm}{Lemma \arabic{defn}}}{\end{@@thm}}
+\newenvironment{cor}{\refstepcounter{defn}\begin{@@thm}{Corollary \arabic{defn}}}{\end{@@thm}}
+\newenvironment{prop}{\refstepcounter{defn}\begin{@@thm}{Proposition \arabic{defn}}}{\end{@@thm}}
+\newenvironment{prob}{\refstepcounter{defn}\begin{@@thm}{Problem \arabic{defn}}}{\end{@@thm}}
+
+\newenvironment{defn}{\refstepcounter{defn}\begin{@defn}{Definition \arabic{defn}}}{\end{@defn}}
+\newenvironment{fact}{\refstepcounter{defn}\begin{@defn}{Experimental Fact \arabic{defn}}}{\end{@defn}}
+\newenvironment{ex}{\refstepcounter{defn}\begin{@defn}{Example \arabic{defn}}}{\end{@defn}}
+\newenvironment{nonex}{\refstepcounter{defn}\begin{@defn}{NON-Example \arabic{defn}}}{\end{@defn}}
+\newenvironment{conjecture}{\refstepcounter{defn}\begin{@defn}{Conjecture \arabic{defn}}}{\end{@defn}}
+\newenvironment{axm}{\refstepcounter{defn}\begin{@defn}{Axiom \arabic{defn}}}{\end{@defn}}
+\newenvironment{notation}{\begin{@defn}{Notation}}{\end{@defn}}
+\newenvironment{assume}{\begin{@defn}{Assumption}}{\end{@defn}}
+\newenvironment{quest}{\begin{@defn}{Question}}{\end{@defn}}
+
+\newenvironment{rmk}{\refstepcounter{defn}\begin{@rmk}{Remark \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
+\newenvironment{sch}{\refstepcounter{defn}\begin{@rmk}{Scholium \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
+
+
+\let\pffont\textit
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
+\newenvironment{sketch}{\smallbreak\noindent\pffont{Sketch of Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
+\newenvironment{proof}{\smallbreak\noindent\pffont{Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
+\makeatother
+}}}
+
 == Structured Proofs ==
 
 Lamport's "[ How to Write a Proof]" article outlines some notion of a "structured proof." Sadly, his macros are rather dated. Moreover, one cannot use a simple list!
@@ -579,335 +972,4 @@ $\gcd(m,n)=1$ in step \ref{pf:step:1.1}.\quad\slug
 \end{sproof}
 }}}
 
-== Theorems ==
-
-I use the {{{amsthm}}} package, even though I am torn about it. It's not bad enough for me to write my own macros in frustration, at least not yet! So here are the macros I use to customize my theorems.
-
-{{{
-\usepackage{amsthm}
-
-\theoremstyle{plain}
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{conjecture}[thm]{Conjecture}
-\newtheorem*{DiracConjecture}{Dirac's Conjecture}
-\newtheorem*{bessel}{Bessel Inequality}
-\newtheorem*{parseval}{Parseval Equality}
-\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
-\newtheorem*{invFourier}{Fourier Inversion Theorem}
-\newtheorem*{plancherel}{Plancherel Theorem}
-\newtheorem*{samplingthm}{Sampling Theorem}
-\newtheorem*{dual}{Dual Principle for Categories}
-\newtheorem*{yoneda}{Yoneda Lemma}
-\newtheorem*{schur}{Schur's Lemma}
-\newtheorem*{implicitFunctionThm}{Implicit Function Theorem}
-\newtheorem*{minNum}{Minimal Number Principle}
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{ex}[thm]{Example}
-\newtheorem{nonex}[thm]{NON-Example}
-\newtheorem{axiom}{Axiom}
-\newtheorem{fact}{Experimental Fact}
-\newtheorem{prob}[thm]{Problem}
-\newtheorem{con}[thm]{Conjecture}
-\newtheorem*{notation}{Notation}
-\newtheorem*{assume}{Assumption}
-\newtheorem*{quest}{Question}
-\theoremstyle{remark}
-\newtheorem{rmk}[thm]{Remark}
-\newtheorem{sch}[thm]{Scholium}
-}}}
-
-*TODO* It is important to write my own theorem macros because {{{amsthm.sty}}} is incompatible with too many things. Here is a preliminary version:
-
-{{{
-\makeatletter
-\newcounter{defn}
-\setcounter{defn}{0}
-\newenvironment{proclaim}[1]{\medbreak\noindent{\textbf{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
-\newenvironment{@@thm}[1]{\begin{proclaim}{#1}\sl}{\end{proclaim}}
-\newenvironment{@defn}[1]{\begin{proclaim}{#1}}{\end{proclaim}}
-\newenvironment{@rmk}[1]{\medbreak\noindent{\textit{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
-
-\newenvironment{thm}{\refstepcounter{defn}\begin{@@thm}{Theorem \arabic{defn}}}{\end{@@thm}}
-\newenvironment{lem}{\refstepcounter{defn}\begin{@@thm}{Lemma \arabic{defn}}}{\end{@@thm}}
-\newenvironment{cor}{\refstepcounter{defn}\begin{@@thm}{Corollary \arabic{defn}}}{\end{@@thm}}
-\newenvironment{prop}{\refstepcounter{defn}\begin{@@thm}{Proposition \arabic{defn}}}{\end{@@thm}}
-\newenvironment{prob}{\refstepcounter{defn}\begin{@@thm}{Problem \arabic{defn}}}{\end{@@thm}}
-
-\newenvironment{defn}{\refstepcounter{defn}\begin{@defn}{Definition \arabic{defn}}}{\end{@defn}}
-\newenvironment{fact}{\refstepcounter{defn}\begin{@defn}{Experimental Fact \arabic{defn}}}{\end{@defn}}
-\newenvironment{ex}{\refstepcounter{defn}\begin{@defn}{Example \arabic{defn}}}{\end{@defn}}
-\newenvironment{nonex}{\refstepcounter{defn}\begin{@defn}{NON-Example \arabic{defn}}}{\end{@defn}}
-\newenvironment{conjecture}{\refstepcounter{defn}\begin{@defn}{Conjecture \arabic{defn}}}{\end{@defn}}
-\newenvironment{axm}{\refstepcounter{defn}\begin{@defn}{Axiom \arabic{defn}}}{\end{@defn}}
-\newenvironment{notation}{\begin{@defn}{Notation}}{\end{@defn}}
-\newenvironment{assume}{\begin{@defn}{Assumption}}{\end{@defn}}
-\newenvironment{quest}{\begin{@defn}{Question}}{\end{@defn}}
-
-\newenvironment{rmk}{\refstepcounter{defn}\begin{@rmk}{Remark \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
-\newenvironment{sch}{\refstepcounter{defn}\begin{@rmk}{Scholium \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
-
-
-\let\pffont\textit
-\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
-\newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
-\newenvironment{sketch}{\smallbreak\noindent\pffont{Sketch of Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
-\newenvironment{proof}{\smallbreak\noindent\pffont{Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
-\makeatother
-}}}
-
-== Sketch of Proof ==
-
-I like to sometimes provide a __sketch__ of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used {{{amsthm}}}'s proof environment as inspiration:
-
-{{{
-\renewcommand{\qedsymbol}{\slug}
-
-\makeatletter
-\providecommand{\sketchname}{Sketch of Proof}
-\newenvironment{sketch}[1][\sketchname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-        \itshape
-    #1\@addpunct{.}]\ignorespaces
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-\makeatother
-}}}
-
-Remember the {{{\slug}}} is the code borrowed from Knuth, it's just a particular version of the Halmos tombstone.
-
-== Bracket Macros ==
-
-I forgot where I found these macros, but I claim *no credit* for them. They were released into the public domain, so licensing really isn't an issue. Here are the lovely macros:
-
-{{{
-\makeatletter
-\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
-[\@bracketheight]}}
-\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
-{\@over@bracket[#1][0.3em]}}
-\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
-\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
-\nointerlineskip }\downbracketfill {#1}{#2}
-                              \crcr \noalign {\kern 3\p@ }
-                              \crcr  $\hfil \displaystyle {#3}\hfil $%
-                              \crcr} }}\limits}
-\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
-                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
-                  \leaders \vrule \@height #1 \@depth \z@ \hfill
-                  \leaders \vrule \@height #1 \@depth \z@ \hfill
-\downbracketend{#1}{#2}$}
-\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
-
-
-\def\underbracket{%
-  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
-}
-\def\@underbracket[#1]{%
-  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
-}
-\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
- \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
- \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
-       \crcr \noalign {\kern 3\p@ }}}}\limits}
-\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
-                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
-                    \leaders \vrule \@height #1 \@depth \z@ \hfill
-                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
-	              {#1}{#2}$}
-\def\bracketend#1#2{\vrule height #2 width #1\relax}
-\makeatother
-
-\def\mathllap{\mathpalette\mathllapinternal}
-\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
-\def\clap#1{\hbox to 0pt{\hss#1\hss}}
-\def\mathclap{\mathpalette\mathclapinternal}
-\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
-\def\mathrlap{\mathpalette\mathrlapinternal}
-\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
-}}}
-
-They function like the {{{\underbrace}}} and {{{\overbrace}}} macros, except they take in an optional argument for the width of the bracket. I prefer using {{{[0.5pt]}}} for my brackets.
-
-== Mathematical Operators ==
-
-I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing {{{$\aut{X}$}}} or something like that, then change one line of code to change the notation throughout the paper.
-
-{{{
-\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}
-\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
-\newcommand{\tr}{\mathop{\mathrm{Tr}}\nolimits}
-\newcommand{\aut}{\mathop{\mathrm{Aut}}\nolimits}
-\renewcommand{\ker}{\mathop{\mathrm{Ker}}\nolimits}
-\newcommand{\coker}{\mathop{\mathrm{Coker}}\nolimits}
-\newcommand{\erfi}{\mathop{\mathrm{erfi}}\nolimits}
-\newcommand{\erf}{\mathop{\mathrm{erf}}\nolimits}
-\let\<\langle
-\let\>\rangle
-\let\iso\cong
-\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
-\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
-\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
-\newcommand{\lie}{\mathop{\mathrm{Lie}}\nolimits}
-\let\Lie\lie
-\renewcommand{\arctan}{\mathop{\mathrm{ArcTan}}\nolimits}
-\renewcommand{\hom}{\mathop{\mathrm{Hom}}\nolimits}
-\def\fun{\mathop{\mathrm{Fun}}\nolimits} % like \hom but for categories
-\def\nat{\mathop{\mathrm{Nat}}\nolimits} % like \hom but for functors
-\let\Hom\hom
-\def\noparskip{}
-\newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
-\newcommand{\ob}[1]{\mathrm{Ob}(#1)}
-\newcommand{\cat}[1]{\mathbf{#1}} % notation for a category, e.g. $\cat{Set}$
-\newcommand\powerset[1]{\mathcal{P}(#1)}
-
-\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
-\newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
-\newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
-\newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
-\newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
-%% Frequently used set theory notation
-\let\logic\texttt
-\newcommand\CC{\mathbb{C}}
-\newcommand\FF{\mathbb{F}}
-\newcommand\NN{\mathbb{N}}
-\newcommand\OO{\mathbb{O}}
-\newcommand\QQ{\mathbb{Q}}
-\newcommand\RR{\mathbb{R}}
-\newcommand\ZZ{\mathbb{Z}}
-\let\oldsetminus\setminus
-\def\setminus{-}
-\newcommand\universe{\mathcal{U}}
-\newcommand\domain{\mathop{\mathrm{dom}}\nolimits}
-\newcommand\codomain{\mathop{\mathrm{cod}}\nolimits}
-\let\propersubset\subset
-\let\propersupset\supset
-\let\oldsubset\subset
-\let\oldsupset\supset
-\let\subset\subseteq
-\let\supset\supseteq
-%% Lie groups frequently used
-\def\GL#1{\mathrm{GL}(#1)}
-\def\SL#1{\mathrm{SL}(#1)}
-\def\SO#1{\mathrm{SO}(#1)}
-\def\ORTH#1{\mathrm{O}(#1)}
-\def\U#1{\mathrm{U}(#1)}
-\def\SU#1{\mathrm{SU}(#1)}
-\def\Sp#1{\mathrm{Sp}(#1)}
-
-%% Differential Geometry refers to these quantities frequently as well
-\def\diff{\mathrm{Diff}}
-\def\vect{\mathrm{Vect}}
-
-%% Categories frequently used
-\newcommand\Set{\cat{Set}} % category of sets
-\newcommand\FinSet{\cat{FinSet}} % category of finite sets
-\newcommand\Cat{\cat{Cat}} % category of categories
-\newcommand\Vect{\cat{Vect}} % category of vector spaces
-\newcommand\Top{\cat{Top}} % category of topological spaces
-\newcommand\Grp{\cat{Grp}} % category of groups
-\newcommand\Gpd{\cat{Gpd}} % category of groupoids
-\newcommand\Alg{\cat{Alg}} % category of algebras over a field
-\newcommand\Magm{\cat{Magm}} % category of Magmas
-
-\def\weak={\approx} % weak equality when working in classical gauge theory
-\def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
-
-\newcommand\ClassicalGroup[1]{\mathsf{#1}}
-\newcommand\Antisymmetric{{\textstyle\bigwedge\nolimits}}
-
-\let\oldemptyset\emptyset
-\let\varemptyset\varnothing
-
-% Notation used for algebraic topology
-\let\homotopic\sim
-}}}
-
-The `\ClassicalGroup` macro is used to write the classical Lie groups using a particular font. This way, when working with finite groups, we can tell the difference between the Dihedral group and the `D_{n}` family of simple Lie groups. 
-
-I am "on the fence" about the empty set notation. There are two versions of it, and I cannot decide which is preferable --- the one that is standard in LaTeX, the other which is `\varnothing` in the AMS-symb package.
-
-The `\Antisymmetric` macro was written because I must confess to not being fond of using `\Lambda` but I would prefer to use something bigger than `\wedge`. The text style of `\bigwedge` seemed ideal, so I just defined a new macro to make it so.
-
-===Clifford Algebra Notation===
-
-Being fond of Lawson and Michelsohn's _Spin Geometry_, I adopted their notation:
-{{{
-\def\Cliff{\mathrm{C}\ell}  % for real clifford algebras
-\def\CCliff{\CC\ell}        % for complex clifford algebras
-\DeclareOperator{\Spin}{Spin} % spin groups
-\DeclareOperator{\Pin}{Pin}   % pin groups
-}}}
-Perhaps also some notation for Dirac operators?
-
-= Homework Macros =
-
-Here are my macros I use (typically) when doing homework.
-
-{{{
-\documentclass{article}
-\usepackage[top=6pc,textwidth=32pc,inner=6pc,%
-marginparwidth=9.5pc,marginparsep=1cm]{geometry}
-\usepackage{amsmath,amsfonts,amssymb,amsthm}
-\usepackage{marginnote}
-\font\manual=manfnt
-
-\newcounter{exercise}
-\newenvironment{exercise}{\refstepcounter{exercise}\medbreak%
-  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
-  \small{\textbf{EXERCISE \theexercise}}\\%
-  \noindent}{}
-\def\ansno#1:{\medbreak\noindent%
-  {\bf A\uppercase{{\footnotesize nswer to}} #1:\enspace}\ignorespaces}
-\newcommand{\answer}{\par\medbreak % \answer simply
-  \ansno\theexercise: \\% prints directly
-  } % out when it's called 
-\numberwithin{equation}{exercise}
-\let\Bbb\mathbb
-\let\frak\mathfrak
-
-
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\newcommand{\hwmark}{}
-\if@twoside
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[LO,RE]{\nouppercase{\leftmark}}
-\fancyheadoffset[OR,EL]{8pc}
-\else
-\fancyhead[L]{\nouppercase{\hwmark}}
-\fancyhead[R]{\thepage}
-\fancyheadoffset[R]{8pc}
-\fi
-\cfoot{}
-\renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[L]{Math 261a Homework\#6} %%% XXX: replace this
-\title{Math 261A Homework 6} %%% XXX: replace this with current homework and class data
-\begin{document}
-
-\maketitle
-
-\begin{exercise}
-Let $V$ be the fundamental representation of $\frak{sl}(n)$. Let
-$V^{*}$ be the representation dual to $V$. Find  the
-decomposition of $V\otimes V$ and $V\otimes V^{*}$ into the
-direct sum of irreducible representations.
-\end{exercise}
-
-\answer Well, we first see that if
-\begin{equation}
-\rho\colon\frak{sl}(n)\to \frak{gl}(V)
-\end{equation}
-is our representation morphism and... % rest not shown
-
-\end{document}
-
-}}}
+I moved this to the deprecated section after carefully considering the structure of proofs. One should consider using the mathematical vernacular instead, if one wants to be formal; otherwise one should note the structure of the proof _before_ entering the proof environment.
