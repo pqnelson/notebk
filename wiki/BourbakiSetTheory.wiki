@@ -17,3 +17,23 @@ Mr Grimm kindly explains the frustratingly cryptic notation and terms used by Bo
   (∃x)R is true. (Part 1, page 11)
 
 This turns out to be Bourbaki's bizarre formulation of [http://en.wikipedia.org/wiki/Epsilon_calculus Epsilon Calculus] which has become more or less antiquated.
+
+==Axioms==
+
+This is a review of [http://texnicalstuff.blogspot.com/2011/10/epsilon-calculus.html my blogpost]. The basic five axioms for Bourbaki's set theory is:
+
+  # Axiom of extension, A1. (∀ x)(∀ y)((x⊂y and y⊂x) implies (x=y)). (Sets II §1.4, pg 67) 
+  # Axiom of the set of two elements, a.k.a. Axiom of Pairing, A2. (∀ x)(∀ y) Coll,,z,,(z=x or z=y). (Sets II §1.5, pg 69)
+  # Axiom of the ordered pair (Sets II §2.1, pg 72): (∀ x)(∀ x')(∀ y) (∀ y') (((x,y) = (x',y')) implies (x=x' and y=y')) 
+  # Axiom of the set of subsets (Sets II §5.1, pg 101): (∀ X) Coll,,Y,, (Y⊂X). In other words, for any set X, we can form its power set. 
+  # Axiom of infinity (Sets III §6.1, pg 183): A5. There exists an infinite set. 
+
+This is formally equivalent to the [http://en.wikipedia.org/wiki/Zermelo_set_theory Zermelo formulation] of set theory.
+
+The epsilon calculus gives the axiom of _global_ choice. Yes, _global_ choice.
+
+How? Well, we have the rule of inference:
+
+  ∀x ((A(x) if and only if B(x)) implies (εx A = εx B)) 
+
+which gives us the axiom of _global_ choice, because here the epsilon operator acts as the _choice operator_.
