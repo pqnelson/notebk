@@ -136,7 +136,7 @@ When referring to an eprint from arXiv, the suggested syntax is something like {
 
 {{{
 \def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
-\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
 \def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
 }}}
 
