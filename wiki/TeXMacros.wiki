@@ -536,7 +536,7 @@ Consequently it is hard to tell when an example _ends_ unless one has a grocery 
 % perhaps \ensuremath\triangle if one prefers...
 \newenvironment{example}{\begin{ex} %
   \let\qedsymbol\qefsymbol % this is a temporary "let"
-  \pushQED{\qedsymbol}}%
+  \pushQED{\qed}}%
   {\popQED\end{ex}}
 }}}
 Landi's arXiv eprint "An Introduction to Noncommutative Spaces and their Geometry" ([http://arxiv.org/abs/hep-th/9701078 arXiv:hep-th/9701078]) uses `\triangle` to end examples.
