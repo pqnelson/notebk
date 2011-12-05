@@ -498,7 +498,18 @@ I use the {{{amsthm}}} package, even though I am torn about it. It's not bad eno
 \newtheorem*{conclude}{Conclusion}
 }}}
 
+===Amsmath Exercise Environment===
+With exercises, `amsmath` suggests an `xca` environment. I would do the following
+{{{
+% if we don't have manfonts...
+% usepackage{manual} or use the following:
+\@ifundefined{mantriangleright}{\font\manual=manfnt %
+  \def\mantriangleright{{\manual\char'170}} % dangerous bend sign
+  }{}
 
+\newtheorem{xca}{\llap{\mantriangleright\kern.15em}Exercise}
+}}}
+This is based on Knuth's TeXbook exercise environment, which sticks a triangle into the margin. 
 
 ===Examples with QEF===
 I've been studying other subjects (e.g., biology, chemistry, physics, etc.) where examples _are_ the main thing studied. Moreover, this typically takes the form, in LaTeX, as:
@@ -521,13 +532,14 @@ Consequently it is hard to tell when an example _ends_ unless one has a grocery 
 
 {{{
 % if \qedsymbol is \square...
-\newcommand\qefsymbol{\ensuremath\blacksquare}
+\newcommand\qefsymbol{\ensuremath\blacksquare} 
+% perhaps \ensuremath\triangle if one prefers...
 \newenvironment{example}{\begin{ex} %
   \let\qedsymbol\qefsymbol % this is a temporary "let"
   \pushQED{\qedsymbol}}%
   {\popQED\end{ex}}
 }}}
-
+Landi's arXiv eprint "An Introduction to Noncommutative Spaces and their Geometry" ([http://arxiv.org/abs/hep-th/9701078 arXiv:hep-th/9701078]) uses `\triangle` to end examples.
 
 == Sketch of Proof ==
 
