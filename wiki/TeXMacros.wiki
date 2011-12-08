@@ -83,7 +83,20 @@ If you don't make this change, you may end up with problems when doing e.g. the 
 
 == Text dimensions ==
 
-Text dimensions are interesting to change. For example, {{{amsart}}} has the dimensions
+Text dimensions are interesting to change. 
+
+I would *highly recommend* using AMSTeX's `amsppt` (AMS Preprint) style, which would make
+{{{
+\usepackage[top=6pc,%
+  textheight=8.9in,% or 53.4pc, compared to svmono's 45pc or amsart's 50.5pc
+  textwidth=30pc,%
+  inner=6pc,%
+  marginparwidth=10pc,%
+  marginparsep=1.5pc]{geometry}
+}}}
+This is the best choice for notes/preprints, it allows the reader to write in the spacious-but-not-quite-absurd 2-inch margin.
+
+Other examples, {{{amsart}}} has the dimensions
 {{{
 \textheight=50.5pc \topskip=10pt
 \textwidth=30pc
