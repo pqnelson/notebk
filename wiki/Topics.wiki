@@ -1,0 +1,111 @@
+#summary Topics for stuff to write about
+
+<wiki:toc max_depth="3" />
+
+= Introduction =
+These are just a collection of topics and references of interesting stuff to look into...
+
+= Representation Theory =
+
+All of physics boils down to trivial problems in representation theory.
+
+References:
+  # Pavel Etingof, Oleg Golberg, Sebastian Hensel, Tiankai Liu, Alex Schwendner, Dmitry Vaintrob, Elena Yudovina, "Introduction to representation theory" [http://arxiv.org/abs/0901.0827 arXiv:0901.0827] (108 pages)
+  # Constantin Teleman [http://math.berkeley.edu/~teleman/math/RepThry.pdf Representation Theory] (pdf, 60 pages)
+  # Langland's [http://sunsite.ubc.ca/DigitalMathArchive/Langlands/pdf/gibbs-ps.pdf Representation theory - its rise and role in number theory] (pdf, 34 pages)
+  # Henry Cohn's [http://research.microsoft.com/en-us/um/people/cohn/Papers/reptheory.pdf Outline of Basic Representation Theory] (pdf, 7 pages)
+  # Andrew Baker's [http://www.maths.gla.ac.uk/~ajb/dvi-ps/groupreps.pdf Representations of Finite Groups]
+  # W Schmid [http://www.math.harvard.edu/~schmid/articles/brussels_1_30_04.pdf Geometric Methods in Representation Theory] (pdf, 33 pages)
+  # Kevin McGerty's [http://www2.imperial.ac.uk/~kmcgerty/GroupReps09/GrpRepTh.pdf Group Representation Theory] (pdf, 59 pages)
+  
+= Moonshine =
+Moonshine is a peculiar topic, because it is "some relationship" between "modular stuff" and "algebraic stuff".
+
+References:
+  # Terry Gannon's _Moonshine beyond the Monster_ and "Monstrous moonshine and the classification of CFT" ([http://arxiv.org/abs/math/9906167 arXiv:math/9906167])
+== Finite simple groups and the Monster ==
+This is often dismissed as "too simple" a subject to even discuss: finite simple groups are completely classified, thus trivial.
+
+The sporadic groups [viz. the Pariahs + the monster] and twisted finite groups are particularly interesting (in that, they are not like the other finite simple groups).
+
+But still there are a few good references:
+  # Robert Wilson's _Finite Simple Groups_
+  # Luis J. Boya's "Introduction to Sporadic Groups" [http://arxiv.org/abs/1101.3055 arXiv:1101.3055] (18 pages)
+  # Griess' _Twelve Sporadic Groups_
+  # A. A. Ivanov's _The Monster Group and Majorana Involutions_
+  # -----, _Geometry of Sporadic Groups: Volume 1, Petersen and Tilde Geometries_
+  # ----- and S. V. Shpectorov, _Geometry of Sporadic Groups: Volume 2, Representations and Amalgams_
+  # Michael Aschbacher, _Sporadic Groups_
+  # -----, _Finite Group Theory_
+== Modular functions and Hauptmoduls ==
+Modular functions are a sticky subject to discuss.
+
+The Poincare half-plane is important to discuss, as is the modular group. 
+
+Weierstrass' elliptic function ℘ is also an important object to study. Apostol takes the approach of studying doubly periodic functions in the complex plane, then examining some examples.
+
+Serge Lang's book on elliptic functions might be worth while to look into...
+
+Cousins of Weierstrass' ℘ includes Dedekind's eta function, Jacobi's theta function, the j-invariant, and Eisenstein series.
+
+Such functions emerged from considering inverse functions for elliptic integrals.
+
+References:
+  # Apostol's _Modular functions and Dirichlet Series in Number Theory_
+  # Igor V. Dolgachev's [http://www.math.lsa.umich.edu/~idolga/modular.pdf Modular Forms (pdf, 147 pages)]
+  # Serge Lang, _Elliptic Functions_ Second ed., Springer GTM *112*
+  # E. T. Whittaker and G. N. Watson's infamous _A course of modern analysis_ Free at [http://books.google.com/books?id=_hoPAAAAIAAJ GoogleBooks]
+  # Akhiezer's _Elements of the Theory of Elliptic Functions_, AMS Translations of Mathematical Monographs *79*
+== Vertex operator algebras ==
+There is no good book on this, in my opinion. There are some good approaches, but no good books.
+
+*Dependencies:* Topological QFT (for the algebraic approach), Wightman Axioms (for the analytical approach).
+
+References:
+  # Kac's _Vertex Algebras for Beginners_
+  # Borcherd's "Vertex Algebras" [http://math.berkeley.edu/~reb/papers/vertex/vertex.pdf eprint] (pdf)
+  # Markus Rosellen's "A Course in Vertex Algebra" [http://arxiv.org/abs/math/0607270 arXiv:math/0607270] 
+  # R. W. Gebert's "Introduction to Vertex Algebras, Borcherds Algebras, and the Monster Lie Algebra" [http://arxiv.org/abs/hep-th/9308151 arXiv:hep-th/9308151] (55 pages)
+  # J. Fuchs' "Lectures on conformal field theory and Kac-Moody algebras" [http://arxiv.org/abs/hep-th/9702194 arXiv:hep-th/9702194] (59 pages)
+== Generalised Kac-Moody algebras ==
+This is a straightforward generalization of Kac-Moody Algebras.
+
+References:
+  # Kac's _Infinite-Dimensional Lie Algebras_ (Third ed.)
+  # Antony Wassermann's "Kac-Moody and Virasoro algebras" [http://arxiv.org/abs/1004.1287 arXiv:1004.1287] (80 pages)
+  # Dmitry Fuchs' notes (through personal communication)
+
+=McKay Correspondence=
+This relates various finite groups --- well, finite subgroups of SU(2,*C*) --- to various Lie groups.
+
+What are the finite subgroups of SU(2,*C*)? Well, there are several:
+  # Cyclic groups
+  # Binary dihedral group
+  # Binary Tetrahedral group
+  # Binary Octahedral group
+  # Binary Dodecahedral group
+and no others. See Yi Sun's [http://web.mit.edu/yisun/www/talks/mckay.pdf The McKay Correspondence] (pdf, 4 pages).
+
+Miles Reid has done some work generalizing it, working with finite subgroups of SL(3,*C*).
+
+References:
+  # Igor V. Dolgachev's "McKay correspondence" [http://www.math.lsa.umich.edu/~idolga/McKaybook.pdf Eprint] (pdf, 158 pages) Winter 2006/07
+  # John F. Duncan's "Arithmetic groups and the affine E8 Dynkin diagram" [http://arxiv.org/abs/0810.1465 arXiv:0810.1465v2] (29 pages)
+  # F Palesi's [http://math.univ-lyon1.fr/~remy/Palesi.pdf Introduction to McKay's correspondence] (pdf, 8 pages)
+  # Luca Scala's [http://www.floorlengthandtux.com/pics/flat6/seminario.pdf On some aspects of the McKay correspondence] (pdf, 14 pages)
+= Quantum Field Theory =
+
+This is a subject that, quite frankly, no one _understands_ but people formally manipulate in a prescribed manner.
+
+In particular, the different approaches to functional integration seems interesting. 
+
+References:
+  # Igor V. Dolgachev's [http://www.math.lsa.umich.edu/~idolga/lecturenotes.html Lecture Notes] on physics
+
+== Canonical Formalism ==
+
+This approach uses Hilbert spaces in the obvious way. It runs into problems due to the von Hove-Groenewald theorem.
+
+References:
+  # Streater and Wightman _PCT, spin and statistics, and all that._
+  # Woodhouse's _Geometric Quantization_ for a slightly more rigorous approach to canonically quantize a system
