@@ -7,17 +7,43 @@ These are just a collection of topics and references of interesting stuff to loo
 
 = Representation Theory =
 
-All of physics boils down to trivial problems in representation theory.
+All of physics boils down to trivial problems in representation theory...or, as Schwarz and Shapiro pointed out, considering integrals of the form:
+ ∫ f(x) exp[g(x)] dx.
+
+Sometimes category theorists say things like "A group consists of a category with a single object such that all the morphisms are isomorphisms" and I think to myself "Thanks, that helps." 
+
+But look, consider such a category *G* and consider the category of finite-dimensional vector spaces over some field, *Vect*. The functor *G* -> *Vect* is a linear representation (the group elements, i.e. isomorphisms in *G*, are mapped to invertible linear operators of some finite-dimensional vector space).
+
+That's cute, and it can be generalized to consider representation theory _of groupoids_. 
+
+*Question:* Is there a well-developed representation theory for arbitrary categories?
+
+Let us restrict our focus to the representation theory of groups for now.
+
+There are different types of representations (e.g. orthogonal or unitary representations, projective representations, and so on). Perhaps some notes should be written on this matter.
+
+There is also the matter of _Spinor Representations_.
 
 References:
   # Pavel Etingof, Oleg Golberg, Sebastian Hensel, Tiankai Liu, Alex Schwendner, Dmitry Vaintrob, Elena Yudovina, "Introduction to representation theory" [http://arxiv.org/abs/0901.0827 arXiv:0901.0827] (108 pages)
   # Constantin Teleman [http://math.berkeley.edu/~teleman/math/RepThry.pdf Representation Theory] (pdf, 60 pages)
   # Langland's [http://sunsite.ubc.ca/DigitalMathArchive/Langlands/pdf/gibbs-ps.pdf Representation theory - its rise and role in number theory] (pdf, 34 pages)
   # Henry Cohn's [http://research.microsoft.com/en-us/um/people/cohn/Papers/reptheory.pdf Outline of Basic Representation Theory] (pdf, 7 pages)
-  # Andrew Baker's [http://www.maths.gla.ac.uk/~ajb/dvi-ps/groupreps.pdf Representations of Finite Groups]
   # W Schmid [http://www.math.harvard.edu/~schmid/articles/brussels_1_30_04.pdf Geometric Methods in Representation Theory] (pdf, 33 pages)
   # Kevin McGerty's [http://www2.imperial.ac.uk/~kmcgerty/GroupReps09/GrpRepTh.pdf Group Representation Theory] (pdf, 59 pages)
+  # Constantin V. USENKO and Bogdan I. LEV's "Spinor Representation of Lie Algebra for Complete Linear Group" (Eprint [http://www.slac.stanford.edu/econf/C0306234/papers/usenko.pdf SLAC], pdf, 5 pages)
   
+== Representation Theory for Finite Groups ==
+This requires a slightly different line of thinking (a discrete one, instead of a continuum).
+ 
+For example, we may work with linear representations over a finite field (which crops up in number theory, coding theory, etc.). This is called a *Modular Representation*.
+
+Two particularly important results are Maschke's theorem (the group algebra for a finite group is a semisimple algebra) and Schur's lemma.
+
+References:
+  # Andrew Baker's [http://www.maths.gla.ac.uk/~ajb/dvi-ps/groupreps.pdf Representations of Finite Groups]
+  # Randall R. Holmes's [http://auburn.edu/~holmerr/linear%20representations.pdf Linear Representations of Finite Groups] (pdf, 66 pages)
+  # JP Serre's _Linear Representations of Finite Groups_ 
 = Moonshine =
 Moonshine is a peculiar topic, because it is "some relationship" between "modular stuff" and "algebraic stuff".
 
@@ -75,7 +101,7 @@ References:
   # Antony Wassermann's "Kac-Moody and Virasoro algebras" [http://arxiv.org/abs/1004.1287 arXiv:1004.1287] (80 pages)
   # Dmitry Fuchs' notes (through personal communication)
 
-=McKay Correspondence=
+=The Mckay Correspondence=
 This relates various finite groups --- well, finite subgroups of SU(2,*C*) --- to various Lie groups.
 
 What are the finite subgroups of SU(2,*C*)? Well, there are several:
@@ -93,6 +119,70 @@ References:
   # John F. Duncan's "Arithmetic groups and the affine E8 Dynkin diagram" [http://arxiv.org/abs/0810.1465 arXiv:0810.1465v2] (29 pages)
   # F Palesi's [http://math.univ-lyon1.fr/~remy/Palesi.pdf Introduction to McKay's correspondence] (pdf, 8 pages)
   # Luca Scala's [http://www.floorlengthandtux.com/pics/flat6/seminario.pdf On some aspects of the McKay correspondence] (pdf, 14 pages)
+
+----
+
+= Interlude: On Science =
+This is a mis-leading title, it is really about "Science Notes". Science is grounded in experiment. This is a wonderful thing.
+
+However, the challenge is for me to write science notes for mathematicians. Quite ambitious. My guiding principle is to be quite frank with the reader (and I am the reader!). But science is a very different topic than mathematics.
+
+For starters, there is the matter of experiments. Do we cover them or not?
+
+All experiments should be covered, and unless terribly relevant placed inside a "Box" environment (so the reader can skip it).
+
+There should be some DIY experiments, cheap experiments that would reproduce the theoretical results (e.g., the Cavendish experiment done for less than $5, or something like that).
+
+The various fields of science that I would like to discuss include chemistry and biology as well (if only to get a basic understanding of the subject).
+
+----
+
+= Physics = 
+== Classical Mechanics ==
+Classical mechanics studies the motion of a point particle, then moves on to consider extended bodies ("rigid body motion").
+
+Newton began with differential equations, done in Euclidean geometry. It is left for the reader's imagination to fathom the difficulty here.
+
+Lagrange formulated a different approach using "modern" calculus. Modern parlance would say it involves the tangent bundle of the "space".
+
+Hamilton formulated a slightly different approach. Lagrange works with second-order differential equations (which are hard), and Hamilton switched over to a system of first order differential equations (easier). 
+
+Topics would include canonical transformations (and the relation to representation theory), Hamilton Jacobi equations, Action-Angle coordinates, etc.
+
+Note that Woodhouse's _Geometric Quantization_ has the best discussion of constraints in mechanics (contained in chapter 2).
+
+*Dependencies* Differential Geometry of Curves, Variational Calculus (in some sense of those words)
+
+References:
+  # M Spivak's _Physics for Mathematicians: Mechanics_
+  # V.I. Arnol'd's _Mathematical Methods of Classical Mechanics_
+  # James J. Binney's [http://www-thphys.physics.ox.ac.uk/people/JamesBinney/cmech.pdf Classical Mechanics] (pdf, 31 pages)
+== Classical Field Theory ==
+There are two serious classical field theories: gravity and electromagnetism. 
+
+Students are taught electromagnetism through circuit diagrams ("field theory for electricians"). Gravity is taught as general relativity.
+
+*Dependencies* Differential Geometry
+
+References:
+  # Landau and Lipschitz, _Theoretical Physics_ Vol. 2 Classical Field Theory.
+  # Any of the many books I have on general relativity...
+== Particle Physics ==
+This has always been an exotic subject. It seems that there is a lot of folk lore not written down or not accessible (e.g., Regge trajectories).
+
+It would be nice to write a tutorial on the empirical strength of various models using the algorithmic style used for my Feynman diagram notes.
+
+Topics including: How to compute amplitudes, scattering theory, hadrons, isospin and flavor charges, the quark model, color charges, weak forces, electroweak theory and symmetry breaking, cross sections for various processes, and so on.
+
+Note with symmetry breaking, although spontaneous and explicit symmetry breaking is discussed quite a bit in the literature, there is little said regarding pseudo-Goldstone bosons wherein an approximate symmetry is broken. This happens in certain models of QCD (I'm told it is where the symmetry breaking is simultaneously explicit and spontaneous).
+
+There is the matter of Cooper pairs, which is peculiar yet interesting.
+
+*Dependencies* Spin bundles, classical field theory, functional analysis.
+
+References:
+  # A. Seiden's _Particle Physics: A Comprehensive Introduction_
+  # Gribov's _Theory of Complex Angular Momenta_
 = Quantum Field Theory =
 
 This is a subject that, quite frankly, no one _understands_ but people formally manipulate in a prescribed manner.
@@ -101,7 +191,7 @@ In particular, the different approaches to functional integration seems interest
 
 References:
   # Igor V. Dolgachev's [http://www.math.lsa.umich.edu/~idolga/lecturenotes.html Lecture Notes] on physics
-
+  # Deligne, et al., _String Theory for Mathematicians_ (NB the notes are available free, legally, [http://www.math.ias.edu/qft online])
 == Canonical Formalism ==
 
 This approach uses Hilbert spaces in the obvious way. It runs into problems due to the von Hove-Groenewald theorem.
@@ -109,3 +199,21 @@ This approach uses Hilbert spaces in the obvious way. It runs into problems due 
 References:
   # Streater and Wightman _PCT, spin and statistics, and all that._
   # Woodhouse's _Geometric Quantization_ for a slightly more rigorous approach to canonically quantize a system
+
+== Functional Integration ==
+
+This can be considered part of mathematics or physics, depending on who one speaks to.
+
+There are different formulations of functional integration. I discuss one in my [http://notebk.googlecode.com/files/functionalQFT.pdf Notes on Functional Methods in Quantum Theory] (pdf, 28 pages). 
+
+There are others. For example, the lattice approach is usually taken, and we consider the continuum limit. The resulting quantity, we claim, is the definition of the functional integral.
+
+But there are many different, inequivalent lattice approaches. Sometimes it causes differing continuum limits. This is the *Gribov Ambiguity* (as I understand it). 
+
+There is also the approach using Wiener measures, which DeWitt-Morette and Cartier discuss. I don't know enough about it, though.
+
+*Dependencies* Everything! Measure theory, cohomology, etc.
+
+References:
+  # Pierre Cartier, Cécile DeWitt-Morette "A new perspective on Functional Integration" [http://arxiv.org/abs/funct-an/9602005 arXiv:funct-an/9602005], 102 pages.
+  # -----, ----- _Functional Integration: Action and Symmetries_
