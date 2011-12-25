@@ -257,6 +257,41 @@ It would also be nice if we could turn it into an environment somehow...
 I often type up lecture notes, so I have macros that replace the `\section{...}` macro. 
 
 {{{
+\makeatletter
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}\sectionfont Lecture \thesection.}\medbreak}
+\makeatother
+}}}
+
+How does one use this? Well, it's like the `\section{...}` command, except instead one doesn't need to give a subject title. So here's some example usage:
+
+{{{
+\lecture
+\input{tex/lecture01}
+\lecture
+\input{tex/lecture02}
+\lecture[Riemannian Metrics]
+\input{tex/lecture03}
+\lecture
+\input{tex/lecture04}
+\lecture[Affine Connections]
+\input{tex/lecture05}
+\lecture[Riemannian Connection]
+\input{tex/lecture06}
+\lecture[Geodesics]
+\input{tex/lecture07}
+\lecture
+\input{tex/lecture08}
+}}}
+That is from my notes on Differential geometry!
+
+==== Deprecated Version ====
+Here is the deprecated version of the `\lecture` command, I don't think it works too well...
+
+{{{
 \newcommand{\lecture}[1][]{\refstepcounter{section}\bigbreak\renewcommand{\leftmark}{Lecture \thesection}
 \noindent{\addcontentsline{toc}{section}{Lecture \thesection#1}\sectionfont Lecture \thesection#1}\medbreak}
 }}}
