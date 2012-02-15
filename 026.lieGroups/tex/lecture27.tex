@@ -1,0 +1,177 @@
+%%
+%% lecture27.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Mon Dec 13 18:25:25 2010 Alex Nelson
+%% Last update Mon Dec 13 21:17:49 2010 Alex Nelson
+%%
+We will discuss some stuff that generalizes what we
+considered. Last time we considered infinite dimensional Clifford
+algebras with generators $a^{\dagger}_{k}$, $a_{k}$ such that
+\begin{subequations}
+\begin{align}
+[a_{i},a_{j}]_{+} = [a^{\dagger}_{i}, a^{\dagger}_{j}]_{+} = 0\\
+[a_{i}, a^{\dagger}_{j}]_{+} = \delta_{ij}
+\end{align}
+\end{subequations}
+We can construct a representation in analogy to the finite
+dimensional case: take a vector $\phi$ such that
+\begin{equation}
+a_{i}\phi = 0
+\end{equation}
+for all $a_{i}$. We consider
+\begin{equation}
+a^{\dagger}_{k_{1}}(\cdots)a^{\dagger}_{k_{n}}\phi
+\end{equation}
+where $k_{1}<\cdots<k_{n}$. This gives us a space called the
+\define{Fock Space} and the vector $\phi$ is called the
+\define{Vaccum Vector}. We may swap
+\begin{equation}
+a^{\dagger}\iff a
+\end{equation}
+we get another Fock space; we may exchange only parts of the
+operator, and we still get another Fock space. Maybe these Fock
+spaces are equivalent, maybe not.
+
+Consider terms of the form $\alpha_{kl}a^{\dagger}_{k}a_{l}$ with
+Euclidean summation convention\footnote{If two indices are
+  repeated, either upstairs or downstairs, sum over it. So
+  e.g. $\alpha_{kl}a_{k}a_{l}=\sum_{k,l}\alpha_{kl}a_{k}a_{l}$. The
+  term ``Euclidean summation convention'' is due to Misner,
+  Thorne and Wheeler's \emph{Gravitation} Chapter 12.3:
+  ``(`Euclidean' index convention: repeated space indices to be
+  summed even if both are down; dot denotes time derivative.)''.}. We consider
+\begin{subequations}
+\begin{align}
+[\alpha_{kl}a^{\dagger}_{k}a_{l}, \beta_{rs}a^{\dagger}_{r}a_{s}]
+&= \alpha_{kl}a^{\dagger}_{k}a_{l}\beta_{rs}a^{\dagger}_{r}a_{s}
+- \beta_{rs}a^{\dagger}_{r}a_{s}\alpha_{kl}a^{\dagger}_{k}a_{l}\\
+&= \alpha_{kl}\beta_{rs}a^{\dagger}_{k}a_{l}a^{\dagger}_{r}a_{s}
+- a^{\dagger}_{r}a_{s}a^{\dagger}_{k}a_{l}
+\end{align}
+\end{subequations}
+Well, we deduce
+\begin{equation}
+a_{l}a^{\dagger}_{r} = -a^{\dagger}_{r}a_{l}+\delta_{rl}.
+\end{equation}
+We thus get something of the form
+\begin{equation}
+[\alpha_{kl}a^{\dagger}_{k}a_{l}, \beta_{rs}a^{\dagger}_{r}a_{s}]
+\sim \gamma_{mn}a^{\dagger}_{m}a_{n}+\tr[\alpha,\beta]\cdot\1,
+\end{equation}
+the trace of hte commutator is nonzero for infinite dimensional
+matrices $\alpha$, $\beta$.
+
+What we would like to do is move from formal considerations to
+reality. When working with infinite sums, it is not terribly
+clear. But with representations, we may ask questions regarding
+the sum
+\begin{equation}
+\left(\sum_{kl}\alpha_{kl}a^{\dagger}_{k}a_{l}\right)(a^{\dagger}_{i_{1}}\cdots
+a^{\dagger}_{i_{s}}\phi)
+\end{equation}
+we may questions. If the sum is infinite, then sometimes it is
+still well-defined. Suppose for every $l$, there are finitely
+many $k$'s which have nonzero components
+\begin{equation}
+\alpha_{kl}\not=0
+\end{equation}
+(if $k,l\in\ZZ$, we could say $\alpha_{kl}$ if $|k-l|<N$ for some
+fixed $N$). We have finite number of indices; therefore if $l$ is
+sufficiently large, then we can obtain a vanishing
+answer. Thererfore only finitely many cases are possible, but the
+expression is well-defined! So everything is fine! But such
+operators appear in such matrices.
+
+In particular with the Virasoro algebra, we have
+\begin{equation}
+\ell_{k} = -z^{k+1}\frac{d}{dz}
+\end{equation}
+If we take the basis $z^{n}$, the derivative shifts the index
+\begin{equation}
+\frac{d}{dz}\colon z^{k}\mapsto kz^{k-1},
+\end{equation}
+multiplication by $z$ shifts the index too:
+\begin{equation}
+z\colon z^{k}\mapsto z^{k+1}.
+\end{equation}
+We have a nontrivial central extension of some algebra
+$\mathfrak{gl}(\infty)$ the Lie algebra of \emph{good} infinite
+dimensional matrices (but not \emph{all} infinite dimensional
+matrices). We can embed the Witt algebra into $\mathfrak{gl}_{\infty}$.
+
+\begin{rmk}
+The infinite dimensional Clifford algebra appears to be the limit
+or colimit of all finite dimensional Clifford algebras; Schwarz
+says this is not so for the infinite dimensional case; there
+appears to be cannonical embeddings
+\begin{equation}
+\CC^{n}\hookrightarrow\CC^{n+1}\hookrightarrow\CC^{n+2}\hookrightarrow\cdots
+\end{equation}
+which is the limit of this sort of represntation. There are some
+side-effects with this, especially regarding the central
+extension --- it becomes trivial in this limit!
+\end{rmk}
+
+We would like to describe a very interesting situation when we
+get an affine algebra, a situation of the Kac-Moody algebra. Take
+any Lie Algebra $\mathscr{G}$. Now take all Laurent series $\sum
+a_{n}z^{n}$ where $a_{n}\in\mathscr{G}$ and $n\in\ZZ$, but we
+restrict ourselves specifically to Laurent \emph{polynomials} so
+this sum is \emph{finite}. We can obtain a Lie algebra, defining
+the Lie bracket as
+\begin{equation}
+[az^{m},bz^{n}] = [a,b]z^{m+n},
+\end{equation}
+and by demanding linearity, distributivity, etc. This is not the
+most interesting one; the most important thing here is the
+central extension. One of the ways is by means of matrices and
+infinite matrices, then perform the central extension.
+
+We will merely write the answer. (This is related to the answer
+to one of the problems on the final!) We will define a \emph{new}
+Lie Algebra denoted $\widehat{\mathscr{G}}$ in the following way:
+take the central extension of the algebra in the following
+manner. Generators are of the form $az^{n}$, the central
+extension $c$. We assume
+\begin{equation}
+[az^{n},c] = 0
+\end{equation}
+We don't really have a choice! Define the new commutator by
+\begin{equation}
+[az^{m},bz^{n}]_{\text{new}}=[a,b]_{\text{old}}z^{m+n}+\underbracket[0.5pt]{m\<a,b\>\delta_{m+n,0}c}_{\mathclap{\text{central term with coefficient}}}
+\end{equation}
+This is the answer, we get a central extension this way. Well, do
+we? Prove it! Check it is a Lie Algebra, check the Jacobi
+identity:
+\begin{subequations}
+\begin{align}
+[[az^{m},bz^{n}]_{\text{new}},rz^{s}]_{\text{new}} &=[[a,b]_{\text{old}}z^{m+n},rz^{s}]_{\text{new}}\\
+&=[[a,b]_{\text{old}},r]_{\text{old}}z^{m+n+s} +
+(m+n)\<[a,b]_{\text{old}},r\>\delta_{m+n+s,0}c
+\end{align}
+\end{subequations}
+By taking cyclic permutations, the first term vanishes
+identically (we borrow the Jacobi identity from the old Lie
+bracket). What about the second term? Well, we use the invariant
+inner product, i.e. for a representation $\varphi$ we have
+\begin{equation}
+\<y,\varphi(z)\>+\<\varphi(y),z\> = 0;
+\end{equation}
+the adjoint representation has
+\begin{equation}
+\<[x,y],z\>+\<y,[x,z]\> = 0
+\end{equation}
+So really the cyclic permutations of $\<[a,b],r\>$ are equal up
+to a sign (or more closely examined, we see it is identical). We
+can repeat more or less everything from finite-dimensional Lie
+algebras.
+
+\begin{rmk}
+This is useful in physics, if symmetry coincides with Lie
+algebra, we need projective representations, thus we need central
+extensions; the cohomology of Lie algebras gives us the central
+extension being unique.
+\end{rmk}

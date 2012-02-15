@@ -1,0 +1,154 @@
+%%
+%% lecture19.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat Dec 11 11:22:33 2010 Alex Nelson
+%% Last update Sat Dec 11 12:05:59 2010 Alex Nelson
+%%
+Consider $\mathfrak{gl}(n)$ where the Cartan subalgebra is simply
+the diagonal matrices, which we'll denote by $\diag(\lambda_{1},\dots,\lambda_{n})$
+or simply $(\lambda_{1},\dots,\lambda_{n})$. By definition the
+weight vectors are merely the canonical basis, denoted by
+$\vec{u}_{1}$, \dots, $\vec{u}_{n}$ with the corresponding
+weights $\lambda_{1}$, \dots, $\lambda_{n}$. This is the
+fundamental representation. Also $-\lambda_{1}$, \dots,
+$-\lambda_{n}$ are the weights of the dual fundamental
+representation, or covector representation.
+
+The adjoint representation consists of matrices (i.e. a tensor
+with 1 upper and 1 lower index):
+\begin{equation}
+a^{i}_{j}\in V\otimes V^{*}.
+\end{equation}
+Consider the action of
+\begin{equation}
+(V\otimes V^{*})\times V\to V
+\end{equation}
+defined in the obvious way using the map
+\begin{equation}
+V^{*}\times V\to\Bbb{F}.
+\end{equation}
+At any rate the adjoint representation is precisely this tensor
+product. So we see that $(\lambda_{i}-\lambda_{j})$ are the
+weights of the adjoint representation. If it is nonzero we call
+them \define{Roots} with the condition that $i\not=j$. Now
+$\mathfrak{gl}(n)$ is not simple, so we should talk about
+$\mathfrak{sl}(n)$. We have in $\mathfrak{sl}(n)$ the Cartan
+subalgebra satisfy
+\begin{equation}
+\lambda_{1}+\dots+\lambda_{n}=0.
+\end{equation}
+The roots are (again) the same.
+
+We would like to find simple roots (recall we can decompose roots
+into positive and negative, the minimal set of positive roots are
+called \define{Simple Roots}). We consider the situation when
+$i>j$ and $i<j$, one should be called ``positive'', the other
+``negative''. We choose $i>j$ to be negative roots, $i<j$ to be
+positive roots. Thus $\lambda_{1}-\lambda_{2}$,
+$\lambda_{2}-\lambda_{3}$, \dots, $\lambda_{n-1}-\lambda_{n}$ are
+the simple roots of $\mathfrak{sl}(n)=\ClassicalGroup{A}_{n-1}$,
+there are $n-1$ simple roots.
+
+Now, for $\SO{2n}$ we have the fundamental representation be
+$2n$-dimensional. For the Lie algebra business
+$\mathfrak{so}(2n)$ the weights are $\lambda_{1}$,
+$-\lambda_{1}$, \dots, $\lambda_{n}$, $-\lambda_{n}$ (weights of
+the fundamental vector representation, to be precise). What are
+the weights of the adjoint representation? We know the adjoint
+representation for $\mathfrak{so}(2n)$ is
+\begin{equation}
+V\otimes V^{*}=V\otimes V
+\end{equation}
+since
+\begin{equation}
+V^{*}=V
+\end{equation}
+as far as the representations are concerned. The antisymmetric
+part preserves the inner product. The weights of the adjoint
+representation, we consider $\vec{u}_{i}$ ($i=1,\dots,2n$). When
+we take the tensor product we should get
+$\vec{u}_{i}\otimes\vec{u}_{j}$, and for $\Antisymmetric^{2}V$
+consider
+\begin{equation}
+\vec{u}_{i}\otimes\vec{u}_{j}-\vec{u}_{j}\otimes\vec{u}_{i}
+\quad\text{for }i\not=j.
+\end{equation}
+The weights should be
+$\pm\lambda_{\alpha}\pm\lambda_{\beta}$. The nonzero guys are the
+\define{Roots}. We say that $\lambda_{\alpha}+\lambda_{\beta}$
+are the positive roots, $-\lambda_{\alpha}-\lambda_{\beta}$ are
+the negative roots, and $\lambda_{\alpha}-\lambda_{\beta}$ be
+positive iff $\alpha<\beta$. We have $\lambda_{1}-\lambda_{2}$,
+\dots, $\lambda_{n-1}-\lambda_{n}$ be the simple roots\dots but
+that is not sufficient, we have $n-1$ roots and
+$\dim(\mathscr{H})=n$. So we should add $\lambda_{1}+\lambda_{n}$
+to our list of simple roots. We can obtain everything by
+considering these guys. The Dynkin diagram looks like:
+\begin{center}
+  \includegraphics{img/LieImg.4}
+\end{center}
+As previously noted in Lecture 16, the Cartan matrix here is
+symmetric. 
+
+The next Lie algebra we will consider is
+$\ClassicalGroup{B}_{n}=\mathfrak{so}(2n+1)$. The Cartan
+subalgebra is
+\begin{equation}
+\mathscr{H}=\left\{\;\begin{bmatrix}
+1 &                    &        &  \\
+  & [\mathfrak{so}(2)] &        &  \\
+  &                    & \ddots &  \\
+  &                    &        & [\mathfrak{so}(2)]
+\end{bmatrix}\;\right\}
+\end{equation}
+What are the weights of the fundamental vector representation?
+They are $0$, $\lambda_{1}$, $-\lambda_{1}$, \dots,
+$\lambda_{n}$, $-\lambda_{n}$. The adjoint representation is
+again $\Antisymmetric^{2}(V)$ and again we are doing the same
+thing. We are adding the weights for $i\not=j$:
+$\lambda_{i}+\lambda_{j}$, $\lambda_{i}-\lambda_{j}$,
+$-\lambda_{i}-\lambda_{j}$ but we have more, we can take
+$0+\lambda_{i}$ and $0-\lambda_{i}$. What are the positive
+weights? They are: $\lambda_{i}$, $\lambda_{i}+\lambda_{j}$, and
+$\lambda_{i}-\lambda_{j}$ for $i<j$. What are the simple roots?
+We take $\lambda_{1}-\lambda_{2}$, \dots,
+$\lambda_{n-1}-\lambda_{n}$, and $\lambda_{n}$. These are the $n$
+simple roots. But in this situation, the Dynkin diagram is
+\begin{center}
+  \includegraphics{img/LieImg.6}
+\end{center}
+Remember the number of lines connecting the nodes $ij$ are
+\begin{equation}
+n_{ij}=a_{ij}a_{ji}.
+\end{equation}
+We will get
+\begin{equation}
+a_{ij}\not=a_{ji}
+\end{equation}
+the diagonal matrix $\diag(2,2,\dots,2,1)$ symmetrizes the Cartan
+matrix. The root vectors $e_{\alpha}$ have positive roots, and
+$f_{\alpha}$ has negative roots. We obtain
+\begin{equation}
+[e_{\alpha},f_{\alpha}]=h_{\alpha}\in\mathscr{H}\quad\mbox{and}\quad [h_{\alpha},e_{\beta}]=a_{\alpha\beta}e_{\beta}
+\end{equation}
+and so on.
+
+For $\ClassicalGroup{C}_{n}=\mathfrak{sp}(n)$, the weights are
+$\lambda_{\alpha}$, $-\lambda_{\alpha}$ and the adjoint
+representation has $\lambda_{\alpha}+\lambda_{\beta}$,
+$\lambda_{\alpha}-\lambda_{\beta}$,
+$-(\lambda_{\alpha}+\lambda_{\beta})$ for all $\alpha$,
+$\beta$. The descriptions of the simple roots begins with the
+same stuff. The simple roots are $\lambda_{1}-\lambda_{2}$,
+\dots, $\lambda_{n-1}-\lambda_{n}$, $2\lambda_{n}$. We are
+allowed to add 2 guys, which is how we get $2\lambda_{n}$. The
+Dynkin diagram is:
+\begin{center}
+  \includegraphics{img/LieImg.5}
+\end{center}
+Observe that this resembles $\ClassicalGroup{B}_{n}$'s Dynkin
+diagram, but it is different. The diagonalization here requires
+the matrix $\diag(1,\dots,1,2)$.

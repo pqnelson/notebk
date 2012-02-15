@@ -1,0 +1,183 @@
+%%
+%% box1.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Feb 20 10:55:50 2011 Alex Nelson
+%% Last update Sun Feb 20 17:09:04 2011 Alex Nelson
+%%
+\begin{framed}
+\noindent{\sectionfont Box\enspace \thesection.1 Dynkin Diagrams}
+\bigskip
+\noindent{}The problem we are facing is really two-fold: (a)
+given a Dynkin diagram obtain the Cartan matrix, and (b) given
+the Cartan matrix obtain the Dynkin diagram. This box is really
+based off of \S4.7 of Kac's book \emph{Infinite Dimensional Lie Algebras}.
+No secrets among friends: Kac provides the method of, given a
+Cartan matrix, producing the Dynkin diagram. We review this, and
+provide the algorithm going in the opposite direction. We also
+consider examples. Throughout $A=[a_{ij}]$ is the Cartan matrix.
+
+\medskip
+\noindent\textbf{Given Cartan Matrix Obtain Dynkin Diagram.}\enspace
+The basic idea is that we will have an $n\times n$ matrix
+$A$. The Dynkin diagram is a graph that will have $n$
+vertices, which are labeled by integers $i=1,\dots,n$. If
+\begin{equation}
+a_{ij}a_{ji}\leq4\quad\mbox{and}\quad |a_{ij}|\geq|a_{ji}|
+\end{equation}
+then vertices $i$ and $j$ are connected by $|a_{ij}|$ lines;
+moreover if $|a_{ij}|>1$, then these lines are equipped with an
+arrow pointing towards vertex $j$. 
+
+Why do we need an arrow? The idea is that the Cartan matrix is
+not symmetric, but has a weaker condition that $a_{ij}\not=0$
+implies $a_{ji}\not=0$. Since we know the product by the number
+of lines, we know the values by considering which direction the
+arrow points.
+
+\medskip
+\noindent\textbf{Given a Dynkin Diagram Obtain Cartan Matrix.}\enspace
+This occurs more often in practice (at least, for
+physicists). What can we know immediately from the properties of
+a Cartan matrix? Well, we know
+\begin{equation}
+a_{ii} = 2
+\end{equation}
+for all $i$. We know that the number of vertices $n$ gives
+information about the number of rows, and the number of columns,
+of the Cartan matrix --- i.e. $A$ is an $n\times n$ matrix. We
+also know if $i\not=j$ that
+\begin{equation}
+a_{ij}\leq0\quad\mbox{and}\quad a_{ij}\in\Bbb{Z}.
+\end{equation}
+The rest we need to find from the diagram.
+
+If vertex $i$ and $j$ are connected by $k$ lines, then $a_{ij}<0$. 
+What values can this component be? Well, if $k=1$, then
+\begin{equation}
+a_{ij}=a_{ji}=-1
+\end{equation}
+since there is no arrow, it must be $-1$. If there are multiple
+lines, we have an arrow to indicate which entry 
+
+\begin{rmk}
+Note that in these examples, the vertices are labeled by
+\emph{indices} to keep track of which we are discussing. Usually,
+the labels of a vertex are the relative (squared)
+lengths of the fundamental roots as Gilmore describes
+it [see Robert Gilmore, \emph{Lie Groups, Lie Algebras, and Some
+    of Their Applications} Dover Publications (2002) Ch 8 \S III.2 pp 306 \emph{et seq.}].
+
+{\bf N.B.} the method we have described are used to deduce a
+\emph{generalized} Cartan matrix from a Dynkin diagram. So if we
+restrict focus to Dynkin diagrams corresponding to ``strict''
+Cartan matrices, we recover precisely the same information. But
+we can do more! We can consider ``closed loops'' in our approach!
+The only requirement we have for our considerations is that there
+are less than 4 edges connecting any pair of vertices.
+\end{rmk}
+\begin{ex}
+Consider the Dynkin diagram given by
+\begin{center}
+  \includegraphics{img/LieImg.11}
+\end{center}
+We see that there are 4 vertices, so immediately we know that the
+Cartan matrix is $4\times4$ and we can write:
+\begin{equation}
+A = \begin{bmatrix}
+2 &   &   &   \\
+  & 2 &   &   \\
+  &   & 2 &   \\
+  &   &   & 2
+\end{bmatrix}.
+\end{equation}
+We also see that there is one line connecting vertex 1 to vertex
+2, so that means we can write
+\begin{equation}
+A = \begin{bmatrix}
+2 &-1 &   &   \\
+-1& 2 &   &   \\
+  &   & 2 &   \\
+  &   &   & 2
+\end{bmatrix}.
+\end{equation}
+We then observe that there are no other edges connected to 1, so
+\begin{equation}
+A = \begin{bmatrix}
+2 &-1 & 0 & 0 \\
+-1& 2 &   &   \\
+0 &   & 2 &   \\
+0 &   &   & 2
+\end{bmatrix}.
+\end{equation}
+Similar reasoning holds for vertex 4, it's connected by a single
+edge to vertex 3
+\begin{equation}
+A = \begin{bmatrix}
+2 &-1 & 0 & 0 \\
+-1& 2 &   &   \\
+0 &   & 2 &-1 \\
+0 &   &-1 & 2
+\end{bmatrix}.
+\end{equation}
+There are no other edges that connect vertex 4 to any other
+vertex, so 
+\begin{equation}
+A = \begin{bmatrix}
+2 &-1 & 0 & 0 \\
+-1& 2 &   & 0 \\
+0 &   & 2 &-1 \\
+0 & 0 &-1 & 2
+\end{bmatrix}.
+\end{equation}
+We see that there are \emph{two lines} connecting vertex 2 to
+vertex 3 and there is an arrow. The arrow means that
+\begin{equation}
+a_{23}\not=a_{32}.
+\end{equation}
+The arrow points towards 3, so
+\begin{equation}
+|a_{32}|<|a_{23}|.
+\end{equation}
+Then we use the fact that there are two edges means that
+\begin{equation}
+|a_{23}|=2
+\end{equation}
+This is sufficient information to conclude
+\begin{equation}
+A = \begin{bmatrix}
+2 &-1 & 0 & 0 \\
+-1& 2 &-2 & 0 \\
+0 &-1 & 2 &-1 \\
+0 & 0 &-1 & 2
+\end{bmatrix}.
+\end{equation}
+Thus we conclude our example.
+\end{ex}
+\begin{ex}
+Consider the Dynkin diagram given by
+\begin{center}
+  \includegraphics{img/LieImg.12}
+\end{center}
+We see that there are 2 vertices, so immediately we know that the
+Cartan matrix is $2\times2$ and we can write:
+\begin{equation}
+A = \begin{bmatrix}
+ 2 &   \\
+   & 2 
+\end{bmatrix}.
+\end{equation}
+The two vertices are connected by 3 edges. There is an arrow
+pointing from vertex 1 to vertex 2. This implies that
+\begin{equation}
+A = \begin{bmatrix}
+ 2 &-3 \\
+-1 & 2 
+\end{bmatrix}.
+\end{equation}
+Observe that if the arrow pointed the other way, we would merely
+have the transpose of our matrix.
+\end{ex}
+\end{framed}

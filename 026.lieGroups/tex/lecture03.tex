@@ -1,0 +1,155 @@
+%%
+%% lecture03.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 21 10:33:51 2010 Alex Nelson
+%% Last update Thu Jan 21 13:10:56 2010 Alex Nelson
+%%
+
+Let us consider $n$-dimensional space $\Bbb{R}^{n}$, with
+coordinates $(x^1,\ldots,x^n)$, and we can consider either
+functions or polynomials of these coordinates
+$\Bbb{C}[x^1,\ldots,x^n]$ and we will consider the differential
+operators on $\Bbb{C}[x^1,...,x^n]$. It is an associative
+algebra, but also a Lie algebra (when the Lie bracket is the
+commutator). We can consider Lie subalgebras, e.g. first order
+differential operators\footnote{Note that we are using Einstein
+  summation convention; when one index is upstairs and another is
+  downstairs, we sum over it as a dummy index.}$\widehat{A}=A^{i}\partial_{i}$. But this
+is \emph{NOT} a subalgebra of derivations, the product
+$\widehat{A}\widehat{B}$ is a second order differential operator;
+however note that
+\begin{subequations}
+\begin{align}
+[\widehat{A},\widehat{B}](f)&=A^{i}\partial_{i}(B^{j}\partial_{j}f)-B^{j}\partial_{j}(A^{i}\partial_{i}f)\\
+&=A^{i}(\partial_{i}B^{j})\partial_{j}f+A^{i}B^{j}\partial_{i}\partial_{j}f-B^{j}(\partial_{j}A^{i})\partial_{i}f-A^{i}B^{j}\partial_{i}\partial_{j}f\\
+&=A^{i}(\partial_{i}B^{j})\partial_{j}f-B^{j}(\partial_{j}A^{i})\partial_{i}f
+\end{align}
+\end{subequations}
+So we write
+\begin{equation}
+\widehat{C}=C^{k}\partial_{k}=A^{i}(\partial_{i}B^{j})\partial_{j}-B^{j}(\partial_{j}A^{i})\partial_{i}
+\end{equation}
+This $\widehat{C}$ is a derivation on $\Bbb{C}[x^1,...,x^n]$. We
+can write
+$C^k=A^{j}(\partial_{j}B^{k})-B^{j}(\partial_{j}A^{k})$. The
+commutator of first order differential operators is again a first
+order differential operator.
+
+We would like to express this operator in two different
+ways. First what are the coefficients $A^i$? They are teh
+components of a vector field. So this is really the algebra of
+vector fields, the commutator of vector fields yield a Lie
+Algebra. Second, we want to introduce the notion of derivation of
+algebra. It is something satisfying the Leibniz rule. Suppose we
+have an $\scr{A}$-algebra, and a linear map
+\begin{equation}
+\alpha\colon\scr{A}\to\scr{A}
+\end{equation}
+such that
+\begin{equation}
+\alpha(ab)=\alpha(a)b+a\alpha(b).
+\end{equation}
+
+First, these first order differential operators are derivations,
+and moreover all derivations are first order differential
+operators.
+
+This is a bit ambiguous, the algebra considered are left
+unspecified (smooth functions or polynomials!). We willl prove it
+for polynomials, but not for smooth functions. If we know how a
+derivation behaves on the generators of the polynomial, then we
+know everything. Let $\widehat{A}(x^i)=A^i(x)$ where $A^i(x)$ is
+a polynomial.
+
+\begin{rmk}
+All this stuff works on smooth manifolds despite never specifying
+what a ``smooth manifold'' is!
+\end{rmk}
+
+\begin{thm}
+Given an algebra $\scr{A}$, then we may consider $\der(\scr{A})$
+of derivations of $\scr{A}$ which form a Lie algebra.
+\end{thm}
+\begin{proof}
+We should prove it is a vector space, but it is obvious; we
+should prove the commutator of derivations
+$\alpha,\beta\in\der(\scr{A})$ is a derivation
+$[\alpha,\beta]\in\der(\scr{A})$. We consider
+\begin{subequations}
+\begin{align}
+(\alpha\circ\beta)(ab)&=\alpha(\beta(ab))\\
+&=\alpha(\beta(a)\cdot b+a\cdot\beta(b))\\
+&=\alpha(\beta(a)\cdot b)+\alpha(a\cdot \beta(b))\qquad\hbox{by linearity}\\
+&=(\alpha\circ\beta)(a)\cdot b+\beta(a)\alpha(b)+\alpha(a)\beta(b)+a\cdot(\alpha\circ\beta)(b)
+\end{align}
+\end{subequations}
+Now we can consider the commutator expression of $\alpha$ with
+$\beta$, which amounts to
+\begin{subequations}
+\begin{align}
+[\alpha,\beta](ab) &= \bigg((\alpha\circ\beta)(a)\cdot b+\beta(a)\alpha(b)+\alpha(a)\beta(b)+a\cdot(\alpha\circ\beta)(b)\bigg)\nonumber\\
+&\quad-\bigg((\beta\circ\alpha)(a)\cdot b+\beta(a)\alpha(b)+\alpha(a)\beta(b)+a\cdot(\beta\circ\alpha)(b)\bigg)\\
+&=(\alpha\circ\beta)(a)b+a\cdot(\alpha\circ\beta)(b)-(\beta\circ\alpha)(a)b-a\cdot(\beta\circ\alpha)(b)\\
+&=[\alpha,\beta](a)\cdot b+a\cdot[\alpha,\beta](b).
+\end{align}
+\end{subequations}
+This concludes our proof.
+\end{proof}
+
+One last example of derivations. Consider an algebra $\scr{A}$
+(either associative or Lie), take $a,x\in\scr{A}$ where $a$ is
+fixed. Consider the derivation
+\begin{equation}
+\alpha_{a}(x)=[a,x].
+\end{equation}
+For Lie algebras it is absolutely trivial:
+\begin{subequations}
+\begin{align}
+\alpha_{a}([x,y]) &= [\alpha_{a}(x),y]+[x,\alpha_{a}(y)]\\
+\iff[a,[x,y]] &=[[a,x],y]+[x,[a,y]]\\
+&=-[x,[y,a]]-[y,[a,x]]\qquad\hbox{Jacobi Identity!}
+\end{align}
+\end{subequations}
+\begin{rmk}
+Such derivations are called \define{Inner Derivations}.
+\end{rmk}
+Lets compute the commutator of two inner derivations, the answer
+is the
+\begin{equation}
+[\alpha_a,\alpha_b]=\alpha_{[a,b]}
+\end{equation}
+the result is an  inner derivation. We have a homomorphism, so we
+have a $\scr{G}$-Lie algebra so we get a map
+$\scr{G}\to\der({\scr{G}})$ which, for all $a\in\scr{G}$, is mapped
+to
+\begin{equation}
+\alpha_a=[a,-].
+\end{equation}
+
+\medbreak
+\noindent\textbf{N.B.:} Henceforth and throughout, I will use the
+term ``morphism'' and ``homomorphism'' interchangeably. 
+
+We can consider the morphism $\scr{G}\to L(\scr{G})$ where
+$L(\scr{G})$ is the linear operators on $\scr{G}$. We have a
+representation of our Lie algebra $\scr{G}$, called the
+\define{Adjoint Representation} where
+$a\mapsto\alpha_a=[a,-]$. We write $\ad_{a}=\alpha_a$. This is
+one of the simplest and most important examples of the
+representation of Lie algebras.
+
+Consider $\ker(\ad)$. Then $\alpha_a=0$. What does it mean that
+$[a,x]=0$ for all $x\in\scr{G}$? This is precisely the
+\define{Center of $\scr{G}$} denoted by $\ker(\alpha)=Z$.
+\begin{thm}
+If a finite dimensional Lie Algebra has no center (or a trivial one), then it is
+isomorphic to a matrix Algebra.
+\end{thm}
+\begin{proof}
+We see that $\im(\ad)$ consists of a subalgebra of a Lie algebra
+of matrices since the Lie algebra \emph{IS} a vector space and it
+is finite dimensional. Thus $\ad$ is a matrix algebra.
+\end{proof}

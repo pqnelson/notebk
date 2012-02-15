@@ -1,0 +1,176 @@
+%%
+%% lecture13.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Jun 20 12:08:00 2010 Alex Nelson
+%% Last update Sun Jun 20 12:40:21 2010 Alex Nelson
+%%
+Today we will talk about compact Lie groups. First a few remarks
+about characters. Suppose we have
+\begin{equation}
+\varphi\colon G\to\GL{n}
+\end{equation}
+be a group morphism. We have
+\begin{equation}
+\tr\big(\varphi(g)\big)=\chi_{\varphi}(g)
+\end{equation}
+be the character at the point $g$. The character is an invariant
+of a representation. If $\varphi$, $\varphi'$ are two isomorphic
+representations, so 
+\begin{equation}
+\varphi'(g) = A\varphi(g)A'
+\end{equation}
+then
+\begin{equation}
+\chi_{\varphi}(g)=\chi_{\varphi'}(g)
+\end{equation}
+for every $g\in G$. The character is a class function, it doesn't
+depend on conjugation
+\begin{equation}
+\chi_{\varphi}(aga^{-1})=\chi_{\varphi}(g).
+\end{equation}
+This is basically everything we need. In general, for compact
+groups $G$, the characters determine everything.
+
+\begin{thm}
+If $\rho\colon G\to\GL{n}$, $\rho'\colon G\to\GL{n}$ are two
+representations such that $\chi_{\rho}(g)=\chi_{\rho'}(g)$ for
+each $g\in G$, then $\rho\iso\rho'$.
+\end{thm}
+
+For a compact group, we have the invariant volume be
+\begin{equation}
+\int 1\cdot dv = 1
+\end{equation}
+which can be normalized. For a finite group, this integral
+averaging a function is merely a sum
+\begin{subequations}
+\begin{align}
+\overline{f} &= \int f(v)dv\quad\mbox{for compact groups}\\
+&= \frac{1}{N}\sum_{g\in G}f(g)\quad\mbox{for finite groups}
+\end{align}
+\end{subequations}
+We have 
+\begin{equation}
+\<f,f_{1}\> = \int f^{*}(v)f_{1}(v)dv = \overline{f^{*}f_{1}}
+\end{equation}
+we can compute the norm of characters
+\begin{equation}
+\|\chi\| = \sqrt{\<\chi,\chi\>} = \begin{cases} 1 & \mbox{if the rep is
+  irreducible}\\
+0 & \mbox{otherwise}
+\end{cases}
+\end{equation}
+So we have
+\begin{equation}
+\<\chi_{i},\chi_{j}\>=\delta_{ij}
+\end{equation}
+so we have orthonormal characters from an orthonormal
+basis. Where? For class functions!
+
+Note class functions only depend on conjugacy classes. For
+example, consider $G=\U{n}$, we can diagonalize any unitary
+matrix by means of unitary transformations. We have then diagonal
+matrices consists of
+\begin{equation}
+D = \begin{bmatrix}z_{1} & & \\
+ & \ddots & \\
+ &  & z_{n}
+\end{bmatrix}
+\end{equation}
+where $z_{k}=\exp(i\varphi_{k})$, so $T\iso \U{1}^{n}$ the
+$n$-torus.
+
+What's relevant is that $T$ forms a commutative subgroup of
+$\U{n}$. This is the maximal commutative subgroup for $\U{n}$, or
+the maximal torus. Since every element is conjugate to this
+stuff, if we want to know the character, we only need to be
+concerned about the character on the torus. But can the character
+be an arbitrary function here? No, it can't. So the characters
+$\chi(z_{1},...,z_{n})$ is a symmetric function on $T$, so it is
+invariant under any permutation.
+
+Let $G$ be a connected, compact Lie group. Le t$T$ be the maximal
+torus, i.e. the maximal Abelian subgroup. It will always be a
+Torus, always a product of $\U{1}$. Then every element of $g\in
+G$ is conjugate (conjugated in $G$) to an element of $T$. Not
+every function on the torus is a character. We should consider
+elements of $G$ that form the normalizer of $T$, i.e.
+\begin{equation}
+N(T) = \{x\in G\mid xT=Tx\}.
+\end{equation}
+We know $T\subset N(T)$ trivially, so to examine the nontrivial
+part of the normalizer we should consider the quotient
+\begin{equation}
+N(T)/T = W
+\end{equation}
+called the \define{Weyl Group}\index{Weyl Group}. The Weyl group
+acts on the Torus. It is obvious that characters should be
+invariant with respect to this group.
+
+Now to Lie algebras. We will work with complex Lie algebras. We
+will take $G$ to be a compact Lie group, $\Bbb{C}\Lie(G)$ the
+complexification of its Lie algebra. The Lie algebras obtained in
+this way are \define{Reductive Lie Algebras}\index{Lie Algebra!Reductive}%
+\index{Reductive Lie Algebra}. They have an invariant inner
+product. Every representation of a compact group is equivalent to
+a unitary representation (if complex), or an orthogonal
+representation (if real). Lets take a Lie group $G$, lets take
+its (real) Lie algebra 
+\begin{equation}
+\mathscr{G}=\Lie(G)=T_{e}G
+\end{equation}
+which is the tangent space to the group at $e\in G$. The group
+$G$ acts on $T_{e}G$ in the obvious way. For some $x\in G$, then
+\begin{equation}
+gxg^{-1}\in G
+\end{equation}
+is an inner automorphism. It maps $e\mapsto e$. So every curve
+starting at the identity goes to a curve also starting at the
+identity, so we can define an action of $G$ on tangent
+vectors. This is called the \define{Adjoint Representation of $G$},
+this is probably the most important representation. We had a
+notion of the adjoint representation for Lie algebras, and really
+it's related to adjoint representations of Lie groups. We should
+consider
+\begin{equation}
+g=1+\gamma
+\end{equation}
+where $\gamma$ is ``small.'' Then the adjoint group
+representation is
+\begin{subequations}
+\begin{align}
+(1+\gamma)x(1+\gamma)^{-1}&=x+\gamma x-x\gamma+\cdots \\
+&= x + [\gamma,x] + \cdots
+\end{align}
+\end{subequations}
+We are concluding that the adjoint representation of the group
+corresponds to the adjoint representation of the algebra. Adjoint
+representation for compact group is equivalent to an orthogonal
+representation. There exists an inner product $\<x,y\>$ in
+$\mathscr{G}$ which is invariant under
+\begin{equation}
+\<{\rm Ad}_{g}x,{\rm Ad}_{g}y\> = \<x,y\>,
+\end{equation}
+we see
+\begin{equation}
+{\rm Ad}_{1+\gamma+\cdots}x = x + [\gamma,x] + \cdots = x + {\rm
+  ad}_{\gamma}x + \cdots.
+\end{equation}
+(The convention is adjoint representation for the Lie group is
+written as ``Ad'' but for the Lie algebra is ``ad''.)
+
+We get
+\begin{equation}\label{eq:orthogonalCondition}
+\<[\gamma,x],y\>+\<x,[\gamma,y]\>=0.
+\end{equation}
+If $G$ is compact, then $\Lie(G)$ is equipped with a
+nondegenerate positive invariant product (which is precisely 
+the eq \eqref{eq:orthogonalCondition} condition). We can extend
+this to the complexified Lie algebra $\Bbb{C}\Lie(G)$ but it is a
+nondegenerate invariant inner product. This is a general result.
+
+Examples. Consider $\mathfrak{gl}(n)$, we have an invariant inner
+product $\<x,y\>=\tr(xy)$.

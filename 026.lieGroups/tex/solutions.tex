@@ -1,0 +1,1866 @@
+%%
+%% solutions.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Dec 12 11:26:23 2010 Alex Nelson
+%% Last update Sun Dec 12 11:27:36 2010 Alex Nelson
+%%
+\renewcommand{\leftmark}{Solutions to Exercises}
+\section{Solutions to Exercises}
+
+\subsection{Problem Set 1}
+\begin{exercise}\label{hw1:ex:one}
+Check:
+\begin{enumerate}
+\item that the vector space $\Bbb{R}^{3}$ is a Lie algebra with
+respect to the cross product of vectors;
+\item this Lie algebra is simple (i.e. does not have any
+  non-trivial ideals);
+\item all derivations of this Lie algebra are inner derivations.
+\end{enumerate}
+\end{exercise}
+
+
+\answer For the matter of
+$\RR^{3}$ being a Lie algebra, we have the following proof:
+\begin{proof}
+We have a vector space $\RR^{3}$ over $\RR$. We need to
+show that when we equip it with the cross product operation, we
+obtain a Lie algebra. That is, we induce a Lie Bracket
+\begin{equation}
+[\vec{v},\vec{w}]:=\vec{v}\times\vec{w}
+\end{equation}
+where $\vec{v}$, $\vec{w}\in\RR^{3}$. We need to check that
+it obeys the properties of the Lie bracket, and that the property
+of distributivity holds. 
+
+For the properties of the bracket, we see that antisymmetry
+holds:
+\begin{subequations}
+\begin{align}
+[\vec{v},\vec{w}]&=\vec{v}\times\vec{w}\\
+&=-\vec{w}\times\vec{v}\\
+&=-[\vec{w},\vec{v}].
+\end{align}
+\end{subequations}
+We see that it is linear in the second slot (and by antisymmetry,
+the first slot too):
+\begin{subequations}
+\begin{align}
+[\vec{u},\vec{v}+\vec{w}]&=\vec{u}\times(\vec{v}+\vec{w})\\
+&=\vec{u}\times\vec{v}+\vec{u}\times\vec{w}\\
+&=[\vec{u},\vec{v}]+[\vec{u},\vec{w}].
+\end{align}
+\end{subequations}
+Lastly we see that the Jacobi identity holds. We first observe, by
+Lagrange's identity
+\begin{subequations}\label{ex1:eq:lagrangeID}
+\begin{align}
+\vec{u}\times(\vec{v}\times\vec{w}) &= \vec{v}(\vec{u}\cdot\vec{w})-\vec{w}(\vec{u}\cdot\vec{v})\\
+\vec{v}\times(\vec{w}\times\vec{u}) &= \vec{w}(\vec{v}\cdot\vec{u})-\vec{u}(\vec{v}\cdot\vec{w})\\
+\vec{w}\times(\vec{u}\times\vec{v}) &= \vec{u}(\vec{w}\cdot\vec{v})-\vec{v}(\vec{w}\cdot\vec{u})
+\end{align}
+\end{subequations}
+Then we consider the Jacobi identity by plugging in our results
+from Eq \eqref{ex1:eq:lagrangeID}:
+\begin{subequations}
+\begin{align}
+\left[\vec{u},[\vec{v},\vec{w}]\right] +
+\left[\vec{v},[\vec{w},\vec{u}]\right] +
+\left[\vec{w},[\vec{u},\vec{v}]\right] &= \vec{u}\times(\vec{v}\times\vec{w})+\vec{v}\times(\vec{w}\times\vec{u})+\vec{w}\times(\vec{u}\times\vec{v})\\
+&=\vec{v}(\vec{u}\cdot\vec{w})-\vec{w}(\vec{u}\cdot\vec{v})+\vec{w}(\vec{v}\cdot\vec{u})-\vec{u}(\vec{v}\cdot\vec{w})\nonumber\\
+&\phantom{=+\vec{v}}+\vec{u}(\vec{w}\cdot\vec{v})-\vec{v}(\vec{w}\cdot\vec{u})\\
+&=\left[\vec{v}(\vec{u}\cdot\vec{w})-\vec{v}(\vec{w}\cdot\vec{u})\right]+\left[\vec{w}(\vec{v}\cdot\vec{u})-\vec{w}(\vec{u}\cdot\vec{v})\right]\nonumber\\
+&\phantom{=\left[\vec{w}\right]}+\left[\vec{u}(\vec{w}\cdot\vec{v})-\vec{u}(\vec{v}\cdot\vec{w})\right]\\
+&=[0]+[0]+[0]=0
+\end{align}
+\end{subequations}
+which holds. Thus the cross product satisfies the properties of
+the Lie bracket, implying $\Bbb{R}^{3}$ equipped with the cross
+product is a Lia algebra.
+\end{proof}
+
+\medbreak\noindent\textbf{Answer 1.2:\enspace}
+For the matter of this Lie algebra being simple, we have another
+proof.
+
+\begin{proof}
+Assume for contradiction there is an ideal
+$I\subset\Bbb{R}^{3}$ which is nontrivial. Then there is a
+nontrivial center for the Lie algebra. That is, we have some
+$\vec{x}\in I$ such that
+\begin{equation}
+[\vec{x},\vec{y}]=0
+\end{equation}
+for all $\vec{y}\in\Bbb{R}$. However, this happens if and only if
+\begin{equation}
+\vec{x}=\lambda\vec{y}\quad\hbox{for some nonzero $\lambda$, or}\quad\vec{x}=0.
+\end{equation}
+The second case is trivial, the first case implies
+$I=\Bbb{R}^{3}$. In either case, $\Bbb{R}^{3}$ does not have a
+nontrivial center, so it doesn't have a nontrivial ideal.
+\end{proof}
+
+\medbreak\noindent\textbf{Answer 1.3:\enspace}
+Last part of the first exercise, we need to show that all
+derivations of this Lie algebra are inner derivations. We thus
+produce the following proof.
+
+\begin{proof}
+We find that a derivation $\alpha\colon\Bbb{R}^{3}\to\Bbb{R}^{3}$
+would be of the form
+\begin{equation}
+\alpha([\vec{u},\vec{v}])=[\alpha(\vec{u}),\vec{v}]+[\vec{u},\alpha(\vec{v})].
+\end{equation}
+which occurs whenever $\alpha=[\vec{w},-]$ (for some
+$\vec{w}\in\Bbb{R}^{3}$) by the Jacobi identity. We want to show
+that there are no other derivations. We see that $\alpha$ is
+represented by an antisymmetric matrix $X+X^{T}=0$. But we also
+recall any matrix $B$ can be written as
+\begin{equation}
+B = A + S
+\end{equation}
+where $A$ is antisymmetric, and $S$ is symmetric. Then if $B$
+were a derivation we see that
+\begin{equation}
+B[\vec{u},\vec{v}]=[B\vec{u},\vec{v}]+[\vec{u},B\vec{v}]
+\end{equation}
+but this would have
+\begin{equation}
+S[\vec{u},\vec{v}]=[S\vec{u},\vec{v}]+[\vec{u},S\vec{v}]
+\end{equation}
+which is not true. This means that a derivation is of the form of
+an antisymmetric matrix, which is the same as being of the form $\alpha[\vec{w},-]$.
+\end{proof}
+
+\begin{exercise}
+Check the Lie algebra in problem \ref{hw1:ex:one} is:
+\begin{enumerate}
+\item isomorphic to the Lie algebra $\frak{so}(3)$ of real
+  antisymmetric $3\times 3$ matrices; and
+\item isomorphic to the Lie algebra $\frak{su}(2)$ of complex
+  anti-Hermitian traceless $2\times 2$ matrices.
+\end{enumerate}
+\end{exercise}
+
+\medbreak\noindent\textsc{\textbf{Answer 2.1:\enspace}}
+For the first matter of $\mathfrak{so}(3)$ we have the following
+proof:
+\begin{proof}
+The linear map $\varphi$ basically maps bijectively
+\begin{subequations}
+\begin{align}
+\vec{e}_{1}=\begin{bmatrix}1\\0\\0\end{bmatrix}&\mapsto\varphi(\vec{e}_{1})=
+\begin{bmatrix}0 & 0 &
+  0\\0&0&-1\\0&1&0\end{bmatrix}\\
+\vec{e}_{2}=\begin{bmatrix}0\\1\\0\end{bmatrix}&\mapsto\varphi(\vec{e}_{2})=
+\begin{bmatrix}0 & 0 &
+  1\\0&0&0\\-1&0&0\end{bmatrix}\\
+\vec{e}_{3}=\begin{bmatrix}0\\0\\1\end{bmatrix}&\mapsto\varphi(\vec{e}_{3})=
+\begin{bmatrix}0 & -1 &
+  0\\1&0&0\\0&0&0\end{bmatrix}\\
+\vec{x}=\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix}
+&\mapsto \varphi(\vec{x})=\begin{bmatrix}0 & -x_{3} &
+  x_{2}\\x_{3}&0&-x_{1}\\-x_{2}&x_{1}&0\end{bmatrix}
+\end{align}
+\end{subequations}
+which we will prove is an isomorphism.
+By direct computation, we find the commutator
+$[\varphi(\vec{x}),\varphi(\vec{y})]$ is:
+\begin{subequations}
+\begin{align}
+&\begin{bmatrix}0 & -x_{3} &
+  x_{2}\\x_{3}&0&-x_{1}\\-x_{2}&x_{1}&0\end{bmatrix}
+\begin{bmatrix}0 & -y_{3} &
+  y_{2}\\y_{3}&0&-y_{1}\\-y_{2}&y_{1}&0\end{bmatrix}
+-
+\begin{bmatrix}0 & -y_{3} &
+  y_{2}\\y_{3}&0&-y_{1}\\-y_{2}&y_{1}&0\end{bmatrix}
+\begin{bmatrix}0 & -x_{3} &
+  x_{2}\\x_{3}&0&-x_{1}\\-x_{2}&x_{1}&0\end{bmatrix}\nonumber\\
+&=
+\begin{bmatrix}
+-x_2 y_2-x_3 y_3 & x_2 y_1 & x_3 y_1 \\
+x_1 y_2 & -x_1 y_1-x_3 y_3 & x_3 y_2 \\
+x_1 y_3 & x_2 y_3 & -x_1 y_1-x_2 y_2\end{bmatrix}
+-\begin{bmatrix}
+-x_2 y_2-x_3 y_3 & x_1 y_2 & x_1 y_3 \\
+x_2 y_1 & -x_1 y_1-x_3 y_3 & x_2 y_3 \\
+x_3 y_1 & x_3 y_2 & -x_1 y_1-x_2 y_2
+\end{bmatrix}\\
+&= \begin{bmatrix}
+0 & x_2 y_1-x_1 y_2 & x_3 y_1-x_1 y_3 \\
+x_1 y_2-x_2 y_1 & 0 & x_3 y_2-x_2 y_3 \\
+x_1 y_3-x_3 y_1 & x_2 y_3-x_3 y_2 & 0
+\end{bmatrix}=\varphi(\vec{x}\times\vec{y})
+\end{align}
+\end{subequations}
+so it preserves the Lie bracket. We see by inspection
+\begin{equation}
+\varphi^{-1}\left([\varphi(\vec{x}),\varphi(\vec{y})]\right)=\vec{x}\times\vec{y}
+\end{equation}
+the inverse map also preserves the Lie bracket. This implies that
+this linear mapping is a Lie algebra isomorphism.
+\end{proof}
+
+\medbreak\noindent\textsc{\textbf{Answer 2.2:\enspace}}
+The isomorphism with $\mathfrak{su}(2)$ is contained in the proof:
+\begin{proof}
+We have another mapping $\psi$ which is an isomorphism of vector
+spaces which behave on basis vectors and an arbitrary vector by:
+\begin{subequations}
+\begin{align}
+\vec{e}_{1}=\begin{bmatrix}1\\0\\0\end{bmatrix}&\mapsto\psi(\vec{e}_{1})=
+i\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\\
+\vec{e}_{2}=\begin{bmatrix}0\\1\\0\end{bmatrix}&\mapsto\psi(\vec{e}_{2})=
+i\begin{bmatrix}0&i\\-i&0\end{bmatrix}\\
+\vec{e}_{3}=\begin{bmatrix}0\\0\\1\end{bmatrix}&\mapsto\psi(\vec{e}_{3})=
+i\begin{bmatrix}1&0\\0&-1\end{bmatrix}\\
+\vec{x}=\begin{bmatrix}x_{1}\\x_{2}\\x_{3}\end{bmatrix}
+&\mapsto \psi(\vec{x})=i\begin{bmatrix}
+x_{3} & x_{1}-ix_{2}\\
+x_{1}+ix_{2}&-x_{3}
+\end{bmatrix}.
+\end{align}
+\end{subequations}
+To show that $\psi$ is an isomorphism of Lie algebras, we need to
+show that the Lie bracket is preserved. We see that the
+commutator of basis elements of $\mathfrak{su}(2)$ are
+\begin{subequations}
+\begin{align}
+[\psi(\vec{e}_{3}),\psi(\vec{e}_{1})]&=-\begin{bmatrix}1&0\\0&-1\end{bmatrix}\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}+\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\begin{bmatrix}1&0\\0&-1\end{bmatrix}\\
+&=-\begin{bmatrix}0&1\\-1&0\end{bmatrix}
++\begin{bmatrix}0&-1\\1&0\end{bmatrix}\\
+&=2\psi(\vec{e}_{2})\\
+[\psi(\vec{e}_{1}),\psi(\vec{e}_{2})]&=i
+\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\begin{bmatrix}0&-1\\1&0\end{bmatrix}
+-i\begin{bmatrix}0&-1\\1&0\end{bmatrix}
+\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\\
+&=i\begin{bmatrix}1&0\\0&-1\end{bmatrix}
+-i\begin{bmatrix}-1&0\\0&1\end{bmatrix}\\
+&=2\psi(\vec{e}_{3})\\
+[\psi(\vec{e}_{2}),\psi(\vec{e}_{3})]&=i\begin{bmatrix}0&-1\\1&0\end{bmatrix}\begin{bmatrix}1&0\\0&-1\end{bmatrix}
+-i\begin{bmatrix}1&0\\0&-1\end{bmatrix}\begin{bmatrix}0&-1\\1&0\end{bmatrix}\\
+&=\begin{bmatrix}0&i\\i&0\end{bmatrix}-\begin{bmatrix}0&-i\\-i&0\end{bmatrix}\\
+&=2\psi(\vec{e}_{1})
+\end{align}
+\end{subequations}
+We see that this is isomorphic to the Lie algebra on
+$\Bbb{R}^{3}$ equipped with the Lie bracket incuced by
+\begin{equation}
+[\vec{u},\vec{v}]=\vec{u}\times\vec{v}-\vec{v}\times\vec{u}
+\end{equation}
+the commutator of the cross products. 
+\end{proof}
+
+\subsection{Problem Set 2}
+\begin{exercise}\label{exercise1HW2}
+Find the Lie algebras for the following matrix groups:
+\begin{enumerate}
+\item The group of real upper triangular matrices.
+\item The group of real upper triangular matrices with diagonal
+  entries equal to 1.
+\item The group $T_{k}$ of real $n\times n$ matrices obeying
+  $a_{ii}=1$, $a_{ij}=0$ if $j-i<k$ and $j\not=i$.
+\end{enumerate}
+\end{exercise}
+
+\noindent{\textbf{Answer \ref{exercise1HW2}.1:\enspace}}
+We see that a curve $\gamma\colon[0,1]\to G$ in the group of real
+upper triangular matrices such that $\gamma(0)=I$ has components
+of the form
+\begin{equation}
+\gamma(t)=I+c(t)
+\end{equation}
+where $c(t)$ has zero lower triangular components. This implies
+that the Lie algebra consists of matrices $c'(0)$ which are upper
+triangular. 
+
+\medbreak
+\noindent{\textbf{Answer \ref{exercise1HW2}.2:\enspace}}
+We see that curves $\gamma\colon[0,1]\to G$ in the group of real
+upper triangular matrices with the diagonal components equal to 1
+(such that $\gamma(0)=I$) is of the form
+\begin{equation}
+\gamma(t)=I+\begin{bmatrix} 
+0 & c_{12}(t) & \cdots & c_{1n}(t)\\
+0 & 0        & \cdots & c_{2n}(t)\\
+\vdots & \vdots & \ddots & \vdots\\
+%0 & 0        & \cdots & c_{n-1,n}(t)\\
+0 & 0        & \cdots & 0\end{bmatrix}
+\end{equation}
+The Lie algebra is then consisting of matrices of the form
+\begin{equation}
+\gamma'(0)=\begin{bmatrix} 
+0 & c_{12}'(0) & \cdots & c_{1n}'(0)\\
+0 & 0        & \cdots & c_{2n}'(0)\\
+\vdots & \vdots & \ddots & \vdots\\
+%0 & 0        & \cdots & c_{n-1,n}'(0)\\
+0 & 0        & \cdots & 0\end{bmatrix}
+\end{equation}
+where $c_{ij}'(0)\in\Bbb{R}$ for $0<i<j\leq n$. These are
+strictly upper triangular matrices with real entries.
+
+\medbreak
+\noindent{\textbf{Answer \ref{exercise1HW2}.3:\enspace}}
+We have a matrix $T_{k}$ with components $a_{ij}=0$ if both $j<i+k$
+\textsc{\textbf{and}} $j\not=i$. For example, consider $3\times3$
+matrices. We see that
+\begin{equation}
+T_{1}=\begin{bmatrix}
+1 & a_{12} & a_{13}\\
+0 & 1 & a_{23}\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+where $a_{12}$, $a_{13}$, and $a_{23}$ are real numbers not
+necessarily zero (we use the well known fact that $2\not<1+1$,
+$3\not<1+1$, and $3\not<2+1$ respectively). Similarly, we see
+that
+\begin{equation}
+T_{2}=\begin{bmatrix}
+1 & 0 & b_{13}\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+where $b_{13}\in\Bbb{R}$, since here $b_{12}=b_{23}=0$. Lastly we
+see that
+\begin{equation}
+T_{3}=I
+\end{equation}
+is the identity element. We see then that the product of two
+matrices $T_{a}T_{b}=\widetilde{T}_{\min\{a,b\}}$ produce another
+matrix in the group.
+
+We see, however, that this group's elements of the form $T_{1}$
+form a subgroup which is isomorphic to the Lie group
+described in \hyperref[exercise1HW2]{Exercise \ref{exercise1HW2}.2.}
+We also see that $\{T_{i+1}\}\subset\{T_{i}\}$ are subgroups, for
+all $i\in\Bbb{N}$. The Lie algebra for the group described in \hyperref[exercise1HW2]{Answer \ref{exercise1HW2}.2} is thus completely
+isomorphic to the Lie algebra we are interested in. 
+
+\begin{exercise}\label{ex2HW2}
+Check the groups of \hyperref[exercise1HW2]{Exercise \ref{exercise1HW2}}
+ and corresponding Lie algebras are solvable.
+\end{exercise}
+\medbreak
+\noindent\textsc{\textbf{Answer \ref{ex2HW2}:\enspace}}
+Recall that if $\mathfrak{g}$ is the Lie Algebra for the group
+$G$, then we use the notation from Knapp's \emph{Lie Groups: Beyond An Introduction}
+ (Second Ed.) that
+\begin{equation}
+\mathfrak{g}^{0}=
+\mathfrak{g},\qquad
+\mathfrak{g}^{1}=[
+\mathfrak{g},
+\mathfrak{g}],\qquad
+\mathfrak{g}^{j+1}=[
+\mathfrak{g}^{j},
+\mathfrak{g}^{j}].
+\end{equation}
+We say that $\mathfrak{g}$ is \define{Solvable} if
+$\mathfrak{g}^{j}=0$ for some $j\in\Bbb{Z}$. Here we are using
+notation that
+\begin{equation}
+[\mathfrak{a},\frak{b}]=\mathop{\rm span}\nolimits\{[X,Y]\mid X\in\frak{a},Y\in\frak{b}\}
+\end{equation}
+wbere $\frak{a}$, $\frak{b}$ are subsets of a Lie algebra
+$\frak{g}$ and we take the span over a field $\Bbb{F}$ (in our
+case $\Bbb{R}$). A group $G$ is solvable iff it is connected and
+its Lie algebra is solvable. So we need to check for each group
+that: 1) it is connected, and 2) its Lie algebra is solvable.
+
+\medbreak
+\noindent\textsc{\textbf{Answer \ref{ex2HW2}.1:\enspace}}
+We consider $\frak{g}$ the Lie algebra for the group of $n\times
+n$ upper triangular matrices with real value entries. Let
+$X,Y\in\frak{g}$, write
+\begin{equation}
+X=D_{X}+\widetilde{X},\qquad Y=D_{Y}+\widetilde{Y}
+\end{equation}
+where $D_{X}$, $D_{Y}$ are diagonal matrices, and
+$\widetilde{X}$, $\widetilde{Y}$ are off-diagonal matrices. We
+see that the commutator of these two elements are then
+\begin{subequations}
+\begin{align}
+[X,Y]&=[D_{X}+\widetilde{X},D_{Y}+\widetilde{Y}]\\
+&=[D_{X},D_{Y}]+[D_{X},\widetilde{Y}]+[\widetilde{X},D_{Y}]+[\widetilde{X},\widetilde{Y}]\\
+&=0+0+0+[\widetilde{X},\widetilde{Y}]
+\end{align}
+\end{subequations}
+and we can write in block form that
+\begin{equation}
+[\widetilde{X},\widetilde{Y}] = a_{ij} = \begin{cases}\not=0&\hbox{if
+  }i+1\leq j\\
+0 & \hbox{otherwise}.
+\end{cases}
+\end{equation}
+By induction, we see that elements of $\frak{g}^{m}$ are matrices
+of the form
+\begin{equation}
+a_{ij} = \begin{cases}\not=0&\hbox{if
+  }i+m\leq j\\
+0 & \hbox{otherwise}
+\end{cases}
+\end{equation}
+which is zero for all $m\geq n$.
+
+We need to prove that the group is connected in order to conclude
+that it is solvable. We can see that given any two matrices $X$,
+$Y\in G$ there is a path $\gamma\colon[0,1]\to G$ connecting them
+defined by
+\begin{equation}
+\gamma(t)=tX+(1-t)Y
+\end{equation}
+which is always in the group $\forall t\in[0,1]$. Thus the group
+is path-connected. This implies that $G$ is connected.
+
+\medbreak
+\noindent\textsc{\textbf{Answer \ref{ex2HW2}.2:\enspace}}
+We see that the Lie algebra we are working with is actually
+isomorphic to $\frak{g}^{1}$ from Answer 2.1, which we saw is
+solvable. We need to show that the group is connected to prove
+that it is solvable. Let $X$, $Y\in G$ be arbitrary group
+elements. We construct a path $\gamma\colon[0,1]\to G$ from $X$
+to $Y$ defined by
+\begin{equation}
+\gamma(t)=tY+(1-t)X.
+\end{equation}
+We see that $\gamma(t)\in G$ for all $t\in[0,1]$, which means
+that the group is path-connected. This implies that the group is
+connected and, moreover, solvable.
+
+
+\medbreak
+\noindent\textsc{\textbf{Answer \ref{ex2HW2}.3:\enspace}}
+We see that  the Lie algebra we are working with is, again,
+isomorphic to $\frak{g}^{1}$ from Answer 2.1, which we saw is
+solvable. We need to show that the group is connected, which we
+will do by proving it is path-connected (a stronger notion!). For
+$T_{i}$, $T_{j}$ be arbitrary matrices in our group, we construct
+a path $\gamma\colon[0,1]\to G$ by
+\begin{equation}
+\gamma(t)=tT_{j}+(1-t)T_{i}.
+\end{equation}
+We see that this path $\gamma(t)\in G$ for all $t\in[0,1]$. This
+implies path-connectedness and, more importantly, solvability of
+the group.
+
+\begin{defn}
+A group is \define{Solvable} if
+\begin{equation}
+G=G_{0}\supset G_{1}\supset\cdots\supset G_{n}=\{e\}
+\end{equation}
+is a tower of groups such that $G_{n-1}\supset G_{n}$ and
+$G_{n-1}/G_{n}$ is Abelian.
+\end{defn}
+\begin{defn}
+A Lie Algebra $\frak{g}$ is \define{Solvable} iff we can find
+ideals $\frak{g}_{0}=\frak{g}$, $\frak{g}_{1}$, ...,
+$\frak{g}_{n}=0$ such that $\frak{g}_{i}\supset\frak{g}_{i+1}$
+and $\frak{g}_{i}/\frak{g}_{i+1}$ is Abelian.
+\end{defn}
+\noindent{\bf N.B.:\enspace} %% Sometimes $\frak{g}_{i+1}$ is given
+%% the extra condition of being an ideal in $\frak{g}_{i}$ (see
+%% e.g. Knapp's {\it Lie Groups: Beyond an Introduction} Second Ed., Chapter I.5). 
+Recall that an ideal $\frak{h}$ for a Lie algebra $\frak{g}$
+satisfies the property that
+\begin{equation}
+[\frak{h},\frak{g}]=\mathop{\rm span}\nolimits\{[X,Y]\mid X\in\frak{h},Y\in\frak{g}\}\subseteq\frak{h}.
+\end{equation}
+
+\begin{prop}\label{prop:ab}
+Let $\frak{g}$ be a Lie algebra,
+$\frak{g}^{1}=[\frak{g},\frak{g}]$, and inductively
+$\frak{g}^{i+1}=[\frak{g}^{i},\frak{g}^{i}]$. Then
+$\frak{g}^{i}/\frak{g}^{i+1}$ is Abelian.
+\end{prop}
+\begin{proof}
+It is obvious. We mod out all commutation relations to vanish,
+which is the necessary and sufficient conditions for a Lie
+algebra to be Abelian.
+\end{proof}
+\begin{prop}
+Let $\frak{g}$ be a Lie algebra, $\frak{h}\subset\frak{g}$ be an
+ideal. Then $[\frak{h},\frak{h}]\subset\frak{h}$ is an ideal of $\frak{h}$.
+\end{prop}
+\begin{proof}
+It is obvious.
+\end{proof}
+\begin{prop}
+Let $N\subset G$ be a normal Lie subgroup. Then
+$\frak{n}\subset\frak{g}$ is an ideal of the Lie algebra.
+\end{prop}
+\begin{proof}
+We see that since $N$ is normal, for any $g\in G$ that
+$gNg^{-1}\subset N$. Consider a curve $\gamma\colon[0,1]\to N$
+such that $\gamma(0)=I$ is the identity element.
+\end{proof}
+\begin{thm}
+Let $G$ be a Lie group and $\frak{g}$ its Lie algebra. If
+$\frak{g}$ is solvable, then $G$ is solvable.
+\end{thm}
+\begin{proof}
+We recall that $\exp\colon\frak{g}\to G$ recovers the Lie
+group. We see that if we have a tower of ideals
+\begin{equation}
+\frak{g}_{0}\supset\frak{g}_{1}\supset\cdots\supset\frak{g}_{n}=\{0\},
+\end{equation}
+then by exponentiation we get a tower of normal Lie subgroups
+\begin{equation}
+G\supset G_{1}\supset\cdots\supset G_{n}=\{\exp(0)\}.
+\end{equation}
+We also see that proposition \ref{prop:ab} gives us a method to
+construct a tower of ideals to demonstrate solvability for a Lie
+algebra. Additionally, if $\frak{g}^{i}/\frak{g}^{i+1}$ is
+Abelian, by exponentiation $G^{i}/G^{i+1}$ is Abelian. This is
+sufficient to stating that if $\frak{g}$ is solvable, then $G$ is
+solvable too.
+\end{proof}
+\begin{rmk}
+The Lie algebra $\frak{sl}(n)$ (also denoted by the symbol
+$A_{n-1}$) consists of traceless $n\times n$ complex
+matrices. The symbol $E_{i,j}$ denotes a matrix with only one
+nonzero entry that is equal to 1 and located in the $i$-th row
+and $j$-th column.
+\end{rmk}
+
+\subsection{Exercises}
+\begin{exercise}
+\begin{enumerate}
+\item Check that the matrices $E_{i,j}$ (for $i\not=j$) and the matrices $h_{i}=E_{i,i}-E_{i+1,i+1}$ form a basis of $\frak{sl}(n)$.
+\item Find the structure constants in this basis.
+\end{enumerate}
+\end{exercise}
+
+\answer{1}
+We need to check that any matrix $X\in\frak{sl}(n)$ can be
+written as a linear combination of $E_{i,j}$ and $h_{i}$. We see
+that if we work in the canonical basis of $\Bbb{C}^{n}$, then we
+can write out $X$ with components
+\begin{equation}
+X=D+\widetilde{X}=\delta_{ij}\lambda_{i}+[\widetilde{x}_{ij}]
+\end{equation}
+where $D$ is diagonal, $\widetilde{X}$ has the diagonal
+components identically zero. We see then that we can trivially
+write out
+\begin{equation}
+\widetilde{X}=\sum_{i,j}\widetilde{x}_{ij}E_{i,j}.
+\end{equation}
+So we need to show that we can write out the diagonal part $D$ in
+terms of $h_{i}$.
+
+We see that we can write
+\begin{equation}
+D = \lambda_{1}h_{1}+(\lambda_{1}+\lambda_{2})h_{2}+\cdots+(\sum^{k}_{j=1}\lambda_{j})h_{k}+\cdots+(\sum^{n}_{j=1}\lambda_{j})h_{n}
+\end{equation}
+which permits us to verify that $D$ is indeed traceless, and a
+linear combination of the basis vectors $h_{i}$.
+
+\answer{2}
+We see first of all that
+\begin{equation}
+[h_{i},h_{j}]=0
+\end{equation}
+for all $i,j=1,...,n$. It is obvious, since $h$ is diagonal.
+
+We observe that
+\begin{equation}
+E_{i,j}E_{j,k}=E_{i,k}\quad\Rightarrow\quad E_{i,j}E_{k,l}=\delta_{j,k}E_{i,\,l}
+\end{equation}
+where $\delta_{j,k}$ is the Kronecker delta, which implies
+\begin{equation}
+[E_{i,j},E_{k,l}]=\delta_{j,k}E_{i,l}-\delta_{i,l}E_{j,k}.
+\end{equation}
+This permits us to observe that
+\begin{subequations}
+\begin{align}
+[E_{i,j},h_{k}] &= [E_{i,j},E_{k,k}-E_{k+1,k+1}]\\
+&=[E_{i,j},E_{k,k}]-[E_{i,j},E_{k+1,k+1}]\\
+&=(\delta_{j,k}E_{i,k}-\delta_{i,k}E_{j,k})
+-(\delta_{j,k+1}E_{i,k+1}-\delta_{i,k+1}E_{j,k+1})
+\end{align}
+\end{subequations}
+Thus we have the commutation relations for the generators of
+$\frak{sl}(n)$, which permits us to deduce the structure
+constants. Observe if we omit the commas in the indices, we can write
+\begin{subequations}
+\begin{align}
+[E_{ij},E_{kl}] &= {f_{ijkl}}^{ab}E_{ab}\\
+&=(\delta^{a}_{i}\delta^{b}_{l}\delta_{jk}-\delta^{a}_{j}\delta^{b}_{k}\delta_{il})E_{ab}
+\end{align}
+\end{subequations}
+which permits us to deduce some of the structure constants. We
+also have
+\begin{equation}
+[E_{ij},h_{k}]={f_{ijlm}}^{ab}(\delta^{l}_{k}\delta^{m}_{k}-\delta^{l}_{k+1}\delta^{m}_{k+1})E_{ab}
+\end{equation}
+and
+\begin{equation}
+[h_{i},h_{j}]=0.
+\end{equation}
+
+\begin{exercise}
+\begin{enumerate}
+\item Check that subalgebra $\frak{h}$ of all diagonal matrices is a maximal
+commutative subalgebra.
+\item Prove that there exists a basis of $\frak{sl}(n)$
+  consisting of eigenvectors for elements of $\frak{h}$. (This means
+  that $\frak{h}$ is a Cartan subalgebra of $\frak{sl}(n)$.)
+\end{enumerate}
+\end{exercise}
+
+\answer{1} 
+Let $\frak{h}$ consist of diagonal matrices in $\frak{sl}(n)$. We
+need to show (a) it is Abelian, (b) it is maximal. We see that
+\begin{subequations}
+\begin{align}
+[\frak{h},\frak{h}] &= \mathop{\rm Span}\nolimits\{[X,Y]\mid X,Y\in\frak{h}\}\\
+&= \mathop{\rm Span}\nolimits\{0\}\\
+&=0.
+\end{align}
+\end{subequations}
+Thus it is Abelian and moreover a nilpotent Lie algebra.
+
+We see that
+\begin{subequations}
+\begin{align}
+N_{\frak{sl}(n)}(\frak{h}) &= \{X\in\frak{sl}(n)\mid
+[X,Y]\in\frak{h}\quad\forall Y\in\frak{h}\}\\
+&=\{ E_{ij}\in\frak{sl}(n)\mid
+[E_{ij},Y]\in\frak{h}\quad\forall Y\in\frak{h}\}\cup\{ h_{k}\in\frak{sl}(n)\mid
+[h_{k},Y]\in\frak{h}\quad\forall Y\in\frak{h}\}\\
+&=\emptyset\cup\{ h_{k}\in\frak{sl}(n)\mid
+[h_{k},Y]\in\frak{h}\quad\forall Y\in\frak{h}\}\\
+&=\emptyset\cup\frak{h}=\frak{h}.
+\end{align}
+\end{subequations}
+That is to say that $\frak{h}$ is self-normalising, so $\frak{h}$
+is a Cartan subalgebra.
+
+Since $\frak{h}$ is self-normalising, if $\frak{h}'$ is another
+Abelian subalgebra, then by definition for each $x\in\frak{h}'$
+\begin{equation}
+[x,y]\in\frak{h}
+\end{equation}
+for every $y\in\frak{h}$. This implies that $x\in\frak{h}$ and
+more importantly $\frak{h'}\subset\frak{h}$.
+
+\answer{2} 
+We observe that
+\begin{equation}
+[a^{i}E_{i,i},E_{j,k}]=(a^{j}-a^{k})E_{j,k}.
+\end{equation}
+It implies that
+\begin{equation}
+[a^{i}h_{i},E_{j,k}]=[\widetilde{a}^{i}E_{i,i},E_{j,k}]=(\widetilde{a}^{j}-\widetilde{a}^{k})E_{j,k}
+\end{equation}
+or that $E_{j,k}$ is an eigenvector for $\ad(a^{i}h_{i})$.
+
+\begin{exercise}
+Check that $e_{i} = E_{i,i+1}$ and $f_{i} = E_{i+1,i}$ form a system of multiplicative generators of
+$\frak{sl}(n)$. Prove relations
+\begin{subequations}
+\begin{align}
+  [e_{i} , f_{j} ] = \delta_{ij} h_{i},\qquad [h_{i} , h_{j} ] = 0,\\
+  [h_{i} , e_{j} ] = a_{ij} e_{j} ,\qquad [h_{i} , f_{j} ] = -a_{ij} f_{j},\\
+  (\ad{e_{i}} )^{-a_{ij} +1} e_{j} = 0,\qquad (\ad{f_{i}} )^{-a_{ij} +1} f_{j} = 0
+\end{align}
+\end{subequations}
+for some choice of matrix $a_{ij}$.
+
+ We use here the notation $\ad(x)$ for the operator transforming $y$ into $[x, y]$.
+\end{exercise}
+
+\answer{} Observe that
+\begin{equation}
+E_{j,k} = \prod^{k}_{p=j} e_{p}
+\end{equation}
+assuming that $k>j$ and
+\begin{equation}
+E_{j,k} = \prod^{j}_{p=k}f_{p}
+\end{equation}
+otherwise. So $e_{i}$ and $f_{j}$ generate the algebra.
+
+With regards to the commutation relations, we see first that 
+\begin{equation}
+[h_{i},h_{j}]=0
+\end{equation}
+for all $i,j$ since $h_{i}$ is diagonal and thus commutes with
+other diagonal matrices. 
+
+We also see that
+\begin{subequations}
+\begin{align}
+e_{i}f_{j} &= E_{i,i+1}E_{j+1,j}\\
+&= \delta_{i,j}E_{i,i}
+\end{align}
+\end{subequations}
+which implies
+\begin{equation}
+[e_{i},f_{j}]=\delta_{i,j}E_{i,i}-\delta_{i,j}E_{i+1,i+1}=\delta_{i,j}h_{i}.
+\end{equation}
+It follows then from the last homework problem that
+\begin{equation}
+[h_{i},e_{j}] = 2\delta_{ij}e_{j}-\delta_{i,j+1}e_{j}.
+\end{equation}
+Similarly
+\begin{equation}
+[h_{i},f_{j}] = -2\delta_{ij}f_{j}+\delta_{i,j+1}f_{j}.
+\end{equation}
+If we write
+\begin{equation}
+[e_{i},e_{j}]={c_{ij}}^{k}e_{k},\qquad[f_{i},f_{j}]={{\widetilde{c}}_{ij}}{}^{k}f_{k}
+\end{equation}
+then we see that if $|j-i|>1$ then
+\begin{equation}
+\ad(e_{i})(e_{j})=0,\qquad \ad(f_{i})(f_{j})=0.
+\end{equation}
+If $i=j$, then
+\begin{equation}
+\ad(e_{j})e_{j}=0,\qquad \ad(f_{j})f_{j}=0
+\end{equation}
+and for $i=j+1$ we have
+\begin{equation}
+\ad(e_{j+1})e_{j}=0,\qquad \ad(f_{j+1})f_{j}=0.
+\end{equation}
+This is precisely as desired.
+
+\subsection{Exercises}
+\subsubsection{Algebra \texorpdfstring{$\ClassicalGroup{D}_{n}$}{Dn}}
+
+The Lie algebra $\ClassicalGroup{D}_{n}$ consists of $2n\times2n$ complex matrices
+$L$ obeying
+\begin{equation}
+(FL)^{T}+FL=0
+\end{equation}
+where, in block form,
+\begin{equation}
+F=\begin{bmatrix}
+0&1\\
+1&0
+\end{bmatrix}.
+\end{equation}
+
+\begin{exercise}
+Check that $\ClassicalGroup{D}_{n}$ is isomorphic to the complexification of the
+Lie algebra of the orthogonal group $O(2n)$.
+\end{exercise}
+
+\answer
+We see first that we can diagonalize $F$. Observe that
+\begin{equation}
+\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}
+\begin{bmatrix}
+0&1\\
+1&0
+\end{bmatrix}
+\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}=\begin{bmatrix}
+1&1\\
+-1&1
+\end{bmatrix}\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}=\begin{bmatrix}
+2&0\\
+0&-2
+\end{bmatrix}
+\end{equation}
+So we have
+\begin{equation}
+F=\left(\frac{1}{\sqrt{2}}\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}\right)\begin{bmatrix}1&0\\0&-1\end{bmatrix}
+\left(\frac{1}{\sqrt{2}}\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}\right)
+\end{equation}
+We observe that since we are working with complex matrices, we
+can write
+\begin{equation}
+\begin{bmatrix}1&0\\
+0&-1
+\end{bmatrix}=\begin{bmatrix}1&0\\
+0&i\end{bmatrix}I\begin{bmatrix}1&0\\
+0&i\end{bmatrix}
+\end{equation}
+where $I$ is the $2n\times2n$ identity matrix. Thus we have a
+mapping
+\begin{equation}
+\varphi(X)=\frac{1}{2}\begin{bmatrix}1&1\\1&-1\end{bmatrix}\begin{bmatrix}1&0\\
+0&i\end{bmatrix}X\begin{bmatrix}1&0\\
+0&i\end{bmatrix}\begin{bmatrix}1&1\\1&-1\end{bmatrix}
+\end{equation}
+which maps the condition
+\begin{equation}
+\varphi\left((FX)^{T}+FX\right)=\varphi(X)^{T}+\varphi(X)
+\end{equation}
+to the condition for $\varphi(X)\in\CC\frak{o}(2n)$. We see
+that this mapping is invertible trivially.
+
+\begin{exercise}
+Check that the matrices
+\begin{equation}
+e_{ij}:=\begin{bmatrix}E_{ij}&0\\
+0&-E_{ji}
+\end{bmatrix}
+\end{equation}
+together with the matrices
+\begin{equation}
+f_{pq}:=\begin{bmatrix}0&E_{pq}-E_{qp}\\
+0&0
+\end{bmatrix},\qquad
+g_{pq}:=\begin{bmatrix}0&0\\
+E_{pq}-E_{qp}&0
+\end{bmatrix}
+\end{equation}
+form a basis of $\ClassicalGroup{D}_{n}$. 
+
+Here $i,j=1,\ldots,n$, $1\leq p<q\leq n$, and $E_{i,j}$ has only
+one nonzero entry that is equal to unity located in the $i^{th}$
+row and $j^{th}$ column.
+\end{exercise}
+
+\answer We see that, when written in block form, the condition
+for $\ClassicalGroup{D}_{n}$ implies that
+\begin{subequations}
+\begin{align}
+F\begin{bmatrix}A&B\\C&D
+\end{bmatrix}&=\begin{bmatrix}C&D\\A&B\end{bmatrix}\\
+\begin{bmatrix}A^{T}&C^{T}\\B^{T}&D^{T}
+\end{bmatrix}F&=\begin{bmatrix}C^{T}&A^{T}\\
+D^{T}&B^{T}
+\end{bmatrix}\\
+\Rightarrow\quad\begin{bmatrix}C&D\\A&B\end{bmatrix}&=-\begin{bmatrix}C^{T}&A^{T}\\
+D^{T}&B^{T}
+\end{bmatrix}
+\end{align}
+\end{subequations}
+Thus we see that if $L\in \ClassicalGroup{D}_{n}$, it can be written in block form
+as
+\begin{equation}
+L=\begin{bmatrix}A&B\\
+C&-A^{T}
+\end{bmatrix}
+\end{equation}
+where $A$ is any $n\times n$ matrix, $B,C$ are antisymmetric
+$n\times n$ matrices. We see we can write this as
+\begin{equation}
+L=a^{ij}e_{ij}+b^{pq}f_{pq}+c^{pq}g_{pq}
+\end{equation}
+where we sum over $i$, $j$, $p$, $q$.
+
+\begin{exercise}
+Check that the subalgebra $\frak{h}$ of all matrices of the form
+\begin{equation}
+\begin{bmatrix}
+A&0\\
+0&-A
+\end{bmatrix}
+\end{equation}
+(where $A$ is a diagonal matrix) is a maximal commutative
+subalgebra, and prove that there exists a basis of $\ClassicalGroup{D}_{n}$
+consisting of eigenvectors for elements of $\frak{h}$ acting on
+$\ClassicalGroup{D}_{n}$ by means of adjoint representation. (This means that
+$\frak{h}$ is a Cartan subalgebra of $\ClassicalGroup{D}_{n}$.)
+\end{exercise}
+
+\answer\marginpar{$\frak{h}$ is Cartan Subalgebra} Well, we see
+that $h_{i}=e_{i,i}$ forms a basis of $\frak{h}$. We know from
+homework 1 that if we include nonzero off-diagonal components,
+the algebra is non-Abelian. So every Abelian subalgebra must be
+generated by some subset of $h_{i}$. This means that
+\begin{equation}
+\frak{h}={\rm span}\{a^{i}h_{i}\colon a^{i}\in\Bbb{C}\}
+\end{equation}
+is a Maximal Abelian subalgebra.
+
+\marginpar{Eigenbasis}We see that
+\begin{subequations}
+\begin{align}
+[h_{i},e_{jk}]&=h_{i}e_{jk}-e_{jk}h_{i}\\
+&=\begin{bmatrix}
+E_{i,i}&0\\
+0     &-E_{i,i}
+\end{bmatrix}
+\begin{bmatrix}E_{jk}&0\\
+0&-E_{kj}
+\end{bmatrix}
+-\begin{bmatrix}E_{jk}&0\\
+0&-E_{kj}
+\end{bmatrix}
+\begin{bmatrix}
+E_{i,i}&0\\
+0     &-E_{i,i}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+E_{i,i}E_{j,k} - E_{j,k}E_{i,i} & 0\\
+0 & E_{i,i}E_{k,j}-E_{k,j}E_{i,i}
+\end{bmatrix}\\
+&=\delta_{i,j}e_{i,k}-\delta_{k,i}e_{j,i}\\
+&=(\delta_{i,j}-\delta_{k,i})e_{j,k}.
+\end{align}
+\end{subequations}
+Similarly
+\begin{subequations}
+\begin{align}
+[h_{i},f_{pq}]&=
+\begin{bmatrix}E_{i,i}&0\\0&-E_{i,i}\end{bmatrix}
+\begin{bmatrix}
+0&E_{pq}-E_{qp}\\
+ 0&0
+ \end{bmatrix}
+-\begin{bmatrix}
+0&E_{pq}-E_{qp}\\
+ 0&0
+ \end{bmatrix}
+\begin{bmatrix}E_{i,i}&0\\0&-E_{i,i}\end{bmatrix}\\
+&=\begin{bmatrix}
+0&E_{i,i}E_{p,q}-E_{i,i}E_{q,p}\\
+0&0
+\end{bmatrix}
+-\begin{bmatrix}0&-(E_{p,q}E_{i,i}-E_{q,p}E_{i,i})\\
+0&0\end{bmatrix}\\
+&=\begin{bmatrix}
+0&E_{i,i}E_{p,q}+E_{p,q}E_{i,i}-E_{i,i}E_{q,p}-E_{q,p}E_{i,i}\\
+0&0
+\end{bmatrix}\\
+&=(\delta_{i,p}+\delta_{i,q})f_{pq}.
+\end{align}
+\end{subequations}
+Lastly
+\begin{subequations}
+\begin{align}
+[h_{i},g_{pq}]&=
+\begin{bmatrix}E_{i,i}&0\\0&-E_{i,i}\end{bmatrix}
+\begin{bmatrix}
+0&0\\
+E_{pq}-E_{qp} &0
+ \end{bmatrix}
+-\begin{bmatrix}
+0&0\\
+E_{pq}-E_{qp}&0
+ \end{bmatrix}
+\begin{bmatrix}E_{i,i}&0\\0&-E_{i,i}\end{bmatrix}\\
+&=\begin{bmatrix}0&0\\
+-E_{i,i}E_{p,q}+E_{i,i}E_{q,p}&0
+\end{bmatrix}
+-\begin{bmatrix}
+0&0\\
+E_{p,q}E_{i,i}-E_{q,p}E_{i,i}&0
+\end{bmatrix}\\
+&=-(\delta_{i,p}+\delta_{i,q})g_{p,q}.
+\end{align}
+\end{subequations}
+Thus $e_{jk}$, $f_{pq}$, and $g_{pq}$ form a basis for the Lie
+algebra, and are weight vectors.
+
+
+\begin{exercise}
+Check that $e_{i}=e_{i,i+1}$ for $i=1,...,n-1$ and
+$e_{n}=f_{n-1,n}$; $f_{i}=e_{i+1,i}$ for $i=1,...,n-1$ and
+$f_{n}=g_{n-1,n}$ form a system of multiplicative generators of
+$D_{n}$. Prove the relations
+\begin{subequations}
+\begin{align}
+[e_{i},f_{j}]&=\delta_{ij}h_{i}\\
+[h_{i},h_{j}]&=0\\
+[h_{i},e_{j}]&=a_{ij}e_{j}\\
+[h_{i},f_{j}]&=-a_{ij}f_{j}\\
+({\rm ad}e_{i})^{1-a_{ij}}e_{j}&=0\qquad\hbox{when $i\not=j$}\\
+({\rm ad}f_{i})^{1-a_{ij}}f_{j}&=0\qquad\hbox{when $i\not=j$}
+\end{align}
+\end{subequations}
+\end{exercise}
+
+\answer It follows immediately from the calculations performed in
+the answer to 3.
+
+\subsubsection{Algebra \texorpdfstring{$\ClassicalGroup{C}_{n}$}{Cn}}
+
+Consider the Lie algebra $\ClassicalGroup{C}_{n}$ consisting of $2n\times2n$
+complex matrices obeying
+\begin{equation}
+(FL)^{T}+FL=0
+\end{equation}
+where
+\begin{equation}
+F=\begin{bmatrix}0&1\\
+-1&0
+\end{bmatrix}.
+\end{equation}
+
+\begin{exercise}
+Check that $\ClassicalGroup{C}_{n}$ is isomorphic to the complexification of the
+Lie algebra of the compact group $\Sp{2n}\cap \U{2n}$ where
+$\Sp{2n}$ stands for the group of linear transformations of
+$\CC^{2n}$ preserving non-degerate anti-symmetric bilinear
+form and $\U{2n}$ denotes unitary group.
+\end{exercise}
+
+\answer We see first of all that we may diagonalize $F$ when we
+write it as
+\begin{equation}
+\frac{1}{2}\begin{bmatrix}-i&1\\i&1
+\end{bmatrix}
+\begin{bmatrix}
+i&0\\0&i
+\end{bmatrix}
+\begin{bmatrix}-i&i\\
+1&1
+\end{bmatrix}=F.
+\end{equation}
+We see that we can construct a morphism
+\begin{equation}
+\varphi(X)=\frac{1}{2}\begin{bmatrix}-i&i\\
+1&1
+\end{bmatrix}X\begin{bmatrix}-i&1\\i&1
+\end{bmatrix}
+\end{equation}
+which is invertible, whose domain is $\ClassicalGroup{C}_{n}$ and whose codomain
+is precisely the complexified Lie algebra for $\U{2n}\cap\Sp{2n}$.
+
+\begin{exercise}\label{hw4:ex6}
+Check that the matrices
+\begin{subequations}
+\begin{align}
+e_{ij} &= \begin{bmatrix}E_{ij}&0\\0&-E_{ji}
+\end{bmatrix}\\
+f_{pq}&= \begin{bmatrix}0&E_{pq}+E_{qp}\\0&0
+\end{bmatrix}\\
+g_{pq}&=\begin{bmatrix}0&0\\E_{pq}+E_{qp}&0
+\end{bmatrix}
+\end{align}
+\end{subequations}
+form a basis of $\ClassicalGroup{C}_{n}$, where $i,j=1,...,n$ and $1\leq p\leq
+q\leq n$.
+\end{exercise}
+
+\answer If we write an element of our algebra in block form as
+\begin{equation}
+L = \begin{bmatrix}
+A&B\\C&D\end{bmatrix}
+\end{equation}
+then by our conditions, we deduce
+\begin{subequations}
+\begin{align}
+FL &= \begin{bmatrix}C&D\\-A&-B\end{bmatrix}\\
+L^{T}F&=\begin{bmatrix}C^{T}&-A^{T}\\D^{T}&-B^{T}\end{bmatrix}
+\end{align}
+\end{subequations}
+which implies that $B$ and $C$ are symmetric, and $-A^{T}=D$. So
+in other words we can write
+\begin{equation}
+L = \begin{bmatrix} A & \frac{1}{2}(B+B^{T})\\
+\frac{1}{2}(C+C^{T}) & -A^{T}
+\end{bmatrix}.
+\end{equation}
+However, this permits us to write
+\begin{subequations}
+\begin{align}
+L &= \begin{bmatrix}A&0\\0&-A^{T}
+\end{bmatrix}+\begin{bmatrix}0&\frac{1}{2}(B+B^{T})\\
+0&0
+\end{bmatrix}+\begin{bmatrix}0&0\\
+\frac{1}{2}(C+C^{T})&0
+\end{bmatrix}\\
+&=a^{ij}e_{ij}+b^{pq}f_{pq}+c^{pq}g_{pq}
+\end{align}
+\end{subequations}
+which is precisely what we desired to demonstrate.
+
+\begin{exercise}
+Check that the subalgebra $\frak{h}$ of all matrices of the form
+\begin{equation}
+\begin{bmatrix}
+A&0\\
+0&-A
+\end{bmatrix}
+\end{equation}
+where $A$ is a diagonal matrix, is a maximal commutative
+subalgebra. Prove there exists a basis of $\ClassicalGroup{C}_{n}$ consisting of
+eigenvectors for elements of $\frak{h}$ acting on $\ClassicalGroup{C}_{n}$ by
+means of adjoint representation.
+\end{exercise}
+
+\answer The reasoning for the maximal commutative subalgebra is
+the same as for the $\ClassicalGroup{D}_{n}$ case.
+
+\begin{exercise}
+Check that $e_{i}=e_{i,i+1}$ ($i=1,...,n-1$) and $e_{n}=f_{n,n}$;
+$f_{i}=e_{i+1,i}$ ($i=1,...,n-1$) and $f_{n}=g_{n,n}$ form a
+system of generators of $\ClassicalGroup{C}_{n}$. Prove
+\begin{subequations}
+\begin{align}
+[e_{i},f_{j}]&=\delta_{ij}h_{i},\\
+[h_{i},h_{j}]&=0\\
+[h_{i},e_{j}]&=a_{ij}e_{j},\\
+[h_{i},f_{j}]&=-a_{ij}f_{j},\\
+({\rm ad}e_{i})^{1-a_{ij}}e_{j}&=0,\qquad i\not=j \\
+({\rm ad}f_{i})^{1-a_{ij}}f_{j}&=0,\qquad i\not=j
+\end{align}
+\end{subequations}
+\end{exercise}
+\answer We see that it follows from the calculations performed in
+the previous answer to exercise \ref{hw4:ex6}.
+\subsubsection{Algebra \texorpdfstring{$\ClassicalGroup{B}_{n}$}{Bn}}
+
+The algebra $\ClassicalGroup{B}_{n}$ consists of $(2n+1)\times(2n+1)$ complex
+matrices obeying
+\begin{equation}
+L^{T}F+FL=0
+\end{equation}
+where
+\begin{equation}
+F=\begin{bmatrix}1&0&0\\
+0&0&1\\
+0&1&0
+\end{bmatrix}
+\end{equation}
+is written in block form.
+
+\begin{exercise}
+Show that $\ClassicalGroup{B}_{n}$ is isomorphic to the complexified Lie algebra of $\ORTH{2n+1}$.
+\end{exercise}
+
+\answer We construct an isomorphism by diagonalizing $F$:
+\begin{equation}
+F = \begin{bmatrix} 1&0&0\\
+0&\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\
+0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}
+\end{bmatrix}
+\begin{bmatrix}
+1&0&0\\
+0&-1&0\\
+0&0&1
+\end{bmatrix}
+\begin{bmatrix} 1&0&0\\
+0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+0&-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}
+\end{bmatrix}
+\end{equation}
+which allows us to write
+\begin{equation}
+\varphi(X)=\begin{bmatrix} 1&0&0\\
+0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+0&-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}
+\end{bmatrix}
+\begin{bmatrix}1&0&0\\
+0&i&0\\
+0&0&1\end{bmatrix}X
+\begin{bmatrix}1&0&0\\
+0&i&0\\
+0&0&1\end{bmatrix}\begin{bmatrix} 1&0&0\\
+0&\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\
+0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}
+\end{bmatrix}
+\end{equation}
+which clearly is an isomorphism as desired.
+
+\begin{exercise}
+Check that the subalgebra $\frak{h}$ of all matrices of the form
+\begin{equation}
+\begin{bmatrix}0&0&0\\
+0&A&0\\
+0&0&-A
+\end{bmatrix}
+\end{equation}
+(where $A$ is a diagonal matrix) is a maximal Abelian subalgebra,
+and prove there is a basis of $\ClassicalGroup{B}_{n}$ consisting of eigenvectors
+for elements of $\frak{h}$ acting on $\ClassicalGroup{B}_{n}$ by the adjoint
+representation.
+\end{exercise}
+\answer The proof for $\frak{h}$ being a Cartan subalgebra is
+\emph{ALMOST the same} as for the $\ClassicalGroup{D}_{n}$ case. The basic
+reasoning is the same, we have our beloved isomorphism
+\begin{equation}
+\varphi\colon \ClassicalGroup{B}_{n}\to\Bbb{C}\lie\big(\ORTH{2n+1}\big)
+\end{equation}
+which is defined by
+\begin{equation}
+\varphi(X)=PXP^{T}
+\end{equation}
+where $P$ is the orthogonal matrix
+\begin{equation}
+P = \begin{bmatrix}1&0&0\\
+0&\frac{I}{\sqrt{2}}&\frac{-I}{\sqrt{2}}\\
+0&\frac{I}{\sqrt{2}}&\frac{I}{\sqrt{2}}
+\end{bmatrix}
+\end{equation}
+where $I$ here is the $n\times n$ identity matrix.
+The inverse to this morphism would be
+\begin{equation}
+\varphi^{-1}(Y)=P^{T}YP
+\end{equation}
+and we know the Cartan subalgebra is spanned by
+$h_{i}=E_{i,i+1}-E_{i+1,i}$, by applying $\varphi^{-1}$ to it we
+deduce that
+\begin{equation}
+\varphi^{-1}(h_{i})=E_{1+i,1+i}-E_{1+n+i,1+n+i}
+\end{equation}
+up to some change of coordinates by multiplication by $i$.
+
+
+\begin{exercise}
+Find a system $e_{i}$, $f_{j}$ of multiplicative generators of
+$\ClassicalGroup{B}_{n}$ obeying
+\begin{subequations}
+\begin{align}
+[e_{i},f_{j}]&=\delta_{ij}h_{i}\\
+[h_{i},h_{j}]&=0\\
+[h_{i},e_{j}]&=a_{ij}e_{j}\\
+[h_{i},f_{j}]&=-a_{ij}f_{j}\\
+({\rm ad}e_{i})^{1-a_{ij}}e_{j}&=0,\qquad i\not=j\\
+({\rm ad}f_{i})^{1-a_{ij}}f_{j}&=0,\qquad i\not=j
+\end{align}
+\end{subequations}
+for ``some'' matrix $a_{ij}$.
+\end{exercise}
+\answer We know that $\CC\lie\big(\ORTH{2n+1}\big)\cong \ClassicalGroup{B}_{n}$, and that
+the basis for $\CC\lie\big(\ORTH{2n+1}\big)$ consists of $n(2n+1)$
+antisymmetric matrices. We observe
+\begin{equation}
+\varphi^{-1}\left(
+\begin{bmatrix}
+0 & -\vec{u}^{T} & -\vec{v}^{T}\\
+\vec{u} & 0 & 0\\
+\vec{v} & 0 & 0
+\end{bmatrix}
+\right)
+=
+\frac{1}{\sqrt{2}}\begin{bmatrix}
+0                   & -i(\vec{v}-\vec{u})^{T} & -(\vec{v}+\vec{u})^{T}\\
+i(\vec{v}-\vec{u})  & 0                      &0\\
+(\vec{v}+\vec{u})   & 0                      &0
+\end{bmatrix}
+\end{equation}
+which permits us to deduce how these particular basis vectors
+transform. The others are remarkably similar to $\ClassicalGroup{D}_{n}$, which
+calculations have been performed or given.
+
+If we let
+\begin{equation}
+H = \begin{bmatrix} 0&0&0\\
+0&D&0\\
+0&0&-D
+\end{bmatrix}\in\frak{h}
+\end{equation}
+(for some diagonal $n\times n$ matrix $D$) and
+\begin{equation}
+L=\begin{bmatrix}0&-\vec{u}^{T}&-\vec{v}^{T}\\
+\vec{u}&A&\frac{1}{2}(B-B^{T})\\
+\vec{v}&\frac{1}{2}(C-C^{T})&-A^{T}
+\end{bmatrix}\in B_{n}
+\end{equation}
+(for arbitrary $n\times n$ matrices $A$, $B$, $C$, and
+$n$-vectors $\vec{u}$, $\vec{v}$) be arbitrary, then we find
+\begin{equation}
+[H,L]=\begin{bmatrix} 0 & -\vec{u}^{T}D & \vec{v}^{T}D\\
+D\vec{u}   & [D,A]                     & \frac{1}{2}\{B-B^{T},D\}\\
+-D\vec{v}  & -\frac{1}{2}\{C-C^{T},D\} & [D,A^{T}]
+\end{bmatrix}
+\end{equation}
+where $\{a,b\}=ab+ba$ is the anticommutator. We see that in
+addition to the basis root vectors given by $\ClassicalGroup{D}_{n}$, we have the
+additional root vectors
+\begin{equation}
+\widetilde{e}_{i}=\begin{bmatrix} 0 & -\vec{u}^{T}_{i} & 0\\
+\vec{u}_{i}   & 0 & 0\\
+0  & 0 & 0
+\end{bmatrix}
+\end{equation}
+ and
+\begin{equation}
+\widetilde{f}_{i}=\begin{bmatrix} 0 & 0 & -\vec{u}^{T}_{i}\\
+0   & 0 & 0\\
+\vec{u}_{i}  & 0 & 0
+\end{bmatrix}
+\end{equation}
+ where $\{\vec{u}_{i}\}$ is the canonical basis
+for $\RR^{n}$. We see that, if
+\begin{equation}
+h_{i}=\begin{bmatrix}
+0 & 0     & 0\\
+0 & E_{i,i}  & 0\\
+0 & 0     & -E_{i,i}
+\end{bmatrix}\in\frak{h}
+\end{equation}
+then
+\begin{equation}
+[h_{i},\widetilde{e}_{j}]=\delta_{ij}\widetilde{e}_{j}
+\end{equation}
+and
+\begin{equation}
+[h_{i},\widetilde{f}_{j}]=-\delta_{ij}\widetilde{f}_{j}
+\end{equation}
+which tell us the roots corresponding to $\widetilde{e}_{j}$ and $\widetilde{f}_{j}$.
+
+
+%%  We first make a quick observation in general about weight
+%% vectors.
+%% 
+%% \begin{prop}
+%% When the Cartan subalgebra is presented as the span of a finite
+%% set of diagonal matrices, the weight vectors in the fundamental
+%% representation correspond to canonical basis vectors.
+%% \end{prop}
+%% \begin{proof}
+%% It is obvious, since the weight vectors are eigenvectors of the
+%% representation of the Cartan subalgebra elements. Since the
+%% Cartan subalgebra elements are diagonal matrices, the
+%% eigenvectors are naturally canonical basis vectors.
+%% \end{proof}
+%% 
+%% This permits us to ``cheat'' and find representations for the
+%% elements $e_{j}$ and $f_{k}$ which raise and lower the weight
+%% vectors. 
+
+\begin{exercise}
+Describe the roots and root vectors of $\ClassicalGroup{A}_{n}$, $\ClassicalGroup{B}_{n}$, $\ClassicalGroup{C}_{n}$, $\ClassicalGroup{D}_{n}$.
+\end{exercise}
+\answer We find the roots and root vectors described by the previous exercises
+for algebras $\ClassicalGroup{D}_{n}$, $\ClassicalGroup{C}_{n}$, and $\ClassicalGroup{B}_{n}$
+respectively. We also examined the root system for $\ClassicalGroup{A}_{n}$ in a
+previous homework.
+
+We can describe the roots by examining the Cartan matrices of
+these algebras. These are obtained by the commutation relations,
+the coefficients $a_{ij}$ are the components of the Cartan
+matrix. Additionally we have by definition $a_{ij}\leq 0$ for
+non-diagonal components. With these conditions in mind, we can
+write the Cartan matrices merely from the results we have already
+computed. For $A_{n}$ we have
+\begin{equation}
+a_{ij} = \begin{bmatrix}
+2  & -1 & 0  & \cdots & 0\\
+-1 & 2  & -1 & \cdots & 0\\
+0  & -1 & 2  & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & 2
+\end{bmatrix}.
+\end{equation}
+For $B_{n}$ we have
+\begin{equation}
+a_{ij} = \begin{bmatrix}
+2   & -1 & 0  & 0 & \cdots & 0 & 0\\
+-1  & 2  & -1 & 0 & \cdots & 0 & 0\\
+0   & -1 &  2 &-1 & \cdots & 0 & 0\\
+0   & 0  & -1 & 2 &  \cdots & 0 & 0\\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+0   & 0  & 0  & 0 &  \cdots & 2 & -2\\
+0   & 0  & 0  & 0 &  \cdots & -1 & 2
+\end{bmatrix}.
+\end{equation}
+For $C_{n}$ 
+\begin{equation}
+a_{ij} = \begin{bmatrix}
+2   & -1 & 0  & 0 & \cdots & 0 & 0\\
+-1  & 2  & -1 & 0 & \cdots & 0 & 0\\
+0   & -1 &  2 &-1 & \cdots & 0 & 0\\
+0   & 0  & -1 & 2 &  \cdots & 0 & 0\\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+0   & 0  & 0  & 0 &  \cdots & 2 & -1\\
+0   & 0  & 0  & 0 &  \cdots & -2 & 2
+\end{bmatrix}.
+\end{equation}
+For $D_{n}$
+\begin{equation}
+a_{ij} =
+\begin{bmatrix}
+2      & -1    & \cdots & 0      &  0     &   0    & 0\\
+-1     &  2    & \cdots & 0      &  0     &   0    & 0\\
+\vdots & \vdots& \ddots & \vdots & \vdots & \vdots & \vdots\\
+0      & 0     & \cdots & 2      & -1     &   0    & 0\\
+0      & 0     & \cdots & -1     &  2     &  -1    &-1\\  
+0      &  0    & \cdots & 0      &  -1    &   2    & 0\\
+0      &  0    & \cdots & 0      &  -1    &   0    & 2
+\end{bmatrix}.
+\end{equation}
+\subsection{Additional Exercises}
+\begin{exercise}
+Let $V$ be the fundamental representation of $\frak{sl}(n)$. Let
+$V^{*}$ be the representation dual to $V$. Find  the
+decomposition of $V\otimes V$ and $V\otimes V^{*}$ into the
+direct sum of irreducible representations.
+\end{exercise}
+
+\answer Well, we first see that if
+\begin{equation}
+\rho\colon\frak{sl}(n)\to \frak{gl}(V)
+\end{equation}
+is our representation morphism and
+\begin{equation}
+\rho^{*}\colon\frak{sl}(n)\to \frak{gl}(V^{*})
+\end{equation}
+is the dual representation, then we have
+\begin{equation}
+\rho\otimes\rho\colon\frak{sl}(n)\to \frak{gl}(V)\otimes \frak{gl}(V)
+\end{equation}
+and
+\begin{equation}
+\rho\otimes\rho^{*}\colon\frak{sl}(n)\to \frak{gl}(V)\otimes \frak{gl}(V^{*}).
+\end{equation}
+We know that we can decompose
+\begin{equation}\label{eq:decomposition}
+V\otimes V\iso {\rm Sym}^{2}(V)\oplus\Lambda^{2}(V)
+\end{equation}
+which intuitively corresponds to writing an arbitrary matrix as
+the sum of an antisymmetric matrix and a symmetric matrix. We
+would like to show that this decomposition corresponds to a
+direct sum of irreps.
+
+We first of all see that if
+\begin{equation}
+V={\rm span}\{u_{1},u_{2},...,u_{n}\}
+\end{equation}
+where $u_{1}$ is the highest weight vector, $e_{1}u_{2}=u_{1}$,
+and so on, then we can write
+\begin{equation}
+V\otimes V={\rm Span}\{u_{i}\otimes u_{j}\mid i,j=1,...,n\}.
+\end{equation}
+However we note that the decomposition in eq \eqref{eq:decomposition}
+amounts to
+\begin{equation*}
+V\otimes V=\underbracket[0.5pt]{{\rm Span}\left\{\frac{1}{2}\left(u_{i}\otimes
+u_{j}+u_{j}\otimes u_{i}\right)\mid i,j=1,...,n\right\}}_{={\rm Sym}^{2}(V)}\oplus\underbracket[0.5pt]{{\rm
+  Span}\left\{\frac{1}{2}\left(u_{i}\otimes u_{j}-u_{j}\otimes
+u_{i}\right)\mid i\not=j,\quad i,j=1,...,n\right\}}_{=\Lambda^{2}(V)}.
+\end{equation*}
+To show that the representation of the group acting on $V\otimes
+V$ is the direct sum of two irreducible representations, we will
+show that the representation has exactly one highest weight
+vector in ${\rm Sym}^{2}(V)$ and exactly one highest weight
+vector in $\Lambda^{2}(V)$. We will also show that the group acts
+on all basis vectors, which is sufficient to demand that the
+representations is irreducible (thus implying $\rho\otimes\rho$ is
+the direct sum of two irreps).
+\vskip 4pt
+\noindent\textbf{C\uppercase{{\footnotesize laim}} 1:}~ There is exactly one highest weight
+vector in ${\rm Sym}^{2}(V)$.
+
+\begin{proof}
+We see that 
+\begin{equation}
+\rho\otimes\rho(h_{i})(u_{i}\otimes
+u_{j})=(\lambda_{i}+\lambda_{j})(u_{i}\otimes u_{j})
+\end{equation}
+and thus
+\begin{equation}
+\rho\otimes\rho(h_{i})(u_{1}\otimes u_{1})=2\lambda_{1}(u_{1}\otimes u_{1}).
+\end{equation}
+We see that
+\begin{equation}
+\rho\otimes\rho(e_{i})(u_{1}\otimes u_{1})=0
+\end{equation}
+for all $i$, implying that $u_{1}\otimes u_{1}$ is a highest
+weight vector. There are no others since
+\begin{equation}
+\rho\otimes\rho(e_{i})(u_{j}\otimes
+u_{k})=\delta_{i,j}u_{j-1}\otimes u_{k}+\delta_{i,k}u_{j}\otimes
+u_{k-1}
+\end{equation}
+up to some constant, which implies there are no other
+possibilities for a highest weight vector.
+\end{proof}
+
+
+\vskip 4pt
+\noindent\textbf{C\uppercase{{\footnotesize laim}} 2:}~ There is exactly one highest weight
+vector in $\Lambda^{2}(V)$.
+
+\begin{proof}
+We see that similar reasoning holds. More explicitly
+\begin{equation}
+\rho\otimes\rho(e_{i})(u_{j}\otimes u_{k}-u_{k}\otimes u_{j})=
+\left(\delta_{i,j}u_{j-1}\otimes u_{k}+\delta_{i,k}u_{j}\otimes
+u_{k-1}\right)-
+\left(\delta_{i,j}u_{k}\otimes u_{j-1}+\delta_{i,k}u_{k-1}\otimes
+u_{j}\right)
+\end{equation}
+but only
+\begin{equation}
+\rho\otimes\rho(e_{i})(u_{1}\otimes u_{2}-u_{2}\otimes u_{1})=0
+\end{equation}
+for all $i$ identically. This is precisely uniqueness of a vector
+that vanishes when acted upon by $e_{i}$ for any $i$, which is
+the condition for the highest weight vector to be unique.
+\end{proof}
+
+\begin{lem}
+If $\rho\colon G\to GL(V)$ is a representation of a
+Lie group, its induced dual representation for the Lie Algebra is 
+\begin{equation}
+\rho^{*}(x):=-\rho(x)^{T}.
+\end{equation}
+\end{lem}
+\begin{proof}
+We observe that, from Lecture 15, the dual representation of a
+Lie group is defined to be
+\begin{equation}
+\rho^{*}(g)=\rho(g^{-1})^{T}
+\end{equation}
+for any $g\in G$. If we take $g=1+\varepsilon X$ for an
+``infinitesimal'' $\varepsilon$, then we can write
+\begin{equation}
+(1+\varepsilon X)^{-1}=1-\varepsilon X
+\end{equation}
+and
+\begin{equation}
+\rho^{*}(1+\varepsilon X)=\rho(1-\varepsilon X)^{T}.
+\end{equation}
+By Taylor expanding about 1, we deduce
+\begin{equation}
+\rho^{*}(1+\varepsilon X)=\rho(1)^{T}+\varepsilon\left[-\rho(X)^{T}\right]
+\end{equation}
+which permits us to induce a ``dual'' representation for the Lie
+Algebra defined by
+\begin{equation}
+\rho^{*}(X)=-\rho(X)^{T}
+\end{equation}
+precisely as desired.
+\end{proof}
+\vskip 4pt
+
+Since we are working with the fundamental representation $\rho$
+of $\frak{sl}(n)$ we have
+\begin{equation}
+\rho({e_{i}})^{T}=\rho(f_{i}).
+\end{equation}
+Additionally, the Cartan subalgebra elements are such that
+\begin{equation}
+\rho(h_{i})^{T}=\rho(h_{i})
+\end{equation}
+since they are represented by diagonal matrices. So we have
+\begin{equation}
+(\rho\otimes\rho^{*})(e_{i})(u_{j}\otimes
+  u^{k})=(\rho(e_{i})u_{j})\otimes u^{k}-u_{j}\otimes(\rho(f_{i})u^{k})
+\end{equation}
+where superscript indices here indicate that it is a covector, a
+linear functional, an element of the dual vector space. We observe
+\begin{equation}
+\rho(f_{i})u_{i}=u_{i+1},\qquad\hbox{and}\quad\rho(e_{i})u_{i}=u_{i-1}
+\end{equation}
+since we noted in Lecture 16 the weight vectors for the
+fundamental representation is nothing more than the canonical
+basis. This permits us to deduce
+\begin{equation}
+(\rho\otimes\rho^{*})(e_{i})(u_{1}\otimes u^{n})=0
+\end{equation}
+for all $i$, which means $u_{1}\otimes u^{n}$ is a weight vector
+for this representation. We also see that
+\begin{equation}
+(\rho\otimes\rho^{*})(e_{i})(u_{j}\otimes u^{j})=0
+\end{equation}
+identically, since
+\begin{equation}
+(\rho\otimes\rho^{*})(e_{i})(u_{j}\otimes u^{k})=(\lambda_{j}-\lambda_{k})(u_{j}\otimes u^{k}).
+\end{equation}
+Setting $j=k$ we find the right hand side vanishes \emph{identically}.
+
+\begin{exercise}
+Prove the fundamental represenation of $\frak{so}(n)$ is
+equivalent to dual representation. Find the decomposition of the
+tensor square of this representation into direct sum of
+irreducible representations.
+\end{exercise}
+
+\noindent\textbf{C\uppercase{{\footnotesize laim}} 1:}~
+The fundamental representation of $\frak{so}(n)$ is equivalent to
+its dual representation.
+
+\begin{proof}
+Well, we know the dual representation for $\rho\colon G\to GL(V)$
+is
+\begin{equation}
+\rho^{*}(g)=\rho(g^{-1})^{T}.
+\end{equation}
+By making $g=1+\varepsilon X$ where $\varepsilon$ is
+``infinitesimal,'' we get by Taylor expanding about 1 
+\begin{equation}
+\rho(1-\varepsilon X)^{T}=\rho(1)+\varepsilon\left(-\rho(X)^{T}\right)
+\end{equation}
+which permits us to deduce for a Lie algebra, the dual
+representation for an element $X$ is
+\begin{equation}
+\rho^{*}(X)=-\rho(X)^{T}.
+\end{equation}
+We know for the fundamental representation of $\frak{so}(n)$ we
+are working with $n\times n$ antisymmetric matrices. However,
+this means that for the fundamental representation $\rho$ of $\frak{so}(n)$
+\begin{equation}
+\rho(X)^{T}=-\rho(X)
+\end{equation}
+for all $X\in\frak{so}(n)$, which implies
+\begin{equation}
+\rho(X)=-\rho(X)^{T}=\rho^{*}(X)
+\end{equation}
+precisely as desired.
+\end{proof}
+
+\begin{prop}
+The Cartan subalgebra is
+\begin{equation}\label{eq:sonCartan}
+\frak{h}={\rm span}\{\sum_{j=1}^{n}x_{j}(E_{2j,2j-1}-E_{2j-1,2j})\}
+\end{equation}
+and the weight vectors are, for the fundamental representation
+\begin{equation}
+\vec{u}_{j}=\vec{e}_{2j}+i\vec{e}_{2j-1}
+\end{equation}
+for $j=1,...,n$.
+\end{prop}
+\begin{proof}
+It follows from the definition of the maximal torus that eq \eqref{eq:sonCartan}
+ holds. The eigenvalues for the $2\times2$ matrix
+\begin{equation}
+\begin{bmatrix}0&-1\\1&0
+\end{bmatrix}
+\end{equation}
+is $\pm1$ with eigenvectors $(i,1)$ and $(-i,1)$ for $-i$, $i$
+respectively. Thus we deduce the weight vectors to be as desired.
+\end{proof}
+
+\begin{prop}
+We deduce that 
+\begin{equation}
+[h_{j},\lambda^{k}(E_{k,2j}-E_{2j,k})+\mu^{\ell}(E_{\ell,2j-1}-E_{2j-1,\ell})]=-\lambda^{k}(E_{k,2j-1}-E_{2j-1,k})+\mu^{\ell}(E_{\ell,2j}-E_{2j,\ell}).
+\end{equation}
+\end{prop}
+\begin{proof}
+We find this by direct calculation.
+\end{proof}
+
+\vskip 1pc
+We can further compute how these terms act on the weight
+vectors. We observe
+\begin{subequations}
+\begin{align}
+\lambda^{k}(E_{k,2j}-E_{2j,k})\vec{u}_{j}&=\lambda^{k}\vec{e}_{k}-i\lambda^{k}\delta_{k,2j-1}\vec{e}_{2j}\\
+\mu^{\ell}(E_{\ell,2j-1}-E_{2j-1,\ell})\vec{u}_{j}&=i\mu^{\ell}\vec{e}_{\ell}-\mu^{\ell}\delta_{\ell,2j}\vec{e}_{\ell}.
+\end{align}
+\end{subequations}
+Thus we observe that when $\ell=2j+1$ and $k=2j+2$, we get
+\begin{equation}
+\lambda^{k}(E_{k,2j}-E_{2j,k})\vec{u}_{j}+\mu^{\ell}(E_{\ell,2j-1}-E_{2j-1,\ell})\vec{u}_{j}=\vec{u}_{j+1}.
+\end{equation}
+We also observe that when $\ell=2j-3$ and $k=2j-2$, we get
+\begin{equation}
+\lambda^{k}(E_{k,2j}-E_{2j,k})\vec{u}_{j}+\mu^{\ell}(E_{\ell,2j-1}-E_{2j-1,\ell})\vec{u}_{j}=\vec{u}_{j-1}.
+\end{equation}
+Thus we have found our raising and lowering operators $e_{j}$ and
+$f_{j}$ respectively. 
+
+But notice since the representation is ``self-dual'', we have the
+decomposition of
+\begin{equation}
+V\otimes V={\rm Sym}^{2}(V)\oplus\Lambda^{2}(V).
+\end{equation}
+Thus we have two irreps, one acting on ${\rm Sym}^{2}(V)$ and the
+other acting on $\Lambda^{2}(V)$. We can observe the following
+thing: a symmetric matrix $X$ is such that
+\begin{equation}
+\tr(PXP^{T})=\tr(X)
+\end{equation}
+for $P\in \ORTH{n}$. So, we can consider traceless symmetric matrices
+$X$ which forms an invariant subspace of ${\rm
+  Sym}^{2}(V)$. Additionally, matrices of the form $cI$ where
+$c\in\Bbb{R}$ is some constant, also obey
+\begin{equation}
+P(cI)P^{T}=c(PIP^{T})=c(PP^{T})=cI
+\end{equation}
+for $P\in O(n)$. Note these are group elements and the group
+representation acting on $V\otimes V$, which permit us to find
+invariant subspaces and thus subrepresentations for the group
+which correspond to subrepresentations of the Lie algebra.
+
+So the invariant subspaces are three:
+\begin{enumerate}
+\item $\Lambda^{2}V$ the antisymmetric part;
+\item ${\rm Span}\{I\}$ the scalar matrices; and
+\item $\{X\in{\rm Sym}^{2}V|\tr(X)=0\}$ traceless matrices.
+\end{enumerate}
+Each of these are irreducible, since there is precisely one
+highest weight vector for each of them.
+\begin{exercise}
+  (Schur's lemma) Let us consider a complex irreducible
+  representation $\varphi$ of Lie algebra $\mathscr{G}$. Let us
+  assume that the operator $A$ in the representation space
+  commutes with all operators of the form $\varphi(x)$ where
+  $x\in\mathscr{G}$. Prove that $A = \lambda\cdot 1$ where
+  $\lambda\in\Bbb{C}$ and $1$ stands for the identity operator.
+
+
+  Hint: Consider $\ker(A -\mu\cdot1)$.
+\end{exercise}
+
+\answer 
+We will first make a small lemma.
+
+\begin{lem}\label{lem:invertibility}
+Let $\varphi\colon \mathscr{G}\to V$ be an irreducible
+representation of the Lie algebra $\mathscr{G}$, and $L\colon
+V\to V$ be a linear mapping. Then either $L$ is an isomorphism,
+or it is zero.
+\end{lem}
+\begin{proof}
+Consider $\ker(L)$. It would be an invariant subspace
+of $V$, but since $\varphi$ is irreducible this subspace is
+either $V$ or $0$. For nonzero $L$, we have $\ker(L)=0$. This
+implies that $L$ is injective. But since we have an injective
+endomorphism, thus it is surjective and moreover bijective. We have
+$L$ be an isomorphism or, alternatively, 0.
+\end{proof}
+
+Consider $A$. It has at least 1 nonzero eigenvalue $\lambda$, or
+it is the zero mapping necessarily (in which case, $A=0\cdot
+I$). We see that $A-\lambda\cdot1$ is not an isomorphism, by our
+lemma since its kernel is all of $V$ it follows that
+$A=\lambda\cdot1$ for some $\lambda\in\Bbb{C}$.
+
+\begin{exercise}
+Let us consider a Lie algebra $\mathscr{G}$ with basis $e_1$,
+$...$, $e_n$ and structure constants ${c^{k}}_{ij}$:
+\begin{equation}
+  [e_i , e_j ] = {c^{k}}_{ij} e_k.
+\end{equation}
+We define universal enveloping algebra $U(\mathscr{G})$ as a
+unital associative algebra with generators $e_i$ and relations
+\begin{equation}    
+e_i e_j - e_j e_i = {c^{k}}_{ij} e_k.
+\end{equation}
+Let us assume that there exists an invariant inner product on $\mathscr{G}$
+and that the basis $e_1$, $...$, $e_n$ is orthonormal with
+respect to this product. Prove that that the element 
+\begin{equation}
+\omega=\sum_{i}  e_i e_i
+\end{equation}
+(Casimir element) belongs to the center of enveloping algebra.
+
+Hint. It is sufficient to check that Casimir element commutes
+with all generators. Write the condition for $e_k \omega = \omega
+e_k$ in terms of structure constants and check that the same
+condition guarantees invariance of inner product. 
+\end{exercise}
+
+\answer
+Let $B$ be a nondegenerate symmetric invariant bilinear form on
+$\mathscr{G}$. Let $x_{1}$, ..., $x_{n}$ be the basis for
+$\mathscr{G}$, $x^{1}$, ..., $x^{n}$ be the dual basis so 
+\begin{equation}
+B(x_{i},x^{j})={\delta_{i}}^{j}.
+\end{equation}
+Let $z\in\mathscr{G}$, we have
+\begin{equation}
+[z,x_{j}]=\sum_{i}{a^{i}}_{j}x_{i}={a^{i}}_{j}x_{i}
+\end{equation}
+and
+\begin{equation}
+[z,x^{j}]=\sum_{i}{b_{i}}^{j}x^{i}={b_{i}}^{j}x^{i}
+\end{equation}
+where ${a_{i}}^{j}$ and ${b_{i}}^{j}$ are ``some constants.'' Since $B$ is
+invariant we have
+\begin{equation}
+0=B([z,x_{i}],x^{j})+B(x_{i},[z,x^{j}])={a_{i}}^{j}+{b_{i}}^{j}.
+\end{equation}
+We see
+\begin{subequations}
+\begin{align}
+z(x_{i}x^{i})&=[z,x_{i}]x^{i}+x_{i}zx^{i}\\
+&=\sum_{j}{a_{i}}^{j}x_jx^{i}+x_{i}zx^{i}
+\end{align}
+\end{subequations}
+and
+\begin{equation}
+(x_{i}x^{i})z=(x_{i}[x^{i},z])+x_{i}zx^{i}=-\sum_{j}{b_{i}}^{j}x_{i}x^{j}+x_{i}zx^{i}
+\end{equation}
+Thus we find
+\begin{equation}
+[z,x_{i}x^{i}]=\sum_{j}{a_{i}}^{j}x_{j}x^{i}+{b^{i}}_{j}x_{i}x^{j}=\sum_{j}({a_{j}}^{i}+{b^{i}}_{j})x_{i}x^{j}
+\end{equation}
+but due to the invariance of $B$, we see that the parenthetic
+term must be zero (we sum over dummy indices, which we may
+rewrite as we like). This implies
+\begin{equation}
+[z,x_{i}x^{i}]=0
+\end{equation}
+for any $z\in\mathscr{G}$.
+
+\begin{exercise}
+A representation $\varphi\colon\mathscr{G}\to\mathfrak{gl}(n)$
+can be extended to a homomorphism of universal enveloping algebra
+to the algebra of $n\times n$ matrices. If the representation is
+irreducible the image of the Casimir element has the form
+$\lambda\cdot1$. Show that this follows from Schur's lemma.
+\end{exercise}
+
+\answer
+We have that the Casimir element be denoted by $\omega$. In the
+universal enveloping algebra, it is an $n\times n$ matrix. It has
+at least one nonzero eigenvalue $\lambda\in\CC$ or it is the
+zero matrix. By Lemma \ref{lem:invertibility} we have for
+$\omega-\lambda\cdot1$ its kernel is either 0 or all of
+$\CC^{n}$. If 
+\begin{equation}
+\ker(\omega-\lambda\cdot1)=\CC^{n}
+\end{equation}
+then 
+\begin{equation}
+\omega=\lambda\cdot1
+\end{equation}
+by Schur's lemma. Otherwise it is the zero matrix.
+
+\begin{exercise}
+Calculate the image of Casimir element for an irreducible
+representation of the Lie algebra $\frak{sl}(2)$. 
+\end{exercise}
+\answer
+
+Let
+\begin{equation}\label{eq:sl2irrep}
+\rho\colon \frak{sl}(2)\to\frak{gl}(V)
+\end{equation}
+be an irrep.
+We have the dual basis for $e$, $f$, $h$ in $\frak{sl}(2)$ be
+$2f$, $2e$ and $h$ respectively. By our previous calculations, it
+follows that
+\begin{equation}
+\omega=H^{2}+2EF+2FE
+\end{equation}
+where $F=\rho(f)$, $E=\rho(e)$, $H=\rho(h)$. 
+
+Observe if $\vec{v}$ is the highest weight vector for the irrep
+in eq \eqref{eq:sl2irrep}, and $\lambda$ is the corresponding
+highest weight, we have
+\begin{subequations}
+\begin{align}
+\rho(h^{2})\vec{v} &=\rho(h)^{2}\vec{v}\\
+&=\lambda(h)^{2}\vec{v}.
+\end{align}
+\end{subequations}
+Similarly, we see
+\begin{subequations}
+\begin{align}
+\rho(ef+fe)\vec{v}&=(\rho(e)\rho(f)+\rho(f)\rho(e))\vec{v}\\
+&=\rho(e)\rho(f)\vec{v}+\rho(f)\left(\rho(e)\vec{v}\right)\\
+&=\rho(e)\rho(f)\vec{v}+0\\
+&=\rho(e)\rho(f)\vec{v}-0\\
+&=\rho(e)\rho(f)\vec{v}-\rho(f)\left(\rho(e)\vec{v}\right)\\
+&=(\rho(e)\rho(f)-\rho(f)\rho(e))\vec{v}\\
+&=[\rho(e),\rho(f)]\vec{v}\\
+&=\rho(h)\vec{v}.
+\end{align}
+\end{subequations}
+Thus the Casimir acting on the highest weight vector is
+\begin{equation}
+\omega\vec{v}=(\rho(h)^{2}+\rho(h))\vec{v}=\lambda(h)\left(1+\lambda(h)\right)\vec{v}.
+\end{equation}

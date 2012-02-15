@@ -1,0 +1,245 @@
+%%
+%% lecture26.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Mon Dec 13 14:22:29 2010 Alex Nelson
+%% Last update Mon Dec 13 18:24:22 2010 Alex Nelson
+%%
+Last time we considered Clifford algebras and its representation
+by gamma matrices
+\begin{equation}
+\Gamma^{\mu}\Gamma^{\nu}+\Gamma^{\nu}\Gamma^{\mu}=2\eta^{\mu\nu}\cdot\1
+\end{equation}
+We can consider part of this business which is spanned by
+\begin{equation}
+a\1 + b_{\mu\nu}\Gamma^{\mu}\Gamma^{\nu}
+\end{equation}
+zero order terms and quadratic terms. This is a subalgebra of the
+associative algebra. We may consider it with an induced Lie
+algebra structure. We consider the coefficients of the quadratic
+term
+\begin{equation}
+b_{\mu\nu}=-b_{\nu\mu}
+\end{equation}
+to be antisymmetric. Moreover this is an ``almost'' orthogonal
+Lie algebra.
+
+We will introduce new notation
+\begin{equation}
+\Gamma^{\mu\nu} =
+\frac{1}{2}(\Gamma^{\mu}\Gamma^{\nu}-\Gamma^{\nu}\Gamma^{\mu}).
+\end{equation}
+This implies that
+\begin{equation}
+\Gamma^{\mu\nu}=-\Gamma^{\nu\mu}.
+\end{equation}
+We also observe that
+\begin{subequations}
+\begin{align}
+\Gamma^{\mu\nu} &=
+\frac{1}{2}(\Gamma^{\mu}\Gamma^{\nu}+\Gamma^{\mu}\Gamma^{\nu}-2\eta^{\mu\nu}\1)\\
+&= \Gamma^{\mu}\Gamma^{\nu}-\eta^{\mu\nu}\cdot\1
+\end{align}
+\end{subequations}
+This is something created in such a way it gives us an orthogonal
+Lie algebra. We may take $a_{\mu\nu}\Gamma^{\mu\nu}$
+requiring\footnote{Although this requirement is not really
+  necessary. We can write $a_{\mu\nu}$ as the sum of the
+  symmetric and antisymmetric part. But if $s_{\mu\nu}$ is
+  symmetric, then $s_{\mu\nu}\Gamma^{\mu\nu}=0$ always.}
+\begin{equation}
+a_{\mu\nu}=-a_{\nu\mu}.
+\end{equation}
+If we take the commutator of
+\begin{equation}
+[a_{\mu\nu}\Gamma^{\mu\nu},b_{\rho\sigma}\Gamma^{\rho\sigma}]=C_{\alpha\beta}\Gamma^{\alpha\beta}
+\end{equation}
+where
+\begin{equation}
+C=[a,b].
+\end{equation}
+The only thing we should check, that's not so easy, is that the
+scalar part goes away. We see by adding a scalar part, we get a
+central extension of $\mathfrak{so}(n)$. This is a trivial
+central extension, we managed to separate it into 2 parts. A
+representation of Clifford algebra gives us a representation of
+the orthogonal algebra called the \define{Spinor
+Representation}. For $\mathfrak{so}(2n)$,
+i.e. $\ClassicalGroup{D}_{n}$, we get a reducible representation
+--- alternatively, for public relations reasons, we say we get 2
+irreducible representations. The spinor representation
+corresponds to the Dynkin diagram:
+\begin{center}
+\includegraphics{img/LieImg.10}
+\end{center}
+
+So lets consider all this stuff in the case when the Lie algebra
+is $\mathfrak{so}(2n)$. In this case, remember what did we do? We
+constructed the Clifford algebra in such a way
+\begin{equation}
+\eta = \begin{bmatrix} 0 & 1\\ 1& 0
+\end{bmatrix},
+\end{equation}
+and instead of the $\Gamma$ we took $a^{\dagger}$ and $a$ with
+the anti-commutation relations
+\begin{subequations}
+\begin{align}
+[a_{i},a_{j}]_{+} = [a^{\dagger}_{i},a^{\dagger}_{j}]_{+} = 0\\
+[a_{i}, a^{\dagger}_{j}]_{+} = 2\delta_{ij}
+\end{align}
+\end{subequations}
+Of course this describes the canonical anticommutation relations;
+this is of course a Clifford algebra, or more precisely a
+particularly case of it.
+
+We have proven in any finite dimensional representation there is
+(for Clifford algebras) a vacuum vector $\phi$ such that
+\begin{equation}
+a_{i}\phi = 0
+\end{equation}
+for all $a_{i}$. We have a basis by applying the creation
+operators to $\phi$ our vaccum:
+$a^{\dagger}_{i_{1}}(\cdots)a^{\dagger}_{i_{k}}\phi$ (where
+$i_{1}<\cdots<i_{k}$), it follows
+\begin{equation}
+(a^{\dagger}_{i})^{2}=0
+\end{equation}
+for all $i$, so we need the indices to be strictly ordered. We
+have a spinor representation here, we should consider these guys
+$\Gamma^{\mu\nu}$. But really what will we do? We will only write
+$\Gamma^{\mu}\Gamma^{\nu}$, we \emph{should} write the constant
+part
+\begin{equation}
+a^{\dagger}_{i}a^{\dagger}_{j}-\eta_{ij}\1
+\end{equation}
+but 
+\begin{equation}
+\eta_{ij}=0
+\end{equation}
+in this instance, so we have terms of the form
+\begin{subequations}
+\begin{align}
+a^{\dagger}_{i}a^{\dagger}_{j}\quad\mbox{and}\quad a_{i}a_{j}\\
+\frac{1}{2}(a^{\dagger}_{i}a_{j}-a_{j}a^{\dagger}_{i})=a^{\dagger}_{i}a_{j}-\frac{1}{2}\delta_{ij}
+\end{align}
+\end{subequations}
+These are the generators of the spinor representation acting on
+the Fock space; it is reducible. Look at the number of
+$a^{\dagger}$'s and $a$'s --- they're always even. The parity is
+preserved. The Fock space is the sum of two parts
+\begin{equation}
+\mathcal{F}=\mathcal{F}_{\text{odd}}\oplus\mathcal{F}_{\text{even}}
+\end{equation}
+where even/odd refer to the number of $a^{\dagger}$'s. So we have
+2 representations, one is called the \define{Left Spinor
+  Representation} and the other is surprisingly enough the
+\define{Right Spinor Representation}. 
+
+We want to check these representations are irreducible. How to do
+this? Take the Cartan subalgebra of this stuff. The Cartan
+subalgebra is generated by
+\begin{equation}
+h_{i}=a^{\dagger}_{i}a_{i}-\frac{1}{2}.
+\end{equation}
+What we see here is something similar to one of the exercises,
+with $\ClassicalGroup{D}_{n}$ we had elements of the form
+\begin{equation}
+x = \begin{bmatrix}A & B \\ C & D
+\end{bmatrix}
+\end{equation}
+written in block form, where
+\begin{subequations}
+\begin{align}
+B &= -B^{T}\\
+C &= -C^{T}\\
+D &= -A^{T}
+\end{align}
+\end{subequations}
+describe the $n\times n$ block components. We know the Cartan
+subalgebra, we should take the simple roots, although this is
+unnecessary. We decompose the algebra into three parts:
+\begin{equation}
+\mbox{algebra} = (\mbox{positive})\oplus(\mbox{negative})\oplus(\mbox{Cartan}).
+\end{equation}
+Let us take
+\begin{equation}
+a^{\dagger}_{i}a^{\dagger}_{j}\sim B
+\end{equation}
+be the negative part,
+\begin{equation}
+a_{i}a_{j}\sim C
+\end{equation}
+for the positive part. We have additionally
+\begin{equation}
+\alpha_{ij}(a^{\dagger}_{i}a_{j}-\frac{1}{2}\delta_{ij})
+\end{equation}
+where $\alpha_{ij}$ is the Cartan matrix. There are two places to
+make a choice: positive guys form a Lie algebra, and the negative
+guys form a Lie algebra too. These choices should be compatible,
+how they form Lie algebras should be done compatibly. Now the
+highest weight vectors must be determined. We have $\phi$ as the
+highest weight vector, but we see that
+\begin{equation}
+a_{j}(a^{\dagger}_{i}\phi) = 0
+\end{equation}
+for all $a^{\dagger}_{i}$ and $a_{j}$. But only one of them is
+the highest weight vector, really. Since we can decompose
+$\mathcal{F}$ into two irreducible representations, we have
+\emph{two} highest weight vectors.
+
+What we would like to do now is consider infinite-dimensional
+Clifford algebra. This is taught all the time in physics, there
+are an infinite number of creation/annihilation operators for
+fermions. What to do? We have creation and annihilation operators
+$a^{\dagger}_{i}$, $a_{i}$ which obey the canonical
+anticommutation relations
+\begin{subequations}
+\begin{align}
+[a_{i},a_{j}]_{+} = [a^{\dagger}_{i}, a^{\dagger}_{j}]_{+} = 0\\
+[a_{i}, a^{\dagger}_{j}]_{+} = \delta_{ij}
+\end{align}
+\end{subequations}
+We may try to consider infinite dimensional representations of
+this algebra, constructed in exactly the same way. Consider a
+vector $\phi$ such that
+\begin{equation}
+a_{i}\phi = 0
+\end{equation}
+for all $a_{i}$. We may consider
+\begin{equation}
+a^{\dagger}_{i_{1}}(\cdots)a^{\dagger}_{i_{k}}\phi
+\end{equation}
+where $i_{1}<\cdots<i_{k}$. We can act by means of annihilation
+operators $a_{i}$ on this stuff. Something new happens, namely:
+\begin{itemize}
+\item First of all, we do not know if this vector $\phi$ exists
+  at all. Maybe it doesn't exist!
+\item Second we may introduce $a^{\dagger}_{i}$, $a_{i}$ in many
+  ways. These operators are on completely equal footing, and we
+  may interchange them! Or parts of them! Why not? If we do this
+  in finite dimensions, we have a vector annihilated by all
+  $a^{\dagger}$'s, and we have a vector annihilated by all
+  $a$'s. They the operators are on completely equal
+  footing. Physicists are brave, they apply an infinite number of
+  $a^{\dagger}$'s. Mathematicians are not so brave.
+\end{itemize}
+This Fock space may be definite in the infinite-dimensional case.
+
+We would like to consider analogous generators for an
+infinite-dimensional spinor representation. We have some
+problems. We consider
+\begin{equation}
+A = \sum_{i,j} \alpha_{ij}a^{\dagger}_{i}a^{\dagger}_{j}+\beta\cdot\1
+\end{equation}
+we consider operators of this form (we can do it for finite
+dimensions). Then this is a representation of $\GL{n}$, it is
+sitting inside of $\SO{n}$. Well $\mathfrak{gl}(n)$ to be
+precise. We may consider something like this here. We get a
+nontrivial central extension for infinite-dimensional
+representations. We will describe an infinite-dimensional general
+linear Lie Algebra $\mathfrak{gl}(\infty)$. We cannot consider
+them all, but we will restrict our focus. These guys appear in
+physics all the time during quantization. We have projective
+representations as our tool in quantum theory.

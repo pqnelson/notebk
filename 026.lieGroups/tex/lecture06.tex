@@ -1,0 +1,136 @@
+%%
+%% lecture06.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 21 12:28:44 2010 Alex Nelson
+%% Last update Thu Jan 21 12:55:27 2010 Alex Nelson
+%%
+\begin{thm}
+Consider a matrix group $G\subset\GL{n}$. Consider $\scr{G}$ the
+tangent space to $G$ at 1. Then $\scr{G}$ is a Lie algebra with
+respect to commutator of elements.
+\end{thm}
+\begin{proof}
+Consider a curve
+\begin{equation}
+x\colon[0,1]\to G,\qquad x(\tau)=1+a\tau+\mathcal{O}(\tau^{2}),
+\end{equation}
+we obtain the tangent vector
+\begin{equation}
+x'(0)=\lim_{\tau\to0}\frac{x(\tau)-x(0)}{\tau}=a.
+\end{equation}
+We are proving this is a vector space and a ring.
+
+\noindent\textbf{Vector Space.} If we have two
+curves
+\begin{equation}
+x(\tau)=1+a\tau+\cdots,\qquad y(\tau)=1+b\tau+\cdots,
+\end{equation}
+we multiply together to find
+\begin{equation}
+x(\tau)y(\tau)=1+(a+b)\tau+\mathcal{O}(\tau^{2}),
+\end{equation}
+and its derivative at 0 is
+\begin{equation}
+\left.\frac{d}{d\tau}(x(\tau)y(\tau))\right|_{\tau=0}=a+b.
+\end{equation}
+This implies that $a+b\in\scr{G}$. We can similarly show
+\begin{equation}
+\left.\frac{d}{d\tau}x(\lambda\tau)\right|_{\tau=0}=\lambda a\in\scr{G}
+\end{equation}
+for all $\lambda\in\Bbb{R}$. Thus it's a vector space.
+
+\noindent\textbf{Ring.} The commutator $[a,b]$ is obtained by the
+group commutator. We first let
+\begin{equation}
+x(\tau)=1+a\tau+\alpha\tau^2+\cdots,\qquad y(\tau)=1+b\tau+\beta\tau^{2}+\cdots,
+\end{equation}
+and for the inverses use primed coefficients
+\begin{equation}
+x^{-1}(\tau)=1+a'\tau+\alpha'\tau^2+\cdots,\qquad y^{-1}(\tau)=1+b'\tau+\beta'\tau^{2}+\cdots.
+\end{equation}
+Then we plug it into the definition of the group commutator:
+\begin{equation}
+x(\tau)y(\tau)x^{-1}(\tau)y^{-1}(\tau)=(1+a\tau+\cdots)(1+b\tau+\cdots)(1+\alpha\tau+\cdots)(1+\beta\tau+\cdots)
+\end{equation}
+and we demand that
+\begin{equation}
+x(\tau)x^{-1}(\tau)=1
+\end{equation}
+produces the conditions that $a+a'=0$, and $aa'+\alpha'+\alpha=0$
+from the first and second order terms respectively. We see
+similar reasoning for $y(\tau)y^{-1}(\tau)=1$ produces $b+b'=0$
+and $bb'+\beta'+\beta=0$ as conditions on the coefficients. By
+carrying out multiplication, we find
+\begin{align}
+&(1+a\tau+\alpha\tau^2+\cdots)(1+b\tau+\beta\tau^{2}+\cdots)
+(1+a'\tau+\alpha'\tau^2+\cdots)(1+b'\tau+\beta'\tau^{2}+\cdots)\nonumber\\
+&=1+(a+b+a'+b')\tau\nonumber\\
+&\qquad+(\alpha+\beta+\alpha'+\beta'+ab+aa'+ab'+ba'+bb'+a'b')\tau^{2}+\cdots
+\end{align}
+The first order term vanishes identically. The second order terms
+can be factored as
+\begin{equation}
+[(\alpha+\alpha'+aa')+(\beta+\beta'+bb')+ab+ab'+ba'+a'b']\tau^{2}
+\end{equation}
+which can be rewritten as
+\begin{equation}
+[ab+(-a)(-b)+a(-b)+(-a)b]\tau^{2}=[ab-ba]\tau^{2}.
+\end{equation}
+Thus
+\begin{equation}
+x(\tau)y(\tau)x(\tau)^{-1}y(\tau)^{-1}=1+[a,b]\tau^{2}+\mathcal{O}(\tau^{3}).
+\end{equation}
+We can introduce a new parameter $\sigma=\sqrt{\tau}$ and rewrite
+our equations to first order in $\sigma$ which implies $[a,b]\in\scr{G}$.
+\end{proof}
+
+\subsection{Derivations as Infinitesimal Automorphisms}
+We have an algebra $\scr{A}$, all atuomorphisms of $\scr{A}$ form
+a group $\aut(\scr{A})$. We may say that derivations are
+``tangent vectors'' to automorphisms, or in other words are
+infinitesimal automorphisms. Consider a continuous family of
+automorphisms $x(\tau)$, then 
+\begin{equation}
+x(\tau)(ab)=x(\tau)(a)\cdot x(\tau)(b).
+\end{equation}
+We take its derivative, if $x'(\tau)=\alpha_{\tau}$, then
+\begin{equation}
+\alpha_{\tau}(ab)=\alpha_{\tau}(a)x(\tau)(b)+x(\tau)(a)\alpha_{\tau}(b).
+\end{equation}
+We assume $x(0)=1$, then
+\begin{equation}
+\alpha_{0}(ab)=\alpha_{0}(a)b+a\alpha_{0}(b),
+\end{equation}
+in other words derivations are infinitesimal automorphisms. We
+can say that derivations form the tangent space to
+$e\in\aut(\scr{A})$.
+
+\noindent\textbf{N.B.} \emph{We cheated!} We assumed $\scr{A}$
+was equipped with a topology, so a curve being ``continuous''
+(much less differentiable!) made sense. 
+
+Consider a smooth manifold $M$, consider $C^{\infty}(M)$ the
+algebra of smooth functions on $M$. Any change of variables,
+i.e. smooth map, $\varphi\colon M\to M$ will generate an
+automorphism. Diffeomorphisms of $M$ may be considered as
+automorphisms of $C^{\infty}(M)$. Then $\diff(M)\subset\aut(C^{\infty}(M))$.
+
+To be completely precise we should write $f(\varphi^{-1}(x))$. We
+may say the diffeomorphisms form an infinite dimensional
+topological group. If $M$ is compact, there is a natural notion
+of topology on $\diff(M)$. If we have a family of diffeomorphisms
+$\varphi_{t}(x)$, differentiation with respect to $t$ is
+obvious. Vector fields are derivations of this algebra; that is
+$\der=\lie\aut\scr{A}$ and
+\begin{equation}
+\vect(M)\subset\lie\diff(M).
+\end{equation}
+We are of course a bit sloppy here....we won't go into details on
+infinite dimensional groups.
+
+Suppose that $G$ acts on $M$, its action can be a smooth
+action. That is we have a morphism of $G\to\diff(M)$ and at the
+level of Lie algebras consider $\lie(G)\to\vect(M)$.

@@ -1,0 +1,175 @@
+%%
+%% lecture02.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Tue Jan 19 11:05:14 2010 Alex Nelson
+%% Last update Thu Jan 21 10:33:23 2010 Alex Nelson
+%%
+The main thing of interest is Lie groups, but Lie algebras are a
+useful tool to study Lie groups. We will start with Lie
+algebras. First what is an algebra. Well, more or less, it's
+obtained from the formula
+\begin{equation}
+\hbox{Vector Space}+\hbox{Ring}=\hbox{Algebra},
+\end{equation}
+with some compatibility conditions. %% We want the addition
+%% operation in the Ring structure to be the same as the addition
+%% operation in the Vector Space structre, we want the
+%% multiplication operation in the Ring structure to be
+%% distributive over the Vector addition operation, and so on. 
+When
+we speak of vector spaces, we need a field $\Bbb{F}$; a ring has 2
+operations: multiplication and addition. (A ring is an Abelian
+group under addition, and a magma under multiplication.)
+The only only relation between addition and multiplication is
+distributivity: 
+\begin{subequations}
+\begin{align}
+a(b+c)&=ab+ac\\
+(b+c)a&=ba+ca.
+\end{align}
+\end{subequations}
+In general, a ring doesn't have a multiplicative identity, nor is
+multiplication an Abelian operation.
+
+The compatibility condition for an algebra is thus
+\begin{subequations}
+\begin{align}
+\lambda(ab) &= (\lambda a)\cdot b\\
+&= a\cdot(\lambda b)
+\end{align}
+\end{subequations}
+where $\lambda\in\Bbb{F}$. This is associativity. 
+
+\begin{ex}
+We have $\mat_{n}(\Bbb{F})$ --- the collection of all $n\times n$
+matrices over a field $\Bbb{F}$ --- be a noncommutative,
+associative algebra.
+\end{ex}
+\begin{ex}
+If we have some set $M$, the set of functions on $M$ (denoted by
+$C(M)$) is an algebra with respect to pointwise addition,
+multiplication, and $\Bbb{F}$-scalar multiplication. Note that if
+$\Bbb{F}$ is a field, the algebra is associative. Now $C(M)$ has
+a lot of subalgebras if $M$ has some additional structure. If $M$
+is a topological space, we have the set $C^0(M)\subset C(M)$ of
+continuous functions be a subalgebra. If $M=\Bbb{R}^{n}$ we may
+consider $C^{\infty}(M)\subset C(M)$ the subalgebra of smooth functions.
+\end{ex}
+\begin{ex}
+We can consider $C^{\infty}(S^{n})$ where $S^n$ is the
+$n$-sphere. We do this by introducing local coordinates, and
+define the notion of smoothness in $S^n$ by demanding tit be
+smooth in every coordinate system on $S^n$. But it is possible
+for a function to be smooth in one coordinate system but not
+another, so we need to use the notion of a transition function.
+\end{ex}
+
+A smooth manfiold $M$ is covered by smooth local coordinate
+systems, and the transition function between coordinate systems
+is smooth. So $C^{\infty}(M)$, for some smooth manifold $M$, is a
+unital, commutative, associative algebra.\marginpar{Unital=has unit element for multiplication}
+
+We will introduce a construction of an algebra for a group,
+called the group algebra. We consider all formal linear
+combinations of group elements with coefficients from a ring:
+%\begin{subequations}
+\begin{align}
+\hbox{Group}&\to\hbox{Algebra}\nonumber\\
+G&\to\Bbb{F}[G]
+\end{align}
+%\end{subequations}
+which has an element resemble $\sum_{i}^{n}a_{i}g_{i}$ where
+$g_{i}\in G$ and $a_{i}\in\Bbb{F}$ for all $i$. We have addition
+be componentwise, and multiplication also be componentwise.
+So for example
+\begin{subequations}
+\begin{align}
+(g_{1}+g_{2})+(g_{2}+3g_{3}) &= g_{1}+2g_{2}+3g_{3}\\
+(g_{1}+g_{2})(g_{2}+3g_{3}) &= g_{1}g_{2}+3g_{1}g_{3}+g_{2}^{2}+3g_{2}g_{3}.
+\end{align}
+\end{subequations}
+More generally
+\begin{equation}
+(\sum_{i}a_{i}g_{i})(\sum_{j}b_{j}g_{j})=\sum_{i,j}a_{i}b_{j}\cdot(g_{i}g_{j}).
+\end{equation}
+In the language of category theory, this is a functor $\Grp\to\Alg$.
+
+Recall a representation of a group $G\to\GL{V}$ are homomorphisms
+from $G$ to automorphisms on $V$. We have very simply for a rep
+$G\to\GL{n}$ a representation
+$\Bbb{F}[G]\to\mathcal{L}(V,V)=\mat_{n}$ of the algebras. For
+every $g\in G$ we have its representation $\varphi(g)$, so this
+induces a representation
+\begin{equation}
+\sum a_{i}g_{i}\mapsto \sum a_{i}\varphi(g_{i}),
+\end{equation}
+where products go to products and sums go to sums. The opposite
+direction, a representation of $\Bbb{F}[G]$ induces a
+representation of $G$, is also true (by the duality
+principle). Moral: representations of groups induce
+representations of associative algebras (a representation of
+associative algebras in general is referred to as
+\define{Modules}).
+
+Consider $\scr{A}$ an associative algebra. We will define a new
+operation on $\scr{A}$, namely the bracket as a commutator
+\begin{equation}
+[a,b]=ab-ba
+\end{equation}
+for all $a,b\in\scr{A}$. So with respect to the bracket,
+$\scr{A}$ is an algebra (distributivity remains, but
+associativity is broken). But observe
+\begin{enumerate}
+\item $[a,b]=-[b,a]$ i.e. we have antisymmetry of the bracket;
+\item the Jacobi identity holds.
+\end{enumerate}
+This newly constructed algebra is in fact a Lie algebra! So for
+every associative algebra $\scr{A}$, we may construct a Lie
+algebra on $\scr{A}$; this is described by a natural functor, so
+algebra morphisms are mapping to Lie algebra morphisms.
+
+\begin{rmk}
+There are other ways to construct Lie algebras. 
+
+\noindent{\bf N.B.:} subalgebras of Lie algebras are again Lie algebras.
+\end{rmk}
+
+\begin{ex}
+The Lie Algebra $\mat_{n}(\Bbb{F})=\frak{gl}_{n}(\Bbb{F})$ the
+Lie algebra for $\GL{n,\Bbb{F}}$.
+\end{ex}
+\begin{ex}
+Consider
+$\frak{sl}_{n}(\Bbb{F})=\{A\in\frak{gl}_{n}(\Bbb{F})\mid\tr(A)=0\}$. This
+is a Lie subalgebra of $\frak{gl}_{n}(\Bbb{F})$, since
+$\tr(AB)=\tr(BA)$ so $\tr([A,B])=0$ for all $A,B\in\frak{gl}_{n}(\Bbb{F})$.
+\end{ex}
+
+We can introduce the notion of an \define{Ideal} in an algebra,
+especially a Lie algebra! If $I\subset R$ where $R$ is a ring,
+then $IR=I$ is a left ideal, and $RI=I$ is a right ideal. This
+notion may be generalized to algebras (especially Lie
+algebras!). Fir Lie algebras, \emph{every ideal is a two-sided
+  ideal.}
+
+\begin{prop}
+$\frak{sl}_{n}(\Bbb{F})$ is an ideal in $\frak{gl}_{n}(\Bbb{F})$.
+\end{prop}
+
+If we have a ring morphism $\varphi\colon R\to R'$, its kernel is
+a two-sided ideal. Moreover we may factorize
+\begin{equation}
+\im(\varphi)\iso R/\ker(\varphi).
+\end{equation}
+This construction generalizes to algebras.
+
+\subsection{Exercises}
+\begin{exercise}\label{ex:prob1}
+Check that the vector space $\RR^{3}$ is a Lie algebra with respect to cross-product of vectors. Check that this Lie algebra is simple (does not have any non-trivial ideals). Check that all derivations of this Lie algebra are inner derivations.
+\end{exercise}
+\begin{exercise}
+Check that the Lie algebra of Problem \ref{ex:prob1} is isomorphic to the Lie algebra $\mathfrak{so}(3)$ of real antisymmetric $3\times3$ matrices and to the Lie algebra $\mathfrak{su}(2)$ of complex anti-Hermitian traceless $2\times2$ matrices.
+\end{exercise}

@@ -1,0 +1,146 @@
+%%
+%% lecture01.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Tue Jan 19 10:41:41 2010 Alex Nelson
+%% Last update Tue Jan 19 11:05:10 2010 Alex Nelson
+%%
+
+Lie algebras and Lie groups, and their representations, will be
+the subject of the quarter. We  will start with an outline for
+the course.
+
+First of all, an explanation of what is a Lie group. Well, group
+theory is simply a theory of symmetry. We've studied mostly
+finite and discrete symmetries, but in the real world symmetries
+are continuous. For example in 4-dimensional space, everything is
+invariant to translations labeled by elements of $\Bbb{R}^{3}$
+(this is a continuous symmetry). Everything is also invariant
+under rotations (symmetry denoted by SO(3)). So really the study
+of symmetries should be the study of continuous groups. First of
+all, group of symmetries should be a topological group. (It is a
+group object in the category of topological spaces.) We have a
+notion of continuity therefore.
+\begin{defn}
+A \define{Topological Group} consists of a topological space $M$
+equipped with
+\begin{enumerate}
+\item a continuous mapping $\mu\colon M\times M\to M$ called the
+  ``Law of composition'';
+\item a continuous mapping $e\colon{\bf 1}\to M$ called the
+  ``Identity Element'';
+\item a continuous mapping $\xi\colon M\to M$ called the
+  ``Inversion Operation''.
+\end{enumerate}
+\end{defn}
+We can further demand that $M$ is a manifold. So if we have a
+group $G$, t hen we can take a neighborhood of the unit element
+$e\in U\subseteq G$ where $U\sim\Bbb{R}^{n}$ is ``topologically
+equivalent'' (i.e. we can introduce a ``good'' coordinate system
+in $U$ denoted by $x^1$, ..., $x^n$ which are continuous and have
+continuous inverses).
+
+A manifold is a topological space where every point $x\in M$ has
+a neighborhood $U_{x}\subseteq M$ which is equivalent to
+$\Bbb{R}^{n}$. We have a preferred point, namely the unit point
+(identity element of the group), since we have \emph{shifts}
+\begin{equation}
+T_{g}(x)=g\cdot x.
+\end{equation}
+These shifts are continuous topological transformations with
+continuous inverses, a continuous identity, etc. We have 
+\begin{equation}
+T_{g}(e)=g\cdot e=g \qquad\forall g\in G.
+\end{equation}
+We have coordinates in the neighborhood of any point. A Lie group
+is a topological group with a coordinizable neighborhood at every
+point.
+
+Note that this is not a good definition. The coordinates of
+$x\cdot y$ are coordinates of these two factors
+$f^{j}(x^1,\ldots,x^n,y^1,\ldots,y^n)$ continuous, but that's not
+enough. We would like these functions to be differentiable
+(moreover smooth, i.e. $C^{\infty}$). This is not included in the
+definition of a Lie group. First could we correct our coordinates
+to be differentiable (there is a theorem which says we
+can). Second, we'd like to incorporate smoothness into the
+definition of a Lie group. A Lie group is then a topological
+group with a neighborhood at each point with coordinates
+permitting some smooth structure.
+
+Now what of Lie algebras. If the Lie group is connected, if we
+know the group in the neighborhood of $e$ (the identity element),
+then we know it everywhere. The main thing is we can take
+infinitesimally small neighborhoods\footnote{Do not worry about
+  what this rigorously means, we will use the tools of
+  differential geometry to make such a notion explicit and
+  rigorous.} of $e$ which is how we get a Lie algebra.
+
+Take the group $\GL{n}$. It is easy to see it is a Lie group. If
+we take any closed subgroup $G\subset\GL{n}$, then we will get a
+Lie group. It is a kind of submanifold of $\GL{n}$. We can
+consider the tangent space of $e$ in this submanifold, and it
+turns out it is a Lie algebra. So it is a vector space closed
+under a commutator operation. This is the Lie algebra of the
+group $G$, denoted $\Lie(G)$.
+
+\begin{defn}
+A \define{Lie Algebra} consists of a vector space $V$
+equipped with a commutator
+\begin{equation}
+[\cdot,\cdot]\colon V\times V\to V
+\end{equation}
+such that, for all $a,b,c\in V$, we have
+\begin{enumerate}
+\item distributivity $[a,b+c]=[a,b]+[a,c]$;
+\item anticommutativity $[a,b]=-[b,a]$;
+\item Jacobi identity $[a,[b,c]]+[b,[c,a]]+[c,[a,b]]=0$.
+\end{enumerate}
+\end{defn}
+\begin{prop}\label{prop:lieAlgebraMorphism}
+For every Lie group we can construct a corresponding Lie
+algebra. Moreover, if $\Phi\colon G\to G'$ is a Lie group
+morphism, then we can construct a Lie algebra morphism $\phi\colon\Lie(G)\to\Lie(G')$.
+\end{prop}
+
+\begin{quest}
+If we have a Lie algebra, does it come from a Lie group? Does it
+only come from only one Lie group?
+\end{quest}
+The answer is that a finite dimensional Lie algebra gives rise to
+a simply connected Lie group corresponding to the Lie
+algebra. Omitting the criteria of finite dimensionality, we don't
+have an answer --- no notion of infinite dimensional Lie groups
+currently exist!
+
+We have, lastly, a notion of representation. It is very simple,
+namely a group homomorphism
+\begin{equation}
+\rho\colon G\to\GL{n}.
+\end{equation}
+By proposition \ref{prop:lieAlgebraMorphism} this has a
+corresponding  morphism of Lie algebras $\Lie(G)\to\Lie(\GL{n})$
+which is the representation of Lie algebras. How to restore, how
+to classify the representations of Lie algebras? It is very easy,
+contrasted to asking the same question for Lie groups.
+
+We will mostly work with compact Lie groups, classical Lie
+groups, and their representations. We will also consider infinite
+dimensional Lie algebras. We will consider applications to
+physics.
+
+A Kac-Moody algebra is in general infinite dimensional, given by
+some commutation relations. Every classical Lie Algebra may be
+considered as a Kac-Moody algebra. Every Lie algebra of a compact
+Lie group is a Kac-Moody algebra, to be more precise.
+
+Semisimple and reductive Lie algebras are very closely related ot
+the theory of compact Lie algebras of compact Lie groups. This is
+Hermann Weyl's so-called unitary trick. By default we will
+consider Lie algebras over $\Bbb{R}$, i.e. consider the
+underlying vector space to be over $\Bbb{R}$. We can consider
+over any field (viz. over $\Bbb{C}$). At some moment we may
+switch to work over $\Bbb{C}$, as we are interested in complex
+representations.

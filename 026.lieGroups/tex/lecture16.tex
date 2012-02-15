@@ -1,0 +1,377 @@
+%%
+%% lecture16.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Fri Dec 10 12:52:01 2010 Alex Nelson
+%% Last update Sun Feb 20 11:01:11 2011 Alex Nelson
+%%
+If we have
+\begin{equation}
+\varphi\colon\mathscr{G}\to\mathfrak{gl}(V)
+\end{equation}
+a representation, and $\mathscr{H}\propersubset\mathscr{G}$ is
+the Cartan subalgebra, then we recall a weight vector $v$ is an
+eigenvector
+\begin{equation}
+\varphi(h)v = \lambda(h)v
+\end{equation}
+for every $h\in\mathscr{H}$. We have an adjoint representation
+\begin{equation}
+\ad\colon\mathscr{G}\to\mathfrak{gl}(\mathscr{G})
+\end{equation}
+where
+\begin{equation}
+(\ad x)v = [x,v]
+\end{equation}
+and the weight vectors for this representation are called root
+vectors, and the weights are called roots. To define roots and
+root vectors for $\mathscr{G}$ we are solving
+\begin{equation}
+[h,v] = \alpha(h)v.
+\end{equation}
+We can construct new root vectors from a given root vector by
+applying $e_{i}$, $f_{j}$ to it. We have
+\begin{subequations}
+\begin{align}
+[h,e] = \alpha(h)e & \iff he=eh+\alpha(h)e \\
+ & \iff h(ev) = \big(eh+\alpha(h)e\big)v
+\end{align}
+\end{subequations}
+but 
+\begin{equation}
+hv = \lambda(h)v \quad\implies\quad h(ev) =
+\big(\lambda(h)+\alpha(h)\big) ev.
+\end{equation}
+This is either zero or another distinct eigenvector.
+
+\begin{prop}
+If $v$ is a weight vector with weight $\lambda$ and $e$ is a root
+vector with root $\alpha$, then $ev$ is a weight vector with
+weight $\lambda+\alpha$ unless $ev=0$.
+\end{prop}
+
+Now we will introduce a definition. Well several
+definitions. First we introduce a notion of a Cartan Matrix which
+is presented differently in different papers.
+\begin{defn}
+A \define{Cartan Matrix} is a matrix $A=[a_{ij}]$ such that
+\begin{enumerate}
+\item $a_{ii}=2$ are the diagonal components;
+\item $a_{ij}\in\ZZ$ for any $i$, $j$;
+\item $a_{ij}\leq 0$ for off-diagonal components;
+\item although not necessarily symmetric, if $a_{ij}=0$ then
+  $a_{ji}=0$;
+\item it should be symmetrizable, i.e. we have a diagonal matrix
+  $B$ such that $AB=D$ is also diagonal.
+\end{enumerate}
+\end{defn}
+\begin{rmk}
+Most of the time we will work with $A$ nondegenerate, i.e.
+\begin{equation}
+\det(A)\not=0
+\end{equation}
+But this is not a necessary condition, so we do not make it part
+of the definition.
+\end{rmk}
+For every classical Lie Algebra, the matrix $a_{ij}$ % from the homework assignment,
+is nondegenerate
+\begin{equation}
+\det(a_{ij})\not=0.
+\end{equation}
+We have explicitly computed this, so we should look at our
+answers and nothing more.
+
+The only thing that needs discussion is ``Why is $A$
+symmetrizable?'' We know there exists a nondegenerate invariant
+inner product on classical Lie algebras. The adjoint
+representation is orthogonal with respect to this inner product,
+i.e.\
+\begin{equation}
+\big\<[h,x], y\big\>+\big\<x,[h,y]\big\> = 0
+\end{equation}
+where $h,x,y\in\mathscr{G}$. This could be viewed as a
+consequence of compact Lie groups having unitary representations
+giving invariant inner product.
+
+We can introduce the Killing form\index{Killing Form!Invariant Inner Product, Relation to} as
+\begin{equation}
+\<x,y\> = \tr\big(\ad_{x}\ad_{y}\big)
+\end{equation}
+which is an invariant inner product. %
+%% %% Incorrect proof given on the day of the lecture
+%% We consider the case when
+%% $h\in\mathscr{H}$, $x=e_{j}$, and $y=f_{k}$, then we see that
+%% \begin{subequations}
+%% \begin{align}
+%% \big\<[h,x], y\big\>+\big\<x,[h,y]\big\> &= \big\<[h,e_{j}],
+%% f_{k}\big\>+\big\<e_{j},[h,f_{k}]\big\> =\\
+%% &= \big\<a_{ij}e_{j}, f_{k}\big\>+\big\<e_{j},-a_{ik}f_{k}]\big\>
+%% \end{align}
+%% \end{subequations}
+%% \dots
+%% we should get the formula
+%% \begin{equation}
+%% a_{ij}\<e_{i},f_{i}\> = a_{ji}\<e_{j}, f_{j}\>
+%% \end{equation}
+%% %% Correct proof given in the next lecture
+We may introduce an invariant inner product on the group
+\begin{equation}
+\<Ux,Uy\> = \<x,y\>
+\end{equation}
+where $U\in G$, but when $U=\1+u\varepsilon$ where $\varepsilon$
+is ``small'', then we get
+\begin{equation}
+\<\varphi(u)x,y\> + \<x,\varphi(u)y\> = 0
+\end{equation}
+where $\varphi$ is a morphism. But as a representation we have
+\begin{equation}
+\Big\<[u,x],y\Big\> + \Big\<x,[u,y]\Big\> = 0.
+\end{equation}
+If we let $u=e_{i}$, $x=f_{i}$, $y=h_{j}$ we get
+\begin{subequations}
+\begin{align}
+\Big\<[u,x],y\Big\> + \Big\<x,[u,y]\Big\>
+&= \Big\<[e_{i},f_{i}],h_{j}\Big\> + \Big\<f_{i},[e_{i},h_{j}]\Big\>\\
+&= \<h_{i},h_{j}\> + \<f_{i}, -a_{ji}e_{i}\>
+\end{align}
+\end{subequations}
+This holds if and only if
+\begin{equation}
+\begin{diagram}[small,hug,height=13.5pt]
+\<h_{i}, h_{j}\> & \rEq & a_{ji}\<f_{i},e_{i}\> \\
+\dEq             &      & \dEq \\
+\<h_{j}, h_{i}\> & \rEq & a_{ij}\<f_{j},e_{i}\>
+\end{diagram}
+\end{equation}
+Using the inner product on the group, we may construct  the
+matrix $B=\diag\<e_{i},f_{i}\>$ which implies $AB$ is symmetric.
+
+For every Cartan matrix, we may construct a Lie algebra called a
+Kac-Moody algebra. Really %irreducible
+simple Lie Algebras are Kac-Moody algebras with additional
+condition that the Cartan matrix is positive definite. We will
+now describe all irreducible representations of classical Lie
+Algebras; this is true for all Lie Algebras related to compact
+groups, and reductive Lie Algebras.
+
+In reality we may say for every compact group, the corresponding
+Lie algebras have precisely the right generators. Moreover, we
+may classify algebras of compact groups. This gives us a general
+theorem for representations of compact Lie algebras. We would
+like to explain the notion of a highest weight vector in this
+situation. Namely the highest weight vector $v$ is such that
+\begin{equation}
+\varphi(e_{i})v = 0
+\end{equation}
+for all $e_{i}\in\mathscr{G}$. Of course this means that
+\begin{equation}
+\varphi(h)v = \lambda(h)v
+\end{equation}
+for all $h\in\mathscr{H}$, then this $\lambda$ is called the
+highest weight. 
+
+First of all, what is $\lambda(-)$? It is a linear functional
+$\lambda\in\mathscr{H}^{*}$, i.e.
+\begin{equation}
+\lambda\colon\mathscr{H}\to\FF
+\end{equation}
+it is a linear functional acting on the Cartan subalgebra. Then:
+\begin{enumerate}
+\item Irreducible representations contain not more than one
+  highest weight vector, up to a constant factor; 
+\item Finite dimensional irreducible representation $\iff$ finite
+  dimensional representation with one highest weight vector;
+\item For every $\lambda\in\mathscr{H}^{*}$ one can construct a
+  unique irreducible representation with highest weight $\lambda$
+  but this representation can be infinite dimensional;
+\item\label{lec16:cartan:mostImportantPoint}\marginpar{\eqref{lec16:cartan:mostImportantPoint} is the most important point!}
+  This representation is finite dimensional if and only if
+  $\lambda(h_{i})$ is a non-negative integer.
+\end{enumerate}
+This gives us a complete description of finite dimensional
+irreducible representations.
+
+\subsection{Dynkin Diagrams}
+It is a very convenient way to depict Cartan matrices. Namely %it is 
+first of all the dimension of the Cartan algebra is called the
+\define{Rank of the Lie Algebra}. We have $\ClassicalGroup{A}_{\ell}$,
+$\ClassicalGroup{B}_{\ell}$, $\ClassicalGroup{C}_{\ell}$,
+$\ClassicalGroup{D}_{\ell}$ all of rank $\ell$. 
+
+\begin{wrapfigure}[2]{r}{4cm}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/LieImg.3}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+The Dynkin diagram for $\ClassicalGroup{A}_{\ell}$ we draw $\ell$
+vertices and we draw edges. We have the number of edges connecting vertices
+$v_{i}$ to $v_{j}$ be given by the formula using the Cartan matrix 
+\begin{equation}
+n_{ij}=a_{ij}a_{ji}.
+\end{equation}
+Suppose we know $B$, its diagonal so we only need to keep track
+of one index really. Since we suppose we know $B$, then
+\begin{equation}
+a_{ij}b_{j}=a_{ji}b_{i}
+\end{equation}
+implies
+\begin{equation}
+b_{i} = \frac{a_{ij}b_{j}}{a_{ji}}
+\end{equation}
+we get
+\begin{equation}
+n_{i}b_{i} = {a_{ij}}^{2}b_{j},
+\end{equation}
+or equivalently
+\begin{equation}
+{a_{ij}}^{2} = \frac{n_{i}b_{i}}{b_{j}}.
+\end{equation}
+What is the conclusion? If we know $[n_{i}]$ and $[b_{i}]$, we can
+compute $[a_{ij}]$. 
+
+Let us write down the Dynkin diagrams for the classical Lie
+groups we have considered.
+\begin{wrapfigure}[4]{r}{4.5cm}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/LieImg.4}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+\noindent{}For $\ClassicalGroup{D}_{n}$ we have the diagram drawn
+on the right for the case when $n=7$ (observe there are 7
+vertices). The Cartan matrix for $\ClassicalGroup{D}_{n}$ is
+symmetric. One can observe this by considering the adjacency
+matrix for the graph.
+
+\begin{wrapfigure}[2]{l}{4.5cm}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/LieImg.5}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+\noindent{}For $\ClassicalGroup{C}_{n}$ we see the Cartan
+matrix is not symmetric, but we can symmetrize it. We find that
+$a_{n-1,n}a_{n,n-1}=2$.
+
+\begin{wrapfigure}[2]{r}{4.5cm}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/LieImg.6}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+\noindent{}For $\ClassicalGroup{B}_{n}$ we see the Dynkin diagram
+is ``the same'' as for $\ClassicalGroup{C}_{n}$ but with
+different labels for the vertices.
+
+Almost all of these groups are simple and almost all of them are
+not isomorphic. But almost all. For example, in
+$\ClassicalGroup{D}_{2}$ we have two disconnected vertices for
+the Dynkin diagram. So $\ClassicalGroup{D}_{2}$ is not simple, it
+is the direct product of $\SU{2}$ at the level of Lie Algebras,
+and \emph{almost} the direct product at the level of Lie
+groups. So we may examine the Dynkin diagram for $\ClassicalGroup{D}_{3}$
+to find:
+\begin{center}
+\includegraphics{img/LieImg.7}
+\end{center}
+\noindent{}So we see this is the same Dynkin diagram as for
+$\ClassicalGroup{A}_{3}$ which implies at the level of Lie
+Algebras
+\begin{equation}
+\SU{4}\iso\SO{6}
+\end{equation}
+but only at the level of Lie Algebras. We similarly have $\ClassicalGroup{B}_{2}\iso\ClassicalGroup{C}_{2}$
+by inspection of the Dynkin diagrams, but again it is an
+isomorphism at the level of Lie Algebras.
+
+\input{tex/box1}
+
+\subsection{Returning to Representations}
+The representations are described by means of highest weight. We
+had previously
+\begin{equation}
+\varphi(e_{i})x = 0
+\end{equation}
+where $x$ is our highest weight vector, and the highest weight is
+described by
+\begin{equation}
+\varphi(h)x = \lambda(h)x
+\end{equation}
+where $\lambda\in\mathscr{H}^{*}$ is the highest weight. We
+should demand $\lambda(h_{i})\geq0$, and
+$\lambda(h_{i})\in\ZZ$. We will now turn our attention to examples.
+
+We will consider the fundamental representations of
+$\ClassicalGroup{A}_{\ell+1}=\mathfrak{sl}(\ell+1)$. The
+fundamental representation is the representation by
+$(1+\ell)\times(1+\ell)$ matrices. We found
+\begin{equation}
+e_{i}=E_{i,i+1}
+\end{equation}
+where $E_{i,j}$ has zero components everywhere except at $i,j$ it
+is 1. The Cartan subalgebra is
+\begin{equation}
+\mathscr{H}=\left\{\begin{bmatrix}\lambda_1 & & \\
+ & \ddots & \\
+ &        & \lambda_{n}
+\end{bmatrix}\text{ such that }\lambda_{1}+\dots+\lambda_{\ell+1}=0\right\}
+\end{equation}
+What are the weight vectors here? It is quite clear that the
+weight vectors $u_{1}$, \dots, $u_{\ell+1}$ are the standard
+basis vectors. Observe
+\begin{equation}
+hu_{i}=\lambda_{i}u_{i}.
+\end{equation}
+What is the highest weight vector of this representation? We see
+that
+\begin{equation}
+e_{i}u_{j} = 0
+\end{equation}
+unless $j=i+1$ we have
+\begin{equation}
+e_{i}u_{i+1}=u_{i}
+\end{equation}
+The highest weight vector is clearly $u_{1}$ because the shift
+goes down and there is no way down. This implies the
+representation is irreducible as the highest weight vector is
+unique up to some coefficient. We see that
+\begin{equation}
+\lambda(h_{i}) = \delta_{i1}
+\end{equation}
+also holds.
+
+What about the tensor product of representations. We find the
+basis to be $u_{j}\otimes u_{k}$ and
+\begin{subequations}
+\begin{align}
+h_{i}(u_{j}\otimes u_{k}) &= (h_{i}u_{j})\otimes u_{k} + u_{j}\otimes(h_{i}u_{k})\\
+&= (\lambda_{j}+\lambda_{k})(u_{j}\otimes u_{k})
+\end{align}
+\end{subequations}
+We found all the weight vectors\dots well not really since
+$u_{1}\otimes u_{2}$ is a weight vector with the same weight as
+$u_{2}\otimes u_{1}$, so $u_{1}\otimes u_{2}\pm u_{2}\otimes
+u_{1}$ is again a weight vector. We find the highest weight
+vector to be $u_{1}\otimes u_{1}$, but we see that
+\begin{equation}
+e_{1}(u_{1}\otimes u_{2}) = u_{1}\otimes u_{1}
+\end{equation}
+and
+\begin{equation}
+e_{1}(u_{2}\otimes u_{1}) = u_{1}\otimes u_{1}
+\end{equation}
+so it follows that $u_{1}\otimes u_{2}-u_{2}\otimes u_{1}$ is
+again a highest weight vector\dots so we have 2 distinct highest
+weight vectors! This cannot be an irreducible
+representation. This we know, we may consider the symmetric and
+antisymmetric parts of the representation.
+
+
+
