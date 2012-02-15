@@ -1,0 +1,276 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{elements}[2009/12/08 Elements of Mathematics Style]
+\usepackage[textwidth=8.5in,textheight=8.9in,inner=1in,outer=1in]{geometry}
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+%            citecolor=black,
+%            filecolor=black,
+%            menucolor=black,
+%            linkcolor=black,
+%            urlcolor=black,
+            bookmarksopen=true,
+            unicode=false]{hyperref}
+\usepackage{float}
+\usepackage{ifpdf}
+\usepackage[final]{graphicx}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{comment}
+\usepackage{slashed}
+\usepackage{marginnote}
+\usepackage{diagrams}
+\def\smallbreak{\par \ifdim \lastskip <\smallskipamount \removelastskip \penalty -50\smallskip \fi}
+\def\medbreak{\par\ifdim\lastskip<\medskipamount
+  \removelastskip\penalty-100\medskip\fi}
+\def\textindent#1{\indent\llap{#1\enspace}\ignorespaces}
+\renewenvironment{enumerate}%
+  {\begin{list}{\arabic{enumi}.}%
+     {\topsep=0in\itemsep=0in\parsep=0in\partopsep=0in\usecounter{enumi}}%
+   }{\end{list}}
+\font\eightbf=cmbx8
+\font\inchhigh=cminch
+\font\titlefont=cmssdc10 at 40pt
+\font\bookfont=cmbx10 at 40pt
+\font\chapterfont=cmssbx10 scaled\magstep3
+\font\sectionfont=cmssbx10 %at 12pt
+\font\twelvess=cmss12
+\parskip=0pt plus 1pt
+\def\slug{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\def\slugonright{\vrule width0pt\nobreak\hfill\slug}
+
+\newcounter{thm}
+\newcounter{lem}
+\newcounter{cor}
+\newcounter{defn}
+\newcounter{scholium}
+
+\newenvironment{thm}{\refstepcounter{thm}
+\setcounter{cor}{0}
+\vskip 1pt
+\noindent{\bf T\uppercase{{\eightbf heorem}} \thethm.\enspace}\bgroup\sl}
+{\egroup\par}
+\newenvironment{lem}{\refstepcounter{lem}
+\setcounter{cor}{0}
+%\vskip 1pt
+\noindent{\bf L\uppercase{{\eightbf emma}} \thelem.\enspace}\bgroup\sl}
+{\egroup\par}
+\newenvironment{cor}{\refstepcounter{cor}
+%\vskip 1pt
+\noindent{\bf C\uppercase{{\eightbf orollary}} \thecor.\enspace}\bgroup\sl}
+{\egroup\par}
+\newenvironment{defn}{\refstepcounter{defn}
+%\vskip 1pt
+\noindent{\bf D\uppercase{{\eightbf efinition}} \thedefn.\enspace}\bgroup\sl}
+{\egroup\par\medbreak}
+\newenvironment{scholium}{\medbreak\refstepcounter{scholium}
+%\vskip 1pt
+\noindent{\bf S\uppercase{{\eightbf cholium}} \thescholium.\enspace}}
+{\medbreak\par}
+\newenvironment{proof}{\smallskip\noindent\textsc{Proof:\enspace}}{\slugonright\par}
+
+\newdimen\linespacing
+\linespacing\baselineskip
+
+\makeatletter
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+%        \chapterfont\hfill \@chapapp\space \thechapter
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \chapterfont \hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+\def\specialsection{\@startsection{section}{1}%
+  \z@{\linespacing\@plus\linespacing}{.25\linespacing}%
+  {\sectionfont}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\linespacing\@plus\linespacing}{.125\linespacing}%
+  {\sectionfont}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.7\linespacing\@plus\linespacing}{.125\linespacing}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\sectionfont}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.7\linespacing\@plus\linespacing}{.125\linespacing}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\sectionfont}}
+
+\def\ps@myheadings{%
+    \let\@oddfoot\@empty\let\@evenfoot\@empty
+    \def\@evenhead{\thepage\hfil\slshape\leftmark}%
+    \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+    \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
+    \let\sectionmark\@gobble
+    }
+  \if@titlepage
+  \renewcommand\maketitle{\begin{titlepage}%
+  \let\footnotesize\small
+  \let\footnoterule\relax
+  \let \footnote \thanks
+  \null\vfil
+  \vskip 60\p@
+  \begin{center}%
+    {\titlefont \@title \par}%
+    \vskip 3em%
+    {\large
+     \lineskip .75em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+      \vskip 1.5em%
+    {\large \@date \par}%       % Set date in \large size.
+  \end{center}\par
+  \@thanks
+  \vfil\null
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+\else
+\renewcommand\maketitle{\par
+  \begingroup
+    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+    \long\def\@makefntext##1{\parindent 1em\noindent
+            \hb@xt@1.8em{%
+                \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+    \if@twocolumn
+      \ifnum \col@number=\@ne
+        \@maketitle
+      \else
+        \twocolumn[\@maketitle]%
+      \fi
+    \else
+      \newpage
+      \global\@topnum\z@   % Prevents figures from going at top of page.
+      \@maketitle
+    \fi
+    \thispagestyle{plain}\@thanks
+  \endgroup
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\titlefont \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\long\def\futureex#1{$\langle\mskip -3mu\langle$#1$\rangle\mskip -3mu\rangle$}
+\def\tline{\hbox to\hsize}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{DarkCyan}{RGB}{0,88,88}
+\definecolor{DarkMagenta}{RGB}{202,31,123}
+\def\BibTeX{{\rm B\kern-.05em {\sevenrm I\kern-.025em B}%
+   \kern-.08em T\kern-.1667em \lower.7ex\hbox{E}%
+   \kern-.125emX}}%
+\def\define#1{\textsc{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\manual=manfnt
+\let\manfnt\manual
+\def\dbend{{\manual\char127}} % dangerous bend sign
+
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\item[]\noindent%
+\begingroup\small\hangindent=2pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{trivlist}\normalfont}
+
+% Danger! Danger!
+\def\ddanger{\begin{trivlist}\item[]\noindent%
+\begingroup\small\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\par\end{trivlist}\normalfont}
+\renewcommand\partname{Book}
+\let\book\part
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Exercises and Answers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{exercise}[chapter]
+\def\theexercise{\arabic{exercise}}
+
+\newwrite\ans%
+\immediate\openout\ans=answers % file for answers to exercises
+\immediate\write\ans{\detokenize{\chapter*{Answers to Exercises}}}
+\def\ansno#1:{\medbreak\noindent%
+  \hbox to\parindent{\bf\hss #1.\enspace}\ignorespaces}
+\newcommand{\answer}[1]{\par\medbreak
+  \immediate\write\ans{}%
+  \immediate\write\ans{\string\ansno\theexercise:}%
+  \immediate\write\ans{ \detokenize{#1}}}
+\newcommand{\dumpanswers}{\immediate\closeout\ans\input{answers}}
+
+
+\def\ex[#1]{\refstepcounter{exercise}\ifnum \value{exercise}>1 \smallbreak\fi
+  \gdef\curexno{\value{exercise}}%
+  \textindent{\bf\theexercise.}[{\it#1\/}]\kern6pt}
+\def\EX[#1]{\refstepcounter{exercise}\ifnum \value{exercise}>1 \smallbreak\fi
+  \gdef\curexno{\value{exercise}}%
+  \textindent{\llap{\manfnt x\hskip3pt}\bf{\hbox to
+     \ifnum \value{exercise}>99 1.5em\else 1em\fi{\hfil\theexercise}}.}[{\it#1\/}]\kern6pt}
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+
+\newenvironment{exercises}{\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+\immediate\write\ans{\detokenize{\smallskip\noindent\sectionfont} Answers to Chapter \thechapter\detokenize{\normalfont}}}{}
+
+\makeatother
