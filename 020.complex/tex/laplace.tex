@@ -7,7 +7,7 @@
 %% Started on  Wed Jun 10 10:30:18 2009 Alex Nelson
 %% Last update Wed Jun 10 10:30:18 2009 Alex Nelson
 %%
-\begin{defn}{(Laplace Transform)}
+\begin{defn}[Laplace Transform]
 The \textbf{Laplace Transform} of a function $f(t)$ (for $t\geq
 0$) is the function $\widetilde{f}(z)$ defined by
 \begin{equation}%\label{eq:}
@@ -15,7 +15,7 @@ The \textbf{Laplace Transform} of a function $f(t)$ (for $t\geq
 \end{equation}
 where $z$ is complex.
 \end{defn}
-\begin{prop}{(Asymptotic Behavior of Laplace Transform) }%\label{prop:}
+\begin{prop}[Asymptotic Behavior of Laplace Transform]%\label{prop:}
 Suppose $g$ is analytic in a region containing the positive real
 axis and is bounded on the positve real axis. Let the Taylor
 series for $g$ centered at 0 be
@@ -49,7 +49,7 @@ Then
 \end{equation}
 as $z\to\infty$, $\operatorname{arg}(z)=0$.
 \end{prop}
-\begin{thm}{(Convergence Theorem for Laplace Transform) }%\label{thm:}
+\begin{thm}[Convergence Theorem for Laplace Transform]%\label{thm:}
 Assume
 \begin{equation}%\label{eq:}
 f:(0,\infty)\to\mathbb{C}
@@ -78,7 +78,7 @@ $\rho$ by
 \end{equation}
 then $\sigma\leq\rho$.
 \end{thm}
-\begin{thm}{(Laplace Transforms)}
+\begin{thm}[Laplace Transforms]
 Suppose that the functions $f$ and $h$ are continuous and that
 $\widetilde{f}(z)=\widetilde{h}(z)$ for $\re(z)>\gamma_0$ for
 some $\gamma_0$. Then $f(t)=h(t)$ for all $t\in(0,\infty)$.
@@ -100,7 +100,7 @@ Then for $\re(z)>\max[0,\rho(f)]$,
 \wt{g}(z) = \frac{\wt{f}(z)}{z}.
 \end{equation}
 \end{prop}
-\begin{thm}{(First Shifting Theorem)}%\label{thm:}
+\begin{thm}[First Shifting Theorem]%\label{thm:}
 Fix $a\in\mathbb{C}$ and let $g(t)=e^{-at}f(t)$. Then for
 $\re(z)>\sigma(f)-\re(a)$, we have
 \begin{equation}%\label{eq:}
@@ -108,7 +108,7 @@ $\re(z)>\sigma(f)-\re(a)$, we have
 \end{equation}
 \end{thm}
 
-\begin{thm}{(Second Shifting Theorem)}%\label{thm:}
+\begin{thm}[Second Shifting Theorem]%\label{thm:}
 Let $H(t)=0$ if $t<0$ and $H(t)=1$ if $t\geq1$ be the
 \textbf{Step Function} or \textbf{Heaviside Step Function}. Let
 $a\geq0$ and let $g(t)=f(t-a)H(t-a)$; that is, $g(t)=0$ if $t<a$
@@ -117,7 +117,7 @@ while $g(t)=f(t-a)$ if $t\geq a$. Then for $\re(z)>0$ we have
 \wt{g}(z)=e^{-az}\wt{f}(z).
 \end{equation}
 \end{thm}
-\begin{defn}{(Convolution)}%\label{defn:}
+\begin{defn}[Convolution]%\label{defn:}
 The ``\textbf{Convolution}'' of two functions $f(t)$ and $g(t)$
 is defined for $t\geq0$ by
 \begin{equation}%\label{eq:}
@@ -125,7 +125,7 @@ is defined for $t\geq0$ by
 \end{equation}
 where we set $f(t)=0$ if $t<0$.
 \end{defn}
-\begin{thm}{(Convolution Theorem)}%\label{thm:}
+\begin{thm}[Convolution Theorem]%\label{thm:}
 The equalities
 \begin{equation}%\label{eq:}
 (f*g)(t) = (g*f)(t)
@@ -142,8 +142,8 @@ Let $u(t)$ be the Heaviside step function.
 u(t) = \int^{t}_{-\infty}\delta(\tau)d\tau
 \end{equation}
 where $\delta$ is the delta function we all know and love.
-\\
-\begin{tabular}{|p{3cm}|l|l|}
+\bigskip
+\begin{tabular}{|p{4cm}|l|l|}
 \hline
 %&&\\
 Linearity & $af\left(t\right)+bg\left(t\right)$ & $a\wt{f}\(z\)+b\wt{g}\(z\)$\\\hline
@@ -162,10 +162,12 @@ Convolution & $(f*g)(t)$ & $\wt{f}(z)\wt{g}(z)$\\\hline
 Periodic Function & $f(t)$ & $(\int^{T}_{0}e^{-zt}f(t)dt)/(1-e^{-Tz})$\\\hline
 \end{tabular}
 \subsection{List of Properties of the Laplace Transform}
-\textbf{Definition}
+\textbf{Definition.\quad}\ignorespaces
+The Laplace transform of $f(t)$ is given by:
 \begin{equation}%\label{eq:}
 \wt{f}(z)=\int^{\infty}_{0}e^{-zt}f(t)dt.
 \end{equation}
+It is such that:
 \begin{enumerate}
 \item $\displaystyle \wt{g}(z)=-\frac{d}{dz}\wt{f}(z)$ where $g(t)=tf(t)$.
 \item $\ds \mathcal{L}\bigl\{af+bg\bigr\} = a\wt{f}+b\wt{g}$
