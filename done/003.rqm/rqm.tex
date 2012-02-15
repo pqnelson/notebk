@@ -7,37 +7,40 @@
 %% Started on  Tue Jul 21 10:59:59 2009 Alex Nelson
 %% Last update Tue Jul 21 10:59:59 2009 Alex Nelson
 %%
-\documentclass[final]{amsart}
-\usepackage{fly}
-\usepackage{danger}
+\documentclass{article}
+%% \usepackage{fly}
+%% \usepackage{danger}
 \usepackage{paralist}
+\usepackage{notebk}
+\pdfinfo{/CreationDate (D:20090721105959)}
 
 
 \title{Notes on Relativistic Quantum Mechanics}
 \date{July 21, 2009}
-\email{pqnelson@gmail.com}
-\author{Alex Nelson}
+%\email{pqnelson@gmail.com}
+%\author{Alex Nelson}
 \begin{document}
-\maketitle\footnote{Note we are using the West Coast convention, i.e. + - - - metric signature, and setting $c=1$ and $\hbar=1$.}
+\maketitle
+\textbf{Note:\quad}We are using the West Coast convention, i.e.\ $+---$ metric signature, and setting $c=1$ and $\hbar=1$.
 \tableofcontents
 
 \section{One Particle Systems: Mathematical Formalism}
-\input{src/oneParticleStateMath}
+\input{tex/oneParticleStateMath}
 \section{One Particle Systems: Physical Aspects}
-\input{src/oneParticleSystemPhysics}
+\input{tex/oneParticleSystemPhysics}
 \section{Unitary Representation of Poincar\'e Group}
 \subsection{Action of Translation on States}
-\input{src/poincareRep}
+\input{tex/poincareRep}
 \subsection{Action of the Lorentz Group}
-\input{src/actionLorentzGroup}
+\input{tex/actionLorentzGroup}
 \subsection{Representing the Poincar\'e Group}
-\input{src/actionPoincareGroup}
+\input{tex/actionPoincareGroup}
 
 \section{Notes on a Position Operator}
-\input{src/positionOperator}
+\input{tex/positionOperator}
 
 \section{Conclusion}
-\input{src/conclusion}
+\input{tex/conclusion}
 
 \nocite{*}
 \bibliographystyle{utcaps}
