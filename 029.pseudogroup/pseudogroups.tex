@@ -1,0 +1,98 @@
+%%
+%% pseudogroups.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Jan 17 10:24:22 2010 Alex Nelson
+%% Last update Mon Jan 18 12:27:59 2010 Alex Nelson
+%%
+\documentclass{article}
+\usepackage{notebk}
+
+\title{Notes on Pseudogroups of Transformations}
+\date{January 17, 2010}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+We will review the traditional definition of pseudogroups.
+
+Then we will ``internalize'' it in the language of category
+theory as a groupoid.
+
+\section{Traditional Notion of Pseudogroups}
+
+We use the definition from Kobayashi and Nomizu~\cite{kobayashi1963foundations}.
+
+\begin{defn}
+A \define{Pseudogroup of Transformations} on a topological space
+$S$ is a set $\Gamma$ of transformations satisfying the following
+axioms:
+\begin{enumerate}
+\item Each $f\in\Gamma$ is a homeomorphism of an open set (called
+  the domain of $f$) of $S$ onto another open set (called the
+  range of $f$) of $S$;
+\item If $f\in\Gamma$, then the restriction of $f$ to an
+  arbitrary open subset of the domain of $f$ is in $\Gamma$;
+\item Let $U=\cup_{i}U_{i}$ where each $U_{i}$ is an open set of
+  $S$. A homeomorphism $f$ of $U$ onto an open set of $S$ belongs
+  to $\Gamma$ if the restriction of $f$ to $U_{i}$ is in $\Gamma$
+  for every $i$;
+\item For every open set $U$ of $S$, the identity transformation
+  of $U$ is in $\Gamma$;
+\item If $f\in\Gamma$, then $f^{-1}\in\Gamma$;
+\item If $f\in\Gamma$ is a homeomorphism of $U$ onto $V$ and
+  $f'\in\Gamma$ is a homeomorphism of $U'$ onto $V'$ and if
+  $V\cap U'$ is non-empty, then the homeomorphism $f'\circ f$ of
+  $f^{-1}(V\cap U')$ onto $f'(V\cap U')$ is in $\Gamma$.
+\end{enumerate}
+\end{defn}
+
+So what's the significance of being a homeomorphism? It means
+that topologically, the open subsets of $S$ are ``the same''
+locally. That is, we can deform any open subset into any other
+open subset.
+
+We have some consistency conditions too. This is precisely the
+importance of properties 2 and 3. More precisely these are
+conditions specifying ``consistency on restrictions''. The last
+condition, property 6, is an explicit condition for ``consistency
+on overlaps''. 
+
+The property 4 makes a pseudogroup ``sufficiently nice'';
+similarly, property 5 indicates that this is kind of like a
+groupoid. However, a pseudogroup is \emph{a single set} of
+transformations; a groupoid is more structured than this.
+
+\section{Internalization}
+
+\begin{quote}
+When you are collecting mushrooms, you only see the mushroom
+itself. But if you are a mycologist, you know that the real
+mushroom is in the Earth. There's an enormous thing down there,
+and you just see the fruit, the body that you eat. In
+mathematics, the upper part of the mushroom corresponds to the
+theorems that you see, but you don't see the things that are
+below, that is: \emph{problems, conjectures, mistakes, ideas},
+etc. --- V.~I.~Arnold~\cite{arnol2004hilbert}
+\end{quote}
+
+We will try several attempts to internalize the notion of a
+pseudogroup of transformations. It may take several attempts,
+leading to wrong turns, wrong guesses, etc. 
+
+Recall, given a topological space $X$ (or more generally any set
+$X$), we can construct a category $\mathcal{O}(X)$ whose objects
+are open subsets of $X$ and morphisms are restrictions and
+inclusions. We will need to use this to construct the notion of a
+pseudogroup of transformations. Weinstein notes~\cite{weinstein1996groupoids}
+that germs of elements of a pseudogroup form a groupoid.
+
+
+\nocite{*}
+\bibliographystyle{elements}
+\bibliography{pseudogroups}
+\end{document}

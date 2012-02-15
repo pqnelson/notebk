@@ -1,0 +1,121 @@
+%%
+%% gravityInfo.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Wed Jan 13 15:58:23 2010 Alex Nelson
+%% Last update Wed Jan 13 16:55:30 2010 Alex Nelson
+%%
+\documentclass{article}
+\usepackage{notebk}
+\let\entropy=S
+\title{Notes on {\tt arXiv:1001.0785v1 [hep-th]}}
+\date{January 13, 2010}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Entropic Force}
+
+\begin{defn}
+An \define{Entropic Force} is an effective macroscopic force that
+originates in a system with many degrees of freedom by the
+statistical tendency to increase its entropy.
+\end{defn}
+
+We express the force equation in terms of entropy differences.
+
+\begin{prop}
+An entropic force is independent of the details of the
+microscopic dynamics.
+\end{prop}
+
+\begin{prop}
+No fundamental field is associated with an entropic force.
+\end{prop}
+
+\begin{ex}
+The elasticity of a polymer molocule is an entropic force. A
+single polymer molecule can be modeled as many monomers of fixed
+length, where each monomer can rotate freely around the points of
+attachment and direct itself in any spatial direction. Each of
+these configurations has the same energy. When the polymer
+molecule is immersed into a heat bath, it puts itself into a
+randomly coiled configuration (as these are entropically
+favored). There more configurations when the molecule is short,
+compared to when it is stretched to an extended
+configuration. The tendency to return to a maximal entropy states
+translates into a macroscopic force, which is the elastic force.
+\end{ex}
+
+\begin{defn}
+For a given system, the \define{Entropy} equals
+\begin{equation}
+S(E,x)=k_{B}\log\Omega(E,x)
+\end{equation}
+where $k_{B}$ is Boltzmann's constant and $\Omega(E,x)$ denotes
+the volume of the configuration space for the entire system.
+\end{defn}
+
+\section{Emergence of the Laws of Newton}
+
+Space is seen as ``literally just a storage space for
+information'' (6). It turns out to be ``naturally'' associated
+with matter. There is an interesting discussion that the maximal
+allowed information is finite for each part of space, implying
+that it is impossible to localize a particle with infinite
+precision at a point of a continuum space; ``in fact'' points and
+coordinates arise as derived concepts. ``One could assume that
+information is stored in points of a discretized space'' which
+has interesting applications with respect to causal sets.
+
+Information is assumed to be stored on surfaces, called
+``screens'' apparently. Screens seperate points, and ``thus'' are
+``the natural place'' to store information about particles that
+move from one side to the other.
+
+\subsection{Force and Inertia}
+
+In analogy to Bekenstein's derivation of black hole
+entropy~\cite{Bekenstein:1973ur}, we will consider entropy
+related to surface area in flat spacetime. We assume that the
+change of entropy associated with the information on the boundary
+equals
+\begin{equation}
+\Delta\entropy=2\pi k_{B}\qquad\hbox{when}\qquad\Delta x=\frac{\hbar}{mc}.
+\end{equation}
+The reason for the factor of $2\pi$ ``will become apparent
+soon.'' Suppose that the change in entropy is linear in $\Delta
+x$, that is to say
+\begin{equation}
+\Delta\entropy=2\pi k_{B}\frac{mc}{\hbar}\Delta x.
+\end{equation}
+
+\noindent$\langle$\emph{N.B. for an early proposal for a Goldstone graviton from
+Lorentz-Invariance breaking, see
+Ohanian~\cite{PhysRev.184.1305}. For more modern ideas, see \cite{Jenkins:2003hw}.}$\rangle$
+
+Recall Unruh demonstrated that an observer in an accelerated
+frame experiences a temperature
+\begin{equation}
+k_{B}T=\frac{1}{2\pi}\frac{\hbar a}{c}
+\end{equation}
+where $a$ is the acceleration. We see then that
+\begin{subequations}
+\begin{align}
+T &= \frac{1}{2\pi}\frac{\hbar a}{ck_{B}}\\
+T\Delta\entropy &= ma\Delta x\\
+&=F\Delta x
+\end{align}
+\end{subequations}
+Thus we get our expression
+\begin{equation}
+T\Delta\entropy = F\Delta x
+\end{equation}
+relating entropy to force, tacitly deriving Newton's second law.
+
+\nocite{*}
+\bibliographystyle{elements}
+\bibliography{gravityInfo}
+\end{document}

@@ -1,0 +1,289 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdftex 2009.11.3)  30 MAR 2010 17:33
+entering extended mode
+ %&-line parsing enabled.
+**blackhole
+(./blackhole.tex (./macros.tex (/usr/share/texmf-texlive/tex/eplain/eplain.tex)
+(/usr/share/texmf-texlive/tex/plain/amsfonts/amssym.tex
+(/usr/share/texmf-texlive/tex/plain/amsfonts/amssym.def
+\msafam=\fam8
+\msbfam=\fam9
+\eufmfam=\fam10
+))
+(/usr/share/texmf-texlive/tex/plain/plgraph/miniltx.tex
+\@tempcnta=\count49
+\@tempcntb=\count50
+\@tempdima=\dimen55
+\@tempdimb=\dimen56
+\@tempdimc=\dimen57
+\@tempboxa=\box19
+\@tempskipa=\skip26
+\@tempskipb=\skip27
+\@temptokena=\toks25
+\leftmarginv=\dimen58
+\leftmarginvi=\dimen59
+\@ovxx=\dimen60
+\@ovyy=\dimen61
+\@ovdx=\dimen62
+\@ovdy=\dimen63
+\@ovro=\dimen64
+\@ovri=\dimen65
+\@xdim=\dimen66
+\@ydim=\dimen67
+\@linelen=\dimen68
+\@dashdim=\dimen69
+\fboxsep=\dimen70
+\fboxrule=\dimen71
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+graphicx.sty: 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+keyval.sty: 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks26
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+graphics.sty: 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/fontinst/base/trig.sty
+trig.sty: 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+graphics.cfg: 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+graphics: Driver file: pdftex.def
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+pdftex.def: 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count51
+))
+\Gin@req@height=\dimen72
+\Gin@req@width=\dimen73
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+color.sty: 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+color.cfg: 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+color: Driver file: pdftex.def
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
+dvipsnam.def: 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count52
+\scratchdimen=\dimen74
+\scratchbox=\box20
+\nofMPsegments=\count53
+\nofMParguments=\count54
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count55
+\MPscratchDim=\dimen75
+\MPnumerator=\count56
+\everyMPtoPDFconversion=\toks28
+) 
+Eplain: using `pdftex' hyperlink driver.
+\ttglue=\skip28
+\chapno=\count57
+\sectionno=\count58
+\subsectionno=\count59
+\subsubsectionno=\count60
+\htrimsize=\dimen76
+\vtrimsize=\dimen77
+\outermargin=\dimen78
+\topmargin=\dimen79
+\htrim=\box21
+\vtrim=\box22
+\trimmarks=\box23
+\headmargin=\dimen80
+\margin=\insert251
+\pagewidth=\dimen81
+\pageheight=\dimen82
+\ruleht=\dimen83
+\margin=\insert250
+\marginhackwidth=\dimen84
+\marginhackshift=\dimen85
+\marginhacknudge=\dimen86
+\defno=\count61
+\thmno=\count62
+\lemno=\count63
+\corno=\count64
+\propno=\count65
+\problemno=\count66
+\fignumber=\count67
+\@iindexfile=\write3
+) (./blackhole.toc)
+\openout1 = `blackhole.toc'.
+
+
+(./tex/semiclassical.tex (./blackhole.aux)
+\openout0 = `blackhole.aux'.
+
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Memory usage before: 4367&47042; after: 636&44585; still untouched: 1447614
+[2]
+Memory usage before: 4723&46409; after: 471&44402; still untouched: 1446614
+) (./tex/WKB.tex [3]
+Memory usage before: 3687&45953; after: 585&44306; still untouched: 1446614
+[4]
+Memory usage before: 5863&45759; after: 1472&44379; still untouched: 1445614
+
+Overfull \hbox (51.75221pt too wide) in paragraph at lines 176--176
+[]\eighttt (2^((3*(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2^^M+ 8*m*c[1]
+]))/(4*h))*((((-I)*h)/(Sqrt[e]*Sqrt[m]*r))^(Sqrt[h^2|
+
+\hbox(5.55556+1.77777)x469.75499
+.\hbox(0.0+0.0)x20.0
+.\eighttt (
+.\eighttt 2
+.\eighttt ^
+.\eighttt (
+.etc.
+
+
+Overfull \hbox (125.25356pt too wide) in paragraph at lines 176--176
+\eighttt +^^M8*m*c[1]]/h)*Gamma[Sqrt[h^2 + 8*m*c[1]]/h]*Gamma[(h +^^M(I*Sqrt[2]
+*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 +^^M8*m*c[1]])/(2*h)]*Hypergeometric1F1[(h|
+
+\hbox(5.55556+1.77777)x469.75499
+.\eighttt +
+.\eighttt ^^M
+.\eighttt 8
+.\eighttt *
+.\eighttt m
+.etc.
+
+
+Overfull \hbox (78.50288pt too wide) in paragraph at lines 176--176
+\eighttt +^^M(I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 + 8*m*c[1]])/(2*h), 1^
+^M- Sqrt[h^2 + 8*m*c[1]]/h,((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h]|
+
+\hbox(5.55556+1.77777)x469.75499
+.\eighttt +
+.\eighttt ^^M
+.\eighttt (
+.\eighttt I
+.\eighttt *
+.etc.
+
+
+Overfull \hbox (10.5019pt too wide) in paragraph at lines 176--176
+\eighttt +^^M2^((3*Sqrt[h^2 + 8*m*c[1]])/(2*h))*Gamma[-(Sqrt[h^2 +^^M8*m*c[1]]/
+h)]*Gamma[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e]|
+
+\hbox(5.55556+1.77777)x469.75499
+.\eighttt +
+.\eighttt ^^M
+.\eighttt 2
+.\eighttt ^
+.\eighttt (
+.etc.
+
+
+Overfull \hbox (40.25233pt too wide) in paragraph at lines 176--176
+\eighttt +^^MSqrt[h^2 + 8*m*c[1]])/(2*h)]*Hypergeometric1F1[(h +^^M(I*Sqrt[2]*S
+qrt[m]*c[0])/Sqrt[e] + Sqrt[h^2 + 8*m*c[1]])/(2*h),^^M(h|
+
+\hbox(5.55556+1.77777)x469.75499
+.\eighttt +
+.\eighttt ^^M
+.\eighttt S
+.\eighttt q
+.\eighttt r
+.etc.
+
+
+Overfull \hbox (108.25331pt too wide) in paragraph at lines 176--176
+\eighttt + Sqrt[h^2 + 8*m*c[1]])/h,^^M((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h]))/((
+((-I)*h)/(Sqrt[e]*Sqrt[m]*r))^((h^^M+ (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e]|
+
+\hbox(5.55556+1.77777)x469.75499
+.\eighttt +
+.\glue 4.25006
+.\eighttt S
+.\eighttt q
+.\eighttt r
+.etc.
+
+)
+\@itemnum=\count68
+ (./blackhole.bbl
+Underfull \hbox (badness 7273) in paragraph at lines 14--19
+[][]\eightrm J. D. Beken-stein.  ``Black holes: Clas-si-cal prop-er-ties, ther-
+mo-dy-nam-ics, and heuris-tic quan-ti-za-tion.''
+
+\hbox(6.0+2.0)x469.75499, glue set 4.1757
+.\hbox(6.0+2.0)x27.85318, glue set 0.35fil
+..\penalty 10000
+..\glue 0.0
+..\hbox(0.0+0.0)x0.0
+...\hbox(0.0+0.0)x0.0, shifted -9.0 []
+..\penalty 10000
+..\glue 0.0
+..etc.
+.\kern 4.25006
+.\write0{\string \@citedef {Bekenstein:1998aw}{\csname \@citelabel {Bekenstein\
+ETC.}
+.\eightrm J
+.\eightrm .
+.etc.
+
+
+Underfull \hbox (badness 4647) in paragraph at lines 82--92
+[][]\eightrm R. M. Wald.  ``Black hole en-tropy is the Noether charge.''  \eigh
+tit Phys. Rev. \eightbf D48 \eightrm (1993) 3427--3431.
+
+\hbox(6.0+2.0)x469.75499, glue set 3.59648
+.\hbox(6.0+2.0)x27.85318
+..\penalty 10000
+..\glue 0.0
+..\hbox(0.0+0.0)x0.0
+...\hbox(0.0+0.0)x0.0, shifted -9.0 []
+..\penalty 10000
+..\glue 0.0
+..etc.
+.\kern 4.25006
+.\write0{\string \@citedef {Wald:1993nt}{\csname \@citelabel {Wald:1993nt}\endc
+sname \ETC.}
+.\eightrm R
+.\eightrm .
+.etc.
+
+) [5]
+Memory usage before: 7730&49785; after: 424&44264; still untouched: 1440544
+[6]
+Memory usage before: 484&44265; after: 357&44206; still untouched: 1440544
+ ) 
+Here is how much of TeX's memory you used:
+ 2737 strings out of 97293
+ 34832 string characters out of 1210112
+ 59456 words of memory out of 1500000
+ 3754 multiletter control sequences out of 10000+50000
+ 21546 words of font info for 80 fonts, out of 1200000 for 2000
+ 14 hyphenation exceptions out of 8191
+ 21i,14n,17p,1136b,522s stack positions out of 5000i,500n,6000p,200000b,5000s
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmbx8.pfb></usr/share/texmf-texlive/fonts/type1
+/bluesky/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texm
+f-texlive/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1
+/bluesky/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsl10.pf
+b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmssbx10.pfb></usr/share/tex
+mf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmsy5.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt
+8.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/ams/msbm10.pfb></usr/share/
+texmf-texlive/fonts/type1/bluesky/ams/msbm5.pfb></usr/share/texmf-texlive/fonts
+/type1/bluesky/ams/msbm7.pfb>
+Output written on blackhole.pdf (6 pages, 189999 bytes).
+PDF statistics:
+ 157 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

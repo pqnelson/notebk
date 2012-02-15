@@ -1,0 +1,93 @@
+\begin{thebibliography}{Wal93}
+\def\enquote#1{``#1''}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \expandafter\ifx\csname doi\endcsname\relax
+  \def\doi#1{doi:\discretionary{}{}{}#1}\fi \else
+  \expandafter\ifx\csname doi\endcsname\relax
+  \def\doi{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi \fi
+\expandafter\ifx\csname bibinfo\endcsname\relax\def\bibinfo#1#2{#2}\fi
+\expandafter\ifx\csname eprint\endcsname\relax\def\eprint#1{\url{#1}}\fi
+
+\bibitem[Bek98]{Bekenstein:1998aw}
+\bibinfo{author}{J.~D. Bekenstein}.
+\newblock \enquote{\bibinfo{title}{{Black holes: Classical properties,
+  thermodynamics, and heuristic quantization}}.}
+  {\tt\href{http://arxiv.org/abs/gr-qc/9808028}{arXiv:gr-qc/9808028}}.
+
+\bibitem[BL07]{Bhattacharya:2007ap}
+\bibinfo{author}{S.~Bhattacharya}, \bibinfo{author}{A.~Lahiri}.
+\newblock \enquote{\bibinfo{title}{{No hair theorems for positive Lambda}}.}
+\newblock {\em \bibinfo{journal}{Phys. Rev. Lett.}\/} \bibinfo{volume}{{\bf
+  99}} (\bibinfo{year}{2007}) \bibinfo{pages}{201101}.
+\newblock
+  \href{http://dx.doi.org/10.1103/PhysRevLett.99.201101}{\url{doi:10.1103/Phys%
+RevLett.99.201101}}.
+\newblock {\tt\href{http://arxiv.org/abs/gr-qc/0702006}{arXiv:gr-qc/0702006}}.
+
+\bibitem[Car08]{Carlip:2008rk}
+\bibinfo{author}{S.~Carlip}.
+\newblock \enquote{\bibinfo{title}{{Black Hole Entropy and the Problem of
+  Universality}}.} {\tt\href{http://arxiv.org/abs/0807.4192}{arXiv:0807.4192}
+  [gr-qc]}.
+
+\bibitem[Car09]{Carlip:2008wv}
+\bibinfo{author}{S.~Carlip}.
+\newblock \enquote{\bibinfo{title}{{Black Hole Thermodynamics and Statistical
+  Mechanics}}.}
+\newblock {\em \bibinfo{journal}{Lect. Notes Phys.}\/} \bibinfo{volume}{{\bf
+  769}} (\bibinfo{year}{2009}) \bibinfo{pages}{89--123}.
+\newblock
+  \href{http://dx.doi.org/10.1007/978-3-540-88460-6_3}{\url{doi:10.1007/978-3-%
+540-88460-6_3}}.
+\newblock {\tt\href{http://arxiv.org/abs/0807.4520}{arXiv:0807.4520} [gr-qc]}.
+
+\bibitem[Chr94]{Chrusciel:1994sn}
+\bibinfo{author}{P.~T. Chrusciel}.
+\newblock \enquote{\bibinfo{title}{{`No hair' theorems: Folklore, conjectures,
+  results}}.}
+\newblock {\em \bibinfo{journal}{Contemp. Math.}\/} \bibinfo{volume}{{\bf 170}}
+  (\bibinfo{year}{1994}) \bibinfo{pages}{23--49}.
+\newblock {\tt\href{http://arxiv.org/abs/gr-qc/9402032}{arXiv:gr-qc/9402032}}.
+
+\bibitem[Heu96]{Heusler:1996ft}
+\bibinfo{author}{M.~Heusler}.
+\newblock \enquote{\bibinfo{title}{{No-hair theorems and black holes with
+  hair}}.}
+\newblock {\em \bibinfo{journal}{Helv. Phys. Acta}\/} \bibinfo{volume}{{\bf
+  69}} (\bibinfo{year}{1996}) \bibinfo{pages}{501--528}.
+\newblock {\tt\href{http://arxiv.org/abs/gr-qc/9610019}{arXiv:gr-qc/9610019}}.
+
+\bibitem[Poi04]{poisson2004relativist}
+\bibinfo{author}{E.~Poisson}.
+\newblock {\em \bibinfo{title}{{A Relativist's Toolkit: The Mathematics of
+  Black-Hole Mechanics}}\/}.
+\newblock \bibinfo{publisher}{Cambridge University Press}
+  (\bibinfo{year}{2004}).
+\newblock
+  \urlprefix\url{http://www.physics.uoguelph.ca/~poisson/research/agr.pdf}.
+
+\bibitem[Pri72]{Price:1972pw}
+\bibinfo{author}{R.~H. Price}.
+\newblock \enquote{\bibinfo{title}{{Nonspherical Perturbations of Relativistic
+  Gravitational Collapse. II. Integer-Spin, Zero-Rest-Mass Fields}}.}
+\newblock {\em \bibinfo{journal}{Phys. Rev.}\/} \bibinfo{volume}{{\bf D5}}
+  (\bibinfo{year}{1972}) \bibinfo{pages}{2439--2454}.
+\newblock
+  \href{http://dx.doi.org/10.1103/PhysRevD.5.2439}{\url{doi:10.1103/PhysRevD.5%
+.2439}}.
+
+\bibitem[Wal93]{Wald:1993nt}
+\bibinfo{author}{R.~M. Wald}.
+\newblock \enquote{\bibinfo{title}{{Black hole entropy is the Noether
+  charge}}.}
+\newblock {\em \bibinfo{journal}{Phys. Rev.}\/} \bibinfo{volume}{{\bf D48}}
+  (\bibinfo{year}{1993}) \bibinfo{pages}{3427--3431}.
+\newblock
+  \href{http://dx.doi.org/10.1103/PhysRevD.48.R3427}{\url{doi:10.1103/PhysRevD%
+.48.R3427}}.
+\newblock {\tt\href{http://arxiv.org/abs/gr-qc/9307038}{arXiv:gr-qc/9307038}}.
+
+\end{thebibliography}

@@ -1,0 +1,175 @@
+%%
+%% semiclassical.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat Feb 20 11:42:25 2010 Alex Nelson
+%% Last update Tue Mar 30 17:33:01 2010 Alex Nelson
+%%
+
+We have a box of gas with linear size $L$, mass $m$ and
+temperature $T$. The black hole has mass $M$ and a horizon radius
+$R=2GM$, thus it has a horizon area $A=16\pi G^{2}M^{2}$. The box
+of gas will merge with the black hole when its proper distance
+$\rho$ from the horizon is of order $L$, at which point the
+disappearance of the gas will lead to a loss of entropy
+\equation\label{eq:approximationOfEntropyLoss}
+\Delta S\sim -m/T.
+\endequation
+Presumably this is from the relation
+\equation
+dE=\delta Q-\delta W
+\endequation
+where $dE$ is the infitesimal change in internal energy, $\delta
+Q$ is the inexact differential describing the infinitesimal
+change in heat, and $\delta W$ is the inexact differential in
+work. For a {\it reversible process} we have
+\equation\label{eq:secondLawThermodynamicsReversibleProcess}
+dS=\frac{\delta Q}{T}=\frac{dE+\delta W}{T}\approx\frac{c^{2}dm}{T}
+\endequation
+where $dS$ is the differential change in entropy.
+
+\problem
+Is dropping a box of gas into a black hole a reversible process?
+Because that's what is used in \ref{eq:approximationOfEntropyLoss}
+derived via \ref{eq:secondLawThermodynamicsReversibleProcess}. But
+if the process is not reversible, which intuitively it isn't,
+there's not reason why \ref{eq:secondLawThermodynamicsReversibleProcess}
+should be used.
+\endproblem
+\solution
+It turns out that we can use \ref{eq:secondLawThermodynamicsReversibleProcess}
+as a lower bound for non-reversible processes,
+i.e. non-reversible processes have some {\it greater} change in entropy.
+\endsolution
+
+
+For a Schwarzschild Black Hole, the proper distance is $\rho=\int
+\sqrt{g_{rr}}dr$. Why? Well, we can change coordinates to where
+$\theta$ is constant, $\varphi$ is constant too, and work with a
+constant time-slice. Thus the only surviving part of the
+differential proper distance is
+\equation
+ds^{2}=g_{\mu\nu}dx^{\mu}dx^{\nu}=g_{rr}dr^{2}.
+\endequation
+Thus the proper distance from the horizon is
+\equation
+\rho=\int^{R+\delta r}_{R}\frac{dr}{\sqrt{1-2GM/r}}
+=\left.r \sqrt{1-\frac{2GM}{r}}+ 2GM \ln\left(2 r
+    \left(\sqrt{1-\frac{2GM}{r}}+1\right)-2GM\right)\right|^{r=R+\delta r}_{r=R}
+\endequation
+By imposing the conditions we have
+\equation
+\rho=\sqrt{\delta r (\delta r+2GM)}+2GM\left(\ln\left(\sqrt{\frac{\delta r}{\delta r+2GM}}+1\right)+\tanh^{-1}\left(\frac{\delta r}{\delta r+4GM}\right)\right)
+\endequation
+We can work with the highest order term, and for ``small $\delta
+r$'' we get to first order in $\delta r$
+\equation
+\rho\sim\sqrt{2GM\delta r}.
+\endequation
+Well, already I am hestitant on several levels.
+
+\problem
+It seems that we are using classical thermodynamics. However, in
+semiclassical gravity, energy is not conserved. That is, the
+first Law no longer holds. Can we really rely on the second Law
+holding in {\sc\ref{eq:approximationOfEntropyLoss}} or is there a way
+to have it be rigorous?
+\endproblem
+
+At any rate, we say that $\rho\sim L$ when $\delta r\sim
+L^{2}/GM$. This bothers me, it's unrigorous, so let's try to find
+it more exactly. We find that really, the exact solution is
+\equation
+\delta r = \frac{1}{2}GM\left(\cosh \left(\frac{L}{GM}\right)-\sinh \left(\frac{L}{GM}\right)\right) \left(\sinh\left(\frac{L}{GM}\right)+\cosh \left(\frac{L}{GM}\right)-1\right)^2
+\endequation
+which is to first order
+\equation
+\delta r \approx \frac{L^{2}}{2GM}+\hbox{higher order terms}
+\endequation
+precisely as specified. The gas initially has mass $m$ but (as
+seen by an observer from infinity) it is redshifted as the box
+falls to the black hole. When $r=2GM+\delta r$, the black hole
+gains a mass
+\equation
+\Delta M\approx m\sqrt{1-\frac{2GM}{2GM+\delta r}}=m\sqrt{\tanh(L^{2}/R^{2})}.
+\endequation
+Recall that the Thermal de Broglie relations give the wavelength 
+\equation\label{eq:thermalDeBroglieRelation}
+\Lambda = \frac{\hbar\sqrt{2\pi}}{\sqrt{mkT}}
+\endequation
+where $k$ is Boltzmann's constant, and $\hbar$ is Planck's
+constant over $2\pi$. If we write
+\equation
+\Lambda=L\quad\iff\quad L\sim\frac{\hbar}{\sqrt{mT}}
+\endequation
+then we don't obtain the same results that Carlip gets...which is
+quite bad. However, if we use $T$ for $E$ in the usual de Broglie
+relations, we do get the same results. 
+
+\problem\label{problem:ambiguityFromThermalDeBroglieRelations}
+Can we really avoid the implications from \ref{eq:thermalDeBroglieRelation}
+or does it doom the calculation?
+\endproblem
+
+Unfortunately due to our rigorous adherence to precision, we
+cannot easily continue calculations to verify their
+correctness. We are condemned to make an approximation. We can
+Taylor expand
+\equation
+\sqrt{\tanh(x^{2})}=x-\frac{x^{5}}{6}+\frac{19 x^{9}}{360}-\frac{55
+    x^{13}}{3024}+{\cal O}(x^{17}).
+\endequation
+Being physicists, we take the first term and plug it in for
+$\Delta M$
+\equation
+\Delta M \approx \frac{mL}{2GM}\quad\Rightarrow\quad 2GM\Delta
+M\approx mL.
+\endequation
+Thus we deduce from our temperature relations
+\equation
+L\sim\frac{\hbar}{\sqrt{mT}}\quad\Rightarrow\quad T=\frac{\hbar^{2}}{L^{2}m}
+\endequation
+and this is plugged into the entropy relation we began with
+\equation
+\Delta S \sim \frac{-m}{T} = \frac{-m^{2}L^{2}}{\hbar^{2}}.
+\endequation
+Thus we obtain
+\equation
+\Delta S \sim \frac{-(2GM\Delta M)^{2}}{\hbar^{2}}.
+\endequation
+Here is where things go horribly awry! We approximate
+\equation
+\Delta A\approx G^{2}M\Delta M
+\endequation
+so setting $G=1$, we get more or less
+\equation
+\Delta S\sim\frac{-(\Delta A)^{2}}{\hbar^{2}}
+\endequation
+which is horribly wrong!
+So to answer \ref{problem:ambiguityFromThermalDeBroglieRelations}
+we can definitively say {\bf NO, IT DOOMS THE CALCULATION!}  
+
+Now, what if we try something different? Work with a single
+quantum particle in a box, then the temperature {\it is precisely}
+the kinetic energy. We know for the non-relativistic quantum
+particle in a box the energy is
+\equation
+E_n = \frac{n^2\hbar^2 \pi^2}{2mL^2}
+\endequation
+where $n\in\Bbb{N}$, $m$ is the mass of the particle, and $L$ is
+the length of the box. The momentum would be
+\equation
+p_{n}=\hbar\frac{n\pi}{L}
+\endequation
+which permits us to deduce the value of 
+\equation
+\lambda=n/2L.
+\endequation
+If we plug this value in, well, it still doesn't work.
+
+\solution
+We cannot have $\lambda\propto1/\sqrt{m}$, otherwise we end up
+with $\Delta S\propto (\Delta A)^{2}$.
+\endsolution

@@ -1,0 +1,51 @@
+%%
+%% blackhole.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Tue Feb 16 16:34:25 2010 Alex Nelson
+%% Last update Sun Feb 21 22:22:52 2010 Alex Nelson
+%%
+
+\input macros
+\def\bblhook{\parskip=1pt}
+\ifx\pdfoutput\undefined\else
+  \pdfminorversion 6
+  \pdfinfo {
+    /Title        (Notes on Black Hole Thermodynamics)
+    /Creator      (Alex Nelson)
+    /Producer     (pdfTeX 1.40.3)
+    /Author       (Alex Nelson)
+    /CreationDate (D:20100216170106+01'00')
+    /Subject      (Mathematical Physics)
+    /Keywords     (Physics, Math) }
+\fi
+
+
+\title{Notes on Black Hole Thermodynamics}
+\Author{Alex Nelson}
+\email{pqnelson@ucdavis.edu}
+\date{16 February 2010}
+\address{Mathematics Department, University of California, Davis, CA 95616}
+
+
+\maketitle
+\centerline{{\sc Contents}}
+\readtocfile
+\bigskip
+\section{Semiclassical Derivation}
+
+\input tex/semiclassical
+
+%==========================================================================
+% tunneling and whatnot
+\section{WKB Approximation}
+\input tex/WKB
+
+
+%\vfill\eject
+%\hfill\break
+%\vfill
+\Bibliography{blackhole}
+\bye

@@ -1,0 +1,56 @@
+\begin{thebibliography}{Wei96}
+\def\enquote#1{``#1''}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \expandafter\ifx\csname doi\endcsname\relax
+  \def\doi#1{doi:\discretionary{}{}{}#1}\fi \else
+  \expandafter\ifx\csname doi\endcsname\relax
+  \def\doi{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi \fi
+\expandafter\ifx\csname bibinfo\endcsname\relax\def\bibinfo#1#2{#2}\fi
+\expandafter\ifx\csname eprint\endcsname\relax\def\eprint#1{\url{#1}}\fi
+
+\bibitem[Arn04]{arnol2004hilbert}
+\bibinfo{author}{V.~Arnol'd}.
+\newblock \enquote{\bibinfo{title}{{From Hilbert's superposition problem to
+  dynamical systems}}.}
+\newblock {\em \bibinfo{journal}{American Mathematical Monthly}\/}
+  \bibinfo{volume}{{\bf 111}} (\bibinfo{year}{2004}) \bibinfo{pages}{608--624}.
+
+\bibitem[Caf09]{caftan1904structure}
+\bibinfo{author}{E.~Caftan}.
+\newblock \enquote{\bibinfo{title}{{Sur la structure des groupes infinis de
+  transformations}}.}
+\newblock {\em \bibinfo{journal}{Annales scientifiques de l'\'Ecole Normale
+  Sup\'erieure S\'er}\/} \bibinfo{volume}{{\bf 26}} (\bibinfo{year}{1909})
+  \bibinfo{pages}{93--161}.
+\newblock
+  \urlprefix\url{http://archive.numdam.org/article/ASENS_1909_3_26__93_0.pdf}.
+
+\bibitem[Car04]{cartan-groupes}
+\bibinfo{author}{E.~Cartan}.
+\newblock \enquote{\bibinfo{title}{{Les groupes de transformations continus,
+  infinis, simples}}.}
+\newblock {\em \bibinfo{journal}{Annales scientifiques de l'\'Ecole Normale
+  Sup\'erieure S\'er}\/} \bibinfo{volume}{{\bf 21}} (\bibinfo{year}{1904})
+  \bibinfo{pages}{153--206}.
+\newblock
+  \urlprefix\url{http://archive.numdam.org/article/ASENS_1904_3_21__153_0.pdf}.
+
+\bibitem[KN63]{kobayashi1963foundations}
+\bibinfo{author}{S.~Kobayashi}, \bibinfo{author}{K.~Nomizu}.
+\newblock {\em \bibinfo{title}{Foundations of Differential Geometry}\/},
+  volume~\bibinfo{volume}{I}.
+\newblock \bibinfo{publisher}{Interscience Publishers, New York}
+  (\bibinfo{year}{1963}).
+
+\bibitem[Wei96]{weinstein1996groupoids}
+\bibinfo{author}{A.~Weinstein}.
+\newblock \enquote{\bibinfo{title}{{Groupoids: unifying internal and external
+  symmetry}}.}
+\newblock {\em \bibinfo{journal}{Notices of the American Mathematical
+  Society}\/} \bibinfo{volume}{{\bf 43}} (\bibinfo{year}{1996})
+  \bibinfo{pages}{744--752}.
+
+\end{thebibliography}

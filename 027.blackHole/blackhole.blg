@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: blackhole.aux
+The style file: elements.bst
+Database file #1: blackhole.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty journal in Bekenstein:1998aw
+Warning--empty journal in Carlip:2008rk
+You've used 9 entries,
+            3279 wiz_defined-function locations,
+            741 strings with 7079 characters,
+and the built_in function-call counts, 4226 in all, are:
+= -- 305
+> -- 82
+< -- 8
++ -- 22
+- -- 22
+* -- 529
+:= -- 531
+add.period$ -- 43
+call.type$ -- 9
+change.case$ -- 37
+chr.to.int$ -- 9
+cite$ -- 11
+duplicate$ -- 323
+empty$ -- 390
+format.name$ -- 40
+if$ -- 816
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 66
+newline$ -- 67
+num.names$ -- 27
+pop$ -- 74
+preamble$ -- 1
+purify$ -- 55
+quote$ -- 0
+skip$ -- 97
+stack$ -- 0
+substring$ -- 189
+swap$ -- 232
+text.length$ -- 8
+text.prefix$ -- 8
+top$ -- 0
+type$ -- 68
+warning$ -- 2
+while$ -- 25
+width$ -- 10
+write$ -- 119
+(There were 2 warnings)

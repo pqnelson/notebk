@@ -1,0 +1,204 @@
+%%
+%% WKB.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat Feb 20 11:43:28 2010 Alex Nelson
+%% Last update Wed Feb 24 22:49:13 2010 Alex Nelson
+%%
+
+We will review the Wentzel-Kramers-Brillouin, or ``WKB'',
+approximation in quantum mechanics. To begin, consider the one
+dimensional time-independent Schr\"odinger equation
+\equation
+\frac{-\hbar^{2}}{2m}\frac{d^{2}}{dx^{2}}\Psi(x)+V(x)\Psi(x)=E\Psi(x)
+\endequation
+which can be rewritten as
+\equation
+\frac{d^{2}}{dx^{2}}\Psi(x)=\frac{2m}{\hbar^{2}}(V(x)-E)\Psi(x).
+\endequation
+So we {\it guess} the answer is of the form
+\equation\label{eq:WKB:guess}
+\Psi(x)=e^{\Phi(x)}
+\endequation
+and we plug this in to find
+\equation
+\Phi''(x)+[\Phi'(x)]^{2}=\frac{2m}{\hbar^{2}}(V(x)-E)
+\endequation
+where primes indicate differentiation with respect to $x$. We
+then boldly guess
+\equation
+\Phi'(x)=A(x)+iB(x)
+\endequation
+where $A$ and $B$ are real functions. We observe that when we
+plug this into \ref{eq:WKB:guess} we obtain
+\equation
+\Psi(x)=\exp\left(\int^{x}\!\!\!A(y)dy+i\int^{x}\!\!\!B(y)dy\right)
+\endequation
+which tells us the first term is the amplitude of the
+wavefunction
+\equation
+\exp(\int^{x}\!\!\!A(y)dy)=\hbox{Amplitude}
+\endequation
+and the second term is the phase
+\equation
+\exp(i\int^{x}\!\!\!B(y)dy)=\hbox{Phase}.
+\endequation
+We divide up the Schr\"odinger equation into the real and
+imaginary parts, which becomes
+\equation
+A'(x)+A(x)^{2}-B(x)^{2}=\frac{2m}{\hbar^{2}}(V(x)-E)
+\endequation
+and
+\equation
+B'(x)+2A(x)B(x)=0
+\endequation
+respectively.
+
+Now we become semiclassical. We expand $A$ and $B$ as power
+series in terms of $\hbar$:
+\equation
+A(x)=\hbar^{-1}\sum^{\infty}_{n=0}\hbar^{n}A_{n}(x)
+\endequation
+and
+\equation
+B(x)=\hbar^{-1}\sum^{\infty}_{n=0}\hbar^{n}B_{n}(x).
+\endequation
+To first order this allows us to write
+\equation
+A_{0}(x)^{2}-B_{0}(x)^{2}=2m(V(x)-E)
+\endequation
+and
+\equation
+A_{0}(x)B_{0}(x)=0.
+\endequation
+If the amplitude ``varies sufficiently slowly compared to the
+phase'' (i.e. we let $A_{0}=0$), then we deduce
+\equation
+B_{0}(x)=\pm\sqrt{2m(E-V(x))}
+\endequation
+which is valid for $E\geq V(x)$. On the other hand, if the
+``phase varies slowly'' (so $B_{0}=0$), we get
+\equation
+A_{0}(x)=\pm\sqrt{2m(V(x)-E)}
+\endequation
+which is only valid when the potential energy is greater than the
+total energy, i.e. {\it when quantum tunneling is possible!}
+
+% V[r_]:= (-M/r)+(1/2)*Power[l/r,2]-M*l*l/(r^3)
+%
+Now the potential we are working with is the effective potential
+for the Schwarzschild metric. It is ``God given'' as
+\equation
+V_{eff}(r)=\overbrace{\frac{-M}{r}+\frac{\ell^{2}}{2r^{2}}}^{\mathclap{\rm Newtonian\ Approximation}}
+-\underbracket{\frac{M\ell^{2}}{r^{3}}}_{\mathclap{\rm Relativistic\ Correction}}
+\endequation
+which we will use in computations with the WKB
+approximation. %% Observe that
+%% \equation
+%% V_{eff}'(r)=\frac{3 \ell^2 M}{r^4}-\frac{\ell^2}{r^3}+\frac{M}{r^2}
+%% \endequation
+%% which is zero at
+%% \equation
+%% r_{\pm}=\frac{\ell^{2}\pm\ell\sqrt{\ell^{2}-12M^{2}}}{2M}.
+%% \endequation
+%% We see that
+%% \equation
+%% V(r_{-})=\frac{2 M^2 \left(\ell \left(\sqrt{\ell^2-12 M^2}-\ell\right)+8 M^2\right)}{\ell\left(\ell-\sqrt{\ell^2-12 M^2}\right)^3}
+%% \endequation
+%% and
+%% \equation
+%% V(r_{+})=-\frac{2 M^2 \left(\ell \left(\sqrt{\ell^2-12 M^2}+\ell\right)-8 M^2\right)}{\ell\left(\sqrt{\ell^2-12 M^2}+\ell\right)^3}
+%% \endequation
+%
+%
+If we work with the Newtonian effective potential, we can work
+with the Scr\"odinger equation
+\equation
+E\psi(r)=\frac{-\hbar^{2}}{2\mu}\frac{d^{2}}{dr^{2}}\psi(r)+\left(\frac{-c_{0}}{r}+\frac{c_{1}}{r^{2}}\right)\psi(r).
+\endequation
+We can, after a lot of work, solve this to have the general solution
+\equation
+%% \psi(r)=k_{1} M_{-\frac{i \sqrt{m} c_0}{\sqrt{2} \sqrt{e}\hbar},\frac{\sqrt{\hbar^2+8 m c_1}}{2 \hbar}}\left(\frac{2 i \sqrt{2} \sqrt{e}\sqrt{m} r}{\hbar}\right)
+%% +k_{2} W_{-\frac{i \sqrt{m} c_0}{\sqrt{2} \sqrt{e}\hbar},\frac{\sqrt{\hbar^2+8 m c_1}}{2 \hbar}}\left(\frac{2 i \sqrt{2} \sqrt{e}\sqrt{m} r}{\hbar}\right)
+\psi(r)=k_{1} M_{k,m}\left(\frac{2 ir \sqrt{2E\mu}}{\hbar}\right)
++k_{2} W_{k,m}\left(\frac{2 ir \sqrt{2E\mu}}{\hbar}\right)
+\endequation
+where $k_{1}$, $k_{2}$ are constants to be determined,
+\equation
+k=-\frac{i c_0\sqrt{\mu} }{\hbar\sqrt{2E}},\quad\hbox{and}\quad
+m=\frac{\sqrt{\hbar^2+8 \mu c_1}}{2 \hbar},
+\endequation
+ $M_{a,b}(x)$ and
+$W_{a,b}(x)$ are the Whittaker functions. Recall that these are
+\equation
+M_{k,m}(z)=z^{m+1/2}e^{-z/2}\sum_{n=0}^{\infty}\frac{(m-k+1/2)_n}{n!(2m+1)_n}z^n
+\endequation
+and
+\equation
+W_{k,m}(z)=\frac{e^{-z/2}z^{k}}{\Gamma(\frac{1}{2}-k+m)}\int^{\infty}_{0}t^{m-k-1/2}\left(1+\frac{t}{z}\right)^{m+k-1/2}e^{-t}dt
+\endequation
+whenever ${\rm Re}(k-m-1/2)\leq0$ and $k-m-1/2\not\in\Bbb{Z}$. It
+is a pretty safe bet that, since $k$ is purely imaginary, both
+these conditions hold. We would like to fix $k_{1}$, $k_{2}$ by
+normalization, that is
+\equation
+N=\int^{\infty}_{0}\overline{\psi(r)}\psi(r)rdr.
+\endequation
+If we just expand out $\psi(r)$, we have for $\beta=2\sqrt{2E\mu}/\hbar$
+\equation
+\eqalign{
+\psi(r)=&k_{1}\left((i\beta r)^{m+1/2}e^{-i\beta r/2}\sum^{\infty}_{n=0}\frac{\Gamma(\frac{3}{2}+m-k)\Gamma(2+2m-n)}{\Gamma(\frac{3}{2}+m-k-n)\Gamma(2+2m)}(i\beta r)^{n}\right)\cr
+&\quad+k_{2}\left(
+\frac{e^{-i\beta r/2}(i\beta
+r)^{k}}{\Gamma(\frac{1}{2}+m-k)}\int^{\infty}_{0}t^{m-k-1/2}\left(1+\frac{t}{i\beta r}\right)^{k+m-1/2}e^{-t}dt
+\right)}
+\endequation
+We see that by plugging it into infallible Mathematica:
+
+{\eightpoint\obeylines\smallskip
+\verbatim{(2^((3*(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2
++ 8*m*c[1]]))/(4*h))*((((-I)*h)/(Sqrt[e]*Sqrt[m]*r))^(Sqrt[h^2 +
+8*m*c[1]]/h)*Gamma[Sqrt[h^2 + 8*m*c[1]]/h]*Gamma[(h +
+(I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 +
+8*m*c[1]])/(2*h)]*Hypergeometric1F1[(h +
+(I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 + 8*m*c[1]])/(2*h), 1
+- Sqrt[h^2 + 8*m*c[1]]/h,((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h] +
+2^((3*Sqrt[h^2 + 8*m*c[1]])/(2*h))*Gamma[-(Sqrt[h^2 +
+8*m*c[1]]/h)]*Gamma[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] +
+Sqrt[h^2 + 8*m*c[1]])/(2*h)]*Hypergeometric1F1[(h +
+(I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] + Sqrt[h^2 + 8*m*c[1]])/(2*h),
+(h + Sqrt[h^2 + 8*m*c[1]])/h,
+((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h]))/((((-I)*h)/(Sqrt[e]*Sqrt[m]*r))^((h
++ (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] + Sqrt[h^2 +
+8*m*c[1]])/(2*h))*Gamma[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] -
+Sqrt[h^2 + 8*m*c[1]])/(2*h)])} 
+\smallskip}
+
+or in human readable form:
+
+\equation\penalty1000
+\eqalign{
+\int ... dt
+&= \frac{2^{(3 \left(\hbar+\frac{i \sqrt{2\mu}
+c_{0}}{\sqrt{E}}-\sqrt{\hbar^2+8 \mu  c_{1}}\right))/4 \hbar}}{\Gamma\left(\frac{\hbar+\frac{i \sqrt{2\mu}
+c_{0}}{\sqrt{E}}-\sqrt{\hbar^2+8 \mu c_{1}}}{2
+\hbar}\right)} \left(\frac{\sqrt{E\mu} r}{-i\hbar}\right)^{\frac{\hbar+\frac{i \sqrt{2\mu}c_{0}}{\sqrt{E}}+\sqrt{\hbar^2+8 \mu  c_{1}}}{2 \hbar}}\cr
+&\quad\times \bigg[\Gamma\left(\frac{\sqrt{\hbar^2+8 \mu  c_{1}}}{\hbar}\right) \Gamma \left(\frac{\hbar+\frac{i\sqrt{2\mu} c_{0}}{\sqrt{E}}-\sqrt{\hbar^2+8 \mu  c_{1}}}{2 \hbar}\right)\cr
+&\quad\times{}_{1}F_{1}\left(\frac{\hbar+\frac{i \sqrt{2\mu} c_{0}}{\sqrt{E}}-\sqrt{\hbar^2+8 \mu  c_{1}}}{2 \hbar};1-\frac{\sqrt{\hbar^2+8 \mu  c_{1}}}{\hbar};\frac{2 ir \sqrt{2E\mu}}{\hbar}\right)%\cr&\quad\times 
+\left(\frac{-i \hbar}{\sqrt{E\mu}r}\right)^{\frac{\sqrt{\hbar^2+8 \mu
+c_{1}}}{\hbar}}\cr
+&\quad+2^{\frac{3 \sqrt{\hbar^2+8 \mu  c_{1}}}{2 \hbar}} \Gamma \left(-\frac{\sqrt{\hbar^2+8 \mu  c_{1}}}{\hbar}\right)%\cr
+%&\quad\times  
+\Gamma\left(\frac{\hbar+\frac{i \sqrt{2\mu} c_{0}}{\sqrt{E}}+\sqrt{\hbar^2+8 mc_{1}}}{2 \hbar}\right)\cr
+&\quad\times{}_{1}F_{1} \left(\frac{\hbar+\frac{i \sqrt{2} \sqrt{\mu}c_{0}}{\sqrt{E}}+\sqrt{\hbar^2+8 \mu  c_{1}}}{2 \hbar};\frac{\hbar+\sqrt{\hbar^2+8 mc_{1}}}{\hbar};\frac{2 i \sqrt{2E\mu} r}{\hbar}\right)\bigg]}
+\endequation
+where ${}_{1}F_{1}(x;y;z)$ is the Hypergeometric function.
+
+%% C[1]*WhittakerM[((-I)*Sqrt[m]*c[0])/(Sqrt[2]*Sqrt[e]*h), Sqrt[h^2 + 8*m*c[1]]/(2*h), ((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h] +  C[2]*WhittakerW[((-I)*Sqrt[m]*c[0])/(Sqrt[2]*Sqrt[e]*h), Sqrt[h^2 + 8*m*c[1]]/(2*h), ((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h]
+% more mathematica code
+% beta=2*Sqrt[2*e*m]*r/(2*h)
+% M = Sqrt[h^2 + 8*m*c[1]]/(2*h)
+% k = ((-I)*Sqrt[m]*c[0])/(Sqrt[2]*Sqrt[e]*h)
+% k[1]*(Power[I*beta*r,M+1/2]*Exp[-I*beta*r/2]*Sum[Gamma[M-k+3/2]*Gamma[2+2*M-n]*Power[I*beta*r,n]/(Gamma[M-k-n+1/2]*Gamma[2+2*M]),{n,0,Infinity}])+k[2]*Exp[-I*2*Sqrt[2*e*m]*r/(2*h)]*Power[I*2*Sqrt[2*e*m]*r/(2*h),k]*Power[Gamma[M-k+1/2],-1]*(2^((3*(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 + 8*m*c[1]]))/(4*h))*((((-I)*h)/(Sqrt[e]*Sqrt[m]*r))^(Sqrt[h^2 + 8*m*c[1]]/h)*Gamma[Sqrt[h^2 + 8*m*c[1]]/h]*Gamma[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 + 8*m*c[1]])/(2*h)]*Hypergeometric1F1[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 + 8*m*c[1]])/(2*h), 1 - Sqrt[h^2 + 8*m*c[1]]/h,((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h] + 2^((3*Sqrt[h^2 + 8*m*c[1]])/(2*h))*Gamma[-(Sqrt[h^2 + 8*m*c[1]]/h)]*Gamma[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] + Sqrt[h^2 + 8*m*c[1]])/(2*h)]*Hypergeometric1F1[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] + Sqrt[h^2 + 8*m*c[1]])/(2*h), (h + Sqrt[h^2 + 8*m*c[1]])/h, ((2*I)*Sqrt[2]*Sqrt[e]*Sqrt[m]*r)/h]))/((((-I)*h)/(Sqrt[e]*Sqrt[m]*r))^((h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] + Sqrt[h^2 + 8*m*c[1]])/(2*h))*Gamma[(h + (I*Sqrt[2]*Sqrt[m]*c[0])/Sqrt[e] - Sqrt[h^2 + 8*m*c[1]])/(2*h)])

@@ -1,0 +1,955 @@
+%%
+%% macros.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Fri Jan  8 17:53:44 2010 Alex Nelson
+%% Last update Sat Feb 20 09:16:55 2010 Alex Nelson
+%%
+\input eplain
+\input amssym
+\beginpackages
+  \usepackage{graphicx}
+  \usepackage[dvipsnames]{color}
+%  \usepackage{url}
+\endpackages
+\enablehyperlinks
+\hlopts{bwidth=0}
+\tracingstats=2
+
+
+
+\catcode`@=11 % borrow the private macros of PLAIN (with care)
+
+\long\def\verbatim#1{\def\next{#1}%
+  {\tt\frenchspacing\expandafter\strip\meaning\next}}
+\def\strip#1>{}
+
+
+\def\url#1{\hlstart{url}{}{#1}\verbatim{#1}\hlend}
+
+\font\ninerm=cmr9
+\font\eightrm=cmr8
+\font\sixrm=cmr6
+
+\font\ninei=cmmi9  \skewchar\ninei='177
+\font\eighti=cmmi8  \skewchar\eighti='177
+\font\sixi=cmmi6  \skewchar\sixi='177
+
+\font\tenbi=cmmib10  \skewchar\tenbi='177
+\font\ninebi=cmmib9  \skewchar\ninebi='177
+
+\font\ninesy=cmsy9  \skewchar\ninesy='60
+\font\eightsy=cmsy8  \skewchar\eightsy='60
+\font\sixsy=cmsy6  \skewchar\sixsy='60
+
+\font\tenbsy=cmbsy10  \skewchar\tenbsy='60
+\font\sevenbsy=cmbsy7  \skewchar\sevenbsy='60
+\font\fivebsy=cmbsy5  \skewchar\fivebsy='60
+
+\font\elevenex=cmex10 scaled\magstephalf
+\font\nineex=cmex9
+\font\eightex=cmex8
+\font\sevenex=cmex7
+
+\font\ninebf=cmbx9
+\font\eightbf=cmbx8
+\font\sixbf=cmbx6
+
+\font\tenthinbf=cmb10
+\font\ninethinbf=cmb10 at 9.25pt
+\font\eightthinbf=cmb10 at 8.5pt
+
+\font\twelvett=cmtt12  \hyphenchar\twelvett=-1  % inhibit hyphenation in tt
+\font\tensltt=cmsltt10  \hyphenchar\tensltt=-1
+\font\eleventt=cmtt10  \hyphenchar\eleventt=-1
+\font\ninett=cmtt9  \hyphenchar\ninett=-1
+\font\ninesltt=cmsltt10 at 9pt  \hyphenchar\ninesltt=-1
+\font\eighttt=cmtt8  \hyphenchar\eighttt=-1
+\font\seventt=cmtt8 scaled 875  \hyphenchar\seventt=-1
+
+\font\ninesl=cmsl9
+\font\eightsl=cmsl8
+
+\font\nineit=cmti9
+\font\eightit=cmti8
+
+\font\eightss=cmssq8
+\font\eightssi=cmssqi8
+\font\sixss=cmssq8 scaled 800
+\font\tenssbx=cmssbx10
+\font\twelvess=cmss12
+\font\titlefont=cmssbx10 scaled\magstep2
+\font\chapterfont=cmssbx10 scaled\magstep3
+\font\cmman=cmman % font used for miscellaneous Computer Modern variations
+\font\inchhigh=cmssdc10 at 40pt
+\font\tencsc=cmcsc10
+
+
+\font\manfnt=manfnt % special symbols from the TeX project
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \font\tentex=cmtex10
+
+%% \font\inchhigh=cminch
+%% \font\titlefont=cmssdc10 at 40pt
+
+%% \font\ninerm=cmr9
+%% \font\eightrm=cmr8
+%% \font\sixrm=cmr6
+
+%% \font\ninei=cmmi9
+%% \font\eighti=cmmi8
+%% \font\sixi=cmmi6
+%% \skewchar\ninei='177 \skewchar\eighti='177 \skewchar\sixi='177
+
+%% \font\ninesy=cmsy9
+%% \font\eightsy=cmsy8
+%% \font\sixsy=cmsy6
+%% \skewchar\ninesy='60 \skewchar\eightsy='60 \skewchar\sixsy='60
+
+%% \font\eightss=cmssq8
+
+%% \font\eightssi=cmssqi8
+
+%% \font\ninebf=cmbx9
+%% \font\eightbf=cmbx8
+%% \font\sixbf=cmbx6
+
+%% \font\ninett=cmtt9
+%% \font\eighttt=cmtt8
+
+%% \hyphenchar\tentt=-1 % inhibit hyphenation in typewriter type
+%% \hyphenchar\ninett=-1
+%% \hyphenchar\eighttt=-1
+
+%% \font\ninesl=cmsl9
+%% \font\eightsl=cmsl8
+
+%% \font\nineit=cmti9
+%% \font\eightit=cmti8
+
+%% \font\tenu=cmu10 % unslanted text italic
+%% \font\magnifiedfiverm=cmr5 at 10pt
+%% \font\manual=manfnt % font used for the METAFONT logo, etc.
+%% \font\cmman=cmman % font used for miscellaneous Computer Modern variations
+
+\newskip\ttglue
+\def\tenpoint{\def\rm{\fam0\tenrm}%
+  \textfont0=\tenrm \scriptfont0=\sevenrm \scriptscriptfont0=\fiverm
+  \textfont1=\teni \scriptfont1=\seveni \scriptscriptfont1=\fivei
+  \textfont2=\tensy \scriptfont2=\sevensy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \def\it{\fam\itfam\tenit}%
+  \textfont\itfam=\tenit
+  \def\sl{\fam\slfam\tensl}%
+  \textfont\slfam=\tensl
+  \def\bf{\fam\bffam\tenbf}%
+  \textfont\bffam=\tenbf \scriptfont\bffam=\sevenbf
+   \scriptscriptfont\bffam=\fivebf
+  \def\tt{\fam\ttfam\tentt}%
+  \textfont\ttfam=\tentt
+  \tt \ttglue=.5em plus.25em minus.15em
+  \normalbaselineskip=12pt
+  \def\MF{{\manfnt META}\-{\manfnt FONT}}%
+%  \let\sc=\eightrm
+  \let\big=\tenbig
+  \setbox\strutbox=\hbox{\vrule height8.5pt depth3.5pt width\z@}%
+  \normalbaselines\rm}
+
+\def\ninepoint{\def\rm{\fam0\ninerm}%
+  \textfont0=\ninerm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+  \textfont1=\ninei \scriptfont1=\sixi \scriptscriptfont1=\fivei
+  \textfont2=\ninesy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \def\it{\fam\itfam\nineit}%
+  \textfont\itfam=\nineit
+  \def\sl{\fam\slfam\ninesl}%
+  \textfont\slfam=\ninesl
+  \def\bf{\fam\bffam\ninebf}%
+  \textfont\bffam=\ninebf \scriptfont\bffam=\sixbf
+   \scriptscriptfont\bffam=\fivebf
+  \def\tt{\fam\ttfam\ninett}%
+  \textfont\ttfam=\ninett
+  \tt \ttglue=.5em plus.25em minus.15em
+  \normalbaselineskip=11pt
+  \def\MF{{\manfnt hijk}\-{\manfnt lmnj}}%
+%  \let\sc=\sevenrm
+  \let\big=\ninebig
+  \setbox\strutbox=\hbox{\vrule height8pt depth3pt width\z@}%
+  \normalbaselines\rm}
+
+\def\eightpoint{\def\rm{\fam0\eightrm}%
+  \textfont0=\eightrm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+  \textfont1=\eighti \scriptfont1=\sixi \scriptscriptfont1=\fivei
+  \textfont2=\eightsy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \def\it{\fam\itfam\eightit}%
+  \textfont\itfam=\eightit
+  \def\sl{\fam\slfam\eightsl}%
+  \textfont\slfam=\eightsl
+  \def\bf{\fam\bffam\eightbf}%
+  \textfont\bffam=\eightbf \scriptfont\bffam=\sixbf
+   \scriptscriptfont\bffam=\fivebf
+  \def\tt{\fam\ttfam\eighttt}%
+  \textfont\ttfam=\eighttt
+  \tt \ttglue=.5em plus.25em minus.15em
+  \normalbaselineskip=9pt
+  \def\MF{{\manfnt opqr}\-{\manfnt stuq}}%
+%  \let\sc=\sixrm
+  \let\big=\eightbig
+  \setbox\strutbox=\hbox{\vrule height7pt depth2pt width\z@}%
+  \normalbaselines\rm}
+
+\def\tenmath{\tenpoint\fam-1 } % use after $ in ninepoint sections
+\def\tenbig#1{{\hbox{$\left#1\vbox to8.5pt{}\right.\n@space$}}}
+\def\ninebig#1{{\hbox{$\textfont0=\tenrm\textfont2=\tensy
+  \left#1\vbox to7.25pt{}\right.\n@space$}}}
+\def\eightbig#1{{\hbox{$\textfont0=\ninerm\textfont2=\ninesy
+  \left#1\vbox to6.5pt{}\right.\n@space$}}}
+
+
+\abovedisplayskip=6pt plus 3pt minus 1pt
+\belowdisplayskip=6pt plus 3pt minus 1pt
+\abovedisplayshortskip=0pt plus 3pt
+\belowdisplayshortskip=4pt plus 3pt
+\abovelistskipamount=1pt 
+\belowlistskipamount=1pt
+
+\font\sc=cmcsc10
+\def\textsc#1{{\sc #1}}
+\def\define#1{{\bf#1}}
+
+\def\slug{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\def\slugonright{\vrule width0pt\nobreak\hfill\slug}
+
+\def\eqprint#1{(#1)}
+\def\theeqnumber{\thesection.\the\eqnumber}
+% enumerate
+\def\enumerate{\numberedlist\listcompact}
+\def\endenumerate{\endnumberedlist\noindent}
+% equation
+\def\equation{\advance\eqnumber by1
+  \xdef\internalref{(\thesection.\the\eqnumber)}
+  \xdef\labelprefix{equation}
+  $$}
+\def\endequation{\eqno{\eqprint\theeqnumber}$$}
+
+
+\def\dbend{{\manfnt\char127}} % dangerous bend sign
+\def\d@nger{\medbreak\begingroup\clubpenalty=10000
+  \def\par{\endgraf\endgroup\medbreak} \noindent\hang\hangindent=1.75pc\hangafter=-2
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\ninepoint}
+\outer\def\danger{\d@nger}
+\def\dd@nger{\medbreak\begingroup\clubpenalty=10000
+  \def\par{\endgraf\endgroup\medbreak} \noindent\hang\hangindent=3pc\hangafter=-2
+  \hbox to0pt{\hskip-\hangindent\dbend\kern1pt\dbend\hfill}\ninepoint}
+\outer\def\ddanger{\dd@nger}
+\def\enddanger{\endgraf\endgroup} % omits the \medbreak
+\let\oldfootnote\footnote
+\def\footnote#1#2{\oldfootnote{#1}{{\eightpoint#2}}}
+%==========================================================================
+% section commands
+\newif\iftitle \newif\ifdrop \newif\ifrunon
+\def\titlepage{\global\titletrue\global\droptrue} % for pages without headlines
+\def\lhead{} % running headline on lefthand pages (usually chapter name)
+\def\rhead{} % running headline on righthand pages (usually section name)
+\def\currentsection{} % the number of the current section
+\def\xskip{\hskip 7pt plus 3pt minus 4pt}
+
+\newcount\chapno
+\newcount\sectionno
+\newcount\subsectionno
+\newcount\subsubsectionno
+\global\chapno=0
+\global\sectionno=0
+\global\subsectionno=0
+\global\subsubsectionno=0
+
+\def\beginchapter#1: #2.
+  {\def\currentsection{}\mark{\currentsection \noexpand\else #1}\vfill\eject
+    \global\sectionno=0
+    \global\subsectionno=0
+    \global\subsubsectionno=0
+    \titlepage\writetocentry{chapter}{Chapter #1 --- #2}
+    \leftline{\twelvess \spaceskip=10pt \def\\{\kern1pt}#1}
+    \vskip 4pc
+    \rightline{\titlefont #2}
+    \def\\{}
+    \xdef\lhead{#1}
+    {\ninepoint\xdef\rhead{\uppercase{#2}}}
+    \ifx\rhead\omitrhead\else{\ninepoint\xdef\lhead{\uppercase{#2}}}\fi
+    \vskip 2pc plus 1 pc minus 1 pc
+  }
+\def\beginchapternonumber#1.
+  {\def\currentsection{}\mark{\currentsection \noexpand}\vfill\eject
+    \global\sectionno=0
+    \global\subsectionno=0
+    \global\subsubsectionno=0
+    \titlepage\writetocentry{chapter}{#1}
+    \rightline{\titlefont #1}
+    \def\\{}
+    {\ninepoint\xdef\rhead{\uppercase{#1}}}
+    \xdef\lhead{}
+    \ifx\rhead\omitrhead\else{\ninepoint\xdef\lhead{\uppercase{#1}}}\fi
+    \vskip 2pc plus 1 pc minus 1 pc
+  }
+\def\starred{}
+\def\starit{\def\starred{\llap{*}}}
+\def\omitrhead{\omit}
+\def\beginsection #1. #2.
+  {\mark{\currentsection \noexpand\else #1}
+    \vskip 1 cm plus 1 pc minus 5 pt
+    \tenpoint
+    \global\defno=0
+    \global\thmno=0
+    \global\lemno=0
+    \global\corno=0
+    \global\propno=0
+    \global\problemno=0
+    \global\eqnumber=0
+    \leftline{\tenssbx\starred#1. \uppercase{#2}\writetocentry{section}{#1 \quad #2}}
+    \def\starred{}
+    \mark{#1\noexpand\else #1}
+    \def\currentsection{#1}
+    {\ninepoint\xdef\rhead{\uppercase{#2}}}
+    \nobreak\smallskip\noindent}
+
+\def\beginsectionnonumber #1.
+  {\vskip 1 cm plus 1 pc minus 5 pt
+    \tenpoint
+    \leftline{\tenssbx\starred\uppercase{#1}\writetocentry{section}{#1}}
+    \global\defno=0
+    \global\thmno=0
+    \global\lemno=0
+    \global\corno=0
+    \global\propno=0
+    \global\problemno=0
+    \global\eqnumber=0
+    \def\starred{}
+    {\ninepoint\xdef\rhead{\uppercase{#1}}}
+    \nobreak\smallskip\noindent}
+
+\def\beginsubsection #1. #2.
+  {\mark{\currentsection \noexpand\else #1}
+    \bigbreak
+    \tenpoint
+    \leftline{\tenssbx\starred#1 #2\writetocentry{subsection}{#1 \quad #2}}
+    \def\starred{}
+    \mark{#1\noexpand\else #1}
+    \def\currentsection{#1}
+    {\ninepoint\xdef\rhead{\uppercase{#2}}}
+    \nobreak\smallskip\noindent}
+
+\def\beginsubsubsection #1. #2.    % set page headers: 3.2.1.3
+  {\mark{\currentsection \noexpand\else #1}
+    \tenpoint
+    \bigbreak
+    \null
+    \mark{#1\noexpand\else #1}
+    \def\currentsection{#1}
+    {\ninepoint\xdef\rhead{\uppercase{#2}}}
+    \nobreak\vskip-\baselineskip
+    \noindent{\bf\starred#1.\enspace #2\writetocentry{subsection}{\quad#1 \quad #2}\xskip}\def\starred{}\ignorespaces}
+
+\def\beginsubsubsectionprime #1.  % don't set page headers: 3.3.1B
+  {\medbreak
+    \null
+    \tenpoint
+    \nobreak\vskip-\baselineskip
+    \noindent{\bf\starred#1\xskip}\def\starred{}\ignorespaces}
+
+\catcode`*=11
+\def\thechapter{\the\chapno}
+\def\chapter#1{\global\advance\chapno by1
+  \global\sectionno=0
+  \global\subsectionno=0
+  \global\subsubsectionno=0
+  \xdef\thechapter{\the\chapno}
+  \expandafter\beginchapter\the\chapno: #1.}
+
+\def\chapter*#1{\expandafter\beginchapternonumber#1.}
+\def\thesection{\the\sectionno}
+\def\thesubsection{\the\sectionno.\the\subsectionno}
+\def\thesubsubsection{\the\sectionno.\the\subsectionno.\the\subsubsectionno}
+\def\section*#1{\beginsectionnonumber #1.}
+\def\section#1{\global\advance\sectionno by1
+  \global\subsectionno=0
+  \global\subsubsectionno=0
+  \xdef\thesection{\the\sectionno} 
+  \expandafter\beginsection\thesection{}. #1.}
+\def\subsection#1{\global\advance\subsectionno by1
+  \global\subsubsectionno=0
+  \xdef\thesubsection{\the\sectionno.\the\subsectionno}
+  \expandafter\beginsubsection\thesubsection{}. #1.}
+\def\subsubsection#1{\global\advance\subsubsectionno by1
+  \xdef\thesubsubsection{\the\sectionno.\the\subsectionno.\the\subsubsectionno}
+  \expandafter\beginsubsubsection\thesubsubsection{}. #1.}
+
+
+% Page layout
+\newdimen\htrimsize \htrimsize=6.375in
+\newdimen\vtrimsize \vtrimsize=9.25in
+\newdimen\outermargin \outermargin=22mm
+\newdimen\topmargin \topmargin=15mm % plus height of the headline box
+\newbox\htrim \newbox\vtrim \newbox\trimmarks
+\setbox\htrim=\hbox to\htrimsize{\kern-.5in
+  \vrule height .2pt depth .2pt width .4in\hfil\vrule width.4in\kern-.5in}
+  \wd\htrim=0pt
+\setbox\vtrim=\vbox to\vtrimsize{\kern-.5in
+  \moveleft.2pt\hbox{\vrule height .4in}\vfil
+  \moveleft.2pt\hbox{\vrule height .4in}\kern-.5in}
+  \wd\vtrim=0pt
+\setbox\trimmarks=\hbox to0pt{\raise\vtrimsize\copy\htrim \copy\htrim
+     \copy\vtrim \kern\htrimsize \copy\vtrim\hss}
+  \ht\trimmarks=0pt \dp\trimmarks=0pt
+\topmargin=-2pc
+\newif\iffinal % are we making the final copy? (pages.tex says "999")
+\finaltrue
+
+\newdimen\headmargin
+\newinsert\margin
+\newdimen\pagewidth \newdimen\pageheight \newdimen\ruleht
+\newif\iftitle \newif\ifdrop \newif\ifrunon \newif\iftwosided
+\twosidedtrue
+\def\twoside{\twosidedtrue}
+\def\oneside{\twosidedfalse}
+\def\mainmatter{
+  \hsize=32pc  \vsize=52pc  \maxdepth=2.2pt  \parindent=1pc
+  \pagewidth=\hsize \pageheight=\vsize \ruleht=.5pt
+  \abovedisplayskip=6pt plus 3pt minus 1pt
+  \belowdisplayskip=6pt plus 3pt minus 1pt
+  \abovedisplayshortskip=0pt plus 3pt
+  \belowdisplayshortskip=4pt plus 3pt
+
+  \hyphenpenalty=500
+  \vbadness=200
+  \widowpenalty=10000
+  \clubpenalty=10000
+
+  \gdef\titlepage{\global\titletrue\global\droptrue} % for pages without headlines
+  \gdef\lhead{} % running headline on lefthand pages (usually chapter name)
+  \gdef\rhead{} % running headline on righthand pages (usually section name)
+  \headline = {%
+    \iftitle\else
+      \iftwosided
+        \ifodd\folio
+          \vbox to 10pt{}% strut to position the baseline
+          \tenrm \iftrue\botmark\fi % section number flush left
+          \hfil\eightrm\rhead\hfil % then running right head
+          {\tenrm\folio}% page number flush right
+        \else
+          \hskip-1in
+          \vbox to 10pt{}% strut to position the baseline
+          \tenrm\folio % page number flush left
+          \hfil\eightrm\lhead\hfil % then running left head
+          \tenrm \expandafter\iffalse\topmark\fi \hskip1.25in % section number flush right
+        \fi
+      \else % one sided
+        \vbox to 10pt{}% strut to position the baseline
+        \tenrm \iftrue\botmark\fi % section number flush left
+        \hfil\eightrm\rhead\hfil % then running right head
+        {\tenrm\folio}% page number flush right
+      \fi
+  \fi}
+  \footline={\hss\iftitle\global\titlefalse
+    \tenrm\folio\fi\hss}
+  \output{\onepageout}}
+
+\def\marginfixerupper{
+  \iftwosided
+    \ifodd\pageno
+      \leftmargin=6pc
+      \rightmargin=13pc
+    \else
+      \leftmargin=13pc
+      \rightmargin=6pc
+    \fi
+  \else
+      \leftmargin=6pc
+      \rightmargin=13pc
+  \fi}
+
+\def\onepageout{\marginfixerupper
+   \shipout\vbox{%
+     \smash{\hbox to6.5in{\the\headline}}% Simplified \makeheadline.
+     \iftitle
+       %\global\titlefalse
+     \else\vskip3pt
+       \iftwosided
+         \ifodd\folio\hrule width6.5in\else\nointerlineskip\moveright -1in \vbox{\hrule width6.3in}\fi
+       \else
+         \hrule width6.5in
+       \fi
+     \fi
+      \vskip 1pc
+      \pagebody
+      % The footline is needed on one page (for an example).
+      \vskip 2pc
+      \line{\the\footline}%
+   }%
+   % Now the rest from \plainoutput:
+   \advancepageno
+   \ifnum\outputpenalty>-20000\else \dosupereject \fi
+}
+
+\def\makeheadline{\vbox to 0pt{\vskip-22.5pt
+    \line{\vbox to8.5pt{}\the\headline}\vss}\nointerlineskip}
+
+
+\footline={\hss\iftitle\global\titlefalse\else
+  \tenrm\folio\fi\hss}
+
+\def\Author#1{\xdef\theauthor{{#1}}}
+\def\title#1{\xdef\thetitle{{#1}}}
+\def\address#1{\xdef\theaddress{{#1}}}
+\def\date#1{\xdef\thedate{{#1}}}
+\def\dateposted#1{\xdef\thedateposted{{#1}}}
+\def\email#1{\def\theemail{\href{mailto:#1}{\uppercase{{\tt #1}}}}}
+\def\maketitle{\ifundefined{thetitle}\else\centerline{{\titlefont \thetitle{}}}\smallskip\fi
+\ifundefined{theauthor}\else\centerline{{\sc \theauthor{}}}\smallskip\fi
+\ifundefined{theemail}\else\centerline{{\sc Email:} \theemail{}}\smallskip\fi
+\ifundefined{thedate}\else\centerline{{\sc Date: \thedate}\footnote{}{{\eightpoint Compiled:\enspace\today\enspace{at}\enspace\timestring\ifundefined{thedateposted}\else\hfill\break Date Posted:\enspace\thedateposted{}\fi}}}\fi
+\vskip 2pc plus 1pc minus 1pc}
+\def\Bibliography#1{\section*{References}
+  \nocite{*}
+  {\eightpoint
+  \bibliography{#1}
+  \bibliographystyle{elements}
+  }}
+\def\bye{\par\ifundefined{address}\else\medskip\noindent{\sc\theaddress{}}\fi\vfill\supereject\end}
+%==============================================================================
+
+
+
+%% Save file as: MHACK.TEX              Source: FILESERV@SHSU.BITNET  
+%% Original author: Norman Walsh <walsh@cs.umass.edu>
+%% Original source: Posted to INFO-TeX@SHSU.edu by 
+%% RAY BROHINSKY <RAYBRO%HOLON@utrcgw.utc.com> on Fri, 27 Sep 1991 16:29 EDT
+%%
+%Here are two solutions for marginal hacks.  \ihack is based upon
+%the marginal hacks notes in the book and requires the section that
+%redefines \pagecontents.  It has the defect that marginal hacks
+%start at the top of the page rather than where you put them in the
+%text.
+
+%\vhack doesn't use inserts and has the advantage that you don't
+%need to redefine part of the output routine (\pagecontents) but if
+%you put several hacks very close to each other, they may overlap.%
+
+%Let me know what you think.  If you have try to integrate them into
+%your notes and you have trouble, just let me know.
+
+% mhack.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\marginhackfont=cmr7
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newinsert\margin
+\dimen\margin=\maxdimen
+\count\margin=0 \skip\margin=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newdimen\marginhackwidth
+\newdimen\marginhackshift
+\newdimen\marginhacknudge
+\marginhackwidth=9.5pc
+\marginhackshift=\hsize
+\advance\marginhackshift by .1in
+\marginhacknudge=.1in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ihack#1{\marginhacknudge=0pt\insert\margin{\hbox{\marginhackpara{#1}}}}
+\def\vhack#1{\overfullrule=0pt                     % I don't care about overfull ones
+             \vadjust{\vbox to 0pt{%
+             \marginhacknudge=1pc%.1in%
+             \vskip-8.5pt% move it back up the page
+             \iftwosided
+             \ifodd\pageno%
+             \marginhacknudge=1pc
+             \hskip\hsize\rlap%
+             {%
+             \marginhackpara{#1}}
+             \else\marginhacknudge=-1pc\llap%
+             {%
+             \marginhackpara{#1}}\fi
+             \else
+             \marginhacknudge=1pc
+             \hskip\hsize\rlap%
+             {%
+             \marginhackpara{#1}}\fi\vss}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% this is a modified version of \para that I got
+% from ... somewhere
+%
+\long\def\marginhackpara#1{%            %
+   \hskip\marginhacknudge               %
+   \vtop{\leftskip=0pt\rightskip=0pt    % Make width ok
+   \hsize=\marginhackwidth              %
+   \eightpoint                          % select font
+   \parindent=0pt                       %
+   \baselineskip=6pt                    %
+   \everypar={}                         %
+   \lineskip=1pt                        %
+   \lineskiplimit=1pt                   %
+   \raggedright                         %
+   \hbadness=10000                      % I don't care about underfull boxes
+   \tolerance=10000                     % I don't care about overfull ones
+   \noindent                            % don't indent
+   \vrule width0pt height8.5pt          % line up top of hack and text
+   #1\relax                             % add the text
+   \vrule width 0pt depth 7pt}%         % pad bottom of box
+}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Include the marginal hacks in the plain output routine
+% (only needed for \ihack)
+\def\pagecontents{\ifvoid\topins\else\unvbox\topins\fi
+  \ifvoid\margin\else %
+    \rlap{\kern\marginhackshift\vbox to 0pt{\box\margin\vss}}\fi
+  \dimen@=\dp\@cclv \unvbox\@cclv % open up \box255
+  \ifvoid\footins\else % footnote info is present
+    \vskip\skip\footins
+    \footnoterule
+    \unvbox\footins\fi
+  \ifr@ggedbottom \kern-\dimen@ \vfil \fi}
+
+
+
+
+\def\marginstyle{\vrule height6pt depth2pt width\z@ \sevenrm}
+\let\marginpar\vhack
+
+%===============================================================
+% theorem environments
+\newcount\defno
+\newcount\thmno
+\newcount\lemno
+\newcount\corno
+\newcount\propno
+\newcount\problemno
+\global\defno=0
+\global\thmno=0
+\global\lemno=0
+\global\corno=0
+\global\propno=0
+\global\problemno=0
+\def\upbf#1#2{{\bf#1}\uppercase{{\eightpoint\bf#2}}}
+%\def\thedefinition{\upbf{D}{efinition}}
+%\def\thetheorem{\upbf{T}{heorem}}
+%\def\thelemma{\upbf{L}{emma}}
+%\def\thecorollary{\upbf{C}{orollary}}
+%\def\theproposition{\upbf{P}{roposition}}
+\xdef\thedefn{\thechapter.\the\defno}
+\xdef\thethm{\thechapter.\the\thmno}
+\xdef\thelemma{\thechapter.\the\lemno}
+\xdef\thecor{\the\corno}
+\xdef\theprop{\thechapter.\the\propno}
+
+\def\internalref{}
+\def\label#1{\definexref{#1}{\internalref}{\labelprefix}}
+
+\def\equationword{{\sc Equation}}
+\def\definitionword{{\sc Definition}}
+\def\theoremword{{\sc Theorem}}
+\def\lemmaword{{\sc Lemma}}
+\def\corollaryword{{\sc Corollary}}
+\def\propositionword{{\sc Proposition}}
+\def\problemword{{\sc Problem}}
+\def\defn{\global\corno=0\global\advance\defno by1\vskip 2pt
+  \xdef\thedefn{\thesection.\the\defno}
+  \xdef\internalref{\thesection.\the\defno}
+  \xdef\labelprefix{definition}
+  \noindent{\upbf{D}{efinition} {\bf\thedefn.}\enspace}\bgroup\sl}
+\def\enddefn{\egroup\vskip 1.5pt}%
+  %\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\def\problem{\global\advance\problemno by1\vskip 2pt
+  \xdef\theproblem{\thesection.\the\problemno}
+  \xdef\internalref{\thesection.\the\problemno}
+  \xdef\labelprefix{problem}
+  \noindent{\upbf{P}{roblem} {\bf\theproblem.}\enspace}\bgroup\sl}
+\let\endproblem=\enddefn
+\def\solution{\vskip 2pt
+  \xdef\thesolution{\thesection.\the\problemno}
+  \xdef\internalref{\thesection.\the\problemno}
+  \xdef\labelprefix{solution}
+  \noindent{\upbf{S}{olution} {\bf\thesolution.}\enspace}\bgroup\sl}
+\let\endsolution=\enddefn
+
+\def\thm{\global\corno=0\global\advance\thmno by1\vskip 2pt
+  \xdef\thethm{\thesection.\the\thmno}
+  \xdef\internalref{\thesection.\the\thmno}
+  \xdef\labelprefix{theorem}
+  \noindent{\upbf{T}{heorem} {\bf\thethm.}\enspace}\bgroup\sl}
+\let\endthm=\enddefn
+\def\lemma{\global\corno=0\global\advance\lemno by1\vskip 2pt
+  \xdef\thelemma{\thesection.\the\lemno}
+  \xdef\internalref{\thesection.\the\lemno}
+  \xdef\labelprefix{lemma}
+  \noindent{\upbf{L}{emma} {\bf\thelemma.}\enspace}\bgroup\sl}
+\let\endlemma=\enddefn
+\def\corollary{\global\advance\corno by1\vskip 2pt
+  \xdef\thecor{\the\corno}
+  \xdef\internalref{\the\corno}
+  \xdef\labelprefix{corollary}
+  \noindent{\upbf{C}{orollary} {\bf\thecor.}\enspace}\bgroup\sl}
+\let\endcorollary=\enddefn
+\def\prop{\global\corno=0\global\advance\propno by1\vskip 2pt
+  \xdef\theprop{\thesection.\the\propno}
+  \xdef\internalref{\thesection.\the\propno}
+  \xdef\labelprefix{proposition}
+  \noindent{\upbf{P}{roposition} {\bf\theprop.}\enspace}\bgroup\sl}
+\let\endprop=\enddefn
+
+
+\def\rmk{\vskip 2pt
+  \noindent{\upbf{R}{emark}{\bf.}\enspace}}
+\def\endrmk{\par%
+  \ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\def\scholium{\medbreak
+  \noindent{\upbf{S}{cholium}{\bf.}\enspace}}
+\let\endscholium=\endrmk
+
+
+\def\proof{\vskip -1.0pt\noindent{\sc Proof:\enspace}}
+\def\endproof{\slugonright\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\def\sketch{{\vskip -1.0pt\noindent{\sc Sketch of Proof:\enspace}}}
+\let\endsketch=\endproof
+
+
+
+
+\def\opticalThm{\global\corno=0\global\advance\thmno by1\vskip 2pt
+  \xdef\thethm{\thesection.\the\thmno}
+  \xdef\internalref{\thesection.\the\thmno}
+  \xdef\labelprefix{theorem}
+  \noindent{\upbf{T}{heorem} {\bf\thethm\ (\upbf{O}{ptical} \upbf{T}{heorem}).}\enspace}\bgroup\sl}
+
+
+
+
+%==============================================================================\
+% figure macros
+\def\figureword{{\sc Figure}}
+\newcount\fignumber
+\fignumber=0
+% Now comes the fun part--constructing the figure for the image of the
+% \CTAN\ lion.  We define a macro
+%
+%   \fig{LABEL}{FILENAME}{CAPTION}
+%
+% which creates a figure using LABEL for the cross-reference and
+% hyperlink label, reading the image from file FILENAME, using CAPTION
+% to name the figure, and WIDTH to scale the image horizontally.
+\def\fig#1#2#3{%
+  % Leave some space above the figure.  This will also ensure that we
+  % are in the vertical mode before we produce a |\vbox|.
+  \medskip
+  % Advance the figure number.  |\global| ensures that the change to
+  % the count register is global, even when |\fig| is buried inside a
+  % group.
+  \global\advance\fignumber by 1
+  % We use |\includegraphics| (from |graphicx.sty|) to load the image,
+  % scaled to the specified width, into our ``measuring'' box
+  % |\imgbox|.
+  \setbox\imgbox = \hbox{\includegraphics{#2}}%
+  % Continue the paragraph by constructing a |\vbox| with the image of
+  % the lion.  We use |\definexref| to define the cross-reference
+  % label.
+  \vbox{%
+    % In addition to the cross-reference label, |\definexref| will
+    % create a hyperlink destination with the same label.  Therefore,
+    % we customize this destination to do what we need.  We say that
+    % destination type for the hyperlink group |definexref| (to which
+    % |\definexref| belongs) should be |fitr|.  This destination type
+    % will magnify the rectangle specified by the options |width|,
+    % |height| and |depth| to the PDF viewer's window.  Therefore, we
+    % set those options accordingly with |\hldestopts| (notice the use
+    % of |depth| instead of |height|---we will want the rectangle to
+    % extend {\it downward}, to cover the image which will come
+    % next).  Notice that these settings will be isolated within the
+    % current group (i.e., the |\vbox| we're constructing).
+    \hldesttype[definexref]{fitr}%
+    \hldestopts[definexref]{width=\wd\imgbox,height=0pt,depth=\ht\imgbox}%
+    % We define a symbolic label so that we can later refer
+    % to the figure with |\ref|.  The command |\definexref| does
+    % exactly that.  The last argument to |\definexref| specifies
+    % class of the label, which determines the word used by |\ref| in
+    % front of the reference text (remember that we've defined
+    % |\figureword| above).
+    \definexref{#1}{\the\fignumber}{figure}%
+    % Finally, produce the image which we've been stashing in the box
+    % register |\imgbox|.
+    \box\imgbox
+  }%
+  % To make the demo even more exciting, let's put the figure's
+  % caption to the left of the image into the |\indent| space of the
+  % new paragraph, and rotate the caption~$90^\circ$.
+  \centerline{{{\sc Figure~\the\fignumber.}\enspace  #3}}%
+  \medskip
+}
+%   \fig[width=WIDTH]{LABEL}{FILENAME}{CAPTION}
+% which creates a figure using LABEL for the cross-reference and
+% hyperlink label, reading the image from file FILENAME, using CAPTION
+% to name the figure, and WIDTH to scale the image horizontally.
+\def\fig[width=#1]#2#3#4{%
+  % Leave some space above the figure.  This will also ensure that we
+  % are in the vertical mode before we produce a |\vbox|.
+  \medskip
+  % Advance the figure number.  |\global| ensures that the change to
+  % the count register is global, even when |\fig| is buried inside a
+  % group.
+  \global\advance\fignumber by 1
+  % We use |\includegraphics| (from |graphicx.sty|) to load the image,
+  % scaled to the specified width, into our ``measuring'' box
+  % |\imgbox|.
+  \setbox\imgbox = \hbox{\includegraphics[width=#1]{#3}}%
+  % Continue the paragraph by constructing a |\vbox| with the image of
+  % the lion.  We use |\definexref| to define the cross-reference
+  % label.
+  \vbox{%
+    % In addition to the cross-reference label, |\definexref| will
+    % create a hyperlink destination with the same label.  Therefore,
+    % we customize this destination to do what we need.  We say that
+    % destination type for the hyperlink group |definexref| (to which
+    % |\definexref| belongs) should be |fitr|.  This destination type
+    % will magnify the rectangle specified by the options |width|,
+    % |height| and |depth| to the PDF viewer's window.  Therefore, we
+    % set those options accordingly with |\hldestopts| (notice the use
+    % of |depth| instead of |height|---we will want the rectangle to
+    % extend {\it downward}, to cover the image which will come
+    % next).  Notice that these settings will be isolated within the
+    % current group (i.e., the |\vbox| we're constructing).
+    \hldesttype[definexref]{fitr}%
+    \hldestopts[definexref]{width=\wd\imgbox,height=0pt,depth=\ht\imgbox}%
+    % We define a symbolic label so that we can later refer
+    % to the figure with |\ref|.  The command |\definexref| does
+    % exactly that.  The last argument to |\definexref| specifies
+    % class of the label, which determines the word used by |\ref| in
+    % front of the reference text (remember that we've defined
+    % |\figureword| above).
+    \definexref{#2}{\the\fignumber}{figure}%
+    % Finally, produce the image which we've been stashing in the box
+    % register |\imgbox|.
+    \hfil\box\imgbox\hfill
+  }%
+  % To make the demo even more exciting, let's put the figure's
+  % caption to the left of the image into the |\indent| space of the
+  % new paragraph, and rotate the caption~$90^\circ$.
+  \centerline{%
+    {\sc Figure~\the\fignumber.}\enspace  #4}%
+  \medskip
+}
+
+
+%==============================================================================
+% Index Macro helpers
+\defineindex{i}
+
+
+\def\quoteformat{
+  \baselineskip 10pt
+  \parfillskip \z@
+  \interlinepenalty 10000
+  \leftskip \z@ plus 40pc minus \parindent
+  \let\rm=\eightss \let\sl=\eightssi \let\adbcfont=\sixss
+  \everypar{\sl}
+  \def\\{\hskip.05em} % can say 3\\:\\16
+  \obeylines}
+\def\author#1(#2){\par\nobreak\smallskip\noindent\rm--- #1\unskip\enspace(#2)}
+
+\def\lastnamefirst{Nelson, Alexander Mackenzie}
+\def\authorfullname{Alexander Mackenzie Nelson}
+\def\webpage{\url{http://code.google.com/p/notebk/}}
+\def\futureex#1{$\<\!\<$\eightpoint#1\tenpoint$\>\!\>$}
+
+\def\exercise #1. [#2]{\ifnum #1>1 \smallbreak\fi
+  \gdef\curexno{#1}%
+  \textindent{\bf#1.}[{\it#2\/}]\kern6pt}
+\def\EXERCISE #1. [#2]{\ifnum #1>1 \smallbreak\fi
+  \gdef\curexno{#1}%
+  \textindent{\llap{\manfnt x\hskip3pt}\bf{\hbox to
+     \ifnum #1>99 1.5em\else 1em\fi{\hfil#1}}.}[{\it#2\/}]\kern6pt}
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+\def\ans #1. {\textindent{\bf#1.}}
+\def\anss #1, #2. {\noindent
+   \hbox to\parindent{\hss\bf#1,\enspace}\kern-.5em{\bf\thinspace#2.}\enspace}
+\def\answeritem(#1){\ifitempar\par
+   \else\itempartrue\fi(#1)\enspace\ignorespaces}
+
+%\def\tocchapterentry#1#2{\line {\sc #1 \dotfill \ #2}}
+\def\tocsectionentry#1#2{\line {\quad #1 \dotfill \ \rm #2}}
+%==============================================================================
+% math operations
+%\catcode`\_=8
+\let\iso\cong
+\let\<\langle
+\let\>\rangle
+\let\exterior\bigwedge
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathllapinternal#1#2{%
+  \llap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlapinternal#1#2{%
+  \rlap{$\mathsurround=0pt#1{#2}$}}
+\def\mathclapinternal#1#2{%
+  \clap{$\mathsurround=0pt#1{#2}$}}
+\def\frac#1#2{{{#1}\over{#2}}}
+\def\lambdabar{%
+  \bgroup
+    \def\@tempa{%
+      \hbox{%
+        \raise.73\ht\z@
+        \hb@xt@\z@{%
+          \kern.125\wd\z@
+          \vrule \@width0.8\wd\z@\@height.2\p@\@depth.1\p@
+          \hss
+        }%
+        \box\z@
+      }%
+    }%
+    \mathchoice
+      {\setbox\z@\hbox{$\displaystyle     \lambda$}\@tempa}%
+      {\setbox\z@\hbox{$\textstyle        \lambda$}\@tempa}%
+      {\setbox\z@\hbox{$\scriptstyle      \lambda$}\@tempa}%
+      {\setbox\z@\hbox{$\scriptscriptstyle\lambda$}\@tempa}%
+  \egroup}
+\def\overbracket#1{\mathop{\vbox{\ialign{##\crcr\noalign{\kern3\p@}
+      \downbracketfill\crcr\noalign{\kern3\p@\nointerlineskip}
+      $\hfil\displaystyle{#1}\,\hfil$\crcr}}}\limits}
+\def\underbracket#1{\mathop{\vtop{\ialign{##\crcr
+      $\hfil\displaystyle{#1}\hfil$\crcr\noalign{\kern3\p@\nointerlineskip}
+      \upbracketfill\crcr\noalign{\kern3\p@}}}}}
+\def\overparenthesis#1{\mathop{\vbox{\ialign{##\crcr\noalign{\kern3\p@}
+      \downparenthfill\crcr\noalign{\kern3\p@\nointerlineskip}
+      $\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
+\def\underparenthesis#1{\mathop{\vtop{\ialign{##\crcr
+      $\hfil\displaystyle{#1}\hfil$\crcr\noalign{\kern3\p@\nointerlineskip}
+      \upparenthfill\crcr\noalign{\kern3\p@}}}}\limits}
+\def\downparenthfill{$\m@th\braceld\leaders\vrule\hfill\bracerd$}
+\def\upparenthfill{$\m@th\bracelu\leaders\vrule\hfill\braceru$}
+\def\upbracketfill{$\m@th\makesm@sh{\llap{\vrule\@height3\p@\@width.5\p@}}%
+  \leaders\vrule\@height.5\p@\hfill
+  \makesm@sh{\rlap{\vrule\@height3\p@\@width.5\p@}}$}
+\def\downbracketfill{$\m@th
+  \makesm@sh{\llap{\vrule\@height.5\p@\@depth2.3\p@\@width.5\p@}}%
+  \leaders\vrule\@height.5\p@\hfill
+  \makesm@sh{\rlap{\vrule\@height.5\p@\@depth2.3\p@\@width.5\p@}}$}
+
+
+
+\xdef\iiint{\int\!\!\!\!\int\!\!\!\!\int}
+\xdef\iint{\int\!\!\!\!\int}
+
+\def\hom{\mathop{\rm Hom}\nolimits}
+\def\ker{\mathop{\rm Ker}\nolimits}
+\def\coker{\mathop{\rm CoKer}\nolimits}
+\def\fun{\mathop{\rm Fun}\nolimits}
+\def\lie{\mathop{\rm Lie}\nolimits}
+\def\perm{\mathop{\rm Perm}\nolimits}
+\def\sym{\mathop{\rm Sym}\nolimits}
+\def\aut{\mathop{\rm Aut}\nolimits}
+%\font\fntrsfs=/usr/share/texmf-texlive/fonts/type1/hoekwater/rsfs/rsfs10
+%\def\rsfs#1{\hbox{\fntrsfs#1}}
+\catcode`@=12 % at signs are no longer letters
