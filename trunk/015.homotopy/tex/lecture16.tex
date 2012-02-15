@@ -1,0 +1,102 @@
+%%
+%% lecture16.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 21:28:28 2011 alex
+%% Last update Mon Dec 26 21:28:28 2011 alex
+%%
+
+I missed this lecture, but Steenrod's book~\cite{steenrod} is the
+standard reference for fibre bundles. So instead, I will review
+the topological notion of fibre bundles. 
+
+In a sense it is a straightforward generalization of what we
+have: a group $G$ acting freely on a topological space $X$. Then
+we have a surjective continuous map 
+\begin{equation}
+p\colon X\to X/G. 
+\end{equation}
+We call the space $X/G$ the \define{Base Space}\index{Base Space}\index{Space!Base}, and note that
+for any $x\in X/G$ we have
+\begin{equation}
+p^{-1}\{x\}\iso G
+\end{equation}
+be a homeomorphism. 
+
+How do we generalize this? Well, the first steps is to let the
+base space $B$ be any topological space. We have
+the \define{Total Space}\index{Total Space}\index{Space!Total}
+be a topological space $E$. A \define{Fibration}\index{Fibration|textbf}
+is then a surjective continuous map
+\begin{equation}
+p\colon E\to B
+\end{equation}
+with the extra condition that, for any $b,b'\in B$, we have
+$F_{b}=p^{-1}\{b\}$ and $F_{b'}=p^{-1}\{b'\}$ be the preimages
+such that
+\begin{equation}
+F_{b}\iso F_{b'}
+\end{equation}
+are homeomorphic. 
+
+\begin{ex}[Trivial Fibration]
+Example number zero is quite simple. Let $F$ and $B$ be
+topological spaces, and
+\begin{equation}
+E=F\times B
+\end{equation}
+be the total space. It's just the product space. This is a basic
+fibre bundle; in fact, the fibre bundle \emph{generalizes} the
+notion of a product space. But as a fibration, we call it
+the \define{Trivial Fibration}\index{Fibration!Trivial|textbf}
+whenever the fibration is just the product space.
+\end{ex}
+\begin{ex}[Tangent Bundle]\index{Bundle!Tangent}\index{Tangent Bundle}
+Consider a smooth $n$-dimensional manifold $M$, at each $x\in M$ we may consider
+the vector space $T_{x}M$ of all tangent vectors with base point
+$x$. We can construct the total space
+\begin{equation}
+TM = \bigsqcup_{x\in M}T_{x}M
+\end{equation}
+which is a fibration. Really? Well, we see that we have a
+continuous surjective function
+\begin{equation}
+p\colon TM\to M
+\end{equation}
+which gives the base point of the tangent vector. What's the
+fibre? Well,
+\begin{equation}
+p^{-1}\{x\}=T_{x}M\iso\RR^{n}
+\end{equation}
+describes the fibre: it is the tangent vector space. The fibre is
+then just the vector space $\RR^n$, where $n=\dim(M)$.
+\end{ex}
+
+A \define{Fibre Bundle}\index{Fibre Bundle}\index{Bundle!Fibre}
+is then a fibration $(F,E,B,p)$ which is \define{Locally
+Trivial}\index{Locally Trivial Fibration}\index{Fibration!Locally Trivial}
+in the sense that, $U\propersubset B$ open implies
+\begin{equation}
+p^{-1}(U)\iso U\times F
+\end{equation}
+Another way to think of it is as pasting together a bunch of
+direct products.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercises
+\begin{xca}
+Let $X\propersubset\RR^3$ be the union of $n$ lines through the
+origin. Compute $\pi_{1}(\RR^3\setminus X)$.
+\end{xca}
+\begin{xca}
+Let $X$ be the quotient space of $S^2$ obtained by identifying
+the north and south pole into a single point. Put a cell complex
+structure on $X$ and use this to compute $\pi_{1}(X)$.
+\end{xca}
+\begin{xca}
+Compute the fundamental group of the space obtained from two tori
+$S^{1}\times S^{1}$ by identifying a circle $S^{1}\times x_{0}$
+in one torus with the corresponding cycle $S^{1}\times x_{0}$ in
+another torus. 
+\end{xca}

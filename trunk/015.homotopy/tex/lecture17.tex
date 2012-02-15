@@ -1,0 +1,140 @@
+%%
+%% lecture17.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Dec 29 11:16:54 2011 alex
+%% Last update Thu Dec 29 11:16:54 2011 alex
+%%
+
+We introduced a notion of fibration. If we have a map $p\colon
+E\to B$ which is surjective $p(E)=B$, we have fibres 
+\begin{equation}
+F_{b}=f^{-1}\{b\}
+\end{equation}
+for $b\in B$. If $F_{b}\iso F_{b'}\iso F$, where $F$ is ``some
+topological space'', then we have a fibration. The space $F$ is
+called the typical fibre.
+
+There are very nice fibrations called \define{Trivial Fibrations}
+where $E=F\times B$ where all the fibres are canonically
+homeomorphic.
+
+A mapping of fibrations $\varphi\colon E\to E'$ is such that
+such that
+\begin{equation}
+\varphi\colon F_{b}\to F'_{\varphi(b)}
+\end{equation}
+We also demand that, if $p\colon E\to B$ and $p'\colon E'\to B'$,
+then 
+\begin{equation}
+p'\circ\varphi=p
+\end{equation}
+holds.
+
+A \define{Locally Trivial Fibration} is precisely a fibre
+bundle. We take a fibration $p\colon E\to B$ and require for
+$U\propersubset B$ open that
+\begin{equation}
+p^{-1}(U)=U\times F.
+\end{equation}
+Another way to think of it is as pasted together from direct
+products. We have a cover $\{U_{\alpha}\}$ of $B$, we consider
+$U_{\alpha}\times F$ pasted together, i.e., $(U_{\alpha}\cap
+U_{\beta})\times F\propersubset U_{\alpha}\times F$ and
+$(U_{\alpha}\cap
+U_{\beta})\times F\propersubset U_{\beta}\times F$, the
+intersection is embedded in both. We should have a map that
+identifies the overlap
+\begin{equation}
+(b,f)\sim\bigl(b,\varphi_{\alpha\beta}(b)f\bigr)
+\end{equation}
+where
+\begin{equation}
+\varphi_{\alpha\beta}(b)\colon F\to F
+\end{equation}
+which is defined for all $b\in U_{\alpha}\cap U_{\beta}$. We can
+introduce different notation
+\begin{equation}
+\widetilde{\varphi}_{\alpha\beta}(b,f) =
+(b,\varphi_{\alpha\beta}(b)f).
+\end{equation}
+These guys are called the \define{Transition Functions}\index{Transition Functions|textbf}
+which obeys some properties of compatibility.
+
+We may consider the case when the fibre is discrete. Then a
+locally trivial fibration is a covering\index{Covering!as a Fibration}.
+This is a definition. We have $p\colon E\to B$, consider
+\begin{equation}
+p^{-1}(U)=\begin{pmatrix}
+\mbox{disjoint union}\\
+\mbox{of homeomorphic}\\
+\mbox{components}
+\end{pmatrix}
+\end{equation}
+where $U\propersubset B$ is ``small.'' But $p^{-1}(U)=U\times F$,
+but $F$ is a discrete space where every point is open. 
+
+\begin{ex}
+Let $G$ be a discrete group that acts freely on $X$. We have the
+identification map
+\begin{equation}
+\pi\colon X\to X/G
+\end{equation}
+and this is a covering. This is called a \define{Regular Covering}\index{Covering!Regular}\index{Regular Covering}
+\end{ex}
+Remember we assumed $X$ is simply connected, so by definition it
+is a regular covering --- but it has one more name: a
+\define{Universal Covering}\index{Covering!Universal}\index{Universal Covering}.
+Every connected covering may be obtained from the universal
+one. We will focus exclusively on connected coverings for the rest
+of this lecture.
+
+Why is this universal? If we have a (regular) covering, we may
+obtain other coverings in the following way: let 
+\begin{equation}
+G=\pi_{1}(X/G)=\pi_{1}(X^{1})
+\end{equation}
+We have $X^{1}=X/G$ be connected. We may take \emph{any}
+subgroup $H\propersubset G$ which acts freely on $X$. Therefore
+we may repeat the same construction, obtaining a map
+\begin{equation}
+X\xrightarrow{\alpha_{H}}(X/H)\xrightarrow{\pi_{H}}(X/G).
+\end{equation}
+The first remark is that $\alpha_h$, $\pi_H$ both are coverings,
+moreover $\alpha_H$ is a regular covering. We take some
+$V\propersubset X/G$. We have its preimage
+\begin{equation}
+\pi^{-1}(V)=\sqcup U_{i} = \sqcup g_{i}U
+\end{equation}
+where $g_i\in G$. This induces an open covering. When we consider
+$\pi^{-1}_{H}(V)=\sqcup U_{i}$, we recall
+$\pi^{-1}_{H}(V)\propersubset\pi^{-1}(V)$ is a proper subset. All
+connected coverings of $X/H$ may be obtained in this way.
+
+One more remark. Is this quotient $X/H$ always a regular
+covering? Not always. But it is clear if $H\propersubset G$ is a
+normal subgroup, then $\pi^{-1}_{H}$ is a regular
+covering. Because $(G/H)$ acts on $(X/H)$. The points of $(X/H)$
+are orbits $Hx$; and if $H\propersubset G$ is normal, and
+$\gamma\in G/H$, then it acts on $(X/H)$ by taking $g\in\gamma$
+and applying it to $hx$. We may represent it as
+\begin{equation}
+ghx=hgx
+\end{equation}
+so $ghg^{-1}=h'\in H$ by virtue of $H$ being a normal subgroup.
+
+\begin{thm}
+Connected coverings of a ``good'' space $Y$ are in one-to-one
+correspondence with subgroups of $\pi_{1}(Y)$. Connected regular
+coverings correspond to normal subgroups of $\pi_{1}(Y)$.
+\end{thm}
+
+A ``good'' space is one with at least one universal covering, but
+in reality we need less. The idea is that it is a maximal
+covering --- so a good space has small closed loops be
+contractible. It is not precisely clear where they are
+contractible. More precisely every point has a neighborhood such
+that closed loops are contractible in a bigger neighborhood.
+

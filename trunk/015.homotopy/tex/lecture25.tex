@@ -1,0 +1,329 @@
+%%
+%% lecture25.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jan  3 11:01:27 2012 alex
+%% Last update Tue Jan  3 11:01:27 2012 alex
+%%
+
+So, last time we discussed the ``\emph{Exact Homotopy Sequence Fibration\/}''
+\begin{equation}
+\pi_{k}(F)\xrightarrow{i_{*}}
+\pi_{k}(E)\xrightarrow{p_{*}}
+\pi_{k}(B)\xrightarrow{\partial}
+\pi_{k-1}(F)
+\end{equation}
+where $p\colon E\to B$ forms the fibration, and
+\begin{subequations}
+\begin{equation}
+\varphi\colon I^k\to B 
+\end{equation}
+is a spheroid, 
+\begin{equation}
+\psi\colon I^k\to E 
+\end{equation}
+\end{subequations}
+is a spheroid such that 
+\begin{equation}
+p\circ\psi=\varphi
+\end{equation}
+holds.
+
+Consider the Hopf fibration
+\begin{equation}
+S^{3}\xrightarrow{S^1}S^2.
+\end{equation}
+The sequence we had was
+\begin{equation}
+\pi_{k}(S^{1})\to\pi_{k}(S^{3})\to\pi_{k}(S^2)\to\pi_{k-1}(S^1).
+\end{equation}
+Notice for $k=2$ we get
+\begin{equation}
+\pi_{2}(S^{1})=0\to\pi_{2}(S^{3})\to\pi_{2}(S^2)\to\ZZ\iso\pi_{1}(S^1)\to0=\pi_{1}(S^{3}).
+\end{equation}
+We should remember that
+\begin{equation}
+\pi_{2}(S^2)\iso\ZZ
+\end{equation}
+thus we obtain
+\begin{equation}
+0\to\pi_{2}(S^{3})\to\ZZ\to\ZZ\to0.
+\end{equation}
+But we also have
+\begin{equation}
+\pi_{k}(S^{n})=0\quad\mbox{for }k<n.
+\end{equation}
+Thus we obtain
+\begin{equation}
+0\to\pi_{2}(S^{3})=0\to\ZZ\to\ZZ\to0.
+\end{equation}
+For $k>2$ we find $\pi_{k}(S^1)=0$, thus obtaining a sequence
+\begin{equation}
+\pi_{k}(S^{1})=0\to\pi_{k}(S^{3})\to\pi_{k}(S^{2})\to0=\pi_{k-1}(S^1).
+\end{equation}
+This implies
+\begin{equation}
+\pi_{k}(S^{3})\iso\pi_{k}(S^{2})
+\end{equation}
+for all $k\geq3$.
+
+We would like to extract some interesting sequences. First we
+will introduce a \define{Section}\index{Bundle!Section of a ---|textbf}% 
+\index{Fibre Bundle!Section of a ---|textbf}% 
+\index{Fibration!Section of a ---|textbf}% 
+\index{Section!of a Fibre Bundle|textbf} %
+of a fibre bundle $p\colon E\to B$. So we take a single point in
+every fibre $F_{b}$, and we do this continuously. In othr words,
+it is a mapping
+\begin{equation}
+q\colon B\to E
+\end{equation}
+such that
+\begin{equation}
+q(b)\in F_{b}\quad\forall b\in B.
+\end{equation}
+Thus
+\begin{equation}
+(p\circ q)(b)=b
+\end{equation}
+or simply $p\circ q=\id{B}$.
+
+\begin{Boxed}{Sections in Fibre Bundles}
+The intuition should really be guided by thinking of vector
+fields in $\RR^3$. Here, our fibre is $F\iso\RR^3$ \emph{the vector space}
+and the base is $B=\RR^3$ \emph{the topological space}. What do
+we do? Well, it's quite simple: we have a continuous mapping
+\begin{equation}
+\begin{split}
+\RR^{3}&\to E\iso\RR^{3}\times\RR^{3}\\
+\boldsymbol{p}&\mapsto(\boldsymbol{p},\vec{v}\,)
+\end{split}
+\end{equation}
+where $\boldsymbol{p}\in\RR^3$ is a point in our topological
+space, and $\vec{v}\in\RR^3$ is a vector in our vector space. The
+ordered pair $(\boldsymbol{p},\vec{v})$ is a tangent vector with
+base point $\boldsymbol{p}$ and vector part $\vec{v}$.
+
+\begin{ddanger}
+Note that as a vector bundle, the space $E\iso\RR^3\times\RR^3$
+is a \emph{trivial} vector bundle. This enables us to write guys
+living in $E$ as an ordered pair. Also note, this is not the
+tangent bundle! It resembles it an awful lot, but I am being
+lazy and referring to something similar but different.
+\end{ddanger}
+
+What if we want to assign something else to each point
+``continuously''? For example: assign to each point a
+differential operator? Or a group element? How do we handle these
+situations? The solution is obvious: work with a
+\emph{topological gadget} (e.g., a topological group). What does
+this mean? Well, it means the gadget has topological
+structure. This enables us to \emph{continuously} assign data to
+each point. 
+
+The problem is \emph{not every bundle has sections}. If the
+bundle is ``twisted'' too much (i.e., not ``trivial'' enough),
+then the topology ``obstructs'' global sections existing. What's
+a global section?\marginpar{Global Section defined on every $U\propersubset{B}$; local section defined on some $U$}\index{Section!Global} It is a section defined on $B$, not just a
+neighborhood $U\propersubset B$. Compare this to a local section\index{Section!Local},
+which is defined on some neighborhood $U\propersubset B$.
+\end{Boxed}
+The trivial bundle $p\colon B\times F\to B$ has sections, of
+course. We just take $f=f(b)$ continuous. Then
+\begin{equation}
+\begin{split}
+q\colon&B\to B\times F\\
+&b\mapsto\bigl(b,f(b)\bigr)
+\end{split}
+\end{equation}
+We have a section map $B\to F$.
+
+\begin{wrapfigure}{r}{6pc}
+  \centering
+  \includegraphics{img/lecture25.0}
+  \vspace{-12pt}
+\end{wrapfigure}
+
+The Mobius band\index{Mobius Band!as Fibration} is a fibration if
+we take the dashed line, doodled to the right. We get a section,
+where the fibres are doodled in grey. What's the base space $B$
+for the Mobius band? Well, it's a circle. What's the fibre? Well,
+$F_{b}\iso I$ it's homeomorphic to the unit interval. So
+\emph{locally}, i.e.\ for a sufficiently small neighborhood
+$U\propersubset B$, we have $p^{-1}(U)\iso U\times I$.
+
+\index{Section!Existence of a ---|(}
+Lets consider a surface, say in $\RR^3\supset\Sigma$. Lets specifically
+consider the following picture: our surface is smooth, so we may
+speak meaningfully of tangent vectors. If we set $B=\Sigma$, then
+$E=T\Sigma$ is our \define{Tangent Bundle}.\index{Bundle!Tangent}\index{Tangent Bundle} 
+For our surface $\Sigma$, a tangent vector has two components;
+thus our tangent space $T_{x}\Sigma=p^{-1}(x)$ is
+two-dimensional. What does this mean? Well,
+$T_{x}\Sigma\iso\RR^2$ for all $x\in\Sigma$. Our tangent bundle
+is a locally trivial fibration, so at some $U\propersubset\Sigma$
+``small neighborhood'', we have $p^{-1}U\iso U\times\RR^2$.
+
+Do we have a section for $T\Sigma$? Well, there is a trivial one:
+$q(b)=0$ for any $b\in B$. But generally, a section for a tangent
+bundle is a \define{Tangent Vector Field}.\index{Tangent Bundle!Section of}%
+\index{Section!Tangent Vector Field}\index{Tangent Vector Field|textbf}
+Can we have a nontrivial tangent vector field? Well, just get rid
+of zero in the fibre:
+\begin{equation*}
+E'=E-(B\times\{0\})
+\end{equation*}
+and consider the fibration
+\begin{equation}
+p'\colon E'\to B.
+\end{equation}
+This is really the same guy as $p\colon E\to B$ with the demand
+of nontriviality. A section would be a mapping
+\begin{equation}
+q\colon B\to(E-B\times\{0\}).
+\end{equation}
+Lets note that the fibre we are working with looks like
+\begin{equation}
+F'_{b}\iso\RR^{2}-\{0\}.
+\end{equation}
+So what? Well,
+\begin{equation}
+F'_{b}\iso S^{1}
+\end{equation}
+describes the fibre's topology. The million-dollar question: does
+a section exist? How to prove that the section exists?
+
+Lets first discuss some very trivial statements. If we have a
+fibration $p\colon E\to B$ and a section on our fibration, it is
+a map $q\colon B\to E$. Observe: these are maps. So what? Well,
+functoriality induces morphisms
+\begin{subequations}
+\begin{equation}
+q_{*}\colon\pi_{n}(B)\to\pi_{n}(E)
+\end{equation}
+and
+\begin{equation}
+p_{*}\colon\pi_{n}(E)\to\pi_{n}(B).
+\end{equation}
+\end{subequations}
+We use functoriality and obtain
+\begin{equation}
+p\circ q=\id{B}\quad\implies\quad p_{*}\circ q_{*}=\id{\pi_{n}(B)},
+\end{equation}
+which implies $p_{*}$ is surjective. Recall our exact homotopy
+sequence for a fibration has
+\begin{equation}
+\pi_{k}(E)\xrightarrow{p_{*}}\pi_{k}(B)\xrightarrow{\partial}\pi_{k-1}(F)
+\end{equation}
+So $p_{*}$ surjective gives us
+\begin{equation}
+\im(p_{*})=\pi_{k}(B)
+\end{equation}
+and exactness gives us
+\begin{equation}
+\im(p_{*})=\ker(\partial).
+\end{equation}
+Together, these imply
+\begin{equation}
+\pi_{k}(B)=\ker(\partial)
+\end{equation}
+provided a section exists. Lets reiterate this:
+\begin{equation}
+\boxed{\quad\mbox{If $\ker(\partial)=\pi_{k}(B)$, then a section exists.}\quad}
+\end{equation}
+For example, we have our Hopf fibration, does it have a section?
+Well, $\pi_{2}(S^3)\to\pi_{2}(S^2)$ is not surjective, so it is
+impossible for a section to exist.
+\index{Section!Existence of a ---|)}
+
+Lets introduce the notion of a \define{Stiefel
+Manifold}\index{Stiefel Manifold} $V_{n,k}$.\marginpar{$V_{n,k}$ consists of $k\times n$ matrices whose columns are \emph{orthonormal} column vectors in $\RR^{n}$}
+Here
+\begin{equation}
+V_{n,k} = \{ (e_1, \dots, e_k) \}
+\end{equation}
+where $e_{i}$ is a column vector living in $\RR^n$. Morever, we
+demand orthonormality
+\begin{equation}
+\<e_i,e_j\>=\delta_{ij}.
+\end{equation}
+We may give a different definition: we require $e_1$, \dots,
+$e_k$ be linearly independent. Lets denote this different
+definition by $\widetilde{V}_{n,k}$.\marginpar{$\widetilde{V}_{n,k}$ consists of $k\times n$ matrices whose columns are \emph{linearly independent} column vectors in $\RR^{n}$}
+We see that $V_{n,k}\propersubset\widetilde{V}_{n,k}$. But this
+embedding is really a homotopy equivalence. How can we say this?
+Well, the Grahm-Schmidt procedure\index{Grahm-Schmidt procedure}
+gives us a mapping
+\begin{equation}
+\widetilde{V}_{n,k}\to V_{n,k}
+\end{equation}
+which is a homotopy equivalence.
+
+We have a special case
+\begin{equation}
+V_{n,1}=S^{n-1}
+\end{equation}
+and
+\begin{equation}
+\widetilde{V}_{n,1}=\RR^{n}\setminus\{0\}.
+\end{equation}
+There are other fascinating examples, 
+\begin{equation}
+V_{n,2}=\{\mbox{normalized tangent vectors to }S^{n-1}\},
+\end{equation}
+but we also have a fibration
+\begin{subequations}
+\begin{equation}
+V_{3,2}\to S^{2}
+\end{equation}
+constructed by
+\begin{equation}
+(e_1,e_2)\mapsto e_1.
+\end{equation}
+\end{subequations}
+The fibre is $S^1$. Writing down the exact sequence for this
+fibration is very easy, but it is a Hopf fibration if we replace
+$S^{3}$ with $V_{3,2}$.
+
+First $V_{3,2}=\SO{3}$ where $\ORTH{n}$ is the group of
+orthogonal matrices, and $\SO{n}$ is the subgroup with unit
+determinant. Why is this obvious? First, we have
+\begin{equation}
+V_{3,3}=\ORTH{3}
+\end{equation}
+trivially, since each column is orthonormal. We have, given
+$(e_1,e_2)\in V_{3,2}$, the third vector $e_{3}$ be orthogonal to
+$e_1$ and $e_2$. But we have two options $\pm e_{3}$ are both
+orthogonal to $e_1$ and $e_2$! We get a mapping
+\begin{equation}
+\begin{split}
+V_{3,2}\to&V_{3,3}\\
+(e_1,e_2)\mapsto & X=(e_1,e_2,se_3)
+\end{split}
+\end{equation}
+where $s=\pm1$ is such that $\det(X)=1$. This gives us a
+one-to-one correspondence between $V_{3,2}$ and $\SO{3}$. But
+that's a triviality. More generally, we have
+\begin{equation}
+V_{n,n-1}=\SO{n}
+\end{equation}
+but
+\begin{equation}
+V_{3,2}\iso\RP^2.
+\end{equation}
+Then $\pi_{1}(V_{3,2})\iso\ZZ_2$. We see our exact homotopy
+sequence is
+\begin{equation}
+\pi_{2}(V_{3,2})\to\pi_{2}(S^{2})\iso\ZZ\to\ZZ_2\to 0
+\end{equation}
+but it then follows that
+\begin{equation}
+\pi_{2}(V_{3,2})\to\ZZ
+\end{equation}
+is \emph{not} surjective. Thus this fibration has no
+section. There exists no nonzero tangent vector field to the
+sphere. The moral: \emph{Don't bring hedehog to barber shop}.%
+\index{Hedgehog!Should Avoid Barbers}
+

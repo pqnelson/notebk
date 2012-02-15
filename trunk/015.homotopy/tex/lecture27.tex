@@ -1,0 +1,246 @@
+%%
+%% lecture27.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 20:51:49 2011 alex
+%% Last update Tue Dec 27 20:51:49 2011 alex
+%%
+
+Consider a topological group $G$ and a closed subgroup
+$H\propersubset G$, we are assuming that $G$ is a compact Lie
+group for simplicity. Then we may say that $H$ acts on $G$ by
+means of multiplication --- specifically, by means of
+multiplication on the right. That is
+\begin{equation}
+\varphi_{h}(g)=gh
+\end{equation}
+for $g\in G$ and $h\in H$. We have cosets $gH$ by considering the
+orbits of such maps. We also have a fibration where the fibres
+are $H$ and 
+\begin{equation}
+p\colon G\to G/H
+\end{equation}
+is the fibration. So $G$ acts on $G/H$ but on the left. If we
+take any $\gamma\in G$ and $\gamma(gH)=(\gamma g)H$. This action
+is transitive. Ifwe start with $H$ and consider
+\begin{equation}
+\gamma(eH)=\gamma H
+\end{equation}
+we get every orbit, therefore it is transitive. If $G$ acts
+transitively on $X$, then $X$ may be identified with the space of
+orbits $X=G/H$ where $H$ is a stable subgroup. We may write down
+the exact homotopy sequnce for this fibration.
+
+\begin{ex}
+We may consider $\U{n}/\U{n-1}=S^{2n-1}$ and this is simply
+because $\U{n}$ acts on $\CC^n$ by definition. The orbits of this
+action are spheres. The stable subgroup is $\SU{n}$. We may also
+write 
+\begin{equation}
+\SU{n}/\SU{n-1}=S^{2n-1} 
+\end{equation}
+which is the same stuff.
+
+But we may repeat the same consideration on $\RR^n$, where the
+orthogonal group replaces the unitary group. We have that 
+\begin{equation}
+\ORTH{n}/\ORTH{n-1}=S^{n-1}.
+\end{equation}
+We may also consider instead
+\begin{equation}
+\SO{n}/\SO{n-1}=S^{n-1}.
+\end{equation}
+There is another consideration using $\HH^n$ quaternionic
+space. The analog of unitary or orthogonal group, here, is the
+symplectic group $\Sp{n}$. We obtain
+\begin{equation}
+\Sp{n}/\Sp{n-1}=S^{4n-1}
+\end{equation}
+by similar reasoning as the complex case.
+\end{ex}
+
+Recall that for the exact sequence for fibrations we have
+\begin{equation}
+\dots\to
+\pi_{n}(F)\to
+\pi_{n}(E)\to
+\pi_{n}(B)\to
+\pi_{n-1}(F)\to
+\dots
+\end{equation}
+but usually one of these spaces is contractible, so its homotopy
+group is trivial for all $n$. Thus we get an isomorphism between
+homotopy groups.
+
+We thus deduce that, for ``small $k$'', 
+\begin{equation}
+\pi_{k}\bigl(\U{n}\bigr)\iso\pi_{k}\bigl(\U{n-1}\bigr)
+\end{equation}
+This means we may consider \define{Stable Homotopy Groups}\index{Homotopy Group!Stable}\index{Stable Homotopy Group|see{Homotopy Group}}
+which are denoted by $\pi_{k}(\mathrm{U})$,
+$\pi_{k}(\mathrm{O})$, and $\pi_{k}(\mathrm{Sp})$. This
+corresponds to $\pi_{k}\bigl(\U{n}\bigr)$, etc., for ``large enough $n$''.
+We can compute how large $n$ has to be.
+There then exists a wonderful statement:
+\begin{bott}\index{Bott Periodicity Theorem}\index{Bott Periodicity!Theorem|(}
+We have $\pi_{k}(\mathrm{U})\iso\pi_{k+2}(\mathrm{U})$,
+$\pi_{k}(\mathrm{O})\iso\pi_{k+8}(\mathrm{O})$, and
+$\pi_{k}(\mathrm{Sp})\iso\pi_{k+4}(\mathrm{O})$. 
+\index{Bott Periodicity!Theorem|)}\end{bott}
+
+So we should know a small amount of these guys. First of all, all
+even guys
+\begin{subequations}
+\begin{equation}
+\pi_{2k}(\mathrm{U})=0.
+\end{equation}
+We see $\pi_{0}(\mathrm{U})$ is the set of connected components,
+and thus the unitary group is connected. We also can see
+\begin{equation}
+\pi_{2k}(\mathrm{U})\iso\ZZ
+\end{equation}
+\end{subequations}
+We see $\SU{n}\propersubset\U{n}$ is a subgroup. Moreover, if
+$u\in\U{n}$, $v\in\SU{n}$, we have
+\begin{equation}
+u=\lambda v
+\end{equation}
+for some $\lambda\in\CC$. So this quotient
+\begin{equation}
+\U{n}/\SU{n}=S^1
+\end{equation}
+as topological spaces, so we have
+\begin{equation}
+\pi_{1}\bigl(\SU{n}\bigr)=0.
+\end{equation}
+Thus we deduce that $\pi_{1}\bigl(\U{n}\bigr)\iso\ZZ$ and we may
+use Bott periodicity.
+
+For the orthogonal group, we must compute $\pi_{0}$, \dots,
+$\pi_{7}$. We see that
+\begin{equation}
+\pi_{0}(\mathrm{O})\iso\ZZ_2
+\end{equation}
+since there are two connected components, by Euler's
+theorem\index{Euler's Theorem}\footnote{Euler's theorem states: if $X$ is an orthogonal
+matrix, then $\det(X)=\pm1$. This can be seen by
+$\det(X^{\mathrm{T}}X)=\det(I)=1$ and
+$\det(X^{\mathrm{T}})=\det(X)$. Thus $\det(X)^2=1$, and there are
+only two real numbers that do this.}. We also observe
+\begin{equation}
+\pi_{1}\bigl(\SO{3}\bigr)\iso\pi_{1}\bigl(\RP^3\bigr)\iso\ZZ_2
+\end{equation}
+so
+\begin{equation}
+\pi_{1}(\mathrm{O})\iso\ZZ_2.
+\end{equation}
+Now we see that
+\begin{equation}
+\pi_{2}(\mathrm{O})=0
+\end{equation}
+is trivial. More interestingly, for any Lie group $G$ we have
+\begin{equation}
+\pi_{2}(G)=0.
+\end{equation}
+But we have
+\begin{equation}
+\pi_{3}(\mathrm{O})\iso\ZZ,
+\end{equation}
+which is a general fact for every \emph{simple} noncommutative
+Lie group $G$ we have $\pi_{3}(G)\iso\ZZ$.
+We may now write down a table
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c|c}
+$\pi_{0}(\mathrm{O})$ & 
+$\pi_{1}(\mathrm{O})$ & 
+$\pi_{2}(\mathrm{O})$ & 
+$\pi_{3}(\mathrm{O})$ & 
+$\pi_{4}(\mathrm{O})$ & 
+$\pi_{5}(\mathrm{O})$ & 
+$\pi_{6}(\mathrm{O})$ & 
+$\pi_{7}(\mathrm{O})$\\ \hline
+$\ZZ_2$ & $\ZZ_2$ & 0 & $\ZZ$ & 0 & 0 & 0 & $\ZZ$
+\end{tabular}
+\end{center}
+Only $\pi_{0}$ depends on the components, all other homotopy
+groups are computed on the component connected to the identity
+element. 
+
+We may compute $\pi_0$, $\pi_1$, $\pi_2$, $\pi_3$ for all simple
+Lie groups $\mathrm{U}$, $\mathrm{O}$, $\mathrm{Sp}$. Every Lie
+group is homotopy equivalent to a compact Lie group. So really,
+look, first of all both $\U{n}$ and $\Sp{n}$ are connected but
+$\ORTH{n}$ has two components. We know
+\begin{equation}
+\pi_{3}\bigl(\SU{2}\bigr)=\pi_{3}(S^3)=\ZZ
+\end{equation}
+and this gives us
+\begin{equation}
+\pi_{3}\bigl(\SO{3}\bigr)=\ZZ.
+\end{equation}
+We observe
+\begin{equation}
+\SO{4}\iso\bigl(\SU{2}\times\SU{2}\bigr)/\ZZ_2.
+\end{equation}
+But it follows that
+\begin{equation}
+\pi_{3}\bigl(\SO{4}\bigr)\iso\ZZ\oplus\ZZ.
+\end{equation}
+We have $\Sp{1}\iso\SU{2}$, so
+\begin{equation}
+\pi_{3}\bigl(\Sp{1}\bigr)\iso\ZZ.
+\end{equation}
+We can now apply stability to deduce
+\begin{equation}
+\pi_{2}\bigl(\SU{n}\bigr)=0
+\end{equation}
+and
+\begin{equation}
+\pi_{3}\bigl(\SU{n}\bigr)\iso\ZZ
+\end{equation}
+for $n\geq2$. We see we may compute
+\begin{equation}
+\SU{3}/\SU{2}\iso S^5
+\end{equation}
+We have
+\begin{equation}
+\SO{6}\iso\SU{4},
+\end{equation}
+so we now know the homotopy group for $\SO{6}$. We see
+\begin{equation}
+\SO{6}/\SO{5}\iso S^5
+\end{equation}
+and that enables us to deduce the homotopy groups for $\SO{5}$.
+
+
+\exercises
+\begin{xca}
+Let us consider a locally trivial fibration with total space $E$,
+base $B=S^2$ and fiber $S^{1}$. Express the homotopy groups of
+$E$ in terms of homotopy groups of the sphere $S^2$.
+
+Hint. The data you have do not specify completely the homotopy
+groups of $E$. You should describe all possible answers.
+\end{xca}
+\begin{xca}\index{Classifying Space}\index{$B_{G}$}
+A topological group $G$ acts freely on contractible space
+$E$. Express the homotopy groups of the space of orbits $B_{G} =
+E/G$ in terms of homotopy groups of $G$. (The space $B_{G}$ is
+called classifying space of $G$.)
+\end{xca}
+\begin{xca}
+The group $\U{k}\times\U{k}$ is embedded into group $\U{2k}$ as a
+subgroup consisting of block-diagonal matrices with two $k\times
+k$ blocks. Calculate the homotopy groups
+$\pi_{n}(\U{2k}/\U{k}\times\U{k})$ for $n < 2k$.
+
+
+Hint. You can use the fact that the natural homomorphism
+$\pi_{n}(\U{k})\to\pi_{n}(\U{m})$ where $k<m$ is an isomorphism
+for $n < 2k$. The groups $\pi_{n}\bigl(\U{k}\bigr)$ for $n<2k$
+are called stable homotopy groups;%
+\index{Stable Homotopy Groups}\index{Group!Stable Homotopy}\index{Homotopy Group!Stable} %
+they are equal to $\ZZ$ for odd $n$ and to $0$ for even $n$
+\end{xca}

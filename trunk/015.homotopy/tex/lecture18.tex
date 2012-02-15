@@ -1,0 +1,194 @@
+%%
+%% lecture18.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 20:36:56 2011 alex
+%% Last update Tue Dec 27 20:36:56 2011 alex
+%%
+
+\begin{prop}\index{Covering!Uniqueness of Simply Connected ---}
+Simply connected covering is unique.
+\end{prop}
+The ``unique'' means that two simply connected coverings are the
+same. Nothing is said of their \emph{existence!}
+
+\medbreak
+\noindent\emph{Proof.}\quad\ignorespaces%
+Let $p\colon\widetilde{X}\to X$ be a simply connected
+covering. So $X$ is connected. We may declare any point in
+$\widetilde{X}$ to correspond to the marked point in $X$, i.e.,
+\begin{equation}
+p(*)=*.
+\end{equation}
+Now we take $x\in\widetilde{X}$ so $p(x)\in X$.
+We will take a path from $*$ to $x$ in $\widetilde{X}$,
+\begin{equation}
+\alpha\colon[0,1]\to\widetilde{X}
+\end{equation}
+such that $\alpha(0)=*$, $\alpha(1)=x$. Now this path may be
+projected to $X$. Every path is homotopic in $\widetilde{X}$,
+thus when projected to $X$ they remain homotopic. So we have
+\begin{equation}
+x\in\widetilde{X}\rightleftharpoons\begin{pmatrix}
+\begin{matrix}p(x)\in X,
+\end{matrix}
+&
+\begin{matrix}
+\mbox{homotopy class of}\\
+\mbox{paths from $*$ to $p(x)$}
+\end{matrix}
+\end{pmatrix}
+\end{equation}
+If we are given only $X$, we may construct
+\begin{equation}
+\widetilde{X}=(z\in X,\mbox{homotopy class of paths from $*$ to $z$}).
+\end{equation}
+But this means that $\widetilde{X}$ is basically unique, so there
+exists a unique simply connected covering. Moreover this appears
+to be a construction that always gives something we call a
+``simply connected covering''---but this is wrong. It gives a
+set. We need to prove it is a topological space, and that it is a
+covering. Lets suppose a simply connected covering exists. If
+$V\ni *$ is a neighborhood, then it is covered by disjoint sets
+in $\widetilde{X}$
+\begin{equation}
+(U_1\sqcup U_2\sqcup\dots)=p^{-1}V,
+\end{equation}
+every map $U_i\to V$ is a homeomorphism. But then let us take any
+closed path in $V$. It is a small path, it's covered by some path
+$\widetilde{\alpha}\in U_i$ such that
+\begin{equation}
+p(\widetilde{\alpha})=\alpha.
+\end{equation}
+But this covering path $\widetilde{\alpha}$ is contractible in
+$\widetilde{X}$. It follows that $\alpha$ is contractible in
+$X$. This isn't always true, there is a pathological
+counter-example.
+
+
+\begin{wrapfigure}{l}{1in}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{img/lecture18.0}
+\end{wrapfigure}
+\noindent\ignorespaces %
+A neighborhood $U$ of a pair $(z,\mbox{path})$. Let $V$ be a
+neighborhood of $z$. Then $U$ has
+\begin{equation}
+(z',\mbox{path}')\in U
+\end{equation}
+where $z'\in V$. We have
+\begin{equation}
+\mbox{path}'=\mbox{path}*\gamma
+\end{equation}
+where $\gamma\colon[0,1]\to V$ has
+\begin{equation}
+\gamma(0)=z',\quad\gamma(1)=z.
+\end{equation}
+This gives us a topology, and it is simply connected, etc. What
+should be required is really something a little bit stronger:
+
+\medbreak
+\noindent\textbf{Requirement:\quad}for every point $z\in X$ and
+every neighborhood $V$ of $z$, there exists a smaller
+neighborhood $U\propersubset V$ such that every closed path in
+$U$ is contractible in $V$.
+
+\medbreak
+\noindent\ignorespaces %
+On $\widetilde{X}$ we can define an action of $\pi_{1}(X,*)$ such
+that (1) this action is free, (2)
+$X=\widetilde{X}/\pi_{1}(X,*)$. How to prove this?
+
+We lift everything we did in the opposite order. Remember
+\begin{equation}
+\widetilde{X}=(z\in X,\mbox{path from $*$ to $z$ in $X$})
+\end{equation}
+We see
+\begin{equation}
+\beta\colon I\to X
+\end{equation}
+with $\beta(0)=\beta(1)=*$, which specifies an element of
+$\pi_{1}(X)$. Further, $\alpha$ is a path from $*$ to $z$. We
+concatenate $\beta*\alpha$, we changed the path though not the
+end points. We remain in the same fibre. Thus it's an action of $\pi_{1}(X)$.
+So it justifies the statement $X=\widetilde{X}/\pi_{1}(X)$.
+
+So we've shown: a simply connected covering is unique, and it is
+a regular covering. But what about other coverings? The simply
+connected covering is universal. It is easy to see without formal
+proofs. Let us take any connected covering of $X$, denote it by
+$Y$. But it also has a simply connected covering $\widetilde{Y}$
+of $Y$. But now the covering of a covering is a covering. So it
+is the simply connected covering of $X$, i.e.,
+\begin{equation}
+\widetilde{X}=\widetilde{Y}.
+\end{equation}
+We may therfore say
+\begin{equation}
+Y=\widetilde{X}/\pi_{1}(Y)
+\end{equation}
+and that's the end of the story.
+
+We should check the simply connected covering exists. But we may
+prov ethis. Instead, we'll do something different. Namely, look:
+we take some covering $Y$ and we project
+\begin{equation}
+\pi\colon Y\to X.
+\end{equation}
+But from this construction it follows we may construct a map
+$\widetilde{X}\to Y$ by definition of $\widetilde{X}$. It is
+almost obvious this map is a covering.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercises
+\begin{xca}\index{Mobius Band!Connected Coverings of ---}
+Describe all connected coverings of Moebius band. Show that all
+compact covering spaces are homeomorphic either to Moebius band
+or to annulus.
+\end{xca}
+\begin{xca}
+Let us consider a group $G$ of transformations of the plane
+$\RR^2$ generated by transformations $(x, y)\to(x, y + 2)$ and
+$(x, y)\to(x + 1, -y + 1)$. 
+\begin{enumerate}
+\item Prove that $G$ acts freely on $\RR^2$.
+\item Prove that the quotient space $\RR^2/G$ is homeomorphic to
+Klein bottle (i.e.\ it can be be obtained from two Moebius bands
+by means of identifying their boundaries).\index{Klein Bottle!Homeomorphic to $\RR^2/G$}
+\item Use this construction to show that there exists a covering
+of Klein bottle homeomorphic to a torus.\index{Klein Bottle!Torus as Covering of ---}
+\end{enumerate}
+\end{xca}
+\begin{xca}
+One says that a map $p\colon X\to Y$ is a ramified covering\index{Ramified Covering}\index{Covering!Ramified} of the surface $Y$ if the map $p$ is a covering of the set $Y\setminus F$ where $F$ is a finite subset of $Y$ (i.e.\ the map $p\colon p^{-1}(Y)\to Y$ is a covering. Let us suppose that $p$ is $n$-sheeted covering of $Y\setminus F$ (i.e.\ every point of $Y\setminus F$ has $n$ preimages) and the ramification points (points of $F$) have $\mu_{1}$, \dots, $\mu_{k}$ preimages (here $k$ stands for the number of points in $F$). Prove the following formula connecting Euler characteristics of $X$ and $Y$:
+\begin{equation}
+\chi(X)=n\chi(Y)+\sum_{1\leq i\leq k}(\mu_{i}-n)
+\end{equation}
+(this is a version of Riemann-Hurwitz formula\index{Riemann-Hurwitz Formula}).
+
+Hint. You can use additivity of Euler characteristic.
+\end{xca}
+\begin{xca}
+Check the Riemann-Hurwitz formula for the map $p\colon S^2\to
+S^2$ defined by the formula $p(z)=z^n$ (we consider the sphere as
+the set of complex numbers with addition of a point at infinity:
+$S^2 = \CC\cup\infty$). 
+\end{xca}
+\begin{xca}
+Calculate the Euler characteristic of a surface defined by the
+equation $w^2=q(z)$ where $q(z)$ is a polynomial of degree
+$m$. (Such a surface is called elliptic if $m=3$ or $m=4$ and
+hyperelliptic if $m>4$). Here $w, z \in S^2 = \CC\cup\infty$.
+
+Hint. Consider the surface as a ramified covering of the
+sphere. Take into account that for $m=2n$ the function
+$w=\pm\sqrt{q(z)}$ looks like $w=\pm{}z^n$ at infinity and
+therefore consists of two separate branches; this means that in
+the neighborhood of infinity we have two-sheeted covering. For
+$m=2n+1$ this function looks like $w=\pm z^{n}\sqrt{z}$, hence we
+have a ramification point at infinity.
+\end{xca}
+

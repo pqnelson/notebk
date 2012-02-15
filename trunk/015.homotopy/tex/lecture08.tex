@@ -1,0 +1,124 @@
+%%
+%% lecture08.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 21:17:57 2011 alex
+%% Last update Mon Dec 26 21:17:57 2011 alex
+%%
+
+We classified homotopy classes $\homotopyClass(S^1,S^1)$ using
+angular coordinates. The requirement of continuity is that if
+$f\colon S^1\to S^1$, then 
+\begin{equation}
+f(2\pi)-f(0)=2\pi k
+\end{equation}
+where $k\in\ZZ$ is the degree of the map. It is an invariant of
+the homotopy class, i.e., a ``homotopy invariant''\index{Invariant!Homotopy}.
+Later we will see analogously
+\begin{equation}
+\deg\colon\homotopyClass(S^n,S^n)\iso\ZZ
+\end{equation}
+for $n\geq1$, where this is a one-to-one correspondence.
+But more generically, what is the meaning of the ``degree of a
+map''?
+
+It tells us how many times the codomain is covered by the
+domain. Let us take for definiteness $f(0)=0$. The simplest case
+is
+\begin{equation}
+f(\alpha)=k\alpha
+\end{equation}
+What happens? Look, we see that the image raps around th circle
+$k$ times, so $f^{-1}$ is a one-to-$k$ function. More precisely,
+\begin{equation}
+f^{-1}(0)=\left\{0,\frac{2\pi}{k},2\frac{2\pi}{k},\dots,(k-1)\frac{2\pi}{k}\right\}.
+\end{equation}
+But this is a very simple case. We should solve
+\begin{equation}
+f(\alpha)=0\bmod2\pi,
+\end{equation}
+we know
+\begin{equation}
+f'(\alpha)<0\quad\mbox{or}\quad f'(\alpha)>0
+\end{equation}
+implies the curve grows with a positive/negative slope between
+the roots. We could say that the degree is the algebraic number
+of solutions to the equation
+\begin{equation}
+f(\alpha)\equiv\alpha_0\bmod2\pi
+\end{equation}
+where $f'(\alpha_0)\not=0$. We can only calculate the
+\emph{algebraic} number of solutions for an equation.
+
+\index{Fundamental Theorem of Algebra!proof|(}
+We can prove the main (fundamental) theorem of algebra. One way
+to prove it is very simple (our proof will not be rigorous!). A
+trivial proof of the fact that every algebraic equation has a
+solution. What is an algebraic equation? We have a polynomial
+\begin{equation}
+p(x)=x^{n}+a_{1}x^{n-1}+\dots+a_{n},
+\end{equation}
+which is a map. It is a map
+\begin{equation}\label{eq:lec8:pMapsS}
+p\colon S^2\to S^2
+\end{equation}
+where we recall
+\begin{equation}
+S^2=\RR^2\cup\{\infty\}
+\end{equation}
+by Stereographic Projection\index{Stereographic Projection}.
+But
+\begin{equation}
+p(\infty)=\infty
+\end{equation}
+so our claim in Eq \eqref{eq:lec8:pMapsS} is correct. We can
+compute the degree of this map, and that is very easy since the
+degree is an invariant of the homotopy class. And look, we will
+write
+\begin{equation}
+p_{t}(x)=x^{n}+t\bigl(a_{1}x^{n-1}+\dots+a_{n}\bigr)
+\end{equation}
+what do we see? We see
+\begin{subequations}
+\begin{equation}
+p_{1}(x)=p(x)
+\end{equation}
+is our original polynomial, and
+\begin{equation}
+p_{0}(x)=x^{n}
+\end{equation}
+\end{subequations}
+is the same degree as our original polynomial. But the degree of
+the map $x\mapsto x^n$ is very simple, since
+\begin{equation}
+p(x)\equiv\alpha\pmod2\pi
+\end{equation}
+has $n>0$ solutions (well, $n\not=0$ solutions). Thus $p(x)$ is a
+map of degree $n$, or the algebraic number of solutions is
+$n$. We have no right in replacing $t$ to be
+\begin{equation}
+\widetilde{p}_{t}(x)=a_{k-1}x^{k}+t\bigl(x^{n}+a_{1}x^{n-1}+\dots\bigr)
+\end{equation}
+otherwise we violate continuity.
+
+There is a simple trick to prove $p(x)$ has a solution. We want
+to prove $p(x)$ is zero somewhere. Let us assume it is
+\emph{nowhere zero}. We take
+\begin{equation}
+|x|=b
+\end{equation}
+and consider
+\begin{equation}
+\varphi(x)=\frac{p(x)}{|p(x)|}
+\end{equation}
+we can do this as we assumed $p(x)\not=0$ for any $x$. It is a
+continuous map from a circle to a circle. Let us calculate the
+degree of this map. We take $b=\varepsilon>0$ to be small, then
+$\varphi\homotopic0$ homotopic. We can take $b\gg0$, but then
+it is easy to see only the first term $x^n$ dominates. We've seen
+that the degree of $p$ is $n$ in this case, so the degree of
+$\varphi$ would be nonzero. A contradiction! Caused by what? By
+dividing by $p(x)$ since we cannot divide by 0.
+\index{Fundamental Theorem of Algebra!proof|)}

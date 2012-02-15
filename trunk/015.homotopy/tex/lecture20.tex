@@ -1,0 +1,210 @@
+%%
+%% lecture20.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 30 14:37:24 2011 alex
+%% Last update Fri Dec 30 14:37:24 2011 alex
+%%
+Last time we gave a definition of $\pi_{2}$, the second homotopy
+group of a space with a marked point. We can generalize to
+$\pi_{n}(X,*)$ by considering
+\begin{equation}
+f\colon I^n\to X
+\end{equation}
+and requiring
+\begin{equation}
+f(\partial I^{n})=\{*\}.
+\end{equation}
+This guy is called an $n$-dimensional \define{Spheroid}\index{Spheroid|textbf}. We can
+define the concatenation of spheroids
+\begin{equation}
+h=f*g
+\end{equation}
+by taking the domain and splitting it up (as we did for
+curves). So
+\begin{equation}
+h(t_1,\dots,t_n) = \begin{cases}
+f(2t_1,t_2,\dots,t_n) & 0\leq t_1\leq\frac{1}{2}\\
+g(2t_1-1,t_2,\dots,t_n) & \frac{1}{2}\leq t_1\leq1.
+\end{cases}
+\end{equation}
+Here $\pi_{n}(X,*)$ is the set of homotopy classes of spheroids
+--- if we can deform one spheroid to another while remaining a
+spheroid throughout deformation.
+
+There is another definition which may be given through
+induction. We have $\Omega$ be the sapce of paths beginning and
+ending at $*$. We inductively define
+$\pi_{n}(X,*)=\pi_{n-1}(\Omega,*)$. If $f\in\pi_{n-1}(\Omega,*)$,
+then we see it is
+\begin{equation}
+f\colon I^{n-1}\to\Omega
+\end{equation}
+and therefore we write
+\begin{equation*}
+f_{\tau}(t_1,t_2,\dots,t_{n-1})=f(t_1,\dots,t_{n-1},\tau)
+\end{equation*}
+This is an $n$-dimensional spheroid\index{Spheroid!$n$-dimensional ---}. We see this is a
+correspondence between $(n-1)$-dimensional spheroids in $\Omega$
+and $n$-dimensional spheroids in $X$.
+We should check concatenation is preserved. We can take
+concatenation with any coordinate, so use $\tau$ and we're done.
+
+We can give a third definition. Namely if we write the spheroid
+as a map
+\begin{equation}
+I^{n}/\partial I^{n}\to X
+\end{equation}
+taking the boundary to the marked point $*\in X$. We may say
+$\pi_{n}(X,*)$ is the homotopy group of spheroids; it's clearer
+conceptually, but the operation is ambiguous.
+
+The first thing to state is $\pi_{n}$ is Abelian for
+$n\geq2$. The second thing is that $\pi_{n}$ is a functor. If
+$f\colon X\to Y$ is a map of topological spaces such that $f(*)*$
+then 
+\begin{equation}
+\pi_{n}\bigl(f\colon X\to Y\bigr)\quad=\quad
+f_{*}\colon\pi_{n}(X,*)\to\pi_{n}(Y,*) 
+\end{equation}
+and it has functorial properties
+\begin{equation}
+(f\circ g)_{*}=f_{*}\circ g_{*},\quad\mbox{and}\quad\id{*}=\id{}
+\end{equation}
+as desired.
+
+\begin{thm}
+If $(X,*)\homotopic(Y,*)$ homotopy equivalent, then
+$\pi_{n}(X,*)\iso\pi_{n}(Y,*)$ is an isomorphism of groups for
+all $n$.
+\end{thm}
+\begin{proof}
+We have $f\colon X\to Y$ and $g\colon Y\to X$ such that
+\begin{equation}
+f\circ g\homotopic\id{Y}
+\end{equation}
+and
+\begin{equation}
+g\circ f\homotopic\id{X}
+\end{equation}
+are homotopic. Then we may write $g_{*}\circ
+f_{*}=\id{\pi_{n}(X)}$ and $f_{*}\circ
+g_{*}=\id{\pi_{n}(Y)}$. Thus we may speak of $\pi_{n}$ as an invariant.
+\end{proof}
+There is a repetition: everything we did for $\pi_{1}$ we do for $\pi_{n}$.
+
+Suppose $X$ is connected. Then
+\begin{equation}
+\pi_{n}(X,*)\iso\pi_{n}(X,\widetilde{*})
+\end{equation}
+is isomorphic, but it is not a canonical isomorphism: there are
+many. Lets consider the $n=2$ proof, we may draw
+pictures. Everything is very simple. We have a spheroid
+\begin{equation}
+f\colon I^2\to X,\quad f(\partial I^2)=*.
+\end{equation}
+
+\begin{wrapfigure}{l}{1.5in}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{img/lecture20.0}
+  \vspace{-18pt}
+\end{wrapfigure}\noindent\ignorespaces
+We want to create a spheroid\index{Spheroid!Changing Base Point} which has the property 
+that the boundary goes to another marked point
+$\widetilde{*}$. We take a larger square, as doodled on the left,
+and embed our spheroid into it. The ``bonus space'' is just
+concatenation with the trivial spheroid, mapping everything to
+the marked point. One could also think of this as mapping the
+boundary ``thicker''\footnote{I suppose the technical term is
+  ``adding a collar'' to our boundary region, if one prefers this
+  exotic terminology.}. This is a bunch of paths connecting $*$
+to $\widetilde{*}$, which are doodled in light gray. Our
+extended version of $f$ is constructed in a nonunique way. This
+$\alpha$ connects $*$ to $\widetilde{*}$, lets abuse notation to
+write
+\begin{equation}
+\alpha\colon\pi_{n}(X,*)\to\pi_{n}(X,\widetilde{*}).
+\end{equation}
+We could consider $\alpha^{-1}$, or better
+\begin{equation}
+\beta(\tau)=\alpha(1-\tau)
+\end{equation}
+which goes in the opposite direction. So we may use it to
+construct a map
+\begin{equation}
+\beta\colon\pi_{n}(X,\widetilde{*})\to\pi_{n}(X,*).
+\end{equation}
+Now we may state, at the level of $\pi_{n}$, we have
+$\alpha\circ\beta=1$ and $\beta\circ\alpha=1$. Why? Because
+\begin{subequations}
+\begin{equation}
+\alpha\circ\beta\homotopic\begin{pmatrix}\mbox{trivial}\\\mbox{path}
+\end{pmatrix}
+\end{equation}
+homotopic, and
+\begin{equation}
+\beta\circ\alpha\homotopic\begin{pmatrix}\mbox{trivial}\\\mbox{path}
+\end{pmatrix}
+\end{equation}
+\end{subequations}
+homotopic too.
+
+\begin{wrapfigure}{r}{3.35in}
+  \vspace{-20pt}
+  \centering
+  \includegraphics{img/lecture20.1}
+\end{wrapfigure}
+We should note that we have $\alpha(f\circ g)=\alpha(f)\circ\alpha(g)$, which
+we prove with a series of pictures doodled to the right.
+These isomorphism are quite nontrivial. We've seen for $n=1$
+they're nontrivial. In particular we may take the marked points
+to be equal $*=\widetilde{*}$. By taking a nontrivial path, we
+get an isomorphism
+\begin{equation}
+\alpha\colon\pi_{n}(X,*)\to\pi_{n}(X,*).
+\end{equation}
+We may say $\alpha(f)=\alpha\circ f\circ\alpha^{-1}$, so this is
+the case for $*=\widetilde{*}$, we may write this for any
+case. But then $\alpha^{-1}$ is not very well defined. We've
+shown that $\pi_{1}(X,*)$ acts on $\pi_{n}(X,*)$ by means of
+automophisms. So we have
+\begin{equation}
+\pi_{1}(X,*)\to\aut\bigl(\pi_{n}(X,*)\bigr)
+\end{equation}
+Did we prove this? Not really. We proved there exists a map, but
+we need to prove it is a morphism. The proof, however, is easy.
+So what did we prove? We proved if $X$ is connected, then
+$\pi_{n}(X,*)$ does not depend on the marked point $*$.
+
+
+Lets consider the homotopy class
+\begin{equation}\index{Orbit!in Homotopy Groups}
+\homotopyClass(S^{n},X)=\{\mbox{orbits of $\pi_{1}(X,*)$ in $\pi_{n}(X,*)$}\}
+\end{equation}
+provided $X$ is connected. This is merely a structureless
+set. The proof of this is very simple. First there is a natural
+map
+\begin{equation}
+\pi_{n}(X,*)\to\homotopyClass(S^{n},X),
+\end{equation}
+the only difference is we fix a point in the domain---this map is
+surjective (that's obvious). Because there is a map
+\begin{equation}
+f\colon S^{n}\to X
+\end{equation}
+such that $*\mapsto f(*)=\widetilde{*}$. Is this a spheroid?
+No. But we may take another path $\alpha$ from $*$ to $*$, so we
+can consider $\alpha(f)$. We explained how to do this. The remark
+is $\alpha(f)\homotopic f$ homotopic, as a map of spheres. We
+should look at the kernel of
+\begin{equation}
+\pi_{n}(X,*)\to\homotopyClass(S^{n},X).
+\end{equation}
+It is clear $\alpha(f)\homotopic f$ homotopic as spheroids, or
+more precisely as a map of spheres.
+
+
+

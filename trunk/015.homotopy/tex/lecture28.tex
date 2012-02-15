@@ -1,0 +1,87 @@
+%%
+%% lecture28.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 20:51:34 2011 alex
+%% Last update Tue Dec 27 20:51:34 2011 alex
+%%
+
+
+\begin{wrapfigure}{r}{10pc}
+  \vspace{-20pt}
+  \centering
+  \includegraphics{img/lecture28.0}
+\end{wrapfigure}
+Now we will prove there exists a homotopy exact sequence of a
+fibration. Really we are proving the homotopy lifting property
+for locally trivial fibations. Lets suppose we have $p\colon E\to
+B$ for us the essential caase is a fibration where
+\begin{equation*}
+p^{-1}\{b\}\homotopic F;
+\end{equation*}
+and if we have
+\begin{equation*}
+\psi\colon X\to E
+\end{equation*}
+where $X$ is some arbitrary (but fixed) topological space, then
+we can compose to get a map 
+\begin{equation*}
+p\circ\psi\colon X\to B.
+\end{equation*}
+Lets write $\varphi=p\circ\psi$. We may say that $\psi$ lies
+above $\varphi$, or $\psi$ is a \define{Lifting}\index{Lifting}
+of $\varphi$. Not every map can be lifted, in particular the map
+\begin{equation}
+\id{B}\colon B\to B
+\end{equation}
+this lifting map is prcisely what is called a
+\define{Section}\index{Section!as Lift of Identity}.
+
+For a locally trivial fibration, every homotopy may be lifted
+provided the cell complex $X$ is ``good enough'' (i.e.,
+polyhedral). Precisely this means that if we have a map
+\begin{equation}
+\varphi\colon X\to B
+\end{equation}
+and suppose we have lifted it to get a map
+\begin{equation}
+\psi\colon X\to E,
+\end{equation}
+then
+\begin{equation}
+\varphi=p\circ\psi.
+\end{equation}
+But now we know that $\psi$ does not always exist. Assume we have
+a homotopy 
+\begin{equation}
+\varphi_{t}\colon X\to B
+\end{equation}
+with the property
+\begin{equation}
+\varphi_0=\varphi,
+\end{equation}
+then the statement is: if we start with a locally trivial
+fibration, there exists a homotopy $\psi_t$ such that
+$\psi_0=\psi$ and $p\circ\psi_t=\varphi_t$.
+
+We will prove this by induction (in some sense). We will prove
+something stronger, namely this lifting property for a pair. We
+assume $X$ is a cell complex, $A\propersubset X$ is a
+subcomplex. Or better, a polyhedron and subpolyhedron. This is
+the homotopy lifting property for pairs. We have the additional
+assumption that homotopy is lifted on $A$.
+
+\begin{thm}
+Let $(A,X)$ be a cellular pair, $\psi\colon X\to A$
+There exists a homotopy $\psi_t$ such that $\psi_0=\psi$,
+$p\circ\psi_t=\varphi_t$, and the lifted homotopy has the given
+value on $A$.
+\end{thm}
+
+In other words, we may begin on $A$, then extend it to $X$. We
+will now prove a particular case.
+
+\bigskip
+\noindent\textbf{TODO:} write up the proof.

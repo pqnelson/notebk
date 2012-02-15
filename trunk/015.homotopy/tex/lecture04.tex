@@ -1,0 +1,291 @@
+%%
+%% lecture04.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 17:57:21 2011 alex
+%% Last update Mon Dec 26 17:57:21 2011 alex
+%%
+
+
+\begin{wrapfigure}{l}{0.868in}
+  \vspace{-20pt}
+  \includegraphics{img/lecture4.0}
+  \vspace{-20pt}
+\end{wrapfigure}
+The last thing we did was consider something called a
+``handle''. It is a torus, but we cut out a hole. We take our
+hole anywhere we'd like. So lets have it be touching a vertex, as
+doodled on the left.
+
+Now what we claim is that we have an equality of cell complexes:
+\begin{equation}
+\includegraphics{img/lecture4.0}\quad
+\begin{array}{c}
+= \\
+\quad \\
+\quad \\
+\quad\\
+\end{array}\quad
+\includegraphics{img/lecture4.1}
+\vspace{-24pt}
+\end{equation}
+We obtain the right hand side through a cut. But is a cut
+allowed? Usually not, but since all the vertices are the same so
+it's okay here. We identify the base points to be the same. We
+also consider the Euler characteristic. Observe
+\begin{equation}
+\begin{split}
+\chi(\mbox{handle}) &= (\mbox{1 vertex})-(\mbox{3 edges})
++(\mbox{1 face})\\
+&= -1.
+\end{split}
+\end{equation}
+This is just the first step in our considerations.
+
+\begin{wrapfigure}{r}{1.5in}
+  \vspace{-20pt}
+  \centering
+  \includegraphics{img/lecture4.2}
+  \vspace{-20pt}
+\end{wrapfigure}
+The next thing we may consider is a sphere with several holes,
+and we paste on each hole a handle, as doodled on the right. So
+this is a sphere with $g$-holes and each hole we glue a handle to
+it. We should draw its cell complex as a polygon with
+$4g$-edges. What is the Euler characteristic for this surface? We
+can calculate it quickly as:
+\begin{subequations}
+\begin{align}
+\chi(\mbox{$g$-handled sphere})
+&=g\chi(\mbox{handles})+\chi(\mbox{sphere with $g$ holes})\\
+&=g\chi(\mbox{handles})+\chi\bigl((S^{2}-\mbox{$g$ holes}-(\mbox{$g$ holes}\bigr)\\
+&=g(-1)+(2-g),
+\end{align}
+\end{subequations}
+where we quickly compute
+\begin{equation}
+\chi(S^{2})=\chi\bigl((S^{2}-\mbox{$g$ discs})\cup(\mbox{$g$ discs}\bigr)=2
+\end{equation}
+for the sphere.
+
+\begin{wrapfigure}{r}{4.25pc}
+  \vspace{-24pt}
+  \includegraphics{img/lecture4.3}
+  \vspace{-24pt}
+\end{wrapfigure}
+One more interesting thing, take a rectangle and identify
+opposite edges and reverse orientation. We doodle this on the
+right. We will cut this to get 
+
+\begin{wrapfigure}{l}{4.25pc}
+  \vspace{-16pt}
+  \includegraphics{img/lecture4.4}
+  \vspace{-16pt}
+\end{wrapfigure}
+\noindent two triangles along the dashed
+line. We erase the vertical line distinguishing the two
+triangles and we get the cell complex doodled to the left. This
+is the cell structure for the Mobius band\index{Mobius Band!Cell Structure|textbf}.
+The boundary of the Mobius band is a circle. We may take a sphere
+with several punctures and paste Mobius bands instead of
+handles. We do not want to go into the theory of surfaces, so we
+leave it to the reader's imagination how this is done.
+
+We will work with compact 2-dimensional manifolds.
+
+\begin{thm}
+All compact 2-dimensional manifolds are spheres with handles or
+Mobius bands.
+\end{thm}
+
+\subsection{Homotopy}
+Now we would like to go to the definition of homotopy. Before
+going to this topic, we'd like to discuss operations on
+topological spaces. Let us take two sets $A$, $B$ and we may
+construct their (direct) product
+\begin{equation}
+A\times B=\{(a,b)\mid a\in A, b\in B\}.
+\end{equation}
+Now everything is very simple, if we have
+\begin{equation}
+f\colon X\times Y\to Z,
+\end{equation}
+then this map is a function of two variables $f(x,y)$. That's
+obvious. Now there is a standard procedure. We may consider one
+of the variables as a \emph{parameter}. Fix $x$, we get a map
+\begin{equation}
+f_{x}\colon Y\to Z
+\end{equation}
+We say\index{Currying Functions}
+\begin{equation}
+\hom(X\times Y,Z)=\hom\bigl(X,\hom(Y,Z)\bigr).
+\end{equation}
+This is a completely trivial formula.
+
+\index{Product Topology|(}
+We now say that $A$, $B$ are topological spaces. Then $A\times B$
+may also be considered as a topological space. If $a\in A$ has  a
+neighborhood $a\in U\propersubset A$, and similarly let $b\in
+V\propersubset B$ be a neighborhood, then
+\begin{equation}
+(a,b)\in U\times V\propersubset A\times B
+\end{equation}
+is a neighborhood.  And all other open sets of $A\times B$ are
+obtained by arbitrary unions and finite intersections of these
+guys.
+\index{Product Topology|)}
+
+Now, we have topological spaces $X$, $Y$. We may speak of
+continuous maps
+\begin{equation}
+f\colon X\times Y\to Z
+\end{equation}
+and consider this construction $f(x,y)=f_{x}(y)$, obtaining a map
+\begin{equation}\label{eq:lec04:belovedFormula}
+f_{x}\colon Y\to Z
+\end{equation}
+fixing $x\in X$. What about our beloved formula \eqref{eq:lec04:belovedFormula}? Is it correct
+when the maps we take are continuous maps? It's a meaningless
+question, we don't know the topology of continuous maps $Y\to
+Z$. There is a meaningful question, namely what is the topology
+of the set of continuous maps $\hom(Y,Z)$? This is not entirely
+honest, but not dishonest either! We define the topology on
+$\hom(Y,Z)$ to satisfy
+\begin{equation}
+\hom(X\times Y,Z)=\hom\bigl(X,\hom(Y,Z)\bigr).
+\end{equation}
+We would like to construct topological invariants (for this space
+of continuous maps). 
+
+One is the number of connected components. Consider $\hom(X,Y)$,
+if we fix $X$ it's a topological invariant for $Y$; and if we fix
+$Y$, the number of connected components of $\hom(X,Y)$ is a
+topological invariant for $X$. 
+But still we may consider the number of components for
+$\hom(X,Y)$, and we indicate this by\index{$\homotopyClass(X,Y)$|textbf}
+\begin{equation}
+\hom(X,Y)=\homotopyClass(X,Y)
+\end{equation}
+denoted with the brackets. Lets rephrase this in a more
+pedestrian way. Remember a component is connected if for any pair
+of points, there is a path connecting them. We
+say\index{$f\homotopic g$!Homotopic Maps}\index{Homotopic!Maps|textbf}
+\begin{equation}
+f_{0}\homotopic f_{1}\mbox{ homotopic}
+\end{equation}
+if and only if there is a path in the space of maps connecting
+these guys. What does it mean? Well, we have a path $f_{t}$ where
+as $t\in[0,1]$ varies and $f_{t}\in\hom(X,Y)$ continuously
+varies. So really, it's a path in $\hom(X,Y)$. But it is
+specifically such that
+\begin{equation}
+f_{t}|_{t=0}=f_{0}\quad\mbox{and}\quad
+f_{t}|_{t=1}=f_{1}
+\end{equation}
+This may be seen as a deformation of the path from $f_0$ to
+$f_1$. We avoid difficulties by writing
+\begin{equation}
+f_{t}(x)=f(x,t)
+\end{equation}
+as a continuous family of paths. We can now give another
+definition; let
+\begin{equation}
+f_{0},f_{1}\colon X\to Y
+\end{equation}
+be continuous, we say they are
+\begin{equation}
+f_{0}\homotopic f_{1}\mbox{ homotopic}
+\end{equation}
+if there exists a map
+\begin{equation}
+F\colon X\times I\to Y
+\end{equation}
+such that
+\begin{equation}
+F(x,0)=f_{0}(x)\quad\mbox{and}\quad F(x,1)=f_{1}(x).
+\end{equation}
+We did nothing new, we just gave a different definition of what
+we had\footnote{Alright, you got me, it's not even a different
+  definition: it's just slightly different notation!}.
+
+\begin{wrapfigure}{r}{1in}
+  \vspace{-20pt}
+  \centering
+  \includegraphics{img/lecture4.5}
+\end{wrapfigure}
+
+The first example is $S^{1}\to\RR^2$. It's a closed curve, as
+doodled on the right. We see every such map is homotopic to the
+zero map. How do we see this? Well, the light gray lines indicate
+the $t$ value, with $t=1$ being the outer most curve and $t=0$
+being the centered dot. This means that $S^{1}\propersubset\RR^2$  
+is contractible to a point. We may contract $\RR^2$ to a point
+since
+\begin{equation}
+\id{\RR^2}\homotopic\mbox{trivial map}
+\end{equation}
+homotopic, which implies $\RR^{2}$ is contractible. We can write 
+\begin{equation}
+f_{t}(x)=tx
+\end{equation}
+but that's a triviality.
+
+Lets consider the simplest nontrivial case. Lets take
+\begin{equation}
+S^{1}\to\RR^{2}-0
+\end{equation}
+
+\begin{wrapfigure}{r}{2pc}
+  \vspace{-20pt}
+  \centering\includegraphics{img/lecture4.6}
+  \vspace{-20pt}
+\end{wrapfigure}
+Here we have the following picture: if the point deleted is
+inside the circle, we cannot do anything. We cannot contract it
+to a point. We could, on the other hand, 
+
+\begin{wrapfigure}{l}{4pc}
+  \vspace{-16pt}
+  \centering\includegraphics{img/lecture4.7}
+  \vspace{-20pt}
+\end{wrapfigure}
+\noindent consider maps that go
+around the deleted point twice. This map is not homotopic to
+either zero or the map which goes around the deleted point
+once. Convince yourself this is the only topological invariant.
+
+\index{Homotopic!Spaces}We have a space $X$ and a space $Y$, we have maps
+\begin{equation}
+f\colon X\to Y\quad\mbox{and}\quad g\colon Y\to X
+\end{equation}
+We say $X\homotopic Y$ homotopic if and only if
+\begin{equation}
+f\circ g\homotopic\id{Y}\quad\mbox{and}\quad g\circ
+f\homotopic\id{X}.
+\end{equation}
+\begin{thm}
+If we have homotopically equivalent spaces $X$ and $Y$, then
+$\homotopyClass(A,X)=\homotopyClass(A,Y)$ for any space $A$, and
+$\homotopyClass(X,B)=\homotopyClass(Y,B)$ for any space $B$.
+\end{thm}
+We call $\homotopyClass(X,Y)$ the \define{Homotopic Classification of Maps}.
+\index{Homotopy!Classification of Maps}
+We are going to prove that this relation $X\homotopic Y$
+homotopic, sometimes called ``homotopic equivalence'', is really
+an equivalence relation.
+\exercises
+\begin{xca}[Reflexivity]
+Prove or find a counter-example: for any $X$, $X\homotopic X$
+homotopic. 
+\end{xca}
+\begin{xca}[Symmetry]
+Prove or find a counter-example: for any $X$, $Y$ topological
+spaces, $X\homotopic Y$ if and only if $Y\homotopic X$.
+\end{xca}
+\begin{xca}[Transitivity]
+Prove or find a counter-example: let $X$, $Y$, $Z$ be topological
+spaces such that $X\homotopic Y$ and $Y\homotopic Z$ homotopic,
+both imply  $X\homotopic Z$ homotopic.
+\end{xca}

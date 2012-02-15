@@ -1,0 +1,226 @@
+%%
+%% lecture26.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 20:47:25 2011 alex
+%% Last update Tue Dec 27 20:47:25 2011 alex
+%%
+\subsection{Aside on Principal Fibrations}
+Some particular cases of fibrations are called \define{Principal
+Fibrations}\index{Principal Fibrations}\index{Fibration!Index}\index{Bundle!Principal}. Let $G$ be 
+a topological group (usually a Lie group; for notes on Lie
+groups, see Nelson~\cite{nelson2}).  Lets consider a space $E$
+where $G$ acts freely\index{Action!Free}\index{Group Action!Free}. What does it mean? Well, for any nontrivial $g\in G$
+there are no fixed points, i.e.,
+\begin{equation}
+gx\not=x\quad\mbox{provided}\quad g\not=e.
+\end{equation}
+The obvious exception is the identity transformation has fixed
+points, but that's a triviality. Although this is unsatisfactory,
+but sufficient for us. Given such an action, every orbit $O_{x}$
+is in one-to-one correspondence with $G$. We have
+\begin{equation}
+g\mapsto xg
+\end{equation}
+using the right action for notational convenience. So
+\begin{equation}
+G\to O_{x}
+\end{equation}
+is bijective and continuous. This is a topological equivalence!
+Moreover, if $G$ is compact, then every continuous one-to-one
+mapping has a continuous inverse. Then every orbit is
+topologically equivalent to $G$. We have a map $E\to E/G$ which
+is a fibration.
+\begin{thm}\index{Section!Existence of a ---!Implies Trivial Principal Fibration}
+A principal fibration has a section if and only if it is a
+trivial fibration.
+\end{thm}
+We should additionally assume that $G$ is compact, and $B=E/G$ is
+at least locally compact.
+Lets suppose we have a section 
+\begin{equation}
+q\colon B\to E, 
+\end{equation}
+consider the mapping
+\begin{subequations}
+\begin{equation}
+f\colon B\times G\to E
+\end{equation}
+defined by
+\begin{equation}
+f(b,g)=q(b)g
+\end{equation}
+\end{subequations}
+which is continuous. So $F$ is one-to-one and continuous. If
+everything is compact, it's a homeomorphism. It's a condition of
+triviality for a principal bundle.
+Also note
+\begin{equation}\index{Section!Local}
+\begin{pmatrix}
+\mbox{Local Triviality}\\
+\mbox{of Bundle}
+\end{pmatrix} \implies \begin{pmatrix}\mbox{Existence
+of}\\ \mbox{ Local Sections}
+\end{pmatrix}.
+\end{equation}
+We will do the following trick: include existence of lcoal
+sections into the definition of a free action.
+
+There is an important case, namely a subgroup $H\propersubset G$
+of a topological group. Itacts on the left or on the right, so
+lets consider the action
+\begin{equation}
+(g,h)\mapsto gh
+\end{equation}
+for some $g\in G$ and $h\in H$. What is the space of orbits? It
+is $G/H$, the space of cosets. We have
+\begin{equation}
+G\xrightarrow{H}G/H
+\end{equation}
+and it is a principal fibre bundle. We assume compactness
+everywhere (otherwise, we need to worry about the existence of
+sections, etc.).
+
+Suppose $G$ acts transitively on $B$. Lets take a point $b\in B$,
+then we may map $G\to B$ by considering
+\begin{equation}
+g\mapsto\varphi_{g}(b)
+\end{equation}
+where
+\begin{equation}
+\varphi\colon G\to\aut(B).
+\end{equation}
+But this is precisely the picture we had before. If we denote
+$\mathrm{Stab}(b)=H$, then $B$ corresponds to $G/H$.
+
+\subsection{Returning to Stiefel Manifolds}
+Now we would like to consider two different cases: the real case,
+and the complex case. But we don't really want to talk about
+quaternionic case, but everything we say may be repeated for
+quaternions. So what are the Stiefel Manifold $V_{n,k}$? It is
+precisely $k$ column vectors in $\RR^n$ which are
+orthonormal. But
+\begin{equation}
+V_{n,n}(\RR)=\ORTH{n}
+\end{equation}
+may be considered as an identity. For the complex case, we see we
+get
+\begin{equation}
+V_{n,n}(\CC)=\U{n}
+\end{equation}
+the unitary group! The quaternionic case, we also have something
+of this kind
+\begin{equation}
+V_{n,n}(\HH)=\Sp{n}
+\end{equation}
+the Symplectic group.
+
+We had explained
+\begin{equation}
+V_{n,n-1}(\RR)=\SO{n},
+\end{equation}
+and some consideration gives the fact
+\begin{equation}
+V_{n,n-1}(\CC)=\SU{n}.
+\end{equation}
+In particular, what we would like to say is that 
+\begin{equation}
+V_{2,1}(\CC)=\SU{2}.
+\end{equation}
+So this is a pair of complex numbers $x,y\in\CC$ such that 
+\begin{equation}
+|x|^{2}+|y|^{2}=1,
+\end{equation}
+which is a sphere in $\CC^2\iso\RR^4$. So $\SU{2}\iso
+S^{3}$.\index{$\SU{2}$!Homeomorphic to $S^3$}
+
+Now it is easy to check that
+\begin{equation}
+\SO{3}\iso\SU{2}/\ZZ_{2}.
+\end{equation}
+This may be done in many different ways. One is to consider a
+3-dimensional representation of $\SU{2}$. Or we may consider an
+action of $\SU{2}$ on Hermitian matrices. We won't go into detail
+here. By the way, this fact implies that
+\begin{equation}
+\SO{3}\iso\RP^{3}
+\end{equation}
+as topological spaces, and we used this before. Homotopy groups
+care about the topological structure of spaces, so we have
+\begin{equation}
+\pi_{k}\bigl(\SO{3}\bigr)\iso\pi_{k}\bigl(\SU{2}\bigr)
+\end{equation}
+for any $k\in\NN$.
+
+After these remarks, we want to construct some fibrations. We do
+this in two ways. One way take $V_{n,k}$ and maps
+\begin{equation}
+(e_{1},\dots,e_{k})\mapsto e_{1}.
+\end{equation}
+Note we could have mapped it to $e_k$, it doesn't really
+matter. This gives us a mapping
+\begin{equation}
+V_{n,k}\to V_{n,1}.
+\end{equation}
+What's the fibre? Well, we fix one vector $e_1$ and we have
+$(k-1)$ vectors orthogonal to it. Thus we have $V_{n-1,k-1}$ be
+the fibre. So we have for each $k$ a fibration of this
+kind. Observe
+\begin{equation}
+V_{n,n}\to V_{n,1}
+\end{equation}
+has fibre $V_{n-1,n-1}$. But we know these guys! It's the
+fibration
+\begin{equation}
+\ORTH{n}\to S^{n-1}
+\end{equation}
+with fibre $\ORTH{n-1}$, in the $\RR$ case. (For the $\CC$ case
+we have $\U{n}\to S^{2n-1}$ with fibre $\U{n-1}$.) We see that
+$\ORTH{n}$ acts on $\RR^n$ which preserves the scalar product and
+length (likewise describes the action of $\U{n}$ on $\CC^n$). So
+it follows every sphere is a quotient
+\begin{equation}
+\ORTH{n}/\ORTH{n-1}=S^{n-1}
+\end{equation}
+in the real case, and
+\begin{equation}
+\U{n}/\U{n-1}=S^{2n-1}
+\end{equation}
+for the complex case.
+
+We can get information about the connection of $\U{n-1}$, $\U{n}$
+if we know the homotopy groups for $S^{2n-1}$. We know for small
+$k$ that
+\begin{equation}
+\pi_{k}(S^{2n-1})=0.
+\end{equation}
+Thus 
+\begin{equation}
+\pi_{k}\bigl(\U{n-1}\bigr)\iso\pi_{k}\bigl(\U{n}\bigr).
+\end{equation}
+We have a similar situation for the orthogonal group, for $k<n$.
+
+\exercises
+\begin{xca}
+Prove that every graph (one-dimensional cell complex) has trivial
+homotopy groups in dimensions $>1$. 
+
+Hint. Every simply connected graph is contractible. (This is true
+also for infinite graphs, but to solve the problem it is
+sufficient to check this for finite graphs.)
+\end{xca}
+\begin{xca}
+Calculate relative homotopy groups $\pi_{k}(S^n, S^1, ∗)$ where
+$k\leq n$, $n\geq3$. Here $S^1$ stand for a circle embedded into
+$n$-dimensional sphere $S^n$. 
+\end{xca}
+\begin{xca}
+Let us consider a letter $\Phi$ as three-dimensional object (in
+other words we consider $\Phi$ as a small neighborhood of a graph
+in $\RR^3$). One can say also that we consider three-dimensional
+body $\Phi$ bounded by a sphere with handles
+$\partial\Phi$. Calculate relative homotopy groups 
+$\pi_{n}(\Phi, \partial\Phi, ∗)$ where $∗\in\partial\Phi$.
+\end{xca}

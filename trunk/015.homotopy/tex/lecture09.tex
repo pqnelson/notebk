@@ -1,0 +1,241 @@
+%%
+%% lecture09.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 14:20:05 2011 alex
+%% Last update Tue Dec 27 14:20:05 2011 alex
+%%
+Now,
+\begin{equation}
+\homotopyClass(S^1,S^1)=\ZZ
+\end{equation}
+the homotopy classification of maps $S^1\to S^1$ are in
+one-to-one correspondence with $\ZZ$. So we are a little bit
+sloppy here. But the important question: what about
+$\homotopyClass(S^1,S^2)$? Well, every map $f\colon S^1\to S^2$
+is homotopically equivalent to the constant map. 
+
+%% We can see this
+%% by considering the map taking $S^1$ to the equator. Now what?
+%% Well, suppose we continuously deform this fixing one point on the
+%% equator, while shrinking our circle. We can continue shrinking
+%% until the deformation contracts the equator to a single point.
+
+The proof is as follows. Suppose $f\colon S^1\to S^2$, take
+$x\in S^2$ which is not covered by the image $x\notin
+f(S^1)$. Then we may delete this $x$. But we get
+\begin{equation}
+S^2-\{x\}=\RR^2
+\end{equation}
+which is contractible. We may contract the map to a point. For
+physicists, it's a good proof; but for mathematicians---no! We
+could have a Peano curve, where
+\begin{equation}
+f(S^1)=S^2
+\end{equation}
+i.e., a space filling curve. Differentiable, or even piecewise
+differentiable,maps of this kind are impossible. We get a trivial
+lemma:
+\begin{lem}[Trivial]
+If $S^1\to\RR^n$, every such map may be approximated as good as
+you want by piecewise linear maps.
+\end{lem}
+\begin{proof}
+But this is a triviality. Look, we have a circle, or an interval,
+we may decompose it into small pieces. If we have a map to
+$\RR^n$, we may approximate the map  along the subdivision by a
+linear map. If the subdivision is in ``small pieces'', then our
+approximation is ``good.''
+\end{proof}
+This lemma is pretty much universal, we may substitute the domain
+by $S^2$ or any cell complex. We may consider a rectangle, divide
+it up into ``small triangles''---this is called a
+\define{Triangulation}\index{Triangulation}. If we consider
+\begin{equation}
+[0,1]\times[0,1]\to\RR^2,
+\end{equation}
+we may approximate it by piecewise linear functions. We extend it
+uniquely by linearity (perhaps ``affine'' is a better choice of
+words than ``linear''). We may approximate the maps that are
+horrible by maps that are quite nice. But now, when we
+approximate, if we have two closed maps to a sphere---they are
+homotopic. We may say every map is homotopic to a good map.
+
+A minor technicality with the codomain. We either generalize the
+notion of piecewise linear map to $S^2$, or (the easier choice)
+take a piece of $S^2$ homeomorphic to a square. We take the
+preimage of this to construct a piecewise linear map. Then we use
+the lemma on extension of homotopy, we get an extension homotopic
+to the approximation, and so on. Consider
+$\homotopyClass(S^k,S^n)$ for $k<n$. We see that all maps are
+homotopically trivial.
+
+\subsection{Fundamental Group}
+\index{Loop Space|(}\index{Space!Loop|(}
+A very important notion that may be explained as follows: we have
+a space $X$, and maps $S^1\to X$. We want to consider their
+homotopy classes, but we want some algebraic structure. So we
+need some structure, some operation. These maps are loops. We
+will assume that our $S^1$ has a marked point, and $X$ has a
+marked point; we will say that we would like to consider maps
+\begin{equation}
+(S^1,*)\to(X,x_0)
+\end{equation}
+which take the marked point to the marked point. What do we have?
+We have two loops that start and finish at the same point. People
+use the word ``concatenation''\index{Concatenation!of Paths}. We
+get an operation of two loops. %% We will write this out as
+%% \begin{equation}
+%% (f*g)(\alpha)=\begin{cases}
+%% f(2\alpha) & 0\leq\alpha<\pi\\
+%% g(2\alpha-2\pi) & \pi\leq\alpha<2\pi
+%%   \end{cases}
+%% \end{equation}
+%% to indicate the concatenation of $f,g\colon S^1\to X$.
+We write $f*g$ for the concatenation of $g$ followed by
+$f$.\marginpar{$f*g$ = concatenation of paths}
+Now we may define the fundamental
+group\index{Fundamental Group}\index{Group!Fundamental}. We
+consider
+\begin{equation}
+\homotopyClass({(S^1,*)},{(X,x_0)})
+\end{equation}
+so if $f\homotopic f'$ and $g\homotopic g'$, then
+\begin{equation}
+f*g\homotopic f'*g'
+\end{equation}
+homotopic. This operation $f*g$ is associative and has
+inverses. We thus have a group, and we call it the
+\define{Fundamental Group} denoted $\pi_{1}(X,x_0)$\index{$\pi_{1}(X,x_0)$}.
+As usual, this is a sloppy definition. We will give a more
+precise one.
+
+First: what is a loop? It is easier, formally, to work with
+intervals. So we will consider
+\begin{subequations}
+\begin{equation}
+f\colon[0,1]\to X
+\end{equation}
+and we require 
+\begin{equation}
+f(0)=f(1)=x_0
+\end{equation}
+\end{subequations}
+both endpoints are mapped to the marked point. But this is the
+same as a map of a circle, which starts and stops at the marked
+point. Why did we take $[0,1]$? I don't know! We could take
+instead
+\begin{equation*}
+f\colon[0,a]\to X
+\end{equation*}
+for any $a>0$ with the condition $f(0)=f(a)=x_0$. But topology
+doesn't care about this: $[0,a]\iso[0,1]$ for topologists. Now we
+can consider the space of all these maps denoted by $\Omega(X,x_0)\propersubset\hom\bigl([0,1],(X,x_0)\bigr)$.%
+\index{$\Omega(X,x_0)$}%
+Now we can modify this if we we consider the space of maps
+\begin{equation}\index{$\widetilde{\Omega}(X,x_0)$}
+\widetilde{\Omega}(X,x_0)=\{ f\colon[0,a]\to(X,x_0)\mid a>0, f(0)=f(a)=x_0\}.
+\end{equation}
+Are these spaces the same? No, of course not. But
+\begin{equation}
+\Omega\iso\widetilde{\Omega}
+\end{equation}
+which is a triviality since
+\begin{equation}
+\Omega\propersubset\widetilde{\Omega}
+\end{equation}
+is embedded, we may retract $\widetilde{\Omega}$ to $\Omega$. We
+may deform continuously $[0,a]\homotopic[0,1]$ which is why we
+may confidently state $\Omega\homotopic\widetilde{\Omega}$
+homotopic.
+
+We now want to define multiplication in these spaces. This is
+easy to do for $\widetilde{\Omega}$. If we have
+\begin{subequations}
+\begin{equation}
+f\colon[0,a]\to(X,x_0)
+\end{equation}
+and
+\begin{equation}
+g\colon[0,b]\to(X,x_0)
+\end{equation}
+\end{subequations}
+then we may define their concatenation\index{Concatenation|textbf} as
+\begin{subequations}
+\begin{equation}
+h=f*g\colon[0,a+b]\to(X,x_0)
+\end{equation}
+where
+\begin{equation}
+h(x) = \begin{cases}f(x) & 0\leq x\leq a\\
+g(x-a) & a\leq x\leq b+a.
+\end{cases}
+\end{equation}
+\end{subequations}
+It is very clear in this picture this concatenation is an
+associative operation. We don't need to prove
+\begin{equation}
+(f*g)*h=f*(g*h).
+\end{equation}
+So $\widetilde{\Omega}$ has an operation called
+``concatenation'', and it is an associative operation. People
+usually work with $[0,1]$ but concatenation is still defined for
+\begin{equation}
+f,g\colon[0,1]\to(X,x_0).
+\end{equation}
+We have
+\begin{equation}
+h(x) = \begin{cases}f(2x) & 0\leq x\leq\frac{1}{2}\\
+g(2x-1) & \frac{1}{2}\leq x\leq 1
+\end{cases}
+\end{equation}
+for our concatenation operation. Is it associative? No, it will
+not be associative, because look
+\begin{equation}
+(f*g)*h = \begin{cases}
+f(4x) & 0\leq x\leq 1/4\\
+g(4x-1) & 1/4\leq x\leq 1/2\\
+h(2x-1) & 1/2\leq x\leq1
+  \end{cases}
+\end{equation}
+but if we consider instead
+\begin{equation}
+f*(g*h) = 
+\begin{cases}
+f(2x) & 0\leq x\leq 1/2\\
+g(4x-1) & 1/2\leq x\leq 3/4\\
+h(4x-2) & 3/4\leq x\leq1
+\end{cases}
+\end{equation}
+So we do not have associativity, strictly speaking. But if we
+care up to homotopy, we have full associativity for
+$\widetilde{\Omega}$. 
+
+Now we may define the fundamental group. What are we doing? Well,
+as a set $\pi_{1}(X,x_0)$\index{$\pi_{1}(X,x_0)$} is the set of components
+\begin{equation}
+\pi_{0}\bigl(\Omega(X,x_0)\bigr)=\pi_{0}\bigl(\widetilde{\Omega}(X,x_0)\bigr)
+\end{equation}
+but in $\Omega$ we have multiplication (and we have it in
+$\widetilde{\Omega}$ too), and --- what a coincidence! --- we
+have multiplication in $\pi_{0}(-)$. And, moreover,
+$\pi_{0}(\Omega(X,x_0))$ has multiplication be associative, which
+implies associativity in the others.
+
+We have a unit element, namely
+\begin{equation}
+e(t)=x_0
+\end{equation}
+where we stay at the marked point. We may say
+\begin{equation}
+e*f\homotopic f.
+\end{equation}
+It is very easy to say
+\begin{equation}
+f^{-1}(t)=f(1-t)
+\end{equation}
+as the path that goes in the opposite direction. We end up with
+the fundamental group.
+\index{Loop Space|)}\index{Space!Loop|)}

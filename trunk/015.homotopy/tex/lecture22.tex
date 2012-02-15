@@ -1,0 +1,210 @@
+%%
+%% lecture22.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 31 12:00:40 2011 alex
+%% Last update Sat Dec 31 12:00:40 2011 alex
+%%
+
+Let $\Sigma$ be a 2-dimensional manifold\index{Manifold}. Let
+$\widetilde{\Sigma}$ be the universal cover of $\Sigma$. But
+there are only two choices for $\widetilde{\Sigma}$: $S^2$ or
+$\RR^2$. For simplicity we will suppose that $\Sigma$ is
+compact. We know how to calculate $\pi_{1}(\Sigma)$, the only
+thing we need is the statement that $\pi_{1}(\Sigma)$ is finite
+in two cases: $\Sigma=S^2$ or $\RP^2$. This is easy looking at
+the Abelianization of the fundamental group. In both of these
+cases, $\widetilde{\Sigma}=S^2$. We have
+\begin{equation}
+\pi_{k}(\Sigma)=\pi_{k}(\widetilde{\Sigma})
+\end{equation}
+for $k\geq2$. Now let us suppose $\pi_{1}(\Sigma)$ is
+infinite. Then $\widetilde{\Sigma}$ is not compact. Why? Because
+when we look at the covering
+\begin{equation*}
+\widetilde{\Sigma}\to\Sigma
+\end{equation*}
+the number of sheets in this covering are the number of elements
+in $\pi_{1}(\Sigma)$, which is infinite. Over every disc, we have
+an infinite number of discs, which is definitely noncompact. We
+have only one chocie for $\widetilde{\Sigma}$. We see then that
+\begin{equation}
+\pi_{k}(\Sigma)=\pi_{k}(\RR^2)=0
+\end{equation}
+for $k\geq2$.
+
+We would like to show 
+\begin{equation}
+\pi_{k}(X\times Y)\iso\pi_{k}(X)\times\pi_{k}(Y).
+\end{equation}
+It's a one minute proof. If we have a mapping
+\begin{equation}
+f\colon Z\to X\times Y=\{(x,y)\}
+\end{equation}
+this map means $(x,y)=f(z)$. This means
+\begin{equation}
+x=f_{1}(z),\quad\mbox{and}\quad y=f_{2}(z).
+\end{equation}
+When we apply this to spheroids, everything follows. When we
+deform $f(z)$, we deform these two guys. We have, e.g., an
+$n$-torus be
+\begin{equation}
+T^n=(S^1)^n
+\end{equation}
+so $\pi_{k}(T^n)\iso\pi_{k}(S^1)^n$.
+ 
+\subsection{Relative Homotopy Groups}\index{Homotopy Group!Relative}
+\index{Relative Homotopy Group}\index{Reduced Homotopy Group|see{Relative Homotopy Group}}%
+\index{Relative Homotopy Group!Construction with Spheroids|(}
+We will have a pair of topological spaces $X$, $A$ (so
+$A\propersubset X$), and consider $*\in A\propersubset X$. For
+simplicity, $A$ and $X$ are connected. We will define a
+\define{Relative Homotopy Group} $\pi_{n}(X,A,*)$ or sometimes
+$\pi_{n}(X,A)$. We will neglect something in $X$, namely, we
+neglect $A$ --- this is the notion of ``relative''.
+
+Recall we defined $\pi_n$ by means of spheroids
+\begin{equation*}
+(S^n,*)\to(X,*).
+\end{equation*}
+The homotopy group $\pi_{n}(X,*)$ is then the homotopy classes of
+spheroids. This is nice but incomplete. We need to define an
+operation. We did this by considering a
+spheroid\index{Spheroid!as Map on Cube} as a map on a
+cube, generalizing
+concatenation\index{Concatenation!Generalization of ---}.
+
+Lets consider something similar for relative homotopy groups. We
+introduce \define{Relative Spheroids}\index{Spheroid!Relative}\index{Relative Spheroid} %
+$(\bar{D}^n,S^{n-1},*)$ where 
+\begin{equation}
+S^{n-1}=\partial\bar{D}^{n},
+\end{equation}
+and relative spheroid is a map
+\begin{equation}
+(\bar{D}^n,S^{n-1},*)\to(X,A,*).
+\end{equation}
+This means we have a map
+\begin{equation}
+f\colon\bar{D}^{n}\to X
+\end{equation}
+such that
+\begin{equation}
+f\colon\partial\bar{D}^{n}\to A
+\end{equation}
+but $f(*)=*$. Such a map is a relative spheroid.
+
+The relative homotopy group $\pi_{n}(X,A,*)$\index{Relative Homotopy Group!in Terms of Relative Spheroids}
+is a set of homotopy classes of relative spheroids. It's exactly
+the same for ordinary homotopy group, the only difference is we
+use relative spheroids. We will discuss the operation later on.
+
+One relation we'd like to note is we have a map
+\begin{equation}
+\pi_{n}(X,A,*)\to\pi_{n-1}(A,*)
+\end{equation}
+from the relative homotopy group to the full homotopy group. Why?
+For a trivial reason that a relative spheroid
+\begin{equation}
+f\colon(\bar{D}^{n},S^{n-1},*)\to(X,A,*)
+\end{equation}
+is really a full spheroid on $A$. Thus $f\colon(S^{n-1},*)\to(A,*)$
+is an $(n-1)$-spheroid.
+\index{Relative Homotopy Group!Construction with Spheroids|)}
+
+A different formulation of the relative homotopy group.
+Recall we considered the space $\Omega$ of all closed loops
+starting and ending at $*$. We consider 
+\begin{equation*}
+\pi_{n}(X,*)=\pi_{n-1}(\Omega,*)
+\end{equation*}
+
+\begin{wrapfigure}{r}{1.5in}
+  \centering
+  \includegraphics{img/lecture22.0}
+\end{wrapfigure}\noindent\ignorespaces %
+Now what about the relative groups? We have $A\propersubset X$,
+consider all paths that are closed modulo $A$. That is to say
+\begin{equation}
+\Omega(A)=\{f\colon I\to X\mid f(0)=*, f(1)\in A\}
+\end{equation}
+This sort of path is doodled on the right, where it begins at the
+marked point and ends anywhere inside the gray region.
+We may consider its homotopy groups.
+Thus we may define $\pi_{n}(X,A,*)=\pi_{n-1}(\Omega(A),*)$ where
+$*(t)=*$ is the stationary path. Okay, this is a definition. We
+see this is a group. Also, for $n\geq3$ we see $\pi_{n}(X,A,*)$
+is Abelian. The only problem is that this is not a very good
+definition. 
+
+Let us decode this definition. Consider
+$\pi_{n-1}\bigl(\Omega(A),*\bigr)$. What is this? We define this
+in terms of spheroids as a map of a cube
+\begin{equation}
+f\colon I^{n-1}\to\Omega(A)
+\end{equation}
+which sends $\partial I^{n-1}\to*$. What is $\Omega(A)$? It
+consists of paths. Our function $f(t_1,\dots,t_{n-1})$ itself is
+a path, so really
+\begin{equation}
+f=f(t_1,\dots,t_{n-1},\tau)\in X.
+\end{equation}
+What ar ethe conditions on $f$? First of all, the condition is
+\begin{equation}
+f_{\tau}\colon\partial I^{n-1}\to *(\tau),
+\end{equation}
+so
+\begin{equation}
+f(\partial I^{n-1},\tau)=*(\tau).
+\end{equation}
+Another is that, for $\tau=0$, we have
+\begin{equation}
+f(\dots,0)=*
+\end{equation}
+be our marked point, whereas for $\tau=1$ we require
+\begin{equation}
+f(\dots,1)\in A
+\end{equation}
+and that's it!
+
+\begin{wrapfigure}{r}{1.5in}
+  \vspace{-30pt}
+  \centering
+  \includegraphics{img/lecture22.1}
+  \vspace{-24pt}
+\end{wrapfigure}
+We will try to reconcile everything. Consider $f\colon I^n\to X$.
+For $n=2$, we will have a square and when $\tau=1$ we go to
+$A$. This is doodled on the right. When $t=0,1$ we go to $*$ and
+when $\tau=0$ we also go to $*$.
+
+\marginpar{This needs to be rewritten for clarity} 
+\begin{wrapfigure}{l}{0.75in}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{img/lecture22.2}
+  \vspace{-12pt}
+\end{wrapfigure}
+For the $n=3$ case, we have the top face go to $A$ (it is shaded
+grey). This is really what is defined by Hatcher as a relative
+spheroid.
+But this is already defined. We should prove it is the same.
+Here we have the map of a ball, which sends its boundary to
+$A$. But here we have some extra stuff, namely, the rest of the
+boundary. We identify it witha pouint. So really, this is
+equvialent to a ball with a marked point.
+Consider
+\begin{equation}
+\left(I^n,I^{n-1}\times\{1\},(\partial I^{n-1}\times I)\cup(I^{n-1}\times\{0\})\right)\mapsto(\bar{D}^{n},S^{n-1},*)
+\end{equation}
+since they both are mapped to $(X,A,*)$.
+So this identifies the notion of a relative spheroid with
+Hatcher's notion of a spheroid. Observe
+\begin{equation*}
+(\partial I^{n-1}\times I)\cup(I^{n-1}\times\{0\})
+\end{equation*}
+is a contractible set. When we contract, the upperface is mapped
+to $S^{n-1}$ the whole boundary. So our new sense of relative
+spheroid agrees with the relative spheroid in the old sense.

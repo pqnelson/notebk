@@ -1,0 +1,150 @@
+%%
+%% lecture03.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Sep 29 11:03:37 2011 alex
+%% Last update Thu Sep 29 11:03:37 2011 alex
+%%
+We have a sequence of sets $X^{k}$ called a
+\define{$k$-Dimensional Skeleton}\index{Skeleton}. We get a $(k+1)$-dimensional
+skeleton by taking several closed balls $\overline{D}^{k+1}_{i}$
+and take
+\begin{equation}
+f_{i}\colon S^{k}\to X^{k}
+\end{equation}
+to paste $\partial\overline{D}^{k}_{i}$ to the $k$-dimensional
+skeleton. If we consider only the open balls, then
+\begin{equation}
+X^{k+1}=X^{k}\sqcup D^{k}_{1}\sqcup\dots\sqcup D^{k}_{n}
+\end{equation}
+(NB: this is the \emph{disjoint} union!) The skeleton is closed
+\begin{equation}
+\overline{X^{k}}=X^{k}
+\end{equation}
+This is more or less the definition given, which is fine for the
+finite-dimensional case. In general, we should note exclude the
+case when $k\in\NN$, then the cell complex is the union of all
+the skeletons:
+\begin{equation}
+X=\bigcup_{k\in\NN}X^{k}
+\end{equation}
+But we should think about the topology. We simply say that
+\begin{equation}
+U\propersubset X\mbox{ is open if }U\cap  X^{k}\mbox{ is open
+}\forall k.
+\end{equation}
+That's reasonable. We impose the condition that the embedding
+\begin{equation}
+X^{k}\into X
+\end{equation}
+is continuous. The preimage of an open set $U\propersubset X$ is
+then such that $U\cap X^{k}$ is open too. That is,
+$U\propersubset X$ is open if and only if $U\cap X^{k}$ is
+open. This means we take the weakest possible topology in
+$X$\dots well, the weakest one satisfying the requirement
+$U\propersubset X$ is open $\iff U\cap X^{k}$ is open. Lets
+consider some examples. 
+
+\begin{ex}
+Zero dimensional cell complexes are just collections of
+vertices. One-dimensional cell complexes are called
+\define{Graphs}\index{Graph!as One-Dimensional Complex}\index{Complex!Graph as a ---}. We have $\overline{D}^{1}$ be a line interval,
+the endpoints are the vertices in the $X^{0}$ skeleton. There are
+some cases when the graphs are topologically equivalent, e.g.,
+$E$ and $T$ are topologically equivalent.
+\end{ex}
+
+\begin{wrapfigure}{r}{0.7in}
+        \includegraphics{img/lecture3.0}
+\end{wrapfigure}
+We can prove some guys are topologically nonequivalent. The
+number of components is a topological invariant, so the letter
+``i'' is not equivalent to any uppercase letter. We introduce a
+notion of the \define{Degree of a Vertex}\index{Degree!of a Vertex}\index{Vertex!Degree} which is the number of
+edges going into the vertex, which is a bit ambiguous.
+But the degree of a vertex is a topological invariant. Why?
+Because we can give it a topological definition. The graph for
+$T$ as doodled on the right, we can pick three points of the
+graph such that
+\begin{equation}
+\mbox{graph}-(\mbox{3 points})=U\sqcup V
+\end{equation}
+where $U$ and $V$ are open sets. Degree should be a local notion,
+defined by the behavior of the graph in a neighborhood.
+
+We will say the degree of a vertex is less than or equal to $k$
+if in any neighborhood of the vertex we can find $k$ points such
+that after deleting our points, the connected component of the
+vertex is smaller than the union of the edges coming into this
+vertex. In graph theory, this operation of removing vertices in
+this manner is called a \define{Cut}\index{Cut|see{Vertex Cut}} (or ``\emph{Vertex Cut\/}''\index{Vertex!Cut}\index{Vertex Cut}).
+
+What is important is that degree of a vertex is defined in terms
+of connectedness. Although this notion of ``connectedness'' is a
+topological notion, Graph theorists use the confusingly obtuse
+term \define{Vertex Connectivity}\index{Vertex!Connectivity}\index{Vertex Connectivity}. So vertices of degree $k$ must be mapped to
+vertices of degree $k$. Thus $A\not\iso T$ is not a topological
+equivalence of graphs. If we cut any point from $T$, it's
+disconnected. However, if we cut a point in $A$ while retaining
+connectedness, it becomes topologically equivalent to $H$ --- any
+other cut renders it disconnected.
+
+\begin{wrapfigure}{r}{1in}
+        \includegraphics{img/lecture3.1}
+\end{wrapfigure}
+Consider the cell complex for the torus, as doodled on the right.
+We see that the skeleton can be described by a rectangle as its
+only cell in 2-dimensions.
+
+For a sphere we can consider it as many different cell
+complexes. For example, we can construct the sphere by
+\begin{equation}
+D^{2}/\partial D^{2}\iso S^{2}
+\end{equation}
+which has a single 2-cell, and a single vertex. On the other
+hand, if we take two discs $D^{2}_{0}$ and $D^{2}_{1}$, then
+consider
+\begin{equation}
+(D^{2}_{0}\sqcup D^{2}_{1})/(\partial D^{2}_{0}\sim \partial
+D^{2}_{1})\iso S^{2}
+\end{equation}
+we have 2 vertices, 2 edges, and 2 faces.
+
+Recall we discussed the Euler characteristic.\index{Euler Characteristic|textbf}
+We may define it as
+\begin{equation}\index{$\chi(X)$}
+\chi(X)=\sum(-1)^{n}\alpha_{n}
+\end{equation}
+where $\alpha_{n}$ is the number of $n$-cells. This is a
+topological invariant, it is the simplest one. It obeys
+\begin{equation}
+\chi(A\sqcup B)=\chi(A)+\chi(B)
+\end{equation}
+So
+\begin{equation}
+\begin{split}
+\chi(\mbox{torus}) &= (\mbox{1 vertex})-(\mbox{2 edges})+(\mbox{1 face})\\
+&=0.
+\end{split}
+\end{equation}
+Observe for the sphere we have
+\begin{equation}
+\begin{split}
+\chi(\mbox{sphere}) &= (\mbox{2 vertices})-(\mbox{2
+edges})+(\mbox{2 faces})\\
+&=2.
+\end{split}
+\end{equation}
+Quite simple!
+
+\begin{wrapfigure}{r}{1.68in}
+  \vspace{-36pt}
+  \includegraphics{img/lecture3.2}
+  \vspace{-36pt}
+\end{wrapfigure}
+We consider a handle\index{Handle}, obtained by taking a torus and deleting an
+open ball. It is an example of a manifold/surface with
+boundary. We may take a sphere and delete several discs. We paste
+in each cut-out disc a handle.

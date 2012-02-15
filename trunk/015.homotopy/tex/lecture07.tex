@@ -1,0 +1,184 @@
+%%
+%% lecture07.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 21:18:08 2011 alex
+%% Last update Mon Dec 26 21:18:08 2011 alex
+%%
+
+\begin{lem}[Homotopy Extension Property]
+Let us suppose we have a pair $A\propersubset X$ closed and we
+have a map
+\begin{equation}
+F\colon X\to Y.
+\end{equation}
+We can restrict our $F$ to $A$,
+\begin{equation}
+f=\left.F\right|_{A}
+\end{equation}
+Suppose we have a deformation $f_{t}\colon A\to Y$ such that
+$f_{0}(a)=F(a)$ for all $a\in A$. What we would like to do is
+extend, construct a family of maps
+\begin{equation}
+F_{t}\colon X\to Y
+\end{equation}
+such that on $A$, we have $f_{t}=\left.F_{t}\right|_{A}$. We want
+to extend this deformation from $A$ to the whole space $X$. We
+say that this pair $(X,A)$ has the \define{Homotopy Extension Property}.% 
+\index{Homotopy Extension Property}\index{Homotopy!Extension Property}
+\end{lem}
+\begin{rmk}\index{HEP|see{Homotopy Extension Property}}
+We often abbreviate ``Homotopy Extension Property'' as HEP.
+\end{rmk}
+\begin{lem}
+If $A$ is a (closed) subcomplex of the cell complex $X$, then the
+pair $(X,A)$ has the Homotopy Extension Property.
+\end{lem}
+
+\begin{wrapfigure}{r}{1.06in}
+  \vspace{-20pt}
+  \includegraphics{img/lecture7.0}
+\end{wrapfigure}
+\noindent\emph{Proof} (Particular Case).
+Take $X$ to be an interval and $A$ consisting of boundary
+points. We have a map a map of the interval, and we have a
+deformation over $A$. The situation is doodled to the right,
+where the top picture shows $X$ and in light gray $A$; the bottom
+picture is $A\times[0,1]\cup X\times\{0\}$. The parameter $t$ of
+$I$ is labeled as well.
+We would like $f_{t}\colon A\to Y$, which is $I\times A\to A$ a
+function intuitively taking the bottom diagram as the domain. We
+may construct a retraction
+\begin{equation}
+\varphi\colon X\times I\to X\times\{0\}\cup A\times I
+\end{equation}
+which is precisely the dilapidated rectangle to the right. If we
+have such a map, we can construct $F_{t}=f\circ\varphi$ where
+$f=f_{t}$ on $A\times I$ and $f=F$ on $X\times\{0\}$. Now it is
+completely clear that $F_{t}$ is an extension of $f_{t}$ and
+that's it. If we have that retraction, we may apply 
+
+\begin{wrapfigure}{l}{0.75in}
+  \vspace{-18pt}
+  \includegraphics{img/lecture7.1}
+  \vspace{-36pt}
+\end{wrapfigure}
+\noindent this to every
+case. Moreover, we may construct the deformation retraction.
+This is very easy. The procedure is doodled on the left, where we
+have $A\times I$ in light gray and the deformation retraction is
+dashed. 
+
+\medbreak
+\noindent\textbf{Case:} Take $X$ to be a disc, multiply the
+boundary by $I$ and we get the cylinder.
+Again we should take the retraction. We repeat the procedure,
+taking a point above the cylinder and consider lines from
+$A\times I\cup D^{2}\times\{0\}$ to the point. We may continue to
+generalize to higher dimension cases.
+
+The general case we take $A\propersubset X$ and take a
+$k$-skeleton $X^{k}$ and perform this induction on $k$. We can
+assume we took this for $(A\cup X^{k-1})\propersubset(A\cup X^{k})$.
+We extend from $(k-1)$-cells to $k$-cells, but this is precisely
+what we have done.\hfill\qedsymbol\break
+
+Remember we had $A\propersubset X$ and $A$ was contractible,
+i.e., we had a retraction from $A$ to a point. We claim
+$X\homotopic X/A$ homotopic. We prove this when $A$ is ``nice'',
+i.e., the pair $(X,A)$ has the Homotopy Extension Property.
+\begin{proof}
+We have $\id{X}\colon X\to X$ and on $A$ we can deform this
+map---$A$ is contractible, so we have $f_{t}\colon A\to A$ such
+that $f_{0}(a)=a$ and $f_{1}(a)=a_{0}$. But this is precisely the
+picture of the Homotopy Extension Principle, we have a
+deformation of the whole space. This permits us to extend from
+$f_{t}$ to $F_{t}\colon X\to X$ which has the property
+$f_{t}=\left.F_{t}\right|_{A}$ and in particular $f_{1}=\left.F_{1}\right|_{A}$
+which means $F_{1}(a)=a_{0}$ for $a\in A$. We have a map $X/A\to X$,
+because all of $A$ went to one point. This is the main step of
+the proof, we should prove it's a homotopy equivalence but we'll
+skip it.
+\end{proof}
+
+Recall we stated
+\begin{equation}
+\homotopyClass(S^{1},S^{1})=\ZZ.
+\end{equation}
+We will prove it, but it won't be absolutely rigorous (we'll be
+rigorous later in a more general setting). On a circle we have an
+angular coordinate $\alpha\in[0,2\pi)$, or $\alpha\in\RR$ subject
+to the equivalence $\alpha\simeq\alpha+2\pi$. Therefore if we
+have
+\begin{equation}
+f\colon S^1\to S^1
+\end{equation}
+we have two possibilities. One is, e.g.,
+\begin{equation}
+f(\alpha)=5\alpha
+\end{equation}
+which is discontinuous at $2\pi k/5$ for $k=1,\dots,4$. What to
+do? Well, we relax the map a little bit to be
+\begin{equation}
+f\colon[0,2\pi]\to\RR
+\end{equation}
+such that
+\begin{equation}
+f(2\pi)\equiv f(0)\bmod 2\pi.
+\end{equation}
+So in other words
+\begin{equation}
+f(2\pi) = f(0) + k2\pi
+\end{equation}
+for some $k\in\ZZ$; then this $f$ specifies a map of circles. But
+that is obvious. What is less obvious is any map of circles may
+be written in this way.
+
+This $k\in\ZZ$ is called the \define{Degree}\index{Degree!of a Map}
+\textbf{of a Map}. It is a triviality that
+\begin{equation}
+\deg(f)=\deg(g)\implies f\homotopic g
+\end{equation}
+homotopic. Maps of the same degree are homotopic. To see this
+triviality, take
+\begin{equation}
+h_{t}(x)=tg(x)+(1-t)f(x)
+\end{equation}
+and since $\deg(g)=\deg(f)$ we see that $\deg(h)=\deg(f)=\deg(g)$
+as well. There is no problem here. Let $k=\deg(f)$ and
+$k'=\deg(g)$, then
+\begin{equation}
+\begin{split}
+h_{t}(2\pi) &= t\bigl(k'2\pi+g(0)\bigr)+(1-t)\bigl(k2\pi+f(0)\bigr)\\
+&= \bigl(tk'+(1-t)k\bigr)2\pi + h_{t}(0).
+\end{split}
+\end{equation}
+But this works if and only if $k=k'$, otherwise we have an
+integer varying continuously while remaining integral\dots and
+then anything is possible! We have $f(\varphi)=k\varphi$ be a map
+of degree $k$, so all maps of degree $k$ are homotopic to it.
+
+\exercises
+\begin{xca}
+Classify first 15 letters of English alphabet up to topological
+equivalence and up to homotopy equivalence.
+(Consider capital letters only.)
+\end{xca}
+\begin{xca}
+Find a letter that is homotopy equivalent to a torus with one deleted point.
+\end{xca}
+\begin{xca}\index{Mobius Band!and Surfaces}
+Calculate Euler characteristic of a sphere with $g$ handles and $h$
+Moebius bands attached.
+\end{xca}
+\begin{xca}
+Calculate the Euler characteristic of a T-shirt. Find a graph that is
+homotopy equivalent to a T-shirt.
+\end{xca}
+\begin{xca}
+5. Calculate Euler characteristic of projective plane. (We define
+projective plane as two-dimensional sphere
+$\|x\|=1$ where the point $x$ is identified with the point $-x$.)
+\end{xca}
