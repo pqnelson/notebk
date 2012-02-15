@@ -1,0 +1,140 @@
+%%
+%% lecture14.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Jun 20 12:44:46 2010 Alex Nelson
+%% Last update Sun Jun 20 13:21:21 2010 Alex Nelson
+%%
+We have defined a reductive Lie algebra as the complexification
+of the Lie algebra for a compact group. The Cartan subalgebra
+(usually denoted $\mathfrak{h}$) corresponds to the maximal torus
+in the group $T\subset G$ is the maximal, Abelian, connected
+subgroup. Diagrammatically 
+\begin{equation}
+\begin{diagram}[small]
+\mathfrak{g} & \rTo^{\exp} & G\\
+\uTo         &             & \uTo\\
+\mathfrak{h} & \rTo^{\exp} & T
+\end{diagram}
+\end{equation}
+It is obvious that $T=\U{1}\times\cdots\times\U{1}$.
+
+We can see $\Bbb{R}$ is the Lie algebra for
+$\Bbb{R}^{\times}_{>0}$ positive reals equipped with
+multiplication. Note that
+\begin{equation}
+\Bbb{R}^{\times}_{>0}\iso\Bbb{R}^{+}
+\end{equation}
+is an isomorphism for $\Bbb{R}^{+}$ the reals equipped with
+addition. This is not a unique Lie algebra, we should factorize
+with respect to a discrete subgroup. To get a compact group,
+$\U{1}^{n}$ is the only choice.
+
+Let $G$ be a compact group. Let $\mathscr{G}=\Lie(G)$, since
+$T\subset G$, we see $\mathbb{G}\Lie(T)=\mathscr{H}$ is the
+Cartan subalgebra. This is its definition.
+
+It is tempting to define the Cartan subalgebra as the maximal
+Abelian subalgebra of $\mathscr{G}$, but this is wrong. It is
+clear the Cartan subalgebra is really important, since the
+character restricted to the maximal Torus permits us to
+reconstruct all information of the representation. We will
+consider a representation of the Lie algebra
+\begin{equation}
+\varphi\colon\mathscr{G}\to\mathfrak{gl}(V),
+\end{equation}
+and we will assume the representation comes from a compact Lie
+group
+\begin{equation}
+\Phi\colon G\to\GL{V}.
+\end{equation}
+This is true for compact groups, and the corresponding
+representation of the corresponding Lie algebra. Consider a
+representation for an Abelian Lie algebra, it is not necessarily
+semisimple; not every representation of Abelian Lie algebras
+comes from $\U{1}$, it comes from $\Bbb{R}^{+}$. We have for any
+$z$, a representation of $\U{1}$ is $z\mapsto z^{n}$,
+$n\in\Bbb{Z}$. We can restrict the representation $\Phi$ to the
+maximal torus, and it is completely reducible. The same may be
+said about
+\begin{equation}
+\varphi\colon\mathscr{H}\to\mathfrak{gl}(V)
+\end{equation}
+the representation of the Cartan subalgebra, it is completely
+reducible. What are the irreps of Ablian Lie algebras? It is very
+easy to see irrep[s of Abelian Lie Algebras are one-dimensional;
+it may be proven in precisely one million different ways.
+
+Now lets introduce the notion of a \define{Weight Vector} of a
+representation $\varphi$, it is a vector $x\in V$ such that
+\begin{equation}
+\varphi(h)x=\lambda(h)x
+\end{equation}
+it is an eigenvector for the Cartan subalgebra, we call
+$\lambda(h)$ the weight (it is a linear functional for the vector
+space underlying $\mathscr{H}$). That is to say
+$\lambda\in\mathscr{H}^{*}$. 
+
+\begin{prop}
+There exists a basis of $V$ consisting of weight vectors.
+\end{prop}
+
+If we know all the weights, we may compute the character of the
+representation. Suppose we write
+\begin{equation}
+\mathscr{H}=\left\{\sum_{k}\xi^{k}h_{k}\right\},
+\end{equation}
+then any linear fuction $h_{k}\mapsto\alpha_{k}$ acts as
+\begin{equation}
+\sum \xi^{k}h_{k}\mapsto \sum\xi^{k}\alpha_{k}.
+\end{equation}
+There is an exponential map
+\begin{equation}
+A\mapsto\exp(A)
+\end{equation}
+that maps $A\in\mathscr{G}$ to $\exp(A)\in G$. If we have a
+one-parameter family in the Lie algebra $tA$, then we have a
+one-parameter family in the subgroup $\exp(tA)$.
+
+Suppose the coordinates of the Lie group is
+$\{z^{1},\ldots,z^{k}\}$, then the basis for the Lie algebra
+would be
+\begin{equation}
+\xi^{j}=\log(z^{j}),
+\end{equation}
+to recover the group you should exponentiate. We get the maximal
+torus, and then we can compute the trace.
+
+We have the adjoint representation
+\begin{equation}
+\alpha_{i}(h)E_{i} = [h,E_{i}]
+\end{equation}
+where $E_{i}$ is the weight vector for $\alpha_{i}(h)$. Nonzero
+weights for the adjoint representation are called \define{Roots}\index{Root}
+and weight vectors for the adjoint representation are
+called \define{Root Vectors}\index{Root Vector}.We can give a
+different definition for the Cartan subalgebra:
+\begin{defn}\index{Cartan Subalgebra}\index{Lie Algebra!Cartan Subalgebra}
+The \define{Cartan Subalgebra} is a maximal Abelian subalgebra
+that is completely reducible in (all representations, but in
+particular) the Adjoint representation.
+\end{defn}
+
+Consider $\U{n}$, and
+$\mathfrak{gl}(n)=\Bbb{C}\Lie\big(\U{n}\big)$, the maximal torus
+here consists of all diagonal matrix
+\begin{equation}
+H = \begin{bmatrix}
+\exp(i\varphi_{1}) &        &\\
+                   & \ddots & \\
+                   &        & \exp(i\varphi_{n})
+\end{bmatrix}
+\end{equation}
+is the maximal Torus. Here the basis of the weight vectors may be
+taken to be the standard basis, the representation is
+\begin{equation}
+\rho\colon\U{n}\to\aut(\Bbb{C}^{n}).
+\end{equation}
+So we have $n$ weights which are functionals on $\mathscr{H}$.

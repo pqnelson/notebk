@@ -1,0 +1,196 @@
+%%
+%% lecture24.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Dec 12 20:50:41 2010 Alex Nelson
+%% Last update Mon Dec 13 12:59:05 2010 Alex Nelson
+%%
+We have a Clifford algebra over any field $\FF$, we take some
+nondegenerate matrix $\eta$, and we look for generators obeying
+\begin{equation}
+\Gamma_{\alpha}\Gamma_{\beta}+\Gamma_{\beta}\Gamma_{\alpha}=2\eta_{\alpha\beta}\cdot\1
+\end{equation}
+This is a representation of a Clifford algebra, they may be
+classified quite easily:
+\begin{enumerate}
+\item all representations are irreducible;
+\item the symmetric matrix $\eta_{\alpha\beta}$ is a symmetric
+  $(m,n)$-form, which corresponds to $\cliff(m,n,\RR)$.
+\end{enumerate}
+We have orthogonal groups $\ORTH{m,n,\RR}$ for the metric which
+is similar to
+\begin{equation}
+g = \diag(\underbrace{+1,\dots,+1}_{\text{$m$
+    $+1$'s}},\underbrace{-1,\dots,-1}_{\text{$n$ $-1$'s}})
+\end{equation}
+If we take
+\begin{equation}
+\widetilde\Gamma_{\alpha}={a_{\alpha}}^{\beta}\Gamma_{\beta}
+\end{equation}
+(using Einstein summation convention) and
+${a_{\alpha}}^{\beta}\in\ORTH{\eta,\FF}$, then the commutation
+relations are preserved.
+
+\begin{ClassificationCliff}
+There is only one irreducible representation for $\cliff(2n)$ for
+each dimension, and other irreducible representations in the same
+dimensiona are equivalent:
+\begin{equation}
+\widetilde{\Gamma}_{\alpha}=U_{a}\Gamma_{\alpha}{U_{a}}^{-1}\quad\mbox{and}\quad
+U_{ab}=(\mbox{constant})U_{a}U_{b}
+\end{equation}
+and we cannot set this constant to be unity.
+\end{ClassificationCliff}
+
+Consider $\SO{3}$, odd-dimensional guys. The situation is a
+little different. How to construct representations of the group
+in odd dimension? Recall
+\begin{equation}
+\SO{2n,\CC}\subset\SO{2n+1,\CC}
+\end{equation}
+is an embedding. We may construct $\Gamma_{1}$, \dots,
+$\Gamma_{2n}$ which obey the desired relation. After that, the
+theorem is: we may add the last matrix in such a way that the
+commutation relations are satisfied. The construction is very
+simple:
+\begin{equation}
+\Gamma_{2n+1} = \Gamma_{1}(\cdots)\Gamma_{2n}
+\end{equation}
+up to some constant. We should quickly verify that
+$\Gamma_{2n+1}$ satisfy the desired properties, e.g.
+\begin{equation}
+\Gamma_{2n+1}^{2} = 1.
+\end{equation}
+It is very clear that
+\begin{equation}
+\Gamma_{2n+1}^{2}=\pm 1
+\end{equation}
+so we merely choose the coefficient to make it unity. Therefore
+we may extend any irreducible representation of the Clifford
+Algebra over $2n$-dimensions to be an irreducible representation
+of $\cliff(2n+1)$, with an appropriate choice of
+coefficient. This may be done in two ways really (up to sign).
+
+Lets compute the dimensions. $\cliff(2n)$ has one irreducible
+representation. What is its dimensions? It is
+\begin{equation}
+2^{n} = \dim\big(\cliff(2n)\big)
+\end{equation}
+Why? We have our guys divided into 2 parts, creation and
+annihilation operators, and we may apply them to a vacuum
+state. The rest follows trivially.
+
+Consider $\cliff(2n+1)$ we have 2 irreducible representations
+both of dimension $2^{n}$, since we considered irreducible
+representations and added 1 Dirac matrix generator. For, e.g.,
+$n=1$, we get $\cliff(3)$ and moreover we have an irreducible
+representation of $\SO{3}$ of dimension $2^{1}=2$. But a
+2-dimensional representation of $\SO{3}$ does not exist! What
+does exist is
+\begin{equation}
+\SU{2}\to\SO{3}
+\end{equation}
+which is a 2-sheeted covering. We may take the inverse
+mapping:
+\begin{equation}
+\SO{3}\to\SU{2}
+\end{equation}
+which is a 2-valued representation. This is \emph{precisely} the
+spinor representation.
+
+\subsection{Review of Previous Stuff}
+Here we will stress several points which should be
+stressed. There is a notion of a \define{Reducible
+  Representation}, i.e. a representation with a nontrivial
+subrepresentation (an invariant subspace). There is a notion of
+\define{Completely Reducible Representation} which is the direct
+sum of irreducible representatio. Is an irreducible
+representation completely reducible? Yes! It is! Really, it is
+$\rho=\rho$. 
+
+Remember unitary and orthogonal representations are completely
+reducible, representations of a Lie algebra/group are not
+necessarily reducible (standard example: Abelian Lie algebra,
+$\mathfrak{u}(1)^{k}$ which has more representations since
+$\U{1}$ is not simply connected).
+
+Irreducible representations of an Abelian Lie algebra are
+\emph{always} 1-dimensional, but this doesn't mean that every
+representation of the Abelian Lie Algebras are direct sums of
+irreducible representations. For a representation onto a matrix
+with not normal Jordan form, the representation is not completely
+reducible; for the representation of the single generator by a
+diagonalizable matrix, we get the direct sum of 1-dimensional
+irreducible representations.
+
+Remember
+\begin{equation}
+\mbox{Reductive Lie
+  Algebra}=(\mbox{Center})\oplus(\mbox{semisimple part})
+\end{equation}
+It has a non-trivial center which is an Abelian Lie Algebra.
+
+The Cartan subalgebra is a maximal Abelian subalgebra, but this
+is not the end of the story because we should have some sort of
+requirement of semisimplicity. It was defined as the Lie Algebra
+of the maximal Torus for a compact group. What does ``maximal''
+mean? If we add anything else, it become non-Abelian. But it is
+\textbf{WRONG} to state it contains every Abelian
+subalgebra. Consider $\mathfrak{gl}(n)$, the Cartan subalgebra
+consists of diagonal matrices\dots but we should have a basis. If
+we change basis, we get a completely different Cartan
+subalgebra\dots well, a \emph{conjugate} Cartan
+subalgebra. Really, 2 maximal Tori are conjugate; this is a
+nontrivial statement. Care needs to be taken when working with a
+Cartan subalgebra.
+
+We have asimilar situation with simple roots, and the highest
+weight representation. We need additional data to introduce
+these notions. There is \emph{no} intrinsic information in the
+Lie Algebra. The first choice is to fix the Cartan subalgebra
+$\mathscr{H}$. Then we decompose the Lie Algebra into 3 parts:
+\begin{equation}
+\mathscr{G}=\mathscr{G}_{+}\oplus\mathscr{H}\oplus\mathscr{G}_{-}
+\end{equation}
+where this direct sum is as vector spaces. Each summand is a
+subalgebra. We have a basis consisting of 3 types of elements
+\begin{subequations}
+\begin{align}
+E_{i}\in\mathscr{G}_{+}\\
+H_{k}\in\mathscr{H}\\
+F_{j}\in\mathscr{G}_{-}
+\end{align}
+\end{subequations}
+The commutation relations are nontrivial. The computations may
+not be made componentwise. We can define the highest weight
+vector $\vec{v}$ by
+\begin{equation}
+E_{i}\vec{v}=0
+\end{equation}
+for all $E_{i}\in\mathscr{G}_{+}$ \textbf{and}
+\begin{equation}
+H_{k}\vec{v}=\lambda(H_{k})\vec{v}
+\end{equation}
+where
+\begin{equation}
+\lambda\colon\mathscr{H}\to\FF
+\end{equation}
+is a linear functional called the \define{Highest Weight}. This
+piucture is not terribly convenient, we'd like one with more
+information. Namely a system of multiplicative generators denoted
+by lowercase letters: $e_{\alpha}$, $h_{\alpha}$, and
+$f_{\alpha}$. We take $E_{i}$ as the roots of Lie Algebra, so
+\begin{equation}
+[H,\mathscr{G}_{+}]\subset\mathscr{G}_{+}
+\end{equation}
+thus
+\begin{equation}
+[H_{k},E_{i}] = \alpha(H_{k})E_{i}
+\end{equation}
+are root vectors $E_{i}$ and roots $\alpha(H_{k})$. We see the
+commmutator of root vectors is a root vector again
+$[E_{i},E_{j}]$ with root $\alpha_{i}+\alpha_{j}$. We consider
+the $e_{\alpha}$ sufficient to generate all $E_{i}$, and $f_{j}$
+sufficient to generate all $F_{j}$.

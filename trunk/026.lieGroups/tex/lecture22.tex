@@ -1,0 +1,222 @@
+%%
+%% lecture22.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Dec 12 11:32:08 2010 Alex Nelson
+%% Last update Sun Dec 12 12:18:03 2010 Alex Nelson
+%%
+Now we will give another construction of the Verma
+module. Really, it will be a general case of our particular
+construction called \define{Induced Representations}. We will
+talk about representations of associative algebras, it is more
+general than representations of Lie Algebras (since we may
+construct for any Lie Algebra $\mathscr{G}$ with its universal
+enveloping algebra $\mathcal{U}(\mathscr{G})$\thinspace). So
+representations of $\mathscr{G}$ and $\mathcal{U}(\mathscr{G})$
+are precisely the same. Therefore we will consider
+representations of an associative algebra $\mathscr{A}$. To ever
+$x\in\mathscr{A}$ we assign a linear operator
+\begin{equation}
+\widehat{x}\colon V\to V.
+\end{equation}
+We have
+\begin{equation}
+\widehat{xy}=\widehat{x}\widehat{y}.
+\end{equation}
+We would like to say that representations of $\mathscr{A}$ is the
+same as a left $\mathscr{A}$-module. An $\mathscr{A}$-module is a
+vector space $V$ and we have multiplication by elements of
+$\mathscr{A}$ (so we may consider $x\vec{v}$ for
+$x\in\mathscr{A}$ and $\vec{v}\in V$). We may think of it as a
+vector space over $\mathscr{A}$. We should have the standard
+relations for a sort of associativity
+\begin{equation}
+(xy)\vec{v}=x(y\vec{v}).
+\end{equation}
+This is precisely what we have if we write
+\begin{equation}
+x\vec{v}=\widehat{x}\vec{v}.
+\end{equation}
+We see
+\begin{equation}
+(xy)\vec{v}=x(y\vec{v})\quad\iff\quad\widehat{xy}=\widehat{x}\widehat{y}
+\end{equation}
+
+If we can talk about left modules, we may talk about \emph{right}
+modules. What does it mean? Well $\mathscr{A}$-scalar
+multiplication occurs on the right, i.e. we have
+\begin{equation}
+(\vec{v}x)y=\vec{v}(xy)
+\end{equation}
+We write
+\begin{equation}
+\vec{v}x=\widetilde{x}\vec{v}
+\end{equation}
+is it a representation? Not really, observe
+\begin{equation}
+\widetilde{xy}=\widetilde{y}\widetilde{x}.
+\end{equation}
+We may say a right module is a representation of
+$\mathscr{A}^{op}$, where $\mathscr{A}^{op}$ has multiplication
+defined by $x\cdot y=yx$.
+
+\begin{ex}
+A left module could be $\mathscr{A}$, but this is also a right
+module. Or we may say that $\mathscr{A}$ is a bimodule, i.e. a
+left and a right module such that
+\begin{equation}
+(xa)y=x(ay)
+\end{equation}
+for all $x,y,a\in\mathscr{A}$.
+\end{ex}
+
+Now we would like to define the tensor product of algebras. If we
+have a right module $V_{\mathscr{A}}$ and a left module
+${}_{\mathscr{A}}W$, both over the associative algebra
+$\mathscr{A}$, then we may take the tensor product as modules
+\begin{equation}
+V_{\mathscr{A}}\mathop{\otimes}\limits_{\mathscr{A}} {}_{\mathscr{A}}W =
+\frac{V\otimes W}{Va\otimes W\sim V\otimes aW}
+\end{equation}
+as vector spaces, and we identify 
+\begin{equation}
+\vec{v}a\otimes\vec{w}\sim\vec{v}\otimes a\vec{w}
+\end{equation}
+which is the definition of taking the tensor product over
+$\mathscr{A}$. The tensor product describes bilinear functions
+\begin{subequations}
+\begin{align}
+f\colon&V\otimes W\to Z\\
+v\otimes w\mapsto f(v,w)
+\end{align}
+\end{subequations}
+be bilinear.
+
+This means that bilinear functions of $\mathscr{A}$-modules would
+be such that
+\begin{equation}
+f(va,w)=f(v,aw).
+\end{equation}
+A really nice picture occurs when we work with bimodules, or
+$(\mathscr{A},\mathscr{B})$-modules.  We have $\mathscr{A}$,
+$\mathscr{B}$ be associative algebras. An
+$(\mathscr{A},\mathscr{B})$-module is simultaneously a left
+$\mathscr{A}$-module \emph{and} a right $\mathscr{B}$-module. The
+corresponding operation should commute. We have
+\begin{equation}
+(av)b=a(vb)
+\end{equation}
+be such a condition. In particular, what is an
+$(\mathscr{A},\mathscr{A})$-module? It is something we called a
+``bimodule''. Suppose we have an
+$(\mathscr{A},\mathscr{B})$-module
+${}_{\mathscr{A}}V_{\mathscr{B}}$ and a
+$(\mathscr{B},\mathscr{C})$-module
+${}_{\mathscr{B}}W_{\mathscr{C}}$ then we may consider
+\begin{equation}
+{}_{\mathscr{A}}V_{\mathscr{B}}\mathop{\otimes}\limits_{\mathscr{B}}{}_{\mathscr{B}}W_{\mathscr{C}}
+\end{equation}
+by identifying
+\begin{equation}
+vb\otimes w\sim v\otimes bw.
+\end{equation}
+We can say that $V\mathop{\otimes}\limits_{\mathscr{B}}W$ is an
+$(\mathscr{A},\mathscr{C})$-module. We see that
+\begin{equation}
+a(v\otimes w)=(av)\otimes w.
+\end{equation}
+Is it possible to do this with the relation
+\begin{equation}
+vb\otimes w\sim v\otimes bw?
+\end{equation}
+We assert the multiplication by $a$ is compatible with this
+equivalence because, well, it is:
+\begin{subequations}
+\begin{align}
+a(vb\otimes w) &= a(vb)\otimes w\\
+&= (av)b\otimes w\\
+&\sim av\otimes bw\\
+&= a(v\otimes bw)
+\end{align}
+\end{subequations}
+
+\begin{ex}
+Lets take a simple example $\mathscr{B}\subset\mathscr{A}$ a
+subalgebra. Suppose we have a $\mathscr{B}$-module
+${}_{\mathscr{B}}V$. We would like to get an
+$\mathscr{A}$-module. How to do this? Look, we consider
+$\mathscr{A}$ our algebra as an
+$(\mathscr{A},\mathscr{B})$-module, now we take the tensor
+product of these guys over $\mathscr{B}$
+\begin{equation}
+{}_{\mathscr{A}}\mathscr{A}_{\mathscr{B}}\mathop{\otimes}\limits_{\mathscr{B}}{}_{\mathscr{B}}V
+\end{equation}
+which is an $\mathscr{A}$-module.
+\end{ex}
+
+We have $\mathscr{G}\supset\mathscr{G}'$. Let
+$\mathscr{A}=\mathcal{U}(\mathscr{G})$,
+$\mathscr{B}=\mathcal{U}(\mathscr{G}')$. It is obvious that
+\begin{equation}
+\mathscr{A}\supset\mathscr{B}
+\end{equation}
+Suppose we have a representation of $\mathscr{G}'$ we recall this
+is a $\mathscr{G}'$-module, which is precisely the same as a
+$\mathcal{U}(\mathscr{G}')$-module; lets call this thing $V$. We
+get the
+\begin{equation}
+\mathcal{U}(\mathscr{G})\mathop{\otimes}\limits_{\mathscr{B}}V
+\end{equation}
+a $\mathscr{G}$-module. This is precisely the notion of an
+\define{Induced Representation of Lie Algebras}.
+
+For the Verma module, we have
+\begin{equation}
+\mathscr{G}=\mathscr{G}_{+}\oplus\mathscr{H}\oplus\mathscr{G}_{-}
+\end{equation}
+there is a highest weight vector $\vec{v}$. We have for
+$h\in\mathscr{H}$,
+\begin{equation}
+h\vec{v}=\lambda(h)\vec{v}.
+\end{equation}
+For
+\begin{equation}
+\mathscr{G}_{+}\vec{v}=0
+\end{equation}
+So we write
+\begin{equation}
+\mathscr{G}'=\mathscr{G}\oplus\mathscr{H}
+\end{equation}
+which is a subalgebra. The one-dimensional $\mathscr{G}'$-module
+is $\Span\{\vec{v}\}$. This gives us a representation of
+$\mathscr{G}_{+}$ too. We can write that the Verma module is an
+induced module
+\begin{equation}\label{eq:thingWeWannaWorkWith}
+\mathcal{U}(\mathscr{G})\bigotimes_{\mathcal{U}(\mathscr{G}')}V_{\lambda}
+\end{equation}
+where $V_{\lambda}$ is precisely the $\Span\{\vec{v}\}$,
+$\lambda$ is precisely the highest weight. The only that remains
+is to prove that \eqref{eq:thingWeWannaWorkWith} is precisely the
+Verma module. We see that
+\begin{equation}
+\mathcal{U}(\mathscr{G}_{-})\vec{v}=\mathcal{U}(\mathscr{G})\bigotimes_{\mathcal{U}(\mathscr{G}')}V_{\lambda}
+\end{equation}
+we did prove something before (although perhaps not in this
+name): the Poincar\'e-Birkhoff-Witt theorem. We proved something
+about the structure of $\mathcal{U}(\mathscr{G})$, namely
+\begin{equation}
+\mathscr{G}=\{E_{1},\dots,E_{n}\}
+\end{equation}
+so \marginpar{Poincar\'e-Birkhoff-Witt theorem}
+\begin{equation}
+\mathcal{U}(\mathscr{G})=\{c_{0}+c^{i}E_{i}+c^{ij}E_{i}E_{j}+\cdots\}
+\end{equation}
+but such a representation is not unique: it may be made unique by
+(1) demanding $i\leq j$; or (2) that $c^{ij}$, $c^{ijk}$, and all
+the other coefficients, be symmetric in its indices. This is the
+Poincar\'e-Birkhoff-Witt theorem. Then it is clear that
+$\mathcal{U}(\mathscr{G})$ is on the left hand side of the tensor
+product; what is not clear is this identity. We speak of all
+possible roots $E=\{e_{i},f_{i},h_{i}\}$.

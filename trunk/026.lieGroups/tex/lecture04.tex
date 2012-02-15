@@ -1,0 +1,177 @@
+%%
+%% lecture04.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 21 11:03:01 2010 Alex Nelson
+%% Last update Fri Dec 10 11:46:22 2010 Alex Nelson
+%%
+
+We started discussing the adjoint representation last time. Given
+a Lie algebra $\scr{G}$ and $a\in\scr{G}$, we can construct
+$\alpha_a=[a,-]$, $\alpha_a\colon\scr{G}\to\scr{G}$ and obeys
+\begin{equation}
+\alpha_{[a,b]}=[\alpha_a,\alpha_b].
+\end{equation}
+The adjoint representation for $\Bbb{R}^{3}$ equipped with the
+cross-product form $\Lie({\rm SO}(3))$ --- the Lie algebra for
+$\SO{3}$. The derivations are defined completely if we know the
+derivations of the generators; moreover, for e.g. $\widehat{\imath}$,
+$\widehat{\jmath}$, $\widehat{k}$ we only need to think about
+$\widehat{\imath}$, $\widehat{\jmath}$ since
+$\widehat{\imath}\times\widehat{\jmath}=\widehat{k}$. 
+
+\begin{defn}
+The \define{Structure Constants} for a Lie algebra $\scr{G}$
+(with generators $e_1$, ..., $e_n$ which form a basis of the
+vector space) are specified by
+$[e_\alpha,e_\beta]={f_{\alpha\beta}}^{\gamma}e_{\gamma}$, where
+${f_{\alpha\beta}}^{\gamma}$ are the structure constants.
+\end{defn}
+\begin{rmk}
+If we have a real Lie algebra, the structure constants are real;
+on the other hand, for complex Lie algebra, the structure
+constants are complex.
+\end{rmk}
+\begin{defn}
+Let $\scr{G}$ be a real Lie algebra. Its
+\define{Complexification} consists of a Lie algebra denoted by
+$\Bbb{C}\scr{G}$ constructed by making the structure constants complex.
+\end{defn}
+So complexification is some ``mapping''
+\begin{align*}
+(\hbox{Real Lie Algebras})&\to(\hbox{Complex Lie Algebras})\\
+x^{\alpha}e_{\alpha}&\mapsto z^{\alpha}e_{\alpha}
+\end{align*}
+where $z^{\alpha}=x^{\alpha}+iy^{\alpha}\in\Bbb{C}$,
+$x^\alpha\in\Bbb{R}$. So we can write
+$\Bbb{C}\scr{G}=\scr{G}\oplus i\scr{G}$ where we have this direct
+sum be the direct sum of vector spaces. This induces a notion of
+multiplication.
+
+\begin{ex}
+Consider the Lie algebra $\frak{so}(n)$ which is a real Lie
+algebra consisting of antisymmetric $n$-by-$n$ matrices:
+\begin{equation}\label{eq:lec4:son}
+A^{T}+A=0,
+\end{equation}
+where $A\in\mat_{n}(\Bbb{R})$. We want to complexify it, which is
+very easy We consider the same condition but take matrices with
+complex entries $A\in\mat_{n}(\Bbb{C})$ which obey Eq \eqref{eq:lec4:son}.
+So we write $\frak{so}(n,\Bbb{C})=\Bbb{C}\frak{so}(n,\Bbb{R})$.
+\end{ex}
+\begin{ex}
+The algebra $\frak{u}(n)$ of anti-Hermitian matrices $A+A^{\dagger}=0$
+where $A^{\dagger}$ is the Hermitian conjugate (i.e. conjugate
+transpose of $A$). We have $A\in\mat_{n}(\Bbb{C})$ but what is
+its complexification? Observe
+\begin{equation}
+\Bbb{C}\frak{u}(n)=\frak{gl}(n,\Bbb{C}),
+\end{equation}
+why? Well, for $X\in\mat_{n}(\Bbb{C})$ we have
+\begin{equation}
+X = \frac{1}{2}\underbracket[0.5pt]{(X-X^{\dagger})}_{\text{anti-Hermitian}}+\frac{1}{2}\underbracket[0.5pt]{(X+X^{\dagger})}_{\text{Hermitian}}
+\end{equation}
+but observe if $A$ is anti-Hermtian, we have $A+A^{\dagger}=0$,
+then $iA$ is Hermtian since
+\begin{equation}
+(iA)^{\dagger}+iA=i(-A^{\dagger}+A)=0.
+\end{equation}
+So $\scr{G}$ is anti-Hermitian, $i\scr{G}$ is Hermitian, and
+$\Bbb{C}\scr{G}$ is everything.
+\end{ex}
+
+We like to work in $\Bbb{C}$ since it is simpler than working in $\Bbb{R}$.
+
+\begin{thm}
+Complex representations of real Lie algebras are in one-to-one
+correspondence with the complex representations of its complexification.
+\end{thm}
+A representation maps basis vectors to linear operators,
+requiring us to solve
+\begin{equation}
+[\widehat{e}_{\alpha},\widehat{e}_{\beta}]={f_{\alpha\beta}}^{\gamma}\widehat{e}_{\gamma},
+\end{equation}
+where $\varphi(e_{\alpha})=\widehat{e}_{\alpha}$. For the
+complexified Lie algebra, we do \emph{precisely the same thing!}
+
+We will define matrix groups, then matrix Lie algebras. It will
+not be a general definition.
+\begin{defn}
+A \define{Matrix Group} is a closed subgroup of $\GL{n,\RR}$
+or $\GL{n,\CC}$.
+\end{defn}
+\begin{thm}
+The tangent space to the matrix group at the point $I=e=1$ the
+identity is a Lie algebra called the Lie algebra of the matrix group.
+\end{thm}
+
+Suppose we have a curve $x(t)\in\Bbb{R}^{m}$ or in any
+topological space. Well, since $x$ is a curve, it's a mapping
+\begin{equation}
+x\colon[\alpha,\beta]\to\RR^{m}
+\end{equation}
+from an interval of the real line $[\alpha,\beta]$ to the space,
+the tangent vector is
+\begin{equation}
+\left.\frac{dx(t)}{dt}\right|_{t=\alpha}=x'(\alpha).
+\end{equation}
+The tangent space at $x_{0}\in M$ for a manifold $M$ is the
+vector space of all tangent vectors at $x_{0}$. If the surface is
+given by
+\begin{equation}
+f(x^1,...,x^n)=0,
+\end{equation}
+we promote $x\mapsto x^{i}(t)$ to be components of a curve,
+implying
+\begin{equation}
+f(x^{1}(t),...,x^{n}(t))=0.
+\end{equation}
+We thus have by the chain rule
+\begin{equation}
+\left.\frac{d}{dt}f(x^{1}(t),...,x^{n}(t))\right|_{t=\alpha}=\left.\frac{\partial
+  f}{\partial x^i}\frac{dx^i}{dt}\right|_{t=\alpha}=0.
+\end{equation}
+If we use the implicit function theorem, we can consider $A^{i}$
+vectors such that
+\begin{equation}
+\left.A^{i}\frac{\partial f}{\partial x^{i}}\right|_{t=\alpha}=0.
+\end{equation}
+
+\begin{ex}
+Consider $O(n)=\{A\mid A^{T}A=I\}$ the group of $n$-by-$n$
+orthogonal matrices. We take $A(t)$ to be a curve in $O(n)$ such
+that $A(0)=I$ is the identity. So $A(t)=I+a(t)$. Consider then
+\begin{equation}
+(I+a(t))(I+a(t)^{T})=I+a(t)+a(t)^{T}+\mathcal{O}(t^{2}),
+\end{equation}
+then we can deduce the structure of the Lie algebra for
+``infinitesimal $a(t)$'' to be precisely the matrices $X$ such
+that
+\begin{equation}
+X+X^{T}=0.
+\end{equation}
+That is, all antisymmetric matrices.
+\end{ex}
+
+
+If one has forgotten the implicit function theorem, here it is reproduced:
+\begin{implicitFunctionThm}
+Let $f\colon\Bbb{R}^{n+m}\to\Bbb{R}^{m}$ be a continuously
+differentiable function. Fix
+$(\boldsymbol{x},\boldsymbol{y})\in\Bbb{R}^{n+m}$,
+$\boldsymbol{x}\in\Bbb{R}^{n}$,
+$\boldsymbol{y}\in\Bbb{R}^{m}$ such that
+$f(\boldsymbol{x},\boldsymbol{y})=\boldsymbol{c}$ where $\boldsymbol{c}\in\Bbb{R}^{m}$. If the matrix
+\begin{equation}
+{J_{i}}^{j}=\frac{\partial f_{i}(\boldsymbol{x},\boldsymbol{y})}{\partial y^{j}}
+\end{equation}
+is invertible, then there exists an open set $U$ containing
+$\boldsymbol{x}$, an open set $V$ containing $\boldsymbol{b}$,
+and a unique continuously differentiable function $g\colon U\to
+V$ such that
+\begin{equation}
+\{ (\boldsymbol{x}, g(\boldsymbol{x})) \} = \{ (\boldsymbol{x}, \boldsymbol{y}) | f(\boldsymbol{x}, \boldsymbol{y}) = \boldsymbol{c} \} \cap (U \times V).
+\end{equation}
+\end{implicitFunctionThm}

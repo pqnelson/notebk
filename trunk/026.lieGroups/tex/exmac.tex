@@ -1,0 +1,26 @@
+%%
+%% exmac.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Jun 20 13:13:21 2010 Alex Nelson
+%% Last update Sun Jun 20 13:13:28 2010 Alex Nelson
+%%
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+\newcounter{exercise}[section]
+\renewcommand{\theexercise}{\arabic{exercise}}
+\newenvironment{exercise}[1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\else\immediate\write\ans{\detokenize{\section*{Section \thesection}}}\fi
+  \textindent{\bf\theexercise.}[{\it#1\/}]\kern6pt}{}
+\newenvironment{EXERCISE}[1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\else\immediate\write\ans{\detokenize{\section*{Section \thesection}}}\fi
+  \textindent{\llap{\manfnt x\hskip3pt}\bf{\hbox to
+     \ifnum \value{exercise}>99 1.5em\else 1em\fi{\hfil\theexercise}}.}[{\it#1\/}]\kern6pt}{}
+\newwrite\ans%
+\immediate\openout\ans=tex/answers % file for answers to exercises
+\immediate\write\ans{\detokenize{\section{Solutions to Exercises}}}
+\newcommand{\answer}[1]{\par\medbreak
+  \immediate\write\ans{}%
+  \immediate\write\ans{\string\ansno\theexercise:}%
+  \immediate\write\ans{ \detokenize{#1}}}
+\newcommand{\dumpanswers}{\immediate\closeout\ans\input{tex/answers}}

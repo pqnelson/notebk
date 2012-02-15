@@ -1,0 +1,187 @@
+%%
+%% lecture10.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Mon Jun 14 15:20:31 2010 Alex Nelson
+%% Last update Mon Jun 14 15:55:14 2010 Alex Nelson
+%%
+We will finish the construction of the Lie group from the Lie
+algebra. There is an important formula called the
+\define{Baker-Campbell-Hausdorff formula.} Recall we considered a
+correspondence between a curve in the Lie group and a curve in
+the Lie algebra. The question is can we only consider curves
+$\exp(tA)$ one-parameter families of the group; in the
+neighborhood of the identity, the correspondence is
+one-to-one. It would follow that multiplication in the group
+\begin{equation}
+e^{A}\cdot e^{B}=e^{C(A,B)}
+\end{equation}
+goes to some operation in the algebra. We have
+\begin{equation}
+C(A,B) = \log(e^{A}\cdot e^{B})
+\end{equation}
+we know
+\begin{equation}
+e^{A}=\sum^{\infty}_{n=0}\frac{A^{n}}{n!},
+\end{equation}
+but there is no such series for the logarithm. There is some
+expansion for the logarithm \emph{in some neighborhood.} We need
+to be careful about the order of multiplication, we can express
+the series in terms of the commutators
+\begin{equation}
+C(A,B)=A+B+\frac{1}{2}[A,B]+\frac{1}{12}[A,[A,B]]-\frac{1}{12}[B,[A,B]]-\frac{1}{24}[B,[A,[A,B]]]+\cdots.
+\end{equation}
+Really, the most important part of this formula is
+\begin{equation}
+C(A,B)=A+B+\frac{1}{2}[A,B]+\cdots
+\end{equation}
+We expect \emph{ab initio} that $C(A,B)\in\lie(G)$ is in the Lie
+algebra. This formula permits us to construct a \define{local Lie group},
+i.e. a group with induced group operation in the neighborhood of
+the unit element.
+
+There is a special situation with this being global. Consider a
+nilpotent Lie algebra. The Baker-Campbell-Hausdorff formula
+becomes a polynomial with finitely many terms, which gives rise
+to a Lie group from the Lie algebra.
+
+\subsection{Representations of \texorpdfstring{$\mathfrak{sl}(2)$}{sl2}}
+
+This is really quite important in math and in physics. We know
+\begin{equation}
+\Bbb{C}\otimes\frak{su}(2)\iso\frak{sl}(2).
+\end{equation}
+So representations of $\frak{su}(2)$ may be studies by
+representations of $\frak{sl}(2)$. We know
+\begin{equation}
+SO(3)\iso SU(2)/\Bbb{Z}_{2},
+\end{equation}
+so we can study representations of $\frak{so}(3)$ too!
+
+For $\frak{sl}(2)$, we have generators $e$, $f$, $h$ with the
+commutation relations
+\begin{subequations}
+\begin{align}
+[e,f]&=h\\
+[h,e]&=2e\\
+[h,f]&=-2f.
+\end{align}
+\end{subequations}
+We would like to describe all representations of
+$\frak{sl}(2)$. For a general Lie Algebra, we take its Cartan
+subalgebra $\frak{h}\subset\lie(G)$. Here $h$ is a generator of
+the Cartan subalgebra. We will take any rep
+\begin{equation}
+\varphi\colon\mathscr{G}\to\frak{gl}(n).
+\end{equation}
+So
+\begin{equation}
+f\mapsto\varphi(f)=F,\quad
+e\mapsto\varphi(e)=E,\quad
+h\mapsto\varphi(h)=H,
+\end{equation}
+and the commutation relations are
+\begin{subequations}
+\begin{align}
+[E,F]&=H\label{eq:lec10:comm1}\\
+[H,E]&=2E\label{eq:lec10:comm2} \\
+[H,F]&=-2F.\label{eq:lec10:comm3}
+\end{align}
+\end{subequations}
+We need to find 3 such matrices. We will consider eigenvectors of
+$H$ called \define{Weight Vectors}
+\begin{equation}
+H\vec{x}=\lambda\cdot\vec{x}.
+\end{equation}
+Once we have one weight vector $\vec{x}$, we can construct others
+via use of $E$ and $F$. We have from eq \eqref{eq:lec10:comm2}
+\begin{equation}
+HE=E(H+2)
+\end{equation}
+which, when applied to the weight vector, yields
+\begin{equation}
+HE\vec{x}=E(H+2)\vec{x}=(\lambda+2)E\vec{x}.
+\end{equation}
+This implies that $E\vec{x}$ is also an eigenvector of $H$ with
+eigenvalue $\lambda+2$. Thus we have infinitely many weight
+vectors, right? Well, this is {\bf wrong} since $E\vec{x}$ could
+vanish! If $E\vec{x}=0$, then $\vec{x}$ is called the
+\define{Highest Weight Vector}.
+
+We also have
+\begin{equation}
+H(F\vec{x})=(\lambda-2)F\vec{x}
+\end{equation}
+by the exact same reasoning. This means that $F\vec{x}$ is also a
+weight vector. We will now describe all finite dimensional
+representations of $\frak{sl}(2)$.
+
+\begin{rmk}
+In finite dimensional representations, $H$ always has an eigenvector.
+\end{rmk}
+
+Lets apply $E$ to $\vec{x}$ many times, so we get new
+eigenvectors. Then at some moment
+\begin{equation}
+HE^{k}\vec{x}=0
+\end{equation}
+for some $k$ since we cannot have an infinite number of distinct
+eigenvectors. Let
+\begin{equation}
+\vec{v}:=E^{k-1}\vec{x}
+\end{equation}
+be the highest weight vector, so
+\begin{equation}
+E\vec{v}=0.
+\end{equation}
+Let
+\begin{equation}
+H\vec{v}=m\vec{v}.
+\end{equation}
+Let
+\begin{equation}
+\vec{v}_{k}=F^{k}\vec{v},
+\end{equation}
+we know
+\begin{equation}
+H\vec{v}_{k}=(m-2k)\vec{v}_{k}.
+\end{equation}
+This is a weight vector. We have
+\begin{equation}
+F\vec{v}_{k}=\vec{v}_{k+1}
+\end{equation}
+by definition. We should apply
+\begin{equation}
+E\vec{v}_{k}=EF\vec{v}_{k-1}=(FE+H)\vec{v}_{k-1}.
+\end{equation}
+We can guess that $E$ \emph{raises} the eigenvalue. That is
+\begin{equation}
+E\vec{v}_{k}=\gamma_{k}\vec{v}_{k}
+\end{equation}
+where $\gamma_{k}$ is some factor.
+
+We can compute
+\begin{subequations}
+\begin{align}
+E\vec{v}_{k} &= FE\vec{v}_{k-1}+H\vec{v}_{k-1}\\
+&= F(\gamma_{k-1}\vec{v}_{k-2})+(m+2-2k)\vec{v}_{k-1}\\
+&= \gamma_{k-1}F\vec{v}_{k-2}+(m+2-2k)\vec{v}_{k-1}\\
+&= (m+2-2k+\gamma_{k-1})\vec{v}_{k-1}\\
+&= \gamma_{k}\vec{v}_{k-1}
+\end{align}
+\end{subequations}
+This implies that
+\begin{equation}
+\gamma_{k}=\gamma_{k-1}+m+2-2k
+\end{equation}
+a recursion relation which permits us to compute $\gamma_{k}$, an
+arithmetic progression./ We have our representation be
+irreducible if and only if
+\begin{equation}
+{\rm span}\{\vec{v}_{k}\}\iso\Bbb{C}^{n}.
+\end{equation}
+We have everything, we just need to compute the $\gamma_{k}$
+constants. It turns out that the weights range from $m$, $m-2$,
+..., $-m$.

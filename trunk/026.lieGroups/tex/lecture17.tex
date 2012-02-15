@@ -1,0 +1,209 @@
+%%
+%% lecture17.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Fri Dec 10 13:49:18 2010 Alex Nelson
+%% Last update Sat Dec 11 11:21:33 2010 Alex Nelson
+%%
+Recall we start with a compact Lie group $G$, and we are
+interested in complex representations of this group. If the group
+is simply connected, this is the same as representations of its
+Lie Algebra
+\begin{equation}
+\CC\Lie(G)=\mathscr{G}
+\end{equation}
+which is called \define{Reductive} if it is obtained in this way.
+If we have a compact group, every representation is reducible
+(i.e. it can be written as the direct sum of irreducible
+representations). Moreover if we consider the adjoint
+representation of this reductive Lie Algebra, then we may
+consider it as a matrix Lie Algebra\dots{}well not entirely. The
+adjoint action is
+\begin{equation}
+\ad_{a}x=[a,x]
+\end{equation}
+but the center is mapped to zero. Well, the center's not
+interesting, so we factorize the reductive algebra by its center,
+and we obtain a semisimple Lie Algebra. The maximal Abelian
+subgroup is known as the maximal Torus in the group. The
+corresponding notion for Lie Algebras is the Cartan subalgebra
+$\mathscr{H}$.
+\begin{equation}
+\mbox{A reductive Lie Algebra}=(\mbox{center})\oplus(\mbox{semisimple part})
+\end{equation}
+We wish to work with completely reductive representations, so we
+will talk about semisimple Lie Algebras. We are looking at
+representations of $\mathscr{H}\subset\mathscr{G}$ the Cartan
+subalgebra, which will be the direct sum of irreducible
+representations. But they'd be 1-dimensional, since
+$\mathscr{H}$ is Abelian. So we have a set of eigenvectors
+\begin{equation}
+\varphi(h)X_{\lambda} = \lambda(h)X_{\lambda}
+\end{equation}
+called \define{Weight Vectors} where we label $X$ with an index
+$\lambda$ its \define{Weight}. These $X_{\lambda}$ form a basis;
+now we can consider as a representation the adjoint
+representation. And then simply we repeat the formulas
+\begin{equation}
+[h,E_{i}] = \alpha_{i}(h)E_{i}
+\end{equation}
+which are weights and weight vectors for the adjoint
+representation. Well, if
+\begin{equation}
+\alpha_{i}(h)\not=0
+\end{equation}
+then $\alpha_{i}(h)$ are called the \define{Roots} and the
+$E_{i}$ are called the \define{Root Vectors}. Loosely we have
+\begin{equation}
+\mbox{basis of }\mathscr{G}=\mbox{root vectors}+\mbox{basis of }\mathscr{H}.
+\end{equation}
+
+Now we will deviate. We would like to give a definition for a
+simple root, or more precisely a simple system of roots. Recall
+if we take a root vector and act by means of root vector on the
+weight vector $\varphi(E_{i})x$ we get \emph{either} a weight
+vector \emph{or} we get zero. By considering the adjoint
+representation, we have $[E_{i},E_{j}]$ be either a root vector
+iff
+\begin{equation}
+\alpha_{i}+\alpha_{j}\not=0
+\end{equation}
+or an element of $\mathscr{H}$ iff
+\begin{equation}
+\alpha_{i}+\alpha_{j}=0,
+\end{equation}
+\textbf{or} it could be zero. We can try to minimize our work,
+and find the roots with the property that all other roots are
+obtained by means of a linear combination of these guys. These
+roots are called \define{Simple Roots}.
+
+How many simple roots would there be? Well, if 
+\begin{equation}
+\ell=\dim(\mathscr{H})=\rank(\mathscr{G})
+\end{equation}
+is the number of simple roots $\alpha_{1}$,\dots,$\alpha_{\ell}$
+which form a basis of $\mathscr{H}^{*}$. We also require that
+every other root has the form
+\begin{equation}
+\alpha = m_{1}\alpha_{1}+\dots+m_{\ell}\alpha_{\ell}
+\end{equation}
+where the coefficients are all positive, or all negative, but
+\textbf{not mixed} coefficients. There is a challenge that such
+things exist, but it does; moreover we have \emph{done} this for
+all classical groups. If we have a simple system of roots
+$\alpha_{1}$, \dots, $\alpha_{\ell}$ we can form a good
+basis. 
+
+First of for each root, we have a corresponding root vector
+denoted by $e_{1}$, \dots, $e_{\ell}$. Then we have
+$-\alpha_{1}$, \dots, $-\alpha_{\ell}$ with corresponding root
+vectors $f_{1}$, \dots, $f_{\ell}$. This is not the end of the
+story. We've listed root vectors of this kind. We may consider
+commutators of
+\begin{equation}
+[e_{i},f_{i}]=h_{i}.
+\end{equation}
+They are sitting in $\mathscr{H}$ since their weight is
+\begin{equation}
+\alpha_{i}-\alpha_{i}=0.
+\end{equation}
+We can take
+\begin{equation}
+[e_{i},f_{j}]=0
+\end{equation}
+since it has a weight of
+\begin{equation}
+\alpha_{i}-\alpha_{j}\not=0
+\end{equation}
+which cannot appear \emph{by definition} we have \textbf{no
+  mixed} coefficients. We have
+\begin{equation}
+[h,e_{j}]=\alpha_{j}(h)e_{j}
+\end{equation}
+by construction, since $e_{j}$ are root vectors. Lets denote
+\begin{equation}
+[h_{i},e_{j}] = a_{ij}e_{j}
+\end{equation}
+where $a_{ij}=\alpha_{j}(h_{i})$. In the same way,
+\begin{equation}
+[h_{i},f_{j}] = -a_{ij}f_{j}.
+\end{equation}
+So we've obtained this stuff, and this matrix $a_{ij}$ is called
+the \define{Cartan Matrix} of the Lie Algebra. We came to the
+same conclusion from a different starting point. We have
+introduced the notion of a simple system of roots, and proven a
+theorem that such manipulations work.
+
+Recall we are working with classical groups, which are matrix
+groups. We are finding the weight vectors of the fundamental
+representation. We will start with
+\begin{equation}
+\mathfrak{sl}(n+1)=\ClassicalGroup{A}_{n}.
+\end{equation}
+This is generated by matrices, the Cartan subalgebra consists of
+diagonal matrices, with $\varphi_{i}$ on the diagonal such that
+\begin{equation}
+\sum_{i}\varphi_{i}=0
+\end{equation}
+since the matrices are traceless. We can see that the standard
+basis are the weight vectors, we will let $u_{i}$ denote the
+canonical basis. We see that
+\begin{equation}
+\begin{bmatrix}
+\varphi_{1} &        &  \\
+            & \ddots & \\
+            &        & \varphi_{n+1}
+\end{bmatrix}
+u_{i} = \varphi_{i}u_{i}
+\end{equation}
+so we see that $\varphi_{i}$ is a functional on $\mathscr{H}$.
+
+What are the roots? The weights of the adjoint representation, we
+will skip this part. We need to look at other Lie Algebras. They
+are defined in a similar way, namely as matrices preserving some
+Bilinear form. That is
+\begin{equation}
+(x,y)=x^{T}\omega y,
+\end{equation}
+the demand of invariance amounts to
+\begin{equation}
+(Ax,Ay)=x^{T}A^{T}\omega Ay = (x,y)\quad\iff\quad A^{T}\omega A=\omega
+\end{equation}
+but if we consider
+\begin{equation}
+A = \1 + a
+\end{equation}
+for ``infinitesimal'' $a$ we get
+\begin{subequations}
+\begin{align}
+A^{T}\omega A &= (\1+a)^{T}\omega(\1+a)\\
+&= (\omega + a^{T}\omega)(\1+a)\\
+&=\omega + (\omega a+a^{T}\omega) +
+\underbracket[0.5pt]{a^{T}\omega a\;\;}_{\approx 0}
+\end{align}
+\end{subequations}
+So with summation convention we explicitly have
+\begin{equation}
+a^{i}_{j}\omega_{ik}+\omega_{ij}a^{i}_{k}=0,
+\end{equation}
+or if
+\begin{equation}
+b_{jk} = \omega_{ji}a^{i}_{k}
+\end{equation}
+then our invariance condition amounts to
+\begin{equation}
+b_{jk}=\mp b_{kj}
+\end{equation}
+for orthogonal groups this is antisymmetric, for the symplectic
+group it is symmetric.
+We have a one-to-one correspondence between $b_{jk}$ and
+$a^{i}_{j}$, so the conclusion is:
+\begin{enumerate}
+\item for $\mathfrak{so}(n)$ we have its adjoint representation
+  antisymmetric square of its fundamental representation
+\item for $\mathfrak{sp}(n)$ we have its adjoint representation
+  be the symmetric square of its fundamental representation.
+\end{enumerate}
+That is, the symmetric or antisymmetric parts of $V\otimes V$.

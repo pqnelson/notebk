@@ -1,0 +1,195 @@
+%%
+%% lecture05.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 21 11:44:35 2010 Alex Nelson
+%% Last update Mon Dec 13 21:50:25 2010 Alex Nelson
+%%
+
+The first example is $\GL{n,\Bbb{R}}$ and the corresponding Lie
+algebra $\frak{gl}_{n}(\Bbb{R})$ which consists of all
+matrices. It is important to consider
+$\frak{gl}_{n}(\Bbb{R})\subset\frak{gl}_{n}(\Bbb{C})$ the
+complexification of the algebra. We will denote
+$\frak{gl}_{n}(\Bbb{C})=\Bbb{C}\frak{gl}_{n}(\Bbb{R})=\frak{gl}_{n}$.
+
+Another example ${\rm SL}_{n}(\Bbb{R})$ the group of $n$-by-$n$
+matrices satisfying the property of having unit determinant. To
+compute the Lie algebra, consider elements close to $I$ or more
+precisely a curve
+\begin{equation}
+A(\tau)=I+a(\tau).
+\end{equation}
+Now we should like to consider the tangent vector by Taylor
+expanding the curve and using the coefficient of the first order
+term as the tangenet vector
+\begin{equation}
+A(\tau)=I+\tau X+\mathcal{O}(\tau^{2}),
+\end{equation}
+so we want
+\begin{equation}
+\det\left(A(\varepsilon)\right)=\det(I+\varepsilon X)=I+\varepsilon\tr(X)+\mathcal{O}(\varepsilon^{2}).
+\end{equation}
+We see immediately that the condition $\tr(X)=0$ is the condition
+for elements of the Lie algebra. So we see that
+\begin{equation}
+\Lie(\SL{n,\Bbb{R}})=\frak{sl}_{n}(\Bbb{R})=\{X\in\frak{gl}_{n}\mid\tr(X)=0\}.
+\end{equation}
+We may consider the complexification
+\begin{equation}
+\Bbb{C}\frak{sl}_{n}(\Bbb{R})=\frak{sl}_{n}(\Bbb{C})=\frak{sl}_{n}.
+\end{equation}
+{\bf N.B.} $\frak{sl}_{n}$ is an ideal in $\frak{gl}_{n}$ and
+$\frak{gl}_{n}=\Bbb{C}\oplus\frak{sl}_{n}$ is the direct sum of
+the trivial Lie algebra $\Bbb{C}$ and $\frak{sl}_{n}$ since
+$A=\alpha\cdot I+A'$ where $A'\in\frak{sl}_{n}$ so
+$\tr{A}=\alpha\cdot{\rm dim}$.
+
+We also see $\ORTH{n}=\{A\in\GL{n}\mid A^{T}A=I\}$. The Lie algebra
+is obtained by considering $A=I+\varepsilon X$ where
+$\varepsilon^{2}\approx 0$ is an
+``infinitesimal''\footnote{Although this is a mathematically
+  unrigorous notion, we can still use it for computational and
+  heuristic purposes.}. The Lie algebra is obtained by
+\begin{subequations}
+\begin{align}
+A^{T}A &= (I+\varepsilon X)^{T}(I+\varepsilon X)\\
+&= I +\varepsilon(X^{T}+X)+\mathcal{O}(\varepsilon^2)\\
+&= I\quad\iff\quad X^{T}+X=0.
+\end{align}
+\end{subequations}
+This is the condition for the Lie algebra of $\ORTH{n}$ which is denoted
+\begin{equation}
+\frak{so}(n)=\{X\in\frak{gl}(n)\mid X+X^{T}=0\}.
+\end{equation}
+We are interested in
+$\frak{so}(n)=\frak{so}(n,\Bbb{C})=\Bbb{C}\frak{so}(n,\Bbb{R})$. We
+see the Lie group
+\begin{equation}
+\SO{n}=\ORTH{n}\cap\SL{n}
+\end{equation}
+has unit determinants. We can also quickly compute and find that
+$\SO{n}$ is the connected part of $\ORTH{n}$ which contains the identity.
+
+\begin{wrapfigure}[12]{r}{0.35\textwidth}
+  \vspace{-30pt}
+  \begin{center}
+    \includegraphics{img/LieImg.0}
+  \end{center}
+  \vspace{-20pt}
+  \caption{{\small The Two Seperated Components of O$(n)$.}}\label{fig:LieImg0}
+  \vspace{20pt}
+\end{wrapfigure}
+
+The group $\ORTH{n}$ has elements $A\in\ORTH{n}$ such that
+$\det(A)^{2}=1$, so it has two seperate components. This is seen
+in figure \ref{fig:LieImg0}. This means that the group $\ORTH{n}$ is
+disconnected, there is no continuous path connecting e.g. an
+element $X\in\ORTH{n}$ with $\det(X)=-1$ to an element $Y\in\ORTH{n}$
+with $\det(Y)=+1$, because the path would have to go through a
+point with zero determinant. That is a singular matrix, which is
+not contained in the group $\GL{n}$, and that would imply
+$\ORTH{n}\not\subset\GL{n}$ which is a contradiction.
+
+\begin{rmk}
+Both $\SO{n}$ and $\ORTH{n}$ are both compact groups, i.e. closed
+and bounded.
+\end{rmk}
+\begin{rmk}
+Note that $\U{n}$ and $\SU{n}=\U{n}\cap\SL{n}$ are also
+compact. The condition for $\U{n}=\{A\in\GL{n,\Bbb{C}}\mid
+A^{\dagger}A=I\}$, and the corresponding Lie algebra is
+$\frak{u}(n)$. The condition for it is
+\begin{subequations}
+\begin{align}
+(I+\varepsilon A^{\dagger})(I+\varepsilon A)&=I+\varepsilon(A^{\dagger}+A)+\mathcal{O}(\varepsilon^{2})\\
+&=I\quad\iff\quad A^{\dagger}+A=0.
+\end{align}
+\end{subequations}
+So $\frak{u}(n)=\{X\in\frak{gl}_{n}(\Bbb{C})\mid
+A^{\dagger}+A=0\}$. We have for
+$\frak{su}(n)=\{A\in\frak{u}(n)\mid \tr(A)=0\}$. We see that
+$\Bbb{C}=\frak{gl}_{n}(\Bbb{C})$,
+$\Bbb{C}\frak{su}(n)=\frak{sl}_{n}$ are the complexifications.
+\end{rmk}
+
+The last classical group we would like to consider preserves some
+skew-symmetric inner product. That is to say, $\<x,y\>=-\<y,x\>$
+more generally however we will use a Bilinear form $B$ which is
+antisymmetric
+\begin{equation}
+B(x,y)=-B(y,x).
+\end{equation}
+We write
+\begin{equation}
+B(x,y)=x^{T}By
+\end{equation}
+if $B$ is an antisymmetric matrix. We want to find matrices $A$
+such that $B(Ax,Ay)=B(x,y)$, i.e.
+\begin{equation}
+(Ax)^{T}BAy=x(A^{T}BA)y=xBy
+\end{equation}
+or equivalently $A^{T}BA=B$. {\bf N.B.} if $B=I$ we recover the
+orthogonal group. We get a group $\Sp{n}=\{A\in\GL{2n}\mid
+A^{T}BA=B\}.$ the Lie algebra is of the form
+\begin{equation}
+(I+\varepsilon X)^{T}B(I+\varepsilon X)=B\quad\Rightarrow\quad X^{T}B+BX=0.
+\end{equation}
+If $B$ is nondegenerate, then 
+\begin{equation}
+\frak{sp}(n)=\{X|X^{T}B+BX=0\}
+\end{equation}
+is the Lie Algebra for $\Sp{n}$. This is a noncompact group. We
+can get a compact group by examining the intersection ${\rm
+  Sp}_{n}(\Bbb{C})\cap\U{n}={\rm Sp}_{n}$, and $\Bbb{C}\Lie({\rm
+  Sp}_{n})=\frak{sp}(n)$ is the original Lie Algebra.
+
+\begin{thm}
+All simple Lie algebras that are Lie algebras of compact groups
+are classical Lie algebras or one of 5 exceptional Lie algebras.
+\end{thm}
+
+There is a related notion of semisimple Lie algebra. A semisimple
+Lie algebra is a direct sum of noncommutative simple Lie
+algebras. There is an important class of \define{Solvable} Lie
+algebras. 
+
+Remember (e.g. from Lang's \emph{Algebra} chapter I \S3) that a group $G$ is
+\define{Solvable} if we have a tower of groups
+\begin{equation}
+G\supset G_{1}\supset G_{2}\supset\cdots\supset G_{m}=\{e\}
+\end{equation}
+such that for $G_{n-1}\supset G_{n}$ we have $G_{n-1}/G_{n}$ be Abelian.
+
+The notion of a solvable Lie algebra is the same except we have
+$\frak{g}_{n-1}\supset \frak{g}_{n}$\marginpar{\textbf{Notational
+Warning:} we will use $\frak{g}$ or $\mathscr{G}$ for the Lie
+Algebra, interchangeably, and without warning!} be an ideal. We also can
+doodle this cute diagram
+\begin{equation}
+\begin{diagram}[small]
+\mbox{Group}   & \qquad & G           & \rhd    & H          &\\
+               &        & \uTo<{\exp} &         & \uTo>{\exp}&\\
+\mbox{Algebra} & \qquad &\Lie(G)      & \supset & \Lie(H)    &\mbox{ is an ideal}
+\end{diagram}
+\end{equation}
+
+In a sense, these two notions of solvability and semisimplicity
+are ``complementary'' --- an arbitrary Lie group has a semisimple
+part and a reductive part. A compact Lie group has a semisimple
+Lie algebra.
+
+\subsection{Exercises}
+\begin{exercise}\label{ex:prob3}
+Find Lie algebras of the following matrix groups
+\begin{enumerate}
+\item The group of real upper triangular matrices
+\item The group of real upper triangular matrices with diagonal entries equal to 1.
+\item The group $T_{k}$ of real $n\times n$ matrices obeying $a_{ii} = 1$, $a_{ij} = 0$ if $j-i<k$ and $j=i$.
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+Check that the groups of Problem \ref{ex:prob3} and corresponding Lie algebras are solvable.
+\end{exercise}

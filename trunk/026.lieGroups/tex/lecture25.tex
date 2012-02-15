@@ -1,0 +1,221 @@
+%%
+%% lecture25.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Mon Dec 13 13:00:13 2010 Alex Nelson
+%% Last update Mon Dec 13 14:20:58 2010 Alex Nelson
+%%
+The goal here on out is twofold: (1) the Virasoro algebra is
+important, (2) we will be forced to reconsider the relevant
+theorems for semisimple Lie algebras. We will touch upon the
+notion of central extensions explicitly.
+
+\begin{defn}
+Lets suppose we have a group $(G/N)$ and $N\subset G$ is a normal
+subgroup, or more precisely $N\subset Z(G)$. Let $H:=G/N$. Then
+$G$ is a \define{Central Extension} of $H$.
+\end{defn}
+
+\begin{ex}
+Consider $\GL{V}$, consider its center which consists of scalar
+matrices 
+\begin{equation}
+N = \{ cI : c\in\CC\}.
+\end{equation}
+We have $\PGL(V)$ be the ``projectivization'' of $\GL{V}$, and
+$\GL{V}$ is the central extension of $\PGL(V)=\GL{V}/N$.
+\end{ex}
+
+The notion is very close to the notion of a \define{Projective
+  Representation} where we have
+\begin{equation}
+U_{a}U_{b}=c(a,b)U_{ab}
+\end{equation}
+the product be up to a factor $c(a,b)$ which may depend on $a$
+and/or $b$. We have $U_{a}\in\GL{V}$, denote
+\begin{equation}
+[U_{a}]\in\PGL(V).
+\end{equation}
+Therefore we may write
+\begin{equation}
+[U_{a}][U_{b}]=[U_{ab}]
+\end{equation}
+We may alternatively think of a projective representation as a
+morphism
+\begin{equation}
+\rho\colon G\to\PGL(V).
+\end{equation}
+
+One more thing to say is we may consider the situation when $G$
+is a central extension of $H$. This means
+\begin{equation}
+H=G/N.
+\end{equation}
+Then we may say an irreducible (complex) representation $\rho$ of
+a group $G$ gives us a projective representation of $H$. The
+image of $\rho(N)$ commutes with the image $\rho(G)$, so by
+Schur's lemma 
+\begin{equation}
+\rho(N) = \{cI\}.
+\end{equation}
+for each scalar $c\in\CC$. So then $\rho(H)$ is ``up to
+constants'' $\rho(G)$. We have this situation be described by
+demanding the diagram
+\begin{equation}
+\begin{diagram}
+  G      & \rTo^{\varphi}              & \GL{V} \\
+\uTo\!\dTo & \ruTo_{\widetilde{\varphi}} & \\
+H        &                        &
+\end{diagram}
+\end{equation}
+We lift $h$ to $G$ in many ways, we get a multivalued map
+\begin{equation}
+\widetilde{\varphi}\colon H\to\GL{V}
+\end{equation}
+This is precisely a projective representation.
+
+There is a parallel notion for Lie Algebras. We have
+\begin{equation}
+\mathscr{G}/\mathscr{N}=\mathscr{H},
+\end{equation}
+and we have that $\mathscr{N}\subset\mbox{center of
+}\mathscr{G}$. Then we have $\mathscr{G}$ be the central
+extension of $\mathscr{H}$. Everything may be repeated, with
+small changes of course. For groups it is difficult to lift a
+quotient group $H$ to the group $G$; for Lie algebras, we may
+lift it as linear spaces. If we havea surjective morphism $V\to W$
+of vector spaces, we may lift it in th following way: find
+$\widetilde{W}\subset V$ such that $\widetilde{W}\iso W$. Then we
+have
+\begin{equation}
+V=\widetilde{W}\oplus(\mbox{something})
+\end{equation}
+this is something special for vector spaces. So therefore for Lie
+Algebras we may say that 
+\begin{equation}
+\mathscr{G}=\mathscr{H}\oplus\mathscr{N}
+\end{equation}
+\textbf{as vector spaces!!} Does it work for the direct sum as
+Lie Algebras?
+
+For simplicity we will consider $\mathscr{N}=\{\lambda c\}$ where
+$\lambda c\in\CC$ and $c$ is one single generator. We can now say
+that $g\in\mathscr{G}$ may be represented as
+\begin{equation}
+g = h + \lambda c
+\end{equation}
+for some $h\in\mathscr{H}$. The general properties are really
+clear. Suppose we have the commutator 
+\begin{subequations}
+\begin{align}
+[g,g'] &= [h+\lambda c, h'+\lambda'c]\\
+&= [h,h'] + \underbrace{[\lambda c, h']+[h,\lambda' c] + [\lambda
+    c,\lambda'c]}_{=0\text{ since $c$ is in the center}}
+\end{align}
+\end{subequations}
+So we find
+\begin{equation}
+[h,h']_{\text{new}} =
+\underbracket[0.5pt]{\varphi(h,h')}_{\mathclap{\text{element in
+    $\mathscr{H}$}}} +
+\overbracket[0.5pt]{\lambda(h,h')}^{\mathclap{\text{Element in $\mathscr{N}$}}}\cdot c
+\end{equation}
+This is our new commutator, if we factorize with respect to
+$\mathscr{N}$, we get a morphism
+\begin{equation}
+\mathscr{G}\to\mathscr{H}
+\end{equation}
+The formula is as follows
+\begin{equation}
+[h,h']_{\text{new}} = [h,h']_{\text{old}} + \lambda(h,h')\cdot c
+\end{equation}
+which is precisely our central extension. Note that
+$[\cdot,\cdot]_{\text{new}}$ is the commutator in $\mathscr{G}$,
+and $[\cdot,\cdot]_{\text{old}}$ is the commutator in $\mathscr{H}$.
+Can we use any $\lambda(h,h')$? Of course not, otherwise it'd be
+too easy. We want the new bracket to form a Lie Algebra. So it
+needs to obey the condition of antisymmetry (which is easy), but
+also the Jacobi identity.
+
+\subsection{Spinor Representations}
+How to construct spinor representations in the language of Lie
+Algebras? Remember the Clifford algebra is an algebra with
+generators $\gamma_{\mu}$ and the anticommutator of these
+generators is
+\begin{equation}
+\gamma_{\mu}\gamma_{\nu}+\gamma_{\nu}\gamma_{\mu}=2\eta_{\mu\nu}\cdot1
+\end{equation}
+where $\eta_{\mu\nu}$ is a symmetric, nondegenerate matrix. So a
+representation of the Clifford algebra is given by the Dirac
+matrices
+\begin{equation}
+\Gamma_{\mu}\Gamma_{\nu}+\Gamma_{\nu}\Gamma_{\mu}=2\eta_{\mu\nu}\cdot1
+\end{equation}
+We know something about the representations of Clifford
+algebras. We will denote $\cliff(n)$ as the $n$-dimensional
+Clifford algebra. Now what we would like to do, since $\cliff(n)$
+is an associative algebra, is to note it is also a Lie algebra:
+\begin{equation}
+[\Gamma_{a},\Gamma_{b}] =
+\Gamma_{a}\Gamma_{b}-\Gamma_{b}\Gamma_{a}
+\end{equation}
+We will divide our Clifford algebra into parts, a standard trick!
+The general element $a\in\cliff(n)$ can be written as
+\begin{equation}
+a = a^{0}\cdot\1 + a^{\mu}\Gamma_{\mu} + a^{\mu\nu}\Gamma_{\mu}\Gamma_{\nu}+\cdots
+\end{equation}
+We will now consider elements only up to quadratic terms. Is it a
+subalgebra? Not exactly\dots but if we use the Lie algebra
+operation, we get a Lie subalgebra. Why is this true?
+
+First of all, constant terms drop out of the commutator, and
+\begin{equation}
+[\Gamma_{\mu},\Gamma_{\nu}] = \mbox{something quadratic}
+\end{equation}
+But what about
+\begin{equation}
+[\Gamma_{\mu}\Gamma_{\nu},\Gamma_{\rho}\Gamma_{\sigma}] = ?
+\end{equation}
+Well, we see first of all that
+\begin{subequations}
+\begin{align}
+[\Gamma_{\alpha},\Gamma_{\beta}\Gamma_{\gamma}] 
+&=\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma}-\Gamma_{\beta}\Gamma_{\gamma}\Gamma_{\alpha}\\
+&=\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma}-\Gamma_{\beta}(-\Gamma_{\alpha}\Gamma_{\gamma}+2\eta_{\alpha\gamma}\cdot\1)\\
+&=\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma}+\Gamma_{\beta}\Gamma_{\alpha}\Gamma_{\gamma}-2\eta_{\alpha\gamma}\Gamma_{\beta}\\
+&=(\Gamma_{\alpha}\Gamma_{\beta}+\Gamma_{\beta}\Gamma_{\alpha})\Gamma_{\gamma}-2\eta_{\alpha\gamma}\Gamma_{\beta}\\
+&=2\eta_{\alpha\beta}\Gamma_{\gamma}-2\eta_{\alpha\gamma}\Gamma_{\beta}
+\end{align}
+\end{subequations}
+Then we take advantage of the identity of the commutator
+\begin{equation}
+[AB,C] = A[B,C] + [A,C]B
+\end{equation}
+to find
+\begin{subequations}
+\begin{align}
+[\Gamma_{\mu}\Gamma_{\nu},\Gamma_{\alpha}\Gamma_{\beta}] &=
+\Gamma_{\mu}[\Gamma_{\nu},\Gamma_{\alpha}\Gamma_{\beta}]+[\Gamma_{\mu},\Gamma_{\alpha}\Gamma_{\beta}]\Gamma_{\nu}\\
+&=2\Gamma_{\mu}(\eta_{\nu\alpha}\Gamma_{\beta}-\eta_{\nu\beta}\Gamma_{\alpha})
++2(\eta_{\mu\alpha}\Gamma_{\beta}-\eta_{\mu\beta}\Gamma_{\alpha})\Gamma_{\nu}\\
+&=2\eta_{\nu\alpha}(-\Gamma_{\beta}\Gamma_{\mu}+2\eta_{\mu\beta}\1)-2\eta_{\nu\beta}(-\Gamma_{\alpha}\Gamma_{\mu}+2\eta_{\alpha\mu}\1)+\cdots\\
+&=4(\eta_{\nu\alpha}\eta_{\mu\beta}-\eta_{\nu\beta}\eta_{\mu\alpha})\1\nonumber\\
+&\phantom{=4}\quad+ 2(\eta_{\mu\alpha}\Gamma_{\beta}\Gamma_{\mu}-\eta_{\mu\beta}\Gamma_{\alpha}\Gamma_{\nu}-\eta_{\nu\alpha}\Gamma_{\beta}\Gamma_{\mu}+\eta_{\nu\beta}\Gamma_{\alpha}\Gamma_{\mu})\\
+&\sim a\Gamma_{\sigma}\Gamma_{\tau}+b\cdot\1
+\end{align}
+\end{subequations}
+We find that $a\cdot\1+\Gamma_{\mu}\Gamma_{\nu}a^{\mu\nu}$ is
+itself a Lie subalgebra. What is this Lie algebra? We may say
+that $a^{\mu\nu}$ may be restricted, due to the anticommutation
+relation any symmetric combination disappears. So
+\begin{equation}
+a^{\mu\nu}=-a^{\nu\mu}
+\end{equation}
+is an antisymmetric matrix. It is pretty clear it is the
+orthogonal Lie algebra, as it is described by means of
+antisymmetric matrices. But we have this extra stuff, so we have
+no chance for it to be an orthogonal Lie Algebra, but it is the
+central extension to the orthogonal Lie algebra. Moreover it is
+the trivial central extension.

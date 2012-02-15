@@ -1,0 +1,283 @@
+%%
+%% lecture15.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Fri Dec 10 11:39:14 2010 Alex Nelson
+%% Last update Fri Dec 10 12:54:35 2010 Alex Nelson
+%%
+
+Today we will start with some general examples. First some simple
+constructions of representations which are quite general. We will
+consider a representation
+\begin{equation}
+\varphi\colon G\to\GL{V}.
+\end{equation}
+If we have one representation, we may consider manyt others
+related to it. We may use any natural construction, any functor,
+will give you something. For example we may consider the dual
+space 
+\begin{equation}
+V^{*}=\left\{ v\colon V\to\Bbb{F}\right\}
+\end{equation}
+This is a contravariant functor. Remember $\varphi(g)\in{\rm
+  GL}_{n}$ if $V$ is finite dimensional; duality is related by
+the transpose $\varphi(g)^{T}$, we may ask ourselves if it is a
+representation?
+
+We see immediately \emph{no it isn't!} Because we may say the
+transpose
+\begin{equation}
+\big(\varphi(g)\varphi(h)\big)^{T}\not=\varphi(g)^{T}\varphi(h)^{T}
+\end{equation}
+therefore we do not have a representation. It is simple to cure
+this, we take
+\begin{equation}
+\big(\varphi(g)^{T}\big)^{-1}=\big(\varphi(g)^{-1}\big)^{T}
+\end{equation}
+which is the \define{Dual Representation}, i.e.\ the
+representation on the dual space. We demand then that
+\begin{equation}
+\big(\varphi(g)^{-1}\big)^{T}=\varphi(g^{-1})^{T}
+\end{equation}
+and then the character of the dual representation is
+\begin{equation}
+\chi_{\text{dual}}(g)=\tr\big(\varphi(g^{-1})^{T}\big)=\tr\big(\varphi(g^{-1})\big)
+\end{equation}
+so
+\begin{equation}
+\chi_{\text{dual}}(g)=\chi(g^{-1}).
+\end{equation}
+
+There is another operation that is important, namely taking the
+tensor product. Suppose $V$ has basis $(v_{1},\dots,v_{m})$ and
+$W$ has basis $(w_{1},\dots,w_{n})$, then $V\otimes W$ has basis 
+\begin{equation}
+(v_{1}\otimes w_{1},\dots, v_{1}\otimes w_{n},\dots,v_{m}\otimes
+  w_{1},\dots, v_{m}\otimes w_{n})
+\end{equation}
+and a vector in $V\otimes W$ is of the form
+\begin{equation}
+z = z^{ij}v_{i}\otimes w_{j} = \sum_{i=1}^{m}\sum_{j=1}^{n}z^{ij}v_{i}\otimes w_{j}
+\end{equation}
+where we use Einstein summation conventions where indices
+upstairs are summed over the indices downstairs. The dependence
+on the choice of basis is fictitious. If we have a change of
+coordinates in $V$ have the components transform by
+\begin{equation}
+x^{i}\mapsto\widetilde{x}^{i} = {a^{i}}_{j}x^{j}
+\end{equation}
+and we consider some arbitrary vector
+\begin{equation}
+v=x^{j}v_{j}\quad\text{in }V
+\end{equation}
+and if we do likewise consider a change of coordinates in $W$ by
+\begin{equation}
+y^{l}\mapsto\widetilde{y}^{l}={b^{l}}_{k}y^{k}
+\end{equation}
+where we implicitly sum over $k$, then we have
+\begin{equation}
+w=y^{k}w_{k}
+\end{equation}
+describe an arbitrary element. What is the transformation in the
+coordinates of the tensor product? It is very simple. We obtain
+them by
+\begin{equation}
+\widetilde{z}^{il}={a^{i}}_{j}{b^{l}}_{k}z^{jk}
+\end{equation}
+so if
+\begin{equation}
+a=a(g)\quad\mbox{and}\quad b=b(g)
+\end{equation}
+for some group element $g\in G$, then
+\begin{equation}
+a\otimes b=(a\otimes b)(g)
+\end{equation}
+depends on $g$ too. This gives rise to a tensor product of
+representations, which is a representation by functoriality.
+
+If we have
+\begin{equation}
+\varphi\colon G\to\GL{V}
+\end{equation}
+and
+\begin{equation}
+\psi\colon G\to\GL{W}
+\end{equation}
+be representations, then we have the tensor product of
+representations as
+\begin{equation}
+(\varphi\otimes\psi)_{g}(v\otimes w)=\big(\varphi(g)v\big)\otimes\big(\psi(g)w\big).
+\end{equation}
+What about vectors that are not basis vectors? We can use
+distributivity, if
+\begin{equation}
+v=x^{i}v_{i}\quad\mbox{and}\quad w=y^{j}w_{j}
+\end{equation}
+then by definition
+\begin{equation}
+v\otimes w=x^{i}y^{j}(v_{i}\otimes w_{j}).
+\end{equation}
+In other words, if $V$ and $W$ are $G$-modules, then $V\otimes W$
+is a $G$-module. We may iterate for as many $G$-modules tensored
+together as possible. We may recall 
+\begin{equation}
+W\otimes V\iso V\otimes W
+\end{equation}
+naturally.
+
+We may construct more representations via some gadget called an
+\define{Intertwiner} which is a morphism of $G$-modules
+(i.e. preserves commutator, group operation). Sometimes we use
+shorthand
+\begin{equation}
+\varphi_{g}v = gv
+\end{equation}
+for the group action. Then a morphism is
+\begin{equation}
+\alpha(gv)=g(\alpha v).
+\end{equation}
+If an intertwiner is invertible, we have an equivalence of
+representations. 
+
+If we consider $V\otimes V$, then we have a natural intertwiner
+namely
+\begin{equation}
+v\otimes w\mapsto w\otimes v.
+\end{equation}
+This is a natural isomorphism of representations, so nothing
+changes. If we have $V^{\otimes n}$, then we have the symmetric
+group $S_{n}$ consisting of intertwiners. So a permutation is an
+intertwiner. We may consider vectors $x$ such that
+\begin{equation}
+\alpha(x)=x
+\end{equation}
+is invariant under such permutations; they form a subspace. More
+precisely
+\begin{equation}
+x=z^{ij}v_{i}\otimes v_{j}
+\end{equation}
+and the coefficients are tensors, what we do is consider
+symmetric tensors which are fixed points of the intertwiner which
+implies the coefficients obey
+\begin{equation}
+z^{ij}=z^{ji}
+\end{equation}
+for all $i$, $j$.
+
+We may consider the subspace obeying
+\begin{equation}
+\alpha(x)=-x
+\end{equation}
+then the coefficients are
+\begin{equation}
+z^{ij}=-z^{ji}
+\end{equation}
+antisymmetric tensors. The symmetric one is denoted by
+$\Sym^{2}V$ and the antisymmetric by $\Antisymmetric^{2}V$. We
+generalize to the tensor product of $n$ spaces
+\begin{equation}
+V^{\otimes n}=\underbracket[0.5pt]{V\otimes\dots\otimes V}_{\text{$n$ times}}
+\end{equation}
+then we get guys with $n$ indices $z^{i_{1}\dots i_{n}}$. We can
+apply various demands of indices. We use the notation
+\begin{equation}
+z^{[ij]} = \frac{1}{2!}(z^{ij}-z^{ji})
+\end{equation}
+and
+\begin{equation}
+z^{(ij)} = \frac{1}{2!}(z^{ij}+z^{ji}).
+\end{equation}
+
+We may also take tensor products including the dual space and the
+vector space, for example
+\begin{equation}
+V^{\otimes m}\otimes (V^{*})^{\otimes n} = 
+\underbracket[0.5pt]{V\otimes\dots\otimes V}_{\text{$m$ times}}\otimes
+\underbracket[0.5pt]{V^{*}\otimes\dots\otimes V^{*}}_{\text{$n$ times}}
+\end{equation}
+which results in guys
+\begin{equation}
+a^{i_{1}\dots i_{m}}_{j_{1}\dots j_{n}}
+\end{equation}
+with mixed indices.
+
+We have been talking about groups, but we may consider analogous
+gadgetry for the Lie algebra. If we have
+\begin{equation}
+(\varphi_{g}\otimes\psi_{g})(u\otimes v)=\big(\varphi(g)(u)\big)\otimes\big(\psi(g)(v)\big)
+\end{equation}
+for the Lie group, and we take 
+\begin{equation}
+g=1+\gamma
+\end{equation}
+where $\gamma$ is ``small.'' We obtain from the Lie group
+representation $\varphi_{1+\gamma}$ a Lie algebra representation
+$\widetilde{\varphi}_{\gamma}$, but how does the representation
+behave under the tensor product of Lie algebra representations?
+We have
+\begin{equation}
+(\widetilde\varphi_{\gamma}\otimes\widetilde\psi_{\gamma})(u\otimes v)=
+\big(\widetilde\varphi_{\gamma}(u)\big)\otimes v + u\otimes\big(\widetilde\psi_{\gamma}(v)\big).
+\end{equation}
+Why? Well observe that
+\begin{subequations}
+\begin{align}
+(\varphi_{1+\gamma}\otimes\psi_{1+\gamma}) 
+&= (\1+\widetilde\varphi_{\gamma})\otimes(\1+\widetilde\psi_{\gamma})\\
+&= {\bf 1} +
+  \underbracket[0.5pt]{\widetilde{\varphi}_{\gamma}\otimes{\bf 1}
++{\bf 1}\otimes\widetilde{\psi}_{\gamma}}_{\text{Lie Algebra rep.}} + \mathcal{O}(\varepsilon^{2})
+\end{align}
+\end{subequations}
+where $\varepsilon$ is the ``magnitude'' of $\gamma$, which is
+negligibly small in comparison to 1, and $\1$ is the
+identity operator.
+
+Consider the simplest example $\U{n}$ and its fundamental
+representation $\GL{\CC^{n}}$. The maximal torus is
+\begin{equation}
+T = \left\{\begin{bmatrix}
+ e^{i\varphi_{1}} &        &  \\
+              & \ddots &  \\
+              &        & e^{i\varphi_{n}}
+\end{bmatrix}
+\right\},
+\end{equation}
+this corresponds to the Cartan subalgebra consisting of diagonal
+matrices. The weight vectors are the standard basis
+\begin{equation}
+v_{i} = e_{i}
+\end{equation}
+which is 1 for the $i^{th}$ component, 0 for all others. Now it
+is clear what are the weights, merely the corresponding
+components. We may consider the tensor product of two such
+representations. The basis is by our definition $v_{i}\otimes
+v_{j}$, and it is very easy to understand
+\begin{equation}
+v_{i}\otimes v_{j}\mapsto (\varphi_{i}+\varphi_{j})(v_{i}\otimes v_{j})
+\end{equation}
+is a weight vector. There is a rule for the characters
+\begin{equation}
+\chi_{\varphi\otimes\psi}=\chi_{\varphi}\chi_{\psi}
+\end{equation}
+using the characters of the ``component'' representations. We
+also have a representation of symmetric tensors with the basis
+\begin{equation}
+v_{i}\otimes v_{j}+v_{j}\otimes v_{i}
+\end{equation}
+and for a representation of antisymmetric tensors
+\begin{equation}
+v_{i}\otimes v_{j}-v_{j}\otimes v_{i}
+\end{equation}
+up to some overall factor of $1/2$. Both bases have almost the
+same weights $\varphi_{i}+\varphi_{j}$, but for the antisymmetric
+tensors we require $i\not=j$.
+
+
+
+%% \begin{picture}(50,7)
+%% \multiput(5,1)(20,0){5}{\circle{6}}
+%% \multiput(8,1)(20,0){4}{\line(1,0){14}}
+%% \end{picture}

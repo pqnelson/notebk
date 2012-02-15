@@ -1,0 +1,194 @@
+%%
+%% lecture20.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat Dec 11 12:35:11 2010 Alex Nelson
+%% Last update Mon Dec 13 21:25:51 2010 Alex Nelson
+%%
+We formulated a theorem of the structure of semisimple algebras,
+then considered examples. Lets go back. Recall we considered the
+situation when we had $e_{\alpha}$, $f_{\alpha}$, $h_{\alpha}$
+(members of the Lie Algebra) with the relations that
+\begin{subequations}
+\begin{align}
+[h_{\alpha}, h_{\beta}] &= 0\\
+[e_{\alpha}, f_{\beta}] &= h_{\alpha}\delta_{\alpha\beta}\\
+[h_{\alpha}, e_{\beta}] &= a_{\alpha\beta}e_{\beta}\\
+[h_{\alpha}, f_{\beta}] &=-a_{\alpha\beta}f_{\beta}.
+\end{align}
+\end{subequations}
+We see that $e_{\alpha}$, $f_{\alpha}$ are root vectors, so
+\begin{equation}
+[h, e_{\alpha}] = \lambda_{\alpha}(h)e_{\alpha}
+\end{equation}
+and similarly
+\begin{equation}
+[h, f_{\beta}] = -\lambda_{\beta}(h)f_{\beta}.
+\end{equation}
+We recall that a mapping
+\begin{equation}
+\lambda\colon\mathscr{H}\to\Bbb{F}
+\end{equation}
+is called a \define{Root}, it's a linear functional on
+$\mathscr{H}$. We see that
+\begin{equation}
+\lambda_{\beta}(h_{\alpha})=a_{\alpha\beta}.
+\end{equation}
+Moreover $a_{\alpha\beta}$ should be the Cartan matrix, so 
+\begin{subequations}
+\begin{align}
+a_{\alpha\alpha}&=2\\
+a_{\alpha\beta}&\leq0\quad\mbox{for }\alpha\not=\beta\\
+a_{\alpha\beta}&\mbox{ is symmetrizable}
+\end{align}
+\end{subequations}
+We also assume that
+\begin{equation}
+\det(a_{\alpha\beta})\not=0
+\end{equation}
+i.e. the Cartan matrix is nondegenerate. We can find the Cartan
+matrix for semisimple Lie Algebras. An ideal corresponds to an
+invaraint subspace of the Lie algebra under the adjoint
+representation. We know a simple Lie Algebra is simple iff it has
+only trivial ideals. For semisimple Lie Algebras, we can
+partition roots into positive and negative roots. Positive roots
+contain a subset that generates all roots, we call this subset
+\define{Simple Roots}.
+
+What may be said of representations with this data? We take
+$\mathscr{G}$ a Lie algebra, we take a representation
+\begin{equation}
+\varphi\colon\mathscr{G}\to\mathfrak{gl}(V)
+\end{equation}
+for some vector space $V$, and we may consider the weights of
+this Lie Algebra
+\begin{equation}
+\varphi(h)\vec{v}=\alpha(h)\vec{v}
+\end{equation}
+and weight vectors $\vec{v}$ (where we take
+$h\in\mathscr{H}$). The root vectors act on weight vectors,
+namely $\varphi(e_{k})\vec{v}$ is a weight vector (supposing that
+$\vec{v}$ was initially a weight vector) with weight
+$\alpha+\lambda_{k}$ provided that it is nonzero. Similarly
+$\varphi(f_{j})\vec{v}$ is a weight vector with weight
+$\alpha-\lambda_{j}$, so $\varphi(f_{j})$ lowers the weights. The
+highest weight vector is annhilated by applying
+$\varphi(e_{i})\vec{v}=0$ for all $i$. The highest weight vector
+always exists in in finite dimensional representations, although
+this is not necessarily true for infinite dimensional
+representations. 
+
+\begin{thm} {\rm(The highest weight vector exists in finite
+    dimensional representations.)} If a finite dimensional
+  representation is reducible, then the highest weight vector is
+  not unique.
+\end{thm}
+
+Why? Well, at least one exists in the finite dimensional
+case. Why? Trivially, because in linear algebra the eigenvalue
+problem has no solution if the matrix is all zeroes. We cannot
+have that for a nontrivial representation. 
+
+Now suppose there exists a representation that is a
+subrepresentation which will be irreducible and contains a
+different highest weight vector. Let us suppose we have highest
+weight vector, then we may construct a subrepresentation
+consisting of
+$f_{\alpha_{1}}(\cdots{})f_{\alpha_{n}}\vec{v}$\marginpar{This
+may appear to be mathematically incorrect, but the weights are
+integers which means at some moment these would vanish.} which
+is a subrepresentation --- it is highest weight since
+\begin{equation}
+e_{\beta}\vec{v}=0
+\end{equation}
+for all $\beta$. Suppose our representation is reducible. If this
+is so, there is a highest weight vector in the subrepresentation.
+
+\begin{rmk}
+To prove a representation is irreducible, it is sufficient to
+prove the uniqueness of the highest weight vector.
+\end{rmk}
+
+How to classify, to describe representations (especially
+irreducible representations). This is a simple thing, namely take
+this highest weight vector
+\begin{equation}
+\varphi(h)\vec{v}=\alpha(h)\vec{v}
+\end{equation}
+where $\alpha\in\mathscr{H}^{*}$, and we should calculate
+$\alpha(h_{1})$, \dots, $\alpha(h_{n})$ for all basis elements of
+the Cartan subalgebra. We will prove that $\alpha(h_{i})\geq0$
+and $\alpha(h)\in\ZZ$. To prove this is extremely simple, because
+-- look -- we have these commutation relations
+\begin{equation}
+\Span\{h_{i},e_{i},f_{i}\}\iso\mathfrak{sl}(2)
+\end{equation}
+for fixed $i$. For this algebra $\mathfrak{sl}(2)$ we
+know \emph{everything}, in particular all finite dimensional
+irreducible representations, which is \emph{precisely} the guys
+we are interested in. So the representation is characterized by
+$n$ non-negative numbers. So can we take thse numbers in any way
+we want? Yes we can, we'll prove it in the next lecture. We will
+merely check this for $\ClassicalGroup{A}_{n}$. This is
+interesting by itself. We will later check this for
+$\ClassicalGroup{B}_{n}$, $\ClassicalGroup{C}_{n}$; the proof
+will be constructive.
+
+For $\ClassicalGroup{A}_{n}$, we have $e_{i}=E_{i,i+1}$,
+$f_{i}=E_{i+1,i}$. We see
+\begin{equation}
+h_{i}=E_{i,i}-E_{i+1,i+1}
+\end{equation}
+What to do? Well, we have first of all $n$ numbers
+$\alpha(h_{1})$, \dots, $\alpha(h_{n})$. We will prove these
+numbers may be taken by considering the standard basis in
+$\RR^{n}$. 
+
+We will call the name for these
+representations \define{Elementary Representations}. First it is
+sufficient to find elementary representations, they represent
+$\mathscr{G}$ in spaces $V_{1}$, \dots, $V_{n}$. We will take
+$V^{\otimes m_{1}}_{1}\otimes\cdots\otimes V^{\otimes
+m_{n}}_{n}$, and the highest weights $\alpha_{1}$, \dots,
+$\alpha_{n}$ with the corresponding highest weight vectors
+$\vec{v}_{1}$, \dots, $\vec{v}_{n}$, then the corresponding
+weight vectors in $V^{\otimes m_{1}}_{1}\otimes\cdots\otimes V^{\otimes
+m_{n}}_{n}$ have weights
+$m_{1}\alpha_{1}+\cdots+m_{n}\alpha_{n}$. If we analyze these
+weights, we may consider any representation constructed from the
+elementary representations.
+
+What to do? Construct the elementary representation, which is
+very easy\dots we take the fundamental representation. If
+$(\varphi_{1},\dots,\varphi_{n})$ are the coordinates of the
+Cartan subalgebra (bear in mind because we work with
+$\ClassicalGroup{A}_{n}$ we have
+$\varphi_{1}+\dots+\varphi_{n}=0$ and we work with diagonal
+matrices), then the weights are simply $\varphi_{1}$, \dots,
+$\varphi_{n}$. The highest weight correspond to $\varphi_{1}$. We
+see
+\begin{equation}
+\alpha_{1}(h_{k}) = \begin{cases}1 & k=1\\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+We would like to now note this corresponds to $(1,0,\dots,0)$.
+
+We want to consider $(0,1,0,\dots,0)$. This is constructed by
+considering $\Antisymmetric^{2}(V)$, the antisymmetric part of
+$V\otimes V$. The highest weight vector is $v_{1}\otimes
+v_{2}-v_{2}\otimes v_{1}$, and the corresponding weight is
+$\alpha_{1}+\alpha_{2}$. We see
+\begin{equation}
+(\alpha_{1}+\alpha_{2})(h_{k})=\begin{cases}0 & k\not=2\\
+1 & k=2
+\end{cases}
+\end{equation}
+This corresponds to the desired $(0,1,0,\dots,0)$.
+
+The general case we have the highest weight be
+$\alpha_{1}+\dots+\alpha_{k}$, which corresponds to the
+representation $\Antisymmetric^{k}(V)$ --- the antismmetric part
+of $V^{\otimes k}$. The highest weight vector is then $\vec{v}_{[1}\otimes\vec{v}_{2}\otimes\cdots\otimes\vec{v}_{k]}$.

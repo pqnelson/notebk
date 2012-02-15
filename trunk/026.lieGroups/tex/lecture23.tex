@@ -1,0 +1,229 @@
+%%
+%% lecture23.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Dec 12 12:21:40 2010 Alex Nelson
+%% Last update Sun Dec 12 16:48:30 2010 Alex Nelson
+%%
+\noindent\ignorespaces %
+Today we will talk about spinor representations.
+
+Now we wil repeat what we know about $\mathfrak{sl}(n)$. For this
+Lie algebra, we can construct all ireeducible representations as
+tensor representations. What does this mean? We have the
+fundamental representation $V$, we can take tensor powers
+$V\otimes\cdots\otimes V$ and there are a lot of invariant
+subspaces there. All irreducible representations are equivalent
+to representations in one of these invariant subspaces, we can
+give a more precise result. The algebra $\mathfrak{sl}(n)$ has
+Cartan subalgebra of rank $n-1$, we can draw the Dynkin diagram
+for $\ClassicalGroup{A}_{n-1}$ as
+\begin{center}
+\includegraphics{img/LieImg.8}
+\end{center}
+We assign to each node a number. When we take $n-2$ nodes to be
+zero, and one node to be 1, we can get an elementary representation.
+This corresponds to $\Antisymmetric^{k}V$. Here we have the
+highest weight vector
+\begin{equation}
+\vec{v}_{k}\in\Antisymmetric^{k}V
+\end{equation}
+then we take
+\begin{equation}
+\bigotimes(\Antisymmetric^{k}V)^{\otimes
+  n_{k}}\quad\mbox{and}\quad\bigotimes \vec{v}_{k}^{\otimes n_{k}}
+\end{equation}
+will be the highest weight vector with weight
+$(n_{1},\dots,n_{k},\dots)$. This representation is reducible,
+but we can get an irreducible part.
+
+We can restrict our attention to any subgroup of $\SL{n}$, in
+particular $\SO{n}$, or more precisely $\mathfrak{so}(n)$. Not
+all representations of $\mathfrak{so}(n)$ are tensor
+representations, not all of them may be embedded in this tensor
+representation. Remember for $\ClassicalGroup{D}_{n}=\SO{2n}$ the
+Dynkin diagram is of the form
+\begin{center}
+\includegraphics{img/LieImg.4}
+\end{center}
+and for $\ClassicalGroup{B}_{n}=\SO{2n+1}$ the Dynkin diagram is
+\begin{center}
+\includegraphics{img/LieImg.6}
+\end{center}
+There are some special nodes. We have really from the left
+$(n-2)$ nodes in $\ClassicalGroup{D}_{n}$:
+\begin{center}
+\includegraphics{img/LieImg.9}
+\end{center}
+the solid nodes are precisely when we get the same situation as
+$\ClassicalGroup{A}_{n-2}$. For the special nodes, putting 1 as
+the value on the black nodes gives special representations called
+\define{Spinor Representations}. We want to construct spinor
+representations. The main tool will be Clifford Algebras.
+
+What is the Clifford Algebra? It is a unital associative algebra
+with generators $e_{1}$, \dots, $e_{n}$ and relations
+\begin{equation}
+e_{\alpha}e_{\beta}+e_{\beta}e_{\alpha}=2\eta_{\alpha\beta}\cdot\1
+\end{equation}
+where $\eta_{\alpha\beta}$ are numbers and form a symmetric
+matrix
+\begin{equation}
+\eta_{\alpha\beta}=\eta_{\beta\alpha}.
+\end{equation}
+We will require the matrix be degenerate
+\begin{equation}
+\det(\eta)\not=0
+\end{equation}
+but really we can impose the opposite condition
+\begin{equation}
+\eta=0
+\end{equation}
+and we get what is called a \define{Grassmann Algebra}. We can
+reduce everything to these two opposite conditions. We can
+consider any field, but we will work with $\CC$.
+
+What is important is that $\eta_{\alpha\beta}$ may be
+diagonalized. For complex numbers this shows all Clifford
+Algebras of a given dimension are isomorphic. So we may choose
+$\eta_{\alpha\beta}$ as we'd like. And we choose
+\begin{equation}
+\eta = \begin{bmatrix} 0 & 1\\
+1 & 0
+\end{bmatrix}
+\end{equation}
+when $n=2m$ (for some $m\in\NN$). We have two sorts of
+generators, lets denote generators by symbols $a^{\dagger}_{i}$,
+$a_{i}$. Then the defining relations will be of the following
+form
+\begin{subequations}
+\begin{align}
+a_{i}a_{j}^{\dagger}+a_{j}^{\dagger}a_{i}=2\delta_{ij}\\
+a_{i}^{2}=0
+\end{align}
+\end{subequations}
+which gives us
+\begin{equation}
+a_{i}a_{j}+a_{j}a_{i}=a_{i}^{\dagger}a_{j}^{\dagger}+a_{j}^{\dagger}a_{i}^{\dagger}=0.
+\end{equation}
+Physicists give a different name for this stuff, referring to it
+as \define{Canonical Anticommutation Relations}, and $a_{i}$,
+$a_{i}^{\dagger}$ play the role of creation and annihilation
+operators. What may be said of the representations for this
+Clifford Algebra. It is extremely simple: when $n=2m$, $\cliff(n)$
+has only one irreducible representation. By the way, Physicists
+also ahve another name for representations of $\cliff(n)$:
+representations of Clifford Algebras are called \define{Dirac
+Matrices}. We are sending
+\begin{equation}
+e_{\alpha}\mapsto\Gamma_{\alpha}
+\end{equation}
+generators to matrices which obey
+\begin{equation}
+\Gamma_{\alpha}\Gamma_{\beta}+\Gamma_{\beta}\Gamma_{\alpha}=2\eta_{\alpha\beta}\cdot\1.
+\end{equation}
+We would now like to prove: if we require irreducibility, then we
+will have only one irreducible representation of Clifford
+Algebras.
+
+So how to prove this? It is very simple and more or less based on
+the idea of the highest weight vector, although in this situation
+it is named the vacuum vector $\phi$\marginpar{Vaccum Vector
+$\phi$ generalized version of highest weight vector}. The Fock
+Vacuum vector $\phi$ is annihilated by all $a_{i}$
+\begin{equation}
+a_{i}\phi = 0
+\end{equation}
+for all $i$. Here we can consider $a_{i_{1}}^{\dagger}\cdots
+a_{i_{n}}^{\dagger}\phi$, we may take arbitrary linear
+combinations of these guys. We can define the action of $a$ on
+these guys. We just use the relations
+\begin{equation}
+a_{i}a_{j}^{\dagger}=2\delta_{ij}\1-a_{j}^{\dagger}a_{i}
+\end{equation}
+and we are golden.
+
+We have some questions. Maybe this vacuum vector does not exist
+at all. We construct this sum
+\begin{equation}
+\widehat{N}=\sum_{i}a_{i}^{\dagger}a_{i}
+\end{equation}
+observe that we may consider eigenvectors of $\widehat{N}$:
+\begin{equation}
+\widehat{N}\psi=N\psi
+\end{equation}
+which always exist for non-trivial finite-dimensional
+representations. We see
+\begin{equation}
+a_{i}^{\dagger}\colon N\mapsto N+1 \quad\mbox{and}\quad
+a_{i}\colon N\mapsto N-1.
+\end{equation}
+We have
+\begin{subequations}
+\begin{align}
+\widehat{N}(a_{\alpha}\psi)
+&= \sum_{i}a_{i}^{\dagger}a_{i}a_{\alpha}\psi\\
+&= a_{\alpha}(N-1)\psi
+\end{align}
+\end{subequations}
+We cannot go down indefinitely, and the number operator does
+indeed exist. The representation is irreducible iff the vacuum
+vector is unique (it is more or less obvious, if we had
+reducibility we'd have another vacuum vector). It is very easy to
+show that there is only one irreducible representation, and all
+other representations are direct sums of irreducible
+representations.
+
+\begin{rmk}
+Hoiw to realize this representation? We can consider the
+Grassmann algebra with $n$ variables, we have ``functions of
+anticommuting variables'' in the jargon of physicists. We may
+multiply by $\alpha_{i}$ and differentiate with respect to them
+$\partial/\partial\alpha_{i}$. Differentiation amounts to
+``canceling after moving to the left.'' These two operators give
+a Clifford Algebra.
+\end{rmk}
+
+The question is why do we need this? Elements of the orthogonal group
+generate automorphisms of the Clifford algebra. What does this
+mean? It means if we take generators $e_{i}$ of the Clifford
+algebra, and we use the transformation
+\begin{equation}
+\widetilde{e}_{j} = {a_{j}}^{i}e_{i}
+\end{equation}
+and we assume ${a_{j}}^{i}$ is an orthogonal matrix, then it is
+clear that the commutation relations for $\widetilde{e}$ are
+precisely the same as for $e$. We see
+\begin{equation}
+\widetilde{e}_{i}\widetilde{e}_{j}+\widetilde{e}_{j}\widetilde{e}_{i}=2\eta_{ij}\cdot\1
+\end{equation}
+In other words, if we have Dirac Matrices, then we can obtain
+``new'' Dirac matrices by using precisely the same orthogonal
+transformation:
+\begin{equation}
+\widetilde{\Gamma}_{i} = {a_{i}}^{j}\Gamma_{j}.
+\end{equation}
+We only have one irreducible representation, so
+\begin{equation}
+\widetilde\Gamma_{i}\sim\Gamma_{i}
+\end{equation}
+should be similar. Iss this matrix unique? That is we have
+matrices $U_{a}$ indexed by elements of the orthogonal group such that
+\begin{equation}
+\widetilde\Gamma_{i}=U_{a}\Gamma_{i}U_{a^{-1}},
+\end{equation}
+we can replace
+\begin{equation}
+U_{a}\mapsto\lambda U_{a}.
+\end{equation}
+We demand
+\begin{equation}
+U_{a}U_{b}=\lambda U_{ab}
+\end{equation}
+for the simple reason that we may perform 2 change of
+coordinates. This is a small problem, the $U_{a}$ speceify a
+representation of the orthogonal group called the \define{Spinor
+Representation} of the orthogonal group. It is a projecctive
+representation due to this pesky $\lambda$.

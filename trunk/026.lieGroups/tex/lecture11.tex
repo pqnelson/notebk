@@ -1,0 +1,190 @@
+%%
+%% lecture11.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Mon Jun 14 15:56:24 2010 Alex Nelson
+%% Last update Mon Jun 14 16:29:24 2010 Alex Nelson
+%%
+
+We consider representations of $\frak{sl}(2)=A_{1}$. We analyzed
+completely the finite dimensional representations; the only place
+where finite dimensions were used was in proving the existence of
+the highest weight vector. We reasoned $h$ has eigenvectors. Then
+we applied $e$ to the eigenvectors of $h$, which produced a
+different eigenvector or zero.
+
+We had the eigenvector
+\begin{equation}
+h\vec{v}=\lambda\vec{v},
+\end{equation}
+then
+\begin{equation}
+h(e^{k}\vec{v})=(\lambda+2k)e^{k}\vec{v},
+\end{equation}
+but in the finite dimensional case we get at some moment
+\begin{equation}
+e^{n}\vec{v}=0
+\end{equation}
+for some $n$. So in finite dimensions, such a vector always
+exists. In the infinite dimensional case, we will assume a
+highest weight vector exists. Then we will describe all
+irreducible representations, we did this basically. Let $\vec{v}$
+be such that
+\begin{equation}
+e\vec{v}=0,
+\end{equation}
+then let
+\begin{equation}
+\vec{v}_{k}=f^{k}\vec{v},
+\end{equation}
+so
+\begin{equation}
+h\vec{v}_{k}=(m-2k)\vec{v}_{k}
+\end{equation}
+and we have ``ladder relations''
+\begin{equation}
+f\vec{v}_{k}=\vec{v}_{k+1}
+\end{equation}
+and
+\begin{equation}
+e\vec{v}_{k}=\gamma_{k}\vec{v}_{k-1},
+\end{equation}
+where $\gamma_{k}$ is some coefficient which requires solving a
+recursive formula. We have
+\begin{equation}
+\gamma_{k}=k(m-k+1).
+\end{equation}
+Lets prove this is an irreducible representation. What does this
+mean? It doesn't have any nontrivial subrepresentations. Suppose
+we do have some nontrivial subrepresentation, it should contain
+at least one vector. Suppose this one vector is of the form
+\begin{equation}
+\sum c_{k}\vec{v}_{k}=\vec{w}.
+\end{equation}
+Lets apply to this vector $e^{s}\vec{w}$, what happens? It is pretty
+clear it should be $\vec{w}=\vec{v}_{s'}$ where $s'$ is some
+index, this is due to $h$ having an eigenvector in any representation.
+
+We can now apply $e$ and $f$ to $\vec{w}$, we end up recovering
+\begin{equation}
+e^{s'}\vec{w}\propto\vec{v}_{0}.
+\end{equation}
+We made the mistake that
+\begin{equation}
+e\vec{v}_{k}=k(m-k+1)\vec{v}_{k-1}
+\end{equation}
+exists, i.e. $m-k+1\not=0$. If $m\not\in\Bbb{Z}$, then this is an
+irreducible representation. But if $m\in\Bbb{Z}$, more
+specifically
+\begin{equation}
+k=m+1,
+\end{equation}
+then
+\begin{equation}
+e\vec{v}_{m+1}=0.
+\end{equation}
+So we get an irreducible subrepresentation spanned by
+$\vec{v}_{0}$, $\vec{v}_{1}$, ..., $\vec{v}_{m}$. So for each
+$m\in\Bbb{N}$, we have on irreducible representation of dimension
+$m+1$, so we have $m+1=1,2,3,...$.
+
+Now lets discuss the group $SU(2)$, recall $\frak{su}(2)$
+consists of traceless anti-Hermitian matrices; recall unitary
+matrices satisfy
+\begin{equation}
+A^{\dagger}A=I.
+\end{equation}
+The rows and columns form an orthonormal basis:
+\begin{equation}
+A = \begin{bmatrix}a&b\\c&d\end{bmatrix}
+\end{equation}
+so
+\begin{equation}
+|a|^{2}+|b|^{2}=1\quad\mbox{and}\quad|c|^{2}+|d|^{2}=1\quad\mbox{and}\quad ad-bc=1.
+\end{equation}
+If we know $a$ and $b$, we can deduce that
+\begin{equation}
+\begin{bmatrix}
+a&b\\c&d
+\end{bmatrix}=
+\begin{bmatrix}
+a&b\\
+-\overline{b}&\overline{a}
+\end{bmatrix}.
+\end{equation}
+We can consider the topology here, if
+\begin{equation}
+a=a_{0}+ia_{1}\quad\mbox{and}\quad b=b_{0}+ib_{1}
+\end{equation}
+then we are working with a 4-dimensional sphere. We can say that
+topologically SU(2) is compact and simply connected. The
+representations of SU(2) may be identified by representations of
+its Lie algebra. We recall
+\begin{equation}
+\Bbb{C}\lie\big(SU(2)\big)=\frak{sl}(2).
+\end{equation}
+We may describe the representations directly.
+
+\begin{rmk}
+$\frak{su}(2)$ has a scalar representation, i.e. the most boring
+  representation imaginable (everything is represented by the
+  unit matrix). It's trivial, and has dimension 1.
+\end{rmk}
+
+Now we have the vector or ``fundamental'' representation. It is
+2-dimensional. Every matrix is repersented by itself. Let
+$V=\Bbb{C}^{2}$ be the representation of SU(2). For this special
+situation, we can work with polynomials of $x,y\in\Bbb{C}$.
+
+That is to say, if $\{(x,y)\}=V$, we may take the space of
+functions on $V$. We introduce
+\begin{equation}
+\psi_{g}\colon\varphi(z)\mapsto\varphi(g^{-1}z)
+\end{equation}
+which ``deforms'' $\varphi(z)$ into $\varphi(g^{-1}z)$. If we
+have
+\begin{equation}
+\psi_{h}\colon\varphi(z)\mapsto\varphi(h^{-1}z),
+\end{equation}
+then we demand
+\begin{equation}
+\varphi_{h}\circ\varphi_{g}\colon\varphi(z)\mapsto\varphi\big((hg)^{-1}z\big).
+\end{equation}
+Functions of $V$ are contravariant functors.
+
+This is a reducible representation, since we may restrict our
+focus to polynomials over $V$. Is the space of polynomials an
+irreducible representation? No! Why? We can have the subspace of
+homogeneous polynomials of degree $m$. So it would be irreducible
+and spanned by $x^{m}$, $x^{m-1}y$, ..., $xy^{m-1}$, $y^{m}$
+which is of dimensions $m+1$. We can deduce the representation of
+the Lie algebra. Observe for us in $\frak{su}(2)$,
+\begin{equation}
+h=\begin{bmatrix}
+1 & 0\\
+0 & -1
+\end{bmatrix}
+\end{equation}
+so it corresponds to
+\begin{equation}
+\begin{bmatrix}
+u & 0\\
+0 & u^{-1}
+\end{bmatrix}\in{\rm SU}(2).
+\end{equation}
+How $h$ acts on the basis is that
+\begin{equation}
+h\colon x\mapsto ux,\quad y\mapsto u^{-1}y.
+\end{equation}
+So in effect,
+\begin{equation}
+x^{m-k}y^{k}\mapsto u^{m-2k}x^{m-k}y^{k},
+\end{equation}
+with the Lie algebra $u=1+\varepsilon$ where
+$|\varepsilon|^{2}\ll1$. So 
+\begin{equation}
+u^{m}=1+m\varepsilon
+\end{equation}
+and so on.

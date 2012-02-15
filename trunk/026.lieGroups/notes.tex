@@ -1,0 +1,123 @@
+%%
+%% notes.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat Jan 16 09:25:52 2010 Alex Nelson
+%% Last update Sun Feb 20 11:52:07 2011 Alex Nelson
+%%
+
+\documentclass{article}
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\pdfinfo{/CreationDate (D:20100116092662)}
+\usepackage{xmpincl}
+\includexmp{CC_Attribution-NonCommercial-NoDerivs_3.0_Unported}
+\usepackage{wrapfig}
+%\usepackage[PS]{diagrams}
+\usepackage{notebk}
+%\usepackage[T1]{fontenc}
+%\usepackage{ae,aecompl}
+
+\diagramstyle[nohug,labelstyle=\scriptstyle]
+
+\advance\headsep by1pc
+\newcommand{\lecture}[1]{\refstepcounter{section}\bigbreak\renewcommand{\leftmark}{Lecture \thesection}
+\noindent{\addcontentsline{toc}{section}{Lecture \thesection#1}\sectionfont Lecture \thesection#1}\medbreak}
+
+
+\renewenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  %\hbox to\parindent
+  {\bf Answer to #1:\enspace}\ignorespaces}
+\renewcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+%\renewcommand{\theequation}{\arabic{equation}}
+
+
+\let\scr=\mathscr
+
+
+
+\title{Lie Groups Notes}
+\date{January 16, 2010}
+\begin{document}
+\maketitle
+\begin{abstract}
+Notes taken from Albert Schwarz's class on Lie Groups taught
+Winter Quarter 2010 at University of California, Davis.
+\end{abstract}
+\tableofcontents
+\vfill
+\pagebreak
+%Let $\mathscr{G}$ be a Lie algebra.
+%\section{Lecture 1}
+\lecture{}
+\input{tex/lecture01}
+\lecture{}
+\input{tex/lecture02}
+\lecture{: Examples of Lie Algebras}
+\input{tex/lecture03}
+\lecture{}
+\input{tex/lecture04}
+\lecture{: Classical Lie Groups and Algebras}
+\input{tex/lecture05}
+\lecture{}
+\input{tex/lecture06}
+\lecture{}
+\input{tex/lecture07}
+\lecture{}
+\input{tex/lecture08}
+\lecture{}
+\input{tex/lecture09}
+\lecture{}
+\input{tex/lecture10}
+\lecture{}
+\input{tex/lecture11}
+\lecture{: Representations}
+\input{tex/lecture12}
+\lecture{}
+\input{tex/lecture13}
+\lecture{}
+\input{tex/lecture14}
+\lecture{}
+\input{tex/lecture15}
+\lecture{}
+\input{tex/lecture16}
+\lecture{}
+\input{tex/lecture17}
+\lecture{}
+\input{tex/lecture18}
+\lecture{}
+\input{tex/lecture19}
+\lecture{}
+\input{tex/lecture20}
+\lecture{}
+\input{tex/lecture21}
+\lecture{}
+\input{tex/lecture22}
+\lecture{}
+\input{tex/lecture23}
+\lecture{}
+\input{tex/lecture24}
+\lecture{}
+\input{tex/lecture25}
+\lecture{}
+\input{tex/lecture26}
+\lecture{}
+\input{tex/lecture27}
+
+
+\vfill\eject
+\input{tex/bib}
+\vfill\eject
+%\numberwithin{equation}{exercise}
+%\setcounter{exercise}{0}
+%\renewcommand{\theequation}{\Alph{section}.\arabic{exercise}.\arabic{equation}}
+\input{tex/solutions}
+\end{document}

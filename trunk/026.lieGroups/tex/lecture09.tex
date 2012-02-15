@@ -1,0 +1,127 @@
+%%
+%% lecture09.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Mon Jun 14 10:11:45 2010 Alex Nelson
+%% Last update Mon Jun 14 15:20:28 2010 Alex Nelson
+%%
+
+Let $G$ be a Lie group, consider $\lie(G)$ its Lie algebra. Then
+there is a corresponddence between curves in the group and curves
+in the Lie algebra. So if we have two curves in the Lie algebra,
+we have two curves in the Lie group, then for simply connected
+groups we may deform two curves $g_{1}(t)$, $g_{2}(t)$ with
+\begin{equation}
+g_{1}(0)=g_{2}(0)=g_{0},\quad\mbox{and}\quad
+g_{1}(1)=g_{2}(1)=g_{1}
+\end{equation}
+by introducing a family of curves $g_{\tau}(t)$ which has a
+corresponding family of curves in the Lie algebra. We have
+\begin{subequations}
+\begin{align}
+\xi(\tau,t) &= g_{\tau}(t)^{-1}\frac{dg_{\tau}(t)}{dt}\\
+\eta(\tau,t) &= g_{\tau}(t)^{-1}\frac{dg_{\tau}(t)}{d\tau}
+\end{align}
+\end{subequations}
+and we have the relation
+\begin{equation}
+\frac{\partial\eta}{\partial t}-\frac{\partial\xi}{\partial t}=[\xi,\eta]
+\end{equation}
+which occurs in the Lie algebra. Observe that 
+\begin{equation}
+\xi(t,0)=\gamma_{0}(t),\quad\xi(t,1)=\gamma_{1}(t),\quad\eta(0,\tau)=\eta(1,\tau)=0.
+\end{equation}
+So given these conditions that, for
+\begin{equation}
+\frac{\partial\eta(\tau,t)}{\partial t}-\frac{\partial\xi(\tau,t)}{\partial\tau}
+=[\xi(\tau,t),\eta(\tau,t)]
+\end{equation}
+with boundary conditions
+\begin{subequations}
+\begin{align}
+\xi(t,0)=\gamma_{0}(t)\quad\mbox{and}\quad\xi(t,1)=\gamma_{1}(t)\\
+\eta(1,\tau)=\eta(0,\tau)=0
+\end{align}
+\end{subequations}
+can we get information induced in the group? We have
+\begin{equation}\label{eq:lec09:diffEqXi}
+\xi(t,\tau)=g(t,\tau)^{-1}\frac{\partial g(t,\tau)}{\partial t},
+\end{equation}
+where $g(0,\tau)=1$. We can restore $g(t,\tau)$ since there is a
+unique solution to eq \eqref{eq:lec09:diffEqXi}.
+
+%% So, more or less, $\widetilde{\xi}\to g\to(\xi,\eta)$. We can
+%% find new $\xi$, $\eta$ satisfying the above. So
+%% $\widetilde{\xi}=\xi$ by construction.
+
+Suppose we have $\lie(G)\to\lie(G')$ be a Lie algebra morphism;
+how can we induce a Lie group morphism? Well, how we do it makes
+heavy use of this curve voodoo. The basic correspondence we have
+is that ``points in the group'' corresponds to ``curves in the
+Lie Algebra'', and ``multiplication in the group'' corresponds to
+``concatenation of paths in the Lie algebra.'' Group curve
+concatenation can be performed, for 
+\begin{equation}
+g_{1}:[0,b]\to G
+\end{equation}
+and
+\begin{equation}
+g_{2}:[b,a]\to G,
+\end{equation}
+as 
+\begin{equation}
+g(t)=\begin{cases} g_{1}(t) & t\in[0,b]\\
+g_{2}(b)^{-1}g_{2}(t) & t\in[b,a].
+\end{cases}
+\end{equation}
+If the paths $g_{1}(t)$, $g_{2}(t)$ are not loops,
+i.e. $g_{1}(0)\not=g_{1}(b)$ and $g_{2}(b)\not=g_{2}(a)$, then
+\begin{equation}
+g(t)=\begin{cases} g_{1}(t) & t\in[0,b]\\
+g_{1}(b)g_{2}(b)^{-1}g_{2}(t) & t\in[b,a].
+\end{cases}
+\end{equation}
+We see that $g(b)$ is in the first case equal to $g_{1}(b)$, and
+in the second case
+\begin{equation}
+g(b) = g_{1}(b)g_{2}(b)^{-1}g_{2}(b) = g_{1}(b).
+\end{equation}
+Thus the two cases agree on the overlap.
+
+The corresponding curve in the Lie algebra is
+\begin{equation}
+\gamma(t) = \begin{cases}\displaystyle
+g_{1}(t)^{-1}\frac{dg_{1}(t)}{dt} & t\in[0,b]\\
+\displaystyle (g_{2}(b)^{-1}g_{2}(t))^{-1}\left(g_{2}(b)^{-1}\frac{dg_{2}(t)}{dt}\right)
+& t\in[b,a]
+\end{cases}
+\end{equation}
+up to a constant (i.e. $g_{1}(b)$) in the second case. It doesn't
+play a significant role, as it is factored out. We end up with
+\begin{equation}
+\gamma(t) = \begin{cases}\displaystyle
+g_{1}(t)^{-1}\frac{dg_{1}(t)}{dt} & t\in[0,b]\\
+\displaystyle g_{2}(t)^{-1}\frac{dg_{2}(t)}{dt} & t\in[b,a]
+\end{cases}
+\end{equation}
+We will consider the construction of Lie groups from Lie algebra
+next time...
+
+We proved there exists a one-to-one correspondence between simply
+connected Lie groups and finite dimensional Lie algebras. If we
+have a discrete normal subgroup $N\subset G$, then the Lie
+algebra of $G/N\iso\lie(G)$. This is because there is a
+neighborhood $\mathcal{U}$ of $1\in G$ such that $\mathcal{U}\cap
+N=\{1\}$. 
+
+\begin{thm}
+If $G$ is simply connected, and $\lie(G)\iso\lie(G')$, then
+$G'\iso G/N$ where $N$ is a discrete normal subgroup of $G$.
+\end{thm}
+\begin{ex}
+$\Bbb{R}$ equipped with addition has trivial commutators in Lie
+  algebra, but $\lie\big(U(1)\big)\iso\lie(\Bbb{R})$ so
+  $U(1)\iso\Bbb{R}/\Bbb{Z}$. 
+\end{ex}

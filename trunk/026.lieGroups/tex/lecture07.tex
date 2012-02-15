@@ -1,0 +1,194 @@
+%%
+%% lecture07.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Thu Jan 21 12:56:40 2010 Alex Nelson
+%% Last update Thu Jan 21 13:49:02 2010 Alex Nelson
+%%
+We took a matrix group $G$ and considered the tangent space at
+$e\in G$, $T_{e}G=\lie(G)$ and showed it was the Lie algebra for
+$G$. If we took a curve $x\colon[0,1]\to G$ with $x(0)=e$, then
+we took $x'(0)\in T_{e}G$. This tangent space is closed under the
+commutator, and addition, so it's a Lie algebra.
+\medbreak
+\begin{quest}
+Given a Lie Algebra, could we ``restore'' all elements of the group?
+\end{quest}
+\medbreak
+Yes, lets take $x\colon[0,1]\to G$ without the condition
+$x(0)=e$. If $x(\tau_{0})=e$, then 
+\begin{equation}
+\left.\frac{d}{d\tau}x(\tau)\right|_{\tau=\tau_{0}}\in\Lie(G).
+\end{equation}
+The value of the parameter is completely irrelevant. What if we
+take $x(\tau_0)\not=e$? Then nothing dangerous! Because look, we
+can take another curve
+\begin{equation}
+y(\tau)=x(\tau_{0})^{-1}x(\tau)
+\end{equation}
+which is still a curve in the group. Now
+$y(\tau_{0})=e$. Therefore we can say that
+$y'(\tau_{0})\in\lie(G)$. Or by plugging in the definition, we
+see $y'(\tau_{0})=x(\tau_{0})^{-1}x(\tau_{0})\in\lie(G)$. This is
+due to the product rule and $x(\tau_{0})$ being a constant. So
+\emph{for any curve} in the group $x(\tau)\in G$ we have
+$x(\tau)^{-1}x'(\tau)\in\Lie(G)$. Let
+\begin{equation}
+\xi(\tau)=x(\tau)^{-1}x'(\tau).
+\end{equation}
+So a curve in $G$ will generate a curve in the Lie Algebra of $G$
+by means of this simple way. But now we would like to have a
+curve in $\lie(G)$ give rise to a curve in $G$. We know
+\begin{equation}
+\frac{dx(\tau)}{d\tau}=x(\tau)\xi(\tau)
+\end{equation}
+gives a system of differential equations. To solve it, we need
+initial conditions. If we take $x(0)=e$, then a solution exists.
+
+How to restore the Lie group? Take all the curves in the Lie
+algebra, then we get all the curves in the Lie group starting at
+1, then...we get the whole matrix group? Not really, only the
+\define{Connected Part}!!! We use the notion of path connected,
+that any two points of the group have a continuous path
+connecting them. 
+
+\begin{ex}
+$\ORTH{3}$ is not connected, since $\det(X)=\pm1$ for all
+  $X\in\ORTH{3}$. We cannot connect two matrices $X$, $Y\in\ORTH{3}$ if
+  $\det(XY)=-1$. But $\SO{3}$ is the connected component of
+  $\ORTH{3}$ since $\det(X)=1$ for all $X\in\SO{3}$.
+\end{ex}
+
+\medbreak
+\noindent\textbf{Moral:} We still have a way to get back the
+connected part of the group.
+\medbreak
+
+We get $x(\tau)^{-1}x'(\tau)=\xi(\tau)\in\lie(G)$. We can take
+very simple curves in this algebra, namely constants! So
+$\xi(\tau)$ are constant matrices. Then we get $\xi(\tau)=A$
+implies $x(\tau)^{-1}x'(\tau)=A$ if and only if
+\begin{equation}
+\frac{dx(\tau)}{d\tau}=x(\tau)A,
+\end{equation}
+with $x(0)=e$. Then $x(\tau)=\exp(A\tau)$. One way to define
+$\exp(A\tau)$ is as a solution to this differential equation. The
+other way is as a series
+\begin{equation}
+x(\tau)=\sum^{\infty}_{n=0}\frac{1}{n!}(A\tau)^{n}
+\end{equation}
+
+\begin{cor}
+If $A\in\Lie(G)$, then $\exp(A)\in G$.
+\end{cor}
+\medbreak
+
+In reality this is almost sufficient. We have the
+\define{Exponential Map}
+\begin{equation}
+\exp\colon\Lie(G)\to G,\qquad A\mapsto\exp(A).
+\end{equation}
+It maps a neighborhood of $O\in\Lie(G)$ onto a neighborhood of
+$1\in G$. Why is this true? Because look, this is definitely true
+if the matrix group is a Lie group. Why? Because look, what we
+have is a map of the tangent spaces to the manifold. It is
+obvious this matriux is nondegenerate. It is really easy to check
+for classical groups.
+
+If $B=\exp(A)$, then $A=\log(B)$. So we have
+\begin{equation}
+\exp\colon\Lie(G)\to G
+\end{equation}
+and 
+\begin{equation}
+\log\colon G\to\Lie(G)
+\end{equation}
+which exists in the neighborhood of 1. In reality matrix groups
+are the only thing that are interesting. However we should also
+consider other groups. This requires a general definition of Lie
+algebras. 
+
+Take any Lie group $G$ (so take $1=e\in G$, we can introduce a
+coordinate system in the neighborhood of 1, $(x^1,...,x^n)$,
+so it is topologically equivalent to the unit ball, and moreover
+permits functions to be differentiable). Take the tangent space
+at the identity $T_{{\bf 1}}G$ and introduce an operation in such
+a way that makees it a Lie algebra. We consider curves in $G$,
+$x(\tau)$, such that $x(0)=1$ and
+\begin{equation}
+\left.\frac{dx}{d\tau}\right|_{\tau=0}\in\Lie(G).
+\end{equation}
+Although it is coordinate dependent, we know how to change
+coordinates $x\to y(x)$, $y^i=y^i(x)$, and
+\begin{equation}
+\frac{dy^i}{d\tau}=\frac{\partial y^i}{\partial x^j}\frac{d x^j}{d\tau},
+\end{equation}
+so we could define curves in any coordinate system and obtain the
+curve in any coordinate system.
+
+We still need to define the Lie Bracket $[\xi,\eta]$ for
+$\xi,\eta\in T_{{\bf 1}}G$. We would like it to be compatiible
+with the commutator of matrices. So what to do?
+
+We will draw
+\begin{equation}
+\xi=\left.\frac{dx}{d\tau}\right|_{\tau=0},\qquad\hbox{and}\qquad\eta=\left.\frac{d\widetilde{x}}{d\tau}\right|_{\tau=0}
+\end{equation}
+where $x$, $\widetilde{x}$ are curves in the group. We introduce
+the commutator
+\begin{equation}
+x(\sqrt{\tau})\widetilde{x}(\sqrt{\tau})x(\sqrt{\tau})^{-1}\widetilde{x}(\sqrt{\tau})^{-1},
+\end{equation}
+we would like
+\begin{equation}
+[\xi,\eta]=\left.\frac{d}{d\tau}x(\sqrt{\tau})\widetilde{x}(\sqrt{\tau})x(\sqrt{\tau})^{-1}\widetilde{x}(\sqrt{\tau})^{-1}\right|_{\tau=0}.
+\end{equation}
+We have already proven when we work with matrix groups, this is
+the exact same thing as the commutator for matrices.
+
+This is not quite the end of the story. But from this definition,
+we can derive a lot of important stuff. Namely, if $G$, $G'$ are
+two Lie groups and $\Phi\colon G\to G'$ is a Lie group morphism,
+then $\Lie(\Phi)\colon\Lie(G)\to\Lie(G')$ is a Lie Algebra
+morphism.
+\medbreak
+\begin{prop}
+$\Lie$ is a functor.
+\end{prop}
+\medbreak
+Note that the Lie group morphism maps $\Phi(e)=e'$,
+$\Phi_{*}(T_{{\bf 1}}G)=T_{{\bf 1}'}G'$ which is then a Lie
+algebra morphism.
+
+\medbreak\noindent\textbf{N.B.} If the group is simply connected,
+Lie algebra morphisms induce Lie group morphisms.
+
+\subsection{Exercises}
+
+Lie algebra $\mathfrak{sl}(n)$ (denoted also by the symbol $\ClassicalGroup{A}_{n-1}$ ) consists of traceless $n\times n$ complex matrices. The symbol $E_{i,j}$ denotes a matrix with only one non-zero entry that is equal to 1 and located in $i$-th row and $j$-th column.
+\begin{exercise}
+Check that the matrices $E_{i,j}$ for $i = j$ and the matrices $h_{i} = E_{i,i} - E_{i+1,i+1}$ form a
+basis of $\mathfrak{sl}(n)$. Find the structure constants in this basis.
+\end{exercise}
+\begin{exercise}
+Check that subalgebra $\frak{h}$ of all diagonal matrices is a maximal
+commutative subalgebra. Prove that there exists a basis of $\frak{sl}(n)$
+consisting of eigenvectors for elements of $\frak{h}$. (This means
+that $\frak{h}$ is a Cartan subalgebra of $\frak{sl}(n)$.)
+\end{exercise}
+\begin{exercise}
+Check that $e_{i} = E_{i,i+1}$ and $f_{i} = E_{i+1,i}$ form a system of multiplicative generators of
+$\frak{sl}(n)$. Prove relations
+\begin{subequations}
+\begin{align}
+  [e_{i} , f_{j} ] = \delta_{ij} h_{i},\qquad [h_{i} , h_{j} ] = 0,\\
+  [h_{i} , e_{j} ] = a_{ij} e_{j} ,\qquad [h_{i} , f_{j} ] = -a_{ij} f_{j},\\
+  (\ad{e_{i}} )^{-a_{ij} +1} e_{j} = 0,\qquad (\ad{f_{i}} )^{-a_{ij} +1} f_{j} = 0
+\end{align}
+\end{subequations}
+for some choice of matrix $a_{ij}$.
+
+ We use here the notation $\ad(x)$ for the operator transforming $y$ into $[x, y]$.
+\end{exercise}

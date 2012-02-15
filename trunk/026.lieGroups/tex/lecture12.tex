@@ -1,0 +1,169 @@
+%%
+%% lecture12.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Jun 20 11:23:40 2010 Alex Nelson
+%% Last update Sun Jun 20 12:07:27 2010 Alex Nelson
+%%
+Today we will talk about representations, and this is the main
+part of the class. First some things about representations. We
+havea representation be a morphism $G\to{\rm GL}(n,\Bbb{C})$ for Lie
+groups, a Lie algebra representation is a morphism
+$\mathscr{G}\to\mathfrak{gl}(n,\Bbb{C})$. How do we classify
+representations? Well, the most important group representations
+are orthogonal or unitary in the sense of using an inner product
+$\<\cdot,\cdot\>$, i.e. morphisms
+\begin{equation}
+G\to{\rm O}(n)\quad\mbox{and}\quad G\to{\rm U}(n)
+\end{equation}
+respectively. However, in the language of Lie algebras
+\begin{equation}
+A = 1 + a
+\end{equation}
+and the condition is as follows
+\begin{equation}
+\<ax,y\>+\<x,ay\>=0,
+\end{equation}
+which for algebras results in morphisms
+\begin{equation}
+\mathscr{G}\to\mathfrak{so}(n)\quad\mbox{and}\quad\mathscr{G}\to\mathfrak{u}(n)
+\end{equation}
+respectively for orthogonal and unitary representations.
+
+\begin{thm}\label{lecture12:thm:reducibility}
+Unitary and orthogonal representations are completely reducible
+(i.e. a direct sum of irreps).
+\end{thm}
+\begin{lem}\label{lecture12:lemma:invariantSubspace}
+If $W$ is an invariant subspace, then $W^{\bot}$ is also an
+invariant subspace.
+\end{lem}
+\begin{proof}[Lemma \ref{lecture12:lemma:invariantSubspace}]
+We have $AW\subset W$, where $A=\varphi(X)$ for some $X\in G$. If
+$x\in W^{\bot}$,
+\begin{equation}
+\<x,w\>=0
+\end{equation}
+for all $w\in W$. But 
+\begin{equation}
+\<x,Aw\>=0
+\end{equation}
+since $Aw\in W$. But
+\begin{equation}
+\<x,Aw\>=\<A^{\dagger}x,w\>=0
+\end{equation}
+if and only if
+\begin{equation}
+A^{\dagger}x\in W^{\bot}
+\end{equation}
+for every $A$ in our representations. But
+$A^{\dagger}=A^{-1}=\varphi(X)^{-1}=\varphi(X^{-1})$, so we are
+done. If $\<x,x\>\geq0$ for all $x$, then $V=W\oplus W^{\bot}$.
+\end{proof}
+\begin{proof}[Theorem \ref{lecture12:thm:reducibility}]
+We have by our lemma, if our representation is irreducible we're
+done; otherwise, we write
+\begin{equation}
+V=W\oplus W^{\bot}.
+\end{equation}
+We iterate on our summands, until we end up writing
+\begin{equation}
+V = \bigoplus_{i\in I}V_{i}
+\end{equation}
+for our representation as a direct sum of mutually orthogonal
+irreps. For finite dimensional $V$, there is only finitely many
+recursions; \textbf{note} this is the first time finite
+dimensionality is used. There is an analogous notion for infinite
+dimensionality, but we need to use the direct integral.
+\end{proof}
+
+Now are all representations unitary or orthogonal?
+Or...equivalent to unitary or orthogonal representations? The
+answer is ``No'' for the simple reason they are not completely
+reducible!
+\begin{ex}
+Consider the one-dimensional Lie algebra $\Bbb{R}$. It has one
+generator $e$, and its commutator
+\begin{equation}
+[e,e] = 0.
+\end{equation}
+Now to construct a representation of this, how to do this? Send
+this generator to somewhere satisfying the commutation
+relations...but they are \emph{always} satisfied. So
+representations of this Lie algebra are merely all linear operators.
+\end{ex}
+We should classify these representations. Two representations are
+``involutive'' if they are, as matrices, similar
+\begin{equation}
+E' = A^{-1}EA.
+\end{equation}
+Every matrix may be written in Jordan normal form, and that's it!
+We've classified everything. We get a series of eigenspaces
+embedded in each other, but no direct sum of invariant subspaces
+for the simple reason every invariant subspace should have an
+eigenvector. So this representation \emph{is not} equivalent to a
+unitary or orthogonal representation, and it is not completely
+irreducible. Only when all the Jordan cells are one dimensional,
+then the representation is completely reducible.
+
+The corresponding Lie group to $\Bbb{R}$ is
+$\Bbb{R}^{\times}_{>0}$, but there is one more group which
+corresponds to the same Lie algebra viz. U(1). Geometrically U(1)
+is a circle, and its elements are of the form
+$\exp(i\varphi)$...there is a whole in this circle, it's not
+simply connected. So the reperesentations of the Lie algebra
+$\Bbb{R}$ does not coincide with representations of the Lie group
+U(1). They are related but do not coincide. This group has
+representations that are equivalent to unitary representations,
+moreover are completely reducible; if $z=\exp(i\varphi)$, then
+the representations are given by
+\begin{equation}
+z\mapsto z^{n}.
+\end{equation}
+How to prove all this stuff?
+
+First how to prove all representations of this group are
+equivalent to unitary ones. Lets consider any representation
+\begin{equation}
+\varphi\colon {\rm U}(1)\to V
+\end{equation}
+and introduce an inner product on $V$,
+i.e. $\<\cdot,\cdot\>$. There are two possibilities: inner
+product is invariant (we're happy, the representation is
+unitary), or it's not invariant (it's not equivalent to a unitary
+representation). Then we can make the inner product invariant,
+namely by introducing a new inner product
+\begin{equation}
+\<\!\< v_{2},v_{1}\>\!\> = \int \<\varphi(g)v_{1},\varphi(g)v_{2}\>dg
+\end{equation}
+which is already invariant with respect to the group $G$. Namely
+\begin{subequations}
+\begin{align}
+\<\!\<\varphi(h) v_{2},\varphi(h)v_{1}\>\!\> &= \int \<\varphi(g)\varphi(h)v_{1},\varphi(g)\varphi(h)v_{2}\>dg\\
+&=\int\<\varphi(gh)v_{2},\varphi(gh)v_{1}\>dg\quad\mbox{g'=gh,
+  dg'=dg}\\
+&=\int\<\varphi(g')v_{2},\varphi(g')v_{1}\>dg'\\
+&=\<\!\<v_{2},v_{1}\>\!\>
+\end{align}
+\end{subequations}
+For us $g=\exp(i\varphi)$,
+$gh=\exp(i\varphi)\exp(i\theta)=\exp\big(i(\varphi+\theta)\big)$
+is merely a shift. So we need a measure on the circle which is
+invariant with respect to translations; we have it. We proved
+more, really, we almost proved the theorem:
+\begin{thm}
+Every complex representation of a compact group is equivalent to a
+unitary representation.
+\end{thm}
+The proof is exactly the same, the only thing missing is a lemma.
+\begin{lem}
+Every compact group can be equipped with an invariant measure
+(measure invariant with respect to shifts).
+\end{lem}
+Really a measure invariant under right (or left) shifts always
+exists, but may not be finite for noncompact groups. To fix the
+measure, fix it in the tangent spaces, but we know the tangent
+spaces for Lie groups! For compact groups, left invariant measure
+coincides with right measure, and are finite.

@@ -1,0 +1,354 @@
+%%
+%% lecture08.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Feb 14 15:56:21 2010 Alex Nelson
+%% Last update Sun Jun 20 11:59:29 2010 Alex Nelson
+%%
+%\noindent\textbf{Main Theorems}
+\subsection{Main Theorems}
+We havea group $G$ and we can construct the corresponding Lie
+Algebra $\lie(G)$ constructed by examining the tangent space at
+the identity $e=I\in G$:
+\begin{equation}
+\lie(G)=T_{e}G.
+\end{equation}
+We discussed obtaining the Lie algebra \emph{from} the Lie group,
+and if we have a group morphism
+\begin{equation}
+\varphi\colon G\to G',
+\end{equation}
+we can construct a morphism of the corresponding Lie Algebras
+\begin{equation}
+\varphi_{*}\colon \lie(G)\to\lie(G').
+\end{equation}
+That is to say the following diagram commutes
+\begin{equation}
+\begin{diagram}
+G              & \rTo & \lie(G)\\
+\dTo>{\varphi} &      & \dTo>{\varphi_{*}}\\
+G'             & \rTo & \lie(G')
+\end{diagram}
+\end{equation}
+we would like to consider going the other way. That is given a
+Lie algebra $\mathscr{G}$, we would like to construct a
+corresponding group, and show that Lie algebra morphisms
+$\mathscr{G}\to\mathscr{G}'$ generate group morphisms. But  the
+group needs to be simply connected.
+
+Consider $SU(2)/\Bbb{Z}_{2}=SO(3)$. However $SU(2)$ has the same
+Lie algebra as $SO(3)$; when we identify the algebra
+topologically as the sphere, this quotient identifies opposite
+points as the same. This doesn't affect the Lie algebra.
+
+If we drop the condition of being simply connected, a Lie algebra
+may give rise to two different Lie groups. Simply connected
+permits us to continuously deform one path to another. Every
+closed curved is contractible iff the space is simply connected.
+
+\begin{thm}
+For each Lie algebra there exists a uniquie simply connected Lie group.
+\end{thm}
+
+If $g\colon[0,1]\to G$ is a differentiable curve on the group, we
+may construct a curve
+\begin{equation}
+\gamma(t)=g(t)^{-1}\frac{dg(t)}{dt}=\frac{d}{dt}\log\big(g(t)\big)
+\end{equation}
+on the algebra. We have
+\begin{equation}
+\left.\frac{dg(t)}{dt}\right|_{t}\in T_{g(t)}G,
+\end{equation}
+which is not necessarily in the Lie algebra $T_{e}G$. However for
+some $g\in G$ we have $g\cdot 1=g$, so this is a translation
+which sends $1\mapsto g$. We have a map
+\begin{equation}
+g_{*}\colon T_{e}G\to T_{g}G,
+\end{equation}
+and so the right formula would be
+\begin{equation}
+\gamma(t)=\left(g_{*}(t)\right)^{-1}\frac{dg(t)}{dt}.
+\end{equation}
+But we will abuse notation and write
+\begin{equation}
+\gamma(t)=g(t)^{-1}\frac{dg(t)}{dt}.
+\end{equation}
+We have a correspondence between curves in the Lie Algebra and
+curves in the Lie group. We obtain a system of differential
+equations 
+\begin{equation}
+\frac{dg(t)}{dt}=g(t)\gamma(t)
+\end{equation}
+which has a unique solution for $g(0)=e$.\marginpar{We use $e$,
+  $1$, $I$ for the identity interchanging notation without warning...}
+
+\begin{wrapfigure}[10]{r}{6.25cm}  
+%  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/LieImg.1}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+
+Consider a curve $g_{0}(t)$, $g_{1}(t)$ in the group, where
+\begin{equation}
+g_{0}(0)=g_{1}(0)=e,
+\end{equation}
+and we have
+\begin{equation}
+g_{0}(1)=g_{1}(1)=g.
+\end{equation}
+\begin{wrapfigure}[6]{l}{4cm}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/LieImg.2}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+
+\noindent\ignorespaces{}We assume that $G$ is simply connected
+and we will deform the path, thus obtaining a family of paths
+$g_{\tau}(t)=g(\tau,t)$ such that $g(0,t)=g_{0}(t)$ and
+$g(1,t)=g_{1}(t)$. We can draw a diagram (seen on the left), we
+have two variables to consider $\tau$ and $t$, which to
+differentiate?  Both of them! Consider
+\begin{equation}
+\xi(\tau,t)=g(\tau,t)^{-1}\frac{\partial g(\tau,t)}{\partial t}
+\end{equation}
+and
+\begin{equation}
+\eta(\tau,t)=g(\tau,t)^{-1}\frac{\partial g(\tau,t)}{\partial\tau}.
+\end{equation}
+So what do we know? Well, the curves in the Lie algebra are
+\begin{equation}
+\gamma_{0}(t) = g_{0}(t)^{-1}\frac{dg_{0}(t)}{dt}=\xi(0,t)
+\end{equation}
+and
+\begin{equation}
+\gamma(1)(t) = g_{1}(t)^{-1}\frac{dg_{1}(t)}{dt}=\xi(1,t).
+\end{equation}
+We also know $g_{\tau}(0)=e=1$, and $g_{\tau}(1)=g$, for every
+$\tau$. We see then that
+\begin{equation}
+\eta(\tau,0)=\eta(\tau,1)=0.
+\end{equation}
+We have
+\begin{equation}
+\partial_{t}g(\tau,t)=g(\tau,t)\xi(\tau,t)
+\end{equation}
+and
+\begin{equation}
+\partial_{\tau}g(\tau,t)=g(\tau,t)\eta(\tau,t).
+\end{equation}
+We deduce from
+\begin{equation}
+\partial_{\tau}\partial_{t}g(\tau,t)=\partial_{t}\partial_{\tau}g(\tau,t)
+\end{equation}
+that
+\begin{equation}
+(\partial_{\tau}g)\xi+g\partial_{\tau}\xi=(\partial_{t}g)\eta+g(\partial_{t}\eta),
+\end{equation}
+and by multiplying on the right by $g(\tau,t)^{-1}$ we have
+\begin{equation}
+\underbracket[0.5pt]{(g^{-1}\partial_{\tau}g)}_{=\eta}\xi+\partial_{\tau}\xi=\underbracket[0.5pt]{(g^{-1}\partial_{t}g)}_{=\xi}\eta+\partial_{t}\eta\quad\implies\quad
+\partial_{t}\eta-\partial_{\tau}\xi=\eta\xi-\xi\eta.
+\end{equation}
+We have an equation of r the form
+\begin{equation}
+\frac{\partial\eta(\tau,t)}{\partial t}-\frac{\partial\xi(\tau,t)}{\partial\tau}
+=[\xi(\tau,t),\eta(\tau,t)].
+\end{equation}
+Now, what should we do with this? In reality, we've done
+everything already. What is our goal? We'd like to restore the
+group knowing the Lie Algebra. We get points in the group by
+considering equivalence classes of paths in the Lie Algebra.
+
+\subsection{Exercises}
+\subsubsection{Algebra \texorpdfstring{$\ClassicalGroup{D}_{n}$}{Dn}}
+
+The Lie algebra $\ClassicalGroup{D}_{n}$ consists of $2n\times2n$ complex matrices
+$L$ obeying
+\begin{equation}
+(FL)^{T}+FL=0
+\end{equation}
+where, in block form,
+\begin{equation}
+F=\begin{bmatrix}
+0&1\\
+1&0
+\end{bmatrix}.
+\end{equation}
+
+\begin{exercise}
+Check that $\ClassicalGroup{D}_{n}$ is isomorphic to the complexification of the
+Lie algebra of the orthogonal group $\ORTH(2n)$.
+\end{exercise}
+\begin{exercise}
+Check that the matrices
+\begin{equation}
+e_{ij}:=\begin{bmatrix}E_{ij}&0\\
+0&-E_{ji}
+\end{bmatrix}
+\end{equation}
+together with the matrices
+\begin{equation}
+f_{pq}:=\begin{bmatrix}0&E_{pq}-E_{qp}\\
+0&0
+\end{bmatrix},\qquad
+g_{pq}:=\begin{bmatrix}0&0\\
+E_{pq}-E_{qp}&0
+\end{bmatrix}
+\end{equation}
+form a basis of $\ClassicalGroup{D}_{n}$. 
+
+Here $i,j=1,\ldots,n$, $1\leq p<q\leq n$, and $E_{i,j}$ has only
+one nonzero entry that is equal to unity located in the $i^{th}$
+row and $j^{th}$ column.
+\end{exercise}
+\begin{exercise}
+Check that the subalgebra $\frak{h}$ of all matrices of the form
+\begin{equation}
+\begin{bmatrix}
+A&0\\
+0&-A
+\end{bmatrix}
+\end{equation}
+(where $A$ is a diagonal matrix) is a maximal commutative
+subalgebra, and prove that there exists a basis of $\ClassicalGroup{D}_{n}$
+consisting of eigenvectors for elements of $\frak{h}$ acting on
+$\ClassicalGroup{D}_{n}$ by means of adjoint representation. (This means that
+$\frak{h}$ is a Cartan subalgebra of $\ClassicalGroup{D}_{n}$.)
+\end{exercise}
+\begin{exercise}
+Check that $e_{i}=e_{i,i+1}$ for $i=1,...,n-1$ and
+$e_{n}=f_{n-1,n}$; $f_{i}=e_{i+1,i}$ for $i=1,...,n-1$ and
+$f_{n}=g_{n-1,n}$ form a system of multiplicative generators of
+$\ClassicalGroup{D}_{n}$. Prove the relations
+\begin{subequations}
+\begin{align}
+[e_{i},f_{j}]&=\delta_{ij}h_{i}\\
+[h_{i},h_{j}]&=0\\
+[h_{i},e_{j}]&=a_{ij}e_{j}\\
+[h_{i},f_{j}]&=-a_{ij}f_{j}\\
+({\rm ad}e_{i})^{1-a_{ij}}e_{j}&=0\qquad\mbox{when $i\not=j$}\\
+({\rm ad}f_{i})^{1-a_{ij}}f_{j}&=0\qquad\mbox{when $i\not=j$}
+\end{align}
+\end{subequations}
+We use here the notation $(\ad x)$ for the operator transforming $y$ into $[x,y]$.
+\end{exercise}
+
+\subsubsection{Algebra \texorpdfstring{$\ClassicalGroup{C}_{n}$}{Cn}}
+Consider the Lie algebra $\ClassicalGroup{C}_{n}$ consisting of $2n\times2n$
+complex matrices obeying
+\begin{equation}
+(FL)^{T}+FL=0
+\end{equation}
+where
+\begin{equation}
+F=\begin{bmatrix}0&1\\
+-1&0
+\end{bmatrix}.
+\end{equation}
+
+\begin{exercise}
+Check that $\ClassicalGroup{C}_{n}$ is isomorphic to the complexification of the
+Lie algebra of the compact group $\Sp{2n}\cap \U{2n}$ where
+$\Sp{2n}$ stands for the group of linear transformations of
+$\CC^{2n}$ preserving non-degerate anti-symmetric bilinear
+form and $\U{2n}$ denotes unitary group.
+\end{exercise}
+\begin{exercise}
+Check that the matrices
+\begin{subequations}
+\begin{align}
+e_{ij} &= \begin{bmatrix}E_{ij}&0\\0&-E_{ji}
+\end{bmatrix}\\
+f_{pq}&= \begin{bmatrix}0&E_{pq}+E_{qp}\\0&0
+\end{bmatrix}\\
+g_{pq}&=\begin{bmatrix}0&0\\E_{pq}+E_{qp}&0
+\end{bmatrix}
+\end{align}
+\end{subequations}
+form a basis of $\ClassicalGroup{C}_{n}$, where $i,j=1,...,n$ and $1\leq p\leq
+q\leq n$.
+\end{exercise}
+\begin{exercise}
+Check that the subalgebra $\frak{h}$ of all matrices of the form
+\begin{equation}
+\begin{bmatrix}
+A&0\\
+0&-A
+\end{bmatrix}
+\end{equation}
+where $A$ is a diagonal matrix, is a maximal commutative
+subalgebra. Prove there exists a basis of $\ClassicalGroup{C}_{n}$ consisting of
+eigenvectors for elements of $\frak{h}$ acting on $\ClassicalGroup{C}_{n}$ by
+means of adjoint representation.
+\end{exercise}
+\begin{exercise}
+Check that $e_{i}=e_{i,i+1}$ ($i=1,...,n-1$) and $e_{n}=f_{n,n}$;
+$f_{i}=e_{i+1,i}$ ($i=1,...,n-1$) and $f_{n}=g_{n,n}$ form a
+system of generators of $\ClassicalGroup{C}_{n}$. Prove
+\begin{subequations}
+\begin{align}
+[e_{i},f_{j}]&=\delta_{ij}h_{i},\\
+[h_{i},h_{j}]&=0\\
+[h_{i},e_{j}]&=a_{ij}e_{j},\\
+[h_{i},f_{j}]&=-a_{ij}f_{j},\\
+({\rm ad}e_{i})^{1-a_{ij}}e_{j}&=0,\qquad i\not=j \\
+({\rm ad}f_{i})^{1-a_{ij}}f_{j}&=0,\qquad i\not=j
+\end{align}
+\end{subequations}
+\end{exercise}
+\subsubsection{Algebra \texorpdfstring{$\ClassicalGroup{B}_{n}$}{Bn}}
+
+The algebra $\ClassicalGroup{B}_{n}$ consists of $(2n+1)\times(2n+1)$ complex
+matrices obeying
+\begin{equation}
+L^{T}F+FL=0
+\end{equation}
+where
+\begin{equation}
+F=\begin{bmatrix}1&0&0\\
+0&0&I_{n}\\
+0&I_{n}&0
+\end{bmatrix}
+\end{equation}
+$I_{n}$ is the $n\times n$ identity matrix, and we have written $F$ in block form.
+
+\begin{exercise}
+Show that $\ClassicalGroup{B}_{n}$ is isomorphic to the complexified Lie algebra of $\ORTH{2n+1}$.
+\end{exercise}
+\begin{exercise}
+Check that the subalgebra $\frak{h}$ of all matrices of the form
+\begin{equation}
+\begin{bmatrix}0&0&0\\
+0&A&0\\
+0&0&-A
+\end{bmatrix}
+\end{equation}
+(where $A$ is a diagonal matrix) is a maximal Abelian subalgebra,
+and prove there is a basis of $\ClassicalGroup{B}_{n}$ consisting of eigenvectors
+for elements of $\frak{h}$ acting on $\ClassicalGroup{B}_{n}$ by the adjoint
+representation.
+\end{exercise}
+\begin{exercise}
+Find a system $e_{i}$, $f_{j}$ of multiplicative generators of
+$\ClassicalGroup{B}_{n}$ obeying
+\begin{subequations}
+\begin{align}
+[e_{i},f_{j}]&=\delta_{ij}h_{i}\\
+[h_{i},h_{j}]&=0\\
+[h_{i},e_{j}]&=a_{ij}e_{j}\\
+[h_{i},f_{j}]&=-a_{ij}f_{j}\\
+({\rm ad}e_{i})^{1-a_{ij}}e_{j}&=0,\qquad i\not=j\\
+({\rm ad}f_{i})^{1-a_{ij}}f_{j}&=0,\qquad i\not=j
+\end{align}
+\end{subequations}
+for ``some'' matrix $a_{ij}$.
+\end{exercise}
+\begin{exercise}
+Describe the roots and root vectors of $\ClassicalGroup{A}_{n}$, $\ClassicalGroup{B}_{n}$, $\ClassicalGroup{C}_{n}$, $\ClassicalGroup{D}_{n}$.
+\end{exercise}
