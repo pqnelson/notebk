@@ -1,0 +1,62 @@
+\begin{thebibliography}{Jen04b}
+\def\enquote#1{``#1''}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \expandafter\ifx\csname doi\endcsname\relax
+  \def\doi#1{doi:\discretionary{}{}{}#1}\fi \else
+  \expandafter\ifx\csname doi\endcsname\relax
+  \def\doi{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi \fi
+\expandafter\ifx\csname bibinfo\endcsname\relax\def\bibinfo#1#2{#2}\fi
+\expandafter\ifx\csname eprint\endcsname\relax\def\eprint#1{\url{#1}}\fi
+
+\bibitem[Bek73]{Bekenstein:1973ur}
+\bibinfo{author}{J.~D. Bekenstein}.
+\newblock \enquote{\bibinfo{title}{{Black holes and entropy}}.}
+\newblock {\em \bibinfo{journal}{Phys. Rev.}\/} \bibinfo{volume}{{\bf D7}}
+  (\bibinfo{year}{1973}) \bibinfo{pages}{2333--2346}.
+\newblock
+  \href{http://dx.doi.org/10.1103/PhysRevD.7.2333}{\url{doi:10.1103/PhysRevD.7%
+.2333}}.
+
+\bibitem[Jen04a]{Jenkins:2004yn}
+\bibinfo{author}{A.~Jenkins}.
+\newblock \enquote{\bibinfo{title}{{Composite mediators and Lorentz
+  violation}}.}
+  {\tt\href{http://arxiv.org/abs/hep-th/0409189}{arXiv:hep-th/0409189}}.
+
+\bibitem[Jen04b]{Jenkins:2003hw}
+\bibinfo{author}{A.~Jenkins}.
+\newblock \enquote{\bibinfo{title}{{Spontaneous breaking of Lorentz
+  invariance}}.}
+\newblock {\em \bibinfo{journal}{Phys. Rev.}\/} \bibinfo{volume}{{\bf D69}}
+  (\bibinfo{year}{2004}) \bibinfo{pages}{105007}.
+\newblock
+  \href{http://dx.doi.org/10.1103/PhysRevD.69.105007}{\url{doi:10.1103/PhysRev%
+D.69.105007}}.
+\newblock
+  {\tt\href{http://arxiv.org/abs/hep-th/0311127}{arXiv:hep-th/0311127}}.
+
+\bibitem[Mof03]{Moffat:2003mk}
+\bibinfo{author}{J.~W. Moffat}.
+\newblock \enquote{\bibinfo{title}{{The graviton as a bound state and the
+  cosmological constant problem}}.}
+  {\tt\href{http://arxiv.org/abs/gr-qc/0309125}{arXiv:gr-qc/0309125}}.
+
+\bibitem[Oha69]{PhysRev.184.1305}
+\bibinfo{author}{H.~C. Ohanian}.
+\newblock \enquote{\bibinfo{title}{Gravitons as Goldstone Bosons}.}
+\newblock {\em \bibinfo{journal}{Phys. Rev.}\/} \bibinfo{volume}{{\bf 184}}
+  (\bibinfo{year}{1969}) \bibinfo{pages}{1305--1312}.
+\newblock
+  \href{http://dx.doi.org/10.1103/PhysRev.184.1305}{\url{doi:10.1103/PhysRev.1%
+84.1305}}.
+
+\bibitem[Ver10]{Verlinde:2010hp}
+\bibinfo{author}{E.~P. Verlinde}.
+\newblock \enquote{\bibinfo{title}{{On the Origin of Gravity and the Laws of
+  Newton}}.} {\tt\href{http://arxiv.org/abs/1001.0785}{arXiv:1001.0785}
+  [hep-th]}.
+
+\end{thebibliography}
