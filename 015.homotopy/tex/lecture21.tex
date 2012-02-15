@@ -1,0 +1,163 @@
+%%
+%% lecture21.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 31 11:35:19 2011 alex
+%% Last update Sat Dec 31 11:35:19 2011 alex
+%%
+We defined homotopy groups which generalize the fundamental
+group. We would like to compute the simplest example. Homotopy
+groups are Abelian, and Abelian groups are easy to describe ---
+but hard to compute.
+
+The first thing we will do is calculate the homotopy group of
+$\RR^n$. It is immediately obvious: the homotopy group is
+trivial, since $\RR^n$ is contractible. Alternatively: if we have
+a spheroid, then we may contract it.
+
+\index{Homotopy Group!of $S^{n}$|(}
+What about $\pi_{k}(S^{n})$? Well, for $k<n$, we have a spheroid
+\begin{equation}
+f\colon I^k\to S^n
+\end{equation}
+such that $f(\partial I^{k})$ is the north pole. Well, if $k<n$
+and $f$ is ``not too bad'', then it doesn't cover the whole
+sphere. This means there is a point $x_0$ which is not contained
+in $f(I^k)$. We recall
+\begin{equation}
+S^{n}-\{x_0\}=\RR^n
+\end{equation}
+and every spheroid is contractible. But what does it mean for $f$
+to be ``not too bad''? We should approximate our map by a
+polynomial, or a $C^{r}$ map, or a piecewise-linear map; then
+this approximation is homotopic to $f$.
+
+What about $\pi_{n}(S^{n})$? Well, we have
+\begin{equation}
+\pi_{n}(S^{n})=\homotopyClass(S^n,S^n),
+\end{equation}
+but why? This is normally not the case! In general we have
+\begin{equation}
+\homotopyClass(S^k,X)=\begin{pmatrix}
+\mbox{orbit of}\\
+\pi_{1}(X)\mbox{ in }\pi_{k}(X).
+\end{pmatrix}
+\end{equation}
+%For $n\geq2$, we see
+%\begin{
+For $\pi_{1}(X)$ Abelian, we see
+\begin{equation}
+\homotopyClass(S^1,X)=\pi_{1}(X).
+\end{equation}
+(Recall how $\pi_{1}(X)$ acts on $\pi_{k}(X)$ via inner automorphisms.)
+So what happens for $k>1$? Well, we see
+\begin{equation}
+\pi_{n}(S^{n})=\homotopyClass(S^n,S^n)\xrightarrow{1:1}\ZZ
+\end{equation}
+We even talked about this before: we proved it for $n=1$, but for
+$n>1$ it is also true. If $f\colon S^n\to S^n$, then $f^{-1}(x)$
+is an algebraic number called the \define{Degree}\index{Degree!of a Map} of $f$.
+
+What happens for $\pi_{k}(S^n)$ and $k>n$? Consider
+$\pi_{3}(S^{2})$, we constructed a map $S^{3}\to S^{2}$, the Hopf
+map\index{Hopf Map} and it is not contractible. The explanation
+for this, recall the preimages for points were circles. The
+preimages for two points are two linked circles. One may see this
+group is nontrivial. What about in general? This situation is
+very nontrivial. We have
+\begin{subequations}
+\begin{equation}
+\pi_{k}(S^{k})\iso\ZZ
+\end{equation}
+and
+\begin{equation}
+\pi_{4k-1}(S^{2k})\iso\ZZ+\begin{pmatrix}\mbox{finite}\\\mbox{group}\end{pmatrix}
+\end{equation}
+\end{subequations}
+All others are finite!
+\index{Homotopy Group!of $S^{n}$|)}
+
+We will consider a covering $p\colon\widetilde{X}\to X$ where
+$X$, $\widetilde{X}$ are connceted. We would like to consider the
+situation with homotopy groups
+\begin{equation}
+\pi_{k}(\widetilde{X},*)=\pi_{k}(X,*)
+\end{equation}
+for $k\geq2$. The proof is as follows: ifwe have a path in $X$,
+it may be uniquely lifted to a path in $\widetilde{X}$ --- well,
+not uniquely, but if we lift the starting point then it's
+\emph{unambiguous}. 
+
+So we now have a spheroid in $X$. The trick is to look at a
+spheroid\index{Spheroid!as family of paths} as a family of paths
+in $X$, then we may lift it to $\widetilde{X}$.\index{Spheroid!Lifting}
+But this lifts the paths, does it lift the spheroid? Well, the
+initiall point of the paths are lifted to the marked point. When
+we lift $f(\partial I^{k})$ to the marked point, then we may lfit
+the spheroid. In principle, if
+\begin{equation}
+f(\partial I^k)\propersubset p^{-1}(*)
+\end{equation}
+so we have some freedom in lifting.
+
+Remember we considered $G$ acting on a simply connected space
+$\widetilde{X}$, we let
+\begin{equation}
+X=\widetilde{X}/G.
+\end{equation}
+Assume $G$ acts freely, we proved $G=\pi_{1}(X)$. We can get
+every universal covering this way. We now know
+$\pi_{n}(X)=\pi_{n}(\widetilde{X})$ for $n\geq2$. We see
+therefore that
+\begin{equation}
+G\iso\pi_{1}(X)
+\end{equation}
+acts on $\pi_{n}(X)$. But we kknow $\pi_{1}(X)$ acts on
+$\pi_{n}(X)$, we merely proved it in a different way. But this is
+geometrically obvious. Lets use this for an interesting
+calculation.
+
+\index{Homotopy Group!and Universal Covering|(}
+\index{Universal Covering!and Homotopy Group|(}
+We know the universal covering of $S^1$ is $\RR$, so
+\begin{equation}
+S^{1}=\RR/\ZZ.
+\end{equation}
+The action of $\ZZ$ on $\RR$ is $x\mapsto x+n$. We know
+\begin{equation}
+\pi_{1}(S)=\ZZ,\quad\mbox{and}\quad\pi_{n}(S^{1})=0
+\end{equation}
+for $n\geq2$. We have $\homotopyClass(S^n,S^1)$ be trivial, for
+$n\geq2$.
+
+A more interesting case: we have $\ZZ_2$ act on $S^n$ by
+$x\mapsto-x$. We see
+\begin{equation}
+S^{n}/\ZZ_2=\RP^n
+\end{equation}
+We know
+\begin{equation}
+\pi_{1}(\RP^n)=\ZZ_2,\quad\mbox\quad\pi_{k}(\RP^{n})\iso\pi_{k}(S^{n})
+\end{equation}
+otherwise. In particular
+\begin{equation}
+\pi_{n}(\RP^n)\iso\ZZ
+\end{equation}
+Consider $\homotopyClass(S^n,\RP^n)$, we see $\deg(\id{S^n})=1$
+and
+\begin{equation}
+\begin{split}
+\varepsilon\colon&S^n\to S^n\\
+&x\mapsto-x
+\end{split}
+\end{equation}
+has $\deg(\varepsilon)=\pm1$. The conclusion is, for $n$ even, we
+have
+\begin{equation}
+\homotopyClass(S^n,\RP^n)=\ZZ/(n\sim-n)
+\end{equation}
+whereas for $n$ odd we have no identification.
+\index{Homotopy Group!and Universal Covering|)}%
+\index{Universal Covering!and Homotopy Group|)}

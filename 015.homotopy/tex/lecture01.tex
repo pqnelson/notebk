@@ -1,0 +1,171 @@
+%%
+%% lecture01.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Sep 29 07:39:00 2011 alex
+%% Last update Thu Sep 29 07:39:00 2011 alex
+%%
+
+The goals today are to explain: what is a topology, and why is it
+useful to know topology?
+
+What is topology? The first notion is topological equivalence, or
+equivalence of two spaces, i.e., a homeomorphism. If we have $X$,
+$Y$ be topological spaces, then a topological equivalence is a
+map
+\begin{equation}
+f\colon X\to Y
+\end{equation}
+that is a one-to-one correspondence, $f$ and $f^{-1}$ are both
+continuous. But what kind of spaces are these? The most general
+situation is when $X$ is a topological space, where we have a
+notion of an open set.
+
+One of the main questions of topology is: given two spaces, are
+they equivalent? If we can construct a homeomorphism, we got
+it. What about if they're nonequivalent? We need to use
+properties called \define{Topological Invariants}\index{Topological Property}\index{Topological Invariant}\index{Invariant!Topological}.\marginpar{Topological Invariant = Property Invariant under Homeomorphisms} If two spaces
+are topologically equivalent, then the topological invariants of
+the two spaces are the same.
+
+The basic topological invariant for a space is
+connectedness\index{Connectedness}\index{Topological Invariant!Connectedness}\index{Topological Property!Connectedness}. We
+will use the notion of pathwise connected. A space is pathwise
+connected if and only if any two points are connected by a
+path. What is a path? Well, it is a parametrized curve
+\begin{equation}
+\gamma\colon[0,1]\to X
+\end{equation}
+such that $\gamma(0)=x$ and $\gamma(1)=y$, and $\gamma$ is
+continuous.
+
+We can consider the connected component of $X$. We can consider
+$x\sim y$ iff there is a path connecting the points. We see that
+the letter ``A'' is connected whereas ``i'' is disconnected (it
+has two components), so they are not topologically equivalent.
+
+There is a simple idea regarding ho to construct a topological
+invariant given some topological invariant. We consider a
+functor $F$ which is such that
+\begin{equation}
+X\sim Y\quad\implies\quad F(X)\sim F(Y)
+\end{equation}
+We can consider, for example, the construction
+\begin{equation}
+F(-)=\hom(A,-)
+\end{equation}
+for some fixed topological space $A$. We may construct
+topological invariants this way. For example the number of
+connected components of $\hom(A,X)$ gives an invariant of $X$. 
+
+We may consider topological spaces with a marked point\index{Marked Points} $(X,x_{0})$
+where $x_{0}\in X$. We may consider
+\begin{equation}
+f\colon (X,x_{0})\to (Y,y_{0})
+\end{equation}
+such that $f(x_{0})=y_{0}$ preserves the marked point. The most
+interesting object of this kind is obtained in the following way:
+take a sphere with a marked point, take maps of this sphere to
+some other pointed space
+\begin{equation}
+\hom\left((S^{n},s_{0}),(X,x_{0})\right)
+\end{equation}
+which is a topological space with marked point $(X,x_{0})$.
+We consider the components of this space, this set has a group
+structure which we will call $\pi_{n}(X)$\index{$\pi_{n}(X)$} called the
+\define{Homotopy Group}\index{Homotopy Group}\index{Group!Homotopy}. For $n=1$ we get the fundamental group\index{Fundamental Group}.
+
+\index{Euler Characteristic|(}
+Some other invariants we will consider later are the Euler
+characteristic. We may decompose $X$ into the disjoint union of
+open balls
+\begin{equation}
+X=\bigsqcup\mbox{(open balls)}
+\end{equation}
+For example the sphere is equivalent to a point and the remainder
+is homologically equivalent to an open disc. So the Euler
+characteristic is then
+\begin{equation}
+\chi(X)=\sum(-1)^{n}\alpha_{n}
+\end{equation}
+where $\alpha_{n}$ is the number of open $n$-balls. So
+\begin{equation}
+\chi(X\sqcup Y)=\chi(X)+\chi(Y)
+\end{equation}
+This sum should not depend on how we decompose the space. To give
+a proper definition of the Euler characteristic, we need to use
+homology.
+\index{Euler Characteristic|)}
+
+Topology may be applied to more-or-less everywhere and
+everything. That doesn't mean it answers every question. But we
+should ask ourselves ``What is topology saying about this?''
+
+Historically the first application was to study integrals. For\index{Stoke's Theorem}
+example, Stoke's formula, Green's formula\index{Green's Formula}, etc., are of the form
+\begin{equation}
+\int_{\partial S}\omega=\int_{S}\D\omega,
+\end{equation}
+so the notion of an integral\index{Integral} is closely related to the notion of
+the boundary\index{Boundary!and Integration} of some surface.
+
+The homology\index{Homology} is closed surfaces mod boundaries, meh we are sloppy
+here.
+
+At any rate, integers are relevant to topology, viz.\ in
+$\CC$. Another thing we'd like to mention is the application
+of topology to the study of $\vec{f}(\vec{x})=\vec{0}$. The first
+question is how many solutions do we have? Topology cannot say
+the number of solutions, but it can tell us the \emph{algebraic
+  number} of solutions. For example, when considering $y=f(x)$
+where
+\begin{subequations}
+\begin{equation}
+\lim_{x\to-\infty}f(x)<0
+\end{equation}
+and
+\begin{equation}
+\lim_{x\to\infty}f(x)>0
+\end{equation}
+\end{subequations}
+then there are an odd number of points $x_{1}$, \dots, $x_{2n+1}$
+such that 
+\begin{equation}
+f(x_{i})=0
+\end{equation}
+This is topological, and looks like:
+\begin{center}
+\includegraphics{img/lecture1.0}\quad\includegraphics{img/lecture1.1}\quad
+etc.
+\end{center}
+
+The last thing to mention is the calculation of the index of $A$,
+a Fredholm operator\index{Fredholm Operator}. We consider $\ker(A)$ and assume
+$\dim(\ker(A))$ is finite. We can consider
+\begin{equation}
+A\colon E\to E
+\end{equation}
+then
+\begin{equation}
+\coker(A)=\im(A)/\ker(A)
+\end{equation}
+and $\dim(\coker(A))$ is finite. The difference between these
+finite numbers is precisely the \define{Index}\index{Operator Index}\index{Index!of Operator} of the operator.
+
+Topology has very important applications in physics. Namely, one
+of the ways is when we work with fields. We can consider the
+space of all fields (possibly with some restrictions, e.g. with
+finite energy). It is possibly disconnected. Foe example, in
+classical mechanics
+\begin{equation}
+V(x)=x^{4}
+\end{equation}
+the space of solutions is disconnected. But to show this, we need
+the homotopic group of the space. There are other applications of
+topology in physics, e.g., TQFT.
+
+There are other topological applications, e.g., in the calculus
+of variation we may compute the number of critical points
+topologically. 

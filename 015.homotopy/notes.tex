@@ -1,0 +1,139 @@
+%%
+%% notes.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Sep 29 07:37:25 2011 alex
+%% Last update Thu Sep 29 07:37:25 2011 alex
+%%
+\documentclass{article}
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\pdfinfo{/CreationDate (D:20110410120127)}
+\usepackage{xmpincl}
+\includexmp{CC_Attribution-NonCommercial-NoDerivs_3.0_Unported}
+\usepackage{wrapfig}
+%\usepackage[PS]{diagrams}
+\usepackage{makeidx}
+\usepackage{notebk}
+\makeindex
+\diagramstyle[nohug,labelstyle=\scriptstyle]
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\advance\headsep by1pc
+
+\theoremstyle{plain}
+\newtheorem*{bott}{Bott Periodicity Theorem}
+
+\makeatletter
+\numberwithin{section}{part}
+\renewcommand\thesection{\arabic{section}}
+\def\lecture{\smallbreak\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\bigbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\sectionfont Lecture \thesection. #1\@addpunct{.}\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}}\medbreak}
+\def\@lectureWithout{\bigbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\sectionfont Lecture \thesection.\addcontentsline{toc}{section}{Lecture \thesection}}\medbreak}
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{xca}{\llap{\manual\char'170\rm\kern.15em}Exercise}
+\renewcommand\exercises{\phantomsection\subsection*{EXERCISES}\addcontentsline{toc}{subsection}{Exercises}}
+
+\renewenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  %\hbox to\parindent
+  {\bf Answer to #1:\enspace}\ignorespaces}
+\renewcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+%\renewcommand{\theequation}{\arabic{equation}}
+
+
+\let\myindex\theindex
+\renewcommand\theindex{\phantomsection\renewcommand{\leftmark}{Index}\myindex\addcontentsline{toc}{section}{Index}}
+\makeatletter
+\def\WF@collision{}
+\makeatother
+
+\input{notation}
+
+
+\title{Algebraic Topology Notes: Homotopy Theory}
+\date{September 29, 2011}
+\begin{document}
+\maketitle\index{$\hom(-,-)$|see{Function Space}}
+\begin{abstract}
+Notes on homotopy theory, the first part of a trilogy on algebraic topology.
+Any typos, errors, mistakes, gaffes, etc., are entirely my folly. 
+\end{abstract}
+\tableofcontents
+\vfill\eject
+
+\part{Homotopy Theory}
+\lecture
+\input{tex/lecture01}%\vfill\eject
+\lecture
+\input{tex/lecture02}%\vfill\eject
+\lecture
+\input{tex/lecture03}
+\lecture
+\input{tex/lecture04}
+\lecture
+\input{tex/lecture05}\vfill\eject
+\lecture
+\input{tex/lecture06}
+\lecture
+\input{tex/lecture07}\vfill\eject
+\lecture
+\input{tex/lecture08}
+\lecture
+\input{tex/lecture09}
+\lecture
+\input{tex/lecture10}
+\lecture
+\input{tex/lecture11}
+\lecture
+\input{tex/lecture12} % need to do the pictures
+\lecture
+\input{tex/lecture13}
+\lecture[Toric Knots]
+\input{tex/lecture14}
+\lecture
+\input{tex/lecture15}
+\lecture[Fibrations]
+\input{tex/lecture16}
+\lecture
+\input{tex/lecture17}
+\lecture
+\input{tex/lecture18}
+\lecture[Homotopy Groups]
+\input{tex/lecture19}
+\lecture
+\input{tex/lecture20}
+\lecture
+\input{tex/lecture21}
+\lecture
+\input{tex/lecture22}
+\lecture
+\input{tex/lecture23}
+\lecture
+\input{tex/lecture24}
+\lecture
+\input{tex/lecture25}
+\lecture[Principal Fibrations]
+\input{tex/lecture26}
+\lecture
+\input{tex/lecture27}
+\lecture
+\input{tex/lecture28}
+
+
+
+\vfill\eject
+\appendix
+\input{tex/bib}
+\printindex
+\end{document}

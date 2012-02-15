@@ -1,0 +1,241 @@
+%%
+%% lecture24.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Jan  3 09:30:19 2012 alex
+%% Last update Tue Jan  3 09:30:19 2012 alex
+%%
+
+We will see how to apply our theorem. Recall we have a space $X$,
+a subset $A\propersubset X$, and a point $*\in A$. We considered
+homotopy groups $\pi_{n}(A,*)$ but every spheroid of $A$ is a
+spheroid in $X$. We thus get a morphism
+\begin{equation}
+\pi_{n}(A,*)\to\pi_{n}(X,*).
+\end{equation}
+But we can consider an absolute spheroid in $X$ as a relative
+spheroid, thus we get a morphism
+\begin{equation}
+\pi_{n}(X,*)\to\pi_{n-1}(X,A,*).
+\end{equation}
+Thus we get our exact sequence
+\begin{equation}
+\dots\to\pi_{n}(A,*)\to\pi_{n}(X,*)\to\pi_{n-1}(X,A,*)
+\to\pi_{n-1}(A,*)\to\dots
+\end{equation}
+We have to check that
+\begin{equation}
+\pi_{n}(A,*)\to\pi_{n}(X,*)\to\pi_{n-1}(X,A,*)
+\end{equation}
+is exact. Lets first introduce some notation:
+\begin{subequations}
+\begin{align}
+i_{*}\colon&\pi_{n}(A,*)\to\pi_{n}(X,*)\\
+j_{*}\colon&\pi_{n}(X,*)\to\pi_{n}(X,A,*)\\
+\partial\colon&\pi_{n}(X,A,*)\to\pi_{n-1}(A)
+\end{align}
+\end{subequations}
+Then we have
+\begin{equation}
+\partial\circ j_{*}=0,\quad j_{*}\circ i_{*}=0,\quad
+i_{*}\circ\partial=0.
+\end{equation}
+So we have
+\begin{equation}
+\im(i_{*})\subset\ker(j_*),\quad\im(j_*)\subset\ker(\partial),\quad
+\im(\partial)\subset\ker(i_*).
+\end{equation}
+In other words, this sequence is a \define{Complex}\index{Complex|textbf}.
+Last time we proved that
+\begin{equation}
+\im(i_{*})\supset\ker(j_*),\quad\im(j_*)\supset\ker(\partial),\quad
+\im(\partial)\supset\ker(i_*).
+\end{equation}
+which imply that these are equal and our sequence is exact.
+
+Consider  $X=\bar{D}^n$, $A=S^{n-1}$, and $*\in A$. We can write
+down an exact sequence:
+\begin{equation}
+\pi_{k}(S^{n-1})\to\pi_{k}(\bar{D}^{n})\to\pi_{k}(\bar{D}^{n},S^{n-1})\to
+\pi_{k-1}(S^{n-1})\to\dots 
+\end{equation}
+We definitely know that $\bar{D}^n$ is contractible, which means
+they have trivial homotopy groups. We obtain
+\begin{equation}
+\pi_{k}(S^{n-1})\to0\to\pi_{k}(\bar{D}^{n},S^{n-1})\to
+\pi_{k-1}(S^{n-1})\to\dots 
+\end{equation}
+which implies an isomorphism.\marginpar{Important: $0\to A\into B$ and $A\onto B\to 0$ for exact sequences}
+If $0\to A\into B$ where we have $A\into B$ injective, then
+$\im(A\into B)\propersubset B$. Similarly, we have $A\onto B\to
+0$ imply the kernel is contained in the image and, being sloppy
+with notation, have $B\propersubset A$. Thus $0\to A\to B\to 0$
+implies $A\iso B$.
+
+So what? Well, this implies
+\begin{equation}
+\pi_{k}(\bar{D}^{n},S^{n-1})\iso
+\pi_{k-1}(S^{n-1})
+\end{equation}
+That is the end of the story.
+
+\subsection{Homotopy Groups of Fibrations}
+We have a notion of fibration $p\colon E\to B$ surjective, and
+\begin{equation}
+p^{-1}\{b\}=F_{b}\iso F
+\end{equation}
+for any $b\in B$, where $F$ is the fibre. A \define{Locally
+  Trivial Fibration}\index{Locally Trivial Fibration}\index{Fibration!Locally Trivial}
+is one which locally behaves as a direct product. So for
+some neighborhood $U\propersubset B$ , we have
+\begin{equation}
+p^{-1}(U)\iso U\times F.
+\end{equation}
+We may consider a fibre
+\begin{equation}
+p^{-1}\{b\}=F_{b}\propersubset E
+\end{equation}
+we may compute the relative homotopy groups of this pair:
+$\pi_{k}(E,F_{b},*)$ where $*\in F_{b}$. So
+\begin{equation}
+p(*)=b=*
+\end{equation}
+we mark a point in the base
+\begin{equation}
+b\in B.
+\end{equation}
+Lets clarify notation a bit: We have $b=*$ in base $B$, and in
+$F_{b}$ the marked point denoted $*$. We have $F$ be the fibre
+over the marked point. \emph{Immediately} relative homotopy
+groups of $E$ relative to $F$ is mapped to the absolute homotopy
+group of $B$:
+\begin{equation}
+p_{*}\colon\pi_{n}(E,F,*)\to\pi_{n}(B,*).
+\end{equation}
+We have a fibration over the base.
+
+\begin{thm}
+We have this morphism $p_{*}$ be an isomorphism if the fibration
+is locally trivial.
+\end{thm}
+
+There is a notion of a cell fibration\index{Cell Complex!Fibration Over a ---}%
+\index{Cell Fibration|textbf}\index{Bundle!Cellular ---}%
+\index{Fibration!Cell}\index{Fibre Bundle!Cellular ---}%
+ defined in this way. Using this theorem for complexes, if 
+\begin{equation}
+\pi_{n}(X,A)\iso\pi_{n}(B)
+\end{equation}
+then it's locally trivial, etc. So in other words, our cell
+complex $X$ corresponds to $E$, and the subcomplex $A$ correspond
+to the ``fibre''. When we use this analogy on our cell complex,
+we get a cell fibration.
+The only thing we need is the ability to lift from a spheroid in
+$B$ to a relative spheroid. We will elaborate later, now we will
+focus on examples.
+
+If $(E,F)$ are a pair, we may consider the exact sequence
+\begin{equation}
+\dots\to\pi_{n}(F)\to\pi_{n}(E)\to\pi_{n}(E,F)\to\pi_{n-1}(F)\to\dots.
+\end{equation}
+Topological results are invariant with respect to letters used
+for variables. But recall our theorem, that is
+\begin{equation}
+\pi_{n}(E,F)\iso\pi_{n}(B).
+\end{equation}
+So we can write
+\begin{equation}
+\dots\to\pi_{n}(F)\to\pi_{n}(E)\to\pi_{n}(B)\to\pi_{n-1}(F)\to\dots
+\end{equation}
+we have an \define{Exact Homotopy Sequence of Fibrations}.%
+\index{Fibration!Exact Homotopy Sequence of ---}%
+\index{Exact Sequence!Homotopy Groups of Fibration}%
+\index{Fibre Bundle!Exact Homotopy Sequence of ---}%
+\index{Homotopy Group!Sequence for Fibration}%
+This permits me to consider, to calculate homotopy groups and
+everyt fibration gives some information. So first of all, we need
+examples of fibrations. We have one! The trivial fibration, but
+that is a triviality.
+
+\index{Hopf Fibration!Generalization of ---|(}
+But we have also the Hopf fibration, where we have $E=S^3$,
+$B=S^2$ and $F=S^1$. For a more general picture, we had the
+complex projective space which is defined in terms of $(n+1)$
+complex numbers defined up to a factor $(z_0 : \dots : z_n)$. It
+is a sphere of dimension $S^{2n+1}$, when we factorize by an
+action of $S^{1}$ we get
+\begin{equation}
+S^{2n+1}/S^{1}=\CP^{n}.
+\end{equation}
+We may consider a fibration $S^{2n+1}\to\CP^{n}$ with the fibre
+$S^{1}$. In the case $n=1$, we have $\CP^1=S^2$. It is clear this
+fibration is locally trivial. We see we get
+\begin{equation}
+\dots\to\pi_{k}(S^1)\to\pi_{k}(S^{2n+1})\to\pi_{k}(\CP^{n})\to\pi_{k-1}(S^{1})\to\dots
+\end{equation}
+describing the exact homotopy sequence.
+\index{Hopf Fibration!Generalization of ---|)}
+
+Remember that we already mentioned
+\begin{equation}
+\pi_{k}(\mbox{space})=\pi_{k}\begin{pmatrix}\mbox{covering}\\\mbox{space}
+\end{pmatrix}
+\end{equation}
+for $k\geq2$. We thus have
+\begin{equation}
+\pi_{k}(B)\iso\pi_{k}(E)
+\end{equation}
+since $E$ is the covering space of the base $B$. We see $F$ is
+discrete, so 
+\begin{equation}
+\pi_{k}(F)=0
+\end{equation}
+for $k\geq1$. This situation we explained, every third term of
+our sequence vanishes. So
+\begin{equation}
+\pi_{k}(S^1)=0
+\end{equation}
+for $k\geq2$, and
+\begin{equation}
+\pi_{1}(S^1)\iso\ZZ.
+\end{equation}
+We may write down this sequence, we are in this wonderful
+situation that lets us say
+\begin{equation}
+\pi_{k}(S^{2n+1})\iso\pi_{k}(\CP^n).
+\end{equation}
+But this is not always true. Why? Because
+\begin{equation}
+\pi_{1}(S^{1})\not=0.
+\end{equation}
+We should consider this portion of the exact sequence
+\begin{equation}
+\bigl(\pi_{2}(S^{1})=0\bigr)\to
+\pi_{2}(S^{2n+1})\to
+\pi_{2}(\CP^n)\to
+\bigl(\pi_{1}(S^{1})\iso\ZZ\bigr)\to
+\bigl(\pi_{1}(S^{2n+1})=0\bigr)
+\end{equation}
+But
+\begin{equation}
+\pi_{2}(S^{2n+1})=0
+\end{equation}
+which gives us
+\begin{equation}
+0\to\pi_{2}(\CP^n)\to\bigl(\pi_{1}(S^{1})\iso\ZZ\bigr)\to0
+\end{equation}
+We get
+\begin{equation}
+0\to\pi_{2}(\CP^n)\to\ZZ\to0
+\end{equation}
+or in other words
+\begin{equation}
+\pi_{2}(\CP^n)\iso\ZZ,
+\end{equation}
+and for $k>2$ we have
+\begin{equation}
+\pi_{k}(\CP^{n})\iso\pi_{k}(S^{2n+1})
+\end{equation}
+as desired.

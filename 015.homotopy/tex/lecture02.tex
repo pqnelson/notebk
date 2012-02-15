@@ -1,0 +1,286 @@
+%%
+%% lecture02.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Sep 29 08:34:48 2011 alex
+%% Last update Thu Sep 29 08:34:48 2011 alex
+%%
+
+We will follow Hatcher's book, and Schwarz's \emph{Topology for Physicists}.
+
+The first thing to discuss is topological
+spaces\index{Topological Space}\index{Space!Topological}. We have a set
+$E$ and a notion of an open set of $E$. We have a collection of
+open subsets of $E$, $\{U\}$ where
+\begin{subequations}
+\begin{equation}
+\bigcup U=E
+\end{equation}
+and
+\begin{equation}
+\bigcap_{\text{finite}} U\mbox{ is open}
+\end{equation}
+\end{subequations}
+It is not enough to say 
+\begin{subequations}
+\begin{equation}
+\bigcup \mbox{(open)}=\mbox{(open)}
+\end{equation}
+and
+\begin{equation}
+\bigcap_{\text{finite}} \mbox{(open)}=\mbox{(open)}
+\end{equation}
+\end{subequations}
+We have closed sets be the complement of open sets. There is a
+requirement that $E$ is both open and closed, which then implies
+that $\emptyset$ is both open and closed.
+
+We can define a continuous function $f\colon E\to E'$ such that
+the preimage of open sets is open, i.e.,
+\begin{equation}
+f^{-1}(\mbox{open})=\mbox{open}.
+\end{equation}
+
+\begin{Boxed}{Functorial view of Topology, Continuous Functions}
+\index{Topological Space!and Stuff, Structure, Properties}
+\index{Continuous Function!from Stuff, Structure, Properties}
+This may seem odd at first why continuous functions obey this
+pre-image condition. There are a variety of explanations out
+there, but I prefer this explanation. Consider the category
+$\Set$. Let\index{$\hom(-,\mathbf{2})$|(}
+\begin{equation}
+\hom(-,\mathbf{2})\colon\Set^{\op}\to\Set
+\end{equation}
+be the contravariant power set functor. So in other words, we
+have
+\begin{equation}
+\hom(X,\mathbf{2})=\begin{pmatrix}\mbox{set of indicator}\\
+\mbox{functions for subsets}\\
+\mbox{of the set $X$}
+\end{pmatrix}
+\end{equation}
+We construct a topology by picking a subset of this collection of
+subsets $\hom(X,\mathbf{2})$ which obey the axioms for a
+topology. That is, we have $T\subset\hom(X,\mathbf{2})$ be a
+topology of $X$. That is to say, $T$ consists of the indicator
+functions for open subsets of $X$. It is a structure-type.
+A topological space is then $(X,T)$. 
+
+But note that we functor, so we have the immediate question:
+\begin{quest}
+How does $\hom(X\xrightarrow{\;f\;}Y,\mathbf{2})$ behave?
+\end{quest}
+If we can answer this question, then we will have some idea of
+what a ``topological-space morphism'' would be like. Why? Because
+we just restrict focus to the functions preserving the
+``topological structure'' $T\subset\hom(X,\mathbf{2})$.
+
+We should recall from our knowledge of category theory that the
+functor $\hom(-,B)$ behaves on morphisms in the following manner:
+$\hom(-,B)$ maps each morphism $h\colon X\to Y$ to the function
+$\hom(h, B)\colon \hom(Y, B)\to\hom(X, B)$ given by $g \mapsto
+g\circ h$ for each $g$ in $\hom(Y, B)$.  
+
+What does this mean for our situation? Well, for each $f\colon
+X\to Y$ it is mapped to the function 
+\begin{equation}
+\hom(f,\mathbf{2})\colon\hom(Y,\mathbf{2})\to\hom(X,\mathbf{2})
+\end{equation}
+given by $f\mapsto h\circ f$ where $h\in\hom(Y,\mathbf{2})$. So
+$h$ is really an indicator function of an open subset of
+$Y$. This is precisely the same condition as saying the preimage
+$f^{-1}(\mbox{open})$ is open.\index{Open Set}\index{$\hom(-,\mathbf{2})$|)}
+For a brief introduction to topology using this approach, see Nelson~\cite{nelson}.
+\end{Boxed}
+
+Usually we use the Hausdorff condition\index{Hausdorff Condition} that two distinct points
+are contained in two disjoint neighborhoods.
+
+There is a topological property of \define{Compactness}\index{Compactness} where
+every open covering has a finite subcovering.
+
+There is one more thing that is relevant. What can we do with
+equivalence relations on topological spaces? We can consider
+equivalence classes\index{Equivalence Classes} $E/\sim$. There is a natural map
+\begin{equation}
+\pi\colon E\to E/\sim
+\end{equation}
+What happens if $E$ is a topological space, then we would like
+to have $E/\sim$ be a topological space and the map $\pi$ to be
+continuous, i.e., the preimage $\pi^{-1}(\mbox{open})$ is
+open. We are saying $U\propersubset E/\sim$ is open iff the
+preimage $\pi^{-1}(U)$ is open in $E$. If the preimage of an open
+set is open, then the preimage of a closed set is closed. We see
+for a singleton $a\in E/\sim$ then the preimage $\pi^{-1}(a)$ is
+an equivalence class. We have the singletons be closed, so we
+require these equivalence classes be closed to avoid pathology.
+
+\marginpar{List of topological spaces}Now why are we so interested in this construction? Because we
+want to have a construction of interesting topological spaces. We
+have some simple interesting topological spaces. What are they?
+First of all, $\RR^{3}$ the space that surrounds us. \marginpar{$\RR^{n}$}More
+generally $\RR^{n}$. Another interesting space is a ball
+\begin{equation}\index{$\bar{D}^{n}$}
+\overline{D}^{n}=\{\vec{x}\in\RR^{n}\lst\|\vec{x}\|\leq1\}
+\end{equation}
+\marginpar{Closed ball $\bar{D}^{n}$}which is closed of radius 1. The radius doesn't change anything,
+balls of different radius are topologically equivalent. For
+example $x\mapsto\lambda x$ for $\lambda>0$ is the topological
+equivalence. We won't repeat the definition of ``topological
+equivalence'' the curious reader may look it up. Another
+interesting space is the open ball\index{$D^{n}$}\index{Open Ball}\marginpar{Open ball $D^{n}$}
+\begin{equation}
+D^{n}=\{\vec{x}\in\RR^{n}\lst\|\vec{x}\|<1\}
+\end{equation}
+We use the notation $\overline{D}^{n}$ to stress it is the
+closure of $D^{n}$. It's an interesting space, perhaps it is
+equivalent to $\overline{D}^{n}$? No! Why? Well, we see that
+$D^{n}$ is not compact but $\overline{D}^{n}$ is compact, so they
+cannot be topologically equivalent.
+
+\begin{wrapfigure}{r}{2in}
+  \vspace{-30pt}
+  \begin{center}
+    \includegraphics{img/lecture2.0}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+But is $\RR^{n}$ topologically equivalent to $D^{n}$? Yes, we can
+see this for $n=1$, we use the stereographic
+projection\index{Stereographic Projection} which
+gives us a one-to-one correspondence between
+$S^{1}\setminus\{0\}$ and $\RR^{1}$. We can take $n=2$ and
+nothing conceptually changes. The same is true for
+$S^{n}\setminus\{0\}\iso\RR^{n}$. But we may say that
+$S^{n}\setminus\{0\}\iso D^{n}$.
+
+We would like to stress that the $n$-dimensional sphere is
+\emph{not} a sphere in $n$-dimensional space. No, it is instead
+living in $\RR^{n+1}$. In $\RR^{n}$, the sphere is characterized
+by the points $\vec{x}\in\RR^{n}$ satisfying
+\begin{equation}
+\|\vec{x}\|=1
+\end{equation}
+which is an $(n-1)$-sphere. We have 
+\begin{equation}
+\overline{D}^{n}=S^{n-1}\cup D^{n}
+\end{equation}
+where $D^{n}$ are the interior points and $S^{n-1}$ is the boundary.
+
+Now what we would like to say is that, more or less, all
+interesting spaces may be constructed from the simple spaces
+$D^{n}$, $\overline{D}^{n}$. We define a very general
+construction, namely given a topological space $X$, and a
+topological space $Y$, a closed subset $A\propersubset Y$, we'd
+like to paste together $X$ and $Y$ along $A$. What does this
+mean? We take any continuous map
+\begin{equation}
+f\colon A\to X
+\end{equation}
+take the disjoint union $X\sqcup Y$, and then in this disjoint
+union introduce an equivalence relation that any $a\in
+A\propersubset Y \sim f(a)\in X$ and no other equivalences!
+
+\begin{wrapfigure}{l}{0.5in}
+  \vspace{-10pt}
+  \begin{center}
+    \includegraphics{img/lecture2.1}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+\noindent{}We require $a\in A\propersubset Y\sim f(a)\in X$ is the only
+nontrivial equivalence. Lets consider some examples. The Mobius
+band\index{Mobius Band!Construction of} can be defined in this way: take a rectangle (which is
+topologically equivalent to $D^{2}$) and we consider the
+equivalence relation that the two arrows are pasted together.
+
+\begin{wrapfigure}{r}{2.1in}
+  \vspace{-30pt}
+  \begin{center}
+    \includegraphics{img/lecture2.2}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+We see that a rectangle is equivalent to a disc since both are
+convex and stretch the boundary to be a rectangle which permits
+us to formally write this equivalence but that won't be necessary.
+We can stretch according to the gray lines doodled to the right.
+
+\begin{wrapfigure}{l}{1.05in}
+  \vspace{-25pt}
+  \begin{center}
+    \includegraphics{img/lecture2.3}
+  \end{center}
+  \vspace{-23pt}
+\end{wrapfigure}
+So more examples. We take the same rectangle, and paste together
+points at the same height. This topologically is equivalent to a
+cylinder. This is obvious, as we see in the doodle to the left.
+
+
+\begin{wrapfigure}{r}{1.5in}
+  \vspace{-16pt}
+    \includegraphics{img/lecture2.5}
+  \vspace{-20pt}
+\end{wrapfigure}
+But if we take our cylinder, and glue the two ends to each other
+without any twisting, what do we get? Well, we have a torus. This
+is doodled on the right hand side, very carefully, with colors to
+show where we glued the rectangle together.
+The red line indicates where we glued the rectangle to obtain a
+cylinder, and the blue line indicates where we glued the cylinder
+to obtain a torus. Do we really need all this information? Is
+there some easier diagram which yields the relevant data? Or are
+we forced to become artists to understand the topological
+properties of these exotic spaces?
+
+
+There is a very general construction of something called a
+\define{Cell Complex}\index{Cell Complex!generalization of ---|see{Complex}}\index{Cell Complex}\index{Complex!Cellular}, we will first describe it. Take a closed
+ball and some topological space $X$. Now we will take any
+continuous map
+\begin{subequations}
+\begin{equation}
+f\colon S^{n-1}\to X
+\end{equation}
+or in other words
+\begin{equation}
+f\colon\partial\overline{D}^{n}\to X
+\end{equation}
+\end{subequations}
+and then we use the construction we just explained. That is, we
+glue a closed ball along its boundary to $X$. We get a new set
+\begin{subequations}
+\begin{equation}
+Y=X\cup\overline{D}^{n}
+\end{equation}
+or as sets
+\begin{equation}
+Y=X\sqcup\overline{D}^{n}
+\end{equation}
+\end{subequations}
+The simplest posssible case is when $X$ is just a one point space
+\begin{equation}
+X=\{a\}
+\end{equation}
+the boundary of the ball goes to $a$. This is a trivial map.
+We see in $n=2$ what do we get with identifying the boundary to
+$a$? Look at the stereographic projection backwards.
+\begin{center}
+\includegraphics{img/lecture2.4}
+\end{center}
+This general construction, gluing the boundary of closed
+$n$-balls to a topological space (starting with $n=0$, i.e., a
+set of vertices to begin with), gives us a cell complex.
+
+\begin{defn}
+The \define{$n$-Dimensional Cell Complex}\index{Cell Complex!$n$-Dimensional|textbf} can be done inductively
+by assuming we have the $(n-1)$-dimensional cell complex denoted
+$X^{n-1}$ called the \define{$(n-1)$-Skeleton}\index{Skeleton!of Complex|textbf}, now we have
+$k$-copies of $n$-discs and perform the same construction. We end
+up with a sequence of skeletons $X^{0}\propersubset
+X^{1}\propersubset X^{2}\propersubset\dots$, if we consider
+$X^{n}\setminus x^{n-1}=\bigsqcup_{k} D^{n}_{k}$.
+\end{defn}

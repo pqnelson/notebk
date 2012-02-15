@@ -1,0 +1,274 @@
+%%
+%% lecture13.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 21:23:33 2011 alex
+%% Last update Mon Dec 26 21:23:33 2011 alex
+%%
+
+\subsection{Projective Spaces}
+\index{Space!Projective|(}\index{Projective Space|(}
+Recall the notion of a projective space $\PP^n$. Consider the
+$(n+1)$-dimensional vector space $\FF^{n+1}$ over $\FF$. Consider
+all lines in $\FF^{n+1}$ that contain the origin. We need to know
+only one point---then we know the line. (Why?) If $x\in\FF^{n+1}$
+and $x\not=0$, then $\lambda x$ describes the lines, for
+arbitrary $\lambda\in\FF$. The set of all such lines is the
+projective space over $\FF$, denoted $\FP^{n}$. We can take
+\begin{equation}
+(\FF^{n+1}-0)/(x\sim \alpha x)\eqdef\FP^{n}
+\end{equation}
+This is another description of it.
+
+A point in projective space may be described
+by \define{Homogeneous Coordinates}\index{Projective Space!Homogeneous Coordinates}\index{Homogeneous Coordinates}
+denoted
+\begin{equation}
+(x_0:x_1:\cdots:x_n)\sim(\alpha x_0:\alpha x_1:\cdots:\alpha x_n).
+\end{equation}
+(In physics, we have a similar picture where wave functions are
+defined up to a constant factor.) So this projective space
+contains an $n$-dimensional vector space
+\begin{equation}
+\FF^n\propersubset\FP^n.
+\end{equation}
+How? Consider $x_0\not=0$. Every point with this condition is
+equivalent to
+\begin{equation}
+(x_0:x_1:\cdots:x_n) = \left(1:\frac{x_1}{x_0}:\cdots:\frac{x_n}{x_0}\right).
+\end{equation}
+We take
+\begin{equation}
+y_i\eqdef x_i/x_0,
+\end{equation}
+then
+\begin{equation}
+(x_0:x_1:\cdots:x_n) = \left(1:y_1:\cdots:y_n\right).
+\end{equation}So $\FF^n$ is sitting in projective space. The next
+thing we can do is take our projective space and delete this
+$\FF^n$. What do we get? Well, it's quite simple: we get all the
+points where $x_0=0$. We thus get the picture that
+\begin{equation}
+\FP^n-\FF^n=\FP^{n-1}.
+\end{equation}
+So if you like, we may say that
+\begin{equation}
+\FP^{n}=\FF^n\sqcup\FP^{n-1}
+\end{equation}
+disjoint union of topological spaces.
+
+Now we go to topology and consider two cases: $\FF=\CC$ and
+$\FF=\RR$. Lets look at the simplest situations. What is
+$\RP^1$?\index{$\RP^1$} It is very easy to see
+\begin{equation}
+\RP^1=S^1
+\end{equation}
+We see
+\begin{equation}
+\RP^1=\RR^1\sqcup\RP^0
+\end{equation}
+but $\RP^0$ consists of just a single point. What is
+$\CP^1$?\index{$\CP^1$} Of course, we see
+\begin{equation}
+\begin{split}
+\CP^1 &= \CC\cup\CP^0\\
+&=\CC\cup\{\mbox{point}\}\\
+&=S^2
+\end{split}
+\end{equation}
+as desired.
+
+Let us look a little bit at 
+\begin{equation}
+\RP^{n} = (R^{n+1}-0)/(x\sim\lambda x)
+\end{equation}
+But we may do something different. Namely every point on
+$\RR^{n+1}-0\homotopic S^n$, why? We may divide $x$ by $\|x\|$ so
+every point on $\RP^n$ may be represented by a point on a
+sphere. But still we should identify $x\sim\lambda x$ where both
+are on the sphere\dots but this happens when
+$|\lambda|=1$. Therefore the only thing we should do is
+\begin{equation}
+\RP^n=S^n/(x\sim-x)
+\end{equation}
+This may be represented by 
+\begin{equation}
+\RP^n=\RR^n\sqcup\RP^{n-1},
+\end{equation}
+which is how we get a cellular decomposition (where we have a single
+$k$-cell in every dimension $k\leq n$).
+
+For the complex case, we see
+\begin{equation}
+\begin{split}
+\CP^n &= (\CC^{n+1}-0)/(x\sim\lambda x)\\
+&= S^{2n+1}/(x\sim\lambda x)
+\end{split}
+\end{equation}
+where $|\lambda|=1$. Is this true? Let first note
+\begin{equation}
+\CC^{n+1}=\RR^{2(n+1)}
+\end{equation}
+but we demand $\|x\|=1$ which eliminates a dimension, giving us
+\begin{equation}
+\RR^{2(n+1)}/\sim = S^{2n+1}
+\end{equation}
+This implies $|\lambda|=1$. We can consider this set $S^{1}=\{\lambda :
+|\lambda|=1\}$ as a group. This group acts on $S^{2n+1}$ simply
+by
+\begin{equation}
+x\mapsto\lambda x
+\end{equation}
+\index{Hopf Fibration!Derived from $\CP^1$|(}%
+One more definition of $\CP^n$. One more definition of
+$\CP^n$. This is
+\begin{equation}
+\CP^n=S^{2n+1}/S^{1}
+\end{equation}
+where we mod out by this action of $S^1$; we can write similarly
+\begin{equation}
+\RP^n=S^n/\ZZ_2
+\end{equation}
+since $\lambda\in\RR$ and $|\lambda|=1$ implies
+$\lambda=\pm1$. Take $n-1$ we get
+\begin{equation}
+\CP^1=S^3/S^1=S^2
+\end{equation}
+In a different way, we may say this as follows: there exists a
+mapping
+\begin{equation}
+h\colon S^3\to S^2
+\end{equation}
+such that the preimage of a point $h^{-1}(\mbox{point})=S^1$. We
+call $h$ the \define{Hopf Map}\index{Hopf Map}, later we will see
+$h$ is not homotopic to 0, so it's very non-trivial.
+\index{Hopf Fibration!Derived from $\CP^1$|)}%
+\index{Space!Projective|)}\index{Projective Space|)}
+
+\subsection{Knot Rejoinder}
+How do we use $h$ to analyze the structure of knots? We did say
+\begin{equation}
+h^{-1}(x)=S^1
+\end{equation}
+for any $x\in S^2$. We can see that\index{Torus!Solid}
+\begin{equation}
+h^{-1}(\mbox{disc})=\begin{pmatrix}\mbox{solid}\\\mbox{torus}
+\end{pmatrix}.
+\end{equation}
+How? Well, we could see the preimage $h^{-1}(S^{1})$ is a torus,
+and $S^1$ is a boundary of a disc. So we fill in the disc
+``continuously'' and we fill in the torus. 
+
+Lets be clear here. We are looking at $S^{2}$ by constructing it
+from two 2-discs 
+\begin{equation}
+S^{2}=(\bar{D}^{2}_{0}\sqcup\bar{D}^{2}_{1})/(\partial\bar{D}^{2}_{0}\sim\partial\bar{D}^{2}_{1})
+\end{equation}
+We let
+\begin{subequations}
+\begin{equation}
+A=h^{-1}(\bar{D}^{2}_{0})
+\end{equation}
+and
+\begin{equation}
+B=h^{-1}(\bar{D}^{2}_{1})
+\end{equation}
+\end{subequations}
+and we will use van Kampen's theorem.
+
+So
+\begin{equation}
+h^{-1}(S^{2})=A\cup B
+\end{equation}
+where $A$, $B$ are solid tori, and
+\begin{equation}
+A\cap B=T^{2}
+\end{equation}
+is a (non-solid) torus. We obtain this since
+\begin{equation}
+S^{3}=\bar{D}^{2}\cup\bar{D}^{2}.
+\end{equation}
+We obtain this from the Hopf map.
+
+Consider the solid torus in $\RR^3$, it is bounded by the torus
+in $\RR^3$. Consider this stuff in
+\begin{equation}
+S^{3}=\RR^{3}\cup\infty.
+\end{equation}
+We consider
+\begin{equation}
+S^{3}-(\mbox{open solid torus}).
+\end{equation}
+What do we get? A solid torus! We can see this result in our
+picture also. Of course, this is something with the solid torus
+as a boundary. The analog of the solid torus in higher dimension
+--- we take a body with handle, it's called a \define{Handle Body}.\index{Handle Body}
+It's important to consider representations of them in ``Heegaard
+Diagrams''\index{Heegaard Diagrams!we won't speak of ---}\dots but
+we won't speak of it here.
+
+We can take as a knot invariant $\pi_{1}(S^3-K)$. Let us take for
+$K$ a \emph{trivial} knot, i.e., $K=S^1$. Then it's very simple,
+because we can take a small neighborhood of $S^1$, which is a
+solid torus, and 
+\begin{equation}
+S^{3}-K\homotopic\mbox{solid torus}\homotopic\mbox{circle}
+\end{equation}
+are homotopy equivalences. Therefore
+\begin{equation}
+\pi_{1}(S^{3}-K)\iso\pi_{1}(S^1)\iso\ZZ
+\end{equation}
+But we would like to distinguish two unlinked circles from two
+linked circles: \includegraphics{img/lecture12.6} vs.\ \includegraphics{img/lecture12.7}.
+We may take the first circle as $K$,
+\begin{equation}
+S^{3}-K=\begin{pmatrix}\mbox{solid}\\ \mbox{torus}
+\end{pmatrix}
+\end{equation}
+we then consider the second circle as an elemetn of
+$\pi_1(S^3-K)$. If it's trivial, the knots are unlinked.
+
+A knot is a topological circle in $\RR^3$ or $S^3$. Now it is
+possible the circle lies on a torus. Then it's called
+a \define{Torus Knot}\index{Knot!Torus|textbf}\index{Torus!Knot}.
+The next problem is to find
+\begin{equation*}
+\pi_1\bigl(S^3-(\mbox{solid torus})\bigr).
+\end{equation*}
+This will give us an invariant of the knot, we can classify them.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercises
+\begin{xca}
+Let $\FF_{p}$ be the finite field with $p$ elements, where $p$ is
+prime. What is the cardinality of the set $\FP^{n}_{p}$?
+\end{xca}
+\begin{xca}
+Projective space $\RP^n$ can be obtained from the sphere $S^n$ by
+means of identification of antipodes $( x \sim -x)$. Describe the
+cell decomposition of $\RP^n$ and use it to calculate its
+fundamental group. 
+\end{xca}
+\begin{xca}\label{xca:lec13:prob2}
+Let us consider an $n$-dimensional manifold $X$ and its subspace
+$X = X \setminus D^n$ (the space $X$ with deleted open ball
+$D^n$). Express the fundamental group of $X$ in terms of the
+fundamental group of $X$. 
+\end{xca}
+\begin{xca}\label{xca:lec13:prob3}
+The connected sum of two $n$-dimensional manifolds $X$ and $Y$ is
+defined by means of deleting of open balls from $X$ and $Y$ and
+identification of boundaries of deleted balls. (In notations of
+Problem \ref{xca:lec13:prob2} we identify the boundary spheres in
+$X$ and $Y$). Calculate the fundamental group of connected sum. 
+\end{xca}
+\begin{rmk}
+In Problems \ref{xca:lec13:prob2} and \ref{xca:lec13:prob3} we
+assume that $n>1$. In the case $n=2$ you can use the fact that
+every two-dimensional compact manifold is a sphere with attached
+handles and Moebius bands;\index{Mobius Band!and Surfaces} if the manifold is not compact one
+should consider a sphere with holes (with deleted closed disks)
+instead of sphere.
+\end{rmk}

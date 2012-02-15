@@ -1,0 +1,217 @@
+%%
+%% lecture15.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Dec 29 09:46:23 2011 alex
+%% Last update Thu Dec 29 09:46:23 2011 alex
+%%
+
+We covered van Kampen's theorem, which lets us calculate the
+fundamental group. There is another approach which is just as
+powerful. 
+
+\begin{thm}\label{thm:lec15:1}
+Let $X$ be simply connected, suppose a group $G$ acts freely on
+$X$. IF we consider the space of orbits $X/G$, then
+$\pi_{1}(X/G)=G$.
+\end{thm}
+\index{Action!Free|(}\index{Group Action!Free|(}
+What does it mean ``$G$ acts freely''? Well, $G$ acts on $X$
+means that for every element $g\in G$ we have a transformation
+\begin{equation}
+\varphi_{g}\colon X\to X
+\end{equation}
+and we require
+\begin{subequations}
+\begin{equation}
+\varphi_{gh}=\varphi_{g}\varphi_{h}
+\end{equation}
+and
+\begin{equation}
+\id{X}=\varphi_{1}.
+\end{equation}
+\end{subequations}
+But we can write this as
+\begin{equation}
+\varphi_{g}(x)=gx,
+\end{equation}
+where we have associativity
+\begin{equation}
+(gg')x=g(g'x).
+\end{equation}
+This is the left action; there is a right action which is more or
+less the same stuff, but written on the right, e.g.,
+$\varphi_{gh}=\varphi_{h}\varphi_{g}$. If we don't say explicitly
+otherwise, we use the left action.
+
+We have a notion of an \define{Orbit}\index{Orbit} of every
+point. For one point, an orbit is
+\begin{equation}
+Gx=\{gx\mid g\in G\}.
+\end{equation}
+We also have a \define{Stabilizer}\index{Stabilizer}
+\begin{equation}
+\mbox{stab}(x)=\{g\in G\mid gx=x\}=H_{x}
+\end{equation}
+It is a subgroup of $G$. A free action (if the group is finite)
+is very simple: all the stabilizers are trivial.
+\index{Action!Free|)}\index{Group Action!Free|)}
+
+When $X$ is a topological space, we require 
+\begin{equation}
+\varphi_{g}\colon X\to X
+\end{equation}
+to be continuous. We may say a little bit more, namely:
+what does it mean we have a\index{Group Action!on Topological Space}\index{Action!Free on Topological Space} free action on a topological space? 
+We have an orbit, and each point in the orbit is distinct. So if
+$g,g'\in G$ and $g\not=g'$, then 
+\begin{equation}
+gx\not=g'x.
+\end{equation}
+What may we do? We may take a neighborhood of a point of the
+orbit. Then we get a neighborhood of \emph{every} point of the
+orbit. Here we should note we assume $X$ is at least
+Hausdorff. We may take $U$ ``sufficiently small'' so that 
+\begin{equation}
+U\cap gU=\emptyset,
+\end{equation}
+we see that we may say that 
+\begin{equation}
+g_{i}U\cap g_{j}U=\emptyset.
+\end{equation}
+Now we may define the free group action.
+\begin{defn}\index{Action!Free|textbf}
+A group $G$ \define{Acts Freely} on $X$ if for any $x\in X$ we
+may find a neighborhood $U\ni x$ such that $g U\cap
+g'U=\emptyset$ for distinct $g,g'\in G$.
+\end{defn}
+Really we have already used this notion. Well, a particular case
+of it. We computed the fundamental group of $S^{1}$. But really
+we have
+\begin{equation}
+S^{1}\iso\RR/\ZZ
+\end{equation}
+where the action is
+\begin{equation}
+x\mapsto x+n.
+\end{equation}
+The orbit of $0\in\RR$ is precisely $\ZZ$. We have then
+\begin{equation*}
+[0,1]/(0\sim1)
+\end{equation*}
+we have a circle. So $\pi_{1}(S^{1})=\ZZ$ by our theorem.
+
+The torus is a more complicated example, since $\RR^2/\ZZ^2$
+describes the torus.
+The action is
+\begin{equation}
+(x,y)\mapsto(x+n_1,y+n_2)
+\end{equation}
+So
+\begin{equation}
+\pi_{1}(T)=\ZZ^{2}.
+\end{equation}
+More generally, the multidimensional torus\index{Torus!Multidimensional} is obtained from
+\begin{equation}
+T^{n}=\RR^n/\ZZ^n
+\end{equation}
+and this gives us
+\begin{equation}
+\pi_{1}(T^{n})\iso\ZZ^n.
+\end{equation}
+One more example. On the sphere we have the action of the group
+$\ZZ_2$. That is
+\begin{equation}
+S^2/\ZZ_2\iso\RP^2,
+\end{equation}
+so we have
+\begin{equation}
+\pi_{1}(S^{2}/\ZZ_{2})=\pi_{1}(\RP^{2})=\ZZ_{2}.
+\end{equation}
+We can generalize to $\RP^{n}=S^{n}/\ZZ_{2}$ for $n\geq2$. We see
+\begin{equation}
+\pi_{1}(\RP^{n})=\ZZ_{2}.
+\end{equation}
+But we cannot do this for $S^1$, since it is \emph{not} simply
+connected! 
+
+%\medbreak\noindent\emph{Proof} (Theorem \ref{thm:lec15:1}).\quad
+Let us suppose we have a path on $X/G$. It can be lifted to
+$X$. What does this mean? Recall we have a natural map
+\begin{equation}
+f\colon X\to X/G.
+\end{equation}
+When we have a point $y\in X/G$, it may be considered by a set of points
+$\{x\in X\mid f(x)=y\}$. We may lift $y$ to $x$. We may do this
+several different ways, and the number of different ways is
+precisely the number of elements of $G$. In other words
+\begin{equation}
+|G|=|f^{-1}(y)|
+\end{equation}
+describes the cardinality. So this lifting of the path is not
+unique. 
+
+\begin{wrapfigure}{l}{6pc}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{img/lecture15.0}
+\end{wrapfigure}
+\noindent\ignorespaces
+We divide our path into small pieces. This is doodled on the left.
+We lift the end point.
+Consider a neighborhood $U$ such that
+\begin{equation}
+gU\cap U=\emptyset
+\end{equation}
+for any $g\not=1$ in the group $G$. But 
+\begin{equation}
+f(U)=V=f(gU).
+\end{equation}
+We may say that
+\begin{equation}
+f^{-1}(V)=\bigsqcup_{g\in G}gU.
+\end{equation}
+We would like to lift our piece of path contained in $V$, but a
+path is continuous. Therefore if we lift it, the piece of path
+should be lifted and moreover the small piece is lifted
+uniquely. We want to lift the \emph{whole} path. Now we use
+compactness to have a finite covering that may be lifted in a
+unique way.
+
+\begin{lem}
+For every path, there is a unique lifting of the path for every
+lift of the starting point.
+\end{lem}
+
+So now we would like to say the following thing: suppose we have
+a family of paths $g_{t}(\tau)$ and everything varies
+continuously. Then the lifts also vary continuously. This
+follows almost immediately from uniqueness. We assumed that the
+starting points are lifted continuously. Now we can prove the
+theorem.
+
+\medbreak\noindent\emph{Proof} (Theorem \ref{thm:lec15:1}).\quad%
+This correspondence is very simple. Take any fixed (i.e., not
+varying) point $*$, we can consider its orbit $g(*)$. We may
+consider the path $h(t)$ where $h(0)=*$ and $h(1)=g(*)$. We apply
+our map $f$ and we have
+\begin{equation}
+f\bigl(h(0)\bigr)=f\bigl(h(1)\bigr)
+\end{equation}
+which is a loop!
+This defines an element of the fundamental group. Now there is a
+question whether we may say this element depends on the choice of
+$g$. But all paths are homotopic, by simple connectedness of $X$.
+
+\begin{center}
+\includegraphics{img/lecture15.1}
+\end{center}
+We then have a map $G\to\pi_{1}(X/G)$. We need to prove it is
+one-to-one, but we proved this: every point in the quotient may
+be lifted. This map is surjective. We should prove this map is
+injective (if we can lift the homotopy, then definitely $g$
+remains the same). We should prove it preserves multiplication,
+but we will do this next time.
+

@@ -1,0 +1,164 @@
+%%
+%% lecture19.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 20:31:28 2011 alex
+%% Last update Tue Dec 27 20:31:28 2011 alex
+%%
+
+%\marginpar
+{\textbf{TODO:}\quad{}Write up the notess on homotopy
+groups from Schwarz's book~\cite[Ch.\ 8]{schwarz}.}
+
+\index{Homotopy Group!from Loop Space|(}
+\marginpar{Iterative construction of homotopy groups}We will start with a reminder of the fundamental group. We took a
+space $X$ with a marked point $*\in X$. We take $\Omega(X,*)$ to
+be the space which consists of loops in $X$ that have base point
+$*$. We considered the connected components of the space
+$\Omega$, i.e., $\pi_{0}(\Omega,*)$. We then just
+\begin{equation}
+\pi_{1}(X,*)=\pi_{0}(\Omega,*).
+\end{equation}
+We use topological invariant of $\Omega$ to get a topological
+invariant of $X$. But we can use anything we want! We can keep
+iterating, and take
+\begin{equation}
+\pi_{1}(\Omega,*)=\pi_{2}(X,*)
+\end{equation}
+is a topological invariant of $X$, we have functoriality. If
+$f\colon X\to Y$, then $\Omega_{X}\to\Omega_{Y}$.
+We can iterate this construction $n$-times to get $\pi_{n}$, but
+we will focus on $\pi_{2}$.
+\index{Homotopy Group!from Loop Space|)}
+
+\index{Homotopy Group!from Spheroids|(}
+\marginpar{Different Construction}%
+Look, what are the elements of $\Omega$? They are maps of an
+itnerval to $X$:
+\begin{equation}
+\alpha\colon I\to X
+\end{equation}
+which are closed paths, i.e.,
+\begin{equation}
+\alpha(0)=\alpha(1)=*.
+\end{equation}
+We want to consider the fundamental group of $\Omega$. A path of
+$\Omega$ is then of the form $\alpha_{\tau}(t)$ where $\tau$ is
+the parameter of the path in $\Omega$. Perhaps it is better to
+write
+\begin{equation}
+\alpha_{\tau}(t)=\alpha(\tau,t).
+\end{equation}
+We want to have a closed path that starts and ends at
+\begin{equation}
+\alpha_{\tau}(0)=\alpha_{\tau}(1)=*,\quad\mbox{and}\quad
+\alpha_{0}(t)=\alpha_{1}(t)=*.
+\end{equation}
+We can look at $(\tau,t)\in I^2$ as a square. So in other words,
+our path $\alpha$ is a mapping
+\begin{equation}
+\alpha\colon I^{2}\to X
+\end{equation}
+such that
+\begin{equation}
+\alpha(\partial I^{2})=*
+\end{equation}
+it takes the boundary to the marked point. This mapping is called
+a \define{Spheroid}\index{Spheroid}. Why is this name a good one?
+Well, recall $I^{2}/\partial I^{2}\iso(S^{2},*)$ is a
+homeomorphism. So equivalently, we have it be
+\begin{equation}
+\alpha\colon(S^2,*)\to(X,*)
+\end{equation}
+a mapping from the marked 2-sphere to the marked space
+$(X,*)$. Using this language, $\pi_{2}$\index{$\pi_{2}$} is the
+collection of homotopy classes of spheroids.
+
+\begin{rmk}[``Spheroid'' and Nationality]
+IT appears that only the Russian topologists use the word
+``spheroid'' in their writing. A cursory google search would
+reveal that it is a relatively antiquated or esoteric word, and
+indeed only Russians employ it.
+\end{rmk}
+\begin{ddanger}
+We will abuse language and notation to refer to the mapping
+and/or the cube as the ``spheroid.''
+\end{ddanger}
+
+\begin{wrapfigure}{r}{1.75in}
+  \vspace{-20pt}
+  \centering
+  \includegraphics{img/lecture19.0}
+  \end{wrapfigure}
+Suppose we have two spheroids $\alpha$ and $\beta$. 
+We can construct a third spheroid using
+\begin{equation}
+\gamma(\tau,t)=\begin{cases}\alpha(2\tau,t) & 0\leq\tau\leq\frac{1}{2}\\ 
+\beta(2\tau-1,t) & \frac{1}{2}\leq\tau\leq1
+\end{cases}
+\end{equation}
+This is doodled to the above right, taking the two spheroids
+labeled $\alpha$ and $\beta$ and combines them into the third as
+we specified. This is precfisely a reformulation of the
+definition of $\pi_2$ in terms of $\pi_1$.
+
+\begin{thm}
+The group $\pi_{2}(X,*)$ is commutative.
+\end{thm}
+There are two proofs of this fact. One is long and boring. Ours
+is a sequence of pictures:
+
+\includegraphics{img/lecture19.1}
+
+\bigskip
+Now, let us introduce the ntoion of a topological
+group\index{Topological!Group}\index{Topological Group}\index{Group!Topological}
+$G$ which is a group object internal to $\Top$. In other words,
+it consists of a topological space $G$ equipped with ``group
+structure'': continuous maps $\mu\colon G\times G\to G$ and
+$\iota\colon G\to G$. We will prove that
+\begin{equation}
+\pi_{1}\begin{pmatrix}\mbox{Topological}\\
+\mbox{Group}
+\end{pmatrix}\in\Ab
+\end{equation}
+We can define the multipication of paths as one of two ways: (1)
+concatenation $\alpha*\beta$; (2) $\gamma(t)=\alpha(t)\beta(t)$
+pointwise using the group's multiplication.
+
+These are the same up to homotopy. And that is obvious. Why? Lets
+write down
+\begin{equation}
+\alpha'=\alpha * e
+\end{equation}
+where the constant path $e(t)=e$ is the multiplicative identity. Obviously
+$\alpha'\homotopic\alpha$ homotopic.
+Also take
+\begin{equation}
+\beta'=e*\beta
+\end{equation}
+then we see
+\begin{equation}
+\alpha'*\beta' = \alpha'\beta'
+\end{equation}
+pointwise. 
+
+We can consider the opposite group $G^{\op}$ where multiplication
+is defined as
+\begin{equation}
+x\circ^{\op}y=x\circ y
+\end{equation}
+But
+\begin{equation}
+\alpha\beta\homotopic\beta\alpha
+\end{equation}
+Thus we deduce commutativity up to homotopy. We want to prove
+$\pi_{2}$ is commutative. What to do? We apply this statement to
+$\Omega$. But it is not a group. It has multiplication, and a
+unit. But this is up to homotopy! Nevertheless, everything goes
+through for $\Omega$, so $\pi_{1}(\Omega)$, which is an $H$-space
+(``almost topological group''), is commutative. Thus $\pi_{2}(X)$
+is commutative.
+\index{Homotopy Group!from Spheroids|)}

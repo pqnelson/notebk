@@ -1,0 +1,224 @@
+%%
+%% lecture23.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 31 12:01:46 2011 alex
+%% Last update Sat Dec 31 12:01:46 2011 alex
+%%
+
+We gave a definition of homotopy groups $\pi_{k}(X,*)$ in various
+ways. Using spheroids
+\begin{equation}
+f\colon(S^k,*)\to(X,*)
+\end{equation}
+such that $f(*)=*$, or as
+\begin{equation}
+f\colon I^k\to (X,*)
+\end{equation}
+such that $f(\partial I^k)=*$. We introduced the notion of
+relative homotopy groups on $(X,A,*)$. We can have relative
+spheroids
+\begin{equation}
+f\colon\bar{D}^{n}\to X
+\end{equation}
+such that
+\begin{equation}
+f(S^{n-1})\subset A,\quad\mbox{and}\quad f(*)=*.
+\end{equation}
+This is very nice but it doesn't give a group
+structure. Therefore one can consider instead of maps of a ball,
+well, maps of a cube. That would be
+\begin{equation}
+f\colon I^n\to X
+\end{equation}
+such that
+\begin{equation}
+f(I^{n-1})\propersubset A,\quad\mbox{and}\quad
+f(\partial I^n-I^{n-1})=*.
+\end{equation}
+This is an equivalent picture, but we see how to form a binary
+operation now. This definition may now be formulated as
+$\pi_{n-1}\bigl(\Omega(A)\bigr)$.
+
+The first thing to say is this definition is functorial\index{Functoriality}. 
+What does this mean? Well, we have 
+\begin{equation}
+\alpha\colon(X,A,*)\to(Y,B,*)
+\end{equation}
+such that
+\begin{equation}
+\alpha\colon X\to Y\quad\mbox{and}\quad \alpha(A)\propersubset B
+\end{equation}
+and $\alpha(*)=*$. We then have ``by functoriality'' a map
+\begin{equation}
+\pi_{n}\bigl(\alpha\colon(X,A,*)\to(Y,B,*)\bigr)\quad=\quad \alpha_{*}\colon
+\pi_{n}(X,A,*)\to\pi_{n}(Y,B,*).
+\end{equation}
+Moreover $\alpha_{*}$ is a morphism. We have the functoriality
+property that 
+\begin{equation}
+(\alpha\circ\beta)_{*}=\alpha_{*}\circ\beta_{*}\quad\mbox{and}\quad
+(\id{})_{*}=\id{*}.
+\end{equation}
+These are the functorial properties.
+
+\subsection{Exact Homotopy Sequence of a Pair}
+\index{Exact Sequence!of Homotopy Groups}
+\index{Homotopy Group!Exact Sequence of ---}
+
+We see that a spherodi in $A$ is definitely a spheroid in $X$. In
+other words, functoriality acts on this inclusion
+\begin{equation}
+i\colon A\into X
+\end{equation}
+and gives us a morphism
+\begin{equation}
+i_{*}\colon\pi_{n}(A)\to\pi_{n}(X).
+\end{equation}
+Note that we do abuse notation slightly, we should write
+something like $i_{*,n}$ to indicate we have $\pi_{n}(i)$, i.e.,
+it depends on the $n\in\NN_{0}$.
+
+Next we have absolute homotopy groups, we had absolute spheroids.
+Now we may consider relative spheroids and relative homotopy
+groups
+\begin{equation}
+\pi_{n}(A,*)\xrightarrow{i_{*}}\pi_{n}(X,*)\to\pi_{n}(X,A,*).
+\end{equation}
+Why do we have this? Well, any absolute spheroid is-a relative
+spheroid. Why? Because the simple reason is $*\in A$. So a
+spheroid is just a relative spheroid ``ending at $*$''.
+
+We have one more map, which we already described
+\begin{equation}
+\pi_{n}(X,A,*)\to\pi_{n-1}(A,*).
+\end{equation}
+This comes from the fact a relative spheroid
+\begin{equation}
+f\colon I^n\to X
+\end{equation}
+can be restricted to $I^{n-1}$, but $f(I^{n-1})\propersubset
+A$. This is a spheroid in $A$! So we induce this morphism.
+
+But we also have
+\begin{equation}
+i_{*}\colon\pi_{n-1}(A,*)\to\pi_{n-1}(X,*).
+\end{equation}
+Why? Well, we saw this earlier using the inclusion and applying
+the functor $\pi_{n-1}$. So we have a sequence. We have at the
+end of this
+\begin{equation}\label{eq:lec23:stuffNotDefined}
+\dots\to\pi_{1}(A,*)\to\pi_{1}(X,*)\to
+\underbracket[0.5pt]{\pi_{1}(X,A,*)\to\pi_{0}(A,*)\to\pi_{0}(X,*)}
+\end{equation}
+where the underlined terms are not really defined. So what to do?
+Simple: \emph{define them!} We really have a problem here: we
+have no group for $\pi_{0}(X)$, but we have a set. The stuff
+underlined in Eq \eqref{eq:lec23:stuffNotDefined} are not groups,
+but they are sets. If we consider $\pi_{0}(X)$\index{$\pi_{0}(X)$}, it may be
+considered as $S^0\to X$ which maps marked point to marked
+point. Please note that $S^0$ consists of two points, one of them
+is marked. So what is
+\begin{equation}
+f\colon (S^0,*)\to(X,*)?
+\end{equation}
+It is a map of one point, so naively we would expect
+$\pi_{0}(X,*)$ to be in one-to-one correspondence with the points
+of $X$, right? Wrong: $\pi_{0}$ is the \emph{homotopy classes} of
+such mappings, and two points are homotopic if they are on the
+same components. So really,
+\begin{equation}
+\pi_{0}(X,*)=\begin{pmatrix}\mbox{components}\\
+\mbox{of $X$}
+\end{pmatrix}
+\end{equation}
+A deformation of elements of $\hom\bigl((S^0,*),(X,*)\bigr)$ is a
+path. So we have really $\pi_{0}(X,*)$ be homotopy classes of
+these thngs, i.e., of the components of $X$. It is a set.
+
+A relative spheroid
+\begin{equation}
+f\colon I\to(X,A,*)
+\end{equation}
+is a path
+\begin{equation}
+\gamma\colon[0,1]\to X
+\end{equation}
+such that
+\begin{equation}
+\gamma(0)=*,\quad\mbox{and}\quad
+\gamma(1)\in A.
+\end{equation}
+So a spheroid is determined where it ends. What is important is
+we have a sequence of groups that ends with a sequence of groups
+that ends with a sequence of sets.
+
+\begin{thm}
+This sequence
+\begin{equation}
+\dots\to\pi_{n}(A,*)\to\pi_{n}(X,*)\to\pi_{n}(X,A,*)\to\pi_{n-1}(A,*)\to\dots
+\end{equation}
+is exact.
+\end{thm}
+\begin{defn}\index{Sequence!Exact|(}
+Consider a sequence of groups
+\begin{equation}
+\dots\xrightarrow{\D_n}A_{n}\xrightarrow{\D_{n-1}}A_{n-1}\xrightarrow{\D_{n-2}}A_{n-2}\to\dots
+\end{equation}
+it is said to be \define{Exact}\index{Exact Sequence|textbf}
+if{}f $\im(\D_{k})=\ker(\D_{k-1})$.
+\index{Sequence!Exact|)}
+\end{defn}
+Observe as a consequence in an exact sequence
+\begin{equation}
+\im(\D_{k-1}\circ\D_{k})=0.
+\end{equation}
+Can we say $\im(\D_{k})=\ker(\D_{k-1})$? Well, yes, but the
+statement, for any $k$,
+\begin{equation}
+\im(\D_{k})\subset\ker(\D_{k-1})
+\end{equation}
+is sufficient to say we have an exact sequence, and
+\begin{equation}
+\im(\D_{k})\supset\ker(\D_{k-1})
+\end{equation}
+is necessary. We could write
+\begin{equation}
+\im(\D_{k})=\D^{-1}_{k-1}(0)
+\end{equation}
+for exactness conditions.
+
+\begin{rmk}
+The definition of exactness remains meaningful if we wok with
+sets with marked points. We simply write $*$ for our marked
+point, and $\D^{-1}_{k-1}(*)=\im(\D_{k})$, etc.
+\end{rmk}
+
+\begin{proof}[Sketch of Proof]
+The full proof requires checking 6 terms showing an equality of
+sets.\marginpar{\textbf{TODO:} write in the proof}
+\end{proof}
+
+
+\begin{wrapfigure}{l}{0.6in}
+  \vspace{-20pt}
+  \centering
+  \includegraphics{img/lecture23.0}
+  \vspace{-12pt}
+\end{wrapfigure}
+If we have $S^{n-1}\to A$ homotopic to the trivial path, then it
+may be extended to a union of nonintersecting $S^{n-1}$, i.e., to
+$D^{n}$. Consider $S^{n-1}\times I$, then on the upper part of
+the cylinder (if it is homotopic to 0) is $*$, we get what is
+doodled on the left.
+
+Consider $\pi_{n-1}(A,*)\to\pi_{n-1}(X,*)$. We can extend the
+sphere to a ball. But that means we have
+$\pi_{n}(X,A,*)\to\pi_{n-1}(A,*)$, because this extension to a
+ball is a relative spheroid. So we have the kernel included in
+the image.
+
+The best thing to do is to go home and think about it yourselves:
+there are some things so simple, it cannot be explained.

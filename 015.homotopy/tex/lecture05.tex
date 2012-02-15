@@ -1,0 +1,200 @@
+%%
+%% lecture05.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 20:28:43 2011 alex
+%% Last update Mon Dec 26 20:28:43 2011 alex
+%%
+
+Remember we consider $\hom(A,X)$ the maps of topological spaces
+$A$, $X$. We will use the notation\index{$\Omega_{A}(-)$}
+\begin{equation}
+\hom(A,X)=\Omega_{A}(X),
+\end{equation}
+we would like to stress that $\Omega_{A}(-)$ is a functor. So
+\begin{equation}
+\Omega_{A}\left(f\colon X\to X'\right)\quad=\quad
+\Omega_{A}(f)\colon\Omega_{A}(X)\to\Omega_{A}(X')
+\end{equation}
+which amounts to composing
+\begin{equation}
+A\xrightarrow{\varphi}X\xrightarrow{f}X',
+\end{equation}
+i.e., $f\circ\varphi$ for all $\varphi\in\Omega_{A}(X)$\index{$\Omega_{A}(-)$}. The
+identity morphism, and composition of morphisms, are preserved
+under action by a functor. So for every map $f\colon X\to X'$ we
+have a map of ``spaces of maps''
+\begin{equation}
+\Omega_{A}(f)\colon\Omega_{A}(X)\to\Omega_{A}(X').
+\end{equation}
+What are the homotopy classes?
+
+They are merely components of the function space\index{Space!Function}\index{Function Space}. We may say the
+following: a set of homotopic classes
+\begin{equation}
+\homotopyClass(A,X)=\begin{pmatrix}\mbox{set of}\\
+\mbox{components}\\
+\mbox{of }\Omega_{A}(X)
+\end{pmatrix} = \pi_{0}\bigl(\Omega_{A}(X)\bigr)
+\end{equation}
+where $\pi_{0}$\index{$\pi_{0}$|textbf} is an assignment to each topological space its
+set of connected components, but it is also a functor! If
+\begin{equation}
+\psi\colon Z\to Z'
+\end{equation}
+then
+\begin{equation}
+\pi_{0}(\psi)\colon\pi_{0}(Z)\to\pi_{0}(Z').
+\end{equation}
+That is trivial. What can we say? We can say if
+\begin{equation}
+f\colon X\to X'
+\end{equation}
+and
+\begin{equation}
+\Omega_{A}(f)\colon\Omega_{A}(X)\to\Omega_{A}(X')
+\end{equation}
+then
+\begin{equation}
+\pi_{0}\bigl(\Omega_{A}(f)\bigr)\colon\pi_{0}\bigl(\Omega_{A}(X)\bigr)\to\pi_{0}\bigl(\Omega_{A}(X')\bigr).
+\end{equation}
+Of course, functoriality is completely irrelevant here.
+
+If $\varphi_{0}\homotopic\varphi_{1}$ homotopic, then
+$f\circ\varphi_{0}\homotopic f\circ\varphi_{1}$ homotopic
+too. What did we get? A remark that if we have a map
+\begin{equation}
+f\colon X\to X'
+\end{equation}
+then we obtain a mapping
+\begin{equation}
+\homotopyClass(A,X)\to\homotopyClass(A,X')
+\end{equation}
+but that's a triviality. Is this map a one-to-one correspondence,
+a bijection? We can construct a map
+\begin{equation}
+g\colon X'\to X
+\end{equation}
+and we induce
+\begin{equation}
+\homotopyClass(A,X')\to\homotopyClass(A,X).
+\end{equation}
+We would like it to compose with $f$ to give the identity. We can
+require, of course, 
+\begin{equation}
+f\circ g=\id{X'}\quad\mbox{and}\quad
+g\circ f=\id{X}
+\end{equation}
+but that's too much. We instead require
+\begin{equation}
+f\circ g\homotopic\id{X'}\quad\mbox{and}\quad
+g\circ f\homotopic\id{X}
+\end{equation}
+both homotopic. Thus we get
+\begin{equation}
+\homotopyClass(A,X)=\homotopyClass(A,X').
+\end{equation}
+We have obtained a classification of homotopy equivalent maps.
+
+We may do something a little bit different. We may take\index{$\Omega^{A}(-)$}
+\begin{equation}
+\hom(X,A)\eqdef\Omega^{A}(X)
+\end{equation}
+which is a contravariant functor. If we have
+\begin{equation}
+X'\xrightarrow{f}X,\quad\mbox{and}\quad X\xrightarrow{\varphi}A
+\end{equation}
+then we may consider
+\begin{equation}
+\varphi\circ f\colon X'\to A.
+\end{equation}
+We have, if $X\homotopic X'$ homotopic, we may identify
+\begin{equation}
+\homotopyClass(X,A)=\homotopyClass(X',A).
+\end{equation}
+If $X\homotopic X'$ homotopic, and $Y\homotopic Y'$ homotopic,
+then $\homotopyClass(X,Y)=\homotopyClass(X',Y')$.
+
+One more definition. We would like to ask: when $A\propersubset
+X$ is a subset homotopically equivalent to the whole set?
+Definitely we have a map $\iota\colon A\into X$ but we should have a map in the
+opposite direction
+\begin{equation}
+f\colon X\to A.
+\end{equation}
+We require two things.
+First that $\iota\circ f\homotopic\id{X}$. Second that
+\begin{equation}
+f\circ \iota\homotopic\id{A}
+\end{equation}
+is homotopic. Did we say anything new? Nothing! Now we will
+require more and get a definition that implies homotopy
+equivalent. We require
+\begin{equation}
+f\circ\iota=\id{A}.
+\end{equation}
+Then $f$ is called a
+\define{Retraction}\index{Retraction|textbf}. By the way the
+statement that a retraction exists is a non-trivial statement. It
+is impossible to retract $[0,1]$ to its boundary $\{0,1\}$
+without tearing. We should have a family of maps 
+\begin{equation}
+f_{t}\colon X\to X
+\end{equation}
+where $f_{0}=\id{X}$ and $f_{1}=\iota\circ f=f$. We are a little
+bit sloppy here since 
+\begin{equation}
+f\colon X\to A\quad\mbox{and}\quad f_{0}\colon X\to X
+\end{equation}
+so to be completely precise
+\begin{equation}
+f_{1}(x)=(\iota\circ f)(x).
+\end{equation}
+So what does it mean? We require our retraction to be a
+\define{Deformation Retraction}\index{Deformation Retraction|textbf}\index{Retraction!Deformation}
+which is a very typical case of homotopy equivalence. This means
+$A\propersubset X$ and $A\homotopic X$ homotopic. Now, examples!
+
+Consider the letter ``P''. It is clear this guy is homotopically
+equivalent to ``O'', i.e. $\mbox{P}\homotopic\mbox{O}$
+homotopic. Let us first note that
+\begin{equation}
+\mbox{P}\homotopic\mbox{D}
+\end{equation}
+homotopic, and
+\begin{equation}
+\mbox{D}\iso\mbox{O}
+\end{equation}
+homeomorphic, thus
+\begin{equation}
+\mbox{P}\homotopic\mbox{O}
+\end{equation}
+homotopic. (Homotopic equivalence is weaker than topological
+equivalence.)
+
+\begin{wrapfigure}{l}{0.69in}
+  \vspace{-14pt}
+  \includegraphics{img/lecture4.8}
+  \vspace{-24pt}
+\end{wrapfigure}
+Let us suppose we have a cell complex $X$. First of all, we
+have $X^{k}\propersubset X^{k+1}$ for the $k$-dimensional and
+$(k+1)$-dimensional skeletons. Suppose we deleted one point from
+ever $k$-dimensional cell. Then $X^{k}$ is a deformation retract
+of $X^{k+1}-\{\mbox{deleted points}\}$. We can work in every cell
+separately. We can stay in one of these points, blow it up into a
+larger hole, and the boundary remains in tact.
+
+Gradually everything goes to the boundary. This is not a very
+rigorous explanation. A rigorous one is available. A cell complex
+comes from a ball of dimension $(k+1)$. If we remove a point
+inside this ball, it is the same as a $k$-dimensional sphere
+multiplied by an interval $\bar{D}^{k+1}-0=S^{k}\times[0,1)$.
+
+\begin{thm}
+If $A\propersubset X$ closed and it is ``good enough'' (not
+pathological) and $A$ is contractible (i.e., homotopically
+equivalent to a point), then $X\homotopic X/A$ homotopic.
+\end{thm}

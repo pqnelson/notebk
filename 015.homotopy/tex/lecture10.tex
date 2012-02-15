@@ -1,0 +1,188 @@
+%%
+%% lecture10.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 21:20:24 2011 alex
+%% Last update Mon Dec 26 21:20:24 2011 alex
+%%
+
+We considered a space with a marked point $(X,x_0)$ and we
+constructed the loop space $\Omega(X,x_0)$ with loops that start
+and end at $x_0\in X$. We reviewed two constructions which are
+homotopically equivalent. We also considered a binary operation
+called concatenation which is intuitively ``multiplication''. We
+can use this multiplication to define the group
+\begin{equation}
+\pi_{1}(X,x_0)=\pi_{0}\bigl(\Omega(X,x_0)\bigr)
+\end{equation}
+which is just the set of components of the loop space. We proved
+this multiplication is associative, the unit element exists, and
+inversion exists. Well, we did not ``prove'' it, but it is
+obvious. We see
+\begin{equation}
+f^{-1}(t)=f(1-t)
+\end{equation}
+and that $e(t)\homotopic f^{-1}*f$ homotopic.
+
+The fundamental group is not, strictly speaking, an invariant of
+a topological space. It may depend on the marked point; the
+question is, can we (if we change the marked point) say
+\begin{equation}
+\pi_{1}(X,x_0)=\pi_{1}(X,\widetilde{x}_{0})?
+\end{equation}
+If $X$ is pathwise-connected, yes. If $X$ is disconnected, we
+have no chance. We will give two proofs of this. One is really
+short and (perhaps) the better, while the other is more
+pedestrian. 
+
+\begin{proof}
+We have a connected space $X$, and a path
+\begin{equation}
+h\colon[0,1]\to X
+\end{equation}
+where $h(0)=x_0$ and $h(1)=x_1$. What we can do, we can say we
+have a deformation from one marked point into the other. We have
+the homotopy extension property\index{Homotopy Extension Property}.
+So if we have a deformation of a subset, we may extend it to a
+deformation of the \emph{whole} space. So 
+\begin{equation}
+(X,x_0)\homotopic(X,x_1)
+\end{equation}
+homotopic, and we may go in the other direction by using
+$h^{-1}(t)$. It is very easy to see these maps are homotopically
+equivalence. Then everything is fine. 
+\end{proof}
+This proof has the disadvantage that the homotopy extension
+principles holds \emph{almost} for every space. But if $X$ is not
+among them, this proof does not hold. 
+\begin{proof}
+We will give another proof that is perhaps a bit longer. Look we
+have these two points $x_0$, $x_1$ and a connecting path. We
+consider a path in $\Omega(X,x_0)$ but we want to get a path that
+lives in $\Omega(X,x_1)$. If $h\colon[0,1]\to X$ such that
+$h(0)=x_0$ and $h(1)=x_1$, then for any $f\in\Omega(X,x_0)$ we
+induce a map $h*f*h^{-1}\in\Omega(X,x_1)$. Thus if we are working
+with connected spaces, the fundamental group does not depend on
+the marked point.
+\end{proof}
+\begin{rmk}
+Is this true? Not really, because we cannot say that this
+isomorphism
+\begin{equation}
+\pi_{1}(X,x_0)\iso\pi_{1}(X,x_1)
+\end{equation}
+is canonical. The isomorphism depends on the choice of the path
+connecting marked points. Why? Lets explain. These points $x_0$,
+$x_1$ can coincide, why not? No one said they had to be
+different! If they coincide, then the path connecting the marked
+points is a loop. Then our formula
+\begin{equation}
+f\mapsto h*f*h^{-1}
+\end{equation}
+can be understood at the level of the fundamental group. At the
+level of the fundamental group, this gives us a nontrivial inner
+automorphism of $\pi_{1}(X,x_0)$. It is a canonical isomorphism
+when the group $\pi_{1}(X)$ is Abelian.
+\end{rmk}
+
+When working with the fundamental group, we will neglect the
+marked point. It is a little dangerous.
+
+Now, let us consider $\homotopyClass(S^1,X)$ the classification
+of maps from the circle to $X$. We assume $X$ is connected. We
+see now that
+\begin{equation}
+\pi_1\colon (X,x_0)\to\homotopyClass(S^1,X)
+\end{equation}
+we get a group. So lets say something that definitely is quite
+trivial, namely: we can say that the conjugacy classes of
+$\pi_1(X,x_0)$ is also a map to $\homotopyClass(S^1,X)$. We are
+really saying if two guys are conjugate
+\begin{equation}
+h^{-1}gh=f
+\end{equation}
+then they are mapped to the samje homotopy class. We can identify
+maps $S^1\to X$ with conjugacy classes in the fundamental group.
+
+But now we would like to calculate the fundamental group. Two
+fundamental groups are quite obvious. The first
+is\index{Fundamental Group!of Circle}
+\begin{equation}
+\pi_{1}(S^1)=\ZZ.
+\end{equation}
+This is because we know
+\begin{equation}
+\homotopyClass(S^1,S^1)\to\ZZ
+\end{equation}
+is a one-to-one correspondence. 
+
+The other fundamental group\index{Fundamental Group!of $n$-Sphere} 
+that we know is
+\begin{equation}
+\pi_{1}(S^n)=0
+\end{equation}
+for $n>1$. It is the \emph{trivial} group!
+
+There are (at least) two ways to compute the fundamental
+group. One is by the van Kampen Theorem\index{van Kampen Theorem}.
+We represent
+\begin{equation}
+X=A\cup B
+\end{equation}
+and we will assume $A$, $B$, and $A\cap B$ are connected; we also
+assume $A$ and $B$ are open. (Pop quiz: is $A\cap B$ open?) We
+will consider the simplest case when $A\cap B$ is \emph{simply}
+connected. (Here \define{Simply Connected}\index{Connectedness!Simply}\index{Simply Connected|textbf}
+means connected and the fundamental group is trivial.)
+Without loss of generality, we will say that our marked point
+$\star\in A\cap B$. 
+The typical case is when considering the wedge sum of two
+circles, the intersection is a single point, but then we work
+with closed sets. Well, okay, but that doesn't matter! In this
+case,
+\begin{equation}
+\pi_{1}(X,\star)=\mbox{free product of }\pi_{1}(A,\star)\mbox{ and }\pi_{1}(B,\star)
+\end{equation}
+The free product\index{Group!Free Product}\index{Free Product!of Groups}\index{Product!Free}
+is a general notion in group theory. Let $G_1$, $G_2$ be
+groups. Their free product can be deduced in terms of generators
+$a_1,\dots,a_m$ of $G_1$ and $b_1,\dots,b_n$ of $G_2$; we have
+some relations on $G_1$ as well as some on $G_2$. Then we combine
+generators and relations. This isn't a very good definition,
+since it depends on the choice of generators and relations.
+
+We could define it in a slightly different way. Consider
+\begin{equation*}
+\hom(G_1*G_2,G)
+\end{equation*}
+where $G_1*G_2$ is the free product. We say
+\begin{equation}
+\hom(G_1*G_2,G)=\hom(G_1,G)\times\hom(G_2,G)
+\end{equation}
+which doesn't explicitly depend on the generators and relations
+of $G_1$ and $G_2$. We have a pair of homomorphisms that act on
+elements of $G_1$ and $G_2$ respectively. Now we'd like to
+explain why we have this. 
+
+
+
+\exercises
+\begin{xca}
+Let $f$ denote a differentiable map of a circle into another
+circle. In angular coordinates the map $f$ can be represented by
+a multivalued function, but its derivative $f(\alpha)$ is
+well-defined. Prove that the degree of the map can be represented
+as an integral 
+\begin{equation}
+\deg(f)=\frac{1}{2\pi}\int^{2\pi}_{0}f'(\alpha)\D\alpha.
+\end{equation}
+\end{xca}
+\begin{xca}
+Prove that a polynomial map $p\colon\RR\to\RR$ where $p$ is a
+polynomial of degree $n$ can be extended by continuity to a map
+of circles. (We use the fact that adding to $\RR$ one point at
+infinity we get a circle). Calculate the degree of this map of
+circles. 
+\end{xca}

@@ -1,0 +1,157 @@
+%%
+%% lecture12.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Dec 28 12:47:36 2011 alex
+%% Last update Wed Dec 28 12:47:36 2011 alex
+%%
+\marginpar{\textbf{TODO:} need to carefully reconsider notation used}
+We really did the main job with computing the fundamental
+group. We have a set $X$, a 2-dimensional cell $\sigma^2$, we
+consider
+$X\cup(\sigma^2-0)$.
+The intersection is $\sigma^2-0\homotopic S^1$ homotopic. Then
+apply van Kampen's theorem, we have generators from $X$ and from
+$\sigma^2$, we apply relations from $X$, and relations induced
+from the intersection. We have
+\begin{equation}
+\pi_1(S^1)\to\pi_{1}(X)=\pi_1\bigl(X\cup(\sigma-0)\bigr)
+\end{equation}
+Note $\sigma^2$ is open, so it has a trivial fundamental
+group. When we attach a 2-cell, it gives us a new operation.
+
+Lets consider a $k$-cell: $X\cup\sigma^k$,
+$X\cup(\sigma^k-0)$. If $k>2$, we have the intersection give us a
+trivial fundamental group. 
+
+\index{Cell Complex!Fundamental Group of ---}\index{Fundamental Group!for Cell Complex}%
+How do we calculate $\pi_1(X)$ for some cell complex $X$?
+Easy, take the fundamental group of the skeleton of the cell
+complex $\pi_1(X^1)$. We have a graph, homotopic to a bouquet\index{Bouquet}
+with $k$ circles. This is all if $X$ is connected. Then
+\begin{equation}
+\pi_1(X^1)\iso\freeGrp{k}
+\end{equation}
+is the free group with $k$ generators. The Euler characteristic
+of the bouquet is
+\begin{equation}
+\chi(X^1)=1-k.
+\end{equation}
+We then attach $2$-cells, and each one gives us a relation. Then
+higher dimensional cells, and they do nothing! So
+\begin{equation}
+\pi_{1}(X)\iso\pi_{1}(X^2)
+\end{equation}
+is a canonical isomorphism. Its generators are given by
+$\pi_1(X^1)$ with a relation for each 2-cell. We don't really
+know if the group is trivial or not, and we \emph{can't} know
+either. For the fundamental group we can get \emph{any} group. We
+can add the 2-cells in any particular order to get
+relations. Furthermore, we can continue adding 2-cells to get
+\emph{any} relation.
+
+What we can really calculate is the
+\define{Abelianization}\index{Fundamental Group!Abelianization}\index{Abelianization!of Fundamental Group}
+of $\pi_1$ which is $\pi_1/[\pi_1,\pi_1]$. This means we have
+generators and we have relations. If $a_i$ are our generators,
+then we have the additional relation
+\begin{equation}
+a_ia_j=a_ja_i
+\end{equation}
+So we have an Abelian group. This is an invariant which can be
+calculated efficiently. It is the first homology
+group\index{Homology!First Group}\index{Homology!from Fundamental Group}.
+
+\begin{ex}[$g$-Handled Sphere]\marginpar{TODO: draw pictures on pp.\ 33--34}
+A sphere with $g$-handles. We have the same picture for a single
+hand repeated several times. We have $2g$ edges and a single
+2-cell. So if we want to look at the fundamental group, look at
+what happens. We have $a_1$, $b_1$, \dots, $a_g$, $b_g$ and only
+1 vertex. The fundamental group is a group with $2g$
+generators. We should have 1 relation because we have a single
+2-cell. We delete one point and consider a loop around the
+deleted point. It is a circle which cannot be contracted, and
+thus has the relation
+\begin{equation}
+a_1b_1(a_{1}^{-1})(b_{1}^{-1})(a_2b_2)(a^{-1}_{2})(b^{-1}_{2})=1
+\end{equation}
+in the case $g=2$. But we still do not know, maybe this group is
+trivial. We go to Abelianization----all generators commute. But
+then this relation becomes trivial! So in this case,
+Abelianization gives us a free Abelian group with
+$2g$-generators. We accidentally have a theorem.
+\end{ex}
+
+\begin{thm}
+The number of handles on a surface is a topological invariant.
+\end{thm}
+
+\begin{ex}
+Consider a sphere with $g$-handles and a hole. We have more
+generators. For $g=2$, we have $a_1$, $b_1$, $a_2$, $b_2$,
+$c$. We have a relation of the form
+\begin{equation}
+a_1b_1(a_{1}^{-1})(b_{1}^{-1})(a_2b_2)(a^{-1}_{2})(b^{-1}_{2})c=1
+\end{equation}
+We see we get a free group. We included a generator that is
+\emph{not} necessary: we may express $c$ in terms of $a_i$,
+$b_j$. So we end up with $2g$ generators, no relations, and thus
+a free group.
+\end{ex}
+
+\subsection{Knots}
+
+\begin{wrapfigure}{r}{12pc}
+  \vspace{-20pt}
+  \includegraphics{img/lecture12.5}
+\end{wrapfigure}
+We would like to consider the topological classification of
+knots. We consider $\RR^3$ (or $S^3$, for us it'd be
+equivalent). We consider a subset of $\RR^3$ topologically
+equivalent to a circle. So a knot may be doodled on the
+right. But this means all knots are topologically equivalent to
+$S^1$. Consider two knots 
+\begin{equation}
+K\propersubset S^3,\quad\mbox{and}\quad L\propersubset S^3
+\end{equation}
+If we can find a homeomorphism
+\begin{equation}
+\varphi\colon S^3\to S^3
+\end{equation}
+such that
+\begin{equation}
+\varphi(K)=L
+\end{equation}
+then two knots are \define{Isotopic}\index{Knot!Isotopic|textbf}\index{Isotopic Knot}.
+
+We may consider $\pi_1(\RR^3-K)$, or $\pi_1(S^3-K)$ since
+$S^3=\RR^3\cup\infty$ through stereographic projection. From van
+Kampen's theorem, we have
+\begin{equation}
+\pi_1(\RR^3-K)\iso\pi_1(S^3-K)
+\end{equation}
+be a knot invariant\index{Invariant!Knot}. 
+We see
+\begin{equation}
+S^3-K\iso(\RR^3-K)\cup D^3
+\end{equation}
+where $D^3$ is an open ball ``near infinity''. By van Kampen's
+theorem, the intersection ($D^3$) is trivial, so we have
+\begin{equation}
+\pi_1(\RR^3-K)\iso\pi_1(S^3-K)
+\end{equation}
+which is an isomorphism. (Pop quiz: is it canonical?)
+
+We would like to introduce the notion of a \define{Link}\index{Link}
+which is a disjoint union of knots (i.e., of topological
+circles). For example {\centering\includegraphics{img/lecture12.6}}
+is a link, but it is a trivial link. But \includegraphics{img/lecture12.7}
+is two linked circles. These two pictures are topologically
+different. We can take
+\begin{equation*}
+\pi_1(S^3-\mbox{link})
+\end{equation*}
+and this will be the invariant of a link. If the invariant
+differs for two links, we have two topologically inequivalent links.

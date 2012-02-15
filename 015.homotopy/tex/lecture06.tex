@@ -1,0 +1,171 @@
+%%
+%% lecture06.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Dec 27 09:58:36 2011 alex
+%% Last update Tue Dec 27 09:58:36 2011 alex
+%%
+
+If $X$, $Y$ are topological spaces, we may consider $\hom(X,Y)$
+and it is also a topological space. We may consider
+$\pi_{0}\bigl(\hom(X,Y)\bigr)$ the connected components (homotopy
+classes) of the space. We say $X\homotopic X'$ homotopic if there
+exists maps
+\begin{equation}
+f\colon X\to X',\quad\mbox{and}\quad
+g\colon X'\to X
+\end{equation}
+such that
+\begin{equation}
+g\circ f\homotopic\id{X}\quad\mbox{and}\quad
+f\circ g\homotopic\id{X'}
+\end{equation}
+are homotopic.
+
+\begin{ddanger}
+Note that we are abusing language a little. We have the notion of
+homotopic maps $f\homotopic g$ and we construct from this a weak
+equivalence relation on topological spaces. We call this
+``homotopy equivalence of topological spaces'' or simply
+``homotopic spaces''.
+\end{ddanger}
+
+For example, if $X\homotopic(\mbox{point})$, then we say $X$ is
+\define{Contractible}\index{Contractible!Space|textbf}. In
+particular every convex set $C$ is contractible, it is obvious. We
+assume without loss of generality that $0\in C$, we have
+\begin{equation}
+f_{t}(x)=tx
+\end{equation}
+describe the contraction. Thus $D^n$, $\bar{D}^n$, $\RR^n$ are
+contractible. But $S^{n}$ is \emph{not} contractible.
+If we delete a single point from a sphere, we get
+\begin{equation}
+S^{n}-\mbox{point}\iso\RR^{n}
+\end{equation}
+and that implies $S^{n}-(\mbox{point})$ is contractible.
+
+There is a notion of retraction and deformation retraction. If
+$A\propersubset X$, then it is a deformation retract if the
+inclusion is a homotopy equivalence. We have
+\begin{equation}
+f_{0}(x)=x
+\end{equation}
+for all $x\in X$ and
+\begin{equation}
+f_{1}(x)\in A
+\end{equation}
+for all $x\in X$ be a deformation retract. If $X\propersupset A$
+(where $A$ is a ``good'' subset, i.e. closed and we require if
+$X$ is a cell complex that $A$ be a subcomplex), is contractible,
+then $X\homotopic X/A$ homotopic.
+
+We will consider homotopic classifications of graphs (we will
+consider connected graphs, this is not really a restriction).
+
+\begin{thm}\label{thm:bouquet}
+Every connected graph is homotopically equivalent to a wedge sum
+of cirlces (``bouquet'').\index{Bouquet}
+\end{thm}
+If we are working with sets with marked points $(X,x_0)$, then we
+may consider\index{Marked Points}\index{Space!Pointed}\index{Topological Space!Pointed}
+\begin{equation}
+f\colon (X,x_0)\to (Y,y_0)
+\end{equation}
+which is a map $f\colon X\to Y$ such that $f(x_0)=y_0$.Then we
+may consider the set $\hom\bigl((X,x_0),(Y,y_0)\bigr)$ which is
+again a topological space, or part of the topological space
+$\hom(X,Y)$. We may generalize this to a pair $(X,A)$ where
+$A\propersubset X$, and we may consider maps
+\begin{equation}
+f\colon (X,A)\to (Y,B)
+\end{equation}
+which consists of a map $f\colon X\to Y$ such that
+$f(A)\propersubset B$. This is a straightforward generalization
+of marked points. Again, we consider
+$\hom\bigl((X,A),(Y,B)\bigr)$
+which is a topological space, and again we may speak of connected
+components. 
+
+\index{Disjoint Union|(}
+If $X$, $Y$ are topological spaces we may consider a disjoint
+union $X\sqcup Y$ which is a topological space with two
+components $X$ and $Y$. We see
+\begin{equation}
+\hom(X\sqcup Y,Z)=\hom(X,Z)\times\hom(Y,Z).
+\end{equation}
+Also note we have two notions of disjoint unions: a set
+theoretic\index{Disjoint Union!of Sets}
+sense, where we have
+\begin{subequations}
+\begin{equation}
+\bar{D}^{n}=S^{n-1}\sqcup D^{n}
+\end{equation}
+be true, whereas the topological version has
+\begin{equation}
+\bar{D}^{n}\not=S^{n-1}\sqcup D^{n}
+\end{equation}
+\end{subequations}
+\index{Disjoint Union|)}%
+We may consider the wedge sum\index{Wedge Sum} of $X$ and $Y$ to be
+\begin{equation}
+\begin{split}
+(X\wedgeSum Y,*)&=(X,x_0)\wedgeSum (Y,y_0) \\
+&= (X\sqcup Y)/(x_{0}\sim y_{0})
+\end{split}
+\end{equation}
+where we identify the marked points of the pointed spaces
+$(X,x_0)$ and $(Y,y_0)$. Thus
+\begin{equation}
+\hom\bigl((X\wedgeSum Y,*),(Z,z_0)\bigr) = 
+\hom\bigl((X,*),(Z,z_0)\bigr)\times
+\hom\bigl((Y,*),(Z,z_0)\bigr)
+\end{equation}
+The marked point needs to be taken into account. The wedge sum is
+the coproduct in the category $\Top_{*}$ of topological spaces
+with marked point (``pointed topological spaces'').
+
+\begin{proof}[Proof (of Theorem \ref{thm:bouquet})]
+It is trivial. Suppose we have a connected graph. Every edge is an
+interval, but an interval is contractible. We can contract as
+long as the starting point of and edge is different from its
+ending point. We can contract any edge with two different
+vertices, which decreases the number of vertices. At some point
+we have only one vertex, and it's the wedge sum of circles.
+\end{proof}
+
+So to give an example of what this would look like, we doodle:
+\begin{center}
+  \includegraphics{img/lecture6.0}
+\end{center}
+
+\bigbreak
+The second question: start with a completely general graph. How
+to say what is an equivalent graph? The answer is very simple if
+we know the Euler characteristic. The Euler characteristic of a
+compact set is a homotopy invariant. We will prove it next
+quarter. Suppose our graph is simply connected, then the Euler
+characteristic is
+\begin{equation}
+\alpha_0-\alpha_1=(\mbox{\# vertices})-(\mbox{\# edges}),
+\end{equation}
+and the wedge sum of $k$ circles is
+\begin{equation}
+\chi(S^{1}\wedgeSum\dots\wedgeSum S^{1})=1-(\mbox{\# circles})
+\end{equation}
+as there is a single vertex. If we have homotopy equivalence,
+then we may compute the number of circles in a moment.
+
+Graphs are one-dimensional guys, and reduce to circles. Now we
+should consider
+\begin{equation}
+\pi_{0}\bigl(\hom(S^1,S^1)\bigr)=\ZZ
+\end{equation}
+We should see this as obvious. We saw
+\begin{equation}
+S^1\to \RR^2-(\mbox{point})\homotopic S^{1}
+\end{equation}
+and the homotopy class of maps is characterized by the winding
+number\index{Winding Number}\index{Winding Number!generalization of ---|see{Degree}}.
