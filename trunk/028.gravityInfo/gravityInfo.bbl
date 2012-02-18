@@ -11,6 +11,12 @@
 \expandafter\ifx\csname bibinfo\endcsname\relax\def\bibinfo#1#2{#2}\fi
 \expandafter\ifx\csname eprint\endcsname\relax\def\eprint#1{\url{#1}}\fi
 
+\bibitem[Bae]{baez}
+\bibinfo{author}{J.~Baez}.
+\newblock \enquote{\bibinfo{title}{Entropic Forces}.}
+\newblock \bibinfo{howpublished}{Blog post
+  \url{https://johncarlosbaez.wordpress.com/2012/02/01/entropic-forces/}}.
+
 \bibitem[Bek73]{Bekenstein:1973ur}
 \bibinfo{author}{J.~D. Bekenstein}.
 \newblock \enquote{\bibinfo{title}{{Black holes and entropy}}.}
