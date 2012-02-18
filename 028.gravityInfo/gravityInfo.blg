@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99c (Web2C 7.5.6)
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: gravityInfo.aux
 The style file: elements.bst
 Database file #1: gravityInfo.bib
@@ -6,45 +6,45 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty journal in Jenkins:2004yn
 Warning--empty journal in Moffat:2003mk
 Warning--empty journal in Verlinde:2010hp
-You've used 6 entries,
+You've used 7 entries,
             3279 wiz_defined-function locations,
-            713 strings with 6439 characters,
-and the built_in function-call counts, 2614 in all, are:
-= -- 190
-> -- 48
-< -- 6
-+ -- 13
-- -- 12
-* -- 308
-:= -- 340
-add.period$ -- 25
-call.type$ -- 6
-change.case$ -- 24
-chr.to.int$ -- 5
-cite$ -- 9
-duplicate$ -- 201
-empty$ -- 238
-format.name$ -- 24
-if$ -- 497
+            717 strings with 6547 characters,
+and the built_in function-call counts, 2969 in all, are:
+= -- 213
+> -- 56
+< -- 7
++ -- 15
+- -- 14
+* -- 336
+:= -- 383
+add.period$ -- 29
+call.type$ -- 7
+change.case$ -- 28
+chr.to.int$ -- 6
+cite$ -- 10
+duplicate$ -- 230
+empty$ -- 276
+format.name$ -- 28
+if$ -- 569
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 39
-newline$ -- 45
-num.names$ -- 18
-pop$ -- 59
+missing$ -- 44
+newline$ -- 50
+num.names$ -- 21
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 36
+purify$ -- 42
 quote$ -- 0
-skip$ -- 61
+skip$ -- 73
 stack$ -- 0
-substring$ -- 118
-swap$ -- 126
-text.length$ -- 6
-text.prefix$ -- 6
+substring$ -- 125
+swap$ -- 143
+text.length$ -- 7
+text.prefix$ -- 7
 top$ -- 0
-type$ -- 48
+type$ -- 56
 warning$ -- 3
-while$ -- 16
-width$ -- 9
-write$ -- 75
+while$ -- 18
+width$ -- 10
+write$ -- 84
 (There were 3 warnings)
