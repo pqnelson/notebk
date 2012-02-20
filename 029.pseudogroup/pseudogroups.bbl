@@ -45,6 +45,12 @@
 \newblock \bibinfo{publisher}{Interscience Publishers, New York}
   (\bibinfo{year}{1963}).
 
+\bibitem[Vak]{vakil}
+\bibinfo{author}{R.~Vakil}.
+\newblock \enquote{\bibinfo{title}{Foundations of Algebraic Geometry}.}
+\newblock \bibinfo{howpublished}{Lecture notes, online at
+  \url{http://math.stanford.edu/~vakil/216blog/}}.
+
 \bibitem[Wei96]{weinstein1996groupoids}
 \bibinfo{author}{A.~Weinstein}.
 \newblock \enquote{\bibinfo{title}{{Groupoids: unifying internal and external
