@@ -1,0 +1,124 @@
+%%
+%% internalization.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Feb 19 17:12:21 2012 alex
+%% Last update Sun Feb 19 17:12:21 2012 alex
+%%
+\section{Internalization}
+
+\begin{quote}
+When you are collecting mushrooms, you only see the mushroom
+itself. But if you are a mycologist, you know that the real
+mushroom is in the Earth. There's an enormous thing down there,
+and you just see the fruit, the body that you eat. In
+mathematics, the upper part of the mushroom corresponds to the
+theorems that you see, but you don't see the things that are
+below, that is: \emph{problems, conjectures, mistakes, ideas},
+etc. --- V.~I.~Arnold~\cite{arnol2004hilbert}
+\end{quote}
+
+We will try several attempts to internalize the notion of a
+pseudogroup of transformations. It may take several attempts,
+leading to wrong turns, wrong guesses, etc. 
+
+Recall, given a topological space $X$ (or more generally any set
+$X$), we can construct a category $\mathcal{O}(X)$ whose objects
+are open subsets of $X$ and morphisms are restrictions and
+inclusions. We will need to use this to construct the notion of a
+pseudogroup of transformations. Weinstein notes~\cite{weinstein1996groupoids}
+that germs of elements of a pseudogroup form a groupoid.
+
+\begin{defn}
+A \define{Pseudogroup} on a topological space $X$ consists of a
+groupoid $G$ whose
+\vspace{-.75pc}
+\begin{description*}
+\item[Objects:] Open subsets of $X$
+\item[Morphisms:] Homeomorphisms between those subsets; 
+\end{description*}
+\vspace{-.75pc}
+satisfying
+\vspace{-.75pc}
+\begin{description*}
+\item[Covering Property:] The objects cover $X$.
+\item[Restriction Property:] If $g\colon V\to W$ is a morphism in
+  $G$, and $U\subset V$, then the restriction $g|_{U}\colon U\to
+  g(U)$ belongs to $G$. 
+\item[Sheaf Property:] Let $g\colon U\to V$ be a homeomorphism, and if
+  there is a covering $\{U_{\alpha}\}$ of $U$ such that the
+  restrictions $g|_{U_{\alpha}}\colon U_{\alpha}\to
+  g(U_{\alpha})$ are morphisms in $G$, then $g$ is also a
+  morphism of $G$.
+\end{description*}
+\end{defn}
+
+How do we use a pseudogroup? Well, we pick some ``nice space''
+$X$ (usually $X=\RR^n$), and we consider its pseudogroup
+$G$. Then maybe we want to study a space $M$ which ``locally
+looks'' like $X$, so for an open subset $U\subset M$ we have an
+embedding
+\begin{equation}
+\phi\colon U\to X.
+\end{equation}
+This pair $(\phi,U)$ gives us a \define{Chart}. We say two charts 
+\begin{equation}
+\phi\colon U\to X,\quad\mbox{and}\quad\psi\colon V\to X
+\end{equation}
+are \define{Compatible} (a property!) if and only if the
+transition function
+\begin{equation}
+\psi\circ\phi^{-1}\colon \phi(U\cap V)\to\psi(U\cap V)
+\end{equation}
+belongs to $G$. So pseudogroups are useful for determining
+compatibility of charts (usually for manifolds), and we consider
+pseudogroups on the ``model space''.
+
+\begin{xca}\label{xca:L202pi}
+Consider $L^{2}(0,2\pi)$. What is its pseudogroup?
+\end{xca}
+\begin{xca}
+Consider $\CC[x]$ equipped with the Zariski topology. What is its pseudogroup?
+\end{xca}
+\begin{xca}
+Working in the category $\Top$ of topological spaces, consider
+the function space $\hom(X,Y)$. What is its pseudogroup? If we
+consider $\hom(S^{1},Y)$, does its pseudogroup relate to the one
+investigated in exercise \ref{xca:L202pi}?
+\end{xca}
+
+Observe that the approach taken is to consider what the space
+``locally looks like''. The pseudogroup is some extra stuff
+assigned to the model space. On the other hand, we could go in
+the opposite way: gluing together a bunch of patches to assemble
+our space. The modern approach to algebraic geometry does this
+using schemes, which are glorified ringed spaces.
+
+\begin{rmk}[On Ringed Spaces and Schemes]
+A different-yet-related idea is also captured in the notion of a \emph{Ringed Space},
+where we have a topological space $X$ as a category (induced from
+its poset structure), and a sheaf $\mathcal{O}_{X}$ which assigns
+to each open subset of $X$ a ring. The intuition is that $X$ is
+the ``model space'' and the ring assigned is the continuous real
+functions (or smooth real functions, or holomorphic complex functions, or
+\dots). We patch together a bunch of ringed spaces into a bigger
+space, just as we patch together charts into a manifold. This
+``composite space'' is called a \emph{Scheme}. Vakil~\cite{vakil}
+reviews this in some modest detail. 
+\end{rmk}
+\begin{rmk}[Schemes are Good!]
+The notion of a scheme is a straight-forward generalization of a
+manifold. In fact, any manifold can be turned into a scheme (but
+not every scheme is a manifold!).
+\end{rmk}
+
+\begin{rmk}[Internalization]
+Now, we should remember that we \emph{can} internalize a groupoid
+in various nice categories. This would suggest the notion of a
+pseudogroup can likewise be internalized. However, after much
+reflection, it seems altogether the wrong approach towards
+generalizing geometry for a variety of reasons (most of them
+emotional). 
+\end{rmk}

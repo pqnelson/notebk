@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99c (Web2C 7.5.6)
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: pseudogroups.aux
 The style file: elements.bst
 Database file #1: pseudogroups.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 5 entries,
+You've used 6 entries,
             3279 wiz_defined-function locations,
-            704 strings with 6554 characters,
-and the built_in function-call counts, 2479 in all, are:
-= -- 182
-> -- 50
-< -- 5
-+ -- 14
-- -- 14
-* -- 290
-:= -- 309
-add.period$ -- 21
-call.type$ -- 5
-change.case$ -- 21
-chr.to.int$ -- 5
-cite$ -- 5
-duplicate$ -- 193
-empty$ -- 221
-format.name$ -- 24
-if$ -- 468
+            708 strings with 6673 characters,
+and the built_in function-call counts, 2834 in all, are:
+= -- 205
+> -- 58
+< -- 6
++ -- 16
+- -- 16
+* -- 318
+:= -- 352
+add.period$ -- 25
+call.type$ -- 6
+change.case$ -- 25
+chr.to.int$ -- 6
+cite$ -- 6
+duplicate$ -- 222
+empty$ -- 259
+format.name$ -- 28
+if$ -- 540
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 42
-newline$ -- 41
-num.names$ -- 15
-pop$ -- 42
+missing$ -- 47
+newline$ -- 46
+num.names$ -- 18
+pop$ -- 59
 preamble$ -- 1
-purify$ -- 31
+purify$ -- 37
 quote$ -- 0
-skip$ -- 55
+skip$ -- 67
 stack$ -- 0
-substring$ -- 132
-swap$ -- 154
-text.length$ -- 5
-text.prefix$ -- 4
+substring$ -- 139
+swap$ -- 171
+text.length$ -- 6
+text.prefix$ -- 5
 top$ -- 0
-type$ -- 36
+type$ -- 44
 warning$ -- 0
-while$ -- 19
-width$ -- 6
-write$ -- 68
+while$ -- 21
+width$ -- 7
+write$ -- 77
