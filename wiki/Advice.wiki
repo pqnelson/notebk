@@ -66,6 +66,12 @@ However, if one were to write a book, the best thing to do is treat it like a do
 
 It's not hard to write 3 to 10 pages of mathematics notes in each "parcel". Then you do this for a long time, and you have a book ready. That's what Terry Tao did with his blog (and still continues to do it!).
 
+== Polishing your notes ==
+
+Quintilian writes
+
+  A different fault is that of those who wish, first of all, to run through their subject with as rapid a pen as possible and, yielding to the ardor and impetuosity of their imagination, write off their thoughts extemporaneously, producing what they call a rough copy, which they then go over again and arrange what they have hastily poured forth. Though the words and rhythm of the sentences are mended, there still remains the same want of solid connection that there was originally in the parts hurriedly thrown together. It will be better, therefore, to use care at first, and so to form our work from the beginning that we may have merely to polish it and not to mold it anew. Sometimes, however, we may give loose to our feeling, in the display of which warmth is generally of more effect than accuracy. [http://rhetoric.eserver.org/quintilian/10/chapter3.html#17 X.3.17]
+
 == Getting the Scope Right ==
 
 This is the hardest bit of writing notes. It's too easy to get lost in a downward spiral, and instead of writing about Lie algebras you end up on some random topic.
