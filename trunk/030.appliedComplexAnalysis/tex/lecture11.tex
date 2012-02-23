@@ -1,0 +1,162 @@
+%%
+%% lecture11.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Oct  3 10:23:10 2011 alex
+%% Last update Mon Oct  3 10:23:10 2011 alex
+%%
+The Riemann zeta function is investigated further in $p$-adic
+numbers. In real variables, we have Bernoulli numbers obey
+\begin{equation}
+\frac{x}{\E^{x}-1}=1-\frac{x}{2}+\sum^{\infty}_{k=1}(-1)^{k-1}B_{k}x^{2k}
+\end{equation}
+where
+\begin{equation}
+B_{k}=\frac{1}{6},\frac{1}{30},\frac{1}{42},\frac{5}{66},\frac{691}{8130},\dots
+\end{equation}
+We have
+\begin{equation}
+\sum^{\infty}_{n=1}\frac{1}{n^{2k}}=B_{k}\pi^{2k}\frac{2^{2k-1}}{(2k)!}
+\end{equation}
+So by plugging in $k=1$ we obtain
+\begin{equation}
+\sum_{n=1}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
+\end{equation}
+We also assert that
+\begin{equation}
+\sum_{1\leq k_{1}<\dots<k_{s}}(k_{1}k_{2}\cdots k_{s})^{-2}=\frac{\pi^{2s}}{(s+1)!}
+\end{equation}
+This is not so obvious (which is why we \emph{assert} it for the
+moment). 
+
+If we consider the following diagram
+\begin{equation}
+\begin{diagram}[small]
+\left(\sum\frac{1}{n^{2}}\right)^{2} & = & \sum\frac{1}{n^{4}}+2\sum_{k_{1}<k_{2}}\frac{1}{k_{1}^{2}k_{2}^{2}}\\
+\dEq &   & \dEq \\
+\frac{\pi^{4}}{36} & = & \left(\sum\frac{1}{n^{4}}\right)+\frac{\pi^{4}}{60}
+\end{diagram}
+\end{equation}
+which then gives us
+\begin{equation}
+\sum\frac{1}{n^{4}}=\frac{\pi^{4}}{90}
+\end{equation}
+We can go further
+\begin{equation}
+\left(\sum\frac{1}{n^{2}}\right)^{3}=\sum\frac{1}{n^{6}}+
+3\sum_{k\not=\ell}\frac{1}{k^{4}\ell^{2}}+
+6\sum_{\mathclap{k_{1}<k_{2}<k_{3}}}(k_{1}k_{2}k_{3})^{-2}
+\end{equation}
+and take
+\begin{equation}
+\begin{diagram}[small]
+\sum\frac{1}{n^{4}}\sum\frac{1}{n^{2}} & = & \sum\frac{1}{n^{6}}+\sum_{k\not=\ell}\frac{1}{k^{4}\ell^{2}}\\
+\dEq & & \\
+\left(\frac{\pi^{4}}{90}\right)\left(\frac{\pi^{2}}{6}\right) & & 
+\end{diagram}
+\end{equation}
+We subtract these results
+\begin{subequations}
+\begin{align}
+\left(\sum\frac{1}{n^{2}}\right)^{3}-3\sum\frac{1}{n^{4}}\sum\frac{1}{n^{2}}
+&= \left(\frac{1}{6^{3}}-\frac{3}{6\cdot90}\right)\pi^{6}\\
+&= -2\sum\frac{1}{n^{6}}+6\sum_{\mathclap{k_{1}<k_{2}<k_{3}}}(k_{1}k_{2}k_{3})^{-2}
+\end{align}
+\end{subequations}
+We know
+\begin{equation}
+\sum_{\mathclap{k_{1}<k_{2}<k_{3}}}(k_{1}k_{2}k_{3})^{-2}=6\left(\frac{\pi^{6}}{7!}\right)
+\end{equation}
+so we plug this in and we find
+\begin{equation}
+\sum\frac{1}{n^{6}}=\frac{\pi^{6}}{2}\left(\frac{6}{7!}+\frac{1}{120}-\frac{1}{6^{3}}\right).
+\end{equation}
+We may continue iterating, but there is no closed form expression
+in general.
+
+Now, suppose we have a sequence of complex numbers $a_{1}$,
+$a_{2}$, \dots, and we \emph{do not} demand they are distinct. We
+can construct an entire function with zeroes at $a_{1}$, \dots,
+would this be possible? Why not? Take the product
+\begin{equation}
+f(z)=(z-a_{1})(z-a_{2})(\dots)
+\end{equation}
+Why not?
+
+\begin{rmk}
+If a function has singularities, we have $f$ be continuous if it
+has no poles (or in a neighborhood of a pole); if we have $f$
+with an essential singularity, a function takes values (in a
+neighborhood of an essential singularity) all values with
+possibly two exceptions: 0 and $\infty$. This is Picard's theorem.
+\end{rmk}
+
+If we have a function without singularities, and a sequence of
+points $a_{1}$, \dots; can we have a function $f(z)$ such that
+$f(a_{k})=0$ for all $k\in\NN$? We can construct
+\begin{equation}
+f(z)=\prod_{k}\left(1-\frac{z}{a_{k}}\right)
+\end{equation}
+When will this work? We need to impose the condition that
+$\|a_{k}\|\to\infty$, but we need more. This will converge
+absolutely if
+\begin{equation}
+\sum\frac{1}{\|a_{n}\|}\mbox{ converges}
+\end{equation}
+This is actually too strong a condition. What about $a_{n}=n$,
+the sum is harmonic and diverges!
+
+Consider
+\begin{equation}
+f(z) = z^{k}\prod_{j}\left(1-\frac{z}{a_{j}}\right)
+\end{equation}
+we write instead
+\begin{equation}
+f(z) = \prod_{n}\left(1-\frac{z}{a_{n}}\right)\E^{z/a_{n}}
+\end{equation}
+which converges if
+\begin{equation}
+\sum\frac{1}{\|a_{n}\|^{2}}\mbox{ converges}.
+\end{equation}
+Why? Because
+\begin{subequations}
+\begin{align}
+\left(1-\frac{z}{a_{n}}\right)\E^{z/a_{n}}&=\left(1-\frac{z}{a_{n}}\right)\left(1+\frac{z}{a_{n}}+\cdots\right)\\
+&=1+\frac{z^{2}}{a_{n}^{2}}\left(-1+\frac{1}{2}\right)
++\cdots+\frac{z^{k}}{a_{n}^{k}}\left(\frac{-1}{(k-1)!}+\frac{1}{k!}\right)+\cdots
+\end{align}
+\end{subequations}
+So we are considering evaluating products of the form
+\begin{equation}
+\prod^{\infty}_{n=1}(1+\omega_{n})
+\end{equation}
+where $\omega_{n}=(z/a_{n})^{2}(-1+\frac{1}{2})+\dots$, we have
+\begin{equation}
+\|\omega_{n}\|<\sum^{\infty}_{k=2}\left\|\frac{z}{a_{n}}\right\|^{k}\underbracket[0.5pt]{\left|\frac{1}{k!}-\frac{1}{(k-1)!}\right|\;\,}_{<1}
+\end{equation}
+and note that the sum on the right hand side begins with $k=2$.
+If $\|z\|<a_{n}$, then
+\begin{equation}
+\|\omega_{n}\|<\frac{\|z/a_{n}\|^{2}}{1-\|z/a_{n}\|}
+\end{equation}
+by geometric series.So it follows that $\prod(1+\omega_{n})$
+converges if the aforementioned series converges. Remember we
+have
+\begin{equation}
+1+\omega_{n}=\left(1-\frac{z}{a_{n}}\right)\E^{z/a_{n}}
+\end{equation}
+We have our product converging, uniformly on the unit disc, with
+zeroes at $a_{1}$, \dots.
+\begin{thm}
+If $a_{1}$, \dots, is a sequence where $a_{i}\not=0$ for every
+$i$, and $\sum\|a_{n}\|^{-2}$ converges, then 
+\begin{equation}
+f(z) = \prod_{n}\left(1-\frac{z}{a_{n}}\right)\E^{z/a_{n}}
+\end{equation}
+converges and is entire with zeroes at $a_{1}$, \dots.
+\end{thm}
+Note that this is an existence theorem, not a uniqueness
+theorem. It is unique up to a factor of $\exp(g(z))$ for
+\emph{arbitrary} $g(z)$.

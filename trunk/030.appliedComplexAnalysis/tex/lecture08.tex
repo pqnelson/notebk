@@ -1,0 +1,161 @@
+%%
+%% lecture08.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Oct  2 16:12:40 2011 alex
+%% Last update Sun Oct  2 16:12:40 2011 alex
+%%
+
+A confocal family of conics --- every point lies in a hyperbola
+and an ellipse which are perpendicular to each other.
+
+Now, let us continue considerations of the reflection
+principle. If $f\colon\mathcal{U}\to\CC$ is analytic, and just to
+explicitly reiterate the notion of reflection we have
+\begin{equation}
+\overline{\mathcal{U}}=\{\overline{z}\lst z\in\mathcal{U}\}
+\end{equation}
+be a reflection of $\mathcal{U}$, $f$ be real on $I$, we can
+analytically continue $f$ on $\overline{\mathcal{U}}$. 
+
+\begin{wrapfigure}[14]{r}{3.3in}
+\vspace{-25pt}
+\begin{center}
+\includegraphics{img/lecture08.0}
+\end{center}
+\end{wrapfigure}
+We can similarly do this on the unit circle, how? Well, we can
+use one of our beloved conformal mappings $\psi$ which maps the
+region $\mathcal{U}$ to a domain $\psi(\mathcal{U})$ in the unit
+circle with part of its boundary $\psi(I)$ on the boundary of the
+unit circle. Then $f$ can be inverted. Let the domain of the
+inversion be $\mathcal{V}$. Let $i$ inverse be in the circle, $j$
+inverse be in the image. So
+\begin{equation}
+f(z)=jf(i(z)).
+\end{equation}
+We may construct a fractional linear transformation $\varphi$.
+
+We simply replace $f$ by $\psi^{-1}\circ f\circ\varphi$. We
+generalize the reflection principle to circles.
+
+
+\subsection*{And Now, For Something Completely Different}
+
+\begin{wrapfigure}[5]{r}{1.7in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture08.1}
+\end{center}
+\end{wrapfigure}
+The Riemann mapping theorem may be generalized to non-simply
+connected regions. We can extract it from the circle reflection
+principle. How to do this witchcraft? Well, suppose we have 2
+discs, and inside 2 subdiscs of radii $r$ and $R$. Then we have a
+conformal mapping from one to the other if $r=R$. The boundary
+circles are mapped to the boundary circles; and moreover $f$ is a
+rotation.
+
+\begin{wrapfigure}[7]{r}{1.05in}
+\vspace{-35pt}
+\begin{center}
+\includegraphics{img/lecture08.2}
+\end{center}
+\end{wrapfigure}
+We can see from inversion as doodled to the right takes the
+annulus of radially shaded domain to the angularly shaded
+domain. We can iterate over and over again. We end up with
+$D\setminus\{0\}$ --- the unit disc missing the origin.
+Well, to be more precise, we do not invert the annulus: we invert
+the inner disc of radius $r$ or $R$, we get the result doodled on
+the right. We have a holomorphic map
+\begin{equation}
+f\colon D\setminus\{0\}\to D\setminus\{0\}
+\end{equation}
+which is bijective. We interpret this as mapping the center to
+the center, so we have a conformal map. We notice that the only
+undetermined property is how the mapping treats orientation, but
+since it is conformal then all orientation is preserved. The only
+such map is a rotation! Quite ingenious to say $f\colon D\to D$
+such that $0\mapsto 0$.
+
+What happens if we have a conformal map that is not concentric
+(i.e., the domain is not a concentric annulus)? It becomes more
+of a challenge to prove that the domains are conformal. Some
+examples of these would look like:
+\begin{center}
+\includegraphics{img/lecture08.3}
+\end{center}
+
+\subsection{Argument Principle}
+We will consider several theorems whose name change but results
+remain the same. (I believe Led Zeppelin had a song with this
+title!) Suppose we have some domain, and we have some function
+that is not zero on the boundary of the domain and there are no
+poles on the boundary. So all poles are inside the domain. We
+have the function be meromorphic. We compute:
+\begin{equation}
+\begin{split}
+Z &= \mbox{number of zeroes}\\
+P &= \mbox{number of poles}
+\end{split}
+\end{equation}
+If we travel $f$ along the boundary, when we return to our
+departure point $\|f\|$ is the same but the argument differs by
+$2\pi k$ ($k\in\ZZ$).
+
+\begin{wrapfigure}[5]{r}{0.75in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture08.4}
+\end{center}
+\end{wrapfigure}
+We taake the unit disc, the function $f(z)=z$. We start at 1. We
+travel along the boundary and when we get back to the point of
+departure we find
+\begin{equation}
+\Delta\arg(f(z))=2\pi\cdot1.
+\end{equation}
+In general we let $\gamma$ be the boundary of the domain. We
+have, then, in general
+\begin{equation}\label{eq:lecture08:moveAntiClockwise}
+\Delta_{\gamma}\arg(f(z))=2\pi(Z-P)
+\end{equation}
+If we know the behavior of the function on the boundary, we have
+a good clue to the number of zeroes. Also note, if we were to move
+\emph{clockwise} then our formula changes to
+\begin{equation}\label{eq:lecture08:moveClockwise}
+\Delta_{\gamma}\arg(f(z))=2\pi(P-Z)
+\end{equation}
+instead. Note the difference between eq
+\eqref{eq:lecture08:moveAntiClockwise} and
+\eqref{eq:lecture08:moveClockwise}. 
+
+\begin{thm}
+Suppose we have a meromorphic function
+$f\colon\mathcal{U}\to\CC$, and $\mathcal{U}$ is our domain, and
+also suppose $f$ has zeroes and poles. Consider a closed curve $\gamma$ in
+this domain not passing through zeroes or poles. Then
+\begin{equation}
+\Delta_{\gamma}\arg(f(z))=2\pi(Z-P)
+\end{equation}
+holds for our oriented closed curve $\gamma$.
+\end{thm}
+\begin{thm}
+We have
+\begin{equation}
+\int_{\gamma}\frac{f'(z)}{f(z)}\D z=2\pi\I\left(
+\sum_{{\text{zeroes }a}}I(\gamma,a)-\sum_{\mathclap{\text{poles }b}}I(\gamma,b)
+\right)
+\end{equation}
+Observe that this integral is the same as
+\begin{equation}
+\int_{\gamma}\frac{f'(z)}{f(z)}\D z=\int_{\gamma}\D\left(\log\left(f(z)\right)\right).
+\end{equation}
+\end{thm}
+\begin{rmk}
+This second theorem implies the first. The second theorem follows
+directly from the residue theorem.
+\end{rmk}

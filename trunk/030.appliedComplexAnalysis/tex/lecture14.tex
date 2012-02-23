@@ -1,0 +1,200 @@
+%%
+%% lecture14.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Oct  3 18:44:56 2011 alex
+%% Last update Mon Oct  3 18:44:56 2011 alex
+%%
+There are several things of the $\Gamma$ function which we still
+can discuss. There are two properties of interest: computation of
+its residues, and Gauss' formula.
+
+Gauss' formula says
+$\Gamma(z)\Gamma(z+\frac{1}{n})\dots\Gamma(z+\frac{n-1}{n})$ is
+related to $\Gamma(n+z)$. To guess the Gauss formula, choose
+$z=m\in\NN$. So we want to relate
+$\Gamma(m)\Gamma(m+\frac{1}{n})\dots\Gamma(m+\frac{n-1}{n})$. To
+begin with $n=1$ is uninteresting. So lets begin with $n=2$, we
+have
+\begin{subequations}
+\begin{align}
+\Gamma(m)\Gamma\left(m+\frac{1}{2}\right) &=
+(m-1)!\cdot\Gamma(1/2)\frac{1}{2}\frac{3}{2}(\dots)\frac{2m-1}{2}\\
+&=\Gamma(1/2)\frac{(2m-1)!}{2^{2m-1}}\\
+&=\frac{(2m-1)!\sqrt{\pi}}{2^{2m-1}}
+\end{align}
+\end{subequations}
+Now for $n=3$ what do we have? Well, we find
+\begin{subequations}
+\begin{align}
+\Gamma(m)\Gamma\left(m+\frac{1}{3}\right)\Gamma\left(m+\frac{2}{3}\right)
+&=\frac{(3m-1)!}{3^{3m-1}}\Gamma(1/3)\Gamma(2/3)\\
+&=\frac{(3m-1)!}{3^{3m-1}}\frac{2\pi}{\sqrt{3}}
+\end{align}
+\end{subequations}
+We see that for some general $n$ that
+\begin{equation}
+\Gamma(m)\Gamma\left(m+\frac{1}{n}\right)(\dots)\Gamma\left(m+\frac{n-1}{n}\right)=\frac{(mn-1)!}{n^{mn-1}}\Gamma(1/n)\Gamma(2/n)(\dots)\Gamma([n-1]/n)
+\end{equation}
+We can compute the $\Gamma$ terms by first squaring it and
+rearranging terms to read:
+\begin{align}
+\left(\Gamma(1/n)(\dots)\Gamma([n-1]/n)\right)^{2}
+&=\Gamma\left(\frac{1}{n}\right)
+\Gamma\left(\frac{n-1}{n}\right)
+\Gamma\left(\frac{2}{n}\right)
+\Gamma\left(\frac{n-2}{n}\right)(\dots)
+\Gamma\left(\frac{n-1}{n}\right)
+\Gamma\left(\frac{1}{n}\right)\nonumber\\
+&=\frac{\pi^{n-1}}{\sin(\pi/n)\sin(2\pi/n)(\dots)\sin([n-1]\pi/n)}
+\end{align}
+So we find
+\begin{equation}
+\sin(\pi/n)(\dots)\sin\left(\frac{(n-1)}{n}\pi\right)=\frac{n}{2^{n-1}}
+\end{equation}
+we can rewrite this as
+\begin{equation}
+\Gamma(m)\Gamma\left(m+\frac{1}{n}\right)(\dots)\Gamma\left(m+\frac{n-1}{n}\right)
+=\frac{\Gamma(mn)}{n^{nm-1}}\frac{\pi^{(n-1)/2}2^{(n-1)/2}}{\sqrt{n}}.
+\end{equation}
+We then replace $m\to z$ and that is Gauss' formula.
+
+Now to compute the residues, choose $(-m)$ where $m\in\NN$, the
+residue is
+\begin{subequations}
+\begin{align}
+\lim_{z\to-m}(z+m)\Gamma(z)
+&=\lim_{z\to-m}(z+m)\frac{\Gamma(z+1)}{z}\\
+&=\lim_{z\to-m}(z+m)\frac{\Gamma(z+2)}{z(z+1)}\\
+&=\lim_{z\to-m}(z+m)\frac{\Gamma(z+m+1)}{z(z+1)(\dots)(z+m)}\\
+&=\lim_{z\to-m}\frac{\Gamma(z+m+1)}{z(z+1)(\dots)(z+m-1)}\\
+&=\frac{(-1)^{m}}{m!}
+\end{align}
+\end{subequations}
+This is the residue of the $\Gamma$ function.
+
+\subsection{Asymptotics}
+
+Asymptotiocs are different than approximations, we will begin
+with asymptotics of factorials. Consider $N!$ for some large $N$,
+the number of digits of the number is more or less
+$\ln(N!)$. Lets compare $n!$ to $n^{n}$, we take
+\begin{equation}
+\frac{n!}{n^{n}}=\frac{1}{n}\frac{2}{n}(\dots)\frac{n}{n}
+\end{equation}
+We take the logarithm of this to make the product into a sum
+\begin{equation}
+\ln\left(\frac{n!}{n^{n}}\right)=\sum^{n}_{k=1}\ln(k/n)
+\end{equation}
+but this sum is not well behaved. To remedy the situation, we
+divide through by $N$
+\begin{subequations}
+\begin{align}
+\frac{1}{n}\ln(n!/n^{n}) &= \frac{1}{n}\left[\ln\left(\frac{1}{n}\right)+(\dots)+\ln\left(\frac{n}{n}\right)\right]\\
+&\approx\left.\int^{1}_{0}\ln(x)\D x = \lim_{\varepsilon\to0}x\ln(x)-x\right|^{1}_{\varepsilon}\\
+&\phantom{\approx\int^{1}_{0}\ln(x)\D x} = (0-0)-(1-0)=-1.
+\end{align}
+\end{subequations}
+We see that
+\begin{equation}
+\ln\left(\sqrt[n]{\frac{n!}{n^{n}}}\right)\approx-1
+\end{equation}
+so we exponentiate both sides
+\begin{equation}
+\sqrt[n]{\frac{n!}{n^{n}}}\approx\E^{-1}
+\end{equation}
+then we raise both sides to the $n^{\rm th}$ power
+\begin{equation}
+\frac{n!}{n^{n}}\approx\E^{-n}\implies
+n!\approx\left(\frac{n}{\E}\right)^{n}
+\end{equation}
+which is a very rough asymptotic formula, but it was the first
+asymptotic formula for the factorial.
+
+There are more precisely asymptotic formulas, of which Stirling's
+is the most famous. It states
+\begin{equation}
+n!\asymptote\sqrt{2\pi n}\left(\frac{n}{\E}\right)^{n}
+\end{equation}
+What about the relative error of using $\sqrt{2\pi n}(n/\E)^{n}$
+instead of $n!$, that is the error in terms of percents. Consider
+a more precise form of Stirling's approximation
+\begin{equation}
+n!\asymptote\sqrt{2\pi n}\left(1+\frac{1}{12n}\right)\left(\frac{n}{\E}\right)^{n}
+\end{equation}
+There is in fact an infinite series, then next asymptotic would be
+\begin{equation}
+n!\asymptote\sqrt{2\pi n}\left(1+\frac{1}{12n}+\frac{1}{288n^{2}}\right)\left(\frac{n}{\E}\right)^{n}
+\end{equation}
+and so on.
+
+Consider $n=10$, then
+\begin{subequations}
+\begin{align}
+10! &= 3\;628\;800\\
+\sqrt{2\pi10}\left(\frac{10}{\E}\right)^{10} & \approx
+3\;598\;695\\
+\intertext{and}
+\sqrt{2\pi10}\left(1+\frac{1}{120}\right)\left(\frac{10}{\E}\right)^{10} & \approx
+3\;628\;685
+\end{align}
+\end{subequations}
+and the next expansion would be precise to one digit, probably.
+
+Consider the asymptotics for the number of primes less than
+$n$.\marginpar{Prime number function $\pi(n)$} This is a special function denoted
+\begin{equation}
+\pi(n)=\mbox{number of primes less than $n$}
+\end{equation}
+We have two estimates: Euler's formula 
+\begin{equation}
+\pi(n)\asymptote\log(n)/n
+\end{equation}
+and the logarithmic integral function (``li's integral'') 
+\begin{equation}
+\pi(n)\asymptote\int^{n}_{0}(1/\ln(t))\D t. 
+\end{equation}
+The latter is better. Consider $n=10^{9}$, what happens? Well we
+see (truncating to integer values) that
+\begin{subequations}
+\begin{align}
+ n &= 10^{9}\\
+\pi(n) &= 50\;847\;534\\
+\frac{n}{\ln(n)} &\approx 48,429,482\\
+\int^{n}_{2}\frac{\D t}{\ln(t)} &= 50,849,235
+\end{align}
+\end{subequations}
+Can we say anything about the error? Yes and no: yes because yes,
+and no because no. Most theorems about the error depends on the
+Riemann zeta conjecture being true.
+
+If the Riemann hypothesis is true, then
+\begin{equation}
+|\Li(n)-\pi(n)|<\frac{\sqrt{n}\log(n)}{8\pi}
+\end{equation}
+where
+\begin{equation}
+\Li(n) := \int^{n}_{2}\frac{\D t}{\log(t)}
+\end{equation}
+The difference $\Li(n)-\pi(n)$ changes sign infinitely many
+times (John Littlewood proved this fact in 1914), the first time
+is at $10^{349}$. (Although a more recent estimate puts this
+around $10^{316}$.)
+
+\marginpar{Partition function $p(n)$}The partition function $p(n)$ counts the number of ways to write
+$n$ as a sum of positive numbers. So for example,
+\begin{equation}
+p(4)=5
+\end{equation}
+since we have
+\begin{equation}
+4,\quad 3+1,\quad 2+2,\quad 2+1+1,\quad 1+1+1+1
+\end{equation}
+are the five distinct sums.
+\marginpar{Rademacher's formula}We have an asymptotic formula for it
+\begin{equation}
+p(n)\asymptote\frac{1}{4n\sqrt{3}}\E^{2\pi\sqrt{n/6}}
+\end{equation}
+This grows faster than any polynomial, but slower than any exponential.

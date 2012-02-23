@@ -1,0 +1,112 @@
+%%
+%% lecture17.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 09:11:26 2011 alex
+%% Last update Wed Oct  5 09:11:26 2011 alex
+%%
+Last time, we wrote the formula
+\begin{equation}
+f(x)=\int^{\infty}_{0}\E^{xh(\zeta)}\D\zeta
+\end{equation}
+where $h(\zeta_{0})$ is a maximum and $h''(\zeta_{0})<0$. We know
+from last time that
+\begin{equation}
+f(x)\asymptote\E^{xh(\zeta_{0})}\sqrt{\frac{\pi}{x}}\left(a_{1}+\frac{1\cdot3}{x}a_{3}+\frac{1\cdot3\cdot5}{x^{2}}a_{5}+\dots\right)
+\end{equation}
+We wrote
+\begin{equation}
+h(\zeta)=h(\zeta_{0})-\omega(\zeta)^{2}
+\end{equation}
+so
+\begin{equation}
+\omega(\zeta)=\sqrt{h(\zeta_{0})-h(\zeta)}>0
+\end{equation}
+since $h(\zeta_{0})$ is the maximum for $h$. We see that
+$\omega(\zeta)$ is smooth, so we can express
+$\zeta(\omega)=\omega^{-1}(\zeta)$, thus
+\begin{equation}
+\zeta(\omega)=\zeta_{0}+a_{1}\omega+a_{2}\omega^{2}+\dots.
+\end{equation}
+Certainly this could be applied to the $\Gamma$ function, which
+is very famous.
+
+\subsection{The Laplace Transform}
+
+The Laplace transform is used to solve differential equations, it
+is a version of the Fourier transform. It takes sums to sums and
+products to convolutions.
+
+Let
+\begin{equation}
+S=\{z\in\CC\lst\|z\|=1\}
+\end{equation}
+we have characters of a group $G$ which are maps $G\to S$, they
+form a group denoted
+\begin{equation}
+G^{*}=\mathrm{Char}(G).
+\end{equation}
+If $G=S$, then characters are all raising to integral powers. So
+we have $G^{*}=\ZZ$. Let $f$ be a function on $G$, $\widehat{f}$
+be a function on $G^{*}$, we write
+\begin{equation}
+\widehat{f}=\int_{G}\chi(g)f(g)\D g
+\end{equation}
+What is $\D g$? It is a Haar measure, there exists some ability
+to integrate functions on groups (if the group is topological,
+the measure is continuous). We need to consider functions that
+are integrable, if the group is noncompact (e.g. $\RR$) we could
+get divergent integrals. We have $\widehat{f}(\chi)$ be the
+Fourier coefficients $c_{n}$.
+
+\begin{rmk}
+What we are doing is considering the dual group $\widehat{G}$ in
+the sense of Pontryagin duality.
+\end{rmk}
+
+We change now to let 
+\begin{subequations}
+\begin{align}
+G=\RR,\\
+f\colon\RR\to\CC
+\end{align}
+and we write
+\begin{equation}
+\widehat{f}(t)=\frac{1}{\sqrt{2\pi}}\int^{\infty}_{-\infty}\E^{\I tx}f(x)\D x
+\end{equation}
+\end{subequations}
+It is the Fourier transform. If we have two functions
+\begin{equation}
+f_{1},f_{2}\colon\RR\to\CC
+\end{equation}
+their convolution is
+\begin{equation}
+(f_{1}*f_{2})(h)=\int_{G}f_{1}(g)f_{2}(g^{-1}h)\D g
+\end{equation}
+in a reasonable setting it is a sort of involution. Let us return
+to discuss the Laplace transform.
+
+Consider $f\colon(0,\infty)\to\CC$ (we can generalize any half
+line), the Laplace transform is defined as
+\begin{equation}
+\widetilde{f}(t)=\int^{\infty}_{0}\E^{-tx}f(x)\D x
+\end{equation}
+The onyl condition we have on $f$ is that
+\begin{equation}
+\|f(x)\|<A\E^{Bx}
+\end{equation}
+where $A,B\in\RR$ are ``Big Constants''.
+
+So, after all, we are doing asymptotics, if $f$ has two properties:
+\begin{enumerate}
+\item $f\in C^{\infty}(0,\infty)$, and
+\item $\displaystyle\|f^{(n)}(x)\|<A_{n}\exp(B_{n}x)$,
+\end{enumerate}
+then we have the following asymptotics:
+\begin{equation}
+\widetilde{f}(x)\asymptote\frac{f(0)}{x}+\frac{f'(0)}{x^{2}}+\frac{f^{(2)}(0)}{x^{3}}+\dots+\frac{f^{(n-1)}(0)}{x^{n}}+\dots
+\end{equation}
+Observe that we do not demand its convergence since we do not
+weight by factorials.

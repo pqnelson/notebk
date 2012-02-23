@@ -1,0 +1,175 @@
+%%
+%% lecture05.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Oct  1 16:47:46 2011 alex
+%% Last update Sat Oct  1 16:47:46 2011 alex
+%%
+
+\begin{wrapfigure}{r}{1.75in}
+\vspace{-40pt}
+\begin{center}
+\includegraphics{img/lecture05.0}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+Applications of conformal maps to partial differential equations
+will not be covered. Instead we will skip ahead to ANALYTIC
+CONTINUATION! We have a domain $\mathcal{U}$ and a domain
+$\mathcal{V}$. We have a function $f\colon\mathcal{U}\to\CC$. 
+
+We wish to extend $f$ to $g\colon\mathcal{V}\to\CC$. That is,
+when we restrict $g$ to $\mathcal{U}$ we recover $f$. The natural
+questions that arise are: does such an extension exist, and if so
+is it unique?
+
+The famous example is the\marginpar{$\zeta$ function;\\
+  Riemann conjecture} Riemann zeta conjecture: the real part
+of the nontrivial zeroes of the zeta function is $1/2$, where the
+zeta function is 
+\begin{equation}
+\zeta(z)=\sum_{n=1}n^{-z}. 
+\end{equation}
+Note it converges for $\re(z)>1$. Also observe for $z=1$ we have
+the divergent Harmonic series.
+
+Consider the\marginpar{Gamma function} Gamma function
+\begin{equation}
+\Gamma(\mu)=\int^{\infty}_{0}x^{\mu-1}\E^{-x}\D x,
+\end{equation}
+if $\mu<0$ we are in trouble. We will consider
+$\re(\mu)>0$. Using this, we can express the zeta function as
+\begin{equation}
+\zeta(\mu)=\frac{1}{\Gamma(\mu)}\int^{\infty}_{0}\frac{x^{\mu-1}}{\E^{x}-1}\D
+x
+\end{equation}
+Nifty!
+
+\begin{lem}
+Let $f,g\colon\mathcal{U}\to\CC$ (where $\mathcal{U}$ is
+connected) be analytic. Let
+$\mathcal{V}\propersubset\mathcal{U}$,
+$f|_{\mathcal{V}}=g|_{\mathcal{V}}$, and $\mathcal{V}$ be open
+and nonempty. Then $f=g$.
+\end{lem}
+\begin{lem}[``Sublemma'']
+For the same $f,g,\mathcal{U}$. Suppose that we have a sequence
+$z_{i}\in\mathcal{U}$, $z_{i}\not=z_{j}$ if $i\not=j$, suppose 
+\begin{equation}
+\lim_{i\to\infty}z_{i}=z_{0}\in\mathcal{U}.
+\end{equation}
+If $f(z_{i})=g(z_{i})$ for all $i\in\NN$, then $f=g$.
+\end{lem}
+\begin{proof}[Proof of Sublemma.]
+Let $f-g=: h$. Then $h$ is also analytic. We take
+\begin{equation}
+h(z)=a(z-z_{0})^{k}+\dots
+\end{equation}
+then it follows
+\begin{equation}
+|a-\varepsilon|\cdot\|z-z_{0}\|^{k}<\|h(z)\|<|a+\varepsilon|\cdot\|z-z_{0}\|^{k}
+\end{equation}
+in a small neighborhood of $z_{0}$. So $\|h(z)\|>0$, a
+contradiction, $h(z)\not=0$ in the neighborhood with the point
+$z_{0}$ removed.
+\end{proof}
+\begin{proof}[Proof of Lemma.]
+Let 
+\begin{equation}
+\mathcal{V}=\{z_{0}\in\mathcal{U}\lst f(z)=g(z)\mbox{ in some
+  neighborhood of }z_{0}\}.
+\end{equation}
+Well then, $\mathcal{V}$ is open (it's obvious), and it follows
+from the sublemma that $\mathcal{V}$ is closed: it contains its
+boundary points. So either $\mathcal{V}$ is $\mathcal{U}$ or
+$\emptyset$, but by hypothesis $\mathcal{V}\not=\emptyset$.
+\end{proof}
+
+\begin{wrapfigure}{r}{2in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture05.1}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+Suppose we have two functions $f\colon\mathcal{U}\to\CC$ and
+$g\colon\mathcal{V}\to\CC$. We demand that
+$\mathcal{U}\cap\mathcal{V}\not=\emptyset$, we do not demand
+simply connectedness. Suppose also that the functions agree on
+the overlap, i.e.\ $f|_{\mathcal{U}\cap\mathcal{V}}=g|_{\mathcal{U}\cap\mathcal{V}}$.
+Now if we ``combine'' these two functions, we get an analytic
+function in $\mathcal{U}\cap\mathcal{V}$.
+
+Let
+\begin{equation}
+h(z)=\begin{cases} f(z) & \mbox{if }z\in\mathcal{U}\\
+g(z) & z\in\mathcal{V}
+\end{cases}
+\end{equation}
+Our lemma implies if $\mathcal{U}$, $\mathcal{V}$ are connected,
+then $f$ determines $g$.
+
+\begin{wrapfigure}{l}{2in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture05.2}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+Suppose again we have some function $f\colon\mathcal{U}\to\CC$
+and let $z_{0}\in\partial\mathcal{U}$. We wish to define a function on a
+small neighborhood $B_{\varepsilon}(z_{0})$ of $z_{0}$ such that
+$g\colon B_{\varepsilon}(z_{0})\to\CC$ such that it agrees with
+$f$ on the overlap:
+$f|_{B\cap\mathcal{U}}=g|_{B\cap\mathcal{U}}$. If no such $g$
+exists, it is impossible to extend $f$ to any
+$\mathcal{V}=\mathcal{U}\cup B_{\varepsilon}(z_{0})$. On the
+other hand, if $g$ exists, we can extend $f$ to this new domain. 
+
+If $f$ is so badly behaved that $f$ is not defined on the
+boundary of $\mathcal{U}$, it cannot be extended at all.
+
+\begin{ex}
+Consider the function
+\begin{equation}
+f(z)=\sum^{\infty}_{n=0}z^{n!}
+\end{equation}
+it is defined on the unit disc in $\CC$, it is analytic, but it
+cannot be extended and it is ill defined on the boundary.
+\end{ex}
+\begin{rmk}
+For several complex variables, we cannot abuse any knowledge of a
+single complex variable concept.
+\end{rmk}
+
+Of course any domain of interest is conformally equivalent to
+the unit disc, and this interesting open domain will (by the
+Riemann mapping theorem) always have a nonextendable function on
+the boundary. 
+
+\begin{wrapfigure}{l}{2in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture05.3}
+\end{center}
+\vspace{-30pt}
+\end{wrapfigure}
+\noindent{}Consider the function $f(z)=\sqrt{z}$, then
+$f(z)^{2}=z$. If we extend it on some patchwork, we go around
+this patch work and end up in the shaded region on our original
+domain. This may be seen as doodled on the left. However, the
+resulting extension \emph{is not our beloved $f$!} We do not end
+up with a function with a domain in the plane, no! We see this is
+a Riemann surface!
+
+\medskip
+\noindent\textit{Aside.\enspace} Riemann surfaces are fairly
+interesting as a subject. Note that for the most part, we will be
+working with discs (which are ``the same'' as the upper half
+complex plane). They are homotopically equivalent to spheres with
+finitely many punctures. So, in short, all we care about is how
+do we glue together the discs from analytically continuing a
+given function? Provided, of course, that it does not ``close''
+under continuation.

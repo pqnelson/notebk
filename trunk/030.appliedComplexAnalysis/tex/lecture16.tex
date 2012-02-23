@@ -1,0 +1,142 @@
+%%
+%% lecture16.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Oct  4 14:25:21 2011 alex
+%% Last update Tue Oct  4 14:25:21 2011 alex
+%%
+\begin{wrapfigure}[14]{l}{1.85in}
+\vspace{-24pt}
+\begin{center}
+\includegraphics{img/lecture16.0}
+\end{center}
+\end{wrapfigure}
+\noindent{}We consider the function
+\begin{equation}
+f(x)=\int^{\infty}_{0}\E^{x h(\zeta)}\D\zeta
+\end{equation}
+and we want to consider it for big values of $x$. We see that for
+any $\zeta\not=\zeta_{0}$ that
+\begin{equation}
+\|h(\zeta_{0})-h(\zeta)\|=\alpha
+\end{equation}
+and since $h(\zeta_{0})$ is the location of the maxima of $h$ we
+see
+\begin{equation}
+h(\zeta_{0})-h(\zeta)=-\alpha.
+\end{equation}
+Thus we have
+\begin{equation}
+\E^{xh(\zeta)}\approx\E^{-x\alpha}\approx0
+\end{equation}
+for big $x$. We see that
+\begin{equation}
+f(x)=\int^{\infty}_{0}\E^{xh(\zeta)}\D\zeta\expequiv\int^{\zeta_{0}+\varepsilon}_{\zeta_{0}-\varepsilon}\E^{xh(\zeta)}\D\zeta
+\end{equation}
+which is an exponential equivalence, \emph{not} an
+``asymptotically behaves as''. The \define{Exponential
+  Equivalence} of $f$ and $g$ means that they have the same
+asymptotics, it is considered to be ``very strong''.
+
+\begin{notation}
+We will indicate $f$ is exponentially equivalent to $g$ by the
+notation
+\begin{equation}
+f\expequiv g.
+\end{equation}
+It is odd notation, but it is \emph{our} odd notation!
+\end{notation}
+
+Now, we have assumed that $h$ has an extrema at $\zeta_{0}$, so
+let us Taylor expand about $\zeta_{0}$
+\begin{equation}
+h(\zeta)=h(\zeta_{0})+\frac{1}{2}h''(\zeta_{0})\cdot(\zeta-\zeta_{0})^{2}+\dots,
+\end{equation}
+from just our simple Taylor expansion. We then have
+\begin{subequations}
+\begin{equation}
+f\expequiv
+\int^{\zeta_{0}+\varepsilon}_{\zeta_{0}-\varepsilon}\E^{xh(\zeta)}\D\zeta
+\end{equation}
+as we have discussed, so we change variables $\zeta=\zeta_{0}+z$
+\begin{equation}
+\int^{\zeta_{0}+\varepsilon}_{\zeta_{0}-\varepsilon}\E^{xh(\zeta)}\D\zeta
+\asymptote
+\int^{\varepsilon}_{\varepsilon}\E^{xh(\zeta_{0}+z)}\D z
+\end{equation}
+and then plug in the Taylor expansion of $h$ about $\zeta_{0}$
+(up to second order --- additional orders would be negligible):
+\begin{equation}
+\int^{\varepsilon}_{\varepsilon}\E^{xh(\zeta_{0}+z)}\D z
+\asymptote\int^{\varepsilon}_{\varepsilon}\E^{x[h(\zeta_{0})+h''(\zeta_{0})z^{2}/2]}\D z
+\end{equation}
+and we observe that
+\begin{align}
+\int^{\varepsilon}_{\varepsilon}\E^{x[h(\zeta_{0})+h''(\zeta_{0})z^{2}/2]}\D z
+&= \E^{xh(\zeta_{0})}\int^{\varepsilon}_{\varepsilon}\E^{xh''(\zeta_{0})z^{2}/2}\D z\\
+&= \exp[xh(\zeta_{0})]\sqrt{\pi}/\sqrt{-xh''(\zeta_{0})/2}
+\end{align}
+\end{subequations}
+Thus we conclude
+\begin{equation}
+f(x)\asymptote\frac{\E^{xh(\zeta_{0})}\sqrt{2\pi}}{\sqrt{x}\sqrt{-h''(\zeta_{0})}}
+\end{equation}
+as the asymptotic behavior for $f(x)$.
+
+\begin{wrapfigure}{r}{1in}
+\vspace{-36pt}
+\begin{center}
+\includegraphics{img/lecture16.1}
+\end{center}
+\end{wrapfigure}
+This steepest descent method holds for $f(z)$ provided that $z$
+lies in the sector of $\CC$ where $x>0$ and $y$ is on the right
+hand side. See the shaded part of the diagram to the right for
+details. 
+
+Now we should remember
+\begin{equation}
+h(\zeta)=h(\zeta_{0})+\underbracket[0.5pt]{\frac{1}{2}h''(\zeta_{0})(\zeta-\zeta_{0})^{2}+\dots}_{=-\omega(z)^{2}}
+\end{equation}
+In a reasonable neighborhood of 0, $\omega(z)$ is invertible.
+We have from our computations
+\begin{subequations}
+\begin{align}
+f(x)
+&\expequiv\int^{\varepsilon}_{-\varepsilon}\E^{xh(\zeta_{0}+z)}\D
+z\asymptote\int^{\infty}_{-\infty}\E^{xh(\zeta)}\D\zeta\\
+&=\E^{xh(\zeta_{0})}\int^{\varepsilon}_{-\varepsilon}\E^{-\omega^{2}x}\D z
+\end{align}
+where we have used the fact that $\omega(z)$ is invertible in a
+neighborhood of 0, so we get $z=z(\omega)$ and $\D
+z=z'(\omega)\D\omega$, thus
+\begin{align}
+f(x)&\asymptote \E^{xh(\zeta_{0})}\int^{\varepsilon}_{-\varepsilon}\E^{-\omega^{2}x}\D z\nonumber\\
+&=\E^{xh(\zeta_{0})}\int^{\omega(\varepsilon)}_{\omega(-\varepsilon)}\E^{-\omega^{2}x}z'(\omega)\D\omega
+\end{align}
+Now we suppose that we can power-series expand $z(\omega)=\sum
+a_{n}\omega^{n}$, and thus we obtain
+\begin{align}
+f(x)&\asymptote\E^{xh(\zeta_{0})}\int^{\omega(\varepsilon)}_{\omega(-\varepsilon)}\E^{-\omega^{2}x}z'(\omega)\D\omega\nonumber\\
+&=\E^{xh(\zeta_{0})}\sum^{\infty}_{n=1}\int^{\omega(\varepsilon)}_{\omega(-\varepsilon)}a_{n}n\omega^{n-1}\E^{-\omega^{2}x}\D\omega\\
+&\asymptote\E^{xh(\zeta_{0})}\sum^{\infty}_{n=1}a_{n}n\int^{\infty}_{-\infty}\omega^{n-1}\E^{-\omega^{2}x}\D\omega
+\intertext{and only the even integrands survive, so we get}
+&=\E^{xh(\zeta_{0})}\sum^{\infty}_{n=1}a_{2n-1}(2n-1)\int^{\infty}_{-\infty}\omega^{(2n-1)-1}\E^{-\omega^{2}x}\D\omega
+\end{align}
+\end{subequations}
+We recall that
+\begin{equation}
+\int^{\infty}_{-\infty}t^{n}\E^{-t^{2}}\D t=\underbracket[0.5pt]{\left.\left(\frac{t^{n+1}}{n+1}\right)\E^{-t^{2}}\right|^{+\infty}_{-\infty}}_{=0}+\frac{2}{n+1}\int^{\infty}_{-\infty}\E^{-t^{2}}t^{n+2}\D t
+\end{equation}
+and thus inductively we find
+\begin{equation}
+\int^{\infty}_{-\infty}t^{2m}\E^{-t^{2}}\D t=\frac{(2m)!\sqrt{\pi}}{m!2^{m-1}}.
+\end{equation}
+When we plug this result into the integral, we find precisely
+\begin{equation}
+f(x)\asymptote\E^{xh(\zeta_{0})}\sum^{\infty}_{m=0}a_{2m+1}(2m+1)\frac{(2m)!\sqrt{\pi}}{m!2^{m+1}}
+\end{equation}
+Note that this method is useful when considering the classical
+limit in path integral quantization.

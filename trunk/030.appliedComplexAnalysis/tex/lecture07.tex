@@ -1,0 +1,144 @@
+%%
+%% lecture07.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Oct  1 19:36:14 2011 alex
+%% Last update Sat Oct  1 19:36:14 2011 alex
+%%
+We discussed the Riemann surface of
+\begin{equation}
+h(z)=\sqrt{(z-1)z(z+1)}.
+\end{equation}
+This is doodled thus:
+\begin{center}
+\includegraphics{img/lecture07.0}
+\end{center}
+Consider
+\begin{equation}
+\omega^{3}-\omega+z=0,
+\end{equation}
+we see that
+\begin{equation}
+z=\omega-\omega^{3},
+\end{equation}
+so we may write $z=z(\omega)$. We can invert this to find
+$\omega=\omega(z)$. More generally we can suppose that
+$p(\omega)=z$ and its inverse is $q(z)=\omega$. We can now
+consider the Riemann surface of this function. Consider the graph
+of this function (roughly doodled below to the left).
+
+\begin{wrapfigure}{l}{3in}
+\begin{center}
+\includegraphics{img/lecture07.1}
+\end{center}
+\end{wrapfigure}
+\noindent{}The inverse function has several values, so we get in this
+complex analogue a Riemann surface. From the projection, which is
+multivalued, we have the Riemann surface. In this case for
+$h(z)$, the Riemann surface is homeomorphic to a torus.
+
+The reader should make a mental note on the importance of branch
+cuts in this method of constructing Riemann surfaces. Also note
+that we are projecting onto \emph{Riemann spheres} which are
+distinguished from the notion of \emph{Riemann surfaces}. The
+Riemann sphere is $\CC$ as a sphere, obtained from Stereographic
+projection. 
+
+\begin{prop}[Fact from geometry]
+An orientable, closed, compact surface is homeomorphic to a torus
+(or more generally a sphere with $p$ handles).
+\end{prop}
+
+How do we find the genus of a Riemann surface? (I.e., how do we
+find the value of $p$?) We have $n$ roots, we count how many
+times we glue points together. We subtract the number of boundary
+points of the cuts. So we have
+\begin{equation}
+\chi=2n-\#(\mbox{boundary points of the cuts})
+\end{equation}
+\marginpar{Euler Characteristic of Riemann Surface}which is precisely the Euler characteristic. The genus is
+\begin{equation}
+\frac{2-\chi}{2}=\mbox{genus}.
+\end{equation}
+This is for polynomials, however.
+
+Riemann surfaces are defined for algebraic functions. Consider
+the famous example of the logarithm function, it covers the
+complex plane infinitely many times. When we consider the Riemann
+surface, it's like an infinite Helix. This is the logarithmic
+staircase. See Penrose's \emph{Road to Reality} for a good
+doodle.
+
+\subsection{Reflection Principle}
+
+\begin{wrapfigure}[10]{r}{1.5in}
+\vspace{-50pt}
+\begin{center}
+\includegraphics{img/lecture07.2}
+\end{center}
+\vspace{-40pt}
+\end{wrapfigure}
+We are nonetheless interested in extending functions. We have the
+Reflection principle. We have some domain which contains on the
+boundary part of the $x$ (real) axis.
+We consider some function $f\colon\mathcal{U}\to\CC$, we extend
+$f$ to another function $\widetilde{f}$ on $\mathcal{U}\cup I$
+where $I$ is the real part of $\partial\mathcal{U}$, i.e.,
+$I=\RR\cap\partial\mathcal{U}$. We demand that $\widetilde{f}$ be
+continuous, and demand that $\widetilde{f}|_{I}$ be real. We
+consider the complex conjugation of $\mathcal{U}$, doodled to the
+right, which is $\bar{\mathcal{U}}=\{\bar{z}\lst
+z\in\mathcal{U}\}$. We introduce a function $\widehat{f}$ such
+that
+\[
+\widehat{f}(z) = \begin{cases}
+f(z) & \mbox{if }z\in\mathcal{U}\\
+\overline{f(\bar{z})} & \mbox{if }z\in\bar{\mathcal{U}}\\
+\widetilde{f}(z) & \mbox{if }z\in I.
+\end{cases}
+\]
+We have then $\mathcal{V}=\mathcal{U}\cup
+I\cup\bar{\mathcal{U}}$, and we see that $\widehat{f}$ is
+continuous on $\mathcal{V}$. We see that if $\widehat{f}$ is
+analytic on $\mathcal{U}$, then $\widehat{f}$ is analytic on
+$\bar{\mathcal{U}}$. 
+
+Let $z=x+\I y\in\mathcal{U}$,
+\begin{equation}
+\widehat{f}(x+\I y)=u(x,y)+\I v(x,y)
+\end{equation}
+and for $\overline{z}\in\bar{\mathcal{U}}$ we see we have
+\begin{equation}
+\overline{f(\overline{z})}=u(x,-y)-\I v(x,-y)
+\end{equation}
+By the chain rule we see that $\overline{f(\overline{z})}$ satisfies
+the Cauchy-Riemann equations.
+
+\begin{wrapfigure}[5]{r}{1.25in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture07.3}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+\medbreak\noindent\textbf{A General Statement.\enspace}
+We will use the diagrams doodled on the right for reference.
+Consider $\varphi\colon W\to\CC$ such that $\varphi$ is
+continuous on $W$. If $\varphi|_{W_{1}}$ and
+$\bar{\varphi}|_{W_{2}}$ are analytic, then $\varphi$ is analytic
+on $W$.
+
+\begin{lem}
+Suppose we have in some domain $\mathcal{U}$ a continuous
+function $$f\colon\mathcal{U}\to\CC.$$ Let $\gamma\colon
+I\to\mathcal{U}$ be a continuous, closed curve, and for any such $\gamma$
+that is simply connected, i.e., $$\int_{\gamma}f(z)\D z=0.$$ Then the
+function is analytic.
+\end{lem}
+
+We see that the integral over a closed, simply connected path is
+zero if its contained entirely in $W_{1}$ or $W_{2}$. We just
+need to check for a path that crosses $\gamma$, we just treat it
+by breaking it up into pieces.

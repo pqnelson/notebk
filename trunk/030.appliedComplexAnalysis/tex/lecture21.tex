@@ -1,0 +1,111 @@
+%%
+%% lecture21.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 11:56:20 2011 alex
+%% Last update Wed Oct  5 11:56:20 2011 alex
+%%
+Now, last time we covered the inverse Laplace transform. Let
+$F(z)$ be analytic in $\CC$ with possibly only finitely many
+poles. Then $F=\widetilde{f}$, and we obtain the original
+function by
+\begin{equation}
+f(t)=\sum\left(\mbox{Residues of }\E^{tz}F(z)\right)
+\end{equation}
+The poles of this function comes entirely from $F(z)$ since
+$\E^{tz}$ has no poles. We suppose that $F(z)$ is analytic on
+$\CC$ except for a finite number of isolated singularities and
+for some $\sigma\in\RR$ we have $F$ be analytic on the plane
+$\{z\in\CC\lst\re(z)>\sigma\}$. 
+
+The requirements: there are 3 positive constants $M$, $R$,
+$\beta>0$ such that if $\|z\|>R$ then
+\begin{equation}
+\|F(z)\|<\frac{M}{\|z\|^{\beta}}=M(\|z\|^{-\beta})
+\end{equation}
+This is some contour integral with the requirement as
+$\|z\|\to\infty$, then on the boundary $\|F(z)\|$ is ``really
+small''. 
+
+\begin{wrapfigure}{l}{1.45in}
+\vspace{-24pt}
+\begin{center}
+\includegraphics{img/lecture21.0}
+\end{center}
+\vspace{-36pt}
+\end{wrapfigure}
+What do we do? We create a rectangle $\Gamma$ which is big enough
+to contain all the singularities of $F$. This is doodled to the
+left, the $\times$ indicates singularities of $F$.
+We break up $\Gamma$ into two bits $\gamma$ which contains all
+the singularities and $\widetilde{\gamma}$ which is everything
+else. 
+
+We see since all the singularities live inside $\gamma$ that
+\begin{equation}
+\int_{\gamma}\E^{zt}F(z)\D{z}=2\pi\I f(t)
+\end{equation}
+How can we check that this is correct?
+
+We take its Laplace transform
+\begin{equation}
+2\pi\I\widetilde{f}(z)=\int^{\infty}_{0}\E^{-zt}\left[\int_{\gamma}\E^{\zeta t}F(\zeta)\D\zeta\right]\D{t}
+\end{equation}
+and change the order of integration
+\begin{equation*}
+2\pi\I\widetilde{f}(z)=\int_{\gamma}\int^{\infty}_{0}\E^{-zt}\E^{\zeta t}F(\zeta)\D\zeta\D{t}.
+\end{equation*}
+This is a little bit sloppy, it is really
+\begin{equation}
+2\pi\I\widetilde{f}(z)=\lim_{r\to\infty}\int_{\gamma}\int^{r}_{0}\E^{-zt}\E^{\zeta t}F(\zeta)\D\zeta\D{t}
+\end{equation}
+We then evaluate the integral and we find
+\begin{equation}
+\begin{split}
+2\pi\I\widetilde{f}(z)&=\lim_{r\to\infty}\int_{\gamma}\left(\E^{(\zeta-z)r}-1\right)\frac{F(\zeta)}{\zeta-z}\D\zeta\\
+&=\int_{\gamma}F(\zeta)\left[\frac{-1}{\zeta-z}\right]\D\zeta
+\end{split}
+\end{equation}
+We want to show that $F(z)=\widetilde{f}(z)$. 
+
+We use the fact that
+\begin{equation}
+\int_{\gamma}(\dots)=\int_{\Gamma}(\dots)+\int_{\widetilde{\gamma}}(\dots)
+\end{equation}
+to deduce
+\begin{subequations}
+\begin{align}
+-2\pi\I\widetilde{f}(z)
+&=-\int_{\gamma}\frac{F(\omega)}{\omega-z}\D\omega\\
+&=-\int_{\Gamma}\frac{F(\omega)}{\omega-z}\D\omega-\int_{\widetilde{\gamma}}\frac{F(\omega)}{\omega-z}\D\omega\\
+&=-\int_{\Gamma}\frac{F(\omega)}{\omega-z}\D\omega-2\pi\I F(z)
+\end{align}
+\end{subequations}
+and we see that
+\begin{equation}
+\int_{\Gamma}\frac{F(\omega)}{\omega-z}\D\omega\approx 0
+\end{equation}
+when $\|\omega-z\|\sim R$ and $R$ becomes huge, we basically
+divide by ``infinity''. So we have $\widetilde{f}=F$.
+
+\begin{rmk}
+The derivative is convolution with the derivative of the delta
+function. 
+\end{rmk}
+
+
+This theorem has many corollaries. We see
+\begin{equation}
+f(t)=\sum(\mbox{residues }\E^{tz}F(z))
+\end{equation}
+so we can write this as an integral (thanks to the Residue
+theorem)
+\begin{equation}
+f(t)=\frac{1}{2\pi\I}\int^{a+\I\infty}_{a-\I\infty}\E^{zt}F(z)\D{z}
+\end{equation}
+This formula is very close to the Laplace transform, and we
+derived various properties of the Laplace transform using only
+integration by parts (which means the inverse transform has
+analogous properties).

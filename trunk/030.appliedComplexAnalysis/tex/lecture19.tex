@@ -1,0 +1,107 @@
+%%
+%% lecture19.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 11:02:21 2011 alex
+%% Last update Wed Oct  5 11:02:21 2011 alex
+%%
+
+\begin{wrapfigure}{l}{0.9in}
+\vspace{-24pt}
+\begin{center}
+\includegraphics{img/lecture19.0}
+\end{center}
+\end{wrapfigure}
+\noindent{}Lets continue on the Laplace transform. Consider
+\begin{equation}
+f\colon(0,\infty)\to\RR.
+\end{equation}
+The expression 
+\begin{equation}
+\widetilde{f}(z)=\int^{\infty}_{0}\E^{-tz}f(t)\D t
+\end{equation}
+it converges for mild conditions on $f$, namely it should
+satisfy
+\begin{equation}
+\|f(t)\|<A\exp(Bt)
+\end{equation}
+where $A,B\in\RR\setminus\{0\}$. We demand
+\begin{equation}
+\re(z)>B
+\end{equation}
+and the imaginary part of $z$ won't affect convergence. Then we
+are working with the half of the complex plane doodled to the left.
+
+Now last time we considered for $f\in C^{\infty}(0,\infty)$ and
+\begin{equation}
+\|f^{(n)}(t)\|\leq A_{n}\exp(B_{n}t)
+\end{equation}
+the asymptotics for its Laplace transform is
+\begin{equation}
+\widetilde{f}(x)\asymptote\frac{1}{x}f(0)+\frac{1}{x^{2}}f'(0)+\dots+\frac{1}{x^{n+1}}f^{(n)}(0)+\frac{1}{x^{n+1}}\int^{\infty}_{0}\E^{-xt}f^{(n+1)}(t)\D{}t.
+\end{equation}
+If $g=f'$, and we know $\widetilde{f}$, how can we express
+$\widetilde{g}$? Well, we go back to the definition of the
+Laplace transform
+\begin{subequations}
+\begin{align}
+\widetilde{g}(z) &= \int^{\infty}_{0}\E^{-tz}g(t)\D t\\
+&=\int^{\infty}_{0}\E^{-tz}f'(t)\D t\\
+\intertext{integrate by parts}
+&=\E^{-tz}f(z)|^{\infty}_{0}-\int^{\infty}_{0}f(t)\left(\frac{\D}{\D{}z}\E^{-tz}\right)\D{}t\\
+&=0-f(0)+z\int^{\infty}_{0}f(t)\E^{-tz}\D t\\
+&=-f(0)+z\widetilde{f}(z)
+\end{align}
+\end{subequations}
+This is the relation between $\widetilde{f}(z)$ and $\widetilde{g}(z)$.
+
+Consider
+\begin{equation}
+g(t)=f(t)\E^{-at}
+\end{equation}
+for some $a\in\CC$. This is Laplace transformed into a shift
+\begin{subequations}
+\begin{align}
+\widetilde{g}(z) &=\widetilde{f}(z+a)\\
+&=\int^{\infty}_{0}\E^{-tz}\E^{-at}f(t)\D t\\
+&=\int^{\infty}_{0}\E^{-t(z+a)}f(t)\D t\\
+\intertext{let $\widetilde{z}=z+a$}
+&=\int^{\infty}_{0}\E^{-t\widetilde{z}}f(t)\D t\\
+&=\widetilde{f}(\widetilde{z})=\widetilde{f}(z+a)
+\end{align}
+\end{subequations}
+Consider
+\begin{equation}
+g(t)=\begin{cases}0 & \mbox{if }t\leq-a\\
+f(t+a)&\mbox{if }t\geq-a
+\end{cases}
+\end{equation}
+we see then that
+\begin{equation}
+\widetilde{g}(z)=\widetilde{f}(z)\E^{-az}
+\end{equation}
+If we have $h(t)$ defined such that
+\begin{equation}
+\widetilde{h}(z)=\widetilde{f}(z)\widetilde{g}(z)
+\end{equation}
+What $h(t)$ could do this? A convolution of $f$ and $g$, that is
+\begin{equation}
+h(t)=(f*g)(t)=\int^{\infty}_{0}f(t-\tau)g(\tau)\D\tau
+\end{equation}
+Suppose that $g$ is bounded and 
+\begin{equation}
+f(x)=\frac{1}{\varepsilon}
+\end{equation}
+when $x\in(-\varepsilon,\varepsilon)$ for ``small'' $0<\varepsilon\lll1$.
+Then we have
+\begin{subequations}
+\begin{align}
+\int^{\infty}_{0}f(t-\tau)g(\tau)\D\tau
+&=\int^{t+\varepsilon}_{t-\varepsilon}f(t-\tau)g(\tau)\D\tau\\
+&\approx\frac{1}{2\varepsilon}(g(t+\varepsilon)+g(t-\varepsilon))\\
+&\approx g(t)\mbox{ as }\varepsilon\to0.
+\end{align}
+\end{subequations}
+That concludes today's lecture.

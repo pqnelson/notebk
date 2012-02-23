@@ -1,0 +1,160 @@
+%%
+%% lecture15.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Oct  4 10:39:13 2011 alex
+%% Last update Tue Oct  4 10:39:13 2011 alex
+%%
+
+A function (for us a meromorphic function of a complex variable)
+may be written asymptotically as
+\begin{equation}
+f(z)\asymptote a_{0}+\frac{a_{1}}{z}+\frac{a_{2}}{z^{2}}+\frac{a_{3}}{z^{3}}+\dots
+\end{equation}
+Our example from last time was
+\begin{equation}
+\Gamma(z+1)\asymptote\sqrt{2\pi z}\left(\frac{z}{\E}\right)^{z}\left(1+\frac{1}{12z}+\dots\right)
+\end{equation}
+First, the series diverges in many important cases; and second,
+the behavior at the poles is misleading.
+
+\begin{wrapfigure}{l}{1in}
+\vspace{-24pt}
+\begin{center}
+\includegraphics{img/lecture15.0}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+We make our first assumption, $\Gamma(z)\asymptote\sqrt{2\pi
+  z}(\dots)$ holds \emph{NOT} for all values of $z$ but for a
+sector. That is, we confine the argument of $z$ to satisfy
+\begin{equation}
+\alpha\leq\arg(z)\leq\beta
+\end{equation}
+We then commit our second assumption that we deal with a finite
+sum
+\begin{equation}
+S_{N}=a_{0}+\frac{a_{1}}{z}+\dots+\frac{a_{N}}{z^{N}}
+\end{equation}
+we demand that
+\begin{equation}
+\lim_{\|z\|\to\infty}\|z\|^{N}\cdot\|f(z)-S_{N}\|=0.
+\end{equation}
+So for each $\varepsilon>0$ there exists a $R_{N}>0$ such that if
+$\alpha\leq\arg(z)\leq\beta$ and $\|z\|\geq R_{N}$ implies
+\begin{equation}
+\|f(z)-S_{N}\|<\frac{\varepsilon}{\|z\|^{N}}
+\end{equation}
+
+\begin{wrapfigure}{r}{1in}
+\vspace{-24pt}
+\begin{center}
+\includegraphics{img/lecture15.1}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+Within a portion of a sector the asymptotic formula is very
+good. Outside of it, it becomes a bad approximation. This is
+doodled on the right where the gray region is when $S_{N}$ is
+very good.
+
+Consider an example
+\begin{equation}\label{eq:lecture15:theintegral}
+f(x)=\int^{\infty}_{x}t^{-1}\E^{x-t}\D t,
+\end{equation}
+now consider the formula
+\begin{equation}\label{eq:lecture15:thesum}
+f(x)\asymptote\frac{1}{x}-\frac{1}{x^{2}}+\frac{2!}{x^{3}}
+-\frac{3!}{x^{4}}+\frac{4!}{x^{5}}+\cdots
+\end{equation}
+This is the canonical example of the series with a radius of
+convergence being zero.
+
+We will now show how to relate the two, or more precisely how to
+go from the integral, Eq \eqref{eq:lecture15:theintegral}, to the
+sum, Eq \eqref{eq:lecture15:thesum}. We write
+\begin{equation}
+f(x) = \int^{\infty}_{x}t^{-1}\E^{x-t}\D t
+\end{equation}
+and integrate by parts letting
+\begin{equation}
+u=t^{-1}\quad\mbox{and}\quad \D v=\E^{x-t}\D t
+\end{equation}
+thus
+\begin{equation}
+\begin{split}
+f(x)&=\left.-t^{-1}\E^{x-t}\right|^{\infty}_{x}-\int^{\infty}_{x}t^{-2}\E^{x-t}\D t\\
+&=x^{-1}\E^{x-x}-\int^{\infty}_{x}t^{-2}\E^{x-t}\D t
+\end{split}
+\end{equation}
+So we can simplify
+\begin{equation}
+f(x)=\frac{1}{x}-\int^{\infty}_{x} t^{-2}\E^{x-t}\D t
+\end{equation}
+and by iterating we obtain
+\begin{equation}
+f(x)=\frac{1}{x}-\frac{1}{x^{2}}+\frac{2!}{x^{3}}-\frac{3!}{x^{4}}+\dots+\frac{(-1)^{n-1}(n-1)!}{x^{n}}+\underbracket[0.5pt]{(-1)^{n}n!\int^{\infty}_{x} t^{-(n+1)}\E^{x-t}\D t}_{\text{remainder term}}
+\end{equation}
+We will not show, but writing $(t/x)^{-1}$ instead of $t$, we get
+the remainder term being bounded by $n!/x$. So if $x$ is really
+big, written
+\begin{equation}
+x\gg n!
+\end{equation}
+we have a fairly good approximation within a sector. So fro more
+terms in this asymptote, the smaller the domain for convergence.
+
+We have two things left to discuss today. First the method of
+steepest descent. This may be considered a generalization of
+Student's formula.
+\begin{rmk}
+We wrote $f(x)\asymptote a_{0}+\frac{a_{1}}{x}+\dots$, we should
+write more generally that $f(x)\asymptote g(x)(a_{0}+\dots)$, so
+we consider
+\begin{equation}
+\lim_{x\to\infty}\frac{f(x)}{g(x)}=a_{0},
+\end{equation}
+and this first term usually contains a lot of information.
+\end{rmk}
+The following has nothing to do with complex analysis: it is
+absolutely real.
+
+\begin{wrapfigure}{r}{0.9in}
+\vspace{-24pt}
+\begin{center}
+\includegraphics{img/lecture15.2}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+We have some function $h\colon(0,\infty)\to\RR$, we will consider
+\begin{equation}
+f(z)=\int^{\infty}_{0}\E^{zh(t)}\D t
+\end{equation}
+We suppose it converges. Our conditions is that $h(t)$ has a
+maximum at $t_{0}$, $h'(t_{0})=0$ and $h''(t_{0})<0$.
+We plot $h(t)$ to the right, with maximum at $t_{0}$. So then we
+find
+\begin{equation}
+f(x)\asymptote\left(\frac{\E^{x-h(t_{0})}\sqrt{2\pi}}{\sqrt{x}\sqrt{-h''(t_{0})}}\right)
+\end{equation}
+This generalizes Stirling's formula. How? Well, observe
+\begin{subequations}
+\begin{align}
+\Gamma(x+1) &= \int^{\infty}_{0}t^{x}\E^{-t}\D t\\
+\intertext{change variables $xu=t$ so $x\D u=\D t$, thus}
+&=\int^{\infty}_{0}(xu)^{x}\E^{-xu}x\D u\\
+&=x^{x+1}\int^{\infty}_{0}u^{x}\E^{-xu}\D u\\
+&= x^{x+1}\int^{\infty}_{0}\exp\left(x\big(\ln(u)-u\big)\right)\D
+u
+\end{align}
+\end{subequations}
+where we let $h(u):=\ln(u)-u$. We end up with
+\begin{equation}
+\begin{split}
+\frac{\Gamma(x+1)}{x^{x+1}} &=\int^{\infty}_{0}\E^{x(\ln(u)-u)}\D u\\
+&\asymptote\frac{\E^{-(x+1)}\sqrt{2\pi}}{\sqrt{x}\sqrt{1}}
+\end{split}
+\end{equation}
+thus we get Stirling's formula back entirely.

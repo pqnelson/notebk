@@ -1,0 +1,162 @@
+%%
+%% lecture10.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Oct  3 09:38:25 2011 alex
+%% Last update Mon Oct  3 09:38:25 2011 alex
+%%
+Today, we are going to prove a couple of theorems.
+\begin{thm}
+Suppose we have an analytic function in some domain ${\cal U}$
+which is injective (at least locally). So $f\colon{\cal U}\to\CC$
+is injective, then $f'(z)\not=0$ for all $z\in{\cal U}$. 
+\end{thm}
+Note that this is not true for real analysis.
+\begin{proof}
+Suppose for contradiction this is not true. So $f'(z_{0})=0$ for
+some $z_{0}\in{\cal U}$, we have $g(z)=(f(z)-f(z_{0}))$ be zero at
+$z_{0}$ and its derivative is zero. It's a double zero, at least
+at $z_{90}$. This implies there is a neighborhood around $z_{0}$,
+  $d$ the disc with boundary $\gamma$ such that neither $g(z)$
+  nor $g'(z)$ is zero in the neighborhood. There exists an $a$
+  such that
+\begin{equation}
+0<a<\inf_{z\in\gamma}\|f(z)-f(z_{0})\|
+\end{equation}
+Consider
+\begin{equation}
+h(z)=f(z)-f(z_{0})-a
+\end{equation}
+By Rouch\'e's theorem, $h(z)$ has at least two zeroes. So $h$ has
+precisely $k$ zeroes within the disc. If for a $z\in d$, $h(z)=0$
+but its derivative $h'(z)\not=0$ is nonvanishing (we see in fact
+$h(z_{0})=-a\not=0$), it follows that all zeroes are different
+\begin{equation}
+h(z)=0\implies f(z)=f(z_{0})+a=\mbox{constant}.
+\end{equation}
+This contradicts the premise that $f(z)$ is injective, we reject
+our initial supposition.
+\end{proof}
+
+\begin{thm}
+Let $f\colon{\cal U}\to\CC$ be nonconstant, analytic such that
+for some $z_{0}\in{\cal U}$, $f(z_{0})=a$, then $f-a$ has a zero
+of multiplicity $k$ at $z_{0}$.
+\end{thm}
+
+Consider 
+\begin{equation}
+\zeta(s) = \sum^{\infty}_{n=1}n^{-s}
+\end{equation}
+We know $\zeta(2k)$ is related to the Bernoulli numbers. Try to
+do the computation. We will discuss it next time.
+
+Consider infinite products $\prod a_{n}$, we consider the partial
+products
+\begin{equation}
+p_{n}=\prod^{n}_{k=1}a_{k}
+\end{equation}
+If
+\begin{equation}
+\lim_{n\to\infty}p_{n}=p
+\end{equation}
+exists and is finite, then
+\begin{equation}
+\prod^{\infty}_{n=1}a_{n}=p.
+\end{equation}
+It is tempting to say this. But consider
+\begin{equation}
+\begin{split}
+\prod^{\infty}_{n=2}\left(1-\frac{1}{n}\right)&=\lim_{N\to\infty}\frac{1}{2}\frac{2}{3}\frac{3}{4}\dots\frac{N-1}{N}\\
+&=\lim_{N\to\infty}\frac{1}{N}=0
+\end{split}
+\end{equation}
+Is this true? No! The product diverges.
+
+Suppose
+\begin{equation}
+\prod^{\infty}_{n=1}a_{n}\quad\mbox{and}\quad a_{n}\not=0\mbox{ for all }n
+\end{equation}
+and further suppose
+\begin{equation}
+\lim_{N\to\infty}\prod^{N}_{n=1}a_{n}\not=0.
+\end{equation}
+We could argue that it converges. If we extend this to include
+finitely many $a_{n}=0$, but after some $m$ all $a_{n}\not=0$ for
+$n\geq m$, then
+\begin{equation}
+\lim_{N\to\infty}\prod^{N}_{n=m}a_{n}\not=0.
+\end{equation}
+We just start from where $a_{n}$ will not be zero.
+
+Consider
+\begin{equation}
+\prod^{\infty}_{n=1}(1+z_{n})
+\end{equation}
+and suppose $z_{n}\not=-1$ for all $n$. Suppose this converges
+\begin{equation}
+\prod^{N}_{n=1}(1+z_{n})\to p
+\end{equation}
+so it is also true that
+\begin{equation}
+\prod^{N}_{n=1}\|1+z_{n}\|\to\|p\|.
+\end{equation}
+We write
+\begin{equation}
+\sum^{N}_{n=1}\log\|1+z_{n}\|\to\log\|p\|
+\end{equation}
+so it means
+\begin{equation}
+S_{N}=\sum^{N}_{n=1}\log\|1+z_{n}\|
+\end{equation}
+converges. But for the sum to converge, the summands form a
+sequence which converge to zero, i.e.,
+\begin{equation}
+\lim_{n\to\infty}\log\|1+z_{n}\|=0.
+\end{equation}
+But this happens if and only if
+\begin{equation}
+\|1+z_{n}\|\to 1.
+\end{equation}
+How interesting!
+
+Euler showed that
+\begin{equation}
+\sin(z)=z\prod^{\infty}_{n=1}\left(1-\frac{z^{2}}{n^{2}\pi^{2}}\right),
+\end{equation}
+the zeroes of since are $0$, $\pm\pi$, $\pm2\pi$, \dots, $\pm
+k\pi$, \dots; we could write this out as a product:
+\begin{subequations}
+\begin{align}
+z(z-\pi)(z+\pi)(z-2\pi)(z+2\pi)(\dots) &=
+z(z^{2}-\pi^{2})(z^{2}-(2\pi)^{2})(\dots)\label{eq:lecture10:zetaStep1} \\
+&= z\left(\frac{z^{2}}{\pi^{2}}-1\right)\left(\frac{z^{2}}{2^{2}\pi^{2}}-1\right)(\dots)\label{eq:lecture10:zetaStep2}\\
+&= \sum^{\infty}_{n=0}\frac{(-1)^{n}z^{2n+1}}{(2n+1)!}
+\end{align}
+\end{subequations}
+where the last step is justified by setting equals to equals (the
+product definition of sine to the Taylor series definition of
+sine). 
+\begin{rmk}
+Note that going from Eq \eqref{eq:lecture10:zetaStep1} to
+Eq \eqref{eq:lecture10:zetaStep2} is a little confusing for neophytes
+(read: the author). However, it is a common trick to write it in
+this form so the infinite product looks like
+\begin{equation}
+\sin(\dots)=z_{0}\prod_{n}(1-z_{n})
+\end{equation}
+which is the form of the infinite product we study thoroughly!
+\end{rmk}
+We may set terms of the same power equal to each other, we
+find
+\begin{subequations}
+\begin{align}
+\sum^{\infty}_{n=1}\frac{1}{\pi^{2}n^{2}}&=\frac{1}{3!}\\
+\sum^{\infty}_{n=1}\frac{1}{\pi^{4}n^{4}}&=\frac{1}{5!}
+\end{align}
+\end{subequations}
+and so on. How do we get this? Well, it has to do with picking
+the terms intelligently from the infinite product. 
+

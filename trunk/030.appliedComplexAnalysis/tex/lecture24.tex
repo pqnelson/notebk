@@ -1,0 +1,52 @@
+%%
+%% lecture24.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Oct  6 14:39:19 2011 alex
+%% Last update Thu Oct  6 14:39:19 2011 alex
+%%
+We will cover multiple complex variables, and analytic
+continuation. First the last.
+
+\begin{wrapfigure}{l}{1.05in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture24.0}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+We have some boundary, and a function defined inside the
+region. When can it not be extended beyond the region. Well,
+consider one point, what function cannot be extended to $z_{1}$?
+Well, $1/(z-z_{1})$. For $n$ points $z_{1}$, \dots, $z_{n}$ we
+could have
+\begin{equation}
+f(z)=\sum_{k=1}^{n}\frac{1}{z-z_{k}}
+\end{equation}
+We could replace it by an integral on the boundary, but that'd be
+hard. Why not take an infinite sum? Well, why not work with a
+dense (countable) set of points on the boundary? This approach is
+better, since it's countable. We take $\{z_{k}\}$ to be dense in
+the boundary of the region. We can write out the sum
+\begin{equation}
+f(z)=\sum^{\infty}_{k=1}\frac{1}{z-z_{k}}
+\end{equation}
+but it won't converge. We then generalize this to
+\begin{equation}
+f(z)=\sum^{\infty}_{k=1}\frac{a_{k}}{z-z_{k}}
+\end{equation}
+where $\{a_{k}\}$ is a sequence rapidly decreasing. Although it'd
+converge on the interior of the region, there is no guarantee for
+convergence on the boundary.
+
+We then specify
+\begin{equation}
+a_{n}=2^{-n}\min_{m<n}(1,\|z_{m}-z_{n}\|)
+\end{equation}
+and so on the boundary we have 1 singular point and a sum
+\begin{equation}
+\sum^{\infty}_{k\not=n}\frac{a_{k}}{z-z_{k}}<\sum^{\infty}_{k\not=n}2^{-k}
+\end{equation}
+which converges.
