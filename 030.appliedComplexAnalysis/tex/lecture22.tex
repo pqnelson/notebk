@@ -1,0 +1,57 @@
+%%
+%% lecture22.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 13:26:12 2011 alex
+%% Last update Wed Oct  5 13:26:12 2011 alex
+%%
+The two fields of interest were really (1) Riemann surfaces, (2) the
+theory of conformal mappings. Geometry merely refers to measuring
+lengths and angles. We will briefly discuss the Riemann zeta
+function. First recall the fundamental theorem of arithmetic
+\begin{thm}[Arithmetic's Fundamental]
+If $m$ is a positive integer, it can be written uniquely (up to
+order of factors) as a product of prime numbers
+\begin{equation}
+m = p_{1}^{q_{1}}(\dots)p_{k}^{q_{k}}
+\end{equation}
+where $p_{1}$, \dots, $p_{k}$ are all distinct primes.
+\end{thm}
+Now, the Riemann zeta function
+\begin{equation}
+\zeta(s)=\sum^{\infty}_{n=1}\frac{1}{n^{s}}
+\end{equation}
+can be analytically continued to $\CC\setminus\{1\}$. We see
+that, by the fundamental theorem of arithmetic, we may group
+terms
+\begin{equation}
+\left(1+\frac{1}{2^{s}}+\frac{1}{2^{2s}}+\dots\right)\left(1+\frac{1}{3^{s}}+\dots\right)\left(1+\frac{1}{5^{s}}+\dots\right)(\dots)=\zeta(s)
+\end{equation}
+This is just from 
+\begin{equation}
+\sum\frac{1}{n^{s}}=\sum\frac{1}{(p_{1}^{k_{1}}\dots p_{m}^{k_{m}})^{s}}
+\end{equation}
+and thus\marginpar{Euler Product}
+\begin{equation}
+\zeta(s) = \prod_{\text{prime }p}\frac{1}{\left(1-\displaystyle\frac{1}{p^{s}}\right)}=\prod\frac{p^{s}}{p^{s}-1}=\prod\left(1+\frac{1}{p^{s}-1}\right)
+\end{equation}
+This is the \define{Euler Product}. We can represent it as an
+integral, first note the notation $[x]$ for the integer part of
+$x$, then
+\begin{subequations}
+\begin{align}
+\zeta(s) &=\left[\int^{1}_{0}\frac{x^{s-1}}{\E^{x}-1}\D x\right]\frac{1}{\Gamma(s)}\\
+&=s\int^{\infty}_{0}\frac{[x]}{x^{s+1}}\D x\\
+&=\left(\frac{s}{s-1}\right)-s\int^{\infty}_{0}\frac{x-[x]}{x^{s+1}}\D
+x
+\end{align}
+\end{subequations}
+which converges for $\re(s)>0$ which is an extension of the
+preceding integral. So we obtain a functional relationship
+\begin{equation}\label{eq:reflectionPrincipleForZeta}
+\zeta(s)=2^{s}\pi^{s-1}\sin\left(\frac{s\pi}{2}\right)\Gamma(1-s)\zeta(1-s)
+\end{equation}
+and with this functional relationship we may uniquely extend the
+zeta function to a larger domain.

@@ -1,0 +1,191 @@
+%%
+%% lecture09.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Oct  2 17:52:21 2011 alex
+%% Last update Sun Oct  2 17:52:21 2011 alex
+%%
+\marginpar{A meromorphic map is
+  $f\colon\mathcal{U}\to\CC\cup\{\infty\}$, or the ratio of two
+  holomorphic functions.}We have an analytic function $f\colon\mathcal{U}\to\CC$ (or more
+precisely meromorphic), $\mathcal{U}$ is simply connected, and
+$\gamma$ is an oriented closed curve in $\mathcal{U}$ that
+doesn't pass through poles or zeroes, we stated
+\begin{equation}
+\int_{\gamma}\frac{f'(z)}{f(z)}\D z=2\pi\I\left(
+\sum_{{\text{zeroes }a}}I(\gamma,a)-\sum_{\mathclap{\text{poles }b}}I(\gamma,b)
+\right)
+\end{equation}
+\begin{rmk}
+Remember $\gamma$ does not pass through any zeroes or poles of $f$.
+\end{rmk}
+For a point $z_{0}$, we have ``locally''
+\begin{equation}
+f(z)=(z-z_{0})^{k}\varphi(z)
+\end{equation}
+for some nonzero $k\in\ZZ$ and an analytic $\varphi(z)$ with
+neither pole nor zero at $z_{0}$. For $k>0$, we see that $z_{0}$ is
+a zero of $f$, and for $-k<0$ that $f$ has a pole at $z_{0}$. So
+we can see that
+\begin{subequations}
+\begin{align}
+\frac{f'(z)}{f(z)} &=
+\frac{k(z-z_{0})^{k-1}\varphi(z)+(z-z_{0})^{k}\varphi'(z)}{(z-z_{0})^{k}\varphi(z)}\\
+&=\frac{k}{z-z_{0}}+\frac{\varphi'(z)}{\varphi(z)}
+\end{align}
+\end{subequations}
+We see that $k$ is the residue of $f'(z)/f(z)$ at $z_{0}$, so by
+our theorem we have
+\begin{equation}
+\int_{\gamma}\frac{f'(z)}{f(z)}\D z=2\pi\I\left(
+\sum_{\substack{\text{distinct}\\\text{zeroes}\\a}}\mu(a)I(\gamma,a)
+-\sum_{\substack{\text{distinct}\\\text{poles}\\b}}\mu(b)I(\gamma,b)
+\right)
+\end{equation}
+For the winding path, we have the following rule for each intersection of
+the curve:
+\begin{center}
+\includegraphics{img/lecture09.0}
+\end{center}
+\begin{comment}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ex}
+So for example consider
+\begin{center}
+\includegraphics{img/lecture09.1}
+\end{center}
+\end{ex}
+\end{comment}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent{}We have this integral also be, by the fundamental theorem of
+calculus,
+\begin{equation}
+\int_{\gamma}\frac{f'(z)}{f(z)}\D z=\int_{\gamma}\D\log(z)
+\end{equation}
+but beware! The logarithm is \emph{multivalued}. We see that
+\begin{equation}
+\log(\omega)=\log\|\omega\|+\I\arg(\omega).
+\end{equation}
+So we use a notation
+\begin{equation}
+\begin{split}
+\int_{\gamma}\D\log(f(z))&=\Delta_{\gamma}\underbracket[0.5pt]{\log\|f(z)\|}_{\mathclap{\text{no change if $\gamma$ is closed, so it's 0}}}+\I\Delta_{\gamma}\arg(f(z))\\
+&= \I\Delta_{\gamma}\arg(f(z))
+\end{split}
+\end{equation}
+We can then write
+\begin{equation}
+\begin{split}
+&\I\Delta_{\gamma}\arg(f(z))=2\pi\I(\sum I(\gamma,a)-\sum
+  I(\gamma,b))\\
+\implies&\Delta_{\gamma}\arg(f(z))=2\pi(\sum I(\gamma,a)-\sum
+  I(\gamma,b))
+\end{split}
+\end{equation}
+We can write
+\begin{equation}
+\gamma\colon I\to\CC
+\end{equation}
+which is $\gamma$ given parametrically, then write $f\circ\gamma$
+or $f(\gamma(t))$.
+If we integrate over $I$ we get back $2\pi$ times a number. We
+can write, then, 
+\begin{equation}
+\begin{diagram}[small]
+\Delta_{\gamma}\arg(f(z)) & \rEq & 2\pi(\sum I(\gamma,a) - \sum I(\gamma,b))\\
+\dEq & & \\
+2\pi I(f\circ\gamma,0) & &
+\end{diagram}
+\end{equation}
+If $\gamma$ is a simple curve, we can write
+\begin{equation}
+\begin{split}
+I(f\circ\gamma,0) &=
+\begin{pmatrix}
+\text{zeroes}\\
+\text{within}\\
+\text{the bdry}
+\end{pmatrix}
+-
+\begin{pmatrix}
+\text{poles}\\
+\text{within}\\
+\text{the bdry}
+\end{pmatrix}\\
+&= Z-P
+\end{split}
+\end{equation}
+Recall a simple curve is any nonintersecting curve.
+
+\subsection{Rouch\'e's Theorem}
+
+Suppose that in a simply connected domain $\mathcal{U}$ we have
+meromorphic functions
+\begin{equation}
+f,g\colon\mathcal{U}\to\CC
+\end{equation}
+let
+\begin{equation}
+\|f(z)-g(z)\|<\|f(z)\|\quad\forall z\in\gamma
+\end{equation}
+where $\gamma$ is an oriented closed curve in $\mathcal{U}$. Then
+\begin{equation}
+\Delta_{\gamma}\arg(f)=\Delta_{\gamma}\arg(g)
+\end{equation}
+is our claim.
+
+\begin{wrapfigure}[12]{r}{2.8in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture09.4}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+What this means is $f\circ\gamma$ has a curve in $\CC$ and for
+some $f(z)\in f\circ\gamma$, we have $g(z)$ in a disc of radius
+$\|f(z)\|$. We wish to argue that the distance from
+$f(\gamma(t))$ to $g(\gamma(t))$ is less than the distance from
+$f(\gamma(t))$ to the origin. So we have the inequality
+$\|f(\gamma(t))-g(\gamma(t))\|<\|f(\gamma(t))\|$. This situation
+is doodled to the right, where the dark red line indicates the
+line from $f(\gamma(t))$ to the origin, and the dark blue line
+indicates the distance from $f(\gamma(t))$ to $g(\gamma(t))$.
+
+Now every domain in math has a cherished proof of the fundamental
+theorem of algebra, we now have the tools to prove it. Let
+\begin{equation}
+f(z) = z^{n}+a_{n-1}z^{n-1}+\dots+a_{1}z+a_{0}
+\end{equation}
+and
+\begin{equation}
+g(z)=z^{n}.
+\end{equation}
+Now we take
+\begin{equation}
+\|f(z)-g(z)\| =
+\|a_{n-1}z^{n-1}+\dots+a_{0}\|\leq\|a_{n-1}\|\cdot\|z^{n-1}\|+\dots+\|a_{0}\|
+\end{equation}
+then for some radius $R$ we consider the curve 
+\begin{equation}
+\gamma=\{z\lst \|z\|=R\}.
+\end{equation}
+We find on this curve
+\begin{equation}
+\|f(z)-g(z)\|<\|g(z)\|
+\end{equation}
+Then the ratio
+\begin{equation}
+\frac{\|f(z)-g(z)\|}{\|g(z)\|}\leq \|a_{n-1}\|\frac{1}{R}+
+\|a_{n-2}\|\frac{1}{R^{2}}+\dots+\|a_{0}\|\frac{1}{R^{n}}
+\end{equation}
+is very interesting. We let 
+\begin{equation}
+h(z)=\|a_{n-1}\|z+\|a_{n-2}\|z^{2}+\dots+\|a_{0}\|z^{n}
+\end{equation}
+then we find a $\delta>0$ such that
+\begin{equation}
+\|z\|<\delta\implies\|h(z)\|<1
+\end{equation}
+We take $R=1/\delta$.
+

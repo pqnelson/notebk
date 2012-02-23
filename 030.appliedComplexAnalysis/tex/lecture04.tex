@@ -1,0 +1,170 @@
+%%
+%% lecture04.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Oct  1 14:11:55 2011 alex
+%% Last update Sat Oct  1 14:11:55 2011 alex
+%%
+It is sometimes important to give conformal equivalence between
+two domains. There are some books on the subject of equivalence
+of conformal domains.
+
+\begin{ex}
+One of the important functions that is a conformal mapping is the
+exponential mapping
+\begin{equation}
+f(z)=\E^{z}.
+\end{equation}
+It maps $\RR\times[0,2\pi)\propersubset\CC$ to
+$\CC\setminus\{0\}$. We shade the domain in gray, and consider
+how horizontal lines behave under this mapping:
+\begin{center}
+\includegraphics{img/lecture04.0}
+\end{center}
+Note that horizontal lines are mapped to lines, and vertical
+lines are mapped to circles.
+
+The line $y\I$ (that is, $z(t)=t\I$ which is purely imaginary) is
+mapped to the unit circle, the lines with $x<0$ are mapped to
+concentric circles. The vertical lines (to the right) are mapped
+to circles with radius $\exp(x)$.
+So the region 
+$$\{(x,y)\in\CC\lst x\geq0,\quad 0\leq y\leq2\pi\}$$
+is mapped to the region \emph{outside} the unit circle, since
+$\exp(x)\geq\exp(0)=1$. 
+\end{ex}
+\begin{ex}
+Consider
+\begin{equation}
+f(z)=z+\frac{1}{z}
+\end{equation}
+How does this behave? Lets consider a nice subdomain of the upper
+half plane:
+\begin{center}
+\includegraphics{img/lecture04.1}
+\end{center}
+Wee see that $f(1)=2$ and $f(-1)=-2$ by direct computation; when
+$\|z\|=1$, we see that $1/z=\exp(-i\theta)$ and we have more
+generally $1/z=\bar{z}$. Thus $f(z)=z+\bar{z}=2\re(z)$. So we see
+that this boundary is mapped to the real line. We see that this
+maps the domain to the upper half-plane. But to make things
+interesting, we cut up the domain in the manner we have
+doodled. The circular arcs are mapped to elliptical arcs. The
+lines are mapped to hyperbolas. We have a family of ellipses
+given by the relation
+\begin{equation}
+\frac{x^{2}}{a+t}+\frac{y^{2}}{b+t}=1
+\end{equation}
+where $t\in\RR$ is ``some parameter''. There are places where it
+is badly behaved, but that's okay. We also have imaginary
+ellipses when $t<a$ or $t<b$.
+\end{ex}
+There are many beautiful properties of confocal family (conformal
+foci family) which we will not pursue here. I believe my good
+friend, Dmitry B.\ Fuchs, has beautifully examined it in
+\emph{Mathematical Omnibus: Thirty Lectures on Classic Mathematics}. 
+Additionally, Serge Tabachnikov's \emph{Geometry and Billiards}
+(American Mathematical Society, 2005) is a good resource.
+
+
+\begin{wrapfigure}{r}{1in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture04.2}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+There is one more transformation to be considered which is fairly
+beautiful, so we will consider it. Suppose we have a convex
+$n$-gon ($n$ sided polygon), there is a conformal map from the
+upper half plane to this $n$-gon.
+
+Let $p$ be a convex $n$-gon with exterior angle $\alpha_{1}\pi$,
+\dots, $\alpha_{n}\pi$ as doodled to the right. We see that
+$\alpha_{1}+\dots+\alpha_{n}=2$, and $0<\alpha_{j}<1$. Consider
+the following: fix $n-1$ points (on the real line) $x_{1}$,
+\dots, $x_{n-1}$ ordered from left to right with distances left
+unspecified. 
+
+Consider
+\begin{equation}
+f(z)=b+a\int^{z}_{z_{0}}(\xi-x_{1})^{-\alpha_{1}}(\dots)(\xi-x_{n-1})^{-\alpha_{n-1}}\D\xi
+\end{equation}
+where $a,b\in\CC$. Why consider only $(n-1)$ such $\alpha$'s?
+Well, the $n^{\rm th}$ is determined completely by our relations
+above. 
+
+When we consider $f(z)$ on the real line, what happens when $\xi$
+approaches, e.g., $x_{1}$? Does this converge or diverge as an
+improper integral? Well, since we have
+\begin{equation}
+0<\alpha_{j}<1
+\end{equation}
+we see the integral converges since
+\begin{equation}\label{eq:lecture4:integralsomethinglike}
+\int^{1}_{0}\frac{\D x}{\sqrt{x}}=2
+\end{equation}
+is finite. We can change variables from $\xi$ to $\xi-x_{j}$, and
+we get something like our integral in Eq \eqref{eq:lecture4:integralsomethinglike}.
+Now, it really looks like
+\begin{equation}
+f(z)\propto\int^{z}_{z_{0}}\xi^{-2+\alpha_{n}}\D\xi
+\end{equation}
+and this converges. So this function $f(z)$ is defined at the
+dangerous points $x_{1}$, \dots, $x_{n}$ and $\pm\infty$. Lets
+set $b=0$ and $a=1$ for now.
+
+The fundamental theorem fo calculus says
+\begin{equation}
+f'(z)=(\xi-x_{1})^{-\alpha_{1}}(\dots)(\xi-x_{n-1})^{-\alpha_{n-1}}
+\end{equation}
+Let $x_{i}<z<x_{i+1}$. We are interested in
+\begin{equation}
+\arg\big(f'(z)\big)=?
+\end{equation}
+We see for real numbers $\arg(x)=0$. By direct computation we
+find
+\begin{equation}
+\arg\left(f'(z)\right)=(-\alpha_{j+1}-\dots-\alpha_{n-1})\pi
+\end{equation}
+This means that the direction is constant.
+
+\begin{wrapfigure}{r}{2.5in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture04.3}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+We see that as we move along the real axis, the argument changes
+in ``discrete chunks''. If $z<x_{1}$, then
+what may we say about $\arg(f'(z))$? Well well well, we see that
+\begin{equation}
+\arg(f'(z))=(-\alpha_{1}-\dots-\alpha_{n-1})\pi=(2-\alpha_{n})\pi=-\alpha_{n}\pi
+\end{equation}
+The last step is because $2\pi\equiv0$ since we mod out by $2\pi$.
+
+\begin{wrapfigure}{l}{2.5in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture04.4}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+\noindent{}We have no $x_{n}$ on the real axis specified because
+we have $f(\infty)$ ``='' $f(x_{n})$, so we have in effect what
+is doodled on the left. We have the identification
+$f(\infty)=f(-\infty)$. 
+
+What did we just do? We verified that the boundary is mapped to
+the boundary, but what about the \emph{interior}?
+
+Consider the rectangle. As a holomorphic function (obtained by
+our construction) we get the elliptic integral.
+
+\begin{rmk}[Further Reading]
+For more on this, see Stein~\cite{stein}, chapter 8 \S4
+``Conformal mappings onto polygons.''
+\end{rmk}

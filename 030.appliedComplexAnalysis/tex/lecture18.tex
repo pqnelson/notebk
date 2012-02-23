@@ -1,0 +1,129 @@
+%%
+%% lecture18.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 09:35:25 2011 alex
+%% Last update Wed Oct  5 09:35:25 2011 alex
+%%
+The steepest descent method may be generalized from
+\begin{equation}
+f(x)=\int^{\infty}_{0}\E^{-xh(\zeta)}\D\zeta\asymptote\sqrt{\frac{2\pi}{x}}\frac{\E^{-xh''(\zeta_{0})}}{\sqrt{-h''(\zeta_{0})}}
+\end{equation}
+to 
+\begin{equation}
+f(x)=\int^{\infty}_{0}\E^{-xh(\zeta)}g(\zeta)\D\zeta
+\end{equation}
+where $g(\zeta)$ is bounded and $g(\zeta_{0})\not=0$.
+We see that this doesn't change anything since we're working in a
+small neighborhood near $\zeta_{0}$, so we have essentially
+\begin{equation}
+f(x)\asymptote\sqrt{\frac{2\pi}{x}}\frac{g(\zeta_{0})\E^{-xh''(\zeta_{0})}}{\sqrt{-h''(\zeta_{0})}}
+\end{equation}
+We make a small change in the integrand and the limits of
+integration
+\begin{equation}
+f(x)=\int^{b}_{a}\E^{\I xh(\zeta)}g(\zeta)\D\zeta
+\end{equation}
+We do not insist anymore that $h(\zeta_{0})$ is a maximum, we
+relax this to 
+\begin{equation}
+h'(\zeta_{0})=0\quad\mbox{ and }\quad h''(\zeta_{0})\not=0.
+\end{equation}
+Here $g(\zeta)$ is not really all that important.
+
+\begin{wrapfigure}{l}{1in}
+\vspace{-20pt}
+\begin{center}
+\includegraphics{img/lecture18.0}
+\end{center}
+\end{wrapfigure}
+\noindent{}We recall from calculus that
+\begin{equation}
+\E^{\I xh(\zeta)}=\cos(xh(\zeta))+\I\sin(xh(\zeta))
+\end{equation}
+How does $\cos(xh(\zeta))$ look around $\zeta_{0}$? In some
+neighborhood of $\zeta_{0}$, we have
+\begin{equation}
+\cos(xh(\zeta))\mbox{``$\approx$''}\cos(\mbox{constant})=\mbox{constant}
+\end{equation}
+locally in that neighborhood. A doodle to the left shows the
+intuitive picture. The interval where it is constant is
+$(\zeta_{0}-\varepsilon,\zeta_{0}+\varepsilon)$, where
+$\varepsilon\sim1/\sqrt{x}$, $x$ is huge so we can think of it as
+the frequency of the wave.
+
+The contributions to the oscillations outside of this
+neighborhood is $\approx0$ since destructive interference sets
+everything to be negligible in comparison to the contribution
+from the $(\zeta_{0}-\varepsilon,\zeta_{0}+\varepsilon)$
+neighborhood.
+
+We then have, on the one hand
+\begin{subequations}
+\begin{align}
+f(x) &= \int^{b}_{a}\E^{\I xh(\zeta)}g(\zeta)\D\zeta\\
+&\asymptote\frac{\E^{\I xh(\zeta_{0})}\sqrt{2\pi}}{\sqrt{x}\sqrt{\|h''(\zeta_{0})\|}}\E^{\sgn(h''(\zeta_{0}))\I\pi/4}
+\end{align}
+\end{subequations}
+and on the other hand we have
+\begin{subequations}
+\begin{align}
+f(x)
+&\expequiv\int^{\zeta_{0}+\varepsilon}_{\zeta_{0}-\varepsilon}\E^{\I x[h(\zeta_{0})+h''(\zeta_{0})(\zeta-\zeta_{0})^{2}/2]}\D\zeta\\
+&=\E^{\I xh(\zeta_{0})}\int^{\zeta_{0}+\varepsilon}_{\zeta_{0}-\varepsilon}\E^{\I xh''(\zeta_{0})(\zeta-\zeta_{0})^{2}/2}\D\zeta\\
+\intertext{change variables to $u=\zeta-\zeta_{0}$}
+&=\E^{\I xh(\zeta_{0})}\int^{\varepsilon}_{-\varepsilon}\E^{\I xh''(\zeta_{0})u^{2}/2}\D{}u\\
+&=c_{0}\E^{\I xh(\zeta_{0})}\int^{+\varepsilon}_{-\varepsilon}
+\E^{\I v^{2}}\D v
+\end{align}
+\end{subequations}
+where $v=\sqrt{xh''(\zeta_{0})/2}u$. Note that we know
+\begin{equation}
+\int^{\infty}_{-\infty}\E^{\I v^{2}}\D v=(1+\I)\sqrt{\pi/2}
+\end{equation}
+so we use it!
+
+Lets return now to the Laplace transform. We have our function
+\begin{equation}
+f\colon(0,\infty)\to\RR
+\end{equation}
+and suppose it grows slower than exponentially. More precisely,
+there are numbers $A,B\in\RR$ such that
+\begin{equation}
+\|f(x)\|\leq A\E^{Bx}
+\end{equation}
+where $A,B\not=0$.
+
+We have
+\begin{equation}
+\widetilde{f}(x)=\int^{\infty}_{0}\E^{-xt}f(t)\D t
+\end{equation}
+we require $x>B$, otherwise we don't know anything about
+convergence. If we allow $x\in\CC$, then the requirement because
+$\re(x)>B$. 
+
+Now, what about asymptotics for this function? We need $f\in
+C^{\infty}$ and $\|f^{(n)}(t)\|\leq A_{n}\exp(B_{n}t)$, we can
+then write
+\begin{subequations}
+\begin{align}
+\widetilde{f}(x) &= \int^{\infty}_{0}\E^{-xt}f(t)\D t\\
+\intertext{then integrate by parts}
+&=\left.\frac{-1}{x}\E^{-xt}f(t)\right|^{t=\infty}_{t=0}
++\frac{1}{x}\int^{\infty}_{0}\E^{-xt}f'(t)\D t\\
+&=\frac{f(0)}{x}+\frac{1}{x}\int^{\infty}_{0}\E^{-xt}f'(t)\D t\\
+\intertext{integration by parts again yields}
+&=\frac{f(0)}{x}+\frac{f'(0)}{x}+\frac{1}{x^{2}}\int^{\infty}_{0}\E^{-xt}f''(t)\D t\\
+\intertext{and inductively we obtain}
+\widetilde{f}(x)&=\frac{f(0)}{x}+\dots+\frac{f^{(n)}(0)}{x^{n+1}}+\frac{1}{x^{n+1}}\int^{\infty}_{0}\E^{-xt}f^{(n+1)}(t)\D t
+\end{align}
+\end{subequations}
+We can consider the last term
+\begin{equation}
+\frac{1}{x^{n+1}}\int^{\infty}_{0}\E^{-xt}f^{(n+1)}(t)\D t=:R(x)
+\end{equation}
+as the remainder term.
+
+

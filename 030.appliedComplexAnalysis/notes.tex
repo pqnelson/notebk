@@ -1,0 +1,147 @@
+%%
+%% notes.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Sep 30 11:27:44 2011 alex
+%% Last update Fri Sep 30 11:27:44 2011 alex
+%%
+%% TODO: lecture09.tex needs to have the example done, requires a picture
+%% NB: there should be ~25 lectures.
+\documentclass{article}
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\pdfinfo{/CreationDate (D:20110410120127)}
+\usepackage{xmpincl}
+\includexmp{CC_Attribution-NonCommercial-NoDerivs_3.0_Unported}
+\usepackage{wrapfig,cancel}
+%\usepackage[PS]{diagrams}
+\usepackage{booktabs}
+\usepackage{notebk}
+
+\diagramstyle[nohug,labelstyle=\scriptstyle]
+
+\advance\headsep by1pc
+\newcommand{\lecture}[1]{\refstepcounter{section}\bigbreak\renewcommand{\leftmark}{Lecture \thesection}
+\noindent{\addcontentsline{toc}{section}{Lecture \thesection#1}\sectionfont Lecture \thesection#1}\medbreak}
+
+\renewenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  %\hbox to\parindent
+  {\bf Answer to #1:\enspace}\ignorespaces}
+\renewcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+%\renewcommand{\theequation}{\arabic{equation}}
+
+\makeatletter
+\def\WF@collision{}
+\makeatother
+
+\input{notation}
+\newcommand\Li{\mathop{\mathrm{Li}}\nolimits}
+\newcommand\asymptote{\sim}
+\newcommand\expequiv{\mathop{\sim}_{\text{exp}}}
+\newcommand\laplace[1]{\mathcal{L}\left[#1\right]}
+
+\title{Complex Analysis with Applications Notes}
+\date{September 29, 2011}
+\begin{document}
+\maketitle
+\begin{abstract}
+These are notes from Dr Dmitry B.\ Fuchs' course (Math 185B) from
+Spring 2009. This covers advanced complex analysis. The
+``applications'' are to various fields of mathematics. 
+
+NOTE: any errors are due to me, and not Dr Fuchs; and corrections
+are welcome.
+\end{abstract}
+\tableofcontents
+\vfill\eject
+
+\section*{Introduction}\renewcommand{\leftmark}{Introduction}\phantomsection\addcontentsline{toc}{section}{Introduction}
+\input{tex/intro}
+
+\vfill\eject
+\lecture{}
+\input{tex/lecture01}
+\lecture{}
+\input{tex/lecture02}
+\lecture{}
+\input{tex/lecture03}
+\lecture{}
+\input{tex/lecture04}
+\lecture{: Analytic Continuation}
+\input{tex/lecture05}
+\lecture{}
+I was sick for this lecture and missed it. It covered Riemann
+surfaces, and introduced terminology (the family of discs which
+constitute a Riemann surface, we will call them
+\define{Relatives} and if they overlap they are \define{Close Relatives}
+---note this is our own terminology, not found in the
+literature). For a good reference, see Teleman's notes: \url{http://math.berkeley.edu/~teleman/math/Riemann.pdf}
+\lecture{}
+\input{tex/lecture07}
+
+
+
+\input{tex/hw1}
+
+\lecture{}
+\input{tex/lecture08}
+\lecture{}
+\input{tex/lecture09}
+
+\input{tex/hw2}
+\lecture{}
+\input{tex/lecture10}
+\lecture{}
+\input{tex/lecture11}
+
+\input{tex/hw3}
+\lecture{}
+\input{tex/lecture12}
+\lecture{}
+\input{tex/lecture13}
+\input{tex/hw4}
+\lecture{}
+\input{tex/lecture14}
+\lecture{}
+\input{tex/lecture15}
+\lecture{}
+\input{tex/lecture16}
+\input{tex/hw5}
+\lecture{}
+\input{tex/lecture17}
+\lecture{}
+\input{tex/lecture18}
+\lecture{}
+\input{tex/lecture19}
+\include{tex/midterm}
+\vfill\eject
+\lecture{}
+\input{tex/lecture20}
+\lecture{}
+\input{tex/lecture21}
+\input{tex/hw6}
+\lecture{}
+\input{tex/lecture22}
+\lecture{}
+\input{tex/lecture23}
+\lecture{}
+\input{tex/lecture24}
+\lecture{}
+\input{tex/lecture25}
+
+\vfill\eject\renewcommand{\leftmark}{References}\phantomsection\addcontentsline{toc}{section}{References}
+\input{tex/bib}
+
+
+
+
+
+\end{document}

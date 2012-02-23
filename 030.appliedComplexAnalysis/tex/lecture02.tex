@@ -1,0 +1,149 @@
+%%
+%% lecture02.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Sep 30 12:42:58 2011 alex
+%% Last update Fri Sep 30 12:42:58 2011 alex
+%%
+We stated previously the first nontrivial theorem of the course:
+\begin{riemMap}
+If $\mathcal{U}\propersubset\CC$ is a simply connected domain,
+and $\mathcal{U}\not=\emptyset,\CC$, then there exists a
+conformal map $f\colon\mathcal{U}\to\mathcal{D}$ where
+$\mathcal{D}=\{z\in\CC\lst\|z\|<1\}$ is the unit
+disc. Additionally, if we fix some point $u\in\mathcal{U}$,
+demand it be mapped to the origin $0\in\mathcal{D}$, and some
+direction specified in $\mathcal{U}$ be mapped to some direction
+in $\mathcal{D}$, then $f$ is unique.
+\end{riemMap}
+
+Existence is a more delicate matter than uniqueness. The domains
+need not be finite (e.g., the upper half plane of $\CC$). There
+are some particular cases we need to consider, e.g.\ when
+$\mathcal{U}=\mathcal{D}$. 
+
+\begin{wrapfigure}{r}{2.35in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture02.0}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+Uniqueness can be constructed in two different forms. Consider
+two maps $f,g\colon\mathcal{U}\to\mathcal{D}$. We see that
+$h=g\circ f^{-1}\colon\mathcal{D}\to\mathcal{D}$. We also can see
+that together this map takes $0\mapsto0$. We have the Schwarz
+inequality $\|h(z)\|\leq\|z\|$. We can deduce this from the
+Cauchy integral formula. We can apply the same process to
+$h^{-1}=f\circ g^{-1}\colon\mathcal{D}\to\mathcal{D}$. We have
+the inequality $\|h^{-1}(\omega)\|\leq\|\omega\|$ where
+$\omega=h(z)$ and $z=h^{-1}(\omega)$. We see that this implies
+$\|z\|\leq\|h(z)\|\leq\|z\|$ which implies $\|h(z)\|=\|z\|$. We
+see then that this implies $h(z)=\lambda z$ where $\|\lambda\|=1$
+is a root of unity. In other words, $h$ is just a rotation. By
+fixing the orientation we have $g\circ f^{-1}=h=\id{}$ imply
+$f=g$. This is simply just from the Schwarz inequality.
+
+There is a notion of a \define{Fractional Linear Map} where,
+given some $a,b,c,d\in\CC$, we have
+\begin{equation}
+|A|=\begin{vmatrix}
+a & b\\ c&d
+\end{vmatrix}
+=|ad-bc|\not=0,
+\end{equation}
+we are interested in the domain and the range of the map
+\begin{equation}
+f_{A}(z)=\frac{az+b}{cz+d}.
+\end{equation}
+Observe that it is singular at $z=-d/c$, and we also see that
+$f_{A}(z)\not=a/c$. 
+
+We see that the composition of two linear fractional maps is
+itself a fractional linear map given by the product of the
+matrices.
+
+We can consider the matrices as being unique (up to
+multiplication by a complex number), so lets think of matrices
+with determinant of 1. We should make them up to a sign, this is
+\begin{equation}
+\SL{2,\CC}/\{\pm1\}\iso\PSU{2}.
+\end{equation}
+We want to say now that every fractional linear transformation
+maps circles and straight lines into circles and straight lines.
+
+\begin{thm}
+Fractional linear transformations preserves circles and lines.
+\end{thm}
+
+We can explicitly write
+\begin{equation}
+f(z)=\frac{az+b}{cz+d}=\frac{1}{c}\left(a+\frac{bc-ad}{cz+d}\right)
+\end{equation}
+by considering the following:
+\begin{align*}
+f_{1}(z) &= cz\\
+f_{2}(z) &= z+d\\
+f_{3}(z) &= 1/z\\
+f_{4}(z) &= (bc-ad)z\\
+f_{5}(z) &= a+z\\
+f_{6}(z) &= \frac{1}{c}z\quad\mbox{assuming }c\not=0.
+\end{align*}
+Each of these maps---with one exception---are just translations
+and multiplication by complex numbers. These preserves circles
+and straight lines. The inversion operation, $f_{3}(z)$, after
+some thinking can be shown to preserve ``generalized
+circles''\dots that is to say, straight lines become circles and
+circles become straight lines.
+
+Consider the unit disc. What does a ``fractional linear map'' map
+it to? Well, there are several possibilities, doodled below. The
+boundary can be mapped to a line or a unit circle, and the
+contents may be mapped to several places.
+\begin{center}
+\includegraphics{img/lecture02.1}
+\end{center}
+It depends on where the point mapped to infinity lives. It can
+live on the boundary. If the singularity of the map is on the
+boundary, the circle is mapped to a line, and two distinct points
+on the interior of the disc is mapped to the same side of the
+line, so the disc is mapped to the plane. If the singularity is
+on the interior of the disc, the disc is mapped to the exterior
+of the boundary's mapping in the range. The last case of interest
+is if the point mapped to infinity is outside the disc, then the
+disc is mapped to a disc.
+
+Take the map
+\begin{equation}
+f(z)=\frac{z-a}{1-z\bar{a}}\lambda
+\end{equation}
+where $\|a\|<1$ and $\|\lambda\|=1$. This maps $D\to D$, and
+covers all we need for the map to exist by the Riemann mapping
+theorem. We see first that $f(a)=0$. We see that
+\begin{subequations}
+\begin{align}
+f'(z) &= \lambda\left(\frac{1-\bar{a}{z}+\bar{a}(z-a)}{(1-\bar{a}z)^{2}}
+\right)\\
+&=\lambda\left(\frac{1-\bar{a}a}{(1-\bar{a}z)^{2}}\right)
+\end{align}
+\end{subequations}
+Observe that
+\begin{equation}
+f'(0)=\lambda(1-a\bar{a})
+\end{equation}
+So for some orientation $+\bar{\lambda}$, we have it be mapped to
+the positive real direction.
+
+If $\|z\|=1$, then 
+\begin{subequations}
+\begin{align}
+\|f(z)\|&=1\\
+&=\|f(z)\bar{z}\|\\
+&=\|\lambda\|\cdot\left\|\frac{z\bar{z}-\bar{z}a}{1-\bar{a}z}\right\|\\
+&=\|\lambda\|\cdot\left\|\frac{1-\bar{z}a}{1-\bar{a}z}\right\|\\
+&=\|\lambda\|=1
+\end{align}
+\end{subequations}
+How interesting.

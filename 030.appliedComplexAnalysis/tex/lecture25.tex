@@ -1,0 +1,77 @@
+%%
+%% lecture25.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Oct  6 15:12:43 2011 alex
+%% Last update Thu Oct  6 15:12:43 2011 alex
+%%
+
+Suppose we have a region $\Gamma$ in $\CC^{2}$ which we want a holomorphic
+function singular at $(z_{0},\omega_{0})\in\Gamma$. Suppose we
+have it be
+\begin{equation}
+f(z,\omega)=\frac{1}{z+\omega-z_{0}-\omega_{0}}
+\end{equation}
+This is singular at
+\begin{equation}
+\begin{split}
+z &= a + z_{0}\\
+\omega &=-a+\omega_{0}
+\end{split}
+\end{equation}
+for some $a\in\CC$. This is a complex line (since $a$ varies over
+all of $\CC$). Suppose we want it to not pierce the region\dots
+then we demand  the region must be convex for this to be true.
+
+The hyperplane tangent to the point $(z_{1},\dots,z_{n})$ is
+defined by the equation
+\begin{equation}
+a_{1}z_{1}+\dots+a_{n}z_{n}+b=0
+\end{equation}
+So back to the original problem in $\CC^{2}$, we write
+$(a_{1}z+a_{2}\omega+b)^{-1}$ is regular in the domain and it has
+a pole on the surface. We do what we did last time: take a dense
+selection of such points, and so on. We can weaken the condition
+of convexity to \emph{pseudoconvexity} (i.e., the tangent plane
+may possibly intersect the domain).
+
+Consider a surface described by
+\begin{equation}
+F(z_{1},\dots,z_{n})=0
+\end{equation}
+We can rewrite it as
+\begin{equation}
+F(x_{1},y_{1},\dots,x_{n},y_{n})=0.
+\end{equation}
+Let
+\begin{equation}
+\begin{split}
+\partial_{k}=\frac{\partial}{\partial z_{k}}&=\left(\frac{\partial}{\partial x_{k}}\right)
++\I\left(\frac{\partial}{\partial y_{k}}\right)\\
+\overline{\partial}_{k}=\frac{\partial}{\partial \overline{z}_{k}}&=\left(\frac{\partial}{\partial x_{k}}\right)
+-\I\left(\frac{\partial}{\partial y_{k}}\right)
+\end{split}
+\end{equation}
+For the second derivatives, we have
+$[\partial_{i}\overline{\partial}_{j}F]$ be Hermitian, then the
+domain is a \define{Holomorphic Domain}. They are very important!
+
+In $\CC^{n}$ (for $n\geq2$) the region between two concentric
+spheres \emph{is not} a holomorphic domain, we can extend it to
+the center ball though. Recall that if $f$ is analytic inside a
+domain with boundary $\gamma$, then
+\begin{equation}
+f(z_{0}=\frac{1}{2\pi\I}\int_{\gamma}\frac{f(\zeta)}{\zeta-z_{0}}\D\zeta.
+\end{equation}
+Suppose that $f$ were continuous on $\gamma$, then
+\begin{equation}
+g(z_{0})=\int_{\gamma}\frac{f(\zeta)}{\zeta-z_{0}}\D\zeta
+\end{equation}
+it is a differentiable function of $z_{0}$. Very briefly, the
+idea is to take your domain, stack an infinite number of discs
+there, and perform Cauchy integration on each disc. We get a
+function in one variable, and this function turns out to tell us
+that $f=g$ in the domain. So $f$ can be expanded. This approach
+can be applied to many other domains.

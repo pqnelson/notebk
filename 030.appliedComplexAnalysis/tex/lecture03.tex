@@ -1,0 +1,124 @@
+%%
+%% lecture03.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Oct  1 13:34:38 2011 alex
+%% Last update Sat Oct  1 13:34:38 2011 alex
+%%
+We will discuss the scheme of two proofs of existence. Given some
+$\mathcal{U}\propersubset\RR^{2}$ that is simply connected,
+$\mathcal{U}\not=\RR^{2}$ and $\mathcal{U}\not=\emptyset$, then
+there exists some function
+\begin{equation}
+f\colon\mathcal{U}\xrightarrow{\iso}D
+\end{equation}
+is conformal (where $D$ is the open unit disc in $\CC$), or
+holomorphic with $f'$ nonvanishing. We fix some
+$a\in\mathcal{U}$.
+
+Consider the set of maps 
+\begin{equation}
+S=\{f\colon\mathcal{U}\to D\mbox{ is conformal}\lst f(a)=0,
+f'(a)>0\}
+\end{equation}
+First we see that $S$ is nonempty.
+
+We suppose that $0\notin\mathcal{U}$. Since $\mathcal{U}$ is
+simply connected, for each circle around $o$ we have some point
+on the circle not in $\mathcal{U}$ since $\mathcal{U}$ is simply
+connected we can contract it.
+
+We consider a branch of $\sqrt{-}\colon\mathcal{U}\to\RR^{2}$,
+namely we see that $\sqrt{-}(\mathcal{U})$ contains some disc. If
+$\omega\in\sqrt{-}(\mathcal{U})$, then
+$-\omega\notin\sqrt{-}(\mathcal{U})$. 
+
+For every $f\in S$, $f'(a)\in\RR_{+}$ is bounded. There exists
+some $M>0$ such that $f(a)<M$ for all $f\in S$ (i.e., it's
+bounded).
+
+Now we use a standard trick in analysis. Let 
+\begin{equation}
+M=\sup\{f'(0)\lst f\in S\}
+\end{equation}
+If we have some sequence $\{f_{i}\}\propersubset S$, we can find
+some convergent subsequence. We wish to deduce that $\exists f\in
+S$ such that $f'(a)=M$. This is our $f$ that maps $\mathcal{U}$
+to $D$ injectively.
+
+Suppose that $B\propersubset D$, $0\in B$ and $B\not=D$ is simply
+connected. We claim that there is a conformal map $g\colon B\to
+D$, where $f(A)=B$. Then $g\circ f\colon A\to D$ is itself
+conformal. 
+
+Suppose we have a domain $\mathcal{U}$ which we do not demand to
+be simply connected. For every continuous function on
+$\partial\mathcal{U}$, there is an analytic function in
+$\mathcal{U}$; i.e.,
+\begin{equation}
+\begin{split}
+&\forall h\colon\partial\mathcal{U}\to\RR\\
+&\exists u\colon\bar{\mathcal{U}}\to\RR\quad\mbox{such that}\quad
+h=\left.u\right|_{\partial\mathcal{U}}
+\end{split}
+\end{equation}
+We have
+\begin{equation}
+h(a)=\ln|z-a|.
+\end{equation}
+Now this $u$ may be supplemented with $v$ such that $u+\I v$ is
+holomorphic. Then we take 
+\begin{equation}
+f(z)=(z-a)\exp\big(-(u+\I v)\big)
+\end{equation}
+Our claim is that this is our function, it bijectively maps
+$\mathcal{U}$ to $D$.
+
+If $z\in\partial\mathcal{U}$, then $\|f(z)\|=1$. We see this by
+direct computation:
+\begin{subequations}
+\begin{align}
+\|f(z)\| &= \|z-a\|\cdot\|e^{-u(a)}\|\\
+&=\frac{\|z-a\|}{\|z-a\|}\\
+&=1
+\end{align}
+\end{subequations}
+The only thing that requires work is that $f'(z)>0$, or at least
+nonzero. We cannot use any information of the boundary of
+$\mathcal{U}$. 
+
+Is it possible to extend the Riemann mapping theorem from
+$\mathcal{U}\xrightarrow{\iso}D$ to
+$\bar{\mathcal{U}}\xrightarrow{\iso}\bar{D}$? Not necessarily. It
+is possible if $\partial\mathcal{U}$ is a continuous closed
+curved.
+
+If $\mathcal{U}$, $\mathcal{V}$ are simply connected and bounded
+domains, then what? Well, suppose we have a conformal map
+\begin{equation}
+f\colon\bar{\mathcal{U}}\to\RR^{2}
+\end{equation}
+such that $\left.f\right|_{\mathcal{U}}$ is conformal, and
+additionally that $f(\partial\mathcal{U})=\partial\mathcal{V}$.
+Then
+\begin{equation}
+f\colon\mathcal{U}\to\mathcal{V}.
+\end{equation}
+It is sufficient to let $\mathcal{V}=D$, then
+\begin{equation}
+f\colon\bar{\mathcal{U}}\to D
+\end{equation}
+and $z\in\bar{\mathcal{U}}$ implies $\|f(z)\|\leq1$.
+
+Let us consider conformal maps between $D$ and the upper half
+plane. Consider
+\begin{equation}
+z\mapsto\I\left(\frac{-z+1}{z+1}\right)
+\end{equation}
+which maps $1\mapsto 0$, $-1\mapsto\infty$, $\I\mapsto-1$, and
+indeed we can note
+\begin{equation}
+\I\left(\frac{-z+1}{z+1}\right)=\I\frac{1-\|z\|^{2}}{\|1+z\|^{2}}
+\end{equation}

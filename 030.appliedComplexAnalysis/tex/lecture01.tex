@@ -1,0 +1,111 @@
+%%
+%% lecture01.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Sep 30 11:33:18 2011 alex
+%% Last update Fri Sep 30 11:33:18 2011 alex
+%%
+A \define{Conformal Map}, for us, is  a smooth map from a plane into
+itself that preserves angles. Let $A\subset\RR^{2}$,
+$B\subset\RR^{2}$, and
+\begin{equation}
+f\colon A\to B
+\end{equation}
+be smooth and bijective. Consider the following:
+\begin{center}
+\includegraphics{img/lecture01.0}
+\end{center}
+Additionally we have
+\begin{equation}
+\frac{\|f(\vec{v})\|}{\|\vec{v}\|}=\mbox{constant}.
+\end{equation}
+It is understood that it is an orientation preserving map, the
+correct term is an ``orientation preserving conformal map''. They
+precisely correspond to analytic functions of complex variables
+with nonzero first derivative.
+
+In complex analysis this is equivalent to $A,B\subset\CC$, we
+have $z\in A$ and $\omega\in B$, $f$ be holomorphic. If
+\begin{equation}
+f'(z)\not=0
+\end{equation}
+for all $z\in A$, then it is conformal.
+
+\medskip
+\begin{wrapfigure}{r}{1.5in}
+\vspace{-40pt}
+\begin{center}
+\includegraphics{img/lecture01.1}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+\noindent\textbf{NON-Example }(Inversion)\textbf{.\enspace}
+We have some disc of radius $R$, and it has its center be
+$\mathcal{O}$. Inversion would be
+$z\mapsto1/\bar{z}$ in the complex plane (if we make the origin
+$\mathcal{O}$ and dilate by $1/R$).
+It does not preserve orientation. In the complex plane,
+$f(z)=1/z$ is a bit more interesting. This preserves angles but
+it \emph{reverses} orientation. This situation is doodled on the
+right. 
+\medbreak
+
+Inversion changes lines into circles if we have lines that do not
+pass through the origin. How can we see this? Consider
+\begin{equation}
+\gamma(t) = z_{0}+z_{1}t
+\end{equation}
+where we have nonzero constants
+$z_{0},z_{1}\in\CC\setminus\{0\}$. Then $\gamma$ is a line that
+does not pass through the origin. What happens when we invert it?
+It becomes
+\begin{equation}
+\widetilde{\gamma}(t)=\frac{1}{z_{0}+z_{1}t}=\frac{\bar{z}_{0}+\bar{z_{1}}t}{\|z_{0}+z_{1}t\|^{2}}
+\end{equation}
+We see that the denominator is
+\begin{subequations}
+\begin{align}
+\|z_{0}+z_{1}t\|^{2} &= z_{0}\bar{z}_{0}+(\bar{z}_{1}z_{0}+\overline{\bar{z}_{1}z_{0}})t+\bar{z}_{1}z_{1}t^{2}\\
+&= r_{0} + 2\re(\bar{z}_{1}z_{0})t+r_{1}^{2}t^{2}
+\end{align}
+\end{subequations}
+where $r_{0},r_{1}\in\RR$ are positive real numbers. Observe,
+then, that
+\begin{equation}
+\lim_{t\to+\infty}\widetilde{\gamma}(t)=0
+\end{equation}
+since it's of the form
+\begin{equation}
+\widetilde{\gamma}(t)\propto\frac{\mbox{const}+\bar{z}_{1}t}{\mbox{const}+\|z_{1}\|^{2}t^{2}}
+\end{equation}
+and the denominator vanishes quicker than the numerator
+increases. Likewise, for precisely the same reason, we have
+\begin{equation}
+\lim_{t\to-\infty}\widetilde{\gamma}(t)=0
+\end{equation}
+and
+\begin{equation}
+\widetilde{\gamma}(0)=z_{0}^{-1}
+\end{equation}
+Is this convincing? Well, yes and no.
+
+Consider the stereographic projection to the sphere. We will
+consider longitudinal lines on the sphere. What happens when we
+consider the inverse to the stereographic projection? We leave
+this to the reader\dots
+
+\subsection{Riemann Mapping Theorem}
+Suppose that you have two domains in the plane that are not empty
+and not the whole plane. Is it possible to find some conformal
+map from one to the other? If so, how many are there?
+
+\begin{thm}[Incomplete Version Riemann Mapping]
+If we have two nonempty, simply connected subsets of the plane
+(which are not the whole plane), if we map $z_{0}\mapsto
+f(z_{0})$ and preserve orientation, then there exists a unique
+conformal map from one to the other.
+\end{thm}
+
+For existence, we need some extra conditions.

@@ -1,0 +1,183 @@
+%%
+%% lecture13.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Oct  3 13:40:15 2011 alex
+%% Last update Mon Oct  3 13:40:15 2011 alex
+%%
+
+We will continue on the $\Gamma$ function. Remember Stirling's
+approximation
+\begin{equation}
+n!\approx\sqrt{2\pi n}\left(\frac{n}{\E}\right)^{n}
+\end{equation}
+We see that $5!=120$ but
+\begin{equation}
+\sqrt{10\pi}(5/\E)^{5}\approx 118.019168
+\end{equation}
+which is reasonably accurate. There are more accurate formulas
+approximating $n!$ though.
+
+We saw that
+\begin{equation}
+\sin(\pi z)=\pi zG(z)G(-z)
+\end{equation}
+We should regard $G(z)$ as the material for building the $\Gamma$
+function. Observe that
+\begin{equation}
+G(z-1)=\E^{\gamma}zG(z)
+\end{equation}
+where $\gamma\approx 0.57721$ is Euler's constant.
+We replace $z\mapsto z+1$ which gives us
+\begin{equation}
+\begin{split}
+G(z) &= (z+1)\E^{\gamma}G(z+1)\\
+\implies G(z+1) &= (z+1)^{-1}\E^{-\gamma}G(z)
+\end{split}
+\end{equation}
+This gives us our definition
+\begin{equation}
+\Gamma(z)=\left(z\E^{\gamma z}G(z)\right)^{-1}
+\end{equation}
+This is defined for all values of $z$. We see first of all that
+\begin{equation}
+\Gamma(1)=(1\E^{\gamma}G(1))^{-1}
+\end{equation}
+where
+\begin{equation}
+G(1) = \E^{-\gamma}G(0)=e^{-\gamma}
+\end{equation}
+together both imply
+\begin{equation}
+G(1)=(1\E^{\gamma}\E^{-\gamma})^{-1}=1
+\end{equation}
+We can immediately see that
+\begin{subequations}
+\begin{align}
+\Gamma(z+1) &= \left((z+1)\E^{\gamma(z+1)}G(z+1)\right)^{-1}\\
+&=\left(\cancel{(z+1)}\E^{\gamma(z+1)}\E^{-\gamma}\cancel{(z+1)^{-1}}G(z)\right)^{-1}\\
+&=\left(\E^{\gamma z}G(z)\right)^{-1}\\
+&=z\left(z\E^{\gamma z}G(z)\right)^{-1}\\
+&=z\Gamma(z)
+\end{align}
+\end{subequations}
+Consider the formula
+\begin{equation}
+\sin(\pi z)=\pi zG(z)G(-z)
+\end{equation}
+We want to use $\Gamma(z)$ instead of $G(z)$, which permits us to
+see that
+\begin{equation}
+\sin(\pi z)=\pi (z\E^{\gamma z}G(z))(-z\E^{-\gamma z}G(-z))
+\end{equation}
+This allows us to calculate
+\begin{subequations}
+\begin{align}
+\Gamma(z)\Gamma(1-z) &= [(z\E^{\gamma z}G(z))((1-z)\E^{\gamma(1-z)}G(1-z))]^{-1}\\
+&=[z\E^{\gamma z}\E^{-\gamma z}G(z)\E^{\gamma}(1-z)(\E^{-\gamma}(1-z)^{-1}G(-z))]^{-1}\\
+&=[zG(z)G(-z)]^{-1} = [\sin(\pi z)/\pi]^{-1}\\
+&=\frac{\pi}{\sin(\pi z)}
+\end{align}
+\end{subequations}
+We find by accident a cute relation
+\begin{equation}
+\Gamma(1/2)^{2}=\pi\implies\Gamma(1/2)=\sqrt{\pi}.
+\end{equation}
+So what? Well, we have
+\begin{equation}
+\int^{\infty}_{-\infty}\E^{-x^{2}}\D x=\sqrt{\pi}
+\end{equation}
+which we get from all our information of $\Gamma(1/2)$, as well
+as exotic numbers like $\E$ and $\pi$. How is this even possible?
+Well we see
+\begin{equation}
+\Gamma(z)=\int^{\infty}_{0-}t^{z-1}\E^{-t}\D t
+\end{equation}
+so we see
+\begin{subequations}
+\begin{align}
+\Gamma(1/2) &= \int^{\infty}_{0}t^{-1/2}\E^{-t}\D t\\
+&= \frac{1}{2}\int^{\infty}_{0}\E^{-u^{2}}\D u
+\end{align}
+\end{subequations}
+by choosing $u^{2}=t$. Now we can deduce the Gamma function's
+action on half-integral values:
+\begin{equation}
+\Gamma(3/2)=\Gamma(1+(1/2))=\frac{\Gamma(1/2)}{2}=\frac{\sqrt{\pi}}{2}
+\end{equation}
+and so on.
+
+We are now interested in this integral $\int t^{z-1}\E^{-t}\D
+t$. Most textbooks insist on integrating by parts, but we want to
+compute it. We will rewrite it as
+\begin{equation}
+\int^{\infty}_{0}t^{z-1}\E^{-t}\D t=\lim_{N\to\infty}\int^{N}_{0}t^{z-1}\left(1-\frac{t}{N}\right)^{N}\D t
+\end{equation}
+We just substitute in the limit definition for
+exponentiation. But we will change variables $t=Ns$ so we may
+write
+\begin{equation}
+\begin{split}
+\lim_{N\to\infty}\int^{N}_{0}t^{z-1}\left(1-\frac{t}{N}\right)^{N}\D t
+&= \lim_{N\to\infty}\int^{1}_{0}(Ns)^{z-1}(1-s)^{N}N\D s\\
+&= \lim_{N\to\infty}N^{z}\int^{1}_{0}s^{z-1}(1-s)^{N}\D s
+\end{split}
+\end{equation}
+We will now perform integration by parts. We do it once to find
+\begin{equation}
+\lim_{N\to\infty}N^{z}\int^{1}_{0}s^{z-1}(1-s)^{N}\D
+s=\lim_{N\to\infty}N^{z}\left(\underbracket[0.5pt]{\left.(1-s)^{N}\frac{s^{z}}{z}\right|^{1}_{0}}_{=0}+\frac{N}{z}\int^{1}_{0}(1-s)^{N-1}s^{z}\D
+s\right)
+\end{equation}
+and again to find
+\begin{equation}
+\lim_{N\to\infty}N^{z}\int^{1}_{0}s^{z-1}(1-s)^{N}\D
+s=\lim\dots\left(\frac{N(N-1)}{z(z+1)}\int^{1}_{0}(1-s)^{N-2}s^{z+1}\D s\right)
+\end{equation}
+and after many integration by parts we see that
+\begin{equation}
+\begin{split}
+(1-s)^{N} & \to N!,\\
+\int s^{z}& \to \int^{1}_{0}s^{z+n-1}\D s=\frac{1}{z+N}
+\end{split}
+\end{equation}
+We therefore claim that
+\begin{equation}
+\Gamma(z)=\lim_{N\to\infty}\frac{N!N^{z}}{z(z+1)(\dots)(z+N)}
+\end{equation}
+Let us prove this.
+
+Consider
+\begin{subequations}
+\begin{align}
+\frac{1}{\Gamma(z)} &= zG(z)\E^{\gamma z}\\
+\intertext{so we substitute in the definition of $\gamma$ and $G(z)$}
+&=\lim_{N\to\infty}
+z\left[\prod^{N}_{n=1}\left(1+\frac{z}{n}\right)\E^{-z/n}\right]\exp\left[{\sum^{N}(z/n)-z\ln(n)}\right]\\
+\intertext{we gather terms}
+&=\lim_{N\to\infty}z\E^{-\ln(N)z}\prod^{N}_{n=1}\left(1+\frac{z}{n}\right)\\
+\intertext{then by using the law of logarithms to simplify}
+&=\lim_{N\to\infty}zN^{-z}\prod^{N}_{n=1}\frac{n+z}{n}\\
+\intertext{and then expanding out the product yields}
+&=\lim_{N\to\infty}zN^{-z}(z+1)(z+2)(\dots)(z+N)/N!\\
+&=\lim_{N\to\infty}\frac{z(z+1)(z+2)(\dots)(z+N)}{N^{z}N!}
+\end{align}
+\end{subequations}
+Thus we are done!
+
+Now for Stirling's approximation, we have
+\begin{equation}
+n!\sim\sqrt{2\pi n}(n/\E)^{n}
+\end{equation}
+where
+\begin{equation}
+a_{n}\sim b_{n}\quad\mbox{means}\quad
+\lim_{n\to\infty}\frac{a_{n}}{b_{n}}=1.
+\end{equation}
+We can really write
+\begin{equation}
+n!=\sqrt{2\pi n}(n/\E)^{n}\left(1+\frac{1}{12n}+\frac{1}{288n^{2}}+\cdots\right)
+\end{equation}
+if we want to use equality instead of an equivalence relation.

@@ -1,0 +1,175 @@
+%%
+%% lecture20.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 11:21:19 2011 alex
+%% Last update Wed Oct  5 11:21:19 2011 alex
+%%
+\begin{rmk}[On Midterm]
+If we wish to map the upper half of $\CC$ to the lower half of
+$\CC$, we use a fractional linear transformation with real
+coefficients. Also note that the product cannot be replaced by
+expanding into pairwise expansion, that is
+\begin{equation}
+\prod\left(1+\frac{(-1)^{n}}{n}\right)\not=\prod\left(1-1\frac{1}{n(n+1)}\right)
+\end{equation}
+otherwise by this reasoning
+\begin{equation}
+\sum(-1)^{n}=\sum(1-1)=0
+\end{equation}
+is correct, which it most certainly is not.
+\end{rmk}
+So what do we know about the Laplace transform? It's something
+that looks like
+\begin{equation}
+\widetilde{f}(z)=\int^{\infty}_{0}\E^{-zt}f(t)\D t
+\end{equation}
+What else can we say? First we fix notation, we will write
+\begin{equation}
+\laplace{f(t)}(z)=\widetilde{f}(z)=\int^{\infty}_{0}\E^{-zt}f(t)\D t.
+\end{equation}
+Let us list out the properties of the Laplace transform:
+\begin{enumerate}
+\item If $f$ is differentiable and its derivative is not growing
+  too fast, then $\widetilde{(f')}(z)=z\widetilde{f}(z)-f(0)$.
+\item We see that $\widetilde{(tf(t))}(z)=-(\widetilde{f})'(z)$.
+\item A shift corresponds to multiplication by the exponential,
+  $\laplace{\E^{-at}f(t)}(z)=\widetilde{f}(z+a)$ where $a\in\CC$
+  is arbitrary.
+\item We consider for $t\geq a$
+  $\laplace{f(t-a)}(z)=\E^{-az}\widetilde{f}(z)$.
+\item We have this strange correspondence between convolution and
+  the product
+  $\laplace{f*g}(z)=\widetilde{f}(z)\widetilde{g}(z)$.
+\item Consider a specific example for $a>-1$:
+  $\laplace{t^{a}}=\Gamma(a+1)/z^{a+1}$. 
+\item An example $a\in\CC$ is arbitrary, then
+  $\laplace{\E^{-at}}(z)=1/(z+a)$. 
+\item For cosine we have $\laplace{\cos(at)}(z)=z/(z^{2}+a^{2})$.
+\item For sine we have $\laplace{\sin(at)}(z)=a/(z^{2}+a^{2})$.
+\end{enumerate}
+
+\subsection{Some Proofs}
+Let us consider some proofs of the properties just asserted.
+\begin{prop}
+For $a>-1$ we have
+$\laplace{t^{a}}=\Gamma(a+1)/z^{a+1}$. 
+\end{prop}
+\begin{proof}
+We see that
+\begin{equation}
+\laplace{t^{a}}=\int^{\infty}_{0}\E^{-zt}t^{a}\D t
+\end{equation}
+we let $u=zt$, so $t=u/z$ and $\D t=\D u/z$ then
+\begin{equation}
+\begin{split}
+\int^{\infty}_{0}\E^{-zt}t^{a}\D t
+&=\int^{\infty}_{0}\E^{-u}\left(\frac{u}{z}\right)^{a}\left(\frac{\D u}{z}\right)\\
+&=\frac{1}{z^{a+1}}\Gamma(a+1)
+\end{split}
+\end{equation}
+where we have used the definition of the $\Gamma$ function, specifically Eq \eqref{eq:lecture12:defnOfGammaFn}.
+\end{proof}
+\begin{ex}
+We see $\laplace{1}=z^{-1}$, $\laplace{t}=z^{-2}$, etc. Consider
+\begin{equation}
+f(t)=f(0)+f'(0)t+\frac{1}{2}f''(0)t^{2}+\dots
+\end{equation}
+then
+\begin{equation}
+\laplace{f}(z)=\frac{f(0)}{z}+\frac{f'(0)}{z^{2}}+\dots+\frac{f^{(n)}(0)}{z^{n+1}}+\dots
+\end{equation}
+This is a bit of a joke, the approach is unreliable. The result
+is correct however.
+\end{ex}
+\begin{prop}[Transform of Cosine]
+For some $a\in\CC$, we have
+\begin{equation}
+\laplace{\cos(at)}(z) = \frac{z}{z^{2}+a^{2}}
+\end{equation}
+\end{prop}
+\begin{proof}
+By direct computation we see
+\begin{equation}
+\laplace{\cos(at)}{z}=\laplace{\frac{\E^{\I at}+\E^{-\I at}}{2}}(z)
+\end{equation}
+and by linearity we obtain
+\begin{equation}
+\laplace{\frac{\E^{\I at}+\E^{-\I at}}{2}}(z)=\frac{1}{2}\laplace{\E^{\I at}}{z}+\frac{1}{2}\laplace{\E^{-\I at}}(z).
+\end{equation}
+We use the result from computing $\laplace{\E^{-at}1}$ to find
+\begin{equation}
+\frac{1}{2}\laplace{\E^{\I at}}{z}+\frac{1}{2}\laplace{\E^{-\I at}}(z)=\frac{1}{2}\left(\frac{1}{z-\I{}a}-\frac{1}{z+\I{}a}\right)
+\end{equation}
+and by gathering terms we have
+\begin{equation}
+\frac{1}{2}\left(\frac{1}{z-\I a}-\frac{1}{z+\I a}\right)=\frac{1}{2}\left(\frac{2z}{z^{2}+a^{2}}\right)
+\end{equation}
+which proves the theorem.
+\end{proof}
+\begin{prop}[Transform of Sine]
+For some $a\in\CC$, we have
+\begin{equation}
+\laplace{\sin(at)}(z) = \frac{a}{z^{2}+a^{2}}
+\end{equation}
+\end{prop}
+\begin{proof}
+We may use the fact
+\begin{equation}
+\frac{1}{a}\frac{\D}{\D z}\sin(at)=\cos(at)
+\end{equation}
+take the Laplace transform of both sides, and we immediately get
+the result.
+\end{proof}
+
+\subsection{Applications}
+It is tempting by the first property to apply this to
+differential equations, we'd end up with the answer but Laplace
+transformed. We'd need to inverse the transform to get the
+answer. 
+
+Let us first consider a very simply thing. If we have, e.g., 
+\begin{equation}
+\widetilde{f}(z)=\frac{1}{z-a},
+\end{equation}
+what would we expect to find for $f(t)$? We expect $f(t)=\exp(at)$.
+
+If we instead have now
+\begin{equation}
+\widetilde{f}(z)=\frac{1}{(z-1)(z-2)}
+\end{equation}
+we'd very much like to use partial fraction decomposition
+\begin{equation}
+\widetilde{f}(z)=\frac{1}{z-2}-\frac{1}{z-1}
+\end{equation}
+to obtain the result
+\begin{equation}
+f(t)=e^{2t}-e^{t}.
+\end{equation}
+More generally, if we have a rational function
+\begin{equation}
+\widetilde{f}(z)=\frac{P(z)}{Q(z)}
+\end{equation}
+where
+\begin{equation}
+\deg(P)<\deg(Q)
+\end{equation}
+and we demand that all roots of $Q$ are different (so $Q$ has
+simple roots). Let $z_{1}$, \dots, $z_{n}$ be the roots of
+$Q$. We write
+\begin{equation}
+f(t) = \sum^{m}_{k=1}\E^{z_{i}t}\left(\frac{P(z_{i})}{Q'(z_{i})}\right).
+\end{equation}
+Let $F$ be some function, $F=\widetilde{f}$ or in other words $F$
+is the function we will try to ``invert Laplace transform''; let 
+\begin{equation}
+f(t)=\sum\mbox{residues}(\E^{zt}F(z))
+\end{equation}
+But the sum of residues is an integral! We see that
+\begin{equation}
+f(t)=\frac{1}{2\pi\I}\int^{a+\I\infty}_{a-\I\infty}\E^{zt}F(z)\D z
+\end{equation}
+All the poles should be on the left of $a$, and there should be
+only finitely many poles.

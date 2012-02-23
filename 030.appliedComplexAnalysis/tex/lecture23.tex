@@ -1,0 +1,96 @@
+%%
+%% lecture23.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Oct  5 13:49:39 2011 alex
+%% Last update Wed Oct  5 13:49:39 2011 alex
+%%
+
+We are referred to:
+\begin{itemize}
+\item E.\ Titchmarsh,\newblock
+\emph{The Zeta-Function of Riemann}.
+\end{itemize}
+for further reading on the Riemann zeta function. We will
+continue analytically continuing $\zeta(s)$ to
+$\CC\setminus\{1\}$. Now what happens to Eq
+\eqref{eq:reflectionPrincipleForZeta} when we take
+$\zeta(1-s)=\dots$?
+It becomes
+\begin{equation}
+\zeta(1-s)=2(2\pi)^{-s}\cos\left(\frac{s\pi}{2}\right)\Gamma(s)\zeta(s).
+\end{equation}
+Notice that for $s=2n+1$, for any $n\in\ZZ$, we have
+\begin{equation}
+\zeta(1-s)=0.
+\end{equation}
+But due to the $\Gamma$ function, we have $s>0$, otherwise
+$\Gamma$ is undefined. But they're killed off by $\cos(\pi s/2)$,
+so it's all good.
+There are the trivial zeroes $\zeta(-2)=\zeta(-4)=\dots=0$.
+
+Now, the most famous unsolved problem in mathematics: the Riemann
+hypothesis. The only zeroes (in addition to the trivial zeroes)
+are at 
+\begin{equation}
+s=\frac{1}{2}+\I\mbox{(something)}.
+\end{equation}
+Note $\zeta(s)=\zeta(\overline{s})$.
+
+\begin{prop}
+There are infinitely many ``nontrivial zeroes'' for $\zeta(s)$.
+\end{prop}
+\begin{prop}
+If $\gamma_{n}$ is the $n^{\rm th}$ nontrivial zero,
+$\lim_{n\to\infty}(\gamma_{n}-\gamma_{n-1})=0$.
+\end{prop}
+\begin{con}
+If $N(T)$ is the number of $\gamma$ with $\im(\gamma_{n})<T$,
+then $N(T)\asymptote T\ln(T)$ is the asymptotic behavior.
+\end{con}
+The first nontrivial zero is at 
+\begin{equation}
+\gamma_{1}\approx\frac{1}{2}+\I14.1347\;2514\;17346.
+\end{equation}
+So what are the distribution of these nontrivial zeroes?
+We see that the number $k\in\NN$ with $\im(\gamma_{k})<n$ is
+described on the following table:
+
+\medskip
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+$n$ & $\max\{k\in\NN\lst\im(\gamma_{k})<n\}$  \\
+\midrule
+100       & 29\\
+1000      & 649\\
+100,000   & 10142\\
+1,000,000 & 1,747,146\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+Let
+\begin{equation}
+\pi(N):=\mbox{(number of primes$<N$)}
+\end{equation}
+We have
+\begin{equation}
+\pi(N)\asymptote \Li(N)
+\end{equation}
+where
+\begin{equation}
+\Li(x)=\int^{x}_{2}\frac{\D u}{\log(u)}
+\end{equation}
+is the Logarithmic integral function. The Riemann hypothesis then
+states there exists constants $c,C\in\RR$ such that $c>0$
+and $C>0$ which obey
+\begin{equation}
+c\sqrt{N}\ln(N)<|\pi(N)-\Li(N)|<C\sqrt{N}\ln(N)
+\end{equation}
+How beautiful.
+
+% Some notes on Poincar\'e's half-plane model omitted

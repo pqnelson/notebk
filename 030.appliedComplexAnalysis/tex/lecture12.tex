@@ -1,0 +1,208 @@
+%%
+%% lecture12.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Oct  3 12:19:17 2011 alex
+%% Last update Mon Oct  3 12:19:17 2011 alex
+%%
+So recall our theorem
+\begin{thm}
+If $a_{1}$, \dots, is a sequence where $a_{i}\not=0$ for every
+$i$, and $\sum\|a_{n}\|^{-2}$ converges, then 
+\begin{equation}
+f(z) = \prod_{n}\left(1-\frac{z}{a_{n}}\right)\E^{z/a_{n}}
+\end{equation}
+converges and is entire with zeroes at $a_{1}$, \dots.
+\end{thm}
+We know
+\begin{equation}
+\sin(z)=z\prod^{\infty}_{\substack{n=-\infty\\n\not=0}}\left(1-\frac{z}{\pi n}\right)
+\E^{z/(\pi n)}
+\end{equation}
+We collect terms
+\begin{subequations}
+\begin{align}
+\sin(z)&=z\prod^{\infty}_{n=1}\left(1-\frac{z}{\pi n}\right)\left(1+\frac{z}{\pi n}\right)
+\E^{z/(\pi n)}\E^{z/(-\pi n)}\\
+&=z\prod^{\infty}_{n=1}\left(1-\frac{z^{2}}{\pi^{2}n^{2}}\right)
+\end{align}
+\end{subequations}
+If we wrote
+\begin{equation}
+f(z) = \prod_{n\not=0}\left(1-\frac{z}{\pi n}\right)
+\end{equation}
+instead, then $f(z)$ diverges entirely. This problem is similar
+to how
+\begin{equation}
+\sum(-1)^{n}=\left(\sum 1\right)+\left(\sum -1\right)
+\end{equation}
+diverges but
+\begin{equation}
+\sum(-1)^{n}=\sum (1-1)=0
+\end{equation}
+converges. So if we disregard the contribution of $\exp[z/(\pi
+  n)]$, the series diverges very much as the harmonic series diverges.
+Consider
+\begin{equation}
+\sum_{n\not=0}\frac{1}{z+n}
+\end{equation}
+which diverges, but
+\begin{equation}
+\sum_{n\not=0}\left(\frac{1}{z+n}-\frac{1}{n}\right)
+\end{equation}
+converges! But
+\begin{equation}
+\sum_{n\not=0}\frac{1}{n}=0
+\end{equation}
+which changes nothing.
+
+\subsection{Gamma Function}
+We will begin with examining the $\Gamma$ function. What do we
+know about it? Well,
+\begin{equation}
+\Gamma(n+1)=n!
+\end{equation}
+and $\Gamma(-n)$ are singular (simple poles really). We also know
+\begin{equation}
+\Gamma(\mu+1)=\mu\Gamma(\mu)
+\end{equation}
+There is a lot of information on the $\Gamma$ function in
+Marsden~\cite{marsden}. 
+
+Consider its definition: the $\Gamma$ function is defined by
+\begin{equation}\label{eq:lecture12:defnOfGammaFn}
+\Gamma(\mu)=\int^{\infty}_{0}x^{\mu-1}\E^{-x}\D x
+\end{equation}
+Consider some $x\in\RR$, $\mu\in\CC$. But are these arbitrary?
+When will the integral be defined? Well, lets consider
+\begin{subequations}
+\begin{align}
+x^{a+\I b} &= x^{a}x^{\I b}\\
+&=x^{a}\E^{\I b\log(x)}\\
+&=x^{a}\E^{\I\log(x^{b})}
+\end{align}
+\end{subequations}
+Note that $\|x^{\I b}\|=1$ for $a,b\in\RR$. We are not interested
+in how our integral behaves near $x\to\infty$, since $e^{-x}$
+wins out (i.e., vanishes faster than $x^{\mu-1}$ explodes). So we
+are interested in the behavior of the integrand near zero. The
+condition is that $\re(\mu)>0$, the integral is defined.
+
+\begin{wrapfigure}{r}{2.75in}
+\vspace{-30pt}
+\begin{center}
+\includegraphics{img/lecture12.0}
+\end{center}
+\vspace{-20pt}
+\end{wrapfigure}
+We need to employ our favorite phrase: analytic continuation. We
+see that when $\mu=0$, the integral diverges. Similarly for
+$\mu=-1$, $-2$, \dots, the integral diverges too.
+
+There are poles but no zeroes, and for this reason it is not
+entire; but its inverse $1/\Gamma(z)$ is entire.
+
+We will consider the inverse and bring in the infinite product
+for the sine. Why? Well, we have zeroes for $G(z)=1/\Gamma(z)$,
+which are $\NN$. They are all multiplicity zero, so we'll use
+$\NN$ to indicate the zeroes. This is a little bit sloppy, but
+meh, that's life. Now we know how to construct the product for
+$G(z)$ since we know its zeroes. We construct it explicitly as
+\begin{equation}
+G(z)=\prod^{\infty}_{n=1}\left(1+\frac{z}{n}\right)\E^{-z/n}
+\end{equation}
+observe $G(0)=1$. We know the relation between $G(z)$ and
+$\sin(z)$ by the product series. Indeed, observe
+\begin{equation}
+\sin(\pi z)=\pi zG(z)G(-z).
+\end{equation}
+Lets see to what extent $\Gamma(\mu+1)\mu\Gamma(\mu)$ is
+preserved in $G(z)$, i.e. $G(z-1)=H(z)$. We see by inspecting the
+zeroes of $H(z)$ that
+\begin{equation}
+H(z)=\E^{g(z)}z G(z)
+\end{equation}
+we have some unknown factor $g(z)$.
+\begin{thm}
+The factor $g(z)$ is a constant denoted as $\gamma$, shorthand
+for
+\begin{equation}
+\lim_{N\to\infty}\left(\sum^{N}_{n=1}\frac{1}{n}-\log(N)\right)
+\end{equation}
+This is certainly one definition of $\gamma$. (This is drawn above
+to the right.)
+\end{thm}
+Note that numerically,
+\begin{equation}
+\gamma\approx0.57721\; 56649\; 01532\; 86060
+\end{equation}
+We will now define the $\Gamma$ function as
+\begin{equation}
+\Gamma(z)=\left[z\E^{\gamma z}G(z)\right]^{-1}
+\end{equation}
+We need to prove that $g(z)=\gamma$ is constant though. We do the
+following:
+\begin{equation}
+\frac{\D}{\D z}\log(H(z))=\frac{\D}{\D z}\log(G(z-1))
+\end{equation}
+We observe
+\begin{subequations}
+\begin{align}
+\log(H(z)) &= g(z) +\log(z) + \log(G(z))\\
+&= g(z) + \log(z) +
+\sum^{\infty}_{n=1}\log\left(1+\frac{z}{n}\right)-\frac{z}{n}
+\end{align}
+\end{subequations}
+We see
+\begin{subequations}
+\begin{align}
+\frac{\D}{\D z}\log(H(z)) &=\frac{\D}{\D z}\left(g(z) + \log(z) +
+\sum^{\infty}_{n=1}\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\\
+&=g'(z)+\frac{1}{z}+\sum^{\infty}_{n=1}\left(\frac{1}{z+n}-\frac{1}{n}\right).
+\end{align}
+\end{subequations}
+Now we consider calculations involving $G(z)$ thus
+\begin{subequations}
+\begin{align}
+\log(G(z-1)) &=
+\log(\prod^{\infty}_{n=1}\left(1+\frac{z-1}{n}\right)\E^{(1-z)/n})\\
+&=\sum^{\infty}_{n=1}\left(\log\left(1+\frac{z-1}{n}\right)-\frac{z-1}{n}\right)\\
+\implies\frac{\D}{\D z}\log(G(z-1)) &=
+\sum^{\infty}_{n=1}\left(\frac{1}{z+n-1}-\frac{1}{n}\right)\\
+&=
+\frac{1}{z}+\sum^{\infty}_{n=1}\left(\frac{1}{z+n}-\frac{1}{n}\right)
+\end{align}
+\end{subequations}
+This implies that
+\begin{equation}
+g'(z)=0\implies g(z)=\mbox{(constant)}
+\end{equation}
+which concludes the proof of the theorem.
+
+How to find the value of $g(z)$? Take $H(z)$ and set $z=1$, so
+\begin{equation}
+H(1)=e^{g(1)}G(1)
+\end{equation}
+which gives us a new problem: what is $G(1)$? Well,
+\begin{equation}
+G(1)=\lim_{N\to\infty}\prod^{N}_{n=1}\left(1+\frac{1}{n}\right)\E^{-1/n}
+\end{equation}
+Observe that
+\begin{equation}
+\prod^{N}_{n=1}\left(1+\frac{1}{n}\right)=N+1
+\end{equation}
+which means
+\begin{equation}
+G(1)=\lim_{N\to\infty}(N+1)\E^{-\sum^{N}_{n=1}(1/n)}
+\end{equation}
+So
+\begin{subequations}
+\begin{align}
+\log(G(1)) &=
+\lim_{N\to\infty}\log(N+1)-\sum^{N}_{n=1}\frac{1}{n}\\
+&=-\gamma.
+\end{align}
+\end{subequations}
+This concludes this lecture.
