@@ -442,8 +442,10 @@ One should probably rewrite the {{{exercises}}} environment to include writing t
 I think that the section, subsection, etc., fonts are rather ugly. I decided to change this to make them somewhat prettier.
 
 {{{
-\font\sectionfont=cmssbx10 %at 12pt
-\font\subsectionfont=cmssbx10
+%\font\sectionfont=cmssbx10 %at 12pt
+%\font\subsectionfont=cmssbx10
+\def\sectionfont{\large\sffamily\bfseries}
+\def\subsectionfont{\sffamily\bfseries}
 \makeatletter
 \def\specialsection{\@startsection{section}{1}%
   \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
