@@ -9,7 +9,7 @@
 %%
 
 Let $G$ be a Lie group, consider $\lie(G)$ its Lie algebra. Then
-there is a corresponddence between curves in the group and curves
+there is a correspondence between curves in the group and curves
 in the Lie algebra. So if we have two curves in the Lie algebra,
 we have two curves in the Lie group, then for simply connected
 groups we may deform two curves $g_{1}(t)$, $g_{2}(t)$ with
@@ -21,8 +21,8 @@ by introducing a family of curves $g_{\tau}(t)$ which has a
 corresponding family of curves in the Lie algebra. We have
 \begin{subequations}
 \begin{align}
-\xi(\tau,t) &= g_{\tau}(t)^{-1}\frac{dg_{\tau}(t)}{dt}\\
-\eta(\tau,t) &= g_{\tau}(t)^{-1}\frac{dg_{\tau}(t)}{d\tau}
+\xi(\tau,t) &= g_{\tau}(t)^{-1}\frac{\D g_{\tau}(t)}{\D t}\\
+\eta(\tau,t) &= g_{\tau}(t)^{-1}\frac{\D g_{\tau}(t)}{\D \tau}
 \end{align}
 \end{subequations}
 and we have the relation
@@ -93,8 +93,8 @@ Thus the two cases agree on the overlap.
 The corresponding curve in the Lie algebra is
 \begin{equation}
 \gamma(t) = \begin{cases}\displaystyle
-g_{1}(t)^{-1}\frac{dg_{1}(t)}{dt} & t\in[0,b]\\
-\displaystyle (g_{2}(b)^{-1}g_{2}(t))^{-1}\left(g_{2}(b)^{-1}\frac{dg_{2}(t)}{dt}\right)
+g_{1}(t)^{-1}\frac{\D g_{1}(t)}{\D t} & t\in[0,b]\\
+\displaystyle (g_{2}(b)^{-1}g_{2}(t))^{-1}\left(g_{2}(b)^{-1}\frac{\D g_{2}(t)}{\D t}\right)
 & t\in[b,a]
 \end{cases}
 \end{equation}
@@ -102,8 +102,8 @@ up to a constant (i.e. $g_{1}(b)$) in the second case. It doesn't
 play a significant role, as it is factored out. We end up with
 \begin{equation}
 \gamma(t) = \begin{cases}\displaystyle
-g_{1}(t)^{-1}\frac{dg_{1}(t)}{dt} & t\in[0,b]\\
-\displaystyle g_{2}(t)^{-1}\frac{dg_{2}(t)}{dt} & t\in[b,a]
+g_{1}(t)^{-1}\frac{\D g_{1}(t)}{\D t} & t\in[0,b]\\
+\displaystyle g_{2}(t)^{-1}\frac{\D g_{2}(t)}{\D t} & t\in[b,a]
 \end{cases}
 \end{equation}
 We will consider the construction of Lie groups from Lie algebra

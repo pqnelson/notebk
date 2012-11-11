@@ -73,12 +73,12 @@ why? Well, for $X\in\mat_{n}(\Bbb{C})$ we have
 \begin{equation}
 X = \frac{1}{2}\underbracket[0.5pt]{(X-X^{\dagger})}_{\text{anti-Hermitian}}+\frac{1}{2}\underbracket[0.5pt]{(X+X^{\dagger})}_{\text{Hermitian}}
 \end{equation}
-but observe if $A$ is anti-Hermtian, we have $A+A^{\dagger}=0$,
+but observe if $A$ is anti-Hermitian, we have $A+A^{\dagger}=0$,
 then $iA$ is Hermtian since
 \begin{equation}
-(iA)^{\dagger}+iA=i(-A^{\dagger}+A)=0.
+(\I A)^{\dagger}+\I A=\I (-A^{\dagger}+A)=0.
 \end{equation}
-So $\scr{G}$ is anti-Hermitian, $i\scr{G}$ is Hermitian, and
+So $\scr{G}$ is anti-Hermitian, $\I \scr{G}$ is Hermitian, and
 $\Bbb{C}\scr{G}$ is everything.
 \end{ex}
 
@@ -115,23 +115,23 @@ x\colon[\alpha,\beta]\to\RR^{m}
 from an interval of the real line $[\alpha,\beta]$ to the space,
 the tangent vector is
 \begin{equation}
-\left.\frac{dx(t)}{dt}\right|_{t=\alpha}=x'(\alpha).
+\left.\frac{\D x(t)}{\D t}\right|_{t=\alpha}=x'(\alpha).
 \end{equation}
 The tangent space at $x_{0}\in M$ for a manifold $M$ is the
 vector space of all tangent vectors at $x_{0}$. If the surface is
 given by
 \begin{equation}
-f(x^1,...,x^n)=0,
+f(x^1,\dots,x^n)=0,
 \end{equation}
 we promote $x\mapsto x^{i}(t)$ to be components of a curve,
 implying
 \begin{equation}
-f(x^{1}(t),...,x^{n}(t))=0.
+f(x^{1}(t),\dots,x^{n}(t))=0.
 \end{equation}
 We thus have by the chain rule
 \begin{equation}
-\left.\frac{d}{dt}f(x^{1}(t),...,x^{n}(t))\right|_{t=\alpha}=\left.\frac{\partial
-  f}{\partial x^i}\frac{dx^i}{dt}\right|_{t=\alpha}=0.
+\left.\frac{\D }{\D t}f(x^{1}(t),\dots,x^{n}(t))\right|_{t=\alpha}=\left.\frac{\partial
+  f}{\partial x^i}\frac{\D x^i}{\D t}\right|_{t=\alpha}=0.
 \end{equation}
 If we use the implicit function theorem, we can consider $A^{i}$
 vectors such that
