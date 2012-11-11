@@ -9,7 +9,7 @@
 %%
 %\noindent\textbf{Main Theorems}
 \subsection{Main Theorems}
-We havea group $G$ and we can construct the corresponding Lie
+We have a group $G$ and we can construct the corresponding Lie
 Algebra $\lie(G)$ constructed by examining the tangent space at
 the identity $e=I\in G$:
 \begin{equation}
@@ -49,17 +49,17 @@ permits us to continuously deform one path to another. Every
 closed curved is contractible iff the space is simply connected.
 
 \begin{thm}
-For each Lie algebra there exists a uniquie simply connected Lie group.
+For each Lie algebra there exists a unique simply connected Lie group.
 \end{thm}
 
 If $g\colon[0,1]\to G$ is a differentiable curve on the group, we
 may construct a curve
 \begin{equation}
-\gamma(t)=g(t)^{-1}\frac{dg(t)}{dt}=\frac{d}{dt}\log\big(g(t)\big)
+\gamma(t)=g(t)^{-1}\frac{\D g(t)}{\D t}=\frac{\D}{\D t}\log\big(g(t)\big)
 \end{equation}
 on the algebra. We have
 \begin{equation}
-\left.\frac{dg(t)}{dt}\right|_{t}\in T_{g(t)}G,
+\left.\frac{\D g(t)}{\D t}\right|_{t}\in T_{g(t)}G,
 \end{equation}
 which is not necessarily in the Lie algebra $T_{e}G$. However for
 some $g\in G$ we have $g\cdot 1=g$, so this is a translation
@@ -69,17 +69,17 @@ g_{*}\colon T_{e}G\to T_{g}G,
 \end{equation}
 and so the right formula would be
 \begin{equation}
-\gamma(t)=\left(g_{*}(t)\right)^{-1}\frac{dg(t)}{dt}.
+\gamma(t)=\left(g_{*}(t)\right)^{-1}\frac{\D g(t)}{\D t}.
 \end{equation}
 But we will abuse notation and write
 \begin{equation}
-\gamma(t)=g(t)^{-1}\frac{dg(t)}{dt}.
+\gamma(t)=g(t)^{-1}\frac{\D g(t)}{\D t}.
 \end{equation}
 We have a correspondence between curves in the Lie Algebra and
 curves in the Lie group. We obtain a system of differential
 equations 
 \begin{equation}
-\frac{dg(t)}{dt}=g(t)\gamma(t)
+\frac{\D g(t)}{\D t}=g(t)\gamma(t)
 \end{equation}
 which has a unique solution for $g(0)=e$.\marginpar{We use $e$,
   $1$, $I$ for the identity interchanging notation without warning...}
@@ -123,11 +123,11 @@ and
 \end{equation}
 So what do we know? Well, the curves in the Lie algebra are
 \begin{equation}
-\gamma_{0}(t) = g_{0}(t)^{-1}\frac{dg_{0}(t)}{dt}=\xi(0,t)
+\gamma_{0}(t) = g_{0}(t)^{-1}\frac{\D g_{0}(t)}{\D t}=\xi(0,t)
 \end{equation}
 and
 \begin{equation}
-\gamma(1)(t) = g_{1}(t)^{-1}\frac{dg_{1}(t)}{dt}=\xi(1,t).
+\gamma(1)(t) = g_{1}(t)^{-1}\frac{\D g_{1}(t)}{\D t}=\xi(1,t).
 \end{equation}
 We also know $g_{\tau}(0)=e=1$, and $g_{\tau}(1)=g$, for every
 $\tau$. We see then that
@@ -183,7 +183,7 @@ F=\begin{bmatrix}
 
 \begin{exercise}
 Check that $\ClassicalGroup{D}_{n}$ is isomorphic to the complexification of the
-Lie algebra of the orthogonal group $\ORTH(2n)$.
+Lie algebra of the orthogonal group $\ORTH{2n}$.
 \end{exercise}
 \begin{exercise}
 Check that the matrices
@@ -256,7 +256,7 @@ F=\begin{bmatrix}0&1\\
 Check that $\ClassicalGroup{C}_{n}$ is isomorphic to the complexification of the
 Lie algebra of the compact group $\Sp{2n}\cap \U{2n}$ where
 $\Sp{2n}$ stands for the group of linear transformations of
-$\CC^{2n}$ preserving non-degerate anti-symmetric bilinear
+$\CC^{2n}$ preserving non-degenerate anti-symmetric bilinear
 form and $\U{2n}$ denotes unitary group.
 \end{exercise}
 \begin{exercise}

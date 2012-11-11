@@ -20,7 +20,7 @@ Given a Lie Algebra, could we ``restore'' all elements of the group?
 Yes, lets take $x\colon[0,1]\to G$ without the condition
 $x(0)=e$. If $x(\tau_{0})=e$, then 
 \begin{equation}
-\left.\frac{d}{d\tau}x(\tau)\right|_{\tau=\tau_{0}}\in\Lie(G).
+\left.\frac{\D }{\D \tau}x(\tau)\right|_{\tau=\tau_{0}}\in\Lie(G).
 \end{equation}
 The value of the parameter is completely irrelevant. What if we
 take $x(\tau_0)\not=e$? Then nothing dangerous! Because look, we
@@ -42,7 +42,7 @@ So a curve in $G$ will generate a curve in the Lie Algebra of $G$
 by means of this simple way. But now we would like to have a
 curve in $\lie(G)$ give rise to a curve in $G$. We know
 \begin{equation}
-\frac{dx(\tau)}{d\tau}=x(\tau)\xi(\tau)
+\frac{\D x(\tau)}{\D \tau}=x(\tau)\xi(\tau)
 \end{equation}
 gives a system of differential equations. To solve it, we need
 initial conditions. If we take $x(0)=e$, then a solution exists.
@@ -71,7 +71,7 @@ very simple curves in this algebra, namely constants! So
 $\xi(\tau)$ are constant matrices. Then we get $\xi(\tau)=A$
 implies $x(\tau)^{-1}x'(\tau)=A$ if and only if
 \begin{equation}
-\frac{dx(\tau)}{d\tau}=x(\tau)A,
+\frac{\D x(\tau)}{\D \tau}=x(\tau)A,
 \end{equation}
 with $x(0)=e$. Then $x(\tau)=\exp(A\tau)$. One way to define
 $\exp(A\tau)$ is as a solution to this differential equation. The
@@ -94,7 +94,7 @@ It maps a neighborhood of $O\in\Lie(G)$ onto a neighborhood of
 $1\in G$. Why is this true? Because look, this is definitely true
 if the matrix group is a Lie group. Why? Because look, what we
 have is a map of the tangent spaces to the manifold. It is
-obvious this matriux is nondegenerate. It is really easy to check
+obvious this matrix is nondegenerate. It is really easy to check
 for classical groups.
 
 If $B=\exp(A)$, then $A=\log(B)$. So we have
@@ -115,26 +115,26 @@ coordinate system in the neighborhood of 1, $(x^1,...,x^n)$,
 so it is topologically equivalent to the unit ball, and moreover
 permits functions to be differentiable). Take the tangent space
 at the identity $T_{{\bf 1}}G$ and introduce an operation in such
-a way that makees it a Lie algebra. We consider curves in $G$,
+a way that makes it a Lie algebra. We consider curves in $G$,
 $x(\tau)$, such that $x(0)=1$ and
 \begin{equation}
-\left.\frac{dx}{d\tau}\right|_{\tau=0}\in\Lie(G).
+\left.\frac{\D x}{\D \tau}\right|_{\tau=0}\in\Lie(G).
 \end{equation}
 Although it is coordinate dependent, we know how to change
 coordinates $x\to y(x)$, $y^i=y^i(x)$, and
 \begin{equation}
-\frac{dy^i}{d\tau}=\frac{\partial y^i}{\partial x^j}\frac{d x^j}{d\tau},
+\frac{\D y^i}{\D \tau}=\frac{\partial y^i}{\partial x^j}\frac{\D x^j}{\D \tau},
 \end{equation}
 so we could define curves in any coordinate system and obtain the
 curve in any coordinate system.
 
 We still need to define the Lie Bracket $[\xi,\eta]$ for
-$\xi,\eta\in T_{{\bf 1}}G$. We would like it to be compatiible
+$\xi,\eta\in T_{{\bf 1}}G$. We would like it to be compatible
 with the commutator of matrices. So what to do?
 
 We will draw
 \begin{equation}
-\xi=\left.\frac{dx}{d\tau}\right|_{\tau=0},\qquad\hbox{and}\qquad\eta=\left.\frac{d\widetilde{x}}{d\tau}\right|_{\tau=0}
+\xi=\left.\frac{\D x}{\D \tau}\right|_{\tau=0},\qquad\hbox{and}\qquad\eta=\left.\frac{\D \widetilde{x}}{\D \tau}\right|_{\tau=0}
 \end{equation}
 where $x$, $\widetilde{x}$ are curves in the group. We introduce
 the commutator
@@ -143,7 +143,7 @@ x(\sqrt{\tau})\widetilde{x}(\sqrt{\tau})x(\sqrt{\tau})^{-1}\widetilde{x}(\sqrt{\
 \end{equation}
 we would like
 \begin{equation}
-[\xi,\eta]=\left.\frac{d}{d\tau}x(\sqrt{\tau})\widetilde{x}(\sqrt{\tau})x(\sqrt{\tau})^{-1}\widetilde{x}(\sqrt{\tau})^{-1}\right|_{\tau=0}.
+[\xi,\eta]=\left.\frac{\D }{\D \tau}x(\sqrt{\tau})\widetilde{x}(\sqrt{\tau})x(\sqrt{\tau})^{-1}\widetilde{x}(\sqrt{\tau})^{-1}\right|_{\tau=0}.
 \end{equation}
 We have already proven when we work with matrix groups, this is
 the exact same thing as the commutator for matrices.
