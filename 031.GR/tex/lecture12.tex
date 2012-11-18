@@ -1,0 +1,244 @@
+%%
+%% lecture12.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Mar  1 10:59:21 2012 alex
+%% Last update Thu Mar  1 10:59:21 2012 alex
+%%
+
+We will consider the slickest way to compute connections. First
+recall the basic conditions for a connection are: 
+\begin{enumerate}
+\item Torsion free $\Gamma^{\rho}_{\mu\nu}=\Gamma^{\rho}_{\nu\mu}$
+\item Metric Compatible $\nabla_{\mu}g_{ab}=0$.
+\end{enumerate}
+We start with an orthonormal basis for tangent vectors
+\begin{equation}
+e_{a}={e_{a}}^{\mu}\partial_{\mu}.
+\end{equation}
+This makes sense only if we already have a metric, but
+orthonormality demands
+\begin{equation}
+g(e_{a},e_{b})=\eta_{ab}
+\end{equation}
+where $\eta_{ab}=\diag(1,-1,-1,-1)$.
+
+The covariant derivative
+\begin{equation}\label{eq:lec12:covariantDerivativeOfTetrad}
+\nabla_{\mu}{e_{a}}^{\rho}={{\omega_{\mu}}^{c}}_{a}{e_{c}}^{\rho}
+\end{equation}
+where the index $a$ labels which vector we're discussing, $\rho$
+labels the component of the vector we're discussing. This
+$\omega$ is called the \define{Spin Connection}, the term
+originated from trying to understand particle spin in general
+relativity.
+
+Lets examine the metric compatibility condition first
+(torsion-free is trivial). First observe in components
+\begin{equation}
+g(e_{a},e_{b})=g_{\mu\nu}e^{\mu}_{a}e^{\nu}_{b}=\eta_{ab}
+\end{equation}
+so the metric compatibility condition becomes
+\begin{subequations}
+\begin{align}
+\nabla_{\mu}g_{ab}
+&=0\\
+&=\partial_{\mu}g_{ab}-
+({{\omega_{\mu}}^{c}}_{a}g_{cb}+{{\omega_{\mu}}^{c}}_{b}g_{ac})\\
+&=0-\omega_{\mu ba}-\omega_{\mu ab}
+\end{align}
+\end{subequations}
+Metric compatibility implies antisymmetry in spin connection's
+orthonormal basis indices; this critically depends on
+$\partial_{\mu}g_{ab}=0$. Thus metric compatibility implies
+\begin{equation}
+\omega_{\mu ab}=-\omega_{\mu ba}.
+\end{equation}
+Now let us consider the torsion free condition.
+
+Remember the spin connection is a connection in an orthonormal
+basis satisfies
+\begin{equation}%\tag{\ref{eq:lec12:covariantDerivativeOfTetrad}}
+\nabla_{\mu}{e^{a}}_{\rho}={\omega_{\mu}}^{ca}e_{c\rho}
+\end{equation}
+by the fact that the metric vanishes under covariant
+differentiation. In a theory with nonmetricity, we would get an
+extra term. This is antisymmetric, so
+\begin{equation}
+\nabla_{\mu}{e^{a}}_{\rho}=-{{\omega_{\mu}}^{a}}_{c}{e^{c}}_{\rho}
+\end{equation}
+We can write the frame as a one-form:
+\begin{equation}\label{eq:lec12:tetradOneForm}
+e^{a}={e^{a}}_{\rho}\,\D x^{\rho}
+\end{equation}
+Observe
+\begin{equation}
+\nabla_{\mu}{e^{a}}_{\rho}=\partial_{\mu}{e^{a}}_{\rho}
+-{{\Gamma_{\mu}}^{\sigma}}_{\rho}{e^{a}}_{\sigma}
+\end{equation}
+where $a$ just labels which vector we're talking about. We can
+rewrite this as
+\begin{equation}
+{{\Gamma_{\mu}}^{\sigma}}_{\rho}{e^{a}}_{\sigma}=\partial_{\mu}{e^{a}}_{\rho}
+-\nabla_{\mu}{e^{a}}_{\rho}.
+\end{equation}
+This lets us translate from $\Gamma$ to $\omega$ given
+$e$. Observe
+\begin{equation}
+(\Gamma^{\sigma}_{\mu\rho}-\Gamma^{\sigma}_{\rho\mu}){e^{a}}_{\sigma}=0
+\end{equation}
+is the torsion-free condition. This implies
+\begin{equation}
+\partial_{\mu}{e^{a}}_{\rho}-\partial_{\rho}{e^{a}}_{\mu}
++{{\omega_{\mu}}^{a}}_{c}{e^{c}}_{\rho}
+-{{\omega_{\rho}}^{a}}_{c}{e^{c}}_{\mu}=0
+\end{equation}
+by substitution. If we use the tetrad one-form from Equation
+\eqref{eq:lec12:tetradOneForm} we get something slick:
+\begin{equation}
+\boxed{
+\D e^{a}+{\omega^{a}}_{c}\wedge e^{c}=0.
+}
+\end{equation}
+Thus we have simply the same conditions as
+\begin{enumerate}
+\item Torsion-free\quad $\D e^{a}+{\omega^{a}}_{c}\wedge e^{c}=0$.
+\item Metric Compatible\quad $\omega_{\mu ab}+\omega_{\mu ba}=0$.
+\end{enumerate}
+\begin{rmk}\index{Cartan Structure Equation!First ---}
+The ``First Cartan Structure Equation'' is
+\quad $\D e^{a}+{\omega^{a}}_{c}\wedge e^{c}=0$.
+\end{rmk}
+\marginpar{Applications}
+\begin{ex}[2-Sphere]
+Lets recall the usual sphere $S^{2}\subset\RR^{3}$, it has its
+line element be
+\begin{equation}
+\D s^{2}=\D\theta^{2}+\sin^{2}(\theta)\,\D\varphi^{2}.
+\end{equation}
+We interpret the ``$\D$''s here as one-forms. So we obtain
+\begin{equation}
+\begin{split}
+\D s^{2}
+&=g_{\mu\nu}\D x^{\mu}\otimes\D x^{\nu}\\
+&=g_{ab}({e^{a}}_{\mu}\,\D x^{\mu})\otimes({e^{b}}_{\nu}\,\D x^{\nu})
+\end{split}
+\end{equation}
+We can immediately read off an orthonormal basis
+\begin{equation}
+e^{1}=\D\theta,\quad
+e^{2}=\sin(\theta)\,\D\varphi.
+\end{equation}
+We can rotate and take linear combinations if we want a new
+orthonormal basis. Finding an orthonormal basis is very much like
+completing a square.
+
+The spin connection has only one-component:
+\begin{equation}
+\omega_{12}=-\omega_{21}=\omega.
+\end{equation}
+The Cartan structure has two components
+\begin{subequations}
+\begin{align}
+\D e^{1}+{\omega^{1}}_{2}\wedge e^{2}
+&=0\\
+&=\D(\D\theta)+\omega\wedge(\sin(\theta)\,\D\varphi)\\
+&=0+(\omega\wedge\D\varphi)\sin(\theta)
+\end{align}
+\end{subequations}
+which implies
+\begin{equation}
+\D\varphi\wedge\omega=0.
+\end{equation}
+We expect the general solution should look like
+\begin{equation}
+\omega=A\,\D\varphi
+\end{equation}
+The second structure equation yields
+\begin{subequations}
+\begin{align}
+\D e^{2}+{\omega^{2}}_{1}\wedge e^{1}
+&=0\\
+&=\D(\sin(\theta)\,\D\varphi)+\omega\wedge\D\theta\\
+&=\cos(\theta)\,\D\theta\wedge\D\varphi
++\sin(\theta)\,\D\varphi\wedge\D\varphi
+-\omega\wedge\D\theta\\
+&=\cos(\theta)\,\D\theta\wedge\D\varphi+0-\omega\wedge\D\theta
+\end{align}
+\end{subequations}
+So, if we gather terms together we find
+\begin{equation}
+-\cos(\theta)\,\D\varphi\wedge\D\theta-\omega\wedge\D\theta=0
+\end{equation}
+and thus
+\begin{equation}
+-\bigl(
+\cos(\theta)\,\D\varphi+\omega
+\bigr)\wedge\D\theta=0.
+\end{equation}
+This tells us
+\begin{equation}
+\omega=-\cos(\theta)\,\D\varphi.
+\end{equation}
+Observe how easy it was to find these components, compared to the
+approach using the metric components.
+\end{ex}
+\begin{ex}[Simple Cosmology]
+Lets consider a simple metric
+\begin{equation}
+\D s^{2}=\D t^{2}-a(t)^{2}\bigl(\D x^{2}+\D y^{2}+\D z^{2}\bigr)
+\end{equation}
+We can choose a basis of one forms quite simply:
+\begin{equation}
+\begin{split}
+e^{0} &= \D t\\
+e^{i} &= a(t)\,\D x^{i},
+\end{split}
+\end{equation}
+then apply Cartan's equation
+\begin{equation}
+\begin{split}
+\D e^{0}+{\omega^{0}}_{i}\wedge e^{i}
+&=0\\
+&=a(t){\omega^{0}}_{i}\wedge e^{i}
+\end{split}
+\end{equation}
+This tells us that ${\omega^{0}}_{i}$ does not have any $\D t$'s
+in it, so
+\begin{equation}
+{\omega^{0}}_{i}=A_{ij}\,\D x^{j}.
+\end{equation}
+We then have
+\begin{equation}
+A_{ij}\,\D x^{i}\wedge\D x^{j}=0\implies
+A_{ij}=A_{ji}.
+\end{equation}
+Now, we \textbf{GUESS} that
+\begin{equation}
+A_{ij}=A\delta_{ij}
+\end{equation}
+since this is the simplest symmetric tensor. Now we consider the
+other part of Cartan's structure equation
+\begin{equation}\label{eq:lec12:ex2:cartanStruct}
+\D e^{i}+{\omega^{i}}_{j}\wedge e^{j}+{\omega^{i}}_{0}\wedge
+e^{0}=0.
+\end{equation}
+We see
+\begin{subequations}
+\begin{align}
+\D e^{i} &= \D a(t)\wedge \D x^{i}\\
+&= \dot{a}(t) \D t\wedge\D x^{i}
+\end{align}
+\end{subequations}
+and plug this back into Equation \eqref{eq:lec12:ex2:cartanStruct}
+\begin{equation}
+0=\dot{a}\,\D t\wedge\D x^{i}
++{\omega^{i}}_{j}\wedge(a\,\D x^{j})+(A\,\D x^{i}\wedge \D t)
+\end{equation}
+The simplest solution has ${\omega^{i}}_{j}=0$ and $A=\dot{a}$.
+It turns out this is precisely the 
+Friedmann--Lema\^\i{}tre--Robertson--Walker
+metric describing a simple universe.
+\end{ex}

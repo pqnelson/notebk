@@ -1,0 +1,177 @@
+%%
+%% lecture09.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Feb 27 14:05:38 2012 alex
+%% Last update Mon Feb 27 14:05:38 2012 alex
+%%
+
+
+\subsection{Metric Signatures, Index Gymnastics}
+We can use the metric to go from covectors to vectors, and back
+again. We also use it for index gymnastics:
+\begin{subequations}
+\begin{align}
+{T^{\mu\nu}}_{\sigma}g_{\mu\rho} &=
+{{T_{\rho}}^{\nu}}_{\sigma}\\
+{{T_{\rho}}^{\nu}}_{\sigma}g^{\rho\tau}
+&={T^{\mu\nu}}_{\sigma}g_{\mu\rho}g^{\rho\tau}\\
+&={T^{\tau\nu}}_{\sigma}
+\end{align}
+\end{subequations}
+For $g_{\mu\nu}(x)$ at a point, we can find coordinates where
+this is of the form
+\begin{equation}
+g_{\mu\nu}(x)=\diag(\underbrace{-1,\dots,-1}_{p},\underbrace{+1,\dots,+1}_{q}),
+\end{equation}
+where $p+q=n$.
+
+The signature of the metric is 
+\begin{equation}
+\begin{pmatrix}\mbox{metric}\\
+\mbox{signature}
+\end{pmatrix}
+=
+\begin{pmatrix}\mbox{number}\\
+\mbox{of $+$}
+\end{pmatrix}
+-\begin{pmatrix}\mbox{number}\\
+\mbox{of $-$}
+\end{pmatrix}
+\end{equation}
+Physicists always write $+---$ or $-+++$ indicating the metric
+signature, mathematicians write $(1,3)$ or $(3,1)$. If the
+signature is $(+\dots+)$, the metric is called
+\define{Riemannian}; and if the signature is either $(-+\dots+)$
+or $(+-\dots-)$, the metric is \define{Lorentzian}.
+
+At any point $P$ with coordinates\marginpar{Riemann Normal Coordinates} $\overline{x}$, there is a
+coordinate system in which
+\begin{equation}
+g_{\mu\nu}(x)=\eta_{\mu\nu}+\bigO(x-\overline{x})^{2}
+\end{equation}
+where $\eta_{\mu\nu}$ is the flat Minkowski metric. These
+coordinates are called the \define{Riemann Normal
+  Coordinates}. Physically this is a freely falling frame, no
+first order fictitious forces felt.
+
+
+\subsection{Tensor Densities}
+Suppose we have an $n$-dimensional manifold, we look at a totally
+antisymmetric type $(0,n)$ tensor
+\begin{equation}
+\tens{T}=T_{\mu_{1}\mu_{2}\dots\mu_{n}}
+\end{equation}
+has only one component. We see the nonzero component is
+\begin{equation}
+T_{012\dots(n-1)}
+\end{equation}
+since if $\mu_{i}=\mu_{j}$, antisymmetry demands $\tens{T}=0$ for
+the component. It looks like a function, but it doesn't transform
+as such.
+
+How does a totally antisymmetric tensor transform under a change
+of coordinates? We write out the components
+\begin{equation}
+T_{\mu_{1}\mu_{2}\dots\mu_{n}}\D x^{\mu_{1}}\otimes\dots\otimes\D x^{\mu_{n}}
+=
+T'_{\nu_{1}\nu_{2}\dots\nu_{n}}\D y^{\nu_{1}}\otimes\dots\otimes\D y^{\nu_{n}}
+\end{equation}
+The first thing to do is act on
+$(\partial'_{\rho_{1}},\dots,\partial'_{\rho_{n}})$ which obey
+\begin{equation}
+\<\D y^{\nu_{i}},\partial'_{\rho_{j}}\>={\delta^{\nu_{i}}}_{\rho_{j}},
+\end{equation}
+so
+\begin{equation}
+\begin{split}
+T'_{\rho_{1}\dots\rho_{n}}
+&=T_{\mu_{1}\dots\mu_{n}}\<\D y^{\mu_{1}},\partial'_{\rho_{1}}\>(\dots)
+\<\D y^{\mu_{n}},\partial'_{\rho_{n}}\>\\
+&=T_{\mu_{1}\dots\mu_{n}}
+\frac{\partial x^{\mu_{1}}}{\partial y^{\rho_{1}}}
+(\dots)\frac{\partial x^{\mu_{n}}}{\partial y^{\rho_{n}}}
+\end{split}
+\end{equation}
+Wonderful, lets work in a concrete situation: 2-dimensional
+manifolds. We see
+\begin{subequations}
+\begin{align}
+T'_{01}
+&=T_{\mu\nu}\frac{\partial x^{\mu}}{\partial y^{0}}
+\frac{\partial x^{\nu}}{\partial y^{1}}\\
+&=T_{01}\frac{\partial x^{0}}{\partial y^{0}}
+\frac{\partial x^{1}}{\partial y^{1}}+
+T_{10}\frac{\partial x^{1}}{\partial y^{0}}
+\frac{\partial x^{0}}{\partial y^{1}}\\
+&=T_{01}\left(
+\frac{\partial x^{0}}{\partial y^{0}}
+\frac{\partial x^{1}}{\partial y^{1}}-
+\frac{\partial x^{1}}{\partial y^{0}}
+\frac{\partial x^{0}}{\partial y^{1}}
+\right)\\
+&=T_{01}\det\left|
+\frac{\partial x^{\mu}}{\partial y^{\nu}}
+\right|
+\end{align}
+\end{subequations}
+We can generalize this result
+\begin{equation}
+T'_{01\dots(n-1)}=T_{0\dots(n-1)}\det|\partial x/\partial y|.
+\end{equation}
+An object which transforms this way is called a scalar density of
+weight $-1$.
+
+Again, the general\marginpar{Tensor Density of Weight $\omega$} notion
+is a tensor density of weight $\omega$ is
+\begin{equation}
+T'_{\mu_{1}\dots\mu_{n}}=T_{\nu_{1}\dots\nu_{n}}
+\frac{\partial x^{\nu_{1}}}{\partial y^{\mu_{1}}}(\dots)
+\frac{\partial x^{\nu_{n}}}{\partial y^{\mu_{n}}}
+\det|\partial y/\partial x|^{\omega}.
+\end{equation}
+A tensor density is more general than a pseudotensor (recall: a
+pseudotensor is just some quantity with indices).
+
+\begin{ex}[Determinant of Metric Tensor]
+Consider
+\begin{equation}
+g=\det|g_{\mu\nu}|
+\end{equation}
+Under a coordinate transformation $x^{\mu}\to y^{\nu}(x)$, we have
+\begin{equation}
+g'_{\mu\nu}=g_{\alpha\beta}\frac{\partial x^{\alpha}}{\partial y^{\mu}}
+\frac{\partial x^{\beta}}{\partial y^{\nu}}
+\end{equation}
+thus
+\begin{equation}
+g'=g\det|\partial x/\partial y|^{2}
+\end{equation}
+So $g$ is a scalar density of weight $-2$, and moreover this
+implies $\sqrt{|g|}$ is a scalar density of weight $-1$.
+\end{ex}
+
+\begin{ex}[Levi--Civita Symbol]
+Consider the alternating symbol
+\begin{equation}
+\widetilde{\varepsilon}_{\mu_{1}\dots\mu_{n}}
+=\begin{cases}
++1 & \mbox{if even permutation}\\
+-1 & \mbox{if odd permutation}\\
+0 & \mbox{if any two indices equal.}
+\end{cases}
+\end{equation}
+It's a totally antisymmetric matrix, but it is not a tensor: the
+alternating symbol is a tensor density of weight $+1$. We can
+define a genuine tensor by
+\begin{equation}
+\varepsilon_{\mu_{1}\dots\mu_{n}}=\sqrt{|g|}\widetilde{\varepsilon}_{\mu_{1}\dots\mu_{n}}
+\end{equation}
+which is the Levi--Civita symbol\index{Levi--Civita Symbol}. We
+should note, using abstract index notation, the cross product is
+\begin{equation}
+(A\times B)^{i}=g^{ij}\widetilde{\varepsilon}_{jk\ell}A^{k}B^{\ell}.
+\end{equation}
+\end{ex}

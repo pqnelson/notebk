@@ -1,0 +1,174 @@
+%%
+%% lecture11.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Feb 29 11:42:55 2012 alex
+%% Last update Wed Feb 29 11:42:55 2012 alex
+%%
+We ended up with an expression for the covariant derivative
+\begin{equation}
+\nabla_{\mu}v^{a}=\partial_{\mu}v^{a}+
+{{\Gamma_{\mu}}^{a}}_{b}v^{b}
+\end{equation}
+where ${{\Gamma_{\mu}}^{a}}_{b}$ is the corrections to stay on
+the manifold. The connection determines the geometry of the
+manifold. 
+
+Covariant differentiation commutes with contraction
+\begin{equation}
+\begin{split}
+\nabla_{\mu}(v^{a}w_{a})
+&=(\nabla_{\mu}v^{a})w_{a}+v^{a}(\nabla_{\mu}w_{a})\\
+&=(\partial_{\mu}v^{a})w_{a}+v^{a}(\partial_{\mu}w_{a})
+\end{split}
+\end{equation}
+to satisfy the Leibniz property for covariant derivatives. This
+implies
+\begin{equation}
+\nabla_{\mu}w_{a}=\partial_{\mu}w_{a}-{{\Gamma_{\mu}}^{b}}_{a}w_{b}
+\end{equation}
+and we observe
+\begin{equation}
+\nabla_{\mu}{T^{ab}}_{c}
+=
+\partial_{\mu}{T^{ab}}_{c}+
+{{\Gamma_{\mu}}^{a}}_{d}{T^{db}}_{c}+
+{{\Gamma_{\mu}}^{b}}_{d}{T^{ad}}_{c}-
+{{\Gamma_{\mu}}^{d}}_{c}{T^{ab}}_{d}.
+\end{equation}
+Lets consider the second covariant derivative of a function
+\begin{equation}
+\begin{split}
+\nabla_{\mu}\nabla_{\nu}f
+&= \nabla_{\mu}(\partial_{\nu}f)\\
+&=
+\partial_{\mu}\partial_{\nu}f-{{\Gamma_{\nu}}^{\rho}}_{\mu}\partial_{\rho}f. 
+\end{split}
+\end{equation}
+The mixed partials cancel, yielding
+\begin{equation}
+(\nabla_{\mu}\nabla_{\nu}-\nabla_{\nu}\nabla_{\mu})f
+=-({{\Gamma_{\mu}}^{\rho}}_{\nu}-{{\Gamma_{\nu}}^{\rho}}_{\mu})\partial_{\rho}f
+\end{equation}
+which is a tensor. We call
+\begin{equation}
+{{\Gamma_{\mu}}^{\rho}}_{\nu}-{{\Gamma_{\nu}}^{\rho}}_{\mu}=T^{\rho}_{\mu\nu}
+\end{equation}
+the \define{Torsion Tensor}. In Riemannian geometry, this is
+equal to zero.
+
+The next thing to look at is the covariant derivative of the
+metric
+\begin{equation}
+\begin{split}
+\nabla_{\rho}g_{\mu\nu}
+&=\partial_{\rho}g_{\mu\nu}-{{\Gamma_{\rho}}^{\sigma}}_{\nu}g_{\mu\sigma}
+-{{\Gamma_{\rho}}^{\sigma}}_{\mu}g_{\sigma\nu}\\
+&=0
+\end{split}
+\end{equation}
+where we obtain the second line through using metric
+compatibility. Physically this means if we take the inner product
+of two vectors, then move them along a geodesic, the inner
+product should be invariant.
+
+\index{Weyl!Unified Field attempt|(}
+What if we drop this? We get\marginpar{Nonmetricity}
+\begin{equation}
+\nabla_{\rho}g_{\mu\nu}=K_{\rho\mu\nu}
+\end{equation}
+which is called \define{Nonmetricity}. There is one appealing
+version of nonmetricity that Hermann Weyl introduced. Suppose we
+require
+\begin{equation}
+\nabla_{\rho}g_{\mu\nu}=A_{\rho}g_{\mu\nu}
+\end{equation}
+where $A_{\rho}$ is the electromagnetic 4-potential. This yields
+a tensor that looks like the field-strength tensor. But there is
+a problem since the length of a tensor is history-dependent, but
+this is observably untrue (e.g., the frequency of the photon from
+a Hydrogen atom's electron changing orbitals).
+
+Take two vectors $v^{\mu}$, $w^{\mu}$ and define a curve
+$x^{\mu}$ with tangent vector
+\begin{equation}
+\frac{\D x^{\mu}}{\D s}=u^{\mu}.
+\end{equation}
+Observe, since we are moving along the curve
+\begin{equation}
+\frac{\D}{\D s}(g_{\mu\nu}v^{\mu}w^{\nu})=u^{\rho}\partial_{\rho}(g_{\mu\nu}v^{\mu}w^{\nu})
+\end{equation}
+and since this is the derivative of a scalar invariant, we have
+\begin{equation}
+u^{\rho}\partial_{\rho}(g_{\mu\nu}v^{\mu}w^{\nu})=
+u^{\rho}\nabla_{\rho}(g_{\mu\nu}v^{\mu}w^{\nu}).
+\end{equation}
+Using the Leibniz rule yields
+\begin{equation}
+u^{\rho}\nabla_{\rho}(g_{\mu\nu}v^{\mu}w^{\nu})
+=(u^{\rho}\nabla_{\rho}g_{\mu\nu})v^{\mu}w^{\nu}
++g_{\mu\nu}u^{\rho}\bigl(
+(\nabla_{\rho}v^{\mu})w^{\nu}+
+v^{\mu}(\nabla_{\rho}w^{\nu})
+\bigr).
+\end{equation}
+If we move in such a way that\marginpar{Parallel Propagation}
+\begin{equation}
+u^{\rho}\nabla_{\rho}v^{\mu}=0,
+\end{equation}
+called ``parallel propagation,'' the change in the inner product
+comes from the $\nabla g_{\mu\nu}$ term. The Weyl inner product
+gives us
+\begin{equation}
+\frac{\D}{\D s}(g_{\mu\nu}v^{\mu}v^{\nu})=(u^{\rho}A_{\rho})(g_{\mu\nu}v^{\mu}v^{\nu})
+\end{equation}
+Observe this is how it changes ``infinitesimally'' along the
+path. The total magnitude $\ell$ changes as
+\begin{equation}
+\ell^{2}\to\ell^{2}\exp\left(\int\! A_{\rho}\,\D x^{\rho}\right)
+\end{equation}
+It turns out, if we stick an $\I=\sqrt{-1}$ into Weyl's idea, we
+recover some notions in quantum field theory (e.g., phase
+shifting the Dirac field, etc.). For more historical details, see Straumann~\cite{Straumann:2005hj}.
+\index{Weyl!Unified Field attempt|)}
+
+Lets assume we have a Torsion-free, metric-compatible
+connection. If we set the torsion to zero, we uniquely get
+\begin{equation}
+\Gamma^{\rho}_{\mu\nu}=\frac{1}{2}g^{\rho\sigma}
+(\partial_{\mu}g_{\sigma\nu}+\partial_{\nu}g_{\mu\sigma}
+-\partial_{\sigma}g_{\mu\nu})
+\end{equation}
+which is the \define{Christoffel Connection}. The geodesic
+equation can be written as
+\begin{equation}
+\frac{\D^{2}x^{\rho}}{\D s^{2}}
++\Gamma^{\rho}_{\mu\nu}\frac{\D x^{\mu}}{\D s}\frac{\D x^{\nu}}{\D s}
+=0
+\end{equation}
+If it turns out the nonmetricity is nonzero, we can write down
+the equation with all the nonmetricity as well as all the metric
+compatible components. This gives us two sets of paths that are different.
+
+If we set
+\begin{equation}
+u^{\mu}=\frac{\D x^{\mu}}{\D s}
+\end{equation}
+we have the geodesic equation becoming\marginpar{Autoparallel transport}
+\begin{equation}
+u^{\rho}\nabla_{\rho}u^{\mu}=0
+\end{equation}
+which is in some sense the derivative of the tangent is zero (or,
+in other words, ``it remains parallel to itself''). This is
+precisely the condition of autoparallel transport. The two
+definitions of autoparallel and shortest distance become
+inequivalent for nonmetricity situations. 
+
+\begin{prop}
+Let $g=\det|g_{\mu\nu}|$, then ${\Gamma^{\rho}}_{\mu\rho}=(\sqrt{-g})^{-1}\partial_{\mu}\sqrt{-g}$.
+\end{prop}
+\begin{prop}
+For any vector $v^{\mu}$ we have $\sqrt{-g}\nabla_{\mu}v^{\mu}=\partial_{\mu}(\sqrt{-g}v^{\mu})$.
+\end{prop}

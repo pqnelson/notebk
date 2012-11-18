@@ -1,0 +1,431 @@
+%%
+%% lecture02.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Feb 14 11:53:25 2012 alex
+%% Last update Tue Feb 14 11:53:25 2012 alex
+%%
+Lets review the basic setup: gravity determines paths in
+spacetime, a set of preferred paths determine geometry, so we
+can try to go backwards and determine the geometry of spacetime
+from geodesics. Or given the curvature of spacetime, we can
+determine the geodesics. 
+
+
+If we consider charged bodies in the electromagnetic field, it is
+done in two steps: (1) use Maxwell's equations to determine the
+electric and magnetic fields; (2) use the Lorentz force Law to
+compute trajectories. If we are really careful, general
+relativity does the whole thing in a single step. If we have the
+field equations, we only get a consistent answer if everything
+moves (along a geodesic). In electromagnetism, we can hold
+something still with an uncharged body; yet for general
+relativity, the equivalence principle says (the analogous
+procedure) cannot happen.
+
+\subsection{Geodesics in Special Relativity}
+
+We were talking about deriving geodesics. Lets review spacetime
+in special relativity (see, e.g.,
+Carroll~\cite[\normalfont\S\S1.1--1.4]{Carroll:2004st}, Gibbons~\cite{gibbons:2010}, or
+Giulini~\cite{Giulini:2006uy,Giulini:2008pu} for more
+mathematically oriented discussions). The most basic feature:
+distances are relative, and time is relative. Events (things that
+occur at some place and time) are dependent on the observer, but
+the proper time $s$ (or $\tau$) is defined in special relativity
+as
+\begin{equation}
+\D s^2=c^2\D t^2-\D x^2-\D y^2-\D z^2
+\end{equation}
+very much like Pythagoras' theorem but space and time come in
+different signs.\marginpar{Set $c=1$} We will work with units
+where $c=1$.
+
+If we have two events, then we can construct the geodesic from
+$(x_0,t_0)$ to $(x_1,t_1)$ as 
+\begin{equation}
+s=\int^{(x_1,t_1)}_{(x_0,t_0)}\D s
+\end{equation}
+then obtain from $\delta s=0$ the equations of motion for the
+geodesic. These are determined, as by last time, to be the
+solution of the differential equation
+\begin{equation}
+\frac{\D^2}{\D s^2}X^{\mu}(s)=0.
+\end{equation}
+In special relativistic spacetime, geodesics are the trajectories
+with the longest proper time, \emph{not} the shortest! We will
+consider two examples and then the general case.
+
+\begin{ex}[$\RR^2$ revisited]
+Lets consider geodesics in $\RR^2$ using polar coordinates:
+\begin{equation}
+x=r\cos(\theta),\quad y=r\sin(\theta).
+\end{equation}
+We then see
+\begin{equation}
+\begin{split}
+\D s^2 &=\D x^2+\D y^2\\
+&=\D r^2+r^2\D\theta^2
+\end{split}
+\end{equation}
+We are interested in paths from $(r_0,\theta_0)$ to
+$(r_1,\theta_1)$. We label the path by some parameter $u$ and
+write
+\begin{equation}
+s=\int\D s.
+\end{equation}
+Note: we change the parameter $u=s$ \emph{after} we've chosen the
+path. So we write
+\begin{equation}
+r=r(u),\quad\theta=\theta(u).
+\end{equation}
+The integral becomes
+\begin{equation}
+\begin{split}
+s
+&=\int\frac{\D s}{\D u}\D u\\
+&=\int\sqrt{\left(\frac{\D r}{\D u}\right)^{2}+r^{2}\left(\frac{\D\theta}{\D u}\right)^{2}}\D u
+\end{split}
+\end{equation}
+which we extremize. We define
+\begin{equation}
+E=\left(\frac{\D r}{\D u}\right)^{2}+r^{2}\left(\frac{\D\theta}{\D u}\right)^{2}
+\end{equation}
+and take the variation
+\begin{equation}\label{eq:lec02:ex01:variation}
+\begin{split}
+\delta s
+&=\delta\int E^{1/2}\D u\\
+&=\frac{1}{2}\int E^{-1/2}\delta E\D u\\
+&=0.
+\end{split}
+\end{equation}
+First we need to compute $\delta E$, which is a triviality:
+\begin{equation}
+\delta E = 2\frac{\D r}{\D u}\frac{\D\delta r}{\D u}
++2r\delta r\left(\frac{\D\theta}{\D u}\right)^{2}
++2r^{2}\frac{\D\theta}{\D u}\frac{\D\delta\theta}{\D u}.
+\end{equation}
+Then what? Well, plug it back into Eq \eqref{eq:lec02:ex01:variation}
+to find
+\begin{align}
+\delta s
+&=\frac{1}{2}\int\left[
+-2\frac{\D}{\D u}\left(E^{-1/2}\frac{\D r}{\D u}\right)\delta r+
+E^{-1/2}2r\left(\frac{\D\theta}{\D u}\right)^{2}\delta r-
+2\frac{\D}{\D u}\left(E^{-1/2}r^{2}\frac{\D\theta}{\D u}\right)\delta\theta
+\right]\D u\nonumber\\
+&=0
+\end{align}
+We require the coefficients of $\delta r$, $\delta\theta$ must
+vanish\footnote{Mathematicians may feel uneasy about this, but it is due to the fundamental lemma of variational calculus.}.
+We get a set of equations, and we have our particular path. This
+allows us \emph{now} to set $u=s$, thus $E=1$, and our equations
+\begin{align*}
+\frac{\D}{\D s}\left(r^{2}\frac{\D\theta}{\D s}\right)
+&=0\tag{$\delta\theta$\text{ coefficient}}\\
+-\frac{\D^{2}r}{\D s^{2}}+r\left(\frac{\D\theta}{\D s}\right)^{2}
+&=0\tag{$\delta r$\text{ coefficient}}
+\end{align*}
+Trick \#1: we have 2 second-order Ordinary Differential
+Equations. We can do some of the integration without even
+thinking about it (although this trick will give mathematicians
+indigestion). We have
+\begin{equation}\label{eq:ex01:firstInt}
+\D s^2=\D r^2+r^2\D\theta^2\implies
+\left(\frac{\D r}{\D s}\right)^{2}+r^{2}\left(
+\frac{\D\theta}{\D s}\right)^{2}=1
+\end{equation}
+is the first integral of our two given equations.
+
+The $\delta\theta$ coefficient is easy. It says
+\begin{equation}
+\begin{split}
+r^{2}\frac{\D\theta}{\D s}&=\mbox{(constant)}\\
+&\eqdef a.
+\end{split}
+\end{equation}
+We plug this into the Eq \eqref{eq:ex01:firstInt} to find
+\begin{equation}
+\left(\frac{\D r}{\D s}\right)^{2}+\frac{a^{2}}{r^{2}}=1.
+\end{equation}
+Thus we have, rearranging and manipulating, the following
+expression
+\begin{equation}
+\begin{split}
+\D s&=
+\frac{\D r}{\sqrt{1-(a/r)^{2}}}\\
+&=\frac{r\D r}{\sqrt{r^{2}-a^{2}}}
+\end{split}
+\end{equation}
+and integration yields
+\begin{equation}\label{eq:ex01:rEqS}
+s-s_{0}=\sqrt{r^{2}-a^{2}}\implies r^{2}=a^{2}+(s-s_{0})^{2}.
+\end{equation}
+What to do? Well, we do the only thing we can do! We plug this
+expression for $r$ into
+\begin{equation*}
+r^{2}\frac{\D\theta}{\D s}=a
+\end{equation*}
+and we obtain
+\begin{equation}
+\left(a^{2}+(s-s_{0})^{2}\right)\frac{\D\theta}{\D s}=a.
+\end{equation}
+We know how to solve first order differential equations, so we
+just integrate
+\begin{equation}
+\begin{split}
+\theta-\theta_{0}&=\int\frac{a\D s}{a^{2}+(s-s_{0})^{2}}\\
+&=\arctan\left(\frac{s-s_{0}}{a}\right).
+\end{split}
+\end{equation}
+But we want to write $s-s_{0}$ in terms of $\theta$, so we can
+plug it into Eq \eqref{eq:ex01:rEqS}. What to do? Well, we can
+manipulate our result to obtain
+\begin{equation}
+\theta-\theta_{0}=\arctan\left(\frac{s-s_{0}}{a}\right)
+\implies s-s_{0}=a\tan(\theta-\theta_{0}).
+\end{equation}
+So what? Well, plug this into Eq \eqref{eq:ex01:rEqS}
+\begin{equation}
+\begin{split}
+r^{2}
+&=a^{2}\left(1+\tan^{2}(\theta-\theta_{0})\right)\\
+&=\frac{a^{2}}{\cos^{2}(\theta-\theta_{0})}.
+\end{split}
+\end{equation}
+So what? Well, this implies
+\begin{equation}
+r\cos(\theta-\theta_{0})=a
+\end{equation}
+is constant, which is precisely a straight line. Thus a geodesic
+in $\RR^2$ using polar coordinates is precisely a straight line,
+the same result we obtained from considering a geodesic using
+Cartesian coordinates!
+\end{ex}
+\begin{ex}[Hyperbolic Plane]\index{Hyperbolic Plane!Geodesics|(}
+Lets consider the hyperbolic plane, where
+\begin{equation}
+\D s^{2}=\frac{1}{y^{2}}\left(\D x^{2}+\D y^{2}\right).
+\end{equation}
+This is related to de Sitter space.\index{de Sitter space!Relation to Hyperbolic Plane}
+We want to find geodesics, so we parametrize a path
+\begin{equation}
+x=x(u),\quad y=y(u)
+\end{equation}
+then take
+\begin{equation}
+E=\frac{1}{y^{2}}\left[
+\left(\frac{\D x}{\D u}\right)^{2}+
+\left(\frac{\D y}{\D u}\right)^{2}
+\right].
+\end{equation}
+We take the variation
+\begin{equation}
+\begin{split}
+\delta s&=\delta\int E^{1/2}\D u\\
+&=\frac{1}{2}\int E^{-1/2}\delta E\D u\\
+&=0.
+\end{split}
+\end{equation}
+First we consider the variation
+\begin{equation}
+\delta E=
+\frac{-2}{y^{3}}\delta y\left[
+\left(\frac{\D x}{\D u}\right)^{2}+
+\left(\frac{\D y}{\D u}\right)^{2}
+\right]
++\frac{2}{y^{2}}\left[
+\frac{\D x}{\D u}\frac{\D\delta x}{\D u}+
+\frac{\D y}{\D u}\frac{\D\delta y}{\D u}
+\right]
+\end{equation}
+Now we plugging this monstrous result into the variation of the
+length yields
+\begin{equation}
+\begin{split}
+\delta s&=
+\int
+E^{-1/2}\left[
+\frac{-1}{y}E\delta y
++\frac{1}{y^{2}}\frac{\D x}{\D u}\frac{\D\delta x}{\D u}+
+\frac{1}{y^{2}}\frac{\D y}{\D u}\frac{\D\delta y}{\D u}
+\right]\D u\\
+&=0
+\end{split}
+\end{equation}
+Integration by parts gives the $\delta x$ coefficient
+\begin{equation*}\tag{$\delta x$\text{ coefficient}}
+\frac{\D}{\D u}\left(\frac{1}{y^{2}}\frac{\D x}{\D u}\right)=0
+\end{equation*}
+and the first-integral trick gives
+\begin{equation}\label{eq:ex02:firstInt}
+\frac{1}{y^{2}}\left(\frac{\D x}{\D u}\right)^{2}+
+\frac{1}{y^{2}}\left(\frac{\D y}{\D u}\right)^{2}=1.
+\end{equation}
+The $\delta x$ coefficient may be solved explicitly as
+\begin{equation}
+\frac{\D x}{\D u}=ky^{2}
+\end{equation}
+where $k$ is a constant. We plug this into the first-integral
+equation \eqref{eq:ex02:firstInt}
+\begin{equation}
+k^{2}y^{2}+\frac{1}{y}^{2}\left(\frac{\D y}{\D u}\right)^{2}=1.
+\end{equation}
+There are two possible families of geodesics: when $k\not=0$ and
+when $k=0$.
+
+If $k\not=0$, then
+\begin{equation}
+\frac{\D y}{\D u}=\frac{\D y}{\D x}\frac{\D x}{\D u}
+\end{equation}
+and we can think of $y$ as a function
+\begin{equation}
+y=y(x).
+\end{equation}
+The differential equation becomes
+\begin{equation}
+\frac{\D y}{\D u}=ky^{2}\frac{\D y}{\D x}
+\end{equation}
+which we plug into the first-integral
+\begin{equation}
+k^2y^2+k^2y^2\left(\frac{\D y}{\D u}\right)^{2}=1\implies
+\left(\frac{\D y}{\D u}\right)^{2}=\frac{1}{(ky)^{2}}-1.
+\end{equation}
+We may solve this
+\begin{equation}
+k^{2}\left[
+y^{2}+(x-x_{0})^{2}
+\right]=1
+\end{equation}
+which is a circle! This family of geodesics are circles centered
+at $(x_{0},0)$.
+
+If, on the other hand, $k=0$ what happens? We see that the
+differential equation
+\begin{equation}
+\frac{\D x}{\D u}=ky^{2}=0
+\end{equation}
+implies $x$ is a constant. Thus it is a straight line.
+\index{Hyperbolic Plane!Geodesics|)}\end{ex}
+
+\subsection{General Geodesic Equation}
+We have\footnote{Remember, we are using the Einstein summation
+  convention, so $x_{a}y^{ab}=\sum_{a}x_{a}y^{ab}$. When the
+  index appears both ``downstairs'' and ``upstairs'', we sum over
+  it implicitly. But note: the indices must have the same dummy
+  variable, and one must be downstairs while another upstairs!!!}
+\begin{equation}
+\D s^{2}=g_{ab}\D x^{a}\D x^{b}
+\end{equation}
+where $g_{ab}$\marginpar{$g_{ab}$ is metric, $\D s^{2}$ line element}
+is called the \define{Metric}\index{Metric Tensor}\index{$g_{ab}$}
+and $\D s^2$ is called the \define{Line Element}.
+Indices we sum over are called \define{Dummy Indices}, and we may
+relabel them as we please
+\begin{equation}
+\begin{split}
+\D s^{2} &= g_{ab}\D x^{a}\D x^{b}\\
+&=g_{cd}\D x^{c}\D x^{d}
+\end{split}
+\end{equation}
+The \define{Signature} of the metric means the number of positive
+and negative eigenvalues. There are two conventions for general
+relativity: $(+---)$ called the \define{West Coast}
+convention or \define{Particle Physicists} convention; and
+$(-+++)$ called the \define{East Coast} convention or
+\define{Relativists Convention}.
+
+Now lets derive the geodesic equation. We want the path which
+extremizes the arc-length. This is determined by demanding the
+variation of the arc-length vanishes
+\begin{equation}
+\delta s=0.
+\end{equation}
+As usual, we define
+\begin{equation}
+\boxed{
+E\eqdef g_{ab}\frac{\D x^{a}}{\D u}\frac{\D x^{b}}{\D u}
+}
+\end{equation}
+where $x^{a}=x^{a}(u)$ labels a path. Thus we have
+\begin{equation}
+s=\int E^{1/2}\D u
+\end{equation}
+imply
+\begin{equation}
+\delta s = \frac{1}{2}\int E^{-1/2}\delta E\D u
+\end{equation}
+where
+\begin{equation}
+\delta E=(\delta g_{ab})\frac{\D x^{a}}{\D u}\frac{\D x^{b}}{\D u}
++2g_{ab}\frac{\D x^{a}}{\D u}\frac{\D\delta x^{b}}{\D u}.
+\end{equation}
+Note that
+\begin{equation}
+\delta g_{ab}=\frac{\partial g_{ab}}{\partial x^{c}}\delta x^{c}
+\end{equation}
+since we can ``wiggle'' around a path, the metric varies along
+that path. We can notationally write
+\begin{equation}
+\delta g_{ab}=(\partial_{c} g_{ab})\delta x^{c}
+\end{equation}
+where
+\begin{equation}
+\partial_{c}=\frac{\partial}{\partial x^{c}}
+\end{equation}
+and no, that is not a typo. The index on $\partial_{c}$ is
+supposed to be downstairs provided the denominator is $\partial
+x^{c}$. The reason is due to how this quantity behaves when we
+change coordinates.
+
+Thus
+\begin{equation}
+\delta E=(\partial_{c}g_{ab})\frac{\D x^{a}}{\D u}\frac{\D x^{b}}{\D u}
++2g_{bc}\frac{\D x^{b}}{\D u}\frac{\D\delta x^{c}}{\D u}
+\end{equation}
+where we intentionally relabel the dummy indices. This renders
+\begin{equation}
+\begin{split}
+\delta\int\D s&=
+\frac{1}{2}\int E^{-1/2}\left[\delta
+  x^{c}\partial_{c}g_{ab}\frac{\D x^{a}}{\D u}\frac{\D x^{b}}{\D u}
++2g_{cb}\frac{\D\delta x^{c}}{\D u}\frac{\D x^{b}}{\D u}\right]\D u\\
+&=\int\left[\frac{1}{2}E^{-1/2}\partial_{c}g_{ab}\frac{\D x^{a}}{\D u}\frac{\D x^{b}}{\D u}
+-\frac{\D}{\D u}\left(E^{-1/2}g_{bc}\frac{\D x^{b}}{\D u}\right)\right]\delta x^{c}\D u\\
+&=0
+\end{split}
+\end{equation}
+where the second line, we integrated by parts and threw away the
+boundary terms. This implies the bracketed term must vanish:
+\begin{equation}
+\frac{1}{2}E^{-1/2}\partial_{c}g_{ab}\frac{\D x^{a}}{\D u}\frac{\D x^{b}}{\D u}
+-\frac{\D}{\D u}\left(E^{-1/2}g_{bc}\frac{\D x^{b}}{\D u}\right)=0
+\end{equation}
+and this is our geodesic equation.
+
+We can choose $u=s$ and thus $E=1$, giving us
+\begin{equation}
+\boxed{
+\frac{\D}{\D s}
+\left(g_{bc}\frac{\D x^{b}}{\D s}\right)
+-\frac{1}{2}\partial_{c}g_{ab}\frac{\D x^{a}}{\D s}\frac{\D x^{b}}{\D s}=0.
+}
+\end{equation}
+This is the geodesic equation. But also note we may pick another
+paramter $u$ for which
+\begin{equation}
+\frac{\D E}{\D u}=0
+\end{equation}
+and $u$ is called an \define{Affine Parameter}. For light rays it
+is conventional to use a $\lambda$ for this parameter. Also
+notice
+\begin{equation}
+\D s^{2}=\begin{cases}
+1&\mbox{for massive bodies}\\
+0&\mbox{for photons}
+\end{cases}
+\end{equation}
+which is our last observation for now.

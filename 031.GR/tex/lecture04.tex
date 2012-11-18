@@ -1,0 +1,556 @@
+%%
+%% lecture04.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Feb 19 11:51:19 2012 alex
+%% Last update Sun Feb 19 11:51:19 2012 alex
+%%
+There are a few differences with lightlike geodesics and timelike
+geodesics. First we use an affine parameter $\lambda$ instead of
+$s$. Second $\D s^{2}=0$ between events. So we have
+\begin{align*}
+g_{ab}\frac{\D x^{a}}{\D s}\frac{\D x^{b}}{\D s}=1
+\tag{\text{for a planet}}\\
+g_{ab}\frac{\D x^{a}}{\D\lambda}\frac{\D x^{b}}{\D\lambda}=0.
+\tag{\text{for light}}
+\end{align*}
+The only thing that changes is
+\begin{equation}
+\left(\frac{\D r}{\D\lambda}\right)^{2}=
+E^{2}-\left(1-\frac{2m}{r}\right)\frac{L^{2}}{r^{2}}.
+\end{equation}
+The convention for light is to \emph{not} use tildes on $L$ and
+$E$. We also have
+\begin{equation}
+\left(\frac{\D r}{\D\varphi}\right)^{2}=\frac{L^{2}}{r^{4}}.
+\end{equation}
+We can see the angle as a function of distance, instead of the
+other way around:
+\begin{equation}
+\left(\frac{\D\varphi}{\D u}\right)^{2}=
+\frac{L^{2}}{E^{2}-L^{2}u^{2}(1-2mu)}
+\end{equation}
+which is the same sort of problem we've seen before. In
+particular, the ``Newtonian Approximation''\marginpar{Newtonian Approximation}
+is
+\begin{equation}
+\begin{split}
+\frac{\D\varphi}{\D u} 
+&=\frac{1}{\sqrt{(E/L)^{2}-u^{2}}}\\
+&=\frac{1}{\sqrt{b^{-2}-u^{2}}}.
+\end{split}
+\end{equation}
+The solution for our differential equation is
+\begin{equation}
+\varphi-\varphi_{0}=\arcsin(bu)
+\end{equation}
+and thus
+\begin{equation}
+r\sin(\varphi-\varphi_{0})=b.
+\end{equation}
+This is a straight line! In this approximation, light moves in a
+straight line.
+
+\subsection{First Approximation}
+It is useful to use the approximation
+\begin{equation}
+u^{2}-2mu^{3}\approx u^{2}(1-2mu)^{2}-m^{2}u^{4}.
+\end{equation}
+Let us define
+\begin{equation}
+y=u(1-mu),
+\end{equation}
+we can ignore $m^{2}y^{4}$ relative to $y^{2}$. So
+\begin{equation}
+\D y=\D u (1-2mu),
+\end{equation}
+thus
+\begin{equation}
+\begin{split}
+\D u 
+&= (1-2mu)^{-1}\D y\\
+&\approx (1+2my)\D y.
+\end{split}
+\end{equation}
+Then
+\begin{equation}
+\begin{split}
+\D\varphi
+&=\frac{\pm\D u}{\sqrt{(E/L)^{2}-u^{2}(1-2mu)}}\\
+&\approx\pm\frac{(1+2my)}{\sqrt{b^{-2}-y^{2}}}\D y.
+\end{split}
+\end{equation}
+So
+\begin{equation}
+\begin{split}
+\frac{1}{2}\Delta\varphi
+&=\int^{b^{-1}}_{0}\left(\frac{1+2my}{\sqrt{b^{-2}-y^{2}}}\right)
+\D y\\
+&=\pi+\frac{4m}{b}.
+\end{split}
+\end{equation}
+This means light is bent, taking a trajectory roughly doodled
+thus: 
+
+\begin{center}
+  \includegraphics{img/lecture04.0}
+\end{center}
+
+\begin{rmk}
+Please avoid the temptation to Taylor expand in
+\begin{equation}
+\frac{\D\varphi}{\D u}=\frac{\pm1}{\sqrt{b^{-2}-u^{2}+2mu^{3}}}
+\end{equation}
+Do not Taylor expand the right hand side, specifically involving
+the $mu^{3}$ term, about 0. We get something circuitous if we try.
+\end{rmk}
+
+\subsection{Second Approximation}
+An older technique no longer taught, perhaps the most
+straightforward, is
+\begin{equation}\label{eq:lec3:approx2:omegaSquared}
+\omega^{2}=u^{2}-2mu^{3}
+\end{equation}
+so we have
+\begin{equation}
+\varphi=\int^{1}_{0}\frac{\D u}{\sqrt{1-\omega^{2}}}.
+\end{equation}
+%% We have equation \eqref{eq:lec3:approx2:omegaSquared} imply
+%% \begin{equation}
+%% \omega=u\sqrt{1-2mu}
+%% \end{equation}
+%% and 
+By expanding
+\begin{equation}
+u=\omega+\alpha_{1}\omega^{2}+\alpha_{2}\omega^{3}
+\end{equation}
+we get a nice systematic perturbation. Although it is possible to
+solve equation \eqref{eq:lec3:approx2:omegaSquared}, that is not
+the point! No, what we do is rewrite it as
+\begin{equation}
+\omega=u\sqrt{1-2mu}
+\end{equation}
+then Taylor expand the squareroot on the right hand side up to
+some term. This is when we make our approximation:
+\begin{equation}\label{eq:lec3:approx2:omegaAfterTaylorExpansion}
+\omega\approx u-mu^{2}.
+\end{equation}
+We consider
+\begin{equation}
+m^{2}u^{4}\lll u
+\end{equation}
+as our approximation, so squaring equation
+\eqref{eq:lec3:approx2:omegaAfterTaylorExpansion} recovers equation \eqref{eq:lec3:approx2:omegaSquared}.
+
+
+Observe equation
+\eqref{eq:lec3:approx2:omegaAfterTaylorExpansion} is a quadratic equation in $u$, which has its
+solution
+\begin{equation}
+u_{\pm}=\frac{1}{2m}(1\pm\sqrt{1-4m\omega}).
+\end{equation}
+We Taylor expand this to third order in $\omega$, taking the
+physically meaningful root $u=u_{-}$
+\begin{equation}
+\begin{split}
+u&\approx\frac{1}{2m}\left(2m\omega+\frac{1}{8}(4m\omega)^{2}+\frac{1}{16}(4m\omega)^{3}
+\right)\\
+&\approx \omega+m\omega^{2}+\frac{1}{2}m^{2}\omega^{3}.
+\end{split}
+\end{equation}
+Thus
+\begin{equation}
+\D u=\D\omega+2m\omega\D\omega+\frac{3}{2}m^{2}\omega^{2}\D\omega,
+\end{equation}
+and our integral becomes
+\begin{equation}
+\begin{split}
+\Delta\varphi
+&=\int^{1}_{0}\frac{(1+2m\omega+\frac{3}{2}m^{2}\omega^{2})}{\sqrt{1-\omega^{2}}}\D\omega\\
+&=2m+\left(1+\frac{3m^{2}}{4}\right)\pi
+\end{split}
+\end{equation}
+Observe we have an additional term involving $m^{2}$ in this approximation.
+\begin{ddanger}
+These calculations should be carefully double checked, and
+re-examined to make certain we did everything consistently. This
+is left as an exercise to you, gentle reader!
+\end{ddanger}
+The astute reader probably feels discomfort at $b$
+disappearing. Observe that half the angle of deflection is
+\begin{equation}
+\begin{split}
+\frac{\Delta\varphi}{2} &=
+\int^{1/b}_{0}\frac{(1+2m\omega+\frac{3}{2}m^{2}\omega^{2})}{\sqrt{b^{-2}-\omega^{2}}}\D\omega\\
+&=\frac{\pi}{2}+\frac{2m}{b}+\frac{3\pi m^{2}}{8b^{2}}.
+\end{split}
+\end{equation}
+Thus the total angle of deflection is
+\begin{equation}
+\Delta\varphi=\pi+\frac{4m}{b}+\frac{3\pi m^{2}}{4b^{2}}.
+\end{equation}
+Notice this agrees, to first order in $m$, with the first
+approximation we made.
+
+\subsection{Third Approximation}
+Most introductory texts perform the following approximation
+\begin{equation}
+\begin{split}
+u^{2}-2mu^{3}&=u^{2}(1-2mu)\\
+&\approx u^{2}(1-mu)^{2}
+\end{split}
+\end{equation}
+Choose a new variable
+\begin{equation}
+y=u(1-mu),
+\end{equation}
+and then our integral becomes
+\begin{equation}
+\varphi=\int\frac{\D u}{\sqrt{b^{-2}-y^{2}+(\mbox{small factor})}}
+\end{equation}
+To lowest order, this is the same trick as the first
+approximation. Higher order terms needs Newtonian corrections. We
+find
+\begin{equation}
+\D y=(1-2mu)\D u
+\end{equation}
+and so
+\begin{subequations}
+\begin{align}
+\D u
+&\approx\frac{\D y}{1-2mu}\\
+&\approx(1+2mu)\D y\\
+&\approx(1+2my)\D y
+\end{align}
+\end{subequations}
+thus
+\begin{equation}
+\varphi=\pm\int\frac{(1+2my)\D y}{\sqrt{b^{-2}-y^{2}}}.
+\end{equation}
+The first term is the Newtonian integral, and the second term is
+straightforward. Consider half of the path
+\begin{equation}
+\begin{split}
+\varphi
+&=\int^{y=1/b}_{y=0}\frac{(1+2my)\D y}{\sqrt{b^{-2}-y^{2}}}\\
+&=\frac{\pi}{2}+\frac{2m}{b}.
+\end{split}
+\end{equation}
+So the total deflection $\Delta\varphi$ is twice this:
+\begin{equation}
+\Delta\varphi=\pi+4\frac{m}{b}.
+\end{equation}
+This is the first order correction.
+
+\subsection{Shapiro Time Delay}
+
+\begin{wrapfigure}{r}{10pc}
+  \vspace{-1pc}
+  \includegraphics{img/lecture04.1}
+  \vspace{-3pc}
+\end{wrapfigure}
+
+Here's the idea: send a radio signal from the Earth to the
+satellite. There is a time delay from receiving the reflection.
+The physical problem is doodled on the right, with the light's
+trajectory as the dashed line.
+
+Lets assess the problem. Since this is light, we have
+\begin{equation}
+\begin{split}
+\D s^{2} &= 0\\
+&= \left(1-\frac{2m}{r}\right)\D t^{2}
+-\left(1-\frac{2m}{r}\right)^{-1}\D r^{2}
+-r^{2}\D\varphi^{2}
+\end{split}
+\end{equation}
+With a particular choice of coordinates we use the Newtonian approximation
+\begin{equation}
+r\sin(\varphi)=b.
+\end{equation}
+What to do? Well, we can derive a geodesic equation for this
+approximation:
+\begin{equation}
+\sin(\varphi)\D r+r\cos(\varphi)\D\varphi=0
+\end{equation}
+which is rearranged to become
+\begin{equation}
+\D\varphi=\frac{-1}{r}\tan(\varphi)\D r.
+\end{equation}
+We square both sides and use basic trigonometry
+\begin{equation}
+\begin{split}
+r^{2}(\D\varphi)^{2}&=\tan^{2}(\varphi)\;(\D r)^{2}\\
+&=\frac{b^{2}}{r^{2}-b^{2}}\D r^{2}.
+\end{split}
+\end{equation}
+Why do this? Because we can replace the $r^{2}\D\varphi^{2}$ term
+in the $\D s^{2}$ expression:
+\begin{equation}
+\left(1-\frac{2m}{r}\right)\D t^{2}
+=
+\left(1-\frac{2m}{r}\right)^{-1}\D r^{2}
++\frac{b^{2}}{r^{2}-b^{2}}\D r^{2}.
+\end{equation}
+Remember we want to find the \emph{time delay}, so we get rid of
+$\D t^{2}$ coefficient:
+\begin{equation}
+\D t^{2}=\left(1-\frac{2m}{r}\right)^{-2}\D r^{2}
++\left(1-\frac{2m}{r}\right)^{-1}\frac{b^{2}}{r^{2}-b^{2}}\D r^{2}.
+\end{equation}
+We make the approximation
+\begin{equation}
+\begin{split}
+\left(1-\frac{2m}{r}\right)^{-2}&\approx
+\left(1+\frac{2m}{r}\right)^{2}\\
+&\approx 1+\frac{4m}{r}+\underbrace{\mathcal{O}(m^{2}/r^{2})}_{\text{negligible}}
+\end{split}
+\end{equation}
+which simplifies our expression to be
+\begin{equation}
+\D t^{2}
+\approx
+\left[1+\frac{4m}{r}+\left(1+\frac{2m}{r}\right)\frac{b^{2}}{r^{2}-b^{2}}\right]\D
+r^{2}.
+\end{equation}
+Now, we will perform a long and tedious calculation. The
+uninterested reader may skip its proof.
+
+\begin{prop}\label{prop:lec04:simplifyingCalc:shapiroTimeDelay}
+We have
+\begin{equation}
+\left[1+\frac{4m}{r}+\left(1+\frac{2m}{r}\right)\frac{b^{2}}{r^{2}-b^{2}}\right]
+=
+\frac{r^{2}}{r^{2}-b^{2}}\left[1
++\frac{4m}{r}-\frac{2m}{r}\frac{b^{2}}{r^{2}}\right]
+\end{equation}
+\end{prop}
+\begin{proof}
+We see that
+\begin{equation}
+\left(1+\frac{2m}{r}\right)\left(\frac{b^{2}}{r^{2}-b^{2}}\right)
+=\left(\frac{b^{2}}{r^{2}-b^{2}}+\frac{2m}{r}\frac{b^{2}}{r^{2}-b^{2}}\right)
+\end{equation}
+Adding $(1+4m/r)$ to this yields
+\begin{equation}
+\begin{split}
+\left(1+\frac{4m}{r}\right)+\left(\frac{b^{2}}{r^{2}-b^{2}}+\frac{2m}{r}\frac{b^{2}}{r^{2}-b^{2}}\right)
+&=\left(1+\frac{4m}{r}+\frac{b^{2}}{r^{2}-b^{2}}+\frac{2m}{r}\frac{b^{2}}{r^{2}-b^{2}}\right)\\
+&=\left(\frac{r^{2}}{r^{2}-b^{2}}+\frac{4m}{r}+\frac{2m}{r}\frac{b^{2}}{r^{2}-b^{2}}\right)
+\end{split}
+\end{equation}
+Factoring out $r^{2}/(r^{2}-b^{2})$ gives us
+\begin{subequations}
+\begin{align}
+\left(\frac{r^{2}}{r^{2}-b^{2}}+\frac{4m}{r}+\frac{2m}{r}\frac{b^{2}}{r^{2}-b^{2}}\right)
+&=
+\frac{r^{2}}{r^{2}-b^{2}}\left(1+\frac{4m(r^{2}-b^{2})}{r^{3}}+\frac{2m}{r}\frac{b^{2}}{r^{2}}\right)\\
+&=\frac{r^{2}}{r^{2}-b^{2}}\left(1+\frac{4m}{r}-\frac{4mb^{2})}{r^{3}}+\frac{2mb^{2}}{r^{3}}\right)\\
+&=\frac{r^{2}}{r^{2}-b^{2}}\left(1+\frac{4m}{r}-\frac{2mb^{2})}{r^{3}}\right).
+\end{align}
+\end{subequations}
+This concludes the proof.
+\end{proof}
+
+Proposition \eqref{prop:lec04:simplifyingCalc:shapiroTimeDelay} yields
+\begin{equation}
+\D t^{2}\approx\frac{r^{2}}{r^{2}-b^{2}}\left[1
++\frac{4m}{r}-\frac{2m}{r}\frac{b^{2}}{r^{2}}\right]\D r^{2}.
+\end{equation}
+Thus we obtain (taking the Taylor series for the square root on
+the bracketed terms)
+\begin{equation}
+\D t\approx
+\frac{\pm r}{\sqrt{r^{2}-b^{2}}}\left[
+1+\frac{2m}{r}-\frac{mb^{2}}{r^{3}}
+\right]\D r.
+\end{equation}
+What now?
+
+We evaluate the integral
+\begin{equation}
+\int\D t=\pm\biggl[
+\underbracket[0.5pt]{\sqrt{r^{2}-b^{2}}}_{\substack{\text{length of line}\\\text{in flat geometry}}}
++\underbracket[0.5pt]{2m\ln\left(\frac{r}{b}+\sqrt{\frac{r^{2}}{b^{2}}-1}\right)}_{\text{correction to first term}}
+-\frac{m}{r}\sqrt{r^{2}-b^{2}}
+\biggr].
+\end{equation}
+
+\subsection{Time Dilation}
+
+\begin{wrapfigure}{r}{4pc}
+  \vspace{-1pc}
+  \includegraphics{img/lecture04.2}
+\end{wrapfigure}
+
+This is the last experiment we will consider: gravitational time
+dilation, or gravitational redshifting. Most books for the lay
+person describe it as ``time runs more slowly in a gravitational
+field'' (although the immediate question we should ask is:
+\emph{relative to what?}).
+
+So for that to make sense, we need to describe how we are
+measuring the rate of time, and how to compare these. We will
+work again with the Schwarzschild metric. An observer from clock
+1 sends a signal to clock 2. We doodle a spacetime diagram, so
+it's at the same angle (i.e., we assume $\theta=\varphi=$constant). 
+
+\begin{center}
+  \includegraphics{img/lecture04.3}
+\end{center}
+
+\noindent\ignorespaces%
+So the metric reads
+\begin{equation}
+\D s^{2}=-\left(1-\frac{2m}{r}\right)^{-1}\D r^{2}
++\left(1-\frac{2m}{r}\right)\D t^{2}=0
+\end{equation}
+for light. After re-arranging terms we find
+\begin{equation}
+\D t=\left(1-\frac{2m}{r}\right)^{-1}\D r
+\end{equation}
+Integration yields
+\begin{equation}
+t_{2}-t_{1}=\int^{r_{2}}_{r_{1}}\left(1-\frac{2m}{r}\right)^{-1}\D r.
+\end{equation}
+But look, we also have
+\begin{equation}
+(t_{2}+\Delta t_{2})-(t_{1}+\Delta t_{1})=\int^{r_{2}}_{r_{1}}\left(1-\frac{2m}{r}\right)^{-1}\D r.
+\end{equation}
+This implies
+\begin{equation}
+\Delta t_{2}=\Delta t_{1}.
+\end{equation}
+
+Now, an observer measures proper time, so
+\begin{subequations}
+\begin{align}
+\Delta s_{1}
+&=\int\D s\\
+&=\int\sqrt{1-\frac{2m}{r_{1}}}\D t\\
+&=\sqrt{1-\frac{2m}{r_{1}}}\Delta t_{1}
+\end{align}
+\end{subequations}
+where we consider the observer sitting at $r_{1}$ and \emph{is not}
+a photon.
+Similarly, the observer at clock 2 will observe the interval
+between ticks as
+\begin{subequations}
+\begin{align}
+\Delta s_{2}
+&=\sqrt{1-\frac{2m}{r_{2}}}\Delta t_{2}\\
+&=\left(\frac{\sqrt{1-\frac{2m}{r_{2}}}}{\sqrt{1-\frac{2m}{r_{2}}}}\right)\Delta s_{1}\\
+&\approx\left(1-\frac{m}{r_{2}}+\frac{m}{r_{1}}\right)\Delta s_{1}
+\end{align}
+\end{subequations}
+for weak gravitational fields. We see that a photon wave is
+redshifted
+\begin{equation}
+\frac{\Delta\lambda}{\lambda}\approx
+-\frac{m}{r_{2}}+\frac{m}{r_{1}}.
+\end{equation}
+An observer far from the black hole would see a clock on the
+Black Hole's horizon stop. There is nothing deep about this, however.
+
+
+
+\begin{exercises}
+\begin{xca}[The Newtonian Approximation]
+In the Newtonian approximation, the spacetime metric is
+\begin{equation}
+\D s^2 = (1 + 2\phi)\,\D t^2 - (1 - 2\phi)(\D x^2 + \D y^2 + \D z^2)
+\end{equation}
+where $\phi$ is the Newtonian gravitational potential. This
+approximation holds when $\phi$ is small compared to $1$ and
+velocities $v^i = \D x^i/\D t$ are also small compared to $1$,
+with $\phi$ of the same order as $v^2$. 
+
+(Notation: Latin indices from the middle of the alphabet---$i$,
+$j$, $k$, \dots---are spatial indices, going from 1 to
+3. Remember that we are using units $c = 1$.) 
+
+Show that to lowest order, the geodesics are the standard paths of Newtonian gravity, that
+is, $\mathbf{a} = -\nabla\phi$. 
+\end{xca}
+\begin{xca}[Geodesics and the Christoffel connection]
+Let $g^{ab}$ be the matrix inverse of the metric tensor, that is,
+$g^{ab} g_{bc} = {\delta^{a}}_{c}$. Show that the geodesic
+equation can be written in the form 
+\begin{equation}
+\frac{\D^{2}x^{a}}{\D s^{2}}
+\Gamma^{a}_{bc}\frac{\D x^{b}}{\D s}\frac{\D x^{c}}{\D s}=0
+\end{equation}
+where
+\begin{equation}
+\Gamma^{a}_{bc} = g^{ad} (\partial_{b} g_{dc} + \partial_{c}
+g_{db} - \partial_{d} g_{bc}) 
+\end{equation}
+$\Gamma^{a}_{bc}$ is known as the Christoffel connection, or the ``Christoffel symbols.''
+
+(Hint: you will encounter an expression of the form $\D g_{ab}/\D s$. 
+Remember that in the geodesic equation, $g_{ab}$ is the metric
+along the geodesic, and is therefore a function of
+$x^{c}(s)$. Use the chain rule.) 
+\end{xca}
+\begin{xca}[Deflection of a massive particle by the Sun]
+In this problem, you will (approximately) compute the deflection
+of a \emph{massive} particle in the Schwarzschild metric. Note:
+some of this is quite hard! 
+
+\textbf{(a)}
+Recall that for a massive particle, we defined
+\begin{equation}
+\widetilde{E}=-\left(
+1-\frac{2m}{r}\right)\frac{\D t}{\D s}.
+\end{equation}
+Find the relationship between $\widetilde{E}$ and the particle speed
+\begin{equation}
+v^{2} =
+\left|\frac{\D\mathbf{x}}{\D t}\right|^{2}
+\end{equation}
+at $r\to\infty$. (Hint: at infinity, the Schwarzschild metric
+reduces to the spherical coordinate 
+form of the flat spacetime Minkowski metric $\D s^2 = \D t^2-\D x^2-\D y^2-\D z^2$.)
+
+\textbf{(b)}
+For a massive particle, the equation of motion we derived was
+\begin{equation}
+\left(\frac{\D u}{\D\varphi}\right)^{2}=
+\frac{\widetilde{E}^{2}-(1-2mu)(1+\widetilde{L}^{2}u^{2})}{\widetilde{L}^{2}}
+\end{equation}
+with $u = 1/r$. Consider a particle coming in from infinity,
+being deflected, and returning to infinity. Find the deflection
+$\Delta\varphi$ in the Newtonian approximation, that is,
+neglecting the  term $mu^{3}$. (The solution of the equation of motion is a hyperbola, and can be derived by  a number of methods, but I suggest that you use the technique we saw in class, integrating $\D\varphi$, since this will help in part c.)
+
+\textbf{(c)}
+Find the next order approximate expression for the deflection
+$\Delta\varphi$, treating the relativistic term $mu^{3}$ as a
+small perturbation. You can use the same method that we did in
+deriving the deflection of light, including the
+definition of a new variable $y = u(1 - mu)$, although the
+integral will now be somewhat different---be careful about the
+slightly tricky limits of integration! As in the case of light,
+assume that $mu\ll1$. 
+
+\textbf{(d)}
+The impact parameter $b$ is defined as the minimum value of $r$
+on the trajectory. You should already have worked this out in
+step (b) to find your integration range. (Note that $b$ is the
+turning point, the value at which the derivative $\D u/\D\varphi$
+changes sign.) Write $\widetilde{L}$ as a function of $b$, and
+rewrite the deflection $\Delta\varphi$ in terms of
+$\widetilde{E}$ and $b$. You may assume that
+$\widetilde{E}^{2}-1\gg m/b$.
+
+\textbf{(e)}
+Show that for speeds near the speed of light--that is,
+$v\lesssim1$---the deflection is approximately 
+\begin{equation}
+\Delta\varphi\approx\frac{2m}{b}\left(1+\frac{1}{v^{2}}\right)
+\end{equation}
+and agrees with our result for light when $v = 1$.
+\end{xca}
+\end{exercises}

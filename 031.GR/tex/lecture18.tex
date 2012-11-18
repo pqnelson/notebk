@@ -1,0 +1,246 @@
+%%
+%% lecture18.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Mar 10 15:25:11 2012 alex
+%% Last update Sat Mar 10 15:25:11 2012 alex
+%%
+
+The weak field equations. The most important test of general
+relativity is that it gives us back Newtonian gravity. Lets
+consider a weak field, which can be thought of as a perturbation
+of a background $\eta_{\mu\nu}$. So
+\begin{equation}
+g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}
+\end{equation}
+and the inverse metric is given\footnote{We should recall that
+  the Neumann series gives us
+  $(I+X)^{-1}=I+X+X^{2}+\dots+X^{n}+\dots$, which is employed here.} by
+\begin{equation}
+g^{\mu\nu}=\eta^{\mu\nu}-h^{\mu\nu}+\bigO(h^{2}).
+\end{equation}
+We raise and lower indices with $\eta$ in this approximation. The
+Christoffel connection
+\begin{equation}
+\begin{split}
+\Gamma^{\rho}_{\mu\nu}
+&=\frac{1}{2}g^{\rho\sigma}(\partial_{\mu}g_{\sigma\nu}
++\partial_{\nu}g_{\mu\sigma}-\partial_{\sigma}g_{\mu\nu})\\
+&=\frac{1}{2}\eta^{\rho\sigma}(\partial_{\mu}h_{\sigma\nu}
++\partial_{\nu}h_{\mu\sigma}-\partial_{\sigma}h_{\mu\nu})
++\bigO(h^{2}).
+\end{split}
+\end{equation}
+For the Ricci tensor, we only have the $\partial\Gamma$ terms to
+worry about, since $\Gamma\Gamma\sim\bigO(h^{2})$. The components
+of the Ricci tensor are
+\begin{equation}
+R_{\mu\nu}=\frac{1}{2}(\partial^{\sigma}\partial_{\mu}h_{\sigma\nu}
++\partial^{\sigma}\partial_{\nu}h_{\sigma\mu}
+-\partial^{\sigma}\partial_{\sigma}h_{\mu\nu}
+-\partial_{\mu}\partial_{\nu}{h^{\sigma}}_{\sigma}).
+\end{equation}
+If we write
+\begin{equation}
+h={h^{\sigma}}_{\sigma}
+\end{equation}
+for the trace, then the ``trace-reversed $h$'' is
+\begin{equation}
+\bar{h}_{\mu\nu}=h_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}h
+\end{equation}
+Observe
+\begin{equation}
+\begin{split}
+\bar{h}&=\eta^{\mu\nu}\bar{h}_{\mu\nu}\\
+&=h-2h=-h.
+\end{split}
+\end{equation}
+The Einstein tensor becomes
+\begin{equation}
+G_{\mu\nu}=\frac{1}{2}(-\Box\bar{h}_{\mu\nu}+
+\partial_{\mu}\partial^{\sigma}\bar{h}_{\sigma\nu}+
+\partial_{\nu}\partial^{\sigma}\bar{h}_{\sigma\mu}-
+\eta_{\mu\nu}\partial^{\sigma}\partial^{\tau}\bar{h}_{\sigma\tau}).
+\end{equation}
+We can choose coordinates such that
+\begin{equation}
+G_{\mu\nu}=\frac{-1}{2}\Box\bar{h}_{\mu\nu}.
+\end{equation}
+%% The basic trick is that any metric at a given point has an
+%% expansion
+%% \begin{equation}
+%% g_{\mu\nu}=\eta_{\mu\nu}+0+(\partial_{\mu}g_{\nu\alpha}\partial_{\nu}g_{\mu\beta})\frac{g^{\alpha\beta}}{2!}+\dots
+%% \end{equation}
+When
+\begin{equation}
+x^{\mu}\to x^{\mu}+\zeta^{\mu}
+\end{equation}
+for infinitesimal $\zeta$, then
+\begin{equation}
+g_{\mu\nu}\to
+g_{\mu\nu}+\nabla_{\mu}\zeta_{\nu}+\nabla_{\nu}\zeta_{\mu}
+\end{equation}
+and the perturbation transforms as
+\begin{equation}
+h_{\mu\nu}\to h_{\mu\nu}+\partial_{\mu}\zeta_{\nu}+\partial_{\nu}\zeta_{\mu}
++\bigO(h^{2}).
+\end{equation}
+Observe this implies
+\begin{equation}
+\partial^{\sigma}\bar{h}_{\sigma\nu}\to\partial^{\sigma}\bar{h}_{\sigma\nu}+\Box\zeta_{\nu}.
+\end{equation}
+We may choose $\zeta$ so that
+\begin{equation}
+\partial^{\sigma}\bar{h}_{\sigma\nu}\to0.
+\end{equation}
+We just have to solve
+\begin{equation}
+\Box\zeta_{\nu}=-\partial^{\sigma}\bar{h}^{\text{(old)}}_{\sigma\nu}
+\end{equation}
+which is the wave equation with a source. We know how to solve
+that! See, e.g., Jackson's electrodynamics text. We can choose
+coordinates such that
+\begin{equation}
+\partial^{\sigma}\bar{h}_{\sigma\nu}=0
+\end{equation}
+which we call the harmonic gauge, Fock gauge, Lorenz gauge, de
+Donder gauge, etc.
+
+\begin{rmk}[Physical Ramifications of Choice of Coordinates]
+There is no physical meaning for this choice of gauge (i.e., this
+particular choice of coordinates), nor does any other choice have
+physical meaning unless there exists strong symmetries which
+enable a canonical choice.
+\end{rmk}
+
+The harmonic gauge has Einstein's field equations read
+\begin{equation}
+\begin{split}
+\frac{-1}{2}\Box\bar{h}_{\mu\nu}=\frac{\kappa^{2}}{2}T_{\mu\nu}.
+\end{split}
+\end{equation}
+Among other things in life, this tells us (1) there exists
+gravity waves, (2) they travel at the speed of light because of
+the D'Alembertian.
+
+\subsection{Newtonian Limit}
+Lets consider the Newtonian limit, when
+\begin{equation}
+v/c\lll1
+\end{equation}
+where $v$ is the velocity of gravitating bodies.
+For non-interacting matter (``dust'') we had the stress energy
+tensor
+\begin{equation}
+T^{\mu\nu}=\rho u^{\mu}u^{\nu}
+\end{equation}
+which has components
+\begin{equation}
+T^{00}\approx\rho
+\end{equation}
+and
+\begin{equation}
+T^{ij}\approx T^{i0}\approx T^{0j}\approx 0.
+\end{equation}
+So we have
+\begin{equation}
+\Box\bar{h}^{00}=-\kappa^{2}\rho.
+\end{equation}
+Observe the D'Alembertian is written
+\begin{equation}
+\Box=\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}
+-\nabla^{2}
+\end{equation}
+but in the Newtonian approximation
+\begin{equation}
+\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\approx0.
+\end{equation}
+Thus
+\begin{equation}
+\Box\approx-\nabla^{2}.
+\end{equation}
+Our field equation becomes
+\begin{equation}
+-\nabla^{2}\bar{h}_{00}=-\kappa^{2}\rho.
+\end{equation}
+This is precisely Poisson's equation for Newtonian gravity! That
+is
+\begin{equation}
+\nabla^{2}\Phi=4\pi G\rho
+\end{equation}
+thus by inspection
+\begin{equation}
+\bar{h}_{00}=\frac{\kappa^{2}}{4\pi G}\Phi
+\end{equation}
+We see that
+\begin{equation}
+h_{\mu\nu}=\bar{h}_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}\bar{h}
+\end{equation}
+Hence
+\begin{equation}
+h_{\mu\nu}\frac{\kappa^{2}}{8\pi G}\Phi\eta_{\mu\nu}.
+\end{equation}
+The line element in the Newtonian approximation is
+\begin{equation}
+\D s^{2}=\left(1+\frac{\kappa^{2}}{8\pi G}\Phi\right)\D t^{2}
+-\left(1-\frac{\kappa^{2}}{8\pi G}\Phi\right)\D\mathbf{x}\cdot\D\mathbf{x}.
+\end{equation}
+This is good: General Relativity contains Newtonian gravity at
+appropriate limits!
+
+\begin{rmk}
+When we have very light masses moving close to the speed of
+light, we need to include other components of $h$; but we can
+still use the weak field approximation!
+\end{rmk}
+
+We now know that the field equations are
+\begin{equation}
+\Box\bar{h}_{\mu\nu}=-16\pi GT_{\mu\nu}
+\end{equation}
+we pull out our copy of Jackson, or Afkren (or whatever), and use
+the Green's function for the D'Alembertian
+\begin{equation}
+\begin{split}
+\bar{h}_{\mu\nu}(\mathbf{x},t) &= 
+4
+G\int \frac{T_{\mu\nu}(\vec{y},t-|\vec{x}-\vec{y}|)}{|\vec{x}-\vec{y}|}\D^{3}y\\
+&=4
+G\int \frac{T_{\mu\nu}^{\text{(ret)}}}{|\vec{x}-\vec{y}|}\D^{3}y
+\end{split}
+\end{equation}
+We can interpret the next order corrections as gravity's coupling
+to the stress-energy tensor. To conclude our discussion, we will
+write a table comparing the multipole expansion in
+electromagnetism\footnote{C.f., Jackson's \emph{Classical
+Electrodynamics}~\cite[{\normalfont p.145 \emph{et seq.}}]{jackson:1999}.} and in gravity:
+
+\medbreak
+\noindent\begin{tabular}{p{7pc}|p{11pc}p{11pc}}%{p{7pc}|p{11pc}|p{11pc}}
+\toprule
+Multipole Term&Electromagnetism & Gravity\\\midrule
+Monopole Moment 
+  & The total charge $q$; charge conserved, monopole moment is constant 
+  & The total mass $m$; Newtonian limit has mass conserved, fixed
+  field unchanging in time. \\    
+Dipole Moment 
+  & $\sum q_{i}r_{i}$, $\dot{D}=\sum q_{i}\dot{r}_{i}$; Fix two
+  charges to the ends of a spring and oscillate.
+  & $\sum m_{i}r_{i}$, $\sum m_{i}\dot{r}_{i} = \sum p_{i}=0$ in
+  the center of mass frame. Try to oscillate total momentum, but
+  this is fixed!\\
+Magnetic Dipole
+  & $\sum q_{i}\vec{v}_{i}\times\vec{r}_{i}$ 
+  & $\sum m_{i}\vec{v}_{i}\times\vec{r}_{i}=\vec{L}=\mbox{constant}$
+    Gravity has no mass dipole or magnetic dipole by conservation
+    laws.\\
+Quadrapole 
+  & (None)
+  & $\sum m_{i}{r_{i}}^{\mu}{r_{i}}^{\nu}$ This is the lowest
+  order radiation for gravity, but we have to take the
+  appropriate number of derivatives. The power is $\sim v/c^{8}$
+  (This is a strong restriction on corrections to gravity!)\\
+\bottomrule
+\end{tabular}

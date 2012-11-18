@@ -1,0 +1,233 @@
+%%
+%% lecture17.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Mar  7 10:36:17 2012 alex
+%% Last update Wed Mar  7 10:36:17 2012 alex
+%%
+
+Consider the stress energy tensor for a point particle. We have
+\begin{equation}
+x^{\mu}=z^{\mu}(u)
+\end{equation}
+where $u$ is some parameter, $m$ be the particle's mass (at
+rest). We should recall the geodesic action is
+\begin{equation}
+\begin{split}
+I_{geod}
+&=m\int\D s\\
+&=m\int\sqrt{g_{\mu\nu}\frac{\D x^{\mu}}{\D u}
+\frac{\D x^{\nu}}{\D u}}\,\D u.
+\end{split}
+\end{equation}
+Thus the matter action is
+\begin{equation}
+I_{m}=m\iint\delta^{(4)}\Bigl(x-z(u)\Bigr)\sqrt{g_{\mu\nu}\frac{\D z^{\mu}}{\D
+u}\frac{\D z^{\nu}}{\D u}}\,\D^{4}x\,\D u.
+\end{equation}
+We're fixing $z$ but varying $g_{\mu\nu}$, this is reasonably easy
+to do. Also note that
+\begin{equation}
+\int\delta^{(4)}(x)\,\D^{4}x=1.
+\end{equation}
+We'll get the stress-energy tensor for may particles, the
+consider the continuum limit.
+
+First lets consider a single particle. We see that by varying the
+matter action with respect to the metric we obtain
+\begin{equation}
+\delta I
+=\frac{1}{2}\iint\left(g_{\sigma\rho}\frac{\D x^{\sigma}}{\D u}
+\frac{\D x^{\rho}}{\D u}\right)^{1/2}
+\delta g_{\mu\nu}\frac{\D x^{\mu}}{\D u}\frac{\D x^{\nu}}{\D u}\delta^{4}\Bigl(x-z(u)\Bigr)\,\D^{4}x\,
+\D u
+\end{equation}
+Now we take $u=s$ as the parameter, and we find
+\begin{equation}
+\delta I=\frac{1}{2}\iint\delta g_{\mu\nu}\frac{\D x^{\mu}}{\D s}\frac{\D x^{\nu}}{\D s}\delta^{4}\Bigl(x-z(s)\Bigr)\,\D^{4}x\,
+\D s
+\end{equation}
+Comparing this variation to
+\begin{equation}
+\begin{split}
+\delta I
+&=\frac{-1}{2}\int\sqrt{-g}T_{\mu\nu}\delta g^{\mu\nu}\D^{4}x\\
+&=\frac{1}{2}\int\sqrt{-g}T^{\mu\nu}\delta g_{\mu\nu}\D^{4}x
+\end{split}
+\end{equation}
+we find\marginpar{Stress-Energy tensor for a point-particle}
+\begin{equation}
+T^{\mu\nu}=\int m\frac{\D x^{\mu}}{\D s}\frac{\D x^{\nu}}{\D s}
+\delta^{(4)}\Bigl(x-z(s)\Bigr)\frac{1}{\sqrt{-g}}\,\D s.
+\end{equation}
+This describes the stress-energy tensor for a point-particle.
+
+Lets consider what happens in flat spacetime, just to get some
+intuition underpinning the components of a stress-energy
+tensor. We see
+\begin{subequations}
+\begin{align}
+T^{0\mu}
+&=\int m\frac{\D x^{\mu}}{\D s}\frac{\D t}{\D s}\delta^{4}\bigl(x-z(s)\bigr)\,\D s\\
+&=\int m\frac{\D x^{\mu}}{\D s}\delta\bigl(t-z^{0}(s)\bigr)\delta^{3}\bigl(x^{i}-z^{i}(s)\bigr)\,\D t\\
+&=\left.m\frac{\D x^{\mu}}{\D s}\delta^{3}\bigl(x^{i}-z^{i}(s)\bigr)\right|_{t=z^{0}(s)}.
+\end{align}
+\end{subequations}
+The time-time component reads
+\begin{subequations}
+\begin{align}
+T^{00}
+&=m\frac{\D t}{\D s}\delta^{3}\bigl(x^{i}-z^{i}(s)\bigr)\\
+&=\frac{m}{\sqrt{1-v^{2}}}\delta^{3}\bigl(x^{i}-z^{i}(s)\bigr)\\
+&=E\delta^{3}\bigl(x^{i}-z^{i}(s)\bigr)\\
+&=\begin{pmatrix}\mbox{Energy}\\\mbox{Density}
+\end{pmatrix}\nonumber
+\end{align}
+\end{subequations}
+and similarly
+\begin{equation}
+\begin{split}
+T^{0i}
+&=p^{i}\delta^{3}\bigl(x^{i}-z^{i}(s)\bigr)\\
+&=\begin{pmatrix}\mbox{Momentum}\\\mbox{Density}
+\end{pmatrix}
+\end{split}
+\end{equation}
+This is just for a single particle, however.
+
+For\marginpar{Stress-Energy Tensor for Dust} many non-interacting particles without charge (which
+relativists confusingly call ``dust''), we have
+\begin{equation}
+T^{\mu\nu}_{(dust)}=\sum T^{\mu\nu}_{(particles)}
+\end{equation}
+or taking the continuum limit 
+\begin{equation}
+T^{\mu\nu}_{(dust)}=\rho u^{\mu}u^{\nu}
+\end{equation}
+where $u^{\mu}=\D x^{\mu}/\D s$. We take the continuum limit when
+we have a continuous collection of noninteracting particles. For
+most practical purposes in cosmology, this is good enough. 
+
+A perfect fluid\marginpar{Stress-Energy Tensor for Perfect Fluid}
+with pressure $p$ experiences a stress-energy tensor
+\begin{equation}
+T^{\mu\nu}=(p+\rho)u^{\mu}u^{\nu}-pg^{\mu\nu}.
+\end{equation}
+Observe that taking $p\to0$ recovers the dust stress-energy
+tensor. The cosmological constant could be thought of as a
+perfect fluid term.
+
+Now, lets see a miracle! Consider dust
+\begin{equation}
+T^{\mu\nu}_{\text{dust}}=\rho u^{\mu}u^{\nu}
+\end{equation}
+and plug this into Einstein's field equation
+\begin{equation}
+G^{\mu\nu}=T^{\mu\nu}_{\text{dust}}.
+\end{equation}
+We see that
+\begin{equation}
+\nabla_{\mu}G^{\mu\nu}=0\implies\nabla_{\mu} T^{\mu\nu}_{\text{dust}}=0.
+\end{equation}
+We will show that dust moves along geodesics. First we note
+\begin{equation}
+u^{\mu}u_{\mu}=g_{\mu\nu}\frac{\D x^{\mu}}{\D s}\frac{\D x^{\nu}}{\D s}=1.
+\end{equation}
+Now we consider
+\begin{equation}
+\nabla_{\mu}T^{\mu\nu}=\nabla_{\mu}(\rho u^{\mu})u^{\nu}+\rho u^{\mu}\nabla_{\mu}
+u^{\nu}.
+\end{equation}
+We recall the conditions for a geodesic states
+\begin{equation}
+u_{\mu}\nabla_{\nu}u^{\mu}=0.
+\end{equation}
+Thus
+\begin{equation}
+u_{\nu}\nabla_{\mu}T^{\mu\nu}=\underbracket[0.5pt]{u_{\nu}u^{\nu}}_{=1}\nabla_{\mu}(\rho u^{\mu})
++\rho u^{\mu}\underbracket[0.5pt]{u_{\nu}\nabla_{\mu}u^{\nu}}_{=0}
+\end{equation}
+which becomes
+\begin{equation}
+u_{\nu}\nabla_{\mu}T^{\mu\nu}=\nabla_{\mu}(\rho u^{\mu}).
+\end{equation}
+This is a conservation equation. More explicitly, we can rewrite
+it as
+\begin{equation}
+\nabla_{\mu}(\rho u^{\mu})=
+\frac{1}{\sqrt{-g}}\partial_{\mu}(\sqrt{-g}\rho u^{\mu})=0
+\end{equation}
+This is a very nice conservation law for mass which looks exactly
+like the conservation of electric charge. We can now go back and
+find
+\begin{equation}
+\rho u^{\mu}\nabla_{\mu}u^{\nu}=0.
+\end{equation}
+If $\rho\not=0$ (i.e.~in regions where the particles are
+present), then we necessarily have
+\begin{equation}
+u^{\mu}\nabla_{\mu}u^{\nu}=0.
+\end{equation}
+Field equations always give the motion of sources.
+
+\begin{exercises}
+\begin{xca}[Conservation and equations of motion]
+The tensorial description of the electromagnetic field fits the electric field $\mathbf{E}$ and the magnetic field $\mathbf{B}$ together
+in an antisymmetric type 2 tensor $F_{\mu\nu}$, with field equations
+\begin{equation}
+\nabla_{\nu}F^{\mu\nu}=J^{\mu},\quad
+\nabla_{\mu}F_{\nu\rho}+
+\nabla_{\nu}F_{\rho\mu}+
+\nabla_{\rho}F_{\mu\nu}=0
+\end{equation}
+Consider a cloud of charged particles, with a mass density $\mu$ and a charge density $\rho$. The electromagnetic current for such a system at a point $x$ is
+\begin{equation}
+J^{\mu} (x) = \rho(x)u^{\mu}(x)
+\end{equation}
+where $u^{\mu}(x)$ is the four-velocity of the particle at point $x$. The stress-energy
+tensor consists of two pieces, a ``dust'' part
+\begin{equation}
+T^{\mu\nu}_{dust}=\mu u^{\mu}u^{\nu}
+\end{equation}
+as discussed and an electromagnetic part
+\begin{equation}
+T^{\mu\nu}_{EM}={F^{\mu}}_{\rho}F^{\nu\rho}-\frac{1}{4}g^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}
+\end{equation}
+
+\noindent\textbf{a.\quad}Show that the covariant conservation law
+\begin{equation}
+\nabla_{\nu}(T^{\mu\nu}_{dust} + T^{\mu\nu}_{EM}) = 0
+\end{equation}
+that follows from the Einstein field equations implies that
+\begin{equation}
+\mu u^{\nu}\nabla_{\nu}u^{\mu}=\rho{F^{\mu}}_{\rho}u^{\rho}.
+\end{equation}
+(Note: you will have to use both sets of Maxwell's equations and
+the anti-symmetry of $F$.) 
+
+\medbreak
+\noindent\textbf{b.\quad}Suppose that the particles all have mass
+$m$ and charge $e$, so $\rho/\mu = e/m$. Using the expression for
+$F_{\mu\nu}$ in terms of the electric and magnetic fields, show
+that in a flat spacetime, the equation derived in part (a) is
+just the Lorentz force law, $F = e(E + v \times B)$.
+\end{xca}
+\begin{xca}[Massive Neutral Scalar Field]
+The Lagrangian density for a massive neutral scalar field is
+\begin{equation}
+\mathcal{L}=\frac{1}{2}g^{\mu\nu}\partial_{\mu}\phi\partial_{\nu}\phi-\frac{m^{2}}{2}\phi^{2}
+\end{equation}
+where $m$ is the mass, and $\phi$ is the scalar field.
+\begin{enumerate}
+\item Find the equations of motion from the Euler-Lagrange
+  equation.
+\item Find the stress-energy tensor for the scalar field.
+\item Find the equations of motion from Einstein's field equation.
+\end{enumerate}
+\end{xca}
+\begin{xca}[{\cite{lightman:1975}}]
+Show the stress-energy tensor for source-less electromagnetism $T^{\mu\nu}_{\text{EM}}$ has zero trace.
+\end{xca}
+\end{exercises}

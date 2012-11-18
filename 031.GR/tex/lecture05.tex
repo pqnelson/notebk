@@ -1,0 +1,53 @@
+%%
+%% lecture05.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Feb 21 10:14:53 2012 alex
+%% Last update Tue Feb 21 10:14:53 2012 alex
+%%
+A curved space is ``locally like'' $\RR^n$. What does this mean?
+Well, we can take open discs in $\RR^{n}$ and paste them together
+to form our curved space. The basic doodle describing this is
+thus:
+
+\begin{center}
+  \includegraphics{img/lecture05.0}
+\end{center}
+
+\noindent\ignorespaces%
+We have our curved space $\mathcal{M}$, and a neighborhood
+$\mathcal{U}\propersubset\mathcal{M}$ which is ``like'' a
+neighborhood $\mathcal{V}$ of $\RR^n$. We make this rigorous by a
+mapping
+\begin{equation}
+\varphi\colon\mathcal{U}\to\mathcal{V}
+\end{equation}
+and demand it is bijective (one-to-one and onto). The map
+$\varphi$ is called a \define{Coordinate Map}. Note that some
+conventions have $\varphi$ going in the \emph{opposite}
+direction, just a warning when reading other texts.
+
+Note that since $\varphi$ is invertible, we can express an point
+$p\in\mathcal{U}$ in terms of coordinates induced from
+$\varphi(p)\in\RR^{n}$. 
+
+The question we should ask is: what happens on overlapping
+charts? We have two different descriptions, and we should hope
+that the descriptions are ``the same.'' Lets consider the situation:
+
+\begin{center}
+  \includegraphics{img/lecture05.1}
+\end{center}
+
+The minimal condition on $\varphi_{2}\circ\varphi_{1}^{-1}$ is
+that it is continuous and has a continuous inverse (i.e., it's a
+``homeomorphism''). If $\varphi_{2}\circ\varphi_{1}^{-1}$ is
+differentiable (or $C^{n}$ or analytic or \dots) and has a
+differentiable ($C^{n}$, analytics, \dots) inverse, then
+$\mathcal{M}$ is a \emph{Differentiable Manifold} (or a $C^{n}$
+Manifold, analytic manifold, etc.). 
+In practice, it is sufficient using a $C^2$ or $C^3$ manifold for
+general relativity; however, most people prefer using
+$C^{\infty}$ for as long as possible.

@@ -1,0 +1,183 @@
+%%
+%% lecture22.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Jul 14 11:32:52 2012 alex
+%% Last update Sat Jul 14 11:32:52 2012 alex
+%%
+
+We observe over long distances the universe is homogeneous and
+isotropic. ``Homogeneous'' means if we take two regions of space,
+we cannot distinguish them. Certainly this is not true at small
+distances (e.g., compare a human being and a rock). ``Isotropic''
+says if you're at one point, every direction appears the same.
+
+What is a homogeneous non-isotropic shape? A cylinder!
+
+A sphere with a variable density depending on the distance from
+the equator is isotropic but non-homogeneous.
+
+Lets look at metrics that are homogeneous and isotropic. First
+thing to notice is that this is a coordinate dependent statement.
+
+Lets Choose a time $t'$ such that space at constant $t'$ is
+homogeneous. So
+\begin{equation}
+\D s^{2}=A\,(\D t')^{2} + 2B_{i}\,\D x^{i}\,\D t' + g_{ij}\,\D
+x^{i}\,\D x^{j}
+\end{equation}
+Homogeneity and isotropy requires $B_{i}=0$, otherwise $B_{i}$
+picks out a direction. So we throw it away. Similarly, $A$ must
+be a function of time only.
+
+We choose a $t$ such that
+\begin{equation}
+\D t=\sqrt{-A(t')}\,\D t'.
+\end{equation}
+This locally rescales the $t'$ coordinate. We now can write
+\begin{equation}
+\D s^{2}=-\D t^{2}+g_{ij}\,\D x^{i}\,\D x^{j}
+\end{equation}
+Lets examine the (fixed time $t$) spatial metric's curvature:
+\begin{equation}
+{R^{ij}}_{kl}\to {R^{A}}_{B}
+\end{equation}
+where $A=12,13,23=ij$. We have a $3\times3$ matrix we can look at
+its eigenvalues $\lambda_1$, $\lambda_2$, $\lambda_3$ and its
+eigenvectors. We claim they are all equal, otherwise we could
+pick out the largest eigenvector $v^{B}=v^{ij}$ then obtain a
+3-vector $\varepsilon_{kij}v^{ij}$ and this picks out a
+direction. But we cannot allow this! So we have
+\begin{equation}
+{R^{A}}_{B} = k{\delta^{A}}_{B}
+\end{equation}
+and $k$ cannot depend on spatial directions (otherwise its
+gradient picks out some preferred direction). At best we have
+$k=k(t)$ be a function of time. So
+\begin{equation}
+R_{ij\ell m}=k(g_{i\ell}g_{jm}-g_{mi}g_{j\ell})
+\end{equation}
+and we have a ``space of constant curvature''. We then find
+\begin{equation}
+g_{ij}\,\D x^{i}\,\D x^{j}=\frac{\D
+  r^{2}}{1-k^{2}}+r^{2}(\D\theta^{2}+\sin^{2}\theta\,\D\varphi^{2})
+\end{equation}
+where $k=-1,0,1$. For $k=1$, we write $r=\sin\psi$ and thus we
+obtain
+\begin{equation}
+g_{ij}\,\D x^{i}\,\D x^{j}=\D\psi^{2}+\sin^{2}\psi(\D\theta^{2}+\sin^{2}\theta\,\D\varphi^{2})
+\end{equation}
+which describes $S^{3}$. But $k=0$ gives us
+\begin{equation}
+g_{ij}\,\D x^{i}\,\D x^{j}=\D r^{2}+r^{2}(\D\theta^{2}+\sin^{2}\theta\,\D\varphi^{2})
+\end{equation}
+which is flat. Last $k=-1$ we pick $r=\sinh(\psi)$ and obtain
+\begin{equation}
+g_{ij}\,\D x^{i}\,\D x^{j}=\D\psi^{2}+\sinh^{2}\psi(\D\theta^{2}+\sin^{2}\theta\,\D\varphi^{2})
+\end{equation}
+which describes hyperbolic 3-space $\mathbb{H}^{3}$.
+
+We have the metric as (at fixed time)
+\begin{equation}
+\D s^{2}=-\D t^{2}+\underbrace{a^{2}(t)}_{\mathrlap{\text{scale
+      factor as function of time}}}\widetilde{g}_{ij}\,\D
+x^{i}\,\D x^{j}
+\end{equation}
+What about the stress-energy tensor? We have
+\begin{subequations}
+\begin{equation}
+T^{0i}=0
+\end{equation}
+otherwise we'll have a preferred direction, and
+%\begin{equation}
+\begin{align}
+T^{00} &=\rho(t)\\
+{T^{i}}_{j} &= p(t){\delta^{i}}_{j}
+\end{align}
+%\end{equation}
+\end{subequations}
+otherwise if we have ${T^{i}}_{j}$ be a function of position, its
+gradient would determine some preferred direction. Note
+\begin{align*}
+\rho&=\mbox{energy density}\\
+p&=\mbox{pressure}.
+\end{align*}
+We plug this into the Einstein field equation (using units where
+$G_{N}=1$), we end up with the\marginpar{Friedmann Equations} Friedmann equations: 
+\begin{subequations}\label{eq:friedmann}
+\begin{align}
+\frac{3\dot{a}^{2}}{a^{2}} &= 8\pi\rho-\frac{3k}{a^{2}}\\
+\frac{3\ddot{a}}{a} &= -4\pi(\rho+3p).
+\end{align}
+\end{subequations}
+
+We need\marginpar{Equation of State} a third equation, which is an equation of state, i.e.,
+looks like
+\begin{equation}
+p=p(\rho).
+\end{equation}
+The simplest choice is
+\begin{equation}
+p=w\rho
+\end{equation}
+for some constant of proportionality $w$. If $w=0$, we have dust;
+for $w=1/3$ we have radiation (it follows from Maxwell's
+equations); and if $w=-1$, then we have a cosmological
+constant. We can have some combination (e.g., a universe with
+dust, radiation, and a cosmological constant). To get a
+cosmology, we choose some equation of state then plug it back
+in. 
+
+The\marginpar{Perturbations} next step is to examine
+perturbations. We need to do a weak-field approximation to a
+background metric which is not necessarily flat.
+
+From the Friedmann equations \eqref{eq:friedmann}, we see
+\begin{equation}
+\begin{aligned}
+\frac{\D}{\D t}(3\dot{a}^{2}) 
+&= 6\dot{a}\ddot{a} = -8\pi(\rho+3p)a\dot{a}\\
+&=\frac{\D}{\D t}(8\pi\rho a^{2})
+\end{aligned}
+\end{equation}
+thus
+\begin{equation}
+\dot{\rho}+3(\rho+p)\frac{\dot{a}}{a}=0.
+\end{equation}
+If $p=w\rho$, then this is easy to solve:
+\begin{equation}
+\rho=\rho_{0}a^{-3(1+w)}.
+\end{equation}
+If $w=0$, this is a conservation of dust
+$\rho=\rho_{0}a^{-3}$. For radiation ($w=1/3$) we get an extra
+factor for redshift. Observe when we have a cosmological constant
+($w=-1$), we have $\rho$ be constant.
+
+Suppose $\rho+3p>0$, there is an initial singularity. This isn't
+due to the homogeneity and isotropy conditions, years ago
+Hawking, Penrose and others proved if $\rho+3p>0$, then there is
+an initial singularity. If $\rho+3p<0$, we have a big bounce.
+
+\begin{exercises}
+\begin{xca}[de Sitter and anti-de Sitter space]
+Consider a homogeneous, isotropic cosmology with a nonzero
+cosmological constant $\Lambda$ and an otherwise vanishing
+stress-energy tensor. The cosmological constant can be thought of
+as part of the stress-energy tensor, so this setting amounts to
+saying that
+\begin{equation*}
+\rho =-p=\frac{\Lambda}{8\pi}
+\end{equation*}
+(in units $G_{N} = 1$).
+
+\noindent\textbf{a.\quad}\ignorespaces Solve the Friedmann
+equations (see Carroll~\cite{Carroll:2004st} section 8.3) for the case $\Lambda>0$,
+considering all values of the spatial curvature parameter
+$k$. This solution is called de Sitter space.
+
+\noindent\textbf{b.\quad}\ignorespaces Do the same for
+$\Lambda<0$. This solution is called anti-de Sitter space. 
+\end{xca}
+\end{exercises}

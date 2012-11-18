@@ -1,0 +1,86 @@
+%%
+%% simplificationsForWeakRad.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Mar 11 14:00:37 2012 alex
+%% Last update Sun Mar 11 14:00:37 2012 alex
+%%
+
+
+\begin{Boxed}{Some Simplifications for Weak Gravitational Radiation}
+We saw that to first order in perturbation theory
+\begin{equation}
+\bar{h}_{\mu\nu}(\mathbf{x},t)=
+4G\int\frac{T_{\mu\nu}(\mathbf{y},t-|\mathbf{y}-\mathbf{x}|)}{|\mathbf{y}-\mathbf{x}|}\,\D^{3}y
+\end{equation}
+Let us concentrate on the purely spatial components
+$\bar{h}_{ij}$ since the remaining components $\bar{h}_{0\mu}$
+may be obtained by using the harmonic gauge condition
+$\partial^{\mu}\bar{h}_{\mu\nu}=0$.
+
+First, suppose an isolated source is at a distance $R$, and has
+linear size $r\lll R$. Then to a good approximation,
+\begin{equation}\label{eq:box2:goodApprox}
+\bar{h}_{\mu\nu}(\mathbf{x},t)=
+\frac{4G}{R}\int T_{\mu\nu}(\mathbf{y},t-|\mathbf{y}-\mathbf{x}|)\,\D^{3}y
+\end{equation}
+Now, to lowest order in $h$, energy conservation implies that
+\begin{equation}
+\partial_{\mu}T^{\mu\nu}=0=\partial_{i}T^{i\nu}+\partial_{t}T^{t\nu}
+\end{equation}
+We can now use a trick. Note the identities
+\begin{equation}\label{eq:box2:trick:id1}
+\begin{split}
+\partial_{k}(x^{i}T^{kj})&=\delta^{i}_{k}T^{kj}+x^{i}\partial_{k}T^{kj}\\
+&=T^{ij}-x^{i}\partial_{t}T^{tj}
+\end{split}
+\end{equation}
+\begin{equation}\label{eq:box2:trick:id2}
+\begin{split}
+\partial_{\ell}(x^{i}x^{j}T^{t\ell})
+&=\delta^{i}_{\ell}x^{j}T^{t\ell}+\delta^{j}_{\ell}x^{i}T^{t\ell}
++x^{i}x^{j}\partial_{\ell}T^{t\ell}\\
+&=x^{j}T^{ti}+x^{i}T^{tj}-x^{i}x^{j}\partial_{t}T^{t\ell}
+\end{split}
+\end{equation}
+Solving \eqref{eq:box2:trick:id1} for $T^{ij}$, using the
+symmetry of $T^{ij}$, and inserting \eqref{eq:box2:trick:id2},
+we see that
+\begin{align}
+T^{ij}
+&=x^{i}\partial_{t}T^{tj}+\partial_{k}(x^{i}T^{kj})\nonumber\\
+&=\frac{1}{2}\partial_{t}(x^{i}T^{tj}+x^{j}T^{ti})+
+\frac{1}{2}\partial_{k}(x^{i}T^{kj}+x^{j}T^{ik})\nonumber\\
+&=\frac{1}{2}\partial_{t}\Bigl(\partial_{\ell}(x^{i}x^{j}T^{t\ell})+x^{i}x^{j}\partial_{t}T^{tt}\Bigr)
++\frac{1}{2}\partial_{k}\Bigl(x^{i}T^{kj}+x^{j}T^{ik}\Bigr)\nonumber\\
+&=\frac{1}{2}\partial_{t}^{2}(x^{i}x^{j}T^{tt})
++\frac{1}{2}\partial_{\ell}\Bigl(\partial_{t}(x^{i}x^{j}T^{t\ell})+x^{i}T^{\ell j}+x^{j}T^{i\ell}\Bigr)
+\end{align}
+We plug this back into Equation \eqref{eq:box2:goodApprox}. By
+stokes theorem, the term involving $\partial_{\ell}$ integrates
+to zero---by assumption, the source is isolated, so the integral
+can be converted to a surface integral over a surface
+\emph{outside} the source, where $T^{\mu\nu}=0$. Hence
+\begin{equation}
+\begin{split}
+\bar{h}_{ij}(\mathbf{x},t)
+&=\frac{2G}{R}\int\partial^{2}_{t}(y^{i}y^{j}T^{tt})\,\D^{3}y\\
+&=\frac{2G}{R}\frac{\D^{2}}{\D t^{2}}\int y^{i}y^{j}T^{tt}(\mathbf{y},t-|\mathbf{y}-\mathbf{x}|)\,\D^{3}y.
+\end{split}
+\end{equation}
+The integral is the quadrupole moment; thus, the metric
+perturbation goes as the second time derivative of the quadrupole
+moment.
+
+For an isolated system of a few gravitating bodies (say, stars)
+with masses of order $m$ and velocities of order $v$, the
+quadrupole moment is $\sim mr^{2}$, and thus $\bar{h}\sim
+Gmv^{2}/R$. Furthermore, if the system is gravitationally bound,
+$v^{2}\sim Gm/r$, so $\bar{h}\sim v^{4}r/R$.
+
+For a typical binary neutron star, $r\sim 10^{7}$ km and
+$v^{2}\sim10^{-7}$; for such a system at a distance of a
+kiloparsec, this gives $\bar{h}\sim10^{-21}$.
+\end{Boxed}

@@ -1,0 +1,155 @@
+%%
+%% lecture08.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Feb 23 13:33:17 2012 alex
+%% Last update Thu Feb 23 13:33:17 2012 alex
+%%
+A type $(k,l)$-tensor $T$ is a multilinear map from $k$ dual
+vectors and $l$ vectors to $\RR$:
+\begin{equation}
+T\colon\underbrace{\mathrm{T}^{*}\mathcal{M}
+\times\dots\times\mathrm{T}^{*}\mathcal{M}}_{\text{$k$ times}}\times
+\underbrace{\mathrm{T}\mathcal{M}
+\times\dots\times\mathrm{T}\mathcal{M}}_{\text{$l$ times}}
+\to\RR.
+\end{equation}
+This is a linear map, so if we know what it does on the basis
+vectors (and covectors), we know everything. We have
+\begin{equation}
+T(\D x^{\mu_{1}},\dots,\D x^{\mu_{k}},\partial_{\nu_{1}},\dots,,\partial_{\nu_{\ell}})={T^{\mu_{1}\dots\mu_{k}}}_{\nu_{1}\dots\nu_{\ell}}
+\end{equation}
+are the components of $T$ in a coordinate basis.
+
+We have this method of constructing new tensors out of old ones:
+the tensor product. The idea is simple, basically multiply the
+components together. More formally, if we take a $(k,\ell)$
+tensor and a $(m,n)$ tensor, their tensor product gives us 
+a $(k+m,\ell+n)$ tensor denoted
+\begin{equation}
+\mathop{S}\limits^{(k,\ell)}\otimes
+\mathop{T}\limits^{(m,n)}=\mathop{U}\limits^{(k+m,\ell+n)}
+\end{equation}
+and it has components given by
+\begin{equation}
+\begin{split}
+(S\otimes T)&(\omega_{1},\dots,\omega_{k+m},v^{1},\dots,v^{\ell+n})=\\
+&\quad S(\omega_{1},\dots,\omega_{k},v^{1},\dots,v^{\ell})T(\omega_{k+1},\dots,\omega_{k+m},v^{\ell+1},\dots,v^{\ell+n}).
+\end{split}
+\end{equation}
+So what happens in practice? Well, consider a $(1,1)$ tensor 
+\begin{equation}
+T={T^{\mu}}_{\nu}\partial_{\mu}\otimes\D x^{\nu}
+\end{equation}
+we say
+\begin{subequations}
+\begin{align}
+T(\omega,v)
+&= T(\omega_{\rho}\D x^{\rho},v^{\sigma}\partial_{\sigma})\\
+&={T^{\mu}}_{\nu}\partial_{\mu}\otimes\D x^{\nu}(\omega_{\rho}\D x^{\rho},v^{\sigma}\partial_{\sigma})\\
+&={T^{\mu}}_{\nu}(\omega_{\rho}\partial_{\mu}\D x^{\rho})\otimes(v^{\sigma}\D x^{\nu}\partial_{\sigma})\\
+&={T^{\mu}}_{\nu}(\omega_{\rho}{\delta_{\mu}}^{\rho})(v^{\sigma}{\delta^{\nu}}_{\sigma})\\
+&=T^{\mu}_{\nu}\omega_{\mu}v^{\nu}.
+\end{align}
+\end{subequations}
+Again, this is what physicists say. Mathematicians would be a
+little more cautious, but get the same result.
+
+\medbreak\noindent\textbf{Warning:\quad}\ignorespaces %
+It looks like anything with an index is a tensor, in some sense
+this is true but a tensor is independent of what basis you're using.
+So lets consider a misleading non-example: a type $(2,0)$ tensor
+$(\partial\omega)$ which satisfies
+\begin{equation}
+(\partial\omega)(\partial_{\mu},\partial_{\nu})=\partial_{\mu}\omega_{\nu}.
+\end{equation}
+Suppose we choose a different coordinate system, then
+\begin{equation}
+(\partial\omega)(\partial_{\mu},\partial_{\nu})\not=
+(\partial\omega)(\partial_{\mu'},\partial_{\nu'})
+\end{equation}
+In other words: it is not even linear!
+
+\noindent\textbf{Moral:\quad}\ignorespaces %
+Indices don't make something an tensor!
+
+\medbreak
+\begin{ex}[Kronecker Delta]
+A type $(1,1)$ tensor is the Kronecker delta
+\begin{subequations}
+\begin{align}
+\delta
+&={\delta^{\mu}}_{\nu}\partial_{\mu}\otimes\D x^{\nu}\\
+&=\partial_{\mu}\otimes\D x^{\mu}.
+\end{align}
+\end{subequations}
+So 
+\begin{equation}
+\delta(\omega,v)=\omega_{\mu}v^{\mu}.
+\end{equation}
+We can show this by showing $\delta$ is linear, or we can show
+that it's independent of coordinates.
+\end{ex}
+\begin{ex}[Field Strength Tensor]
+The field strength tensor is a $(2,0)$ tensor 
+\begin{equation}
+F=F_{\mu\nu}\D x^{\mu}\otimes\D x^{\nu}
+\end{equation}
+with components
+\begin{equation}
+F_{0i}\sim E_{i},\quad\mbox{and}\quad F_{ij}\sim B_{k}
+\end{equation}
+Usually it is written $F=\D A+A\wedge A$.
+\end{ex}
+\begin{ex}[Metric Tensor]
+A $(2,0)$ tensor we have seen before is the metric tensor
+\begin{equation}
+g=g_{\mu\nu}\D x^{\mu}\otimes\D x^{\nu}
+\end{equation}
+which behaves on vectors as
+\begin{equation}
+g(v,w)=g_{\mu\nu}v^{\mu}w^{\nu}.
+\end{equation}
+This is a generalization of the inner product.
+
+The metric lets us change a vector to a dual vector. Consider (in
+some basis) a vector $v=v^{\mu}\partial_{\mu}$, then $g(v,-)$ is
+an object taking a vector to a real number:
+\begin{equation}
+\begin{split}
+g(v,-)\colon &\mathrm{T}\mathcal{M}\to\RR,\\
+&\omega\mapsto g(v,\omega).
+\end{split}
+\end{equation}
+Component-wise this looks like
+\begin{subequations}
+\begin{align}
+g(v,-)
+&=(g_{\mu\nu}\D x^{\mu}\otimes\D
+x^{\nu})(v^{\rho}\partial_{\rho},-)\\
+&=g_{\mu\nu}\<\D x^{\mu}|v^{\rho}\partial_{\rho}\>\D x^{\nu}\\
+&=g_{\mu\nu}(v^{\rho}{\delta_{\rho}}^{\mu})\D x^{\nu}\\
+&=(g_{\mu\nu}v^{\mu})\D x^{\nu}.
+\end{align}
+\end{subequations}
+\textbf{NOTATION:\quad}\ignorespaces $g_{\mu\nu}v^{\mu}=v_{\nu}$.
+
+Note that we need one more condition for $g$ to be a metric: it
+must be nondegenerate. So
+\begin{equation}
+g(u,v)=0\quad\mbox{for all }v
+\end{equation}
+only when $u=0$.
+Equivalently, $g_{\mu\nu}$ must be invertible. Its inverse is
+denoted $g^{\mu\nu}$ so 
+\begin{equation}
+g_{\alpha\mu}g^{\mu\beta}={\delta_{\alpha}}^{\beta}.
+\end{equation}
+The metric has to be symmetric. The inverse metric tensor
+\begin{equation}
+g=g^{\mu\nu}\partial_{\mu}\otimes\partial_{\nu}
+\end{equation}
+is also an honest tensor.
+\end{ex}

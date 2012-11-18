@@ -1,0 +1,280 @@
+%%
+%% lecture03.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Feb 19 09:42:17 2012 alex
+%% Last update Sun Feb 19 09:42:17 2012 alex
+%%
+
+We will study the Schwarzschild metric
+\begin{equation}
+\D s^{2}=\left(1-\frac{2m}{r}\right)\D t^{2}
+-\left(1-\frac{2m}{r}\right)^{-1}\D r^{2}
+-r^{2}\left(\D\theta^{2}+\sin^{2}(\theta)\D\varphi^{2}\right)
+\end{equation}
+where
+\begin{equation}
+m=\frac{GM}{c^{2}}.
+\end{equation}
+For the Sun, this is approximately
+\begin{subequations}
+\begin{equation}
+m_{\odot}\sim 1.5\;\mbox{km}
+\end{equation}
+whereas for the Earth
+\begin{equation}
+m\sim 1\;\mbox{cm}.
+\end{equation}
+\end{subequations}
+We would like to note:
+
+(1) as $r\to\infty$, it looks like flat spacetime;
+
+(2) at $r=2m$, one component vanishes while the other blows up;
+
+(3) for $r<2m$, the signature ``changes''.
+
+\noindent\ignorespaces %
+This last remark means space-like curves within the region looks
+time-like whereas time-like curves look space-like.
+
+We solve the geodesic equation in the time component
+\begin{equation}
+\frac{\D}{\D s}\left(g_{ab}\frac{\D x^{b}}{\D s}\right)
+-\frac{1}{2}(\partial_{a}g_{bc})\frac{\D x^{b}}{\D s}
+\frac{\D x^{c}}{\D s}=0.
+\end{equation}
+Consider $a=0$, then we get
+\begin{equation}
+\frac{\D}{\D s}\left(g_{ab}\frac{\D x^{b}}{\D s}\right)-0=0
+\end{equation}
+which is a constant of motion:
+\begin{equation}
+\begin{split}
+g_{tt}\frac{\D x^{t}}{\D s} &=\frac{\D}{\D s}
+\left(1-\frac{2m}{r}\right)\frac{\D t}{\D s}\\
+&=-\widetilde{E}
+\end{split}
+\end{equation}
+This notation is tradition as it vaguely reminds us of energy.
+
+Now for $a=3$, the $\varphi$ equation becomes
+\begin{equation}
+\frac{\D}{\D s}\left(g_{\varphi b}\frac{\D x^{b}}{\D s}\right)
+=\frac{\D}{\D s}\left(g_{\varphi\varphi}\frac{\D x^{\varphi}}{\D s}\right)
+\end{equation}
+since the metric is diagonal, and
+\begin{equation}
+\frac{\D}{\D s}\left(g_{\varphi\varphi}\frac{\D x^{\varphi}}{\D s}\right)=0.
+\end{equation}
+Thus we have
+\begin{equation}
+r^{2}\sin^{2}(\theta)\frac{\D\varphi}{\D s}=\widetilde{L}
+\end{equation}
+be a constant of motion, which reminds us of angular momentum.
+
+For the $a=2$ equation, we can set $\theta=\pi/2$ and
+$\D\theta/\D s=0$ for the initial condition. This eliminates the
+differential equation. We are left with radial geodesics.
+
+The trick\marginpar{Trick: first integral of geodesic equation}
+is to write the geodesic equation's first integral as 
+\begin{equation}
+\begin{split}
+g_{ab}\frac{\D x^{a}}{\D s}\frac{\D x^{b}}{\D s} &=
+\left(1-\frac{2m}{r}\right)\left(\frac{\D t}{\D s}\right)^{2}
+-\left(1-\frac{2m}{r}\right)^{-1}\left(\frac{\D r}{\D s}\right)^{2}
+-r^{2}\left(\frac{\D\varphi}{\D s}\right)^{2}\\
+&=1
+\end{split}
+\end{equation}
+Plugging in our constants of motion:
+\begin{equation}
+1=\left(1-\frac{2m}{r}\right)\widetilde{E}^{2}
+-\left(1-\frac{2m}{r}\right)^{-1}\left(\frac{\D r}{\D s}\right)^{2}
+-\left(\frac{\widetilde{L}}{r}\right)^{2}.
+\end{equation}
+This looks like the Hydrogen atom in quantum mechanics! We can
+solve for
+\begin{equation}
+\left(\frac{\D r}{\D s}\right)^{2}=
+\widetilde{E}^{2}-\left(1-\frac{2m}{r}\right)
+\left(1+\frac{\widetilde{L}^{2}}{r^{2}}\right).
+\end{equation}
+Our equations of motion becomes
+\begin{equation}
+\boxed{
+\begin{aligned}
+\widetilde{L} &=r^{2}\frac{\D\varphi}{\D s}\\
+-\widetilde{E} &= \left(1-\frac{2m}{r}\right)\frac{\D t}{\D s}\\
+\left(\frac{\D r}{\D s}\right)^{2} &=
+\widetilde{E}^{2}-\left(1-\frac{2m}{r}\right)
+\left(1+\frac{\widetilde{L}^{2}}{r^{2}}\right)
+\end{aligned}
+}
+\end{equation}
+with the initial conditions $\theta=\pi/2$ and $\D\theta/\D
+s=0$. It turns out that
+\begin{equation}
+s=\int\D s
+\end{equation}
+is a messy elliptic integral. So lets consider various
+perturbative techniques to approximate it.
+
+Lets consider
+\begin{equation}
+\left(\frac{\D r}{\D\varphi}\right)^{2}=\frac{(\D r/\D s)^{2}}{(\D\varphi/\D s)^{2}}
+=\left(\frac{r}{\widetilde{L}}\right)^{4}[\dots].
+\end{equation}
+Things simplify if we write everything in terms of
+\begin{equation}
+u=\frac{1}{r}.
+\end{equation}
+We have
+\begin{equation}
+\left(\frac{\D u}{\D\varphi}\right)^{2}=
+\frac{(\widetilde{E}^{2}-1)}{\widetilde{L}^{2}}
++\frac{2mu}{\widetilde{L}^{2}}
+-u^{2}+2mu^{3}.
+\end{equation}
+If it weren't for the $2mu^{3}$ term, we could integrate this in
+closed form. The extra term is precisely the relativistic
+corrections, so we will treat it as a perturbation.
+
+\subsection{First Approximation}
+We simply ignore higher order terms. So we differentiate
+\begin{equation}
+\frac{\D^{2}u}{\D\varphi^{2}}=\frac{m}{\widetilde{L}^{2}}-u+3mu^{2}
+\end{equation}
+and throw away the $3mu^{2}$ term, obtaining
+\begin{equation}
+\frac{\D^{2}u}{\D\varphi^{2}}=\frac{m}{\widetilde{L}^{2}}-u.
+\end{equation}
+This has its solution be
+\begin{equation}
+u=\frac{m}{\widetilde{L}^{2}}+A\cos(\varphi).
+\end{equation}
+We can rewrite this as
+\begin{equation}
+u=\frac{1+e\cos(\varphi)}{a(1-e^{2})}
+\end{equation}
+where $e$ is eccentricity, and $a$ is the semimajor axis. We see
+that
+\begin{equation}
+r^{-1}=\alpha+\beta\cos(\varphi)
+\end{equation}
+thus
+\begin{equation}
+\alpha r=1-\beta r\cos(\varphi)
+\end{equation}
+and using Cartesian coordinates yields
+\begin{equation}
+x^{2}+y^{2}=\frac{1}{\alpha^{2}}(1-\beta x)^{2}.
+\end{equation}
+What is this? Obviously an ellipse! This is wonderful, we recover
+the Newtonian solution to the Kepler problem.
+\begin{center}
+  \includegraphics{img/lecture03.0}
+\end{center}
+
+\subsection{Second Approximation}
+We write
+\begin{equation}
+u=u_{0}+y
+\end{equation}
+then our equation becomes
+\begin{equation}
+\frac{\D^{2}y}{\D\varphi^{2}}=\underbracket[0.5pt]{\frac{m}{\widetilde{L}^{2}}-u_{0}}-y+\underbracket[0.5pt]{3mu_{0}^{2}}+6mu_{0}y+3my^{2}
+\end{equation}
+where we choose $u_{0}$ to be such that the underbracketed terms
+vanish:
+\begin{equation}
+\frac{m}{\widetilde{L}^{2}}-u_{0}+3mu_{0}^{2}=0.
+\end{equation}
+We ignore that $3my^{2}$ term as ``really small.'' Thus we have
+\begin{equation}
+\frac{\D^{2}y}{\D\varphi^{2}}\approx-(1-6mu_{0})y
+\end{equation}
+which has its solution be
+\begin{equation}
+y=A\cos(\sqrt{1-6mu_{0}}\varphi).
+\end{equation}
+We see when
+\begin{equation}
+\varphi\mapsto\varphi+\frac{2\pi}{\sqrt{1-6mu_{0}}}
+\end{equation}
+that $y\mapsto y$. For Mercury, this works out to be $(2.7\times
+10^{-5})$ degrees per orbit, or roughly 0.1 arcseconds per orbit,
+or again roughly 43 arcseconds per century. Although this is
+small, it was observed by the end of the $19^{{\rm th}}$ century.
+
+\subsection{Remarks on Experiments}
+If the sun were oblate and the mass distribution followed this
+shape, then there is a quadrapole term in Newtonian gravity.
+It turns out the corrections account for roughly 4
+arcseconds. After further more-precise experiments, it turns out
+that General Relativity is correct to one part in a thousand. The
+Messenger satellite is measuring the orbit of Mercury to great
+precision. This will theoretically give the next order term.
+We are also working on measuring the angular momentum of the
+Sun. This will contribute to extra terms in geodesic expressions.
+
+The next planet to think about is Mars. Thanks to the Viking
+projects, there is precision to 100 meters of the orbit's
+measurements. This is fairly remarkable, if you think about it!
+
+Another test is the binary pulsar (a pulsar is a neutron star
+that sends out a beam due to magnetic flux). There is a precision
+of roughly 17 arcseconds per year. We can do this for a binary
+star, but it is messy. There is a tidal distortions to the stars,
+so it's not a sphere. For about 27--28 binary stars their orbits
+agree with General Relativity (see, e.g., Kramer \emph{et al.}~\cite{Kramer:2004gj}), but for a few binary stars General
+Relativity's predictions are really bad (most famously, DI Herculis~\cite{Claret:2010cj,Winn:2005ef}). It's a mystery what's
+going on there! See Baumgarte, et al.,~\cite{Baumgarte:1997eg}
+for simulating a binary neutron system, Laarakkers and
+Poisson~\cite{Laarakkers:1997hb} for rotating neutron stars.
+
+In Scalar-Tensor theories, the extra contribution to the
+precession we get a scalar contribution which nearly cancel for
+neutron stars. For other stars, it may be observable.
+
+\begin{exercises}
+\begin{xca}[Geodesics on the two-sphere]
+A two-dimensional sphere of radius $R$ has a metric
+\begin{equation}
+\D s^2 = R^2 (\D\theta^2 + \sin^2(\theta)\D\varphi^2)
+\end{equation}
+Show that the geodesics of this metrics are great circles.
+\end{xca}
+\begin{xca}[First integral of the geodesic equation]
+Show that the equation
+\begin{equation}
+g_{ab}\frac{\D x^{a}}{\D s}\frac{\D x^{b}}{\D s}=1
+\end{equation}
+is a first integral of the geodesic equation, that is, that the
+$s$ derivative of this equation vanishes whenever the geodesic
+equation holds. 
+\end{xca}
+\begin{xca}[Practice with tensors, indices, summation convention, etc.]
+Consider the following problems.
+\begin{enumerate}
+\item Let ${\delta_{a}}^{b}$ be the Kronecker delta in an
+  $n$-dimensional spacetime. Find ${\delta_{a}}^{a}$. 
+\item\label{xca:lec3:probTensors:2} Suppose $S_{ab}$ is symmetric (that is, $S_{ab} = S_{ba}$)
+  and $A_{ab}$ is antisymmetric (that is, $A^{ab} =
+  -A^{ba}$). Show that $S_{ab}A^{ab}= 0$.
+\item For $A^{ab}$ as in part \eqref{xca:lec3:probTensors:2}, and for an arbitrary tensor $T_{ab}$, show that
+\begin{equation}
+A^{ab} T_{ab} = A^{ab} (T_{ab} - T_{ba})
+\end{equation}
+\end{enumerate}
+\end{xca}
+\begin{xca}[{\cite[\normalfont3.18]{lightman:1975}}]
+Let $Y_{\alpha\beta\gamma}$ be an arbitrary tensor, show
+\begin{equation}
+Y_{\alpha\beta\gamma}\not=Y_{(\alpha\beta\gamma)}+Y_{[\alpha\beta\gamma]}.
+\end{equation}
+\end{xca}
+\end{exercises}

@@ -1,0 +1,110 @@
+%%
+%% GR.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Feb 14 08:28:49 2012 alex
+%% Last update Tue Feb 14 08:28:49 2012 alex
+%%
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{chunk}
+\usepackage{notebk}
+\usepackage{xmpincl}
+\includexmp{CC_Attribution-NonCommercial-NoDerivs_3.0_Unported}
+\ifpdf
+\pdfinfo{/CreationDate (D:20120214082849)}
+\fi
+\makeatletter
+\renewcommand*{\@cite@ofmt}{\bfseries\hbox}
+\makeatother
+
+\input{macros}
+\def\bigO{\mathop{\mathcal{O}}\nolimits}
+\def\arccosh{\mathop{\mathrm{ArcCosh}}\nolimits}
+\def\pathOrder{\mathop{\mathcal{P}}\nolimits}
+\def\TODO#1{\marginpar{\normalfont\texttt{TODO:} #1}}
+
+\title{Notes on Classical General Relativity}
+\date{February 14, 2012}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{tex/preface}
+
+\phantomsection
+\bigskip
+\noindent\textbf{\Large Part I}
+
+\medskip
+\noindent\textbf{\huge\addcontentsline{toc}{section}{Part I: Physical Motivation}Physical Motivation}
+
+\lecture[Geometry and Physics] % 26--29 september 
+\input{tex/lecture01}
+\lecture[Geodesics] % 1--3 october
+\input{tex/lecture02}
+\lecture[Massive Geodesics] % 6 october
+\input{tex/lecture03}
+\lecture[Lightlike Geodesics] % 8 october
+\input{tex/lecture04}
+
+\bigskip\phantomsection
+\noindent\textbf{\Large Part II}
+
+\medskip
+\noindent\textbf{\huge\addcontentsline{toc}{section}{Part II: Mathematical Tools}Mathematical Tools}
+
+\lecture[Manifolds] % 10 october
+\input{tex/lecture05}
+\lecture[Vectors] % 13 october
+\input{tex/lecture06}
+\lecture[Vector Fields] % 15 october
+\input{tex/lecture07}
+\lecture[Tensors] % 17 october
+\input{tex/lecture08}
+\lecture[Tensor Densities] % 20 october
+\input{tex/lecture09}
+\begin{exercises}
+  \input{tex/prob3} % problem set 3
+\end{exercises}
+\lecture[Exterior Algebra] % 27 october
+\input{tex/lecture10}
+\lecture[Connection on Manifold] % 29 October
+\input{tex/lecture11}
+\lecture[Spin Connection] % 31 october
+\input{tex/lecture12}
+\lecture[Curvature] % 3 November
+\input{tex/lecture13}
+\lecture[Geodesic Deviation, Curvature Properties] % 5 november
+\input{tex/lecture14}
+
+\begin{exercises}
+  \input{tex/prob4} % problem set 4
+\end{exercises}
+\bigbreak\phantomsection
+\noindent\textbf{\Large Part III}
+\medskip
+\noindent\textbf{\huge\addcontentsline{toc}{section}{Part III: General Relativity}General Relativity}
+\lecture[Deriving Field Equations]
+\input{tex/lecture15} % 7 november
+\lecture[Symmetries and Killing Vectors] % 12 november
+\input{tex/lecture16}
+\lecture[Stress-Energy Tensor] % 15 november
+\input{tex/lecture17}
+\lecture[Linearized Gravity] % 17 november
+\input{tex/lecture18} 
+\lecture[Gravitational Radiation] % 19 november
+\input{tex/lecture19}
+\lecture[Spherically Symmetric Solutions, Black Holes] % 21 november
+\input{tex/lecture20}
+\lecture[Eddington--Finkelstein, Kruskal--Szekeres Coordinates] % 24 november
+\input{tex/lecture21}
+\lecture[Brief Cosmology] % 26 november
+\input{tex/lecture22}
+\section*{Additional Topics}
+\input{tex/todo}
+\include{tex/bib}
+
+\end{document}

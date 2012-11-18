@@ -1,0 +1,255 @@
+%%
+%% lecture14.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Mar  6 08:04:47 2012 alex
+%% Last update Tue Mar  6 08:04:47 2012 alex
+%%
+
+Parallel transport $v^{a}$ around a closed loop, and we get
+\begin{equation}
+v^{a}_{\|}={H^{a}}_{b}v^{b}
+\end{equation}
+where
+\begin{equation}
+{H^{a}}_{b}={\delta^{a}}_{b}+\int_{S}{{R_{\mu\nu}}^{a}}_{b}
+\,\D x^{\mu}\,\D x^{\nu}+\dots
+\end{equation}
+is the holonomy (as before).
+
+\begin{wrapfigure}{r}{4pc}
+  \vspace{-1pc}
+  \includegraphics{img/lecture14.0}
+  \vspace{-2pc}
+\end{wrapfigure}
+We can get the Holonomy as a product of holonomies of arbitrarily
+small curves. This idea is doodled on the right, which resembles
+the Fibonacci rectangle. In this sense, the curvature tensor
+tells you everything. But we have to assume this curvature
+encloses a surface. It is possible this is not the case.
+
+\begin{wrapfigure}{l}{4pc}
+  \vspace{-1pc}
+  \includegraphics{img/lecture14.1}
+  \vspace{-2pc}
+\end{wrapfigure}
+\noindent In the case of the torus, the circle curve $\gamma$
+cannot be broken into smaller closed curves. A space is called
+\define{Simply Connected} if every loop can be continuously
+shrunk to a point (``contracted'').
+
+Curvature is a measure of the inability to define a (universal)
+Cartesian coordinate system.
+
+If we look at the commutator of covariant derivatives,we find
+\begin{equation}
+(\nabla_{\mu}\nabla_{\nu}-\nabla_{\nu}\nabla_{\mu})v^{a}
+={{R_{\mu\nu}}^{a}}_{b}v^{b}.
+\end{equation}
+\begin{xca}
+Check this explicitly!
+\end{xca}
+\noindent\ignorespaces Recall
+\begin{equation}
+\nabla_{\nu}v^{a}=\partial_{\nu}v^{a}-{{\Gamma_{\nu}}^{a}}_{b}v^{b}.
+\end{equation}
+We may think of this as an integrability condition, or an
+infinitesimal holonomy.
+
+
+\subsection{Geodesic Deviation}
+We would like to compare a one-parameter family of geodesics. One
+parameter is $s$, the proper time along the geodesic, and $t$
+which labels the geodesic we are on. There are two parameters
+\begin{subequations}
+\begin{align}
+u^{\mu} &= \frac{\partial x^{\mu}}{\partial s}\\
+X^{\mu} &= \frac{\partial x^{\mu}}{\partial t}
+\end{align}
+\end{subequations}
+where $u$ tells us the velocity, and $X$ points from one geodesic
+to its neighboring geodesic. (Carroll~\cite{Carroll:2004st} refers to these as
+$T^{\mu}$ and $S^{\mu}$, respectively.)
+
+We can define a relative velocity
+\begin{equation}\label{eq:defnRelativeVelocity}
+V^{\mu} = u^{\rho}\nabla_{\rho}X^{\mu}
+\end{equation}
+which is the relative velocity rate the separation is changing
+in time. Similarly, we may define
+\begin{equation}
+A^{\mu} = u^{\rho}\nabla_{\rho}V^{\mu}
+\end{equation}
+which is the relative acceleration.
+
+Let us start with an identity
+\begin{equation}\label{eq:lec14:id}
+u^{\rho}\nabla_{\rho}X^{\mu}=X^{\rho}\nabla_{\rho}u^{\mu}
+\end{equation}
+%As derivatives
+If we consider the difference between the right hand side and the
+left hand side
+\begin{equation}
+u^{\rho}\nabla_{\rho}X^{\mu}-X^{\rho}\nabla_{\rho}u^{\mu}=\dots
+\end{equation}
+What happens? Well, the first thing to observe is that there are
+no terms involving connection components (they drop out). So we
+are left with:
+\begin{equation}
+u^{\rho}\nabla_{\rho}X^{\mu}-X^{\rho}\nabla_{\rho}u^{\mu}=
+u^{\rho}\partial_{\rho}X^{\mu}-X^{\rho}\partial_{\rho}u^{\mu}.
+\end{equation}
+We also use the geodesic equation for autoparallel situations:
+\begin{equation}
+u^{\mu}\nabla_{\mu}u^{\rho}=0.
+\end{equation}
+Now what? Well, we will consider
+\begin{subequations}
+\begin{equation}
+u^{\rho}\nabla_{\rho}V^{\mu}=A^{\mu}.
+\end{equation}
+Using Equation \eqref{eq:defnRelativeVelocity} yields
+\begin{equation}
+u^{\rho}\nabla_{\rho}V^{\mu}=u^{\rho}\nabla_{\rho}(X^{\nu}\nabla_{\nu}u^{\mu}).
+\end{equation}
+Invoking Leibniz's rule
+\begin{equation}
+u^{\rho}\nabla_{\rho}V^{\mu}=\underbracket[0.5pt]{(u^{\rho}\nabla_{\rho}X^{\nu})}_{=V^{\nu}}\nabla_{\nu}u^{\mu}+
+X^{\nu}u^{\rho}\nabla_{\rho}\nabla_{\nu}u^{\mu}.
+\end{equation}
+We use commutation relations on the second term, yielding
+\begin{equation}\label{eq:lec14:whatWeHaveSoFar}
+u^{\rho}\nabla_{\rho}V^{\mu}=V^{\nu}\nabla_{\nu}u^{\mu}+
+X^{\nu}u^{\rho}\nabla_{\nu}\nabla_{\rho}u^{\mu} + 
+X^{\nu}u^{\rho}\underbracket[0.5pt]{(\nabla_{\rho}\nabla_{\nu}-\nabla_{\nu}\nabla_{\rho})u^{\mu}}_{{{R_{\rho\nu}}^{\mu}}_{\sigma}u^{\sigma}}
+\end{equation}
+Now we observe
+\begin{equation}
+X^{\nu}u^{\rho}\nabla_{\nu}\nabla_{\rho}u^{\mu}=
+X^{\nu}\nabla_{\nu}\underbracket[0.5pt]{(u^{\rho}\nabla_{\rho}u^{\mu})}_{=0}-(X^{\nu}\nabla_{\nu}u^{\rho})\nabla_{\rho}u^{\mu}.
+\end{equation}
+Plugging these expressions back into Equation \eqref{eq:lec14:whatWeHaveSoFar}
+\begin{equation}
+\begin{split}
+u^{\rho}\nabla_{\rho}V^{\mu}&=V^{\nu}\nabla_{\nu}u^{\mu}+0-(X^{\nu}\nabla_{\nu}u^{\rho})\nabla_{\rho}u^{\mu}
++X^{\nu}u^{\rho}{{R_{\rho\nu}}^{\mu}}_{\sigma}u^{\sigma}\\
+&=X^{\nu}u^{\rho}{{R_{\rho\nu}}^{\mu}}_{\sigma}u^{\sigma}
+\end{split}
+\end{equation}
+Thus we obtain
+\begin{equation}
+\boxed{
+A^{\mu}=X^{\nu}u^{\rho}{{R_{\rho\nu}}^{\mu}}_{\sigma}u^{\sigma}.
+}
+\end{equation}
+\end{subequations}
+
+Remember $\D x^{\mu}/\D s$ for slow bodies has
+\begin{equation}
+u^{0}\sim 1,\quad\mbox{and}\quad
+u^{i}\sim v/c\ll1.
+\end{equation}
+Then the relative acceleration
+\begin{equation}
+A^{i}\sim {{R_{0\nu}}^{i}}_{0}X^{\nu}
+\end{equation}
+is proportional to the spatial derivative of the gradient of the
+potential. In classical Newtonian gravity, this gives tidal forces.
+
+\subsection{Symmetries of Riemann Tensor}
+Consider\marginpar{Symmetries of Riemann tensor:\\(1) Skew Symmetries} the curvature tensor $R_{\mu\nu\rho\sigma}$, there are
+some symmetries it has (or more precisely, its \emph{indices}
+have).  We see that
+\begin{subequations}
+\begin{align}
+R_{\mu\nu\rho\sigma}
+&=-R_{\nu\mu\rho\sigma}\\
+&=-R_{\mu\nu\sigma\rho}\\
+&=R_{\rho\sigma\mu\nu}
+\end{align}
+\end{subequations}
+There are 2 pairs of antisymmetric indices, and those pairs are
+symmetric. Thus in 4-dimensions, there are only 21 independent
+components of the Riemann tensor. We also have the
+Jacobi\marginpar{(2) Jacobi Identity}
+identity in the last 3 indices:
+\begin{equation}
+R_{\mu\nu\rho\sigma}+R_{\mu\rho\sigma\nu}+R_{\mu\sigma\nu\rho}=0.
+\end{equation}
+We have, in 4-dimensions, only 20 independent components.
+
+The last identity is known as\marginpar{(3) Bianchi Identity}
+the \emph{Bianchi Identity}:
+\begin{subequations}
+\begin{equation}
+\nabla_{[\mu}R_{\nu\rho]\sigma\tau}=0
+\end{equation}
+or equivalently
+\begin{equation}
+\nabla_{\mu}R_{\nu\rho\sigma\tau}+
+\nabla_{\nu}R_{\rho\mu\sigma\tau}+
+\nabla_{\rho}R_{\mu\nu\sigma\tau}=0.
+\end{equation}
+\end{subequations}
+This actually follows from
+\begin{equation}
+\bigl[\nabla_{\mu},[\nabla_{\nu},\nabla_{\rho}]\bigr]+
+\bigl[\nabla_{\nu},[\nabla_{\rho},\nabla_{\mu}]\bigr]+
+\bigl[\nabla_{\rho},[\nabla_{\mu},\nabla_{\nu}]\bigr]=0.
+\end{equation}
+Note that if we include torsion, we need to modify the Bianchi
+identity to include some term proportional to the torsion.
+
+\subsection{Related Tensors}
+We\marginpar{Ricci Tensor $R_{\mu\nu}$} should note that the only nontrivial contraction for the
+Riemann curvature tensor is
+\begin{equation}
+g^{\mu\nu}R_{\mu\alpha\nu\beta}=R_{\alpha\beta}.
+\end{equation}
+We call it the Ricci tensor. It follows from
+\begin{equation}
+R_{abcd}=R_{cdab}
+\end{equation}
+that the Ricci tensor is symmetric. We can\marginpar{Scalar Curvature $R$} contract
+again to get
+\begin{equation}
+R=g^{\mu\nu}R_{\mu\nu}
+\end{equation}
+which is the \emph{Scalar Curvature} (sometimes called the Ricci scalar).
+It turns out that Einstein tensor (i.e., the traceless Ricci
+tensor)\marginpar{Einstein Tensor $G_{\mu\nu}$}
+\begin{equation}
+G_{\mu\nu}=R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R
+\end{equation}
+is interesting, since contracting the Bianchi identities gives
+\begin{equation}
+\nabla_{\nu}G^{\mu\nu}=0.
+\end{equation}
+This is called the \emph{contracted Bianchi identity}.
+
+The Ricci tensor gives us the volume changing aspects of
+curvature. More precisely, given a ``geodesic ball'' in a
+manifold, the Ricci curvature tells us how it differs from a
+``flat ball''. For General Relativity, the Ricci curvature
+determines the degree to which matter will tend to converge or
+diverge in time\footnote{This is precisely Raychaudhuri's
+  equation, see Baez~\cite{Baez:2001qy}, Kar and SenGupta~\cite{Kar:2006ms}, Eric Poisson~\cite[\normalfont\S2]{poisson}, Hawking and Ellis~\cite[\normalfont\S4.1]{Hawking:1973uf}.}. 
+The remainder of the Riemann tensor is known as the Weyl tensor,
+which gives us the shear.
+
+The last tensor worth mentioning is the Weyl
+tensor\marginpar{Weyl Tensor $C_{\alpha\beta\mu\nu}$}. In
+$n$-dimensions, we have
+\begin{equation}
+C_{\rho\sigma\mu\nu}=R_{\rho\sigma\mu\nu}-\frac{2}{n-2}(g_{\rho[\mu}R_{\nu]\sigma}-g_{\sigma[\mu}R_{\nu]\rho})+\frac{2}{(n-1)(n-2)}(g_{\rho[\mu}g_{\nu]\sigma}R).
+\end{equation}
+Note that the Weyl tensor vanishes in 3-dimensions\footnote{The Cotton tensor is used instead. See Garcia et al.~\cite{Garcia:2003bw}.}. One interesting property the
+Weyl tensor possess is conformal invariance, i.e., under local
+rescalings
+\begin{equation}
+g_{\mu\nu}\to e^{2f}g_{\mu\nu}
+\end{equation}
+where $f$ is an arbitrary smooth function, the Weyl tensor
+remains the same.

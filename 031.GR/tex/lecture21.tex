@@ -1,0 +1,221 @@
+%%
+%% lecture21.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Jul 12 10:40:45 2012 alex
+%% Last update Thu Jul 12 10:40:45 2012 alex
+%%
+
+We have the Schwarzschild metric
+\begin{equation}
+\D s^{2} = \left(1-\frac{2m}{r}\right)\D t^{2}
+-\left(1-\frac{2m}{r}\right)^{-1}\D r^{2}
+-r^{2}\,\D\Omega^{2}
+\end{equation}
+where
+\begin{equation}
+\D\Omega^{2} = \D\theta^{2}+\sin^{2}\theta\D\varphi^{2}
+\end{equation}
+is the usual notation for the metric on $(n-2)$-sphere. 
+
+\begin{thm}[Birkhoff]
+Spherically symmetric vacuum field equations imply the
+Schwarzschild solution.
+\end{thm}
+
+Physically if we have a spherically symmetric field, we can treat
+it as concentrated at a point, all gravitation waves have to be
+spherical, but they're really quadrapole or higher order.
+
+We chose $t$ by demanding a time variable such that everything's
+independent of it. Our solution is still perfectly good. We would
+like some physical time component with some physical meaning.
+
+We have an observer shooting off light to the cylinder of
+constant radius. We could equally make this baseballs instead of
+photons, which is useful for collapsing spherical shells. The
+diagram is
+\begin{center}
+\includegraphics{img/lecture21.0}
+\end{center}
+We have light (null geodesics) and it's only radial (so we have
+$\D\Omega^{2}=0$). Then we have 
+\begin{equation}
+\D s^{2} = 0 = \left(1-\frac{2m}{r}\right)\D t^{2}
+-\left(1-\frac{2m}{r}\right)^{-1}\D r^{2}
+\end{equation}
+which implies
+\begin{equation}
+\pm\left(1-\frac{2m}{r}\right)^{-1}\D r = \D t.
+\end{equation}
+We introduce a coordinate $r_{*}$ such that
+\begin{equation}
+\D t= \pm\D r_{*}
+\end{equation}
+so
+\begin{equation}
+r_{*} = r + 2m\ln\left|\frac{r}{2m}-1\right|.
+\end{equation}
+Either $t-r_{*}=u$ or $t+r_{*}=v$ where $u$, $v$ are constants
+and the same as geodesics $v$-labeling.
+
+We\marginpar{advanced Eddington--Finkelstein Coordinates} eliminate $t$ from the metric, so we get
+\begin{equation}
+\D s^{2} = \left(1-\frac{2m}{r}\right)\D v^{2}-2\,\D v\,\D
+r-r^{2}\,\D\Omega^{2}
+\end{equation}
+This is the same metric expressed in different coordinates. They
+are called the \define{advanced Eddington--Finkelstein Coordinates}.
+If we used $u$ instead of $v$, we'd get \emph{retarded}
+Eddington--Finkelstein coordinates.
+
+The coordinates with $v$ yields a bit of information. The null
+radial geodesics satisfy
+\begin{equation}
+\left(1-\frac{2m}{r}\right)\D v^{2}=2\,\D r\,\D v
+\end{equation}
+The solutions are either
+\begin{equation}
+v=\mbox{const.},\quad\mbox{or}\qquad
+\frac{\D r}{\D v}=\frac{1}{2}\left(1-\frac{2m}{r}\right).
+\end{equation}
+Outgoing geodesics asymptotically approach $r=2m$. One thing to
+note is that $r=2m$ is a null geodesic (i.e., it's lightlike)!
+
+\begin{defn}
+A \define{Killing Horizon} is when a Killing vector changes from
+timelike to lightlike.
+\end{defn}
+
+The\marginpar{Kruskal--Szekeres Coordinates} next thing to do is
+try replacing $r$ with $u$. It's easier to first define
+\begin{equation}
+U=\exp(-u/4m),\quad\mbox{and}\quad V=\exp(v/4m).
+\end{equation}
+We find (plugging these back into the Schwarzschild solution, we
+have
+\begin{equation}
+\D s^{2}=\frac{32m^{3}}{r}\exp(-r/2m)\,\D U\,\D V -r^{2}\,\D\Omega^{2}
+\end{equation}
+where $r=r(U,V)$ is defined by
+\begin{equation}
+\left(\frac{r}{2m}-1\right)\exp(r/2m)=-UV,\quad\mbox{and}
+\quad\frac{U}{V}=\exp(-t/2m).
+\end{equation}
+These coordinates are called \define{Kruskal--Szekeres Coordinates}.
+One of the nice things about these coordinates: nothing in
+particular goes horribly awry when the metric goes to zero,
+everything's nicely behaved.
+
+\begin{wrapfigure}{r}{13pc}
+\vspace{-1pc}
+\includegraphics{img/lecture21.2}
+\vspace{-1pc}
+\end{wrapfigure}
+Consider $r=2m$, in our new coordinates this is
+\begin{equation}
+UV=0.
+\end{equation}
+Our event horizon has two solutions
+\begin{equation}
+U=0,\quad\mbox{or}\quad V=0.
+\end{equation}
+These are null geodesics, so $U=0$, $V=0$ gives two lines are
+$45^{\circ}$ angles.
+
+When $r=0$, we have $UV=1$. This is a hyperboloid. The
+hyperboloid is drawn to the right with dashed lines to denote a
+genuine singularity (usually, it's with a ``squiggly'' line).
+We also have the situation when $r$ is a constant and $r>2m$;
+then $UV<0$ is also constant. Conversely, when $r<2m$ is a
+constant, we have $UV>0$ be constant. These situations are drawn
+in red and blue to the right.
+
+
+\begin{wrapfigure}{l}{11pc}
+\vspace{-1pc}
+\includegraphics{img/lecture21.3}
+\vspace{-1pc}
+\end{wrapfigure}
+We have 4 regions labeled as shown on the left. Regions I and IV
+are outside of the black hole. Regions II and III are inside of
+the black hole. If we enter these regions, we necessarily hit the
+singularity (we'd need to travel faster than light to escape the
+region). Note that a ``white hole'' is just a time-reversed black
+hole. The regions relevant for black holes are I and II, whereas
+I and III are relevant for white holes.
+
+We see black holes but not white holes. Why? Well, we're working
+with $T^{\mu\nu}=0$. We're working with matter collapsing, all we
+really have for the vacuum is part of region I and part of region II.
+
+We think of white hole/black hole as an eternal black hole
+perhaps formed by early fluctuations of the young universe (Hsu
+suggests something along these lines~\cite{Hsu:2010vp}), perhaps
+this is a wrong intuition. 
+
+There is no solution of the vacuum with an isometry which takes
+region III into any other region. Presumably the white holes
+radiate away.
+
+Now\marginpar{Penrose Diagrams} we had
+\begin{equation}
+\D s^{2} = (\dots)\D U\,\D V - r^{2}\,\D\Omega^{2}.
+\end{equation}
+If we multiply by a function, it doesn't change null
+geodesics. Penrose invented a trick to make $r=\infty$ into a
+finite distance, a doodle called a \define{Penrose Diagram}. For
+the Schwarzschild metric, we have the diagram:
+\begin{center}
+\includegraphics{img/lecture21.4}
+\end{center}
+This distorts area but preserves the causal
+structure\footnote{This is because the ``causal structure'' is
+  determined by the angles between intersecting curves; it's a
+  conformal transformation.}. 
+
+\begin{exercises}
+\begin{xca}[Black holes and trapped surfaces]
+The Schwarzschild metric in Kruskal-Szekeres coordinates is
+\begin{equation}
+\D s^{2} =
+\frac{32m^{2}}{r}\E^{-r/2m}
+\bigl(-\D T^{2}+\D X^{2}\bigr)
+ + r^2 \,\D\Omega^2
+\end{equation}
+where $r$ is viewed as a function of $X$ and $T$: 
+\[
+\left(\frac{r}{2m}-1\right)\E^{r/2m}=X^{2}-T^{2}
+\]
+\noindent\textbf{a.\quad}\ignorespaces Show that radial null
+geodesics emitted from the two-sphere $(T_{0}, X_{0}, \theta,
+\varphi)$ are described by the equation of motion
+\begin{equation}
+X - X_{0} = \epsilon(T - T_{0}),\quad
+\theta=\mbox{const.},\quad\varphi=\mbox{const.}
+\end{equation}
+where $\epsilon=1$ for outgoing geodesics and $\epsilon=-1$ for
+ingoing geodesics.
+
+\noindent\textbf{b.\quad}\ignorespaces Consider the new
+two-sphere formed by the wave front at time $T$ of these radial
+geodesics. Show that the area of this sphere is $A =
+4\pi{r^{2}(X, T )}$. (Hint: this is not completely obvious; you
+need to think about how area is defined in a curved spacetime.)
+
+\noindent\textbf{c.\quad}\ignorespaces In region I, $X_{0}>0$ and
+$-X_{0}<T_{0}<X_{0}$. By considering $\D{A}/\D{T}$, show that the
+the area $A$ increases with $T$ for outgoing geodesics, and
+decreases for ingoing geodesics. 
+
+\noindent\textbf{d.\quad}\ignorespaces In region II (inside the
+event horizon), $T_{0}>0$ and $-T_{0}<X_{0}<T_{0}$. Show that in
+this region, $A$ decreases with $T$ for both ingoing and outgoing
+geodesics. This is the condition that the initial sphere $(T_{0},
+X_{0}, \theta, \varphi)$ is a trapped surface. 
+\end{xca}
+\end{exercises}
+
+
