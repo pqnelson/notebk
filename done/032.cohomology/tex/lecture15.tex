@@ -1,0 +1,202 @@
+%%
+%% lecture15.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 17 11:11:56 2011 alex
+%% Last update Sat Dec 17 11:11:56 2011 alex
+%%
+We gave several definitions and we would like to repeat them and
+give a couple of new ones, all of them are useful. We may prove
+their equivalence later.
+
+\marginpar{Definition 1}A \define{Chern Class}\index{Chern Class} are obstructions for complex manifolds
+with structure group $\GL{n}$ or $\U{n}\propersubset\GL{n}$. We are
+working with complex vector bundles. We had taken the space
+$V_{n,k}$ (the Stiefel manifold\index{Stiefel Manifold}) and $\U{n}$ or $\GL{n,\CC}$
+acts there. Well, they act on $V^{orth}_{n,k}$ and $V_{n,k}$
+respectively. The Chern class was introduced as the first
+obstruction to the corresponding bundle. So $c_{l}$ comes in
+every even $k$ since $\pi_{l+1}(V_{n,l})\not=0$ for us, and we
+get $H^{l+1}\bigl(B,\pi_{l}(F)\bigr)$. The $l$ can be expressed
+in terms of $k$, namely $l=2k\pm1$ (the $\pm1$\dots well, look up
+the sign). So $c_{k}\in H^{2k}(B,\ZZ)$.
+
+There are other definitions.\marginpar{Definition 2} We can define the characteristic
+class as $c_{k}\in H^{2k}(B_{\U{n}},\ZZ)$ for the classifying
+space $B_{\U{n}}$. We use the classifying map 
+\begin{equation}
+\varphi\colon B\to B_{\U{n}}
+\end{equation}
+then use
+\begin{equation}
+\varphi^{*}\colon H^{2k}(B_{\U{n}},\ZZ)\to H^{2k}(B,\ZZ)
+\end{equation}
+to find $\varphi^{*}(c_{k})$. We know
+$B_{\U{n}}=\Gr_{\infty,n}$. \hyperref[defn:maximalTorus]{\textsc{Recall}}
+(page \pageref{defn:maximalTorus}) the notion of a maximal torus
+$T\propersubset\U{n}$ which consists of diagonal matrices. We
+have an embedding
+\begin{equation}
+B_{T}\to B_{\U{n}}
+\end{equation}
+there is a map
+\begin{equation}
+E/T\to E/\U{n}.
+\end{equation}
+This gives a morphism
+\begin{equation}
+H^{\bullet}(B_{\U{n}})\to H^{\bullet}(B_{T},\ZZ)
+\end{equation}
+but we know that if $T$ is one-dimensional then
+\begin{equation}
+B_{T}=\CP^{\infty},
+\end{equation}
+and if $T$ is $n$-dimensional, then
+\begin{equation}
+B_{T}=\bigl(\CP^{\infty}\bigr)^{n}.
+\end{equation}
+We know the cohomology ring
+\begin{equation}
+H^{\bullet}(B_{T})=\ZZ[\zeta_{1},\dots,\zeta_{n}]
+\end{equation}
+with $\dim(\zeta_{i})=2$. We may asily describe the image of
+\begin{equation}
+H^{\bullet}(B_{\U{n}},\ZZ)\to H^{\bullet}(B_{T},\ZZ),
+\end{equation}
+the image consists of symmetric polynomials. The group of
+permutations act trivially on $H^{\bullet}(B_{\U{n}},\ZZ)$ but
+nontrivially on $H^{\bullet}(B_{T},\ZZ)$. This is not new.
+
+\index{Chern Class!as Symmetric Polynomial|(}
+\marginpar{Chern classes as Symmetric Polynomials}But now we would like to say that this $c_{k}$ is an elementary
+symmetric polynomial. This is really nice as a definition, since
+$c_{k}$ are the only characteristic class; because every
+symmetric polynomial may be expressed in terms of elementary
+symmetric polynomials, so all characteristic classes may be
+expressed in terms of $c_{k}$. We have
+\begin{subequations}
+\begin{align}
+c_{1} &= \zeta_{1}+\dots+\zeta_{n},\\
+c_{2} &= \sum_{i<j}\zeta_{i}\zeta_{j}
+\end{align}
+\end{subequations}
+and so on. \marginpar{Usefulness of definition}This is the most useful definition if we wish to prove
+any theorem about Chern classes---use this definition!
+\index{Chern Class!as Symmetric Polynomial|)}
+
+\index{Chern Class!Axiomatic Definition|(}
+\marginpar{Definition 3: Axiomatic}The last definition is axiomatic in character. The first is that
+\begin{enumerate}
+\item $c_{k}$ is a characteristic class;
+\item if we have the direct sum of bundles, then
+\begin{equation}
+c_{n}(E\oplus F)=\sum_{k+l=n}c_{k}(E)c_{l}(F)
+\end{equation}
+and these two axioms requires a normalization condition, i.e.,
+another axiom:
+\item $c_{n}(E)=0$ if $n>\dim(E)$
+\end{enumerate}
+C.f.\ Milnor and Stasheff's axiomatic framework for the
+Stiefel--Whitney classes~\cite[Ch.\ 4]{milnor}.
+
+If we have a line bundle, then we have only one Chern
+class. Consider a line bundle $E$ over $\CP^{n}$. This is then
+related to $B_{\U{1}}=\CP$ and we have $c_{1}$ be the generator
+of $H^{2}(\CP^n,\ZZ)$.
+\index{Chern Class!Axiomatic Definition|)}
+
+\marginpar{\emph{\textbf{TODO:}} prove equivalence of definitions}So we have these three definitions of the Chern class. We should
+prove the existence and uniqueness of the axiomatic version, then
+prove the equivalence of all three definitions.
+
+We will very briefly discuss the case of $\GL{n,\RR}$ (the same
+with $\ORTH{n,\RR}$). We should consider $V_{n,k}(\RR)$. We have
+the notion of Chern class work, but it is $w_{k}\in
+H^{k}(B,\ZZ_{2})$ --- the analog of the first definition. We have
+the third axiomatic definition merely change $c_{k}\mapsto
+w_{k}$, nothing but notation changes. For the second definition,
+don't consider the torus, but
+$(\ZZ_{2})^{n}\propersubset\ORTH{n}$ the diagonal matrices have
+components be $\pm1$.
+
+Now this is not the end of the story; Stiefel--Whitney classes
+are classes over $\ZZ_2$. We also have $\ZZ$-classes for the
+group $\SO{n}$---the Euler characteristic is one example. But we
+have more: namely, we have the \define{Pontryagin Classes}\index{Pontryagin Classes}\index{Characteristic Class!Pontryagin Classes}.
+The picture is very simple, look we have an embedding
+$\GL{n,\RR}\propersubset\GL{n,\CC}$. What does it mean? It means
+\begin{equation}
+B_{\GL{n,\RR}}\to B_{\GL{n,\CC}}
+\end{equation}
+or we may work with homotopy equivalent stuff
+$\ORTH{n}\propersubset\U{n}$. Therefore we have the map
+\begin{equation}
+B_{\ORTH{n}}\to B_{\U{n}}.
+\end{equation}
+We may also go the other way, a $n$-dimensional complex bundle
+may be considered a  $2n$-dimensional real bundle. So we have a
+map
+\begin{equation}
+H^{\bullet}(B_{\U{n}},\ZZ)\to H^{\bullet}(B_{\ORTH{n}},\ZZ)
+\end{equation}
+which maps $c_{i}\mapsto\textbf{??}$. But the problem is that it is not
+quite clear we have a nonzero characteristic class. We need to
+take into account the Weyl group to see 
+\begin{subequations}
+\begin{equation}
+c_{2k+1}\mapsto 0
+\end{equation}
+and
+\begin{equation}
+c_{2k}\mapsto\pm P_{k}.
+\end{equation}
+\end{subequations}
+The $P_{k}$ are called ``\emph{Pontryagin Classes\/}'' which have
+$\dim(P_{k})=4k$; Chern classes had $\dim(c_{k})=2k$. So there is
+nothing magical here.
+
+\subsection*{EXERCISES}
+\begin{xca}
+Calculate the first obstruction to the construction of non-vanishing vector field on a sphere with $h$ handles.
+\end{xca}
+\begin{xca}\label{xca:lec15:prob2}
+Let us consider a principal bundle with total space $S^{2n+1}$, group $S^1$ and base $\CP^n$. Calculate the first obstruction to the construction of section of this bundle.
+\end{xca}
+\begin{xca}
+Consider a bundle with a fiber $S^{2k-1}$ associated with the principal bundle of Problem \ref{xca:lec15:prob2}. (We assume that the sphere $S^{2k-1}$ is realized as a unit sphere in complex space $\CC^k$ and $z\in S^1$, where $z$ is a complex number having absolute value 1, transforms a point $(z_1, \dots, z_k)\in S^{2k-1}$ into $(zz_1, \dots, zz_k)$.) Calculate the first obstruction to the construction of section of this bundle.
+\end{xca}
+\subsection{K-Theory}
+Right now we will give some main definitions and the relationship
+to characteristic classes. Complex vector bundles are classified
+by maps $B\to B_{\U{n}}$, so homotopy classification
+$\homotopyClass(B,B_{\U{n}})$ is hard. But we may discuss stable
+homotopy groups! Indeed, $K$-theory\index{K-Theory@$K$-Theory!as stable theory of vector bundles} is the stable theory of
+vector bundles, if you like; it's much simpler.
+
+Let $B$ be a connected, compact space (we will assume its
+cellular decomposition is a finite polyhedron). We have trivial
+bundles\index{$\varepsilon^{r}$|see{Trivial Bundle}}
+\begin{equation}
+E_{trivial} = \varepsilon^{r} = B\times\CC^{r}.
+\end{equation}
+Now what to do? We will say if we have  a vector bundle $E$ and
+we take a direct sum
+\begin{equation}
+E\oplus\varepsilon^{r}\stabequiv E
+\end{equation}
+are \define{Stably Equivalent}\index{Stably Equivalent}\index{Equivalence!Stably}.
+This should be transitive, so if 
+\begin{equation}
+E\oplus\varepsilon^r\iso E'\oplus\varepsilon^s\quad\mbox{then}\quad
+E\stabequiv E'.
+\end{equation}
+Two guys are stably equivalent if and only if they're equal when
+adding trivial bundles.
+
+We'd lke to stress that characteristic
+classes\index{Characteristic Class!and Stable-Equivalent Bundles} are equal for
+stable-equivalent bundles. Why? The  trivial bundle has a
+characteristic class equal to 0, and from axiom (2) it follows
+immediately. 

@@ -1,0 +1,128 @@
+%%
+%% lecture16.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 17 12:22:56 2011 alex
+%% Last update Sat Dec 17 12:22:56 2011 alex
+%%
+
+We will go to the $K$-theory; before that, we would like to prove
+a simple lemma.
+
+\begin{ddanger}
+Take a complex vector bundle $(E,B,F,p)$ considered as a $\U{n}$
+bundle (since $\GL{n,\CC}\homotopic\U{n}$ homotopic, so we
+consider homotopy classifications). Introduce the Hermitian
+product on every fibre, pick a bases $e_{1},\dots,e_{n}$ for the
+fibre and set $\<e_{i},e_{j}\>=a_{ij}$ where the matrix
+$[a_{ij}]$ is positive definite; we should do this continuous in
+every fiber. We get another fibration where the fiber is the set
+of all positive-definite Hermitian matrices. We should take a
+section of this fibration to get an inner product on each $F$,
+to get a metric on the original fiber bundle. BUT the set of all
+positive definite Hermitian matrices is contractible, by the
+simple reason: given two inner products $\<-,-\>_{1}$ and
+$\<-,-\>_{2}$ we can take their linear combination
+$\alpha\<e,f\>_{1}+\beta\<e,f\>_{2}$ where $0\leq\alpha$,
+$0\leq\beta$. This combination is another inner product. But
+look, set $\beta=1-\alpha$ and we have a convex set which is
+contractible. It is important that the inner product is positive,
+otherwise we could end up with our linear combination resulting
+in a degenerate inner product.
+\end{ddanger}
+
+\begin{lem}\index{Vector Bundle!Embedded into Trivial Bundle}\index{Trivial Bundle}
+Every vector bundle may be embedded into a trivial bundle.
+\end{lem}
+The map of $E_1\to E_2$ is linear on the fibres, and an embedding
+means that the map is injective on the fibres
+\begin{equation}
+\begin{array}{ccc}
+E_{1} & \into & E_{2} \\
+%\dTo  &       & \dTo \\
+\downarrow & & \downarrow\\
+B     & \xrightarrow{\id{}} & B
+\end{array}
+\end{equation}
+How to construct such a map which is linear on the fibres?
+Suppose that both are direct products
+\begin{equation}
+E_{1}=B\times F_1\quad\mbox{and}\quad E_2=B\times F_2
+\end{equation}
+then our diagram becomes
+\begin{equation}
+\begin{diagram}[small]
+B\times F_{1} & & B\times F_{2}\\
+\dTo>{p_{1}} & & \dTo>{p_{2}} \\
+B & \rTo^{\id{}} & B.
+\end{diagram}
+\end{equation}
+How do we construct a linear map on the fibres? Let $b\in B$ and
+$\varphi_b\colon F_1\to F_2$ be the linear map we want. So
+$\varphi_b\in\mathrm{Emb}(F_1,F_2)$. If $\dim(F_{1})=k$ and
+$\dim(F_{2})=n$, then really $\mathrm{Emb}(F_1,F_2)=V_{n,k}$. So
+if we had direct products, we'd need a continuous $B\to V_{n,k}$
+to get an embedding of bundles.
+
+Assume now that $B$ is a cell complex, the vector bundle is
+trivial on each cell. Then we may apply this theory of
+obstructions and we construct this map on some skeleton of
+dimension $l$. Construct a map to a trivial bundle
+\begin{equation}
+B\times\CC^n\to B
+\end{equation}
+on $B^l$ (the $l$-dimensional skeleton), then extend it to
+$B^{l+1}$. We may get an obstruction extending it to $B^{l+1}$
+which would live in $H^{\bullet}\bigl(B,\pi_{l}(V_{n,k})\bigr)$.
+If there is an obstruction, we go from 
+\begin{equation}
+n\to n+(\mbox{something})
+\end{equation}
+and when the (something) is large the obstruction disappears. We
+can change $n$ since we introduced it in the skeleton approach
+with the introduction of the trivial bundle $B\times\CC^{n}$
+where $n$ was \emph{never} specified. So by taking
+$n\mapsto n+(\mbox{something big})$, we remove the obstruction.
+
+For every vector bundle $(E,B,F,p)$ we can find another vector
+bundle $(E',B,F',p')$ that the direct sum of these two vector
+bundles is a trivial vector bundle denoted by $\varepsilon^{N}$
+(where $N$ is the dimension of the fiber). We may note that we
+can talk about these guys as $\U{n}$ bundles, since we can always
+introduce an inner product. Then we may always embed
+$E\propersubset B\times\CC^{N}$ and everything we considered may
+be equipped with an inner product. So we may consider
+$E'=E^{\bot}$, and $\CC^{N}=F_{b}\oplus F_{b}^{\bot}$.
+
+Now we can go to the definition of the $K$-group, which is now
+very simple. Recall the notion of stable equivalence $E\stabequiv
+E'$ if $E'\homotopic E+(\mbox{trivial bundle})$. We would now
+like to say that bundles over $B$ with respect to stable
+equivalence form a group $\widetilde{K}(B)$.
+
+The operation is simply the direct sum, it is
+well-defined. Inverses exist, we just proved this! The trivial
+bundle is stable equivalent to 0, so the identity exists. It
+forms a group.
+\begin{ex}
+If $B$ is a point, $\widetilde{K}(B)=0$ since everything is trivial.
+\end{ex}
+\begin{ex}
+If $B=S^{n}$, then $\widetilde{K}(B)=\pi_{n-1}\bigl(\U{k}\bigr)$
+if the fibres are of dimension $k$; we may consider any value of
+$k$, so really we have $E\stabequiv E+\varepsilon^{N}$, so we may
+consider a map
+$\pi_{n-1}\bigl(\U{k}\bigr)\to\pi_{n-1}\bigl(\U{k+\mbox{something}}\bigr)$.
+
+There is the stabilization of the group, we recall the notion of
+$\U{\infty}$\index{$\U{\infty}$} such that 
+\[
+\pi_{n-1}\bigl(\U{\infty}\bigr)=\pi_{n-1}\bigl(\U{N}\bigr)
+\]
+where $N$ is ``sufficiently large.'' This is the answer
+$\widetilde{K}(S^{n})=\pi_{n-1}\bigl(\U{\infty}\bigr)$. 
+\end{ex}
+
+

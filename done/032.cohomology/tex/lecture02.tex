@@ -1,0 +1,224 @@
+%%
+%% lecture02.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat May 21 12:16:40 2011 Alex Nelson
+%% Last update Sat May 21 13:00:16 2011 Alex Nelson
+%%
+The first thing to say is to consider locally trivial fibre
+bundles, which means that we have a covering of the base
+\begin{equation}
+\{U_{\alpha}\propersubset X\lst\bigcup_{\alpha}U_{\alpha}=B\}.
+\end{equation}
+The fibration is trivial over each $U_{\alpha}$. The total space
+is $E$. The typical fibre is $F$. We may say that over
+$U_{\alpha}$ the fibration is trivial, i.e.
+\begin{equation}
+p^{-1}(U_{\alpha})\iso U_{\alpha}\times F
+\end{equation}
+This identification is \emph{not} unique. If we suppose
+\begin{equation}
+E=B\times F,
+\end{equation}
+or in other words the fibration is trivial, then there is a map
+\begin{equation}
+B\times F\to E
+\end{equation}
+which is a homeomorphism and transforms fibre to fibre. We may
+consider a map
+\begin{equation}
+\begin{array}{c}
+B\times F\to B\times F\\
+(b,f)\mapsto(b,\widetilde{f})
+\end{array}
+\end{equation}
+we may say
+\begin{equation}
+\widetilde{f}=\varphi(f,b).
+\end{equation}
+In the simplest case
+\begin{equation}
+B=\{b\}
+\end{equation}
+and this map is a homeomorphism of the fibre. But for many
+fibres, the homeomorphism depends on the base point.
+
+We may say
+\begin{equation}
+E=\bigcup_{\alpha}p^{-1}(U_{\alpha})
+\end{equation}
+the total space is the union of preimages. But we have
+overlaps. So we may write
+\begin{equation}
+E=\bigsqcup_{\alpha}U_{\alpha}\times F/\sim
+\end{equation}
+where we identify the overlap, we should explain the rule that
+allows us to paste this stuff together. If
+\begin{equation}
+U_{\alpha}\cap U_{\beta}\not=\emptyset
+\end{equation}
+then over this intersection we have two representations of our
+fibre space, as the direct product
+\begin{equation}
+(U_{\alpha}\cap U_{\beta})\times F\to (U_{\alpha}\cap U_{\beta})\times F
+\end{equation}
+which transforms
+\begin{equation}
+(b,f)\mapsto (b,\widetilde{f})
+\end{equation}
+where
+\begin{equation}
+\widetilde{f}=\varphi_{\alpha\beta}(f,b)
+\end{equation}
+which depends on $\alpha$, $\beta$. We may say  we have a map
+\begin{equation}
+\varphi_{\alpha\beta}(b)\colon F\to F
+\end{equation}
+that depends on 
+\begin{equation}
+b\in U_{\alpha}\cap U_{\beta}
+\end{equation}
+We have the equivalence defined by
+\begin{equation}
+(b,f)\sim\big(b,\varphi_{\alpha\beta}(f,b)\big)
+\end{equation}
+where $\varphi_{\alpha\beta}$ are called the \define{Transition
+Functions}\index{Transition Function|textbf} or \define{Clutching Functions}\index{Clutching Function|textbf}. Note we have two
+transition functions for this overlap $\varphi_{\alpha\beta}$ and
+$\varphi_{\beta\alpha}$ which satisfy
+\begin{equation}
+\varphi_{\alpha\beta}\circ\varphi_{\beta\alpha}=\id{}
+\end{equation}
+by reflexivity. The transition functions are not completely
+arbitrary, for a triple intersection 
+\begin{equation}
+U_{\alpha}\cap U_{\beta}\cap U_{\gamma}\not=\emptyset
+\end{equation}
+and we should stop and think. We have reflexivity, but what comes
+from this? If we take the composition of transition functions, we
+get a third one --- the only challenging thing is to write it in
+the correct order. We see we have
+\begin{equation}
+b\in U_{\alpha}\cap U_{\beta}
+\end{equation}
+we have
+\begin{equation}
+(b,f)\sim\left(b,\varphi_{\alpha\beta}(f,b)\right)\sim\left(b,\varphi_{\alpha\gamma}(f,b)\right)
+\end{equation}
+where
+\begin{equation}
+\varphi_{\alpha\gamma}(f,b)=\varphi_{\beta\gamma}(f,b)\circ\varphi_{\alpha\beta}(f,b).
+\end{equation}
+We may discuss the bundles pasted together by transition
+functions such that some compatibility conditions hold.
+
+We may impose some conditions, e.g., $F$ is a vector space and
+the transition functions 
+\begin{equation}\label{eq:transitionFnInGLF}
+\varphi_{\alpha\beta}\in\GL{F}
+\end{equation}
+We may say that we have a \define{Vector Bundle}\index{Bundle!Vector|textbf}, in this case
+the fibres are vector spaces (which means we may add elements of
+the same fibre, and scalar multiply). We need the condition
+\eqref{eq:transitionFnInGLF} to avoid contradiction, since
+$\varphi_{\alpha\beta}$ were homeomorphisms (viz, invertible).
+
+The question is when are two vector bundles equivalent? We will
+first consider examples.
+\begin{ex}
+The trivial vector bundle $B\times\RR^{n}$.
+\end{ex}
+\begin{ex}
+Consider a sphere $S^{2}$ and at each point $x\in S^{2}$ we
+consider the tangent vectors
+\begin{equation}
+T_{x}S^{2}\iso\RR^{2},
+\end{equation}
+we may consider
+\begin{equation}
+\bigcup_{x\in S^{2}}T_{x}S^{2}=TS^{2}=E.
+\end{equation}
+This is the tangent bundle of $S^{2}$.
+\end{ex}
+\begin{ex}
+Consider any submanifold $M\subset\EE^{n}$ smooth, then
+\begin{equation}
+\bigcup_{x\in M} T_{x}M = TM = E
+\end{equation}
+is a more general example. Even more generally any smooth
+manifold $M$ has 
+\begin{equation}
+TM = \bigcup_{x\in M} T_{x}M
+\end{equation}
+as a tangent bundle is a vector bundle.
+\end{ex}
+
+We take any space $F$ with an action of a topological group $G$,
+we can require the transition functions
+\begin{equation}
+\varphi_{\alpha\beta}\in G,
+\end{equation}
+we may say that the transition functions give a map
+\begin{equation}
+U_{\alpha}\cap U_{\beta}\to G.
+\end{equation}
+We say that we have a \define{$G$-Bundle}\index{Bundle!$G$|textbf} or a space with a
+\define{Structure Group}\index{Group!Structure ---}\index{Structure Group} $G$.
+
+Recall for principal bundles, we had a topological group $G$ and
+it acts freely (so the orbits are in one-to-one correspondence
+with $G$). If a principal bundle has a section, then this
+principal bundle is a trivial bundle. lets repeat the
+proof. Well, if there are ``local sections'' of our space $E$,
+and we have
+\begin{equation}
+E\to E/G.
+\end{equation}
+Let $\sigma_{\alpha}$ be a \define{Local Section}\index{Section!Local}
+\begin{equation}
+\sigma_{\alpha}\colon U_{\alpha}\to E
+\end{equation}
+where $U_{\alpha}\subset E/G$. We want to identify
+\begin{equation}
+p^{-1}(U_{\alpha})\iso U_{\alpha}\times G
+\end{equation}
+We suppose that this has a right action of $G$, so we have
+\begin{equation}
+(x,g)\mapsto xg
+\end{equation}
+and
+\begin{equation}
+(xh)g=x(hg)
+\end{equation}
+where $g,h\in G$ and $x\in U_{\alpha}$. Now this identification
+of $p^{-1}(U_{\alpha})$ in the following way, we are sending
+\begin{equation}
+(g,b)\mapsto\sigma_{\alpha}(b)g.
+\end{equation}
+Note that this implies the point
+\begin{equation}
+(1,b)\mapsto\sigma_{\alpha}(b)
+\end{equation}
+What remains is to express transition functions in terms of the
+section $\sigma_{\alpha}$. That's easy. What do we have? We have
+\begin{equation}
+b\in U_{\alpha}\cap U_{\beta}
+\end{equation}
+then we can write a formula
+\begin{equation}
+\sigma_{\alpha}(b)g=\sigma_{\beta}(b)\widetilde{g}.
+\end{equation}
+We simply have
+\begin{equation}
+(\sigma_{\beta}^{-1}\circ\sigma_{\alpha})g=\widetilde{g}
+\end{equation}
+and we have
+\begin{equation}
+\varphi_{\alpha\beta}=\sigma_{\beta}^{-1}\circ\sigma_{\alpha}
+\end{equation}
+describe the transition function. So we may say that a principal
+bundle is a G-bundle where the fibre is $G$ and $G$ acts on
+itself by left action.
+

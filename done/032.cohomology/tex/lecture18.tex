@@ -1,0 +1,151 @@
+%%
+%% lecture18.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 25 09:45:58 2011 alex
+%% Last update Sun Dec 25 09:45:58 2011 alex
+%%
+Let $B$ be a topological space. We want to consider the
+collection of vector bundles over $B$. Denote this collection of
+vector bundles by $A=\Vect(B)$. Observe that $A$ is a semigroup.
+But we may promote it to a group by
+\begin{equation}
+A\mapsto\widetilde{A}=K(B).
+\end{equation}
+Two elements $E,E'\in\Vect(B)$ define the same element of $K(B)$
+if and only if for some $n$ we have
+\begin{equation}
+E\oplus\varepsilon^n=E'\oplus\varepsilon^n.
+\end{equation}
+We have stable equivalence
+\begin{equation}
+E\stabequiv E'
+\end{equation}
+defined by
+\begin{equation}
+E\stabequiv E' \iff E\oplus\varepsilon^m=E\oplus\varepsilon^n.
+\end{equation}
+Please note the ``exponents'' differ here. Thus we get a map
+\begin{equation}
+K(B)\to\widetilde{K}(B)
+\end{equation}
+We have a morphism
+\begin{equation}
+\dim\colon K(B)\to\ZZ
+\end{equation}
+It is clear we have a notion of dimension in $K(B)$, but it's
+not an invariant in $\widetilde{K}(B)$. But we may consider
+\begin{equation}
+K(B)\xrightarrow{\sim}\ZZ\oplus\widetilde{K}(B)
+\end{equation}
+which is an isomorphism.
+
+How do we calculate these $K$ groups? We know how to calculate
+soem of them. We have seen how $\widetilde{K}(S^{n})$, the
+calculations boiled down to considering
+\begin{equation}
+\pi_{n-1}\bigl(\U{\infty}\bigr)=\widetilde{K}(S^{n}).
+\end{equation}
+We know, for example,
+$\widetilde{K}(S^{2})=\pi_{1}\bigl(\U{\infty}\bigr)=\ZZ$.
+
+Consider a ``good'' subspace $A\propersubset B$ (if $B$ is a cell
+complex, $A$ is a subcomplex and thus always ``good''). The
+relative cohomology
+\begin{equation}
+H^{k}(B\bmod A)=\widetilde{H}^{k}(B/A).
+\end{equation}
+We have $A\propersubset B$, which implies we have a map in the
+opposite direction
+\begin{equation}
+\dots\gets H^{k}(A)\gets H^{k}(B)\gets H^{k}(B,A)\gets\dots
+\end{equation}
+so we have an exact sequence. We would like to prove that for
+$K$-theory we have a similar exact sequence.
+
+This is an extraordinary sequence\index{Sequence!Extraordinary}\index{Extraordinary Sequence}
+\begin{equation}
+\widetilde{K}(A)\gets\widetilde{K}(B)\gets\widetilde{K}(B/A),
+\end{equation}
+we have the map $\widetilde{K}(A)\gets\widetilde{K}(B)$ because
+we pull-back the bundle to $A$ and likewise $B/A\to B$ pulled
+backed.  We have a sequence, but we should prove it is exact.
+
+\begin{wrapfigure}{r}{7pc}
+  \includegraphics{img/lecture18.0}
+\end{wrapfigure}
+Lets first recall some basic topological constructions\index{Obstruction!Topological}. If we
+have a space $A$, then we can construct the cone over
+$A$\index{Cone!Over a Space} ---
+denoted $CA$ --- as doodled on the right. But from this, we can
+form the suspension over $A$, which is denoted by $S(A)$ and
+turns out completely equivalent to $CA/A$. Again, the
+suspension\index{Suspension!Over a Space}
+is doodled on the right, and we can obtain it from a continuous
+mapping $CA\to S(A)$. It amounts to taking our original space $A$
+(which is shaded) and contracting it to a single point.
+
+Really, we have
+\begin{equation}
+\widetilde{K}(A)\gets
+\widetilde{K}(B)\gets
+\widetilde{K}(\underbracket[0.5pt]{B\cup CA}_{B/A})\gets
+\widetilde{K}(\underbracket[0.5pt]{B\cup CA\cup CB}_{S(A)})\gets
+\dots
+\end{equation}
+
+\begin{wrapfigure}{l}{7pc}
+  \vspace{-30pt}
+  \includegraphics{img/lecture18.1}
+\end{wrapfigure}
+\noindent{}Lets consider what this looks like topologically. We
+have $A$ be a subcomplex of $B$, so a nice picture might be a
+smaller disc contained in a larger disc. We consider the cone
+$CA$ over $A$. We should observe the critically important
+property that $B\cup CA\cup CB$ is the same as the suspension of
+$A$, denoted by $SA$. This is the same stuff as $CA/A$, as we
+have already discussed. We get another term in our exact sequence
+\begin{equation}
+\widetilde{K}(A)\gets
+\widetilde{K}(B)\gets
+\widetilde{K}(B/A)\gets
+\widetilde{K}(SA)\gets
+\widetilde{K}(SB)\gets
+\dots
+\end{equation}
+So now we'd like a cohomological analog of what we have done
+here. Instead of $\widetilde{K}(A)$ we will write
+$\widetilde{K}^{0}(A)$. This is the same stuff, just different
+notation, so $\widetilde{K}=\widetilde{K}^{0}$. Now our exact
+sequence becomes
+\begin{equation}
+\widetilde{K}^{0}(A)\gets
+\widetilde{K}^{0}(B)\gets
+\widetilde{K}^{0}(B/A)\gets
+\widetilde{K}^{-1}(A)\gets
+\widetilde{K}^{-1}(B)\gets
+\dots
+\end{equation}
+We use the notation
+\begin{equation}
+\widetilde{K}(SA)=\widetilde{K}^{-1}(A).
+\end{equation}
+So if we introduce this notation, we see immediately that it is a
+cohomological theory---it has the same exact sequence as
+cohomology. For real bundles, we use the notation $KO$. For
+complex bundles we have Bott periodicity\index{Bott Periodicity}:
+\begin{equation}
+\widetilde{K}(S^{2}A)=\widetilde{K}(A).
+\end{equation}
+This is a slightly more general statement than Bott
+periodicity. We had Bott periodicity describe
+\begin{equation}
+\widetilde{K}(S^{n+2})=\widetilde{K}(S^{n}).
+\end{equation}
+Our notation reads
+\begin{equation}
+\widetilde{K}(S^{n}A)=\widetilde{K}^{-n}(A),
+\end{equation}
+so $\widetilde{K}^{-n-2}(A)=\widetilde{K}^{n}(A)$.

@@ -1,0 +1,204 @@
+%%
+%% lecture01.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 11:43:13 2011 alex
+%% Last update Mon Dec 26 11:43:13 2011 alex
+%%
+
+We will return to fibrations, discussing pricnipal fibrations and
+pricnipal bundles, characteristic classes, spectral sequences,
+and equivariant homology. We may get into $G$-structures. We will
+start with repeating the notion of fibrations, and some
+additional stuff.
+
+Remember if we have a map $p\colon E\to B$ which we assume is
+surjective, then 
+\begin{equation}
+F_{b}=p^{-1}\{b\}
+\end{equation}
+is the preimage of $b$ and we can decompose
+\begin{equation}
+E = \bigsqcup_{b\in B}F_{b}
+\end{equation}
+as a collection of preimages called \define{Fibres}\index{Fibre|textbf}. If all the
+fibres are homeomorphic to
+\begin{equation}
+F\iso F_{b}\quad\mbox{for all }b\in B
+\end{equation}
+then $p$ is called a \define{Fibration}. 
+
+\begin{rmk}[Notation]
+Some people write the fibre bundle as $(E,F,B,p)$ whereas others
+write it out as $F\into E\xrightarrow{p}B$. We will use both
+notations, in order to confuse the reader!
+\end{rmk}
+
+We should ask for more!
+W may introduce a notion of a \define{Locally Trivial Fibration}\index{Locally Trivial Fibration}\index{Fibration!Locally Trivial|textbf}. 
+First, a \define{Trivial Fibration}\index{Bundle!Trivial}\index{Trivial Bundle}\index{Trivial Fibration}\index{Fibration!Trivial|textbf} is when
+\begin{equation}
+E=B\times F\quad\mbox{and}\quad p(b,f)=b.
+\end{equation}
+For locally trivial fibrations, we have locally for ``small
+sets'' $U\propersubset B$ that 
+\begin{equation}
+p^{-1}(U)= U\times F.
+\end{equation}
+
+\begin{wrapfigure}{r}{0.75in}
+  \vspace{-12pt}
+  \includegraphics{img/lecture1.0}
+\end{wrapfigure}
+
+\noindent{}For example, th Mobius band\index{Mobius Band} is a locally trivial
+fibration. How can we see this? Well, it is doodled on the right
+as such. This notion isn't rigorous, for example what is meant by
+``equality''? We have a notion of mappings of fibrations, if
+$p\colon E\to B$ and $p'\colon E'\to B'$ are fibrations, then
+\begin{equation}
+\begin{diagram}[small]
+f\colon& E &\rTo & E'\\
+       &\dTo<{p}& &\dTo>{p'}\\
+\varphi\colon& B&\rTo&B'
+\end{diagram}
+\end{equation}
+commutes, which means
+\begin{subequations}
+\begin{equation}
+f\colon F_{b}\to F_{b'}
+\end{equation}
+where 
+\begin{equation}
+b'=\varphi(b)
+\end{equation}
+\end{subequations}
+and
+\begin{equation}
+p'\circ f=\varphi\circ p.
+\end{equation}
+We have a map of fibrations, and if $f$ is invertible, then the
+fibrations are \define{Equivalent}\index{Fibration!Equivalent|textbf} which is what we really mean
+for locally trivial fibrations.
+
+\begin{Boxed}{Fibre Bundles}
+Let $E$, $F$, $B$ be topological spaces.
+The idea of a fibre bundle $F\into E\to B$ is that it is a
+natural generalization of the product space $E=B\times F$. Why is
+this a good idea? Well, for example, in particle physics we often
+generalize the notion of a tangent space to work with ``tangent
+spinors''. 
+\end{Boxed}
+
+There is a notion of a \define{Section}\index{Section!of a Fibration|textbf} of a fibration $p\colon
+E\to B$ is a mapping
+\begin{equation}
+q\colon B\to E
+\end{equation}
+such that
+\begin{equation}
+p\circ q=\id{B},
+\end{equation}
+i.e., $q(b)\in F_{b}$ for all $b\in B$. What are some examples of
+fibrations that we know? Well, if $F$ is discrete and $E$
+connected, then the notion of a ``fibration'' is the same as a
+``covering space.''\index{Covering Space|textbf}
+
+\begin{thm}[Homotopy Lifting]\index{Homotopy Lifting Theorem|textbf}
+If we have a locally trivial fibration $E\to B$, and if we have a
+map $\alpha\colon X\to B$, then sometimes we may lift this map,
+i.e., find an $\widetilde{\alpha}\colon X\to E$ such that
+$\widetilde\alpha(x)\in F_{\alpha(x)}$, i.e.,
+$p\circ\widetilde{\alpha}=\alpha$.
+\end{thm}
+
+Look, a section is a lift of the identity map. We have examples
+where sections don't exist, so the lifts don't always exist. What
+is important is that we can do this for homotopies. So if $X$ is
+a cell complex, and 
+\begin{equation}
+\alpha_{t}\colon X\times I\to B
+\end{equation}
+then we may lift this to a homotopy
+\begin{equation}
+\widetilde{\alpha}_{t}\colon X\times I\to E
+\end{equation}
+which has the property
+\begin{equation}
+\widetilde{\alpha}_{0}=\widetilde{\alpha}.
+\end{equation}
+If we may lift the homotopy ``at one point'', we may lift the
+whole homotopy. 
+
+\index{Fibration!Serre|(}
+We may use this theorem to define a fibration. This is important,
+as there are some fibrations which are not locally
+trivial. Consider any space $B$. Lets fix a point $*\in
+B$. Consider all the maps
+\begin{equation}
+\varphi\colon I\to B
+\end{equation}
+such that
+\begin{equation}
+\varphi(0)=*,
+\end{equation}
+the space of all these paths is called $\Omega$ but we will
+denote this by $E$. There is a map 
+\begin{equation}
+p\colon E\to B
+\end{equation}
+which sends every path $\varphi$ to $\varphi(1)$ its end
+point. What is its fibre? Lets fix some $b\in B$, then
+\begin{equation}
+p^{-1}(b)=\{\varphi\in E\mid \varphi(0)=*,\varphi(1)=b\} = \Omega_{*,*}=\Omega.
+\end{equation}
+In general, this is not a fibration (unless $B$ is a manifold),
+but this theorem about lifting applies here---just use the
+homotopy extension property. This shift is a \define{Serre Fibration}\index{Fibration!Serre|)}.
+
+If we have a locally trivial fibration, or Serre fibration, then
+we have an exact homotopy sequence\index{Fibration!Exact Homotopy Sequence}
+\begin{equation}
+\dots\to\pi_{n}(F,*)\to\pi_{n}(E,*)\to\pi_{n}(B,*)\to\pi_{n-1}(F,*)\to\dots
+\end{equation}
+the mapping 
+\begin{equation}
+\pi_{n}(B,*)\to\pi_{n-1}(F,*)
+\end{equation}
+requires the homotopy lifting theorem above. We also see
+\begin{equation}
+\pi_{n}(E,F,*)=\pi_{n}(B,*)
+\end{equation}
+is a consequence of the homotopy lifting theorem.
+Observe
+\begin{equation}
+E=\{\varphi\colon I\to B\mid \varphi(0)=*\}
+\end{equation}
+is contractible. So this means the exact homotopy sequence gives
+$\pi_{n}(B,*)\iso\pi_{n-1}(\Omega)$.
+
+We would like to consider \define{Principal Fibrations}\index{Fibration!Principal|textbf}
+by taking a topological group\index{Group!Topological} $G$ and assume $G$ acts on $E$,
+then we may consider orbits of $G$ acting on $E$. The space of
+orbits is denoted $E/G$, there is a natural map
+\begin{equation}
+E\to E/G
+\end{equation}
+and the fibres of this map are precisely the orbits. There is a
+situation when the action is \define{Free}\index{Group!Free Action|textbf}\index{Free!Group Action|textbf}
+(there are no stabilizers); then the orbits are in one-to-one
+correspondence with $G$. Then we are talking about a principal
+fibvration. It will be a locally trivial fibration.
+\begin{prop}
+If a principal fibration has a section (and when $G$ is compact),
+then the fibration is trivial.
+\end{prop}
+The proof is trivial. If we have a section $\sigma\colon B\to E$
+and $G$ acts on the right (it'll be important later), take a pair
+$(b,g)$ and map it to $\sigma(b)\cdot g$. This is a map
+\begin{equation}
+B\times G\to E
+\end{equation}
+which is continuous and injective.

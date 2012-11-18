@@ -1,0 +1,204 @@
+%%
+%% lecture19.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 25 11:01:26 2011 alex
+%% Last update Sun Dec 25 11:01:26 2011 alex
+%%
+The first problem will concern the relation between
+$K(B)$\index{$K(B)$!relation to $\widetilde{K}(B)$} and
+$\widetilde{K}(B)$.\index{$\widetilde{K}(B)$!relation to $K(B)$} We know that 
+\begin{equation}
+K(B)\iso\widetilde{K}(B)\oplus\ZZ.
+\end{equation}
+but make it more detailed, namely from this decomposition there
+are maps
+\begin{equation}
+\begin{diagram}[height=1pc]
+    &       & \widetilde{K}(B) \\
+    & \ruTo & \\
+K(B)&       & \\
+    & \rdTo & \\
+    &       & \ZZ
+\end{diagram}
+\end{equation}
+and
+\begin{equation}
+\widetilde{K}(B)\to K(B),\quad\mbox{and}\quad\ZZ\to K(B).
+\end{equation}
+But still describe all of these morphisms.
+
+The second problem is more of a problem: namely, calculate
+$K(\CP^n)$ and moreover $K^i(\CP^n)$. We defined
+$K^{-i}(B)=K(S^{i}B)$. There is also the Bott periodicity which
+states $K^{i}=K^{i+2}$. We do this by induction, noting we have a
+pair $\CP^n\propersupset\CP^{n-1}$. Then everything follows.
+
+Now we will go ahead and note that we have a ring with respect to
+$K$. If we have two vector bundles $(E,B,F,p)$ and
+$(E',B,F',p')$ then we may take the product of these vector
+bundles which amounts to the tensor product. At each point $b\in
+B$ we take $F_{b}\otimes F_{b}'$; this is a definition that's
+correct but not quite precise. For trivial vector bundles,
+$U\times F\to U$ and $U\times F'\to U$, we may create
+$U\times(F\otimes F')\to U$. We would like to consider two sets
+$U,U_{1}\propersubset B$ where the fibration is trivial, then on
+$U\cap U_{1}$ we have the clutching function. We have a map
+\begin{equation}
+\varphi_{\alpha\beta}\colon U_{\alpha}\cap U_{\beta}\to\GL{F}
+\end{equation}
+which is the clutching function\index{Clutching Function}. We have on $U\cap U_{1}$ two
+fibres from two representations of the fibre, we just paste them
+together---pasting is done by an element of $\GL{F}$. But for the
+other bundle, we have
+\begin{equation}
+\varphi'_{\alpha\beta}\colon U_{\alpha}\cap U_{\beta}\to\GL{F'};
+\end{equation}
+is it possible to create a \index{Transition Function}transition
+function\marginpar{Transition Function, $\phi_{\alpha\beta}$}
+\begin{equation}
+\phi_{\alpha\beta}\colon U_{\alpha}\cap U_{\beta}\to\GL{F\otimes F'}?
+\end{equation}
+Yes, it is easy to do, because there is a map of products of
+groups
+\begin{equation}
+\GL{F}\times\GL{F'}\to\GL{F\otimes F'}.
+\end{equation}
+This can be done for any linear operators
+\begin{equation}
+A\colon F\to F,\quad\mbox{and}\quad B\colon F'\to F'
+\end{equation}
+to get
+\begin{equation}
+A\otimes B\colon F\otimes F'\to F\otimes F'.
+\end{equation}
+In any definition of the tensor product, we have
+functoriality. So 
+\begin{equation}
+\phi_{\alpha\beta}=\varphi_{\alpha\beta}\otimes\varphi'_{\alpha\beta}.
+\end{equation}
+We would like to consider a special case, namely if $F=\CC$ and
+$F'=\CC$ are one-dimensional, then the tensor product is
+one-dimensional
+\begin{equation}
+F\otimes F'=\CC,
+\end{equation}
+and the tensor product is just the usual product, not much more
+than that.
+
+Now we go to $K$-theory. There is nothing to say here. What do we
+need? We need the definition of elements of the $K$ group. So if
+we want to multiply
+\begin{equation}
+[E]\cdot[E']=[E\otimes E']
+\end{equation}
+so $E$, $E'$ are vector bundles over $B$. Some complications
+arise but they are trivial complications. We have virtual
+bundles, so we should define multiplication
+\begin{equation*}
+([E_{0}]-[E_{1}])(\dots)
+\end{equation*}
+by merely invoking distributivity. We should prove this is
+correct. In particular, we know if we have\dots well we should
+recall the tensor product is distributive. We also know it is
+associative and commutative, so we're done.
+
+Our goal is to consider $K(S^{2})$ and multiplication therein. We
+know that
+\begin{subequations}
+\begin{equation}
+K(S^{2})=\ZZ\oplus\widetilde{K}(S^{2})
+\end{equation}
+and
+\begin{equation}
+\widetilde{K}(S^{2})=\pi_{1}\bigl(\U{\infty}\bigr)=\ZZ.
+\end{equation}
+\end{subequations}
+We can describe elements of $\widetilde{K}(S^{2})$. Without loss
+of generality, we may consider line bundles. The higher
+dimensionality here does not contribute since we consider
+\begin{equation}
+\pi_{1}\bigl(\U{\infty}\bigr)=\pi_{1}\bigl(\U{1}\bigr)=\dots
+\end{equation}
+So we use the Hopf bundle
+\begin{equation}
+S^{3}\xrightarrow{\;S^{1}}S^{2}
+\end{equation}
+where we let $H=$ the Hopf vector bundle\index{Hopf Vector Bundle}\index{Hopf Bundle}\index{Bundle!Hopf}.
+
+Now we may take the trivial bundle of dimension 1. It is very easy to
+understand the role played by this bundle in the $K$-ring. We
+know
+\begin{equation}
+\CC\otimes F=F.
+\end{equation}
+So this is the unit of tensor multiplication. We have
+\begin{equation}
+\varepsilon\cdot E=E
+\end{equation}
+Perhaps we should write $\varepsilon=1$? No, we will instead
+write
+\begin{equation}
+\varepsilon=\mathbf{1}.
+\end{equation}
+We have
+\begin{equation}
+\mathbf{1}\cdot H=H,
+\end{equation}
+but what is $H^{2}=$? Look, $H$ is the Hopf vector bundle that
+may have transition function
+\begin{equation}
+\phi = z
+\end{equation}
+since $S^{2}=\CC\cup\infty$. We have the transition function. How
+to prove this? The simpler way is to consider
+\begin{equation}
+\pi_{1}\bigl(\U{1}\bigr)=\pi_{1}\bigl(\GL{1,\CC}\bigr).
+\end{equation}
+The generating elment of $\pi_{1}$, what is it? We have a circle
+\begin{equation}
+S^{1}=\U{1}\homotopic\GL{1,\CC},
+\end{equation}
+and the transition function is thus the identity $z\mapsto z$.
+
+But what is $H^{2}$? It is clear the transition function is
+$z^{2}$, because it's a line bundle so it amounts to
+multiplication in the usual way. Now what about addition? What is
+$H\oplus H$? We get 2-dimensional vector bundle, and the
+transition functions are matrices
+\begin{equation}
+\phi = \begin{bmatrix}z & 0\\0&z
+\end{bmatrix}.
+\end{equation}
+Every two-dimensional bundle is the sum of two one-dimensional
+bundles. We should map
+\begin{equation}
+K(S^{2})\xrightarrow{\dim}\ZZ.
+\end{equation}
+This is, of course,
+\begin{equation}
+H\oplus H\to\ZZ
+\end{equation}
+which is the inclusion mapping.
+
+We also have a map
+\begin{equation}
+K(S^{2})\to\pi_{1}\bigl(\U{\infty}\bigr)
+\end{equation}
+which is easy to calculate. We have one path but it is diagonal;
+we see here that
+\begin{equation}
+\begin{bmatrix}z&0\\0&z
+\end{bmatrix}\mapsto 2.
+\end{equation}
+Now we may write down what is $H^{2}$. The formula is that
+\begin{equation}
+H^{2}=2H-\mathbf{1}.
+\end{equation}
+This is precisely what we wanted to get! It's correct in
+$\widetilde{K}$, we get $\dim(H^{2})=1$ and $\dim(2H)=2$ while
+$\dim(-\mathbf{1})=-1$.
+
+

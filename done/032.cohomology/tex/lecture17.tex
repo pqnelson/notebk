@@ -1,0 +1,254 @@
+%%
+%% lecture17.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sat Dec 17 13:39:36 2011 alex
+%% Last update Sat Dec 17 13:39:36 2011 alex
+%%
+Remember that $B$ is a connected cell complex, we defined a
+notion of stable equivalence of vector bundles, using the
+notation
+\begin{equation}
+\varepsilon^n=B\times\CC^n
+\end{equation}
+for the trivial vector bundles over $B$, $B\times\CC^n\to B$. We
+consider vector bundles over $B$. We are saying there exists a
+stable equivalence
+\begin{equation}
+E\stabequiv E'\iff E\oplus\varepsilon^m\iso E'\oplus\varepsilon^n.
+\end{equation}
+We defined
+\begin{equation}
+\widetilde{K}(B)=\{\mbox{stably equivalence classes}\}
+\end{equation}
+as the stable-equivalence classes of vector bundles over $B$. So
+we have
+\begin{equation}
+\widetilde{K}(B)=\{\mbox{vector bundles over }B\}/\stabequiv.
+\end{equation}
+We have addition, which turns $\widetilde{K}(B)$ into an Abelian group.
+Is this really an Abelian group?
+
+Lets verify this claim, $\widetilde{K}(B)$ equipped with
+addition, is an Abelian group. Is there an additive inverse?
+Well, we should note that we may always embed a vector bundle $E$
+into a trivial bundle
+\begin{equation}
+E\subset\varepsilon^N
+\end{equation}
+so
+\begin{equation}
+E\oplus E^{\bot}=\varepsilon^N.
+\end{equation}
+But $\varepsilon^N\stabequiv0$ is the identity element, which
+implies that $E^\bot$ is the additive inverse of $E$.
+
+The last thing we did was calculate $\widetilde{K}(S^{r})$; we
+know vector bundles over $S^{r}$ are in one-to-one correspondence
+with $\pi_{r-1}\bigl(\U{k}\bigr)$ where $\U{k}$ is the group
+acting on the $k$-dimensional vector bundle. We may add to $E$ a
+trivial guy $E+\varepsilon^N$. We have
+$\widetilde{K}(S^{r})=\pi_{r-1}\bigl(\U{\infty}\bigr)$. 
+
+\begin{prob}
+What is $\widetilde{K}(S^{r})$?
+\end{prob}
+
+By the Bott periodicity theorem\index{Bott Periodicity}, we have
+\begin{equation}
+\pi_{r+2}\bigl(\U{\infty}\bigr)=
+\pi_{r}\bigl(\U{\infty}\bigr).
+\end{equation}
+It is clear that the group is connected implying
+$\pi_{0}\bigl(\U{\infty}\bigr)=0$. We also have
+$\pi_{1}\bigl(\U{\infty}\bigr)=\ZZ$ which is true for every
+$\U{n}$, $n\in\NN$, that $\pi_{1}\bigl(\U{n}\bigr)=\ZZ$. We also
+see that
+\begin{subequations}
+\begin{equation}
+\SU{n}\propersubset\U{n}
+\end{equation}
+\begin{equation}
+\U{n}/\SU{n}=S^{1}=\U{1}
+\end{equation}
+and
+\begin{equation}
+\pi_{1}\bigl(\SU{n}\bigr)=0.
+\end{equation}
+\end{subequations}
+We knw
+\begin{equation}
+\pi_{2k}\bigl(\U{\infty}\bigr)=0,
+\end{equation}
+but
+\begin{equation}
+\pi_{2}(G)=0
+\end{equation}
+for any Lie group $G$. We also know that
+$\pi_{2k+1}\bigl(\U{\infty}\bigr)=\ZZ$. The answer is that
+\begin{equation}
+\widetilde{K}(S^{r})=\begin{cases} 0 & \mbox{if $r$ is odd}\\
+\ZZ & \mbox{if $r$ is even}.
+\end{cases}
+\end{equation}
+
+We may repeat all this for real vector bundles but this requires
+changing $\U{n}\to\ORTH{n}$. Then
+\begin{equation}
+\widetilde{K}_{\text{real}}(S^{r})=\pi_{r-1}\bigl(\ORTH{\infty}\bigr).
+\end{equation}
+The Bott periodicity for the orthogonal group has period 8, i.e., $\pi_{r+8}\bigl(\ORTH{\infty}\bigr)=\pi_{r}\bigl(\ORTH{\infty}\bigr)$.
+We write down our table
+\begin{equation*}
+\begin{array}{c|c|c|c|c|c|c|c}
+\pi_{0}\bigl(\ORTH{\infty}\bigr) &
+\pi_{1}\bigl(\ORTH{\infty}\bigr) &
+\pi_{2}\bigl(\ORTH{\infty}\bigr) &
+\pi_{3}\bigl(\ORTH{\infty}\bigr) &
+\pi_{4}\bigl(\ORTH{\infty}\bigr) &
+\pi_{5}\bigl(\ORTH{\infty}\bigr) &
+\pi_{6}\bigl(\ORTH{\infty}\bigr) &
+\pi_{7}\bigl(\ORTH{\infty}\bigr) \\\hline
+\ZZ_2 & \ZZ_2 & 0 & \ZZ & 0 & 0 & 0 & \ZZ
+\end{array}
+\end{equation*}
+We have
+$\pi_{r}\bigl(\Sp{\infty}\bigr)=\pi_{r\pm4}\bigl(\ORTH{\infty}\bigr)$
+to get
+$\pi_{4}\bigl(\ORTH{\infty}\bigr)=\pi_{0}\bigl(\Sp{\infty}\bigr)$,
+and everything is completely determined.
+
+\bigskip
+\marginpar{A second approach to $K$-theory}Lets focus on a different explanation of the $K$ group. Consider
+vector bundles $E$, $E'$. If we know  $E\oplus E'$, we want to
+consider the subtraction $E-E'$. In second grade, we did
+subtraction $3-5$ by introducing a new number called
+``$-2$''. See \hyperref[box:reviewAlgebraicConstructions]{Box \ref*{box:reviewAlgebraicConstructions}}.
+Lets \emph{formally} introduce $E-E'$ by introducing $-E'$ as a
+\define{Virtual Vector Bundle}\index{Virtual Vector Bundle}\index{Vector Bundle!Virtual}.
+We should ask ourselves what is the meaning of
+\begin{equation}
+E-E'\stackrel{?}{=}E_{1}-E'_{1}?
+\end{equation}
+This may be rewritten as
+\begin{equation}
+E+E_{1}'=E_{1}+E'
+\end{equation}
+which gives us our definition.  If we consider these differences
+we get a group, this is the \define{Grothendieck Construction}\index{Grothendieck Construction}
+and it may be applied to any commutative semigroup. We get $K(B)$
+as a group. We may say that $K(B)\onto\widetilde{K}(B)$ 
+(are the two equal? Not really\dots). Why can we map it? It's
+clear that every element of $K(B)$ is a vector bundle, but an
+element of $\widetilde{K}(B)$ is an equivalence class of vector
+bundles (under stable-equivalence relation).
+
+\begin{Boxed}{Review of Algebraic Constructions}\label{box:reviewAlgebraicConstructions}
+The basic approach taken with $K$-groups from vector bundles
+makes sense if we remember the construction of the integers from
+the natural numbers.
+
+Remember, when we constructed the integers from the natural
+numbers $\NN_0$ we did the following: consider the collection
+$\NN_0\times\NN_0$. Impose an equivalence relation
+\begin{equation}
+(a,b)\sim(x,y)\iff a+y=x+b
+\end{equation}
+and this equivalence class intuitively corresponds to $a-b$. 
+
+\begin{prob}
+Consider the image of the diagonal map
+$\Delta\colon\NN_0\to\NN_0\times\NN_0$. Does this correspond to
+an equivalence class? If so, what equivalence class?
+\end{prob}
+
+If we pick out the representatives where at least one component is
+zero, then we have our intuitive notion of the integers. We just
+make $(0,1)=-1$ and $(1,0)=1$. So we have produced from an
+Abelian monoid an Abelian group.
+\end{Boxed}
+
+So what's going on? We have two pictures, 
+lets consider both of these guys up to stable equivalence
+$E_{s}\oplus(-E)_{s}=0$. Note:
+\begin{subequations}
+\begin{equation}
+\mbox{in $\widetilde{K}(B)$}\qquad E_{s}\oplus
+E_{s}^{\bot}=\varepsilon^{N}
+\end{equation}
+\begin{equation}
+\mbox{in $K(B)$}\qquad E\oplus(-E)=0.
+\end{equation}
+\end{subequations}
+So this map is a surjective group morphism
+$K(B)\onto\widetilde{K}(B)$ and it has a kernel. Under this
+morphism, $\varepsilon^N\mapsto0$. It is easy to check that
+nothing else goes to zero. So
+\begin{equation}
+K(B)/\ZZ=\widetilde{K}(B)
+\end{equation}
+where $\ZZ$ refers to the dimension of the trivial vector bundle.
+
+We may say that
+\begin{equation}
+K(B)\iso \ZZ\oplus\widetilde{K}(B).
+\end{equation}
+From the viewpoint of doing calculations, $K(B)$ and
+$\widetilde{K}(B)$ are equivalent. We don't worry about dimension
+with $\widetilde{K}(B)$---it's not even defined!---but the notion
+of dimension remains in $K(B)$.
+
+Also $K(B)$ is a ring. Why? Because there exists the tensor
+product operation for two vector bundles and one can check this
+operation satisfies the axioms for rings. In particular,
+one-dimensional trivial vector bundle
+$\varepsilon^{1}=\mathbf{1}$ is the unit element. \textsc{Hint:}
+instead of embedding $\widetilde{K}$ into $K$, we may consider a
+morphism $\dim\colon K(B)\to\ZZ$.
+
+\index{K-Theory@$K$-Theory!and Supersymmetry|(}\marginpar{A third, super, approach}Another approach to
+$K$-theory: work with $\ZZ_{2}$-graded vector bundles. We have
+\begin{equation}
+E=E_{\mathbf{0}}\oplus E_{\mathbf{1}}
+\end{equation}
+where one is ``even'' $E_{\mathbf{0}}$ and the other $E_{\mathbf{1}}$ is
+``odd''. If 
+\begin{equation}
+E=\sum_{n\in\ZZ}E_{n}
+\end{equation}
+then
+\begin{subequations}
+\begin{equation}
+E_{\mathbf{0}}=\sum_{n\in\ZZ}E_{2n}
+\end{equation}
+and
+\begin{equation}
+E_{\mathbf{1}}=\sum_{n\in\ZZ}E_{2n+1}.
+\end{equation}
+\end{subequations}
+We have the notion of parity inversion $\Pi\colon E\mapsto\Pi{E}$
+where
+\begin{equation}
+(\Pi E)_{\mathbf{0}}=E_{\mathbf{1}}\quad\mbox{and}\quad
+(\Pi E)_{\mathbf{1}}=E_{\mathbf{0}}.
+\end{equation}
+If every fibre is $\ZZ_2$-graded, this is a $\ZZ_2$-graded vector
+bundle. We may attempt to classify $\ZZ_2$-graded vector bundles
+if we assume
+\begin{equation}
+E\oplus\Pi E\sim 0.
+\end{equation}
+Then $K$-theory is a theory of $\ZZ_2$-graded vector bundles with
+\begin{equation}
+K(B)=(\mbox{$\ZZ_2$-graded vector bundles over $B$})/(E\oplus\Pi{E}\sim0)
+\end{equation}
+and we definitely get an Abelian group. It is easy to see this is
+equivalent to the old definition.
+
+\begin{rmk}
+Does multiplication respect parity? Yes, but when you multiply,
+you do it carefully\dots
+\end{rmk}
+\index{K-Theory@$K$-Theory!and Supersymmetry|)}

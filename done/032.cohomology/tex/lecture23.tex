@@ -1,0 +1,143 @@
+%%
+%% lecture23.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 11:07:34 2011 alex
+%% Last update Mon Dec 26 11:07:34 2011 alex
+%%
+Now, what about applications of $K$-theory? It has a lot of
+applications, since vector bundles are considered in a lot of
+brancehs of nmathematics. Perhaps the most surprising application
+is to division aalgebras. We consider algebras over $\RR$. Now,
+recall
+\begin{equation}
+\mbox{algebra} = \mbox{ring}+(\mbox{vector space})
+\end{equation}
+with some compatibility conditions. What are some examples? Well,
+$\RR$ is an algebra over $\RR$, and $\CC$ is an algebra over
+$\RR$ too (of dimensions 1 and 2, respectively). We will focus on
+\define{Division Algebras}\index{Division Algebra} where, if 
+\begin{equation}\label{eq:lec23:divAlgProb}
+ax=b\quad\mbox{and}\quad a\not=0
+\end{equation}
+then we may solve this equation (``we may divide''). If we have
+associativity, it is sufficient to solve
+\begin{equation}
+ax=1
+\end{equation}
+and denote the solution by $a^{-1}$. Then the solution to Eq
+\eqref{eq:lec23:divAlgProb} would be
+\begin{equation}
+x=a^{-1}b.
+\end{equation}
+But this \emph{requires} associativity. In general, we don't
+necessarily have associativity.
+
+\marginpar{Quaternions}\index{Quaternions}Another division algebra is the
+\define{Quaternion Algebra}, denoted by $\HH$ after its inventor
+Hamilton. It is associative and noncommutative as well as
+4-dimensional. It is a normed algebra, meaning
+\begin{equation}
+\|xy\|=\|x\|\cdot\|y\|.
+\end{equation}
+We may consider the situation when
+\begin{equation}
+\|x\|=1
+\end{equation}
+which is $S^{3}$ and a group isomorphic to $\SU{2}$. Note that
+$\CC$ may be considered likewise, giving us an isomorphism
+$S^{1}\iso\U{1}$. 
+
+\marginpar{Octonions}The next algebra is the \define{Octonions}\index{Octonions}
+which is an 8-dimensional nonassociative algebra. We may consider
+a sphere $S^{7}$ but it is not a group---we don't even have associativity!
+It is not terrible, the octonions are ``weakly nonassociative''
+(in the sense that they are ``alternative'' --- when we attempt
+to modify parentheses, it costs us a sign).
+For more on the Octonions, see Baez's beautiful review paper~\cite{baez}.
+
+Can we find other division algebras? Well, all division algebras
+have dimension 1, 2, 4, and 8. This may be proven by
+$K$-theory. Lets note it is a purely algebraic problem. Does it
+have something to do with topology? Yes. Why? Look! Look first at
+the case when we have associativity and a norm (this is too much,
+we don't need it, but lets suppose). We have $n$ be the
+dimension, then $S^{n-1}$ be a group. But a group has the
+property that the group manifold is ``parallelizable''. What does
+it mean? We have a $k$-dimensional manifold $M$, we may consider
+the tangent bundle as a principal $\GL{k}$-bundle. In general, we
+cannot continuously take a basis at each $T_{x}M$ for all $x\in
+M$, but if we can then we have a group. It's a Lie group! Fo a
+Lie group, we consider some basis at a point (e.g., the identity
+element $e$), then act by $g\in M$ to smoothly map the basis to
+$T_{g}M$. We did not use (nor need) associativity so far.
+
+In reality, we may say the following thing: if the dimension of
+the division algebra is $n$, then $S^{n-1}$ is parallelizable.
+
+\bigbreak
+The next application which is much more important, a revolution
+during a time when analysis and topology were disjoint and
+uninteracting fields. What happened? $K$-theory proved to be
+useful when studying partial differential equations. We should
+explain the notion of the \index{Operator Index|textbf}\index{Inder!of Operator}\define{Index} \textbf{of an Operator},
+suppose $E_{1}$ and $E_{2}$ are infinite-dimensional linear
+spaces and 
+\begin{equation}
+A\colon E_{1}\to E_{2}
+\end{equation}
+is a linear operator. 
+We may consider $\ker(A)\propersubset E_{1}$ and
+$\coker(A)=E_{2}/\im(A)$, then the index is
+\begin{equation}
+\ind(A)=\dim\bigl(\ker(A)\bigr)-\dim\bigl(\coker(A)\bigr).
+\end{equation}
+The only question is: is this well-defined? Could we get
+\begin{equation}
+\ind(A)=\infty-\infty?
+\end{equation}
+If we require $\ker(A)$ and $\coker(A)$ to both be
+finite-dimensional, then we call $A$ a \define{Fredholm Operator}\index{Operator!Fredholm}\index{Fredholm Operator}
+which is an isomorphism up to some one-dimensional problems, we
+require $A(E_{1})$ to be closed in $E_{2}$.
+
+In the finite-dimensional case,
+\begin{equation}
+\begin{split}
+\dim\bigl(\coker(A)\bigr)
+&=\dim(E_{2})-\dim\bigl(A(E_{1})\bigr)\\
+&=\dim(E_{2})-\dim\left(\dim(E_{1})-\dim\bigl(\ker(A)\bigr)\right).
+\end{split}
+\end{equation}
+But this won't work for infinite-dimensional cases. We will say
+that the index is continuous (if we change our operator ``a
+little bit'', the index ``continuously changes''). This means
+that we have thus
+\begin{equation}
+\ind(A+\alpha)=\ind(A)
+\end{equation}
+if $\alpha$ is ``small'', i.e., 
+\begin{equation}
+\|\alpha\|<(\mbox{some number}).
+\end{equation}
+But we may use topology to have some information about the index.
+
+We use this to deform an operator to a simpler operator. This is
+a very topological problem. But we should stary in the domain of
+Fredholm operators. Elliptic operators play an important role,
+specifically elliptic differential operators (or, better,
+elliptic pseudodifferential operators which lets us simplify
+things better). The result of all this stuff is the
+\define{Atiyah--Singer Theorem}\index{Atiyah--Singer Theorem}.
+
+Instead of using the differences of dimension, can we consider
+$\ker(A)-\coker(A)$? Why not, use formal differences! If we have
+a family of operators $A_{x}$ depending on $x\in X$, then we get
+a ``vector bundle''
+\begin{equation}
+\bigl(\ker(A)-\coker(A)\bigr)_{x}
+\end{equation}
+which is not quite right, but this ``index'' is an element of
+$K(X)$, the $K$ group of $X$.

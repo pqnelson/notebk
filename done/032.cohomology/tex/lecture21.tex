@@ -1,0 +1,208 @@
+%%
+%% lecture21.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 25 13:45:39 2011 alex
+%% Last update Sun Dec 25 13:45:39 2011 alex
+%%
+There is an even part $K^{0}(B)\to H^{\text{even}}(B)$ and
+multiplying by $\RR$ or $\QQ$ we get
+\begin{equation}
+K^{0}(B)\otimes\QQ\iso H^{\text{even}}(B,\QQ).
+\end{equation}
+For every vectyor bundle $E$, we have Chern classes of $E$,
+$c_{k}(E)\in H^{\text{even}}(B)$ and note that everything we're
+working with is complex and hence even dimensional. So we have
+\begin{equation}
+c_{n}(E\oplus E')=\sum_{k+\ell=n}c_{k}(E)c_{\ell}(E'),
+\end{equation}
+so we need something else since we have addition $E\oplus E'$ on
+the left hand side, and multiplication on the right hand side. We
+could consider ``some'' mapping
+\begin{equation}
+[E]\to f(c_1,\dots,c_k),
+\end{equation}
+but which mapping?
+
+Chern classes\index{Chern Class!from Cohomology of $B_{G}$} really come from the cohomology of classifying space.
+Remember we defined the classifyign space $B_{G}$ as the quotient
+\begin{equation}
+B_{G}\eqdef E_{G}/G
+\end{equation}
+where $E_{G}$ is contractlbe, and $G$ acts on $E_{G}$ without
+fixed points. If we have a subgroup $H\propersubset G$, then we
+may take $E_{H}=E_{G}$. We see $H$ acts on $E_{G}$ without fixed
+points. The classifying space for $H$ is different from the
+classifying space over $G$, we have
+\begin{equation}
+E_{H}/H\to E_{G}/G
+\end{equation}
+which corresponds to a map $B_{H}\to B_{G}$, and this induces a
+map of the cohomology $H^{n}(B_{G})\to H^{n}(B_{H})$.
+
+For complex bundles, we take $G=\U{n}$. For $H$, we take the
+maximal torus $H=T^{n}\propersubset\U{n}$. We therefore have a
+map of
+$H^{k}\bigl(B\U{n}\bigr)\to H^{k}(BT^{n})$. We have
+\begin{equation}
+T^{n}=S^{1}\times\dots\times S^{1}=(S^{1})^{n},
+\end{equation}
+and
+\begin{equation}
+BS^{1}=B\U{1}=\CP^{\infty},
+\end{equation}
+so the cohomology of $\CP^{\infty}$\index{$\CP^{\infty}$} has a single
+generator. Indeed
+\begin{equation}
+H^{\bullet}(\CP^{\infty})=\ZZ[\zeta]
+\end{equation}
+The classifying space of products is the product of classifying
+spaces, so really we have\index{Classifying Space!for Maximal Torus}
+\begin{equation}
+H^{\bullet}(BT^{n})=\ZZ[\zeta_{1},\dots,\zeta_{n}]
+\end{equation}
+describe the cohomology ring for $BT^n$.
+
+Also if we have a $\gamma\in G$ such that $\gamma
+H\gamma^{-1}=G$ leaving $H$ ``in tact'' (not fixed but transforms
+$H$ into itself), then if we assume that $G$ is connected, we see
+that $\gamma$ acts trivially on $G$ but not necessarily trivial
+on $H$. We saw if we take $W=S_{n}$\index{Weyl Group!Acting on $H^{\bullet}(T)$} the permutation group
+transforming diagonal matrices into diagonal matrices, they act
+nontrivially on the torus. It is easy to prove that 
+\begin{equation}
+H^{\bullet}\bigl(B\U{n}\bigr)\to\ZZ[\zeta_1,\dots,\zeta_n]^{S_{n}},
+\end{equation}
+i.e., they are mapped to symmetric polynomials. This is the easy
+part of the story. The hard part is that this map is an
+isomorphism!
+
+Now, we explained that the Chern classes\index{Chern Class!as Symmetric Polynomial} are mapped to symmetric
+functions:
+\begin{equation}
+\begin{split}
+c_{1}&\mapsto\zeta_1+\cdots+\zeta_n\\
+c_{2}&\mapsto\sum_{i<j}\zeta_{i}\zeta_{j}\\
+c_{3}&\mapsto\sum_{i<j<k}\zeta_{i}\zeta_{j}\zeta_{k}\\
+&\dots
+\end{split}
+\end{equation}
+We need something else: we need the Chern character. We
+characterize it as the mapping
+\begin{equation}
+\chernChar\to \E^{\zeta_{1}}+\E^{\zeta_{2}}+\dots+\E^{\zeta_{n}},
+\end{equation}
+i.e., it's the characteristic class that corresponds to this
+sum. So how to relate this? Lets decompose!
+
+\begin{danger}
+Please note that we are working in $H\otimes\QQ$ here, so what we
+are doing is alright.
+\end{danger}
+
+We see that
+\begin{equation}
+\chernChar\to \E^{\zeta_{1}}+\E^{\zeta_{2}}+\dots+\E^{\zeta_{n}} =
+n + \chernPt_{1}+\chernPt_{2}+\dots.
+\end{equation}
+The first part of the Chern character is
+\begin{equation}
+\begin{split}
+\chernPt_{1} &= \zeta_1+\dots+\zeta_{n} \\
+&=c_{1}
+\end{split}
+\end{equation}
+In general, we have
+\begin{equation}
+\chernPt_{k} =
+\frac{1}{k!}\left(\zeta_{1}^{k}+\dots+\zeta_{n}^{k}\right).
+\end{equation}
+That's trivial. But this is a well-known symmetric function, and
+it may be expressed in terms of elementary symmetric
+functions. We find
+\begin{equation}
+\begin{split}
+\chernPt_{2} &= \frac{1}{2}(\zeta_{1}^{2}+\dots+\zeta_{n}^{2})\\
+&= \frac{1}{2}\left[(\zeta_{1}+\dots+\zeta_{n})^{2}-2\sum_{i<j}\zeta_{i}\zeta_{j}\right]\\
+&= \frac{1}{2}[c_{1}^{2}-2c_{2}],
+\end{split}
+\end{equation}
+so we may talk about the Chern character of a vector
+bundle. Moreover,
+\begin{equation}
+\chernChar(E_{1}\oplus E_{2}) =
+\chernChar(E_{1})+\chernChar(E_{2})
+\end{equation}
+and for the product we see
+\begin{equation}
+\chernChar(E_{1}\otimes E_{2}) =
+\chernChar(E_{1})\chernChar(E_{2}).
+\end{equation}
+This means the Chern character\index{Chern Character!as Ring Morphism} gives a homomorphism 
+\begin{equation}
+K^{0}(B)\to H^{\text{even}}(B)
+\end{equation}
+between rings.
+
+\index{Chern Class!of Line Bundles|(}
+Let us look at one-dimensional bundles, so
+\begin{equation}
+B\to BS^{1}=B\U{1}=\CP^{\infty}
+\end{equation}
+and so let us take $B=S^2$. Really this is the only interesting
+case for reasons we'll explain later. Remember, we've already
+discussed bundles with the base $S^{2}$. The discussion was as
+follows: we divided $S^{2}$ into two hemispheres, and we had a
+transition function on the equator. We represent the transition
+function as $z^{n}$ where $z\in\CC\homotopic S^{1}$. So the
+tenros product would correspond to
+\begin{equation}
+z^{m}\cdot z^{n}=z^{m+n}.
+\end{equation}
+The Chern class is
+\begin{equation}
+c_{1}=n\zeta,
+\end{equation}
+where $n$ is the exponent of hte transition function, which has
+information about the obstruction. Here
+\begin{equation}
+\zeta=[S^{2}].
+\end{equation}
+It is clear we want the tensor product to correspond to
+multiplication, so it is clear that
+\begin{equation}
+\chernChar = \E^{c_{1}}.
+\end{equation}
+We got it, for a line bundle.
+
+So lets justify why $S^{2}$ is sufficient to consider. Lets
+discuss the classification of one-dimensional bundles. What
+should we classify? Namely, maps
+\begin{equation}
+\{B\to B\U{1}=\CP^{\infty}=K(\ZZ,2)\}
+\end{equation}
+We have a wonderful, namely homotopy classes
+$\homotopyClass(B,{K(\Pi,n)})$ are in one-to-one correspondence
+with $H^{n}(B,\Pi)$. We have
+\begin{equation}
+B^{n-1}\to *
+\end{equation}
+be mapped to a point. But every $n$-dimensional cell in $B^{n}$
+goes to an element in $\Pi$. This is a cochain! This cochain is
+not arbitrary: it is a cocycle. It should be extendable to
+$(n+1)$-dimensional guys. Higher dimensional cells don't matter,
+we may always extend the map. We may extend the map how we want,
+they're all homotopy equivalent. So all considerations may be
+reduced to $S^{2}$.
+\index{Chern Class!of Line Bundles|)}
+
+\subsection*{EXERCISES}
+\begin{xca}
+Describe homomorphisms $K(B)\to\widetilde{K}(B)$, $K(B)\to\ZZ$,
+$\widetilde{K}(B)\to K(B)$, $\ZZ\to K(B)$.
+\end{xca}
+\begin{xca}
+Calculate $K^{0}(\CP^n)$ and $K^{1}(\CP^n)$.
+\end{xca}

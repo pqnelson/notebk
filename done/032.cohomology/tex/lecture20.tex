@@ -1,0 +1,217 @@
+%%
+%% lecture20.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Sun Dec 25 12:19:59 2011 alex
+%% Last update Sun Dec 25 12:19:59 2011 alex
+%%
+We should recall we constructed a product in the $K$-group $K(B)$
+as
+\begin{equation}
+K(B)\otimes K(B)\to K(B).
+\end{equation}
+Recall we also have the product in the cohomology group
+\begin{equation}
+H^{\bullet}(B)\otimes H^{\bullet}(B)\to H^{\bullet}(B)
+\end{equation}
+where
+\begin{equation}
+H^{\bullet}(B)=\bigoplus_{k}H^{k}(B)
+\end{equation}
+is the full cohomology group. It could be considered
+\begin{equation}
+H^{k}(B)\otimes H^{\ell}(B)\to H^{k+\ell}(B)
+\end{equation}
+But with cohomology we have what is sometimes called the
+\define{External Product}\index{External Product}\index{Cohomology!External Product}
+\begin{equation}
+H^{\bullet}(B)\otimes H^{\bullet}(B')\to H^{\bullet}(B\times B')
+\end{equation}
+The same stuff holds for $K$-theory:
+\begin{equation}
+K(B)\otimes K(B')\to K(B\times B').
+\end{equation}
+How to construct it?
+
+The construction is trivial. If $b\in B$, $b'\in B'$, and we have
+vector bundles $(E,B,F,p)$ and $(E',B',F',p')$, and suppose we
+are given $F_{b}$ over $b$ and $F'_{b'}$ over $b'$, then we want to
+construct a fibre bundle over $B\times B'$. How? Well, merely by
+taking the tensor product $F_{b}\otimes F'_{b'}=F$ as the
+fibre. Of course, this is not so simple: we want a vector bundle!
+If $U\propersubset B$, $U'\propersubset B'$ and the given bundles
+are locally trivial, then we have locally $U\times U'\times
+F_{b}\times F'_{b'}$ in a natural way. It is something that may
+be called the \define{Tensor Product for Vector Bundles}\index{Vector Bundle!Tensor Product}\index{Tensor Product!for Vector Bundle}
+$E\otimes E'$ over $B\otimes B'$.
+
+What we should prove for this product $K(B)\otimes K(B')\to
+K(B\times B')$ is distributivity, how it behaves on virtual
+bundles, etc.
+
+But if $H(B)$, $H(B')$ are Torsion free, then
+\begin{equation}
+H(B)\otimes H(B')\iso H(B\times B').
+\end{equation}
+This is by Kuenneth's theorem\index{Kuenneth's Theorem}. If they're not torsion free, we
+have a short exact sequence
+\begin{equation}
+0\to H(B)\otimes H(B')\to H(B\times B')\to \Tor(\dots)\to 0.
+\end{equation}
+What happens in $K$-theory? If at least one of the groups $K(B)$
+or $K(B')$ is torsion-free, then
+\begin{equation}
+K(B\times B')\iso K(B)\otimes K(B').
+\end{equation}
+Really?! No. We need to recall
+\begin{equation}
+K^{-i}(B)=K(S^{i}B),
+\end{equation}
+so the analog should be present (c.f., in Cohomology). In the
+particular case when $B'=S^2$, we have
+\begin{equation}
+K(B)\otimes K(S^{2})=K(B\times S^{2}).
+\end{equation}
+Really what we did is called ``cheating.'' The full proof of this
+formula may be found in Hatcher's
+book~\cite[\S2.1]{hatcher2009vector}. (The difference between $K$ and
+$\widetilde{K}$ is analogous to the difference between $H$ and $\widetilde{H}$.)
+
+We would like to do the following. We notice that an exact
+sequence may be written for any pair. If we have a pair $X$, $Y$
+we may embed $X\vee Y\propersubset X\times Y$. Recall we mark a
+point $x_0\in X$ and $y_0\in Y$, and the wedge sum is $(X\times
+y_0\sqcup x_0\times Y)/(x_0\sim y_0)$. Then we may consider the quotient
+\begin{equation}
+(X\times Y)/(X\vee Y)=X\smashProd Y
+\end{equation}
+is the \define{Smash Product}\index{Smash Product}. (This was covered first quarter)
+
+\begin{wrapfigure}{r}{1.74in}
+  \vspace{-30pt}
+  \includegraphics{img/lecture20.0}
+\end{wrapfigure}
+\noindent{}We'd like to consider
+\begin{equation}
+S^{1}\smashProd Y=\Sigma Y
+\end{equation}
+the \define{Weak Suspension}\index{Suspension!Weak}\index{Weak Suspension} of $Y$, which is homotopic to $SY$. 
+For example, we may consider the case of $S^{1}\times Y/S^{1}\vee
+Y$ as doodled on the right.
+
+\begin{ddanger}
+Note that in the literature, sometimes people use the term
+\define{Reduced Suspension}\index{Suspension!Reduced}\index{Reduced Suspension} instead of ``weak suspension''. Also
+note that the reduced suspension is defined as $\Sigma X =
+(X\times I)/(X\times\{0\}\cup X\times\{1\}\cup \{x_0\}\times I)$
+where $I$ is the interval. This is \emph{homeomorphic} to the the
+definition we produced.
+\end{ddanger}
+
+Consider $\widetilde{K}$ calculations.
+We have
+\begin{equation}
+\widetilde{K}(X\vee S^2)\gets
+\widetilde{K}(X\times S^2)\gets
+\widetilde{K}(X\smashProd S^{2})
+\end{equation}
+as the beginning of a long exact sequence. We could continue and
+write more terms, but for now we note that we have
+\begin{equation}
+\widetilde{K}(X\vee S^{2})=\widetilde{K}(X)\oplus\widetilde{K}(S^{2}).
+\end{equation}
+We also know
+\begin{equation}
+K(X\times S^2)=K(X)\otimes K(S^2)
+\end{equation}
+but we also recall
+\begin{equation}
+K(X)=\widetilde{K}(X)\oplus\ZZ.
+\end{equation}
+Thus
+\begin{equation}
+K(S^{2})=\widetilde{K}(S^{2})\oplus\ZZ,
+\end{equation}
+so we can write
+\begin{equation}
+\widetilde{K}(X\times S^2)=\bigl(\widetilde{K}(X)\otimes\widetilde{K}(S^2)\bigr)\oplus\widetilde{K}(X)\oplus\widetilde{K}(S^2).
+\end{equation}
+Now we would like to use the fact that we have $S^{2}$ here.
+Then we have the exact sequence be
+\begin{equation}
+\dots\gets
+\widetilde{K}(X\smashProd S^2)\gets
+0.
+\end{equation}
+We use the fact that
+\begin{equation}
+S^1\smashProd S^2=S^3
+\end{equation}
+to get what we wanted. We get a formula for the smash product, we
+see that
+\begin{equation}
+0\gets
+\widetilde{K}(X)\oplus\widetilde{K}(S^2)\gets
+\widetilde{K}(X)\otimes\widetilde{K}(S^2)\gets
+\widetilde{K}(X)\oplus\widetilde{K}(S^2)\gets
+\dots
+\end{equation}
+So we see
+\begin{equation}
+\widetilde{K}(S^2\smashProd X)=\widetilde{K}(X)
+\end{equation}
+and thus\marginpar{Bott Periodicity}
+\begin{equation}
+\widetilde{K}(S^2X)=\widetilde{K}(X)
+\end{equation}
+which is Bott periodicity\index{Bott Periodicity!and $K$-Theory}. Note we did \emph{not} prove/deduce
+Bott periodicity, we merely related it to Kuenneth's theorem at
+an intuitive level.
+
+\index{K-Theory@$K$-Theory!and Cohomology}\index{Cohomology!and $K$-Theory}There is a strong similarity between $K$-theory and
+cohomology. There is not just a similarity, there is a morphism!
+We will construct it.We really have $K^0(X)$ and $K^1(X)$. We
+have many cohomology groups $H^{r}(X)$. The statement is as
+follows: we may consider
+\begin{equation}
+H^{\text{even}}(X)=\sum H^{2k}(X),\quad\mbox{and}\quad
+H^{\text{odd}}(X)=\sum H^{2k+1}(X).
+\end{equation}
+What is our goal? To construct morphisms
+\begin{equation}
+K^{0}(X)\to H^{\text{even}}(X),\quad\mbox{and}\quad
+K^{1}(X)\to H^{\text{odd}}(X),
+\end{equation}
+and we may consider
+\begin{equation}
+K^0(X)+K^1(X)\to H^{\bullet}(X)
+\end{equation}
+where we must note the full cohomology group $H^{\bullet}(X)$ is
+not just a group: it's a ring! So we infer $K^0(X)+K^1(X)$ is a
+ring, moreover the statement is that this is a ring morphism
+called the \marginpar{Chern Character $\chernChar$}\define{Chern Character}\index{Chern Character|textbf} denoted by
+\begin{equation}
+\chernChar\colon K^{0}(X)+K^{1}(X)\to H^{\bullet}(X).
+\end{equation}
+Note we never considered the group of coefficients for the
+cohomology, we use the integers $H^{\bullet}(X,\ZZ)$. Now what is
+this relationship? Is $\chernChar$ an isomorphism? No!
+
+But it is close to an isomorphism in the following sense: both
+the $K$ group and $H$ have torsion. The part without torsion are
+the same, but the torsion part is different. We may conclude
+$K^{0}(X)\otimes\QQ$ or $K^{0}(X)\otimes\RR$ to kill the torsion
+part. If we write 
+\begin{equation}
+K^{0}(X)=\sum\ZZ\oplus\sum\ZZ_{m}, 
+\end{equation}
+then we see $K^{0}(X)\otimes\QQ$ has two parts:
+$(\sum\ZZ)\otimes\QQ=\sum(\ZZ\otimes\QQ)=\sum\QQ$ and
+$(\sum\ZZ_{m})\otimes\QQ=\sum(\ZZ_{m}\otimes\QQ)=0$. And we have
+\begin{equation}
+K^{0}(X)\otimes\QQ\to H^{\text{even}}(X,\QQ)=H^{\text{even}}(X,\ZZ)\otimes\QQ.
+\end{equation}
+We definitely have this map, just multiply the Chern
+character\index{Chern Character!relating $K$-theory to Cohomology} by $\QQ$. But the statement is \emph{this is now an isomorphism}.

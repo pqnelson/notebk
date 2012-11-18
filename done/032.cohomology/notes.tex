@@ -1,0 +1,111 @@
+%%
+%% notes.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Apr 10 12:01:27 2011 Alex Nelson
+%% Last update Sun Aug 14 15:37:52 2011 Alex Nelson
+%%
+\documentclass{article}
+\pdfminorversion=4
+\pdfcompresslevel9
+\pdfinfo{/CreationDate (D:20110410120127)}
+\usepackage{xmpincl}
+\usepackage{makeidx}
+\includexmp{CC_Attribution-NonCommercial-NoDerivs_3.0_Unported}
+\usepackage{wrapfig}
+\usepackage{notebk}
+\makeindex
+\diagramstyle[nohug,labelstyle=\scriptstyle]
+
+\advance\headsep by1pc
+
+\makeatletter
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\bigbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\bigbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection}\sectionfont Lecture \thesection.}\medbreak}
+\makeatother
+
+\renewenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  %\hbox to\parindent
+  {\bf Answer to #1:\enspace}\ignorespaces}
+\renewcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+%\renewcommand{\theequation}{\arabic{equation}}
+
+\input{notation}
+
+\def\poincareDual#1{\mathcal{D}#1}
+
+\theoremstyle{definition}
+\newtheorem{xca}{\llap{\manual\char'170\rm\kern.15em}Exercise}
+\title{Algebraic Topology Notes}
+\date{April 10, 2011}
+\begin{document}
+\maketitle
+\tableofcontents
+\vfill\eject
+
+\part{$K$-Theory and Characteristic Classes}
+\lecture[Fibre Bundles]
+\input{tex/lecture01}
+\lecture
+\input{tex/lecture02}
+\lecture[Classification of Principal Bundles]
+\input{tex/lecture03}
+\lecture
+\input{tex/lecture04}
+\lecture
+\input{tex/lecture05}
+\lecture
+\input{tex/lecture06}
+\lecture[Characteristic Classes]
+\input{tex/lecture07}\label{215c:lecture7}
+\lecture
+\input{tex/lecture08}
+\lecture
+\input{tex/lecture09}
+\lecture
+\input{tex/lecture10}
+\lecture
+\input{tex/lecture11}
+\lecture[Obstruction Theory]
+\input{tex/lecture12}
+\lecture
+\input{tex/lecture13}
+\lecture
+\input{tex/lecture14}
+\lecture
+\input{tex/lecture15}
+\lecture[$K$-Theory]
+\input{tex/lecture16}
+% the next lecture was a review of the homework problems, so
+% we're right on track!
+\lecture
+\input{tex/lecture17}
+\lecture
+\input{tex/lecture18}
+\lecture
+\input{tex/lecture19}
+\lecture
+\input{tex/lecture20}
+\lecture
+\input{tex/lecture21}
+\lecture
+\input{tex/lecture22}
+\lecture[Applications of $K$-Theory]
+\input{tex/lecture23}
+\appendix
+\vfill\eject\renewcommand{\leftmark}{References}\phantomsection\addcontentsline{toc}{section}{References}
+\input{tex/bibliography}
+\vfill\eject
+\printindex
+\end{document}

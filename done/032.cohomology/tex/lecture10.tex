@@ -1,0 +1,179 @@
+%%
+%% lecture10.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Sep 28 13:24:51 2011 alex
+%% Last update Wed Sep 28 13:24:51 2011 alex
+%%
+Last time we constructed a principal bundle from any given
+locally trivial bundle. We took $H_{k}(F_{b})$ or $H^{k}(F_{b})$
+for each fibre, we took some field as the coefficients, and we
+had a vector space over each point $b\in B$. This gives us a
+locally trivial vector bundle. Locally it looks like $U\times
+H_{k}(F)$. This is a special type of \textbf{vector bundle with
+  \define{Flat Connection}}, we didn't really explain the notion
+of a connection, but we have some notion of a \emph{flat
+connection!}\index{Connection!Flat} Given some $U\propersubset B$ neighborhood, we
+have the canonical identification
+\begin{equation}
+H_{k}(F_{b})\iso H_{k}(p^{-1}(U)),
+\end{equation}
+which is something we don't always have in a fibre bundle, or a
+vector bundle. There is no canonical way for translating from
+fibre to fibre. \textbf{But} this works \textbf{only} for $\CC$.
+
+\begin{Boxed}{Connections and Fibre Bundles}\index{Connection!and
+Fibre Bundles}
+This is a confusing concept, so I'd like to review it in a bit
+more detail. Koszul's ``Homologie et cohomologie des algebres de
+Lie'' (Bulletin de la Soci\'et\'e Math\'ematique {\bf78} (1950) 65--127)
+describes the algebraic framework for connections on vector
+bundles, which are generalized and considered here.
+
+The idea is a generalization of the geometric notion
+of a ``connection.'' Recall its definition:
+\begin{defn}
+Let $p\colon F\to B$ be a fiber bundle. By a \define{connection}\index{Connection}
+on $F$ we will mean a vector bundle splitting $TF = V\oplus H$ where
+$V = \ker(Dp)$. The bundle $V$ will be called the \define{vertical tangent bundle}
+and $H$ will be called the \define{horizontal tangent
+bundle}\index{Tangent Bundle!Horizontal}.
+\end{defn}
+In this definition, we have $\left.Dp\right|_{H}\colon H\to TB$
+be at each point an isomorphism. 
+
+What we are effectively doing, however, is considering a fibre
+bundle $p\colon E\to B$ that is locally trivial with fibre
+$F$. We construct a finite-dimensional complex vector space
+$H_{k}\bigl(p^{-1}(U),\CC\bigr)\iso H_{k}(F,\CC)$, and this is an
+isomorphism because $U\subset B$ is taken to be contractible. So
+$p^{-1}(U)\iso U\times F\homotopic F$ homotopic, and homology
+makes this homotopy equivalence an isomorphism.
+
+This construction gives us ``$H$'' the horizontal space. Due to
+flatness, $V$ is trivial. Thus we get a flat connection. See
+pages 33--34 of Atiyah and Segal's ``Twisted K-theory and
+cohomology'' (\arXiv[math.KT]{math/0510674}) for uses in
+$K$-theory. For some more details on this notion, see Schwarz and
+Shapiro's ``Twisted de Rham cohomology, homological definition of the integral and `Physics over a ring'\thinspace'' (\arXiv[math.AG]{0809.0086})
+pages 8 \emph{et seq.} The notion of \emph{D-modules} generalizes
+this entire situation. Hong-Jong Kim's ``Cohomology of Flat
+Vector Bundles'' (\emph{Comm. Korean Math. Soc.} {\bf11} (1996), No.2, pp. 391--405)
+reviews the cohomology of flat vector bundles nicely.
+\end{Boxed}
+
+Why does this work only for $\CC$? Well, we need a field for the
+group of coefficients, but only the name changes for the general case: it is a 
+\define{Group Bundle}\index{Bundle!Group ---}\index{Group Bundle}.\marginpar{Group Bundle = Fibre is Abelian Group} 
+In a vector bundle, we have a fibre over every point, 
+and this fibre is a vector space. For a group bundle, the fibre
+is an Abelian group. The Abelian property isn't really
+necessary. But $F_{b}$ is an Abelian group, so consider
+\begin{equation}
+E=\bigsqcup_{b\in B}F_{b}
+\end{equation}
+Given $U\propersubset B$, we may identify
+\begin{equation}
+p^{-1}(U)=U\times G,
+\end{equation}
+then we require if $U_{\alpha},U_{\beta}\propersubset B$, then we
+should have a transition function
+\begin{equation}
+\varphi_{\alpha\beta}\colon (U_{\alpha}\cap U_{\beta})\times G\to
+(U_{\alpha}\cap U_{\beta})\times G
+\end{equation}
+So we have a trivial generalization of the notion of vector
+bundles. We require continuity, except for discrete groups.
+
+But we get more than a group bundle! We get a group bundle with a
+flat connection---well, there is no standard notion of connection
+for a group bundle. But a \define{Local Coefficient System}\index{Local Coefficient System} is a
+group bundle with flat connection! That is, over small
+$U\propersubset B$, we should have a canonical identification
+\begin{equation}
+F_{b}\iso F_{b'}
+\end{equation}
+of fibres, where $b,b'\in B$. This preferred isomorphism is part
+of the structure. 
+
+These are called such because we can consider homology group of
+something with coefficients in a local system. For example, we
+may consider the homology $H_{k}(B,H_{l}(F))$ with coefficients
+being the homology group of the fibre. This occurs frequently in
+spectral sequences.
+
+Lets consider the computation of homology in any space with a
+local coefficient system $\mathscr{G}$. Consider
+$H_{k}(B,\mathscr{G})$. It's very easy. We consider singular
+homology (it's not necessary, we may consider the cellular
+homology, or the simplicial homology, or\dots). Singular cubes
+are maps
+\begin{equation}
+\varphi_{k}\colon I^{k}\to B
+\end{equation}
+and we take a linear combination of them. With what coefficients?
+We take the coefficients from some group $G$, so
+\begin{equation}
+\omega=\sum c_{k}\varphi_{k}
+\end{equation}
+where $c_{k}\in G$. But we have a \emph{single} group, we have
+the local coefficient $\mathscr{G}$. Lets take
+$c_{k}\in\mathscr{G}_{b}$ where $b$ is the center of the singular
+cube $\varphi_{k}$. Then we should imitate the definition we gave
+in the obvious way, define
+\begin{equation}
+\partial\omega=\sum c_{k}\partial\varphi_{k}
+\end{equation}
+but here we have a problem. The centers of the faces bounding the
+cubes are \emph{not} the center of the bounded cube. What can we
+do?
+
+First we may say that we can work only with chains consisting of
+small cubes. And for small cubes, the problem disappears, because
+when we get small enough cubs we have our canonical
+identification of fibres. 
+
+The second remark is the $\partial^{2}=0$. Why? Because the
+statement is local. Prove it only for small simplices/cubes, then
+we get the usual situation. No problems at all. OK!
+
+Therefore we define homology in the standard way. There is no
+difference from our prior considerations; exact homology
+sequences, etc., carry over.
+
+Lets consider several places where this concept appears.
+
+\marginpar{Poincar\'e duality for nonorientable manifolds}One of them is Poincar\'e duality for non-orientable\index{Poincar\'e Duality!for Nonorientable Manifolds}
+manifolds. We took a manifold $M$, covered it in a complex
+$\Delta$, then considered the dual to this complex
+$\Delta^{\op}$. This sent
+\begin{equation}
+\sigma^{k}\mapsto\widetilde{\sigma}^{n-k}
+\end{equation}
+and we didn't know what to do about the orientation. We can
+define a local coefficient system, consider a group $G$ and a
+nonorientable manifold $M$. We define a local coordinate system
+$\widetilde{G}$ on our manifold. How to do this? We have a notion
+of the orientation of a neighborhood of a manifold, really we
+have two orientations for each neighborhood $U\propersubset
+M$. These orientations form a group 
+\begin{equation}
+\ZZ_{2}=\{\pm1\}
+\end{equation}
+and these are all isomorphic. Is it canonically isomorphic? We do
+not have a canonical choice for orientation---if we take
+$\ZZ_{2}$, then we get a canonical choice of orientation.
+
+If we define a local coefficient in the following way: on a small
+piece of the manifold, we have a canonical choice of orientation
+since we have a canonical isomorphism of groups. If the manifold
+is not oriented, there is a path which transforms the group in an
+anti-isomorphic way: $g\mapsto-g$.
+
+We may say that for our situation
+\begin{equation}
+H_{k}(M,G)=H^{n-k}(M,\widetilde{\mathscr{G}})
+\end{equation}
+where $\widetilde{\mathscr{G}}$ is the local system of coefficients.

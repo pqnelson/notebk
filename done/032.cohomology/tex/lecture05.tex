@@ -1,0 +1,188 @@
+%%
+%% lecture05.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat May 21 13:43:44 2011 Alex Nelson
+%% Last update Sun Aug 14 14:59:39 2011 Alex Nelson
+
+We spoke a little bit about the notions of universal bundle and
+the classifying space. The universal fibration is the space
+($E_{G}$, $B_{G}$, $G$) and the main property is $E_{G}$ is
+contractible. Then $B_{G}$ is the base of this construction and
+referred to as the classifying space.
+
+Recall the principal fibration ($E$, $B$, $G$, $p$) are in
+one-to-one correspondence with $\homotopyClass(B,B_{G})$. We will
+prove this when $B$ is a cell complex. Recall we introduced the
+notion of a pullback, and by considering the maps
+$B\to B_{G}$ and fibrations
+\begin{equation}
+p_{G}\colon E_{G}\to B_{G},
+\end{equation}
+we can pull it back to obtain a fibration over $B$. Now what
+remains is to prove this correspondence is a one-to-one
+correspondence. We prove for a mapping
+\begin{equation}
+B\to B_{G}
+\end{equation}
+gives a fibration. We should prove homotopy equivalent maps
+\begin{equation}
+B\to B_{G}
+\end{equation}
+go to equivalent fibrations. Now we should prove this map is
+injective and surjective. The main part is proving every
+fibration may be obtained from this construction; so what should
+we prove really? Every principal fibration can be mapped to a
+universal fibration.
+
+By hypothesis, we assumed $B$ is a cell complex. So 
+\begin{equation}
+B=\bigcup B_{k}
+\end{equation}
+is a union of skeletons. We have a proof by induction. The idea
+is to cut out a closed ball. We have a map on the ball
+$D^{n}\times G$ and on the boundary of the ball $S^{n-1}\times G$
+we construct this map from
+\begin{equation}
+f\colon S^{n-1}\to E_{G}
+\end{equation}
+by
+\begin{equation}
+s\mapsto (s,1)
+\end{equation}
+Then $G$ acts on it by
+\begin{equation}
+(s,1)=(s,g)
+\end{equation}
+We should extend our map to $(b,1)$ for $b\in D^{n}$, but this
+can be done since $E_{G}$ is contractible. So every map from a
+sphere may be extended to a ball.
+
+We proved if
+\begin{equation}
+\pi_{k}(E_{G})=0
+\end{equation}
+for $k\leq n$, then the map
+\begin{equation}
+\homotopyClass(B,B_{G})%\onto
+\xtwoheadrightarrow{sur.}\{\mbox{classes of principal fibrations over }B\}
+\end{equation}
+is onto if $\dim(B)\leq n$. To prove this mapping is injective, well,
+it's trivial.
+
+\begin{ex}
+Consider
+\begin{subequations}
+\begin{equation}
+E_{G}=S^{n}
+\end{equation}
+and
+\begin{equation}
+G=\ZZ_{2}.
+\end{equation}
+\end{subequations}
+In this case, the action can be defined in a very simple way, the
+nontrivial element of $\ZZ_{2}$ sends
+\begin{equation}
+x\mapsto-x
+\end{equation}
+We know
+\begin{equation}
+B_{G}=E_{G}/G=\RP^{n}.
+\end{equation}
+Is this the classifying space? Not really, we have
+\begin{equation}
+\pi_{k}(S^{n})=0
+\end{equation}
+for $k<n$. It is not contractible. For 
+\begin{equation}
+E_{G}=S^{\infty}
+\end{equation}
+which is, more or less, infinite sequences such that
+\begin{equation}
+|x_{1}|^{2}+\dots+|x_{n}|^{2}+\dots=1.
+\end{equation}
+We usually set
+\begin{equation}
+x_{n}=0
+\end{equation}
+for $n\gg0$. We may say\index{$\RP^{\infty}$}\index{Classifying Space!for $G=\ZZ_{2}$}
+$\RP^{\infty}$ is the classifying space for $G=\ZZ_{2}$.
+\end{ex}
+\begin{ex}
+But we may go further. We can consider the case when
+$x_{i}\in\CC$ and we have
+\begin{equation}
+\sum_{i\in\NN}|x_{i}|^{2}=1
+\end{equation}
+This is a principal fibration with
+\begin{equation}
+G=S^{1}=\{\lambda\in\CC\lst|\lambda|=1\}.
+\end{equation}
+It acts by
+\begin{equation}
+\lambda(x_{1},\dots,x_{n},\dots)=(\lambda x_{1},\dots,\lambda
+x_{n},\dots).
+\end{equation}
+If we consider finite sequences we have $S^{2n-1}$ and the base
+would be $\CP^{n-1}$. But if we consider infinite sequences, we
+get
+\begin{equation}
+S^{\infty}\to\CP^{\infty}
+\end{equation}
+we just denote this codomain by ``$\CP^{\infty}$'' for
+continuity. So $\CP^{\infty}$\index{$\CP^{\infty}$} may be viewed as the space of all
+wave functions in quantum mechanics. But it is quite clear that
+$\CP^{\infty}$ is the classifying space for $S^{1}$.
+\end{ex}
+
+We can think of the quaternions\index{Quaternions} as
+\begin{equation}
+x_{0}+x_{1}i+x_{2}j+x_{3}k=(x_{0},\vec{x}).
+\end{equation}
+Multiplication is then 
+\begin{equation}
+(x_{0},\vec{x})\star(y_{0},\vec{y})=(x_{0}y_{0}-\vec{x}\cdot\vec{y},\vec{x}\times\vec{y}).
+\end{equation}
+It is a normed-division algebra over $\RR$ and 4-dimensional. The
+typical notation for the quaternions is $\HH$ in honor of its
+inventor Hamilton.
+
+Let $(x_{1},\dots,x_{n})\in\HH^{n}$, assume this is nonzero and
+identify
+\begin{equation}
+(x_{1},\dots,x_{n})\sim(\lambda x_{1},\dots, \lambda x_{n})
+\end{equation}
+where $\lambda\in\HH\setminus\{0\}$. The result is
+$\HP^{n-1}$. 
+
+Or we may impose the condition
+\begin{equation}
+|x_{1}|^{2}+\dots+|x_{n}|^{2}=1.
+\end{equation}
+Observe that the set of $\lambda\in\HH$ such that
+\begin{equation}
+|\lambda|=1,
+\end{equation}
+i.e., $\lambda\in S^{3}$ defines a group. Only $S^{0}\iso\ZZ_{2}$,
+$S^{1}\iso\U{1}$, and $S^{3}$ are groups. So we can say that
+$\HP^{\infty}$\index{$\HP^{\infty}$} is the classifying
+space\index{Classifying Space!for $G=S^{3}$} for $G=S^{3}$. NB
+$S^{3}\iso\SU{3}$. 
+
+We should recall Stiefel manifolds\index{Stiefel Manifold} and Grassmann manifolds\index{Grassmann manifold}
+denoted by $V_{n,k}$\index{$V_{n,k}$} and $\Gr_{n,k}$\index{$\Gr_{n,k}$} (respectively). We have
+\begin{equation}
+\Gr_{n,k}(\FF)=\{\text{space of $k$-dim. linear subspaces of
+$n$-dim. vector space}\}
+\end{equation}
+\begin{thm}
+We have $\Gr_{\infty,k}(\RR)$\index{$\Gr_{\infty,k}(\RR)$} is the classifying
+space\index{Classifying Space!for $\GL{k,\RR}$} for
+$\GL{k,\RR}$, and $\Gr_{\infty,k}(\CC)$\index{$\Gr_{\infty,k}(\CC)$} is the classifying space
+for $\GL{k,\CC}$.\index{Classifying Space!for $\GL{k,\CC}$}
+\end{thm}
+
+

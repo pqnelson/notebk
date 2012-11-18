@@ -1,0 +1,165 @@
+%%
+%% lecture08.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Sep 28 11:51:30 2011 alex
+%% Last update Wed Sep 28 11:51:30 2011 alex
+%%
+Lets discuss the homework. It is clear on the Mobius band we have
+a local trivialization; it may be better to think of $\ZZ_{2}$ as
+$\ORTH{1}$. We may do this with the cell diagram transforming the
+Mobius band into the Klein bottle\index{Klein Bottle} by identifying the top and
+bottom:
+\begin{center}
+\includegraphics{img/lecture8.0}
+\end{center}
+which implies the fibre is $S^{1}$.
+
+The ``second'' two problems are about principal fibre bundles
+with base $B=S^{2}$ and group $\U{1}$. We have for
+\begin{equation}
+B=S^{n}
+\end{equation}
+(in general) $\homotopyClass(S^{n-1},G)$ when $G$ is the fibre,
+then this gives us information about the fibration. It is wrong
+to say we computed the homotopy groups and they correspond to
+$S^{3}$, $\RP^{3}$, etc., at least to homotopic
+equivalence. Knowing the homotopy groups does not tell us about
+equivalent spaces. But we know that $\SO{3}$ is a principal
+fibration.
+
+\bigskip
+
+We will return to characteristic classes, we consider principal
+bundles with the group $G$ over the base $B$. We always assume
+that $B$ is ``good enough'' (for us, it's a polyhedron). We would
+like to classify the principal bundles by the maps
+$\homotopyClass(B,B_{G})$ where
+\begin{equation}
+B_{G}=E_{G}/G
+\end{equation}
+and $E_{G}$ is contractible. There is an obvious way to construct
+invariants of a principal bundle: take any $c\in
+H^{\bullet}(B_{G})$, if $\varphi\colon B\to B_{G}$, then
+$\varphi^{*}(c)$ is an invariant. We considered the case when
+$G=\U{n}$, and formulated the answer for any connected, compact
+matrix group. We take its maximal torus
+\begin{equation}
+T\propersubset G
+\end{equation}
+consider the Weyl group\index{Weyl Group!Acting on $H^{\bullet}(T)$} $W$. Then it follows that $W$ acts on
+$H^{\bullet}(T)$. Then we may say 
+\begin{equation}
+H^{\bullet}(B_{G})=H^{\bullet}(B_{T})^{W}
+\end{equation}
+is $W$-invariant.
+
+We will return to this later, but now we'd like to apply
+characteristic classes to something interesting.
+
+\begin{rmk}
+We may give another definition of characteristic classes that do
+not formally involve the classifying space. To specify a
+characteristic class of the group $G$ is to give every principal
+bundle with group $G$ an element 
+\begin{equation}
+c_{B}\in H^{\bullet}(B)
+\end{equation}
+such that for every map of principal fibrations
+\begin{equation}
+(E,B,G,p)\to(E',B',G,p')
+\end{equation}
+we have a map of bases
+\begin{equation}
+\psi\colon B\to B'
+\end{equation}
+and thus we have
+\begin{equation}
+c_{B}=\psi^{*}(c_{B'})
+\end{equation}
+This is precisely the same as the old definition. We had
+$\varphi\colon B\to B_{G}$, but $B_{G}$ is a good guy\dots so we
+have something special, namely $c_{B_{G}}\in H^{\bullet}(B_{G})$
+so by the second definition we should have
+\begin{equation}
+c_{B}=\varphi^{*}(c_{B_{G}}). 
+\end{equation}
+So the second definition implies the first one; to prove the
+first implies the second we just use the fact that 
+\begin{equation}
+B\xrightarrow{\;\psi\;}B'\xrightarrow{\;\varphi\;}B_{G}
+\end{equation}
+gives us the stuff.
+\end{rmk}
+
+We will focus on something else. Every locally trivial
+fibration\index{Fibration!Locally Trivial}\index{Locally Trivial Fibration}
+is affiliated with a principal fibration\index{Fibration!Principal}\index{Fibration!Principal!from Locally Trivial Fibration}. It is locally trivial,
+we may paste the local trivializations together by transition
+functions\index{Transition Function}. If we have $\{U_{i}\}$ be a covering of the base,
+locally we'd have a map
+\begin{equation}
+(U_{i}\cap U_{j})\times F\to (U_{i}\cap U_{j})\times F
+\end{equation}
+This is a homeomorphism of fibres. We have for each $x\in
+U_{i}\cap U_{j}$ a map 
+\begin{equation}
+\varphi_{x}\colon F\to F
+\end{equation}
+so we may say that we really have a mapping
+\begin{equation}
+U_{i}\cap U_{j}\to\aut(F),
+\end{equation}
+which describe the transition functions.
+If we have a subgroup $G\propersubset\hom(F,F)$, then the
+transition functions live as
+\begin{equation}
+U_{i}\cap U_{j}\to G\propersubset\hom(F,F).
+\end{equation}
+Thus we obtain a $G$-bundle\index{Bundle!$G$!from Locally Trivial Fibration}.
+
+When the fibre $F$ is a vector space $V=F$, then it turns out
+that
+\begin{equation}
+G=\GL{V}.
+\end{equation}
+We have really a vector bundle. We should observe that $G$ acts
+on itself by left multiplication. 
+
+Or we can go in the opposite. Let us take a principal bundle
+\begin{equation}
+G\into E\xrightarrow{p}B,
+\end{equation}
+then we have transition functions. So we have local
+trivializations, and transition functions for a covering
+$\{U_{i}\}$ of $B$, and the transition function $\varphi_{ij}$
+for $U_{i}\cap U_{j}$ is $\varphi_{ij}(x)\in G$. This is not
+quite unique, we may take a section, and another covering,
+etc.\ etc.\ etc. Just verify consistency on overlaps.
+
+We may try to construct a bundle with a fibre $F$ invariant. So
+what do we have? We have $F$ and this stuff $(E_{F}, B, F,
+p_{F})$. We can construct this stuff. How? Well, lets first
+consider
+\begin{equation}
+E_{G}=E\times F
+\end{equation}
+which may be fibred with the base $B$, its very simple, the
+projection map is
+\begin{equation}
+(e,f)\mapsto p(e).
+\end{equation}
+But the fibre here is too big, it's $G\times F$. Let me kill
+$G$. To kill $G$ we do the following identification in $E\times
+F$:
+\begin{equation}
+(e,g)\sim (eg,g^{-1}f).
+\end{equation}
+So we really have
+\begin{equation}
+E_{G}=(E\times F)/G
+\end{equation}
+Then everything is absolutely clear, we have a fibre bundle with
+a fibre $F$.

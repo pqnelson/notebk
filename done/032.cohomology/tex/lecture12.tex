@@ -1,0 +1,159 @@
+%%
+%% lecture12.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Sep 28 14:11:11 2011 alex
+%% Last update Wed Sep 28 14:11:11 2011 alex
+%%
+\index{Section!Obstructions to|(}
+Today we will discuss obstruction theory\index{Obstruction Theory}. It is something that
+appears in very different situations. Maybe the simplest
+statement is when working with a cell complex, suppose $B$ is a
+cell complex, construct a section over $B$ step-by-step taking
+into account the cellular skeleton\index{Section!Extension and Obstruction|textbf}
+decomposition\marginpar{Obstruction theory studies ``obstructions'' to step-by-step construction of sections}
+\begin{equation}
+B=\bigcup B^{k}
+\end{equation}
+where $B^{k}$ is the $k$-skeleton. We construct a section over
+$B^{k}$, then try to extend it to $B^{k+1}$. Sometimes this is
+possible; other times we get an obstruction. The most important
+is the first obstruction (others afterwards are more complicated).
+
+We may also take two sections $f$, $g$ and ask if they're
+homotopic, i.e.
+\begin{equation}
+f\homotopic g?
+\end{equation}
+We may try to classify sections up to
+homotopy.\index{Characteristic Class!related to Obstructions} All
+characteristic classes may be obtained by obstructions.
+
+
+\begin{wrapfigure}{r}{1.5in}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics{img/lecture12.0}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+\marginpar{See \S\S25.6, 35, 38~\cite{steenrod}, or\break Ch.\ 12
+  \cite{milnor} for details\break on obstructions}We have a fibre bundle $(E,F,B,p)$ and suppose $B$ is connected
+(although that's not important). We have $B^{0}$ consists of
+points and over every point we may take any point of the
+fibre. This is a map $B^{0}\to E$ which is a section. Then we
+would like to go to $B^{1}$, which is a little less trivial. But
+if the fibre is connected, we may lift our section to $B^{1}\to E$.
+Let us go to the inductive step.
+Suppose we have constructed a section over
+$B^{k}\xrightarrow{\sigma}E$. Then we can say that we would like
+to extend this section to $B^{k+1}$, we may assume that 
+\begin{equation}
+B^{k+1}\setminus B^{k}=\bigcup\sigma^{k+1}_{i}
+\end{equation}
+but it would probably be clearer if we do the following trick: if
+we have $B^{k+1}$ and we remove small balls in each
+$(k+1)$-cells, then we obtain a deformation-retraction to
+$B^{k}$. Thus we may extend our section to a section over
+\begin{equation}
+\sigma\colon B^{k+1}\setminus\bigcup(\mbox{small balls})\to E.
+\end{equation}
+The next step, look at the small balls. We have over our small
+ball $\bar{D}^{k+1}$ the direct product $\bar{D}^{k+1}\times F$,
+and it contains $S^{k}\times F$. The section we have is defined
+on $S^{k}\times F$, the question is how to extend this to a
+section over $\bar{D}^{k+1}$.
+
+Suppose $F$ is simply connected. Then the maps of the sphere
+\begin{equation}
+\homotopyClass(S^k,F)=\pi_{k}(F),
+\end{equation}
+since we are working with a spheroid after all! So what do we
+get? For each $(k+1)$-cell, $\sigma^{k+1}$, we obtain
+$\xi(\sigma^{k})\in\pi_{k}(F_{b})$ where $b$ is the center of the
+ball. The homotopy groups $\pi_{k}(F)$ form a local system over
+$B$. We may say that $\xi(\sigma^{k+1})$ is a $(k+1)$-dimensional
+cochain on $B$ with coefficients in a local system $\pi_{k}(F)$.
+
+\begin{thm}
+If $\pi_{k}(F)=0$, then any section over $B^{k}$ can be extended
+to a section over $B^{k+1}$.
+\end{thm}
+This is obvious.
+\begin{thm}
+Suppose $\pi_{1}(F)=\dots=\pi_{n-1}(F)=0$, and
+$\pi_{n}(F)\not=0$. Then we can extend the section to $B^{k}$
+(the $k$-dimensional skeleton) without obstructions $\sigma\colon
+B^{n}\to F$ and we have an obstruction $\xi(\sigma)$ that is a
+$(n+1)$-dimensional cochain with values in $\pi_{n}(F)$ (i.e., in
+local system).
+\end{thm}
+This is the first obstruction. Now what can we say? Two
+things. First this cochain is a cocycle, i.e., its coboundary is
+zero. Second this cocycle---if it is zero---is no obstruction,
+but if this cocycle is \emph{homologous to zero}, then we can
+change $\sigma$ in $B^{n}$ in such a way that the obstruction
+becomes equal to zero.
+
+So obstructions lie in $H^{n+1}\bigl(B,\pi_{n}(F)\bigr)$. This is
+the place where we have obstructions; if this group disappears,
+our obstruction disappears. We know that for local coefficient
+systems, if $B$ is simply connected, then
+$H^{n+1}\bigl(B,\pi_{n}(F)\bigr)=0$. But this is the notion of
+obstructions.
+
+\medbreak
+\refstepcounter{thm}%
+\noindent\textbf{Example \thethm} (Vector Fields on Sphere)\textbf{.}\quad
+For $S^n$, a vector field is a section. For any smooth manifold
+$M$, we have for each $x\in M$ the tangent space $T_{x}M$. A
+vector field, therefore, is a section of a vector bundle. There
+are no obstructions here.
+
+What about nonvanishing vector fields on $S^n$? It is a section
+of a bundle with a fiber $\RR^{n}\setminus\{0\}\homotopic S^{n-1}$.
+This is true for any $n$-dimensional smooth manifold $M$, the
+nonvanishing fields on it as a section on a bundle over $M$ with
+fiber $S^{n-1}$. Why? Because what we are doing is considering
+the \emph{unit vectors}. Two vectors are homotopic if and only if
+they are ``pointing in the same direction'' but of different
+magnitudes. Thus we are considering the collection of unit
+vectors, which forms a sphere. So we are looking at sections of
+this bundle
+\begin{equation}
+S^{n-1}\into V_{n+1,2}\to S^{n}.
+\end{equation}
+Observe the first homotoy group of the fiber is
+$\pi_{n-1}(S^{n-1})=\ZZ$ and we have a section over $B^{n-1}$. We
+want to extend this section to $B^{n}$. This is the first
+obstruction, $S^{n-1}$ doesn't have any higher cells, so things
+are simple.
+
+\begin{wrapfigure}[13]{r}{2in}
+  \vspace{-20pt}
+    \includegraphics{img/lecture12.1}
+  \vspace{-20pt}
+\end{wrapfigure}
+
+Consider the case for $S^{2}$, as doodled, where we have a unit
+vector pointing towards the north pole. But in the arctic
+regions, we need to change the vector field. We have for the
+north pole
+\begin{subequations}
+\begin{equation}
+\sigma\colon x\mapsto (-1)^{n-1}x,
+\end{equation}
+and for the South pole
+\begin{equation}
+\sigma\colon x\mapsto x.
+\end{equation}
+\end{subequations}
+For $n$ even, we have an obstruction, and it is equal to 2. For
+$n$ odd, we have a nonzero cochain which gives a class homologous
+to zero\dots and we have no obstruction!
+\medbreak
+
+When we compute the sign, we should have taken into account
+orientation of cells.
