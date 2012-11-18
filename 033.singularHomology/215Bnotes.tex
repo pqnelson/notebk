@@ -1,0 +1,117 @@
+%%
+%% 215Bnotes.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jan  4 11:27:06 2012 alex
+%% Last update Wed Jan  4 11:27:06 2012 alex
+%%
+
+\documentclass{article}
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+\pdfinfo{/CreationDate (D:20120104112709)}
+
+\usepackage{xmpincl}
+\includexmp{CC_Attribution-NonCommercial-NoDerivs_3.0_Unported}
+\usepackage{wrapfig}
+%\usepackage[PS]{diagrams}
+\usepackage{makeidx}
+\usepackage{notebk}
+\makeindex
+\diagramstyle[nohug,labelstyle=\scriptstyle]
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\advance\headsep by1pc
+
+\theoremstyle{plain}
+\newtheorem*{bott}{Bott Periodicity Theorem}
+
+\makeatletter
+\numberwithin{section}{part}
+\renewcommand\thesection{\arabic{section}}
+\def\lecture{\smallbreak\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\bigbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\sectionfont Lecture \thesection. #1\@addpunct{.}\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}}\medbreak}
+\def\@lectureWithout{\bigbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\sectionfont Lecture \thesection.\addcontentsline{toc}{section}{Lecture \thesection}}\medbreak}
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{xca}{\llap{\manual\char'170\rm\kern.15em}Exercise}
+\renewcommand\exercises{\phantomsection\subsection*{EXERCISES}\addcontentsline{toc}{subsection}{Exercises}}
+
+\renewenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  %\hbox to\parindent
+  {\bf Answer to #1:\enspace}\ignorespaces}
+\renewcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+%\renewcommand{\theequation}{\arabic{equation}}
+
+
+\let\myindex\theindex
+\renewcommand\theindex{\phantomsection\renewcommand{\leftmark}{Index}\myindex\addcontentsline{toc}{section}{Index}}
+\makeatletter
+\def\WF@collision{}
+\makeatother
+
+\input{notation}
+
+
+\title{Algebraic Topology Notes}
+\date{January 4, 2012}
+\begin{document}
+\maketitle
+\tableofcontents
+\vfill\eject
+\refstepcounter{part}
+\part{Homology and Cohomology}
+\lecture
+\input{tex/lecture01}
+\lecture
+\input{tex/lecture02}
+\lecture
+\input{tex/lecture03}
+\lecture
+\input{tex/lecture04}
+\lecture
+\input{tex/lecture05}
+\lecture
+\input{tex/lecture06}
+\lecture
+\lecture
+\input{tex/lecture08}
+\lecture
+\lecture
+\lecture
+\input{tex/lecture11}
+\lecture
+\lecture
+\lecture
+\input{tex/lecture14}
+\lecture
+\lecture
+\lecture
+\input{tex/lecture17}
+\lecture
+\lecture
+\input{tex/lecture19}
+\lecture
+\lecture
+\lecture
+\input{tex/lecture22}
+\lecture
+\lecture
+\lecture
+\input{tex/lecture25}
+\lecture
+\lecture
+
+\printindex
+
+\end{document}

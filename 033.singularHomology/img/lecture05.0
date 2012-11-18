@@ -1,0 +1,30 @@
+%!PS
+%%BoundingBox: -13 -13 13 15 
+%%HiResBoundingBox: -12.20517 -12.20517 12.20517 14.16907 
+%%Creator: MetaPost 1.208
+%%CreationDate: 2012.01.19:0955
+%%Pages: 1
+%*Font: cmsy10 9.96265 9.96265 0f:8
+%%BeginProlog
+%%EndProlog
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 0 11.95517 moveto
+-3.17085 11.95517 -6.21146 10.69537 -8.45341 8.45341 curveto
+-10.69537 6.21146 -11.95517 3.17085 -11.95517 0 curveto
+-11.95517 -3.17085 -10.69537 -6.21146 -8.45341 -8.45341 curveto
+-6.21146 -10.69537 -3.17085 -11.95517 0 -11.95517 curveto
+3.17085 -11.95517 6.21146 -10.69537 8.45341 -8.45341 curveto
+10.69537 -6.21146 11.95517 -3.17085 11.95517 0 curveto
+11.95517 3.17085 10.69537 6.21146 8.45341 8.45341 curveto
+6.74951 10.15732 4.58429 11.29393 2.25117 11.74133 curveto stroke
+newpath 6.24872 11.88191 moveto
+4.9198 12.05957 3.56808 12.01273 2.25117 11.74133 curveto
+3.37427 11.00201 4.36319 10.07932 5.17722 9.01399 curveto
+ closepath
+gsave fill grestore stroke
+-2.49065 9.74127 moveto
+(\017) cmsy10 9.96265 fshow
+showpage
+%%EOF

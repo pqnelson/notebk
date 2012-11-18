@@ -1,0 +1,258 @@
+%%
+%% lecture03.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Jan  5 07:57:17 2012 alex
+%% Last update Thu Jan  5 07:57:17 2012 alex
+%%
+
+We introduced a notion of homology, for every topological space
+$X$ the ntoion of the group of chains $C_{n}(X)$ consisting of
+linear combinations $\sum c_n\varphi_n$ of singular cubes. We
+then took
+\begin{equation}
+C(X)=\bigoplus_{n}C_{n}(X).
+\end{equation}
+We introduced the boundary operator
+\begin{equation}
+\bdry\colon C_{n}(X)\to C_{n-1}(X),
+\end{equation}
+and it obeys
+\begin{equation}
+\bdry^2=0.
+\end{equation}
+We introduced the group of cycles
+\begin{equation}
+Z(X)=\ker(\bdry)
+\end{equation}
+and the group of boundaries
+\begin{equation}
+B(X)=\im(X),
+\end{equation}
+thus the Homology group is defined as
+\begin{equation}
+H_{n}(X)=Z_{n}(X)/B_{n}(X).
+\end{equation}
+We computed $H_{0}(X)$.
+
+\index{Fundamental Group!relation to $H_{1}(X)$|(}
+Lets consider $H_{1}(X)$ and its relation with
+$\pi_{1}(X)$. There exists a morphism 
+\begin{equation}\label{eq:lec03:fundamentalGroupRelatedToHomology}
+\pi_{1}(X)\to H_{1}(X). 
+\end{equation}
+Why? Well, first if we have the fundamental group, we
+should mark a point to construct $\pi_{1}(X)$, but what is the
+path? It is really a map
+\begin{equation}
+I\to X
+\end{equation}
+which is a singular 1-dimensional cube! So really, what is the
+morphism described in Eq \eqref{eq:lec03:fundamentalGroupRelatedToHomology}?
+It is a mapping
+\begin{equation}
+(\mbox{Paths})\to(\mbox{Chains}).
+\end{equation}
+Moreover, it is a mapping
+\begin{equation}
+(\mbox{Paths})\to(\mbox{Cycles}).
+\end{equation}
+Why? Well, the fundamental group is concerned with loops, which
+has the starting and ending points be the same. But the boundary
+of a loop vanishes. So a loop corresponds to a
+
+\begin{wrapfigure}{r}{6pc}
+  \vspace{-12pt}
+  \includegraphics{B.img/lecture03.0}
+  \vspace{-12pt}
+\end{wrapfigure}
+\noindent\ignorespaces %
+cycle\index{Cycle!Relation with Loop}.
+It is clear if we have the concatenation of paths, then it is
+mapped to a singular cubed that may be ``divided in two''. So we
+have two pictures. One gives a path divided in two pieces, and
+another picture gives us a singular cube. So really, for us, it
+should not be a problem to say they are the same curve. But
+honestly, we should give a formula and prove formally these guys
+are ``\emph{Homologous\/}''\index{Homologous}\footnote{The notion
+of two guys being ``homologous'' amounts to stating \emph{they
+  describe the same cycle.} What does this mean? Well, if $\alpha$ and $\beta$ are homologous $k$-chains, then $\alpha-\beta=\bdry\gamma$ for some $(k+1)$-chain $\gamma$. }. 
+This is not hard to do, but we won't do it.
+
+\begin{wrapfigure}{l}{6pc}
+  \vspace{-12pt}
+  \includegraphics{B.img/lecture03.1}
+  \vspace{-12pt}
+\end{wrapfigure}
+So we have this morphism, what can we say?
+We have homotopic paths. We should prove that homotopic paths
+gives us homologous cycles. 
+What does this mean? Well, lets draw the  homotopy. It is a
+cylinder $S^1\times I$, what are the boundaries of this cylinder?
+This gives us homologous cycles. Admittedly, this is somewhat
+handwavy, but lets not worry about it for now.
+
+We constructed a map $\pi_{1}(X)\to H_{1}(X)$. Now we will assume
+$X$ is connected.\marginpar{If $X$ connected, we have $\pi_{1}(X)\onto H_{1}(X)$ surjective} This is a reasoanble assumption. We see that
+this morphism is surjective:
+\begin{equation}
+\pi_{1}(X)\onto H_{1}(X).
+\end{equation}
+Look, suppose we have some cycle in $H_{1}(X)$, which consists of
+several ``cubes'' with vanishing boundary. But really this gives
+us something which is the image of a circle. Again, we see that a
+cycle consists of several circles. We can always add some path
+that comes from $x_{0}$, so we can cover $H_{1}(X)$ by
+$\pi_{1}(X)$.
+This is not a rigorous proof, just convincing handwaviness.
+
+If $\pi_{1}(X)\onto H_{1}(X)$ is surjective, what about the
+kernel of this mapping? Well, $\pi_{1}(X)$ is usually
+noncommutative, so the commutator
+\begin{equation}
+[\pi_{1}(X),\pi_{1}(X)]\to(\mbox{Kernel}),
+\end{equation}
+thus
+\begin{equation}
+\pi_{1}(X)/[\pi_{1}(X),\pi_{1}(X)]\to H_{1}(X)
+\end{equation}
+and it is surjective. One can prove this map is injective. So
+$H_{1}$ is simply the
+\define{Abelianization}\index{Abelianization} of $\pi_{1}$,
+provided $X$ is connected.
+\index{Fundamental Group!relation to $H_{1}(X)$|)}
+
+\begin{wrapfigure}{r}{4pc}
+  \includegraphics{B.img/lecture03.2}
+  \vspace{-12pt}
+\end{wrapfigure}
+Just an aside: we will give an example of something homotopic to
+zero, but not homologous to zero. Consider a handle body, as
+doodled to the right. Consider the path drawn in red, near the
+boundary of the handle. It is homotopic to zero, but not
+homologous to zero.
+
+We\marginpar{Functorial Properties of Homology} will consider the
+functorial properties of homology, which will help n performing
+calculations. If
+\begin{equation}
+f\colon X\to Y
+\end{equation}
+is continuous, then it induces
+\begin{equation}
+H_{k}\bigl(f\colon X\to Y)\quad=\quad
+f_{*}\colon H_{k}(X)\to H_{k}(Y)
+\end{equation}
+We may construct it by considering the behaviour on chains. We
+see a chain is a linear combination $\sum c_n\varphi_n$ where
+\begin{equation}
+\varphi_n\colon I^k\to X,
+\end{equation}
+but we see by continuity
+\begin{equation}
+f\colon\varphi_n\colon I^k\to Y.
+\end{equation}
+Thus we map chains to chains by 
+linearity. We have
+\begin{equation}
+C_{n}(X) = \left.\begin{pmatrix}\mbox{Linear}\\\mbox{Combination}
+\end{pmatrix}\!\right/\!\!\begin{pmatrix}\mbox{Degenerate}\\\mbox{Chains}
+\end{pmatrix}
+\end{equation}
+but by continuity $f_{*}$ maps degenerate cubes to degenerate
+cubes. Thus $f_{*}$ maps degenerate chains to degenerate chains
+by linearity.
+
+Additionally, we have
+\begin{equation}
+\partial f_{*}=f_{*}\partial.
+\end{equation}
+As a consequence, we see it maps cycles to cycles and boundaries
+to boundaries. So it maps homology to homology, by construction!
+
+Moreover, $(f\circ g)_{*}=f_{*}\circ g_{*}$. That's obvious, and
+if we have an identity map $(\id{})_{*}=\id{*}$. These are two
+trivial properties.
+All of these properties state we have homology be a functor
+$\Top\to\Ab$.
+
+Now, a less trivial statement. Suppose $f,g\colon X\to Y$ and we
+have $f\homotopic g$ homotopic. That is, we have
+\begin{equation}
+F\colon X\times I\to Y
+\end{equation}
+such that
+\begin{equation}
+F(-,0)=f(-),\quad\mbox{and}\quad F(-,1)=g(-).
+\end{equation}
+Then the induced morphisms are the same. In other words:
+\begin{thm}
+If $f,g\colon X\to Y$ and $f\homotopic g$ homotopic, then they
+generate the same map of homology $f_{*}=g_{*}$.
+\end{thm}
+
+\begin{wrapfigure}{r}{11pc}
+  \vspace{-30pt}
+  \centering
+  \includegraphics{B.img/lecture03.3}
+  \vspace{-24pt}
+\end{wrapfigure}
+\noindent\emph{Proof.\enspace}\ignorespaces %
+Suppose we have a cycle in $X$, we call it $z$. We have a
+cylinder obtained by $F_{*}$. This is the handwavy sketch of the
+proof, and it is doodled on the right. But we will give the
+rigorous details.
+
+We have a regular cube $\varphi\colon I^{k}\to X$. Now, from this
+singular cube, we have two singular cubes in $Y$, namely
+\begin{subequations}
+\begin{equation}
+f\circ\varphi\colon I^k\to Y
+\end{equation}
+and
+\begin{equation}
+g\circ\varphi\colon I^k\to Y.
+\end{equation}
+\end{subequations}
+But we have more! Namely
+\begin{equation}
+F\colon X\times I\to Y
+\end{equation}
+but what does this mean? We take
+\begin{equation}
+I^{k+1}=I^{k}\times I,
+\end{equation}
+and we compose
+\begin{equation}
+\widetilde{\varphi}=\varphi\times\id{I}\colon I^{k+1}\to X\times I
+\end{equation}
+with $F$, so we end up with
+\begin{equation}
+F\circ\widetilde{\varphi}\colon I^{k+1}\to Y.
+\end{equation}
+
+\begin{wrapfigure}{r}{7pc}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{B.img/lecture03.4}
+  \vspace{-12pt}
+\end{wrapfigure}      
+\noindent\ignorespaces %
+What will be the boundary $\bdry(F\circ\widetilde{\varphi})$?
+We doodle the $k=1$ case on our right, and we immediately see
+that
+\begin{equation}
+\bdry(F\circ\widetilde{\varphi})=g_{*}\varphi-f_{*}\varphi-F(\bdry\varphi).
+\end{equation}
+Then we may apply this to any chain. Apply it to $z$, we have
+\begin{equation}
+\bdry(F\widetilde{z})=g_{*}z-f_{*}z-F(\bdry z).
+\end{equation}
+In the case when $z$ is a cycle, i.e.\ $\bdry z=0$, we get
+$g_{*}z-f_{*}z$ is the boundary to \emph{something!} But this
+means $f_{*}=g_{*}$ for homology, which is what we wanted.\hfill\qedsymbol\break
+\medskip
+This proves the statement made earlier regarding homotopic paths
+and homologies.

@@ -1,0 +1,78 @@
+%%
+%% lecture01.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jan  4 11:29:14 2012 alex
+%% Last update Wed Jan  4 11:29:14 2012 alex
+%%
+Today is a bit of motivation, and can easily be disregarded.
+
+Integration amounts to considering cochains and chains. What does
+this mean? Well, lets remember that an integral looks like
+\begin{equation}
+\int_{\Sigma}\omega
+\end{equation}
+where $\omega$ is the integrand (a differential form, in calculus
+or differential geometry) and $\int_{\Sigma}$ specifies where we
+take our integral. Alternatively, we could write it out as
+\begin{equation}
+\<\omega\mid\Sigma\>=\int_{\Sigma}\omega.
+\end{equation}
+But this requires quite a bit of structure! What if we don't work
+with differential geometry? What if we work with topological
+spaces? What do we do? We will answer these questions in this course.
+
+For simplicity, we will work with differential forms. Remember
+Stoke's theorem
+\begin{equation}
+\int_{\Sigma}\D\omega=\int_{\partial\Sigma}\omega.
+\end{equation}
+This is a topological statement. But we have something more:
+consider
+\begin{equation}
+\alpha=\omega+\D\beta
+\end{equation}
+then we see
+\begin{equation}
+\begin{split}
+\int_{\Sigma}\D\alpha &= \int_{\Sigma}\D(\omega+\D\beta)\\
+&= \int_{\Sigma}\D\omega+\D^{2}\beta\\
+&= \int_{\Sigma}\D\omega
+\end{split}
+\end{equation}
+which is bad: two distinct differential forms integrate to the
+same value. We want to avoid these sorts of problems. Also note
+we tacitly used the relationship
+\begin{equation}
+\D^2=0.
+\end{equation}
+This is scary, we could have argued
+\begin{equation}
+\begin{split}
+\int_{\Sigma}\D\D\beta 
+&=\int_{\partial\Sigma}\D\beta\\
+&=\int_{\partial\partial\Sigma}\beta\\
+&=0
+\end{split}
+\end{equation}
+which makes more intuitive sense: the boundary of a boundary is
+zero. 
+
+So the punchline is: we are working with a certain equivalence
+class of differential forms. Really, we have
+$\ker(\D)\propersupset\im(\D)$, so we may consider the cosets
+$\ker(\D)/\im(\D)$. This is precisely the \define{Cohomology Classes}\index{Cohomology Class}.
+
+%% Well, we work with cell complexes in algebraic topology, and that
+%% is sufficient for us to start with. Now we can generalize the
+%% notion of a path as a sequence of edges. This is an algebraic
+%% nightmare! Why not consider the formal ring $\ZZ[e_1,\dots]$
+%% (where $e_k$ is an edge)? Then a path amounts to 
+%% \begin{equation}
+%% \gamma = e_1 + e_2 - e_3 + \dots + e_k
+%% \end{equation}
+%% where we add or subtract according to the orientation of the edge
+%% (where it points). 
+
