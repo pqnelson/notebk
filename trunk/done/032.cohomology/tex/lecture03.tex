@@ -1,0 +1,253 @@
+%%
+%% lecture03.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sat May 21 13:00:19 2011 Alex Nelson
+%% Last update Sat May 21 13:35:00 2011 Alex Nelson
+%%
+Today we will discuss the classification of principal fibre
+bundles, principal fibrations. Recall if a space $E$ has a right
+action of a (topological) group $G$, and if the action is free,
+then there is a one-to-one correspondence between $G$ and its
+orbits. So we have a fibration
+\begin{equation}
+p\colon E\to E/G
+\end{equation}
+A map of principal fibrations 
+\begin{equation}
+f\colon E\to E'
+\end{equation}
+is a $G$-map
+\begin{equation}
+f(xg)=f(x)g
+\end{equation}
+but
+\begin{equation}
+F_{x}=\{xg\lst g\in G\}\to F_{f(x)}'=\{f(x)g\lst g\in G\}
+\end{equation}
+describes the behavior on the fibres.
+
+There is a reduced map
+\begin{equation}
+\varphi\colon E/G\to E'/G
+\end{equation}
+which is a map
+\begin{equation}
+B\to B'
+\end{equation}
+But this is a special map, we still have this property of being a
+$G$-map. The equivalence of fibrations is given by a $G$-map
+that's a homeomorphism.
+
+\begin{ex}
+Consider
+\begin{equation}
+B=\{b\}
+\end{equation}
+a singleton. Let 
+\begin{equation}
+x\in E
+\end{equation}
+so
+\begin{equation}
+E=\{xg\lst g\in G\}.
+\end{equation}
+We have one orbit.
+
+It is clear, if we have another space $E'$, that a map
+\begin{equation}
+f\colon E\to E'
+\end{equation}
+and if we know the image of this one point, we know everything!
+We have
+\begin{equation}
+x\mapsto f(x)
+\end{equation}
+and
+\begin{equation}
+xg\mapsto f(x)g
+\end{equation}
+The fibre in $E$ is mapped to a fibre in $E'$. We may consider
+the map
+\begin{equation}
+\varphi\colon E/G\to E'/G
+\end{equation}
+described by
+\begin{equation}
+\varphi([x])=(p'\circ f)(x)=p'\left(f(x)\right),
+\end{equation}
+where
+\begin{equation}
+p'\colon E'\to E'/G.
+\end{equation}
+So do we know what happens with $x$? We have
+\begin{equation}
+\begin{diagram}[small]
+  x          & \rMapsto & f(x) \\
+\dMapsto>{p} &          & \dMapsto>{p'}\\
+ b           & \rMapsto & b'
+\end{diagram}
+\end{equation}
+We see that 
+\begin{equation}
+\underbracket[0.5pt]{F_{b}}_{=p^{-1}(\{b\})}\to \underbracket[0.5pt]{F_{b'}'}_{=(p')^{-1}(\{b'\})}
+\end{equation}
+is notr arbitrary. What can we say? Every point of the fibre may
+be identified with $G$, so can we write
+\begin{equation}
+F_{b}=G?
+\end{equation}
+Yes and no. We need to identify a base point $x$ so we have 
+\begin{equation}
+xg\sim g
+\end{equation}
+but this is \emph{not unique}. This identification does not
+preserve the group structure. So $G$ may be thought of as a
+$G$-space. This identification respects right action only, not
+left action.
+In the same way
+\begin{equation}
+F_{b'}'=G
+\end{equation}
+may be identified, namely
+\begin{equation}
+x'g\sim g
+\end{equation}
+satisfies the identification. Now when we map the fibre ot the
+fibre, we get
+\begin{equation}
+f(xg)=f(x)g
+\end{equation}
+\textbf{BUT} $f(x)$ is not necessarily $x'$. This map, it turns
+out, is left action.
+\end{ex}
+Consider the map 
+\begin{equation}
+\alpha\colon G\to G
+\end{equation}
+which commutes with right action, how to describe it?
+Well,
+\begin{equation}
+\alpha(g)=hg
+\end{equation}
+Why? Well, this definitely commutes with right action because
+multiplication on the left commutes with multiplication on the
+right by associativity
+\begin{equation}
+\alpha(gk)=\alpha(g)k.
+\end{equation}
+Therefore we may say really this map\dots
+
+We may explain this in a little different way to describe these
+maps when $B$ is a singleton. We simply identify the fibre,
+identify them both with $G$, then it's merely multiplication on
+the left.
+
+But what about the case when $B$ is not a singleton. Easy, $B$ is
+not a point but consists of points, so
+\begin{equation}
+\begin{diagram}[small]
+F_{b} & \rDashto^{hg} & F_{b'}' = (p')^{-1}(b')\\
+\dTo &                & \dTo \\
+\{b\}& \rMapsto       & \{b'\}
+\end{diagram}
+\end{equation}
+and we can identify this map by multiplication on the left.
+Well, we take
+\begin{equation}
+B=B'
+\end{equation}
+and assume that $\varphi$ is the identity map. Then, what should
+we do? Simply consider a map for every $b$ a map
+\begin{equation}
+F_{b}\to F_{b}'
+\end{equation}
+since 
+\begin{equation}
+b=b'.
+\end{equation}
+These maps are labeled by $h\in G$, so everything is very
+simple. Well, everything is fine if everything is continuous.
+
+Lets write
+\begin{equation}
+h\in G_{b}
+\end{equation}
+where $G$ depends on $b\in B$. So for every $b\in B$ we have the
+set $G_{b}$ which is equivalent to $G$ but there is no natural
+identification.
+
+We reduced our problem to finding a continuous section of some
+fibration. But we may prove a lot of things by triviality.
+\begin{prop}
+If $B$ is contractible, then the fibration is trivial $E=B\times F$.
+\end{prop}
+If $B$ is contractible, then there exists a continuous
+section. For principal bundles, we have the additional property
+that the existence of sections implies the fibration is trivial.
+
+Suppose we have a continuous family of principal fibrations. If
+we have
+\begin{equation}
+E\to B=E/G,
+\end{equation}
+then we may include it in
+\begin{equation}
+\widetilde{E}\to B\times I
+\end{equation}
+where $I=[0,1]$ is the closed interval. Then we may consider two
+fibrations: one over the left side of the interval, the other
+over the right side. That is
+\begin{equation}
+\begin{diagram}[small]
+\widetilde{E}  & \quad & \widetilde{E} & \quad & \widetilde{E}\\
+\dTo           & \quad & \dTo          & \quad & \dTo \\
+B\times\{0\}   & \quad & B\times(0,1)  & \quad & B\times\{1\}
+\end{diagram}
+\end{equation}
+we are saying these fibrations are homotopic. We have a
+continuous deformation from left to right.
+\begin{prop}
+If two principal fibrations are homotopic, they are equivalent.
+\end{prop}
+How to prove this? In reality, we proved it already. We reduced
+the problem of finding maps of fibrations to finding a section of
+some auxiliary fibration.
+\begin{lem}
+If we have a fibration with a base $B\times I$ and the fibration
+has a section over $B$, then it has a section over the whole base
+(i.e., $B\times I$).
+\end{lem}
+This is a complete triviality.
+
+We take the case when $G$ is connected and
+\begin{equation}
+B=S^{n}.
+\end{equation}
+Then we will prove that classes of principal fibrations over
+$S^{n}$ are in one-to-one correspondence with homotopy classes
+$\homotopyClass(S^{n-1},G)$. 
+
+Let us take a sphere, it may be considered to be pasted together
+by a pair of $n$-dimensional discs, i.e., we have two
+hemispheres. Over each hemisphere, the fibration is trivial. Why?
+The hemisphere is a disc, and the disc is contractible. Now we
+shall paste the fibrations together. This requires a transition
+function. We see that
+\begin{equation}
+(B_{1}\times G)\propersupset (S^{n-1}\times G)\propersubset
+(B_{2}\times G)
+\end{equation}
+where $S^{n-1}\times G$ is on the equator, and we have an
+equivalence
+\begin{equation}
+S^{n-1}\times G\to S^{n-1}\times G.
+\end{equation}
+This gives a map
+\begin{equation}
+S^{n-1}\to G
+\end{equation}
+The homotopy class of this map does not depend on any of the
+choices we've made.

@@ -1,0 +1,81 @@
+%%
+%% lecture11.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Sep 28 13:48:51 2011 alex
+%% Last update Wed Sep 28 13:48:51 2011 alex
+%%
+(This is just a review of homework problems.)
+
+The first problem is to compute the homotopy groups of $V_{n,k}$;
+we should have done mathematical induction over $k$:
+\begin{equation}
+\begin{split}
+V_{n,k} & \to V_{n,k-1}\\
+(e_{1},\dots,e_{k}) & \mapsto (e_{1},\dots,e_{k-1})
+\end{split}
+\end{equation}
+We get a fibration. The orthogonal complement to $V_{n,k-1}$ is a
+$(n-k+1)$-dimensional space. We have the fibration
+\begin{equation}
+S^{2n-2k+1}\into V_{n,k}\onto V_{n,k-1}
+\end{equation}
+which gives an exact homotopy sequence
+\begin{equation}
+\dots\to\pi_{i}(S^{2n-2k+1})\to\pi_{i}(V_{n,k})\to\pi_{i}(V_{n,k-1})\to\pi_{i-1}(S^{2n-2k+1})\to\dots
+\end{equation}
+which induces an isomorphism 
+\begin{equation}
+\pi_{i}(V_{n,k})\iso\pi_{i}(V_{n,k-1})\quad\mbox{for }i<2n-2k+1.
+\end{equation}
+We see
+\begin{equation}
+\pi_{i}(V_{n,1})\iso\pi_{i}(S^{2n-1})
+\end{equation}
+which is $\ZZ$ at $i=2n-1$ and $0$ for all others before. Don't
+forget the universal coefficient theorem yields the cohomology
+given homology. 
+
+We really do not need the notion of cohomology with local
+coefficients. We should know only one thing, namely, if our space
+is simply connected, then teh homology with local coefficients is
+\emph{precisely} the conventional homology.
+
+We itnroduced the notion of a local coefficient system, we had
+some space $B$. We considered the group bundle, where fore each
+$b\in B$ we have a group $G_{b}$ corresponding to this
+point. This bundle is assumed to be locally trivial. So if
+$b,b'\in U\propersubset B$, then we may identify the fibres
+$G_{b}$ and $G_{b'}$; moreover this identification is unique. If
+we have a vector bundle $(E,F,B,p)$, then the homology of the
+fibres $H_{k}(F_{b})$ can be used as the local coefficients. 
+
+Now we would like to say if we have two points that may be far
+away on $B$, but are connected by a path, then there is an
+identification of the fibres on the endpoints $G_{b}$, $G_{b'}$
+but the identification depends on the path. In all of our
+considerations, we never considered the topology of $G$---it
+played no role. We would consider the discrete topology. Then we
+obtain what is called the \define{Covering Space}; recall that we
+defined the covering as a fibration with a discrete fibre. This
+will give us another ``construction'' of $G_{b}\to G_{b'}$
+identification. Really, this map doesn't depend on the path but
+the \emph{homotopy class} of the path.
+
+If we have paths $\alpha\colon I\to B$ and $\beta\colon I\to B$
+such that $\alpha(1)=\beta(0)$, then the concatenation of paths
+would correspond to $G_{\alpha(1)}\to G_{\beta(0)}$
+identifications.
+
+It follows that local coefficient systems on simply connected
+spaces are trivial. So $G_{b}$ are canonically isomorphic to
+$G_{b'}$ for all $b,b'\in B$. But this is the usual homology we
+all know and love.
+
+If we have a local coefficient system on a connected space, then
+we may take a closed path. The homotopy class of these paths
+$\pi_{1}(B,b)$. The local coefficient system generates a morphism
+of $\pi_{1}(B,b)\to\aut(G)$. But a morphism
+$\pi_{1}(B,b)\to\aut(G)$ generates a local coefficient system.

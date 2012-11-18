@@ -1,0 +1,175 @@
+%%
+%% lecture07.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Aug 14 15:32:31 2011 Alex Nelson
+%% Last update Sun Aug 14 15:51:28 2011 Alex Nelson
+%%
+We would like to apply our classification theorem to invariants;
+this will lead to characteristic classes. We introduced the
+notion of a universal bundle $(E_{G},B_{G},G)$ with topological
+group $G$. We may replace the contractibility of $E_{G}$ with 
+\begin{equation}
+\pi_{k}(E_{G})=0
+\end{equation}
+for all $k$. We have the possibility of weakening this condition
+to be trivial up to a constant; then we get universality up to a
+constant. Then we have a one-to-one correspondence
+\begin{equation}
+\begin{pmatrix}
+\text{classes of principal}\\
+\text{fibrations with base $B$}
+\end{pmatrix}
+\iso\homotopyClass(B,B_{G}).
+\end{equation}
+This may be understood as saying there is a map of principal
+bundles up to homotopy.
+
+Then we constructed the universal bundle for simple cases,
+e.g. for $\ZZ_{2}$ we get $\RP^{n}$, for $S^{1}$ we got
+$\CP^{n}$. For the groups $\SO{n}$ and $\U{n}$ we got Grassmann
+manifolds as the classifying space.
+
+Remember if we have a map of two spaces\marginpar{Characteristic Class of the Principal Fibration}
+\begin{equation}
+\varphi\colon B\to B_{G}
+\end{equation}
+then this map induces a map of cohomology
+\begin{equation}
+\varphi^{*}\colon H^{\bullet}(B_{G})\to H^{\bullet}(B),
+\end{equation}
+and this homomorphism does not depend on the choice of element in
+homotopy class. To know $\varphi^{*}$, we only need to know the
+homotopy class of $\varphi$. Take a cohomology class $c\in
+H^{\bullet}(B_{G})$, then $\varphi^{*}c$ is an invariant of the
+principal fibration. This is called the \define{Characteristic
+  Class of the Principal Fibration}\index{Characteristic Class!of Principal Fibration}.\marginpar{Characteristic
+  classes associates to each fibre bundle a cohomology class
+  measuring the ``twistedness''} The first question is what
+coefficient group to use? For us, it doesn't matter.
+
+Lets consider this for $S^{1}$. Recall 
+\begin{equation}
+\CP^{\infty}=S^{\infty}/S^{1}
+\end{equation}
+in reality we do not need this! We only need
+\begin{equation}
+\CP^{n}=S^{2n+1}/S^{1}.
+\end{equation}
+But we know the cohomology of $\CP^{n}$, we have the cell
+complex constructed by the embedding
+\begin{equation}
+\CP^{n-1}\Into\CP^{n},
+\end{equation}
+and
+\begin{equation}
+\CP^{n}\setminus\CP^{n-1}=\sigma^{2n}.
+\end{equation}
+Thus we have the cell decomposition
+\begin{equation}
+\CP^{n}=\sigma^{0}\cup\sigma^{2}\cup\dots\cup\sigma^{2n},
+\end{equation}
+and all boundaries vanish. Thus we compute
+\begin{equation}
+H^{2k}(\CP^{n},G)=G
+\end{equation}
+and we should remember we had multiplication in cohomology; it is
+related to intersection in homology.
+
+If we fix a generator $c\in H^{2}(\CP^{n},\ZZ)$, then the
+generator of $H^{2k}(\CP^{n},\ZZ)$ is $c^{k}$. By Poincar\'e
+  duality, 
+\begin{equation}
+\poincareDual{c}\in H_{2n-2}(\CP^{n},\ZZ)
+\end{equation}
+Then $\poincareDual{c}$ is a homotopy class of
+$\CP^{n-1}\propersubset\CP^{n}$. When we take the intersection of
+two different copies of $\CP^{n-1}$ we get a projective
+subspace. But for $\CP^{\infty}$ we have 
+\begin{equation}
+H^{\bullet}(\CP,\ZZ)=\ZZ[c]
+\end{equation}
+with $\dim(c)=2$. For $\CP^{n}$ the polynomials are truncated to
+be of degree $\leq n$. What does it mean for characteristic
+classes?
+
+Well, $\varphi^{*}$ is a morphism of cohomology rings, so if we
+take $\varphi^{*}(c^{n})=\left(\varphi^{*}(c)\right)^{n}$. If
+$G=S^{1}$, basically we have one characteristic class
+$\varphi^{*}(c)$ where $c\in H^{2}(\CP^{n})$. In this case,
+$\varphi^{*}(c)$ is denoted as $c_{1}$ and it is called the
+\define{Chern Class}\index{Chern Class}.
+
+Now we consider the ``commutative torus''
+\begin{equation}
+T=(S^{1})^{n}
+\end{equation}
+If we wish to construct the corresponding classifying space
+\begin{equation}
+E_{T}=E_{S^{1}}\times\dots\times E_{S^{1}}
+\end{equation}
+then we take $n$ copies of the classifying space for $S^{1}$. We
+get thus 
+\begin{equation}
+\begin{split}
+B_{T}&=B_{S^{1}}\times\dots\times B_{S^{1}}\\
+&=\CP^{\infty}\times\dots\times\CP^{\infty}
+\end{split}
+\end{equation}
+and everything goes completely independently. Using Kuenneth's
+theorem, or the product of cell complexes, or\dots anyway, the
+answer is obvious
+\begin{equation}
+H^{\bullet}(B_{T})=\ZZ[\xi_{1},\dots,\xi_{n}]
+\end{equation}
+where
+$\dim(\xi_{i})=2$ for each $i$. We may say our characteristic
+classes are $\varphi^{*}(\xi_{1})$, \dots,
+$\varphi^{*}(\xi_{n})$. This is a kind of triviality. The most
+important thing in mathematics is to understand all trivialities.
+
+\phantomsection\label{defn:maximalTorus}
+Lets look at $\U{n}$ and describe characteristic classes.
+We will consider a \define{Maximal Torus}\index{Maximal Torus}, ti is the main hero in
+the story of Lie groups, $T\propersubset\U{n}$. The maximal torus
+for $\U{n}$ is very simple, consider only diagonal matrices and
+the diagonal components take values in $\U{1}$. If we consider a
+permutation matrix $\omega\in P_{n}$, and consider any $\alpha\in
+T$, then we see that $\omega\alpha\omega^{-1}=\omega(\alpha)$ is
+again diagonal. This group $P_{n}$ is usually denoted by $W$ and
+is referred to as the \define{Weyl group}\index{Weyl group} of $\U{n}$.
+
+Let us take the universal bundle for $\U{n}$, denoted
+$E_{\U{n}}$. It is a space where $\U{n}$ acts freely. But
+$T\propersubset\U{n}$, so $T$ also acts freely. We may identify
+\begin{equation}
+E_{\U{n}}=E_{T}
+\end{equation}
+but we may say that
+\begin{equation}
+E_{T}/T\to E_{\U{n}}/\U{n}.
+\end{equation}
+Why? Well, the numerators are the same, and $T$ is smaller than
+$\U{n}$. SO we may say that we have a corresponding map 
+\begin{equation}
+B_{T}\to B_{\U{n}}
+\end{equation}
+and thus a map of cohomologies
+\begin{equation}
+H^{\bullet}(B_{\U{n}})\xrightarrow{\text{inj}}H^{\bullet}(B_{T})
+\end{equation}
+We will describe its image. Really, look, $W$ acts
+on $T$ and therefore on $B_{T}$, and thus on $H^{\bullet}(B_{T})$.
+The description is as follows: the image of
+\begin{equation}
+H^{\bullet}(B_{\U{n}})\xrightarrow{\text{inj}}H^{\bullet}(B_{T})
+\end{equation}
+consists of $W$-invariant elements of $H^{\bullet}(B_{T})$. We
+see that $W$ acts on $\U{n}$ and on $B_{\U{n}}$, and on
+$H^{\bullet}(B_{\U{n}})$ it acts trivially. Why? By the simple
+reason that it acts by means of conjugation, but $\omega
+g\omega^{-1}\homotopic g$ is homotopic for all $g\in\U{n}$. That
+is to say, we can continuously map $\omega\mapsto\id{}$ so the
+action is trivial on $\U{n}$, and thus concludes the lecture.

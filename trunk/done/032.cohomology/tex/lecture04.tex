@@ -1,0 +1,235 @@
+%%
+%% lecture04.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Apr 10 12:03:16 2011 Alex Nelson
+%% Last update Sat May 21 13:59:02 2011 Alex Nelson
+%%
+We are continuing to classify principal bundles when $B=S^{n}$
+and $G$ is connected. We see classes of principal fibrations over
+$B$ are in one-to-one correspondence with $\homotopyClass(S^{n-1},G)$.
+
+Let $S^{n}=D^{n}_{1}\cup D^{n}_{2}$, we assume
+\begin{equation}
+D^{n}_{1}\cap D^{n}_{2}=S^{n-1}
+\end{equation}
+which generalizes the notion of a sphere having two hemispheres
+that meets at an equator. We know that on the ball the fibration
+is trivial. Thus we may take
+the \define{trivialization}\index{Fibration!Trivialization|textbf}\index{Trivialization!of Fibration}
+of the fibration, i.e.,
+\begin{equation}
+p^{-1}(D^{n}_{1})=D^{n}_{1}\times G
+\end{equation}
+is identified as the trivial principal bundle; and trivialization
+over the other hemisphere means
+\begin{equation}
+p^{-1}(D^{n}_{2})=D^{n}_{2}\times G
+\end{equation}
+But trivialization is not unique, we need to choose it in some
+way. But we choose it in some way: we paste them together over
+the sphere. The pasting is described by a \define{Transition function}\index{Transition Function}
+a map
+\begin{equation}
+\varphi\colon S^{n-1}\to G
+\end{equation}
+The only problem is this is \emph{any} continuous map. This
+establishes the one-to-one correspondence.
+
+Really?! No, not really. We have some freedom in the choice of
+trivialization. This means we have the same stuff, the preimage
+of the first hemisphere may be represented in two different ways,
+and we have a morphism between these two different ways (i.e., we
+have the following commutative diagram)
+\begin{equation}
+\begin{diagram}[small]
+p^{-1}(\bar{D}^{n}_{1}) & \rEq & \bar{D}^{n}_{1}\times G\\
+\dEq                 & \ruTo>{\varphi} & \\
+\bar{D}^{n}_{1}\times G &           & 
+\end{diagram}
+\end{equation}
+that is, we have a morphism between these two ways
+\begin{equation}
+\begin{split}
+\varphi\colon\bar{D}^{n}_{1}\times G\to \bar{D}^{n}_{1}\times G\\
+\varphi(x,g)=(x,\alpha(x)g)
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\alpha\colon\bar{D}^{n}_{1}\to G.
+\end{equation}
+So what happens on the sphere? Well, $\alpha$ is an arbitrary
+map, but on the boundary sphere $S^{n-1}$ we see that $\alpha$ is
+not arbitrary because it can be extended to the ball. That means
+\begin{equation}
+\alpha\big|_{S^{n-1}}\homotopic\mbox{trivial map}
+\end{equation}
+that is, a map sending everything to a point. But we assumed $G$
+is connected, so this notion of a trivial map is unambiguous.
+
+The transition function is not uniquely defined, but only up to
+homotopy. This means we have $\alpha\psi$. In any case, when we
+multiply by $\alpha$ (or its analog from $\bar{D}^{n}_{2}$) we do
+not change the homotopy class. This concludes the proof. But this
+is only for the case when $B=S^{n}$. What happens in the
+arbitrary case?
+
+Well, we have some notions we need to first define. So suppose
+that we have a principal bundle $(E_{G},B_{G},G)$ having the
+property that $E_{G}$ is contractible. Then this bundle is called
+a \define{Universal Bundle}\index{Universal Bundle|textbf}\index{Bundle!Universal} and $B_{G}$ is called the
+\define{Classifying Space}\index{Classifying Space|textbf}. Can we construct any such bundles?
+Why is this name appropriate? We will consider interesting cases
+later.
+
+\begin{thm}
+Classes of principal bundles with base $B$ and group $G$ are in
+one-to-one correspondence with $\homotopyClass(B,B_{G})$.
+\end{thm}
+
+Observe if
+\begin{equation}
+B\iso S^{n}
+\end{equation}
+then it is easy to prove (at least if $G$ is connected) that
+\begin{equation}
+\pi_{n}(B_{G})=\{S^{n},B_{G}\}
+\end{equation}
+since $E_{G}$ is contractible we may consider the exact homotopy
+sequence that identifies
+\begin{equation}
+\pi_{n}(B_{G})\iso\pi_{n-1}(G)
+\end{equation}
+and this is the same as $\homotopyClass(S^{n-1},G)$. So this new theorem
+contains the old one.
+
+\begin{rmk}
+Perhaps one should bear in mind the exact homotopy sequence of
+the bundle. Don't forget we can lift $S^{n-1}$ to $\bar{D}^{n}$.
+\end{rmk}
+
+Now to prove this theorem, we need to explain some
+constructions. The first thing is let us suppose we have two
+principal bundles $(E,B,G)$ and $(E',B',G)$ and we have a map
+\begin{equation}
+f\colon (E,B,G)\to(E',B',G)
+\end{equation}
+which agrees with the structure
+\begin{equation}
+f(xg)=f(x)g.
+\end{equation}
+This map \emph{induces} a map of the base space
+\begin{equation}
+\varphi\colon B\to B'.
+\end{equation}
+Now there is an interesting remark: knowing $\varphi$ and the
+target, we may restore the map $f$. How to do this? It's easy.
+
+First we should explain how to recover $E$ if we know $E'$ and
+$B$. Let
+\begin{subequations}
+\begin{align}
+p\colon E\to B\\
+p'\colon E'\to B'\\
+f\colon E\to E'.
+\end{align}
+\end{subequations}
+We can combine these maps, what do we get? We get a map
+\begin{equation}
+F\colon E\to E'\times B.
+\end{equation}
+How? Very simply:
+\begin{equation}
+F(e)=\left(f(e),p(e)\right)
+\end{equation}
+We may consider the image $F(E)$. We have the commutative diagram
+\begin{equation}
+\begin{diagram}[small]
+E & \rTo^{f} & E'\\
+\dTo<{p} &  & \dTo>{p'}\\
+B & \rTo^{\varphi} & B'
+\end{diagram}
+\end{equation}
+which implies
+\begin{equation}
+p'\circ f=\varphi\circ p.
+\end{equation}
+But observe that we have exactly that!
+
+We have a space
+\begin{equation}
+\widetilde{E}\subset E'\times B
+\end{equation}
+consisting of pairs
+\begin{equation}
+(e',b)\in \widetilde{E}
+\end{equation}
+satisfying the relation
+\begin{equation}
+p'(e')=\varphi(b).
+\end{equation}
+Now what can we say? We can say the following: we have a map
+\begin{equation}
+F\colon E\to\widetilde{E}
+\end{equation}
+and it is surjective since $\widetilde{E}$ is the image, and of
+course it is injective and continuous. Therefore we may say that
+there is a continuous bijection
+\begin{equation}
+E\to\widetilde{E}.
+\end{equation}
+In all good cases, this is a homeomorphism.
+\begin{rmk}
+If a space is compact, then every continuous bijection is a
+homeomorphism. 
+\end{rmk}
+Thus we may conclude we may restore $E$ if we know: $E'$, $f$,
+$\varphi$. 
+
+We will introduce the notion of
+a \define{Pullback}\index{Pullback!of Principal Fibrations}\index{Pullback|textbf}. Consider a
+space, more precisely a principal fibration
+\begin{equation}
+(E',B',G',p'\colon E'\to B').
+\end{equation}
+We consider a map
+\begin{equation}
+\varphi\colon B\to B'
+\end{equation}
+There is a way to transfer the fibration from $B'$ to $B$. We
+construct 
+\begin{equation}
+\widetilde{E}\subset E\times B
+\end{equation}
+consisting of pairs $(e',b)$ that satisfy the condition
+\begin{equation}
+p'(e')=\varphi(b).
+\end{equation}
+We have a map
+\begin{equation}
+p\colon\widetilde{E}\to B
+\end{equation}
+satisfying
+\begin{equation}
+p(e',b)=b.
+\end{equation}
+This is a principal fibration. To be more general, we may
+use \emph{any} fibration in this construction.
+
+Now, suppose we have the universal bundle ($E_{G}$, $B_{G}$, $G$,
+$p_{G}\colon E_{G}\to B_{G}$) with classifying space $B_{G}$. If
+we have 
+\begin{equation}
+\varphi\colon B\to B_{G}
+\end{equation}
+then we may construct the pullback. The theorem that we prove
+next time is if 
+\begin{equation}
+\varphi\homotopic\varphi',
+\end{equation}
+then their pullbacks are homotopic and in one-to-one
+correspondence.
+

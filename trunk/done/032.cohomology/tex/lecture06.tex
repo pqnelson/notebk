@@ -1,0 +1,244 @@
+%%
+%% lecture06.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@tomato3>
+%% 
+%% Started on  Sun Aug 14 14:59:43 2011 Alex Nelson
+%% Last update Sun Aug 14 15:32:10 2011 Alex Nelson
+%%
+We described the construction involving $\GL{n,\RR}$,
+$\GL{n,\CC}$ that are its classifying spaces. We are only
+interested in homotopical properties. Here we may say 
+\begin{equation}
+\GL{n,\RR}\homotopic\ORTH{n}
+\end{equation}
+is homotopic, and
+\begin{equation}
+\GL{n,\CC}\homotopic\U{n}
+\end{equation}
+is also homotopic.
+
+What is $\GL{n}$ as a space? Well, pick a basis for 
+\begin{equation}
+V\iso\FF^{n}
+\end{equation}
+then change the basis. The ``Jacobian'' is then a member of
+$\GL{n}$. So $\GL{n,\RR}$ is the space of frames in $\RR^{n}$. We
+can always orthonormalize a given basis by the Grahm-Schmidt
+procedure. This gives us a map
+\begin{equation}
+\GL{n}\to\ORTH{n}
+\end{equation}
+and of course
+\begin{equation}
+\ORTH{n}\Into\GL{n}
+\end{equation}
+is an embedding. We merely have to prove that $\GL{n}\to\ORTH{n}$
+can be done ``gradually''. We then have
+\begin{equation}
+\GL{n,\RR}\homotopic\ORTH{n},
+\end{equation}
+and similar reasoning suggests that $\GL{n,\CC}$ is homotopic to
+$\ORTH{n,\CC}$. But $\ORTH{n,\CC}$ is in one-to-one
+correspondence with $\U{n}$, so $\GL{n,\CC}\homotopic\U{n}$ is
+homotopic.
+
+If 
+\begin{equation}
+\mathrm{GL}_{+}(n,\RR)=\{X\in\GL{n,\RR}\lst\det(X)>0\}
+\end{equation}
+then $\mathrm{GL}_{+}(n,\RR)\homotopic\SO{n}$ is homotopic.
+
+We come to the notion of a Stiefel manifold\index{Stiefel Manifold}, which we covered
+Fall quarter. We have several different definitions of
+$V_{n,k}(\RR)$ which are homotopy equivalent definitions, so we
+do not distinguish between them. We can say that $V_{n,k}(\RR)$
+is the space of $k$-framed in $\RR^{n}$. Observe that
+\begin{equation}
+V_{n,n}\homotopic\GL{n,\RR}
+\end{equation}
+is homotopic. We may say $V_{n,k}(\RR)$ is the space of $k$
+orthonormal vectors in $\RR^{n}$. These two are homotopy
+equivalent spaces. We may extend to $V_{n,k}(\CC)$.
+
+There are various different groups that act on Stiefel
+manifolds. We see that $\GL{n}$ acts on $\RR^{n}$, and thus acts
+on $V_{n,k}(\RR)$ by transitivity. So $V_{n,k}$ is an orbit, thus
+we may say 
+\begin{equation}
+V_{n,k}=\GL{n}\Big/(\text{some stable subgroup}).
+\end{equation}
+But it is another way to describe Stiefel manifolds.
+
+Let $V_{n,k}^{\mathrm{orth}}(\RR)$\index{$V_{n,k}^{\mathrm{orth}}(\RR)$} be the Stiefel manifold
+describing orthonormal $k$-frames. We may say $\ORTH{n}$ acts
+transitively on $V_{n,k}^{\mathrm{orth}}(\RR)$, rotating one
+frame into another. But in this situation, we may describe the
+stabilizer in a simple way.
+
+We look at orthogonal transformations that keep this frame in
+tact. We may write
+\begin{equation}
+\RR^{n}=\RR^{k}\oplus\RR^{n-k}
+\end{equation}
+the transformations preserves $\RR^{k}$. So therefore the
+stabilizer rotates $\RR^{n-k}$ into itself, and
+\begin{equation}
+V^{\mathrm{orth}}_{n,k}(\RR)=\ORTH{n}/\ORTH{n-k}.
+\end{equation}
+Precisely the same consideration goes in the complex case. The
+only difference is 
+\begin{equation}
+V^{\mathrm{orth}}_{n,k}(\CC)=\U{n}/\U{n-k}.
+\end{equation}
+i.e., we work with unitary transformations.
+
+We will look at fibrations involving Stiefel manifolds. Suppose
+we had $V_{n,k}$. Consider \emph{only} $V_{n,k}^{\mathrm{orth}}$,
+we will thus without loss of generality remove the
+superscript. We observe
+\begin{equation}
+p\colon V_{n,k}\to V_{n,k-1}
+\end{equation}
+by forgetting the $k^{\mathrm{th}}$ vector. This map is a locally
+trivial fibration. We see that
+\begin{equation}
+p^{-1}(e_{1},\dots,e_{k-1})=\{(e_{1},\dots,e_{k})\lst
+e_{k}\in\FF\}
+\end{equation}
+where $\FF$ is the field we're working with. 
+
+
+If
+\begin{equation}
+V=\Span(e_{1},\dots,e_{k-1})
+\end{equation}
+then $e_{k}\in V^{\bot}$ and
+\begin{equation}
+\dim(V^{\bot})=n-(k-1)
+\end{equation}
+but $e_{k}$ should be normalized and thus $e_{k}\in S^{n-k}$. We
+obtain a fibration with base $V_{n,k-1}$ and fibre $S^{n-k}$ and
+the total space is $V_{n,k}$.
+
+When we work over $\CC$, we see that
+\begin{equation}
+\dim(V^{\bot})=2\left(n-(k-1)\right)
+\end{equation}
+and thus the fibre has dimension $2n-2k+1$, so
+$F=S^{2n-2k+1}$. 
+
+We would like to compute homotopy groups of the fibrations of the
+Stiefel manifolds. The exact sequence of homotopy groups of the
+fibration is
+\begin{equation}
+\pi_{i+1}(S^{\bullet})\to\pi_{i}(V_{n,k})\to\pi_{i}(V_{n,k-1})\to\pi_{i}(S^{\bullet})
+\end{equation}
+and we see for ``small dimensional spheres,'' we have
+$\pi_{i}(S^{\bullet})=0$ which implies
+\begin{equation}
+\pi_{i}(V_{n,k})\iso\pi_{i}(V_{n,k-1}).
+\end{equation}
+We see that
+\begin{equation}
+V_{n,1}(\RR)\iso S^{n-1}
+\end{equation}
+the orthonormal (real) vector lives in the sphere, and similarly
+\begin{equation}
+V_{n,1}(\CC)\iso S^{2n-1}.
+\end{equation}
+We may inductively compute other homotopy groups. We see that
+\begin{equation}
+\pi_{i}(V_{\infty,k})=0
+\end{equation}
+which is unsurprising since $\pi_{i}(S^{\infty})=0$.
+
+Observe that on $V_{n,k}(\RR)$ we have the action or $\ORTH{k}$
+or $\SO{k}$ [and for $V_{n,k}(\CC)$ we have the action of $\U{k}$
+or $\SU{k}$]. We consider an action of the form
+\begin{equation}
+(e_{1},\dots,e_{k})\mapsto(e_{1}',\dots,e_{k}')
+\end{equation}
+where
+\begin{equation}
+e_{i}'=\sum_{j}a_{ij}e_{j}
+\end{equation}
+where $(a_{ij})$ is ``invertible.'' This is a \emph{free}
+action. Now we have a question: we can factorize this stuff
+\begin{equation}
+V_{n,k}(\CC)/\U{k}=\Gr_{n,k}(\CC)
+\end{equation}
+is precisely the Grassmann manifold. It is obvious. It is clear
+that if we have a frame $(e_{1},\dots,e_{k})$ we can map it to 
+$\Span(e_{1},\dots,e_{k})$; it is clear that this is a fibration
+$V_{n,k}(\CC)\to \Gr_{n,k}(\CC)$, and the fibre is $k$-frames
+living in $k$-dimensional space.
+
+Now lets take $n=\infty$ and we find
+\begin{equation}
+V_{\infty,k}(\CC)/\U{k}=\Gr_{\infty,k}(\CC).
+\end{equation}
+We see that we have a universal bundle\index{Universal Bundle!for $\U{k}$} 
+since $V_{\infty,k}$\index{$V_{\infty,k}$} is
+contractible, $\U{k}$ acts freely, so $\Gr_{\infty,k}(\CC)$ is the
+classifying space\index{Classifying Space!for $\U{k}$}.
+
+Lets consider real Stiefel manifolds, we may take the
+factorization
+\begin{equation}
+V_{n,k}(\RR)/\ORTH{k}=\Gr_{n,k}(\RR)
+\end{equation}
+and repeat the same arguments to find
+\begin{equation}
+V_{\infty,k}(\RR)/\ORTH{k}=\Gr_{\infty,k}(\RR).
+\end{equation}
+We may take the quotient with $\SO{k}$ which produces the space
+of \emph{oriented} $k$-dimensional planes. 
+
+In reality we did more than it seems, because we can now
+construct the classifying space for \emph{any} matrix group $G$,
+a closed subgroup of $\GL{k,\CC}$. We have a free action of
+$\GL{k,\CC}$ on $V_{\infty,k}$. Thus we can induce a free action
+of $G$ on $V_{\infty,k}$. So the classifying space is simply
+$V_{\infty,k}/G$. 
+
+\subsection*{EXERCISES}
+\begin{xca}\label{xca:lec06:prob1}
+Show that Moebius band can be represented as a space of fibration
+having the circle $S^1$ as a base and the interval $I$ as a
+fiber. Prove that this fibration is not trivial. Does it have a
+section? Show that this fibration can be obtained pasting
+together two trivial fibrations; find a transition function
+(clutching function) taking values in the group $\ZZ_2$.
+\end{xca}
+\begin{xca}
+The group $\ZZ_2$ acts on the circle $S^1$ (the non-trivial
+transformation acts as reflection $x\to x$, $y\to-y$). Therefore
+using the transition function of the
+Problem \ref{xca:lec06:prob1} we can construct a fibration with
+the fiber $S^1$ and the base $S^1$. Prove that the total space of
+this fibration is a Klein bottle. Does this fibration have a
+section?
+\end{xca}
+\begin{xca}\label{xca:lec06:prob3}
+Let us consider principal fibrations with the group $\U{1}$,
+total space $E$ and base $S^2$. Show that classes of these
+fibrations are in one-to-one correspondence with integers. Let us
+consider fibrations corresponding to integer numbers $n = 0, 1,
+2$. Prove that we have $E = S^2\times S^1$ for $n = 0$, $E = S^3$
+for $n = 1$, $E = \SO(3) = \RP^3$ for $n = 2$.
+
+Hint. Consider Hopf fibration and tangent fibre bundle to
+$S^2$. (To define Hopf fibration we consider the group $\U{1}$
+acting on the $S^3$ defined by the equation $|z_{1}|^2 +
+|z_{2}|^2 = 1$ in $\CC^2$; element $z\in\U{1}$ transforms $(z_1,
+z_2)$ into $(zz_1, zz_2)$.) Calculate the transition function
+explicitly or use exact homotopy sequence of fibration.
+\end{xca}
+\begin{xca}
+Let us consider a principal fibration of Problem \ref{xca:lec06:prob3} corresponding to arbitrary integer
+$n$. Calculate homotopy groups of total space of the fibration (for dimensions $\leq3$ you
+should give an explicit answer, in dimensions $> 3$ you should express the homotopy group
+of total space in terms of homotopy groups of $S^2$ ).
+\end{xca}

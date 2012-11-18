@@ -1,0 +1,168 @@
+%%
+%% lecture13.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 16 10:51:06 2011 alex
+%% Last update Fri Dec 16 10:51:06 2011 alex
+%%
+We have explained the notion of obstruction, but we did not prove
+the notion we formulated. We will change the setting: instead of
+working with cell complexes, we demand that
+$\overline{\sigma}^{k}$ is a closed ball. Then we may simplify
+the definition. We have a fibration $(E,B,F,p)$ and we construct
+a section step-by-step. Remember we used induction, so if we have
+a skeleton $B^{r}$ and a section 
+$B^{r}\xrightarrow{\;f}E$, $b\mapsto f(b)\in F_{b}$, for small $r$
+every two sections are homotopic. We would like to extend to
+$(r+1)$-cells, how many different ways can we do this? Well, we
+have $\overline{\sigma}^{k+1}$ and over this ball we have the
+direct product $\overline{\sigma}^{k+1}\times F$. This is a
+little different from last lecture, but in our new requirements
+we have a direct product.
+
+Then our section is simply a map $\partial\sigma^{r+1}\to F$
+which is $\partial\sigma^{r+1}\iso S^{r}\to F$ and we want to
+extend to $\sigma^{r+1}$ the rest of the cell. Then the map
+$(S^{r}\to F)\homotopic 0$ homotopic. Why? Because otherwise, we
+would have different approaches to extending the section to the
+rest of the cell. Specifically since $F$ is connected, we should
+look at $\pi_{r}(F)$. The first possibility is that
+$\pi_{r}(F)=0$, then the extension is always possible. The other
+possibility is that $\pi_{r}(F)\not=0$, then we have an obstruction.
+
+Suppose that $\pi_{r}(F)=0$ for $r<k$, but
+$\pi_{k}(F)\not=0$. What does this mean? We may extend our
+section up to $B^{k}$ the $k$-dimensional skeleton. The extension
+$B^{r-1}\to B^{r}$, for $r<k$, is essentially unique (i.e., unique
+up to homotopy).
+Why? Well, suppose we have $f\colon B^{r-1}\to F$ and we extend
+this to $B^{r}$ in two ways $\widetilde{f}\colon B^{r}\to E$ and
+$\widetilde{f}'\colon B^{r}\to E$. We have at $\sigma^{r}$
+specifically $\widetilde{f}\colon\partial\sigma^{r}\to F$,
+$\widetilde{f}'\colon\partial\sigma^{r}\to F$ but on the boundary
+we have
+\begin{equation}
+f = \left.\widetilde{f}\right|_{\partial\sigma^{r}}=\left.\widetilde{f}'\right|_{\partial\sigma^{r}}
+\end{equation}
+This is really a map $S^{r}\to F$ and corresponds to an element of
+$\pi_{r}(F)$. So for $r<k$, the two maps are homotopic, but for
+$r=k$ this is wrong.
+
+For $r=k$, and $\pi_{r}(F)=0$ for $r<k$ but $\pi_{k}(F)\not=0$,
+then the extension of the section to $B^{k-1}$ is essentially
+unique. If we have two extensions $f$, $f'$ to $B^{k}$, then we
+have the difference cochain with values in $\pi_{k}(F)$ which is
+denoted by $\D(f,f')$. Recall a cochain is a function on
+cells. And for every cell we have various extensions. The
+difference cochain describes the difference between the
+extensions.
+
+But we may go farther and try to extend it to $B^{k+1}$. We have
+an obstruction, which gives a cochain $\zeta(f)$ with values in
+$\pi_{k}(F)$. We may say that an obstruction to $f$, $\zeta(f)$,
+differ from an obstruction to $f'$, $\zeta(f')$ by
+\begin{equation}
+\zeta(f)-\zeta(f')=\nabla\D(f,f').
+\end{equation}
+This is sloppy, really the obstruction is
+$\zeta_{f}(\sigma^{k+1})$, so we should really make $f$ an index
+and thus
+\begin{equation}
+\zeta_{f}(\sigma^{k+1})-\zeta_{f'}(\sigma^{k+1})=\nabla\D_{f,f'}
+\end{equation}
+which is very natural. Already everything follows.
+
+First we would like to say that $\zeta$ is a
+cocycle\index{Obstruction!is a cocycle}. Why? Recall
+we calculate all this stuff locally, so we may work in a direct
+product (i.e., take advantage of the local trivialization of the
+fibration). Recall in the direct product we have a trivial
+section, which means that we have a section which sends
+everything to one point in the fibre. In this case, everything is
+very simple. If $f'$ is a trivial section, then 
+\begin{equation}
+\zeta(f')=0.
+\end{equation}
+Thus we see
+\begin{equation}
+\zeta(f)=\nabla\D_{f,f'}
+\end{equation}
+and
+\begin{equation}
+\nabla\zeta_{f}=\nabla^{2}\D_{f,f'}=0.
+\end{equation}
+But this is only in the direct product\dots but for locally
+trivial fibrations, we're done.
+
+We have some freedom in our choice of $\zeta_{f}$. It is a
+cocycle with values in $\pi_{k}(F)$. It is only a coboundary in
+the direct product, but we only have that \emph{locally}. We
+have
+\begin{equation}
+\zeta_{f}=\nabla\D_{f,f'}
+\end{equation}
+be a \emph{local} expression, but 
+\begin{equation}
+\nabla\zeta_{f}=0
+\end{equation}
+is a \emph{global} expression.
+
+We constructed for every locally trivial fibration $(E,B,F,p)$
+such that
+\begin{equation}
+\pi_{k}(F)\not=0
+\end{equation}
+is the first nontrivial homotopy grup, a representative in
+$H^{k+1}\bigl(B,\pi_{k}(F)\bigr)$. And this was for \emph{every}
+bundle. We should assume $k\geq2$ in this business\dots
+otherwise the cohomology coefficients may be non-Abelian.
+
+This construction is very natural (i.e., functorial). Take a map 
+\begin{equation*}
+(E,B,F,p)\to(E',B',F,p')
+\end{equation*}
+which is a map of fibrations. Really it is a commutative diagram
+\begin{equation}
+\begin{diagram}[small]
+E        & \rTo^{\varphi} & E' \\
+\dTo>{p} &                & \dTo>{p'} \\
+B        & \rTo^{\psi}    & B'
+\end{diagram}
+\end{equation}
+We have $\zeta\in H^{k+1}\bigl(B,\pi_{k}(F)\bigr)$ behave
+``nicely'' as we go from fibration to fibration, namely we have
+the following property: $\zeta$ is an obstruction of the first
+fibration, $\zeta'$ is for the second. We are saying
+$\zeta=\psi^{*}(\zeta')$. How to prove it? Look at the
+definitions, and that's it!
+
+Remember this was one possible definition for a characteristic
+class. (See Lecture \ref{215c:lecture7}.) If the fibre is a group
+$G$, then we have the principal fibration
+$(E,B,G,p)\to(E_{G},B_{G},G,p_{G})$ be mapped into the universal
+bundle. We proved that the characteristic classes obey this
+functional property. The only difference is that we were working
+with an arbitrary fibr for obstructions, whereas we work with
+principal bundles for characteristic classes.
+
+Is this too bad? Not really, we can think of a characteristic
+class as an obstruction.
+
+But we had a lot of associated bundles for a principal bundle
+$(E,B,F,p)$. If $F$ is a $G$-space, then we may construct an
+associated fibre bundle $(E_{F},B,F,p_{F})$ where we may
+explicitly construct $E_{F}=(E\times F)/\sim$.
+
+Consider the group $\SO{n}$ and we'd like to construct a
+characteristic class of it. The simplest way is to take $\RR^n$
+as an $\SO{n}$-space. SO we can take a vector bundle using
+$\RR^n$ as fibre. We get an associated vector bundle. We see that
+$\RR^n\homotopic(\mbox{point})$, so the obstructions are trivial.
+
+But we may take $S^{n-1}\subset\RR^{n}$ which is an
+$\SO{n}$-space. We may take sections here. We get an obstruction
+$\zeta\in H^{n}\bigl(B,\pi_{n-1}(S^{n-1})\bigr)$ which is a
+characteristic class.
+\index{Section!Obstructions to|)}

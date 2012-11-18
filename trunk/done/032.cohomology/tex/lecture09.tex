@@ -1,0 +1,230 @@
+%%
+%% lecture09.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Sep 28 12:21:48 2011 alex
+%% Last update Wed Sep 28 12:21:48 2011 alex
+%%
+We talked about $G$-bundles\index{Bundle!$G$!has Vector Fibration} having a vector fibration where
+transition functions\index{Transition Function} belong to the group $G$. We should assume
+the fibre $F$ is a $G$-space, i.e., $G$ acts on $F$ from the left
+(it could be the right, it doesn't matter; our conventions is
+left). Then we had a notion of a principal fibration, so $G$ acts
+without fixed points on $E$. The fibre is in one-to-one
+correspondence with $G$, but the fibre doesn't have the group
+structure. NB: we never made rigorous the notion of equivalent fibrations.
+
+Now if $F$ is a $G$-space, then considering a principal
+$G$-bundle
+\begin{equation}
+F\into E \xonto{p} B
+\end{equation}
+we consider $E\times F$ and a map
+\begin{equation}
+\widetilde{p}(e,f)=p(e).
+\end{equation}
+We factorize $E\times F/\sim$ by the equivalence relation
+\begin{equation}
+(e,f)\sim (eg,g^{-1}f)
+\end{equation}
+But then $E\times F/\sim\to B$ is a fibration with the fibre $F$
+(although really it's $G\times F$ but $G$ is factorized
+out). This may be considered the definition, if you'd like.
+
+We would like to consider a particular case: a vector
+bundle. This is a particular case when
+\begin{equation}
+G=\GL{n}
+\end{equation}
+which acts on some vector space $V$ as a group of its linear
+transformations. Her ewe may consider either $\GL{n,\CC}$ or
+$\GL{n,\RR}$, i.e. complex or real vector bundles and they're not
+the same stuff. Again, this is not the best definition, but it is
+convenient.
+
+We will give a little different definition (of vector bundle).\index{Bundle!Vector} We
+consider a fibre bundle
+\begin{equation}
+V\into E\xonto{p}B
+\end{equation}
+where every fibre has the structure of a vector space. We
+consider $B\times V$ as a vector space, then $(b,v)$ forms a
+vector. 
+
+Then we have vector bundle morphisms
+\begin{equation}
+(E,B,V,p)\to(E',B',V',p')
+\end{equation}
+We have a map
+\begin{equation}
+\varphi\colon E\to E'
+\end{equation}
+which sends a fibre to a fibre. This induces a map of the bases,
+\begin{equation}
+\begin{diagram}[small]
+E    & \rTo^{\varphi} & E'\\
+\dTo &               & \dTo \\
+B    & \rTo          & B'
+\end{diagram}
+\end{equation}
+But if these guys are vector bundles, then this map 
+\begin{equation}
+\mbox{(fibre)}\to\mbox{(fibre)}
+\end{equation}
+must be a linear map. We can now speak of isomorphic vector
+bundles, we know what a locally trivial vector bundle is, so we
+now know what a locally trivial vector bundle is.
+
+Every vector bundle comes from principal fibration. How to prove
+this? Let $\widetilde{E}$ be the collection of all bases in all
+fibres; we can make it into a principal fibration. We define an
+action of $\GL{n}$ on $\widetilde{E}$, by rotating an element of
+a basis. The frames in a given fibre form a fibre of frames, so
+we have a map
+\begin{equation}
+\widetilde{E}\to B
+\end{equation}
+to the base space by selecting the base point. This is a
+principal fibre. So we can go in the opposite direction, from
+this principal fibration, we get a vector bundle.
+
+We have $\GL{n}$-fibrations yielding vector bundles, so suppose
+we begin with a $\U{n}$-fibration. Let $V$ have a $\U{n}$
+action. So $\U{n}$ fibration corresponds to complex vector
+bundles with Hermitian inner product (in fibres). If we suppose
+that every fibre is a Hilbert space, then consider the fibration
+with fibres of orthonormal basis. Then it is determined up to
+some $\U{n}$ action.
+
+We may likewise consider $\ORTH{n}$-fibration, but it is with a
+real Hilbert space equipped with the usual inner product on the
+fibres. 
+
+\begin{ex}
+Consider a submanifold of $\RR^{n}$, i.e., we consider 
+\begin{subequations}
+\begin{align}
+f_{1}(\vec{x}) & = 0\\
+\dots & \dots \\
+f_{k}(\vec{x}) &= 0
+\end{align}
+\end{subequations}
+defining the submanifold $M\propersubset\RR^{n}$. Note that by the\marginpar{Whitney embedding theorem: any smooth $k$-manifold $M$ may be embedded in $\RR^{2k}$}  
+Whitney embedding theorem, $n=2k$ for finite-dimensional real manifolds.
+
+The simplest case is (really) linear equations
+\begin{equation}
+f_{i}(\vec{x})=\vec{a}_{i}^{\mathrm{T}}\vec{x}
+\end{equation}
+where $i=1,\dots,k$. We may imagine we have an $n\times k$ matrix
+whose rows are given by $\vec{a}_{i}^{\mathrm{T}}$. The dimension
+of the subspace is determined by the rank of the matrix;
+generically it is $k$. Really each equation kills 1 dimension, so
+we get an $(n-k)$-dimensional submanifold. If we have $f_{1}$,
+\dots, $f_{k}$ be smooth, then we may approximate by a linear
+function at each point. We have the Jacobian matrix
+\begin{equation}
+\frac{\partial f_{i}}{\partial x^{j}}=J_{ij}
+\end{equation}
+If $\rank(J)=k$, we may use the implicit function theorem. 
+
+Now we may consider a curve to this submanifold $x^{i}(t)$, then
+we obtain tangent vectors
+\begin{equation}
+\left.\frac{\D}{\D t}x^{i}(t)\right|_{t=\tau}.
+\end{equation}
+We obtain
+\begin{equation}
+\sum_{j}\frac{\partial f_{i}}{\partial x^{j}}\frac{\D
+  x^{j}(t)}{\D t}=0
+\end{equation}
+when we have a tangent vector of the submanifold. We define
+$T_{x}M$ as the space of tangent vectors at $x\in M$.
+
+But if we take
+\begin{equation}
+E=\bigsqcup_{x\in M}T_{x}M
+\end{equation}
+then we have a map
+\begin{equation}
+E\to M
+\end{equation}
+which gives a vector bundle called the \define{Tangent Vector
+Bundle}\index{Bundle!Tangent Vector}\index{Tangent Vector Bundle}. By the way, this is even an $\ORTH{n}$-bundle since we
+are working in $\RR^{n}$.
+
+If we consider $N_{x}M=(T_{x}M)^{\bot}$, then 
+\begin{equation}
+NM=\bigsqcup_{x\in M}N_{x}M
+\end{equation}
+is another vector bundle called the \define{Normal Bundle}. In general, we
+have (using the Whitney embedding result):
+\begin{equation}
+T_{x}M\iso\RR^{k},\quad\mbox{and}\quad
+N_{x}M\iso\RR^{n-k}.
+\end{equation}
+For
+$S^{2}$, we have $T_{x}S^{2}\iso\RR^{2}$, and $N_{x}S^{2}\iso\RR$.
+\end{ex}
+
+Consider any locally trivial fibration $(E,B,F,p)$ and consider
+the homology of the fibres. For each $b\in B$,
+$H_{k}(F_{b},\RR)$, then consider\marginpar{Remember $k=\dim(B)$}
+\begin{equation}
+\bigsqcup_{b\in B}H_{k}(F_{b},\RR)=\mbox{\define{Total Space of Vector Bundle}}
+\end{equation}
+If $U\propersubset B$, then by local triviality
+\begin{equation}
+p^{-1}(U)=U\times F.
+\end{equation}
+
+We would like to stress that it is tempting to say it is almost
+always a locally trivial fibration\index{Fibration!Locally Trivial}, but we cannot say this. We
+have a natural identification\dots we have a path in $B$ be
+lifted to a homotopy of fibres, but this may be done in many
+different ways. But now look at the homology! And the homology
+goes in an absolutely definite way since
+\begin{equation}
+F_{b}\rightrightarrows F_{b'}
+\end{equation}
+are homotopic maps, it follows $H_{k}(F_{b})\to H_{k}(F_{b'})$ is
+then unambiguous.
+
+We have a \define{Connection}\index{Connection}\index{Vector Bundle!Connection} in a vector bundle (well, not
+necessarily a vector bundle) if for every\footnote{\textsc{Note:\quad}\ignorespaces this notion
+depends on the paths on $B$, and they may be classified into homotopy equivalent
+classes $\pi_{1}(B)$. This is important, since considerations of flat connections enables us to use singular cohomology later on.} path $\gamma\colon[0,1]\to B$ we have a
+definite lifting $F_{\gamma(0)}\to F_{\gamma(1)}$. 
+If $U$ is contractible, then
+\begin{equation}
+H_{k}(p^{-1}(U))\iso H_{k}(F)
+\end{equation}
+since
+\begin{equation}
+U\homotopic\mathrm{point}
+\end{equation}
+is homotopic, then we lift this contraction of $p^{-1}(U)$ to a
+fibre. That gives us an isomorphism with the homology. Since we
+can do this for a small interval, as long as we go back and forth
+in a contractible neighborhood, we have such an
+identification. This is not always the case, e.g., with the Klein
+bottle:
+\begin{center}
+\includegraphics{img/lecture9.0}
+\end{center}
+which runs into problems when we consider too large of an open
+neighborhood in $B$.
+
+\subsection*{EXERCISES}
+\begin{xca}
+Find first non-trivial homotopy group, first non-trivial homology group and first non-trivial cohomology group of complex Stiefel manifold $V_{n,k}$.
+\end{xca}
+\begin{xca}
+Using the identification of the group $\SU{2}$ with the group of quaternions of norm 1 prove that infinite-dimensional quaternionic projective space is a classifying space of $\SU{2}$. Calculate the cohomology of this space.
+\end{xca}
+\begin{xca}
+Calculate Chern class of the principal fibration with total space $\SO{3} = \RR^3$, group
+$S^1 = \U{1}$ and base $S^2$.
+\end{xca}

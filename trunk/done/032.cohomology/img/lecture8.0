@@ -1,0 +1,71 @@
+%!PS
+%%BoundingBox: -2 -2 98 26 
+%%HiResBoundingBox: -1.7808 -1.78073 97.42216 25.69107 
+%%Creator: MetaPost 1.208
+%%CreationDate: 2011.12.26:1200
+%%Pages: 1
+%*Font: cmsy10 15.7524 9.96265 21:800002
+%%BeginProlog
+%%EndProlog
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0.5
+ 0 dtransform exch truncate exch idtransform pop setlinewidth [] 0 setdash
+ 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 0 0 moveto
+0 23.91034 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 1.5308 20.21474 moveto
+0 23.91034 lineto
+-1.5308 20.21474 lineto
+ closepath
+gsave fill grestore stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 35.86551 23.91034 moveto
+35.86551 0 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 34.3347 3.6956 moveto
+35.86551 0 lineto
+37.39632 3.6956 lineto
+ closepath
+gsave fill grestore stroke
+ [3 3 ] 0 setdash
+newpath 0 0 moveto
+35.86551 0 lineto stroke
+newpath 0 23.91034 moveto
+35.86551 23.91034 lineto stroke
+gsave [1.26491 0 0 0.63245 37.85797 10.12767 ] concat 0 0 moveto
+(7!) cmsy10 15.7524 fshow grestore
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth [] 0 setdash
+newpath 59.77585 0 moveto
+59.77585 23.91034 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 61.30666 20.21474 moveto
+59.77585 23.91034 lineto
+58.24504 20.21474 lineto
+ closepath
+gsave fill grestore stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 95.64136 23.91034 moveto
+95.64136 0 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 94.11055 3.6956 moveto
+95.64136 0 lineto
+97.17216 3.6956 lineto
+ closepath
+gsave fill grestore stroke
+newpath 59.77585 0 moveto
+95.64136 0 lineto stroke
+newpath 91.94592 -1.53073 moveto
+95.64136 0 lineto
+91.94592 1.53073 lineto
+ closepath
+gsave fill grestore stroke
+newpath 59.77585 23.91034 moveto
+95.64136 23.91034 lineto stroke
+newpath 91.94592 22.37961 moveto
+95.64136 23.91034 lineto
+91.94592 25.44107 lineto
+ closepath
+gsave fill grestore stroke
+showpage
+%%EOF

@@ -1,0 +1,108 @@
+%%
+%% lecture14.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Dec 16 16:20:11 2011 alex
+%% Last update Fri Dec 16 16:20:11 2011 alex
+%%
+We have a principal bundle $(E,B,G,p)$ and we'd like to construct
+\index{Principal Bundle!Characteristic Classes on ---}\index{Characteristic Class!of Principal Bundle}characteristic classes of it. Consider the universal bundle
+$E_{G}\xrightarrow{p_{G}}B_{G}$ where $E_{G}/G=B_{G}$. We have a
+map $\psi\colon B\to B_{G}$, take $\psi^{*}(c)\in H^{\bullet}(B)$.
+
+Consider another bundle $(E_{F}, B,F,p_{F})$ we may consider
+sections in this new bundle. The first nontrivial homotopy group
+$\pi_{k}(F)$, we have $\zeta\in H^{k+1}\bigl(B,\pi_{k}(F)\bigr)$
+be the first obstruction to the construction of sections. Really
+it is a characteristic class. For the associated bundle
+$(E_{G}\times F/\sim, B_{G}, F,\dots)$ we have 
+$\zeta_{G}\in H^{k+1}\bigl(B_{G},\pi_{k}(F)\bigr)$
+and thus $\zeta=\psi^{*}(\zeta_{G})$.
+
+For $G=\SO{k}$, it acts on $\RR^k$ and therefore
+$S^{k-1}\subset\RR^{k}$. We may consider the characteristic class
+$\zeta\in H^{k}(B,\ZZ)$. This is the \define{Euler Characteristic Class}\index{Euler Characteristic Class}\index{Characteristic Class!Euler}.
+Why is it called such? Lets consider a smooth manifold of
+dimension $k=\dim(M)$. We may consider the tangent bundle
+$(E=TM,B=,\RR^k)$, but instead of tangent vectors we may take
+frames, based in tangent spaces, $(E,M,\ORTH{k})$ where the fibre
+is the frames at a given point. Or if the manifold is orientable,
+and oriented, then the fibre is $\SO{k}$. We may consider unit
+vectors (or if we don't have a metric, all nonzero vectors) then
+the fibre is $\RR^{k}\setminus\{0\}\homotopic S^{k-1}$. Sections
+correspond to\dots?
+\begin{center}
+\begin{tabular}{c|c|p{5cm}}
+   $E$          &    $F$     & section \\ \hline
+$TM$            & $\RR^k$    & Vector field\\
+frames          & $\ORTH{k}$ & \\
+oriented frames & $\SO{k}$   & \\
+unit vectors    & $\RR^k\setminus\{0\}\homotopic S^{k-1}$ & unit
+vector fields, section exists on $M$ except on finite number of points
+\end{tabular}
+\end{center}
+\noindent{}A vector field nonzero everywhere on $M$ implies obstruction is
+0; but if it cannot be constructed everywhere, finite set is
+``under'' the obstruction.
+
+So all we need is the number of singular points of the vector
+field? Not really. We should take the \emph{algebraic number} of
+singular points of the vector field. The algebraic number of
+singularities for the vector field is an obstruction, and it is
+equal to $\eulerChar(M)$. This is the first problem of the
+homework! We will not solve it here in great detail.
+
+Suppose we have a triangulation. At vertices we say that our
+vector field is zero. On every edge the vector field points
+towards the center.
+
+\begin{wrapfigure}[7]{r}{1in}
+  \includegraphics{img/lecture14.0}
+\end{wrapfigure}
+
+It has a singularity at the center of the edge, we decrease the
+magnitude of the vector field as it tends toward the center. We
+try to extend it from the edges to the faces, the vector fields
+points towards the center of the faces. We get a singular point
+on each cell.
+
+But this is an algebraic sum, so we have some coefficient
+$\sum(-1)^{k}\alpha_{k}$, we should recall this is an obstruction
+and the obstruction lies inthe homology groups; the coefficient
+is thus $(-1)^{k}$ up to a sign due to choice of orientation. The
+vector field may be represented as
+\begin{equation}
+f(x)=Ax+(\mbox{higher order terms})
+\end{equation}
+We can see that the sign of the singularity is related to
+$\det(A)$, provided that $A$ is nondegenerate. We may always
+assume that $A$ is nondegenerate, otherwise we have a degenerate
+singularity and we should look at higher order terms. The sign of
+the determinant doesn't change sign as we vary $A$ continuously,
+otherwise we have problems---thus the sign of $\det$ is a homotopy invariant.
+We have only two possibilities since $\GL{n,\RR}$ has two
+components. So $\pm\sgn\bigl(\det(A)\bigr)$, depending on whether
+the vector fields point in or out (at vertices it points out; etc.).
+
+It sits in $H^k(M,\ZZ)=\ZZ$ since $M$ is a compact oriented
+manifold. The obstruction is a number, and it is simply the Euler
+characteristic.
+
+In general, the zero locus of a section is generically an
+$(n-k)$-dimensional\dots something. In good cases, it is a
+manifold. Well, it's an $(n-k)$-dimensional cocycle,
+$H_{n-k}\bigl(M,\pi_{k}(F)\bigr)$. We need to assume $M$ is an
+oriented manifold. It is very natural to \emph{conjecture} that
+by Poincar\'e duality
+\begin{equation}
+H_{n-k}\bigl(M,\pi_{k}(F)\bigr)\iso H^{k}\bigl(M,\pi_{k}(F)\bigr).
+\end{equation}
+This would nicely relate many facets of obstructions. 
+
+But we have other characteristic classes. If $G=\U{k}$ or
+$\ORTH{k}$, we could construct Stiefel manifolds $V_{k,l}$. We
+may define \define{Chern Classes}\index{Characteristic Class!Chern Class}\index{Chern Class} as obstructions in the case of
+complex manifolds, and we may also define \define{Stiefel--Whitney Classes}\index{Stiefel--Whitney Class}\index{Characteristic Class!Stiefel--Whitney Class}
+for real manifolds.

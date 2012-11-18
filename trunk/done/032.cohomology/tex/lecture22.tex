@@ -1,0 +1,162 @@
+%%
+%% lecture22.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon Dec 26 10:35:29 2011 alex
+%% Last update Mon Dec 26 10:35:29 2011 alex
+%%
+The $\widetilde{K}\to K$ morphism, consider
+$\widetilde{\alpha}\in[\alpha]$, and map it to 
+\begin{equation}
+\widetilde{\alpha}\mapsto\widetilde{\alpha}-\varepsilon^{\dim(\widetilde{\alpha})}.
+\end{equation}
+There are many morphisms due to the decomposition
+$K=\widetilde{K}\oplus\ZZ$, but some are more natural.
+
+\begin{thm}
+Consider a cell complex with even dimensional cells, then
+$K^{0}(X)=\ZZ^{n}$ where $n$ is the number of cells, and
+$K^{1}(X)=0$.
+\end{thm}
+\begin{proof}
+The proof is done by induction on the number of cells. Consider
+$A\propersubset X$ a subcomplex such that 
+\begin{equation}
+X/A = S^{2n}.
+\end{equation}
+Then we write the exact sequence
+\begin{equation}
+\underbracket[0.5pt]{K^{1}(X/A)}_{=0}\gets
+\underbracket[0.5pt]{K^{0}(A)}_{=\ZZ^{n-1}}\gets
+K^{0}(X)\gets
+\underbracket[0.5pt]{K^{0}(X/A)}_{=\ZZ}\gets
+\underbracket[0.5pt]{K^{-1}(A)}_{=0},
+\end{equation}
+we know
+\begin{equation}
+K^{1}(X/A)=K^{1}(S^{2n})=0.
+\end{equation}
+So by exactness, we obtain
+\begin{equation}
+K^{0}(X)=\ZZ^{n}.
+\end{equation}
+This is half of the story.
+
+We should have a simultaneous induction for $K^{1}(X)$, namely
+\begin{equation}
+K^{2}(X/A)\gets
+\underbracket[0.5pt]{K^{1}(A)=0\;\;}_{\text{by induction}}\!\!\!\gets
+K^{1}(X)\gets
+\underbracket[0.5pt]{K^{1}(X/A)}_{=0}\gets
+K^{0}(A).
+\end{equation}
+Thus it follows that
+\begin{equation}
+K^{1}(X)=0.
+\end{equation}
+We have this exact sequence for $\widetilde{K}$ but not for
+$K$. So $\widetilde{K}$ is the analog of relative cohomology, we
+may speak about relative $K$-theory too.
+\end{proof}
+
+We constructed a homomorphism 
+\begin{equation*}
+\chernChar\colon K^{0}\to H^{\text{even}}
+\end{equation*}
+the ``Chern character''. So what about $K^{1}$? Well, look,
+\begin{equation}
+\widetilde{K}^{1}(X)=\widetilde{K}^{-1}(X)=\widetilde{K}^{0}(SX)\xrightarrow{\chernChar}H^{\text{even}}(SX)=H^{\text{odd}}(X).
+\end{equation}
+This is easy to understand. Remember, when \dots\ suppose $X$ is a
+cell complex.
+
+\begin{wrapfigure}{l}{0.69in}
+  \vspace{-12pt}
+  \includegraphics{img/lecture22.0}
+\end{wrapfigure}
+\noindent{}How do we create the suspension? We create the
+following picture, and it is clear everything comes from $X\times
+I$, we just consider cells in $X\ni\sigma$ and multiply by open
+intervals $\sigma\times(0,1)$. We have a one-to-one
+correspondence, etc.\ etc.\ etc.
+This basic construction is doodled on the left, well the
+\emph{result} from the construction is doodled.
+
+We may construct something denoted
+\begin{equation}
+\widetilde{K}^{\bullet}=\widetilde{K}^{0}+\widetilde{K}^{-1} 
+\end{equation}
+to
+get the full $K$ group. We also take
+\begin{equation}
+\begin{split}
+K^{\bullet} &= \ZZ\oplus\widetilde{K}^{\bullet} \\
+&= \ZZ+\widetilde{K}^{0}+\widetilde{K}^{-1} 
+\end{split}
+\end{equation}
+The only difference is in $K^{0}$ and $\widetilde{K}^{0}$, since
+$K^{1}=\widetilde{K}^{1}$. So
+\begin{equation}
+K^{\bullet}=K^{0}+\widetilde{K}^{1}.
+\end{equation}
+But $K^{\bullet}$ is not only a group but also a
+ring!\index{$K^{\bullet}$!is a Ring}
+We have a definition of ring structure in $K$, which goes from
+the external direct product
+\begin{equation}
+K(X)\otimes K(Y)\to K(X\times Y).
+\end{equation}
+Really how may we construct a product? We note the embedding
+\begin{equation}
+\Delta\colon X\into X\times X
+\end{equation}
+where $x\mapsto(x,x)$. This gives us a map
+\begin{equation}
+K(X\times X)\to K(X),
+\end{equation}
+and we have a map
+\begin{equation}
+K(X)\otimes K(X)\to K(X\times X)
+\end{equation}
+which induces by composition a map
+\begin{equation}
+K(X)\otimes K(X)\to K(X).
+\end{equation}
+But for the reduced $\widetilde{K}$ we should consider the
+\define{Smash Product}\index{Smash Product!for $\widetilde{K}$}
+\begin{equation}
+\widetilde{K}(X)\otimes\widetilde{K}(Y)\to\widetilde{K}(X\smashProd Y),
+\end{equation}
+by considering
+\begin{equation}
+X\times Y/X\wedge Y\eqdef X\smashProd Y.
+\end{equation}
+We have
+\begin{equation}
+\widetilde{K}(X)\otimes\widetilde{K}(X)\to\widetilde{K}(X\smashProd X)\to\widetilde{K}(X).
+\end{equation}
+We are askng ourselves: what is
+\begin{equation}
+\begin{split}
+\widetilde{K}^{i}(X) &= \widetilde{K}(S^{i}X)\\
+&=\widetilde{K}(S^{i}\smashProd X)
+\end{split}
+\end{equation}
+But we may define a product of
+\begin{equation}
+\begin{split}
+\widetilde{K}(S^{i}\smashProd
+X)\otimes\widetilde{K}(S^{j}\smashProd X)\to
+\widetilde{K}\bigl((S^{i}\smashProd X)\times(S^{j}\smashProd X)\bigr)
+&=\widetilde{K}(S^{i}\smashProd S^{j}\smashProd X\smashProd X)\\
+&=\widetilde{K}(S^{i+j}\smashProd X\smashProd X)\\
+&=\widetilde{K}^{i+j}(X\smashProd X)\to\widetilde{K}^{i+j}(X).
+\end{split}
+\end{equation}
+So we have thus constructed a mapping
+\begin{equation}
+\widetilde{K}^{i}(X)\otimes\widetilde{K}^{j}(X)\to\widetilde{K}^{i+j}(X)
+\end{equation}
+as desired.
