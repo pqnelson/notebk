@@ -1,0 +1,174 @@
+%%
+%% lecture06.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Feb 22 10:02:42 2012 alex
+%% Last update Wed Feb 22 10:02:42 2012 alex
+%%
+
+The main lessons to take home:
+\begin{enumerate}
+\item Manifolds have coordinates and in practice the actual
+  details of a calculation depends on using coordinates;
+\item Coordinates gives a set of maps, the coordinate system are
+  not the manifold itself. Are the properties found the properties of the
+  coordinate systems or of the manifold?
+\end{enumerate}
+We can answer the second point directly. Recall in $\RR^2$ we
+have the line element be, in Polar coordinates,
+\begin{equation}\label{eq:lec06:polarCoordinates}
+\D s^{2}=\D r^{2}+r^{2}\D\theta^{2}.
+\end{equation}
+But look, it has a peculiar value for $\theta$ when $r=0$
+(namely: distance is $\theta$-independent when $r=0$). But that's
+dependent on the coordinate system! On the other hand, if we
+change coordinate systems to write the line element as
+\begin{equation}
+\D s^{2}=\D\theta^{2}+\theta^{2}\D r^{2}.
+\end{equation}
+This is the same as equation \eqref{eq:lec06:polarCoordinates},
+but $\theta$ is the radial distance and $r$ is the angular
+component. Is there anything deep about $\RR^2$ detected here?
+No, just faulty coordinate systems which break down at a single
+point. 
+
+\medskip
+{\bf Moral:\quad}\ignorespaces Coordinate System's properties
+$\not=$ Manifold's properties.
+
+\medskip
+In a manifold, there is no preferred basis, so we need to first
+define a basis prior to defining a vector. There are several ways
+to do this:
+\begin{description}
+\item[Old School:]
+Deal with a manifold with coordinate system, and we use certain
+rules describing how vectors (and friends) behave under a change
+of coordinates.
+\item[New School:]
+We observe the directional derivative in a particular direction
+is the same in any basis. So we say that a vector is
+$\vec{v}\cdot\nabla$, e.g., in two dimensions
+\begin{subequations}
+\begin{align}
+\vec{v}\cdot\nabla
+&=v^{x}\partial_{x}+v^{y}\partial_{y}\\
+&=v^{r}\partial_{r}+v^{\theta}\partial_{\theta}
+\end{align}
+\end{subequations}
+We find that 
+\begin{equation}
+\begin{split}
+v^{x}&=v(x)\\
+&=v^{r}\frac{\partial x}{\partial r}+v^{\theta}\frac{\partial x}{\partial\theta}
+\end{split}
+\end{equation}
+We have a quantity that is independent of our choice of basis and
+it has a natural way to change under a change of coordinates.
+\end{description}
+
+In practice, we start with some manifold $\mathcal{M}$. We
+consider some curve
+\begin{equation}
+\gamma\colon[0,1]\to\mathcal{M}.
+\end{equation}
+Let $p\in\mathcal{M}$, and consider a smooth function
+\begin{equation}
+f\colon\mathcal{M}\to\RR
+\end{equation}
+We see that the mathematical definition for the vector $v$ at $p$ is
+\begin{equation}
+v_{p}(f)=\left.\frac{\D}{\D\lambda}\bigl(f\circ\gamma(\lambda)\bigr)\right|_{\gamma(\lambda)=p}.
+\end{equation}
+This is fairly abstract.
+
+We may use local coordinates to make things a bit easier. Lets
+draw the doodle of the geometric situation:
+
+\begin{center}
+  \includegraphics{img/lecture06.0}
+\end{center}
+
+\noindent\ignorespaces %
+We have our vector
+\begin{subequations}
+\begin{align}
+v_{p}(f)
+&=\frac{\D}{\D\lambda}(f\circ\gamma)\\
+&=\frac{\D}{\D\lambda}(f\circ\varphi^{-1}\circ\varphi\circ\gamma)\\
+&=\frac{\D}{\D\lambda}\bigl(\widetilde{f}\circ(\varphi\circ\gamma)\bigr)\\
+&=\frac{\partial\widetilde{f}}{\partial\varphi^{\mu}}
+\frac{\D(\varphi\circ\gamma)^{\mu}}{\D\lambda}\\
+&\mbox{``=''}\partial_{\mu}\frac{\D\varphi^{\mu}}{\D\lambda}
+\end{align}
+\end{subequations}
+where we ignore the distinction between the manifold and the
+coordinates on the manifold in this last step. Observe this looks
+like $\vec{v}\cdot\nabla\widetilde{f}$ the directional derivative!
+
+The vector may be written as
+\begin{equation}
+v=v^{\mu}e_{\mu},
+\end{equation}
+with basis vectors
+\begin{equation}
+\{\partial_{\mu}\}=\{e_{\mu}\}.
+\end{equation}
+We can have what is called an\marginpar{Anholonomic Basis} anholonomic (or ``non-coordinate'')
+basis\index{Anholonomic Basis}\index{Basis!Anholonomic} 
+\begin{equation}
+f_{a}={f_{a}}^{\mu}e_{\mu}
+\end{equation}
+where $\det(f)\not=0$ and $\mu,a=1,\dots,n$. The coordinate basis
+satisfies 
+\begin{equation}
+[e_{\mu},e_{\nu}]=\partial_{\mu}\partial_{\nu}
+-\partial_{\nu}\partial_{\mu}=0.
+\end{equation}
+The converse is true, if given any basis $f_{a}$ and
+\begin{equation}
+[f_{a},f_{b}]=0,
+\end{equation}
+then there is some coordinate system 
+\begin{equation}
+f_{a}=\partial/\partial y^{a}.
+\end{equation}
+This follows from the existence theorem on partial differential equations.
+
+Lets consider how vectors transform under coordinate
+changes.\marginpar{Vectors under change of coordinates} We
+see that in two different coordinate systems $\partial_{\mu}$ and
+$\partial_{\mu'}$ we can write
+\begin{equation}
+v=v^{\mu}\partial_{\mu}=v^{\mu'}\partial_{\mu'}.
+\end{equation}
+Observe how it acts on $x^{\nu}$:
+\begin{subequations}
+\begin{align}
+v(x^{\nu})
+&=v^{\mu}\partial_{\mu}x^{\nu}\\
+&=v^{\mu}{\delta_{\mu}}^{\nu}\\
+&=v^{\nu}
+\end{align}
+\end{subequations}
+and using the other coordinate representation
+\begin{subequations}
+\begin{align}
+v(x^{\nu})
+&=v^{\mu'}\partial_{\mu'}x^{\mu}\\
+&=v^{\mu'}\frac{\partial x^{\nu}}{\partial x^{\mu'}}
+\end{align}
+\end{subequations}
+and setting equals to equals tells us
+\begin{equation}
+v^{\nu}=v^{\mu'}\frac{\partial x^{\nu}}{\partial x^{\mu'}}.
+\end{equation}
+This gives us the transformation law between our two coordinate systems.
+
+\begin{rmk}
+Note that all the vectors living at a single base point
+$p\in\mathcal{M}$ form a linear space $\mathrm{T}_{p}\mathcal{M}$
+called the \define{Tangent Space at $p$}.
+\end{rmk}

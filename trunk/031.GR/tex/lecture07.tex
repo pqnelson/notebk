@@ -1,0 +1,103 @@
+%%
+%% lecture07.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Feb 23 11:35:36 2012 alex
+%% Last update Thu Feb 23 11:35:36 2012 alex
+%%
+So, some things worth knowing:
+\begin{enumerate}
+\item Vectors are defined independent of coordinates.
+\item We can represent a vector as a directional derivative
+  $v=v^{\mu}\partial_{\mu}$ which is also independent of
+  coordinates.
+\item The coordinate basis $\partial_{\mu}$, we can have an
+  arbitrary basis $e_{a}={e_{a}}^{\mu}\partial_{\mu}$ which is a
+  linear combination of basis vectors, and called a
+  \define{Frame}\index{Frame} or
+  \define{Vierbein}\index{Vierbein} in 4-dimensions (or tetrad).
+\end{enumerate}
+
+\begin{xca}
+Prove in polar coordinates we have
+$(\partial_{r},\partial_{\theta})$ is a coordinate basis, and
+$(\partial_{r},r^{-1}\partial_{\theta})$ is a basis but not a
+coordinates basis.
+\end{xca}
+
+A vector field is a map $\mathcal{M}\to\mathrm{T}\mathcal{M}$
+such that at each point $p\in\mathcal{M}$ we assign to it a
+tangent vector $v_{p}$ in a ``smooth way''. In other fields of
+physics, we may work with a ``tangent spinor'' or something
+similar. Assigning such a gadget to each point in spacetime is
+really a \define{Section} of a fiber bundle (and doing it in such
+a way that we have a ``tangent spinor'' requires something more,
+something called a \define{Solder Form}).
+
+\begin{ddanger}
+Although it appears straightforward to generalize from tangent
+vector to tangent spinor to an arbitrary tangent \emph{gadget},
+there is dangerous subtlety here! There may be
+\emph{obstructions} to such generalizations, we require tools
+from algebraic topology to study such obstructions. See
+Hatcher~\cite[\normalfont\S4.3]{hatcher1} and~\cite{hatcher2} for
+topological aspects, and Sharpe~\cite{sharpe} for geometric
+aspects. There are some very serious applications to physics
+(e.g., involving Dirac operators), since Lorentzian manifolds
+have particularly unique topology. 
+\end{ddanger}
+
+We should warn the reader, there are three competing notations
+used in general relativity. We use Greek indices when referring
+to components in a coordinate basis, and Latin indices give
+components in an arbitrary basis, but later Latin indices in the
+middle of the alphabet ($i$, $j$, $k$, \dots) gives spatial
+components in a coordinate basis.
+
+Now what is an example of a generalization we have discussed?
+Well, quite simple: the notion of a \define{Covector} (a.k.a.,
+covariant vector, dual vector, one-form, etc.). It is an element
+in the dual space to $\mathrm{T}_{p}\mathcal{M}$, denoted
+$\mathrm{T}^{*}_{p}\mathcal{M}$ and called the \define{Cotangent Space}.
+We indicate the cotangent bundle as $\mathrm{T}^{*}\mathcal{M}$,
+and it consists of all the covectors on $\mathcal{M}$.
+
+\begin{ex}
+Given a manifold $\mathcal{M}$ and a function
+$f\colon\mathcal{M}\to\RR$, then the \define{Gradient} of $f$ is
+$\D f\in \mathrm{T}^{*}\mathcal{M}$. The directional derivative
+is
+\begin{equation}
+\D f[v]=v(f)
+\end{equation}
+where $v\in\mathrm{T}\mathcal{M}$. More generally, if
+\begin{equation}
+\D f=\omega_{\mu}\D x^{\mu},
+\end{equation}
+then
+\begin{subequations}
+\begin{align}
+\<\D f|\partial_{\nu}\>
+&=\partial_{\nu} f
+\end{align}
+but also
+\begin{align}
+\<\D f|\partial_{\nu}\>
+&=\<\omega_{\mu}\D x^{\mu}|\partial_{\nu}\>\\
+&=\omega_{\mu}\<\D x^{\mu}|\partial_{\nu}\>\\
+&=\omega_{\mu}{\delta^{\mu}}_{\nu}\\
+&=\omega_{\nu}
+\end{align}
+\end{subequations}
+and setting equals to equals yields
+\begin{equation}
+\omega_{\nu}=\partial_{\nu} f.
+\end{equation}
+This implies
+\begin{equation}
+\D f=(\partial_{\mu}f)\D x^{\mu}
+\end{equation}
+as before.
+\end{ex}

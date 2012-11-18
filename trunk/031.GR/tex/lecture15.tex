@@ -1,0 +1,206 @@
+%%
+%% lecture15.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Mar  6 12:20:26 2012 alex
+%% Last update Tue Mar  6 12:20:26 2012 alex
+%%
+
+Recall that the geodesic equation for nearby geodesics has the
+relative acceleration
+\begin{equation}
+A^{\mu} = {R^{\mu}}_{\sigma\rho\nu}u^{\rho}X^{\nu}u^{\sigma}.
+\end{equation}
+Lets examine the Newtonian approximation $u^{0}\approx 1$, $u^{i}\approx0$.
+We see the spatial components of acceleration is
+\begin{equation}\label{eq:spatialComponentsOfAcceleration}
+A^{i}\approx {R^{i}}_{00\nu}X^{\nu}={R^{i}}_{00j}X^{j}.
+\end{equation}
+Note that
+\begin{equation}
+{R^{i}}_{00j}=\partial_{0}\Gamma^{i}_{0j}-\partial_{j}\Gamma^{i}_{00}
++\underbrace{\Gamma^{i}_{0\mu}\Gamma^{\mu}_{0j}-\Gamma^{i}_{j\mu}\Gamma^{\mu}_{00}}_{\approx0}
+\end{equation}
+and
+\begin{equation}
+\partial_{0}\Gamma^{i}_{0j}=0
+\end{equation}
+since $\Gamma^{i}_{0j}$ is time-independent. Thus
+\begin{equation}
+{R^{i}}_{00j}\approx-\partial_{j}\Gamma^{i}_{00}
+\end{equation}
+for our approximation.
+
+In Newtonian gravity, the acceleration for a particle is
+\begin{equation}\label{eq:deviationFirstParticle}
+\ddot{x}^{i}=-\partial^{i}\Phi(x)
+\end{equation}
+Consider a separation vector $\vec{X}=X^{j}$, where we have
+one test particle described by $x^{i}$ and another described by
+$x^{i}+X^{i}$. The second particle's acceleration is
+\begin{equation}\label{eq:deviationSecondParticle}
+\frac{\D^{2}(x^i+X^i)}{\D
+  t^{2}}=-g^{ij}\partial_{j}\Phi(x^{k}+X^k)
+\end{equation}
+We Taylor expand to find
+\begin{equation}
+\partial_{j}\Phi(x^{k}+X^k)=\partial_{j}\Phi(x^i)
++\partial_{k}\partial_{j}\Phi(x^{i})X^{k}+\dots
+\end{equation}
+Substitute the Taylor expansion into Equation
+\eqref{eq:deviationSecondParticle}, and subtract out the
+acceleration of the first particle described in Equation
+\eqref{eq:deviationFirstParticle}, we obtain
+\begin{equation}
+\frac{\D^{2}X^{i}}{\D t^{2}}=-\delta^{ij}\left(\partial_{j}\partial_{k}\Phi\right)X^{k}.
+\end{equation}
+Compare this to Equation
+\eqref{eq:spatialComponentsOfAcceleration}, we find
+\begin{equation}
+-{R^{i}}_{00k}=-\delta^{ij}\partial_{j}\partial_{k}\Phi
+\end{equation}
+Observe that we can find one component of the Ricci tensor:
+\begin{equation}
+\begin{split}
+R_{00} &\approx {R^{i}}_{00i}\\
+&=\nabla^{2}\Phi=4\pi G\rho
+\end{split}
+\end{equation}
+where $\rho$ is the mass-density.
+
+This is wonderful, but we really want to consider some action
+\begin{equation}
+I=\int\mathcal{L}\,\D^{4}x
+\end{equation}
+such that its vanishing first variation $\delta I=0$ yields the
+equations of motion. This should also be
+coordinate-independent. We recall that an $n$-form
+$L_{0\dots(n-1)}\,\D x^{0}\wedge\dots\wedge\D x^{n-1}$ is
+coordinate-independent, and we may integrate it over an
+$n$-dimensional manifold. Since it is totally antisymmetric, we
+know it has one component. We can write this out as
+\begin{equation}
+\begin{split}
+\mathcal{L}&=\mbox{(Scalar)}\sqrt{-g}\\
+&=L\sqrt{-g}.
+\end{split}
+\end{equation}
+We also have a few other requirements. A derivation of the
+action is given in Box \ref{box:EHAction}, but the resulting
+Lagrangian is
+\begin{equation}
+\mathcal{L}_{EH}=(g^{\mu\nu}R_{\mu\nu}-2\Lambda)\sqrt{-g}
+\end{equation}
+giving us the field equations
+\begin{equation}
+R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R+\Lambda g_{\mu\nu}=\frac{\kappa^{2}}{2}T_{\mu\nu}
+\end{equation}
+where $\Lambda$ is the cosmological constant, and $T_{\mu\nu}$ is
+the stress-energy tensor (describing the distribution of
+energy-momentum density). 
+
+\begin{Boxed}{Einstein--Hilbert Action}\label{box:EHAction}
+Starting principles:
+\begin{enumerate}
+\item Action should be a coordinate-independent integral of a
+local Lagrangian.
+\item Gravitational part should depend on metric only (no
+``background structure'')
+\item Geometry should be pseudo-Riemannian (no torsion or
+nonmetricity)
+\item Field equations should contain no more than two derivatives
+of metric.
+\end{enumerate}
+
+In four dimensions, most general action obeying these principles
+is 
+\begin{equation}
+I_{EH} = \frac{1}{\kappa^{2}}\int\sqrt{-g}(R-2\Lambda)\,\D^{4}x
+       = \frac{1}{\kappa^{2}}\int\sqrt{-g}(g^{\mu\nu}R_{\mu\nu}-2\Lambda)\,\D^{4}x
+\end{equation}
+where $\kappa$ and $\Lambda$ are constants.
+
+Variation of the action:
+\begin{equation}
+\delta I_{EH} = \frac{1}{\kappa^{2}}\int[\delta(\sqrt{-g})(R-2\Lambda)
++ \sqrt{-g}\delta g^{\mu\nu} R_{\mu\nu}+\sqrt{-g}g^{\mu\nu}\delta
+  R_{\mu\nu}]\,\D^{4}x
+\end{equation}
+Look at three terms separately:
+\begin{enumerate}
+\item $\delta g$: basic relationship $\ln\det M=\tr\ln M$
+\begin{equation}
+\delta\ln\det M = (\delta\det M)/\det M = \tr\delta\ln
+M=\tr(M^{-1}\delta M)=-\tr(M\delta M^{-1})
+\end{equation}
+So $\delta g=-g_{\mu\nu}\delta g^{\mu\nu}$, \quad
+$\delta\sqrt{-g}=-\frac{1}{2}\sqrt{-g}g_{\mu\nu}\delta
+g^{\mu\nu}$.
+\item second term is already in right form,
+$\sqrt{-g}R_{\mu\nu}\delta g^{\mu\nu}$.
+\item $\delta R_{\mu\nu}$: first note that although the
+connection is not a tensor, $\delta\Gamma^{\rho}_{\mu\nu}$
+\emph{is} a tensor.
+
+(To see this, consider the difference between two covariant
+derivatives, one with connection $\Gamma^{\rho}_{\mu\nu}$ and one
+with connection
+$\Gamma^{\rho}_{\mu\nu}+\delta\Gamma^{\rho}_{\mu\nu}$.)
+
+Next check that
+\begin{equation}
+\delta R_{\mu\nu}
+=\nabla_{\rho}\delta\Gamma^{\rho}_{\mu\nu}-\nabla_{\mu}\delta\Gamma^{\rho}_{\nu\rho}
+\end{equation}
+(You can check the variation explicitly, or you can look in
+Riemann normal coordinates, where $\Gamma^{\rho}_{\mu\nu}=0$ at
+some chosen point.)
+
+Hence
+\begin{equation}
+\begin{split}
+g^{\mu\nu}\delta R_{\mu\nu} 
+&=\nabla_{\rho}(g^{\mu\nu}\delta\Gamma^{\rho}_{\mu\nu})-\nabla_{\mu}(g^{\mu\nu}\delta\Gamma^{\rho}_{\rho\nu})
+=\nabla_{\rho}[g^{\mu\nu}\delta\Gamma^{\rho}_{\mu\nu}-g^{\rho\nu}\delta\Gamma^{\sigma}_{\nu\sigma}]\\ &=\frac{1}{\sqrt{-g}}\partial_{\rho}\left(\sqrt{-g}\left[g^{\mu\nu}\Gamma^{\rho}_{\mu\nu}-g^{\rho\nu}\delta\Gamma^{\sigma}_{\nu\sigma}\right]\right)
+\end{split}
+\end{equation}
+where the last step uses the fact that for a vector $\nabla_{\mu}v^{\mu}=\frac{1}{\sqrt{-g}}\partial_{\mu}(\sqrt{-g}v^{\mu})$.
+\end{enumerate}
+
+Now combine the three terms. The last term gives a total
+derivative,
+\begin{equation}
+\partial_{\rho}\left(\sqrt{-g}\left[g^{\mu\nu}\delta\Gamma^{\rho}_{\mu\nu}-g^{\rho\nu}\delta\Gamma^{\sigma}_{\nu\sigma}\right]\right)
+\end{equation}
+which integrates to zero as long as $\delta\Gamma$ goes to zero
+fast enough at any boundaries. That leaves the first two terms:
+\begin{equation}
+\delta I_{EH} = \frac{1}{\kappa^{2}}\int\sqrt{-g}
+\left[R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}(R-2\Lambda)\right]\delta g^{\mu\nu}\,\D^{4}x
+\end{equation}
+Now assume there is an additional ``matter'' contribution $I_{m}$
+to the action, and \emph{define}
+\begin{equation}
+\delta I_{m} = -\frac{1}{2}\int\sqrt{-g}T_{\mu\nu}\delta g^{\mu\nu}\,\D^{4}x
+\end{equation}
+Then
+\begin{equation}
+\delta I_{total} = \int \sqrt{-g}\left\{\frac{1}{\kappa^{2}}\left[R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}(R-2\Lambda)\right]-\frac{1}{2}T_{\mu\nu}\right\}\delta g^{\mu\nu}
+\,\D^{4}x
+\end{equation}
+and the field equations are 
+\begin{equation}
+R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R+\Lambda
+g_{\mu\nu}=\frac{\kappa^{2}}{2}T_{\mu\nu}
+\end{equation}
+\end{Boxed}
+\begin{rmk}[Further Reading]
+We have discussed the Einstein--Hilbert action, but there are
+other Lagrangians out there. Additionally, we have not even
+discussed other choice of variables, nor have we discussed the
+Hamiltonian formalism. These are reviewed in Peldan's
+``Actions for Gravity''~\cite{Peldan:1993hi}. We will discuss the
+Hamiltonian formalism in a follow up paper.
+\end{rmk}

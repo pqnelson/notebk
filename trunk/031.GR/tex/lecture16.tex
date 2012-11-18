@@ -1,0 +1,181 @@
+%%
+%% lecture16.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Mar  6 15:06:59 2012 alex
+%% Last update Tue Mar  6 15:06:59 2012 alex
+%%
+We will assume the cosmological constant vanishes $\Lambda=0$. We
+see the field equations look like
+\begin{equation}
+G_{\mu\nu}=\frac{\kappa^{2}}{2}T_{\mu\nu}
+\end{equation}
+Ten components of the curvature tensor directly depend on $T_{\mu\nu}$.
+The Weyl tensor indirectly depends on it. The $G_{\mu\nu}$
+vanishes for flat space, yet the Weyl tensor describes the free
+propagation of gravity waves.
+
+Recall in electromagnetism, the source of the electric field is
+charge $e$ or in the field equations charge density
+$\rho_{e}$. With Lorentz transformation (viz.~length
+contraction), charge density increases because volume decreases:
+\begin{equation}
+\begin{split}
+&\rho_{e}\to\frac{1}{\sqrt{1-v^{2}}}\rho_{e}\\
+\implies&\rho_{e}\sim J^{0}
+\end{split}
+\end{equation}
+where $J^{\mu}$ is the 4-current.
+
+We know mass is responsible for gravity, but rest mass or total
+mass? Observationally, all forms of energy contributes to the
+gravitational field. So the energy $E$ has energy density
+$\rho_{m}$. How does this transform? Well, we see:
+\begin{equation}
+\begin{split}
+E&\to\frac{1}{\sqrt{1-v^{2}}}E\\
+\rho_{m}&\to\left(\frac{1}{1-v^{2}}\right)\rho_{m}
+\end{split}
+\end{equation}
+This is what happens for a $00$ components of a rank-2 tensor. So
+\begin{subequations}
+\begin{equation}
+\rho\approx T^{00}
+\end{equation}
+and similarly
+\begin{equation}
+\begin{split}
+T^{0i}&\approx\mbox{``Energy Current''}\\
+&\approx\mbox{``Momentum Density''}
+\end{split}
+\end{equation}
+and
+\begin{equation}
+T^{ij}\approx\mbox{``Pressure''}.
+\end{equation}
+\end{subequations}
+The field equations were thought of as
+\begin{equation}
+R_{\mu\nu}+g_{\mu\nu}R\propto T_{\mu\nu}
+\end{equation}
+just as for Newtonian gravity
+\begin{equation}
+\nabla^{2}\Phi=4\pi G\rho_{m}.
+\end{equation}
+Einstein at one point proposed
+\begin{equation}
+R_{\mu\nu}=T_{\mu\nu}
+\end{equation}
+but we can't change coordinates correctly, as these equations are
+under-determined. We know in special relativity the conservation
+of energy states
+\begin{equation}
+\partial_{\mu}T^{\mu\nu}=0
+\end{equation}
+So by the comma-goes-to-semicolon rule, we expect
+\begin{equation}
+\nabla_{\mu}T^{\mu\nu}=0.
+\end{equation}
+But only
+\begin{equation}
+\nabla_{\mu}G^{\mu\nu}=0
+\end{equation}
+whereas
+\begin{equation}
+\nabla_{\mu}R^{\mu\nu}\not=0.
+\end{equation}
+
+In general relativity, we use $I$ for the action and $S$ for the
+entropy (when we Wick rotate $t\to\tau=-\I t$, the Euclidean action for a
+black hole describes \emph{is} its entropy). We have the action
+\begin{equation}
+I=\int\sqrt{-g}L\,\D^{4}x
+\end{equation}
+and its variation is
+\begin{equation}
+\delta I=\int\sqrt{-g}E_{\mu\nu}\delta g^{\mu\nu}\,\D^{4}x
+\end{equation}
+This action is diffeomorphism-invariant. If $\delta g^{\mu\nu}$
+is just a coordinate transformation, then $\delta I=0$ identically.
+This is true ``on shell'' (when the equations of motion are
+satisfied). What is $\delta g^{\mu\nu}$ under a change of
+coordinates?
+Consider
+\begin{equation}
+x^{\mu}\to x^{\mu}+\zeta^{\mu}
+\end{equation}
+We see then that
+\begin{equation}
+g_{\mu\nu}(x)\D x^{\mu}\D x^{\nu}
+\to g_{\mu\nu}(x+\zeta)
+\bigl(\D x^{\mu}+\partial_{\rho}\zeta^{\mu}\D x^{\rho}\bigr)
+\bigl(\D x^{\nu}+\partial_{\sigma}\zeta^{\nu}\D x^{\sigma}\bigr)
+\end{equation}
+where we Taylor expand to first order the metric
+\begin{equation}
+g_{\mu\nu}(x+\zeta)=g_{\mu\nu}(x)+\zeta^{\tau}\partial_{\tau}g_{\mu\nu}(x).
+\end{equation}
+Observe this tells us how the metric changes, after some index
+gymnastics we obtain
+\begin{equation}
+\begin{split}
+g_{\mu\nu}&\to g_{\mu\nu}+(g_{\mu\rho}\partial_{\nu}\zeta^{\rho}+g_{\rho\nu}\partial_{\mu}\zeta^{\rho}+\zeta^{\rho}\partial_{\rho}g_{\mu\nu})\\
+&\qquad=g_{\mu\nu}+\nabla_{\mu}\zeta_{\nu}+\nabla_{\nu}\zeta_{\mu}
+\end{split}
+\end{equation}
+Thus
+\begin{equation}\label{eq:lec16:killingVec}
+\delta_{\zeta}g_{\mu\nu}=\nabla_{\mu}\zeta_{\nu}+\nabla_{\nu}\zeta_{\mu}.
+\end{equation}
+If the right hand side vanishes, we have a Killing vector (c.f.,
+Exercise~\ref{xca:prob4:killing}). If we say the metric is
+time-independent, then this is equivalent to stating there exists
+some time-like Killing vector. Similarly, spherical symmetry
+means that we have Killing vectors generate the spherical symmetries.
+
+So, we see that
+\begin{equation}
+\delta_{\zeta}g^{\mu\nu}=-\nabla^{\mu}\zeta^{\nu}
+-\nabla^{\nu}\zeta^{\mu}
+\end{equation}
+So under a coordinate transformation
+\begin{equation}
+\delta I=-\int\sqrt{-g}E_{\mu\nu}(\nabla^{\mu}\zeta^{\nu}+\nabla^{\nu}\zeta^{\mu})\,\D^{4}x.
+\end{equation}
+We have $E_{\mu\nu}=E_{\nu\mu}$ which simplifies the integrand
+\begin{equation}
+\delta I=-2\int\sqrt{-g}E_{\mu\nu}\nabla^{\mu}\zeta^{\nu}\,\D^{4}x
+\end{equation}
+since we're summing over dummy indices and $E$ is symmetric. Now
+we may write this as
+\begin{equation}
+\delta I=-2\int\sqrt{-g}\Bigl[
+\nabla^{\mu}(E_{\mu\nu}\zeta^{\nu})-(\nabla^{\mu}E_{\mu\nu})\zeta^{\nu}
+\Bigr]\,\D^{4}x
+\end{equation}
+Recall
+\begin{equation}
+\nabla_{\mu}v^{\mu}=\frac{1}{\sqrt{-g}}\partial_{\mu}(\sqrt{-g}v^{\mu})
+\end{equation}
+thus the first term in the integrand becomes
+\begin{equation}
+-2\int\sqrt{-g}\nabla^{\mu}(E_{\mu\nu}\zeta^{\nu})\,\D^{4}x=-2\int\partial_{\mu}(\sqrt{-g}{E^{\mu}}_{\nu}\zeta^{\nu})\,\D^{4}x
+\end{equation}
+which we can always do, since the metric's covariant derivative
+vanishes. This is a surface integral! Thus if $\zeta\to0$ ``fast
+enough'' (or, equivalently, $\zeta=0$ on the boundary), the first
+term vanishes.
+
+Therefore
+\begin{equation}
+\int\sqrt{-g}(\nabla^{\mu}E_{\mu\nu})\zeta^{\nu}\,\D^{4}x=0
+\end{equation}
+which is true for arbitrary $\zeta$. This implies
+\begin{equation}
+\nabla^{\mu}E_{\mu\nu}=0
+\end{equation}
+which is a conservation law. But we cannot change it into
+integral form. This is a special case of Noether's theorem. We
+can run this backwards to get the equations of motion.

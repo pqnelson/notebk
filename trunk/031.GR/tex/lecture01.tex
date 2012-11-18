@@ -1,0 +1,326 @@
+%%
+%% lecture01.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Feb 14 08:29:36 2012 alex
+%% Last update Tue Feb 14 08:29:36 2012 alex
+%%
+\subsection{General Relativity's Importance in Physics}
+The first 50 years after Einstein published his field equations,
+physicists held one of two opinions:
+
+1) It was a beautiful model for how physics ought to be.
+
+2) It was largely irrelevant unless you specialize in it.
+
+\noindent\ignorespaces%
+Most people imagine it's a model for how physics ought to be,
+unless gravity's emergent. The second view is more or less
+disregarded. In high energy physics, the coupling constants
+converge to the same value at high enough energies where gravity
+is significant (perhaps it unifies with the other forces, and
+perhaps that's why it is significant). Trivially, General
+Relativity is useful in cosmology.
+
+There exists a sizeable group of people in condensed matter physics
+where analog models\footnote{For a review, see Barcelo \emph{et al.}~\cite{Barcelo:2005fc}.} are used; e.g., an event horizon for sound
+as an analog to Black Holes. There are attempts to make
+predictions for, e.g., quantum gravity (using analogs of Hawking
+radiation, etc.).
+
+In the next 5 years, there should be experimental evidence for
+gravitational radiation. In 15 years there will be more sensitive
+tests available. We can ask questions like ``Does $E/c^{2}$
+contribute to mass?'' There are interesting anomalies, e.g.,
+measurements\footnote{See, e.g., Gundlach's measurements~\cite{gundlach},
+the CODATA 2002 recommended values~\cite{CODATA2002}}
+ of Newton's constant $G$ differ from each other by
+$10\sigma$ to $15\sigma$, the Pioneer satellite feels
+accelerations that's still not accounted for~\cite{Nieto:2007ng}, the predicted
+energy level for Dark Energy is off by 120 orders of magnitude~\cite{Martin:2012bt}.
+
+\subsection{Geometry and Physics}
+Lets recall Newton's second law 
+\begin{equation}\label{eq:lec01:newtonSecondLaw}
+F=ma.
+\end{equation}
+Initially there was some contraversy whether it's a ``true
+natural law'' or just a definition of force 
+(see Spivak~\cite{spivak:2010} for details). We understand the
+mass on the right hand side of Newton's second law describes
+\emph{inertial mass}, the body's resistance to acting forces. But
+we may say a couple other things.
+
+First, since Newton's second law involves only acceleration, we
+work with the second time derivative of position. Higher order time
+derivative models are unstable since they have energy unbounded
+from below, as Ostrogradski\index{Ostrogradski Theorem} proved\footnote{See
+  Woodard~\cite[\normalfont\S2]{Woodard:2006nt} for a review of
+  Ostrogradski's theorem for classical mechanics.}. 
+
+The second thing to say is that Newton divided the world in two:
+the object we are examining, and the rest of the world affecting
+it. But gravity is now an exception. We consider gravitational
+force of a body with mass $M$ acting on another body (with mass
+$m$) in Newton's second law \eqref{eq:lec01:newtonSecondLaw},
+writing
+\begin{equation}
+F\eqdef\frac{GmM}{r^{2}}
+\end{equation}
+for the gravitational force, and we invoke the second law writing
+\begin{equation}\label{eq:lec01:gravity:newtonSecondLaw}
+\frac{GmM}{r^{2}}=ma.
+\end{equation}
+We observe \emph{mathematically} the masses $m$ cancels out on
+both sides. We thus obtain
+\begin{equation}
+\frac{GM}{r^{2}}=a.
+\end{equation}
+That makes gravity different from everything else, in that it
+makes gravity a \emph{theory of paths}.
+
+Almost\marginpar{Equivalence Principle gives us geometry} automatically, this makes gravity a theory of
+geometry. But first note that really we have the right hand side
+of \eqref{eq:lec01:gravity:newtonSecondLaw} be
+\begin{equation}
+ma=m_{i}a
+\end{equation}
+where $m_{i}$ is the \emph{inertial mass}, whereas the
+gravitational force the body with mass $m$ feels is
+\begin{equation}
+\vec{F}_{12}=\frac{GMm_{g}}{r^{2}}\widehat{e}_{r}
+\end{equation}
+where $\widehat{e}_{r}$ is the unit vector from the body $M$ to
+the body $m$, $m_{g}$ is the \emph{(passive) gravitational
+  mass}\footnote{Note that the way to think of ``gravitational
+  mass'' is that it is the \emph{``charge'' gravity feels.}}
+which experiences the gravitational force, and $M$
+is the \emph{(active) gravitational mass} exerting the
+gravitational force. We have two conceptually different masses:
+the inertial mass $m_{i}$, and the gravitational mass
+$m_{g}$. The basic ingredient for gravity is the idea 
+\begin{equation}\label{eq:lec01:weakEquiv}
+m_{i}=m_{g}
+\end{equation}
+called the \define{Principle of (Weak) Equivalence}\index{Weak Equivalence Principle}\index{Equivalence Principle!Weak}. 
+
+There is a \emph{Strong Equivalence Principle}\index{Strong Equivalence Principle}\index{Equivalence Principle!Strong}. Using
+Newton's third Law, we find
+\begin{equation}
+\vec{F}_{21}=-\vec{F}_{12}.
+\end{equation}
+The role of ``active'' and ``passive'' gravitational masses swap.
+%If active and passive gravitational masses were not
+Active and passive gravitational masses are ``equivalent'' in the sense
+\begin{equation}
+\frac{m^{(a)}}{m^{(p)}}=\frac{M^{(a)}}{M^{(p)}}
+\end{equation}
+where $m$, $M$ are gravitational masses and the superscript
+indicates whether they are active or passive gravitational
+masses. This can be checked by the Earth-Moon\index{Lunar Laser Ranging} system.
+Since 1968, when NASA attached lasers and reflectors (i.e., three plane mirrors
+meeting mutually at right angles) to the moon, we have timed the
+delay of a laser pulse sent to the Moon. If the strong
+equivalence principle didn't hold, we'd expect the
+Earth--Moon system's center of mass would oscillate with the
+Lunar period. But we have not observed this\footnote{See Williams, et al.,~\cite{Williams:2005rv} for more data on this. Will~\cite{Will:1998dx} has a more broad discussion of experimental foundations underlying the equivalence principle in its various forms.}.
+
+Reiterating the main point: the equality
+\begin{equation*}\tag{\ref*{eq:lec01:weakEquiv}}
+m_{i}=m_{g}
+\end{equation*}
+is what makes the geometric picture possible. The present tests
+(as of 2010) suggest they're equal to parts in $10^{12}$ or $10^{13}$.
+
+But Galileo knew the equivalence principle, did he suspect the
+geometrical aspects? No, because gravity determines acceleration,
+and paths depend on initial velocity too. Gravity doesn't
+determine paths in space, instead it determines \emph{paths in spacetime}.
+We need to articulate our vocabulary regarding paths before we can
+continue discussing gravity.
+
+First a \define{Extremal Path} between two points is referred to
+as a \define{Geodesic}. We will set up the framework to discuss
+geodesics, then proceed to consider calculations.
+
+\marginpar{Flat, Intrinsic, Extrinsic Geometries}We need to know a little about what it means for a space to be
+``curved'', so we will first consider what it means for space to
+be ``flat''. We consider it to be the usual Euclidean
+geometry. There is an important distinction between ``intrinsic geometry''\index{Geometry!Intrinsic}\index{Intrinsic Geometry}
+(the curvature of space in itself without reference to higher
+dimensions, e.g., the sum of angles of a triangle on Earth
+doesn't add up to $\pi$, but without reference to 3 dimensions)
+and ``extrinsic geometry''\index{Geometry!Extrinsic} \index{Extrinsic Geometry}
+(curvature as seen in higher dimensions). We mostly care about
+intrinsic curvature with General Relativity. There are times
+(e.g., in the ADM formalism) when extrinsic curvature is
+important. \TODO{figure out some transition motivating arclength}
+
+With paths, we really need an idea of distance. Recall for flat
+space, the Pythogoras' theorem gives us a path's length (more
+or less) as
+\begin{equation}
+s^{2}=x^{2}+y^{2}.
+\end{equation}
+If we knew infinitesimal distances, that's enough: we can
+integrate to get the distance
+\begin{equation}
+s=\int\D s,
+\end{equation}
+where
+\begin{equation}
+(\D s)^{2}=(\D x)^{2}+(\D y)^{2}.
+\end{equation}
+\textbf{WARNING:} the notation used is $\D s^2=(\D s)^2$, which
+may confuse neophytes. The distance between $(x_0,y_0)$ and
+$(x_1,y_1)$ is determined by the variation
+\begin{equation}
+\delta\int^{(x_1,y_1)}_{(x_0,y_0)}\D s=0.
+\end{equation}
+Think of it like the Euler-Lagrange equation. We will now
+consider some special cases.\marginpar{Geodesic Equation: Examples}
+
+\begin{ex}[Sphere]
+Recall a sphere is described by
+\begin{equation}
+x^2+y^2+z^2=R^2.
+\end{equation}
+The distance is
+\begin{equation}
+\D s^2=\D x^2 + \D y^2+\D z^2
+\end{equation}
+with a constraint. In spherical coordinates we have
+\begin{equation}
+\begin{split}
+r^{2}&=x^2+y^2+z^2\\
+&=R^2
+\end{split}
+\end{equation}
+Thus $r$ is constant. By substitution, we find
+\begin{equation}
+\D s^2=\D r^2+r^2(\D\theta^2+\sin^{2}(\theta)\,\D\varphi^2)
+\end{equation}
+This is in a flat 3-dimensional space. But if we set $r=R$ and
+thus $\D r=0$, we obtain
+\begin{equation}
+\D s^2=R^2(\D\theta^2+\sin^{2}(\theta)\,\D\varphi^2)
+\end{equation}
+So we plug this into the variation
+\begin{equation}
+\delta\int\D s=0
+\end{equation}
+to get the geodesic equation.
+\end{ex}
+\begin{ex}
+Consider a surface in $\RR^3$ defined by
+\begin{equation}
+z=f(x,y).
+\end{equation}
+So now we have
+\begin{subequations}
+\begin{align}
+\D s^2 
+&=\D x^2+\D y^2+\D z^2\\
+&=\D x^2+\D y^2+\left(\frac{\partial f}{\partial x}\,\D x+\frac{\partial f}{\partial y}\,\D y\right)^{2}\\
+&=g_{xx}\,\D x^{2}+2g_{xy}\,\D x\,\D y+g_{yy}\,\D y^{2}
+\end{align}
+\end{subequations}
+where we have
+\begin{equation}
+g_{xx}=1+\left(\frac{\partial f}{\partial x}\right)^{2},\quad
+g_{xy}=\frac{\partial f}{\partial x}\frac{\partial f}{\partial y},\quad
+g_{yy}=1+\left(\frac{\partial f}{\partial y}\right)^{2}
+\end{equation}
+are the coefficients. These coefficients $g_{ab}$ are called
+\define{Components of the Metric Tensor}\index{Metric Tensor!Components of ---}
+These are the basic physical variables. There is one
+subtlety---we can have the same geometry described by
+\emph{different coordinates!} For example, in Cartesian
+coordinates the plane $\RR^2$ is described by
+\begin{subequations}
+\begin{equation}
+\D s^2=\D x^2+\D y^2,
+\end{equation}
+whereas in Polar coordinates it is
+\begin{equation}
+\D s^2=\D r^2+r^2\,\D\theta^2,
+\end{equation}
+\end{subequations}
+and although they describe the same geometry (a flat plane), the
+metric tensor is different.
+\end{ex}
+\begin{rmk}\index{Metric Tensor!and Rotation}\index{Rotation!and Metric Tensor}
+Note that the way to tell there is an object experience rotation
+in spacetime is when the metric has a nonzero
+$g_{t\varphi}\not=0$ term.
+\end{rmk}
+
+\begin{ex}[Flat $\RR^2$]
+Consider flat 2-dimensional space. We have
+\begin{equation}
+\D s^2=\D x^2+\D y^2
+\end{equation}
+We want to describe a path, so we parametrize it:
+\begin{equation}
+(x,y)=(x(u),y(u)).
+\end{equation}
+We want to extremize
+\begin{equation}
+\D s=\left[\left(\frac{\D x}{\D u}\right)^{2}+
+\left(\frac{\D y}{\D u}\right)^{2}\right]^{1/2}\D u
+\end{equation}
+Lets call the bracketed term, say,
+\begin{equation}
+E\eqdef\left(\frac{\D x}{\D u}\right)^{2}+
+\left(\frac{\D y}{\D u}\right)^{2}.
+\end{equation}
+This is just an assignment of variables. Intuitively, it plays
+the role of ``kinetic energy''. We want to extremize
+\begin{equation}
+s=\int E^{1/2}\,\D u
+\end{equation}
+What to do? Well,
+\begin{subequations}
+\begin{align}
+\delta\int E^{1/2}\D u
+&=\int\frac{1}{2}E^{-1/2}\delta E\,\D u\\
+&=\int\frac{1}{2}E^{-1/2}\left[2\frac{\D x}{\D u}\delta\frac{\D x}{\D u}+
+\frac{\D y}{\D u}\delta\frac{\D y}{\D u}\right]^{1/2}\D u\\
+&=\int\frac{1}{2}E^{-1/2}\left[2\frac{\D x}{\D u}\frac{\D }{\D u}\delta x+
+\frac{\D y}{\D u}\frac{\D}{\D u}\delta y\right]^{1/2}\D u
+\end{align}
+\end{subequations}
+We integrate by parts, and demand the variation vanishes at its
+endpoints, thus
+\begin{equation}
+\delta\int\D s=-\int\left[
+\frac{\D}{\D u}\left(E^{-1/2}\frac{\D x}{\D u}\right)\delta x
++
+\frac{\D}{\D u}\left(E^{-1/2}\frac{\D y}{\D u}\right)\delta y
+\right]\D u.
+\end{equation}
+So this is supposed to vanish, which implies for the coefficients
+\begin{equation}
+\frac{\D}{\D u}\left(E^{-1/2}\frac{\D x}{\D u}\right)=0\quad
+\mbox{and}\quad
+\frac{\D}{\D u}\left(E^{-1/2}\frac{\D y}{\D u}\right)=0
+\end{equation}
+We can integrate directly to find $E=$constant. There is a trick
+we never specified anything about $u$. So let us choose $u=s$,
+it's a perfectly kosher choice. Then
+\begin{equation}
+E=1
+\end{equation}
+which makes the equations of motion
+\begin{equation}
+\frac{\D^2x}{\D u^2}=0,\quad\mbox{and}\quad
+\frac{\D^2y}{\D u^2}=0.
+\end{equation}
+This has its solution be
+\begin{equation}
+x(s)=as+b,\quad y(s)=\alpha s+\beta.
+\end{equation}
+That's the geodesic for flat space in Cartesian coordinates.
+\end{ex}

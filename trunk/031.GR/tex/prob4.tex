@@ -1,0 +1,100 @@
+%%
+%% prob4.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Mar  7 09:06:46 2012 alex
+%% Last update Wed Mar  7 09:06:46 2012 alex
+%%
+\begin{xca}[Bases and connections]
+Given a basis of tangent vectors $e_{a}$, the connection
+$\Gamma^{b}_{\mu a}$ can be determined by that prescription that
+\begin{equation}\label{eq:prob4:basesConn:eqn1}
+\frac{\D e_{a}}{\D s}=e_{b}\Gamma^{b}_{\mu a}\frac{\D x^{\mu}}{\D s}
+\end{equation}
+In general, this has to be either given from the start or
+determined from the metric, but it's useful to look at a simple
+example where it can be determined by what you already know. 
+
+A coordinate basis for Cartesian coordinates in two dimensions is
+\begin{equation}
+e_{x}=\frac{\partial}{\partial x},\quad
+e_{y}=\frac{\partial}{\partial y}
+\end{equation}
+The corresponding coordinate basis for polar coordinates is
+\begin{equation}
+\begin{split}
+e_{r}&=\frac{\partial}{\partial r}=\frac{x}{r}e_{x}+\frac{y}{r}e_{y}\\
+e_{\theta}&=\frac{\partial}{\partial\theta}=-ye_{x}+xe_{y}.
+\end{split}
+\end{equation}
+
+\noindent\textbf{a.\quad}Show that the relation between $e_x$, $e_y$
+and $e_r$, $e_\theta$ given above is correct, that is, that
+$\partial/\partial r$ and $\partial/\partial\theta$ can be
+expressed in terms of $\partial/\partial x$ and
+$\partial/\partial y$ as shown.
+
+\medbreak
+\noindent\textbf{b.\quad}Suppose that $\D e_{x}/\D s = \D e_y/\D s =
+0$. (This means the space is flat; we'll see this later.) 
+Using Equation \eqref{eq:prob4:basesConn:eqn1}, find the
+connection coefficients $\Gamma^{a}_{\mu b}$ in the polar coordinate basis.
+
+\medbreak
+\noindent\textbf{c.\quad}A different, ``noncoordinate'' basis for
+polar coordinates is 
+\begin{equation}
+e_1 = \frac{\partial}{\partial r},\quad
+e_{2}=\frac{1}{r}\frac{\partial}{\partial\theta}
+\end{equation}
+(This basis is useful in part because it's orthonormal; we'll see
+this later in the course.) Find the connection coefficients in this basis.
+\end{xca}
+\begin{xca}[Killing vectors]\label{xca:prob4:killing}
+A Killing vector $\chi^{\mu}$ is a vector that satisfies the
+Killing equation
+\begin{equation}\label{eq:prob4:killing}
+\nabla_{\mu}\chi_{\nu}+\nabla_{\nu}\chi_{\mu}=0
+\end{equation}
+
+\noindent\textbf{a.\quad}Show that for any Killing vector
+\begin{equation}
+\nabla^{\mu}\nabla_{\mu}\chi^{\rho}=-{R^{\rho}}_{\sigma}\chi^{\sigma}
+\end{equation}
+(Hint: the way to get a curvature tensor in this kind of equation is by commuting covariant
+derivatives somewhere.)
+
+\medbreak\noindent\textbf{b.\quad}Show that if the connection is the standard Christoffel connection, then the Killing
+Equation \eqref{eq:prob4:killing}
+\begin{equation}
+g_{\mu\rho}\partial_{\nu}\chi^{\rho}
++g_{\nu\rho}\partial_{\mu}\chi^{\rho}
++\chi^{\rho}\partial_{\rho}g_{\mu\nu}=0
+\end{equation}
+\end{xca}
+
+\begin{xca}[Christoffel connection and curvature in two dimensions]\label{xca:prob4:2d}
+Any Lorentzian metric on a two-dimensional manifold $M$ can be
+locally put in the form 
+\begin{equation}
+\D s^2 = e^{2\phi} (-\D t^2 +\D x^2)
+\end{equation}
+by a suitable choice of coordinates in an open set on $M$. Here,
+$\phi$ is an arbitrary function of $x$ and $t$. Find the
+Christoffel connection for this metric (in a coordinate
+basis). Find the curvature tensor. What condition must $\phi$
+satisfy for the curvature to vanish? 
+
+(Hint: use the symmetry of the curvature tensor to see that there
+is only one independent nonzero component in two dimensions. This
+will save a lot of work.) 
+\end{xca}
+\begin{xca}[``Moving frames'' in two dimensions]
+Starting with the metric of exercise \ref{xca:prob4:2d} find an
+orthonormal basis of one-forms, and use the Cartan structure
+equations to find the connection one-form and the curvature
+two-form. Compare your result to exercise \ref{xca:prob4:2d}. (The answers had
+better be equivalent!)
+\end{xca}

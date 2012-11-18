@@ -1,0 +1,43 @@
+%%
+%% macros.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Feb 14 08:34:41 2012 alex
+%% Last update Tue Feb 14 08:34:41 2012 alex
+%%
+
+
+\makeatletter
+
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\advance\headsep by1pc
+
+
+\numberwithin{section}{part}
+\renewcommand\thesection{\arabic{section}}
+
+\def\preface{\renewcommand{\leftmark}{Preface}\phantomsection\addcontentsline{toc}{section}{Preface}\section*{Preface}}
+
+
+
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}\sectionfont Lecture \thesection.}\medbreak}
+
+\let\newblock\newline
+
+\theoremstyle{definition}
+\newtheorem{xca}{\llap{\manual\char'170\rm\kern.15em}Exercise}
+\renewcommand\exercises{\phantomsection\subsection*{EXERCISES}\addcontentsline{toc}{subsection}{Exercises}}
+
+\let\tens\mathsf
+
+
+
+
+
+\makeatother

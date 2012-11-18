@@ -1,0 +1,127 @@
+%%
+%% lecture10.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Feb 29 10:50:26 2012 alex
+%% Last update Wed Feb 29 10:50:26 2012 alex
+%%
+
+We want differentiate quantities. Why not just differentiate ``in
+the obvious way'' (i.e., take their derivatives!)?
+The problem with just taking derivatives is we get under a change
+of coordinates
+\begin{equation}
+\partial_{\mu}v^{\nu}\not=\partial_{\mu'}v^{\nu'}.
+\end{equation}
+What to do? Well, we should recall that a\marginpar{$p$-form} \define{$p$-Form}
+is a totally antisymmetric $(0,p)$-tensor
+\begin{equation}
+\omega=\omega_{\mu_{1}\dots\mu_{p}}\D x^{\mu_{1}}\otimes\dots\otimes\D x^{\mu_{p}}
+\end{equation}
+What do we mean by totally antisymmetric? Well, it obeys
+\begin{equation}
+\omega_{\mu_{1}\dots\mu_{k}\mu_{k+1}\dots\mu_{p}}
+=-\omega_{\mu_{1}\dots\mu_{k+1}\mu_{k}\dots\mu_{p}}.
+\end{equation}
+For a 2-form, the components look like
+\begin{equation}
+\partial_{\mu}\omega_{\nu}-\partial_{\nu}\omega_{\mu}
+\end{equation}
+for example.
+
+\subsection{Exterior Calculus}
+We will use the notation
+\begin{equation}
+A_{[\mu_{1}\dots\mu_{p}]}=\frac{1}{p!}(-1)^{\pi}A_{\pi(\mu_{1})\dots\pi(\mu_{p})}
+\end{equation}
+where $\pi$ is a permutation of the indices. Given a $p$-form
+$A$, and a $q$-form $B$, the exterior product\marginpar{Exterior Product} is defined to be
+\begin{equation}
+(A\wedge B)_{\mu_{1}\dots\mu_{p+q}}
+=\left(\frac{(p+q)!}{p!q!}\right)A_{[\mu_{1}\dots\mu_{p}]}B_{[\mu_{p+1}\dots\mu_{p+q}]}.
+\end{equation}
+We also have an exterior derivative\marginpar{Exterior Derivative}
+\begin{equation}
+(\D A)_{\mu_{1}\dots\mu_{p+1}}=\partial_{[\mu_{1}}A_{\mu_{2}\dots\mu_{p+1}]}.
+\end{equation}
+Consider concrete cases. If $A$ is a 1-form, then
+\begin{equation}
+\begin{split}
+(\D A)_{\mu\nu}
+&=\partial_{[\mu}A_{\nu]}\\
+&=\frac{1}{2}(\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu})
+\end{split}
+\end{equation}
+Let $A$ be a $p$-form and $B$ be a $q$-form, then
+\begin{equation}
+\D(A\wedge B)=(\D A)\wedge B+(-1)^{p}A\wedge(\D B).
+\end{equation}
+Equivalently, in this formulation, we have for a function $f$
+\begin{equation}
+\D f=\vec{\nabla}f
+\end{equation}
+and
+\begin{equation}
+\D^{2}f=0.
+\end{equation}
+Whenever we have a $p$-form $A$ such that
+\begin{equation}
+\D A=0
+\end{equation}
+we call it a \define{Closed Form}\marginpar{Closed form: $\D A=0$\\ Exact Form $B=\D C$}.
+We have an \define{Exact Form} be a $p$-form $B$ such that it is
+of the form
+\begin{equation}
+B=\D C
+\end{equation}
+where $C$ is a $(p-1)$-form. Not all closed forms are exact.
+\begin{ex}[Closed Inexact Form]
+A closed but inexact form on a circle is $\D\theta$.
+\end{ex}
+
+\subsection{Differentiating Tangent Vectors}
+Consider an arbitrary tangent vector
+\begin{equation}
+v=v^{\mu}\partial_{\mu}=v^{a}e_{a}.
+\end{equation}
+Lets consider what differentiation would look like in this
+approach, we have
+\begin{equation}
+\partial_{\rho}v\;\mbox{``=''}\;(\partial_{\rho}v^{a})e_{a}+v^{a}(\partial_{\rho}e_{a}).
+\end{equation}
+But this second term is ambiguous? What should we have? Well, we
+should write
+\begin{equation}
+\partial_{\rho}e_{a}=e_{b}{\Gamma^{b}}_{\rho a}-e_{b}{{\Gamma_{\rho}}^{b}}_{a}
+\end{equation}
+where ${{\Gamma_{\rho}}^{b}}_{a}$ is called the connection's components.
+In general, we may say absolutely nothing about the connection as
+it specifies the manifold. We can now write
+\begin{equation}
+\begin{split}
+\partial_{\rho}v
+&\mbox{``=''}(\partial_{\rho}v^{b})e_{b}+e_{b}{{\Gamma_{\rho}}^{b}}_{a}v^{a}\\
+&\mbox{``=''}\underbracket[0.5pt]{(\partial_{\rho}v^{b}+{{\Gamma_{\rho}}^{b}}_{a}v^{a})}_{\nabla_{\rho}v^{b}}e_{b}
+\end{split}
+\end{equation}
+where $\nabla_{\rho}v^{b}$ is the \define{Covariant Derivative}. 
+The intuition is
+\begin{equation}
+\begin{pmatrix}
+\mbox{Covariant}\\
+\mbox{Derivative}
+\end{pmatrix}=\begin{pmatrix}
+\mbox{Derivative in}\\
+\mbox{Flat Space}
+\end{pmatrix}
++\begin{pmatrix}
+\mbox{Corrections to}\\
+\mbox{stay on the}\\\mbox{manifold}
+\end{pmatrix}
+\end{equation}
+where the connection components are precisely these correction
+terms. In a coordinate basis, the components becomes
+${{\Gamma_{\rho}}^{\nu}}_{\mu}$ which are called the
+\define{Christoffel Symbols}.

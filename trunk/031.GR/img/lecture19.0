@@ -1,0 +1,112 @@
+%!PS
+%%BoundingBox: -16 -21 292 16 
+%%HiResBoundingBox: -15.06897 -20.9329 291.96707 15.78539 
+%%Creator: MetaPost 1.208
+%%CreationDate: 2012.07.20:0808
+%%Pages: 1
+%*Font: cmsy10 9.96265 9.96265 0f:8
+%*Font: cmr10 9.96265 9.96265 28:c00000000000004200354
+%*Font: cmex10 9.96265 9.96265 10:c
+%*Font: cmr7 6.97385 6.97385 61:c886788
+%*Font: cmmi10 9.96265 9.96265 52:800000008
+%%BeginProlog
+%%EndProlog
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.25 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinejoin 10 setmiterlimit
+newpath 2.24161 11.20798 moveto
+2.24161 11.8025 2.00539 12.37262 1.58502 12.79298 curveto
+1.16466 13.21336 0.59454 13.44957 0 13.44957 curveto
+-0.59454 13.44957 -1.16466 13.21336 -1.58502 12.79298 curveto
+-2.00539 12.37262 -2.24161 11.8025 -2.24161 11.20798 curveto
+-2.24161 10.61343 -2.00539 10.04332 -1.58502 9.62296 curveto
+-1.16466 9.20259 -0.59454 8.96637 0 8.96637 curveto
+0.59454 8.96637 1.16466 9.20259 1.58502 9.62296 curveto
+2.00539 10.04332 2.24161 10.61343 2.24161 11.20798 curveto closepath stroke
+ 0.25 0 dtransform exch truncate exch idtransform pop setlinewidth 1 setlinecap
+newpath 0 8.96638 moveto
+0 2.9888 lineto stroke
+ 0 0.25 dtransform truncate idtransform setlinewidth pop
+newpath 0 2.9888 moveto
+-2.9888 0 lineto stroke
+newpath 0 2.9888 moveto
+2.9888 0 lineto stroke
+newpath -2.9888 6.7248 moveto
+2.9888 6.7248 lineto stroke
+newpath -9.71356 11.20798 moveto
+-9.71356 11.8025 -9.94978 12.37262 -10.37015 12.79298 curveto
+-10.79051 13.21336 -11.36063 13.44957 -11.95517 13.44957 curveto
+-12.54971 13.44957 -13.11983 13.21336 -13.54019 12.79298 curveto
+-13.96056 12.37262 -14.19678 11.8025 -14.19678 11.20798 curveto
+-14.19678 10.61343 -13.96056 10.04332 -13.54019 9.62296 curveto
+-13.11983 9.20259 -12.54971 8.96637 -11.95517 8.96637 curveto
+-11.36063 8.96637 -10.79051 9.20259 -10.37015 9.62296 curveto
+-9.94978 10.04332 -9.71356 10.61343 -9.71356 11.20798 curveto closepath stroke
+ 0.25 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath -11.95517 8.96638 moveto
+-11.95517 2.9888 lineto stroke
+ 0 0.25 dtransform truncate idtransform setlinewidth pop
+newpath -11.95517 2.9888 moveto
+-14.94397 0 lineto stroke
+newpath -11.95517 2.9888 moveto
+-8.96637 0 lineto stroke
+newpath -14.94397 6.7248 moveto
+-8.96637 6.7248 lineto stroke
+260.52309 -2.2139 moveto
+(\017) cmsy10 9.96265 fshow
+260.52309 9.74127 moveto
+(\017) cmsy10 9.96265 fshow
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 266.54398 1.15329 moveto
+268.02785 2.24098 268.99132 3.99677 268.99132 5.97758 curveto
+268.99132 7.9584 268.02785 9.71419 266.54398 10.80188 curveto stroke
+newpath 269.89012 8.61014 moveto
+269.04964 9.7183 267.8576 10.48065 266.54398 10.80188 curveto
+267.2457 9.64584 267.54951 8.2639 267.36018 6.88599 curveto
+ closepath
+gsave fill grestore stroke
+newpath 259.48349 10.80188 moveto
+257.99962 9.71419 257.03615 7.9584 257.03615 5.97758 curveto
+257.03615 3.99677 257.99962 2.24098 259.48349 1.15329 curveto stroke
+newpath 256.13734 3.34503 moveto
+256.97783 2.23686 258.16986 1.47452 259.48349 1.15329 curveto
+258.78177 2.30933 258.47795 3.69127 258.66728 5.06918 curveto
+ closepath
+gsave fill grestore stroke
+ [3 3 ] 0 setdash
+newpath 11.95517 5.97758 moveto
+251.05856 5.97758 lineto stroke
+ [] 0 setdash
+newpath 247.3643 4.44734 moveto
+251.05856 5.97758 lineto
+247.3643 7.50783 lineto
+ closepath
+gsave fill grestore stroke
+-14.58424 -10.472 moveto
+(\(us\)) cmr10 9.96265 fshow
+97.26024 -4.49442 moveto
+(\(far) cmr10 9.96265 fshow
+116.38304 -4.49442 moveto
+(a) cmr10 9.96265 fshow
+121.08763 -4.49442 moveto
+(w) cmr10 9.96265 fshow
+128.00613 -4.49442 moveto
+(a) cmr10 9.96265 fshow
+132.71074 -4.49442 moveto
+(y\)) cmr10 9.96265 fshow
+234.06038 -3.39851 moveto
+(\020) cmex10 9.96265 fshow
+251.79707 -10.0364 moveto
+(binary) cmr7 6.97385 fshow
+241.20578 -17.89261 moveto
+(neutron) cmr7 6.97385 fshow
+271.46748 -17.89261 moveto
+(star) cmr7 6.97385 fshow
+286.01707 -3.39851 moveto
+(\021) cmex10 9.96265 fshow
+115.73094 8.97758 moveto
+(R) cmmi10 9.96265 fshow
+271.99132 3.83282 moveto
+(r) cmmi10 9.96265 fshow
+showpage
+%%EOF

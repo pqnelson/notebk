@@ -1,0 +1,166 @@
+%%
+%% lecture20.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jul 11 10:23:24 2012 alex
+%% Last update Wed Jul 11 10:23:24 2012 alex
+%%
+
+The weakfield equations' advantage: reduces Einstein's equations
+to linear, uncoupled differential equations. But the problem is
+it doesn't tell us everything. On the other hand, the full
+Einstein equation has for each component some 50000 terms if we
+don't use summation. If we use symmetry, we can reduce the number
+of terms.
+
+We first look at a static (time independent) and spherically
+symmetric solution. (In general, if we assume ``homogeneous'', then
+we cannot assume ``static''.) 
+
+The technical way to deal with time independence is to say there
+exists a timelike vector $\zeta^{\mu}$ such that the transformation
+\begin{equation}
+x^{\mu}\to x^{\mu}+\zeta^{\mu}
+\end{equation}
+doesn't change the metric. We saw in Equation \eqref{eq:lec16:killingVec}
+the metric changes under transformations of this sort as
+\begin{equation}
+g_{\mu\nu}\to
+g_{\mu\nu}+\nabla_{\mu}\zeta_{\nu}+\nabla_{\nu}\zeta_{\mu}.
+\end{equation}
+We have
+\begin{equation}
+\nabla_{\mu}\zeta_{\nu}+\nabla_{\nu}\zeta_{\mu}=0
+\end{equation}
+the Killing equation, and $\zeta^{\mu}$ is the Killing vector. We
+showed in Exercise \ref{xca:prob4:killing} that
+\begin{equation}
+\nabla_{\mu}\zeta_{\nu}+\nabla_{\nu}\zeta_{\mu}=
+g_{\mu\rho}\partial_{\nu}\zeta^{\rho}
++g_{\nu\rho}\partial_{\mu}\zeta^{\rho}
++\zeta^{\rho}\partial_{\rho}g_{\mu\nu}.
+\end{equation}
+We just take coordinates $\zeta^{t}=1$, and $\zeta^{i}=0$ (i.e.,
+rescale the time components). Then we have our Killing equation
+reduce to
+\begin{equation*}\tag{\mbox{stationary metric}}
+\zeta^{t}\partial_{t}g_{\mu\nu}=\partial_{t}g_{\mu\nu}=0
+\end{equation*}
+which is a coordinate independent expression telling us the
+metric is time independent. There is a subtlety here: a rotating
+object doesn't appear to change. We introduce another condition,
+a new symmetry as $t\to-t$. A stationary metric which satisfies
+is said to be \define{Static}. In these coordinates, this is
+equivalent to 
+\begin{equation}
+g_{it}=0.
+\end{equation}
+So
+\begin{equation}
+\D s^{2}=g_{tt}\,\D t^{2}+g_{ij}\,\D x^{i}\,\D x^{j}
+\end{equation}
+(If we cannot eliminate $g_{it}$, it's an indicator of a moving system.)
+
+We will examine the static, spherically symmetric metric. The
+metric shouldn't ``change'' when moving along an entire loop on a
+2-sphere; in some sense there is an invariance. The angular
+dependence is just
+\begin{equation*}
+\D\theta^{2}+\sin^{2}(\theta)\,\D\varphi^{2}
+\end{equation*}
+so
+\begin{equation}
+\D s^{2} = g_{tt}\,\D t^{2} - R^{2}(\D\theta^{2}+\sin^{2}(\theta)\,\D\varphi^{2})
+-g_{rr}\,\D r^{2}
+\end{equation}
+if we think of the spacetime as foliated spheres, the $r$
+determines which spherical disc we're on. We know that $g_{tt}$,
+$R$, $g_{rr}$ depend on $r$ but not on the angles or we wouldn't
+have spherical symmetry, nor does it have a dependency on $t$.
+\begin{rmk}
+See Wald~\cite{Wald:1984rg} for a good discussion of
+$\mathrm{SO}(3)$ symmetry in General Relativity.
+\end{rmk}
+We still have one coordinate degree of freedom---$r$. We can still
+choose many different coordinate systems.
+
+If we fix $r$, we can do it several different ways. The laziest
+way is to choose $r$ satisfying
+\begin{equation}
+g_{rr}=1
+\end{equation}
+which happens when $r$ is the proper distance. We can also choose
+$r$ to satisfy instead
+\begin{equation}
+g_{rr} = R^{2}/r^{2}
+\end{equation}
+which then gives us
+\begin{equation}
+\D s^{2} = g_{tt}\,\D t^{2} - g_{rr}\underbrace{\bigl(\D r^{2} + r^{2}(\D\theta^{2}+\sin^{2}\theta\,\D\varphi^{2})\bigr)}_{\text{usual flat metric}}.
+\end{equation}
+With this choice we have isotropic coordinates. Both of these
+make the field equations a wee bit complicated. But there is a
+third choice! We fix
+\begin{equation}
+R=r
+\end{equation}
+which are ``areal coordinates'' describing a 2-sphere at $r$ with
+area $4\pi r^{2}$.
+
+For the Schwarzschild solution, we choose areal
+coordinates. (Originally Schwarzschild chose coordinates where
+$\det(g)=1$.) We then have
+\begin{equation}
+\D s^{2} = A(r)\,\D t^{2}-B(r)\,\D
+r^{2}-r^{2}(\D\theta^{2}+\sin^{2}\theta\,\D\varphi^{2})
+\end{equation}
+In the Einstein vacuum equation we have
+\begin{equation}
+A = B^{-1} = 1-\frac{2m}{r}
+\end{equation}
+But really by integration, the constant term (the ``1'') is an
+integration constant.
+
+What if $r\approx 2m$? It gets mildly interesting. At $r=2m$,
+something goes horribly awry since $A\to0$ but $B\to\infty$, and
+$\D s^{2}\to\textbf{??}$ This was not understood for a
+longtime. Back in the 1920s, Panlieve et al.~wrote papers with
+novel coordinate systems but this was largely ignored. 
+Is this singularity from poor choice of coordinates, or from
+something deep and not easily understandable in nature?
+
+Lets examine as an example
+\begin{equation}
+\begin{aligned}
+\D s^{2}&= \D x^{2}+\D y^{2}, &\quad &\mbox{let}\quad
+x=\frac{1}{u-1}\\
+&=\frac{\D u^{2}}{(u-1)^{2}}+\D y^{2}
+\end{aligned}
+\end{equation}
+at $u=1$ we have a singularity! 
+
+We can try to look at coordinate independent quantities as a
+first step. For example
+\begin{subequations}
+\begin{align}
+R &= 0\\
+R_{\mu\nu}R^{\mu\nu} &=0.
+\end{align}
+but
+\begin{equation}
+R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=\frac{48m^{2}}{r^{6}}.
+\end{equation}
+\end{subequations}
+At $r=2m$, nothing scary happens! It turns out every scalar we
+can form from the curvature behaves unsuspiciously at
+$r=2m$. Physically, there doesn't appear locally anything new and
+scary. 
+
+On the other hand, for $r<2m$, the temporal component and radial
+component switch. That is
+\begin{equation}
+A(r)<0,\quad\mbox{and}\quad B(r)<0
+\end{equation}
+so spacelike becomes timelike, and timelike becomes spacelike.

@@ -1,0 +1,188 @@
+%%
+%% lecture13.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Mar  2 13:10:48 2012 alex
+%% Last update Fri Mar  2 13:10:48 2012 alex
+%%
+
+\begin{wrapfigure}{r}{6pc}
+  \vspace{-1pc}
+  \includegraphics{img/lecture13.0}
+  \vspace{-2pc}
+\end{wrapfigure}
+We will discuss a bit more about parallel transport, since it is
+the main ingredient in defining curvature. 
+
+Parallel transport a vector $v^{a}$ at $p$ along a curve through
+$p$. We find the parallel transport by considering
+\begin{equation}
+\frac{\D x^{\mu}}{\D s}\nabla_{\mu}v^{a}=0,
+\end{equation}
+which is a first order differential equation.
+
+Consider flat space in Cartesian coordinates, this equation
+becomes
+\begin{equation}
+\begin{split}
+\frac{\D x^{\mu}}{\D s}\frac{\partial v^{a}}{\partial x^{\mu}}
+&=\frac{\D v^{a}}{\D s}\\
+&=0
+\end{split}
+\end{equation}
+which means we keep components constant. In flat space, using
+arbitrary coordinates, this is \emph{necessarily} true too!
+
+In curved space, using the Christoffel connection, a geodesic is
+given by
+\begin{equation}
+\frac{\D x^{\mu}}{\D s}\nabla_{\mu}
+\left(\frac{\D x^{\nu}}{\D s}
+\right)=0.
+\end{equation}
+This demands that the tangent to the geodesic remains parallel to
+itself. Further, if
+\begin{equation}
+\frac{\D x^{\mu}}{\D s}\nabla_{\mu}v^{a}=0
+\end{equation}
+this implies the length of $v$ is constant and the angle between
+$v$ and the tangent is constant.
+
+We can go backwards: first defining parallel transport, then
+obtaining the covariant derivative. Lets define Cartesian
+coordinates in flat space, which is trivial. We just parallel
+transport the orthonormal basis to each point in space.
+
+Lets start with a curved space and an orthonormal frame at a
+point. We can then parallel transport it to every point. So
+there's a tad of a paradox. The problem is there are many ways to
+go from one point to another. It can yield two different bases,
+given two different parallel transports from one point to
+another. It can yield two different bases given two different
+parallel transports from one point to another. We can measure
+curvature by the difference. An equivalent procedure begins with
+a point, make a loop, then transport the frame around the
+loop. How it changes yields information about the
+curvature. Recall the geodesic equation
+\begin{equation}
+\frac{\D v^{a}}{\D s}
++{{\Gamma_{\mu}}^{a}}_{b}\frac{\D x^{\mu}}{\D s}v^{b}=0
+\end{equation}
+although for simplicity we write
+\begin{equation}
+{{\Gamma_{\mu}}^{a}}_{b}\frac{\D x^{\mu}}{\D s}={A^{a}}_{b}.
+\end{equation}
+Thus the geodesic equation is the familiar
+\begin{equation}
+\frac{\D v^{a}}{\D s}+{A^{a}}_{b}v^{b}=0
+\end{equation}
+and $v^{a}(0)$ is given.
+
+We can use standard methods for solving coupled differential
+equations, or we can integrate
+\begin{align}
+v^{a}(s)
+&= v^{a}(0)-\int^{s}_{0} {A^{a}}_{b}(s_{1})v^{b}(s_{1})\,\D s_{1}\\
+&= v^{a}(0)-
+\int^{s}_{0} {A^{a}}_{b}(s_{1})\left[v^{b}(0)-\int^{s_{1}}_{0}{A^{b}}_{c}(s_{2})v^{c}(s_{s})\,\D s_{2}\right]\,\D s_{1}
+\nonumber\tag{\mbox{iterate}}\\
+&= v^{a}(0)-
+\int^{s}_{0}
+    {A^{a}}_{b}(s_{1})\left[v^{b}(0)-\int^{s_{1}}_{0}{A^{b}}_{c}(s_{2})
+\left(v^{c}(0)-\int^{s_{2}}_{0}{A^{c}}_{d}(s_{3})v^{d}(s_{3})\D s_{3}\right)
+\D s_{2}\right]\D s_{1}
+\nonumber\tag{\mbox{iterate again}}
+\end{align}
+This is the origin of holonomy\marginpar{Holonomy}. This
+iterative process yields
+\begin{equation}
+v^{a}(s)=\sum_{n=0}^{\infty}\int^{s}_{0}\int^{s_{1}}_{0}\dots\int^{s_{n-1}}_{0}
+{\bigl(A(s_{1})A(s_{2})\dots A(s_{n})\bigr)^{a}}_{b}v^{b}(0)
+\,\D s_{n}\dots\D s_{1}.
+\end{equation}
+We define the path-ordering operator\marginpar{Path-Ordering Operator $\pathOrder$}
+\begin{equation}
+\pathOrder\bigl(A(s_{1})B(s_{2})\bigr)
+=\begin{cases}A(s_{1})B(s_{2}) & \mbox{if }s_{1}>s_{2}\\
+B(s_{2})A(s_{1}) &\mbox{if }s_{2}>s_{1}
+\end{cases}
+\end{equation}
+The mnemonic is ``later is last'' (where last is the left-most).
+
+So we have
+\begin{equation}
+\begin{split}
+v^{a}(s)
+&= \sum\frac{(-1)^{n}}{n!}\pathOrder\left(
+\int^{s}_{0}\dots\int^{s}_{0}
+{\bigl(A(s_{1})\dots A(s_{n})\bigr)^{a}}_{b}v^{b}(0)\,\D
+s_{n}\dots\D s_{1}
+\right)\\
+&=\pathOrder\bigg(\underbracket[0.5pt]{\exp(-\int^{s}_{0}A\,\D
+  s_{1}){{}^{a}}_{b}}_{\mathclap{\text{Parallel Transport Matrix}}}v^{b}(0)\bigg).
+\end{split}
+\end{equation}
+For a closed loop, it is called the \define{Holonomy} of the
+loop. We can write the holonomy as
+\begin{equation}
+H =
+\pathOrder\bigg(\exp(-\oint\Gamma_{\mu}\,\D x^{\mu}){{}^{a}}_{b}\,v^{b}(0)\bigg).
+\end{equation}
+For an infinitesimal curve, we find
+\begin{equation}
+{H^{a}}_{b}={\delta^{a}}_{b}
++{{R_{\mu\nu}}^{a}}_{b}\,\D x^{\mu}\wedge\D x^{\nu}
++\begin{pmatrix}\mbox{Higher %}\\\mbox{
+Order}\\
+\mbox{Terms}
+\end{pmatrix}
+\end{equation}
+where using the ordinary Stokes' theorem\footnote{Mathematicians
+  call \emph{everything} ``Stokes' theorem'', so be forewarned
+  gentle physicist!}
+\begin{equation}
+{{R_{\mu\nu}}^{a}}_{b}=\partial_{\mu}{{\Gamma_{\nu}}^{a}}_{b}
+-\partial_{\nu}{{\Gamma_{\mu}}^{a}}_{b}
++{{\Gamma_{\mu}}^{a}}_{c}{{\Gamma_{\nu}}^{c}}_{b}
+-{{\Gamma_{\nu}}^{a}}_{c}{{\Gamma_{\mu}}^{c}}_{b}
+\end{equation}
+which is the curvature tensor. It's antisymmetric in the first
+two indices, and if we lower the $a$ index the last two indices
+are antisymmetric in an orthonormal frame.
+
+\begin{rmk}
+We have the Holonomy group $\GL{4,\RR}$ in general, but we can
+impose symmetry. The $A$ is a Lie-algebra valued one-form.
+\end{rmk}
+
+The curvature form\marginpar{Curvature Form} is thus
+\begin{equation}\label{eq:curvatureTwoFormDefn}
+{\mathcal{R}^{a}}_{b}=\frac{1}{2}{{R_{\mu\nu}}^{a}}_{b}\,\D x^{\mu}\wedge\D x^{\nu}
+\end{equation}
+in that case. In an orthonormal basis, the equation for curvature becomes:
+\begin{equation}\label{eq:cartanSecondStructEqn}
+{\mathcal{R}^{a}}_{b}=\D{\omega^{a}}_{b}+{\omega^{a}}_{c}\wedge{\omega^{c}}_{b}.
+\end{equation}
+This is the second Cartan structure equation.
+
+\begin{danger}
+Note that Equation \eqref{eq:cartanSecondStructEqn} holds only
+when we work with an orthonormal frame!
+\end{danger}
+
+\medskip
+\noindent\ignorespaces Once we have the curvature two-form (i.e., we know what
+${\mathcal{R}^{a}}_{b}$ is) we can go back to Equation
+\eqref{eq:curvatureTwoFormDefn} to obtain
+${{R_{\mu\nu}}^{a}}_{b}$ in some basis. 
+
+
+\begin{danger}
+Using symmetries of the curvature tensor, some authors (e.g.,
+Carroll~\cite{Carroll:2004st}) write
+${\mathcal{R}^{a}}_{b}=\frac{1}{2}{R^{a}}_{b\mu\nu}\,\D x^{\mu}\wedge\D x^{\nu}$.
+Just be forewarned on the different equivalent ways of defining
+the curvature two-form!
+\end{danger}

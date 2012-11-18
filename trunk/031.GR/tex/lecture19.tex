@@ -1,0 +1,241 @@
+%%
+%% lecture19.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Jul  6 11:16:20 2012 alex
+%% Last update Fri Jul  6 11:16:20 2012 alex
+%%
+
+So lets consider a binary neutron star. Let $r$ be the radius of
+the binary neutron star, and we are a distance $R$ away from the
+center of mass. We can doodle the situation:
+\begin{center}
+\includegraphics{img/lecture19.0}
+\end{center}
+If $R\ggg r$, then we can approximate this as
+\begin{equation}
+\bar{h}_{\mu\nu} \approx\frac{4G}{R}\int
+T_{\mu\nu}(\vec{y},t-R)\,\D^{3}y.
+\end{equation}
+Remember we're in a gauge where
+\begin{equation}
+\partial_{\mu}\bar{h}^{\mu\nu}=0
+\end{equation}
+which implies $h^{t\mu}$ is determined by $h^{ij}$. So for all
+practical purposes, we can just compute $h^{ij}$.
+
+Now, for some tricks:
+\begin{equation}
+\begin{split}
+\partial_{k}(x^{i}T^{jk})
+&={\delta^{i}}_{k}T^{jk} + x^{i}\partial_{k}T^{jk}\\
+&=T^{ij} + x^{i}\partial_{k}T^{jk}\\
+&=T^{ij} - x^{i}\partial_{t}T^{jt} + \bigO(h).
+\end{split}
+\end{equation}
+Thus we have
+\begin{equation}
+T^{ij} = \partial_{t}(x^{i}T^{tj})
++ \begin{pmatrix}\mbox{total}\\\mbox{derivative}
+\end{pmatrix}
++\bigO(h)
+\end{equation}
+Using Stoke's theorem, the integral of a total derivative is
+zero, so we have
+\begin{equation}
+\bar{h}_{ij} = \frac{2G}{R}\frac{\D^{2}}{\D t^{2}}\int
+\underbrace{y^{i}y^{j}T^{tt}(\vec{y},t-R)}_{\mathclap{\text{mass quadrapole moment}}}\,\D^{3}y
+\end{equation}
+which confirms the handwaving arguments from the last lecture, which
+we justified with conservation laws.
+
+Observe the quadrapole moment behaves as
+\begin{equation}
+I_{ij}\sim mr^{2}
+\end{equation}
+for a binary star with comparable masses. So we see
+\begin{equation}
+\ddot{I}_{ij}\sim mv^{2}
+\end{equation}
+If this is a gravitationally bound system, it works out\dots but
+this means that
+\begin{equation}
+h\sim G\frac{mv^{2}}{R}.
+\end{equation}
+Further we know for gravitational systems
+\begin{equation}
+v^{2}\sim G\frac{m}{r}
+\end{equation}
+and thus
+\begin{equation}
+h\sim v^{4}\left(\frac{r}{R}\right).
+\end{equation}
+We discuss these things in detail in the following box. A binary
+neutron star affects the distance by about $1/1000$ of the
+diameter of a nucleus, though.
+\input{tex/simplificationsForWeakRad}
+
+Nevertheless, in the next five years we will detect these
+things. LIFO has a photon running around in a pipe with length
+$L\sim 10^{3}\,\mathrm{m}$ about $10^{3}$ times which is
+effectively $L_{eff}\sim 10^{9}\,\mathrm{m}$. So there would be
+constructive or destructive interference.
+
+If we are lucky, we'll see results in a year (in 2010); huge
+upgrades are due in 2009. Interesting quantum effects decreasing
+uncertainty in error wavelength; we are nearly saturating
+uncertainty at this point.
+
+There is something of note: the weak field approximation of the
+Einstein tensor gives us
+\begin{equation}
+G_{\mu\nu} = \frac{-1}{2}\Box\bar{h}_{\mu\nu}+(\partial
+h)(\partial h)
+\end{equation}
+where 
+\begin{equation}
+(\partial
+h)(\partial h)
+= \begin{pmatrix}\mbox{self-contribution}\\\mbox{term}
+\end{pmatrix} =: t^{\text{(grav)}}_{\mu\nu}.
+\end{equation}
+It's not really a tensor! The energy carried off by the radiation
+can be found by identifying power $\sim t^{0i}$. So the total
+power radiated is 
+\begin{equation}
+P\sim t^{0i}R^{2}. 
+\end{equation}
+Remember that
+\begin{equation}
+h\sim \frac{G}{R}\ddot{I}
+\end{equation}
+thus
+\begin{equation}
+\begin{aligned}
+t&\sim\frac{1}{G}\dot{h}^{2}\\
+&\sim G(\dddot{I}/R)^{2}.
+\end{aligned}
+\end{equation}
+Hence the power looks like
+\begin{equation}
+P\sim R^{2}t\sim G\dddot{I}^{2}.
+\end{equation}
+Remember
+\begin{equation}
+I\sim mr^{2},\quad\mbox{so}\quad
+\dddot{I}\sim mva
+\end{equation}
+and by Newton's Laws
+\begin{equation}
+\dddot{I}\sim mv^{3}/r.
+\end{equation}
+Then the power looks like
+\begin{equation}
+\begin{aligned}
+P & \sim G(mv^{3}/r)^{2}=Gm^{2}v^{6}/r^{2}\\
+&\sim mv^{8}/r
+\end{aligned}
+\end{equation}
+where the last manipulation is again by Newton's Laws. Remember
+we set $c=1$, so the power is really small.
+
+
+\begin{exercises}
+\begin{xca}[Detecting gravitational radiation I]
+We considered a coordinate system (``gauge'') for weak fields in
+which $\partial_{\mu}\bar{h}^{\mu\nu}=0$. In a region in which the
+  stress-energy tensor $T_{\mu\nu}$ is zero, we can make a
+  further coordinate transformation such that $h_{0\mu}=0$ and
+  $h=\eta^{\mu\nu}h_{\mu\nu}=0$. In such a coordinate system, a
+  gravitational plane wave moving along the $z$ axis has a metric
+  (see, e.g., Carroll~\cite{Carroll:2004st} section 7.4) 
+\begin{equation}\label{eq:ex1:metricWeWannaFind}
+g_{\mu\nu}=\eta_{\mu\nu}+C_{\mu\nu}\cos\bigl(\omega(t-z)\bigr),
+\quad\mbox{with}\quad
+C_{\mu\nu} = \begin{pmatrix} 0 & 0 & 0 & 0\\
+0 & h_{+} & h_{\times} & 0\\
+0 & h_{\times} & -h_{+} & 0\\
+0 &0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+where $h_{+}$ and $h_{\times}$ are constants.
+\begin{enumerate}
+\item Under a rotation in the $x$-$y$ plane, the coordinates transform as
+\begin{equation}
+\begin{aligned}
+x &= \bar{x}\cos\theta + \bar{y}\sin\theta\\
+y &= \bar{y}\cos\theta - \bar{x}\sin\theta
+\end{aligned}
+\end{equation}
+Find the transformations for $h_{+}$ and $h_{\times}$. For what
+angle are the two polarizations interchanged? 
+\item Consider a mass initially located at position $(x_{0}, 0,
+  0)$ with vanishing initial velocity, $\D x^i /\D s = 0$. Find
+  the geodesic equation for this object, with the metric
+  \eqref{eq:ex1:metricWeWannaFind}, to first order in $h$. Show
+  that the object will remain at rest at $(x_{0}, 0, 0)$. (Note
+  that ``at rest'' is a coordinate-dependent statement. That's
+  OK, though: for this problem, the gauge conditions have
+  implicitly determined a unique coordinate system.) 
+\item\label{ex1:partC:lot8} Consider two mirrors, at rest along the $x$ axis at $(0, 0,
+  0)$ and $(L, 0, 0)$. Using the metric
+  \eqref{eq:ex1:metricWeWannaFind}, compute the round-trip time
+  $\Delta t$ for a light pulse starting at the origin at time
+  $t_{0}$, moving along the $x$ axis, reflecting from the mirror
+  at $x = L$, and returning to the origin. For this computation
+  you can assume that $\Delta t\ll1/\omega$, so the quantity
+  $\omega{t}$ can be treated as a constant. Your answer should
+  depend on $t_{0}$; if it doesn't, you've made a mistake. 
+\item For flat spacetime, the round-trip time $\Delta t$ of part
+  \ref{ex1:partC:lot8} is $2L$. The effect of the gravitational
+  wave is the same as if the light traveled a slightly different
+  distance $2L +\Delta L$. For a ``strain'' of $h\sim 10^{-21}$
+  (a reasonable estimate for astrophysical sources of
+  gravitational radiation) and a mirror separation $L\sim 4\,{\rm
+    km}$ (the length of an arm of the LIGO detector), estimate
+  the maximum value of $\Delta{L}$. Compare this to the size of a
+  typical atomic nucleus of about $1\,{\rm fm}$. Tiny as it is,
+  this change in distance should be detectable in an
+  interferometer! 
+\end{enumerate}
+\end{xca}
+\begin{xca}[Detecting gravitational radiation II]
+Another way to construct a gravitational wave detector is to use a metal bar isolated from external sources of noise. When a gravitational wave passes, the two ends of the bar will accelerate at different rates, setting up oscillations. The relative acceleration of the two ends is determined by the equation of geodesic deviation. The deviation vector $X$ can be interpreted as the distance between the two ends of the rod---since spacetime
+is assumed to be nearly flat, it makes sense to talk about Cartesian coordinates and
+distances. In this problem, we will model the bar of metal by two masses at the ends of
+a spring.
+
+A weak gravitational wave is given by the metric of problem 2. Consider two equal masses on a spring in the $x$-$y$ plane, initially separated by a distance L, so
+\begin{equation}
+X_{0} = X(t = 0) \approx (L \cos \theta, L sin \theta, 0)
+\end{equation}
+Say that the spring has natural frequency $\omega_{0}$, that is,
+that it exerts a restoring acceleration $a = \omega_{0}^{2} (X -
+X_{0})$ when the ends are displaced from their initial
+positions. We shall look at the effect of a gravitational wave as
+a driving force for this oscillator (ignoring its tendency to
+rotate the spring). 
+
+Start again with a gravitational wave moving along the $z$ axis, 
+with polarization $h_{\times}$.
+Since the wave is assumed to be weak, we can write
+\begin{equation}
+X(t) = X_{0} + \zeta(t)
+\end{equation}
+with $\zeta$ small, and work to lowest order.
+\begin{enumerate}
+\item From the geodesic deviation equation, find the component of
+  gravitational acceleration along the direction of the spring in
+  terms of $h_{\times}$, $k$, and---to lowest order---$X_{0}$. 
+\item Solve the equations of motion for $\zeta$ subject to this
+  acceleration and the restoring force of the spring. (Strictly
+  speaking, by $\zeta$ I mean here ``the component of $\zeta$ in
+  the direction of the spring,'' since we're ignoring rotation of
+  the spring in the $x$-$y$ plane.) Explain the dependence on
+  $\theta$, the angle at which the bar lies in the $x$-$y$
+  plane. 
+\end{enumerate}
+\end{xca}
+\end{exercises}

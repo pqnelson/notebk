@@ -1,0 +1,114 @@
+%%
+%% prob3.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri Mar  9 08:40:44 2012 alex
+%% Last update Fri Mar  9 08:40:44 2012 alex
+%%
+
+\begin{xca}[Manifolds]
+Give one example of a one-dimensional space that is a manifold,
+and one example of a one-dimensional space that is \emph{not} a
+manifold. You can draw sketches to answer this question, but be
+sure to specify whether the end points of any line segments are
+or are not included.
+\end{xca}
+\begin{xca}[The M\"obius Strip]
+The M\"obius strip is the space formed by joining two ends of a strip with a $180^{\circ}$ twist:
+
+\begin{center}
+  \includegraphics{img/prob3.0}
+\end{center}
+
+Show that this is a manifold, by constructing two coordinate
+charts and a transition function. Show all of the details---give
+the coordinate maps, etc.~as explicitly as possible.
+
+(Technically, the M\"obius strip is a ``manifold with boundary,''
+since the top and bottom edges of the strip are boundaries that
+are not joined to anything.)
+\end{xca}
+\begin{xca}[Derivations]\label{xca:prob3:derivations}
+Consider the manifold $M=\RR$ (the real line). A vector field is
+a differential operator,
+\begin{equation}\label{eq:prob3:derivation:condition}
+v_{x}=v^{1}(x)\frac{\D}{\D x}
+\end{equation}
+where the subscript $x$ in $v_x$ means we are evaluating $v$ at point $x$, and the component $v^1 (x)$ is an ordinary function. As a derivative, $v$ obeys two rules:
+\begin{enumerate}
+\item linearity: $v_x (af + bg) = av_x (f ) + bv_x (g)$
+\item Leibniz rule (product rule): $v_x (f g) = g(x)v_x (f ) + f (x)v_x (g)$.
+\end{enumerate}
+Any operator obeying these two rules is called a ``derivation.''
+
+Show that the converse is true: if $v$ is a derivation on $\RR$,
+then $v$ \emph{necessarily} has the form of Equation
+\eqref{eq:prob3:derivation:condition}. Hint:
+\begin{enumerate}
+\item Show that $v(1) = 0$, where $1$ means the constant function $f (x) = 1$.
+\item Show that $v(c) = 0$ for any constant function $f (x) = c$.
+\item Find $v(f)$ for functions $f (x) = x^n$.
+\item Let $f (x)$ be an arbitrary function with a Taylor expansion around $x = 0$. Show that the desired relation holds for the Taylor expansion.
+\end{enumerate}
+(Technically, this isn't quite enough for the proof---you should
+also consider functions with no Taylor expansion around $x =
+0$---but it will do for this course.) In some mathematical
+approaches, a vector field on a manifold is \emph{defined} as a
+derivation.
+\end{xca}
+\begin{xca}[Commutators]\label{xca:prob3:commutators}
+Let $u$ and $v$ be two tangent vectors, in the somewhat careful
+mathematical sense described in class and in, e.g., section 2.3
+of Carroll~\cite{Carroll:2004st}. 
+\begin{enumerate}
+\item Show that the commutator $[u, v]$, defined by
+\begin{equation}
+[u, v](f) = u(v(f)) - v(u(f))
+\end{equation}
+is a derivation (see Exercise \ref{xca:prob3:derivations}). This
+is enough to show that it is a tangent vector. 
+\item\label{xca:prob3:commutator:firstSlot} Find an expression for the commutator $[f u, v]$, where $f$
+  is an arbitrary differentiable function. 
+\end{enumerate}
+\end{xca}
+\begin{xca}[Exterior derivative]
+Let $\omega$ be a one-form, that is, a cotangent vector, and let
+$\<\omega, u\>$ be the pairing between one-forms and
+vectors. Define a map $\D\omega$ from $T M \times T M$ to
+$\RR$---that is, a function that takes two tangent vectors and
+gives a real number---by
+\begin{equation}
+\D\omega(u, v) =
+\frac{1}{2}\bigg(
+u(\<\omega,v\>)-v(\<\omega,u\>)-\<\omega,[u,v]\>
+\bigg)
+\end{equation}
+where $[u,v]$ is the commutator defined in Exercise \ref{xca:prob3:commutators}.
+\begin{enumerate}
+\item Show that $\D\omega$ is a tensor, that is, that it is a
+  bilinear map---in other words, that
+\begin{equation}
+\D\omega(f u + gv, w) = f\, \D\omega(u, w) + g\,\D\omega(v, w)
+\end{equation}
+(and similarly for the second argument). You will need the answer from part \ref{xca:prob3:commutator:firstSlot} of
+Exercise \ref{xca:prob3:commutators} to do this.
+\item Find the components
+  $\D\omega(\partial_{\mu},\partial_{\nu})$ in a coordinate
+  basis. 
+\end{enumerate}
+\end{xca}
+\begin{xca}[Tensors and coordinate transformations]
+\begin{enumerate}
+\item Show that under a change of coordinates, the Kronecker
+  delta ${\delta^{a}}_{b}$ transforms as a tensor. 
+\item Show that the derivative $\partial_{a} v^{b}$ of the
+  components of a vector does not transform as a tensor under
+  coordinate changes. 
+\item Does the antisymmetrized derivative $\partial_{a} v^{b} -
+  \partial_{b} v^{a}$ of the components of a one-form (covariant
+  vector) transform as a tensor under coordinate changes? Show
+  how you reach your conclusion. 
+\end{enumerate}
+\end{xca}
