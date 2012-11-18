@@ -1,0 +1,282 @@
+%%
+%% lecture04.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Jan 19 08:11:14 2012 alex
+%% Last update Thu Jan 19 08:11:14 2012 alex
+%%
+We introduced the ntoion of homology groups $H_{i}(X)$ which are
+based on singular cubes. We considered maps $f\colon X\to Y$
+which generates a morphism of homology
+\begin{equation}
+f_{*}\colon H_{k}(X)\to H_{k}(Y).
+\end{equation}
+If we have
+\begin{subequations}
+\begin{equation}
+f,g\colon X\to Y,\quad\mbox{and}\quad f\homotopic g
+\end{equation}
+homotopic, and specifically if
+\begin{equation}
+g\circ f\homotopic\id{X}
+\end{equation}
+homotopic, then
+\begin{equation}
+g_{*}\circ f_{*}=\id{H_{k}(X)}
+\end{equation}
+and moreover this implies
+\begin{equation}
+f_{*}\circ g_{*}=\id{H_{k}(Y)}.
+\end{equation}
+\end{subequations}
+This means homology groups are homotopic invariant.\index{Homology!is-a Homotopic Invariant}
+
+We computed various homologies. Recall for
+\begin{equation}
+H_{0}(X) = \underbrace{\ZZ\oplus\dots\oplus\ZZ}_{\mathclap{\text{number of components}}}
+\end{equation}
+and
+\begin{equation}
+H_{1}(X)=\pi_{1}(X)/\bigl[\pi_{1}(X),\pi_{1}(X)\bigr]
+\end{equation}
+is the ``Abelianization'' of the Fundamental group.
+
+We will compute the homology of any convex set. It is easy, every
+convex set is \emph{contractible!} So every convex set $X$ is
+then
+\begin{equation}
+X\homotopic\{\mathrm{pt}\}
+\end{equation}
+homotopic to a point. We should compute the homology of a
+\emph{point!} But that's not too difficult, we see
+\begin{subequations}
+\begin{equation}
+H_{0}(X)=\ZZ
+\end{equation}
+and
+\begin{equation}
+H_{k}(X)=0
+\end{equation}
+\end{subequations}
+for $k>0$. The chain groups $C_{k}(X)$ are also vanishing for
+$k>0$. Thus any convex set (a ball, a cube, a Euclidean space)
+are cyclic: \emph{NO HOMOLOGY!} This isn't very convenient. What
+should we do? We define what is called the \define{Reduced Homology}%
+\index{Homology!Reduced|textbf}\index{Reduced Homology|textbf}
+$\widetilde{H}_{0}(X)$. We have in general $H_{0}(X)=\ZZ^n$ where
+$n$ is the number of components; thus we define
+\begin{equation}
+\widetilde{H}_{0}(X)=\{(z_1,\dots,z_n)\in\ZZ^n\mid z_1+\dots+z_n=0\}.
+\end{equation}
+So this implies
+\begin{subequations}
+\begin{equation}
+H_{0}(X)=\ZZ^n\implies\widetilde{H}_{0}(X)\iso\ZZ^{n-1}
+\end{equation}
+and
+\begin{equation}
+H_{k}(X)\iso\widetilde{H}_{k}(X)
+\end{equation}
+\end{subequations}
+for $k>0$. (We may repeat this definition for
+$\widetilde{H}_{k}(X,G)$ using a different group of coefficients
+$G$.)
+
+\subsection{Cellular Homology}\index{Homology!Cellular}
+The notion of singular homology is very nice but has the
+disadvantage of being hard to calculate. Remember cell
+complexes. We may define a notion of homology for cell complexes
+which is much simpler. This notion coincides with singular
+homology, we'll prove this later.
+
+Lets recall the notion of a cell complex. It is the union of c
+ells. So
+\begin{equation}
+X=\bigcup_{i,k}{\sigma_{i}}^{k}
+\end{equation}
+where $k$ refers to the dimension, and $i$ refers to teh cell. We
+construct it by induction
+\begin{equation}
+X=\bigcup_{k}X_{k}
+\end{equation}
+where
+\begin{equation}
+X_{k}=\bigcup_{i=0}^{k-1}X_{i}
+\end{equation}
+is the $k$-skeleton. We take $D^{k+1}\propersupset S^k$, now we
+take a map
+\begin{equation}
+f\colon S^k\to X_k
+\end{equation}
+and we paste $D^{k+1}$ to $X_{k}$ via this map. We take
+\begin{equation}
+X_{k}\sqcup D^{k+1}/f(\bdry D^{k+1})\simeq \bdry D^{k+1}
+\end{equation}
+that is, we identify $x\simeq f(x)$ for any $x\in\bdry
+D^{k+1}$. We may attach any number of cells by means of this
+construction. 
+
+If we consider $X_{k}$ and factorize $X_{k}/X_{k-1}$, this will
+be the wedge sum
+\begin{equation}
+X_{k}/X_{k-1}=S^{k}_{(1)}\wedgeSum\dots\wedgeSum S^{k}_{(\alpha_{k})}
+\end{equation}
+where $\alpha_{k}$ is the number of $k$-cells. What we do is we
+contract $X_{k-1}$ to a point, so
+\begin{equation}
+X_{k}/X_{k-1}=\left.\left(\bigsqcup\mbox{open balls}\right)\right/\begin{pmatrix}
+\mbox{common}\\\mbox{point}
+\end{pmatrix}.
+\end{equation}
+We have this map
+\begin{equation}
+S^{k}\xrightarrow{f}X_{k}\to X_{k}/X_{k-1}=S^{k}_{(1)}\wedgeSum\dots\wedgeSum S^{k}_{(\alpha_{k})}.
+\end{equation}
+This map $X_{k}\to X_{k}/X_{k-1}$ is called the
+\define{Identification Map}\index{Identification Map}\index{Map!Identification ---}.
+We consider
+\begin{equation}
+S^{k}\xrightarrow{f}X_{k}\to X_{k}/X_{k-1}\xrightarrow{\lambda_{i}}S^{k}
+\end{equation}
+where $\lambda_{i}$ keeps $S^{k}_{(i)}$ ``in tact'' while it
+contracts all others to the common point. But observe: we obtain
+a map
+\begin{equation}
+S^{k}\to S^{k}
+\end{equation}
+by composition! We know that $\homotopyClass(S^k,S^k)$ are
+classified by $\ZZ$ called the
+\define{Degree}\index{Degree}. Lets denote this number
+$m_{i}\in\ZZ$, where $0\leq i\leq\alpha_{k}$ runs over the
+different $k$-cells. But this also depends on
+\begin{equation}
+f\colon S^{k}\to X_{k}
+\end{equation}
+which is really the $(k+1)$-cells. So ${m_{i}}^{j}\in\ZZ$ where
+$i=0,\dots,\alpha_{k}$ and $j=0,\dots,\alpha_{k+1}$.
+What is the geometric meaning of this number? It describes the
+number of times a given $k$-cell appears in the boundary of a
+given $(k+1)$-cell.
+
+Now, we should note we have been a little bit sloppy here. The
+degree of the map depends on the \emph{orientation} of the
+sphere. There is a bit of pathology here.
+
+We will define the notion of a  cellular
+chain\index{Chain!Cellular ---|textbf}\index{Cell Complex!Chain Group of ---}
+as
+\begin{equation}
+C^{\text{cell}}_{k}(X) = \{\sum_{j}c_{j}{\sigma_{j}}^{k}\mid c_{j}\in\ZZ\}
+\end{equation}
+where ${\sigma_{j}}^{k}$ are oriented $k$-cells. We may interpret
+very cellular cell as a singular cell, because for every cell we
+have a mapping
+\begin{equation}
+D^{k}\to\overline{\sigma^{k}},
+\end{equation}
+i.e., the closure of every cell is a singular cube. For every
+cellular chain, we may construct a singular chain (``by linearity'').
+
+Now, we may construct for $k$-chains a map called the
+\define{Boundary}\index{Boundary!of $k$-chain}\index{Chain!Cellular!Boundary}
+\begin{equation}
+\bdry\colon C^{\text{cell}}_{k+1}(X)\to C^{\text{cell}}_{k}(X).
+\end{equation}
+How to do this? We consider $\bdry\sigma^{k+1}$, extend
+$\bdry$ by linearity. Here this will be given by
+\begin{equation}
+\bdry\sigma^{k+1}=\sum m_{i}{\sigma_{i}}^{k}.
+\end{equation}
+It's a triviality.
+
+Until now, everything was rigorous. Well, almost everything! Now
+we do not want to prove $\bdry^2=0$ but it is both true and obvious.
+It will follow from another definition of the boundary. But if it
+is true, then we have a notion of homology given by
+\begin{equation}
+H^{\text{cell}}_{k}(X) = \ker(\bdry)/\im(\bdry)
+\end{equation}
+which is called the \define{Cellular Homology}\index{Homology!Cellular|textbf}
+\index{Cellular Homology|see{Homology}} which allows us to write
+\begin{equation}
+H^{\text{cell}}_{k}(X)=Z^{\text{cell}}_{k}(X)/B^{\text{cell}}_{k}(X)
+\end{equation}
+as usual.
+
+Now we should calculate something.\marginpar{Example: cellular homology of $\RP^2$} The calculations are very
+simple. The simplest is to calculate the homology of a
+surface. We can calculate the homology of the projective 
+
+\begin{wrapfigure}{r}{6pc}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{B.img/lecture04.0}
+\end{wrapfigure}
+\noindent\ignorespaces %
+plane,
+which is given by a disc and identifying the two semicircles as
+explained. 
+This is doodled on the right.
+The cell complex is obvious: we have two vertices but they are
+identified as the same. We have two edges, but again they are
+identified. We have a single 2-cell. So we have $\sigma^0$,
+$\sigma^1$, and $\sigma^2$. We have
+\begin{equation}
+\bdry\sigma^0=0
+\end{equation}
+trivially, and
+\begin{equation}
+\begin{split}
+\bdry\sigma^1
+&=\sigma^0-\sigma^0\\
+&=0
+\end{split}
+\end{equation}
+and lastly
+\begin{equation}
+\begin{split}
+\bdry\sigma^2
+&=\sigma^1+\sigma^1\\
+&=2\sigma^1.
+\end{split}
+\end{equation}
+We can compute the homologies quickly
+\begin{equation}
+H_{0}(\RP^2)=\ZZ
+\end{equation}
+since there is a single connected component. Similarly, we have
+\begin{equation}
+H_{1}(\RP^{2})=\ZZ_{2}
+\end{equation}
+since all 1-chains are cycles, i.e.,
+\begin{equation}
+Z_{1}(\RP^2)=\ZZ\quad\mbox{but}\quad B_{1}(\RP^2)=2\ZZ,
+\end{equation}
+which implies
+\begin{equation}
+H_{1}(\RP^2)=\ZZ/2\ZZ=\ZZ_{2}.
+\end{equation}
+Last, we deduce
+\begin{equation}
+H_{2}(\RP^2)=0.
+\end{equation}
+More generally, if $G$ is any Abelian group, then
+\begin{equation}
+H_{0}(\RP^2,G)\iso G
+\end{equation}
+We also find
+\begin{equation}
+Z_{1}(\RP^{2},G)\iso G,\quad\mbox{and}\quad
+B_{1}(\RP^{2},G)\iso 2G.
+\end{equation}
+Thus
+\begin{equation}
+H_{1}(\RP^2,G)\iso G/2G
+\end{equation}
+and what about $H_{2}(\RP^2,G)$? Well, we see
+\begin{equation}
+H_{2}(\RP^2,G)=\ker\left(G\xrightarrow{x\mapsto 2x}G\right)
+\end{equation}
+which is not necessarily trivial (hint: think of $G=\ZZ_{2}$).

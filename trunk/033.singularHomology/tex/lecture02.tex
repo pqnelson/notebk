@@ -1,0 +1,219 @@
+%%
+%% lecture02.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Wed Jan  4 11:54:16 2012 alex
+%% Last update Wed Jan  4 11:54:16 2012 alex
+%%
+We will always denote the unit cube with $I^k$. Let $X$ be a
+topological space, a \define{Singular ($k$-Dimensional) Cube}\index{Singular Cube}\index{Cube!Singular} in $X$ consists of a
+mapping
+\begin{equation}
+\varphi\colon I^k\to X.
+\end{equation}
+A \define{$k$-Dimensional (Singular) Chain}\index{Singular Chain}\index{Chain!Singular} is 
+a linear combination of singular $k$-cubes
+\begin{equation}
+\gamma=\sum_{n}c_{n}\varphi_{n}
+\end{equation}
+which intuitively corresponds to a surface\index{Surface!as-a Chain} in $X$.
+We can generalize this a little, by letting $c_n\in G$ where $G$
+is an arbitrary Abelian group. This is sometimes convenient, the
+surfaces come with an orientation\index{Orientation!and Chain Coefficients}. 
+For a nonorientable surfaces\index{Surface!Nonorientable}, we
+take $G=\ZZ_2$.
+
+There is on more definition, namely, the \define{Degenerate Cube}\index{Cube!Degenerate}\index{Degenerate Cube}.
+Now, a cube is a function of $k$ variables, but sometimes it
+doesn't depend on certain variables. For example, if 
+\begin{equation}
+f\colon I^2\to X
+\end{equation}
+is such that $f(x,-)$ is independent of the second slot. We get a
+curve. We should ignore chains with degenerate cubes.
+We define $C_{n}(X,G)$\marginpar{$C_{n}(X,G)$ is the group of nondegenerate $n$-chains},
+and let $C_{n}(X)$\index{$C_{n}(X)$} be the case when $G=\ZZ$. We take the group of
+chains (pop quiz: do they form a group?), and we factorize all
+chains with respect to degenerate cubes. We get
+\begin{equation}
+C_{n}(X,G) = \mbox{chains}/\mbox{(Degenerate Chains)}.
+\end{equation}
+The interesting question to ask is: what is the
+boundary\index{Boundary!of a Chain}\index{Chain!Boundary of a ---} of a chain?
+
+\index{Boundary!of a Cube|(}\index{Cube!Boundary of a ---|(}
+Lets look at the boundary for a cube $\partial I^n$\index{$\partial I^n$}. Lets look at simpler examples
+first. What is $\partial I$? It consists of two points, it is a
+zero-dimensional chain because each point is a zero-dimensional
+cube. We have
+\begin{equation}
+\partial I^1=I^{0}_{+}-I^{0}_{-}
+\end{equation}
+be our chain. But what about the singular cube case? We have
+\begin{equation}
+\partial\varphi=\left.\varphi\right|_{I^{0}_{+}}
+-\left.\varphi\right|_{I^{0}_{-}}
+\end{equation}
+and (for example) if we have a closed path, there is no doubt
+that the boundary is zero.
+
+\begin{wrapfigure}{r}{8pc}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{B.img/lecture02.0}
+  \vspace{-12pt}
+\end{wrapfigure}
+\noindent\ignorespaces %
+Let us take $I^2$. It is a square, what is its boundary? It
+consists of four lines, but again we have some freedom, because
+we can choose orientations. We have two degrees of freedom (well,
+two choices for orientations): clockwise or anti-clockwise. There
+is another choice which is more algebraic in nature. 
+
+Consider, for example, the $k$-dimensional cube. Its boundary
+$\partial I^k$ has $2k$ faces, which are $(k-1)$-dimensional
+cubes. We have $I^{k-1}_{i,+}$ and $I^{k-1}_{i,-}$ which are
+described by
+\begin{equation*}
+(t_1,\dots,t_{i-1},t_{i+1},\dots,t_{k})
+\end{equation*}
+and the ordering depends on the orientation. Now, we should write
+what is the boundary. Let us return to the case when $k=2$. It is
+clear that now what we are doing amounts to orienting the edges,
+the boundary, in a different way. For example:
+\begin{center}
+  \includegraphics{B.img/lecture02.1}
+\end{center}
+We cannot merely write the boundary as
+\begin{equation}
+\sum_{i}I^{k-1}_{i,+}-I^{k-1}_{i,-}\stackrel{??}{=}\partial I^{k},
+\end{equation}
+because we also need to take into account orientations. So it is
+not the end of the story, we now have
+\begin{equation}
+\partial I^{k} =
+\sum_{j}(-1)^{j}\bigl(I^{k-1}_{j,+}-I^{k-1}_{j,-}\bigr)
+\end{equation}
+Observe the boundary of the cube \emph{now} becomes a chain! 
+
+\index{Singular Cube!Boundary of a ---|(}
+But what about \emph{singular} cubes? It's the same stuff! For a
+singular cube $\varphi\colon I^k\to X$, we have
+\begin{equation}
+\partial\varphi =
+\sum_{j}(-1)^{j}\left(\left.\varphi\right|_{I^{k-1}_{j,+}}-\left.\varphi\right|_{I^{k-1}_{j,-}}\right).
+\end{equation}
+This is the definition of the boundary for a singular cube.
+\index{Singular Cube!Boundary of a ---|)}
+\index{Cube!Boundary of a ---|)}\index{Boundary!of a Cube|)}
+
+We would like to consider the boundary of a chain. How to do
+this? By linearity! We have
+\begin{equation}
+\bdry\left(\sum c_{n}\varphi_{n}\right)=\sum
+c_{n}\bdry\varphi_{n};
+\end{equation}
+we will often extend notions from a cube to a chain by
+linearity. At any rate, we get a homomorphism
+\begin{equation}\index{$\bdry$}
+\bdry\colon C_{k}(X)\to C_{k-1}(X)
+\end{equation}
+which is the boundary morphism\index{Boundary!Morphism}.
+The main property of this morphism is that
+\begin{equation}
+\bdry^2=0.
+\end{equation}
+We will be a little more precise, and write
+\begin{equation}
+\bdry_k\colon C_{k}(X)\to C_{k-1}(X)
+\end{equation}
+then conclude that
+\begin{equation}\index{$\bdry^2=0$}
+\bdry_{k-1}\circ\bdry_{k}=0.
+\end{equation}
+We can do the following thing: construct the group of all chains
+\begin{equation}\index{$C(X)$}
+C(X)=\bigoplus C_{n}(X),
+\end{equation}
+and by additivity define the boundary there.
+This is a \emph{graded} group. This operator
+\begin{equation}
+\bdry\colon C(X)\to C(X)
+\end{equation}
+which affects the grading by decreasing it by 1. So how to prove
+$\bdry^2=0$? It's nothing difficult, so we won't give the
+proof. After all, it is obvious!
+
+We were cheating a little bit, because $C_{k}(X)$ does not
+consist of chains. We obtain by means of factorization, so our
+operator is really defined on this quotient. We should check that
+it maps degenerate chains into degenerate chains (it does!).
+
+Now the notion of homology. We have this operator
+\begin{equation}
+\bdry\colon C(X)\to C(X)
+\end{equation}
+and we define the \define{Homology}\index{Homology|textbf} as
+\begin{equation}
+H_{\bullet}=\ker(\bdry)/\im(\bdry).
+\end{equation}
+In\marginpar{$k$-Cycles $Z_{k}(X)=\ker(\bdry_{k})$} other words, we factorize cycles modulo boundaries. We can
+give another definition of the $k$-dimensional homology.
+We take
+\begin{equation}
+H_{k}(X)=\ker(\bdry_k)/\im(\bdry_{k+1})
+\end{equation}
+Remember that
+\begin{equation}
+\bdry_{k+1}\bigl(C_{k+1}(X)\bigr)\propersubset C_{k}(X)
+\end{equation}
+We usually write this as
+\begin{equation}
+H_{k}(X)=Z_{k}(X)/B_{k+1}(X).
+\end{equation}
+It is trivial to check we have
+\begin{equation}
+H_{\bullet}(X)=\bigoplus H_{k}(X).
+\end{equation}
+It is therefore pretty obvious that
+\begin{equation}
+(\mbox{Cycles}) = Z(X)=\bigoplus Z_{k}(X)
+\end{equation}
+and
+\begin{equation}
+(\mbox{Boundaries}) = B(X) = \bigoplus B_{k}(X).
+\end{equation}
+Note these are just notation.
+
+Again a definition. Let us calculate something. We would like to
+calculate $H_{0}(X)$. First of all, what is a zero-dimensional
+chain? It is a linear combination of points. What are
+zero-dimensional cycles? They are zero-dimensional chains! So
+$Z_{0}=C_{0}$, but now what are the zero-dimensional boundaries?
+They are boundaries of 1-dimensional chains. They consist of
+several 1-dimensional cubes, i.e., a path.
+
+Two paths are homologous if they are contained in the same
+connected component. We may connect the chains in the components,
+and the answer is as follows:
+\begin{equation}
+H_{0}(X)=\underbrace{\ZZ\oplus\dots\oplus\ZZ}_{\text{\# of components}}
+\end{equation}
+We may say, if $X$ is connected, then definitely
+\begin{equation}
+H_{0}(X)=\ZZ
+\end{equation}
+We may say every zero-dimensional cycle is an 
+\begin{equation*}
+\gamma = (\mbox{integer})(\mbox{point}).
+\end{equation*}
+But if $X$ is disconnected, if $X$ is the disjoint union of
+several guys, then we have a general statement:
+\begin{equation}
+H_{k}(X) = \bigoplus H_{k}(\mbox{component}).
+\end{equation}
+This is true for \emph{any} $k\in\NN$. The disconnected
+components do not speak to each other! Thus everything is reduced
+to components.

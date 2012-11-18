@@ -1,0 +1,213 @@
+%%
+%% lecture05.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Jan 19 09:27:40 2012 alex
+%% Last update Thu Jan 19 09:27:40 2012 alex
+%%
+We introduced the notion of cellular homology and considered a
+single example. Lets consider more examples.
+%\begin{ex}[Sphere]
+
+\medbreak
+\phantomsection\refstepcounter{thm}
+\noindent\textbf{Example \thethm\enspace}(Sphere)\textbf{.}\quad\ignorespaces %
+Lets consider the $n$-dimensional sphere $S^n$. Observe, if we
+delete one point, we have
+\begin{equation}
+S^n-\{x\}\iso\sigma^{n}
+\end{equation}
+``is'' Euclidean space, or an $n$-dimensional ball. But
+\begin{equation}
+\{x\}=\sigma^0
+\end{equation}
+So we have two cells:
+\begin{equation}
+S^{n}=\sigma^0\cup\sigma^n.
+\end{equation}
+So
+\begin{equation}
+\bdry\sigma^0=0
+\end{equation}
+and
+\begin{equation}
+\bdry\sigma^n=0.
+\end{equation}
+%\end{ex}
+
+\begin{wrapfigure}{r}{4pc}
+  \centering
+  \includegraphics{B.img/lecture05.0}
+\end{wrapfigure}
+\noindent\ignorespaces %
+We can picture this for a circle; so everything is a cycle,
+nothing is a boundary. So $C_n=Z_n=G$ is the group of
+coefficients. This immediately implies $H_0(S^n,G)\iso H_n(S^n,G)\iso G$.
+If we consider the reduced homology we find $\widetilde{H}_{0}(S^n,G)=0$
+and $\widetilde{H}_{n}(S^{n},G)\iso G$.
+\medbreak
+
+\begin{wrapfigure}{r}{14pc}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{B.img/lecture05.1}
+  \vspace{-12pt}
+\end{wrapfigure}
+
+\medbreak
+\phantomsection\refstepcounter{thm}\noindent\textbf{Example \thethm}
+(Sphere with different cell complex)\textbf{.}\quad\ignorespaces %
+To prove that the choice of cellular decomposition doesn't
+matter, lets consider a different decomposition for $S^n$.
+Lets work with $S^{2}$. Take a sphere, divide it into
+hemispheres, and take two points. We have two cells in every
+dimension! (This is doodled on the right.) We orient it in such 
+a way that the boundary of $\sigma^{2}_{+}$ is an oriented circle.
+We have
+\begin{subequations}
+\begin{equation}
+\bdry\sigma^{2}_{\pm}=\pm(\sigma^{1}_{+}-\sigma^{1}_{-})
+\end{equation}
+and
+\begin{equation}
+\bdry\sigma^{1}_{\pm}=\pm(\sigma^{0}_{+}-\sigma^{0}_{-}).
+\end{equation}
+\end{subequations}
+It follows immediately we obtain
+\begin{equation}
+\begin{split}
+\bdry(\bdry\sigma^2_{\pm})
+&=\pm\bdry(\sigma^{1}_{+}-\sigma^{1}_{-})\\
+&=0
+\end{split}
+\end{equation}
+as desired.
+Lets look at the homology. Everything is very, very
+simple. Consider
+\begin{equation}
+Z_{2} = \{g_{+}+g_{-}=0\mid g_{\pm}\in G\}
+\end{equation}
+and 
+\begin{equation}
+Z_{1} =
+\{\widetilde{g}_{+}+\widetilde{g}_{-}=0\mid\widetilde{g}_{\pm}\in G\}.
+\end{equation}
+We have
+\begin{equation}
+H_{2}=Z_{2}\iso G
+\end{equation}
+since there are no boundaries. But for $H_{1}$, we \emph{do} have
+boundaries. Here we have
+\begin{equation}
+Z_{1}=B_{1}
+\end{equation}
+so
+\begin{equation}
+H_{1}=0.
+\end{equation}
+This is because
+\begin{equation}
+\im(\bdry_2)=\{g_{+}+g_{-}\}\iso G
+\end{equation}
+and $Z_1\iso G$. So we see that the choice of cell complex
+doesn't matter, we get the same answer for the sphere.
+
+\begin{ex}
+Consider projective space $\RP^n$. It has a very simple cell
+decomposition. Remember we may define it in many ways, e.g., take
+$(n+1)$ coordinates in $\RR^{n+1}$ and we identify
+$(x_0,\dots,x_n)$ with $(\lambda x_0,\dots,\lambda x_n)$ where
+$\lambda\in\RR$ is some (nonzero) scaling constant. We can scaled
+to make $x_0=1$ provided $x_0\not=0$. Then multiplication by
+$\lambda$ ``disappears''---i.e., we fixed
+$\lambda=x_{0}^{-1}$. So we now have $n$ coordinates
+$(x_1,\dots,x_n)$ and they are arbitrary. This describes a cell
+$\sigma^n$. If we take $x_0=0$ we may forget about $x_0$,
+what remains is $\RP^{n-1}$. So
+\begin{equation}
+\RP^n=\RP^{n-1}\sqcup\sigma^{n}
+\end{equation}
+disjoint. We may repeat it, and we have the decomposition
+\begin{equation}
+\RP^n=\sigma^0\sqcup\dots\sqcup\sigma^n
+\end{equation}
+(disjoint unions). All these considerations work for \emph{any}
+projective space. So for 
+\begin{equation}
+\CP^n=\sigma^{2n}\sqcup\CP^{n-1}
+\end{equation}
+since $\CC\iso\RR^2$. A decomposition for $\CP^n$ would be
+\begin{equation}
+\CP^n=\sigma^0\sqcup\dots\sqcup\sigma^{2n}.
+\end{equation}
+For complex projective space, all boundaries vanish and
+homologies are extremely simple: everything is a cycle!
+
+It is not so simple for the case of real projective spaces. Lets
+consider $\RP^2$. We considered it already, so we know the
+answer. We have this picture of $S^2$ for the cell complex, and
+it is invariant with respect to the transformation
+$x\mapsto-x$. We know
+\begin{equation}
+\RP^{n}=S^{n}/(x\sim-x)
+\end{equation}
+So we use this identification procedure with the cell complex we
+identified for $S^2$, and we can use the relations we
+discovered. The answer is 
+\begin{equation}
+\bdry\sigma^k=0
+\end{equation}
+for $k$ odd, and
+\begin{equation}
+\bdry\sigma^{2k}=2\sigma^{2k-1}.
+\end{equation}
+With orientations, what do we know? Well, for linear
+transformations $A\vec{x}=\vec{b}$, if $\det(A)>0$ then the
+orientation is preserved. For nonlinear transformations, we look
+at the determinant of the Jacobian matrix.
+
+Now what are the homology groups? Again, we computed this stuff,
+and our current calculations are precisely the same. When we
+don't have any cells, we don't have any homology. Then we have
+two cases.
+%
+If $n$ is odd for $\RP^n$ then $\bdry\sigma^n=0$ and $H_n\iso G$.
+%
+On the other hand, if $n$ is even, then
+$\bdry\sigma^n=2\sigma^{n-1}$ and we see that
+\begin{equation}
+H_{n}(\RP^{n},G)=\ker\left(G\xrightarrow{x\mapsto2x}G\right)
+\end{equation}
+So in particular
+\begin{equation}
+H_{n}(\RP^n,\ZZ)=0
+\end{equation}
+What about the intermediate dimensions? We have the following
+picture for $2k<n$
+\begin{equation}
+H_{2k}(\RP^n,G)=Z_{2k}/B_{2k}=\ker\left(G\xrightarrow{x\mapsto2x}G\right)
+\end{equation}
+and for $2k+1<n$
+\begin{equation}
+H_{2k+1}(\RP^n,G)=G/2G.
+\end{equation}
+That concludes the calculations of homology for $\RP^n$.
+\end{ex}
+
+
+\begin{wrapfigure}{r}{5pc}
+  \vspace{-12pt}
+  \centering
+  \includegraphics{B.img/lecture05.2}
+\end{wrapfigure}
+\medbreak
+\phantomsection\refstepcounter{thm}
+\noindent\textbf{Example \thethm\enspace}(M\"obius Band)\textbf{.}\quad\ignorespaces %
+Consider the cell complex as doodled on the right. There is one
+2-cell, and so on. This is the cell complex describing the
+M\"obius band. From this picture we see that
+$\bdry\sigma^2=0$. If we had
+
+
