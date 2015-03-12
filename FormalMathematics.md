@@ -1,0 +1,97 @@
+
+
+# Introduction #
+
+This is just a collection of resources on formal mathematics. Formal mathematics is basically mathematics presented in a purely "symbolic way." So, imagine we had some programming language that we use to express mathematics...that's formalized mathematics in a nutshell.
+
+It would be nice if someone could write a proof checker for structured proofs (**cough\*hint\*hint\*cough**)...
+
+Of course, what would be ideal --- if it turns out the author is too lazy to learn Coq, Mizar, Isar, etc. --- is to figure out how to translate a structured proof easily into a declarative proof. That way, it would be trivial (almost mechanical) translating structured proofs into a machine-checkable program.
+
+## Mathematical Vernacular ##
+
+Frank Wiedijk wrote a short [note (pdf)](http://www.cs.ru.nl/~freek/notes/mv.pdf) on what de Bruijn called "mathematical vernacular". The idea is kind of similar to a structured proof, in the sense [Lamport](http://research.microsoft.com/en-us/um/people/lamport/pubs/pubs.html#lamport-how-to-write).
+
+Wiedijk introduces a formal grammar for certain "[Reserved Words](http://en.wikipedia.org/wiki/Reserved_word)" which indicate some rule of inference (take from natural deduction). It is tempting to start using such "vernacular" in structured proofs, but...well, it's something to think about.
+
+It appears to me that "`take x;`" is the usual declaration of a variable "`x`". How do we initialize it to some value? Well, "`consider x such that ...;`" is how to initialize a variable. I may be wrong, but that appears how the mathematical vernacular is set up...
+
+Although Lamport's idea is beautiful, there is something indescribably tempting in Wiedijk's version of the "mathematical vernacular".
+
+If one wanted to typeset it, a poor man's version would be:
+
+```
+\usepackage{listings}
+\lstdefinelanguage{mv} {%
+  basicstyle=\ttfamily,%
+  keywordstyle=\bfseries,
+  mathescape=true,
+  flexiblecolumns=false,
+  xleftmargin=1pc,
+  emph={[1]let,assume,consider,such that,take,per cases,suppose,thus,proof,by,end},%
+  emphstyle={[1]\scshape},%
+  showstringspaces=false
+}
+\lstnewenvironment{proof}
+{\lstset{language=mv}}
+{\smallskip}
+
+%% example usage
+%% \begin{code}
+%% $\forall x(A\land B\Rightarrow C\land D)$
+%% proof
+%%   let $a$;
+%%   assume L4: $A\land B$;
+%%   thus $C$ by L1,L4;
+%%   thus $D$ by L2,L4;
+%% end;
+%% \end{code}
+```
+
+### Term and Formula ###
+
+I have been wondering about this, the grammar for Wiedijk's mathematical vernacular says that (pp 5--6):
+
+> _step_ =
+
+> ...
+
+> | `consider` _variable_ {`,` _variable_} `such that` _proposition_ _justification_ `;`
+
+> | `take` _term_ {`,` _term__} `;`_
+
+So what exactly is the grammatical difference between a variable and a term?
+
+In first order logic, a term is either a variable or a function of finitely many terms...perhaps that is what is meant.
+
+Although `take` is needed to prove an existential fact. The example is generally:
+```
+⟨proof of ∃x.P(x)⟩ ≡
+    ⟨preliminary steps⟩
+    take a;
+    ⟨proof of P(a)⟩
+```
+It is described as existential introduction. But an existential introduction allows us to replace any number of occurrences of a constant with a free variable, and prefix the resulting sentence with an existential quantifier.
+
+The `consider` step is used to apply an existential fact. It is used:
+```
+⟨proof of A⟩ ≡
+    ⟨preliminary steps⟩
+    consider x such that P(x) by ...;
+    ⟨proof of A⟩
+```
+This is supposed to remove an existential quantifier...although I don't exactly see how.
+
+**Remark.** Perhaps a more accurate statement is that `consider ... such that ...;`
+really initializes the variable, but we cannot use it until we `take` it. So the difference is that when we `consider` things, it is as though we are discussing constants (FAPP), whereas if we `take` them...it is a variable in the sense of programming.
+
+**Remark.** Wiedijk suggests in papers written after his "Mathematical Vernacular" note to use a "formal proof sketch" which is language dependent. That is to say, pick some declarative theorem prover _X_ and write up your proof in its language. It will be close to what you would've written, because it is declarative, but it won't compile (it's too ambiguous). Nevertheless, it's a "sketch" of what the formal proof looks like, and indeed after filling-in-the-details it's a correct proof.
+
+(Personally, I think the formal language specified by the "mathematical vernacular" is the better route...)
+
+# Links #
+  * John Harrison, "Formalized Mathematics." Eprint: [online](http://www.cl.cam.ac.uk/~jrh13/papers/form-math3.html). Technical Report 36, Turku Centre for Computer Science (TUCS)
+  * [Freek Wiedijk's Problems in Formalized Mathematics](http://www.cs.ru.nl/~freek/projects/)
+  * [A Language for Mathematics](http://people.pwf.cam.ac.uk/mg262/)
+  * [The Mathematical Vernacular (pdf)](http://www.cs.ru.nl/~freek/notes/mv.pdf) **Abstract.** A "mathematical vernacular" is a formal language for writing mathematical proofs which resembles the natural language from mathematical texts. A number of systems (Hyperproof, Mizar, Isabelle/Isar) all basically have the same proof language. It consists of the combination of natural deduction with first order inference steps. In this note we compare these three languages and present a simplified common version. (9 pp.)
+  * [The formal proof sketch challenge (pdf)](http://www.cs.ru.nl/~freek/notes/newman.pdf) **Abstract.** A _formal proof sketch_ is a way to present a formal proof in a style that is close to an informal proof, but which also is a skeleton of the full formal proof (this makes it easy to relate the presentation to the detailed formalization.) Recently to us every informal proof has started to feel like a _challenge_, to write down the corresponding formal proof sketch. We take on this challenge for the informal proof of _Newman's lemma_ from Henk Barendregt's book about lambda-calculus. The specific difficulty of that proof is its main part, which just is a pair of diagrams without any explanation. (15 pp.)

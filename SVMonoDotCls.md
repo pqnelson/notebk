@@ -1,0 +1,101 @@
+
+
+# Introduction #
+
+You can find the `SVMono.cls` file in the package provided to Springer-Verlag authors, which is available [here](http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip?SGWID=0-0-45-491898-0) I hope.
+
+I'm just writing a few notes concerning how to use this thing. The intended goal is to eventually have a cohesive set of notes, so that I can compile it all into one fancy "book". This documentclass seems most sophisticated, so I decided to use it.
+
+# Details #
+
+I am actually going to have to create some macros which translate my macros to the Springer-Verlag macros, e.g.
+
+```
+\newenvironment{thm}{\begin{theorem}}{\end{theorem}}
+```
+
+**Remark:** Actually, if one uses the `nospthms` options for the `svmono.cls`, then one can use one's own theorem macros. This would probably be the better approach for me.
+
+Additionally there is the matter of getting stuff done quickly. It is actually better, I think, to do something like the following: create a folder `~/docs/` then start creating subdirectories `~/docs/001/` which are "galley proofs". That is to say, they are written as articles and depend only on the stuff _before_ it (so 006 can depend on 001 through 005). In this manner, you organize your notes in a logical and cohesive manner. You also write more and faster since writing an article can be done in nearly no time at all.
+
+To be consistent with notation, have a single file for macros (aptly referred to as `~/docs/macros.tex`) so you have consistent notation throughout.
+
+What I tend to do is also include a `~/docs/ref/` directory which then has a number of other people's `PDF`'s that are references to my notes.
+
+## Fonts ##
+
+It appears that the package to use is `type1cm.sty` which automagically scales fonts, and it doesn't look horrible.
+
+### Special Symbols (Math) ###
+
+Starting on line 822 of `svmono.cls` we see that:
+
+```
+%
+%  special signs and characters
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\E}{\mathrm{e}}
+\let\eul=\E
+\newcommand{\I}{{\rm i}}
+\let\imag=\I
+```
+
+This defines a few special macros for the usual constants (well, e and i) and for the differential `\D`. This seems almost pathological however...
+
+The `\tens` macro which is used for tensors (apparently) is defined on line 892--893 of `svmono.cls` as
+
+```
+% tensor
+\def\tens#1{\relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi}
+```
+
+Which is peculiar! Using Sans Serif font for tensors, how unique!
+
+## QED Symbol ##
+
+We have the following code:
+
+```
+\newcommand\slug{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\renewcommand\qedsymbol{\slug}
+```
+
+Alternatively we may simply write
+
+```
+\renewcommand\qedsymbol{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+```
+
+The rest appears to be taken care of.
+
+### Proof Environment ###
+
+Although the given code for theorem environments is cute (to say the least), I do not like it. One has to manually add the `\qed` which is irritating. I think I should probably write my own macros...
+
+**Remark:** Actually, it seems wiser to use one's own customized theorem macros rather than some "God given" set of theorem macros.
+
+## Page Size ##
+
+We are told in the "Author Instructions for Monographs" (`instruct.pdf`) in 2.2 that:
+
+> This will set the text area to a `\textwidth` of 117 mm or 27.75
+> pica and a `\textheight` of 191 mm or 45.166667 pica plus a
+> `\headsep` of 12 pt (space between the running head and text).
+
+> _N.B._ Trim size (physical paper size) is 155 × 235 mm or 6.125
+> × 9.25 in.
+
+Good to know. The exact code comes from lines 232--239 of `svmono.cls`:
+
+```
+\setlength{\textwidth}{117mm}
+%\setlength{\textheight}{12pt}\multiply\textheight by 45\relax
+\setlength{\textheight}{191mm}
+\setlength{\topmargin}{0cm}
+\setlength\oddsidemargin{63\p@}
+\setlength\evensidemargin{63\p@}
+\setlength\marginparwidth{90\p@}
+\setlength\headsep{12\p@}
+```
+
+The next set of lines sets `\parindent` to be equal to 12pt (lines 241--243), it also sets `\parskip` to be `\z@ \@plus \p@` (line 244) and modifies `\hfuzz` and `\arraycolsep`. French spacing is apparently used.

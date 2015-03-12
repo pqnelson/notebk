@@ -1,0 +1,3 @@
+# Ebook Readers #
+
+I noticed that eBook readers tend to be optimized for a screen of size 3.47 × 4.48 inches. I suppose one may round this to be ~3.5 by 4.5 inches. But this raises an interesting problem: how to format notes to fit on such a screen?

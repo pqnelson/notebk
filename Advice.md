@@ -1,0 +1,214 @@
+# Introduction #
+
+> _I see it all perfectly; there are two possible situations —
+> one can either do this or that. My honest opinion and my friendly advice is this:
+> do it or do not do it — you will regret both._
+> — Soren Kierkegaard, _Either/Or_ (1843)
+
+I have been thinking about what advice I should give based on my experience writing mathematics and physics notes. It may not be much, but I figure it may help someone.
+
+
+
+# How much to write #
+
+This is a difficult problem. I kind of followed the pattern of Medieval scholars, who copied down everything they could (because they probably would never be able to return to the book in their lifetime). This is not a bad approach, depending on who you are or what you are doing.
+
+The problem I have found is trying to organize the notes into books. Writing too much into one paper scares people away.
+
+It is far better to write something that is mostly self-contained, and about precisely one thing. For example, write about the convergence of sequences in real analysis. This could take about 20 pages. Include plenty of detailed examples. Write up your own exercises. This may take up 40 pages altogether.
+
+This is better than beginning with the definition of a set, and moving on from there. It is better to begin with a really quick review of the relevant set theory _in an appendix_ and if so possessed write up some more notes on set theory, then reference them.
+
+## What I've Learned ##
+
+For me, writing about general relativity (and physics, in general) has always been _writing addenda for Misner, Thorne, and Wheeler._
+
+That is to say, write self-contained expositions explaining the physics which is in a similar format as Misner, Thorne, and Wheeler's _Gravitation_.
+
+For example, if I were to write about classical mechanics. What to do? First, I would write up notes on the differential geometry of curves.
+
+Then I would write up a chapter on Newton's equations.
+
+Then I would show, in multiple ways (picking one "obvious" way for the text, and sticking the rest in a "Boxed" environment) how to derive Newton's equations from the differential geometry of curves.
+
+This naturally leads us to formulating Newton's second law as _trying to find a curve which satisfies this relationship._ It's a variational problem! Beautiful, we have connections back to the math we introduced.
+
+But what's more, we have Lagrangian mechanics! We should probably consider other variational approaches either in its own chapter or in a box.
+
+We can exhaustively study classical mechanics as a sort of "prelude" to _Gravitation_.
+
+## Caveats for Mathematics ##
+
+Let me give a concrete example of the peculiarities of mathematical writing. The biggest problem is the number of examples, and how much to do in an example.
+
+While studying Finite Groups, the notion of the [Wreath Product](http://en.wikipedia.org/wiki/Wreath_product) was presented without any examples. So being an industrious student, I write a few examples.
+
+This has the problem of "picking good examples". I believe (perhaps naively) that this matures with time.
+
+But that is something that ought to be done. As a rule of thumb, people remember around 7 things...so have at least 7 examples for each concept.
+
+### Two Things to do for Mathematics ###
+
+Whenever writing mathematics, be sure to frequently ask yourself:
+  1. What have I just done?
+  1. What do I _need_ to do?
+In both situations, also ask _Why?_ This helps yourself immensely, it is sometimes fitting for exposition, and should be omitted from research papers.
+
+# What to Write #
+
+Typically it is better to write about stuff no one else has. For example, my notes on Feynman diagrams algorithmically go through the calculations of Feynman diagrams in φ<sup>4</sup> theory and QED. It goes through many examples, points out step-by-step what to do, makes everything crystal clear.
+
+On the other hand, what not to write, is probably a book (e.g., my _Elements_ fascicles 0). I don't think anyone has the patience for it. It's actually worse for the author, because you get trapped into a field that you may not want to study (e.g., foundations of mathematics!).
+
+However, if one were to write a book, the best thing to do is treat it like a doctoral thesis: write it all down, type it all up, then parcel it out bit by bit.
+
+It's not hard to write 3 to 10 pages of mathematics notes in each "parcel". Then you do this for a long time, and you have a book ready. That's what Terry Tao did with his blog (and still continues to do it!).
+
+## Polishing your notes ##
+
+Quintilian writes
+
+> A different fault is that of those who wish, first of all, to run through their subject with as rapid a pen as possible and, yielding to the ardor and impetuosity of their imagination, write off their thoughts extemporaneously, producing what they call a rough copy, which they then go over again and arrange what they have hastily poured forth. Though the words and rhythm of the sentences are mended, there still remains the same want of solid connection that there was originally in the parts hurriedly thrown together. It will be better, therefore, to use care at first, and so to form our work from the beginning that we may have merely to polish it and not to mold it anew. Sometimes, however, we may give loose to our feeling, in the display of which warmth is generally of more effect than accuracy. [X.3.17](http://rhetoric.eserver.org/quintilian/10/chapter3.html#17)
+
+## Getting the Scope Right ##
+
+This is the hardest bit of writing notes. It's too easy to get lost in a downward spiral, and instead of writing about Lie algebras you end up on some random topic.
+
+A good rule of thumb is, periodically compile the LaTeX document. Every 5 pages of pdf, ask yourself: is this as concise and to the heart as possible?
+
+It's probably best if you begin with a very narrow topic or question in mind (e.g., how do I get a number out of a Feynman diagram?), which turns out to be more useful.
+
+Again, this can be problematical if the question is too vague (e.g., what's a von Neumann algebra?). It's better to read up on it a little, then ask specific questions (e.g., how do I get a von Neumann algebra from a C`*`-algebra?).
+
+_Overly Specific questions are better than overly general questions._
+
+> _Either write things worth reading,
+> Or do things worth the writing._
+> — Ben Franklin, _Poor Richard's Almanack_ (1738)
+
+> _You write with ease to show your breeding,
+> But easy writing's curst hard reading._
+> — Richard Brinsley Sheridan, _Clio's Protest_ (1819).
+
+## Keep a List ##
+
+One thing that is worth mentioning, that I've learned from a course in General Relativity. We had to write a term paper that was 7 to 10 pages long on a subject, and the professor gave us a list of 60 topics in General Relativity to talk about.
+
+This gave me a valuable lesson: keep a list of topics to write about. You can add more stuff as you learn more stuff.
+
+Each item on the list should be explainable in 7 to 10 pages, and you can divide up tasks into smaller chunks.
+
+I always write as if I had to explain it to myself six months ago, which enables me to figure out what heuristics and intuitions to convey.
+
+# Distributing Notes #
+
+It's better to have thousands of downloads of notes on specific questions, than one pdf on each field of mathematics.
+
+Consequently, Google Code is not the ideal format for distributing notes. I wouldn't know what could be better, but just having a chronological list of documents is not ideal.
+
+> _The moment a man sets his thoughts down on paper, however secretly,
+> he is in a sense writing for publication._
+> — Raymond Chandler, _Raymond Chandler Speaking_ (1962)
+
+# LaTeX Macros #
+
+What I realized early on was that macros are critically important. What I realized late was: notation should be a macro.
+
+This allows one to reuse portions of notes, and change one line of LaTeX code.
+
+That's the only advice I have to give.
+
+Oh, and perhaps Misner, Thorne, and Wheeler's _Gravitation_ is a good source of typographical ideas.
+
+If you find a document on arXiv with some fancy typography you'd like to emulate, you can download it's source code and find what they did.
+
+## Commutative Diagrams ##
+
+This is always a sticky subject "How to do commutative diagrams in LaTeX?"
+
+The laziest solution is probably the commutative diagrams package `diagrams.tex` which must be renamed to `diagrams.sty`. It is pretty good, but it has some shortcomings (e.g., no curved arrows).
+
+Some prefer `xy-pic` instead, which is more robust. Note that `xy-pic` is not as well documented despite being more powerful.
+
+**NOTE** the internal diagram pictures in Lawvere's books _Conceptual Mathematics_ and _Set Theory for Mathematicians_ was drawn up using `xy-pic`, so it is incredibly useful and robust!
+
+I think I just need to learn more from the [xy-pic home page](http://www.tug.org/applications/Xy-pic/)...
+
+## Spectral Sequences ##
+
+Spectral sequences may be drawn using commutative diagrams. There is a package `sseq.sty` which type sets spectral sequences, but sadly it is a bit bloated...
+
+## Learn Metapost ##
+
+I would also urge the aspiring writer to learn Metapost. This is the program Knuth uses for diagrams in his _Art of Computer Programming_.
+
+Also keep one file full of common examples (e.g., plotting a function, drawing an undirected graph, etc. etc. etc.).
+
+When you do something more (e.g., doodles in differential geometry), be sure to update your "list of examples".
+
+You can draw maps with metapost too. I have been pondering for a while how to best do this. I think it would be best to write a program that would obtain the coastal coordinates, and pick out one point every _x_ miles. This spares a lot of memory for metapost.
+
+# Examples #
+
+Mathematics consists of definitions, theorems, and proofs. But sometimes examples are useful for demonstrating a concept.
+
+Bagchi and Wells' "Varieties of Mathematical Prose" ([eprint](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.52.5540)) notes a number of different types of examples: easy examples, motivating and delimiting examples, deceptive non-example, elucidatory example, grocery-list of examples.
+
+But there is also the matter of _how much detail_ to give in an example. Is it sufficient to write one sentence: "_X_ is a gadget."?
+
+In expository mathematics, yes; and in research mathematics, yes.
+
+On the other hand, notes and (undergraduate) textbooks require more. They may be _worked examples_ where we provide the _proof_ that _X_ really is such a gadget, because it has the same structure and satisfies the same properties.
+
+What we can do is write in our LaTeX document:
+
+```
+\begin{example}
+We have $X$ be a gadget.
+\begin{soln}
+Observe that \dots % proof not shown
+\end{soln}
+\end{example}
+```
+
+This enables us to set a parameter, pass an option, whatever to enable the `soln` environment to be hidden (more precisely, just an alias for the `comment` environment) or exposed.
+
+## Structure of an Example ##
+
+The structure really depends on what you want your notes to do. If you are trying to show how a mathematician thinks, it might be better to consider working with "Question/Answer" environments.
+
+One could be a little more formal, and do this in three steps:
+  1. **Problem** is _X_ really a gadget, does it satisfy some property, etc.
+  1. **Scratch Work** where we experiment and fiddle around.
+  1. **Solution** where we present the rigorous mathematical statements proving _X_ satisfies some property or not.
+
+Again, we may encode each of these into environments which may be turned into `comment` environments in the header of the LaTeX document.
+
+**Question:** When should a problem, scratch work, or solution be shown?
+
+**Answer:** When it would be instructive for the particular audience. Unfortunately, there is no definite algorithm to determine this.
+
+Heuristically, the more pedantic and pedagogical the text is intended to be, the more needs to be shown.
+
+## Citing Examples? ##
+
+The golden rule of academia: cite too much. If you get an example from somewhere, be sure to cite it:
+
+```
+\begin{example}[{Hungerdunger, Hungerdunger, Hungerdunger, and McCormick~\cite{hhhm1}}]
+...
+\end{example}
+```
+
+If we come up with an example, and later find out that someone else found it first...I would be inclined to cite it or note afterwards "It was shown to us that Hungerdunger, Hungerdunger, Hungerdunger, and McCormick`~\cite{hhhm1`} considered this example independent of us."
+
+# Failing? #
+
+I think it's common to spend a lot of energy writing something, and finding (_x_ months later) that is has only 2 downloads.
+
+One should be writing for _one's self_ and not for an audience. The same reason why one does math for one's own pleasure.
+
+Avoid thinking you've failed because no one downloads your stuff.
+
+> _It is hard to fail, but it is worse never to have tried to succeed._
+> — Theodore Roosevelt, _Speech at the Hamilton Club_ (1899).

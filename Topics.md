@@ -1,0 +1,221 @@
+
+
+# Introduction #
+These are just a collection of topics and references of interesting stuff to look into...
+
+# Representation Theory #
+
+All of physics boils down to trivial problems in representation theory...or, as Schwarz and Shapiro pointed out, considering integrals of the form:
+> ∫ f(x) exp[g(x)] dx.
+
+Sometimes category theorists say things like "A group consists of a category with a single object such that all the morphisms are isomorphisms" and I think to myself "Thanks, that helps."
+
+But look, consider such a category **G** and consider the category of finite-dimensional vector spaces over some field, **Vect**. The functor **G** -> **Vect** is a linear representation (the group elements, i.e. isomorphisms in **G**, are mapped to invertible linear operators of some finite-dimensional vector space).
+
+That's cute, and it can be generalized to consider representation theory _of groupoids_.
+
+**Question:** Is there a well-developed representation theory for arbitrary categories?
+
+Let us restrict our focus to the representation theory of groups for now.
+
+There are different types of representations (e.g. orthogonal or unitary representations, projective representations, and so on). Perhaps some notes should be written on this matter.
+
+There is also the matter of _Spinor Representations_.
+
+References:
+  1. Pavel Etingof, Oleg Golberg, Sebastian Hensel, Tiankai Liu, Alex Schwendner, Dmitry Vaintrob, Elena Yudovina, "Introduction to representation theory" [arXiv:0901.0827](http://arxiv.org/abs/0901.0827) (108 pages)
+  1. Constantin Teleman [Representation Theory](http://math.berkeley.edu/~teleman/math/RepThry.pdf) (pdf, 60 pages)
+  1. Langland's [Representation theory - its rise and role in number theory](http://sunsite.ubc.ca/DigitalMathArchive/Langlands/pdf/gibbs-ps.pdf) (pdf, 34 pages)
+  1. Henry Cohn's [Outline of Basic Representation Theory](http://research.microsoft.com/en-us/um/people/cohn/Papers/reptheory.pdf) (pdf, 7 pages)
+  1. W Schmid [Geometric Methods in Representation Theory](http://www.math.harvard.edu/~schmid/articles/brussels_1_30_04.pdf) (pdf, 33 pages)
+  1. Kevin McGerty's [Group Representation Theory](http://www2.imperial.ac.uk/~kmcgerty/GroupReps09/GrpRepTh.pdf) (pdf, 59 pages)
+  1. Constantin V. USENKO and Bogdan I. LEV's "Spinor Representation of Lie Algebra for Complete Linear Group" (Eprint [SLAC](http://www.slac.stanford.edu/econf/C0306234/papers/usenko.pdf), pdf, 5 pages)
+
+## Representation Theory for Finite Groups ##
+This requires a slightly different line of thinking (a discrete one, instead of a continuum).
+
+For example, we may work with linear representations over a finite field (which crops up in number theory, coding theory, etc.). This is called a **Modular Representation**.
+
+Two particularly important results are Maschke's theorem (the group algebra for a finite group is a semisimple algebra) and Schur's lemma.
+
+References:
+  1. Andrew Baker's [Representations of Finite Groups](http://www.maths.gla.ac.uk/~ajb/dvi-ps/groupreps.pdf)
+  1. Randall R. Holmes's [Linear Representations of Finite Groups](http://auburn.edu/~holmerr/linear%20representations.pdf) (pdf, 66 pages)
+  1. JP Serre's _Linear Representations of Finite Groups_
+# Moonshine #
+Moonshine is a peculiar topic, because it is "some relationship" between "modular stuff" and "algebraic stuff".
+
+References:
+  1. Terry Gannon's _Moonshine beyond the Monster_ and "Monstrous moonshine and the classification of CFT" ([arXiv:math/9906167](http://arxiv.org/abs/math/9906167))
+## Finite simple groups and the Monster ##
+This is often dismissed as "too simple" a subject to even discuss: finite simple groups are completely classified, thus trivial.
+
+The sporadic groups [viz. the Pariahs + the monster] and twisted finite groups are particularly interesting (in that, they are not like the other finite simple groups).
+
+But still there are a few good references:
+  1. Robert Wilson's _Finite Simple Groups_
+  1. Luis J. Boya's "Introduction to Sporadic Groups" [arXiv:1101.3055](http://arxiv.org/abs/1101.3055) (18 pages)
+  1. Griess' _Twelve Sporadic Groups_
+  1. A. A. Ivanov's _The Monster Group and Majorana Involutions_
+  1. -----, _Geometry of Sporadic Groups: Volume 1, Petersen and Tilde Geometries_
+  1. ----- and S. V. Shpectorov, _Geometry of Sporadic Groups: Volume 2, Representations and Amalgams_
+  1. Michael Aschbacher, _Sporadic Groups_
+  1. -----, _Finite Group Theory_
+## Modular functions and Hauptmoduls ##
+Modular functions are a sticky subject to discuss.
+
+The Poincare half-plane is important to discuss, as is the modular group.
+
+Weierstrass' elliptic function ℘ is also an important object to study. Apostol takes the approach of studying doubly periodic functions in the complex plane, then examining some examples.
+
+Serge Lang's book on elliptic functions might be worth while to look into...
+
+Cousins of Weierstrass' ℘ includes Dedekind's eta function, Jacobi's theta function, the j-invariant, and Eisenstein series.
+
+Such functions emerged from considering inverse functions for elliptic integrals.
+
+References:
+  1. Apostol's _Modular functions and Dirichlet Series in Number Theory_
+  1. Igor V. Dolgachev's [Modular Forms (pdf, 147 pages)](http://www.math.lsa.umich.edu/~idolga/modular.pdf)
+  1. Serge Lang, _Elliptic Functions_ Second ed., Springer GTM **112**
+  1. E. T. Whittaker and G. N. Watson's infamous _A course of modern analysis_ Free at [GoogleBooks](http://books.google.com/books?id=_hoPAAAAIAAJ)
+  1. Akhiezer's _Elements of the Theory of Elliptic Functions_, AMS Translations of Mathematical Monographs **79**
+## Vertex operator algebras ##
+There is no good book on this, in my opinion. There are some good approaches, but no good books.
+
+**Dependencies:** Topological QFT (for the algebraic approach), Wightman Axioms (for the analytical approach).
+
+References:
+  1. Kac's _Vertex Algebras for Beginners_
+  1. Borcherd's "Vertex Algebras" [eprint](http://math.berkeley.edu/~reb/papers/vertex/vertex.pdf) (pdf)
+  1. Markus Rosellen's "A Course in Vertex Algebra" [arXiv:math/0607270](http://arxiv.org/abs/math/0607270)
+  1. R. W. Gebert's "Introduction to Vertex Algebras, Borcherds Algebras, and the Monster Lie Algebra" [arXiv:hep-th/9308151](http://arxiv.org/abs/hep-th/9308151) (55 pages)
+  1. J. Fuchs' "Lectures on conformal field theory and Kac-Moody algebras" [arXiv:hep-th/9702194](http://arxiv.org/abs/hep-th/9702194) (59 pages)
+## Generalised Kac-Moody algebras ##
+This is a straightforward generalization of Kac-Moody Algebras.
+
+References:
+  1. Kac's _Infinite-Dimensional Lie Algebras_ (Third ed.)
+  1. Antony Wassermann's "Kac-Moody and Virasoro algebras" [arXiv:1004.1287](http://arxiv.org/abs/1004.1287) (80 pages)
+  1. Dmitry Fuchs' notes (through personal communication)
+
+# The Mckay Correspondence #
+This relates various finite groups --- well, finite subgroups of SU(2,**C**) --- to various Lie groups.
+
+What are the finite subgroups of SU(2,**C**)? Well, there are several:
+  1. Cyclic groups
+  1. Binary dihedral group
+  1. Binary Tetrahedral group
+  1. Binary Octahedral group
+  1. Binary Dodecahedral group
+and no others. See Yi Sun's [The McKay Correspondence](http://web.mit.edu/yisun/www/talks/mckay.pdf) (pdf, 4 pages).
+
+Miles Reid has done some work generalizing it, working with finite subgroups of SL(3,**C**).
+
+References:
+  1. Igor V. Dolgachev's "McKay correspondence" [Eprint](http://www.math.lsa.umich.edu/~idolga/McKaybook.pdf) (pdf, 158 pages) Winter 2006/07
+  1. John F. Duncan's "Arithmetic groups and the affine E8 Dynkin diagram" [arXiv:0810.1465v2](http://arxiv.org/abs/0810.1465) (29 pages)
+  1. F Palesi's [Introduction to McKay's correspondence](http://math.univ-lyon1.fr/~remy/Palesi.pdf) (pdf, 8 pages)
+  1. Luca Scala's [On some aspects of the McKay correspondence](http://www.floorlengthandtux.com/pics/flat6/seminario.pdf) (pdf, 14 pages)
+
+
+---
+
+
+# Interlude: On Science #
+This is a mis-leading title, it is really about "Science Notes". Science is grounded in experiment. This is a wonderful thing.
+
+However, the challenge is for me to write science notes for mathematicians. Quite ambitious. My guiding principle is to be quite frank with the reader (and I am the reader!). But science is a very different topic than mathematics.
+
+For starters, there is the matter of experiments. Do we cover them or not?
+
+All experiments should be covered, and unless terribly relevant placed inside a "Box" environment (so the reader can skip it).
+
+There should be some DIY experiments, cheap experiments that would reproduce the theoretical results (e.g., the Cavendish experiment done for less than $5, or something like that).
+
+The various fields of science that I would like to discuss include chemistry and biology as well (if only to get a basic understanding of the subject).
+
+
+---
+
+
+# Physics #
+## Classical Mechanics ##
+Classical mechanics studies the motion of a point particle, then moves on to consider extended bodies ("rigid body motion").
+
+Newton began with differential equations, done in Euclidean geometry. It is left for the reader's imagination to fathom the difficulty here.
+
+Lagrange formulated a different approach using "modern" calculus. Modern parlance would say it involves the tangent bundle of the "space".
+
+Hamilton formulated a slightly different approach. Lagrange works with second-order differential equations (which are hard), and Hamilton switched over to a system of first order differential equations (easier).
+
+Topics would include canonical transformations (and the relation to representation theory), Hamilton Jacobi equations, Action-Angle coordinates, etc.
+
+Note that Woodhouse's _Geometric Quantization_ has the best discussion of constraints in mechanics (contained in chapter 2).
+
+**Dependencies** Differential Geometry of Curves, Variational Calculus (in some sense of those words)
+
+References:
+  1. M Spivak's _Physics for Mathematicians: Mechanics_
+  1. V.I. Arnol'd's _Mathematical Methods of Classical Mechanics_
+  1. James J. Binney's [Classical Mechanics](http://www-thphys.physics.ox.ac.uk/people/JamesBinney/cmech.pdf) (pdf, 31 pages)
+## Classical Field Theory ##
+There are two serious classical field theories: gravity and electromagnetism.
+
+Students are taught electromagnetism through circuit diagrams ("field theory for electricians"). Gravity is taught as general relativity.
+
+**Dependencies** Differential Geometry
+
+References:
+  1. Landau and Lipschitz, _Theoretical Physics_ Vol. 2 Classical Field Theory.
+  1. Any of the many books I have on general relativity...
+## Particle Physics ##
+This has always been an exotic subject. It seems that there is a lot of folk lore not written down or not accessible (e.g., Regge trajectories).
+
+It would be nice to write a tutorial on the empirical strength of various models using the algorithmic style used for my Feynman diagram notes.
+
+Topics including: How to compute amplitudes, scattering theory, hadrons, isospin and flavor charges, the quark model, color charges, weak forces, electroweak theory and symmetry breaking, cross sections for various processes, and so on.
+
+Note with symmetry breaking, although spontaneous and explicit symmetry breaking is discussed quite a bit in the literature, there is little said regarding pseudo-Goldstone bosons wherein an approximate symmetry is broken. This happens in certain models of QCD (I'm told it is where the symmetry breaking is simultaneously explicit and spontaneous).
+
+There is the matter of Cooper pairs, which is peculiar yet interesting.
+
+**Dependencies** Spin bundles, classical field theory, functional analysis.
+
+References:
+  1. A. Seiden's _Particle Physics: A Comprehensive Introduction_
+  1. Gribov's _Theory of Complex Angular Momenta_
+# Quantum Field Theory #
+
+This is a subject that, quite frankly, no one _understands_ but people formally manipulate in a prescribed manner.
+
+In particular, the different approaches to functional integration seems interesting.
+
+References:
+  1. Igor V. Dolgachev's [Lecture Notes](http://www.math.lsa.umich.edu/~idolga/lecturenotes.html) on physics
+  1. Deligne, et al., _String Theory for Mathematicians_ (NB the notes are available free, legally, [online](http://www.math.ias.edu/qft))
+## Canonical Formalism ##
+
+This approach uses Hilbert spaces in the obvious way. It runs into problems due to the von Hove-Groenewald theorem.
+
+References:
+  1. Streater and Wightman _PCT, spin and statistics, and all that._
+  1. Woodhouse's _Geometric Quantization_ for a slightly more rigorous approach to canonically quantize a system
+
+## Functional Integration ##
+
+This can be considered part of mathematics or physics, depending on who one speaks to.
+
+There are different formulations of functional integration. I discuss one in my [Notes on Functional Methods in Quantum Theory](http://notebk.googlecode.com/files/functionalQFT.pdf) (pdf, 28 pages).
+
+There are others. For example, the lattice approach is usually taken, and we consider the continuum limit. The resulting quantity, we claim, is the definition of the functional integral.
+
+But there are many different, inequivalent lattice approaches. Sometimes it causes differing continuum limits. This is the **Gribov Ambiguity** (as I understand it).
+
+There is also the approach using Wiener measures, which DeWitt-Morette and Cartier discuss. I don't know enough about it, though.
+
+**Dependencies** Everything! Measure theory, cohomology, etc.
+
+References:
+  1. Pierre Cartier, Cécile DeWitt-Morette "A new perspective on Functional Integration" [arXiv:funct-an/9602005](http://arxiv.org/abs/funct-an/9602005), 102 pages.
+  1. -----, ----- _Functional Integration: Action and Symmetries_

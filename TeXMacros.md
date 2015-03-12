@@ -1,0 +1,1035 @@
+
+
+# Introduction #
+
+There's a large number of macros that are useful for specific things, and I'd like to collect them all here for future reference.
+
+# To Do #
+
+There are a variety of macros that I have in my mind that needs to be articulated, they basically amount to the following grocery list. The actual code is in the next section.
+
+## Local and Global Coordinates ##
+
+This problem came up while working on symplectic geometry in Hamiltonian mechanics:
+
+It would be nice to have some sort of code that would allow me to set up some way of doing calculations locally and globally...right next to each other. I'm still trying to envision what this _should_ look like.
+
+## Tracks ##
+
+Another thing that would be nice is to have "tracks" _à la_ Misner, Thorne, and Wheeler. I am going to (one day) assemble all my notes together into one cohesive whole, who knows maybe it'll even be published as a book.
+
+## Book ##
+
+We have `\part`, `\chapter`, then sections...but it would be nice if we could add a `\book` that's weight -2. This should be trivial, but I don't have the time to do it at this very moment (it won't be necessary **until** I'm making this into a cohesive whole).
+
+I am tempted to deprecate this, and use Springer's `svmono` documentclass.
+
+## Boxes ##
+
+This doesn't seem too hard, the `framed.sty` package has done most of the work for me. But it would be nice to make the box slightly larger, again _à la_ Misner, Thorne, and Wheeler; and have the boxes be environments which are numbered.
+
+Here is the first attempt using the `framed.sty` package:
+
+```
+\newcounter{boxed}[section]
+\newenvironment{Boxed}[1]{\refstepcounter{boxed}\MakeFramed {\advance\hsize 2pc\FrameRestore}\noindent{\subsectionfont Box \theboxed. #1}\vskip .125\baselineskip}{\endMakeFramed}
+```
+
+Example usage:
+
+```
+\begin{Boxed}{Soliloqui}
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+Blah blah blah blah blah. Blah blah blah blah blah. Blah blah blah blah blah. 
+\end{Boxed}
+```
+
+The disadvantage, which is glaringly obvious, is that it is necessary to have an argument for the `Boxed` environment. It'd be better if this could be modified to have it be an optional argument...but it works well in a `book` or `svmono` document class.
+
+# Code #
+
+## Fix the Skip and Break Amounts ##
+
+I have noticed for some reason the `\medbreak` (etc.) commands give odd spacing. To fix this I just redefined things using the plain.tex macros:
+
+```
+\makeatletter
+
+\setlength\parindent{20pt}
+\setlength\parskip{0pt plus 1pt}
+\newskip\smallskipamount \smallskipamount=3pt plus 1pt minus 1pt
+\newskip\medskipamount \medskipamount=6pt plus 2pt minus 2pt
+\newskip\bigskipamount \bigskipamount=12pt plus 4pt minus 4pt
+\def\smallskip{\vskip\smallskipamount}
+\def\medskip{\vskip\medskipamount}
+\def\bigskip{\vskip\bigskipamount}
+\def\removelastskip{\ifdim\lastskip=\z@\else\vskip-\lastskip\fi}
+\def\smallbreak{\par\ifdim\lastskip<\smallskipamount
+  \removelastskip\penalty-50\smallskip\fi}
+\def\medbreak{\par\ifdim\lastskip<\medskipamount
+  \removelastskip\penalty-100\medskip\fi}
+\def\bigbreak{\par\ifdim\lastskip<\bigskipamount
+  \removelastskip\penalty-200\bigskip\fi}
+
+\makeatother
+```
+
+If you don't make this change, you may end up with problems when doing e.g. the suggested exercises using the macros below.
+
+## Text dimensions ##
+
+Text dimensions are interesting to change.
+
+I would **highly recommend** using AMSTeX's `amsppt` (AMS Preprint) style, which would make
+```
+\usepackage[top=6pc,%
+  textheight=8.9in,% or 53.4pc, compared to svmono's 45pc or amsart's 50.5pc
+  textwidth=30pc,%
+  inner=6pc,%
+  marginparwidth=10pc,%
+  marginparsep=1.5pc]{geometry}
+```
+This is the best choice for notes/preprints, it allows the reader to write in the spacious-but-not-quite-absurd 2-inch margin.
+
+Other examples, `amsart` has the dimensions
+```
+\textheight=50.5pc \topskip=10pt
+\textwidth=30pc
+\columnsep=10pt \columnseprule=0pt
+\marginparwidth=90pt
+\marginparsep=11pt
+```
+On the other hand, `svmono` (Springer's monograph class) has
+```
+\setlength{\textwidth}{117mm} % or 27.75pc
+\setlength{\textheight}{191mm} % roughly 45.17pc
+```
+Most of my notes use the `geometry` package:
+```
+\usepackage[top=6pc,%
+  textheight=8.9in,% or 53.4pc, compared to svmono's 45pc or amsart's 50.5pc
+  textwidth=33pc,%
+  inner=6pc,%
+  marginparwidth=9pc,%
+  marginparsep=1.5pc]{geometry}
+```
+I think a good sized margin is useful for scribbling.
+
+## Dangerous Bend ##
+
+This produces a simple dangerous bend environment. I prefer this to the alternatives out there, since this permits me to ramble on for paragraphs (as opposed to exactly 1 paragraph).
+
+```
+% usepackage{manual} or use the following:
+\@ifundefined{dbend}{\font\manual=manfnt %
+  \def\dbend{{\manual\char127}} % dangerous bend sign
+  }{}
+
+% Danger, Will Robinson!
+\newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
+
+% Danger! Danger!
+\newenvironment{ddanger}{\medbreak\noindent\hangindent=3pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
+```
+
+## Links to ArXiv ##
+
+When referring to an eprint from arXiv, the suggested syntax is something like `arXiv:gr-qc/xxxxxx` or (nowadays) `arXiv:xxx.yyy [gr-qc]`. One approach to do this is
+
+```
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+```
+
+So to cite the modern way, one could write `\arXiv[gr-qc]{xxx.yyy`}
+which formats it correctly. The older way, `\arXiv{gr-qc/xxxxxx`} would also be formatted correctly. Plus, they are links to the article!
+
+## Quotes From Others ##
+
+Knuth has these wonderful quotes from other authors. I wanted to use his macros in an environment setting. So here's my modified version of his macros:
+
+```
+\newenvironment{quotes}{\font\eightss=cmssq8
+  \font\eightssi=cmssqi8
+  \font\sixss=cmssq8 scaled 800
+  \baselineskip 10pt
+  \parfillskip \z@
+  \interlinepenalty 10000
+  \leftskip \z@ plus 40pc minus \parindent
+  \let\rm=\eightss \let\sl=\eightssi \let\adbcfont=\sixss
+  \everypar{\sl}
+  \def\\{\hskip.05em} % can say 3\\:\\16
+  \obeylines}{}
+\def\Author#1(#2){\par\nobreak\smallskip\noindent\rm--- #1\unskip\enspace(#2)}
+```
+
+How are they used? Well, here's an example:
+
+```
+%\vfill
+\begin{quotes}
+...each problem solved was a rule 
+which served in the discovery
+  of subsequent ones... 
+\Author Ren\'e Descartes, {\sl Discourse on Method} (1637)
+\bigskip
+
+Socrates thought that if all our problems were laid in one common
+heap, whence every one must take an equal portion, most persons
+would be contented to take their own and depart. 
+\Author Plutarch, {\sl Consolation to Apollonius} (????)
+\bigskip
+
+The lyf so short, the craft so longe to lerne.
+Th' assay so hard, so sharp the conquerynge,
+The dredful joye, alwey that slit so yerne;
+Al this mene I be love. 
+\Author Geoffrey Chaucer, {\sl Parlement of Foules} (1382)
+\end{quotes}
+```
+
+Uncomment the `\vfill` if you want the quotes to be at the bottom of the page.
+
+## Algorithms ##
+
+I always loved how Knuth wrote Algorithms --- to me they read as mathematical proofs. At any rate, I wanted to use the same macros. Somehow I found `taocpmac.tex` online somewhere, which are Knuth's macros for TAOCP. The LaTeX version of the relevant macros are thus:
+
+```
+% These macros are borrowed from TAOCPMAC.tex
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\def\xskip{\hskip 7pt plus 3pt minus 4pt}
+\newdimen\algindent
+\newif\ifitempar \itempartrue % normally true unless briefly set false
+\def\algindentset#1{\setbox0\hbox{{\bf #1.\kern.25em}}\algindent=\wd0\relax}
+\def\algbegin #1 #2{\algindentset{#21}\alg #1 #2} % when steps all have 1 digit
+\def\aalgbegin #1 #2{\algindentset{#211}\alg #1 #2} % when 10 or more steps
+\def\alg#1(#2). {\medbreak % Usage: \algbegin Algorithm A (algname). This...
+  \noindent{\bf#1}({\it#2\/}).\xskip\ignorespaces}
+\def\algstep#1.{\ifitempar\smallskip\noindent\else\itempartrue
+  \hskip-\parindent\fi
+  \hbox to\algindent{\bf\hfil #1.\kern.25em}%
+  \hangindent=\algindent\hangafter=1\ignorespaces}
+% end of borrowed macros
+
+% For Example, with less than 10 steps:
+% \algbegin X (Multiplication). blah blah blah blah...
+% \algstep X1. [{\it Do stuff\/}] blah blah blah
+% \algstep X2. Terminate the algorithm.\quad\slug
+```
+
+The `\slug` places the Tombstone to indicate the algorithm is finished. I also use it for the QED symbol.
+
+I have not tried this, but it seems to me that a preferable way to deal with things is to do something that incorporates an automatic counter. That is to say, have something like
+```
+\newcounter{algorithm}
+\def\algorithm#1(#2). {% 
+  \gdef\algprefix{#1}
+  \setcounter{algorithm}{0}
+  \def\step{ %
+    \refstepcounter{algorithm} %
+    \algstep{\algprefix{}\thealgorithm}. %
+    }
+  \alg#1(#2).
+  }
+```
+This way, in theory (**I HAVE NOT TESTED THIS CODE!**) one could simply write
+```
+\algorithm X (Multiplication). We do multiplication the old fashioned way.
+\step [{\it Do stuff\/}] Blah blah blah.
+\step [{\it Clean up\/}] Terminate the algorithm.\quad\slug
+```
+It would also be nice if we could turn it into an environment somehow...
+
+## Lecture Notes ##
+
+I often type up lecture notes, so I have macros that replace the `\section{...}` macro.
+
+```
+\makeatletter
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}\sectionfont Lecture \thesection.}\medbreak}
+\makeatother
+```
+
+How does one use this? Well, it's like the `\section{...}` command, except instead one doesn't need to give a subject title. So here's some example usage:
+
+```
+\lecture
+\input{tex/lecture01}
+\lecture
+\input{tex/lecture02}
+\lecture[Riemannian Metrics]
+\input{tex/lecture03}
+\lecture
+\input{tex/lecture04}
+\lecture[Affine Connections]
+\input{tex/lecture05}
+\lecture[Riemannian Connection]
+\input{tex/lecture06}
+\lecture[Geodesics]
+\input{tex/lecture07}
+\lecture
+\input{tex/lecture08}
+```
+That is from my notes on Differential geometry!
+
+#### Deprecated Version ####
+Here is the deprecated version of the `\lecture` command, I don't think it works too well...
+
+```
+\newcommand{\lecture}[1][]{\refstepcounter{section}\bigbreak\renewcommand{\leftmark}{Lecture \thesection}
+\noindent{\addcontentsline{toc}{section}{Lecture \thesection#1}\sectionfont Lecture \thesection#1}\medbreak}
+```
+
+Instead of the section `\section{Foobar}` being typewritten as "3. Foobar", we have `\lecture{Foobar}` be typeset as "Lecture 3 Foobar". Of course, one is free to improve upon this as one likes...
+
+## Exercises ##
+
+Sometimes it is useful to have exercises to make the reader learn the subject far better. I am admittedly fond of Knuth's approach trying to indicate the difficulty of the exercise, so I have tried to adopt it.
+
+```
+\def\textindent#1{\indent \llap {#1\enspace }\ignorespaces}
+\newcounter{exercise}
+\def\exercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\textbf{\theexercise.}}[\textit{#1\/}]\kern6pt}
+\def\suggestedExercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\llap{\manual x\hskip3pt}\bf{\hbox to
+     \ifnum \value{exercise}>99 1.5em\else 1em\fi{\hfil\theexercise}}.}[\textit{#1\/}]\kern6pt}
+
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+
+\newenvironment{exercises}{\medskip\noindent\ignorespaces\textbf{EXERCISES}%
+	\vspace{-0.35pc}\parindent=0pt%
+	\setcounter{exercise}{0}}{}
+```
+
+The suggested exercises have a triangle in the margins, to differentiate them from the usual exercises.
+
+One can alternatively change the first line of the `exercises` environment to make it a subsection:
+
+```
+\newenvironment{exercises}{\subsection*{Exercises}%
+        \vspace{-0.35pc}\parindent=0pt%
+	\setcounter{exercise}{0}}{}
+```
+
+Whichever one prefers. The next set of macros to consider is one which allows me to write the answers to a file, but this will be tricky (and presumably memory intensive) so I will delay that for the time being.
+
+How one would use this, for example, would be:
+
+```
+\begin{exercises}
+\exercise [05] What is the meaning of life?
+% \answer{The answer is naturally 42.}
+\exercise [50\HM] Solve the Riemann conjecture.
+\suggestedExercise [45\HM] Prove Fermat's last Theorem.
+\end{exercises}
+```
+
+### Without Predetermined Placement ###
+
+From [TeX stackexchange](http://tex.stackexchange.com/questions/13635/exercises-in-lecture-notes-without-predetermined-placement), if one wanted to have exercises without predetermined placement, the general idea is to use the following:
+
+```
+\documentclass{article}
+\usepackage{amsthm}
+
+\theoremstyle{remark}
+\newtheorem{ExInternal}{Exercise}[section]
+
+\makeatletter
+\let\@exercises\@empty%
+\newcommand\exercise[2][]{%
+    \g@addto@macro\@exercises{%
+        \begin{ExInternal}[#1]%
+            #2%
+        \end{ExInternal}%
+    }%
+}
+
+\newcommand\exerciseshere{%
+    \subsection*{Exercises}
+    \@exercises%
+    \global\let\@exercises\@empty%
+}
+\makeatother
+\begin{document}
+
+\section{Prime Numbers}
+
+A \emph{prime number} is a positive integer other than $1$ that is only divisible by $1$ and itself.
+
+\exercise[Euclid's Theorem]{\label{ex:euclid}Show that there are infinitely many prime numbers.}
+
+As you will show in Exercise \ref{ex:euclid}, there are infinitely many primes.
+The number of primes that are smaller than a given natural number $n$ is denoted $\pi(n)$.
+\exercise{Find an asymptotic formula for $\pi(n)$. \emph{Hint:} You might find Exercise \ref{ex:zeta} helpful.}
+
+\exerciseshere
+
+\section{Zeta function}
+
+The zeta function is given by $\zeta(s) = \sum_{n=1}^\infty n^{-s}$, where $s$ is a complex number with real part bigger than $1$.
+\exercise{\label{ex:zeta}Extend $\zeta$ as far as possible and find all zeros of the function.}%
+For example $\zeta(2) = \frac{\pi^2}{6}$.
+
+
+\exerciseshere
+\end{document}
+```
+It would not be hard to modify this appropriately...
+
+## Answers ##
+
+The only way to make LaTeX write verbatim to a file was to use the `verbatim` package. And to make `answer` into an environment.
+
+```
+\usepackage{verbatim}
+\newwrite\ans%
+\immediate\openout\ans=tex/answers % file for answers to exercises
+
+\makeatletter
+\newenvironment{answer}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\theexercise:}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+
+%% Sometimes there's an alternate way to solve the problem
+%% TODO: Make this include an optional argument specifying how it
+%%       was done, so one can use the following code snippet
+%% \begin{altAns}[Using Complex Analysis]
+%% ...
+%% \end{altAns}
+\newenvironment{altAns}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\theexercise (Alternate):}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+\makeatother 
+```
+
+One should probably rewrite the `exercises` environment to include writing to the `tex/answers.tex` file various extra information (e.g. which section the answers correspond to, etc.).
+
+## Changing Section Fonts ##
+
+I think that the section, subsection, etc., fonts are rather ugly. I decided to change this to make them somewhat prettier.
+
+```
+%\font\sectionfont=cmssbx10 %at 12pt
+%\font\subsectionfont=cmssbx10
+\def\sectionfont{\large\sffamily\bfseries}
+\def\subsectionfont{\sffamily\bfseries}
+\makeatletter
+\def\specialsection{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\subsectionfont}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\subsectionfont}}
+\makeatother
+```
+
+## Chapter Macro ##
+
+I decided to also redefine the Chapter macro to make it better. Of course, that's when I am working within the `book.cls`. In other document classes (ahem `memoir.cls`), it causes errors.
+
+```
+\font\chapterfont=cmssbx10 scaled\magstep3
+\font\twelvess=cmss12
+\makeatletter
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \chapterfont \hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+```
+
+This is, again, in the spirit of Knuth's TAOCP.
+
+## Theorems ##
+
+I use the `amsthm` package, even though I am torn about it. It's not bad enough for me to write my own macros in frustration, at least not yet! So here are the macros I use to customize my theorems.
+
+```
+\usepackage{amsthm}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{criteria}[thm]{Criteria}
+\newtheorem*{DiracConjecture}{Dirac's Conjecture}
+\newtheorem*{bessel}{Bessel Inequality}
+\newtheorem*{parseval}{Parseval Equality}
+\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
+\newtheorem*{invFourier}{Fourier Inversion Theorem}
+\newtheorem*{plancherel}{Plancherel Theorem}
+\newtheorem*{samplingthm}{Sampling Theorem}
+\newtheorem*{dual}{Dual Principle for Categories}
+\newtheorem*{yoneda}{Yoneda Lemma}
+\newtheorem*{schur}{Schur's Lemma}
+\newtheorem*{implicitFunctionThm}{Implicit Function Theorem}
+\newtheorem*{minNum}{Minimal Number Principle}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{nonex}[thm]{NON-Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{fact}{Experimental Fact}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{con}[thm]{Conjecture} % if one wants a definition-like conjecture
+\newtheorem*{assume}{Assumption}
+\newtheorem*{quest}{Question}
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{sch}[thm]{Scholium}
+\newtheorem*{notation}{Notation}
+\newtheorem*{note}{Note}
+\newtheorem*{summary}{Summary}
+\newtheorem*{conclude}{Conclusion}
+```
+
+### Amsmath Exercise Environment ###
+With exercises, `amsmath` suggests an `xca` environment. I would do the following
+```
+% if we don't have manfonts...
+% usepackage{manual} or use the following:
+\@ifundefined{mantriangleright}{\font\manual=manfnt %
+  \def\mantriangleright{{\manual\char'170}} % dangerous bend sign
+  }{}
+
+\newtheorem{xca}{\llap{\mantriangleright\kern.15em}Exercise}
+```
+This is based on Knuth's TeXbook exercise environment, which sticks a triangle into the margin.
+
+### Examples with QEF ###
+I've been studying other subjects (e.g., biology, chemistry, physics, etc.) where examples _are_ the main thing studied. Moreover, this typically takes the form, in LaTeX, as:
+
+```
+\begin{ex} % example format
+Consider this problem\dots
+
+\noindent\textbf{Identify:\enspace} We want to find\dots, we have given\dots.
+
+\noindent\textbf{Set Up:\enspace} We will use these equations\dots
+
+\noindent\textbf{Execute:\enspace} We perform the calculations\dots
+
+\noindent\textbf{Evaluate:\enspace} How does it work? What's the key idea?
+\end{ex}
+```
+
+Consequently it is hard to tell when an example _ends_ unless one has a grocery list of examples. So, inspired by Euclid, we use a special QEF symbol:
+
+```
+% if \qedsymbol is \square...
+\newcommand\qefsymbol{\ensuremath\blacksquare} 
+% perhaps \ensuremath\triangle if one prefers...
+\newenvironment{example}{\begin{ex} %
+  \let\qedsymbol\qefsymbol % this is a temporary "let"
+  \pushQED{\qed}}%
+  {\popQED\end{ex}}
+```
+Landi's arXiv eprint "An Introduction to Noncommutative Spaces and their Geometry" ([arXiv:hep-th/9701078](http://arxiv.org/abs/hep-th/9701078)) uses `\triangle` to end examples.
+
+## Sketch of Proof ##
+
+I like to sometimes provide a sketch of a proof instead of the full blown proof, as it's more instructive to give the idea instead of the mundane details (or if the proof is a good exercise, but the intuitive picture is needed at the moment). So I used `amsthm`'s proof environment as inspiration:
+
+```
+\renewcommand{\qedsymbol}{\slug}
+
+\makeatletter
+\providecommand{\sketchname}{Sketch of Proof}
+\newenvironment{sketch}[1][\sketchname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+```
+
+Remember the `\slug` is the code borrowed from Knuth, it's just a particular version of the Halmos tombstone.
+
+## Bracket Macros ##
+
+I forgot where I found these macros, but I claim **no credit** for them. They were released into the public domain, so licensing really isn't an issue. Here are the lovely macros:
+
+```
+\makeatletter
+\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
+[\@bracketheight]}}
+\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
+{\@over@bracket[#1][0.3em]}}
+\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
+\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
+\nointerlineskip }\downbracketfill {#1}{#2}
+                              \crcr \noalign {\kern 3\p@ }
+                              \crcr  $\hfil \displaystyle {#3}\hfil $%
+                              \crcr} }}\limits}
+\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+\downbracketend{#1}{#2}$}
+\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
+
+
+\def\underbracket{%
+  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
+}
+\def\@underbracket[#1]{%
+  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
+}
+\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
+ \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
+ \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
+       \crcr \noalign {\kern 3\p@ }}}}\limits}
+\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
+	              {#1}{#2}$}
+\def\bracketend#1#2{\vrule height #2 width #1\relax}
+\makeatother
+
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+```
+
+They function like the `\underbrace` and `\overbrace` macros, except they take in an optional argument for the width of the bracket. I prefer using `[0.5pt]` for my brackets.
+
+## Mathematical Operators ##
+
+I prefer defining macros that specify the notation for mathematical operators. That is to say, I prefer writing `$\aut{X}$` or something like that, then change one line of code to change the notation throughout the paper.
+
+```
+\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\coker}{\mathop{\mathrm{Coker}}\nolimits}
+\newcommand{\erfi}{\mathop{\mathrm{erfi}}\nolimits}
+\newcommand{\erf}{\mathop{\mathrm{erf}}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\newcommand{\eqdef}{\stackrel{\text{def}}{=}}
+\newcommand{\define}[1] {``\/\textsc{\textbf{#1}}\/\/''}%\index{#1}}
+\renewcommand{\arctan}{\mathop{\mathrm{ArcTan}}\nolimits}
+
+%% Differential Geometry refers to these quantities frequently as well
+\def\diff{\mathrm{Diff}}
+\def\vect{\mathrm{Vect}}
+
+\def\weak={\approx} % weak equality when working in classical gauge theory
+\def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
+
+
+
+% Notation used for algebraic topology
+\let\homotopic\sim
+```
+### Set Theory Notation ###
+Here's the set theory notation I use:
+
+```
+%% Frequently used set theory notation
+\let\logic\texttt
+\newcommand\powerset[1]{\mathcal{P}(#1)}
+\newcommand\CC{\mathbb{C}}
+\newcommand\FF{\mathbb{F}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\OO{\mathbb{O}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\let\oldsetminus\setminus
+\def\setminus{-}
+\newcommand\universe{\mathcal{U}}
+\newcommand\domain{\mathop{\mathrm{dom}}\nolimits}
+\newcommand\codomain{\mathop{\mathrm{cod}}\nolimits}
+\let\propersubset\subset
+\let\propersupset\supset
+\let\oldsubset\subset
+\let\oldsupset\supset
+\let\subset\subseteq
+\let\supset\supseteq
+
+\let\oldemptyset\emptyset
+\let\varemptyset\varnothing
+```
+### Abstract Algebra Notation ###
+This includes category theory, etc.
+
+```
+\newcommand{\tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\aut}{\mathop{\mathrm{Aut}}\nolimits}
+\renewcommand{\ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\lie}{\mathop{\mathrm{Lie}}\nolimits}
+\let\Lie\lie
+\renewcommand{\hom}{\mathop{\mathrm{Hom}}\nolimits}
+\def\fun{\mathop{\mathrm{Fun}}\nolimits} % like \hom but for categories
+\def\nat{\mathop{\mathrm{Nat}}\nolimits} % like \hom but for functors
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathrm{Ob}(#1)}
+\newcommand{\cat}[1]{\mathbf{#1}} % notation for a category, e.g. $\cat{Set}$
+
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+\newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
+\newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
+\newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
+\newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
+
+%% Lie groups frequently used
+\def\GL#1{\mathrm{GL}(#1)}
+\def\SL#1{\mathrm{SL}(#1)}
+\def\SO#1{\mathrm{SO}(#1)}
+\def\ORTH#1{\mathrm{O}(#1)}
+\def\U#1{\mathrm{U}(#1)}
+\def\SU#1{\mathrm{SU}(#1)}
+\def\Sp#1{\mathrm{Sp}(#1)}
+
+%% Categories frequently used
+\newcommand\Set{\cat{Set}} % category of sets
+\newcommand\FinSet{\cat{FinSet}} % category of finite sets
+\newcommand\Cat{\cat{Cat}} % category of categories
+\newcommand\Vect{\cat{Vect}} % category of vector spaces
+\newcommand\Top{\cat{Top}} % category of topological spaces
+\newcommand\Grp{\cat{Grp}} % category of groups
+\newcommand\Gpd{\cat{Gpd}} % category of groupoids
+\newcommand\Alg{\cat{Alg}} % category of algebras over a field
+\newcommand\Magm{\cat{Magm}} % category of Magmas
+
+\newcommand\ClassicalGroup[1]{\mathsf{#1}}
+\newcommand\Antisymmetric{{\textstyle\bigwedge\nolimits}}
+```
+
+### Remarks ###
+The `\ClassicalGroup` macro is used to write the classical Lie groups using a particular font. This way, when working with finite groups, we can tell the difference between the Dihedral group and the `D_{n}` family of simple Lie groups.
+
+I am "on the fence" about the empty set notation. There are two versions of it, and I cannot decide which is preferable --- the one that is standard in LaTeX, the other which is `\varnothing` in the AMS-symb package.
+
+The `\Antisymmetric` macro was written because I must confess to not being fond of using `\Lambda` but I would prefer to use something bigger than `\wedge`. The text style of `\bigwedge` seemed ideal, so I just defined a new macro to make it so.
+
+### Clifford Algebra Notation ###
+
+Being fond of Lawson and Michelsohn's _Spin Geometry_, I adopted their notation:
+```
+\def\Cliff{\mathrm{C}\ell}  % for real clifford algebras
+\def\CCliff{\CC\ell}        % for complex clifford algebras
+\DeclareOperator{\Spin}{Spin} % spin groups
+\DeclareOperator{\Pin}{Pin}   % pin groups
+```
+Perhaps also some notation for Dirac operators?
+
+# Homework Macros #
+
+Here are my macros I use (typically) when doing homework.
+
+```
+\documentclass{article}
+\usepackage[top=6pc,textwidth=32pc,inner=6pc,%
+marginparwidth=9.5pc,marginparsep=1cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{marginnote}
+\font\manual=manfnt
+
+\newcounter{exercise}
+\newenvironment{exercise}{\refstepcounter{exercise}\medbreak%
+  \noindent\llap{\manual\char'170\rm\kern.15em}% triangle in margin
+  \small{\textbf{EXERCISE \theexercise}}\\%
+  \noindent}{}
+\def\ansno#1:{\medbreak\noindent%
+  {\bf A\uppercase{{\footnotesize nswer to}} #1:\enspace}\ignorespaces}
+\newcommand{\answer}{\par\medbreak % \answer simply
+  \ansno\theexercise: \\% prints directly
+  } % out when it's called 
+\numberwithin{equation}{exercise}
+\let\Bbb\mathbb
+\let\frak\mathfrak
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\hwmark}{}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyheadoffset[OR,EL]{8pc}
+\else
+\fancyhead[L]{\nouppercase{\hwmark}}
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{8pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{Math 261a Homework\#6} %%% XXX: replace this
+\title{Math 261A Homework 6} %%% XXX: replace this with current homework and class data
+\begin{document}
+
+\maketitle
+
+\begin{exercise}
+Let $V$ be the fundamental representation of $\frak{sl}(n)$. Let
+$V^{*}$ be the representation dual to $V$. Find  the
+decomposition of $V\otimes V$ and $V\otimes V^{*}$ into the
+direct sum of irreducible representations.
+\end{exercise}
+
+\answer Well, we first see that if
+\begin{equation}
+\rho\colon\frak{sl}(n)\to \frak{gl}(V)
+\end{equation}
+is our representation morphism and... % rest not shown
+
+\end{document}
+
+```
+
+# Deprecated Macros #
+
+Just in case someone is using these macros.
+
+**TODO** It is important to write my own theorem macros because `amsthm.sty` is incompatible with too many things. Here is a preliminary version:
+
+```
+\makeatletter
+\newcounter{defn}
+\setcounter{defn}{0}
+\newenvironment{proclaim}[1]{\medbreak\noindent{\textbf{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+\newenvironment{@@thm}[1]{\begin{proclaim}{#1}\sl}{\end{proclaim}}
+\newenvironment{@defn}[1]{\begin{proclaim}{#1}}{\end{proclaim}}
+\newenvironment{@rmk}[1]{\medbreak\noindent{\textit{#1.}}}{\par\ifdim\lastskip<\medskipamount \removelastskip\penalty55\medskip\fi}
+
+\newenvironment{thm}{\refstepcounter{defn}\begin{@@thm}{Theorem \arabic{defn}}}{\end{@@thm}}
+\newenvironment{lem}{\refstepcounter{defn}\begin{@@thm}{Lemma \arabic{defn}}}{\end{@@thm}}
+\newenvironment{cor}{\refstepcounter{defn}\begin{@@thm}{Corollary \arabic{defn}}}{\end{@@thm}}
+\newenvironment{prop}{\refstepcounter{defn}\begin{@@thm}{Proposition \arabic{defn}}}{\end{@@thm}}
+\newenvironment{prob}{\refstepcounter{defn}\begin{@@thm}{Problem \arabic{defn}}}{\end{@@thm}}
+
+\newenvironment{defn}{\refstepcounter{defn}\begin{@defn}{Definition \arabic{defn}}}{\end{@defn}}
+\newenvironment{fact}{\refstepcounter{defn}\begin{@defn}{Experimental Fact \arabic{defn}}}{\end{@defn}}
+\newenvironment{ex}{\refstepcounter{defn}\begin{@defn}{Example \arabic{defn}}}{\end{@defn}}
+\newenvironment{nonex}{\refstepcounter{defn}\begin{@defn}{NON-Example \arabic{defn}}}{\end{@defn}}
+\newenvironment{conjecture}{\refstepcounter{defn}\begin{@defn}{Conjecture \arabic{defn}}}{\end{@defn}}
+\newenvironment{axm}{\refstepcounter{defn}\begin{@defn}{Axiom \arabic{defn}}}{\end{@defn}}
+\newenvironment{notation}{\begin{@defn}{Notation}}{\end{@defn}}
+\newenvironment{assume}{\begin{@defn}{Assumption}}{\end{@defn}}
+\newenvironment{quest}{\begin{@defn}{Question}}{\end{@defn}}
+
+\newenvironment{rmk}{\refstepcounter{defn}\begin{@rmk}{Remark \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
+\newenvironment{sch}{\refstepcounter{defn}\begin{@rmk}{Scholium \textrm{\rm\arabic{defn}}}}{\end{@rmk}}
+
+
+\let\pffont\textit
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
+\newenvironment{sketch}{\smallbreak\noindent\pffont{Sketch of Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
+\newenvironment{proof}{\smallbreak\noindent\pffont{Proof.\enspace}}{\slugonright\par\ifdim\lastskip<\smallskipamount \removelastskip\penalty55\smallskip\fi}
+\makeatother
+```
+
+## Structured Proofs ##
+
+Lamport's "[How to Write a Proof](.md)" article outlines some notion of a "structured proof." Sadly, his macros are rather dated. Moreover, one cannot use a simple list!
+
+What we have here is the collection of macros that uses a _stack_ to keep track of the steps as we increase and decrease the level. That way, only two counters are used!
+
+Moreover, the macros are fairly robust...they work with `amsthm`, and every other macro defined on this webpage, at least.
+
+```
+\makeatletter
+
+
+\newcounter{pfLevel}
+\newcounter{pfStep}[pfLevel]
+
+\renewcommand\thepfLevel{$\langle$\arabic{pfLevel}$\rangle$}
+\renewcommand\thepfStep{\thepfLevel\arabic{pfStep}}
+
+
+\def\@pf@emptystack{:}
+\let\@pf@stack=\@pf@emptystack
+\def\@pf@push#1{\edef\@pf@stack{#1.\@pf@stack}}
+\def\@pf@topaux#1.#2:{#1}
+\def\@pf@topstack{\expandafter\@pf@topaux\@pf@stack}
+\def\@pf@popaux#1.#2:{\gdef\@pf@stack{#2:}}
+\def\@pf@pop{\expandafter\@pf@popaux\@pf@stack}
+
+\def\@sproof{\expandafter\@pf@push{\arabic{pfStep}}%
+  \bgroup
+  \parindent=0pt
+  \leftskip = \value{pfLevel}em
+  \advance\leftskip\value{pfLevel}em
+  \refstepcounter{pfLevel}%
+  }
+\def\@endsproof{\egroup%
+  \addtocounter{pfLevel}{-1}
+  \leftskip = \value{pfLevel}em
+  \advance\leftskip\value{pfLevel}em
+  }
+\def\sproof{%\par
+  \@sproof}
+\def\endsproof{\par\@endsproof
+  \setcounter{pfStep}{\@pf@topstack}
+  \@pf@pop 
+  \ifnum\value{pfLevel}=0\medbreak%\parindent=\oldparindent
+  \fi}
+
+
+
+\def\step{\nobreak\vskip0pt\nobreak\refstepcounter{pfStep}\thepfStep.\enspace}
+\def\assume{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Assume:}\enspace}
+\def\prove{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Prove:}\enspace}
+\def\assumption{\nobreak\vskip0pt\nobreak\phantomsection$\hphantom{\textsc{Assume:}}$\enspace}
+\def\pf{\nobreak\vskip0pt\nobreak\phantomsection$\hphantom{\textsc{\thepfStep.\enspace}}$\textsc{Proof:}\enspace}
+\def\pfsketch{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Sketch of Proof:}\enspace}
+\def\pflet{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Let:}\enspace}
+\def\inductiveHypothesis{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Inductive Hypothesis:}\enspace}
+\def\baseCase{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Base Case:}\enspace}
+\def\inductiveCase{\nobreak\vskip0pt\nobreak\phantomsection\textsc{Inductive Case:}\enspace}
+
+\makeatother
+```
+
+How do we use these particular macros? Well, here's some example code:
+
+```
+\begin{prop}\label{prop:exDemonstrating a structured proof}
+  There does not exist $r$ in $\QQ$ such that $r^{2}=2$.
+\end{prop}
+\begin{sproof}
+\pfsketch We assume $r^{2}=2$ for $r\in\QQ$ and obtain a contradiction.
+Writing $r=m/n$, where $m$ and $n$ have no common divisors,
+we deduce from $(m/n)^{2}=2$  and the lemma that both $m$ and $n$
+must be divisible by 2.
+\assume 1. $r\in\QQ$\label{assume:1}
+\assumption 2. $r^{2}=2$
+\prove We have a contradiction.
+\step\label{pf:step:1.1} Choose $m$, $n$ in $\ZZ$ such that
+\par\hskip 2.75em 1. $\gcd(m,n)=1$
+\par\hskip 2.75em 2. $r = (m/n)$
+\begin{sproof}
+  \step Choose $p$ and $q$ in $\ZZ$ such that $q\not=0$ and
+  $r=p/q$.\label{pf:example:step:2.1}
+  \pf By assumption \hyperref[assume:1]{$\<0\>$:1}.
+  \pflet\label{pf:example:defnOfMAndN} $m:=p/\gcd(p,q)$\\
+  $\hphantom{\textsc{Let:\enspace}}$ $n:=q/\gcd(p,q)$.
+  \step $m,n\in\ZZ$.
+  \pf By \ref{pf:example:step:2.1} and by definition of $m$ and $n$.
+  \step We have $r=m/n$ since
+  \begin{subequations}
+    \begin{align}
+\mbox{\textsc{Proof:}}\quad m/n &=
+\frac{p/\gcd(p,q)}{q/\gcd(p,q)}&&\quad[\mbox{\hyperref[pf:example:defnOfMAndN]{\textsc{Definition} of $m$ and $n$}}]\\
+&= p/q&&\quad [\mbox{Simple algebra}]\\
+&= r  &&\quad [\mbox{By \ref{pf:example:step:2.1}}]
+    \end{align}
+  \end{subequations}
+  \step $\gcd(m,n)=1$ by definition of the greatest common
+  divisor, it suffices to:
+
+  \begin{sproof}
+    \assume \label{pf:example:assume2:1}1. $s$ divides $m$;
+    \assumption \label{pf:example:assume2:2}2. $s$ divides $n$.
+    \prove $s=\pm1$.
+    \step\label{pf:example:step3.1} $s\cdot\gcd(p,q)$ divides $p$, by assumption \hyperref[pf:example:assume2:1]{$\<2\>$:1}
+    and \hyperref[pf:example:defnOfMAndN]{\textsc{Definition of} $m$}.
+    \step\label{pf:example:step3.2} $s\cdot\gcd(p,q)$ divides $q$, by assumption \hyperref[pf:example:assume2:2]{$\<2\>$:2}
+    and \hyperref[pf:example:defnOfMAndN]{\textsc{Definition of} $n$}.
+    \step This implies that $s=\pm1$ by steps
+    \ref{pf:example:step3.1}, \ref{pf:example:step3.2}, and by
+    the definition of the greatest common divisor.
+  \end{sproof}
+
+  \step Thus we have constructed $m$ and $n$ with the desired properties.
+\end{sproof}
+\step $2$ divides $m$.
+\pf $m/n=2\implies m=2n\implies$ 2 divides $m$ 
+\step $2$ divides $n$. 
+\pf Let $m=2t$, then 
+\begin{subequations}
+\begin{align}
+(m/n)^{2} &= 2\\
+&= (4t^{2})/n^{2}\\
+\implies 4t^{2} &= 2n^{2}\\
+\implies 2t^{2} &= n^{2}\\
+\implies \,\hphantom{2}n&\mbox{ is even}
+\end{align}
+\end{subequations}
+\step This contradicts the property
+$\gcd(m,n)=1$ in step \ref{pf:step:1.1}.\quad\slug
+\end{sproof}
+```
+
+I moved this to the deprecated section after carefully considering the structure of proofs. One should consider using the mathematical vernacular instead, if one wants to be formal; otherwise one should note the structure of the proof _before_ entering the proof environment.

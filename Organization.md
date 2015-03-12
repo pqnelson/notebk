@@ -1,0 +1,77 @@
+# Introduction #
+
+Organizing notes constitutes 75% of writing. This includes collating definitions and theorems into a linear story, as well as the file hierarchy of the TeX files themselves. We will focus on each of these.
+
+
+
+# Collating #
+
+There are many different ways to collate definitions and theorems. I can give some advice.
+
+## Index Cards ##
+
+It may be useful to write down definitions, theorems (and their proof sketches) down on index cards. This allows you to shuffle them around to collate, and to write down bibliographic data on one side of the index card (with the pertinent information on the other side).
+
+You could use one side for the mathematical data (the statement of the theorem or definition).
+
+The other side for: dependencies, bibliographic data, etc.
+
+## Flow Charts ##
+
+It may be useful to write down a dependency chart.
+
+I did this with the set theory notes through a flow chart of the definitions _only_ and arrows pointing to the dependent definitions necessary.
+
+So a "function" depends on the notion of a "Cartesian product" and on the notion of a "subset". The "Cartesian product" depends on the notion of an "ordered pair". This gives us a sense of what order things need to be written in.
+
+# Organizing TeX Files #
+
+I've always felt that a note should be on a particular subject, written in a manner to remind the author of some subject "as quickly as possible."
+
+But if one writes _hundreds_ (if not, _thousands_) of such notes, how to organize them?
+
+Some institutions use a particular format for their preprints, organized as `yyyy-xxx` where `yyyy` is the year, and `xxx` is the number of the preprint (it starts at 0 and increases sequentially).
+
+[Edsger W. Dijkstra](http://en.wikipedia.org/wiki/Edsger_Dijkstra) wrote a series on manuscripts on computer science indexed as `EWDxxx` where `xxx` is the manuscript number. This is another approach.
+
+## What to Do ##
+
+After some experimentation, I think the best advice I have to give is: it depends on your operating system(!).
+
+For example, on GNOME in Linux, it is best to organize your notes in a directory `~/notes/` and each manuscript gets its own subdirectory.
+
+If I just started from scratch, and I am writing notes on linear algebra, the directory I would make is `~/notes/000.linearAlg` to give me some sense of manuscript 000's subject.
+
+Suppose I finish this, what to do? Won't I have a huge cluster of directories?
+
+Yes, so I "hide" them in a directory `~/notes/done/`. So, when I finish my linear algebra notes, and start something on rings, my hierarchy of directories would look like:
+
+```
+~/notes/
+~/notes/done/000.linearAlg/
+~/notes/001.commRings/
+```
+
+Also note that the numbering `000.linearAlg`, etc., should only be done with the directory name. The directory should be named `xxx.<jobname>` where `<jobname>` is the name of the main file run through LaTeX/TeX/whatever.
+
+I **highly urge** if this approach is taken, write a `notes.sty` (or some other style file) which _all_ your notes use. This is to give some uniformity to all the notes. (See [TeXMacros](TeXMacros.md) for my macros; I believe, after some experience, that notation should be made into macros as well!)
+
+It may also be useful to have several additional files in the `~/notes/` directory:
+  1. a `topics.tex` file to keep track of topics worth writing about (and references---kind of like an annotated bibliography), and
+  1. a `contents.tex` (or a `index.tex`) which keeps track of the manuscripts finished and their "contents"---i.e., a brief summary of what was covered.
+
+**Remark.** You can, of course, organize the `~/notes/done/` directory into subdirectories labeled by year completed. So one might have:
+```
+~/notes/done/2011/010.pde
+~/notes/done/2011/009.propCalc
+~/notes/done/2010/008.exactSequences
+~/notes/done/2010/007.algebrasOverCommRings
+~/notes/done/2010/006.modules
+~/notes/done/2010/005.sequences
+~/notes/done/2009/004.series
+~/notes/done/2009/003.calculusIntegralSingleVar
+~/notes/done/2009/002.calculusDerivativeSingleVar
+~/notes/done/2009/001.commRings
+~/notes/done/2009/000.linearAlg
+```
+This would prevent one directory from containing hundreds of subdirectories. If this approach is taken, one should write the `contents.tex` to have each `\section{<year>`} and each `\subsection{...`} to be the title of the manuscript.
