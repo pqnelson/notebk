@@ -1,5 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{notebk}[2009/08/06 Customizations to make the style superfly]
+\newif\if@swap@numbers
+\@swap@numbersfalse
+\DeclareOption{swapnumbers}{\@swap@numberstrue}
+\ProcessOptions\relax
+
 \usepackage{sidecap}
 \usepackage{cancel}
 \usepackage{xmpincl}
@@ -7,7 +12,8 @@
 \usepackage[12hr,us]{datetime}
 
 
-\author{Alex Nelson\footnote{This is a page from \url{http://code.google.com/p/notebk/}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}\\\texttt{Email:\enspace\href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\author{Alex Nelson\footnote{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}\\\texttt{Email:\enspace\href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}
 
 \usepackage[top=6pc,textheight=8.9in,textwidth=33pc,inner=6pc,marginparwidth=9pc,marginparsep=1.5pc]{geometry}
 \usepackage{amsmath,amsfonts,amscd,amssymb}
@@ -74,11 +80,16 @@
 
 \let\Bbb=\mathbb
 \let\frak=\mathfrak
+\if@swap@numbers
+\swapnumbers{}
+\else
+\fi
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{conjecture}[thm]{Conjecture}
 \newtheorem*{ClassificationCliff}{Classification Theorem for Representations of Clifford Algebras}
@@ -117,7 +128,7 @@
 
 \newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
 \newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
-\renewcommand{\qedsymbol}{\slug}
+%\renewcommand{\qedsymbol}{\slug}
 
 
 \providecommand{\sketchname}{Sketch of Proof}
@@ -297,19 +308,21 @@
         \setcounter{exercise}{0}}{}
 
 \newwrite\ans%
+\IfFileExists{tex/answers}{
 \immediate\openout\ans=tex/answers % file for answers to exercises
-\def\ansSec#1{\immediate\write\ans{\detokenize{\section*}{#1}}}
-\def\ansno#1:{\smallbreak\textindent{\textbf{#1.\enspace}}}
+}{}
+\def\ansSec#1{\IfFileExists{tex/answers}{\immediate\write\ans{\detokenize{\section*}{#1}}}{}}
+\def\ansno#1:{\IfFileExists{tex/answers}{\smallbreak\textindent{\textbf{#1.\enspace}}}}
 \newenvironment{answer}%
- {\par\medbreak
+ {\IfFileExists{tex/answers}{\par\medbreak
     \immediate\write\ans{}%
     \immediate\write\ans{\string\ansno\arabic{exercise}:}%
   \@bsphack
   \let\do\@makeother\dospecials\catcode`\^^M\active
   \def\verbatim@processline{%
     \immediate\write\ans{\the\verbatim@line}}%
-  \verbatim@start}%
- {\@esphack} 
+  \verbatim@start}{}}%
+ {\IfFileExists{tex/answers}{\@esphack}{}} 
 
 %% Sometimes there's an alternate way to solve the problem
 %% TODO: Make this include an optional argument specifying how it
@@ -318,15 +331,15 @@
 %% ...
 %% \end{altAns}
 \newenvironment{altAns}%
- {\par\medbreak
+ {\IfFileExists{tex/answers}{\par\medbreak
     \immediate\write\ans{}%
     \immediate\write\ans{\string\ansno\theexercise (Alternate):}%
   \@bsphack
   \let\do\@makeother\dospecials\catcode`\^^M\active
   \def\verbatim@processline{%
     \immediate\write\ans{\the\verbatim@line}}%
-  \verbatim@start}%
- {\@esphack} 
+  \verbatim@start}{}}%
+ {\IfFileExists{tex/answers}{\@esphack}{}} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

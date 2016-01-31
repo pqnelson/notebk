@@ -1,0 +1,44 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chunk}[2015/04/05 Paragraph numbering commands]
+\makeatletter
+
+\@ifundefined{@addpunct}{
+  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
+  \def\frenchspacing{\sfcode`\.1006\sfcode`\?1005\sfcode`\!1004  \sfcode`\:1003\sfcode`\;1002\sfcode`\,1001 }
+  }{}
+
+\newcounter{chunk@ctr}
+\@ifundefined{chapter}{%
+  \@addtoreset{chunk@ctr}{section}
+}{%
+  \@addtoreset{chunk@ctr}{chapter}
+}
+\def\chunkprefix{\@ifundefined{chapter}{%
+  \ifnum\value{section}>0 \oldstylenums{\arabic{section}}.\else{}\fi
+}{%
+  \ifnum\value{chapter}>0 \oldstylenums{\arabic{chapter}}.\else{}\fi
+}}
+
+\renewcommand\thechunk@ctr{\chunkprefix\oldstylenums{\arabic{chunk@ctr}}}
+
+\newcommand\M{\medbreak\noindent%
+  \refstepcounter{chunk@ctr}%
+  \textbf{\thechunk@ctr\@addpunct{.}}\quad\ignorespaces}
+
+\def\N{\@ifstar
+        \NStar%
+        \NNoStar%
+}
+\def\NStar#1{\medbreak\noindent\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+\def\NNoStar{\@ifnextchar[\NNoStarBracket\NNoStarNoBracket}
+
+\def\NNoStarBracket[#1]#2{\M\textbf{#2}\enspace(#1)\textbf{\@addpunct{.}\quad}\ignorespaces}
+\def\NNoStarNoBracket#1{\M\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+
+\def\Mref#1{\@ifundefined{hyperref}%
+        {\textup{\tagform@{\S\ref{#1}}}}%
+        {\hyperref[#1]{\textup{(\S\ref*{#1})}}}}
+
+
+\makeatother
+\endinput

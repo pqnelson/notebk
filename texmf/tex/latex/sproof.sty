@@ -1,0 +1,199 @@
+%% This is an attempt at making Leslie Lamport's structured proof macros
+%% more accessible, compatible with amsmath macros, and more "free form"
+%% (so a \step in a proof is more like an \item in a list).
+%% 
+%% Example usage:
+%% 
+%% \begin{spf}
+%%   \Assume $\sqrt{2}\in\mathbb{Q}$ (for contradiction).
+%%   \Consider $m,n\in\mathbb{Z}$ such that
+%% \begin{equation}
+%%   \gcd(m,n)=1
+%% \end{equation}
+%% and
+%% \begin{equation}
+%%   m/n=\sqrt{2}.
+%% \end{equation}
+%%   \step\label{pf:step:m-is-even} $m$ is even
+%%   \begin{spf}
+%%     \Thus $m=n\sqrt{2}$
+%%     \Thus $m^{2}=2 n^{2}$
+%%   \end{spf}
+%%   \step $n$ is even
+%%   \begin{spf}
+%%     \Consider $k\in\mathbb{Z}$ such that $m=2k$ since $m$ is even by \ref{pf:step:m-is-even}.
+%%     \Thus $2k/n=\sqrt{2}$
+%%     \Thus $4k^{2}=2n^{2}$
+%%     \Thus $2k^{2}=n^{2}$
+%%   \end{spf}
+%%   \step Contradiction.
+%% \end{spf}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sproof}[2015/04/05 Structured Proof macros]
+
+\RequirePackage{comment}
+
+\newif\ifhide@pf
+\hide@pffalse
+\DeclareOption{hide}{\hide@pftrue} % turn sproof environments into comments
+\ProcessOptions\relax
+
+\newcounter{sproofStep}
+\newcounter{sproofSubstep}
+
+\renewcommand\thesproofStep{$\langle$\arabic{sproofStep}$\rangle$}
+\renewcommand\thesproofSubstep{\thesproofStep\arabic{sproofSubstep}}
+
+% stack for the sproof
+\def\@push#1#2{{\let\@nil\relax\let\@elt\relax\xdef#1{#2\@elt#1}}}
+\def\@pop#1#2{{\let\@nil\relax\let\@elt\relax
+              \xdef#2{\expandafter\@innerhead#1}
+              \xdef#1{\expandafter\@innerpop#1}}}
+\def\@innerpop#1\@elt#2\@nil{#2\@nil}
+\def\@head#1#2{{\let\@elt\relax\xdef#2{\expandafter\@innerhead#1}}}
+\def\@innerhead#1\@elt#2\@nil{#1}
+\def\newstack#1{\gdef#1{\@nil}}
+
+\newstack\pf@conj % stack of counters
+
+% helper functions for proof counters
+\def\incPfCounter{\ifnum\value{sproofStep}>0% if in nested proof
+  \@push{\pf@conj}{\arabic{sproofSubstep}}% store the substep counter in stack
+\else%
+\fi%
+  \refstepcounter{sproofStep}%
+  \setcounter{sproofSubstep}{0}%
+}
+
+\def\decPfCounter{\ifnum\value{sproofStep}>1%
+  \@pop\pf@conj\pf@temp % set pf@temp to be the head, pop the stack of counters
+  \setcounter{sproofSubstep}{\pf@temp}% set the substep counter to pf@temp
+\else\fi%
+  \addtocounter{sproofStep}{-1}
+}
+
+% indentation
+\newlength{\pfindent}      
+\setlength{\pfindent}{1em}
+
+\def\incPfIndent{\ifnum\value{sproofStep}>0% if in a proof
+  \advance\leftskip\pfindent
+\else\fi}
+
+\def\decPfIndent{\ifnum\value{sproofStep}>0% if in a proof
+  \advance\leftskip-\pfindent
+\else\fi}
+
+\newlength{\old@parindent}
+\setlength\old@parindent{\parindent}
+
+\def\resetParindent{\ifnum\value{sproofStep}=1
+  \setlength\parindent{\old@parindent}
+\else\fi}
+
+% proof step
+\newlength\stepskipamount
+\setlength\stepskipamount{2pt plus1pt minus1pt}
+
+\def\pf@textindent#1{\indent\llap{#1\enspace}\ignorespaces}
+
+\def\pf@hang{\hangindent20pt}
+\DeclareRobustCommand\@step[0]{\par\ifnum\value{sproofStep}=0\else\vspace\stepskipamount\fi%%
+  \noindent\ignorespaces{}\hskip -5pt\relax}
+\DeclareRobustCommand\@@step[0]{\par\vspace\stepskipamount%
+  \refstepcounter{sproofSubstep}%
+  \par\pf@hang\pf@textindent{\thesproofSubstep.}}
+\newcommand\step{\@ifstar{\@step}{\@@step}}
+
+% keywords
+% Consider Wiedijk's ``Mathematical Vernacular''?
+% http://www.cs.ru.nl/~freek/notes/mv.pdf
+\newcommand\pf@keyword[1]{\textsc{#1}\enspace}
+
+\newcommand\ProofKeyword{\@ifstar{\@ProofKeyword}{\@@ProofKeyword}}
+\DeclareRobustCommand\@ProofKeyword[2]{\DeclareRobustCommand{#1}{#2}}
+\DeclareRobustCommand\@@ProofKeyword[2]{\DeclareRobustCommand{#1}{\pf@keyword{#2}}}
+
+\newcommand\DefStep{\@ifstar{\@DefStep}{\@@DefStep}}
+\DeclareRobustCommand\@DefStep[2]{\DeclareRobustCommand{#1}{\step*{}\pf@keyword{#2}}}
+\DeclareRobustCommand\@@DefStep[2]{\DeclareRobustCommand{#1}{\step{}\pf@keyword{#2}}}
+
+% Wiedijk's formal proof sketches as the default
+% https://www.cs.ru.nl/~freek/pubs/sketches2.pdf
+% See also subsection 1.6. of https://www.cs.ru.nl/~freek/mizar/mizman.pdf
+\DefStep{\Choose}{Choose}     % choice operator
+\DefStep{\Then}{Then}         % a step with implicit reference to previous step
+\DefStep{\Thus}{Thus}         % and-introduction
+\DefStep{\Hence}{Hence}       % = \Then + \Thus steps combined into one
+\DefStep{\Take}{Take}         % existential introduction
+\DefStep{\Consider}{Consider} % existential elimination
+\DefStep{\ThenConsider}{Then Consider} % \Then + \Consider
+\DefStep{\Let}{Let}           % forall-introduction
+\DefStep{\Assume}{Assume}     % implies-introduction, negate-introduction,
+                              % and proof by contradiction
+\DefStep{\Case}{Case}         % or-elimination
+\DefStep*{\Prove}{Prove}       % state the goal to be proven
+\DefStep*{\Suffices}{Suffices} % state the hypotheses + goals in 1 step
+\def\@spfQEDSymbol{qed}
+\ProofKeyword{\QED}{\@spfQEDSymbol}
+\ProofKeyword{\@spf@pf}{Proof:}
+\ProofKeyword{\pfSketchKeyword}{Proof Sketch:}
+
+\providecommand{\openbox}{\leavevmode
+  \hbox to.77778em{%
+  \hfil\vrule
+  \vbox to.675em{\hrule width.6em\vfil\hrule}%
+  \vrule\hfil}}
+\providecommand{\qedsymbol}{\openbox}
+
+\def\@spf@qed@elt{\relax}
+\def\@spf@qedStack{\relax}
+\def\@spf@push@QED{%
+  \if\relax\noexpand\@spf@qedStack%
+    \gdef\@spf@qedStack{\qedsymbol}%
+  \else%
+  \fi
+}
+\newcommand\push@QED{%
+  \gdef\@spf@qedStack{\qedsymbol}%
+}
+\newcommand\@spf@popQED{%
+  \global\let\@spf@qed@elt\@spf@qedStack{}%
+  \gdef\@spf@qedStack{\relax}%
+  \@spf@qed@elt{}%
+}
+
+\def\placeQED{\ifx\relax\@spf@qedStack{}\else\quad\@spf@popQED{}\fi}
+\newenvironment{pfSketch}{\noindent\pfSketchKeyword}{\smallbreak}
+%\def\pfSketch{\par\noindent\ProofKeyword{}}
+%\def\endpfSketch{\par}
+% proof environment
+\ifhide@pf
+  \excludecomment{spf}
+\else
+  \def\spf{\ifnum\value{sproofStep}=0%
+    \else%
+      \par%
+    \fi%
+    \step*{\@spf@pf}%
+    %\setlength\parindent{0pt}%
+    \incPfCounter%
+    \incPfIndent%
+    \push@QED%
+  }
+  \def\endspf{\ifnum\value{sproofStep}=1%
+      \placeQED%
+      \vspace{-12pt plus2pt minus2pt}%
+      \par%
+    \else%
+      \par%
+    \fi%
+    %\par%
+    \decPfIndent%
+    \decPfCounter%
+    \resetParindent{}%
+  }
+\fi
+
+\endinput
