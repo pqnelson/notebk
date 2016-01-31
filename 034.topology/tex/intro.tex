@@ -333,8 +333,6 @@ Then $\mathcal{C}$ is a basis for the topology $\topology{T}$.}
     \begin{spf}
       Directly from hypothesis.
       \Assume $x\in B_{1}\in\mathcal{C}$, $x\in B_{2}\in\mathcal{C}$
-      \Consider $U_{j}\in\mathcal{T}$ such that $x\in U_{j}$ and
-      $B_{j}\subset U_{j}$, for $j=1,2$.
       \Thus $B_{1}\cap B_{2}\in\topology{T}$ by closure under finite
       intersection, and $\mathcal{C}\subset\mathcal{T}$.
       \ThenConsider $B_{3}\in\mathcal{C}$ such that
@@ -362,3 +360,13 @@ Then $\mathcal{C}$ is a basis for the topology $\topology{T}$.}
   \end{spf}
 \end{spf}
 
+\N{Finer Bases Equivalent to Finer Topologies} {\itshape
+Let $\topology{B}$ and $\topology{B'}$ be bases for the topologies
+$\topology{T}$ and $\topology{T'}$ (resp.) on $X$. Then the following
+are equivalent:
+\begin{enumerate}
+\item $\topology{T'}$ is finer than $\topology{T}$
+\item For each $x\in X$ and $B\in\topology{B}$, there is a
+  $B'\in\topology{B'}$ such that $x\in B'\subset B$.
+\end{enumerate}
+}
