@@ -1,0 +1,39 @@
+%%% topology.tex --- 
+%% 
+%% Filename: topology.tex
+%% Description: 
+%% Author: alex
+%% Maintainer: 
+%% Created: Sat Jan 30 10:05:43 2016 (-0800)
+%% Version: 
+%% Package-Requires: ()
+%% Last-Updated: 
+%%           By: 
+%%     Update #: 0
+%% URL: 
+%% Doc URL: 
+
+\documentclass{article}
+\usepackage{chunk}
+\usepackage[swapnumbers]{notebk}
+\makeatletter
+\newcommand*{\dupcntr}[2]{%
+    \expandafter\let\csname c@#1\expandafter\endcsname\csname c@#2\endcsname
+}
+\dupcntr{chunk@ctr}{thm}
+\makeatother
+
+\usepackage{notation}
+
+\usepackage{sproof}
+\pdfinfo{/CreationDate (D:20160130100543)}
+
+\title{Notes on Topology}
+\date{January 30, 2016}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{tex/intro}
+
+\end{document}

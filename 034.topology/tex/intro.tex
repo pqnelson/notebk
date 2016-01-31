@@ -1,0 +1,364 @@
+%%% intro.tex --- 
+%% 
+%% Filename: intro.tex
+%% Description: 
+%% Author: alex
+%% Maintainer: 
+%% Created: Sat Jan 30 10:08:40 2016 (-0800)
+%% Version: 
+%% Package-Requires: ()
+%% Last-Updated: 
+%%           By: 
+%%     Update #: 0
+%% URL: 
+%% Doc URL: 
+%% Keywords: 
+%% Compatibility: 
+\section{Definition of a Topology}
+\begin{defn}\label{defn:topology}
+  A \define{Topology} on a set $X$ consists of a collection
+  $\topology{T}$ of subsets of $X$ such that
+  \begin{enumerate}
+  \item It contains the emptyset $\emptyset\in\topology{T}$
+  \item It contains the underlying set $X\in\topology{T}$
+  \item The union of arbitrary subcollections of $\topology{T}$ are in
+    $\topology{T}$
+  \item The finite intersection of finitely many element of
+    $\topology{T}$ are in $\topology{T}$.
+  \end{enumerate}
+  A set $X$ equipped with a topology $\topology{T}$ is called a
+  \define{Topological Space}.
+\end{defn}
+\N*{Remarks}
+(1) Elements of a topology are precisely open sets. A topology \emph{defines}
+open sets: a subset $U\subset X$ of a topological space is open if and
+only if it is an element of the topology $U\in\topology{T}$.
+
+(2) A set may be equipped with multiple different topologies. Two
+topological spaces cannot be considered ``the same'' if the underlying
+set $X$ is the same. Because of this, we will sometimes write a
+topological space as an ordered pair $(X,\topology{T})$ to clarify
+\emph{which} topology we're working with.
+
+%% (3) If we think of mathematical objects in terms of ``stuff, structure,
+%% and properties'', then a topology is a ``structure''. But it is not like
+%% generic algebraic structure: it is ``contravariant'', in the sense that
+%% the morphisms are different.
+
+\N[Trivial Topology]{Example}
+Let $X$ be an arbitrary set. Then $\topology{T}=\{\,\emptyset, X\,\}$ is a
+``trivial'' topology on $X$. Can we prove it? We must prove this trivial
+topology satisfies the axioms:
+
+\begin{enumerate}
+  \item We see, by construction, the empty set belongs to the collection
+    $\emptyset\in\topology{T}$.
+  \item Also, by construction, the underlying set belongs to the
+    collection $X\in\topology{T}$
+  \item There are only finitely many families of subsets of
+    $\mathcal{T}$ (namely 4 families), the singletons and emptyset
+    trivially satisfy the property of arbitrary unions belong to
+    $\mathcal{T}$ (otherwise we contradict the first two axioms). The
+    last family would be $\mathcal{T}$ itself, the union of its elements
+    are precisely $X$, which we know is in $\mathcal{T}$.
+  \item The intersection of finitely many elements can only be
+    $\emptyset$ or $X$, both of which belong to $\mathcal{T}$.
+\end{enumerate}
+
+Hence the collection $\mathcal{T}$ satisfies the desired properties. It
+is called the \define{Trivial Topology} (or sometimes the
+``\emph{Indiscrete Topology}'').
+
+\N[Discrete Topology]{Example}
+Let $X$ again be an arbitrary set. Then $\powerset{X}$ is also a topology.
+We need to show it satisfies the axioms for a topology:
+
+\begin{enumerate}
+\item We know $\emptyset\in\powerset{X}$.
+\item We also know $X\in\powerset{X}$
+\item We need to show, if
+  $\{U_{\lambda}\}_{\lambda\in\Lambda}\subset\powerset{X}$, then
+  $\bigcup_{\lambda\in\Lambda}U_{\lambda}\in\powerset{X}$. We know
+  $\bigcup_{\lambda\in\Lambda}U_{\lambda}\subset X$ since
+  $U_{\lambda}\subset X$ for each $\lambda\in\Lambda$. Hence the claim
+  follows immediately.
+\item We know the intersection of two elements
+  $U_{1},U_{2}\in\powerset{X}$ also belongs to the powerset $U_{1}\cap
+  U_{2}\in\powerset{X}$. By induction, any finite intersection of
+  finitely many elements of $\powerset{X}$ must also belong to
+  $\powerset{X}$. 
+\end{enumerate}
+
+The collection $\powerset{X}$ forms a topology on $X$ called the
+\define{Discrete Topology}.
+
+\N{Example}
+Consider $\RR$. The collection of open intervals $(a,b)=\{x\in\RR : a<
+x<b\}$ gives us a topology if we take the finite intersection of open
+intervals and arbitrary unions of open intervals. This is called the
+\define{Standard Topology on $\RR$}.
+
+\begin{defn}
+  Let $X$ be a set, $\topology{T}$ and $\topology{T'}$ be two
+  topologies on $X$.
+  \begin{enumerate}
+  \item If $\topology{T'}\supset\topology{T}$, then we say
+    \textbf{$\topology{T'}$ is \define{Finer} than $\topology{T}$}
+    (and \define{Strictly Fine} iff
+    $\topology{T'}\propersupset\topology{T}$).
+  \item If $\topology{T'}\subset\topology{T}$, then we say
+    \textbf{$\topology{T'}$ is \define{Finer} than $\topology{T}$}
+    (and \define{Strictly Fine} iff
+    $\topology{T'}\propersubset\topology{T}$).
+  \item If either $\mathcal{T}\propersupset\mathcal{T'}$ or
+    $\mathcal{T}\propersubset\mathcal{T'}$, then we say $\mathcal{T}$ is
+    \define{Comparable} to $\mathcal{T'}$. Otherwise they are
+    \define{Incomparable} (or just ``\emph{Not Comparable}'').
+  \end{enumerate}
+\end{defn}
+
+\N{Finite Complement Topology}
+Let $X$ be a set, $\topology{T}_{f}$ be the collection of all subsets
+$U$ of $X$ such that $X\setminus U$ is either finite or all of $X$. We
+claim $\topology{T}_{f}$ is a topology on $X$.
+\begin{enumerate}
+  \item We see $X\setminus\emptyset=X$, so
+    $\emptyset\in\topology{T}_{f}$
+  \item We see $X\setminus X=\emptyset$ which is finite, so
+    $X\in\topology{T}_{f}$.
+  \item Let $\{U_{\alpha}\}_{\alpha\in A}$ be an indexed family of
+    nonempty elements of $\topology{T}_{f}$. We want to show the union
+    $bigcup_{\alpha}U_{\alpha}\in\topology{T}_{f}$. We use de Morgan's
+    law to write
+    \begin{equation}
+      X \setminus\bigcup_{\alpha}U_{\alpha} = \bigcap_{\alpha}(X\setminus U_{\alpha})
+    \end{equation}
+    We see $X\setminus U_{\alpha}$ is finite for each $\alpha\in A$,
+    and since the intersection of an arbitrary family of finite sets is
+    finite, we have this set difference be a finite set. Hence the union
+    $\bigcup_{\alpha}U_{\alpha}\in\topology{T}_{f}$.
+  \item Let $U_{1}$, \dots, $U_{n}\in\topology{T}_{f}$ be nonempty
+    sets. Then we want to show $U_{1}\cap\dots\cap U_{n}\in\topology{T}_{f}$.
+    We again invoke de Morgan, writing
+    \begin{equation}
+      X\setminus \bigcap^{n}_{i=1}U_{i}=\bigcup^{n}_{i=1}(X\setminus U_{i})
+    \end{equation}
+    and observing since $U_{i}\in\topology{T}_{f}$ that $X\setminus U_{i}$
+    must be finite (since it cannot be all of $X$, as we assumed
+    $U_{i}$ is nonempty). The finite union of finite sets is again a
+    finite set, hence de Morgan produced a finite set. This implies
+    $U_{1}\cap\dots\cap U_{n}\in\topology{T}_{f}$.
+\end{enumerate}
+\begin{defn}
+  Let $X$ be a set. A \define{Basis} for a topology on $X$ consists of a
+  set $\topology{B}$ of \define{Basis Elements} such that
+  \begin{description}
+    \item[$\topology{B}$ Covers $X$:] For each $x\in X$, there is at
+      least one $B\in\topology{B}$ such that $x\in B$.
+    \item[Closed under Finite Intersection:]
+      If $x$ belongs to the intersection of two basis elements $B_{1}$
+      and $B_{2}$, then there is a $B_{3}\in\topology{B}$ such that
+      $x\in B_{3}\subset B_{1}\cap B_{2}$.
+  \end{description}
+\end{defn}
+\begin{defn}\label{defn:generated-topology}
+  The \define{Topology generated by basis $\topology{B}$} consists of a
+  collection $\mathcal{T}$ of subsets $U\subset X$ such that
+  \begin{enumerate}
+  \item for each $x\in U$, there is a $B\in\topology{B}$
+    containing $x$ and contained in $U$: $x\in B$ and $B\subset U$
+  \end{enumerate}
+\end{defn}
+\begin{lemma}\label{lemma:open-set-squeeze-lemma}
+Let $X$ be a topological space, $A\subset X$. Suppose for each $x\in A$
+there is an open set $U$ containing $x$ such that $U\subset A$. Then $A$
+is open.
+\end{lemma}
+\begin{pfSketch}
+  This is a ``squeeze-type'' lemma, so we'll find a family of sets
+  $U_{x}$ such that $x\in U_{x}\subset A$. Then we'll simply take the
+  union of all such $U_{x}$, and show how this contains the union of
+  $\{x\}$ singleton points of $A$ (the union \emph{is} $A$), and since
+  each $U_{x}\subset A$ we'll have $A\subset\cup U_{x}\subset A$.
+\end{pfSketch}
+\begin{spf}
+  \Let $x\in A$
+  \Consider $U_{x}\subset X$ open such that $x\in U_{x}\subset A$ by hypothesis.
+  \Then $\bigcup_{x\in A}\{x\}\subset\bigcup_{x\in A}U_{x}\subset\bigcup_{x\in A}A$
+  \step $\bigcup_{x\in A}\{x\}=A$, trivially.
+  \Hence $A\subset\bigcup_{x\in A}U_{x}\subset A\implies \bigcup_{x\in A}U_{x}=A$
+  \Thus $A$ is open, since the union of a family of open sets is open.
+\end{spf}
+\bigskip%
+\smallskip
+\begin{thm}
+  Let $\topology{T}$ be the topology generated by a basis $\topology{B}$
+  on $X$.
+  Then $\topology{T}$ really is a topology.
+\end{thm}
+\begin{pfSketch}
+We show $\topology{T}$ satisfies the axioms for a topology directly,
+with the sets $U\in\topology{T}$ generated by basis elements via Lemma
+\ref{lemma:open-set-squeeze-lemma}. 
+\end{pfSketch}
+\begin{spf}
+  \step $\emptyset\in\topology{T}$ since the empty union is empty
+  \step $X\in\topology{T}$
+  \begin{spf}
+    \Let $x\in X$
+    \Consider $B_{x}\in\topology{B}$ such that $x\in B_{x}$ by the basis
+    covers $X$
+    \Hence $\bigcup_{x\in X}B_{x}=X$ by Lemma \ref{lemma:open-set-squeeze-lemma}.
+  \end{spf}
+  \step For each family of open sets $\{U_{\alpha}\in\topology{T}\}$,
+  we have $\bigcup_{\alpha}U_{\alpha}\in\topology{T}$
+  \begin{spf}
+    \Let $\{U_{\alpha}\}\in\powerset{\topology{T}}$ be a family of open
+    sets.
+    \Consider $B_{x,\alpha}\in\topology{B}$ such that for $x\in U_{\alpha}$,
+    we have $x\in B_{x,\alpha}\subset U_{\alpha}$
+    \Hence the result by Lemma \ref{lemma:open-set-squeeze-lemma}.
+  \end{spf}
+  \step For any $\{U_{i}\}_{i=1}^{n}\subset\topology{T}$, we have
+  $U_{1}\cap\dots\cap U_{n}\in\topology{T}$.
+  \begin{spf}
+    Directly
+    \Suffices to show the intersection of any pair of sets $U_{1}$,
+    $U_{2}\in\topology{T}$ belongs to the generated topology
+    $U_{1}\cap U_{2}\in\topology{T}$.
+    \Let $U_{1}$, $U_{2}\in\topology{T}$.
+    \Assume $U_{1}\cap U_{2}\neq\emptyset$ (otherwise we've proven the
+    empty set is in the generated topology).
+    \Let $x\in U_{1}\cap U_{2}$
+    \Consider $B_{x,j}\in\topology{B}$ such that
+    $x\in U_{j}\implies x\in B_{x,j}\subset U_{j}$ where $j=1,2$.
+    \Consider $B_{x}\in\topology{B}$ such that
+    $x\in B_{x,1}\cap B_{x,2}\implies x\in B_{x}\subset B_{x,1}\cap B_{x,2}$
+    \Hence the result by applying Lemma \ref{lemma:open-set-squeeze-lemma}
+    to the family $\{B_{x} : x\in U_{1}\cap U_{2}\}$.\placeQED{}
+  \end{spf}
+\end{spf}
+
+\N*{Remark}
+The proof presented is overkill. The condition for $U$ to be open in the
+generated topology is simply to have a basis element contain a point
+in $U$, for each point in $U$. But really, if we are honest, this is
+equivalent to saying $U$ is the union of some family of basis elements,
+or the intersection of finitely many basis elements (or both).
+
+\N{Exercise}
+Let $X$ be a topological space with topology $\mathcal{T}$ generated by
+basis $\mathcal{B}$. Show that any basis element $B\in\mathcal{B}$ is
+open $B\in\mathcal{T}$.
+
+\N{Puzzle} What is the basis for the trivial topology? For the discrete
+topology?
+
+\N*{Challenge} What is the basis for the finite-complement topology?
+
+\begin{lemma}\label{lemma:basis-generates-topology}
+  Let $X$ be a set, $\topology{B}$ be a basis for a topology
+  $\topology{T}$ on $X$. Then $\topology{T}$ consists of the collection
+  of all possible unions of basis elements.
+\end{lemma}
+
+\begin{pfSketch}
+  Since the claim is about set equality, we will have two steps: (1)
+  $\topology{T}\subset\mbox{(all possible unions of basis elements)}$,
+  and (2)
+  $\topology{T}\supset\mbox{(all possible unions of basis elements)}$.
+  One direction we've proven in Lemma \ref{lemma:open-set-squeeze-lemma}.
+\end{pfSketch}
+
+\begin{spf}
+  \step $\{\bigcup_{B\in\beta} B : \beta\in\powerset{\topology{B}}\}\subset\topology{T}$
+  \begin{spf}
+    Immediately by definitions of a topology (\S\ref{defn:topology}) and
+    the topology generated by a basis (\S\ref{defn:generated-topology}).
+    \step Every basis element is an open set in the generated topology.
+    \Hence the union of an arbitrary family of basis elements is open
+    (by definition of a topology).
+  \end{spf}
+  \step $\{\bigcup_{B\in\beta} B : \beta\in\powerset{\topology{B}}\}\supset\topology{T}$
+  \begin{spf}
+    \Let $U\in\topology{T}$
+    \Let $x\in U$.
+    \Consider $B_{x}\in\topology{B}$ such that $x\in B_{x}\subset U$.
+    \Hence $U=\bigcup_{x\in U}B_{x}$ by Lemma \ref{lemma:open-set-squeeze-lemma}.
+    \Thus $U\in\{\bigcup_{B\in\beta} B : \beta\in\powerset{\topology{B}}\}$.\placeQED{}
+  \end{spf}
+\end{spf}
+
+\N{Remarks} (1) This tells us a simpler way to generate a topology from
+a basis, simply consider $\bigcup_{B\in\beta}B$ for every possible
+family of basis elements $\beta\in\powerset{\topology{B}}$.
+
+(2) Caution: if $U\in\topology{T}$ is an open set, and $\topology{B}$
+generates $\topology{T}$, then $U$ is \emph{not} necessarily a
+\emph{unique} combination of basis elements. Compare this to linear
+algebra, where a vector \emph{is} a unique linear combination of basis
+vectors. 
+
+\N{Obtaining a Basis for a Topology}%
+{\itshape %
+Let $X$ be a topological space equipped with topology $\topology{T}$.
+Suppose $\mathcal{C}$ is a collection of open sets of $X$ such that for
+each subset $U\subset X$ and each $x\in U$ there is an element
+$C\in\mathcal{C}$ such that $x\in C\subset U$.
+Then $\mathcal{C}$ is a basis for the topology $\topology{T}$.}
+
+\smallskip
+
+\begin{pfSketch}
+  We'll first show that $\mathcal{C}$ is a basis for some topology
+  $\topology{T'}$. This amounts to verifying the axioms for a basis. We
+  will then show that $\mathcal{T'}=\mathcal{T}$. This is a set equality
+  claim, so we need to show $\mathcal{T'}\subset\mathcal{T}$ and
+  $\mathcal{T'}\supset\mathcal{T}$. 
+\end{pfSketch}
+
+\begin{spf}
+  \step $\mathcal{C}$ is the basis for some topology $\mathcal{T'}$
+  \begin{spf}
+    Verifying the Axioms
+    \step For each $x\in X$ there is a $B\in\mathcal{C}$ such that $x\in B$.
+    \begin{spf}
+      \Let $x\in X$
+      \ThenConsider $B\in\mathcal{C}$ such that $x\in B\subset X$ by hypothesis.
+      \Hence then claim.
+    \end{spf}
+    \step If $x\in B_{1}\in\mathcal{C}$ and
+    $x\in B_{2}\in\mathcal{C}$, then there is a
+    $B_{3}\in\mathcal{C}$ such that $x\in B_{3}\subset B_{1}\cap B_{2}$.
+    \begin{spf}
+      Directly from hypothesis.
+      \Assume $x\in B_{1}\in\mathcal{C}$, $x\in B_{2}\in\mathcal{C}$
+      \Consider $U_{j}\in\mathcal{T}$ such that $x\in U_{j}$ and
+      $B_{j}\subset U_{j}$, for $j=1,2$.
+      \Thus $B_{1}\cap B_{2}\in\topology{T}$ by closure under finite
+      intersection, and $\mathcal{C}\subset\mathcal{T}$.
+      \ThenConsider $B_{3}\in\mathcal{C}$ such that
+      $x\in B_{3}\subset B_{1}\cap B_{2}$ by hypothesis.
+      \Hence the claim.
+    \end{spf}
+  \end{spf}
+  \step $\topology{T'}=\topology{T}$
+  \begin{spf}
+    \step $\topology{T'}\subset\topology{T}$
+    \begin{spf}
+      \Let $U\in\topology{T'}$
+      \Then $U=\bigcup C_{\alpha}$ for some family of elements $C_{\alpha}\in\mathcal{C}$ by Lemma \ref{lemma:basis-generates-topology}.
+      \Hence $U\in\topology{T}$ by closure under arbitrary unions.
+    \end{spf}
+    \step $\topology{T}\subset\topology{T'}$
+    \begin{spf}
+      \Let $U\in\topology{T}$.
+      \Let $x\in U$.
+      \ThenConsider $C_{x}\in\mathcal{C}$ such that $x\in C_{x}\subset
+      U$
+      by hypothesis.
+      \Hence by Lemma \ref{lemma:open-set-squeeze-lemma} we have the result.\placeQED
+    \end{spf}
+  \end{spf}
+\end{spf}
+
