@@ -16,7 +16,6 @@
 \let\suchthat\mid
 %===========================================
 % exercise macros
-\newcounter{exercise}
 \font\manfnt=manfnt
 \def\ex [#1]{\refstepcounter{exercise}
   \ifnum \value{exercise}>1 \smallbreak\fi
@@ -24,11 +23,10 @@
 \def\EX [#1]{\refstepcounter{exercise}
   \ifnum \value{exercise}>1 \smallbreak\fi
   \noindent{\llap{\manfnt x\hskip3pt}\bf{{Exercise \theexercise}}.} [{\it#1\/}]\kern6pt}
-\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+
 \def\ansno#1:{\medbreak\noindent%
   {{\bf #1. }\ignorespaces}}
-\newwrite\ans%
-\immediate\openout\ans=answers % file for answers to exercises
+
 \newcommand{\myanswer}[1]{\par\medbreak
   \immediate\write\ans{}%
   \immediate\write\ans{\string\ansno {Exercise \theexercise}:}%

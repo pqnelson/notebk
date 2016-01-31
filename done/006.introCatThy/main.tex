@@ -1,7 +1,8 @@
-\documentclass[draft]{amsart}
+\documentclass{amsart}
 %\documentclass{amsbook}
 \usepackage{ifthen}
 \newboolean{isBook}
+\usepackage{ifpdf}
 %\setboolean{isBook}{true} % set true if using amsbook
 \setboolean{isBook}{false} % set true if using amsbook
 % TODO:
@@ -15,6 +16,17 @@
 %       appendix on the calculus of commutative diagrams that
 %       needs to be typed up too),
 \usepackage{manfnt}
+
+\usepackage{amsthm,amsmath,amssymb,amsfonts}
+\usepackage{float,graphicx}
+\usepackage{mathrsfs} % for mathscr used in defining a basis
+\usepackage{verbatim}
+\usepackage{paralist}
+\usepackage{framed}
+\ifpdf
+\usepackage{microtype}
+\fi
+\usepackage[all,cmtip]{xy}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,%
@@ -23,14 +35,6 @@
     linkcolor=black,%
     urlcolor=black
 }
-\usepackage{amsthm,amsmath,amssymb,amsfonts}
-\usepackage{float,graphicx}
-\usepackage{mathrsfs} % for mathscr used in defining a basis
-\usepackage{verbatim}
-\usepackage{paralist}
-\usepackage{framed}
-\usepackage[all,cmtip]{xy}
-
 
 
 
@@ -200,7 +204,7 @@
 \section{Grocery List of Categories}
 \input{src/groceryListOfCats}
 \nocite{*}
-\bibliographystyle{utcaps}
+\bibliographystyle{elements}
 \bibliography{main}
 \end{appendix}
 

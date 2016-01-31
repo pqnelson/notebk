@@ -3,10 +3,9 @@ MPOST=mpost
 all:
 	mpost --tex=latex img.mp
 	rm *.log
-	rm *.mp
-	rm *.t1
+	rm *.mpx
 pdf:
 	mptopdf --latex img.mp
 	rm *.log
-	rm *.mp
+	rm *.mpx
 	rm *.t1
