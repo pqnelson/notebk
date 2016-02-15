@@ -1,0 +1,546 @@
+%%% euler-pentagonal.tex --- 
+%% 
+%% Filename: euler-pentagonal.tex
+%% Description: 
+%% Author: alex
+%% Maintainer: 
+%% Created: Sat Feb 13 11:04:44 2016 (-0800)
+\documentclass{article}
+\usepackage{chunk}
+\usepackage{notebk}
+
+\title{Euler's Pentagonal Theorem}
+\date{February 13, 2015}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  We introduce Euler's pentagonal function. Then we relate it to the
+  partition function and divisor function. Last, we examine the Jacobi
+  triple product formula with it. We work entirely via puzzle-driven
+  discovery. 
+\end{abstract}
+\tableofcontents
+
+\section{Problem Statement}
+\N{Puzzle}
+Consider the sequence of functions defined as finite products
+\begin{equation}
+  f_{n}(x) = \prod^{n}_{k=0}(1-x^{k}).
+\end{equation}
+What is this equal to as $n\to\infty$? Perhaps we can gleam some insight
+if we generate a table of such functions.
+
+\begin{align}
+  f_{3}(x) &= - x^{6} + x^{5} + x^{4} - x^{2} - x + 1\\
+  f_{4}(x) &= x^{10} - x^{9} - x^{8} + 2x^{5} - x^{2} - x + 1\\
+  f_{5}(x) &= -x^{15} + x^{14} + x^{13} - x^{10} - x^{9} - x^{8} + x^{7} + x^{6} + x^{5} - x^{2} - x + 1\\
+  f_{6}(x) &= x^{21} - x^{20} - x^{19} + x^{16} + 2x^{14} - x^{12} - x^{11} - x^{10} - x^{9}\nonumber\\
+  &\qquad + 2x^{7} + x^{5} - x^{2} - x + 1\\
+  f_{7}(x) &= -x^{28} + x^{27} + x^{26} - x^{23} - x^{21} - x^{20} +
+  x^{18} + x^{17} + 2x^{16}\nonumber\\
+&\qquad- 2x^{12} - x^{11} - x^{10} + x^{8} + x^{7} + x^{5} - x^{2} - x + 1
+\end{align}
+
+
+\M We have the following table of terms (higher order terms are swept
+into a big-O prison):
+\begin{align}
+f_{4}(x) &= 1- x - x^{2} + \mathcal{O}(x^{5})\\
+f_{5}(x) &= 1 -x - x^{2} + x^{5} + \mathcal{O}(x^{6}) \\
+f_{6}(x) &= 1 -x - x^{2} + x^{5} + \mathcal{O}(x^{7}) \\
+f_{7}(x) &= 1 -x - x^{2} + x^{5} + x^{7} + \mathcal{O}(x^{8}) \\
+\dots & \dots \\
+f_{20}(x) &= 1 - x - x^{2} + x^{5} + x^{7} - x^{12} - x^{15} + \mathcal{O}(x^{21})
+\end{align}
+We have several observations.
+
+First, as $n$ increases, the lower order terms ``stabilize'' in the sense:
+the coefficient of $x^{n}$ remains the same in $f_{n+1}(x)$,
+$f_{n+2}(x)$, and so on. Hence multiplying by $(1-x^{m})$ for $m>n$ does
+not affect the $x^{n}$ term. Hence it makes sense to talk about the
+``stable product''
+\begin{equation}
+f(x) = f_{\infty}(x) = \prod^{\infty}_{n=0}(1-x^{n})
+\end{equation}
+which is not a polynomial but a formal series.
+
+\M
+The second observation is that many terms cancel. Although we should
+expect \emph{some} terms cancel, based on the above table, lets consider a
+concrete example. The polynomial $f_{10}(x)$ has 36 terms, but only 5
+are stable. If we consider the stable terms less than degree 100, we
+find
+\begin{equation}
+  \begin{split}
+f(x) =& 1 - x - x^{2} + x^{5} + x^{7} - x^{12} - x^{15} \\
+& + x^{22} + x^{26} - x^{35} - x^{40} +x^{51} + x^{57} \\
+&- x^{70} - x^{77} + x^{92} + x^{100} + \dots
+  \end{split}
+\end{equation}
+
+\M
+We also can observe the coefficients are always either $+1$ or $-1$. And
+they always come in pairs (two negative, followed by two positive),
+alternating in sign. We write down a little table summarizing the
+patterns: 
+\begin{center}
+\begin{tabular}{c | c}
+  Exponent & Coefficients\\\hline
+  0        &    1\\
+  1, 2     &   $-1$\\
+  5, 7     &    1\\
+  12, 15   &   $-1$\\
+  22, 26   &    1\\
+  35, 40   &   $-1$\\
+  51, 57   &    1\\
+  70, 77   &   $-1$\\
+  92, 100  &    1\\
+\end{tabular}
+\end{center}
+\noindent\ignorespaces%
+What is the pattern behind the exponents? Well, we can fumble around,
+and after a little experimentation we find the pairs obey $(3n^{2}\pm
+n)/2$ for $n\geq1$. 
+
+Great! We can now explicitly write down the series representation:
+\begin{equation}
+f(x) = \sum^{\infty}_{n=0} -1^{n}(x^{(3n^{2}-n)/2} + x^{(3n^{2}+n)/2})
+\end{equation}
+Or more succinctly (if not, more cavalier):
+\begin{equation}
+\prod^{\infty}_{n=0}(1-x^{n}) = \sum^{\infty}_{k=-\infty}(-1)^{k}x^{(3k^{2}+k)/2}
+\end{equation}
+This equation is called the Euler identity. (Not to be confused with the
+other 1238123 equations called ``Euler identities'')
+
+\M
+Euler, who wrestled with far harder problems, had immense difficulty
+with this particular series. Daniel Bernoulli asked Euler about a
+related problem in a letter dated January 28, 1741. Bernoulli was
+interested in a product of the form $\prod_{n}(1-x^{-n})$. Euler
+wrestled with the problem since then, and wrote an entire treatise
+dedicated to this very subject (delivered on April 6, 1741 but published
+a decade later). The history of Euler's work with this problem may be
+perused in Jordan Bell's ``Euler and the pentagonal number theorem''
+(\arXiv{math/0510054}), a fascinating read and an authoritative
+article on the matter. 
+
+We will quote Polya's translation of Euler's remarks on the identity:
+
+\begin{quote}
+In considering the partitions of numbers, I examined, a long time ago,
+the expression
+\begin{equation*}
+ (1 - x)(1 - x^2 )(1 - x^3 )(1 - x^4 )(1 - x^5 )(1 - x^6 )(1 - x^7 )(1 - x^8 ) \dots , 
+\end{equation*}
+in which the product is assumed to be infinite. In order to see what
+kind of series will result, I multiplied actually a great number of
+factors and found
+\begin{equation*}
+ 1 - x - x^2 + x^5 + x^7 - x^{12} - x^{15} + x^{22} + x^{26} - x^{35} - x^{40} + \dots 
+\end{equation*}
+The exponents of $x$ are the same which enter into the above formula
+[referring to a preceding part of Euler's article containing an
+  explanation of the sequences 1, 5, 12, 22, 35, \dots and 2, 7, 15, 26,
+  40, \dots]; also the signs $+$ and $-$ arise twice in succession. It
+suffices to undertake this multiplication and to continue it as far as
+it is deemed proper to become convinced of the truth of these
+series. Yet I have no other evidence for this, except a long induction
+which I have carried out so far that I cannot in any way doubt the law
+governing the formation of these terms and their exponents. I have long
+searched in vain for a rigorous demonstration of the equation between
+the series and the above infinite product $(1 - x)(1 - x^2 )(1 - x^3
+)\dots$, and I proposed the same question to some of my friends with
+whose ability in these matters I am familiar, but all have agreed with
+me on the truth of this transformation of the product into a series,
+without being able to unearth any clue of a demonstration.
+\end{quote}
+
+\section{Proof}
+
+The basic proof will be to observe in the product, what we do for polynomials (in the naive way) we just multiply out all the terms, then sum them together. 
+
+\N*{Step 1} A generic term will look like
+\begin{equation}
+(-1)^{k}x^{n_{1}+\dots+n_{k}}
+\end{equation}
+for $k\geq0$ and $n_{1}<\dots<n_{k}$.
+
+\N*{Step 2} We argue that the coefficient of $x^{n}$ will be equal to:
+\begin{equation}
+\begin{pmatrix}
+\mbox{number of partitions}\\
+n = n_{1} + \dots + n_{k}\\
+(0<n_{1}<\dots<n_{k})\\
+\mbox{with even }k\\
+\end{pmatrix}
+-
+\begin{pmatrix}
+\mbox{number of partitions}\\
+n = n_{1} + \dots + n_{k}\\
+(0<n_{1}<\dots<n_{k})\\
+\mbox{with odd }k\\
+\end{pmatrix}
+\end{equation}
+
+\N*{Step 3} We introduce, for a given partition $n=n_{1}+\dots+n_{k}$,
+there is a number $s$ of the largest consecutive number of $n_{i}$'s
+which terminate at $n_{k}$. What's an example? For $1+1+2+3$, we have
+$s=3$.
+
+For $1+2+3+4+5+7+8+8+8+9$, we have $s=3$ because $(7,8,9)$ is the
+consecutive sequence. Note that we always start at the largest value,
+and work towards getting smaller values (we started with $9$, then found a
+sequence of consecutive numbers ending in $9$). There is the other, more
+obvious, consecutive sequence $(1,2,3,4,5)$ which is larger\dots but has
+the obvious flaw it does not end in $9$.
+
+\N*{Step 4} We claim that any partition of $n=n_{1}+\dots+n_{k}$ for
+$0<n_{1}<n_{2}<n_{k}$ must fall into one of three categories: 
+\begin{enumerate}
+\item $n_{1}\leq s$ excluding when $n_{1}=s=k$
+\item $n_{1}>s$ excluding when $n_{1}+1=s+1=k+1$
+\item The two excluded cases, when $n_{1}=s=k$ or $n_{1}+1=s+1=k+1$.
+\end{enumerate}
+
+\N*{Step 5} We argue that there is a one-to-one correspondence between
+partitions in class 1 and partitions in class 2. (If you accept this, we
+can see immediately that almost everything must cancel since partitions
+in these classes have opposite signs from each other.)
+
+\N*{Step 6} The only remaining partitions are in the third class, and
+are of the form $k+(k+1)+(k+2)+\dots+(2k-1)$ or $(k+1)+(\dots)+(2k)$
+which correspond to the terms
+\begin{equation}
+(-1)^{k}x^{k+(k+1)+\dots+(2k-1)}=(-1)^{k}x^{k(3k-1)/2}
+\end{equation}
+and
+\begin{equation}
+(-1)^{k}x^{(k+1)+\dots+(2k)}=(-1)^{k}x^{k(3k+1)/2}
+\end{equation}
+respectively.
+
+\section{Partition Function}
+
+\N{Definition}
+Let $n$ be a positive integer. A \define{Partition} of $n$ is a finite
+sequence of strictly positive integers $0<n_{1}\leq n_{2}\leq\dots\leq n_{k}$
+such that
+\begin{equation}
+  n = n_{1} + \dots + n_{k}
+\end{equation}
+The \define{Partition Function} is a function $p\colon\NN\to\NN$ defined
+such that
+\begin{equation}
+  p(0)=p(1)=1
+\end{equation}
+and
+\begin{equation}
+  p(n) = |\{(n_{1},\dots,n_{k})\mbox{ is a partition of }n\}|.
+\end{equation}
+We adopt the convention $p(-n)=0$ for $n>0$, hence extending $p$ to be
+well-defined over the integers.
+
+\N*{Warning:} (1) The ``partitions'' we considered in the proof of
+Euler's pentagonal theorem differ from the ``partition'' we now define,
+in that we required \emph{before} to have \emph{distinct} numbers in the
+partition $n_{1}<n_{2}<\dots<n_{k}$. But now we relax the condition and
+allow duplicates $n_{1}\leq n_{2}\leq\dots\leq n_{k}$.
+
+(2) \emph{Do not} confuse this ``partition function'' from number theory
+with the ``partition function'' from physics! They are completely
+different functions!
+
+\N{Puzzle} For the sake of gaining familiarity with the partition
+function, what is the value of $p(n)$ for $n=1$, \dots, $7$?
+
+\N*{Solution}
+We provide some explicit reasoning for various numbers, to show how to
+reason with such a function. Observe 2 has two partitions:
+\begin{equation}
+  2 = 2 = 1+1 \implies p(2)=2.
+\end{equation}
+Similarly 3 has 3 partitions, since
+\begin{equation}
+  3 = 3 = 2+1 = (1+1)+1 \implies p(3)=3.
+\end{equation}
+We must resist the tempting pattern $p(n)=n$, because $4$ provides us a
+counter-example:
+\begin{equation}
+  \begin{split}
+    4 &= 4 = 2 + 2 = (1 + 1) + 2\\
+    &= 3 + 1 = (2 + 1) + 1 = 1+1+1
+  \end{split}
+\end{equation}
+but $2+1+1=1+1+2$, hence avoiding this duplicate we find
+\begin{equation}
+  p(4) = 5\neq 4.
+\end{equation}
+Similarly, we find
+\begin{equation}
+  5 = 5 = 4 + 1 = 3 + 2
+\end{equation}
+and we know there are $5$ different partitions for 4, which would
+incorporate the various partitions stemming from $3+2$, so we get
+\begin{equation}
+  p(5) = 2 + 5 = 7.
+\end{equation}
+This is a bit cavalier, but it demonstrates a recursive aspect to the
+partition function.
+
+\N{Generating Function}
+A common trick we can try: consider the function $p(x)$ (we abuse
+notation, when $x$ is used it's a different function) defined by
+\begin{equation}
+  p(x) \eqdef
+  1 + x + 2x^{2} + 3x^{3} + 5x^{4} + \dots
+  = \sum^{\infty}_{r=0}p(r)x^{r}
+\end{equation}
+We use the partition function to define the coefficients in this formal
+power series.
+
+\N{Puzzle}
+What is $f(x)p(x)$?
+
+\N*{Guess}
+The first thing we could try doing is multiplying the two series
+together, just to see what happens. We write down:
+\begin{equation}
+  f(x)p(x) = (1 - x - x^{2} + x^{5} + x^{7} - x^{12} - x^{15} + \dots)(1
+  + p(1)x + p(2)x^{2} + \dots)
+\end{equation}
+Now we use a trick from mathematical physics, and examine the
+coefficients of $x^{n}$. We find
+\begin{equation}
+  \begin{split}
+    f(x)p(x) =& 1\\
+    &+ (p(1) - 1)x\\
+    &+ (p(2) - p(1) - 1)x^{2}\\
+    &+ (p(3) - p(2)-p(1))x^{3}\\
+    &+ (p(4) - p(3) - p(2))x^{4}\\
+    &+ (p(5) - p(4) - p(3) + 1)x^{5} + \dots
+  \end{split}
+\end{equation}
+But we know, truncating the expansion here, this is precisely equal to
+$1$.
+
+\N{Claim:} $f(x)p(x)=1$.
+
+\begin{proof}
+It suffices to show $1/f(x)=p(x)$. We see
+\begin{equation}
+  \frac{1}{f(x)} = \frac{1}{\prod^{\infty}_{n=1}(1-x^{n})} = \prod^{\infty}_{n=1}(1 - x^{n})^{-1}
+\end{equation}
+then using the geometric series expansion for
+\begin{equation}
+  (1 - x^{n})^{-1} = \sum^{\infty}_{k=0}x^{nk}
+\end{equation}
+we get
+\begin{equation}
+  \begin{split}
+  \frac{1}{f(x)} &= \prod^{\infty}_{n=1}\left(\sum^{\infty}_{k=0}x^{nk}\right)\\
+  &= \prod^{\infty}_{n=1}\left(1 + x^{n} + x^{2n} + x^{3n} + \dots\right).
+  \end{split}
+\end{equation}
+Now we do the same trick as we did in our guessing: examine the
+coefficient of $x^{r}$ in the product.
+
+We take only one summand from each factor, and multiply them
+together. We then get
+\begin{equation}
+  x^{1\cdot k_{1}} + x^{2\cdot k_{2}} + \dots + x^{m k_{m}} = x^{k_{1} + 2k_{2} + \dots + m k_{m}} = x^{r}
+\end{equation}
+How many such products exist? (That is to say, what is the coefficient?)
+We find that
+\begin{equation}
+  r = k_{1} + \dots + mk_{m} = \underbrace{1+\dots+1}_{k_{1}} + \dots + \underbrace{m+\dots+m}_{k_{m}}
+\end{equation}
+is precisely a partition of $r$, so the total number of factors which
+multiply out to $x^{r}$ is the total number of partitions of $r$. That
+is to say, the coefficient of $x^{r}$ in $1/f(x)$ is $p(r)$.
+\end{proof}
+
+\section{Divisor Function}
+
+\N{Definition}
+Let $n\in\NN$ be an arbitrary positive integer. A \define{Divisor} of
+$n$ is a positive integer $k$ such that $n = mk$ for some $m\in\NN$. We
+write $k\divides n$ to indicate $k$ is a divisor of $n$.
+
+The \define{Divisor Function} $d\colon\NN\to\NN$ is such that $d(n)$ is
+the sum of the divisors of $n$, i.e., 
+\begin{equation}
+  d(n) = \sum_{k\divides n}k.
+\end{equation}
+
+\N{Puzzle}
+Is there a closed-form expression for $d(n)$?
+
+\N*{Simpler Puzzle}
+Let $p$ be a prime number, and $k\in\NN$ be an arbitrary natural
+number. What is $d(p^{k})$? This is quite a bit simpler, since the only
+possible divisors of $p^{k}$ are smaller powers of $p$. How many? Well,
+we have $p^{0}$, $p^{1}$, \dots, $p^{k-1}$, and $p^{k}$. So
+\begin{equation}
+  d(p^{k}) = \sum^{k}_{j=0}p^{j}.
+\end{equation}
+We can then recall the geometric formula for sums of powers, giving us
+the closed form expression
+\begin{equation}
+  d(p^{k}) = \frac{p^{k+1}-1}{p-1}.
+\end{equation}
+
+\N*{Solution}
+We know from the fundamental theorem of arithmetic any natural number
+can be written as the product of primes $n = p_{1}^{k_{1}}(\dots)p_{m}^{k_{m}}$
+for prime numbers $p_{1}$, \dots, $p_{m}$ and natural numbers $k_{1}$,
+\dots, $k_{m}$. We also know that prime numbers are only divisible by
+themselves, so $d(p_{1}p_{2})=d(p_{1})d(p_{2})$ for distinct primes
+$p_{1}\neq p_{2}$.
+
+Hence we deduce
+\begin{equation}
+  d(n) = d(p_{1}^{k_{1}}(\dots)p_{m}^{k_{m}}) = d(p_{1}^{k_{1}})(\dots)d(p_{m}^{k_{m}}).
+\end{equation}
+We now may use our simpler puzzle to substitute the values of
+$d(p_{j}^{k_{j}})$, giving us
+\begin{equation}
+  d(n) = \prod^{m}_{j=1}\frac{p_{j}^{k_{j}+1}-1}{p_{j}-1}.
+\end{equation}
+
+\N{Exercise} Again, just to get a feel of doing the calculations, write
+down $d(n)$ for $n=1$, $2$, \dots, $10$. Also compute $d(1000)$ and
+$d(1000000)$.
+
+\N{Generating Function}
+Doing the same trick as for the partition function, lets consider the
+generating function associated to the divisor function:
+\begin{equation}
+d(x) = \sum^{\infty}_{k=1}d(k)x^{k} = x + 3x^{2} + 4x^{3} + 7x^{4} + 6x^{5} + \dots
+\end{equation}
+
+\N{Puzzle}
+What is a closed-form expression for $d(x)$?
+
+\M
+This is a good puzzle, and one the reader should attempt very hard
+before examining our solution (which follows the footsteps of Euler). 
+
+\N*{Step 1:} We claim
+\begin{equation}
+  d(x) = \sum^{\infty}_{n=1}\frac{nx^{n}}{1-x^{n}}.
+\end{equation}
+(Note: This is not the end of the story, since the right hand side is
+another power series!) We use the geometric series for $(1 -
+x^{n})^{-1}$ to write
+\begin{equation}
+\sum^{\infty}_{n=1}\frac{nx^{n}}{1-x^{n}} = \sum^{\infty}_{n=1}n(x^{n} + x^{2n} + x^{3n} + \dots).
+\end{equation}
+Consider the coefficient of $x^{r}$. If $d_{j}\divides r$, then we have
+\begin{equation}
+ c_{r}x^{r} = (\mbox{something} + d_{j})x^{r}
+\end{equation}
+The other terms in the coefficient must also be a divisor of $r$, i.e.,
+come from some term that looks like $d_{j}x^{d_{j}\cdot k_{j}}$ such
+that $d_{j}k_{j} = r$. But this necessarily means $c_{r}=d(r)$. Hence we
+get the result immediately.
+
+\N*{Step 2:} We claim
+\begin{equation}
+  \frac{nx^{n}}{1-x^{n}}=-x\frac{\D}{\D x}\ln(1 - x^{n}).
+\end{equation}
+This can be verified by direct computation
+\begin{equation}
+    \frac{\D}{\D x}\ln(1 - x^{n}) = \frac{1}{1-x^{n}}\frac{\D}{\D x}(1-x^{n})
+\end{equation}
+by chain rule, and product rules gives us
+\begin{equation}
+\frac{1}{1-x^{n}}\frac{\D}{\D x}(1-x^{n}) = \frac{-nx^{n-1}}{1 - x^{n}},
+\end{equation}
+hence the result.
+
+\N*{Step 3:} We claim
+\begin{equation}
+  \frac{\D}{\D x}\sum^{\infty}_{n=1}\ln(1 - x^{n}) = \frac{f'(x)}{f(x)}.
+\end{equation}
+Using the law of logarithms\footnote{Strictly speaking, this is dodgy
+  when applied to series, but Euler was adventurous!} we find
+\begin{equation}
+\sum^{\infty}_{n=1}\ln(1 - x^{n}) = \ln\left(\prod^{\infty}_{n=1}(1 - x^{n})\right)
+\end{equation}
+but the right hand side is precisely
+\begin{equation}
+ \ln\left(\prod^{\infty}_{n=1}(1 - x^{n})\right) = \ln(f(x)).
+\end{equation}
+Now taking the derivative gives the result.
+
+\N*{Step 4:} We conclude
+\begin{equation}
+  d(x) = \frac{-xf'(x)}{f(x)}
+\end{equation}
+This comes from
+\begin{align*}
+d(x) &= \sum^{\infty}_{n=1}\frac{nx^{n}}{1 - x^{n}}&\mbox{(step 1)}\\
+&= \sum^{\infty}_{n=1}-x\frac{\D}{\D x}\ln(1 - x^{n})&\mbox{(step 2)}\\
+&= -x\frac{\D}{\D x}\sum^{\infty}_{n=1}\ln(1 - x^{n})&\mbox{(distributivity)}\\
+&= -x\left(\frac{\D}{\D x}\sum^{\infty}_{n=1}\ln(1 - x^{n})\right)&\mbox{(associativity)}\\
+&= -x\frac{f'(x)}{f(x)}&\mbox{(step 3)}.
+\end{align*}
+
+\section{Gauss and Jacobi Identities}
+
+\N{Gauss Identity}
+Some 70 years after Euler's investigations, Gauss discovered the most
+startling identity involving the cube of Euler's function:
+\begin{equation}
+  \begin{split}
+f(x)^{3} &= 1 - 3x + 5x^{3} - 7x^{6} + 9x^{10} - 11x^{15} + \dots\\
+    &= 1 + \sum^{\infty}_{n=1} (-1)^{n}(2n+1)x^{(n+1)(n+2)/2}.
+  \end{split}
+\end{equation}
+This is doubly surprising since its square does not reveal any regular
+pattern or interesting properties
+\begin{equation}
+  f(x)^{2} = 1 - 2x - x^{2} + 2x^{3} + x^{4} + 2x^{5} - 2x^{6} - 2x^{8}
+  - 2x^{9} + x^{10} + \dots.
+\end{equation}
+(Truthfully, this work was never published by Gauss, but found after his
+death; it may be perused in Gauss' \emph{Werke: Bd. Analysis}, published 1866.)
+This result may be derived from the Jacobi triple product identity.
+
+\N{Jacobi Triple Product}
+The triple product formula appears in many different fields of
+mathematics, in very different contexts (indicating this is a profound
+result indeed). Jacobi published his triple product in his work on
+elliptic functions~\cite{jacobi}:
+\begin{equation}
+  \prod^{\infty}_{m=1}
+  (1 - z^{2m})
+  (1 + z^{2m-1}y)
+  (1 + y^{-1}z^{2m-1}) = \sum_{r=-\infty}^{\infty} y^{r}z^{r^{2}}.
+\end{equation}
+Proving this relation is quite involved, so lets first make a detour to
+show Gauss' identity derives from the triple product.
+
+\N{From Jacobi to Gauss}
+
+
+
+\begin{thebibliography}{99}
+\bibitem{fuchs}
+  Dmitry Fuchs and Serge Tabachnikov,
+  \emph{Mathematical Omnibus: Thirty Lectures on Classic Mathematics}.
+  AMS Publisher, 2007.
+\bibitem{jacobi}
+  Carl Jacobi,
+  \emph{Fundamenta Nova Theoriae Functionum Ellipticarum}.
+  1829.
+\bibitem{leibenzon}
+  Z. Leibenzon,
+  ``A simple combinatorial method for proving the Jacobi identity and its generalizations''.
+  \emph{Funct. Anal. Appl.} \textbf{20} no.1 (1986), pp.~66--68.
+\end{thebibliography}
+
+\end{document}
+
