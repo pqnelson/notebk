@@ -1,0 +1,99 @@
+%%
+%% swapOrderDouble.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Tue Jul 31 10:29:59 2012 Alex Nelson
+%% Last update Tue Jul 31 13:04:33 2012 Alex Nelson
+%%
+\M
+So we had introduced double integrals. We perform double
+integration thanks to Fubini's theorem, stating
+\begin{equation}
+\iint_{R}f(x,y)\,\D A
+=\iint_{R}f(x,y)\,\D x\,\D y
+=\iint_{R}f(x,y)\,\D y\,\D x.
+\end{equation}
+Sometimes we cannot solve a double integral problem without
+swapping the order of integration. Lets consider this in more
+detail.\more
+
+\N{Finding the Limits of Integration}
+Lets review how we find limits of integration. We will work
+through the example considering the domain $R$ bounded by the
+curves
+\begin{equation}
+1=y+x,\quad\mbox{and}\quad 1=y^{2}+x^{2}.
+\end{equation}
+We consider some arbitrary function $f(x,y)$, and we will express
+the integral $\iint_{R}f(x,y)\,\D A$ as $\iint_{R}f(x,y)\,\D
+y\,\D x$. What's the algorithm?
+
+\emph{Step One: Sketch}. We sketch the region of integation, and
+label the bounding curves.
+\begin{center}
+  \includegraphics{img/swapOrder.0}
+\end{center}
+
+\emph{Step Two: Find the $y$-Limits of Integration}. We consider
+a vertical line $L$ cutting through the region $R$ in the
+direction of increasing $y$. Mark the $y$ values where $L$ enters
+and leaves. These are the $y$-limits of integration and are
+usually functions of $x$ (instead of constants).
+\begin{center}
+  \includegraphics{img/swapOrder.1}
+\end{center}
+This tells us that $1-x\leq y\leq\sqrt{1-x^{2}}$. Also note this
+constrains $x^{2}\leq 1$ if $y$ is a real number.
+
+\emph{Step Three: Find the $x$-Limits of Integration}. We choose
+the $x$-limits that include all the vertical lines through
+$R$. For us, this constrains $0\leq x\leq 1$. Thus we write the
+double integral 
+\begin{equation}
+\iint_{R}f(x,y)\,\D
+A=\int^{1}_{0}\int^{\sqrt{1-x^{2}}}_{1-x}f(x,y)\,\D y\,\D x.
+\end{equation}
+This concludes the generic procedure for finding the limits of
+integration. 
+
+\N{Swapping the Limits of Integration} Consider the double integral
+\begin{equation}
+I=\int^{1}_{0}\int^{3}_{3y}\exp(-x^{2})\,\D x\,\D y.
+\end{equation}
+How can we find $I$? We need to swap the order of integration. 
+
+Lets doodle the domain of integration:
+\begin{center}
+  \includegraphics{img/swapOrder.2}
+\end{center}
+We draw a vertical line to find the $y$-limits of integration
+\begin{center}
+  \includegraphics{img/swapOrder.3}
+\end{center}
+We have the $y$-limits of integration be
+\begin{equation}
+0\leq y\leq x/3.
+\end{equation}
+Observe the $x$-limits of integration are quite simple
+\begin{equation}
+0\leq x\leq 3.
+\end{equation}
+We have the limits of integration, and we can write
+\begin{equation}
+I=\int^{3}_{0}\int^{x/3}_{0}\exp(-x^{2})\,\D y\,\D x.
+\end{equation}
+This may be solved quickly
+\begin{equation}
+I = \int^{3}_{0}\frac{x}{3}\exp(-x^{2})\,\D x
+\end{equation}
+and let $u=x^{2}$, so $\D u=2x\,\D x$ lets us write
+\begin{equation}
+I=\int^{\sqrt{3}}_{0}\frac{\exp(-u)}{6}\,\D u = \left.\frac{-1}{6}\exp(-u)\right]^{\sqrt{3}}_{0}.
+\end{equation}
+Thus
+\begin{equation}
+I = \frac{1-\exp(-\sqrt{3})}{6} \approx 0.13718.
+\end{equation}
+We couldn't have calculated this without swapping the order of integration.

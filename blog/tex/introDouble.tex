@@ -1,0 +1,229 @@
+%%
+%% introDouble.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Jul  4 12:56:05 2012 Alex Nelson
+%% Last update Mon Jul  9 12:40:21 2012 Alex Nelson
+%%
+
+\M
+Consider $z=f(x,y)$. What is the volume of the region 
+\begin{equation}
+S = \{ (x,y,z)\in\RR^{3}\mid z=f(x,y),\; a\leq x\leq b,\;
+c\leq y\leq d\}
+\end{equation}
+The first thing we do: consider the rectangle
+$R=[a,b]\times[c,d]$ and form a partition of $[a,b]$ into $M-1$
+segments and $[c,d]$ into $N-1$ segments. This gives us a mesh of
+rectangles $R_{ij} = [x_{i-1},x_{i}]\times[y_{j-1},y_{j}]$ as
+specified by the following diagram:
+\begin{center}
+\includegraphics{img/introDouble.0}
+\end{center}
+Observe the area of $R_{ij}$ is 
+\begin{equation}
+\Delta A = \Delta x\Delta y.
+\end{equation}
+We can approximate the volume $V$ of $S$ by a sort of Riemann
+sum, picking points $(x_{ij}^{*}, y_{ij}^{*})$ in $R_{ij}$ and
+taking
+\begin{equation}
+\sum^{M}_{i=1}\sum^{N}_{j=1}f(x^{*}_{ij},y^{*}_{ij})\Delta
+A\approx V.
+\end{equation}
+However, as with Riemann sums, we recover the exact volume when
+we take the limits $M,N\to\infty$:
+\begin{equation}
+V = \lim_{M,N\to\infty}\sum^{M}_{i=1}\sum^{N}_{j=1}f(x^{*}_{ij},y^{*}_{ij})\Delta
+A
+\end{equation}
+if the limit exists. \more
+
+\N{Definition}
+We define the \textbf{``Double Integral''} of  $f$ over the integral $R$ as
+\begin{equation}
+\iint_{R}f(x,y)\,\D A = \lim_{M,N\to\infty}\sum^{M}_{i=1}\sum^{N}_{j=1}f(x^{*}_{ij},y^{*}_{ij})\Delta
+A
+\end{equation}
+if this limit exists. 
+
+Note this sum is called a \emph{double Riemann sum}, just as a
+for the single integral we had a \emph{Riemann Sum}.
+
+\N{Properties of Integrals}
+We won't prove, but note, there are three important properties
+double integrals satisfy. Two can be grouped together as
+linearity:
+\begin{equation}
+\iint_{R}\bigl[f(x,y)+g(x,y)\bigr]\,\D A=\iint_{R}f(x,y)\,\D
+A+\iint_{R}g(x,y)\,\D A
+\end{equation}
+and
+\begin{equation}
+\iint_{R}cf(x,y)\,\D A = c\iint_{R}f(x,y)\,\D A
+\end{equation}
+where $f$ and $g$ are continuous on $R$, and $c\in\RR$ is a
+constant.
+
+If $f(x,y)\geq g(x,y)$ for all $(x,y)\in R$, then
+\begin{equation}
+\iint_{R}f(x,y)\,\D A\geq\iint_{R}g(x,y)\,\D A.
+\end{equation}
+
+\N{Problem:} How do we compute $\iint_{R}f(x,y)\,\D A$?
+
+\ifblog\section{Iterated Integrals}\fi\iftex\subsection{Iterated Integrals}\fi
+
+\N{Fubini's Theorem} If $f$ is continuous on the integral
+$R=[a,b]\times[c,d]$, then
+\begin{equation}
+\iint_{R}f(x,y)\,\D A=\int^{b}_{a}\left(\int^{d}_{c}f(x,y)\,\D
+y\right)\D x
+=\int^{d}_{c}\left(\int^{b}_{a}f(x,y)\,\D x\right)\D y.
+\end{equation}
+We won't prove it (that's what real analysis discusses!), but the
+parenthetic terms are functions of a single variable and describe
+the area of a ``sheet''. By stacking ``sheets'' we can compute
+the volume of the region. 
+
+\M This is fine for rectangular regions, but over arbitrary
+regions what do we do? We bound the region $D$ by a pair of
+curves $g_{1}(x)\leq y\leq g_{2}(x)$:
+\begin{center}
+\includegraphics{img/introDouble.1}\qquad
+\includegraphics{img/introDouble.2}
+\end{center}
+In these situations, we write
+\begin{equation}
+\iint_{D}f(x,y)\,\D
+A=\int^{b}_{a}\int^{g_{2}(x)}_{g_{1}(x)}f(x,y)\,\D y\,\D x.
+\end{equation}
+Please note the order of integration, and corresponding boundary
+of integration!
+
+\M
+We can likewise bound the region by curves $h_{1}(y)\leq x\leq
+h_{2}(y)$, for example:
+\begin{center}
+\includegraphics{img/introDouble.3}\quad
+\includegraphics{img/introDouble.4}
+\end{center}
+The trick lies with writing these integrals as
+\begin{equation}
+\iint_{D}f(x,y)\,\D
+A=\int^{d}_{c}\int^{h_{2}(y)}_{h_{1}(y)}f(x,y)\,\D x\,\D y.
+\end{equation}
+Again, note the order of integration!
+
+\begin{example}
+Lets consider the domain 
+\begin{equation}
+D = \{(x,y)\mid -1\leq x\leq1,\; 2x^{2}\leq y\leq 1+x^{2}\}.
+\end{equation}
+Evaluate the integral
+\begin{equation}
+I = \iint_{D}(x-y)\,\D A.
+\end{equation}
+
+\noindent\emph{Solution:\quad}\ignorespaces We first doodle this domain,
+shade it in red: 
+\begin{center}
+\includegraphics{img/introDouble.5}
+\end{center}
+Now we use Fubini's theorem writing
+\begin{equation}
+I = \int^{1}_{-1}\int^{1+x^{2}}_{2x^{2}}(x-y)\,\D y\,\D x.
+\end{equation}
+Observe the order of integration, and the bounds of integration
+are determined by specifying $y\geq 2x^{2}$ and $y\leq1+x^{2}$
+for the $\int\D y$ quantity. Similarly, since $-1\leq x\leq1$, we
+determine the bounds of integration for the $x$ integral.
+
+Using linearity, we can write
+\begin{subequations}
+\begin{equation}
+I = I_{1}+I{2}
+\end{equation}
+where
+\begin{equation}
+I_{1}=\int^{1}_{-1}\int^{1+x^{2}}_{2x^{2}}x\,\D y\,\D x
+\end{equation}
+and
+\begin{equation}
+I_{2}= \int^{1}_{-1}\int^{1+x^{2}}_{2x^{2}}-y\,\D y\,\D x
+\end{equation}
+\end{subequations}
+Now we can evaluate each of these separately. 
+
+We see for $I_{1}$, there are no $y$ expressions, so we have
+\begin{equation}
+\int^{1}_{-1}\int^{1+x^{2}}_{2x^{2}}x\,\D y\,\D x=
+\int^{1}_{-1}x\int^{1+x^{2}}_{2x^{2}}\,\D y\,\D x.
+\end{equation}
+Performing this inner integral
+\begin{equation}
+\int^{1+x^{2}}_{2x^{2}}\D y
+= \bigl(1+x^{2}\bigr)-(2x^{2})=1-x^{2}.
+\end{equation}
+We plug this back in:
+\begin{equation}
+\int^{1}_{-1}x\left(\int^{1+x^{2}}_{2x^{2}}\,\D y\right)\D x
+=\int^{1}_{-1}x\bigl(1-x^{2}\bigr)\D x.
+\end{equation}
+This can be solved quickly as
+\begin{equation}
+\begin{aligned}
+\int^{1}_{-1}x\bigl(1-x^{2}\bigr)\D x
+&= \left.\frac{x^{2}}{2}-\frac{x^{4}}{4}\right|^{1}_{-1}\\
+&= \left(\frac{(1)^{2}}{2}-\frac{(1)^{4}}{4}\right)
+-\left(\frac{(-1)^{2}}{2}-\frac{(-1)^{4}}{4}\right)\\
+&=0.
+\end{aligned}
+\end{equation}
+Thus
+\begin{equation}
+I_{1}=0.
+\end{equation}
+Moreover this implies $I=I_{2}$.
+
+What to do about $I_{2}$? Recall
+\begin{equation*}
+I_{2}= \int^{1}_{-1}\int^{1+x^{2}}_{2x^{2}}-y\,\D y\,\D x
+\end{equation*}
+We first perform the inner integral
+\begin{equation}
+\begin{aligned}
+\int^{1+x^{2}}_{2x^{2}}y\,\D y &= \left.\frac{y^{2}}{2}\right|^{1+x^{2}}_{2x^{2}}\\
+&=\frac{(1+x^{2})^{2} - (2x^{2})^{2}}{2}\\
+&=\frac{1+2x^{2}+x^{4}-4x^{4}}{2} = \frac{1+2x^{2}-3x^{4}}{2}.
+\end{aligned}
+\end{equation}
+We plug this back in
+\begin{equation}
+\int^{1}_{-1}-\left(\int^{1+x^{2}}_{2x^{2}}y\,\D y\right)\D x
+=-\int^{1}_{-1}\frac{1+2x^{2}-3x^{4}}{2}\D x.
+\end{equation}
+We can calculate this out directly as
+\begin{equation}
+\begin{aligned}
+\int^{1}_{-1}(1+2x^{2}-3x^{4})\,\D x
+&=\left.x+\frac{2x^{3}}{3}-\frac{3x^{5}}{5}\right|^{1}_{-1}\\
+&=\left(1+\frac{2}{3}-\frac{3}{5}\right)-\left(-1-\frac{2}{3}+\frac{3}{5}\right)\\
+&=2+\frac{4}{3}-\frac{6}{5}=\frac{32}{15}.
+\end{aligned}
+\end{equation}
+But we forgot the coefficient $-1/2$ in front of the integral!
+Thus our integral is 
+\begin{subequations}
+\begin{equation}
+I_{2}=\frac{-32}{30}
+\end{equation}
+giving us our final result
+\begin{equation}
+I = 0 - \frac{32}{30},
+\end{equation}
+\end{subequations}
+which concludes our example.
+\end{example}

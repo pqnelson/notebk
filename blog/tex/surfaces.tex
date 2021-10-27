@@ -1,0 +1,196 @@
+%%
+%% surfaces.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun 22 13:32:11 2012 Alex Nelson
+%% Last update Thu Jun 28 12:18:49 2012 Alex Nelson
+%%
+\M
+Let $w=f(x_{1},x_{2},\dots,x_{n})$ where $x_{1}$, $x_{2}$, \dots,
+$x_{n}$ are all independent variables. Then the
+\textbf{``Domain''} of $f$ is the set of $n$-tuples
+$\RR^{n}$. Note that an ordered pair is 
+\begin{equation}
+(x,y)=\mbox{2-tuple}.
+\end{equation}
+The set of corresponding values is the \textbf{``Range''} (or
+\emph{Codomain}) of the function. So we have
+\begin{equation}
+%% \begin{aligned}
+%% f\colon &\RR^{n}&\to&\RR\\
+%% &\mbox{(Domain)}&\to&\mbox{(Range)}
+%% \end{aligned}
+f\colon\underbrace{\RR^{n}}_{\text{domain}}\to\underbrace{\RR}_{\text{range}}
+\end{equation}
+Sometimes we write $\mathrm{dom}(f)$ for the domain of $f$, and
+$\mathrm{ran}(f)$ or $\mathrm{cod}(f)$ for the range (or
+codomain) of $f$. We \emph{DO NOT} write $f(\RR^{2})$ for the
+range, because this is the collection of all points mapped by
+$f$. 
+
+\begin{example}
+Consider $f\colon\RR^{2}\to\RR$ defined by
+\begin{equation}
+f(x,y) = \sqrt{x^{2}+y^{2}}
+\end{equation}
+Notice that $f(x,y)\geq0$ for any $x,y\in\RR$. So
+\begin{equation}
+f(\RR^{2})=\{ u\in\RR : u\geq0\}\not=\RR.
+\end{equation}
+This is not the codomain! It's contained in the codomain,
+though. The image is \emph{always} a subset of the codomain.
+\end{example}
+\more
+
+\begin{example}
+Let $g(x,y)=\ln(x^{2}-y)$. For $g$ to be defined, we need
+\begin{equation}
+x^{2}-y>0\quad\mbox{or}\quad x^{2}>y.
+\end{equation}
+The boundary of the domain is $x^{2}=y$, which we can doodle:
+\begin{center}
+  \includegraphics{img/surfaces.0}
+\end{center}
+Since the boundary is not in the domain, then the domain of $g$
+is open.
+\end{example}
+
+\begin{example}
+Consider 
+\begin{equation}
+h(x,y)=\sqrt{25-x^{2}-y^{2}}.
+\end{equation}
+The domain is the set of $(x,y)$ such that
+\begin{equation}
+x^{2}+y^{2}\leq25.
+\end{equation}
+We can doodle this:
+\begin{center}
+\includegraphics{img/surfaces.1}
+\end{center}
+Observe that the boundary is the circle; the disc is the circle
+and everything enclosed in it.
+\end{example}
+
+\M
+So we have just discussed domains and codomains, but we have not
+discussed the graph of the function $z=f(x,y)$. What would this
+look like? Well, when we plot $y=g(x)$, it's on the plane
+$\RR^{2}$. So plotting $z=f(x,y)$ would be on the 3-space
+$\RR^{3}$. Lets start considering examples of what this looks
+like. 
+
+\begin{example}
+Consider the graph given by
+\begin{equation}
+z = f(x,y) = 9 - x^{2}-y^{2}.
+\end{equation}
+How can we draw this? Well, the first trick is to draw when $x=0$
+and $y=0$:
+\begin{equation}
+\begin{aligned}
+z &= f(0,y) = 9-y^{2}\\
+z &= f(x,0) = 9-x^{2}
+\end{aligned}
+\end{equation}
+These are parabolas in the $yz$ and $xz$ planes,
+respectively. Now we can start drawing \textbf{``Level Curves''},
+i.e., curves where we fix $z$ to be some constant. For example,
+when $z=0$, we have a circle
+\begin{equation}
+x^{2}+y^{2}=9
+\end{equation}
+Observe then that $z$ controls the radius of the circles: for
+nonzero $z$, we have
+\begin{equation}
+x^{2}+y^{2}=9-z.
+\end{equation}
+The left hand side must be non-negative, and can be zero only
+when $z=9$. So we get a surface that looks like
+\begin{center}
+ \includegraphics{img/paraboloid.0}
+\end{center}
+We call this surface a \textbf{``Paraboloid''} as we have
+parabolas along the $x$- and $y$-axes.
+
+This is the general scheme for picturing a surface: draw level
+curves $f(x,y)=c$ for some constant $c$, which produces the level
+curve for $f$ corresponding to $c$.
+\end{example}
+
+\begin{example}
+Consider $x^{2}+y^{2}-z^{2}=0$. What does this surface look like?
+
+\emph{Solution}: First we observe the curves along the $x$-axis,
+i.e., when $y=0$ is $x^{2}=z^{2}$. Similarly when $x=0$ we have
+$y^{2}=z^{2}$. What sort of curves are these? Well, $(\pm t,0,t)$
+and $(0,\pm t,t)$ are the curves, for $t\in\RR$. 
+
+Also note that $x^{2}+y^{2}$ describes a circle, whose radius
+happens to be $z^{2}$. This tells us the level curves are simply
+circles. So we have a cone: 
+\begin{center}
+  \includegraphics{img/surfaces.2}  
+\end{center}
+This surface is precisely a \textbf{``Cone''}.
+\end{example}
+\begin{example}
+What if we deform the previous example, writing
+\begin{equation}
+x^{2}+y^{2}-z^{2}=1.
+\end{equation}
+What surface does this describe?
+
+\emph{Solution}: Well, we see that the radius of the level curves
+deform $z^{2}\to z^{2}+1$. So the resulting surface looks like a
+cone, but along the $x$-axis we don't have a straight-line: we
+have a hyperbola $x^{2}-z^{2}=1$. Similarly along the $y$-axis we
+have another hyperbola $y^{2}-z^{2}=1$. Thus our surface is
+doodled as:
+\begin{center}
+\includegraphics{img/surfaces.3}
+\end{center}
+This ``deformed cone'' is called a \textbf{``One Sheeted Hyperboloid''}.
+\end{example}
+\begin{example}
+Another variation, consider the surface
+\begin{equation}
+x^{2}+y^{2}-z^{2}=-1
+\end{equation}
+What does it look like?
+
+\emph{Solution}: Well, we see that $x^{2}+y^{2}\geq0$ always,
+whereas $z^{2}-1\geq0$ only when $|z|\geq1$. So we have two
+``surfaces'' or \textbf{``Sheets''} here. The level curves are
+again circles, and this enables us to doodle the graph:
+\begin{center}
+\includegraphics{img/surfaces.4}
+\end{center}
+Along the $x$-axis and $y$-axis, we have hyperbolas. For this
+reason, we call the surface a \textbf{``Two-Sheeted Hyperbaloid''}.
+\end{example}
+
+\begin{example}
+Suppose we have a surface given by $z=x^{2}-y^{2}$. What does it
+look like?
+
+\emph{Solution}: Observe the level curves for $z>0$ gives us
+hyperbolas, and for $z<0$ we again have hyperbolas (the same as
+before but reflected about the line $x=y$). For $z=0$ we have a
+cone. 
+
+When we take $y=\pm1,0$ we see $z=x^{2}-C$ for some constant
+$C$. These curves look like smiles. For $x=\pm1,0$, we have
+$z=C-y^{2}$ for some constant $C$. These curves look like
+frowns. 
+
+This surface is a saddle, and we can doodle it as
+\begin{center}
+\includegraphics{img/surfaces.5}
+\end{center}
+Since the curves when we hold $z$ constant form hyperbolas, and
+the curves when we hold $x$ or $y$ constaant are parabolas,
+people sometimes call this saddle a \textbf{``Hyperbolic Paraboloid''}.
+\end{example}

@@ -1,0 +1,89 @@
+%%
+%% taylorErrorPt1.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Mon Jun 18 10:34:28 2012 Alex Nelson
+%% Last update Mon Jun 18 10:51:51 2012 Alex Nelson
+%%
+
+\M
+So last time we constructed a polynomial using the first $n$
+terms in the Taylor series. This ``Taylor polynomial''
+approximated our function, and we want to know \emph{how well does it approximate?}
+
+We will derive the Taylor series differently. Our derivation will
+give us a natural error term. \more{}
+
+\N{Set Up} Lets consider $f(x)$ which is sufficiently nice around
+$x=0$ (i.e., it has enough derivatives at $x=0$). The fundamental
+theorem of calculus tells us that
+\begin{equation}\label{eq:taylorErr1:line1}
+f(x) = f(0) + \int^{x}_{0}f'(t)\,\D t.
+\end{equation}
+Wonderful.
+
+\N{Linear Approximation}
+We now use integration by parts for the integral in Equation \eqref{eq:taylorErr1:line1}:
+\begin{equation}
+\begin{aligned}
+\int^{x}_{0}f'(t)\,\D t &=
+\left.tf'(t)\right|^{x}_{0}-\int^{x}_{0}tf''(t)\,\D t\\
+&= xf'(x)-0f'(0) - \int^{x}_{0}tf''(t)\,\D t\\
+&= xf'(x) - \int^{x}_{0}tf''(t)\,\D t.
+\end{aligned}
+\end{equation}
+Now we can plug in Equation \eqref{eq:taylorErr1:line1} for the
+first term in the right hand side:
+\begin{equation}
+\begin{aligned}
+xf'(x) - \int^{x}_{0}tf''(t)\,\D t &=
+x\left(f'(0)+\int^{x}_{0}f'(t)\,\D t\right) - \int^{x}_{0}tf''(t)\,\D t\\
+&= xf'(0) - \int^{x}_{0}(t-x)f''(t)\,\D t.
+\end{aligned}
+\end{equation}
+We plug this back into Equation \eqref{eq:taylorErr1:line1}
+\begin{equation}
+\begin{aligned}
+f(x) &= f(0) + \int^{x}_{0}f'(t)\,\D t\\
+&= f(0) +\left[ xf'(0) - \int^{x}_{0}(t-x)f''(t)\,\D t\right].
+\end{aligned}
+\end{equation}
+Observe the first two terms are precisely the linear
+approximation to $f(x)$. What's the third term? \emph{The error term!}
+But we're not done yet!
+
+\N{Inductive Procedure}
+We can iterate a procedure to get a better and better
+approximation. Performing integration by parts on
+\begin{equation}
+\int^{x}_{0}(t-x)f''(t)\,\D t
+\end{equation}
+will give us the next term in our approximation plus an
+integral. The integral gives us the error for using a quadratic
+approximation. 
+
+Lets do it! We use integration by parts 
+\begin{equation}
+\begin{aligned}
+\int^{x}_{0}(t-x)f''(t)\,\D t &=
+\left.\frac{(t-x)^{2}}{2!}f''(t)\right|^{x}_{0}-\int^{x}_{0}\frac{(t-x)^{2}}{2!}f'''(t)\,\D t\\
+&=\frac{-(-x)^{2}}{2!}f''(0)-\int^{x}_{0}\frac{(t-x)^{2}}{2!}f'''(t)\,\D t
+\end{aligned}
+\end{equation}
+So our approximation becomes
+\begin{equation}
+\begin{aligned}
+f(x) &= f(0) +  xf'(0) - \left[\int^{x}_{0}(t-x)f''(t)\,\D  t\right]\\
+&=f(0) + xf'(0) - \left[\frac{-(-x)^{2}}{2!}f''(0)-\int^{x}_{0}\frac{(t-x)^{2}}{2!}f'''(t)\,\D t\right]\\
+&=f(0) + xf'(0) + \frac{x^{2}}{2!}f''(0)+\left[\int^{x}_{0}\frac{(t-x)^{2}}{2!}f'''(t)\,\D t\right]
+\end{aligned}
+\end{equation}
+The brackted term in the final line is the error term for using
+the quadratic approximation. But look: the quadratic
+approximation corresponds to the first 3 terms of the Taylor series!
+When we do this iterative procedure on the error term,
+integrating by parts will produce a higher order
+approximation. And for free, we get the error term telling us how
+good our approximation is!

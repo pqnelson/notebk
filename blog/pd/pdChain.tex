@@ -1,0 +1,140 @@
+%%
+%% pdChain.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Thu Jun 28 15:42:27 2012 Alex Nelson
+%% Last update Tue Jul  3 10:54:12 2012 Alex Nelson
+%%
+
+\N{Problem}
+Consider a function $f(x,y)$ where we parametrize 
+\begin{equation}
+x=x(t,u),\quad\mbox{and}\quad y=y(t,u).
+\end{equation}
+If $t\to t+\Delta t$, how does $f\to f+\Delta f$ change?
+
+\M
+We first note
+\begin{equation}
+f(x+\Delta x,y) = f(x,y)+\Delta x\partial_{x}f(x,y)+\bigO(\Delta
+x^{2}).
+\end{equation}
+Similarly 
+\begin{equation}
+f(x,y+\Delta y)= f(x,y)+\Delta y\partial_{y}f(x,y)+\bigO(\Delta
+y^{2}).
+\end{equation}
+Thus we find
+\begin{equation}
+\begin{aligned}
+f(x+\Delta x,y+\Delta y)
+&=f(x,y+\Delta y)+\Delta x\partial_{x}f(x,y + \Delta y)+\bigO(\Delta
+x^{2})\\
+&=\bigl(f(x,y) + \Delta y\partial_{y}f(x,y) + \bigO(\Delta
+y^{2})\bigr)\\
+&\quad+ \Delta x\partial_{x}\bigl(f(x,y) + \Delta y\partial_{y}f(x,y) + \bigO(\Delta
+y^{2})\bigr)\\
+&\quad+\bigO(\Delta x^{2})\\
+&= f(x,y) + \Delta y\partial_{y}f(x,y) + \Delta
+x\partial_{x}f(x,y)\\
+&\quad + \bigO(\Delta x\Delta y)%\partial_{x}\partial_{y}f(x,y)
++\bigO(\Delta x^{2})+\bigO(\Delta y^{2}).
+\end{aligned}
+\end{equation}
+But specifically, we are interested in
+\begin{equation}
+\Delta x = \Delta t\partial_{t}x(t,u)+\bigO(\Delta t^{2})
+\end{equation}
+and
+\begin{equation}
+\Delta y = \Delta t\partial_{t}y(t,u)+\bigO(\Delta t^{2})
+\end{equation}
+Plugging this in allows us to write
+\begin{equation}
+\Delta f=\Delta y\partial_{y}f(x,y) + \Delta
+x\partial_{x}f(x,y) + \bigO(\Delta x\Delta y)%\partial_{x}\partial_{y}f(x,y)
++\bigO(\Delta x^{2})+\bigO(\Delta y^{2})
+\end{equation}
+as
+\begin{equation}
+\Delta f = \bigl(\Delta t\partial_{t}y\bigr)\bigl(\partial_{y}f\bigr) +
+\bigl(\Delta t\partial_{t}x\bigr)\bigl(\partial_{x}f\bigr) +
+\bigO(\Delta t^{2})
+\end{equation}
+Observe under our substitution, we have the $\bigO(\Delta
+x\Delta y)$ and other big O terms be gathered into the
+$\bigO(\Delta t^{2})$ term.
+
+So what? Observe
+\begin{equation}
+\begin{aligned}
+\frac{\partial f}{\partial t} &= \lim_{\Delta t\to 0}\frac{f\bigl(x(t+\Delta t,u),y(t+\Delta t)\bigr)-f\bigl(x(t,u),y(t,u)\bigr)}{\Delta t} \\
+&=\frac{\partial f}{\partial x}\frac{\partial x}{\partial t}+
+\frac{\partial f}{\partial y}\frac{\partial y}{\partial t}.
+\end{aligned}
+\end{equation}
+This is precisely the chain rule. Similarly, we find
+\begin{equation}
+\frac{\partial f}{\partial u}
+=\frac{\partial f}{\partial x}\frac{\partial x}{\partial u}+
+\frac{\partial f}{\partial y}\frac{\partial y}{\partial u}.
+\end{equation}
+
+\N{Implicit Differentiation Revisited}
+Recall implicit differentiation required us to find $\D y/\D x$
+from some complicated expression like
+\begin{equation}
+\E^{xy}+4y^{2}+\tan(x+y)=0
+\end{equation}
+What to do? First we write
+\begin{equation}
+z = F(x,y) = \E^{xy}+4y^{2}+\tan(x+y)=0.
+\end{equation}
+Next we say $y=y(x)$. So we find
+\begin{equation}
+\begin{aligned}
+\frac{\D z}{\D x}
+&= \frac{\partial F(x,y)}{\partial x}\frac{\D x}{\D x}+\frac{\partial F(x,y)}{\partial y}\frac{\D y}{\D x}\\
+&=0
+\end{aligned}
+\end{equation}
+where we set the derivative of $F$ to be zero since it's equal to the
+derivative of zero. We can then write (taking $\D x/\D x=1$)
+\begin{equation}
+-\frac{\partial F(x,y)}{\partial x}=\frac{\partial
+  F(x,y)}{\partial y}\frac{\D y}{\D x}
+\end{equation}
+and divide both sides by $\partial_{y}F$ to get
+\begin{equation}
+\frac{-\partial_{x}F}{\partial_{y}F} = \frac{\D y}{\D x}.
+\end{equation}
+But this is precisely what implicit differentiation gives us!
+
+\N{Warning for Physicists} 
+Physicists often use partial derivative notation slightly
+differently. If $q(t)$ is the position of a particle, and $p(t)$
+is its momentum, physicists consider arbitrary functions of the
+form
+\begin{equation}
+f=f(q,p,t)
+\end{equation}
+and write
+\begin{equation}
+\frac{\partial f}{\partial t} = \lim_{\Delta t\to0}
+\frac{f\bigl(q(t),p(t),t+\Delta t\bigr)-f\bigl(q(t),p(t),t\bigr)}{\Delta t}.
+\end{equation}
+This is strictly speaking not quite true. The error committed
+lies in treating $q$ and $p$ as functions of time: really they
+are variables whom we are trying to express as functions of
+time. 
+
+\begin{exercise}
+Let $w=\sqrt{x}+y^{2}/z$ where $x=\exp(2t)$, $y=t^{3}+4t$, and
+$z=t^{2}-t$. Find $\D w/\D t$.
+\end{exercise}
+\begin{exercise}
+Let $z=\cos(xy)+y\sin(x)$ where $x=v^{2}+u$ and $y=u-v$. Find
+$\partial_{u} z$ and $\partial_{v}z$.
+\end{exercise}

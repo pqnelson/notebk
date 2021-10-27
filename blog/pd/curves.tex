@@ -1,0 +1,196 @@
+%%
+%% curves.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun 29 11:50:28 2012 Alex Nelson
+%% Last update Sat Jun 30 20:32:51 2012 Alex Nelson
+%%
+\N{Curves}
+We are interested in describing the motion of my car. Well,
+\emph{everyone} is interested in the motion of my car. How can we
+describe it mathematically? 
+
+First we approximate the car as a point. The point-like car moves
+in time, so the value of its components are functions of
+time. More precisely, the position of my car is 
+\begin{equation}
+\vec{r}(t) = \langle f(t),g(t),h(t)\rangle =
+f(t)\widehat{\textbf{\i}} +
+g(t)\widehat{\textbf{\j}} +
+h(t)\widehat{\textbf{k}}
+\end{equation}
+where the functions $f(t)$, $g(t)$, and $h(t)$ are sometimes
+called \emph{component functions}. Another way to think about
+this is writing
+\begin{equation}
+\vec{r}\colon[0,1]\to\RR^{3}
+\end{equation}
+where $0\leq t\leq1$. 
+
+Classical mechanics studies such curves under various
+circumstances. We will discuss some notions of kinematics, and
+study what it means to differentiate curves.
+
+\begin{example}
+Consider a point traveling in circular motion in the
+$xy$-plane. What does this look like? 
+
+Well, it's a paramteric curve, using trigonometric functions we write
+\begin{equation}
+\vec{r}(t) = \cos(t)\widehat{\textbf{\i}}+\sin(t)\widehat{\textbf{\j}}.
+\end{equation}
+This descrivbes an anti-clockwise circular motion with radius 1,
+lying in the $xy$-plane.
+\end{example}
+
+\begin{example}
+Suppose a particle travels along a parabolic curve, what does the
+curve look like? We can write it explicitly as
+\begin{equation}
+\vec{r}(t) =
+t\,\widehat{\textbf{\i}}+(t^{2}-1)\widehat{\textbf{\j}}
+\end{equation}
+This is precisely aa parabola.
+\end{example}
+
+\N{Calculus with Vector-Valued Functions}
+We should recall the construction of the tangent line to a curve
+$y=f(x)$ at a point $(x_{0},f(x_{0})=y_{0})$ had us write
+\begin{equation}
+t(h) = y_{0} + f'(x_{0}) \cdot h.
+\end{equation}
+When we consider the situation when we work with $\vec{r}(t)$
+instead of a function $f(x)$. We have
+$\vec{r}_{0}=\vec{r}(t_{0})$ be the base point for the tangent to
+the curve, then we have
+\begin{equation}
+\vec{T}(h) = \vec{r}_{0} + \vec{r}'(t_{0})\cdot h
+\end{equation}
+The problem: what exactly is $\vec{r}'(t_{0})$?
+
+\M
+We can let $\vec{r}\colon(0,1)\to\RR^{3}$ (or more generally the
+codomain can be $\RR^{n}$ for any positive integer $n\in\NN$). We
+have
+\begin{equation}
+\frac{\D\vec{r}(t)}{\D t}=\vec{v}(t) = \lim_{\Delta t\to0}\frac{\vec{r}(t+\Delta t)-\vec{r}(t)}{\Delta t}
+\end{equation}
+describe the rate of change of the position vector $\vec{r}(t)$
+with respect to time. What does this look like? Well, writiing out
+\begin{equation}
+\vec{r}(t) = \langle f(t),g(t),h(t)\rangle =
+f(t)\widehat{\textbf{\i}} +
+g(t)\widehat{\textbf{\j}} +
+h(t)\widehat{\textbf{k}}
+\end{equation}
+we have
+\begin{equation}
+\frac{\D\vec{r}(t)}{\D t} = \langle f'(t), g'(t), h'(t)\rangle =
+f'(t)\widehat{\textbf{\i}} +
+g'(t)\widehat{\textbf{\j}} +
+h'(t)\widehat{\textbf{k}}
+\end{equation}
+where primes denote differentiation with respect to time.
+
+\begin{remark}
+We can keep iterating this procedure to obtain higher order
+derivatives of a curve.
+\end{remark}
+
+\N{Kinematics}
+We have $\vec{r}(t)$ describe the position of a particle. The
+velocity of the particle is a vector-valued function
+\begin{equation}
+\begin{aligned}
+\vec{v}(t)
+&=\lim_{\Delta t\to 0}\frac{\vec{r}(t+\Delta
+  t)-\vec{r}(t)}{\Delta t}\\
+&=\frac{\D\vec{r}(t)}{\D t}
+\end{aligned}
+\end{equation}
+However, we also can consider the \emph{speed} or the magnitude
+of the velocity
+\begin{equation}
+\|\vec{v}(t)\|=\frac{\D s}{\D t} = \begin{pmatrix}
+\mbox{rate of change of distance}\\
+\mbox{with respect to time}
+\end{pmatrix}
+\end{equation}
+Observe the speed is a scalar quantity: it's just some function
+of time. The velocity is a vector-valued function of time. 
+
+We have one last kinematical quantity to consider: the
+acceleration. This is just the rate of change of velocity with
+respect to time:
+\begin{equation}
+\vec{a}(t) = \frac{\D\vec{v}(t)}{\D t} =
+\frac{\D^{2}\vec{r}(t)}{\D t^{2}}
+\end{equation}
+Observe we can reconstruct the position from the velocity by
+considering
+\begin{equation}
+\vec{r}(t) = \vec{r}(t_{0}) +
+\int^{t}_{t_{0}}\frac{\D\vec{r}(\tau)}{\D\tau}\,\D\tau
+\end{equation}
+which when we consider $\vec{r}(t)=\langle x(t),y(t),z(t)\rangle$
+we have the integral evaluated ``component-wise'':
+\begin{equation}
+\vec{r}(t) = \vec{r}(t_{0}) +
+\left\langle \int^{t}_{t_{0}}\frac{\D x(\tau)}{\D\tau}\,\D\tau,
+\int^{t}_{t_{0}}\frac{\D y(\tau)}{\D\tau}\,\D\tau,
+\int^{t}_{t_{0}}\frac{\D z(\tau)}{\D\tau}\,\D\tau\right\rangle.
+\end{equation}
+We can similarly reconstruct velocity from acceleration.
+
+\begin{example}
+Consider the curve describing circular motion
+\begin{equation}
+\vec{r}(t) = \cos(t)\widehat{\textbf{\i}}
++\sin(t)\widehat{\textbf{\j}}
+\end{equation}
+What is its velocity vector, acceleration vector, and speed?
+
+\emph{Solution}: We find its velocity
+\begin{equation}
+\begin{aligned}
+\vec{v}(t) &= \frac{\D\vec{r}(t)}{\D t}\\
+&=-\sin(t)(t)\widehat{\textbf{\i}}
++\cos(t)\widehat{\textbf{\j}}
+\end{aligned}
+\end{equation}
+From this we can compute its speed as
+\begin{equation}
+\begin{aligned}
+\|\vec{v}(t)\| &= \sqrt{\vec{v}(t)\cdot\vec{v}(t)}\\
+&=\sqrt{\sin^{2}(t)+\cos^{2}(t)} = 1.
+\end{aligned}
+\end{equation}
+The acceleration is precisely the derivative of the velocity
+vector
+\begin{equation}
+\frac{\D\vec{v}(t)}{\D t}
+= -\cos(t)\widehat{\textbf{\i}}-\sin(t)\widehat{\textbf{\j}}
+\end{equation}
+That concludes our example.
+\end{example}
+
+\begin{exercise}
+Find the velocity vector, speed, and acceleration of the
+parabolic curve $\vec{r}(t) =
+t\,\widehat{\textbf{\i}}+(t^{2}-1)\widehat{\textbf{\j}}$
+\end{exercise}
+
+\begin{exercise}
+Let $\vec{u}(t)$ and $\vec{v}(t)$ be differentiable vector-valued
+functions of time. Prove or find a counter-example that
+\begin{equation}
+\frac{\D}{\D t}\bigl[\vec{u}(t)\times\vec{v}(t)\bigr]=
+\frac{\D\vec{u}(t)}{\D t}\times\vec{v}(t) +
+\vec{u}(t)\times\frac{\D\vec{v}(t)}{\D t}.
+\end{equation}
+\end{exercise}
+\begin{exercise}
+Calculate $\displaystyle\frac{\D}{\D t}\bigl[\vec{a}(t)\cdot\bigl(\vec{b}(t)\times\vec{c}(t)\bigr)\bigr]$
+\end{exercise}

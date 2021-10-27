@@ -1,0 +1,170 @@
+%%
+%% altSeriesTest.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Sat Jun 16 17:09:03 2012 Alex Nelson
+%% Last update Sun Jun 17 14:45:03 2012 Alex Nelson
+%%
+%\documentclass{article}
+%\usepackage{blog}
+%\begin{document}
+\N{Proposition} Let
+\begin{equation}
+\sum^{\infty}_{n=1}(-1)^{n+1}a_{n} =
+a_{1}-a_{2}+a_{3}-a_{4}+\dots
+\end{equation}
+be a given series where $a_{n}>0$. Then the series converges if
+\begin{enumerate}
+\item $a_{n}\geq a_{n+1}$ for each $n$;
+\item $\displaystyle\lim_{n\to\infty}a_{n}=0$.
+\end{enumerate}
+\begin{proof}
+We have in the sequence of partial sums
+\begin{equation}
+S_{2n}=\underbrace{(a_{1}-a_{2})}_{\geq0}
++\underbrace{(a_{3}-a_{4})}_{\geq0}+\dots+\underbrace{(a_{2n-1}-a_{2n})}_{\geq0}\geq0
+\end{equation}
+so
+\begin{equation}
+0\leq S_{2}\leq S_{4}\leq \dots\leq S_{2n}\leq\dots
+\end{equation}
+But we also have
+\begin{equation}
+\begin{aligned}
+S_{2n} &= a_{1} - (a_{2}-a_{3})-(a_{4}-a_{5})-(\dots)-a_{2n}\\
+&\leq a_{1}.
+\end{aligned}
+\end{equation}
+So
+\begin{equation}
+\lim_{n\to\infty}S_{2n}=L\leq a_{1}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+\lim_{n\to\infty}S_{2n+1} &=\lim_{n\to\infty}(S_{2n}+a_{2n+1})\\
+&=\left(\lim_{n\to\infty}S_{2n}\right)+\left(\lim_{n\to\infty}a_{2n+1}\right)\\
+&=L+0=L.
+\end{aligned}
+\end{equation}
+Conclusion: $\displaystyle\sum^{\infty}_{n=1}(-1)^{n+1}a_{n}=L$.
+\end{proof}
+\begin{example}
+Consider the series
+\begin{equation}
+\sum^{\infty}_{n=1}\frac{(-1)^{n+1}}{n}
+\end{equation}
+We see that $1/n\geq1/(n+1)$ for each $n$, and 
+\begin{equation}
+\lim_{n\to\infty}\frac{1}{n}=0.
+\end{equation}
+Thus the Alternating Series Test implies the alternating Harmonic
+series converges.
+\end{example}
+\begin{example}
+Consider the series
+\begin{equation}
+\sum^{\infty}_{n=1}\frac{(-1)^{n+1}n}{(n+1)(n+2)}
+\end{equation}
+We see
+\begin{equation}
+\frac{n}{(n+1)(n+2)}\geq\frac{n+1}{(n+2)(n+3)};
+\end{equation}
+why? Well, multiply both sides by $(n+2)$ and we get
+\begin{equation}
+\frac{n}{n+1}\geq \frac{n+1}{n+3}
+\end{equation}
+Cross multiplication gives us
+\begin{equation}
+n(n+3)\geq (n+1)^{2} \iff n^{2}+3n \geq n^{2}+2n+1.
+\end{equation}
+Subtracting $n^{2}+2n$ from both sides gives us
+\begin{equation}
+n\geq1.
+\end{equation}
+So our series satisfies the first condition for the alternating
+series test.
+
+We also see that
+\begin{equation}
+\frac{n}{(n+1)(n+2)}\approx\frac{1}{n}
+\end{equation}
+for ``large $n$''. So we see 
+\begin{equation}
+\lim_{n\to\infty}\frac{n}{(n+1)(n+2)}=0.
+\end{equation}
+Thus our series satisfies the criteria for the alternating series
+test, which implies convergence.
+\end{example}
+
+\N{Definitions} A series $\sum a_{n}$ is \textbf{``Absolutely Convergent''}
+if $\sum|a_{n}|$ converges.
+
+On the other hand, if $\sum|a_{n}|$ is divergent, then we call
+the series $\sum a_{n}$ \textbf{``Conditionally Convergent''}.
+
+\begin{example}
+We see that $\sum(-1)^{n}/n$ is conditionally convergent, since
+$\sum 1/n$ diverges.
+\end{example}
+\begin{example}
+The series $\sum (-1)^{n}n^{-3/2}$ is absolutely convergent since
+the integral test tells us $\sum n^{-3/2}$ converges.
+\end{example}
+
+\medbreak\noindent\emph{Question:} let $\sum a_{n}$ be a
+convergent series, and $a_{n}\geq0$ for each $n$. Does the series
+$\sum (-1)^{n}a_{n}$ converge? 
+
+Stop and think before continuing!
+
+\N{Absolute Convergence Test} 
+If $\sum |a_{n}|$ conveges, then $\sum a_{n}$ converges.
+
+\begin{proof}
+We see first that 
+\begin{equation}
+-|a_{n}|\leq a_{n}\leq|a_{n}|\quad\mbox{for each }n
+\end{equation}
+So what? Well, we see that
+\begin{equation}
+0\leq a_{n}+|a_{n}|\leq2|a_{n}|\quad\mbox{for each }n
+\end{equation}
+Since $\sum|a_{n}|$ converges, we see $\sum2|a_{n}|$ converges
+too. But by the comparison test, we see
+\begin{equation}
+\sum^{\infty}_{n=1}a_{n}+|a_{n}|
+\end{equation}
+converges. So what? We haven't proven $\sum a_{n}$ converges,
+have we? Consider the following trick
+\begin{equation}
+\sum a_{n} = \underbrace{\sum
+  a_{n}+|a_{n}|}_{\text{converges}}-\underbrace{\sum
+  |a_{n}|}_{\text{converges}}.
+\end{equation}
+Therefore the series $\sum a_{n}$ converges.
+\end{proof}
+\begin{example}
+Consider the series
+\begin{equation}\label{eq:altSeriesTest:ex4:eq1}
+\sum^{\infty}_{n=1}\frac{\cos(n)}{n^{3/2}}.
+\end{equation}
+What to do? We know
+\begin{equation}
+\left|\frac{\cos(n)}{n^{3/2}}\right|\leq\frac{1}{n^{3/2}}.
+\end{equation}
+So what? We know $\sum n^{-3/2}$ converges by the integral
+test. Then
+\begin{equation}
+\sum^{\infty}_{n=1}\left|\frac{\cos(n)}{n^{3/2}}\right|
+\end{equation}
+converges by comparison. By the absolute convergence test, we know
+our series in Equation \eqref{eq:altSeriesTest:ex4:eq1} converges.
+\end{example}
+
+
+%\end{document}
+
+

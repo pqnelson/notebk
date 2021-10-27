@@ -1,0 +1,238 @@
+%%
+%% taylorSeries.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Sun Jun 17 15:47:04 2012 Alex Nelson
+%% Last update Mon Jun 18 10:34:00 2012 Alex Nelson
+%%
+\M
+Consider the function
+\begin{equation}
+f(x)  = \sum^{\infty}_{n=0}b_{n}(x-a)^{n} = b_{0} + b_{1}(x-a) + \dots.
+\end{equation}
+We suppose it is smooth (i.e., has infinitely many
+derivatives). We see
+\begin{equation}
+\begin{aligned}
+f'(x) &= \sum^{\infty}_{n=1}b_{n}n(x-a)^{n-1}\\
+f'(a) &= b_{1}
+\end{aligned}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+f''(x) &= \sum^{\infty}_{n=2}b_{n}n(n-1)\cdot(x-a)^{n-2}\\
+f''(a) &= 2b_{2}.
+\end{aligned}
+\end{equation}
+We also have
+\begin{equation}
+\begin{aligned}
+f'''(x) &= \sum^{\infty}_{n=3}b_{n}n(n-1)(n-2)\cdot(x-a)^{n-3}\\
+f'''(a) &= 3\cdot2\cdot1 b_{3} = 6b_{3}.
+\end{aligned}
+\end{equation}
+The general case appears to be
+\begin{equation}
+\left.\frac{\D^{n}}{\D x^{n}}f(x)\right|_{x=a}=n! b_{n}
+\end{equation}
+Thus the coefficients are
+\begin{equation}
+b_{n} = \left.\frac{1}{n!}\frac{\D^{n}}{\D x^{n}}f(x)\right|_{x=a}
+\end{equation}
+and we can reconstruct the function $f(x)$.
+
+\N{Definition}
+Let $f(x)$ be any function. The \textbf{``Taylor Series about $x=a$''}
+is a series
+\begin{equation}
+\sum^{\infty}_{n=0}f^{(n)}(a)\cdot(x-a)^{n}
+\end{equation}
+When $a=0$, it's called a \emph{MacLaurin Series}.
+
+\begin{remark}
+If we have the MacLaurin series for a function, and if the series
+converges for any value of $x$, then we can use the MacLaurin
+series as a synonym for the original function. That's the
+usefulness of MacLaurin series.
+\end{remark}
+\begin{remark}
+The Taylor series helps us compute $f(x+h)$ when $h\ll x$ and
+when $f(x)$ is known. For example, $\sqrt{1.001}$ can be computed
+using the Taylor series of $\sqrt{1+x}$ about $x=1$.
+\end{remark}
+
+\begin{example}
+Consider the function $\exp(x)$. We see that
+\begin{equation}
+\frac{\D\exp(x)}{\D x}=\exp(x).
+\end{equation}
+Thus the MacLaurin series for the exponential function is
+\begin{equation}
+\exp(x)=\sum^{\infty}_{n=0}\frac{x^{n}}{n!}
+\end{equation}
+Where does this series converge?
+
+Using the absolute ratio test, we find
+\begin{equation}
+\lim_{n\to\infty}\frac{x^{n+1}/(n+1)!}{x^{n}/n!} =
+\lim_{n\to\infty}\frac{x}{n+1}=0.
+\end{equation}
+So the series converges \emph{for any value of $x$}.
+\end{example}
+\begin{example}
+Consider the sine function $\sin(x)$. What is its MacLaurin
+series? Writing
+\begin{equation}
+\sum^{\infty}_{n=0}c_{n}x^{n}=\sin(x)
+\end{equation}
+we have
+\begin{equation}
+\begin{aligned}
+c_{0}&=\sin(0)=0\\
+c_{1}&=\cos(0)=1\\
+c_{2}&=\frac{-\sin(0)}{2!}=0\\
+c_{3}&=\frac{-\cos(0)}{3!}=-1/3!
+\end{aligned}
+\end{equation}
+The coefficients are sort of ``periodic'' in the sense that only
+the odd ones remain, and their sign alternates. We have
+\begin{equation}
+c_{n} = c_{2k-1} = \frac{(-1)^{n}}{n!} = \frac{(-1)^{k+1}}{(2k-1)!}
+\end{equation}
+thus the MacLaurin series is
+\begin{equation}
+\sin(x)=\sum^{\infty}_{n=1}\frac{(-1)^{n+1}x^{n}}{(2n-1)!}.
+\end{equation}
+Where does this converge? 
+
+Using the ratio test, we have
+\begin{equation}
+\lim_{n\to\infty}\left|\frac{\left(\displaystyle\frac{x^{2n+3}}{(2n+3)!}\right)}{\left(\displaystyle\frac{x^{2n+1}}{(2n+1)!}\right)}\right|
+=\lim_{n\to\infty}\frac{x^{2}}{(2n+1)(2n+2)} =  0.
+\end{equation}
+Thus it converges for any value of $x$.
+\end{example}
+
+
+\begin{example}
+
+Lets find the MacLaurin series for $\cos(x)$. We see that
+\begin{equation}
+\cos(x)=\sum^{\infty}_{n=0}b_{n}x^{n},
+\end{equation}
+we need to find the $b_{n}$. We see that
+\begin{equation}
+\begin{aligned}
+b_{0} &= \cos(0) = 1\\
+b_{1} &= -\sin(0) = 0\\
+b_{2} &= \frac{-1}{2!}\cos(0) = -1/2\\
+b_{3} &= \frac{1}{3!}\sin(0) = 0\\
+b_{2k} &= \frac{(-1)^{k}}{(2k)!}
+\end{aligned}
+\end{equation}
+So we have the MacLaurin series be
+\begin{equation}
+\cos(x) = \sum^{\infty}_{n=0}\frac{(-1)^{n}}{(2n)!}x^{2n}.
+\end{equation}
+Where will it converge? Using the absolute ratio test, we have
+\begin{equation}
+\begin{aligned}
+\lim_{n\to\infty}\left|\frac{\left(\displaystyle\frac{(-1)^{n+1}x^{2n+2}}{(2n+2)!}\right)}{\left(\displaystyle\frac{(-1)^{n}x^{2n}}{(2n)!}\right)}\right|
+&=\lim_{n\to\infty}\frac{x^{2}}{(2n+1)(2n+2)}\\
+&=0.
+\end{aligned}
+\end{equation}
+Thus the MacLaurin series for $\cos(x)$ converges for any value
+of $x$.
+\end{example}
+
+
+
+\N{Euler's Formula}
+Recall Euler's formula states
+\begin{equation}
+\exp(\I\theta)=\cos(\theta)+\I\sin(\theta)
+\end{equation}
+and we have the MacLaurin  series for $\exp(x)$. Setting
+$x=\I\theta$, we find
+\begin{equation}
+\begin{aligned}
+\exp(\I\theta) &= \sum^{\infty}_{n=0}\frac{(\I\theta)^{n}}{n!}\\
+&=1+\I\theta-\frac{\theta^{2}}{2!}-\frac{\I\theta^{3}}{3!}+\frac{\theta^{4}}{4!}+\dots
+\end{aligned}
+\end{equation}
+Gathering the real and imaginary parts together we get
+\begin{equation}\label{eq:taylorSeries:expITheta:comparison}
+\exp(\I\theta) =
+\left(\sum^{\infty}_{n=0}\frac{(-1)^{n}x^{2n}}{(2n)!}\right)
++\I\left(\sum^{\infty}_{n=0}\frac{(-1)^{n}x^{2n+1}}{(2n+1)!}\right)
+\end{equation}
+But look: the imaginary part is precisely the MacLaurin series
+for $\sin(x)$! And the real part is the MacLaurin series for
+$\cos(x)$, too! So what did we do? We just derived Euler's
+formula. 
+
+\N{Taylor Series Makes Approximations}
+Consider the function
+\begin{equation}
+f(x)=\sqrt{x}.
+\end{equation}
+Its Taylor series about $x=1$ is \emph{the same} as the MacLaurin
+series for the function
+\begin{equation}
+g(h)=\sqrt{1+h}.
+\end{equation}
+Just write $x=1+h$. For small $0<h\ll1$, we can use the first
+couple of terms in the Taylor series as an approximate value. So
+what's the first 6 nonzero terms in the Taylor series? We see
+\begin{subequations}
+\begin{equation}
+f(x)=x^{1/2}\quad\implies\quad f(1)=1
+\end{equation}
+describes the constant term. The linear term has coefficient
+\begin{equation}
+f'(x)=\frac{x^{-1/2}}{2}\quad\implies\quad f'(1)=\frac{1}{2}.
+\end{equation}
+The quadratic term
+\begin{equation}
+f''(x)=\frac{-x^{-3/2}}{2^{2}}\quad\implies\quad f''(1)=-1/2^{2}.
+\end{equation}
+Observe how the exponent behaves when differentiating:
+$(1/2)-n$. The numerator is always odd, the denominator doesn't
+change. So the $n^{th}$ derivative would be
+\begin{equation}
+f^{(n)}(x)=\frac{1\cdot3\cdot5\cdot(\dots)\cdot(2n-1)}{2^{n}}(-1)^{n-1}x^{(1-2n)/2}
+\end{equation}
+This gives us our coefficients! We then have
+\begin{equation}
+c_{n} = \frac{(-1)^{n-1}(2n)!}{(n!2^{n})^{2}}
+\end{equation}
+for $n>0$. Observe the numerator appears odd, but we can justify
+it thus:
+\begin{equation}
+\begin{aligned}
+\frac{(2n)!}{n!2^{n}}
+&= \frac{1\cdot2\cdot3\cdot(\dots)\cdot(2n)}{(1\cdot2\cdot(\dots)\cdot n)2^{n}}\\
+&= \frac{\bigl(1\cdot3\cdot(\dots)\cdot(2n-1)\bigr)\bigl(2\cdot4\cdot(\dots)\cdot 2n\bigr)}{(2\cdot4\cdot(\dots)\cdot2n)}\\
+&= 1\cdot3\cdot(\dots)\cdot(2n-1)\frac{\bigl(2\cdot4\cdot(\dots)\cdot 2n\bigr)}{(2\cdot4\cdot(\dots)\cdot2n)}\\
+&=
+1\cdot3\cdot(\dots)\cdot(2n-1)\left(\vphantom{\frac{a}{a}}1\right)\\
+&= 1\cdot3\cdot(\dots)\cdot(2n-1)
+\end{aligned}
+\end{equation}
+\end{subequations}
+At any rate, this gives us a polynomial expression for $f(1+h)$
+as
+\begin{equation}
+f(1+h) = \left(1+\sum^{6}_{n=1}\frac{(-1)^{n-1}(2n)!}{(n!2^{n})^{2}}h^{n}\right)
++ R_{6}(h)
+\end{equation}
+where $R_{6}(h)$ is the ``error'' term. What does the error term
+tell us? Precisely how good or bad our polynomial approximates
+$f(1+h)$. That is to say, how $(1+c_{1}h+\dots+c_{6}h^{6})$
+approximates $f(1+h)$.
+
+\emph{Question}: how do we find the error term?

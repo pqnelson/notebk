@@ -1,0 +1,86 @@
+%%
+%% polar.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Aug  1 15:26:24 2012 Alex Nelson
+%% Last update Wed Aug  1 16:02:11 2012 Alex Nelson
+%%
+
+\M
+Recall with trigonometric functions, we considered a unit
+circle. Given any point $(x_{0}, y_{0})$, we see it lies on a
+circle with radius $r=\sqrt{x_{0}^{2}+y_{0}^{2}}$. We can
+generalize this idea inventing a new coordinate system: any point
+in $\RR^{2}$ can be described using the radial distance to the
+origin, and an angular component.
+
+\M
+We fix a point (usually the origin) then use the $x$-axis to
+determine an angle $\theta$ to a point $r$ away from the
+origin. So we can doodle the generic situation as:
+\begin{center}
+\includegraphics{img/polar.0}
+\end{center}
+Note this is how people usually describe distances. For example
+``New York is 3000 miles to the North-East'' where $r$ is given
+as ``3000 miles'' and the angle $\theta$ we can determine from
+``North-East''. 
+
+Note this is a \emph{completely different} coordinate system,
+i.e., we describe coordinates using different numeric values and
+a different approach. We previously used the Cartesian coordinate
+system, describing points in the ``obvious'' way
+(component-wise). However, we can relate Cartesian coordinates to
+polar coordinates, writing
+\begin{equation}\label{eq:cartInPolar}
+x=r\cos(\theta),\quad\mbox{and}\quad y=r\sin(\theta).
+\end{equation}
+Similarly, we can obtain polar coordinates from Cartesian
+coordinates by
+\begin{equation}
+r=\sqrt{x^{2}+y^{2}},\quad\mbox{and}\quad \theta=\arctan(y/x).
+\end{equation}
+We can use either polar coordinates or Cartesian coordinates when
+describing the plane $\RR^2$.
+
+\M
+How do we describe curves using polar coordinates? We would
+effectively have
+\begin{equation}
+r=r(\theta),\quad\mbox{or}\quad \theta=\theta(r).
+\end{equation}
+The naive approach would convert to Cartesian coordinates. We
+also have several heuristic rules describing the behaviour of the
+curve. 
+
+\M
+The tangent line to $r=r(\theta)$ at $\theta=\theta_{0}$. We can
+use implicit differentiation to find its slope as
+\begin{equation}
+\frac{\D y}{\D x}=\frac{\D y/\D\theta}{\D x/\D\theta}
+\end{equation}
+Recall Eq \eqref{eq:cartInPolar} and we can find the slope's
+numerator
+\begin{equation}
+\frac{\D y}{\D\theta}=\frac{\D r(\theta)}{\D\theta}\sin(\theta)+r(\theta)\cos(\theta)
+\end{equation}
+and the denominator
+\begin{equation}
+\frac{\D x}{\D\theta}=\frac{\D r(\theta)}{\D\theta}\cos(\theta)-r(\theta)\sin(\theta)
+\end{equation}
+giving us
+\begin{equation}
+\frac{\D y}{\D x}=\frac{\displaystyle\frac{\D r(\theta)}{\D\theta}\sin(\theta)+r(\theta)\cos(\theta)}{\displaystyle\frac{\D r(\theta)}{\D\theta}\cos(\theta)-r(\theta)\sin(\theta)}.
+\end{equation}
+Thus the tangent line is
+\begin{equation}
+t(x) = y(\theta_{0}) + \left.\frac{\D y}{\D x}\right|_{\theta=\theta_{0}}\cdot\bigl(x-x(\theta_{0})\bigr).
+\end{equation}
+
+
+\begin{exercise}[Ovals of Cassini]
+Consider the curve described by
+$r^{4}-2c^{2}r^{2}\cos(2\theta)+c^{4}-a^{4}=0$. 
+\end{exercise}

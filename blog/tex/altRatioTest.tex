@@ -1,0 +1,163 @@
+%%
+%% altRatioTest.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Sun Jun 17 14:33:38 2012 Alex Nelson
+%% Last update Sun Jun 17 15:36:44 2012 Alex Nelson
+%%
+%% \documentclass{article}
+%% \pdfinfo{ /CreationDate (20120617143338)}
+%% \usepackage{blog}
+%% \begin{document}
+\M
+We have another couple of methods testing if an alternating
+series converges. It's worth knowing as many different ways as
+possible, because sometimes one doesn't work well (or at all).
+
+We will consider a couple tests. For each test we provide a
+proof that it works, and a couple examples.
+
+\N{Alternating Ratio Test}
+Consider the series 
+\begin{equation}
+\sum^{\infty}_{n=0}(-1)^{n}a_{n}
+\end{equation}
+Let
+\begin{equation}
+L = \lim_{n\to\infty}\frac{a_{n+1}}{a_{n}}.
+\end{equation}
+\begin{enumerate}
+\item If $L<1$, then the series $\sum (-1)^{n}a_{n}$ conveges
+  absolutely.
+\item If $L>1$ (or $L=\infty$), then the series
+  $\sum (-1)^{n}a_{n}$ diverges.
+\end{enumerate}
+
+\begin{proof}[Proof of Convergence]
+We will prove if $L<1$, then the series
+\begin{equation}
+\sum^{\infty}_{n=0}a_{n}
+\end{equation}
+converges. The absolute convergence test implies the alternating
+series will converge. What to do?
+
+We first consider some $\varepsilon$ satisfying
+$L<\varepsilon<1$. (Can we do this? Sure, pick $(L+1)/2$, and
+we're good!) Since we suppose $L<1$, then there exists an $N$
+such that
+\begin{equation}
+\left|\frac{a_{n+1}}{a_{n}}\right|<r\quad\mbox{for any }n\geq N.
+\end{equation}
+We have
+\begin{equation}
+\begin{aligned}
+a_{N+1}&<r a_{N}\\
+a_{N+2}&<r a_{N+1}<r^{2}a_{N}\\
+a_{N+3}&<r^{3}a_{N}\\
+a_{N+k}&<r^{k}a_{N}
+\end{aligned}
+\end{equation}
+So we form a geometric series
+\begin{equation}
+\sum^{\infty}_{k=0}a_{N}r^{k} = \frac{a_{N}}{1-r}
+\end{equation}
+which bounds the ``most'' of our series
+\begin{equation}
+0\leq\sum^{\infty}_{k=0}a_{N+k}\leq\sum^{\infty}_{k=0}a_{N}r^{k}
+\end{equation}
+The comparison test tells us that ``most'' of our series
+converges. But what about our whole series? We write it as
+\begin{equation}
+\sum^{\infty}_{n=0}a_{n} = \underbrace{\sum^{N-1}_{n=0}a_{n}}_{\text{finite}}+\underbrace{\sum^{\infty}_{k=0}a_{N+k}}_{\text{converges}}
+\end{equation}
+so it converges.
+\end{proof}
+
+\begin{proof}[Proof of Divergence]
+We assume that $L>1$. The ratio $a_{n+1}/a_{n}$ will eventually
+be greater than 1, too. So there exists an $N$ such that
+\begin{equation}
+\left|\frac{a_{n+1}}{a_{n}}\right|>1\quad\mbox{for any }n\geq N.
+\end{equation}
+So we see $|a_{n+1}|>|a_{n}|$ whenever $n\geq N$, thus
+\begin{equation}
+\lim_{n\to\infty}a_{n}\not=0.
+\end{equation}
+Thus it's impossible for the series $\sum a_{n}$ to converge!
+\end{proof}
+
+
+\begin{remark}
+We only really proved that the series doesn't converge
+\emph{absolutely}. If we pick some $r$ between $1<r<L$, then
+there exists an $N$ such that
+\begin{equation}
+\left|\frac{a_{n+1}}{a_{n}}\right|>r\quad\mbox{for any }n\geq N.
+\end{equation}
+So we have
+\begin{equation}
+a_{N+k} > r^{k}a_{N}.
+\end{equation}
+We have our series
+\begin{equation}
+\begin{aligned}
+\sum^{\infty}_{k=1}(-r)^{k}a_{N}
+&= a_{N} \sum^{\infty}_{k=1}(r^{2k}-r^{2k-1})\\
+&= a_{N} (r-1)\sum^{\infty}_{k=1}r^{2k}.
+\end{aligned}
+\end{equation}
+We see since $r>1$ that the series
+\begin{equation}
+\sum^{\infty}_{k=1}r^{2k}\quad\mbox{diverges}
+\end{equation}
+Thus
+\begin{equation}
+\sum^{\infty}_{k=1}(-r)^{k}a_{N}\quad\mbox{diverges}
+\end{equation}
+We see then that the series
+\begin{equation}
+\sum^{\infty}_{k=1}a_{N+k}\geq\sum^{\infty}_{k=1}(-r)^{k}a_{N}
+\end{equation}
+diverges by the comparison test.
+\end{remark}
+
+
+\N{The Root Test}
+Consider the series 
+\begin{equation}
+\sum^{\infty}_{n=1}(-1)^{n}a_{n}
+\end{equation}
+Let
+\begin{equation}
+L = \lim_{n\to\infty}\sqrt[n]{a_{n}}
+\end{equation}
+\begin{enumerate}
+\item If $L<1$, then the series converges absolutely;
+\item If $L>1$ (or $L=\infty$), then the series diverges.
+\end{enumerate}
+
+\begin{proof}
+It's similar to the ratio test, for the convergent case we pick
+some $r$ satisfying $L<r<1$. Then we have some $N$ satisfying
+\begin{equation}
+\sqrt[n]{a_{n}}<r\quad\mbox{for any }n\geq N.
+\end{equation}
+which implies
+\begin{equation}
+a_{n}<r^{n}.
+\end{equation}
+Thus we have
+\begin{equation}
+\sum^{\infty}_{k=1}a_{N+k}<\sum^{\infty}_{k=1}r^{N+k}<\sum^{\infty}_{k=0}r^{k}=\frac{1}{1-r}
+\end{equation}
+which by the  comparison test implies convergence. The proof for
+divergence is similar.
+\end{proof}
+\begin{remark}
+When $L=1$, the ratio test doesn't say anything about convergence
+or divergence for the series.
+\end{remark}
+
+%\end{document}

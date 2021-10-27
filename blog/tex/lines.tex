@@ -1,0 +1,143 @@
+%%
+%% lines.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Thu Jun 21 17:27:08 2012 Alex Nelson
+%% Last update Thu Jun 21 17:28:45 2012 Alex Nelson
+%%
+\N{Constructing Lines}
+Suppose we have two points
+\begin{equation}
+A = (4,2,-1)\quad\mbox{and}\quad
+B = (3,5,7).
+\end{equation}
+We want to find a line $\ell$ passing through these points. What to do?
+
+First we form the vector
+\begin{equation}
+\begin{aligned}
+\vec{v}=\overrightarrow{AB}
+&= (3-4)\widehat{\textbf{\i}}+(5-2)\widehat{\textbf{\j}}+(7+1)\widehat{\textbf{k}}\\
+&=-\widehat{\textbf{\i}}+3\widehat{\textbf{\j}}+8\widehat{\textbf{k}}
+\end{aligned}
+\end{equation}
+This vector is parallel to $\ell$; the numbers given by this
+vector's components (i.e., -1, 3, 8) are called
+the \textbf{``Direction Numbers''} of $\ell$.  
+
+In general, we have two distinct points $P_{0}=(x_0,y_0,z_0)$ and
+$P=(x,y,z)$ on the line $\ell$, then we construct the vector
+\begin{equation}
+\overrightarrow{P_{0}P} = (x-x_{0})\widehat{\textbf{\i}}+
+(y-y_{0})\widehat{\textbf{\j}}+(z-z_{0})\widehat{\textbf{k}}
+\end{equation}
+and this is equal to some scalar multiple of $\vec{v}$ (i.e.,
+it's a dilation of the vector).  We write
+\begin{equation}
+(x-x_{0})\widehat{\textbf{\i}}+
+(y-y_{0})\widehat{\textbf{\j}}+(z-z_{0})\widehat{\textbf{k}}
+=t\vec{v}
+\end{equation}
+which lets us write
+\begin{equation}
+\left.\begin{array}{rl}
+x-x_{0} &=tv_{1}\\
+y-y_{0} &=tv_{2}\\
+z-z_{0} &=tv_{3}
+\end{array}
+\right\}\implies
+\left\{\begin{array}{rl}
+x &=x_{0}+tv_{1}\\
+y &=y_{0}+tv_{2}\\
+z &=z_{0}+tv_{3}
+\end{array}\right.
+\end{equation}
+This is the parametric equations of $\ell$. So returning to our
+example, we have
+\begin{equation}
+\begin{aligned}
+x &= 4 - t\\
+y &= 2 + 3t\\
+z &= -1 + 8t
+\end{aligned}
+\end{equation}
+where the constant terms are precisely the values of the
+components of $A$, and the coefficients of $t$ are the components
+of the vector $\overrightarrow{AB}$.
+
+\N{Distance From a Point to a Line}
+What's the distance from any point $S$ in 3-space to a given line
+$\ell$? 
+
+We pick a point $P$ on $\ell$ and form a vector
+$\overrightarrow{PS}$. The distance from $S$ to $\ell$ can be
+given as $d$, as in the following diagram:
+\begin{center}
+\includegraphics{img/moreVectors.2}
+\end{center}
+We see $d=\|\overrightarrow{PS}\|\sin(\theta)$. If $\vec{v}$ is a
+vector parallel to $\ell$, then we have
+\begin{equation}
+\|\overrightarrow{PS}\times\widehat{v}\|=\|\overrightarrow{PS}\|\sin(\theta)
+\end{equation}
+This is all abstract, lets consider an example.
+
+\begin{example}
+Find the distance from $S=(2,1,3)$ to the line given by
+\begin{equation}
+\begin{aligned}
+x &= -1+t\\
+y &= 2+t\\
+z &= 1+2t
+\end{aligned}
+\end{equation}
+First we pick the point when $t=0$, we call it
+\begin{equation}
+P = (-1,2,1).
+\end{equation}
+Observe
+\begin{equation}
+\overrightarrow{PS} =
+3\widehat{\textbf{\i}}-\widehat{\textbf{\j}}+2\widehat{\textbf{k}}. 
+\end{equation}
+Now we need to find a vector parallel to the line. What to do?
+Construct a vector by considering the point when $t=1$, which
+would be $P_{1}=(0,3,3)$. Thus
+\begin{equation}
+\begin{aligned}
+\vec{v}
+&=\overrightarrow{PP_{1}}\\
+&=(-1-0)\widehat{\textbf{\i}}+(2-3)\widehat{\textbf{\j}}+(1-3)\widehat{\textbf{k}}\\
+&=-\widehat{\textbf{\i}}-\widehat{\textbf{\j}}-2\widehat{\textbf{k}}
+\end{aligned}
+\end{equation}
+Its unit vector is
+\begin{equation}
+\begin{aligned}
+\widehat{v} &= \vec{v}/\|\vec{v}\|\\
+&= \vec{v}/\sqrt{1+1+4}\\ 
+&= \vec{v}/\sqrt{6}
+\end{aligned}
+\end{equation}
+We have
+\begin{equation}
+\begin{aligned}
+\overrightarrow{PS}\times\widehat{v}
+&= \frac{1}{\sqrt{6}}\begin{vmatrix}
+\widehat{\textbf{\i}} & \widehat{\textbf{\j}} & \widehat{\textbf{k}}\\
+3 & -1 & 2\\
+-1 & -1 & -2
+\end{vmatrix}\\
+&= \frac{4\widehat{\textbf{\i}}+4\widehat{\textbf{\j}}-4\widehat{\textbf{k}}}{\sqrt{6}}
+\end{aligned}
+\end{equation}
+This has its magnitude be
+\begin{equation}
+\|\overrightarrow{PS}\times\widehat{v}\|
+= \frac{4\sqrt{3}}{\sqrt{6}}=2\sqrt{2},
+\end{equation}
+which describes the distance between our point $S$ and the given line.
+\end{example}
+

@@ -1,0 +1,144 @@
+%%
+%% directionalDerivatives.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun 29 12:30:18 2012 Alex Nelson
+%% Last update Tue Jul  3 11:02:55 2012 Alex Nelson
+%%
+\M
+Suppose we have a scalar function of several variables
+\begin{equation}
+f\colon\RR^{3}\to\RR
+\end{equation}
+Let $\widehat{u}$ be some unit vector. How does $f$ change in the
+$\widehat{u}$ direction?
+
+We can consider this quantity as a function
+\begin{equation}
+g(\vec{x}) =
+\lim_{h\to0}\frac{f(\vec{x}+h\widehat{u})-f(\vec{x})}{h}
+\end{equation}
+What does this look like?
+
+\M Lets restrict our attention to the
+smallest non-boring case: $f\colon\RR^2\to\RR$. Then we write
+$\widehat{u} = \langle p,q\rangle$. We have
+\begin{equation}
+f(\vec{x}+h\widehat{u}) = f(x+hp,y+hq).
+\end{equation}
+Expanding this to first order in $h$ lets us write
+\begin{equation}
+\begin{aligned}
+f(x+hp,y+hq) &= f(x,y+hq) +
+hp\partial_{x}f(x,y+hq)+\bigO(h^{2})\\
+&= \bigl(f(x,y)+hq\partial_{y}f(x,y)+\bigO(h^{2})\bigr)\\
+&\quad+hp\partial_{x}\bigl(f(x,y)+hq\partial_{y}f(x,y)+\bigO(h^{2})\bigr)\\
+&\quad+\bigO(h^{2})\\
+&= f(x,y) + h\bigl(q\partial_{y}f(x,y) +
+p\partial_{x}f(x,y)\bigr) +\bigO(h^{2}).
+\end{aligned}
+\end{equation}
+But what does this look like? It's simply
+\begin{equation}
+f(\vec{x}+h\widehat{u}) = f(\vec{x}) +
+h\widehat{u}\cdot\langle\partial_{x},\partial_{y}\rangle
+f(\vec{x}) + \bigO(h^{2}).
+\end{equation}
+
+\begin{example}
+What is the derivative of $f(x,y)=x/y$ in the direction of
+$\vec{v}=\langle 1,3\rangle$ at $(5,3)$?
+
+\emph{Solution}: We find the directional derivative is
+\begin{equation}
+v_{1}\partial_{x}f + v_{2}\partial_{y}f
+\end{equation}
+We compute
+\begin{equation}
+\partial_{x}f = 1/y
+\end{equation}
+and
+\begin{equation}
+\partial_{y}f = -x/y^{2}
+\end{equation}
+Thus we have
+\begin{equation}
+v_{1}\partial_{x}f + v_{2}\partial_{y}f = v_{1}(1/y) + v_{2}(-x/y^{2}).
+\end{equation}
+We plug in $v_{1}=1$, $v_{2}=3$
+\begin{equation}
+v_{1}\partial_{x}f + v_{2}\partial_{y}f = (1/y) + 3(-x/y^{2}).
+\end{equation}
+Then we evaluate $(x,y)=(5,3)$ to get
+\begin{equation}
+v_{1}\partial_{x}f + v_{2}\partial_{y}f = (1/3) + 3(-5/3^{2})
+=-4/3.
+\end{equation}
+This gives us the directional derivative of $f$.
+\end{example}
+
+
+\M We denote
+\begin{equation}
+\vec{\nabla} = \langle\partial_{1},\dots,\partial_{n}\rangle
+\end{equation}
+and call it the \textbf{``Gradient''}. Note we will write
+$\nabla$ interchangeably with the vector arrow $\vec{\nabla}$,
+and they mean the same thing. The vector arrow doesn't add
+anything semantically, it's just different syntax.
+
+The directional derivative is then
+\begin{equation}
+\widehat{u}\cdot\vec{\nabla}f(\vec{x}) = \widehat{u}\cdot\langle
+\partial_{1}f,\dots,\partial_{n}f\rangle.
+\end{equation}
+Note that the gradient acting on a scalar function produces a
+vector-valued function of several variables, but we can also take
+the dot product of the gradient with such a monstrosity.
+
+\N{Question:} What is a vector-valued function of several variables?
+
+For us, in practice, we think of this as a \emph{Vector Field}: a
+``function'' which assigns to each point a vector. Each
+vector-component is a function, usually smooth (i.e., infinitely
+differentiable). 
+
+(Again, just as we warned the reader with vectors, this too is a
+lie. A vector field is a bit more than just a function
+$\RR^{n}\to\RR^{n}$, it's a more complicated beast which is
+studied further in differential geometry.)
+
+\N{Meaning of Gradient}
+Consider a family of level curves $f(\vec{x})=c$. The gradient
+points towards the direction of increasing $c$. How can we see
+this? Well, consider the function
+\begin{equation}
+f(x,y)=x^{2}-y^{2}.
+\end{equation}
+We see its gradient is
+\begin{equation}
+\vec{\nabla}f(x,y) = \langle 2x, -2y\rangle.
+\end{equation}
+Lets draw a few level-curves and see what the vectors point to:
+\begin{center}
+\includegraphics{img/gradient.0}
+\end{center}
+We see the vectors point towards $(x,y)\to(\pm\infty,0)$. 
+
+\begin{exercise}
+Consider the function $f\colon\RR^{2}\to\RR$ defined by
+$f(x,y)=\ln(x^{2}+y^{2})$. What is its gradient?
+\end{exercise}
+\begin{exercise}
+Let $g\colon\RR^{3}\to\RR$ be defined by $g(x,y,z) =
+(x^{2}+y^{2}+z^{2})^{-1/2}$. Find its gradient.
+\end{exercise}
+\begin{exercise}
+Let $f(x,y,z)=x/(y+z)$. Find its derivative in the direction
+$\vec{u}=\langle 1,1,1\rangle$ at the point $(1,6,2)$. 
+\end{exercise}
+\begin{exercise}
+Let $f(x,y)=x\exp(-y) + 3y$. Find its gradient.
+\end{exercise}

@@ -1,0 +1,142 @@
+%%
+%% moreVectors.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Thu Jun 21 15:16:44 2012 Alex Nelson
+%% Last update Thu Jun 21 17:28:46 2012 Alex Nelson
+%%
+
+\M
+Last time we ended with discussing how to project a vector onto
+another. So if we consider projecting $\vec{u}$ onto $\vec{v}$,
+we can write this as
+\begin{equation}
+\proj_{\vec{v}}\vec{u} = \vec{u}_{\|}
+\end{equation}
+Observe, we have another vector constructed
+\begin{equation}
+\vec{u}_{\bot} = \vec{u}-\vec{u}_{\|}
+\end{equation}
+which is orthogonal to $\vec{v}$. We have a closed form
+expression for projection, namely
+\begin{equation}
+\proj_{\vec{v}}\vec{u} = (\vec{u}\cdot\widehat{v})\widehat{v}
+\end{equation}
+where $\widehat{v}=\vec{v}/\|\vec{v}\|$ is a unit vector. But do
+we have a closed form expression for $\vec{u}_{\bot}$?\more
+
+\N{Cross-Product}
+The cross product of $\vec{u}$ and $\vec{v}$ is 
+\begin{equation}
+\vec{u}\times\vec{v} = \begin{vmatrix}
+\widehat{\textbf{\i}} & \widehat{\textbf{\j}} & \widehat{\mathbf{k}}\\
+       u_{1}          &            u_{2}      & u_{3}\\
+       v_{1}          &            v_{2}      & v_{3}
+\end{vmatrix} =
+\bigl(\|\vec{u}\|\|\vec{v}\|\sin(\theta)\bigr)\widehat{u}
+\end{equation}
+Note we are using notation from linear algebra writing, recursively,
+\begin{equation}
+\begin{aligned}
+\det(A) &= \begin{vmatrix} a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{vmatrix} \\
+&= a_{11}\begin{vmatrix} a_{22} & a_{23} \\ a_{32} &
+  a_{33}
+\end{vmatrix}
+- a_{12} \begin{vmatrix} a_{21} & a_{23}\\ a_{31} & a_{33}
+\end{vmatrix}
++a_{13}\begin{vmatrix} a_{21} & a_{22}\\ a_{31} & a{32}
+\end{vmatrix}
+\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{vmatrix} a & b\\ c & d
+\end{vmatrix} = ad-bc.
+\end{equation}
+\begin{remark}
+Observe this implies
+$\widehat{\textbf{\i}}\times\widehat{\textbf{\j}}=\widehat{\textbf{k}}$, 
+$\widehat{\textbf{\j}}\times\widehat{\textbf{k}}=\widehat{\textbf{\i}}$,
+and 
+$\widehat{\textbf{k}}\times\widehat{\textbf{\i}}=\widehat{\textbf{\j}}$.
+\end{remark}
+\begin{remark}
+The cross-product takes two vectors, and \emph{produces a third vector}.
+It \emph{does not} produce a scalar (a number, unlike the dot product).
+\end{remark}
+\emph{Pop quiz}: let $\vec{u}$ and $\vec{v}$ be vectors. Is $\vec{u}\times\vec{v}=\vec{v}\times\vec{u}$?
+
+\begin{example}
+Consider $\vec{u}=\langle2,1,-3\rangle$ and
+$\vec{v}=\langle1,-2,1\rangle$. What is $\vec{u}\times\vec{v}$?
+
+\emph{Solution}: we find
+\begin{equation}
+\begin{aligned}
+\vec{u}\times\vec{v} &= \begin{vmatrix}
+\widehat{\textbf{\i}} & \widehat{\textbf{\j}} &\widehat{\textbf{k}}\\
+2 & 1 & -3\\
+1 & -2 & 1
+\end{vmatrix}\\
+&= (1\cdot1-(-3)\cdot(-2))\widehat{\textbf{\i}} 
+- (2\cdot1-(-3)\cdot1)\widehat{\textbf{\j}} 
++(2\cdot(-2)-1\cdot1)\widehat{\textbf{k}}\\
+&=(1-6)\widehat{\textbf{\i}} 
+- (2+3)\widehat{\textbf{\j}} 
++(-4-1)\widehat{\textbf{k}}\\
+&=\langle-5,5,-5\rangle
+\end{aligned}
+\end{equation}
+Another approach would have been to write
+\begin{equation}
+\vec{u}\times\vec{v} 
+= (2\widehat{\textbf{\i}} + \widehat{\textbf{\j}} -3\widehat{\textbf{k}})
+\times(\widehat{\textbf{\i}} -2 \widehat{\textbf{\j}} +\widehat{\textbf{k}})
+\end{equation}
+and used the cross-product's anticommutativity to do the calculations.
+\end{example}
+
+\N{Parallelogram Area}
+Consider three distinct points $P$, $Q$, and $R$. We can
+construct a parallelograph, as in the following diagram:
+\begin{center}
+\includegraphics{img/moreVectors.0}
+\end{center}
+We see that
+$\overrightarrow{PQ}\times\overrightarrow{PR}=\vec{N}$, then the
+area of the parallelogram is $\|\vec{N}\|$.
+
+\N{Parallepiped Volume}
+If we work in 3-space, and we have a six-sided region whose sides
+are each parallelograms, we call this region a
+parallepiped. Observe that we only need 3 vectors to specify the
+vertices: $\vec{u}$, $\vec{v}$, and $\vec{w}$. Then we consider
+$\vec{u}+\vec{v}$, $\vec{u}+\vec{w}$, $\vec{v}+\vec{w}$, and
+$\vec{u}+\vec{v}+\vec{w}$ for the remaining vertices. What is the
+volume of this region?
+
+Lets draw a diagram:
+\begin{center}
+\includegraphics{img/moreVectors.1}
+\end{center}
+Lets first consider the face described by $\overrightarrow{PQ}=\vec{u}$ and
+$\overrightarrow{PR}=\vec{v}$. We see the parallepiped may be considered as a
+``stack'' of such faces, whose height is given by the third
+vector $\vec{w}$. Then we see the area of the face is shaded in
+the diagram, and algebraically it's given by
+$\vec{u}\times\vec{v}$, and this produces a vector whose
+magnitude is the area of the face. When we ``dot'' this with
+$\proj_{\vec{u}\times\vec{v}}\vec{w}$, it's intuitively taking the product of the ``area of
+aa face'' ($\vec{u}\times\vec{v}$) and the ``height of the
+parallepiped'' ($\proj_{\vec{u}\times\vec{v}}\vec{w}$) producing the volume 
+\begin{equation}
+\mbox{volume } = (\vec{u}\times\vec{v})\cdot\vec{w}.
+\end{equation}
+Note this can be negative, and this just tells us information
+regarding the parallepiped's \emph{orientation}.
+

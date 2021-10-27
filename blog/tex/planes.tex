@@ -1,0 +1,56 @@
+%%
+%% planes.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Thu Jun 21 17:24:56 2012 Alex Nelson
+%% Last update Thu Jun 21 17:25:10 2012 Alex Nelson
+%%
+
+\N{Determining a Plane From a Point and Normal Vector}
+Given a vector
+\begin{equation}
+\vec{N} = A\widehat{\textbf{\i}}+b\widehat{\textbf{\j}}+C\widehat{\textbf{k}}
+\end{equation}
+and a point $P_{0}=(x_{0},y_{0},z_{0})$, there exists a unique
+plane which is perpindicular to $\vec{N}$ and contains $P_{0}$. 
+
+How? Well, let $P$ be an arbitrary point on the plane. Then the
+vector $\overrightarrow{P_{0}P}$ would be parallel to the
+plane. Being parallel to the plane implies its orthogonal to
+$\vec{N}$:
+\begin{equation}
+\overrightarrow{P_{0}P}\cdot\vec{N}=0.
+\end{equation}
+This gives us an equation
+\begin{equation}
+\begin{aligned}
+\overrightarrow{P_{0}P}\cdot\vec{N}&=
+\bigl(
+(x-x_{0})\widehat{\textbf{\i}}+(y-y_{0})\widehat{\textbf{\j}}+(z-z_{0})\widehat{\textbf{k}}
+\bigr)\cdot(A\widehat{\textbf{\i}}+b\widehat{\textbf{\j}}-C\widehat{\textbf{k}})
+\\
+&=A(x-x_{0})+B(y-y_{0})+C(z-z_{0})=0.
+\end{aligned}
+\end{equation}
+So any point $(x,y,z)$ lies on the plane if it satisfies this
+equation. 
+
+\N{Determine a Plane from Three Points}
+Given three points $A$, $B$, $C$, find a plane containing these
+points. 
+
+We construct the vectors $\overrightarrow{AB}$ and
+$\overrightarrow{AC}$. Take the cross product, which produces the
+normal vector
+\begin{equation}
+\vec{N} = \overrightarrow{AB}\times\overrightarrow{AC}.
+\end{equation}
+If we write $A=(x_{0},y_{0},z_{0})$ and $\vec{N}=\langle
+N_{1},N_{2},N_{3}\rangle$, then
+\begin{equation}
+N_{1}(x-x_{0})+N_{2}(y-y_{0})+N_{3}(z-z_{0}) = 0
+\end{equation}
+describes the plane. (It follows from our last construction of
+the plane.)

@@ -1,0 +1,213 @@
+%%
+%% multivarContinuity.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Jun 27 11:16:54 2012 Alex Nelson
+%% Last update Tue Jul  3 10:55:19 2012 Alex Nelson
+%%
+\M
+We considered differentiating and integrating functions of a
+single-variable. How? We began with the notion of a limit, and
+then considered the derivative. If we have a, e.g., polynomial
+\begin{equation}
+p(x,y) = x^{3}+x^{2}y+xy^{2}+y^{3}
+\end{equation}
+we see
+\begin{equation}
+p(x+\Delta x,y) = x^{3}+x^{2}y+xy^{2}+y^{3}+\bigl(3x^{2}+2xy+y\bigr)\Delta x+
+\mathcal{O}(\Delta x^{2})
+\end{equation}
+Again we stop and reflect: this treats $y$ as if it were
+constant. So the derivative formed by
+\begin{equation}
+\lim_{\Delta x\to0}\frac{p(x+\Delta x,y)-p(x,y)}{\Delta x}=3x^{2}+2xy+y
+\end{equation}
+are ``incomplete'' or \textbf{partial}. There is some subtlety
+here due to using multiple variables, and we have to discuss the
+problems of limits first.\more
+
+\N{Definition}
+The function $z=f(x,y)$ is \textbf{``Continuous''} at
+$(x_{0},y_{0})$ if
+
+(i) $f(x_{0},y_{0})$ is defined and finite;
+
+(ii) $\displaystyle\lim_{(x,y)\to(x_{0},y_{0})}f(x,y)=f(x_{0},y_{0})$ is
+defined;
+
+(iii) $\displaystyle\lim_{(x,y)\to(x_{0},y_{0})}f(x,y)$ is defined (and finite).
+
+\noindent{Note:} this can be determined by picking any curve
+$\gamma\colon[0,1]\to\RR^{2}$ which satisfies
+\begin{equation}
+\gamma(t_{0}) = (x_{0},y_{0})
+\end{equation}
+for some $0\leq t_{0}\leq 1$, then taking 
+\begin{equation}
+\lim_{t\to t_{0}}f\bigl(\gamma(t)\bigr) = \lim_{(x,y)\to(x_{0},y_{0})}f(x,y).
+\end{equation}
+The subtletly here lies with $\gamma$ being \emph{arbitrary}. If
+two different curves produce two different results, the limit
+\emph{does not exist}. Lets consider some examples and non-examples.
+
+\begin{example}[Limit Exists]
+Find
+\begin{equation}
+\lim_{(x,y)\to(2,4)}\frac{y+4}{x^{2}y-xy+4x^{2}-4x}.
+\end{equation}
+
+\emph{Solution}: for this, we can simply plug in the values
+\begin{equation}
+\begin{aligned}
+\lim_{(x,y)\to(2,4)}\frac{y+4}{x^{2}y-xy+4x^{2}-4x}
+&=\frac{(4)+4}{(2)^{2}(4)-(2)(4)+4(2^{2})-4(2)}\\
+&=\frac{8}{16-8+16-8}=\frac{1}{2}.
+\end{aligned}
+\end{equation}
+This is because the function is sufficiently nice.
+\end{example}
+
+\begin{example}[Limit Doesn't Exist]
+What is
+\begin{equation}
+\lim_{(x,y)\to(0,0)}\frac{x^{4}}{x^{4}+y^{2}}=?
+\end{equation}
+
+\emph{Solution}: Lets first approach it along the $x$-axis,
+i.e. first setting $y=0$. We find
+\begin{equation}
+\lim_{(x,y)\to(0,0)}\frac{x^{4}}{x^{4}+y^{2}}=\lim_{x\to0}\frac{x^{4}}{x^{4}}=1.
+\end{equation}
+Now lets approach it on the $y$-axis, i.e. first setting
+$x=0$. We see
+\begin{equation}
+\lim_{(x,y)\to(0,0)}\frac{x^{4}}{x^{4}+y^{2}}=\lim_{y\to0}\frac{0}{0+y^{2}}=0.
+\end{equation}
+Still, approaching along the curve $y=x^{2}$ we see
+\begin{equation}
+\lim_{(x,y)\to(0,0)}\frac{x^{4}}{x^{4}+y^{2}}=\lim_{x\to0}\frac{x^{4}}{x^{4}+x^{4}}=\frac{1}{2}.
+\end{equation}
+But we have a problem: this implies $0=1/2=1$. This cannot be! So
+the limit \emph{cannot exist!} Very sad.
+\end{example}
+
+
+\N{Definition} Let $z=f(x,y)$ be defined on a region $R$ in the
+$xy$-plane, and let $(x_{0},y_{0})$ be an inerior point of $R$,
+we just don't want a boundary point!
+
+If
+\begin{equation}
+\lim_{\Delta x\to0}\frac{f(x_{0}+\Delta
+  x,y_{0})-f(x_{0},y_{0})}{\Delta x}
+\end{equation}
+exists, then it is called the \textbf{``Partial Derivative''} of
+$z=f(x,y)$ at $(x_{0},y_{0})$ with respect to $x$. It is denoted
+\begin{equation}
+\frac{\partial}{\partial x}f = \frac{\partial}{\partial x}z
+=f_{x} = \partial_{x}f = \partial_{x}z
+\end{equation}
+evaluated at $(x_{0},y_{0})$. NB: the subscripts in the
+$\partial_{x}$ indicate what variable we are taking the partial
+derivative of, i.e., it's shorthand for
+$\partial_{x}=\partial/\partial x$.
+
+Under similar conditions,
+\begin{equation}
+\lim_{\Delta y\to0}\frac{f(x_{0},y_{0}+\Delta y)-f(x_{0},y_{0})}{\Delta y}
+\end{equation}
+is the partial derivative of $z=f(x,y)$ with respect to $y$ at
+$(x_{0},y_{0})$. We denote this by
+\begin{equation}
+\frac{\partial f}{\partial y}=\frac{\partial z}{\partial
+  y}=\partial_{y}f = \partial_{y}z
+\end{equation}
+among a myriad of different conventions.
+
+\M Higher order partial derivatives are done by taking it one at
+a time. So if 
+\begin{equation}
+z=\E^{xy}
+\end{equation}
+for example, we have
+\begin{equation}
+\partial_{y}z=x\E^{xy}
+\end{equation}
+and taking its derivative again yields
+\begin{equation}
+\begin{aligned}
+\partial_{y}^{2}z &= \partial_{y}\left(x\E^{xy}\right)\\
+&=x\partial_{y}(\E^{xy})
+\end{aligned}
+\end{equation}
+Note we factor $x$ out in front of the partial derivative with
+respect to $y$ because $x$ is constant with respect to $y$. So we
+then obtain
+\begin{equation}
+\partial_{y}^{2}z = x^{2}\E^{xy}.
+\end{equation}
+We take partial derivatives one at a time, from right to left:
+\begin{equation}
+\partial_{x}\partial_{y}z
+= \partial_{x}\bigl(\partial_{y}z\bigr).
+\end{equation}
+\emph{Question}: do partial derivatives commute? I.e., is
+$\partial_{x}\partial_{y}=\partial_{y}\partial_{x}$ always?
+Lets first consider an example calculation before considering an answer.
+
+\begin{example}
+Consider the function $u=x^{2}-y^{2}$. Find
+$\partial_{x}^{2}u+\partial_{y}^{2}u$.
+
+\emph{Solution}: We find that
+\begin{equation}
+\partial_{x}u = 2x\implies \partial_{x}^{2}u = 2.
+\end{equation}
+Similarly, we find
+\begin{equation}
+\partial_{y}u=-2y\implies \partial_{y}^{2}y=-2.
+\end{equation}
+Thus we conclude
+\begin{equation}
+\partial_{x}^{2}u+\partial_{y}^{2}u=2-2=0.
+\end{equation}
+\end{example}
+
+\N{Do Partial Derivatives Commute?}
+Answer: not always. The conditions are fairly weak: if
+$\partial_{x}z$, $\partial_{y}z$, $\partial_{x}\partial_{y}z$ and
+$\partial_{y}\partial_{x}z$ are continuous throughout their
+respective domains, then 
+\begin{equation}
+\partial_{x}\partial_{y}z = \partial_{y}\partial_{x}z.
+\end{equation}
+
+
+
+
+\begin{exercise}
+Let $u(x,t) = f(x+vt) + g(x-vt)$ where $v\not=0$ is some
+constant. Prove
+\begin{equation}
+\partial_{t}^{2}u(x,t)=v^{2}\partial_{x}^{2}u(x,t).
+\end{equation}
+\end{exercise}
+\begin{exercise}
+Let $f(x,y)=\ln(x^{2}+y^{2})$. What is
+$\partial_{x}^{2}f(x,y)+\partial_{y}^{2}f(x,y)$? 
+\end{exercise}
+\begin{exercise}
+Consider $g(x,y)=1/\sqrt{x^{2}+y^{2}}$. What is
+$\partial_{x}^{2}g(x,y)$? What is $\partial_{y}^{2}g(x,y)$? Is
+$\partial_{x}\partial_{y}g(x,y)=\partial_{y}\partial_{x}g(x,y)$? 
+\end{exercise}
+\begin{exercise}
+Let $f(x,y)=3x^{2}+4y^{3}++x^{2}y^{3}+\sin(xy)$. What is
+$\partial_{x}f$? What is $\partial_{y}f$?
+\end{exercise}
+\begin{exercise}
+Let $z=\arctan(x^{2}\E^{2y})$. What is $\partial_{x}z$? What is
+$\partial_{y}z$? 
+\end{exercise}

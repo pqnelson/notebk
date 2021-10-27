@@ -1,0 +1,203 @@
+%%
+%% lagrangeMultiplier.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun 29 13:44:22 2012 Alex Nelson
+%% Last update Tue Jul  3 10:48:45 2012 Alex Nelson
+%%
+
+\M
+So, we considered finding extrema for some function
+$f\colon\RR^{n}\to\RR$, but what if we constrain our focus to
+some surface $g\colon\RR^{n}\to\RR$? For example, the unit circle
+would have
+\begin{equation}
+g(x,y) = x^{2}+y^{2} - 1=0
+\end{equation}
+How do we find extrema for $f(x,y)=xy$ on the unit circle?\more
+
+\M What can we do? First we can consider the level curves
+$f(x,y)=c$. These are precisely the curves $y=c/x$. The gradient
+vector for $f$ is precisely
+\begin{equation}
+\nabla f=\langle y,x\rangle.
+\end{equation}
+This points in the direction of increasing values of $f$. 
+
+\M
+We want to consider the situation when $\nabla f=\lambda\nabla
+g$, i.e., when the gradient of $f$ is precisely a scaled tangent
+of $g$. Why? Because we want the gradient of $f$ to point in the
+direction of a tangent to our surface. We draw the circle, the
+gradient vector $\nabla f$ in red, and $\nabla g$ in
+blue. Remember, the red vectors point in the direction of
+increasing values of $f$, and we restrict our movement along the circle:
+\begin{center}
+  \includegraphics{img/lagrangeMultiplier.0}
+\end{center}
+Observe when the red and blue vectors are perpendicular,
+$f=0$. But when they overlap as a purple vector or point in
+completely opposite direction, what happens?
+
+This happens when
+\begin{equation}
+\langle y,x\rangle = \lambda\langle 2x,2y\rangle
+\end{equation}
+or equivalently
+\begin{equation}
+y=2\lambda x,\quad\mbox{and}\quad
+x=2\lambda y.
+\end{equation}
+Solving for $2\lambda$, we find
+\begin{equation}
+2\lambda = \frac{y}{x} = \frac{x}{y}
+\end{equation}
+which implies
+\begin{equation}
+x^{2}=y^{2}.
+\end{equation}
+But we're not quite done!
+
+\M
+We must remain on the circle, so we also must demand that
+$x^{2}+y^{2}=1$. This equivalently implies
+\begin{equation}
+x^{2}=\frac{1}{2}\implies x=\pm\frac{\sqrt{2}}{2}.
+\end{equation}
+
+\M
+Is this optimal? Lets try approaching the problem differently. We
+are working on the circle, which is the parametric curve
+\begin{equation}
+x(t) = \cos(t),\quad\mbox{and}\quad
+y(t) = \sin(t).
+\end{equation}
+Thus the function we are optimizing becomes
+\begin{equation}
+\begin{aligned}
+f(t) &= f\bigl(x(t),y(t)\bigr)\\
+&=\cos(t)\sin(t)
+\end{aligned}
+\end{equation}
+We see
+\begin{equation}
+f'(t) = -\sin^{2}(t)+\cos^{2}(t) = 0.
+\end{equation}
+We need to solve for $t$, to do so we rearrange terms
+\begin{equation}
+\sin^{2}(t)=\cos^{2}(t)
+\end{equation}
+and divide through by $\cos^{2}(t)$, getting
+\begin{equation}
+\tan^{2}(t) = 1.
+\end{equation}
+But this implies $t=(2n+1)\pi/4$ where $n=0$, $1$, $2$, or
+$3$. Look: that's precisely describing
+$(x,y)=(\pm1/\sqrt{2},\pm1/\sqrt{2})$. 
+
+
+\N{Lagrange Multipliers, Constraints}
+One way to consider this situation ``Optimize $f$ subject to the
+constraint $g=0$'' is to say \emph{Okay, so suppose $g=0$, then
+wouldn't we have}
+\begin{equation}
+f + \lambda g\approx f?
+\end{equation}
+The $g$ term vanishes anyways, so intuitively it seems ``equal-ish''.
+
+\begin{example}[Minimizing Surface Area]
+Find the dimensions of the cylinder with smallest surface area
+whose volume is fixed at $16\pi$.
+
+\emph{Solution}: The outline takes several steps, namely, (1)
+construct the function, (2) take the derivatives, (3) solve.
+
+\emph{Step One: Construct the Functions}. We first write
+\begin{equation}
+A(r,h) = \pi r^{2} + \pi r^{2} + 2\pi rh
+\end{equation}
+for the surface area, and
+\begin{equation}
+V(r,h) = \pi r^{2}h
+\end{equation}
+describes the area. The constraint is
+\begin{equation}
+C(r,h) = V(r,h) - 16\pi.
+\end{equation}
+Thus we construct the function
+\begin{equation}
+F(r,h) = A(r,h) - \lambda C(r,h).
+\end{equation}
+This concludes the first step.
+
+\emph{Step Two: Take the Derivatives}. We find
+\begin{equation}
+\nabla F(r,h) = \langle \partial_{r}A(r,h)
+- \lambda\partial_{r}C(r,h), \partial_{h}A(r,h)-\lambda\partial_{h}C(r,h)\rangle
+  = 0.
+\end{equation}
+Observe
+\begin{equation}
+\partial_{r}A(r,h)=4\pi r+2\pi h,\quad\mbox{and}\quad
+\partial_{r}C(r,h)=2\pi rh.
+\end{equation}
+We also have
+\begin{equation}
+\partial_{h}A(r,h)=2r\pi,\quad\mbox{and}\quad
+\partial_{h}C(r,h)=\pi r^{2}.
+\end{equation}
+The derivative with respect to the Lagrange multiplier gives us
+\begin{equation}
+\partial_{\lambda}F(r,h) = C(r,h) = 0.
+\end{equation}
+So we can set up our equations as
+\begin{equation}
+\begin{aligned}
+(\partial_{r}F&=0)&\quad &\quad &2\pi r+2\pi h&=\lambda 2\pi rh\\
+(\partial_{h}F&=0)&\quad &\quad &2\pi r &=\lambda\pi r^{2}\\
+(\partial_{\lambda}F&=0)&\quad &\quad &\pi r^{2}h-16\pi&=0.
+\end{aligned}
+\end{equation}
+That concludes our second step.
+
+\emph{Step Three: Solve}. We see immediately from the
+$\partial_{h}F$ equation that
+\begin{equation}
+2\pi r = \lambda \pi r^{2}\implies \lambda=\frac{2}{r}.
+\end{equation}
+We plug this into the $\partial_{r}F$ equation, we get
+\begin{equation}
+\begin{aligned}
+2\pi r+2\pi h &= \lambda2\pi rh\\
+&=\left(\frac{2}{r}\right)2\pi rh\\
+&=4\pi h
+\end{aligned}
+\end{equation}
+and subtracting $2\pi h$ from both sides yields
+\begin{equation}
+2\pi r=2\pi h\implies r=h.
+\end{equation}
+Now we use the constraint
+\begin{equation}
+\pi r^{2}h = 16\pi
+\end{equation}
+substituting $r=h$ we get
+\begin{equation}
+\pi h^{3} = 16\pi\implies h = \sqrt[3]{16}.
+\end{equation}
+Thus when we take $r=h=\sqrt[3]{16}$, we minimize the surface area.
+\end{example}
+
+
+\begin{exercise}
+Find the extrema of $f(x,y,z)=xy+yz+zx$ subject to the constraint
+$g(x,y,z)=x^{2}+y^{2}+z^{2}-1$.
+\end{exercise}
+\begin{exercise}
+Find the extrema of $f(x,y)=\exp(-xy)$ subject to the constraint
+$g(x,y)=x^{2}+y^{2}-1$.
+\end{exercise}
+
+

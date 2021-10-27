@@ -1,0 +1,135 @@
+%%
+%% powerSeries.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Sat Jun 16 17:37:15 2012 Alex Nelson
+%% Last update Sun Jun 17 15:45:52 2012 Alex Nelson
+%%
+%\documentclass{article}
+%\usepackage{blog}
+%\begin{document}
+
+\N{Definitions}
+Let $x$ be a variable. a series of the form
+\begin{equation}
+\sum^{\infty}_{n=0}a_{n}x^{n}=a_{0}+a_{1}x+a_{2}x^{2}+\dots+a_{n}x^{n}+\dots
+\end{equation}
+is called a \textbf{``Power Series about $x=0$''}.
+
+A series of the form
+\begin{equation}
+\sum^{\infty}_{n=0}b_{n}(x-a)^{n}=b_{0}+b_{1}(x-a)+b_{2}(x-a)^{2}+\dots+b_{n}(x-a)^{n}+\dots
+\end{equation}
+is called a \textbf{``Power Series about $x=a$''}.
+
+\begin{example}
+Consider the series
+\begin{equation}
+f(x)=\sum^{\infty}_{n=0}\frac{n+1}{2^{n}}x^{n}.
+\end{equation}
+For what values of $x$ does this series converge? When will the
+series diverge?\more{}
+
+\emph{Solution.} Using the absolute ratio test, we see
+\begin{equation}
+\begin{aligned}
+\lim_{n\to\infty}\left|\frac{\displaystyle\frac{n+2}{2^{n+1}}x^{n+1}}{\displaystyle\frac{n+1}{2^{n}}x^{n}}\right|
+&=\lim_{n\to\infty}\frac{n+2}{n+1}\cdot\frac{2^{n}}{2^{n+1}}\cdot|x|\\
+&=(1)\cdot\left(\frac{1}{2}\right)\cdot|x|\\
+&=\frac{1}{2}|x|
+\end{aligned}
+\end{equation}
+For convergence, we need
+\begin{equation}
+\frac{1}{2}|x|<1\quad\Longrightarrow\quad|x|<2.
+\end{equation}
+So divergence would be when
+\begin{equation}
+|x|>2.
+\end{equation}
+We need to check the $|x|=2$ case. Observe, for $x=2$, we have
+\begin{equation}
+f(2)=\sum^{\infty}_{n=0}\frac{n+1}{2^{n}}2^{n}=\sum^{\infty}_{n=0}n+1
+\end{equation}
+which diverges. And at $x=-2$ we have
+\begin{equation}
+f(-2)=\sum^{\infty}_{n=0}\frac{n+1}{2^{n}}(-2)^{n}=\sum^{\infty}_{n=0}(-1)^{n}(n+1)
+\end{equation}
+which still diverges!
+\end{example}
+
+\N{Theorem}
+Let $c\not=0$ and 
+\begin{equation}
+f(x)=\sum^{\infty}_{n=0}a_{n}x^{n}
+\end{equation}
+converge at $x=c$. Then $f(x)$ converges absolutely for
+$|x|<|c|$.
+
+\begin{proof}
+Let $x$ be any value such that $|x|<|c|$. Since $f(c)$ converges,
+there exists an $M$ such that
+\begin{equation}
+|a_{n}c^{n}|\leq M\quad\mbox{for any }n.
+\end{equation}
+Well, we see
+\begin{equation}
+|x/c|\leq 1
+\end{equation}
+so
+\begin{equation}
+a_{n}x^{n}=a_{n}c^{n}\left(\frac{x}{c}\right)^{n}
+\end{equation}
+and moreover
+\begin{equation}
+|a_{n}x^{n}| = |a_{n}c^{n}|\cdot\left|\frac{x}{c}\right|^{n}\leq M\left|\frac{x}{c}\right|^{n}
+\end{equation}
+But observe the series
+\begin{equation}
+g(x)=\sum^{\infty}_{n=0}M\cdot\left|\frac{x}{c}\right|^{n}
+\end{equation}
+is a geometric series which converges since $|x/c|\leq1$.
+
+Therefre the series $\sum|a_{n}x^{n}|$ converges by comparison,
+and the absolute convergence test tells us $\sum a_{n}x^{n}$
+converges. Therefore $\sum a_{n}x^{n}$ is absolutely convergent.
+\end{proof}
+
+
+\begin{example}
+Find the values of $x$ for which
+\begin{equation}
+\sum^{\infty}_{n=1}\frac{(x+7)^{n}}{\sqrt{n}}
+\end{equation}
+converge.
+
+\emph{Solution}: Using the absolute ratio test, we find
+\begin{equation}
+\begin{aligned}
+\lim_{n\to\infty}\left|\frac{\left(\displaystyle\frac{(x+7)^{n+1}}{\sqrt{n+1}}\right)}{\left(\displaystyle\frac{(x+7)^{n}}{\sqrt{n}}\right)}\right|
+&=\lim_{n\to\infty}\frac{\sqrt{n}}{\sqrt{n+1}}|x+7|\\
+&=|x+7|.
+\end{aligned}
+\end{equation}
+We get convergence for $|x+7|<1$. So
+\begin{equation}
+-1<x+7<1\quad\Longrightarrow\quad-8<x<-6.
+\end{equation}
+We have to check the boundary cases.
+
+When $x=-6$, we have
+\begin{equation}
+\sum^{\infty}\frac{(7-6)^{n}}{\sqrt{n}}=\sum^{\infty}_{n=1}\frac{1}{\sqrt{n}}
+\end{equation}
+which diverges by the integral test (or the comparison test with
+the Harmonic series). For $x=-8$ we have our series become
+\begin{equation}
+\sum^{\infty}_{n=1}\frac{(-1)^{n}}{\sqrt{n}}
+\end{equation}
+which converges by the alternating series test.
+\end{example}
+
+
+%\end{document}

@@ -1,0 +1,58 @@
+%%
+%% totalDifferential.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun 29 14:21:33 2012 Alex Nelson
+%% Last update Fri Jun 29 14:21:58 2012 Alex Nelson
+%%
+\N{Total Differential}
+Lets consider some function
+\begin{equation}
+f\colon\RR^{2}\to\RR.
+\end{equation}
+What is $\D f$? Well, we can write it as
+\begin{equation}
+\D\vec{x}\cdot\vec{\nabla}f = (\D x\,\partial_{x}+\D
+y\,\partial_{y})f(x,y)
+\end{equation}
+in Cartesian coordinates. We can write a ``linear approximation''
+to $f(x,y)$ as
+\begin{equation}
+f(x+\Delta x, y+\Delta y)\approx f(x,y) + \langle\Delta x,\Delta
+y\rangle\cdot\vec{\nabla}f(x,y).
+\end{equation}
+Again, this should remind us of the linear approximation when we
+used the tangent line as an approximation to a curve.
+
+\M
+Another way to consider to total differential $\D{f}$ is by using
+the ``chain rule'' (wink wink). We write
+\begin{equation}
+\D f = \frac{\partial f(x,y)}{\partial x}\D x
++\frac{\partial f(x,y)}{\partial y}\D y.
+\end{equation}
+This can be quite useful!
+
+\begin{example}
+Lets consider a cylinder whose radius is $r=10$ and height is
+$h=100$. Its volume is $V(r,h)=\pi r^{2}h$. The measurement is
+correct to $0.1$ precision, what's the error in our measurement?
+
+Well, we approximate it as
+\begin{equation}
+\begin{aligned}
+\D V(r,h) &\approx 0.1\partial_{r}V(r,h) + 0.1\partial_{h}
+V(r,h)\\
+&= 0.1(2\pi rh) + 0.1(\pi r^{2})
+\end{aligned}
+\end{equation}
+The error is thus
+\begin{equation}
+\D V(10,100) \approx 0.1 (2\pi\cdot10\cdot100) + 0.1(\pi\cdot 10^{2})
+\approx 210\pi.
+\end{equation}
+The error is approximately $659.7339$, and our estimated volume
+is $31415$. The error is about 2\%, which is quite good.
+\end{example}

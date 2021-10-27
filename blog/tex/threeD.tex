@@ -1,0 +1,292 @@
+%%
+%% threeD.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed Jun 20 13:38:30 2012 Alex Nelson
+%% Last update Thu Jun 21 17:40:32 2012 Alex Nelson
+%%
+
+\N{The 3 Dimensional Coordinate System}
+The $x$, $y$, $z$ axes are perpendicular to each other. We will
+doodle three dimensions as follows:
+\begin{center}
+\includegraphics{img/threeD.0}
+\end{center}
+The formula for distance between two points $(x_{0}, y_{0},
+z_{0})$ and $(x_{1},y_{1},z_{1})$ would be
+\begin{equation}
+s = \sqrt{(x_{1}-x_{0})^{2}+(y_{1}-y_{0})^{2}+(z_{1}-z_{0})^{2}}.
+\end{equation}
+A sphere with its center at $(a,b,c)$ would be the points which
+are a distance $r$ away from the center. So we would have
+\begin{equation}
+S^{2} = \{\,(x,y,z) : \sqrt{(x-a)^{2}+(y-b)^{2}+(z-c)^{2}}=r\,\}
+\end{equation}
+Usually the formula is given as
+\begin{equation}
+(x-a)^{2}+(y-b)^{2}+(z-c)^{2}=r^{2}
+\end{equation}
+describes a sphere.
+
+\N{Vectors}
+A \textbf{``Vector''} is a directed line segment.
+
+We know a directed line segment has both length (magnitude) and
+direction, so any two directed line segments with the same length
+\emph{and} direction represent the same vector.
+
+Vectors are ``transportable'' in the sense that we may translate
+their base point. We will represent the length of a vector
+$\vec{u}$ as $\|\vec{u}\|$ or $|\vec{u}|$.
+
+The notation for a vector would be $\langle x,y\rangle$ (in two
+dimensions) or $\langle x,y,z\rangle$ (in three dimensions). The
+vector from $(0,0,0)$ to $(x,y,z)$ is given as $\langle x,y,z\rangle$.
+For $P=(-1,4,7)$ and $Q=(2,5,3)$, then the vector from $P$ to $Q$
+is denoted $\overrightarrow{PQ}$.
+
+We can add vectors graphically:
+\begin{center}
+\includegraphics{img/threeD.1}
+\end{center}
+Subtraction would amount to $\vec{A}-\vec{B}=\vec{A}+(-\vec{B})$,
+and graphically this is:
+\begin{center}
+\includegraphics{img/threeD.2}
+\end{center}
+Algebraically, if
+\begin{equation}
+\vec{A}=\langle x_{a},y_{a},z_{a}\rangle,\quad
+\vec{B}=\langle x_{b},y_{b},z_{b}\rangle
+\end{equation}
+then
+\begin{equation}
+\begin{aligned}
+\vec{A}+\vec{B} &= \langle x_{a}+x_{b}, y_{a}+y_{b},
+z_{a}+z_{b}\rangle\\
+\vec{A}-\vec{B} &= \langle x_{a}-x_{b}, y_{a}-y_{b},
+z_{a}-z_{b}\rangle
+\end{aligned}
+\end{equation}
+This describes vector addition and subtraction on the components.
+
+Note in two-dimensional space, the vectors
+\begin{equation}
+\widehat{\textbf{\i}}=\langle 1,0\rangle
+\quad\mbox{and}\quad
+\widehat{\textbf{\j}}=\langle 0,1\rangle
+\end{equation}
+are unit vectors (i.e., vectors whose length is $1$). They are
+also called \emph{basis vectors} since any other vector $\vec{v}$
+in two-dimensions can be written as
+\begin{equation}
+\begin{aligned}
+\vec{v}&=\langle v_{x}, v_{y}\rangle\\
+&=\langle v_{x},0\rangle + \langle0,v_{y}\rangle\\
+&=v_{x}\langle1,0\rangle + v_{y}\langle0,1\rangle\\
+&=v_{x}\widehat{\textbf{\i}}+v_{y}\widehat{\textbf{\j}}
+\end{aligned}
+\end{equation}
+where $\langle v_{x}$ and $v_{y}$ are called the vector's 
+\emph{components}. Note that the components of the vector depends on a
+choice of coordinates (i.e., a choice of basis vectors).
+
+The last notion we will discuss: given any vector $\vec{v}$ which
+is nonzero, then we can construct the unit vector
+\begin{equation}
+\widehat{v} = \frac{\vec{v}}{\|\vec{v}\|}
+\end{equation}
+which has magnitude 1. We use hats to indicate unit vectors, and
+arrows for arbitrary vectors.
+
+\N{Caution:} Everything stated about vectors is a
+half-truth. Really, these are ``tangent vectors'' which has a
+base point and a vector part (i.e., where we stick the line
+segment, and the directed line segment itself). We can only
+add/subtract two tangent vectors if they have the same base point. 
+But since we work in Euclidean space (which is flat), we can
+transport vectors without a problem. This is a very special
+situation! 
+
+Since this is never mentioned, often students become confused
+when they finish vector calculus and begin studying linear
+algebra. Linear algebra fixes a base point, and considers the
+collection of all vectors sharing the same base point. This is
+the honest definition of a vector. 
+
+\begin{remark}
+We will also use the phrase ``three-space'' instead of
+``three-dimensional space'', and ``two-space'' replacing
+``two-dimensional space''. In general $n$-space is
+$n$-dimensional Euclidean space.
+\end{remark}
+
+\subsection{Dot Products}
+\N{Definition}
+Given two vectors
+\begin{equation}
+\vec{u}=u_{1}\widehat{\textbf{\i}}+u_{2}\widehat{\textbf{\j}}+u_{3}\widehat{\textbf{k}},\quad\mbox{and}\quad
+\vec{v}=v_{1}\widehat{\textbf{\i}}+v_{2}\widehat{\textbf{\j}}+v_{3}\widehat{\textbf{k}}
+\end{equation}
+their \textbf{``Dot Product''} is the number
+\begin{equation}
+\begin{aligned}
+\vec{u}\cdot\vec{v} &= \sum_{i} u_{i}v_{i}\\
+&= u_{1}v_{1}+u_{2}v_{2}+u_{3}v_{3}
+\end{aligned}
+\end{equation}
+Let $\vec{u}$ and $\vec{v}$ be given vectors in three-space. 
+
+\N{Angles}
+How do we find the angle $\theta$ between the two vectors?
+\begin{center}
+\includegraphics{img/threeD.3}
+\end{center}
+We find that
+\begin{equation}
+\theta = \arccos\left(\frac{\|\vec{v}\|}{\|\vec{u}\|}\right)
+\end{equation}
+How is this? Well, we should recall the law of cosines
+\begin{equation}
+\|\vec{w}\|^{2}=\|\vec{u}\|^{2}+\|\vec{v}\|^{2}-2\|\vec{u}\|\cdot\|\vec{v}\|\cos(\theta)
+\end{equation}
+which can be written as
+\begin{equation}
+\begin{aligned}
+\vec{w}\cdot\vec{w} &=
+(u_{1}-v_{1})^{2}+(u_{2}-v_{2})^{2}+(u_{3}-v_{3})^{2}\\
+&= \|\vec{u}\|^{2}-2(\vec{u}\cdot\vec{v})+\|\vec{v}\|^{2}
+\end{aligned}
+\end{equation}
+Setting equals to equals gives us
+\begin{equation}
+-2(\vec{u}\cdot\vec{v})=-2\|\vec{u}\|\cdot\|\vec{v}\|\cos(\theta)
+\end{equation}
+and thus
+\begin{equation}
+\frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\cdot\|\vec{v}\|}=\cos(\theta)
+\end{equation}
+Taking the arc cosine of both sides yields
+\begin{equation}
+\arccos\left(\frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\cdot\|\vec{v}\|}\right)=\theta.
+\end{equation}
+A useful formula worth remembering 
+\begin{equation}
+(\vec{u}\cdot\vec{v})=\|\vec{u}\|\cdot\|\vec{v}\|\cos(\theta)
+\end{equation}
+\begin{example}
+Let $\vec{u}=\langle3,-1,4\rangle$ and
+$\vec{v}=\langle1,5,-2\rangle$. What's the angle between them?
+
+\emph{Solution}: We first find
+\begin{equation}
+\begin{aligned}
+\vec{u}\cdot\vec{v} &= (3\cdot1)+(-1\cdot5)+(4\cdot-2)\\
+&=3-5-8=-10.
+\end{aligned}
+\end{equation}
+We then compute
+\begin{equation}
+\|\vec{u}\|=\sqrt{9+1+16}=\sqrt{26}
+\end{equation}
+and
+\begin{equation}
+\|\vec{v}\|=\sqrt{1+25+4}=\sqrt{30}.
+\end{equation}
+Thus the angle between $\vec{u}$ and $\vec{v}$ is
+\begin{equation}
+\theta=\arccos\left(\frac{-10}{\sqrt{26}\sqrt{30}}\right)\approx1.937
+\end{equation}
+(radians).
+\end{example}
+
+\subsection{Orthogonality}
+
+\M
+Vectors are perpendicular or \textbf{``Orthogonal''} if
+$\vec{u}\cdot\vec{v}=0$. Sometimes this is denoted $\vec{u}\bot\vec{v}$.
+
+\begin{example}
+Consider
+\begin{equation}
+\vec{u}=\langle6,-3,8\rangle,\quad\mbox{and}\quad
+\vec{v}=\langle-2,4,3\rangle.
+\end{equation}
+We see
+\begin{equation}
+\vec{u}\cdot\vec{v}=-12-12+24=0
+\end{equation}
+which implies $\vec{u}$ and $\vec{v}$ are orthogonal.
+\end{example}
+
+\M
+Consider the following diagram
+\begin{center}
+\includegraphics{img/threeD.4}
+\end{center}
+We're given vectors $\vec{u}=\overrightarrow{PQ}$ and
+$\vec{v}=\overrightarrow{PS}$ in 3-space. Notice that if the
+angle between the vectors $\theta$ is acute, as doodled, then
+$\overrightarrow{PR}$ is the projection of $\vec{u}$ onto
+$\vec{v}$. 
+
+However, if $\theta$ is obtuse, we doodle the situation thus:
+\begin{center}
+\includegraphics{img/threeD.5}
+\end{center}
+Observe the projection of $\vec{u}$ onto $\vec{v}$ will not fall
+on $\vec{v}$. The projection of $\vec{u}$ onto $\vec{v}$ is
+syntactically 
+\begin{equation}
+\proj_{\vec{v}}\vec{u}
+\end{equation}
+The natural question: \emph{what is the formula for projecting
+$\vec{u}$ onto $\vec{v}$?} We have
+\begin{equation}
+\|\overrightarrow{PR}\|=\begin{cases}\|\vec{u}\|\cos(\theta)
+&\mbox{for $\theta$ acute}\\
+-\|\vec{u}\|\cos(\theta)&\mbox{for $\theta$ obtuse}
+\end{cases}
+\end{equation}
+The direction of $\overrightarrow{PR}$ depends on whether
+$\theta$ is acute or obtuse; we have its unit vector be
+\begin{equation}
+\widehat{PR}=\begin{cases}\widehat{v}&\mbox{for $\theta$ acute}\\
+-\widehat{v}&\mbox{for $\theta$ obtuse}
+\end{cases}
+\end{equation}
+But now look, for both obtuse and acute $\theta$ we have
+\begin{equation}
+\begin{aligned}
+\overrightarrow{PR}
+&=\|\vec{u}\|\cos(\theta)\frac{\vec{v}}{\|\vec{v}\|}\\
+&=\frac{\|\vec{u}\|\|\vec{v}\|\cos(\theta)}{\|\vec{v}\|}\frac{\vec{v}}{\|\vec{v}\|}\\
+&=\frac{\vec{u}\cdot\vec{v}}{\|\vec{v}\|}\frac{\vec{v}}{\|\vec{v}\|}
+\end{aligned}
+\end{equation}
+This describes the projection of $\vec{u}$ onto $\vec{v}$
+for \emph{any} $\theta$:
+\begin{equation}
+\proj_{\vec{v}}\vec{u}=\frac{\vec{u}\cdot\vec{v}}{\|\vec{v}\|}\frac{\vec{v}}{\|\vec{v}\|}
+\end{equation}
+Notice that its magnitude is $\vec{u}\cdot\vec{v}/\|\vec{v}\|$. 
+
+\M
+Consider the same situation again. We have a vector
+$\vec{w}=\overrightarrow{RQ}$ as doodled
+\begin{center}
+\includegraphics{img/threeD.6}
+\end{center}
+This vector $\vec{w}$ is orthogonal to the projection of
+$\vec{u}$ onto $\vec{v}$. For this reason, we write
+\begin{equation}
+\vec{w} = \mathop{\mathrm{orth}}\nolimits_{\vec{v}}\vec{u}
+\end{equation}
+What is it? Well, using basic vector arithmetic, we find
+\begin{equation}
+\vec{w} = \vec{u} - \proj_{\vec{v}}\vec{u}.
+\end{equation}
+We will conclude our discussion of vectors here, but continue
+next time.

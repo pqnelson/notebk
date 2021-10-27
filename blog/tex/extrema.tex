@@ -1,0 +1,74 @@
+%%
+%% extrema.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun 29 13:09:57 2012 Alex Nelson
+%% Last update Fri Jun 29 13:43:18 2012 Alex Nelson
+%%
+
+\M
+Remember for a curve $y=f(x)$, we have maxima and minima occur
+whenever
+\begin{equation}
+f'(x_{0}) = 0
+\end{equation}
+What's the multivariable analog to this notion? \more
+
+\N{Definition}
+If $\vec{\nabla}f(\vec{x}_{0})=\vec{0}$, we say $\vec{x}_{0}$ is
+a \textbf{``Critical Point''} of $f$.
+
+\begin{example}
+Consider $f(x,y) = x^{2}+y^{2} - 2x - 8y$. What are its critical
+points?
+
+\emph{Solution}: We find its gradient first
+\begin{equation}
+\vec{\nabla}f = \langle 2x - 2, 2y - 8\rangle
+\end{equation}
+Next we need to set each component to vanish. This implies
+\begin{equation}
+\vec{x}_{0} = \langle 1, 4\rangle
+\end{equation}
+is the only critical point.
+\end{example}
+
+\N{Problem:} How do we determine if a critical point describes a
+maxima or minima?
+
+Lets consider the critical point $\vec{x}_{0}$ for $f$. We Taylor
+expand $f$ to second order about $\vec{x}_{0}$ writing
+\begin{equation}
+f(\vec{x}_{0}+\vec{h}) \approx f(\vec{x}_{0}) +
+\vec{h}\cdot\underbrace{\vec{\nabla}f(\vec{x}_{0})}_{=0} + \frac{1}{2} \vec{h}\cdot\mathrm{Hess}(f)\vec{h}
+\end{equation}
+where we use the matrix
+\begin{equation}
+\mathrm{Hess}(f) = \begin{bmatrix}
+\partial_{1}^{2} f & \dots & \partial_{1}\partial_{n}f \\
+ \vdots  & \ddots & \vdots \\
+\partial_{n}\partial_{1} f & \dots & \partial_{n}^{2}f
+\end{bmatrix}
+\end{equation}
+Each row is precisely $\vec{\nabla}\partial_{j}f$, and each
+column likewise is $\partial_{i}\vec{\nabla}f$; the intuition is
+$\mathrm{Hess}(f) \approx \vec{\nabla}^{2}f$. 
+
+Now, since we are Taylor expanding about a critical point, our
+approximation becomes
+\begin{equation}
+f(\vec{x}_{0}+\vec{h}) \approx f(\vec{x}_{0}) +
+\frac{1}{2} \vec{h}\cdot\mathrm{Hess}(f)\vec{h}.
+\end{equation}
+We can consider the behaviour of $f$ near $\vec{x}_{0}$ by
+studying the properties of $\mathrm{Hess}(f)$. Specifically, the
+signs of the eigenvalues tells us whether the critical point is a
+local maxima (all eigenvalues are positive) or a minima (all are
+negative) or some saddle point (mixture having both positive and
+negative eigenvalues). If there exists at least one eigenvalue
+that vanishes, this test is inconclusive.
+
+\N{Parting Thoughts:} What if we want to optimize a function
+constrained to live on a surface? 
