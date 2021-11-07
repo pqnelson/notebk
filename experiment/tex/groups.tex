@@ -1,0 +1,158 @@
+\chapter{Groups}
+
+\M
+We should think of a group of symmetry transformations as a collection
+of functions mapping an object $X$ to itself. Here ``symmetry'' means
+that the transformation is ``undoable''. The composition operator
+is then just the usual composition of functions.
+
+\begin{definition}
+  A \define{Group} consists of a collection $G$ of symmetry
+  transformations equipped with
+  \begin{enumerate}
+  \item a composition operator $\circ\colon G\times G\to G$
+  \item an identity element $e\in G$ (or $e\colon\singleton\to G$)
+  \item an inverse operator $(-)^{-1}\colon G\to G$
+  \end{enumerate}
+  such that
+  \begin{enumerate}
+  \item composition is associative: for any $g_{1},g_{2},g_{3}\in G$,
+    $(g_{1}\circ g_{2})\circ g_{3}=g_{1}\circ(g_{2}\circ g_{2})$
+  \item unit laws: for any $g\in G$, $e\circ g=g\circ e=g$
+  \item inverse law: for any $g\in G$, $g^{-1}\circ g=g\circ g^{-1}=e$.\popqed
+  \end{enumerate}%
+\end{definition}
+
+\begin{remark}[Terminology: Stuff, Structure, Properties]
+  We use the terms ``group structure'' to refer to the composition
+  operator, identity element, and inverse operator. The axioms they
+  satisfy are the ``properties'' of a group. We try to separate the
+  ``structure'' from the ``properties'' by writing definitions using the
+  generic template:
+
+  \begin{quote}
+    A ``gadget'' consists of $\langle$\emph{stuff\/}$\rangle$ equipped with
+    $\langle$\emph{structure}$\rangle$ such that a bunch of
+    $\langle$\emph{properties}$\rangle$ hold.
+  \end{quote}
+  Using the term ``group structure'' refers very technically to the
+  structure we equip some collection of transformations, which satisfy
+  the group properties.
+\end{remark}
+
+\begin{example}[Trivial Group]
+  The most boring example is the symmetry transformation which does
+  nothing, $G=\{e\}$ where $e(x)=x$ for each $x$ in the object. This
+  group is called the \define{Trivial Group}.
+\end{example}
+
+\begin{example}[Dihedral Group]
+  Consider the regular $n$-gon $X$ in the plane $\RR^{2}$, so
+  $X\subset\RR^{2}$, for $n\in\NN$ at least 3. We explicitly note the
+  vertices are at the points ($x_{k}$, $y_{k}$) = ($\cos(k\,2\pi/n)$, $\sin(k\,2\pi/n)$)
+  for $k=0$, $1$, $\dots$, $n-1$.
+
+  There are two sorts of symmetries here: rotation by $2\pi/n$ radians,
+  and reflection about an axis. We can encode these transformations by
+  \begin{equation}
+    r\begin{pmatrix}
+       x\\
+       y
+     \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \cos(2\pi/n) & -\sin(2\pi/n)\\
+      \sin(2\pi/n) & \cos(2\pi/n)
+    \end{pmatrix}
+    \begin{pmatrix}
+      x\\
+      y
+    \end{pmatrix}
+  \end{equation}
+  and reflections by
+  \begin{equation}
+    s\begin{pmatrix}x\\y
+    \end{pmatrix}=
+    \begin{pmatrix}1 & 0\\
+      0 & -1
+    \end{pmatrix}\begin{pmatrix}x\\y
+    \end{pmatrix}.
+  \end{equation}
+  The $n$-gon $X$ remains \emph{invariant} under these transformations
+  of the plane, in the sense that $r(X)=X$ and $s(X)=X$.
+
+  In this representation of the group of symmetries, composition is
+  matrix multiplication (which we know is associative) and the inverse
+  law is matrix inversion. The identity element is the identity matrix.
+
+  Usually groups are presented \emph{abstractly}, which would consider
+  $s$, $s^{2}=e$, $r$, $r^{2}$, \dots, $r^{n-1}$, $r^{n}=e$, and
+  $sr^{k}$ for $k=1,\dots,n-1$. We also would have $srs=r^{-1}$. Now we
+  do not need to rely on matrices to reason about this symmetry group.
+  The abstract symmetries of the regular $n$-gon is called the
+  \define{Dihedral Group} of the [regular] $n$-gon, denoted $D_{n}$ by
+  geometers and $D_{2n}$ by algebraists. We will use $\dihedral{n}$ notation.
+\end{example}
+
+\begin{example}
+  Consider, for $n\geq3$, the rotations leaving the regular $n$-gon
+  $X$ invariant in the plane $\RR^{2}$. These are rotations by integers
+  multiples of $2\pi/n$ radians. The elements of our group are $e$, $r$,
+  \dots, $r^{n-1}$, $r^{n}=e$. This is a subcollection of the Dihedral
+  group, called the \define{Cyclic group} denoted $\cyclic{n}$.
+\end{example}
+
+\begin{example}[Number systems]
+One class of fairly boring examples is any number system with addition
+and negation. For example, $\ZZ$ equipped with ($+$, $0$, $-$) gives us a
+group. Really? Let's check it:
+\begin{enumerate}
+\item For any $\ell,m,n\in\ZZ$ we have $(\ell + m) + n = \ell + (m+n)$
+\item For any $n\in\ZZ$, we have $n+0=0+n=n$
+\item For any $n\in\ZZ$, there is a unique number denoted $-n\in\ZZ$
+  such that $-n+n=n+(-n)=0$.
+\end{enumerate}
+Thus the integers equipped with addition form a group.
+
+Similar reasoning shows the rational numbers $\QQ$, the real numbers
+$\RR$, and the complex numbers $\CC$ form a group when equipped with
+addition. But the natural numbers $\NN$ do not. Why? Well, for
+Americans, $0\notin\NN$; for everyone else, if $n\in\NN$ is an arbitrary
+natural number, then in general $-n\notin\NN$.
+
+A particular property of these groups is that $m+n=n+m$ the law of
+composition is commutative. This is \emph{not true in general}: given a
+generic group $G$, its law of composition is not necessarily
+commutative. When the law is commutative, it's special and we'd like a
+special name for the group. When the law of composition is commutative,
+we call the group \define{Abelian}. Conventionally we write the law of
+composition as ``$+$'' instead of ``$\circ$'' to stress its commutative
+nature.
+
+We can think of $\ZZ$ with this group structure as an infinite cyclic
+group, and refer to it as such.
+\end{example}
+
+\begin{example}
+  If we think of the dihedral group as a finite cyclic group ``with
+  reflections'', then it's natural to generalize to an infinite cyclic
+  group. There are two generators for the symmetries: ``rotation''
+  $r^{k}$ for $k\in\ZZ$ and ``reflection'' satisfying $s^{2}=e$. Unlike
+  the dihedral groups $\dihedral{n}$ which have a direct geometric
+  picture, there's no simple picture for the \define{Infinite Dihedral Group}
+  denoted $\dihedral{\infty}$.
+\end{example}
+
+\begin{example}
+  Another ``$n\to\infty$ limit'' of the symmetries of the regular
+  $n$-gon would be the symmetries of the circle $S^{1}\subset\RR^{2}$.
+  This would be generated by rotations $r_{\theta}$ anti-clockwise by an angle
+  $0\leq\theta<2\pi$, and reflection $s$ about the $x$-axis. The rotations
+  satisfy
+  \begin{equation}
+    r_{\alpha}\circ r_{\beta}=r_{\alpha+\beta}
+  \end{equation}
+  where $\alpha$, $\beta\in\RR$. Reflections satisfy $s^{2}=e$, and as
+  always $s\circ r_{\alpha}\circ s=r_{-\alpha}$. This could be viewed as
+  the continuous dihedral group.
+\end{example}

@@ -1,0 +1,37 @@
+\preface
+
+This is an experiment in writing with \TeX, to see if it is possible to
+reproduce the code of \LaTeX\ in a minimal environment. (I will be
+writing on a Raspberry Pi, where space is at a premium.) Consequently,
+anyone looking at {\tt Makefile} for this project may be confused at how
+convoluted the build process appears. We try to avoid using PDF\TeX,
+since that produces bloated output.
+
+Simultaneously, these notes are based on my attempt at using a
+\emph{Zettelkasten} as a means to collate my math notes accumulated over
+the years. Right now I'm studying finite groups, and polishing my notes
+on Lie groups.
+
+We use the ``stuff, structure, and properties'' structuralism discovered
+by Baez and Dolan.
+
+\bigbreak
+
+A word about the style: we were inspired by Arthur Besse's beautiful
+writing style, where ``chunks'' of text are grouped together and
+separated by some whitespace. Each ``chunk'' begins with a number
+``$c.p$'' where ``$c$'' is the chapter number, ``$p$'' is the chunk
+number. Some chunks have a label (in bold) summarizing the thrust of the
+chunk, or (more familiar to mathematicians) the \emph{species} of chunk
+(like definition, theorem, remark, etc.).
+
+Proofs end with the Halmos tombstone (\qedsymbol), but that's the only
+``tombstone'' used. It was tempting to use something like ``\qefsymbol'' to
+end examples, and have some other symbol end definitions, but due to the
+writing style we could simply add another ``chunk'' without any
+indicator that the preceding chunk has ended.
+Unlike Besse (but like Dieudonn\'e) we allow ``subchunks'', writing
+things like ``$c.p.s$'' where ``$s$'' is a positive integer numbered
+sequentially. In principle, we could nest indefinitely, writing
+something like ``$c.p.s_{1}.s_{2}.\cdots.s_{n}$'', though I do not know
+why anyone would want to do this.

@@ -1,0 +1,407 @@
+% \parindent=20pt
+% 1em = 10.0pt when working in tenrm
+%% \smallskipamount=2pt %plus 1pt minus 1pt
+%% \medskipamount=4pt %plus 1pt minus 1pt
+%% \bigskipamount=12pt %plus 2pt minus 2pt
+% From manmac.tex
+\font\tentex=cmtex10
+
+\font\inchhigh=cminch
+\font\titlefont=cmssdc10 at 40pt
+
+\font\ninerm=cmr9
+\font\eightrm=cmr8
+\font\sixrm=cmr6
+
+\font\ninei=cmmi9
+\font\eighti=cmmi8
+\font\sixi=cmmi6
+\skewchar\ninei='177 \skewchar\eighti='177 \skewchar\sixi='177
+
+\font\ninesy=cmsy9
+\font\eightsy=cmsy8
+\font\sixsy=cmsy6
+\skewchar\ninesy='60 \skewchar\eightsy='60 \skewchar\sixsy='60
+
+\font\eightss=cmssq8
+
+\font\eightssi=cmssqi8
+
+\font\ninebf=cmbx9
+\font\eightbf=cmbx8
+\font\sixbf=cmbx6
+
+\font\ninett=cmtt9
+\font\eighttt=cmtt8
+
+\font\ninesl=cmsl9
+\font\eightsl=cmsl8
+
+\font\nineit=cmti9
+\font\eightit=cmti8
+\newskip\ttglue
+
+% small caps
+\font\tensc=cmcsc10
+\font\sevensc=cmcsc10 at 7pt
+\font\fivesc=cmcsc10 at 5pt
+
+\def\mathsc#1{{\mathchoice
+  {\hbox{\tensc#1}}
+  {\hbox{\tensc#1}}
+  {\hbox{\sevensc#1}}
+  {\hbox{\fivesc#1}}
+}}
+
+\def\textsc#1{{\tensc #1}}
+
+% black board bold
+\font\tenamsb=msbm10 \font\sevenamsb=msbm7 \font\fiveamsb=msbm5
+\newfam\bbfam
+\textfont\bbfam=\tenamsb
+\scriptfont\bbfam=\sevenamsb
+\scriptscriptfont\bbfam=\fiveamsb
+
+\def\bbb{\fam\bbfam}
+\def\mathbb#1{{\bbb #1}}
+
+%\def\uhtextsc{\fam\scfam}
+%\def\textsc#1{{\uhtextsc\tensc #1}}
+
+\def\ninepoint{\def\rm{\fam0\ninerm}%
+  \textfont0=\ninerm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+  \textfont1=\ninei \scriptfont1=\sixi \scriptscriptfont1=\fivei
+  \textfont2=\ninesy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \def\it{\fam\itfam\nineit}%
+  \textfont\itfam=\nineit
+  \def\sl{\fam\slfam\ninesl}%
+  \textfont\slfam=\ninesl
+  \def\bf{\fam\bffam\ninebf}%
+  \textfont\bffam=\ninebf \scriptfont\bffam=\sixbf
+   \scriptscriptfont\bffam=\fivebf
+  \def\tt{\fam\ttfam\ninett}%
+  \textfont\ttfam=\ninett
+  \tt \ttglue=.5em plus.25em minus.15em
+  \normalbaselineskip=11pt
+  \def\MF{{\manual hijk}\-{\manual lmnj}}%
+  %  \let\sc=\sevenrm
+  \let\big=\ninebig
+  %\setbox\strutbox=\hbox{\vrule height8pt depth3pt width\z@}%
+  \normalbaselines\rm}
+
+
+%% Poor man's LaTeX
+\def\makeatletter{\catcode`\@11\relax}
+\def\makeatother{\catcode`\@12\relax}
+
+\makeatletter
+\let\@@end\end
+\outer\def\bye{\par\vfill\supereject\@@end}
+
+% define environment syntax
+%% \def\begin#1{\begingroup\csname#1\endcsname}
+%% \def\end#1{\csname end#1\endcsname\endgroup}
+\def\@ignorefalse{\global\let\if@ignore\iffalse}
+\def\@ignoretrue {\global\let\if@ignore\iftrue}
+\@ignorefalse
+
+\def\begin#1{\def\reserved@a{\csname#1\endcsname}\begingroup\reserved@a}
+\def\end#1{\csname end#1\endcsname\endgroup\if@ignore\ignorespaces\fi}
+\let\ignorespacesafterend\@ignoretrue
+
+% dangerous bend!
+\font\manual=manfnt % font used for the METAFONT logo, etc.
+\def\dbend{{\manual\char127}} % dangerous bend sign
+\def\danger{\advance\leftskip1.5\parindent%
+  \medbreak%\begingroup
+  \clubpenalty=10000
+  %\def\par{\endgraf\endgroup\medbreak}
+  \noindent\hang\hangafter=-2
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\noindent\ignorespaces}
+\def\enddanger{\endgraf%\endgroup
+\medbreak\global\advance\leftskip-1.5\parindent} % omits the \medbreak
+%\outer\def\danger{\d@nger}
+\def\ddanger{\medbreak\begingroup\clubpenalty=10000
+  %\def\par{\endgraf\endgroup\medbreak}
+  \noindent\hang\hangafter=-2
+  \hbox to0pt{\hskip-\hangindent\dbend\kern1pt\dbend\hfill}\ignorespaces}
+%\outer\def\ddanger{\dd@nger}
+\def\endddanger{\endgraf\endgroup} % omits the \medbreak
+
+
+% minimal counters
+\def\arabic#1{\expandafter\@arabic\csname c@#1\endcsname}
+\def\roman#1{\expandafter\@roman\csname c@#1\endcsname}
+\def\Roman#1{\expandafter\@Roman\csname c@#1\endcsname}
+\def\alph#1{\expandafter\@alph\csname c@#1\endcsname}
+\def\Alph#1{\expandafter\@Alph\csname c@#1\endcsname}
+\def\fnsymbol#1{\expandafter\@fnsymbol\csname c@#1\endcsname}
+\def\@arabic#1{\number #1}  %% changed 29 Apr 86
+\def\@roman#1{\romannumeral #1}
+
+\def\@Roman#1{\expandafter\@slowromancap\romannumeral #1@}
+\def\@slowromancap#1{\ifx @#1% then terminate
+     \else
+       \if i#1I\else\if v#1V\else\if x#1X\else\if l#1L\else\if
+       c#1C\else\if d#1D\else \if m#1M\else#1\fi\fi\fi\fi\fi\fi\fi
+       \expandafter\@slowromancap
+     \fi
+}
+\def\@alph#1{%
+  \ifcase#1\or a\or b\or c\or d\or e\or f\or g\or h\or i\or j\or
+   k\or l\or m\or n\or o\or p\or q\or r\or s\or t\or u\or v\or w\or x\or
+    y\or z\else\@ctrerr\fi}
+\def\@Alph#1{%
+  \ifcase#1\or A\or B\or C\or D\or E\or F\or G\or H\or I\or J\or
+   K\or L\or M\or N\or O\or P\or Q\or R\or S\or T\or U\or V\or W\or X\or
+   Y\or Z\else\@ctrerr\fi}
+
+\def\newcount{\alloc@0\count\countdef\insc@unt}
+\def\stepcounter#1{
+    \expandafter\global\expandafter\advance\csname c@#1\endcsname by1
+}
+
+\def\refstepcounter#1{\stepcounter{#1}
+  \edef\@currentlabel{\csname p@#1\expandafter\endcsname\csname the#1\endcsname}}
+
+\def\setcounter#1#2{
+    \expandafter\global\csname c@#1\endcsname=#2
+}
+\def\@definecounter#1{\expandafter\newcount\csname c@#1\endcsname
+    \setcounter{#1}{0}
+    \expandafter
+    \gdef\csname the#1\expandafter\endcsname\expandafter
+         {\expandafter\number\csname c@#1\endcsname}
+}
+
+% equations
+
+\let\normalfont\tenrm
+\let\normalcolor\relax
+\@definecounter{equation}
+\def\equation{$$\refstepcounter{equation}\def\par{\relax}}
+\def\endequation{\eqno \hbox{\@eqnnum}$$\ignorespacesafterend}
+\def\@eqnnum{{\normalfont \normalcolor (\theequation)}}
+
+\@definecounter{enumi}
+\def\theenumi{(\arabic{enumi})}
+\let\olditem\item
+\def\enumerate{\smallbreak\setcounter{enumi}{0}\def\item{\refstepcounter{enumi}\olditem{\theenumi}}}
+\def\endenumerate{\smallbreak\noindent\ignorespacesafterend}
+
+%%%% sections
+\def\starred{}
+\def\starit{\def\starred{\llap{*}}}
+\def\omitrhead{\omit}
+\font\tenssbx=cmssbx10
+\@definecounter{section}
+\def\thesection{\thechapter.\arabic{section}}
+\def\currentsection{}
+\def\section#1{\medskip\refstepcounter{section}%
+  \mark{\currentsection \noexpand\else #1}
+  %% \ifrunon \runonfalse\vskip 1 cm plus 1 pc minus 5 pt
+  %% \else \vfill\eject
+  %%   {\output{\setbox0=\box255}\null\vfill\eject} % set \topmark for sure
+  %% \fi
+  % \tenpoint
+  \leftline{\tenssbx\starred\thesection. \uppercase{#1}}
+  \def\starred{}
+  \mark{\thesection\noexpand\else \thesection}
+  \def\currentsection{\thesection}
+  {\xdef\rhead{\uppercase{#1}}}
+  \nobreak\smallskip
+  %\noindent
+}
+
+%% chapters
+\newif\ifdrop \newif\iftitle
+\def\titlepage{}
+\font\twelvess=cmss12
+\font\titlefont=cmssbx10 scaled\magstep2
+\def\titlepage{\global\titletrue\global\droptrue}
+
+\@definecounter{chapter}
+\setcounter{chapter}{-1}
+\def\theequation{\thechapter.\arabic{equation}}
+\def\chapter#1{\vfill\eject\titlepage\refstepcounter{chapter}\setcounter{equation}{0}\setcounter{section}{0}\resetzz
+  \leftline{\twelvess \spaceskip=10pt \def\\{\kern1pt}Chapter~\thechapter}
+  \vskip 4pc
+  \rightline{\titlefont #1}
+  \def\\{}
+  \xdef\rhead{\uppercase{#1}}\xdef\lhead{\uppercase{#1}}
+  %\ifx\rhead\omitrhead\else{\ninepoint\xdef\rhead{\uppercase{#1}}}\fi
+  \vskip 2pc %plus 1 pc minus 1 pc
+}
+
+\def\preface{\vfill\eject%\titlepage\refstepcounter{chapter}\setcounter{equation}{0}\setcounter{section}{0}\resetzz
+  %\leftline{\twelvess \spaceskip=10pt \def\\{\kern1pt}Chapter~\thechapter}
+  %\vskip 4pc
+  \rightline{\titlefont Preface}
+  \def\\{}
+  \xdef\rhead{\uppercase{Preface}}\xdef\lhead{\uppercase{Preface}}
+  %\ifx\rhead\omitrhead\else{\ninepoint\xdef\rhead{\uppercase{#1}}}\fi
+  \vskip 2pc %plus 1 pc minus 1 pc
+}
+
+%%%% Paragraph numbering
+% \M will create a new numbered paragraph
+% \M[1] will start a new sub-paragraph
+% \M[-1] will end the sub-paragraph, incrementing the parent paragraph
+%        number
+% \M[k] will start a new sub-sub-...-sub-paragraph (k-fold "sub-"s)
+% \M[-k] will increment the parent k-fold paragraph
+% \N{Heading} will create a new numbered paragraph with a label
+%             "Heading"
+% \N[k]{Heading} starts a new sub-sub-...-sub paragraph with "Heading"
+% \N[-k]{Heading} starts a new parent k-fold paragraph with "Heading"
+\newcount\zzdepth
+\newcount\zza
+\edef\zzbase{\the\allocationnumber}
+\zzdepth\allocationnumber
+\newcount\zzb
+\newcount\zzc
+\newcount\zzd
+
+\def\resetzz{\zzdepth=\zzbase
+  \count\zzdepth=0}
+\def\advancezzdepthby#1{\advance\zzdepth by#1
+\ifnum\zzdepth<\zzbase\zzdepth=\zzbase\else\fi}
+
+\def\the@zz{{%
+    \ifnum\zzdepth>\zzbase\relax
+    \advance\zzdepth-1 %
+    \expandafter\the@zz
+    \fi
+  }\the\count\zzdepth.%
+}
+%\def\thezz{\thechapter\raise4pt\hbox{.}\the@zz}
+\def\chunkcounterprefix{\thechapter}
+\def\thezz{\chunkcounterprefix.\the@zz}
+\def\chunkseparator{\enspace}%{\quad}
+\def\postchunkseparator{\enspace}%{\quad}
+\def\theM{{\bf\thezz}\chunkseparator\ignorespaces}
+\def\vchunkskip{\smallbreak}
+
+\def\@N@one#1{\global\advance\count\zzdepth 1\relax
+  \theM{\bf#1.}\postchunkseparator\ignorespaces}
+\def\@N@many[#1]#2{\advancezzdepthby{#1}\ignorespaces%
+  \ifnum#1<0\global\advance\count\zzdepth 1%
+  \else\count\zzdepth 1%
+  \fi\ignorespaces%
+  {\bf\thezz\chunkseparator\ignorespaces #2.}\postchunkseparator\ignorespaces}
+\def\@xN{\ifx\tmp[\expandafter\@N@many\else\expandafter\@N@one\fi}
+\def\N{\vchunkskip\noindent\ignorespaces\futurelet\tmp\@xN}
+
+\def\@M@one{\global\advance\count\zzdepth 1\relax\theM}
+\def\@M@many[#1]{\advancezzdepthby{#1}%
+  \ifnum#1<0\global\advance\count\zzdepth 1
+  \else\count\zzdepth 1
+  \fi\relax\theM}
+\def\@xM{\ifx\tmp[\expandafter\@M@many\else\@M@one\fi}
+\def\M{\vchunkskip\noindent\ignorespaces\futurelet\tmp\@xM}
+
+%%%% Theorem environments
+\def\propositionfont{\it}
+\def\propositionname{Proposition}
+\def\proposition@named[#1]{\@M@one{\bf\propositionname} {\rm (#1)}{\bf .}\enspace\propositionfont\ignorespaces}
+\def\proposition@unnamed{\@M@one{\bf\propositionname.}\enspace\propositionfont\ignorespaces}
+\def\@proposition{\ifx\tmp[\expandafter\proposition@named\else\proposition@unnamed\fi}
+\def\proposition{\medbreak\noindent\ignorespaces\futurelet\tmp\@proposition}
+\def\endproposition{\par\ignorespacesafterend}%{\par\ifdim\lastskip>\medskipamount \removelastskip\penalty55\medskip\fi}
+% \ignorespacesafterend
+
+\def\deftheorem#1#2{\expandafter\gdef\csname #1\endcsname{%
+    \edef\propositionname{#2}%
+    \proposition%
+  }%
+  \expandafter\def\csname end#1\endcsname{%
+    \relax
+  }%
+}
+
+\deftheorem{theorem}{Theorem}
+\deftheorem{lemma}{Lemma}
+\deftheorem{cor}{Corollary}
+
+\def\qedsymbol{$\square$}
+
+\def\qed{\ifhmode\unskip\nobreak\fi\quad
+  %\ifmmode\square\else$\m@th\square$\fi
+  \qedsymbol}
+
+\def\xqed#1{
+  \ifmmode \quad\hbox{#1}
+  \else
+    \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+    \quad\hbox{#1}%
+  \fi
+}
+\def\qedhere{}
+\def\popqed{\qedhere}
+\def\pushqed{\gdef\popqed{\xqed{\qedsymbol}\gdef\popqed{\relax}}}
+
+\def\proofheadingfont{\textsc}
+\def\proof{\pushqed\smallbreak\noindent\proofheadingfont{Proof.}}
+\def\endproof{\popqed\smallbreak}
+
+%\def\square{\raise1pt\hbox{\vrule width.6em height.5em depth.1em\relax}}
+%% TODO: definition environments
+
+\def\newdefinitionenv#1#2#3{\expandafter\gdef\csname #1\endcsname{%
+    \ifx\@empty#3\else\def\qedsymbol{#3}\pushqed\fi
+    \edef\propositionname{#2}%
+    \edef\propositionfont{\rm}
+    \proposition%
+  }%
+  \expandafter\def\csname end#1\endcsname{%
+    \ifx\@empty#3\else\popqed\fi%
+    \relax
+  }%
+}
+
+\def\qefsymbol{$\parallel\!\parallel$}
+\let\qef\@empty
+\newdefinitionenv{definition}{Definition}{\@empty}
+\newdefinitionenv{remark}{Remark}{\@empty}
+\newdefinitionenv{example}{Example}{\qef}
+
+\def\define#1{{\bf ``#1''}}
+\def\mathbf#1{{\bf #1}}
+\def\emph#1{{\def\emph##1{\rm ##1}\it #1}}
+
+%% Matrices
+\def\setboxz@h{\setbox\z@\hbox}
+\def\Let@{\relax\iffalse{\fi\let\\=\cr\iffalse}\fi}
+\def\vspace@{\def\vspace##1{\crcr\noalign{\vskip##1\relax}}}
+\def\Mathstrut@{\copy\Mathstrutbox@}
+\newbox\Mathstrutbox@
+\setbox\Mathstrutbox@\null
+\setboxz@h{$\m@th($}
+\ht\Mathstrutbox@\ht\z@
+\dp\Mathstrutbox@\dp\z@
+\newdimen\spreadmlines@
+\def\matrix{\null\,\vcenter\bgroup\Let@\vspace@
+ \normalbaselines\openup\spreadmlines@\ialign
+ \bgroup\hfil$\m@th##$\hfil&&\quad\hfil$\m@th##$\hfil\crcr
+ \Mathstrut@\crcr\noalign{\kern-\baselineskip}}
+\def\endmatrix{\crcr\Mathstrut@\crcr\noalign{\kern-\baselineskip}\egroup
+ \egroup\,}
+\def\pmatrix{\left(\matrix}
+\def\endpmatrix{\endmatrix\right)\ignorespacesafterend\ignorespaces}
+
+%% quotes
+\def\quote{\medbreak\noindent\narrower\ignorespaces}
+\def\endquote{\medbreak\ignorespacesafterend\noindent}
+
+%%% Table of contents
+\def\leaderfill{\leaders\hbox to 1em{\hss.\hss}\hfill}
+\def\contentsline#1{\csname l@#1\endcsname}
+\def\l@chapter#1#2{\line{\bf #1\leaderfill#2}}
+\def\l@section#1#2{\line{\leftskip=1\parindent #1\leaderfill #2}}
+\def\l@subsection#1#2{\line{\leftskip=2\parindent #1\leaderfill #2}}
+
+\ifx\LaTeX\undefined
+    \def\LaTeX{L\kern-.36em\raise.3ex\hbox{\tensc a}\kern-.15em\TeX}%
+\fi
+\makeatother

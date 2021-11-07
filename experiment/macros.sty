@@ -1,0 +1,166 @@
+% amsppt.sty has width be 30pc, height be 50.5pc
+%% \RequirePackage[letterpaper,inner=6pc,textwidth=30pc,
+%%   textheight=50.5pc,top=6pc]{geometry}
+\RequirePackage[letterpaper,inner=6pc,outer=6pc,%textwidth=30pc,
+  textheight=50.5pc,top=6pc]{geometry}
+%%\RequirePackage{fullpage}
+\RequirePackage{amssymb,amsmath}
+\@removefromreset{subsubsection}{paragraph}
+
+\providecommand\@addpunct[1]{%
+  \relax\ifhmode
+    \ifnum\spacefactor>\@m \else#1\fi
+  \fi}
+
+\newif\ifchapterdefined
+\ifdefined\chapter\chapterdefinedtrue\else\chapterdefinedfalse\fi
+
+% recycle paragraph counter for chunking
+\ifchapterdefined
+  \renewcommand\theparagraph{\thechapter.\arabic{paragraph}}
+\else
+  \renewcommand\theparagraph{\thesection.\arabic{paragraph}}
+\fi
+
+% named paragraph
+\newcommand\N[1]{\medbreak\refstepcounter{paragraph}\noindent\ignorespaces\textbf{\theparagraph\@addpunct{.} #1\@addpunct{.}}\enspace}
+
+% unnamed paragraph
+\newcommand\M{\medbreak\refstepcounter{paragraph}\noindent\ignorespaces\textbf{\theparagraph\@addpunct{.}\enspace}}
+
+
+%%% Theorem environments
+\def\propositionfont{\it}
+\def\propositionname{Proposition}
+\def\proposition@named[#1]{\M\textbf{\propositionname} \textrm{(#1)}\textbf{.}\enspace\propositionfont\ignorespaces}
+\def\proposition@unnamed{\M\textbf{\propositionname.}\enspace\propositionfont\ignorespaces}
+\def\@proposition{\ifx\tmp[\expandafter\proposition@named\else\proposition@unnamed\fi}
+\def\proposition{\futurelet\tmp\@proposition}
+\def\endproposition{\smallbreak}
+
+\def\deftheorem#1#2{\expandafter\gdef\csname #1\endcsname{%
+    \edef\propositionname{#2}%
+    \proposition%
+  }%
+  \expandafter\def\csname end#1\endcsname{%
+    \smallbreak
+  }%
+}
+
+\deftheorem{theorem}{Theorem}
+\deftheorem{lemma}{Lemma}
+\deftheorem{corollary}{Corollary}
+\deftheorem{conjecture}{Conjecture}
+\deftheorem{puzzle}{Puzzle}
+
+\DeclareRobustCommand{\xqed}[1]{%
+  \ifmmode \quad\hbox{#1}
+  \else
+    \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+    \quad\hbox{#1}%
+  \fi
+}
+
+\tracingmacros1
+%\tracingall
+
+%% \def\foo#1#2{
+%%   \expandafter\xdef\csname #2symbol\endcsname{#1}
+%%   \expandafter\def\expandafter\csname end#2\expandafter\endcsname{\expandafter\xqed{\csname #2symbol\endcsname}}
+%% }
+
+%% \foo{$\parallel\!\parallel$}{bar}
+
+% \newdefinition{closing symbol}{environment name}{Printed Label}
+\newcommand\newdefinition[3]{
+  \expandafter\xdef\csname #2symbol\endcsname{#1}
+  \expandafter\newcommand\csname #2\endcsname[1][\@empty]{
+    \expandafter\def\expandafter\popqed\expandafter{\expandafter\xqed{\csname #2symbol\endcsname}\gdef\popqed{\relax}}
+    \M\ifx\@empty##1\textbf{#3.}\else\textbf{#3} (##1)\textbf{.}\fi\enspace\ignorespaces}
+  % \expandafter\def\csname end#2\endcsname{\relax}
+  \expandafter\def\expandafter\popqed\expandafter{\expandafter\xqed{\csname #2symbol\endcsname}\gdef\popqed{\relax}}
+  \expandafter\def\csname end#2\endcsname{\popqed}
+  % \expandafter\def\expandafter\csname end#2\expandafter\endcsname{\expandafter\xqed{\csname #2symbol\endcsname}}
+  %\ignorespacesafterend}
+
+}
+\font\manual=manfnt
+\def\mantriangleright{{\manual\char120}}
+\usepackage{graphicx}
+\newdefinition{$\diamondsuit$}{definition}{Definition}
+\newdefinition{$\parallel\!\parallel$}{example}{Example}
+\newdefinition{}{remark}{Remark}
+
+\let\oldenumerate\enumerate
+\def\enumerate{\oldenumerate\itemsep=0pt\parskip=0pt\partopsep=0pt}
+
+%% [Informal] Proofs
+\newcommand{\openbox}{\leavevmode
+  \hbox to.77778em{%
+  \hfil\vrule
+  \vbox to.675em{\hrule width.6em\vfil\hrule}%
+  \vrule\hfil}}
+\DeclareRobustCommand{\textsquare}{%
+  \begingroup \usefont{U}{msa}{m}{n}\thr@@\endgroup
+}
+
+\def\proofnamestyle#1{\textsc{#1}}
+\newenvironment{proof}[1][Proof.]{\par\smallbreak\noindent\proofnamestyle{#1\@addpunct{.}}\enspace\ignorespaces}{%\xqed{\openbox}
+\xqed{$\Box$}}
+
+%%% Sectioning commands
+% pretty print the chapter and sections
+\font\sectionfont=cmssbx10 %at 12pt
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                     {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                     {2.3ex \@plus.2ex}%
+                                     {\normalfont\large\bfseries\sffamily}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                       {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                       {1.5ex \@plus .2ex}%
+                                       {\normalfont\large\bfseries\sffamily}}
+
+\ifchapterdefined
+\font\chapterfont=cmssbx10 scaled\magstep3
+\font\twelvess=cmss12
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 4pc
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 2pc
+}}
+% starred chapter heading
+\def\@makeschapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    %% \ifnum \c@secnumdepth >\m@ne
+    %%   \if@mainmatter
+    %%     \twelvess \@chapapp\space \thechapter
+    %%     \par\nobreak
+    %%     \vskip 4pc
+    %%   \fi
+    %% \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 2pc
+  }}
+
+% page numbering should never reset
+\def\pagenumbering#1{%
+  \gdef\thepage{\csname @#1\endcsname
+   \c@page}}
+
+
+
+\newcommand\define[1]{\textbf{``#1''}}
