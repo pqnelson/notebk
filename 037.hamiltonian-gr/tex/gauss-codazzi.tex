@@ -1,0 +1,67 @@
+\section{Gauss--Codazzi Equation}
+
+The slick way to relate ${}^{(4)}R$ to 3-geometric quantities, we begin
+with the familiar relation of the Riemann curvature tensor to the
+commutator of covariant derivatives:
+\begin{equation}
+{}^{(3)}{R^{\rho}}_{\sigma\mu\nu}v^{\sigma}
+  = [{}^{(3)}\nabla_{\mu}, {}^{(3)}\nabla_{\nu}]v^{\rho}
+\end{equation}
+where $v^{\mu}\in T_{p}M$ is tangent to $\Sigma$ with base point
+$p\in\Sigma$.
+We arrive at the relation
+\begin{equation}
+{q^{\rho}}_{\alpha}{q^{\beta}}_{\sigma}{q^{\gamma}}_{\mu}{q^{\delta}}_{\nu}
+{{}^{(4)}\!}{R^{\alpha}}_{\beta\gamma\delta}
+={{}^{(3)}\!}{R^{\rho}}_{\sigma\mu\nu} + {K^{\rho}}_{\mu}K_{\sigma\nu}-{K^{\rho}}_{\nu}K_{\sigma\mu}.
+\end{equation}
+Contracting indices gives us Gauss's \textit{Theorema Egregium}:
+\begin{equation}
+{{}^{(4)}\!}{R} + 2{{}^{(4)}\!}{R}_{\mu\nu}n^{\mu}n^{\nu}
+={{}^{(3)}\!}{R} + K^{2} - K_{\mu\nu}K^{\mu\nu}.
+\end{equation}
+Note, here $K=K_{ij}q^{ij}$ is the trace of the extrinsic curvature, so
+the second term $K^{2}$ is the square of the trace.
+This is half the battle.
+
+We may cleverly pick the normal vector field in our considerations
+\begin{equation}
+{}^{(4)}{R^{\rho}}_{\sigma\mu\nu}n^{\sigma}
+  = [{}^{(4)}\nabla_{\mu}, {}^{(4)}\nabla_{\nu}]n^{\rho}.
+\end{equation}
+\textbf{TODO:} finish the calculations here.
+
+These slick considerations may be found in Danieli's thesis~\cite[see \S2.3]{danieli}.
+
+\subsection{Rewriting the Lagrangian}
+
+We may then rewrite the Einstein--Hilbert Lagrangian density
+\begin{equation}
+\mathcal{L}_{EH} = {}^{(4)}R\sqrt{-g}.
+\end{equation}
+We find
+\begin{equation}
+  \begin{split}
+\mathcal{L}_{EH} &= [{}^{(3)}R - K^{2} + K^{ij}K_{ij}-2\nabla_{\alpha}(n^{\mu}\nabla_{\mu}n^{\alpha}-n^{\alpha}\nabla_{\mu}n^{\mu})]\lapse\sqrt{q}\\
+&= [{}^{(3)}R - K^{2} + K^{ij}K_{ij}]\lapse\sqrt{q}+(\mbox{total deriative term}).
+\end{split}
+\end{equation}
+Since total derivatives do not contribute to the action, we may discard
+it, to get:
+\begin{equation}
+\boxed{\mathcal{L}_{EH}= [{}^{(3)}R - K^{2} + K^{ij}K_{ij}]\lapse\sqrt{q}.}
+\end{equation}
+Intuitively, we can think of the $-{}^{(3)}R$ term as the potential
+energy, and the $K^{ij}K_{ij}-K^{2}$ as the kinetic energy (one way to
+see this is that $\partial_{t}q_{ij}$ appears only in the extrinsic
+curvature $K_{ij}$).
+
+\begin{danger}
+The Lagrangian we have written down produces the correct equations of
+motion, but we often find the boundary terms are non-negligible. For
+this reason, we typically need to add the Gibbons--York boundary term to
+the Lagrangian. It doesn't change the canonical analysis of general
+relativity substantially, but it impacts numerical modeling. Since we
+are interested in the dynamics of general relativity, we will be
+cavalier and stoic in light of these problems.
+\end{danger}

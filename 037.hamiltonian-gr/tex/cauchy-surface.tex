@@ -1,0 +1,195 @@
+\section{Cauchy Surfaces}
+
+We will work with the East coast metric signature $(-+++)$. The proper
+distance between two infinitesimally close points in spacetime $x^{\mu}$
+and $x^{\mu} + \D x^{\mu}$ is given by
+\begin{equation}
+\D s^{2} = g_{\mu\nu}\,\D x^{\mu}\D x^{\nu}.
+\end{equation}
+But we will foliate spacetime into a family of spatial
+hypersurfaces. For now, suppose we have such a ``time-slicing'', a
+foliation of spacetime into spatial hypersurfaces $\Sigma_{t}$ indexed
+by the time parameter.
+
+The two points have local coordinates $(t,x^{i})$ and $(t+\D t, x^{i} + \D x^{i})$.
+The basic steps are as follows:
+\begin{enumerate}
+\item Choose two nearby spatial hypersurfaces $\Sigma_{t}$ and
+  $\Sigma_{t+\D t}$ with positive-definite spatial metrics $q_{ij}(t)$
+  and $q_{ij}(t + \D t)$, respectively.
+\item Pick an initial point $(t, x^{i})$ on $\Sigma_{t}$ and move
+  orthogonally (i.e., according to the normal unit vector) to
+  $\Sigma_{t+\D t}$. This would take proper time $\D\tau=\lapse\,\D t$ where
+  $\lapse$ is the \define{Lapse Function} which measures the rate of flow of
+  proper time $\tau$ with respect to coordinate time $t$ as one moves
+  normally (``orthogonally'').
+\item The motion will end at some point on $\Sigma_{t + \D t}$, but its
+  spatial coordinates may not necessarily be $x^{i}$ (these are
+  arbitrary coordinates) but may be shifted to nearby values
+  $x^{i}+\shift^{i}\,\D t$; this ``drift'' is because we move along the unit
+  normal rather than the gradient of the time function, so we need to
+  consult this \define{Shift Vector} $\shift^{i}$ which measures how much the
+  local spatial coordinate system shifts tangential to $\Sigma_{t}$ when
+  moving to $\Sigma_{t + \D t}$.
+\item On $\Sigma_{t+\D t}$ we can now perform the additional
+  displacement $x^{i} + \D x^{i}$.
+\end{enumerate}
+Combining everything together, we find obtain the ADM line element
+\begin{equation}
+\D s^{2} = -\lapse^{2}\,\D t^{2}
+  + q_{ij}(\D x^{i} + \shift^{i}\,\D t)(\D x^{j} + \shift^{j}\,\D t).
+\end{equation}
+We use Latin indices starting from $i$ to track spatial components and
+3-tensors. The convention will be to raise and lower spatial indices by
+$q^{ij}$ (the inverse of the 3-metric $q_{ij}$) and $q_{ij}$, respectively; in particular, $\shift_{i}=q_{ij}\shift^{j}$.
+We can rewrite the ADM line element as
+\begin{equation}
+  \D s^{2} = (-\lapse^{2} + \shift_{i}\shift^{i})\,\D t^{2}
+  + 2 \shift_{k}\,\D x^{k}\D t
+  + q_{ij}\,\D x^{i}\D x^{j}.
+\end{equation}
+Comparing to the ``covariant'' version, we find the 4-metric can be
+written in block form as
+\begin{equation}
+  g_{\mu\nu} = \begin{pmatrix}
+    -\lapse^{2} + \shift_{k}\shift^{k} & \shift_{j}\\
+    \shift_{i} & q_{ij}
+\end{pmatrix}.
+\end{equation}
+What, then, is $g^{\mu\nu}$ the inverse 4-metric in terms of the
+inverse 3-metric $q^{ij}$, lapse function, and shift vector?
+
+Recall we can compute the matrix inverse for a block matrix as:
+\begin{equation}
+  \begin{bmatrix}
+    \mathbf{A} & \mathbf{B} \\
+    \mathbf{C} & \mathbf{D}
+   \end{bmatrix}^{-1} 
+    = \begin{bmatrix}
+     \left(\mathbf{A} - \mathbf{BD}^{-1}\mathbf{C}\right)^{-1} &
+    -\left(\mathbf{A} - \mathbf{BD}^{-1}\mathbf{C}\right)^{-1}\mathbf{BD}^{-1} \\
+    -\mathbf{D}^{-1}\mathbf{C}\left(\mathbf{A} - \mathbf{BD}^{-1}\mathbf{C}\right)^{-1} &
+    %\quad
+    \mathbf{D}^{-1} + \mathbf{D}^{-1}\mathbf{C}\left(\mathbf{A} - \mathbf{BD}^{-1}\mathbf{C}\right)^{-1}\mathbf{BD}^{-1}
+  \end{bmatrix}.
+\end{equation}
+Using this, we find
+\begin{equation}
+  g^{\mu\nu}
+  = \begin{pmatrix} -1/\lapse^{2} & \shift^{j}/\lapse^{2}\\
+    \shift^{i}/\lapse^{2} & q^{ij} - (\shift^{i}\shift^{j}/\lapse^{2})
+  \end{pmatrix}.
+\end{equation}
+\textbf{Important:} the spatial part of the inverse spacetime metric
+$g^{ij}$ \emph{is not equal to} the inverse of the spatial metric $q^{ij}$.
+
+Similarly, using the property that the determinant for a matrix in block
+form
+\begin{equation}
+\det\begin{pmatrix}A & B\\ C & D
+\end{pmatrix} = \det(D)\det(A - CD^{-1}B),
+\end{equation}
+we find
+\begin{equation}
+\det(g_{\mu\nu}) = -N^{2}\det(q_{ij}).
+\end{equation}
+
+\subsection{Choice of Time-Slicing}
+
+We only required foliating space-time by spatial hypersurfaces
+$\Sigma_{t}$, a ``one-parameter family'' of such surfaces. The parameter
+$t$ is commonly identified with $x^{0}$ the time coordinate. But we
+could pick \emph{arbitrary} coordinates. This corresponds to choosing
+different families of spatial hypersurfaces.
+
+If we pick our family of spatial hypersurfaces such that a [particular,
+fixed] scalar function $T(x^{\mu})$ is constant, then $T$ is a perfectly
+valid alternative choice of time coordinate. For example, later we will
+introduce a notion of ``extrinsic curvature'' $K_{ij}$ and its trace
+$K=q^{ij}K_{ij}$ is a perfectly good time coordinate for a large class
+of manifolds called \define{York Time Slicing}.
+
+We should recall, in this particular case, we can find the normal vector
+$n^{\mu}$ to the hypersurface $\Sigma_{T}$ by taking the gradient
+\begin{equation}
+n^{\mu} = g^{\mu\nu}\partial_{\nu}T(x).
+\end{equation}
+This is a well-defined 4-vector when restricted to the spatial
+hypersurface $\Sigma_{T}$. For space-like hypersurfaces, we see
+\begin{equation}
+n^{\mu}n_{\mu} = -1.
+\end{equation}
+For time-like hypersurfaces, its norm would be $+1$; and null
+hypersurfaces have null normal vectors.
+
+We may construct the three-metric from the space-time metric
+$g_{\mu\nu}$ using the normal vectors:
+\begin{equation}
+q_{\mu\nu} = g_{\mu\nu} + n_{\mu}n_{\nu}.
+\end{equation}
+The quantity $q^{\mu\rho}q_{\rho\nu} = {q^{\mu}}_{\nu}$ acts like a
+projection operator onto the spatial part of 4-quantities. We observe
+this intuition is warranted since
+\begin{subequations}
+\begin{align}
+q^{\mu\rho}q_{\rho\nu}
+&= (g^{\mu\rho} + n^{\mu}n^{\rho})(g_{\rho\nu} + n_{\rho}n_{\nu})\\
+&= {\delta^{\mu}}_{\rho} + n^{\mu}n_{\nu} + n^{\mu}n_{\nu} + n^{\mu}n^{\rho}n_{\rho}n_{\nu}\\
+&= {\delta^{\mu}}_{\rho} + n^{\mu}n_{\nu}.
+\end{align}
+\end{subequations}
+
+We are free to describe the ``flow of time''
+using a time-like vector field $t^{\mu}$ such that
+\begin{equation}
+t^{\mu}\nabla_{\mu}T=1.
+\end{equation}
+This may or may not coincide with the normal vector. It is important to
+note that the ``evolution'' vector $t^{\mu}$ satisfies
+\begin{equation}
+t^{\alpha}\partial_{\alpha} = \partial_{T}.
+\end{equation}
+
+Using these two vectors (the unit normal vector and the ``flow of time''
+vector), however, we may construct the lapse function:
+\begin{equation}
+\lapse = -g_{\mu\nu}t^{\mu}n^{\nu}.
+\end{equation}
+We may also construct the shift vector:
+\begin{equation}
+\shift^{\mu}  = {q^{\mu}}_{\nu}t^{\nu}.
+\end{equation}
+Alternatively, we may define the lapse $\lapse$ and shift vector
+$\shift^{\mu}$ by
+\begin{equation}\label{eq:lapse-and-shift-in-terms-of-t-and-normal}
+t^{\mu} = \lapse n^{\mu} + \shift^{\mu} \implies n^{\mu} = \frac{t^{\mu}-\shift^{\mu}}{\lapse};
+\end{equation}
+that is, the lapse equals the projection of $t^{\mu}$ onto the unit
+normal $n^{\mu}$ to $\Sigma_{T}$, while the shift is the projection of
+$t^{\mu}$ onto the Cauchy surface $\Sigma_{T}$.
+
+We may interpret, as before, $\lapse$ as the ratio of proper time (given
+by $t^{\mu}\nabla_{\mu} T=1$) to coordinate time $n^{\mu}\nabla_{\mu}T$.
+
+We claim, and may be verified by the reader, that $\shift^{\mu}$ is a
+three-dimensional object, in the sense that
+\begin{equation}
+h_{\mu\nu}\shift^{\mu} = 0.
+\end{equation}
+Then we claim that
+\begin{equation}
+-n_{\mu}t^{\mu} = -\underbrace{n_{\mu}n^{\mu}}_{=-1}\lapse - \underbrace{n_{\mu}\shift^{\mu}}_{=0}
+= \lapse.
+\end{equation}
+The components of the normal vector can be found from the one-form
+$n_{\mu}\,\D x^{\mu}=-\lapse\,\D t$ (which matches the motivation for the
+lapse function in the first place) as
+\begin{equation}
+n^{\mu} = g^{\mu\nu}n_{\nu} = \left(\frac{-1}{\lapse},\frac{\shift^{i}}{\lapse}\right).
+\end{equation}
+When compared to Eq~\eqref{eq:lapse-and-shift-in-terms-of-t-and-normal},
+we find
+\begin{equation}
+t^{\mu} = (-1, 0, 0, 0)
+\end{equation}
+as we would expect.

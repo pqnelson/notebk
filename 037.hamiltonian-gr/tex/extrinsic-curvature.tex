@@ -1,0 +1,71 @@
+\section{Extrinsic Curvature}
+
+\begin{ddanger}
+The conventions on the \textsc{sign} of extrinsic curvature varies wildly. I
+believe I have a consistent choice, but it is possible I have erred.
+\end{ddanger}
+
+From the Hamiltonian perspective, the first step amounts to finding the
+conjugate momentum. Ordinarily, these are just the time derivatives of
+the generalized positions. For general relativity, with $q_{ij}$ as the
+generalized positions, the time derivatives $\partial_{t}q_{ij}$ do not
+suffice: they do not form a tensor. In general, the time derivatives of
+the components of a tensor will not form a tensor.\footnote{This
+motivation comes from Carlip~\cite{carlip2019}, which I find
+compelling.} Thus we need to take a geometric detour.
+
+If we have foliated space-time into spatial hypersurfaces $\Sigma_{t}$,
+then we may consider unit normal 4-vectors $n^{\mu}$. The extrinsic
+curvature may be computed using the Lie derivative of the 3-metric with
+respect to $n^{\mu}$ as
+\begin{equation}\label{eq:extrinsic-curvature:as-time-derivative-of-metric}
+  \begin{split}
+  K_{ij} &= \frac{-1}{2}(\mathcal{L}_{\mathbf{n}}q)_{ij}\\
+  &= \frac{-1}{2}n^{\mu}\partial_{\mu}q_{ij} - \frac{1}{2} q_{\mu j}(\partial_{i}n^{\mu}) - \frac{1}{2} q_{i\mu}(\partial_{j}n^{\mu}),
+  \end{split}
+\end{equation}
+where $\nabla_{\mu}$ is the covariant derivative compatible with the
+4-metric $g_{\mu\nu}$, and we recall
+\begin{equation}
+q_{\mu\nu} = g_{\mu\nu} + n_{\mu}n_{\nu}.
+\end{equation}
+We may also consider $K_{ij}$ as the spatial  part of
+\begin{equation}
+K_{\mu\nu} = n_{(\mu;\nu)} = \frac{1}{2}(\nabla_{\mu}n_{\nu} + \nabla_{\nu}n_{\mu}).
+\end{equation}
+Both formulations make clear the extrinsic curvature tensor is
+symmetric:
+\begin{equation}
+K_{ij} = K_{ji}.
+\end{equation}
+
+A third route to explain the extrinsic curvature tensor is simply by
+considering the spatial projection of the covariant derivative of the unit
+normal vector:
+\begin{equation}
+K_{\mu\nu} = {q_{\mu}}^{\rho}\nabla_{\rho}n_{\nu}.
+\end{equation}
+It requires invoking Frobenius's theorem (from differential topology) to
+demonstrate this is a symmetric tensor field. We recall
+\begin{equation}
+n^{\mu}{q_{\mu}}^{\nu} = 0,
+\end{equation}
+which implies
+\begin{equation}
+K_{\mu\nu}n^{\mu} = 0.
+\end{equation}
+Thus this tensor is purely spatial.
+
+However, the intuition of the extrinsic curvature is that it is the
+``velocity'' corresponding to the 3-metric $q_{ij}$:
+\begin{equation}
+\boxed{K_{ij}\mathrel{\mbox{``=''}}\partial_{t}q_{ij}.}
+\end{equation}
+The strategy
+\emph{now} is to rewrite the Ricci scalar for spacetime ${}^{(4)}R$ in
+terms of the extrinsic curvature $K_{ij}$, spatial 3-curvature tensor
+${}^{(3)}R_{ijk\ell}$, and spatial Ricci 3-tensor ${}^{(3)}R_{ij}$. This
+will be used to write the Einstein--Hilbert Lagrangian in terms of
+spatial tensors, then we will find the canonically conjugate momentum
+$\pi^{ij}$ to the 3-metric $q_{ij}$, and continue on our merry way with
+the Hamiltonian formalism.

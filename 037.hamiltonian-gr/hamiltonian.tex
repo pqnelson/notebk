@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\usepackage[12hr,us]{datetime}
+\usepackage[top=6pc,textheight=8.9in,textwidth=33pc,inner=6pc,marginparwidth=9pc,marginparsep=1.5pc]{geometry}
+\usepackage{amsmath,amsfonts,amscd,amssymb}
+\usepackage{extpfeil,manfnt}
+%\usepackage{epic,eepic}
+\usepackage{arydshln} % for the dashed lines in the ADM metric
+\usepackage{float}
+\usepackage{framed}
+\usepackage{ifpdf}
+\usepackage[final]{graphicx}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage[kerning]{microtype}
+\fi
+\usepackage{mathrsfs}
+\usepackage{marginnote}
+\usepackage{wrapfig} % used for wrapping figures!
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+            citecolor=black,
+            filecolor=black,
+            menucolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            bookmarksopen=true,
+            pdfauthor={Alex Nelson}]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage{notation}
+\usepackage{danger}
+\numberwithin{equation}{section}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\newcommand\arXiv[1]{\href{https://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+\title{Hamiltonian Formalism of General Relativity}
+\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}
+\date{October 3, 2022}
+\begin{document}
+\maketitle
+
+% https://arxiv.org/abs/gr-qc/0006091
+% https://arxiv.org/abs/gr-qc/0405109
+\input{tex/cauchy-surface}
+\input{tex/extrinsic-curvature}
+\input{tex/gauss-codazzi}
+\input{tex/canonical-action}
+\input{tex/bib}
+\end{document}

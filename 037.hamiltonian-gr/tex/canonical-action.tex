@@ -1,0 +1,144 @@
+\section{Canonical Action}
+
+The first step, having rewritten the Lagrangian using 3-geometric
+quantities, is to write down the action:
+\begin{subequations}
+  \begin{align}
+  I &= \frac{1}{2\kappa^{2}}\int\mathcal{L}_{EH}\,\D^{3}x\,\D t\\
+  &= \frac{1}{2\kappa^{2}}\int[{}^{(3)}R - K^{2} + K^{ij}K_{ij}]\lapse\sqrt{q}\,\D^{3}x\,\D t
+  \end{align}
+\end{subequations}
+where $\kappa^{2}=8\pi G$. We now find the conjugate momentum density
+\begin{equation}
+\pi^{ij} = \frac{\partial\mathcal{L}}{\partial(\partial_{0}q_{ij})}.
+\end{equation}
+But the action depends on $\partial_{0}q_{ij}$ only through the
+extrinsic curvature, so we find\footnote{\textbf{TODO:} work through
+this calculation more explicitly and carefully.}
+\begin{equation}
+\boxed{\pi^{ij} = \frac{1}{2\kappa^{2}}\sqrt{q}(K^{ij} - q^{ij}K)}.
+\end{equation}
+Thus concludes the first step in canonical analysis of general
+relativity using metric variables.
+
+The first trick is to write the Lagrangian using canonical
+variables. Towards that end, we need to express the extrinsic curvature
+tensor (and its trace) in terms of the momentum density, 
+\begin{subequations}
+\begin{equation}
+K^{ij} = \frac{2\kappa^{2}}{2\sqrt{q}}(\pi q^{ij} - 2\pi^{ij})
+\end{equation}
+where $\pi=\pi^{ij}q_{ij}$, specifically\footnote{\textbf{TODO:} the
+equation for $\partial_{t}q_{ij}$ follows from various forms of the
+extrinsic curvature, but I do not believe I wrote them down
+explicitly. Double check I did.}
+\begin{equation}
+K = \frac{2\kappa^{2}\pi}{2\sqrt{q}}
+\end{equation}
+\begin{equation}\label{eq:canonical-action:time-derivative-of-metric}
+\partial_{t}q_{ij} = {}^{(3)}\nabla_{i}\shift_{j} + {}^{(3)}\nabla_{j}\shift_{i}
+- \lapse\frac{2\kappa^{2}}{\sqrt{q}}(\pi q_{ij} - 2\pi_{ij}).
+\end{equation}
+\end{subequations}
+We can rewrite the Lagrangian using canonical variables
+\begin{equation}
+\boxed{\mathcal{L} = \frac{1}{2\kappa^{2}}{{}^{(3)}\!}R\; \lapse\sqrt{q} + \frac{2\kappa^{2}\lapse}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2}).}
+\end{equation}
+
+%% \begin{danger}
+%% We are a little sloppy here, we dropped the factor of $2\kappa^{2}$ from
+%% the equation relating $K^{ij}$ in terms of the momenta density. Since
+%% $\pi^{ij}\sim(2\kappa^{2})^{-1}$, we need to multiply by a factor of
+%% $2\kappa^{2}$ in the ``kinetic term'' while dividing by $2\kappa^{2}$ in
+%% the ``potential term'', to get:
+%% \begin{equation}
+%% \boxed{\mathcal{L} = \frac{1}{2\kappa^{2}}{{}^{(3)}\!}R\; \lapse\sqrt{q} + \frac{\lapse2\kappa^{2}}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2}).}
+%% \end{equation}
+%% \end{danger}
+
+We can then find the Hamiltonian density using our trusty Legendre transform,
+\begin{equation}
+\mathcal{H} = \pi^{ij}\partial_{0}q_{ij} - \mathcal{L}.
+\end{equation}
+We find, using Eq~\eqref{eq:canonical-action:time-derivative-of-metric},
+\begin{equation}
+  \begin{split}
+  \pi^{ij}\partial_{0}q_{ij}
+  &= \pi^{ij}({}^{(3)}\nabla_{i}\shift_{j} + {}^{(3)}\nabla_{j}\shift_{i}) - \frac{2\kappa^{2}\lapse}{\sqrt{q}}(\pi^{2} - 2\pi^{ij}\pi_{ij})\\
+&= \pi^{ij}({}^{(3)}\nabla_{i}\shift_{j} + {}^{(3)}\nabla_{j}\shift_{i}) + 2\frac{2\kappa^{2}\lapse}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2})
+  \end{split}
+\end{equation}
+Hence
+\begin{equation}
+  \mathcal{H} = \pi^{ij}({}^{(3)}\nabla_{i}\shift_{j} + {}^{(3)}\nabla_{j}\shift_{i})
+          - \frac{1}{2\kappa^{2}}{{}^{(3)}\!}R\; \lapse\sqrt{q} + \frac{2\kappa^{2}\lapse}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2}).
+\end{equation}
+Since $\pi^{ij}$ is a symmetric tensor, the first term can be simplified
+to $\pi^{ij}\nabla_{i}\shift_{j}$, giving us:
+\begin{equation}
+  \mathcal{H} = 2\pi^{ij}\;{{}^{(3)}\nabla_{i}}\shift_{j}
+          - \frac{1}{2\kappa^{2}}{{}^{(3)}\!}R\; \lapse\sqrt{q} + \frac{2\kappa^{2}\lapse}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2}).
+\end{equation}
+We are almost done.
+
+If we care about the Hamiltonian (not just the Hamiltonian
+\emph{density}), then we should instead work with:
+\begin{equation}
+H = \int_{\Sigma}\mathcal{H}\,\D^{3}x.
+\end{equation}
+We can perform integration by parts on the $\pi^{ij}\nabla_{i} \shift_{j}$
+term, to get:
+\begin{equation}
+\boxed{H = \int_{\Sigma}\left(\lapse\frac{2\kappa^{2}}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2})
+-  \lapse\frac{1}{2\kappa^{2}}{{}^{(3)}\!}R\;\sqrt{q} - 2\shift_{j}\;{}^{(3)}\nabla_{i}\pi^{ij}
+\right)\,\D^{3}x.}
+\end{equation}
+This form is preferable, because it fleshes out the role of the lapse
+and shift functions as Lagrange multipliers. That is to say, we get
+\begin{equation}
+  H = \int_{\Sigma}\left(\lapse\mathcal{H}_{\perp} + \shift_{i}\mathcal{H}^{i}\right)\,\D^{3}x
+\end{equation}
+where
+\begin{subequations}
+  \begin{align}
+    \mathcal{H}^{i} &= -2\;{}^{(3)}\nabla_{j}\pi^{ij}\\
+    \mathcal{H}_{\perp} &= \frac{2\kappa^{2}}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\frac{1}{2}\pi^{2})
+- \frac{1}{2\kappa^{2}}{{}^{(3)}\!}R\; \sqrt{q}.
+  \end{align}
+\end{subequations}
+These are the momentum and Hamiltonian constraints, respectively. We
+should expect there to be constraints, since General Relativity is a
+gauge system.
+
+We may take a moment to note, we may write the action for general
+relativity using the familiar canonical formalism for constrained
+systems as
+\begin{equation}
+I_{ADM} = \int^{t_{1}}_{t_{0}}\int_{\Sigma}(\pi^{ij}\partial_{t}q_{ij} - \lapse\mathcal{H}_{\perp}
+- \shift_{i}\mathcal{H}^{i})\,\D^{3}x\,\D t.
+\end{equation}
+Here it is made manifestly obvious the lapse function $\lapse$ acts as
+Lagrange multiplier to the diffeomorphism constraint $\mathcal{H}_{\perp}$
+and the shift vector $\shift_{i}$ acts as Lagrange multipliers to the
+momentum constraints $\mathcal{H}^{i}$.
+
+Now, as usual, we may define the Poisson bracket on a fixed time-slice
+as
+\begin{equation}
+\{q_{ij}(\mathbf{x}), \pi^{k\ell}(\mathbf{y})\} = \frac{1}{2}(\delta^{k}_{i}\delta^{\ell}_{j}+\delta^{k}_{j}\delta^{\ell}_{i})\delta^{(3)}(\mathbf{x}-\mathbf{y}).
+\end{equation}
+Then Hamilton's equations are:
+\begin{subequations}
+  \begin{equation}
+\partial_{t}q_{ij} = \{q_{ij},H\}
+  \end{equation}
+  and
+  \begin{equation}
+\partial_{t}\pi^{ij} = \{\pi^{ij},H\}.
+  \end{equation}
+\end{subequations}
+These are equivalent to Einstein's field equations.
+
+If we were being cautious, we should check that the constraints are
+``consistent'' (in the sense that their Poisson bracket with the
+Hamiltonian weakly vanishes).
