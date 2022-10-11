@@ -56,6 +56,63 @@ K_{\mu\nu}n^{\mu} = 0.
 \end{equation}
 Thus this tensor is purely spatial.
 
+Specifically, the useful \emph{fourth} version of extrinsic curvature,
+\begin{equation}\label{eq:extrinsic-curvature:as-time-derivative-of-three-metric}
+K_{ij} = \frac{1}{2N}(\partial_{t}q_{ij} - {{}^{(3)}}\nabla_{i}N_{j} - {{}^{(3)}}\nabla_{j}N_{i}).
+\end{equation}
+This requires a length calculation. The basic idea is to define the
+extrinsic curvature in a coordinate-free manner
+\begin{equation}
+K(u,v) = -g(\nabla_{u}v,\vec{n}).
+\end{equation}
+
+\begin{lemma}
+In local coordinates, $K_{ij} = N\Gamma^{0}_{ij}$.
+\end{lemma}
+\begin{proof}[Proof (length calculation)]
+Using local coordinates, we find the components of the extrinsic curvature as
+\begin{subequations}
+  \begin{align}
+    K_{ij} &= K(\partial_{i}, \partial_{j})\\
+    &= -g(\nabla_{\partial_{i}}\partial_{j}, \vec{n})\\
+    &= -g(\Gamma^{\mu}_{ij}\partial_{\mu}, n^{\nu}\partial_{\nu})\\
+    &= -\Gamma^{\mu}_{ij}n^{\nu}g_{\mu\nu}\\
+    &= -\Gamma^{0}_{ij}n_{0}\\
+    &= N\Gamma^{0}_{ij}
+  \end{align}
+\end{subequations}
+where we have implicitly used the fact that
+$n_{\mu}=g_{\mu\nu}n^{\nu}=(-N,0,0,0)$.
+\end{proof}
+
+\begin{lemma}
+  The Christoffel symbol is
+  \begin{equation}
+\Gamma^{0}_{ij} = \frac{1}{2N^{2}}(\partial_{t}q_{ij} - {{}^{(3)}}\nabla_{i}N_{j} - {{}^{(3)}}\nabla_{j}N_{i}).
+  \end{equation}
+\end{lemma}
+\begin{proof}[Proof (length calculation)]
+  We can compute this directly,
+  \begin{subequations}
+    \begin{align}
+\Gamma^{0}_{ij} &= \frac{1}{2} g^{0\mu}(\partial_{i}g_{\mu j} + \partial_{j}g_{i\mu} - \partial_{\mu} g_{ij}) \\
+        &= \frac{1}{2}\left[ g^{00}(\partial_{i}g_{0j} + \partial_{j}g_{i0} - \partial_{0} g_{ij}) + g^{0k}(\partial_{i}g_{kj} + \partial_{j}g_{ik} - \partial_{k} g_{ij})  \right] \\
+        &= \frac{1}{2}\left[ -\frac{1}{N^{2}} (\partial_{i}N_{j}+ \partial_{j}N_{i}- \partial_{t} q_{ij}) + \frac{N^{k}}{N^{2}} (\partial_{i}q_{kj} + \partial_{j}q_{ik} - \partial_{k} q_{ij}) \right] \\
+        &= \frac{1}{2N^{2}}\left[ (\partial_{t} q_{ij} - \partial_{i}N_{j}- \partial_{j}N_{i}) + N_{\ell} q^{\ell k} (\partial_{i}q_{kj} + \partial_{j}q_{ik} - \partial_{k} q_{ij}) \right] \\
+        &= \frac{1}{2N^{2}}\left[ (\partial_{t} q_{ij} - \partial_{i} N_{j} - \partial_{j}N_{i}) + 2 N_{\ell} \,{{}^{(3)}}\Gamma^{\ell}_{ij} \right] \\
+        &= \frac{1}{2N^{2}} \left(\partial_{t} q_{ij} - {{}^{(3)}\nabla}_{i}N_{j}- {{}^{(3)}\nabla}_{j}N_{i}\right),
+    \end{align}
+  \end{subequations}
+  where we have explicitly used the Christoffel symbol for the spatial hypersurface,
+  \begin{equation}
+    {{}^{(3)}}\Gamma^{\ell}_{ij} = \frac{1}{2}q^{\ell k}(\partial_{i}q_{kj} + \partial_{j}q_{ik} - \partial_{k}q_{ij}).
+  \end{equation}
+  Thus concludes our calculation.
+\end{proof}
+
+Now combining our two lemmas together, we obtain the desired form of the
+extrinsic curvature in Eq~\eqref{eq:extrinsic-curvature:as-time-derivative-of-three-metric}.
+
 However, the intuition of the extrinsic curvature is that it is the
 ``velocity'' corresponding to the 3-metric $q_{ij}$:
 \begin{equation}

@@ -13,8 +13,9 @@ where $\kappa^{2}=8\pi G$. We now find the conjugate momentum density
 \pi^{ij} = \frac{\partial\mathcal{L}}{\partial(\partial_{0}q_{ij})}.
 \end{equation}
 But the action depends on $\partial_{0}q_{ij}$ only through the
-extrinsic curvature, so we find\footnote{\textbf{TODO:} work through
-this calculation more explicitly and carefully.}
+extrinsic curvature, as we have seen by
+Eq~\eqref{eq:extrinsic-curvature:as-time-derivative-of-three-metric}, so
+we find:
 \begin{equation}
 \boxed{\pi^{ij} = \frac{1}{2\kappa^{2}}\sqrt{q}(K^{ij} - q^{ij}K)}.
 \end{equation}
@@ -28,13 +29,14 @@ tensor (and its trace) in terms of the momentum density,
 \begin{equation}
 K^{ij} = \frac{2\kappa^{2}}{2\sqrt{q}}(\pi q^{ij} - 2\pi^{ij})
 \end{equation}
-where $\pi=\pi^{ij}q_{ij}$, specifically\footnote{\textbf{TODO:} the
-equation for $\partial_{t}q_{ij}$ follows from various forms of the
-extrinsic curvature, but I do not believe I wrote them down
-explicitly. Double check I did.}
+where $\pi=\pi^{ij}q_{ij}$, specifically
 \begin{equation}
-K = \frac{2\kappa^{2}\pi}{2\sqrt{q}}
+K = \frac{2\kappa^{2}\pi}{2\sqrt{q}}.
 \end{equation}
+Simple algebraic manipulation of 
+Eq~\eqref{eq:extrinsic-curvature:as-time-derivative-of-three-metric}
+and using the previous equations, we can readily express
+$\partial_{t}q_{ij}$ in terms of the canonical momenta,
 \begin{equation}\label{eq:canonical-action:time-derivative-of-metric}
 \partial_{t}q_{ij} = {}^{(3)}\nabla_{i}\shift_{j} + {}^{(3)}\nabla_{j}\shift_{i}
 - \lapse\frac{2\kappa^{2}}{\sqrt{q}}(\pi q_{ij} - 2\pi_{ij}).
