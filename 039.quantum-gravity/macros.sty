@@ -1,0 +1,67 @@
+\usepackage[nottoc,notlot,notlof]{tocbibind} % add references to TOC
+\usepackage[12hr,us]{datetime}
+\usepackage[top=6pc,textheight=8.9in,textwidth=33pc,inner=6pc,marginparwidth=9pc,marginparsep=1.5pc]{geometry}
+\usepackage{amsmath,amsfonts,amscd,amssymb}
+\usepackage{extpfeil,manfnt}
+%\usepackage{epic,eepic}
+\usepackage{arydshln} % for the dashed lines in the ADM metric
+\usepackage{float}
+\usepackage{framed}
+\usepackage{ifpdf}
+\usepackage[final]{graphicx}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage[kerning]{microtype}
+\fi
+\usepackage{mathrsfs}
+\usepackage{marginnote}
+\usepackage{wrapfig} % used for wrapping figures!
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+            citecolor=black,
+            filecolor=black,
+            menucolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            bookmarksopen=true,
+            pdfauthor={Alex Nelson}]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage{notation}
+% \usepackage{danger}
+\numberwithin{equation}{section}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\newcommand\arXiv[1]{\href{https://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+\newcommand\doi[1]{\href{https://doi.org/#1}{\texttt{doi:#1}}}
+
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\advance\headsep by1pc
+
+
+\numberwithin{section}{part}
+\renewcommand\thesection{\arabic{section}}
+
+\def\preface{\renewcommand{\leftmark}{Preface}\phantomsection\addcontentsline{toc}{section}{Preface}\section*{Preface}}
+
+\font\manual=manfnt
+\font\sectionfont=cmssbx10 at 12pt
+\font\subsectionfont=cmssbx10 %at 12pt
+
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}\sectionfont Lecture \thesection.}\medbreak}
+
+\let\newblock\newline
+
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{xca}{\llap{\manual\char'170\rm\kern.15em}Exercise}
+% \renewcommand\exercises{\phantomsection\subsection*{EXERCISES}\addcontentsline{toc}{subsection}{Exercises}}
+
+\let\journal\textit
+\let\volume\textbf

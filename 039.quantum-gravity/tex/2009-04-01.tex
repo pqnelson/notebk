@@ -1,0 +1,235 @@
+\lecture
+
+The first paper on quantum gravity was written by Rosenfeld in
+1930.\footnote{I believe this is, in fact, two papers by Leon Rosenfeld:
+\begin{enumerate}
+\item ``Zur Quantelung der Wellenfelder'',
+\journal{Ann.Phys.} \volume{397} (1930) 113--152. An English translation
+may be found thanks to D.~Salisbury, Max Planck
+Institute for the History of Science, Preprint 381 (2009) \url{https://pure.mpg.de/rest/items/item_2274368_1/component/file_2274366/content}.
+\item ``\"{U}ber die Gravitationswirkungen des Lichtes''. \journal{Z.~Phys.} \volume{65} (1930) 589--599.
+\end{enumerate}
+The curious reader may peruse Peruzzi and Rocci's ``Tales from the prehistory of Quantum Gravity. L\'eon Rosenfeld's earliest contribution'' \arXiv{1802.08878} for a summary of
+Rosenfeld's contributions to quantum gravity.}
+
+A small aside on if gravity needs to be quantized. ``Well everything
+else is [quantized].'' True, but gravity is slightly different. The
+proper answer is: \emph{we don't know for certain but it seems
+likely}. Lets consider a few thought experiments.
+
+We will try to cover the collapse of the wave function without getting
+into what it really means. Let us ask two questions:
+\begin{enumerate}
+\item Does gravity collapse the wave function?
+\item Do other measurements collapse the wave function?
+\end{enumerate}
+There are four possible answers.
+
+\bigbreak\noindent\textbf{Answer 1: No, No.}  This is the Everett
+interpretation of quantum mechanics. This is fine if everything is
+quantum mechanical, but what if gravity is not quantum mechanical? A
+classical gravitational field coupled to the quantum mechanical matter
+results in observable inconsistencies.
+
+\begin{itemize}
+\item Don N.~Page and C.D.~Geilker,
+``Indirect Evidence for Quantum Gravity''.
+\journal{Phys. Rev. Lett.} \volume{47} (1981) pp.979 \emph{et seq.}
+\doi{10.1103/PhysRevLett.47.979}
+\end{itemize}
+Page and Geilker experiment testing if gravity is classical and matter
+is quantum mechanical.
+
+\bigbreak\noindent\textbf{Answer 2: No, Yes.}
+The paper for this perspective:
+
+\begin{itemize}
+\item Kenneth Eppley and Eric Hannah,
+``The necessity of quantizing the gravitational field''.
+\journal{Foundations of Physics} \volume{7} (1977) pp.51--68
+\doi{10.1007/BF00715241}
+\end{itemize}
+
+Eppley and Hannah argue if this were the case, we could send information
+faster than light. Their argument is a tad elaborate.
+
+\begin{wrapfigure}{R}{7pc}
+\centering
+\includegraphics{img/2009-04-01.0}
+\end{wrapfigure}
+
+Consider a particle in a box symmetric in the middle. We lower some
+barrier in the middle (the dashed line to the right), split the box in
+two. Send one to Pluto, the other remains here. Measure the
+gravitational field. The measured field shouldn't be that of a whole
+electron since that violates the conservation of energy, and such a
+violation is bad. We are assuming that gravity is classical, so both
+observers should measure the gravitational field for half of an
+electron. Open the box [on Earth]. If the electron is present, the wave
+function collapses, and information instantaneously changes --- the
+gravitational field of Pluto's box \emph{instantaneously}
+changes. That's bad.
+
+What if we try to weaken causality? Well, causality is either there or
+not, it's like pregnancy.
+
+One may be able to weasel out of it by supposing that measurements may
+be generalized a bit.
+
+\bigbreak\noindent\textbf{Answer 3: Yes, No.}  This is Roger Penrose's
+idea. We modify Schrodinger's equation to include some ``weak
+nonlinearities'' from gravity.
+
+\bigbreak\noindent\textbf{Answer 4: Yes, Yes.}  Gravity --- albeit
+classical --- causes collapse of the wave function and measurement does
+as well. This leads to violation of uncertainty, or the conservation of
+energy(?).
+
+
+\begin{wrapfigure}{R}{15pc}\vskip-2pc
+\centering
+\includegraphics{img/2009-04-01.1}
+\end{wrapfigure}\bigbreak\noindent\textbf{Example} (Heisenberg microscope)\textbf{.}
+Consider a microscope and an electron some distance $f$ from the
+lense. We shine some photon to see the electron. We ignore factors and
+use small-angle approximations. Also we set $c=1$.
+
+Lets look at the uncertainty in momentum.  The electron receives
+momentum from the collision of the photon with it. Suppose the energy of
+the electron is $E$. We have
+\begin{equation}
+\Delta p_{x}\sim E\sin(\theta).
+\end{equation}
+What about the uncertainty in position? This comes from the diffraction
+limit, we can approximate
+\begin{equation}
+\theta_{c}\sim\lambda/D,
+\end{equation}
+we can find the exact calculations from Jackson [\textit{Classical
+    Electrodynamics}]. We have
+\begin{equation}
+\Delta x\sim f\theta_{c}\sim(f\lambda/D)\sim\lambda/\theta.
+\end{equation}
+So we find
+\begin{subequations}
+\begin{equation}
+\Delta x\,\Delta p_{x}\sim E\lambda,
+\end{equation}
+then using the de Broglie relation $E\lambda\sim h$ gives us
+\begin{equation}
+\Delta x\,\Delta p_{x}\sim h.
+\end{equation}
+\end{subequations}
+Classically, for a gravitational wave, we can have $E$ as low as we
+want, and $\lambda$ as large as we want. This violates the uncertainty
+principle.
+
+If we violate the uncertainty principle, presumably all of quantum
+mechanics is undermined. On the other hand, momentum conservation is
+violated if the uncertainty principle is preserved.
+
+There are limits to how accurately we can measure low energy
+gravitational waves. The apparatus has to be smaller and more massive,
+but that may collapse into a black hole. This may be a loophole to the
+aforementioned [Heisenberg microscope] argument.
+%\end{example}
+
+\bigbreak
+\noindent Although none of these are conclusive, they seem to
+\emph{imply} that gravity is quantized.
+
+\subsection{Semiclassical Gravity}
+
+Suppose we have classical gravity and quantum fields. The Einstein field
+equations become
+\begin{equation}
+\widehat{T}_{\mu\nu}\mid\psi\rangle = \frac{1}{8\pi} G_{\mu\nu}\mid\psi\rangle,
+\end{equation}
+which may be a bit too restrictive since $\widehat{T}_{\mu\nu}$ may have
+noncommuting elements. On the other hand, we could make it
+\begin{equation}
+\langle\widehat{T}_{\mu\nu}\rangle = \frac{1}{8\pi} G_{\mu\nu}.
+\end{equation}
+The metric now depends on the matter field, and the matter field depends
+on the metric. This becomes nonlinear, albeit a ``weak'' nonlinearity.
+
+We can look at the Newtonian version of this:
+\begin{equation}
+\begin{split}
+  \I\hbar\frac{\partial}{\partial t}\mid\psi\rangle
+  = \left(\frac{-\hbar^{2}}{2m}\nabla^{2} + V\right)\mid\psi\rangle,\\
+  \nabla^{2}V = 4\pi Gm\rho = 4\pi Gm\sum_{j}m_{j}|\psi_{j}|^{2}.
+\end{split}
+\end{equation}
+There is a paper on this:
+\begin{itemize}
+\item P.J.~Salzman, S.~Carlip, ``A possible experimental test of
+  quantized gravity''. \arXiv{gr-qc/0606120}, 9 pages.
+\end{itemize}
+Suppose we start with a single particle with a Gaussian wave
+function. For small mass, it behaves like a free particle. For a large
+mass, the width narrows since gravitational collapse ``wins out''. For
+somewhere in between, there is nonlinear wiggling.
+
+If we neglect the self-gravitating part, we recover the Hartree
+approximation.
+
+There is another potential problem that the covariant divergence of the
+quantum stress-energy tensor is not conserved. We need to include in the
+stress-energy tensor the contribution of the measurement apparatus.
+
+\subsection{Positive Aspects of Quantizing Gravity}
+
+There are some positive aspects of the quantization of gravity!
+
+\begin{enumerate}
+\item There are singularities in general relativity which need to be
+  dealt with. This is similar to back when quantum mechanics was
+  starting and we were answering questions like, ``Why doesn't the
+  electron fall into the nucleus?''
+
+\item Quantum gravity may deal with the problem of infinities in quantum
+  field theory. Consider the renormalization of mass,
+\begin{equation}
+m(\varepsilon) = m_{0} + \frac{e^{2}}{\varepsilon},
+\end{equation}
+where we include the electric self-energy (which looks like
+$e^{2}/\varepsilon$). If we include the classical self-energy to this,
+we have,
+\begin{equation}
+  m(\varepsilon)
+  = m_{0} + \frac{e^{2}}{\varepsilon} - \frac{Gm(\varepsilon)^{2}}{\varepsilon}.
+\end{equation}
+We can solve for $m(\varepsilon)$ to find that this is finite, it is
+something like the Planck mass times $137$ or $1/137$.
+
+We can also see the sum of Feynman diagrams of the gravitational
+self-interaction of the electron is a finite sum, despite each term
+being divergent! (People are finding sets of finite sums of Feynman
+diagrams in supergravity. There is no proof yet.)
+
+\item There are a few physical systems we would like to understand that
+  only quantum gravity can answer. The very early universe when quantum
+  effects were present as well as gravity being the dominant
+  force. Black holes also may be better understood with the quantization
+  of gravity.
+\end{enumerate}
+
+\subsection{Why not Quantum Gravity?}
+
+Well, why not quantize gravity? In ordinary quantum theory, the basic
+observables are local.  Consider a scalar field $\widehat{\varphi}(x)$,
+the value of the field at point $x$, the axiomatic formulations of
+quantum field theory these are observables.  This does not make sense,
+since $x$ does not make sense.  There is no background. The symmetry of
+general relativity is diffeomorphism invariance, i.e., invariance under
+change of coordinates.  If $x\to x+a$, then
+$\widehat{\varphi}(x)\to\widehat{\varphi}(x+a)$ which does not make
+sense.
+
+This is already an issue in classical general relativity.  We need to be
+careful not to write ``the position $x$ of \emph{blah}'', but instead
+``the time an atomic clock reads for a laser to reach some location''.
+This is nonlocal, but what about this treatment in quantum theory?  It's
+fine in classical general relativity, but we have problems in quantum
+mechanics with nonlocal stuff.
