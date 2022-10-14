@@ -7,7 +7,7 @@ absence of local observables, see:
 \item C.G.~Torre
 ``Gravitational Observables and Local Symmetries''.
 \journal{Phys.~Rev.} \volume{D48} (1993) R2373--R2376(R); \arXiv{gr-qc/9306030}.\newline
-\doi{10.1103/PhysRevD.48.R2373}
+{\tt\doi{10.1103/PhysRevD.48.R2373}}
 \end{itemize}
 A particular example of this is the ``problem of time''.
 
@@ -37,3 +37,89 @@ trying to find.
 A lot of these problems come from thinking in the Schrodinger picture,
 perhaps using the Heisenberg picture fixes it.  There are indications
 from lower dimensional approaches that this may be correct.
+
+\subsection{Quantization}
+
+If we want to quantize general relativity, we need to talk about what it
+means to quantize something. This is---for physicsts---the wrong
+question. There may be more than one way to go to the classical limit,
+but we work with the ones that are experimentally correct.
+
+We start with some classical phase space with coordinates $(q,p)$ and
+some Poisson bracket
+\begin{equation}
+\{p,q\}=1.
+\end{equation}
+We want to put hats on everything
+\begin{equation}
+[\widehat{p},\widehat{q}]=\I\hbar.
+\end{equation}
+We look for unitary irreducible representations on a Hilbert space, and
+so on. That's the quantum theory. We have the rule
+\begin{equation}
+\{q,p\}\mapsto\frac{1}{\I\hbar}[\widehat{q},\widehat{p}],
+\end{equation}
+and for any observables $A$ and $B$ we have:
+\begin{equation}
+\{A,B\}\mapsto\frac{1}{\I\hbar}[\widehat{A},\widehat{B}].
+\end{equation}
+In general, this is impossible. There's a ``no go theorem'' from van
+Hove proving there's no consistent way to do this.
+
+We have to choose some subset of functions on the phase space, some set
+of preferred phase space functions, that is ``small enough'' that this
+mapping from Poisson brackets to commutators is consistent. But it must
+be ``large enough'' so that any other function can be expressed in terms
+of the preferred set. This is what we do when we quantize the Hydrogen
+atom.
+
+Suppose we have a phase space with a symmetry group $G$ which relates
+any point with any other point. So we have the Poisson bracket be
+preserved
+\begin{equation}
+\{gA,gB\} = \{A,B\}.
+\end{equation}
+If $H$ is the stabilizer of $x_{0}$ --- so $h\in H$ implies
+$hx_{0}=x_{0}$ --- then $G/H$ is the phase space. In this case, we
+choose the generators of the action of the group on the symmetric space
+for the preferred functions to quantize.
+
+The Stone--von Neumann theorem ensures the representation of
+translations is unique up to unitary equivalence. But this theorem does
+not hold in infinite-dimensions [i.e., for field theories].
+
+There is another approach to quantization called ``deformation
+quantization''. We have a quantization map,
+\begin{equation}
+\mathcal{Q}\colon\mbox{phase space}\to\mbox{operators}
+\end{equation}
+such that
+\begin{enumerate}
+\item Linearity: $\mathcal{Q}(c_{1}f_{1}+c_{2}f_{2}) = c_{1}\mathcal{Q}(f_{1}) + c_{2}\mathcal{Q}(f_{2})$
+\item Preserves identity: $\mathcal{Q}(1)=\mathbf{1}$
+\item $\mathcal{Q}(x)$, $\mathcal{Q}(p)$ are represented irreducibly
+\item $\mathcal{Q}(\{f,g\}) = \frac{\I}{\hbar}[\mathcal{Q}(f),\mathcal{Q}(g)] + \mathcal{O}(1)$
+\end{enumerate}
+See:
+\begin{enumerate}
+\item P.~Tillman, ``Deformation Quantization, Quantization, and the
+Klein-Gordon Equation''.
+\journal{J.Phys.~A} \volume{40} (2007) 7017--7024; \arXiv{gr-qc/0610141}.\\
+{\tt\doi{10.1088/1751-8113/40/25/S55}}
+\item P.~Tillman, ``Deformation Quantization: From Quantum Mechanics to
+Quantum Field Theory''. \arXiv{gr-qc/0610159}
+\item S.~Twareque Ali, Miroslav Engli\v{s},
+``Quantization Methods: A Guide for Physicists and Analysts''.
+\journal{Rev.Math.Phys.} \volume{17} (2005) pp.391--490;
+\arXiv{math-ph/0405065}.\\
+{\tt\doi{10.1142/S0129055X05002376}}
+\end{enumerate}
+
+There is the path integral, which is just the continuous sum over the
+paths, we write this formally as:
+\begin{equation}
+\int[\D q]\E^{\I S}.
+\end{equation}
+We can get different answers depending on how we define the derivative,
+and we get extra terms of order $\hbar$. We think of these ambiguities
+as normalization.

@@ -1,0 +1,215 @@
+\lecture
+
+The action of general relativity in Hamiltonian form,
+\begin{equation}
+\action_{ADM} = \int[\pi^{ij}\dot{q}_{ij} - N\mathcal{H}-N_{i}\mathcal{H}^{i}]\,\D^{3}x\,\D t.
+\end{equation}
+The sign conventions varies, but the Hamiltonian is:
+\begin{subequations}
+\begin{equation}
+\mathcal{H} = \frac{16\pi G}{\sqrt{q}}(\pi^{ij}\pi_{ij}-\pi^{2}) -
+\frac{1}{16\pi G}\sqrt{q}\,{{}^{(3)}\!R},
+\end{equation}
+and the momentum constraints,
+\begin{equation}
+\mathcal{H}^{i} = -2D_{j}\pi^{ij}.
+\end{equation}
+\end{subequations}
+This is a Hamiltonian for general relativity based on a certain set of
+variables: the metric for a spatial hypersurfaces as the position
+variable and its time derivative for its conjugate momenta.
+
+We can consider the Poisson brackets for this field:
+\begin{equation}
+\{q_{ij}(x),\pi^{k\ell}(x')\} =
+\frac{1}{2}(\delta^{k}_{i}\delta^{\ell}_{j}
++\delta^{k}_{j}\delta^{\ell}_{i})\widetilde{\delta}^{(3)}(x-x'),
+\end{equation}
+where the tilde indicates a densitized delta function, so
+\begin{equation}
+\int\widetilde{\delta}^{(3)}(x)\,\D^{3}x=1.
+\end{equation}
+In particular, we do not need to explicitly write out $\sqrt{q}$. Using
+a densitized delta should make intuitive sense, since $\pi^{k\ell}$ is a
+tensor density.
+
+This is a completely constrained system, with the momentum constraints
+generating spatial change of coordinates. Consider:
+\begin{subequations}
+  \begin{align}
+    \{\int\xi^{i}\mathcal{H}_{i}(x)\,\D^{3}x, q_{k\ell}(x')\}
+    &=\{-2\int\xi^{i}D^{j}\pi_{ij}(x)\,\D^{3}x, q_{k\ell}(x')\}\\
+    &=\{\int(\xi_{i}D_{j} + \xi_{j}D_{i})\pi^{ij}(x)\,\D^{3}x, q_{k\ell}(x')\}\\
+    &= - (D_{k}\xi_{\ell}+D_{\ell}\xi_{k})\\
+    &= -\mathcal{L}_{\xi}q_{k\ell}.
+  \end{align}
+\end{subequations}
+This means that $\mathcal{H}_{i}$ are generators of spatial coordinate
+transformations. The Poisson bracket for the momentum constraints and
+the $\pi^{ij}$ are a bit more complicated.
+
+We are working on spatial hypersurfaces, so there is a question of
+what ``$\mathcal{H}$ generates time translations'' even means. The easy
+bracket is with $q_{ij}$, technically what these yield are ``surface
+deformations''.\index{Surface Deformation}
+(On the horizon of a black hole, surface deformations are not equivalent
+to changes of coordinates which could be bad\dots)
+
+\subsection{Reduced Phase Space Quantization}
+
+We have two ways to quantize this system: reduced phase space approach,
+and the Dirac approach. Lets begin with the reduced phase space
+approach.
+
+Recall the basic idea with the reduced phase space quantization is to
+solve the constraints, find new variables, then quantize. The problem
+with this is solving the constraints, which is roughly the same as
+solving Einstein's field equations. We don't have it, or anything near
+it. We need to assume some sort of symmetry (e.g., cylindrical
+symmetry). This leads to ``minisuperspace'' or ``midisuperspace''.\index{Minisuperspace}\index{Midisuperspace}
+In some sense, this is the wrong thing to do because assuming symmetry
+at this level assumes that quantum states have this symmetry too.
+
+An alternative approach is to change variables that change 4 nightmarish
+PDEs into 4 simpler equations.
+
+This is the York time-slicing\index{York Time-Slicing}\index{Time-Slicing!York},
+the work on this was done predominantly by Fischer and Moncrief.
+We start with
+\begin{equation}
+q_{ij} = \phi^{4}\widetilde{q}_{ij}
+\end{equation}
+where $\phi$ is the conformal factor, $\widetilde{q}_{ij}$ is such that
+the Ricci scalar is
+\begin{equation}
+{{}^{(3)}}R[\widetilde{q}]\in\{0,\pm1\}.
+\end{equation}
+This is the Yamabe condition. We can always do this for any Riemannian
+manifold.
+(The reason why ${{}^{(3)}}R[\widetilde{q}]=0$ or $\pm1$ is due to the
+topological properties of the spatial hypersurface; it is some deep
+result in topology that is not immediately obvious.) This is for
+spatially compact universes (or asymptotically flat ones).
+
+We need the decomposition of the canonical momentum:
+\begin{equation}
+\pi^{ij} = \frac{1}{16\pi G}[\phi^{-4}p^{ij} -
+  \underbrace{\frac{2}{3}K\phi^{2}\widetilde{q}^{ij}\sqrt{\widetilde{q}}}_{\text{trace part}}
+  + (\underbrace{\widetilde{D}^{i}Y^{j} + \widetilde{D}^{j}Y^{i}}_{\text{symmetrized covariant derivative of a vector}}
+  -\frac{2}{3}\widetilde{q}^{ij}D_{k}Y^{k})]
+\end{equation}
+where $Y^{i}$ is a density, $p^{ij}$ is a density, and $\widetilde{D}_{i}\widetilde{q}_{jk}=0$.
+(Locally any vector
+in 3 dimensions can be written as $\vec{\nabla}\phi + \vec{\nabla}\times\vec{A}$.)
+We have
+\begin{subequations}
+\begin{equation}
+\widetilde{D}_{i}p^{ij} = 0
+\end{equation}
+and
+\begin{equation}
+\widetilde{q}_{ij}p^{ij}=0.
+\end{equation}
+\end{subequations}
+The momentum constraint $D_{i}\pi^{ij}=0$ can be translated into a
+covariant derivative with respect to $\widetilde{q}$, we have
+\begin{equation}
+D_{i}\pi^{ij} = (\dots)\widetilde{D}_{i}p^{ij} + (\dots)\partial^{j}K + (\dots)\widetilde{D}_{i}(\widetilde{D}^{i}Y^{j}+\dots)=0.
+\end{equation}
+\marginpar{Crucial Step}%
+The crucial step: we choose
+\begin{equation}
+t = -K,
+\end{equation}
+constant mean extrinsic curvature. This is not an obvious choice, but
+there are proofs that this is neat, nice, and consistent. For a black
+hole, the hypersurfaces curve around the singularity.
+
+For a large class of solutions, Anderson and Moncrief have recent proofs
+this is kosher.
+
+We have
+\begin{equation}
+K = \frac{1}{N}\partial_{t}(\ln\sqrt{q}),
+\end{equation}
+some signs vary.
+
+This choice tremendously simplifies things, we are left with
+\begin{equation}
+D_{i}\pi^{ij} = (\dots)\widetilde{D}_{i}(\widetilde{D}^{i}Y^{j}+\dots) = 0.
+\end{equation}
+If we assume spatial compactness or $Y$ falls off at infinity, we get
+$Y^{i}=0$. So we have simplified the conjugate momenta to be:
+\begin{equation}
+\pi^{ij} = \frac{1}{16\pi G}[\phi^{-4}p^{ij} - \frac{2}{3}K\phi^{2}\widetilde{q}^{ij}\sqrt{\widetilde{q}}].
+\end{equation}
+Here $K$ is the proportional time rate of change of the local volume.
+
+We solved the momentum constraints, $p$ is freely specified provided it
+satisfies certain conditions. Now, the Hamiltonian constraint, which is
+hard. We are left with really 2 independent components in
+$\widetilde{q}$ and in $p$. We are left with the conformal factor $\phi$
+to determine. The Hamiltonian constraint determines it! The Hamiltonian
+constraint puts the condition on $\phi$:
+\begin{equation}
+  \widetilde{\Delta}\phi - \frac{1}{8}\phi + \frac{1}{12}t^{2}\phi^{5}
+  -\frac{1}{8}\left(\frac{\widetilde{q}_{ij}\widetilde{q}_{k\ell}p^{ik}p^{j\ell}}{\widetilde{q}^{2}}\right)\phi^{-7} = 0.
+\end{equation}
+This is a second-order elliptic PDE.
+
+Plugging this back into the action, we get (combining \emph{everything}
+back together):
+\begin{equation}
+\action = \left(\frac{1}{16\pi G}\right)^{2}\int[p^{ij}\dot{\widetilde{q}}_{ij}-\frac{4}{3}\sqrt{\widetilde{q}}\phi^{6}]\D^{3}x\,\D t.
+\end{equation}
+With the Hamiltonian constraint implying we can write the conformal
+factor as a function of $p$ and $\widetilde{q}$,
+$\phi=\phi(p,\widetilde{q})$. In our notion of time, that Hamiltonian is
+very nonlocal. It is effectively
+\begin{equation}
+\mathcal{H} = \frac{4}{3}\sqrt{\widetilde{q}}\phi^{6}.
+\end{equation}
+Due to this nightmarish nonlocality, we don't know how to put hats on stuff.
+
+(We have been working with a zero cosmological constant $\Lambda=0$,
+there should be some contribution from it in $\phi$ for nonzero
+$\Lambda$.)
+
+In $2+1$ dimensional gravity, the $q^{2}p^{2}\phi^{-7}$ term goes away,
+and we have a local Hamiltonian, and everything's nice.
+
+This was based on a particular decomposition, we'd like to keep
+something similar to the decomposition of $\pi$.
+
+\subsection{Dirac Quantization}
+
+Let's begin Dirac quantization of the system. We basically impose the
+constraints at the quantum level. We have our wave function $\Psi[q]$,
+so we have
+\begin{subequations}
+\begin{equation}
+\widehat{\mathcal{H}}^{i}\Psi[q]=0
+\end{equation}
+and
+\begin{equation}
+\widehat{\mathcal{H}}\Psi[q]=0.
+\end{equation}
+\end{subequations}
+We use the Schrodinger picture to have
+\begin{equation}
+\widehat{\pi}^{ij} = -\I\frac{\delta}{\delta q_{ij}}.
+\end{equation}
+The momentum constraint smeared by some vector $\zeta^{i}$ is
+\begin{equation}
+\int\zeta_{j}D_{i}\frac{\delta}{\delta q_{ij}}\Psi[q]\,\D^{3}x=0.
+\end{equation}
+Integration by parts gives us,
+\begin{equation}
+\int(D_{i}\zeta_{j}+D_{j}\zeta_{i})\frac{\delta}{\delta q_{ij}}\Psi[q]\,\D^{3}x=0.
+\end{equation}
+By functional Taylor expansion, we have
+\begin{equation}
+\Psi[q_{ij} + D_{i}\zeta_{j}+D_{j}\zeta_{i}] - \Psi[q_{ij}]=0.
+\end{equation}
+So $\Psi$ is invariant under such coordinate transformations. This is
+not as easy as it seems.

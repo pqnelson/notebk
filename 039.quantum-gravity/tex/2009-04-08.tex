@@ -1,0 +1,336 @@
+\lecture
+
+We spoke about what it means to quantize a system. This time we will
+discuss naive quantization of a system with constraints.
+
+\textbf{An addendum from last time:} Take a one-dimensional particle
+moving along a line. We have $q$, $p$ be the canonical coordinates and
+we make the Poisson bracket into commutators
+\begin{equation}
+\{q,p\}\mapsto\frac{\I}{\hbar}[\widehat{q},\widehat{p}].
+\end{equation}
+The operator $\exp(\I a\widehat{p}/\hbar)$ generates translations in
+position, so:
+\begin{equation}
+\E^{\I a\widehat{p}/\hbar}\widehat{q}\E^{-\I a\widehat{p}/\hbar}=\widehat{q}\pm a.
+\end{equation}
+Hence $\widehat{q}$ could take on any value.
+
+Suppose we move on the positive real line, not the entire line. We can
+use the affine commutation relations. We use $\widehat{q}$ and
+\begin{equation}
+\widehat{D} = \widehat{qp}.
+\end{equation}
+Classically we have
+\begin{equation}
+\{q,D\}=q,
+\end{equation}
+yet quantum mechanically,
+\begin{equation}
+[\widehat{q},\widehat{D}]=\I\hbar\widehat{q}.
+\end{equation}
+This is a different representation than the first set of commutators.
+
+We have
+\begin{equation}
+\E^{\I a\widehat{D}/\hbar}\widehat{q}\E^{-\I a\widehat{D}/\hbar} = \E^{a}\widehat{q}.
+\end{equation}
+So this $\widehat{D}$ operation is just dilation.
+
+This ought to be important since the ``position'' [in general
+  relativity] is the metric on a spatial hypersurface, it should be
+positive definite. In the naive way, we can get timelike directions or
+nondefinite values, etc. We probably ought to use affine commutators.
+
+(The Poisson bracket is unique. If we used the Heisenberg brackets, there
+would be an ordering problem, though not a serious one since we could
+use a symmetrized product.)
+
+\subsection{Quantization of Constrained Systems}
+
+In general, we have some action (we use $\action$ for the action since,
+in Euclidean quantum gravity, the action is minus the entropy and $S$ is
+used for entropy)
+\begin{equation}
+\action = \int L(q,\dot{q})\,\D t.
+\end{equation}
+In general, higher-order derivatives in the Lagrangian generically leads
+to unbounded energies. For a review paper on this, see:
+\begin{itemize}
+\item R.P.~Woodard,
+  ``Avoiding Dark Energy with $1/R$ Modifications of Gravity''.
+  \journal{Lect.~Notes Phys.} \volume{720} (2007) pp.403--433; \arXiv{astro-ph/0601672}.\\
+{\tt\doi{10.1007/978-3-540-71013-4_14}}
+\end{itemize}
+There are some exceptions, for example, when there are an infinite
+number of derivatives (but this is a sort of nonlocality, and there have
+been some papers recently on a nonlocal generalization of the
+Einstein--Hilbert action), or when we can integrate by parts to get to
+first-order. This is what happens with Einstein--Hilbert action.
+
+The action of a system with constraints looks like
+\begin{equation}
+\action = \int(L(q,\dot{q}) - \lambda C(q,\dot{q}))\,\D t,
+\end{equation}
+where $\lambda$ is the Lagrange multiplier and $C(q,\dot{q})$ is the
+constraint. By varying the action with respect to $\lambda$, we obtain a
+constraint on the initial data
+\begin{equation}
+C(q,\dot{q})=0.
+\end{equation}
+We can rewrite the action to take into account constraints; if there are
+no second-order time derivatives of certain variables, then there will
+be constraints.
+
+For general relativity, from the conservation laws, we have
+\begin{subequations}
+  \begin{align}
+    \nabla_{\mu}G^{\mu\nu} &= \partial_{\mu}G^{\mu\nu} + \dots\\
+    &= \partial_{t}G^{t\nu} + \partial_{i}G^{i\nu} + \dots.
+  \end{align}
+\end{subequations}
+This means that each term has to have one time derivative and one
+spatial derivative (in the Einstein tensor).
+
+We can look at it one way and say the space of initial data is smaller
+than we thought. Usually constraints ``generate'' gauge transformations,
+meaning we can look at it as:
+\begin{subequations}
+  \begin{align}
+    \delta q &= \{\varepsilon C,q\}\\
+    \delta p &= \{\varepsilon C,p\},
+  \end{align}
+\end{subequations}
+where $\varepsilon$ is an arbitrary function of time. This is a
+generator of canonical transformations. In general, they're gauge
+transformations.
+
+Here's the sketch of the basic idea (see Henneaux and Teitelboim's
+\emph{Quantization of Gauge Systems} for further details). We want to
+consider the variation of the action $\delta\action$. Let's consider the
+action in Hamiltonian form:
+\begin{equation}
+\action = \int(p\dot{q} - H -\lambda C)\,\D t.
+\end{equation}
+We often write
+\begin{equation}
+H^{*} := H + \lambda C,
+\end{equation}
+and refer to it as the ``Extended Hamiltonian''. Let's consider the
+variation of the kinetic term:
+\begin{subequations}
+  \begin{align}
+    \{\varepsilon C,p\dot{q}\}
+    &=\{\varepsilon C,p\}\dot{q} + p\frac{\D}{\D t}\{\varepsilon C,q\}\\
+    &=\left(\varepsilon \frac{\partial C}{\partial q}\right)\dot{q}
+       +p\frac{\D}{\D t}\left(-\varepsilon\frac{\partial C}{\partial p}\right)\\
+    &= \varepsilon \frac{\partial C}{\partial q}\dot{q}
+       -\frac{\D}{\D t}\left(\varepsilon p\frac{\partial C}{\partial p}\right)
+       +\varepsilon\frac{\partial C}{\partial p}\dot{p}\\
+    &= \varepsilon \left(\frac{\partial C}{\partial q}\dot{q}+\frac{\partial C}{\partial p}\dot{p}\right)
+       -\frac{\D}{\D t}\left(\varepsilon p\frac{\partial C}{\partial p}\right)\\
+    &= \varepsilon \frac{\D C}{\D t}
+       -\frac{\D}{\D t}\left(\varepsilon p\frac{\partial C}{\partial p}\right)\\
+    &= -\dot{\varepsilon}C
+       +\frac{\D}{\D t}\left(\varepsilon C - \varepsilon p\frac{\partial C}{\partial p}\right).
+  \end{align}
+\end{subequations}
+The next term we need to examine is $\{\varepsilon C,H\}$ which, in
+general, could be anything. If $C$ remains a constraint under time
+translations, then the bracket with the Hamiltonian $H$ is also a
+constraint. In general this is true, the commutator between the
+Hamiltonian and a constraint is another constraint. Let
+\begin{equation}
+\{H,C\}=vC
+\end{equation}
+where $v$ is some function, then
+\begin{equation}
+\{\varepsilon C,H\} = -\varepsilon vC.
+\end{equation}
+Putting all of this together, we find
+\begin{equation}\label{eq:2009-04-08:pb-of-constraint-and-lagrangian}
+  \{\varepsilon C, p\dot{q}-H-\lambda C\}
+  = -\dot{\varepsilon}C + \frac{\D}{\D t}\left(\varepsilon C - \varepsilon p\frac{\partial C}{\partial p}\right)
++\varepsilon vC-\{\varepsilon C,\lambda C\}.
+\end{equation}
+If
+\begin{equation}
+\delta\lambda = -(\dot{\varepsilon}-\varepsilon v),
+\end{equation}
+then the variation of the action is zero. This is because $\delta C
+=\{\varepsilon C,C\} = 0$, so
+\begin{equation}
+\{\varepsilon C,\lambda C\} = \{\varepsilon C,\lambda\}C = (\delta\lambda)C.
+\end{equation}
+Plugging this back into
+Eq~\eqref{eq:2009-04-08:pb-of-constraint-and-lagrangian} makes
+$\{\varepsilon C, p\dot{q}-H-\lambda C\}$ into a total derivative, which
+contributes nothing to the action.
+
+The moral of the story is that constraints generate gauge
+transformations and, in general (with the exception of some pathological
+counterexamples), the converse holds too. Note: if $\{C,C\}\propto C$,
+then the results still hold.
+
+Now we use the results, and generalize to multiple constraints. We need
+\begin{equation}
+\{C_{i},C_{j}\} = {f_{ij}}^{k}C_{k}
+\end{equation}
+where ${f_{ij}}^{k}$ are ``structure constants'' and these are called
+``first-class constraints''. (If we change Poisson brackets to
+commutators, these are the generators of the gauge algebra --- or, at
+least, the structure constants are those from the Lie algebra of the
+gauge group.)
+
+There are also ``second-class constraints'' which do not generate gauge
+transformations.
+
+There are various ways to handle constraints in the quantization
+process. There is a constraint surface in the phase space when the
+constraints are satisfied. We have this gauge invariance which
+takes\dots\marginpar{TODO: insert diagram from page 9 here}
+
+The space of orbits is what is interesting. We take the physical degrees
+of freedom by taking some subsurface which cuts through the phase space
+orbits only once for each orbit.
+
+There are times when a section may not contain an orbit (or some other
+unpleasant problem), which is the Gribov ambiguity.
+
+For electromagnetism, we have $A_{\mu}\to
+A_{\mu}+\partial_{\mu}\Lambda$.
+
+The approaches to quantizing (``canonically'') systems with constraints:
+
+\bigbreak
+\textbf{Approach 1:} Reduced phase space quantization, the recipe is:
+\begin{enumerate}
+\item Clasically solve the constraints.
+\item Choose a section (``gauge fix'').
+\item Insert into the action $\action$ and quantize.
+\end{enumerate}
+Part of the problem is that, well, sometimes solving the constraints
+is fairly hard. For example, for classical general relativity, we do
+not know the general solution for Einstein's field equations.
+
+A second problem is when fixing a gauge, when we jump to the third step,
+the resulting field is typically nonlocal. Consider electromagnetism. We
+have $A^{\mu}$ which is ambiguous, we could have
+\begin{equation}
+A^{\mu} = \widetilde{A}^{\mu} + \partial^{\mu}\Lambda.
+\end{equation}
+We can gauge fix using the Lorenz gauge
+$\partial_{\mu}\overline{A}^{\mu}=0$ for some gauge fixed potential
+$\overline{A}^{\mu}$. We can expand this to be:
+\begin{subequations}
+\begin{align}
+\partial_{\mu}\overline{A}^{\mu}
+&= \partial_{\mu}(A^{\mu} + \partial^{\mu}\Lambda)\\
+&=\partial_{\mu}A^{\mu} + \square\Lambda = 0.
+\end{align}
+\end{subequations}
+Then we have
+\begin{equation}
+\Lambda = -\square^{-1}\partial_{\mu}A^{\mu},
+\end{equation}
+and then
+\begin{equation}
+\overline{A}^{\mu} = A^{\mu} - \partial^{\mu}\square^{-1}\partial_{\nu}A^{\nu},
+\end{equation}
+or
+\begin{equation}
+A^{\mu} = \overline{A}^{\mu}  - \partial^{\mu}\square^{-1}\partial_{\nu}A^{\nu}.
+\end{equation}
+The second term on the right-hand side is horribly nonlocal. BRST says
+that sticking a differential gauge transformation back into the system
+when solved is illegal. There are particular cases when this works; but
+the more complicated the theory, the harder this approach becomes.
+
+\bigbreak
+\textbf{Approach 2:} Dirac quantization. The basic recipe is:
+\begin{enumerate}
+\item Quantize the whole system.
+\item Impose constraints as operator conditions. That is, we define the
+  physical states as
+  \begin{equation}
+\widehat{C}\mid\mbox{physical}\rangle = 0,
+  \end{equation}
+  the kernel of a ``constraint operator'' (or the intersection of
+  kernels of constraint operators). The states are automatically gauge
+  invariant this way.
+\item Define the inner product on physical states (intuitively: ``gauge
+  fixing the inner product''). How to do this is less obvious and usually hard.
+\item Find physical operators $\widehat{\mathcal{O}}_{\text{phys}}$ that take physical states to physical
+  states (so if one realizes this, then it's equivalent to the operators
+  which commutes with the constraints). That is, we need to find
+  \begin{equation}
+[\widehat{\mathcal{O}}_{\text{phys}},\widehat{C}]=0.
+  \end{equation}
+(For general relativity, these physical operators are in general
+  nonlocal and we don't know what they are.)
+\end{enumerate}
+
+\bigbreak\noindent\textbf{Example.}
+The parametrized particle. For a one-dimensional particle subjected to
+some potential, then
+\begin{equation}
+\action = \int(p\dot{q} - H)\,\D t.
+\end{equation}
+If we change $t$ to some monotonic function of time, then $p\dot{q}\,\D t$
+remains invariant \emph{but} the Hamiltonian contribution $H\,\D t$
+doesn't quite remain invariant. Let's define a parameter $\tau$ such
+that,
+\begin{equation}
+\action = \int\left(p\frac{\D q}{\D \tau} - H\frac{\D t}{\D\tau}\right)\D t.
+\end{equation}
+Let us write $q^{0}=t$ and $p_{0}=H$, so we can write the action as:
+\begin{equation}
+\action = \int\left(p_{\mu}\frac{\D q^{\mu}}{\D\tau}\right)\D\tau.
+\end{equation}
+But to do this, we observe $H=H(p,q)$, so we need to introduce a
+constraint:
+\begin{equation}
+\action = \int\left(p_{\mu}\frac{\D q^{\mu}}{\D\tau} - \lambda(p_{0}+H(p,q))\right)\D\tau.
+\end{equation}
+The constraint generates parametrization invariance under
+\begin{equation}
+\tau\to\tau+\delta\tau.
+\end{equation}
+So far, so good.
+
+The reduced phase space approach solves the constraint, which is
+trivially $p_{0}=-H$. We plug this back in:
+\begin{subequations}
+  \begin{align}
+    p_{\mu}\frac{\D q^{\mu}}{\D\tau}
+    &= p_{1}\frac{\D q^{1}}{\D\tau} + p_{0}\frac{\D q^{0}}{\D\tau}\\
+    &= p_{1}\frac{\D q^{1}}{\D\tau} + (-H)\frac{\D q^{0}}{\D\tau}.
+  \end{align}
+  We plug in our gauge-fixing $q^{0}=t$, then
+  \begin{equation}
+p_{\mu}\frac{\D q^{\mu}}{\D\tau}= p_{1}\frac{\D q^{1}}{\D\tau} + (-H)\frac{\D t}{\D\tau}.
+  \end{equation}
+\end{subequations}
+
+The Dirac approach where the wave function $\Psi[q^{\mu}]$, the
+commutators $[p_{\mu},q^{\nu}]=\I\hbar{\delta_{\mu}}^{\nu}$, the
+constraint operator is
+\begin{subequations}
+  \begin{align}
+    (\widehat{p}_{0}+\widehat{H}_{\text{phys}})\psi_{\text{phys}}
+    &= 0\\
+    &= \left(-\I\hbar\frac{\partial}{\partial q^{0}} + \widehat{H}_{\text{phys}}\right)\psi_{\text{phys}}.
+  \end{align}
+\end{subequations}
+We need to gauge fix the inner product
+\begin{equation}
+\begin{split}
+  \int\Psi^{*}_{1}(q^{\mu})\Psi_{2}(q^{\mu})\,\D q^{i}\D q^{0}
+  &=\int\langle\Psi_{1}\mid\Psi_{2}\rangle_{\text{phys}}\,\D t\\
+  &=\infty
+\end{split}
+\end{equation}
+where $\langle\Psi_{1}\mid\Psi_{2}\rangle_{\text{phys}}$ is the usual
+old-school inner product of quantum mechanics. This integral over time
+generates infinities, we use a rigged Hilbert space to define the inner
+product---roughly speaking, we ``divide out by infinity''.

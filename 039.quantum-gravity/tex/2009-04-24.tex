@@ -1,0 +1,74 @@
+\lecture
+
+Spacelike hypersurfaces defined by metric, but in general we don't know
+the metric in quantum gravity, so we're out of luck. (We are assuming
+that $\mathcal{M}=\mathbb{R}\times\Sigma$ where $\mathbb{R}$ is time,
+$\Sigma$ is a spatial 3-manifold, at least in the canonical approach.)
+Anyways, back to the Dirac approach.
+
+We're imposing the constraints as operators on the wave function. We
+interpret the momentum constraint
+\begin{equation}
+\widehat{\mathcal{H}}^{i}\Psi[q] = 0
+\end{equation}
+as telling us the wave function is invariant under spatial
+diffeomorphisms. We should be able to, at least have the urge to assume
+$\widetilde{H}$ is telling us the wave function is invariant under
+temporal diffeomorphism but realize that this is meaningless. We're on a
+spatial hypersurfaces, after all!
+
+The DeWitt supermetric\index{DeWitt Supermetric}\index{Supermetric}
+\begin{equation}
+G_{ijk\ell} = \frac{1}{2}\frac{1}{\sqrt{q}}(q_{ik}q_{j\ell} +
+q_{i\ell}q_{jk} - q_{ij}q_{k\ell}).
+\end{equation}
+This is like a metric of metrics. We have the deformation of a metric
+$\delta q^{ij}$ have the length
+\begin{equation}
+\|\delta q^{ij}\|^{2} = \int G_{ijk\ell}\delta q^{ij}\delta q^{k\ell}\,\D^{3}x.
+\end{equation}
+This defines the distance on the space of metrics. (The signature of the
+supermetric is $(-+++++)$, we take each pair of indices as a single
+index resulting in a 6-by-6 matrix.)
+
+We introduce
+\begin{equation}
+\widehat{\pi}^{ij}=-\I\frac{\delta}{\delta q_{ij}}.
+\end{equation}
+We plug it into the Hamiltonian constraint, and write:
+\begin{equation}
+\widehat{\mathcal{H}} = 16\pi G G_{ijk\ell}\frac{\delta}{\delta q_{ij}}\frac{\delta}{\delta q_{k\ell}}
++\frac{1}{16\pi G}\sqrt{q}\,{{}^{(3)}R}.
+\end{equation}
+Resist the urge to make the first term a Laplacian. The Ricci 3-scalar
+${{}^{(3)}R}$ is intuitively a sort of potential term, when viewed as a
+function of $q_{ij}$. So then we plug it back into
+\begin{equation}
+\widehat{\mathcal{H}}\Psi[q]=0.
+\end{equation}
+This is the Wheeler--DeWitt Equation.\index{Wheeler--DeWitt Equation}
+
+We need an inner product, wave functions alone do not suffice for a
+quantum theory. There are 2 obvious thing to try to do.
+
+The first thing, the ordinary Schrodinger picture using the 3-metric
+\begin{equation}
+\int\Psi^{*}\Phi\,[\D q] = \infty
+\end{equation}
+always since the Hamiltonian constraint, we need to gauge fix the inner
+product, like a path integral with some extra symmetry.
+
+\begin{itemize}
+\item R.~P.~Woodard,
+``Enforcing the Wheeler-de Witt Constraint the Easy Way''.
+\journal{Class.~Quant.~Grav.} \volume{10} (1993), 483--496.\\
+{\tt\doi{10.1088/0264-9381/10/3/008}}
+\end{itemize}
+
+We can think of $\widehat{\mathcal{H}}\Psi=0$ as a sort of Klein--Gordon
+equation, and the correct inner product there is:
+\begin{equation}
+\int\Psi^{*}\overleftrightarrow{\frac{\delta}{\delta q}}\Phi\,[\D q].
+\end{equation}
+There is some ambiguity here, we have a number of inner products since
+$\delta/\delta q$ is nonunique.
