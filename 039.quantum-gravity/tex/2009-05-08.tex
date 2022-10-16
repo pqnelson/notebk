@@ -2,3 +2,66 @@
 
 We need the spatial topology to not change, otherwise we can end up with
 a number of baby universes (``polymer topology'').
+
+Let us consider the simplest spin network, we need 2 nodes and 3
+edges. (If we had 2 edges, then we would obtain the identity spin
+network.)
+We don't have spin 0, as the propagator would be the identity.
+\begin{center}
+  \includegraphics{img/2009-05-08.1}
+\end{center}
+For each of these lines we have the Wilson line
+\begin{equation}
+\mathcal{U} = \mathcal{P}\exp[-\int A].
+\end{equation}
+We have three Wilson lines ${\mathcal{U}^{m_{1}}_{1}}_{n_{1}}$,
+${\mathcal{U}^{m_{2}}_{2}}_{n_{2}}$, and ${\mathcal{U}^{m_{3}}_{3}}_{n_{3}}$.
+Conceptually, the $\mathcal{U}$'s tell spin-$1/2$ objects rotate in spin
+space. We have $m_{1}=1/2, -1/2$ for spin up and spin down (respectively).
+We see $m_{2}$ also describes a spin-$1/2$ object, but $m_{3}$ describes
+a spin-1 object with possible values $m_{3}=-1,0,+1$. We can now use the
+Clebsch--Gordon coefficients $\langle j\,m\mid j_{1}\,m_{1}\,, j_{2}\,m_{2}\rangle$
+and find
+\begin{equation}
+  \sum_{\substack{m_{1},m_{2},m_{3}\\ n_{1},n_{2},n_{3}}}
+  {\mathcal{U}^{m_{1}}_{1}}_{n_{1}}{\mathcal{U}^{m_{2}}_{2}}_{n_{2}}{\mathcal{U}^{m_{3}}_{3}}_{n_{3}}
+\langle1\,m_{3}\mid\frac{1}{2}\,m_{1}\,\frac{1}{2}m_{2}\rangle
+\langle1\,n_{3}\mid\frac{1}{2}\,n_{1}\,\frac{1}{2}n_{2}\rangle,
+\end{equation}
+which is a function of $A$.
+
+We take a surface $\Sigma$, we can ask ``What is the area of the
+surface?'' Suppose we have some spin network that ``goes through'' our
+surface $\Sigma$:
+\begin{center}
+  \includegraphics{img/2009-05-08.2}
+\end{center}
+We won't consider an edge of the spin network ``grazing'' the surface,
+or lies inside the surface: we care about puncturing edges.
+
+We will only really consider a simple example choosing a surface where
+$x^{3}=0$, the area of the surface would be classically
+\begin{equation}
+A = \int\sqrt{{}^{(2)}g}\D^{2}x.
+\end{equation}
+We see
+\begin{equation}
+{}^{(2)}g = g_{11}g_{22} - 2(g_{12})^{2} = \widetilde{E}^{3}_{\widehat{I}} \widetilde{E}^{3\widehat{I}}.
+\end{equation}
+So the area is
+\begin{equation}
+A = \int\sqrt{\widetilde{E}^{3}_{\widehat{I}} \widetilde{E}^{3\widehat{I}}}\D^{2}x.
+\end{equation}
+Consider a more general surface with coordinates $\sigma^{1}$, $\sigma^{2}$.
+Then our considerations change by
+\begin{equation}
+\widetilde{E}^{3}_{\phantom{3}\widehat{I}}\to\epsilon_{ijk}\frac{\partial x^{i}}{\partial\sigma^{1}}\frac{\partial x^{j}}{\partial\sigma^{2}}\widetilde{E}^{k}_{\phantom{k}\widehat{I}}.
+\end{equation}
+In the classical arena, the criteria for a ``small region'' is not
+really well-defined; in the quantum arena, we just require a single
+piercing of a spin network with the surface.\marginpar{\includegraphics{img/2009-05-08.3}} We can turn this now into an
+operator
+\begin{equation}
+\widetilde{E}_{\widehat{I}} = -8\pi G_{N}\immirzi\int\epsilon_{ijk}\frac{\partial x^{i}}{\partial\sigma^{1}}\frac{\partial x^{j}}{\partial\sigma^{2}}\frac{\delta}{\delta
+A^{\widehat{I}}_{k}}\,\D\sigma^{1}\D\sigma^{2}.
+\end{equation}

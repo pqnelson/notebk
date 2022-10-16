@@ -273,4 +273,126 @@ beginfig(3)
   label(btex $\neq$ etex, (2R,0));
 endfig;
 
+outputtemplate := "2009-05-08.%c";
+beginfig(0);
+  path p[];
+  p0 = halfcircle xscaled 8u yscaled 4u;
+  p1 = (-4u,0)--(4u,0);
+  p2 = halfcircle rotated 180 xscaled 8u yscaled 4u;
+
+  draw p0; draw p1; draw p2;
+  label(btex $\bullet$ etex, (-4u,0));
+  label(btex $\bullet$ etex, (4u,0));
+
+  label.top(btex $c_{1}$ etex, point (0.25*length(p0)) of p0);
+  label.top(btex $c_{2}$ etex, point (0.7*length(p1)) of p1);
+  label.bot(btex $c_{3}$ etex, point (0.75*length(p2)) of p2);
+endfig;
+
+beginfig(1);
+  path p[];
+  p0 = halfcircle xscaled 8u yscaled 4u;
+  p1 = (-4u,0)--(4u,0);
+  p2 = halfcircle rotated 180 xscaled 8u yscaled 4u;
+
+  draw p0; draw p1; draw p2;
+  label(btex $\bullet$ etex, (-4u,0));
+  label(btex $\bullet$ etex, (4u,0));
+
+  label.top(btex $1/2$ etex, point (0.5*length(p0)) of p0);
+  label.bot(btex $1/2$ etex, point (0.5*length(p1)) of p1);
+  label.bot(btex $1$ etex, point (0.5*length(p2)) of p2);
+  label.top(btex $c_{1}$ etex, point (0.25*length(p0)) of p0);
+  label.top(btex $c_{2}$ etex, point (0.7*length(p1)) of p1);
+  label.bot(btex $c_{3}$ etex, point (0.75*length(p2)) of p2);
+endfig;
+
+beginfig(2);
+  numeric i;
+  path p[];
+  path sheet[];
+  z0 = (u,0);
+  z1 = (-2u,-u);
+  z2 = (-3u,u);
+  z3 = 2*z2; % (-6u,2u);
+  z5 = 2*z1; % (-4u,-2u);
+  z4 = 0.5[z3,z5];
+  z6 = (-2u + xpart z3, ypart z1); % (-8u,-u);
+  p0 = z0--z1;
+  p1 = z0--z2;
+  p2 = z1--z2;
+  p3 = z2--z3;
+  p4 = z2--z4;
+  p5 = z3--z4;
+  p6 = z4--z1;
+  p7 = z4--z5;
+  p8 = z1--z5;
+  p9 = z5--z6;
+  p10 = z3--z6;
+
+  p11 = z0--(2u,(u/4));
+  p12 = z0--(2u,(-u/3));
+
+  sheet[0] = (u,3u)..(-0.5u,1.75u)..(-u,-2u);
+  sheet[1] = (-u,-2u)--(u,-4u)--(3u,u)--(u,3u);
+  % draw (p0 cutafter sheet0); % dashed evenly;
+  % draw (p1 cutafter sheet0); % dashed evenly;
+  numeric t[]; numeric dt; dt := 0.04;
+  t[0] = xpart (p0 intersectiontimes sheet0);
+  t[1] = xpart (p1 intersectiontimes sheet0);
+  draw (subpath (0,t0-dt) of p0) dashed evenly;
+  draw (subpath (0,t1-0.5dt) of p1) dashed evenly;
+  draw (subpath (t0+dt,length(p0)) of p0);
+  draw (subpath (t1+dt,length(p1)) of p1);
+  % draw (p1 cutbefore sheet0);
+
+  label(btex $\Sigma$ etex, (u,-2u));
+
+  for i=2 upto 12:
+    draw p[i];
+  endfor;
+  for i=0 upto 6:
+    label(btex $\bullet$ etex, z[i]);
+  endfor;
+ % draw sheet0 withpen pencircle scaled 6 withcolor white;
+  draw sheet0;
+  draw sheet1;
+endfig;
+beginfig(3);
+  numeric i;
+  path p[];
+  path sheet[];
+
+  z0 = (0,0);
+  % z1 = (4u,2u);
+%  z2 = (6u,0);
+  z1 = (3u,u);
+  z2 = (5u,-u);
+  z3 = (2u,-2u);
+
+  z4 = (u,0);
+  p0 = quartercircle xscaled 4u yscaled 6u;
+  p1 = (quartercircle rotated -90) xscaled 4u yscaled 6u;
+  sheet0 = z0--z1;
+  sheet1 = z0--z3;
+  sheet2 = z3--z2;
+  sheet3 = z1--z2;
+
+  numeric t[]; numeric dt; dt := 0.08;
+  t0 = ypart (p0 intersectiontimes sheet0);
+  t1 = xpart (p1 intersectiontimes sheet1);
+
+  p2 = subpath (0,t1-1.5dt) of p1;
+  p3 = subpath (t1+dt,length(p1)) of p1;
+  sheet4 = subpath (0,t0-dt) of sheet0;
+  sheet5 = subpath (t0+dt,length(sheet0)) of sheet0;
+  for i=1 upto 5:
+    draw sheet[i];
+  endfor;
+  draw p0;
+  draw p2;
+  draw p3 dashed evenly;
+  label(btex $\bullet$ etex, point (length(p3)) of p3);
+  label.urt(btex $j$ etex, point (0.5*length(p0)) of p0);
+endfig;
 end;
