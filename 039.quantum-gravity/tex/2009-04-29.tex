@@ -1,0 +1,276 @@
+\lecture
+
+For reduced phase space quantization, we are left with one horrible
+equation---as opposed to many horrible equations in the Dirac approach.
+
+There's also the problem that we chose $t=-K$. It's sometimes not the
+obvious choice for certain problems, for example the Schwarzschild
+solution is completely scary. Do we get different quantum theories with
+different time slicings? We don't know, this is kind of an anomaly
+problem---is the quantum theory generally covariant in the reduced phase
+space approach?
+
+The Dirac approach has a few problems. We need to gauge fix the inner
+product, but in practice we don't know how to do this. Another problem
+is that the Wheeler-DeWitt equation has a piece that looks like the
+product of two functional derivatives at a point, and this results in a
+$\delta(0)$ contribution. This is a standard problem in quantum field
+theory, regularization is needed. We could regulate it in theory as
+\begin{equation}
+\frac{\delta}{\delta g(x)}\frac{\delta}{\delta g(x')}\to
+\frac{\delta}{\delta g(x)}K_{\varepsilon}(x,x')\frac{\delta}{\delta g(x')}
+\end{equation}
+where $K_{\varepsilon}(x,x')$ is some regulator invariant under spatial
+diffeomorphisms, preserves the Poisson brackets, and becomes a $\delta$
+function. No one has a proof that results are independent of how we
+regulate. It could be possible it makes sense, we just don't know enough
+about functional differential equations.
+
+Even if this all worked out, the problem remains how to make sense of
+basic variables. We have physical states be annihilated by the
+constraints
+\begin{equation}
+\widehat{\mathcal{H}}\Psi_{\text{phy}}=0.
+\end{equation}
+We want a physical operator $\widehat{\mathcal{O}}$ to map physical
+states to physical states
+\begin{equation}
+\widehat{\mathcal{O}}\Psi_{\text{phy}}=\Psi_{\text{phy}}'.
+\end{equation}
+This requires
+\begin{equation}
+[\widehat{\mathcal{H}},\widehat{\mathcal{O}}]\approx 0.
+\end{equation}
+We know no operators that do this. There have been proofs that such
+operators are necessarily nonlocal, which we don't know how to deal
+with. There's been work by some to make the Hamiltonian constraint
+``almost local''.
+
+This is where things stood roughly in the 1980s. There are some
+simplified models where the Wheeler-DeWitt equation simplifies, just
+freeze out degrees of freedom, very simplified settings. The
+Wheeler-DeWitt equation becomes an ordinary differential equation.
+
+In the early 1980s, two new approaches emerged:
+\begin{enumerate}
+\item Loop Quantum Gravity (which sought to simplify the Wheeler-DeWitt
+  equation), and
+\item String Theory (possibly contains quantum gravity).
+\end{enumerate}
+Then in the 1990s there was a new approach called dynamical
+triangulations. We'll cover these three for the rest of the quarter.
+
+\subsection{Loop Quantum Gravity}
+
+We'll begin with gravity in the first-order formulation; i.e., a
+tetrad/vierbein/frame field ${e^{I}}_{\mu}$. The capital Latin indices
+track the basis vector, the Greek indices track the components of the
+vector. We have
+\begin{equation}
+g^{\mu\nu}{e^{I}}_{\mu}{e^{J}}_{\nu}=\eta^{IJ}.
+\end{equation}
+It follows that
+\begin{equation}
+\eta_{IJ}{e^{I}}_{\mu}{e^{J}}_{\nu} = g_{\mu\nu}.
+\end{equation}
+We have an additional symmetry: local Lorentz symmetry.
+
+Given such a tetrad, we can introduce the covariant derivative
+\begin{equation}
+\nabla_{\mu}A^{I} = \partial_{\mu}A^{I} + {{\omega_{\mu}}^{I}}_{J}A^{J},
+\end{equation}
+where ${{\omega_{\mu}}^{I}}_{J}$ is the spin connection.\index{Spin Connection}
+Spin connections came about when people tried to introduce the spinor to
+general relativity. We could demand metric compatibility to specify the
+spin connection. The notation gets difficult, but let
+$\widetilde{\nabla}_{\mu}$ be th eordinary covariant derivative for
+tensors. The demand is that
+\begin{equation}
+\widetilde{\nabla}_{\mu}{e_{\nu}}^{J} +
+          {{\omega_{\mu}}^{I}}_{J}{e_{\nu}}^{J} = 0
+\end{equation}
+determines the spin connection $\omega$ in terms of the frame $e$ and
+Christoffel connection.
+
+We can now do ordinary general relativity with this. So
+\begin{equation}
+[\nabla_{\mu},\nabla_{\nu}]A^{I} = {{R_{\mu\nu}}^{I}}_{J}A^{J},
+\end{equation}
+where
+\begin{equation}
+{{R_{\mu\nu}}^{\alpha}}_{\beta}{e^{I}}_{\alpha}{e_{J}}^{\beta} = {{R_{\mu\nu}}^{I}}_{J}.
+\end{equation}
+We write
+\begin{equation}
+A^{I} = {e_{\mu}}^{I}A^{\mu},
+\end{equation}
+and by our specification of the covariant derivative (specifically, the
+spin connection) permits us to write the commutator.
+
+The Einstein field equations are derived from the action:
+\begin{equation}
+\action_{EH} = \frac{1}{16\pi G}\int|e|e^{\mu I}e^{\nu J}R_{\mu\nu I J}\,\D^{4}x,
+\end{equation}
+where $|e| = \det|{e_{\mu}}^{I}|=\sqrt{-g}$ is the determinant of the
+tetrad. We can express $R$ in terms of the spin connection, computed
+directly from the commutator, as:
+\begin{equation}
+  {{R_{\mu\nu}}^{I}}_{J} = \partial_{\mu}{{\omega_{\nu}}^{I}}_{J}
+  +{{\omega_{\mu}}^{I}}_{K}{{\omega_{\nu}}^{K}}_{J} - (\mu\leftrightarrow\nu).
+\end{equation}
+We can also treat the tetrad and connection as independent variables.
+This isn't new: Palatini showed this holds for the metric and $\Gamma$
+back in the 1930s.
+
+The variation of the action, when treating tetrad and connection as
+independent variables, gives us:
+\begin{equation}
+  \begin{split}
+    \delta e: &\qquad e^{\nu I}R_{\mu\nu I J} = 0 = R_{\mu J}\\
+    \delta\omega : &\qquad \nabla_{\mu}(e(e^{\mu I}e^{\nu J} - e^{\mu J}e^{\nu I})) = 0.
+  \end{split}
+\end{equation}
+(The second variation is just the same as $\nabla^{\text{total}}_{\mu}{e_{\nu}}^{J}=0$.)
+The Wheeler-DeWitt equation isn't more interesting, difficult, or
+simple. But we can do interesting stuff!
+
+We can write this in terms of forms
+\begin{subequations}
+\begin{align}
+  e^{I} &= {e_{\mu}}^{I}\,\D x^{\mu},\\
+  {\omega^{I}}_{J} &= {{\omega_{\mu}}^{I}}_{J}\,\D x^{\mu}.
+\end{align}
+\end{subequations}
+We can write down the curvature 2-form
+\begin{equation}
+{\mathcal{R}^{I}}_{J} = \D{\omega^{I}}_{J} + {\omega^{I}}_{K}\wedge{\omega^{K}}_{J}.
+\end{equation}
+The action becomes (up to some sign error):
+\begin{equation}
+\action = \pm\frac{1}{64\pi G}\int\epsilon_{IJKL}e^{I}\wedge e^{J}\wedge\mathcal{R}^{KL}.
+\end{equation}
+This makes it \emph{look} neater.
+
+Let us call
+\begin{equation}
+\mathcal{B}^{IJ} := e^{I}\wedge e^{J}.
+\end{equation}
+Then the action looks like
+\begin{equation}
+\action = \int\epsilon_{IJKL}\mathcal{B}^{IJ}\wedge\mathcal{R}^{KL}.
+\end{equation}
+We impose the condition $\mathcal{B}^{IJ} = e^{I}\wedge e^{J}$ (e.g.,
+$\mathcal{B}^{IJ}\wedge\mathcal{B}^{KL} = e\varepsilon^{IJKL}$). The
+converse (having $\mathcal{B}^{IJ}$ defined  by the condition
+$\mathcal{B}^{IJ}\wedge\mathcal{B}^{KL} = e\varepsilon^{IJKL}$) is
+\emph{almost} true. We then have:
+\begin{equation}
+  \action = \frac{1}{64\pi G}\int\left(
+  \underbrace{\epsilon_{IJKL}\mathcal{B}^{IJ}\wedge\mathcal{R}^{KL}}_{\text{a ``BF'' theory}}
+  + \phi_{IJKL}\underbrace{(\mathcal{B}^{IJ}\wedge\mathcal{B}^{KL} - e\varepsilon^{IJKL})}_{\text{constraint}}
+  \right),
+\end{equation}
+and the $\phi_{IJKL}$ are Lagrange multipliers. If we didn't have tje
+constraint, we'd have a flat spacetime with a sort of gauge theory
+living on it. % (This is where topological QFT comes into play methinks.)
+
+So writing things in new variables suggests new approaches.
+Let us try some new variables.
+
+\subsection{Self-Dual 2-Forms}
+
+First, we define a $*$ operator on a 2-form:
+\begin{subequations}
+\begin{align}
+F^{*}_{IJ} &= \frac{-\I}{2}\epsilon_{IJKL}F^{KL},\\
+F^{**} &= F,
+\end{align}
+\end{subequations}
+where $F_{[IJ]}=0$ (i.e., $F$ is antisymmetric). So this is a dual of
+$F$ (there are many notions of ``duality''). We say $F$ is
+\define{Self-Dual} if
+\begin{equation}
+F^{*}=F,
+\end{equation}
+and $F$ is \define{Anti-Self-Dual} if
+\begin{equation}
+F^{*}=-F.
+\end{equation}
+We can write, for an arbitrary 2-form $F$,
+\begin{equation}
+F^{\pm IJ} = \frac{1}{2}\left(F^{IJ}\pm F^{* IJ}\right).
+\end{equation}
+We can define a self-dual connection,
+\begin{equation}
+{A_{\mu}}^{IJ} = \frac{1}{2}\left({\omega_{\mu}}^{IJ} - \frac{\I}{2}{\epsilon^{IJ}}_{KL}{\omega_{\mu}}^{KL}\right).
+\end{equation}
+We define the self-dual curvature as:
+\begin{subequations}
+\begin{align}
+{F_{\mu\nu}}^{IJ}
+&= \partial_{\mu}{A_{\nu}}^{IJ} + {A_{\mu}}^{I}_{K}{A_{\nu}}^{KL} - (\mu\leftrightarrow\nu)\\
+&= \frac{1}{2}({R_{\mu\nu}}^{IJ} + {R_{\mu\nu}}^{IJ*}).
+\end{align}
+\end{subequations}
+We complexified, doubling the degrees of freedom, roughly speaking the
+self-dual and antiself-dual splits the degrees of freedom.
+
+The Ashtekar--Sen Action is then:
+\begin{equation}
+\action_{AS} = \frac{1}{8\pi G}\int e e^{\mu I}e^{\nu J}F_{\mu\nu IJ}\,\D^{4}x.
+\end{equation}
+By treating the self-dual connection as separate [independent] from the
+tetrad, we get the Einstein field equations. (There is actually an extra
+term like $\sim e^{\mu I}e^{\nu J}{R_{\mu\nu}}^{KL} = \epsilon_{IJKL}R^{IJKL}=0$.)
+The constraints simplify \emph{dramatically}.
+
+We need to have \define{Reality Conditions} so we don't have anything
+imaginary. Classically, they are:
+\begin{subequations}
+\begin{align}
+{\omega_{\mu}}^{IJ} &= {A_{\mu}}^{IJ} + {A_{\mu}}^{IJ*}\\
+\frac{-\I}{2}{\epsilon^{IJ}}_{KL}{\omega_{\mu}}^{KL}
+&={A_{\mu}}^{IJ} - {A_{\mu}}^{IJ*}\\
+&=\frac{-\I}{2}{\epsilon^{IJ}}_{KL}({A_{\mu}}^{IJ} + {A_{\mu}}^{IJ*}).
+\end{align}
+\end{subequations}
+The statement is that
+\begin{equation}
+{A_{\mu}}^{IJ} - {A_{\mu}}^{IJ*} = \frac{-\I}{2}{\epsilon^{IJ}}_{KL}({A_{\mu}}^{IJ} + {A_{\mu}}^{IJ*}).
+\end{equation}
+This is a second-class condition, which relates the real and imaginary
+parts of the connection.
+
+Given the change of variables to the Ashtekar--Sen action, we can do a
+$3+1$ dimensional split. We will introduce new indices ($\widehat{I}$,
+$\widehat{J}$, \dots = 1, 2, 3) for tetrad indices and ($i$, $j$, \dots =
+1, 2, 3) for coordinate indices. Let's look at the components:
+\begin{subequations}
+\begin{align}
+{A_{\mu}}^{0\widehat{L}} &= \frac{1}{2\I}{\epsilon^{0\widehat{L}}}_{\widehat{I}\widehat{J}}{A_{\mu}}^{\widehat{I}\widehat{J}}=\frac{1}{2\I}{A_{\mu}}^{\widehat{L}},\\
+{A_{\mu}}^{\widehat{I}\widehat{J}} &= \frac{1}{2}{\epsilon_{0}}^{\widehat{I}\widehat{J}\widehat{K}}A_{\mu\widehat{L}}.
+\end{align}
+\end{subequations}
+If we went back to the original spin connection, we find it is related
+to the extrinsic curvature\index{Spin Connection!And Extrinsic Curvature}
+\begin{equation}
+{\omega_{i}}^{0\widehat{I}} = {K_{i}}^{\widehat{I}}.
+\end{equation}
+We can define
+\begin{equation}
+{\Gamma_{i}}^{\widehat{I}} = \frac{1}{2}{\epsilon_{0}}^{\widehat{I}\widehat{J}\widehat{K}}\omega_{i\widehat{J}\widehat{K}},
+\end{equation}
+which is basically the connection on the spatial hypersurface ignoring
+the embedding. We do this so we can write the self-dual connection as
+\begin{align}
+{A_{i}}^{\widehat{I}} &= {\Gamma_{i}}^{\widehat{I}} + \I{K_{i}}^{\widehat{I}} \\
+&= \begin{pmatrix}\mbox{Ordinary Connection}\\
+\mbox{On the Slice}\end{pmatrix} + \I\begin{pmatrix}\mbox{Extrinsic Curvature}\\
+\mbox{On the Slice}\end{pmatrix}\nonumber
+\end{align}
+We can generalize, letting $\immirzi$ be ``some parameter''
+\begin{equation}
+A^{(\immirzi)\widehat{I}}_{i} =  {\Gamma_{i}}^{\widehat{I}} + \immirzi{K_{i}}^{\widehat{I}}
+\end{equation}
+where $\immirzi$ is the \define{Immirzi--Barbero Parameter}. The
+self-dual connection is really just a canonical transformation.

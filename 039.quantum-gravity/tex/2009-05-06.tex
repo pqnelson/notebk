@@ -1,0 +1,129 @@
+\lecture
+
+Consider a wave functional $\Psi[\varphi(x)]$ in a Schrodinger type
+picture in quantum field theory. Consider infinitesimal deformations of
+the field
+\begin{equation}
+\Psi[\varphi(x)+\varepsilon(x)] = \Psi[\varphi(x)] + \int\frac{\delta\Psi}{\delta\varphi}(x_{1})\varepsilon(x_{1})\,\D^{n}
+x_{1} + \bigOh(\varepsilon^{2}).
+\end{equation}
+If the field is invariant under $\varphi\to\varphi+\widetilde{\varepsilon}$,
+then
+\begin{equation}
+\Psi[\varphi+\widetilde{\varepsilon}\,]=\Psi[\varphi],
+\end{equation}
+and moreover
+\begin{equation}
+\int\frac{\delta\Psi}{\delta\varphi}(x_{1})\widetilde{\varepsilon}(x_{1})\,\D^{n} x_{1} = 0.
+\end{equation}
+This is useful for computing vacuum expectation values.
+
+Suppose we have a constraint. For us, we have the Gauss Law constraint
+\begin{equation}
+D_{i}\widetilde{E}^{i\widehat{I}}
+=\partial_{i}\widetilde{E}^{i\widehat{I}} + \epsilon^{\widehat{I}\widehat{J}\widehat{K}}A_{i\widehat{J}}\widetilde{E}^{i}_{\phantom{i}\widehat{K}}=0,
+\end{equation}
+where in the Schrodinger picture we have,
+\begin{equation}
+\widetilde{E}^{i\widehat{I}} = -8\pi\immirzi G_{N}\hbar\frac{\delta}{\delta A_{i\widehat{I}}}.
+\end{equation}
+The constraint is linear in functional derivatives. What we can do is
+look at the integral of the constraint against a test function,
+\begin{equation}
+\int\lambda_{\widehat{I}}D_{i}\widetilde{E}^{i\widehat{I}}\,\D^{n}x=0.
+\end{equation}
+If this is true for arbitrary $\lambda_{\widehat{I}}$, then integration
+by parts
+\begin{equation}
+\int\lambda_{\widehat{I}}D_{i}\widetilde{E}^{i\widehat{I}}\,\D^{n}x
+= 8\pi G_{N}\hbar\immirzi\int
+D_{i}\lambda_{\widehat{I}}\frac{\delta}{\delta A_{i\widehat{I}}}\,\D^{n}x.
+\end{equation}
+Our constraint is then, when applied to a wave functional,
+\begin{equation}
+8\pi G_{N}\hbar\immirzi\int
+D_{i}\lambda_{\widehat{I}}\frac{\delta}{\delta A_{i\widehat{I}}}\,\D^{n}x\,\Psi[A]=0.
+\end{equation}
+This is the first term in a Taylor expansion
+\begin{equation}
+\Psi[{A_{i}}^{\widehat{I}} + D_{i}\lambda^{\widehat{I}}] = \Psi[{A_{i}}^{\widehat{I}}].
+\end{equation}
+We can also have gauge transformations not built up from infinitesimal
+transformations (e.g., time reversal) called \define{Large Gauge Transformations}.
+
+We get to the Wilson line (a.k.a., the parallel propagator), we have the
+holonomy
+\begin{equation}
+\mathcal{U}^{\widehat{J}}_{\phantom{J}\widehat{K}}
+  = \mathcal{P}\exp\left[-\int_{C}A_{i}^{\phantom{i}\widehat{J}}{{\epsilon_{\widehat{I}}}^{\,\widehat{J}}}_{\!\widehat{K}}\, \D x^{i}\right],
+\end{equation}
+or suppressing indices and letting $\tau_{\widehat{I}}$ be the
+generators of the gauge algebra,
+\begin{equation}
+\mathcal{U}
+= \mathcal{P}\exp\left[-\int_{C}A_{i}^{\phantom{i}\widehat{I}}\tau_{\widehat{I}}\, \D x^{i}\right].
+\end{equation}
+Observe this transforms under change of ``coordinates'' as
+\begin{equation}
+\mathcal{U}\to g^{-1}(s_{2})\,\mathcal{U}\, g(s_{1}).
+\end{equation}
+We wish to construct invariants, so we construct closed loops then take
+the trace of the holonomy $\mathcal{U}$ over the loop. This is an
+overcomplete set of variables.
+
+\begin{wrapfigure}{R}{7pc}
+\centering\vskip-1pc
+\includegraphics{img/2009-05-06.0}
+\end{wrapfigure}
+The way out is to consider the intersection, as doodled to the right.
+We wish to consider this in detail. Give each edge of the graph
+depicting the intersection a representation of $\SU(2)$.
+We assign the vertex a Clebsch-Gordon coefficient. If we generalize this
+to $n$-edges meeting at a vertex, we can use an intertwiner instead of a
+Clebsch--Gordon coefficient. For $\SU(2)$, we have a neatway to combine
+things as vertices:
+\begin{center}
+  \includegraphics{img/2009-05-06.1}
+\end{center}
+This works for $\SU(2)$, it may not necessarily work for an arbitrary
+gauge group. So in short:
+\begin{itemize}
+\item At each node, we have an intertwiner;
+\item At each edge, we have a representation of $\SU(2)$.
+\end{itemize}
+
+\begin{wrapfigure}{l}{8pc}
+\centering %\vskip-1pc
+\includegraphics{img/2009-05-06.2}
+\end{wrapfigure}
+The spin network (generically doodled to the left) gives a complete (but
+not overcomplete) basis of states. Loop quantum gravity theorists like
+to say a spin network is a state. What they mean is: the spin network is
+a function of the connection $A$, which is all a state \emph{is} in
+quantum gravity. A spin network eats in a value of $A$ and spits out a
+complex number. One could use this for computation in, e.g., QCD (this
+is group field theory).
+
+We don't need a smooth connection, we can \emph{generalize} the
+connection so it gives Wilson lines along finite parts of space (it
+could be only where the edges are in fact). If we take the space of all
+connections modulo gauge transformations, and complete it (so it's a
+Hilbert space), then that's the Hilbert space we use.
+
+Since a spin network is a state, we should probably define an inner
+product between two spin networks. We should consider the usual way to
+define the inner product on the Hilbert space just described as
+something like
+\begin{equation}
+\langle\Psi\mid\Phi\rangle\sim\int_{\mathcal{A}/\mathcal{G}}\Psi^{*}[A]\Phi[A]\,[\D A].
+\end{equation}
+This is the only gauge-invariant inner product. We can get close to a
+delta function, specifying geomtries down to the Planck length, using
+weave states.
+
+\bigbreak
+Note: the spin networks doodled below,
+\begin{center}
+  \includegraphics{img/2009-05-06.3}
+\end{center}
+are distinct, since the lines are Wilson lines, the integral \emph{changes}.

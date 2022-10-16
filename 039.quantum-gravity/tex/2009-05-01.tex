@@ -1,0 +1,240 @@
+\lecture
+
+(Remark: If we can write the constraints in two independent groups, then
+we can do a mixture of Dirac quantization and reduced phase-space
+quantization.)
+
+Last time we ended up with a kind of gauge-like field,
+\begin{equation}
+A^{(\immirzi)\widehat{I}}_{i} =  {\Gamma_{i}}^{\widehat{I}} + \immirzi{K_{i}}^{\widehat{I}}.
+\end{equation}
+We can write this gauge-like field in terms of the spin connection as:
+\begin{equation}
+A^{(\immirzi)\widehat{I}}_{i} =  \frac{1}{2}\epsilon^{0\widehat{I}\widehat{J}\widehat{K}}\omega_{i\widehat{J}\widehat{K}}
++\immirzi {\omega_{i}}^{0\widehat{I}}.
+\end{equation}
+We can think of this as a canonical transformation. In the ADM
+formalism, ${K_{i}}^{\widehat{I}}$ is more or less the canonical
+conjugate momentum, and we're adding some terms involving derivatives of
+the tetrad to it.
+
+The next step is slightly dodgy, but makes the math easier. We gauge fix
+Lorentz-boosts:
+\begin{equation}
+{e^{t}}_{\widehat{I}}=0.
+\end{equation}
+If we don't do this, then we get second-class constraints. This may give
+a different representation (there is some evidence of it yielding a
+different representation\footnote{Unfortunately, I didn't ask for
+references on this.}). We can now define
+\begin{subequations}
+\begin{align}
+{e^{t}}_{\widehat{0}} &= 1/\lapse\\
+{e^{i}}_{\widehat{0}} &= -\shift^{i}/\lapse,
+\end{align}
+\end{subequations}
+where $\lapse$ is the Lapse function and $\shift^{i}$ is the shift function
+both from the ADM formalism.We have
+\begin{equation}
+q^{ij} = {e^{i}}_{\widehat{I}}e^{j\widehat{I}},
+\end{equation}
+so we can write
+\begin{subequations}
+\begin{align}
+g^{ij} &= q^{ij} - \frac{\shift^{i}\shift^{j}}{\lapse^{2}}\\
+  &={e^{i}}_{\widehat{0}}e^{j\widehat{0}} + {e^{i}}_{\widehat{I}}e^{j\widehat{I}}.
+\end{align}
+\end{subequations}
+With this gauge fixing, we recover the ADM decomposition of the metric.
+
+\begin{notation}
+  Let's define
+  \begin{equation}
+{\widetilde{E}^{i}}_{\widehat{I}} := \sqrt{q}{e^{i}}_{\widehat{I}}.
+  \end{equation}
+It is a tensor density, and it is a triad on a spatial hypersurface.
+\end{notation}
+
+Given all of this, we can go back to the Einstein--Hilbert action, do
+all the computations, we find:
+\begin{equation}
+  \action = \frac{1}{8\pi G}\int\left(
+  \frac{1}{\immirzi}{A_{i}}^{\widehat{I}}\frac{\D}{\D t} {{\widetilde{E}}^{i}}_{\phantom{i}\widehat{I}}
+-\underbrace{\I A_{0\widehat{I}}G^{\widehat{I}} + \I\shift^{i}V_{i} - \frac{1}{2}\frac{\lapse}{\sqrt{q}}S}_{\text{constraints}}
+  \right)\,\D^{3}x\,\D t.
+\end{equation}
+If we didn't impose our gauge-fixing condition, we'd have a more
+complicated constraint algebra and one more constraint. Now, let us
+examine these constraints:
+\begin{enumerate}
+\item We have $G^{\widehat{I}} = D_{i}\widetilde{E}^{i\widehat{I}}$
+  where $D_{i}$ is the gauge covariant derivative treating this as a
+  gauge theory.
+\item $V_{j} = \widetilde{E}^{i}_{\phantom{i}\widehat{I}}{F_{ij}}^{\widehat{I}}$
+  where ${F_{ij}}^{\widehat{I}} = \partial_{i}{A_{j}}^{\widehat{I}} - \partial_{j}{A_{i}}^{\widehat{I}}+\epsilon^{\widehat{I}\widehat{J}\widehat{K}}A_{i\widehat{J}}A_{j\widehat{K}}$.
+  (This should ring a bell as the field strength tensor for a nonabelian
+  gauge theory.) Observe these two do not involve the Immirzi parameter
+  $\immirzi$ directlry.
+\item The remaining constraint is a monster:
+  \begin{equation}
+S = \epsilon^{\widehat{I}\widehat{J}\widehat{K}}\widetilde{E}^{i}_{\widehat{I}}\widetilde{E}^{j}_{\widehat{J}}F_{ij\widehat{K}}
+-2\left(\frac{1+\immirzi^{2}}{\immirzi^{2}}\right)\widetilde{E}^{i}_{[\widehat{I}}\widetilde{E}^{j}_{\widehat{J}]}(A^{(\immirzi)\widehat{I}}_{i}-\Gamma_{i}^{\phantom{i}\widehat{I}})
+(A^{(\immirzi)\widehat{J}}_{j}-\Gamma_{j}^{\phantom{j}\widehat{J}}).
+  \end{equation}
+  The factor of $A^{(\immirzi)\widehat{I}}_{i}-\Gamma_{i}^{\phantom{i}\widehat{I}}$
+  should remind us of the extrinsic curvature.
+\end{enumerate}
+
+Let us consider the Poisson brackets of quantities.
+\begin{equation}
+\{\widetilde{E}^{i}_{\widehat{I}}(x),A^{(\immirzi)\widehat{J}}_{j}(x')\}
+= -8\pi G\immirzi{\delta_{\widehat{I}}}^{\widehat{J}}\widetilde{\delta}^{(3)}(x-x').
+\end{equation}
+If we look at this as a nonabelian gauge theory, the Poisson bracket
+looks like an electric field and potential. The constraint
+$D_{i}\widetilde{E}^{i\widehat{I}}=G^{\widehat{I}}$ looks like Gauss's
+law.\index{Gauss Law}
+
+It looks like the physical phase space of an $\SU(2)$ gauge theory.
+We're then imposing two additional constraints, and calling the result
+quantum gravity. The natural thing to do is treat the
+$A^{(\immirzi)\widehat{J}}_{j}$ as positions and
+the $\widetilde{E}^{i}_{\widehat{I}}$ as momenta.
+
+If we work at $G^{\widehat{I}}$, it tells us the wave functions are
+gauge invariant, the $V^{i}$ constraints generate spatial
+diffeomorphisms, and the $S$ is the Hamiltonian constraint. We have:
+  \begin{equation}
+S = \underbrace{\epsilon^{\widehat{I}\widehat{J}\widehat{K}}\widetilde{E}^{i}_{\widehat{I}}\widetilde{E}^{j}_{\widehat{J}}F_{ij\widehat{K}}}_{\text{scalar curvature term}}
+    -\underbrace{2\left(\frac{1+\immirzi^{2}}{\immirzi^{2}}\right)\widetilde{E}^{i}_{[\widehat{I}}\widetilde{E}^{j}_{\widehat{J}]}(A^{(\immirzi)\widehat{I}}_{i}-\Gamma_{i}^{\phantom{i}\widehat{I}})
+(A^{(\immirzi)\widehat{J}}_{j}-\Gamma_{j}^{\phantom{j}\widehat{J}})}_{\text{the $\pi^{2}$ term}}.
+  \end{equation}
+The $\pi^{2}$ term is ugly since the $\Gamma$ term depend on $E$, so we
+have a constraint with quadratic terms in $E$.
+
+There is a trick here, discovered originally by Thiemann, called the
+Thiemann trick\index{Thiemann trick}, where we represent the ugly term
+in terms of nested Poisson brackets. So it is possible to make it really
+pretty.
+
+Let's forget the Hamiltonian constraint for the time being. Let's try to
+solve the other constraints, beginning with the Gauss's Law constraint.
+The constraints
+\begin{equation}
+G^{\widehat{I}} = 0
+\end{equation}
+implies the wave functionals $\Psi$ are gauge-invariant. We will write
+\begin{equation}
+A = {A^{\widehat{I}}}_{i}\,\D x^{i}\,\tau_{\widehat{I}}
+\end{equation}
+where $\tau_{\widehat{I}}$ are the generators of $\SU(2)$ or $\SO(3)$
+depending on gauge, let $g\in\SU(2)$ then the $A$ field transforms like:
+\begin{equation}\label{eq:2009-05-01:gauge-transform-A}
+A\to g^{-1}\,\D g + g^{-1}Ag.
+\end{equation}
+(For electromagnetism, $g^{-1}Ag = g^{-1}gA=A$ and $g^{-1}\,\D g =\D\Lambda$.)
+Recall the field strength 2-form is then,
+\begin{equation}
+F = \D A + A\wedge A.
+\end{equation}
+We see, from $\D(gg^{-1})=0$ we have,
+\begin{equation}
+\D(g^{-1}) = -g^{-1}\,(\D g) g^{-1}.
+\end{equation}
+In particular,
+\begin{equation}
+\D(g^{-1}\,\D g + g^{-1}Ag) = - g^{-1}\,\D g\, g^{-1}\,\D g - g^{-1}\,\D g\,g^{-1}Ag +
+g^{-1}\,\D A\,g - g^{-1}A\,\D g.
+\end{equation}
+Then applying this and Eq~\eqref{eq:2009-05-01:gauge-transform-A} to the field
+strength 2-form gives us,
+\begin{subequations}
+\begin{align}
+F\to F' &= \D(g^{-1}\,\D g + g^{-1}Ag) + (g^{-1}\,\D g + g^{-1}A g)\wedge(g^{-1}\,\D g + g^{-1}A g)\\
+&= g^{-1}\,\D A\, g + (g^{-1}Ag)\wedge(g^{-1}Ag)\\
+&= g^{-1}(\D A + A\wedge A)g\\
+&= g^{-1}Fg.
+\end{align}
+\end{subequations}
+This isn't terribly surprising, it's basic differential geometry.
+
+The kinetic term is
+\begin{equation}
+\Tr(F^{2}) = F^{\widehat{I}}_{\mu\nu}F^{\mu\nu}_{\widehat{I}}
+\end{equation}
+for the gauge field. It's invariant under gauge transformations.
+
+\index{Holonomy|(}
+Now we would like to construct a basis of gauge invariant quantities
+(easier said than done). But we can consider the parallel transport of a
+gauge field on a cloed curve on a surface, the holonomy is gauge
+invariant! We have the parallel transport,
+\begin{equation}
+\frac{\D v^{\widehat{I}}}{\D s}
++ \frac{\D x^{i}}{\D s}\left({A_{i}}^{\widehat{I}}{{\epsilon_{\widehat{K}}}^{\widehat{I}}}_{\widehat{J}}\right)v^{\widehat{J}} = 0.
+\end{equation}
+This is the equation for parallel transport, it's basic differential
+geometry.\footnote{See, e.g., \S13 of my notes on general relativity
+\url{http://pqnelson.github.io/assets/notebk/GR.pdf}.} The result is that
+\begin{equation}
+v^{\widehat{I}}(s) = \mathcal{U}^{\widehat{I}}_{\phantom{I}\widehat{J}}(s,s_{0})v^{\widehat{J}}(s_{0}),
+\end{equation}
+where we have the path-ordering exponential,
+\begin{equation}
+\mathcal{U}^{\widehat{I}}_{\phantom{I}\widehat{J}}(s,s_{0}) =
+\mathcal{P}\exp\left(-\int^{s}_{s_{0}}{A_{i}}^{\widehat{K}}\underbrace{\epsilon^{\widehat{I}}_{\phantom{I}\widehat{J}\widehat{K}}}_{\text{generators}}\,\D x^{i}\right).
+\end{equation}
+We can generalize to any representation of $\SU(2)$, just replace the
+$\epsilon^{\widehat{I}}_{\phantom{I}\widehat{J}\widehat{K}}$
+``generators'' factor with $\tau_{\widehat{K}}$.
+
+This is more general than curvature, we're not doomed to infinitesimal nightmares.
+
+We see, taking care with ordering due to noncommutativity, that:
+\begin{equation}\label{eq:2009-05-01:enlightenment}
+\frac{\D}{\D s}\mathcal{U}(s,s_{0}) = -A(s)\,\mathcal{U},
+\end{equation}
+and similarly,
+\begin{equation}
+\frac{\D}{\D s_{0}}\mathcal{U}(s,s_{0}) = -\mathcal{U}A(s_{0}).
+\end{equation}
+Let $\widetilde{\mathcal{U}} = g(s)^{-1}\mathcal{U}g(s_{0})$, so we
+have:
+\begin{subequations}
+\begin{align}
+\frac{\D}{\D s}\widetilde{\mathcal{U}}
+&= - g^{-1}(s)\frac{\D g(s)}{\D s}\widetilde{\mathcal{U}}-g^{-1}(s)A\mathcal{U}g(s_{0})\\
+&= \left(-g^{-1}Ag - g^{-1}\frac{\D g}{\D s}g\right)\widetilde{\mathcal{U}}\\
+&= - \widetilde{A}\,\widetilde{\mathcal{U}}.
+\end{align}
+\end{subequations}
+We read this backwards, when
+\begin{equation}
+A\to g^{-1}\,\D g + g^{-1}Ag,
+\end{equation}
+we simply have
+\begin{equation}
+\mathcal{U}(s,s_{0})\to g^{-1}(s)\mathcal{U}(s,s_{0})g(s_{0}).
+\end{equation}
+\textbf{Note:} redo the computations starting from Eq~\eqref{eq:2009-05-01:enlightenment}
+for enlightening insight.
+\index{Holonomy|)}
+
+In particular, for a closed curve $C$, we find
+$\Tr(\mathcal{U}(s,s_{0}))$ is gauge invariant. This is the Wilson
+loop,\index{Wilson Loop} and it gives us a complete set of gauge
+invariant variables for a gauge theory.
+
+There is one problem with this, the Wilson loops give an overcomplete
+set of variables (i.e., they're not all linearly independent of each
+other, due to the Mandelstam identities):
+\begin{equation}
+\mathcal{U}_{C_{1}}\mathcal{U}_{C_{2}}=\mathcal{U}_{C_{1}\circ C_{2}} + \mathcal{U}_{C_{1}\circ C_{2}^{-1}},
+\end{equation}
+where $C_{1}$, $C_{2}$ are closed curves sharing a point, as doodled
+below:
+\begin{center}
+  \includegraphics{img/2009-05-01.0}
+\end{center}
+There's a nice basis called the \define{Spin Network Basis}, and we can
+claim to solved 3 of the constraints of quantum gravity.

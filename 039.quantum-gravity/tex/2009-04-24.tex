@@ -38,10 +38,10 @@ We introduce
 We plug it into the Hamiltonian constraint, and write:
 \begin{equation}
 \widehat{\mathcal{H}} = 16\pi G G_{ijk\ell}\frac{\delta}{\delta q_{ij}}\frac{\delta}{\delta q_{k\ell}}
-+\frac{1}{16\pi G}\sqrt{q}\,{{}^{(3)}R}.
++\frac{1}{16\pi G}\sqrt{q}\,\threeRicci.
 \end{equation}
 Resist the urge to make the first term a Laplacian. The Ricci 3-scalar
-${{}^{(3)}R}$ is intuitively a sort of potential term, when viewed as a
+$\threeRicci$ is intuitively a sort of potential term, when viewed as a
 function of $q_{ij}$. So then we plug it back into
 \begin{equation}
 \widehat{\mathcal{H}}\Psi[q]=0.
@@ -72,3 +72,160 @@ equation, and the correct inner product there is:
 \end{equation}
 There is some ambiguity here, we have a number of inner products since
 $\delta/\delta q$ is nonunique.
+
+We could quantize the Wheeler-DeWitt equation, which is a third
+quantization. This creates and annihilates metrics (which correspond to
+universes), which we do not really observe.
+
+There is another approach to finding an inner product which Woodard
+proposes, which for simple models looks like the Klein-Godon inner
+product. The wave function encodes some information about the placement
+of the spatial hypersurface in the universe, which has some information
+about time.
+
+Another technical problem is the first term of $\widehat{\mathcal{H}}$
+has two functional derivatives, which is problematic. We could try to
+put in some regulator, so the first term looks like:
+\begin{equation}
+\widehat{\mathcal{H}} = \lim_{x\to x'}\widetilde{G}_{ijk\ell}\frac{\delta}{\delta q_{ij}(x)}\frac{\delta}{\delta q_{k\ell}(x')}+\dots.
+\end{equation}
+We need to show the result is independent of regularization. We also
+need to be conscious of the Poisson bracket
+$\{\mathcal{H},\mathcal{H}^{i}\}$ must be recovered from the commutator
+$[\widehat{\mathcal{H}},\widehat{\mathcal{H}}^{i}]$ with our own
+regularization.
+
+\subsection{Perturbative Expansion}
+
+The other thing we could try is a perturbative expansion, which is
+natural if we cannot get an exact solution.\footnote{A good reference
+for this subsection is Claus Kiefer~\cite{Kiefer:2004xyv}, \emph{Quantum Gravity}, third
+edition, section 5.4.} We assume the wave
+functional $\Psi$ satisfies the momentum constraints.
+
+We can do what is roughly the Born--Openheimer approximation, wherein we
+couple gravity and matter. (Basic idea of the Born--Openheimer
+approximation is we have 2 independent processes, e.g., there is some
+background on which matter moves slowly, but there is some
+backreaction.)
+
+Let us write:
+\begin{equation}
+\left(16\pi G\hbar G_{ijk\ell}\frac{\delta}{\delta q_{ij}}\frac{\delta}{\delta q_{k\ell}}
++\frac{1}{16\pi G\hbar}\sqrt{q}\,\threeRicci + \mathcal{H}_{m}\right)\Psi = 0,
+\end{equation}
+where we have the matter Hamiltonian $\mathcal{H}_{m}\approx T_{00}$.
+Let us do a sort of WKB approximation:
+\begin{equation}
+\Psi = A\exp\left(\frac{\I}{32\pi G\hbar}S_{0}\right).
+\end{equation}
+We can expand in powers of the Planck length.
+The lowest order expansion is just
+\begin{equation}\label{eq:2009-04-24:perturbative-expansion-wd:zeroeth-order}
+\frac{-1}{4}G_{ijk\ell}\frac{\delta S_{0}}{\delta q_{ij}}\frac{\delta S_{0}}{\delta k\ell}
++\sqrt{q}\,\threeRicci = 0.
+\end{equation}
+(This is the Hamilton--Jacobi equation for gravity uncoupled to matter.)
+So at this level we have some background that's fixed and looks
+classical.
+
+The next order:
+\begin{equation}\label{eq:2009-04-24:perturbative-expansion-wd:first-order}
+\I G_{ijk\ell}\frac{\delta S_{0}}{\delta q_{ij}}\frac{\delta A}{\delta q_{k\ell}}
++\frac{\I}{2} G_{ijk\ell}\left(\frac{\delta^{2} S_{0}}{\delta q_{ij}\,\delta q_{k\ell}}\right)A
++\mathcal{H}_{m}A = 0.
+\end{equation}
+If we are clever, we can choose the functional derivative of $A$
+to \emph{look like}:
+\begin{subequations}
+\begin{equation}
+\frac{\delta A}{\delta q_{k\ell}}\sim\mbox{``}\frac{\D}{\D t}A\mbox{''}.
+\end{equation}
+Remember $A$ is the coefficient for our wave functional $\Psi$.
+Explicitly,
+\begin{equation}
+A = D[q]\widetilde{\Psi},
+\end{equation}
+choose $D$ such that
+\begin{equation}
+\frac{\I}{2}G_{ijk\ell}\left(\frac{\delta^{2} S_{0}}{\delta q_{ij}\,\delta q_{k\ell}}\right)D
++ \I G_{ijk\ell}\frac{\delta D}{\delta q_{ij}}\frac{\delta A}{\delta q_{k\ell}}=0.
+\end{equation}
+\end{subequations}
+Then,
+\begin{equation}
+\I G_{ijk\ell}\frac{\delta S_{0}}{\delta
+q_{ij}}\frac{\delta\widetilde{\Psi}}{\delta q_{k\ell}} + \mathcal{H}_{m}\widetilde{\Psi}=0.
+\end{equation}
+This looks a lot like the Schrodinger equation. We have
+\begin{equation}
+G_{ijk\ell}\frac{\delta S_{0}}{\delta
+q_{ij}} \mathrel{\mbox{``$\sim$''}}\frac{\delta q_{k\ell}}{\delta T}
+\end{equation}
+where $T$ is ``time'' (we don't know exactly what this is in quantum
+gravity). We can be far more rigorous in certain midisuperspace models.
+
+We can go to higher orders, where we get backreaction, where $S_{0}$
+gets corrections from $S_{2}$ (the effects of gravity self-gravitating).
+Barvinsky has worked out a systematic formalism using doodles that look
+like Feynman diagrams.\footnote{Although a reference was not given, I
+believe it is Barvinsky and Kiefer~\cite{Barvinsky:1997hp}.} It's not known if the approximation is renormalizable.
+
+The zeroeth order
+Eq~\eqref{eq:2009-04-24:perturbative-expansion-wd:zeroeth-order}
+describes how spacetime curves, the first-order corrections in
+Eq~\eqref{eq:2009-04-24:perturbative-expansion-wd:first-order} tells matter
+how to move, the second-order correction tells spacetime curves due to matter,
+then the third-order correction tells matter how to react to third-order
+corrections, and so on.
+
+We can do cosmology in this formalism. (Halliwell(?) did some old work
+here.)\footnote{I think this refers to Jonathan
+Halliwell~\arXiv{gr-qc/9208001}, possibly other papers.} Time has sort of emerged, which is nice, but this tells us that
+time emerges when the universe is approximately classical. (What about
+in other universes?)
+
+\subsection{Strong Coupling Limit}
+
+There's another approximation that has appeal. That is to take $\hbar G$
+as large (the so-called \define{Strong Coupling Approximation}). This
+might be good to tell us about the small scale structure of
+spacetime.\footnote{Professor Carlip wrote a review paper with a good
+discussion of this approximation in \S2 of \arXiv{1009.1136}.}
+The leading order contribution in the Wheeler-DeWitt equation is the
+first term. This tells u s that the metric ``decouples'' at each point.
+To lowest order we have ``almost independent'' metrics at each point.
+
+Classically, at each point, the general solution is the Kasner universe
+\begin{equation}
+\D s^{2} = -\D t^{2} + \E^{2p_{1}}\D x^{2} + \E^{2p_{2}}\D y^{2}
++ \E^{2p_{3}}\D z^{2},
+\end{equation}
+where, at lowest order, the terms $p_{j}$ are constants satisfying:
+\begin{subequations}
+\begin{equation}
+p_{1}+p_{2}+p_{3}=1,
+\end{equation}
+and
+\begin{equation}
+p_{1}^{2}+p_{2}^{2}+p_{3}^{2}=1.
+\end{equation}
+\end{subequations}
+The next order correction treats the $p_{j}$ as slowly-varying terms.
+
+\begin{center}
+\includegraphics{img/2009-04-24.0}
+\end{center}
+
+Misner called this the Mixmaster universe. There's a huge literature on
+this (lookup the Belinskii-Khalatnikov-Lifshitz [BKL] model). It is
+conjectured that near the Big Bang, the universe behaved this way.
+
+At higher-order corrections, the oscillations look like:
+
+\begin{center}
+\includegraphics{img/2009-04-24.1}
+\end{center}
+
+The constraints imply $p_{i}>0$, $p_{j}>0$ and $p_{k}<0$ where $i\neq j\neq k$
+and $i,j,k=1,2,3$.

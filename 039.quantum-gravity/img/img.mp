@@ -103,4 +103,174 @@ beginfig(1);
   label.top(btex $|\psi_{2}(t)\rangle$ etex, (0.5x_max,2y_mid));
 endfig;
 
+outputtemplate := "2009-04-24.%c";
+
+beginfig(0)
+  numeric r; r := 4u;
+  draw fullcircle scaled r;
+  draw halfcircle xscaled r yscaled 0.25r dashed evenly;
+  draw halfcircle rotated 180 xscaled r yscaled 0.25r;
+
+  draw fullcircle xscaled 2r yscaled 0.5r shifted (2.5r,0);
+  draw (halfcircle xscaled 2r yscaled (r/8) shifted (2.5r,0)) dashed evenly;
+  draw halfcircle rotated 180 xscaled 2r yscaled (r/8) shifted (2.5r,0);
+
+  drawarrow (0.75r,0)--(1.25r,0);
+endfig;
+
+beginfig(1)
+  numeric r; r := 3u;
+  z[0] = (2.5r,0);
+  z[1] = (5r,0);
+  z[2] = (6.75r,0);
+  draw fullcircle scaled r;
+  draw halfcircle xscaled r yscaled 0.25r dashed evenly;
+  draw halfcircle rotated 180 xscaled r yscaled 0.25r;
+
+  draw fullcircle xscaled 2r yscaled 0.5r shifted z0;
+  draw (halfcircle xscaled 2r yscaled (r/8) shifted z0) dashed evenly;
+  draw halfcircle rotated 180 xscaled 2r yscaled (r/8) shifted z0;
+
+  draw fullcircle scaled r shifted z1;
+  draw (halfcircle xscaled r yscaled (r/4) shifted z1) dashed evenly;
+  draw halfcircle rotated 180 xscaled r yscaled (r/4) shifted z1;
+
+  draw fullcircle xscaled 0.5r yscaled 2r shifted z2;
+  draw (halfcircle xscaled 0.5r yscaled (r/3) shifted z2) dashed evenly;
+  draw halfcircle rotated 180 xscaled 0.5r yscaled (r/3) shifted z2;
+
+  drawarrow (0.75r,0)--(1.25r,0);
+  drawarrow (3.75r,0)--(4.25r,0);
+  drawarrow (5.75r,0)--(6.25r,0);
+  drawarrow (7.25r,0)--(7.75r,0);
+  label(btex $\dots$ etex, (8r,0));
+endfig;
+
+outputtemplate := "2009-05-01.%c";
+beginfig(0)
+  numeric r,a,whatever;
+  path p[];
+  r = 2u;
+  p[0] = fullcircle scaled 2r;
+  z0 = (r*cosd(200), r*sind(200)-r);
+  z1 = (r*cosd(270), r*sind(270));
+  p[1] = (fullcircle scaled 2r) shifted z0;
+  p[2] = (halfcircle scaled 2r) rotated -135 shifted z0;
+  p[3] = (halfcircle scaled 2r) rotated 45 shifted z0;
+  z2 = p2 intersectionpoint p0;
+  z3 = p3 intersectionpoint p0;
+  draw p1;
+
+  drawdot z2 withpen pencircle scaled 0.5u withcolor white;
+  draw p0;
+
+  label(btex $\bullet$ etex, z3);
+  label.rt(btex $C_{1}$ etex, (r,0));
+  label.lft(btex $C_{2}$ etex, (z0 + (-r,0)));
+endfig;
+
+
+outputtemplate := "2009-05-06.%c";
+beginfig(0)
+  numeric length_j_three;
+  path p[];
+  length_j_three := 4u;
+  z[0] = 2*(1.5u,1.5u);
+  z[1] = z[0] + (length_j_three,0);
+  z[2] = (0, 2*(ypart z0));
+  p[0] = (0,0)--z0;
+  p[1] = z2--z0;
+  p[2] = z0--z1;
+  draw p0;
+  draw p1;
+  draw p2;
+  label(btex $\bullet$ etex, z0);
+  label.urt(btex $j_{1}$ etex, 0.5[z2,z0]);
+  label.lrt(btex $j_{2}$ etex, 0.5[(0,0),z0]);
+  label.top(btex $j_{3}$ etex, 0.5[z0,z1]);
+endfig;
+
+beginfig(1)
+  numeric w,i;
+  path p[];
+  w = 2u;
+  p[0] = (0,0)--(w,w);
+  p[1] = (0,w)--(w,0);
+  p[2] = (w+3u,w)--(w+3u+0.5w,0.5w);
+  p[3] = (w+3u,0)--(w+3u+0.5w,0.5w);
+  p[4] = (w+3u+0.5w,0.5w)--(w+3u+0.5w+w,0.5w);
+  p[5] = (w+3u+0.5w+w,0.5w)--(w+3u+0.5w+w+0.5w,0);
+  p[6] = (w+3u+0.5w+w,0.5w)--(w+3u+0.5w+w+0.5w,w);
+  for i=0 upto 6:
+    draw p[i];
+  endfor;
+  z[0] = p0 intersectionpoint p1;
+  z[1] = p2 intersectionpoint p3;
+  z[2] = p5 intersectionpoint p6;
+  for i=0 upto 2:
+    label(btex $\bullet$ etex, z[i]);
+  endfor;
+ % label(btex ``='' etex, (w+u,0.5w));
+  label(btex ``='' etex, 0.5[z0,z1]);
+endfig;
+
+beginfig(2)
+  numeric i;
+  path p[];
+  z0 = (0,0);
+  z1 = (-2u,-2u);
+ % z2 = (2u,-2u);
+  z2 = (2u,-u);
+  z3 = (-u,2u);
+  z4 = (2u,3u);
+  z5 = (0,5u);
+  z6 = (4u,1.5u);
+  z7 = (5u,3.5u);
+  p0 = z0--z1;
+  % p1 = z1--z2;
+  p1 = z1..(0.5[z1,z2]+(0,-u))..z2;
+  p2 = z0--z2;
+  % p3 = z3--z1;
+  p3 = z3..(0.5[z1,z3]+(-u,0))..z1;
+  p4 = z0--z3;
+  p5 = z4--z3;
+  p6 = z0--z4;
+  p7 = z4--z5;
+  p8 = z3--z5;
+  p9 = z2--z6;
+  p10 = z4--z6;
+  p11 = z6--z7;
+  p12 = z4--z7;
+  p13 = z5 .. (0.5[z5,z7] + (0,u)) .. z7;
+  for i=0 upto 13:
+    draw p[i];
+  endfor;
+  for i=0 upto 7:
+    label(btex $\bullet$ etex, z[i]);
+  endfor;
+endfig;
+
+beginfig(3)
+  path p[];
+  numeric r,R,t,whatever; R:=2u;
+  draw fullcircle scaled 2R;
+  draw (-R,0)--(R,0);
+  label(btex $\bullet$ etex, (-R,0));
+  label(btex $\bullet$ etex, (R,0));
+  label(btex $\bullet$ etex, (3R,0));
+  label(btex $\bullet$ etex, (5R,0));
+  draw (3R,0)--(5R,0);
+  r := 0.75u;
+  p[0] = (fullcircle scaled 2R) shifted (4R,0);
+  p[1] = (fullcircle scaled r rotated 45) shifted (4R,-R);
+  p[2] = (halfcircle scaled r rotated 180) shifted (4R,-R);
+  p3 = (p1 cutbefore p0);
+  t = xpart ((subpath (0.1*length(p3),length(p3)) of p3) intersectiontimes p0);
+  p4 = subpath (0,t) of p3;
+  draw p0;
+  fill p1 withcolor white;
+  draw p4;
+  label(btex $\neq$ etex, (2R,0));
+endfig;
+
 end;

@@ -11,7 +11,7 @@
 \usepackage[final]{graphicx}
 \ifpdf
 \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage[kerning]{microtype}
+%\usepackage[kerning]{microtype}
 \fi
 \usepackage{mathrsfs}
 \usepackage{marginnote}
@@ -26,6 +26,7 @@
             linkcolor=black,
             urlcolor=black,
             bookmarksopen=true,
+            pdftitle={Quantum Gravity},
             pdfauthor={Alex Nelson}]{hyperref}
 \usepackage[all]{hypcap}
 \usepackage{notation}
@@ -59,6 +60,7 @@
 \let\newblock\newline
 
 \newtheorem{lemma}{Lemma}[section]
+\newtheorem{notation}{Notation}
 \theoremstyle{definition}
 \newtheorem{example}{Example}[section]
 \newtheorem{xca}{\llap{\manual\char'170\rm\kern.15em}Exercise}
