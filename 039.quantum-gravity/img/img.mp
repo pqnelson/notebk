@@ -395,4 +395,51 @@ beginfig(3);
   label(btex $\bullet$ etex, point (length(p3)) of p3);
   label.urt(btex $j$ etex, point (0.5*length(p0)) of p0);
 endfig;
+
+beginfig(4);
+  path p;
+  z0 = (0,0);
+  z1 = (u,3u);
+  z2 = (4u,4u);
+  z3 = (7u,5u);
+  p = z0..z1..z2..z3;
+
+  numeric t,dt,theta;
+  t = 0.5*length(p);
+  dt = 0.1*length(p);
+
+  z4 = point t of p;
+
+  label(btex $\bullet$ etex, z0);
+  label(btex $\bullet$ etex, z3);
+  label.bot(btex $s$ etex, z4 + (0.5u/sqrt(2))*(1,-1));
+  label.bot(btex $s_{1}$ etex, z0);
+  label.rt(btex $s_{2}$ etex, z3);
+  draw p;
+  pair A,B,d,C,D;
+  A = postcontrol t of p;
+  B = precontrol t of p;
+  C = point (t-dt) of p;
+  D = point (t+dt) of p;
+  d = A - B;
+  show d;
+  % Frankly, I am too stupid to figure out how to adequately compute
+  % theta = atan(y,x) using `angle`. So I do it by hand :'(
+%  theta := angle(A - B);
+  label(btex $)\!($ etex rotated 15.17, z4);
+  A := postcontrol (t-dt) of p;
+  B := precontrol (t-dt) of p;
+  d := A - B;
+  show d; % (11.19353,5.64395)
+  label(btex $($ etex rotated 26.75, C);
+  A := postcontrol (t+dt) of p;
+  B := precontrol (t+dt) of p;
+  d := A - B;
+  show d;%  (12.66386,2.43086)
+  label(btex $)$ etex rotated 10.866, D);
+  numeric w;
+  w = length(subpath (t-dt,t+dt) of p);
+  label(btex $\{$ etex yscaled 2.5w xscaled 1.5 rotated -75, z4 + (0.75u)*(-2cosd(90-15.17),sind(90-15.17)));
+  label.top(btex $s\pm\varepsilon$ etex rotated 15, z4 + (0.75u)*(-cosd(90-15.17),sind(90-15.17)));
+endfig;
 end;

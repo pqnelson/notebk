@@ -30,6 +30,8 @@ and find
 \end{equation}
 which is a function of $A$.
 
+\subsection{Area Operator}
+
 We take a surface $\Sigma$, we can ask ``What is the area of the
 surface?'' Suppose we have some spin network that ``goes through'' our
 surface $\Sigma$:
@@ -59,9 +61,57 @@ Then our considerations change by
 \end{equation}
 In the classical arena, the criteria for a ``small region'' is not
 really well-defined; in the quantum arena, we just require a single
-piercing of a spin network with the surface.\marginpar{\includegraphics{img/2009-05-08.3}} We can turn this now into an
+piercing of a spin network with the surface (as doodled in the margin).\marginpar{\includegraphics{img/2009-05-08.3}} We can turn this now into an
 operator
 \begin{equation}
 \widetilde{E}_{\widehat{I}} = -8\pi G_{N}\immirzi\int\epsilon_{ijk}\frac{\partial x^{i}}{\partial\sigma^{1}}\frac{\partial x^{j}}{\partial\sigma^{2}}\frac{\delta}{\delta
 A^{\widehat{I}}_{k}}\,\D\sigma^{1}\D\sigma^{2}.
 \end{equation}
+We need to consider $\delta\mathcal{U}/\delta A^{\widehat{I}}_{k}$. If
+we didn't have path-ordering, then this would be trivial. But we must be
+careful, since things do not commute. Consider the path doodled below:
+\begin{center}
+  \includegraphics{img/2009-05-08.4}
+\end{center}
+We have
+\begin{subequations}
+  \begin{align}
+    \mathcal{U}(s_{2},s_{1})
+    &= \mathcal{U}(s_{2},s)\mathcal{U}(s,s_{1})\\
+    &= \mathcal{U}(s_{2},s+\varepsilon)\mathcal{U}(s+\varepsilon,s-\varepsilon)\mathcal{U}(s-\varepsilon,s_{1}).
+  \end{align}
+\end{subequations}
+If $\varepsilon$ is small enough, we have
+\begin{equation}
+\frac{\delta}{\delta A^{\widehat{I}}_{i}(s)}\mathcal{U}(s_{2},s_{1})
+= \mathcal{U}(s_{2},s)\left(-\tau_{\widehat{I}}\frac{\D x^{i}}{\D s}\right)\mathcal{U}(s,s_{1}).
+\end{equation}
+More generally,
+\begin{equation}
+\frac{\delta}{\delta A^{\widehat{I}}_{i}(x)}\mathcal{U}(s_{2},s_{1})
+= \int\delta^{(3)}(C(s)-x)\,\mathcal{U}(s_{2},s)\left(-\tau_{\widehat{I}}\frac{\D x^{i}}{\D s}\right)\mathcal{U}(s,s_{1})\,\D s,
+\end{equation}
+and is zero if $x$ does not lie on the curve $C$.
+We now see that
+\begin{equation}
+E_{\widehat{I}}\mathcal{U}(s_{2},s_{1}) = 8\pi\immirzi
+G_{N}\int\epsilon_{ijk}\frac{\partial
+    x^{i}}{\partial\sigma^{1}}\frac{\partial
+    x^{j}}{\partial\sigma^{2}}\frac{\partial x^{k}}{\partial s}\delta^{(3)}(C(s)-x)\,\mathcal{U}(s_{2},s)\tau_{\widehat{I}}\,\mathcal{U}(s,s_{1})\,\D\sigma^{1}\D\sigma^{2}\D s.
+\end{equation}
+We see that
+\begin{equation*}
+\int\epsilon_{ijk}\frac{\partial
+    x^{i}}{\partial\sigma^{1}}\frac{\partial
+    x^{j}}{\partial\sigma^{2}}\frac{\partial x^{k}}{\partial s}\delta^{(3)}(C(s)-x)\,\D\sigma^{1}\D\sigma^{2}\D s
+\end{equation*}
+is called the ``oriented intersection number'' (it's $\pm1$ if $C(s)$
+intersects $\Sigma$, and $0$ otherwise).
+
+The moral of the story is that the oriented intersection number
+$I(C,\Sigma)$ is used to find
+\begin{equation}
+E_{\widehat{I}}\,\mathcal{U}(s_{2},s_{1}) =
+8\pi G_{N}\immirzi I(C,\Sigma)\mathcal{U}(s_{2},s)\tau_{\widehat{I}}\,\mathcal{U}(s,s_{1}),
+\end{equation}
+where $C(s)$ is the point of intersection.
