@@ -20,7 +20,7 @@ curvature may be computed using the Lie derivative of the 3-metric with
 respect to $n^{\mu}$ as
 \begin{equation}\label{eq:extrinsic-curvature:as-time-derivative-of-metric}
   \begin{split}
-  K_{ij} &= \frac{-1}{2}(\mathcal{L}_{\mathbf{n}}q)_{ij}\\
+  K_{ij} &= \frac{-1}{2}(\lieD_{\mathbf{n}}q)_{ij}\\
   &= \frac{-1}{2}n^{\mu}\partial_{\mu}q_{ij} - \frac{1}{2} q_{\mu j}(\partial_{i}n^{\mu}) - \frac{1}{2} q_{i\mu}(\partial_{j}n^{\mu}),
   \end{split}
 \end{equation}
@@ -127,3 +127,17 @@ will be used to write the Einstein--Hilbert Lagrangian in terms of
 spatial tensors, then we will find the canonically conjugate momentum
 $\pi^{ij}$ to the 3-metric $q_{ij}$, and continue on our merry way with
 the Hamiltonian formalism.
+
+\begin{exercise}
+Prove and determine the correct sign: $K = \nabla_{\mu}n^{\mu}$.
+\end{exercise}
+
+\begin{exercise}
+Prove and determine the correct sign (and possibly numerical
+coefficient): $K = \pm\lieD_{n}(\ln\det(q))$.
+\end{exercise}
+
+\begin{exercise}
+Prove and determine the correct sign: $K = \pm(1/N)\partial_{t}\ln\sqrt{q}$. [Hint: Eq~\eqref{eq:cauchy-surface:determinant-of-metric}
+may be helpful.]
+\end{exercise}

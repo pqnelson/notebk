@@ -15,7 +15,10 @@ The two points have local coordinates $(t,x^{i})$ and $(t+\D t, x^{i} + \D x^{i}
 The basic steps are as follows:
 \begin{enumerate}
 \item Choose two nearby spatial hypersurfaces $\Sigma_{t}$ and
-  $\Sigma_{t+\D t}$ with positive-definite spatial metrics $q_{ij}(t)$
+  $\Sigma_{t+\D t}$ with positive-definite spatial metrics\footnote{Some
+people use $\gamma_{ij}$ to denote the spatial metric; but since it will
+act like the position in this Hamiltonian formalism, and since $q$ looks
+like $g$, I have opted to stick with $q_{ij}$.}$q_{ij}(t)$
   and $q_{ij}(t + \D t)$, respectively.
 \item Pick an initial point $(t, x^{i})$ on $\Sigma_{t}$ and move
   orthogonally (i.e., according to the normal unit vector) to
@@ -90,7 +93,7 @@ form
 \end{pmatrix} = \det(D)\det(A - CD^{-1}B),
 \end{equation}
 we find
-\begin{equation}
+\begin{equation}\label{eq:cauchy-surface:determinant-of-metric}
 \det(g_{\mu\nu}) = -N^{2}\det(q_{ij}).
 \end{equation}
 
