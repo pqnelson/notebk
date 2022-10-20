@@ -1,0 +1,171 @@
+\section{Differential Geometry of Curves in $\RR^{3}$ (or $\RR^{n}$)}
+
+\M
+The idea is that we have introduced the basic gadgetry of differential
+geometry, but in the setting of $\RR^{n}$. Now we will consider curves
+in $\RR^{n}$, and use the gadgetry we've introduced to study properties
+of curves (for example, how to vector fields on a curve, and what do
+they tell us). This appears in classical mechanics (especially
+Lagrangian and Hamiltonian mechanics).
+
+\begin{definition}
+An \define{Unparametrized Curve} in $\RR^{3}$ is a ``one-dimensional
+subset'' of points.
+\end{definition}
+
+\begin{example}
+The doodle below is a closed unparametrized curve --- ``closed'' meaning
+it forms a ``loop'' (eventually):
+\begin{center}
+  \includegraphics{img/img.0}
+\end{center}
+\end{example}
+
+\begin{example}
+Here is a happy open unparametrized curve --- ``open'' meaning it is
+``not closed'':
+\begin{center}
+  \includegraphics{img/img.1}
+\end{center}
+\end{example}
+
+\begin{definition}
+Let $I=(a,b)$ be an open interval (it is possible $a=-\infty$, or
+$b=+\infty$, or both). We define a \define{(Parametrized) Curve} in
+$\RR^{3}$ to be a smooth function $\alpha\colon I\to\RR^{3}$
+\end{definition}
+
+\begin{remark}
+Henceforth, we will reserve the term ``curve'' for an unparametrized
+curve, and ``path'' for a parametrized curve.
+\begin{itemize}
+\item ``Path'' = ``Parametrized Curve''
+\item ``Curve'' = ``Unparametrized Curve''.
+\end{itemize}
+In fact, almost always we care about curves, so unless otherwise stated,
+all curves are parametrized.
+\end{remark}
+
+\begin{example}
+Consider the \define{Elliptic Helix}, a parametrized curve $\alpha(t)=(a\cos(t),b\sin(t),ct)$ where
+$a,b,c\in\RR$ are positive constants, and $t\in[0,+\infty)$ looks like:
+\begin{center}
+  \includegraphics{img/img.3}
+\end{center}
+We could consider a different parametrization of the same curve, like
+$\beta(t)=(a\cos(3t),b\sin(3t),3ct)=\alpha(3t)$. How do we know this is
+the same curve? Well, one way is to establish a bijection of points
+$\beta(t/3)=\alpha(t)$ for all $t\in[0,\infty)$.
+\end{example}
+
+\begin{definition}
+Let $\alpha\colon I\to\RR^{3}$ be a path with components
+$(\alpha_{1},\alpha_{2},\alpha_{3})$. The \define{Velocity} of $\alpha$
+at time $t\in I$ is the tangent vector
+\begin{subequations}
+  \begin{equation}
+\alpha'(t) = \left(\frac{\D\alpha(t)}{\D t}\right)_{\alpha(t)}\in\T_{\alpha(t)}\RR^{3}
+\end{equation}
+at base point $\alpha(t)$, whose components are
+\begin{equation}
+\alpha'(t)=\left(\frac{\D\alpha_{1}(t)}{\D t},
+\frac{\D\alpha_{2}(t)}{\D t},
+\frac{\D\alpha_{3}(t)}{\D t}\right).
+\end{equation}
+\end{subequations}
+\end{definition}
+
+\begin{remark}
+The velocity defines a sort of vector field, but defined only on the
+curve and not all of $\RR^{3}$.
+\end{remark}
+
+\begin{example}
+  For the elliptical helix,
+  $\alpha(t)=(a\cos(t),b\sin(t),ct)$ for $t\in\RR$,
+  we have its velocity be
+  \begin{equation}
+\alpha'(t) = (-a\sin(t),b\cos(t),c)_{\alpha(t)}.
+  \end{equation}
+\end{example}
+
+
+\begin{example}
+  Let $\vec{p},\vec{v}\in\RR^{3}$ be constants.
+  Consider the curve $\beta(t)=\vec{p}+t\vec{v}$. This is the straight
+  line with initial position $\beta(0)=\vec{p}$ and initial velocity $\beta'(0)=\vec{v}_{\vec{p}}$.
+  We've used this before when we've worked with the directional
+  derivative of $f\colon\RR^{3}\to\RR$,
+  \begin{equation}
+\vec{v}_{\vec{p}}[f] = \left.\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}.
+  \end{equation}
+  In fact, we could use \emph{any} curve $\alpha$ with
+  $\alpha(0)=\vec{p}$ and $\alpha'(0) = \vec{v}_{\vec{p}}$ to define $\vec{v}_{\vec{p}}[f]$.
+\end{example}
+
+\begin{theorem}
+Let $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{3}$, $I$ be an interval
+containing zero, and let $\alpha\colon I\to\RR^{3}$ be such that
+$\alpha(0)=\vec{p}$ and $\alpha'(0) = \vec{v}_{\vec{p}}$. Then
+\begin{equation}
+\vec{v}_{\vec{p}}[f] = \left.\frac{\D}{\D t}f(\alpha(t))\right|_{t=0}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We know $\alpha'(0) = \vec{v}_{\vec{p}}$. So, let us calculation
+\begin{calculation}
+  \vec{v}_{\vec{p}}[f]
+\step{definition of directional derivative}
+  \left.\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}
+\step{since $\alpha(t)=\vec{p}+t\vec{v}$}
+  \left.\frac{\D}{\D t}f(\alpha(t))\right|_{t=0}
+\step{chain rule}
+  \sum_{j}\left.\frac{\partial f}{\partial x_{j}}(\alpha(t))\frac{\D\alpha^{j}(t)}{\D t}\right|_{t=0}
+\step{since $\D\alpha^{j}(0)/\D t=v^{j}$, $\alpha(0)=\vec{p}$}
+  \sum_{j}\frac{\partial f}{\partial x_{j}}(\vec{p})v^{j}
+\end{calculation}
+On the other hand, repeating the last three steps with
+$$\left.\frac{\D}{\D t}f(\alpha(t))\right|_{t=0}$$
+gives the same result since the only facts used were $\alpha(0)=\vec{p}$, $\alpha'(0)=\vec{v}_{\vec{p}}$.
+\end{proof}
+
+\begin{corollary}
+For any curve $\alpha$ and smooth function $f\colon\RR^{3}\to\RR$, we
+have
+\begin{equation}
+\alpha'(t)[f] = \left.\frac{\D}{\D s}f(\alpha(s))\right|_{s=t}.
+\end{equation}
+That is to say, the directional derivative of $f$ with respect to the
+velocity vector field is the rate of change of $f$ as we move along the
+curve $\alpha$.
+\end{corollary}
+
+\M
+In linear algebra, the key geometric tool is the concept of the inner
+product (``dot product''). Any vector space with an inner product
+automatically gets notations of:
+\begin{itemize}
+\item \textbf{magnitude} of vectors $\|\vec{v}\| = \sqrt{\langle\vec{v},\vec{v}\rangle}$,
+and
+\item \textbf{angle} between vectors $\cos(\theta) = \langle\vec{v},\vec{w}\rangle/(\|\vec{v}\|\cdot\|\vec{w}\|)$.
+\end{itemize}
+In differential geometry, we have not just \emph{one} vector space, but
+a vector space \emph{at each point} (e.g., for each $\vec{p}\in\RR^{3}$,
+we have $\T_{\vec{p}}\RR^{3}$). We can, in principle, put a different
+inner product at each of these tangent spaces. In other words, at each
+point we may have a different notion of magnitude and angle.
+
+\begin{definition}
+An assignment of an inner product to each $\T_{\vec{p}}\RR^{3}$ (varying
+smoothly with $\vec{p}\in\RR^{3}$) is called a \define{Riemannian metric}.
+\end{definition}
+
+\begin{example}
+For now, we will be sticking with the usual Riemannian metric on
+$\RR^{3}$ given by
+\begin{equation}
+\underbrace{\langle\vec{v}_{\vec{p}},\vec{w}_{\vec{p}}\rangle_{\vec{p}}}_{\text{inner product on }\T_{\vec{p}}\RR^{3}}=
+\overbrace{\vec{v}\cdot\vec{w}}^{\text{usual dot product}}
+\end{equation}
+\end{example}

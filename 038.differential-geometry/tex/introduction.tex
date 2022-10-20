@@ -1,0 +1,935 @@
+\section{Tangent Vectors}
+
+\M The motivation underlying differential geometry is: we want to
+generalize vector calculus. A first step is to generalize the notion of
+a ``vector''. And really, if we look at a vector \emph{in} vector
+calculus, there are two components to it:
+\begin{enumerate}
+\item The base point, and
+\item The vector part.
+\end{enumerate}
+Linear algebra studies ``the vector part'', assuming all the vectors
+live at the same base point (i.e., within the same vector space).
+
+\begin{remark}
+We will introduce the concepts, like paint on a canvas, in layers. The
+first pass (``primer'') will be in $\RR^{3}$ (but easily could work in
+$\RR^{n}$ for any $n\in\NN$). The second pass will be on a surface
+$\Sigma\subset\RR^{3}$ (again, it could be generalized to a surface
+$\Sigma\subset\RR^{n}$ for any $n\in\NN$). The third pass ``breaks the bottle'',
+cutting the cord with an ``ambient $\RR^{n}$'', and works with
+manifolds. Since this is a prospectus, we will only look at the first
+pass; this truly is a ``primer''.
+\end{remark}
+
+\begin{definition}
+A \define{Tangent Vector in $\RR^{3}$} is an ordered pair $\vec{v}_{\vec{p}}:=(\vec{p}, \vec{v})$
+where $\vec{p}\in\RR^{3}$ is the base point, and $\vec{v}\in\RR^{3}$ is the
+vector part.
+\end{definition}
+
+\begin{remark}
+  In ordinary vector algebra/calculus, we often ignore the base point
+  (and whenever we add two vectors with different base points, we just
+  transport them to the same base point). But in differential geometry,
+  we must be more careful:
+  \begin{enumerate}
+  \item We can only add two tangent vectors if they live at the same base
+point. So $\vec{v}_{\vec{p}}+\vec{w}_{\vec{q}}$ makes sense
+provided $\vec{p}=\vec{q}$.
+\item We have $\vec{v}_{\vec{p}} = \vec{v}_{\vec{q}}$ if and only if 
+$\vec{p}=\vec{q}$.
+  \end{enumerate}
+In vector calculus, we typically freely
+transport tangent vectors along to share the same base point. This is
+not longer ``free'' in differential geometry, so care must be taken.
+\end{remark}
+
+\begin{definition}
+The tangent vectors at a given base point $\vec{p}\in\RR^{n}$ form a
+vector space $\T_{\vec{p}}\RR^{n}$ called the
+\define{Tangent Space of $\RR^{n}$ at $\vec{p}$}.
+\end{definition}
+
+\begin{remark}
+Note that $\T_{\vec{p}}\RR^{n}$ is isomorphic (as a vector space) to
+$\RR^{n}$ as a vector space, but we must remember that at different base
+points $\vec{p}\neq\vec{q}$ we have $\T_{\vec{p}}\RR^{n}\neq\T_{\vec{q}}\RR^{n}$
+different tangent spaces.
+\end{remark}
+
+\subsection{Vector Fields}
+
+\begin{definition}\label{defn:over-r-n:vector-field}
+A \define{Vector Field} $V$ on $\RR^{n}$ assigns to each point
+$\vec{p}\in\RR^{n}$ a tangent vector $V(\vec{p})$ at $\vec{p}$.
+
+We call $\Vect(\RR^{n})$ the set of all vector fields on $\RR^{n}$.
+\end{definition}
+
+\N{Structure of $\Vect(\RR^{n})$}\label{chunk:over-r-n:structure-of-vect}
+Note that $\Vect(\RR^{n})$ is an infinite-dimensional vector space over
+the ring of [smooth] real-valued functions. If we
+let $V$,~$W\in\Vect(\RR^{n})$, $\vec{p}\in\RR^{n}$, and $f\colon\RR^{n}\to\RR$,
+observe $V(\vec{p})\in\T_{\vec{p}}\RR^{n}$, and
+\begin{subequations}
+  \begin{align}
+    (V+W)(\vec{p}) &= V(\vec{p}) + W(\vec{p})\\
+    (fV)(\vec{p}) &= f(\vec{p}) V(\vec{p}).
+  \end{align}
+\end{subequations}
+Note that the operations on the right-hand side of these equations are
+the vector addition and scalar multiplication in $\T_{\vec{p}}\RR^{n}$,
+whereas the operations on the left-hand side are the newly-defined
+binary operators for $\Vect(\RR^{n})$.
+
+The natural question to ask, what about a ``basis vector field''?
+
+\begin{definition}
+There are $n$ obvious vector fields $U_{1}$, $U_{2}$, \dots, $U_{n}\in\Vect(\RR^{n})$
+defined by
+\begin{equation}
+\begin{split}
+U_{1}(\vec{p}) &= (1,0,0,\dots,0)_{\vec{p}}\\
+U_{2}(\vec{p}) &= (0,1,0,\dots,0)_{\vec{p}}\\
+\vdots\\
+U_{n}(\vec{p}) &= (0,0,0,\dots,1)_{\vec{p}}\in\Vect(\RR^{n})
+\end{split}
+\end{equation}
+called the \define{Natural Frame Field}.
+\end{definition}
+
+\begin{definition}
+More generally, in $\RR^{n}$, a \define{Frame Field} is a list of $n$
+vector fields $W_{1}$, $W_{2}$, \dots, $W_{n}\in\Vect(\RR^{n})$ such
+that at each $p\in\RR^{n}$ the vectors
+$W_{1}(\vec{p})$, $W_{2}(\vec{p})$, \dots, $W_{n}(\vec{p})$ form a basis 
+of $\T_{\vec{p}}\RR^{n}$.
+\end{definition}
+
+\begin{lemma}\label{lemma:over-r-n:vector-field-is-linear-combination-of-natural-frame-field}
+  Given any $V\in\Vect(\RR^{n})$, we can write
+  \begin{equation}
+V = v_{1}U_{1} + v_{2}U_{2} + \dots + v_{n}U_{n},
+  \end{equation}
+  where $U_{i}$ are natural frame fields and $v_{i}\colon\RR^{n}\to\RR$
+for $i=1$, $2$, \dots, $n$.
+\end{lemma}
+
+\begin{proof}
+At each $\vec{p}\in\RR^{n}$, the tangent vector $V(\vec{p})\in\T_{\vec{p}}\RR^{n}$
+can be written in coordinates as
+\begin{calculation}
+  V(\vec{p})
+\step{since $V(\vec{p})$ is a vector and can be written in components relative to a canonical basis}
+  (v_{1}(\vec{p}),\dots,v_{n}(\vec{p}))_{\vec{p}}
+\step{because $U_{1}(\vec{p})$, \dots, $U_{n}(\vec{p})$ form a [canonical] basis of $\T_{\vec{p}}\RR^{n}$}
+  v_{1}(\vec{p})U_{1}(\vec{p}) + \dots + v_{n}(\vec{p})U_{n}(\vec{p})
+\step{since $U_{1}$, \dots, $U_{n}$ are vector fields, using scalar multiplication (\S\ref{chunk:over-r-n:structure-of-vect})}
+  (v_{1}U_{1} + \dots + v_{n}U_{n})(\vec{p})
+\end{calculation}
+%% \begin{subequations}
+%%   \begin{align}
+%%     V(\vec{p}) &= (V(\vec{p})_{1}, V(\vec{p})_{2}, \dots, V(\vec{p})_{n})\\
+%%     &= v_{1}(\vec{p})U_{1}(\vec{p}) + \dots + v_{n}(\vec{p})U_{n}(\vec{p})\\
+%%     &= (v_{1}U_{1} + \dots + v_{n}U_{n})(\vec{p}).
+%%   \end{align}
+%% \end{subequations}
+Since we were using $\vec{p}\in\RR^{n}$ arbitrary, we have
+$V = v_{1}U_{1} + \dots + v_{n}U_{n}$.
+\end{proof}
+
+\begin{remark}[Definition]
+The functions $v_{i}\colon\RR^{n}\to\RR$ are called the
+\define{Coordinate Functions} of $V$ relative to the frame field $U_{i}$.
+\end{remark}
+
+\begin{definition}
+We say a vector field is \define{Differentiable} if all its coordinate
+functions (with respect to the natural frame field) are differentiable.
+Similarly, we call a vector field \define{Smooth} ($C^{\infty}$) if its
+coordinate functions are $C^{\infty}$ (i.e., they have all partial
+derivatives [including mixed partial derivatives] of all orders).
+\end{definition}
+
+\begin{remark}
+We could specify the subset of smooth vector fields as
+$C^{\infty}\Vect(\RR^{n})$, but we will implicitly assume everything is
+smooth from now on.
+\end{remark}
+
+\begin{remark}
+We could also work with $C^{k}$ vector fields by demanding only the
+first $k\in\NN$ order partial derivatives of the coordinate functions
+exist and be continuous. Or we could demand they be analytic functions,
+and we could work analytic vector fields, traditionally denoted
+$C^{\omega}\Vect(\RR^{n})$. 
+\end{remark}
+
+\subsection{Directional Derivatives}
+
+\begin{definition}\label{defn:over-r-n:directional-derivative-relative-to-tangent-vector}
+Given a tangent $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{n}$, we can
+use it to differentiate a smooth function $f\in C^{\infty}(\RR^{n})$.
+We define the \define{Directional Derivative} of $f$ in the $\vec{v}_{\vec{p}}$
+direction [or, the directional derivative of $f$ with respect to $\vec{v}_{\vec{p}}$]
+as:
+\begin{equation}
+  \vec{v}_{\vec{p}}[f] =\left.
+  \frac{\D}{\D t}f(\vec{p} + t\vec{v})\right|_{t=0},
+\end{equation}
+which represents the rate of change of $f$ in the $\vec{v}$ direction at
+the point $\vec{p}$.
+\end{definition}
+
+\begin{remark}
+This lets us think of a tangent vector as a map
+\begin{equation}
+  \begin{split}
+    \vec{v}_{\vec{p}}\colon & C^{\infty}(\RR^{n})\to\RR\\
+                           & f\mapsto \vec{v}_{\vec{p}}[f].
+  \end{split}
+\end{equation}
+\end{remark}
+
+\begin{example}
+Assume $f\in C^{\infty}(\RR^{3})$, $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{3}$,
+and let us write $\vec{p}=(p_{x},p_{y},p_{z})$, $\vec{v}_{\vec{p}}=(v_{x},v_{y},v_{z})_{\vec{p}}$.
+Then we can explicitly determine what the directional derivative of $f$
+with respect to $\vec{v}_{\vec{p}}$ looks like:
+%% \begin{subequations}
+%% \begin{align}
+%% \vec{v}_{\vec{p}}[f] &= \left.\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}\\
+%% &=\left.\frac{\D}{\D t}f(p_{x}+tv_{x}, p_{y}+tv_{y}, p_{z}+tv_{z})\right|_{t=0}\\
+%% &=\left.\left(\frac{\partial f}{\partial x}(\vec{p}+t\vec{v})\right)v_{x}
+%% +\left(\frac{\partial f}{\partial y}(\vec{p}+t\vec{v})\right)v_{y}
+%% +\left(\frac{\partial f}{\partial z}(\vec{p}+t\vec{v})\right)v_{z}\right|_{t=0}\\
+%% &= (v_{x},v_{y},v_{z})\cdot\left(\frac{\partial f}{\partial x}(\vec{p}),
+%% \frac{\partial f}{\partial y}(\vec{p}),
+%% \frac{\partial f}{\partial z}(\vec{p})\right)\\
+%% &= \vec{v}\cdot(\vec{\nabla}f(\vec{p})).
+%% \end{align}
+%% \end{subequations}
+\begin{calculation}
+\vec{v}_{\vec{p}}[f] \step{by Definition~\ref{defn:over-r-n:directional-derivative-relative-to-tangent-vector}} \displaystyle\left.\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}
+\step{unfold components}
+  \displaystyle\left.\frac{\D}{\D t}f(p_{x}+tv_{x}, p_{y}+tv_{y}, p_{z}+tv_{z})\right|_{t=0}
+\step{chain-rule and linearity of derivative}
+  \displaystyle\left.\left(\frac{\partial f}{\partial x}(\vec{p}+t\vec{v})\right)v_{x}
+  +\left(\frac{\partial f}{\partial y}(\vec{p}+t\vec{v})\right)v_{y}
+  +\left(\frac{\partial f}{\partial z}(\vec{p}+t\vec{v})\right)v_{z}\right|_{t=0}
+\step{evaluate at $t=0$, then use the dot product}
+  \displaystyle(v_{x},v_{y},v_{z})\cdot\left(\frac{\partial f}{\partial x}(\vec{p}),
+  \frac{\partial f}{\partial y}(\vec{p}),
+  \frac{\partial f}{\partial z}(\vec{p})\right)
+\step{folding back into vector form}
+  \displaystyle\vec{v}\cdot(\vec{\nabla}f(\vec{p})).
+\end{calculation}
+This should look familiar: it's the directional derivative from vector
+calculus. 
+\end{example}
+
+\begin{definition}\label{defn:over-r-n:directional-derivative:wrt-vector-field}
+Let $f\in C^{\infty}(\RR^{n})$ and $V\in\Vect(\RR^{n})$. We can take 
+\define{Directional Derivative} of $f$ with respect to the vector \emph{field}
+$V$ denoted $V[f]\colon\RR^{n}\to\RR$ given by, for any $\vec{p}\in\RR^{n}$,
+\begin{equation}
+(V[f])(\vec{p}) = V(\vec{p})[f].
+\end{equation}
+\end{definition}
+
+\begin{proposition}
+Let $f,g,h\in C^{\infty}(\RR^{n})$, $a,b\in\RR$, and $V,W\in\Vect(\RR^{n})$.
+\begin{enumerate}
+\item $(fV + gW)[h] = fV[h] + gW[h]$
+\item Linearity: $V[af + bg] = aV[f] + bV[g]$
+\item Product rule: $V[fg] = V[f]g + fV[g]$
+\end{enumerate}
+\end{proposition}
+
+\subsection{Differential Forms}
+
+\begin{definition}
+Given some (real) vector space $W$, a \define{Covector} (or \emph{dual vector})
+is a linear map $\varphi\colon W\to\RR$.
+\end{definition}
+
+\N{Notation change: Indices, superscripts, subscripts}
+I am going to try to be consistent from now on, with coordinates to
+tangent vectors being written with superscipted indices, frame fields
+with subscripted indices (so $V = v^{1}U_{1} + v^{2}U_{2} + \dots + v^{n}U_{n}$),
+covector bases written with superscripted indices, and
+components/coordinates of covectors with subscripted indices. This seems
+random and insane at first (and it probably is), but this is the
+convention which physicists use. It also lends itself to the Einstein
+summation convention, where we sum over repeated indices, for example:
+\begin{equation}
+v^{i}U_{i} := \sum^{n}_{i=1}v^{i}U_{i}.
+\end{equation}
+We will use explicit summation in our notes, for explicit clarity.
+
+\begin{example}
+  Consider $W=\RR^{3}$ and define $\varphi\colon W\to\RR$ by
+  \begin{equation}
+\varphi\left(\begin{bmatrix}w^{1}\\ w^{2}\\ w^{3}
+\end{bmatrix}\right) = w^{1}.
+  \end{equation}
+  It's linear (it's just the projection map onto the first coordinate,
+  which is famously linear). Thus it's a covector.
+\end{example}
+
+\begin{example}
+  Consider $W=\RR^{3}$ and define $\varphi\colon W\to\RR$ by
+  \begin{equation}
+\varphi\left(\begin{bmatrix}w^{1}\\ w^{2}\\ w^{3}
+\end{bmatrix}\right) = \alpha_{1}w^{1} + \alpha_{2}w^{2} + \alpha_{3}w^{3},
+  \end{equation}
+where $\alpha_{1}$, $\alpha_{2}$, $\alpha_{3}\in\RR$ are fixed
+constants. We see this is linear, and we could write it as:
+\begin{equation}
+\begin{bmatrix}\alpha_{1} & \alpha_{2} & \alpha_{3}
+\end{bmatrix}\begin{bmatrix}w^{1}\\ w^{2}\\ w^{3}
+\end{bmatrix} = \alpha_{1}w^{1} + \alpha_{2}w^{2} + \alpha_{3}w^{3}.
+\end{equation}
+The row vectors are called covectors, the column vectors are vectors.
+\end{example}
+
+\begin{definition}
+If $W=\T_{\vec{p}}\RR^{n}$, then a covector is called a
+\define{Cotangent Vector}. The space of all cotangent vectors to
+$\T_{\vec{p}}\RR^{n}$ is called the \define{Cotangent Space with Base Point $\vec{p}$}
+and denoted $\T^{*}_{\vec{p}}\RR^{n}$.
+\end{definition}
+
+\begin{example}
+Let $\vec{p}\in\RR^{n}$, define $\varphi\colon\T_{\vec{p}}\RR^{n}\to\RR$ by
+  \begin{equation}
+\varphi(\vec{v}_{\vec{p}}) = v^{1},
+  \end{equation}
+  where $\vec{v}_{\vec{p}} = (v^{1},\dots,v^{n})_{\vec{p}}$. This is
+  linear:
+  \begin{subequations}
+    \begin{align}
+\varphi(a\vec{v}_{\vec{p}} + b\vec{w}_{\vec{p}})
+&= \varphi\left((a\vec{v}+b\vec{w})_{\vec{p}}\right)\\
+&= (a\vec{v}+b\vec{w})^{1}\\
+&= a\varphi(\vec{v}_{\vec{p}}) + b\varphi(\vec{w}_{\vec{p}}).
+    \end{align}
+  \end{subequations}
+\end{example}
+
+\begin{definition}
+A \define{One-Form} (or ``\emph{Covector Field}'') $\varphi$ on
+$\RR^{n}$ assigns to each point $p\in\RR^{n}$ a covector $\varphi_{\vec{p}}\colon\T_{\vec{p}}\RR^{n}\to\RR$.
+\end{definition}
+
+\begin{remark}
+A one-form is one way of getting certain information out of the vector
+field.
+
+If $V$ is a vector field and $\varphi$ is a one-form, we get (at each
+point $\vec{p}\in\RR^{n}$):
+\begin{equation}
+\varphi_{\vec{p}}(V(\vec{p}))\in\RR.
+\end{equation}
+So at each point we get a number; so $\varphi$ and $V$ give us a
+function. That is, we may think of $\varphi$ as a map
+\begin{equation}
+\begin{split}
+  \varphi\colon &\Vect(\RR^{n})\to C^{\infty}(\RR^{n}),\\
+  &V\mapsto\varphi(V),
+\end{split}
+\end{equation}
+as defined by
+\begin{equation}
+\left(\varphi(V)\right)(\vec{p}) = \varphi_{\vec{p}}(V(\vec{p})).
+\end{equation}
+The main way to obtain a 1-form is to take a differential (of a function).
+\end{remark}
+
+\begin{definition}
+Given a smooth function $f\in C^{\infty}(\RR^{n})$, define the
+\define{Differential of $f$} to be the map
+\begin{equation}
+\D f\colon\Vect(\RR^{n})\to C^{\infty}(\RR^{n})
+\end{equation}
+given by, for any $V\in\Vect(\RR^{n})$,
+\begin{equation}
+\D f[V] = V[f],
+\end{equation}
+i.e., given by the directional derivative of $f$ in the direction of $V$
+(\S\ref{defn:over-r-n:directional-derivative:wrt-vector-field}).
+\end{definition}
+
+\N{Differential forms are one-forms}
+In fact, $\D f$ really is a one-form. We check linearity, letting
+$V,W\in\Vect(\RR^{n})$ be arbitrary,
+\begin{subequations}
+\begin{align}
+  \D f[V + W] &= (V+W)[f]\\
+  &= V[f] + W[f]\\
+  &= \D f[V] + \D f[W]
+\end{align}
+\end{subequations}
+for arbitrary $c\in\RR$,
+\begin{subequations}
+  \begin{align}
+    \D f[c V] &= (c V)[f]\\
+    &= c(V[f])\\
+    &= c\,\D f[V]
+\end{align}
+\end{subequations}
+For arbitrary $h\colon\RR^{n}\to\RR$ smooth,
+\begin{subequations}
+\begin{align}
+\D f[h V] &= (h V)[f]\\
+&= h \cdot (V [f])\\
+&= h\,\D f[V].
+\end{align}
+\end{subequations}
+
+\begin{example}
+Let $x^{1}$, \dots, $x^{n}$ be the standard coordinate functions on
+$\RR^{n}$. Then we see
+\begin{subequations}
+\begin{align}
+  \D x^{j}[U_{i}] &= U_{i}[x^{j}]\\
+  &= \frac{\partial}{\partial x^{i}}x^{j}\\
+  &= {\delta_{i}}^{j} = {\delta^{j}}_{i}
+\end{align}
+\end{subequations}
+is the Kronecker delta ${\delta^{j}}_{i}=0$ if $i\neq j$ and
+${\delta^{j}}_{i}=1$ if $i=j$. Then for any vector field $V\in\Vect(\RR^{n})$,
+we have,
+\begin{subequations}
+\begin{align}
+\D x^{j}[V] &= \D x^{j}\left[\sum_{i}v^{i}U_{i}\right]\\
+&= \sum_{i}\D x^{j}[v^{i}U_{i}]\\
+&= \sum_{i} v^{i}\,\D x^{j}[U_{i}]\\
+&= \sum_{i} v^{i}{\delta^{j}}_{i}\\
+&= v^{j}.
+\end{align}
+\end{subequations}
+So $\D x^{j}$ just picks out the $j^{\text{th}}$ component of the vector
+field at the point.
+\end{example}
+
+\N{Rosetta Stone}
+At this point, it's useful to write a ``Rosetta Stone'' relating
+``Stuff'' and ``Co-Stuff''.
+
+%\begin{tabular}{p{0.45\linewidth}|p{0.45\linewidth}}
+\begin{longtable}{p{0.45\linewidth}|p{0.45\linewidth}}\hline
+  Stuff & Co-Stuff \\ \hline
+ $\bullet$ Tangent vector
+  $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{n}$
+  (vectors with base points)
+  & $\bullet$ Cotangent vectors $\phi_{\vec{p}}\in\T^{*}_{\vec{p}}\RR^{n}$
+  is a linear map $\phi_{\vec{p}}\colon\T_{\vec{p}}\RR^{n}\to\RR$ \\
+  $\bullet$ Vector Field $V$ gives a tangent vector at each point $V(\vec{p})\in\T_{\vec{p}}\RR^{n}$
+  & $\bullet$ One-Forms, or Covector fields, $\phi$ assigns a cotangent vector
+  $\phi_{\vec{p}}$ at each point $\vec{p}\in\RR^{n}$\\
+  $\bullet$ Vector fields act on functions (by the directional
+  derivative) to give new functions:
+
+  $\displaystyle (V[f])(\vec{p}) = \left.\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}$
+  
+  & $\bullet$ One-forms act on vector fields to give functions
+  $(\phi[V])(\vec{p}) = \phi_{\vec{p}}[V(\vec{p})]$. 
+
+  % &
+  $\bullet$ Any smooth function $f\colon\RR^{n}\to\RR$ gives a
+  one-form $\D f$ by the rule
+  $(\D f)_{\vec{p}}[\vec{v}_{\vec{p}}] = \vec{v}_{\vec{p}}[f]$, or
+
+  $\D f[V] = V[f]$.\\
+  $\bullet$ The {\em natural frame field} on $\RR^{n}$
+  is given by the standard coordinate vector fields $U_{1}(\vec{p}) =
+  (1,0,\dots,0)_{\vec{p}}$ and so on. These are special because
+  $\displaystyle U_{i}[f] = \frac{\partial f}{\partial x^{i}}(\vec{p})$.
+  & $\bullet$ The {\em differentials of the coordinate functions}
+  $x^{1}$, \dots, $x^{n}\mapsto\D x^{1}$, \dots, $\D x^{n}$ are special
+  because $\D x^{i}[U_{j}] = \delta^{i}_{j}$. \\
+  $\bullet$ We proved in
+  Lemma~\ref{lemma:over-r-n:vector-field-is-linear-combination-of-natural-frame-field}
+  that any vector field can be written as $V=\sum_{i}v^{i}U_{i}$ where
+  the smooth functions $v^{i}$ are the {\em coordinate functions of $V$
+  relative to the frame field $U_{i}$}.
+  & $\bullet$ We will show that any covector field (i.e., one-form)
+  $\phi$ can be written as $\phi = \sum_{i}f_{i}\,\D x^{i}$ where the
+  $f_{i}$ are called the \define{Coordinate functions of $\phi$ relative
+    to the coframe field} given by $\D x^{j}$.\\
+  \hline
+  Stuff & Co-Stuff\\\hline
+\end{longtable}
+
+%\end{tabular}
+\begin{proposition}
+Every one-form is a $C^{\infty}(\RR^{n})$ linear combination of the $\D x^{i}$.
+\end{proposition}
+\begin{proof}
+Suppose $\phi$ is a one-form Then for any vector field $V\in\Vect(\RR^{n})$,
+%% \begin{subequations}
+%% \begin{align}
+%%   \phi[V] & \nonumber\\
+%%   =& \{\mbox{because } V=\sum_{i}v^{i}U_{i}\}\nonumber\\
+%%   & \phi\left[\sum_{i}v^{i}U_{i}\right]\\
+%%   =& \{\mbox{by linearity of $\phi$}\}\nonumber\\
+%% &\sum_{i}v^{i}\phi[U_{i}] \\
+%%   =& \{\mbox{recall $\D x^{i}[V]=v^{i}$}\}\nonumber\\
+%% &\sum_{i}\D x^{i}[V]\,\phi[U_{i}]\\
+%%   =& \{\mbox{linearity}\}\nonumber\\
+%% &\left(\sum_{i}\phi[U_{i}]\,\D x^{i}\right)[V].
+%% \end{align}
+%% \end{subequations}
+\begin{calculation}
+  \phi[V] 
+\step{\mbox{because } $V=\sum_{i}v^{i}U_{i}$}
+%\refstepcounter{equation}
+  \phi\left[\sum_{i}v^{i}U_{i}\right]
+\step{\mbox{by linearity of $\phi$}}
+  \sum_{i}v^{i}\phi[U_{i}]
+\step{recall $\D x^{i}[V]=v^{i}$}
+  \sum_{i}\D x^{i}[V]\,\phi[U_{i}]
+\step{commutativity of multiplication of real numbers}
+  \sum_{i}\phi[U_{i}]\,\D x^{i}[V]
+\step{\mbox{linearity}}
+  \left(\sum_{i}\phi[U_{i}]\,\D x^{i}\right)[V].
+\end{calculation}
+Since this is true for all $V$, that means $\phi=\sum_{i}\phi[U_{i}]\,\D x^{i}$.
+That's what we wanted to prove. In fact, we have an explicit formula for
+the coefficients.
+\end{proof}
+
+\begin{corollary}
+  If $\phi = \D f$, then
+  \begin{equation*}
+\D f = \sum_{i}\frac{\partial f}{\partial x^{i}}\,\D x^{i}.
+  \end{equation*}
+\end{corollary}
+\begin{proof}
+  We can compute this directly,
+  \begin{subequations}
+    \begin{align}
+      \D f
+      &= \sum_{i}\D f[U_{i}]\,\D x^{i}\\
+      &= \sum_{i}U_{i}[f]\,\D x^{i}\\
+      &= \sum_{i}\frac{\partial f}{\partial x^{i}}\,\D x^{i}.
+    \end{align}
+  \end{subequations}
+  Hence the result.
+\end{proof}
+
+\N{Definition: Differential Operator}
+We actually have something more. We have the \define{Differential} is a
+map
+\begin{subequations}
+\begin{equation}
+\D\colon\{\mbox{functions}\}\to\{\mbox{one-forms}\},
+\end{equation}
+defined by
+\begin{equation}
+\D f := \sum_{i}\frac{\partial f}{\partial x^{i}}\D x^{i}.
+\end{equation}
+\end{subequations}
+Let us now prove properties about the differential operator.
+
+\begin{proposition}[Leibniz rule]
+For any $f,g\in C^{\infty}(\RR^{n})$, we have $\D(fg)=g\,\D f + f\,\D g$.
+\end{proposition}
+\begin{proof}
+  Let $V\in\Vect(\RR^{n})$ be arbitrary, then we have
+  \begin{subequations}
+    \begin{align}
+      \D(fg)[V] &= V[fg] \\
+      &= V[f]\,g + f\,V[g]\\
+      &= g\,\D f[V] + f\,\D g[V]\\
+      &= (g\,\D f + f\,\D g)[V].
+    \end{align}
+  \end{subequations}
+  Since $V$ was arbitrary, the result follows.
+\end{proof}
+
+\begin{proposition}[Chain rule]\label{prop:over-r-n:d:chain-rule}
+Let $f\colon\RR^{n}\to R$ and $h\colon\RR\to\RR$.
+Then for any $\vec{p}\in\RR^{n}$,
+$\D(h\circ f)_{\vec{p}} = h'(f(\vec{p}))\,\D f_{\vec{p}}$.
+\end{proposition}
+
+\begin{proof}
+Let $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{n}$ be arbitrary, then
+\begin{subequations}
+\begin{align}
+\D(h\circ f)_{\vec{p}}[\vec{v}_{\vec{p}}]
+&= \vec{v}_{\vec{p}}[h\circ f]\\
+&= \left.\frac{\D}{\D t} h(f(\vec{p}+t\vec{v}))\right|_{t=0}\\
+&= \left.h'(f(\vec{p}+t\vec{v}))\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}\\
+&= h'(f(\vec{p}))\vec{v}_{\vec{p}}[f]\\
+&= h'(f(\vec{p}))\,\D f[\vec{v}_{\vec{p}}].
+\end{align}
+\end{subequations}
+Since this is for arbitrary tangent vectors, the result follows.
+\end{proof}
+
+\begin{example}
+  Let's work in $\RR^{2}$, let $x^{1}=x$ and $x^{2}=y$. Consider
+  \begin{equation}
+f(x,y) = x^{2}\sin(y) + y^{3}x.
+  \end{equation}
+  We compute the one-form $\D f$:
+\begin{calculation}
+  \D f
+\step{unfold the definition of $f$}
+  \D (x^{2}\sin(y) + y^{3}x)
+\step{linearity of $\D$}
+  \D (x^{2}\sin(y)) + \D(y^{3}x)
+\step{Leibniz rule}
+  \left(x^{2}\,\D(\sin(y)) + \sin(y)\,\D(x^{2})\right) + \left(y^{3}\,\D(x)+x\,\D(y^{3})\right)
+\step{calculus}
+  (x^{2}\cos(y)\,\D y + 2x\sin(y)\,\D x) + (y^{3}\,\D x + 3y^{2}x\,\D y)
+\step{gather terms}
+  (2x\sin(y) + y^{3})\,\D x + (x^{2}\cos(y) + 3y^{2}x)\,\D y.
+\end{calculation}
+This coincides with $\D f= (\partial_{x}f)\,\D x + (\partial_{y}f)\,\D y$.
+\end{example}
+
+\begin{example}
+Working over $\RR^{2}$ with $x^{1}=x$, $x^{2}=y$, consider $g(x,y)=\cos\sqrt{xy}$.
+Compute the one-form $\D g$.
+The trick is to consider $h(z)=\cos\sqrt{z}$ and $f(x,y)=xy$, so
+$g=h\circ f$. This is because we will use the chain-rule for
+differential forms, which requires computing $h'(f(x,y))$ and $\D f$.
+We start with
+\begin{calculation}
+  \D g
+\step{unfold the definition of $g$}
+  \D(h\circ f)
+\step{chain rule (\S\ref{prop:over-r-n:d:chain-rule})}
+  {\displaystyle\left.\frac{\D h(z)}{\D z}\right|_{z=f(x,y)}\,\D f}
+\end{calculation}
+Now we need to compute $h'(f(x,y))$,
+\begin{calculation}
+  {\displaystyle\left.\frac{\D h(z)}{\D z}\right|_{z=f(x,y)}}
+\step{unfold definition of $h$}
+  {\displaystyle\left.\frac{\D\cos\sqrt{z}}{\D z}\right|_{z=f(x,y)}}
+\step{chain rule}
+  {\displaystyle\left.-\sin\sqrt{z}\frac{\D\sqrt{z}}{\D z}\right|_{z=f(x,y)}}
+\step{power rule}
+  {\displaystyle\left.-\sin\sqrt{z}\frac{1}{2\sqrt{z}}\right|_{z=f(x,y)}}
+\step{substitution, simplify numerator}
+  {\displaystyle\frac{-\sin\sqrt{f(x,y)}}{2\sqrt{f(x,y)}}}
+\step{unfold definition of $f$}
+  {\displaystyle\frac{-\sin\sqrt{xy}}{2\sqrt{xy}}}
+\end{calculation}
+We similarly can compute $\D f$,
+\begin{calculation}
+  \D f
+\step{unfold definition of $f$}
+  \D(xy)
+\step{Leibniz rule}
+  x\,\D y + y\,\D x
+\end{calculation}
+We can combine everything together:
+\begin{calculation}
+  \D g
+\step*{chain rule (\S\ref{prop:over-r-n:d:chain-rule})}
+  {\displaystyle\left.\frac{\D h(z)}{\D z}\right|_{z=f(x,y)}\,\D f}
+\step{from our previous calculations}
+  {\displaystyle\frac{-\sin\sqrt{xy}}{2\sqrt{xy}}(x\,\D y + y\,\D x).}
+\end{calculation}
+
+Thus we conclude
+\begin{subequations}
+\begin{equation}
+\D f = \frac{\sin\sqrt{xy}}{2\sqrt{xy}}(x\,\D y + y\,\D x),
+\end{equation}
+or rearranging factors,
+\begin{equation}
+  \D f = \left(\frac{-1}{2}\frac{y}{\sqrt{xy}}\sin\sqrt{xy}\right)\D x
+  +\left(\frac{-1}{2}\frac{x}{\sqrt{xy}}\sin\sqrt{xy}\right)\D y.
+\end{equation}
+\end{subequations}
+\end{example}
+
+\subsection{Algebra of Differential Forms}
+
+\M
+We know how to add one-forms together, and we know how to multiply
+one-forms by ``scalars'' (i.e., smooth functions). But what about the
+multiplication of one-forms \emph{by other one-forms?}
+
+Now let's formally define a definition of multiplication of one-forms
+called the \define{Wedge Product} denoted ``$\wedge$''. By ``formal'',
+we mean we'll just produce a series of rules that the wedge product
+satisfies.
+
+Given two one-forms $\phi$ and $\psi$, their \define{Wedge Product}
+\begin{equation}
+\phi\wedge\psi
+\end{equation}
+is called a \define{Two-Form}. More generally, we can multiply two-forms
+by scalars and add them together, so a generic two-form looks like
+\begin{equation}
+f\phi\wedge\psi+\dots+g\mu\wedge\lambda.
+\end{equation}
+More generally, we could take the wedge product of 3 one-forms to
+produce a three-form, or the wedge produce of $n$ one-forms to produce
+an $n$-form.
+
+\begin{example}
+On $\RR^{15}$, we have $\D x^{1}\wedge\D x^{2}+\sin(x^{1})\,\D x^{2}\wedge\D x^{10}$
+be a perfectly good 2-form.
+\end{example}
+
+\N{Axioms of Wedge Product}
+We stipulate the wedge product satisfies the following axioms:
+\begin{enumerate}
+\item Associativity: $\phi\wedge(\psi\wedge\mu)=(\phi\wedge\psi)\wedge\mu$
+\item Left distributivity over addition: $\phi\wedge(\psi+\mu) = \phi\wedge\psi+\phi\wedge\mu$
+\item Anticommutativity on 1-forms: $\phi\wedge\psi=-\psi\wedge\phi$.
+\item Scalar multiplication: $f\cdot(\phi\wedge\psi\wedge\dots)=(f\phi)\wedge\psi\wedge(\dots)$.
+\end{enumerate}
+
+\N{Consequences}
+From these axioms, we have two consequences:
+\begin{enumerate}
+\item Right distributivity over addition: $(\psi+\mu)\wedge\phi=\psi\wedge\phi+\mu\wedge\phi$
+\item Scalar distributivity: $(f\phi)\wedge\psi=f\cdot(\phi\wedge\psi)=\phi\wedge(f\psi)$
+\item Nilpotence: $\phi\wedge\phi=0$.
+\end{enumerate}
+\begin{proof}
+  These are straightforward calculations.
+  \begin{calculation}
+    (\psi+\mu)\wedge\phi
+  \step{anti-commutativity}
+    -\phi\wedge(\psi+\mu)
+  \step{left distributivity}
+    -\phi\wedge\psi-\phi\wedge\mu
+  \step{anti-commutativity}
+    \psi\wedge\phi+\mu\wedge\phi.
+  \end{calculation}
+  Similarly, for scalar distributivity,
+  \begin{calculation}
+    (f\phi)\wedge\psi
+  \step{scalar multiplication}
+    f\cdot(\phi\wedge\psi)
+  \step{anticommutativity}
+    f\cdot(-\psi\wedge\phi)
+  \step{scalar multiplication}
+    -(f\psi)\wedge\phi
+  \step{anticommutativity}
+    \phi\wedge(f\psi).
+  \end{calculation}
+  Nilpotence follows from anticommutativity, since the only number for
+  which $\phi\wedge\phi=-\phi\wedge\phi$ is when $\phi\wedge\phi=0$. (If
+  you don't believe me, add $\phi\wedge\phi$ to both sides and divide by 2.)
+\end{proof}
+
+\begin{proposition}
+  Any two-form on $\RR^{3}$ may be written in the form
+  \begin{equation}\label{eq:over-r-n:two-forms-generic-structure-in-r-3}
+f\,\D x\wedge\D y + g\,\D y\wedge\D z + h\,\D z\wedge\D x,
+  \end{equation}
+  where $f,g,h\in C^{\infty}(\RR^{3})$.
+\end{proposition}
+
+\begin{proof}
+Let's show if $\phi$, $\psi$ are one-forms, then $\phi\wedge\psi$ can be
+written like
+Eq~\eqref{eq:over-r-n:two-forms-generic-structure-in-r-3}. Let
+\begin{subequations}
+  \begin{align}
+    \phi &= \sum_{i=1}^{3}f_{i}\,\D x^{i}\\
+    \psi &= \sum_{j=1}^{3}g_{j}\,\D x^{j}
+  \end{align}
+\end{subequations}
+We can compute:
+\begin{calculation}
+  \phi\wedge\psi
+\step{unfolding $\phi$, $\psi$}
+  (\sum_{i=1}^{3}f_{i}\,\D x^{i})\wedge(\sum_{j=1}^{3}g_{j}\,\D x^{j})
+\step{distributivity, linearity, anticommutativity}
+  (f_{1}g_{2}-f_{2}g_{1})\,\D x^{1}\wedge\D x^{2}
++ (f_{2}g_{3}-f_{3}g_{2})\,\D x^{2}\wedge\D x^{3}
++ (f_{3}g_{1}-f_{1}g_{3})\,\D x^{3}\wedge\D x^{1}
+\end{calculation}
+Since an arbitrary two-form is some linear combination of wedge products
+of one-forms, we just have to use this result and collect terms.
+\end{proof}
+
+\begin{remark}
+The preceding formula looks a lot like the cross-product of vectors, and
+it would be if:
+\begin{enumerate}
+\item The $\D x^{i}$ were ``orthonormal basis vectors''
+\item We replaced the wedge products with the following basis vectors
+  $\D x^{1}\wedge\D x^{2}\to\vec{e}_{3}$,
+  $\D x^{2}\wedge\D x^{3}\to\vec{e}_{1}$,
+  $\D x^{3}\wedge\D x^{1}\to\vec{e}_{2}$.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}
+Similar results hold for $k$-forms in $\RR^{n}$.
+\end{remark}
+
+\begin{example}
+  Every 2-form on $\RR^{4}$ can be written as a linear combination of
+  $\D x^{1}\wedge\D x^{2}$, $\D x^{1}\wedge\D x^{3}$, $\D x^{1}\wedge\D x^{4}$, 
+  $\D x^{2}\wedge\D x^{3}$, $\D x^{2}\wedge\D x^{4}$,
+  $\D x^{3}\wedge\D x^{4}$. 
+\end{example}
+
+\begin{example}
+In general, every $k$-form on $\RR^{n}$ is a linear combination of
+$\binom{n}{k}$ basis $k$-forms. In particular, for $k>n$, every $k$-form
+is zero.
+\end{example}
+
+\N{Wedge Product of Forms}
+The wedge product is a map
+\begin{equation}
+  \begin{split}
+\wedge\colon&\{\mbox{$k$-forms}\}\times\{\mbox{$\ell$-forms}\}\to\{\mbox{$(k+\ell)$-forms}\}\\
+&(\omega,\lambda)\mapsto\omega\wedge\lambda.
+  \end{split}
+\end{equation}
+In fact, it's useful to think of smooth functions as ``0-forms'' to
+complete the picture, where we define the wedge product as just the
+scalar product $f\wedge\phi=f\phi$. So we have, in $\RR^{n}$,
+\begin{itemize}
+\item $0$-forms: smooth functions
+\item $1$-forms: covector fields
+\item \dots
+\item $n$-forms
+\end{itemize}
+The ``$k$'' in ``$k$-form'' is called the \define{Degree} of the form,
+written $\deg(\phi)$.
+
+\begin{theorem}
+  For any differential forms $\phi$, $\psi$, we have
+  \begin{equation}
+\phi\wedge\psi=(-1)^{(\deg~\phi)(\deg~\psi)}(\psi\wedge\phi).
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  It suffices to prove this for monomials $\phi=f\,\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}}$
+  and $\psi=g\,\D x^{j_{1}}\wedge\dots\wedge\D x^{j_{\ell}}$. The trick
+  is to do this by induction on $\ell$ (the degree of $\psi$).
+
+  \textbf{Base Case:} $\ell=1$, we see
+  \begin{equation}
+\phi\wedge\psi = (f\,\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}})\wedge(g\,\D x^{j_{1}}).
+  \end{equation}
+  We can move the $g$ out in front without a problem, then we must move
+  the $\D x^{j_{1}}$ in front of $k$ one-forms, which will cost us a
+  factor of $(-1)^{k}$, giving us:
+  \begin{equation}
+\phi\wedge\psi = (-1)^{k} fg\,\D x^{j_{1}}\wedge\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}}.
+  \end{equation}
+  And since $\deg(\phi)\deg(\psi)=k$, we're good.
+
+  \textbf{Inductive Hypothesis:}
+  we now assume this works for arbitrary $\ell\in\NN$.
+
+  \textbf{Inductive Case:}
+  we now will prove this is the case for $(\ell+1)$-forms.
+  We write $\psi=\psi^{(\ell)}\wedge\D x^{j_{\ell+1}}$. Then we have
+  \begin{equation}
+\phi\wedge\psi = \phi\wedge(\psi^{(\ell)}\wedge\D x^{j_{\ell+1}}).
+  \end{equation}
+  We invoke associativity to write the right-hand side as
+  \begin{equation}
+\phi\wedge\psi = (\phi\wedge\psi^{(\ell)})\wedge\D x^{j_{\ell+1}}.
+  \end{equation}
+  Now look, we have precisely our base case. What's more: $g=1$ in our
+  current situation. So we use the inductive hypothesis to rewrite
+  \begin{equation}
+    (\phi\wedge\psi^{(\ell)})\wedge\D x^{j_{\ell+1}}
+    = ((-1)^{(\deg~\phi)\ell}\psi^{(\ell)}\wedge\phi)\wedge\D x^{j_{\ell+1}}
+  \end{equation}
+  and invoking the base case to rewrite the right-hand side as
+  \begin{equation}
+    \begin{split}
+    ((-1)^{(\deg~\phi)\ell}\psi^{(\ell)}\wedge\phi)\wedge\D x^{j_{\ell+1}}
+    &= (-1)^{(\ell + \deg~\phi)1}\D x^{j_{\ell+1}}\wedge((-1)^{(\deg~\phi)\ell}\psi^{(\ell)}\wedge\phi)\\
+&= (-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell}\D x^{j_{\ell+1}}\wedge(\psi^{(\ell)}\wedge\phi).
+    \end{split}
+    \end{equation}
+  We have to move $\D x^{j_{\ell+1}}$ behind the $\psi^{(\ell)}$, so we
+  use associativity
+  \begin{equation}
+(-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell}\D x^{j_{\ell+1}}\wedge(\psi^{(\ell)}\wedge\phi)
+=(-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell}(\D x^{j_{\ell+1}}\wedge\psi^{(\ell)})\wedge\phi.
+  \end{equation}
+  Then we can use the inductive hypothesis setting $\phi=\D x^{j_{\ell+1}}$ 
+  \begin{equation}
+    \begin{split}
+(-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell}(\D x^{j_{\ell+1}}\wedge\psi^{(\ell)})\wedge\phi&=(-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell}((-1)^{\ell}\psi^{(\ell)}\wedge\D x^{j_{\ell+1}})\wedge\phi\\
+&=(-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell}((-1)^{\ell}\psi^{(\ell+1)})\wedge\phi.
+    \end{split}
+  \end{equation}
+  Now we just need to prove that
+  \begin{equation}
+(-1)^{(\ell + \deg~\phi)+(\deg~\phi)\ell + \ell} = (-1)^{(\deg~\phi)(\ell+1)}.
+  \end{equation}
+  But this is trivial, since
+  $(\ell + \deg~\phi)+(\deg~\phi)\ell + \ell = 2\ell + \deg(\phi) + \ell\cdot\deg(\phi)$
+  and $(-1)^{2\ell}=1$.
+\end{proof}
+
+\subsection{Exterior Derivative}
+
+\M
+The goal is to ``extend'' the differential $\D$ so it can work on any
+differential form. We know if $f\in C^{\infty}(\RR^{n})$, then $f$ is a
+zero-form and $\D f$ is a one-form. In general we want to differential
+to produce $(k+1)$-forms from $k$-forms,
+\begin{equation}
+\D\colon\{\mbox{$k$-forms}\}\to\{\mbox{$(k+1)$-forms}\}
+\end{equation}
+which satisfy
+\begin{enumerate}
+\item $\D$ acting on a zero-form remains the same as before.
+\item $\D$ is $\RR$-linear --- we can pull out constants but not functions,
+\item Graded Leibniz property: for any differential forms $\phi$ and
+  $\psi$, we want $\D(\phi\wedge\psi) = (D\phi)\wedge\psi+(-1)^{\deg(\phi)}\phi\wedge\D\psi$.
+\item For \emph{any} form $\phi$, we want $\D(\D\phi)=0$.
+\end{enumerate}
+Graded-Leibniz property may seem odd, but consider the following
+situation:
+let $\phi$ and $\psi$ be one-forms, we better get the same answer if we
+compute $\D(\phi\wedge\psi)$ or $\D(-\psi\wedge\phi)$.
+
+\begin{exercise}
+  Prove, without the graded Leibniz property,
+  $\D(\phi\wedge\psi)\neq\D(-\psi\wedge\phi)$.
+\end{exercise}
+
+\M
+Regarding the $\D(\D\phi)=0$ property, the analogy which should spring
+to mind is that
+\begin{equation*}
+\D f\sim\mbox{gradient of $f$},
+\end{equation*}
+and
+\begin{equation*}
+\D(\mbox{$1$-form})\sim\mbox{curl},
+\end{equation*}
+so
+\begin{equation}
+\D(\D f)\sim\nabla\times(\vec{\nabla}f)=0.
+\end{equation}
+
+\N{Computing Exterior Derivative}
+How do we calculate the exterior derivative of a $k$-form $\omega$?
+(Well, if it's a $k$-form on $\RR^{k}$, it's zero, so let's assume we're
+on $\RR^{n}$ for $n>k$.)
+\begin{enumerate}
+\item Write $\phi$ as a linear combination of monomials like $f\,\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}}$
+\item Use linearity to do the calculation term-by-term.
+\item For each term, it looks like:
+$\D(f\,\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}}) = \D f\wedge(\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}})$.
+(Since the other term from graded Leibniz is $(-1)^{0}f\wedge\D(\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}})=f\wedge(0)=0$.)
+\end{enumerate}
+
