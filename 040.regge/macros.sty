@@ -1,0 +1,111 @@
+\usepackage{fullpage}
+\usepackage{longtable}
+\usepackage[nottoc]{tocbibind}
+\usepackage[final]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{enumitem}
+\setlist{topsep=0pt,noitemsep}
+\usepackage{manfnt}
+\usepackage{fancyvrb}
+\usepackage{iso2145}
+\usepackage{ifpdf}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+  pdfauthor={Alex Nelson},
+  pdftitle={Differential Geometry},
+  \ifpdf\else dvipdfmx\fi
+]{hyperref}
+\usepackage{doi}
+
+\usepackage{titlesec}
+% Knuth's chapter style:
+%
+%     titlefont = cmssbx10 scaled\magstep2 = \Large\bfseries\sffamily
+%     \leftline{\twelvess Chapter \thechapter}
+%     \vskip 4pc
+%     \rightline{\titlefont #2}
+%     \vskip 2pc plus 1pc minus 1pc
+%
+% There is probably a smarter way to imitated the style using titlesec,
+% but I just want something that works.
+\titleformat{\chapter}[display]
+  {\Large\bfseries\sffamily}{{\normalfont\large\sffamily\selectfont Chapter \thechapter}}{4pc}
+  {\hfill}[\resetParagraphChunks\vskip 1pc plus 1 pc minus 1 pc] 
+
+\titleformat*{\section}{\resetParagraphChunks\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\newskip\interchunkskip \interchunkskip=\medskipamount%
+% cwebmac.tex has \interchunkskip=12pt minus 3pt
+% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
+\newskip\thmskip \thmskip=\interchunkskip%\topsep
+
+\newtheoremstyle{thmstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{defnstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{rmkstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\itshape} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
+
+\theoremstyle{thmstyle}
+\newtheorem{theorem}[chunk]{Theorem}
+\newtheorem{proposition}[chunk]{Proposition}
+\newtheorem{corollary}[chunk]{Corollary}
+\newtheorem{lemma}[chunk]{Lemma}
+\newtheorem{conjecture}[chunk]{Conjecture}
+
+\theoremstyle{plain}
+\newtheorem{puzzle}{Puzzle}
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk]{Definition}
+\newtheorem{example}[chunk]{Example}
+% \newtheorem{axiom}{Axiom}
+\newtheorem{problem}[chunk]{Problem}
+\newtheorem{question}[chunk]{Question}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk]
+\newtheorem{claim}[chunk]{Claim}
+
+\newcommand\define[1]{\textbf{``#1''}}
+
+
+% arXiv links
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+
+\newcommand\volume{\textbf}
+\newcommand\journal{\textit}

@@ -1,0 +1,121 @@
+\chapter{Physics Results}
+
+\M We assume the following results from physics.
+References will be given for further perusal.
+
+
+\section{High Energy Physics}
+
+\subsection{Propagators}
+
+\N{Spin-0 Propagator}
+The spin-0 propagator looks like
+\begin{equation}
+\propagator^{(0)}(p) = \frac{1}{p^{2} - m^{2} + \I\varepsilon}.
+\end{equation}
+
+
+\N[-1]{Spin-$1/2$ Propagator}
+The massive spin-$1/2$ propagator in QED looks like:
+\begin{equation}
+\propagator^{(1/2)}(p) = \frac{(\gamma^{\mu}p_{\mu}+m)}{p^{2}-m^{2}+\I\varepsilon},
+\end{equation}
+where $\gamma^{\mu}$ are the Dirac gamma matrices. The massless
+spin-$1/2$ propagators may be obtained taking the $m\to0$ limit.
+
+\N{Spin-1 Propagator}
+The general form of the spin-1 propagator for a massive particle
+requires a choice of gauge. The most general expression for the spin-1
+propagator is parametrized by $\lambda$ (the gauge parameter, usually
+$\lambda=0$ or $\lambda=\infty$):
+\begin{equation}
+\propagator_{\mu\nu}(p) = -\I\frac{g_{\mu\nu} + \left(1 - \frac{1}{\lambda}\right)p_{\mu}p_{\nu}/p^{2}}{p^{2}+\I\varepsilon}.
+\end{equation}
+The particular case for a massive spin-1 particle:
+\begin{equation}
+\propagator^{\text{(massive)}}_{\mu\nu}(p) = \frac{g_{\mu\nu} - k_{\mu}k_{\nu}/m^{2}}{k^{2}-m^{2}+\I\varepsilon}
++\frac{g_{\mu\nu} - k_{\mu}k_{\nu}/m^{2}}{k^{2}-(m^{2}/\lambda)+\I\varepsilon}.
+\end{equation}
+%% A few examples of the various different gauge choices:
+%% \begin{itemize}
+%% \item Unitary Gauge $
+%% The Landau gauge 
+
+\N{Graviton Propagator}
+The spin-2 propagator is a nightmare, but simplifies in some settings.
+
+\N[1]{Graviton Propagator in Minkowski Spacetime}
+Veltman~\cite[see Eq~(11)]{Veltman:1975vx} computes for us,
+in $D$-dimensional Minkowski spacetime with background metric
+$\eta_{\mu\nu}$, the spin-2 (``graviton'') propagator in harmonic
+gauge\footnote{Claus Kiefer's \emph{Quantum Gravity}, third ed., pg 53
+discusses this a bit, too.}:
+\begin{subequations}
+\begin{align}
+G_{\alpha\beta~\mu\nu} &= \frac{\mathcal{P}^{2}_{\alpha\beta~\mu\nu}}{k^{2}} - \frac{\mathcal{P}^{0}_{s}{}_{\alpha\beta~\mu\nu}}{2k^{2}}\\
+&= \frac{\eta_{\alpha\mu}\eta_{\beta\nu}+\eta_{\beta\mu}\eta_{\alpha\nu}-\frac{2}{D-2}\eta_{\mu\nu}\eta_{\alpha\beta}}{k^{2}}
+\end{align}
+\end{subequations}
+where $\mathcal{P}^{2}$ is the transverse and traceless spin-2
+projection operator, $\mathcal{P}^{0}$ is the spin-0 scalar multiplet.
+Donoghue~\cite[see Eq (39)]{Donoghue:1995cz}, also working with the harmonic gauge, confirms this calculation.
+
+For the graviton in the Prenkti gauge, see 't Hooft and
+Veltman~\cite[see Eq~(2.9)]{tHooft:1974toh}. The main difference is in
+the expression for scalar multiplet.
+
+\N{Graviton Propagator in Anti-de Sitter Spacetime}
+D'Hoker and friends~\cite[see \S5 \emph{et seq}.]{DHoker:1999bve} have
+computed the graviton propagator in $\mathrm{AdS}(d+1)$ spacetime as
+
+\N[-1]{Propagator for Spin-$J$ Particles}
+The canonical reference\footnote{A
+particularly enlightening reference is \url{https://physics.stackexchange.com/a/15164/9290}} for this result is
+Weinberg~\cite{Weinberg:1964cn,Weinberg:1964ev}. Specifically, table II
+of Weinberg~\cite{Weinberg:1964cn} establishes the propagator for a
+massive particle of spin $J$ and 4-momentum $p_{\mu}$ is
+\begin{subequations}
+\begin{equation}
+\propagator_{\text{massive}}(p) =\frac{1}{\I m^{2J}}\frac{\mathcal{P}(p) + m^{2J}}{p^{2} - m^{2}-\I\varepsilon}
+\end{equation}
+where $\mathcal{P}(p)\sim(p^{2})^{J}$ plus lower-order terms. (Weinberg
+uses $S(q)$ to denote his propagators.) Massless
+particles of spin $J$ look like (according to \S8 of
+Weinberg~\cite{Weinberg:1964ev})
+\begin{equation}
+\propagator_{\text{massless}}(p) =\frac{1}{\I}\frac{\mathcal{P}(p)}{p^{2}-\I\varepsilon}.
+\end{equation}
+\end{subequations}
+In either case, the asymptotic approximation holds:
+\begin{equation}
+\propagator(p)\sim\frac{(p^{2})^{J}}{p^{2} - m^{2} - \I\varepsilon}.
+\end{equation}
+Note: we use the opposite metric signature than Weinberg, hence our
+denominators look like $p^{2}-m^{2}$ whereas Weinberg's published
+formulas look like $p^{2}+m^{2}$.
+
+
+\subsection{Scattering Amplitudes}
+
+
+\N{Yukawa interaction}
+If we suppose there is a Yukawa interaction between a spin-$1/2$ field
+$\psi$ and its antipartner $\bar{\psi}$ governed by
+$V= g\bar{\psi}\phi\psi$, then the nonrelativistic approximation of the tree-level amplitude for the Yukawa-mediated scattering $\psi+\bar{\psi}\to\psi+\bar{\psi}$
+is (in center-of-mass frame):
+\begin{equation}
+\amplitude(k) \sim g^{2}\frac{4\pi}{k^{2}+m^{2}}.
+\end{equation}
+
+\N{Scattering Amplitude for Exchange of Spin $J$ Particle}
+It is a fact the scattering amplitude for a spin $J$ particle at high
+energies is
+\begin{equation}
+\amplitude_{J}(s,t) = -\frac{g^{2}(-s)^{J}}{t-M^{2}}.
+\end{equation}
+This may be found in Williams \emph{Introduction to Elementary Particles},
+More precisely, we expect
+\begin{equation}
+\amplitude_{J}(s,t) = -\frac{g^{2}(p^{2})^{J}}{p^{2}-M^{2}}.
+\end{equation}
+The pole is determined by unitarity. 

@@ -1,0 +1,676 @@
+\chapter{Introduction}
+
+
+\M
+Regge theory starts with quantum mechanics, so we will review the basic
+ideas underlying quantum theory. We want to compute the transition
+amplitude for a scattering process, which acts like the ``squareroot of
+probability''. The scattering amplitude $\amplitude$ is a function of
+kinematical invariants (like $p_{i}^{2}$ or $p_{j}p_{k}$ or whatever).
+
+\N{Scattering Channels}
+The $s$-channel scattering describes particles 1 and 2 annihilate each
+other, create a virtual particle, which then decays into the scattering
+of particles 3 and 4.
+
+The $t$-channel scattering describes the process where particle 1 emits
+an intermediate particle (and particle 1 then becomes particle 3);
+particle 2 absorbs the intermediate particle, thereby becoming particle
+4.
+
+The $u$-channel is the $t$-channel with the roles of particles 3 and 4 
+swapped.
+\section{Basic Principles}
+
+\M
+The cross-section of any process $2\to n$ (where 2 particles scatter,
+and produces a final state consisting of $n$ particles) is related to
+the ``invariant amplitude'' $\amplitude$ as
+\begin{equation}
+  \begin{split}
+\D\sigma_{n} &= (2\pi)^{4}\delta\left(p_{1}+p_{2}-\sum_{i}p_{i}'\right)|\amplitude|^{2}
+\prod^{n}_{i=1}\frac{\D^{3}p'_{i}}{2p'_{i0}(2\pi)^{3}}\frac{1}{I}\\
+&=\begin{pmatrix}\mbox{Energy-Momentum}\\
+\mbox{Conservation}
+\end{pmatrix}|\amplitude|^{2}\prod^{n}_{i=1}\begin{pmatrix}\mbox{phase space}\\
+\mbox{volume}
+\end{pmatrix}\frac{1}{I},
+  \end{split}
+  \end{equation}
+where $I$ is the Moller factor,
+\begin{equation}
+I = 4p_{10}p_{20}J = 4\sqrt{(p_{1}p_{2})^{2} - m_{1}^{2}m_{2}^{2}},
+\end{equation}
+which combines the flux density $J$ of the initial particles and
+$(2p_{10}\cdot2p_{20})^{-1}$ coming from thei wave functions.
+
+I believe this comes from Fermi's golden rule. Doubtless, there are a
+million different derivations of it.
+
+\N[1]{``Invariant'' Amplitude?} This is the first time I've seen the
+phase ``invariant amplitude'' used, in Gribov \S1.1.1; perhaps I just
+haven't been paying attention.
+
+\N[-1]{Analyticity and Causality}
+We assume the scattering amplitude $\amplitude$ is an analytic function
+of its arguments.
+
+\M[1]
+Gribov asserts this is ``a manifestation of the causality principle''.
+Without analyticity, Gribov asserts scattered waves could appear at
+their source before being emitted. I do not see how, not at present.
+I am told this is somehow related to the Kramers--Kronig relations, but
+again I need to sit down and work through this explicitly.
+
+\N{Conjecture: Amplitude is Bounded}
+We conjecture, as one of the kinematical invariants tends to infinity
+[with the remaining invariants fixed],
+the growth of scattering amplitudes is polynomially bounded,
+\begin{equation}
+|\amplitude(p_{1},\dots,p_{n})|<(p_{i}p_{j})^{N}.
+\end{equation}
+This is ``closely related to causality and the locality of the interaction''.
+
+Gribov concedes, ``One needs it in order to write the dispersion representation
+for the amplitudes (to be able to close the integration contour over an
+infinitely large circle).''
+
+\N[-1]{Singularities}
+We assume all singularities of the amplitude on the physical sheet have
+the meaning of reaction thresholds (in the sense that, they are
+determined by the physical masses of the intermediate state particles).
+
+\N[1]{Landau Singularities}\index{Landau Singularity}
+In terms of Feynman diagrams, these are the Landau singularities. This
+appears to be how Landau~\cite{Landau:1959fi} originally envisioned them.
+
+\N[-1]{Crossing Symmetry}
+Gribov takes a diversion to explain crossing symmetries of amplitudes.
+The basic idea being, since the amplitude is a function of kinematical
+invariants, we can change the sign of $p_{i0}$ (the time component of
+the 4-momentum for particle $i$) without altering the amplitude. For
+example, the same analytic function describes the reaction:
+\begin{subequations}\label{eq:introduction:crossing-symmetry:assumptions}
+\begin{equation}
+a(p_{1}) + b(p_{2})\to c(p_{3}) + d(p_{4})
+\end{equation}
+for $p_{10}>0$, $p_{20}>0$, $p_{30}>0$, and $p_{40}>0$; as well as,
+\begin{equation}
+a(p_{1}) + \bar{c}(-p_{3})\to\bar{b}(-p_{2})  + d(p_{4})
+\end{equation}
+(where $\bar{c}$ is the antiparticle of $c$, $\bar{b}$ the antiparticle
+for $b$) for $p_{10}>0$ and $p_{40}>0$, but $p_{20}<0$ and $p_{30}<0$; and
+\begin{equation}
+a(p_{1}) + \bar{d}(-p_{4}) \to\bar{b}(-p_{2}) + c(p_{3})
+\end{equation}
+\end{subequations}
+for $p_{10}>0$ and $p_{30}>0$, but $p_{20}<0$ and $p_{40}<0$.
+
+\M[1]
+What's going on here is a little subtle. Basically, we're considering
+the physical $s$-channel region ($s>0$, $t<0$, $u<0$) for the process
+$a+b\to c+d$. The amplitude is then $\amplitude_{a+b\to c+d}(s,t,u)$.
+
+We can analytically continue this to the $t>0$, $s<0$, $u<0$ region for
+the amplitude to describe the $a+\bar{c}\to\bar{b}+d$ process. Crossing
+symmetry then forces the relation
+\begin{equation}
+\amplitude_{a+b\to c+d}(s,t,u)=\amplitude_{a+\bar{c}\to\bar{b}+d}(t,s,u).
+\end{equation}
+Similarly, we could analytically continue to the region $u>0$, $s<0$, $t<0$
+describing the $a+\bar{d}\to\bar{b}+c$ process, giving us the relation
+\begin{equation}
+\amplitude_{a+b\to c+d}(s,t,u)=\amplitude_{a+\bar{d}\to\bar{b}+c}(u,t,s).
+\end{equation}
+Donnachie \textit{et al}.~\cite{Donnachie:2002en} is our source for this
+clarification. 
+
+\N[1]{CPT Theorem}
+The crossing symmetry implies the $CPT$-theorem: invariance of the
+amplitude $\amplitude$ with respect to the combination of charge
+conjugation $C$, space reflection $P$, and time reversal $T$.
+
+\N{Derivation from Three Assumptions}
+We can derive the crossing symmetry from three assumptions stated as Eq~\eqref{eq:introduction:crossing-symmetry:assumptions}.
+
+\N{The Pauli Theorem}
+We can use Eq~\eqref{eq:introduction:crossing-symmetry:assumptions}
+to derive the spin-statistics relation theorem.
+
+\N[-1]{Unitarity Condition for the Scattering Matrix}. The physical
+meaning of unitarity is quite simple: the sum of probabilities of all
+processes which are possible (at a given energy) is equal to 1,
+$SS^{\dagger}=1$.
+
+\N[1]{Amplitude}
+The amplitude $\amplitude$ may be related to the $S$-matrix by writing
+\begin{equation}
+S = 1 + \I A.
+\end{equation}
+We then have
+\begin{equation}
+SS^{\dagger} = (1 + \I A)(1 - \I A^{\dagger}) = 1 + AA^{\dagger} + \I(A-A^{\dagger}),
+\end{equation}
+which implies
+\begin{equation}
+AA^{\dagger} + \I(A-A^{\dagger})=0.
+\end{equation}
+If we write the amplitude explicitly in terms of its real and imaginary components,
+\begin{equation}
+A = \Re(A) + \I\Im(A),
+\end{equation}
+then the unitarity condition becomes
+\begin{equation}\label{eq:unitarity:in-terms-of-amplitude}
+2\Im(A) = AA^{\dagger}.
+\end{equation}
+
+\M
+We should be careful, because it's a bit misleading. If we have some set
+of orthonormal states $\langle j\mid$ and $\mid i\rangle$, unitarity
+means
+\begin{equation}
+  \delta_{ji} = \langle j| SS^{\dagger}| i\rangle
+  =\sum_{f}\langle j| S| f\rangle\langle f| S^{\dagger}| i\rangle.
+\end{equation}
+Using our definition of $\amplitude$, we would have
+\begin{equation}
+\langle j|\amplitude|i\rangle - \langle j|\amplitude^{\dagger}|i\rangle
+=(2\pi)^{4}\I\sum_{f}\delta^{(4)}(P^{f}-P^{i})
+\langle j|\amplitude^{\dagger}|f\rangle\langle f|\amplitude|i\rangle.
+\end{equation}
+For the particular case when $j=i$, we have (note the omitted factor of $\I$):
+\begin{equation}
+2\Im\langle i|\amplitude|i\rangle
+=(2\pi)^{4}\sum_{f}\delta^{(4)}(P^{f}-P^{i}) |\langle f|\amplitude|i\rangle|^{2}.
+\end{equation}
+We can use this to derive the optical theorem, see Donnachie \textit{et al.}~\cite[esp.~\S\S1.2--1.3]{Donnachie:2002en}
+for details.
+
+\section{Mandelstam Variables for Two-Particle Scattering}
+
+\begin{definition}
+  The three \define{Mandelstam variables} for $2\to2$ scattering
+  processes are 
+  \begin{subequations}
+    \begin{align}
+      s &= (p_{1} + p_{2})^{2},\\
+      t &= (p_{1} - p_{3})^{2},\\
+      u &= (p_{1} - p_{4})^{2}.
+    \end{align}
+  \end{subequations}
+  Further, they satisfy the identity,
+  \begin{equation}
+s + t + u = \sum^{4}_{j=1}m_{j}^{2},
+  \end{equation}
+  where we stress we sum over all particles involved in the scattering
+  process (i.e., incoming \emph{and outgoing} particles).
+\end{definition}
+
+\N{Assumption} We restrict ourselves to the case of equal masses
+$m_{j}=\mu$.
+
+\N{Physical Meaning} In the center-of-mass frame of the reaction $a+b\to c+d$
+(the so-called $s$-channel), we find $s$ is the square of the total
+energy of the colliding particles and $t=-(\vec{p}_{1}-\vec{p}_{3})^{2}$
+is the square of the momentum transfer from $a$ to $c$. Note that
+\begin{subequations}
+  \begin{align}
+    t &= (p_{1} + p_{3})^{2}\\
+    &= [(E,\vec{p}_{1}) - (E,\vec{p}_{3})]^{2}\\
+    &= -(\vec{p}_{1}-\vec{p}_{3})^{2},
+  \end{align}
+\end{subequations}
+where we used the fact the signature is $(+---)$. This is \emph{not quite}
+true, since there may be an angular contribution (a factor like
+$1\pm\cos\theta$) to the scattering, see Eq~\eqref{eq:introduction:mandelstam-in-cm-frame-with-identical-masses}
+below.
+
+In the center-of-mass frame for the reaction $a+\bar{c}\to\bar{b}+d$
+($t$-channel), we find $t$ plays the role of total energy squared, and
+$s$ is the square of the momentum transfer.
+
+Since the $u$-channel is analogous to the $t$-channel, we find the
+variable $u$ in the $u$-channel describes the square of the total energy
+of the collision.
+
+\subsection{Mandelstam Plane}
+
+\M
+Gribov cites Landau as first to represent the kinematics of the three
+reactions graphically on the Mandelstam plane. We will draw three lines
+based on the $s+t+u=4\mu^{2}$ relation.
+
+\N{Fact about triangles}
+The sum of the distances of a point on the plane to the sides of an
+equilateral triangle does not depend on the position of the point.
+
+\M[1]
+Since $s+t+u=4\mu^{2}$, we interpret $s$, $t$, $u$ as distances to the
+side of an equilateral triangle. Then $s=0$ describes one line, $t=0$
+describes a second line, and $u=0$ describes a third line.
+
+\begin{center}
+  \includegraphics{img/img.0}
+\end{center}
+
+
+We see the top vertex of the triangle is where $t=u=0$, which forces
+$s=4\mu^{2}$.
+
+\M
+The ``physical region'' for the reaction $a+\bar{c}\to\bar{b}+d$
+corresponds to $t\geq4\mu^{2}$, $s\leq0$, $u\leq0$. We can draw this
+region shaded in light red below:
+
+\begin{center}
+  \includegraphics{img/img.1}
+\end{center}
+
+Similar reasoning suggests $a+b\to c+d$ has $s\geq4\mu^{2}$, $t\leq0$,
+$u\leq0$, which corresponds to the light blue shaded region.
+
+The remaining region, shaded in light green, corresponds to
+$a+\bar{d}\to\bar{b}+c$.
+
+\begin{center}
+  \includegraphics{img/img.2}
+\end{center}
+
+\M
+We have $\widehat{e}_{s}=\widehat{y}$ be the unit vector from the
+midpoint of the $s=0$ edge of our equilateral triangle. Using some
+trigonometry, we can find
+\begin{equation}
+\widehat{e}_{u} = -\frac{\sqrt{3}}{2}\widehat{x} - \frac{1}{2}\widehat{y}
+\end{equation}
+and
+\begin{equation}
+\widehat{e}_{t} = \frac{\sqrt{3}}{2}\widehat{x} - \frac{1}{2}\widehat{y}.
+\end{equation}
+Hence these three sum to zero.\footnote{See also notes from
+\url{http://physicspages.com/pdf/Field theory/Mandelstam variables.pdf}}
+
+\M[-1]
+Gribov makes a remark about moving from the $s$-channel region in the
+Mandelstam plane to the $u$-channel region, the energy dependence of the
+scattering amplitude turns into the angular dependence.
+
+\subsection{Threshold Singularities on the Mandelstam Plane}
+
+\M
+Gribov begins exploring the importance of singularities by way of
+example.
+
+\M[1]
+Consider elastic scattering of neutral pions
+$\pi^{0}+\pi^{0}\to\pi^{0}+\pi^{0}$.
+
+\N{Assumptions} We assume (in accordance with experiment):
+\begin{enumerate}
+\item pions are the lightest stable hadrons, and
+\item there is no bound state of two neutral pions.
+\end{enumerate}
+
+\M Then the amplitude has no singularities at $s<4\mu^{2}$.
+
+\M
+The first threshold lies at $s=(2\mu)^{2}$. This corresponds to the
+two-particle intermediate state.
+
+\M The next, three-particle threshold could have appeared at
+$s=(3\mu)^{2}$.
+However, in reality, the second threshold in the pion scattering
+amplitude is situated at $s=(4\mu)^{2}$, the four-particle state, since
+the transition of two pions into three is forbidden by $G$-parity
+conservation.
+
+\N[-1]{Interpretation of Momentum Transfer}
+Such singularities in \emph{energy} are known to appear in quantum
+mechanics (e.g., the threshold singularity at $s\to 4\mu^{2}$).
+But there is a principal difference between relativistic and
+nonrelativistic theories in the interpretation of the singularities of
+\emph{momentum transfer}.
+
+\N[1]{In Quantum Mechanics} Such singularities in quantum mechanics are
+determined by the potential.
+
+\N{Example: Yukawa} For example, the Yukawa potential
+\begin{equation}
+V(r)=-g^{2}\frac{\exp(- mr)}{r}.
+\end{equation}
+This corresponds to a pole of the scattering amplitude in the plane of
+the squared momentum transfer,
+\begin{equation}
+\amplitude(k^{2})=-g^{2}\frac{4\pi}{k^{2}-m^{2}}.
+\end{equation}
+(Gribov has $\amplitude\propto 1/(k^{2}+m^{2})$ which I believe to be an error.)
+The singularity occurs at the mass of the actual particle.
+
+\N{In Relativistic Theory} The role of the potential is played by energy
+singularities in the $t$-channel, thresholds at $t=4\mu^{2}$,
+$16\mu^{2}$, and so on.
+
+\M[-1]
+Thus, Gribov concludes, the assumption that all singularities of the
+scattering amplitude are determined by the masses of real particles
+implies that there are no potentials with an infinite radius (since all
+hadrons have nonzero masses).
+
+\section{Partial Wave Expanion and Unitarity}
+
+\N{Partial Waves}
+From the conservation of angular momentum, the unitarity condition for
+scattering amplitudes with given angular momentum $\ell$ becomes
+diagonal. Thus it's convenient to expand the $s$-channel amplitude into
+partial waves
+\begin{equation}
+\amplitude(s,t) = \sum^{\infty}_{\ell=0}f_{\ell}(s)(2\ell+1)P_{\ell}(z),
+\end{equation}
+where $P_{\ell}(z)$ are Legendre polynomials, and $z$ is defined by the
+cosine of the scattering angle $\theta_{s}$,
+\begin{equation}
+z = z_{s} := \cos(\theta_{s}) = 1 + \frac{2t}{s-4\mu^{2}}=\frac{u-t}{u+t}.
+\end{equation}
+This implies, in the physical region of the $s$-channel (where
+$u,t\leq0$) we have $-1\leq z\leq 1$ as expected.
+
+\N[1]{Caution: Normalization Constant}
+The convention people normally take is to use a different normalization,
+so the nonrelativistic limit preserves the partial wave expansion. You
+will find in most modern texts $\amplitude(s,t)=16\pi\sum(\dots)$ to be
+the convention. (I discovered this conferring with Donnachie \textit{et al.}~\cite{Donnachie:2002en}.)
+
+\M
+Also note that in the $s$-channel, the momentum transfer $t$ varies
+linearly with $z_{s} = \cos\theta_{s}$. We can therefore write $t=t(s,z_{s})$.
+We can see this because
+\begin{subequations}
+  \begin{align}
+\vec{p}_{1}^{2} &= \frac{1}{4s}[s - (m_{1}+m_{2})^{2}][s - (m_{1}-m_{2})^{2}]\\
+\vec{p}_{3}^{2} &= \frac{1}{4s}[s - (m_{3}+m_{4})^{2}][s - (m_{3}-m_{4})^{2}],
+  \end{align}
+\end{subequations}
+and
+\begin{subequations}
+  \begin{align}
+t &= m_{1}^{2} + m_{3}^{2} - 2(E_{1}E_{3} - |\vec{p}_{1}|\,|\vec{p}|_{3}\cos\theta_{s})\\
+u &= m_{1}^{2} + m_{4}^{2} - 2(E_{1}E_{4} - |\vec{p}_{1}|\,|\vec{p}|_{4}\cos\theta_{s}).
+  \end{align}
+\end{subequations}
+For arbitrary masses, this is a muddle, but for equal masses $m_{i}=\mu$
+we have in the $s$-channel, $\vec{p}_{1}=\vec{p}_{3}=\vec{p}$, and
+\begin{subequations}\label{eq:introduction:mandelstam-in-cm-frame-with-identical-masses}
+  \begin{align}
+    s &= 4(\vec{p}^{2}+\mu^{2})\\
+    t &= -2\vec{p}^{2}(1 - \cos\theta_{s})\\
+    u &= -2\vec{p}^{2}(1 + \cos\theta_{s}).
+\end{align}
+\end{subequations}
+Note: $s=4\vec{p}^{2}+4\mu^{2}$ implies $-4\vec{p}^{2}=4\mu^{2}-s$ and
+thus
+\begin{equation}
+-2\vec{p}^{2}=2\mu^{2}-(s/2).
+\end{equation}
+So we could write:
+\begin{subequations}
+  \begin{align}
+    s &= 4(\vec{p}^{2}+\mu^{2})\\
+    t &= \left(2\mu^{2} - \frac{s}{2}\right)(1 - \cos\theta_{s})\\
+    u &= \left(2\mu^{2} - \frac{s}{2}\right)(1 + \cos\theta_{s}).
+\end{align}
+\end{subequations}
+
+\M[-1] From the relation Eq~\eqref{eq:unitarity:in-terms-of-amplitude},
+we find
+\begin{equation}\label{eq:ch1:unitarity:partial-wave}
+\Im(f_{\ell}(s)) = \frac{k_{s}}{16\pi\omega_{s}} f_{\ell}(s)f^{*}_{\ell}(s) + \Delta,
+\end{equation}
+where $\Delta$ represents contributions from inelastic channels (where
+$\Delta>0$) and vanish for the elastic case, $p$ and $\omega$ stand for
+center-of-mass frame momentum and energy, respectively,
+\begin{subequations}
+  \begin{align}
+    k_{s} &= \frac{\sqrt{s-4\mu^{2}}}{2}\\
+    \omega_{s} &= \frac{\sqrt{s}}{2}.
+  \end{align}
+\end{subequations}
+We can explicitly solve in the elastic case
+\begin{subequations}
+  \begin{align}
+    f_{\ell}(s)&=\I\frac{8\pi}{v}\left(1 - \E^{2\I\delta_{\ell}(s)}\right),\\
+    v &= k_{s}/\omega_{s},
+  \end{align}
+\end{subequations}
+with $\delta_{\ell}$ the scattering phase.
+
+\N[1]{Relativistic Elastic Unitarity Condition}
+The solution of the elastic unitarity condition has the same form as in
+nonrelativistic quantum mechanics, except for the velocity factor
+$v=k/\omega$ which arises due to relativistic normalization of the
+amplitude $\amplitude$.
+
+\N[-1]{General Solution}
+The general solution to the unitarity condition
+Eq~\eqref{eq:ch1:unitarity:partial-wave} can be parametrized by an
+``elasticity parameter'' $\eta_{\ell}(s)\leq 1$, satisfying,
+\begin{equation}
+\eta_{\ell}^{2} = 1 - \frac{v}{4\pi}\Delta.
+\end{equation}
+Then the general solution looks like,
+\begin{equation}\label{eq:ch1:general-form-of-unitary-partial-wave}
+f_{\ell}(s) = \I\frac{8\pi}{v}\left(1 - \eta_{\ell}\E^{2\I\delta_{\ell}}\right).
+\end{equation}
+
+\N[1]{Bounds}
+It follows that the partial wave amplitudes are bounded from above,
+\begin{equation}
+\Im(f_{\ell})\leq|f_{\ell}|\leq 16\pi/v\qquad(\eta_{\ell}=1).
+\end{equation}
+Maximal inelasticity of the scattering in a given partial wave
+corresponds to $\eta_{\ell}=0$. In the high energy limit ($s\to\infty$),
+this leads to
+\begin{equation}
+\Im(f_{\ell})\leq|f_{\ell}|\leq 8\pi\qquad(\eta_{\ell}=0).
+\end{equation}
+Observe $v\to1$ as $s\to\infty$. Then the $\eta_{\ell}=0$ forces Eq~\eqref{eq:ch1:general-form-of-unitary-partial-wave}
+to look like $f_{\ell} = \I 8\pi/v$ and then the $s\to\infty$ limit
+produces the result.
+
+\M
+In the $\eta_{\ell}=0$ case, the amplitude $f_{\ell}$ in
+Eq~\eqref{eq:ch1:general-form-of-unitary-partial-wave} is purely
+imaginary. Gribov explains this means the elastic scattering is but a
+``shadow'' of inelastic channels, though I do not adequately understand.
+
+\N{Black Disk Model}
+The model
+\begin{equation}
+  f_{\ell} = \begin{cases}
+    \I 8\pi/v,\quad \eta_{\ell=0}, & \mbox{for }\ell<\ell_{0}=k_{s}R,\\
+    0,\quad \eta_{\ell}=1,\delta_{\ell}=0, & \mbox{for} \ell>\ell_{0}
+  \end{cases}
+\end{equation}
+is known as the ``black disk'' model for diffractive scattering.
+
+\M
+At high energies $s\simeq 4k_{s}^{2}\gg\mu^{2}$ ($v\simeq 1$) when
+$\ell_{0}\gg1$, the black disk leads to the forward scattering amplitude
+\begin{equation}
+\amplitude(s,0) = \sum_{\ell}(2\ell+1)f_{\ell}\approx
+\ell_{0}^{2}\cdot8\pi\I\approx\I s\cdot 2\pi R^{2}.
+\end{equation}
+According to the optical theorem, this results in,
+\begin{equation}
+\sigma_{\text{tot}} = \frac{\Im(\amplitude(s,0))}{vs}\approx2\pi R^{2}=\pi R^{2}|_{\text{inelastic}}+\pi
+R^{2}|_{\text{diffraction}}.
+\end{equation}
+This is the pattern of diffraction off an absorbing disk of radius $R$.
+
+\N[-1]{Remark}
+I do not believe anything, thus far stated concerning partial wave
+expansions, has been unique to Gribov. We may find similar remarks in
+other quantum mechanics texts.
+
+\subsection{Threshold Behaviour of Partial Wave Amplitudes}
+
+\M We know from quantum mechanics, for potentials of finite range
+$r_{0}$, the partial waves behave like $(kr_{0})^{\ell}$ for $k\to 0$.
+Similar results hold in $S$-matrix theory.
+
+\M[1] The singularity in $t$ of the amplitude $\amplitude(s,t)$---the
+closest to the physical region in the $s$-channel---is located at
+$t=4\mu^{2}$. Therefore, the partial wave expansion should be convergent
+for $z$ up to $z_{0}=1 + (4\mu^{2}/2k_{s}^{2})$.
+
+\M
+For $t>0$ and $s\to4\mu^{2}$, we get $z\to\infty$ and $P_{\ell}$ grows
+like $P_{\ell}(z)\sim z^{\ell}$. For the partial wave expansion to
+converge, we require $f_{\ell}$ falls with $\ell$ like
+$(2k_{s}^{2}/4\mu^{2})^{\ell}$, but not faster since at $t=4\mu^{2}$ the
+series \emph{must} be divergent.
+
+\subsection{Singularities of $\Im(A)$ on the Mandelstam Plane}
+
+
+\section{Froissart's Theorem}
+
+\begin{lemma}[Asymptotics of Legendre Polynomials]
+We have as $\ell\to\infty$,
+\begin{subequations}
+  \begin{align}
+  P_\ell (\cos \theta) &= \sqrt{\frac{\theta}{\sin \theta}} \, J_0((\ell+1/2)\theta) + \mathcal{O}\left(\ell^{-1}\right) \\
+&= \frac{2}{\sqrt{2\pi \ell\sin\theta}}\cos\left(\left(\ell + \tfrac12\right)\theta - \frac{\pi}{4}\right) + \mathcal{O}\left(\ell^{-3/2}\right), \quad \theta \in (0,\pi),
+\end{align}
+\end{subequations}
+where $J_{0}$ is the Bessel function of the first-kind.
+\end{lemma}
+
+For a proof, see:
+G\'abor Szeg\~o~\cite{szego},
+\emph{Orthogonal polynomials}, (4th ed.) AMS Publishers, pp.194
+\emph{et seq.} (see especially, Theorem 8.21.2).
+
+\begin{theorem}[Froissart]
+  Asymptotically as $s\to\infty$, we have
+  \begin{equation}
+\left.\Im\amplitude(s,t)\right|_{t=0}\leq(\mbox{const})\cdot s[\ln(s/s_{0})]^{2}.
+  \end{equation}
+\end{theorem}
+
+This is due to the analyticity and unitarity properties. The proof is a
+multi-step procedure, but each step is fairly straightforward.
+
+\N[1]{Proof Step 1: estimate $f_{\ell}$ at large $s$}
+We will show, as $\ell,s\to\infty$,
+\begin{equation}
+f_{\ell}(s)\simeq c(s,\ell)\exp\left(\frac{-\ell}{k_{s}}\sqrt{4\mu^{2}}\right).
+\end{equation}
+where $c(s,\ell)$ is slowly [non-exponentially] varying with $\ell$.
+
+\N{Step 2.}
+Assume for $t$ arbitrarily close to $4\mu^{2}$, the amplitude grows with
+$s$ not faster than some power.
+
+Then the same is valid for $\Im c(s,\ell)$.
+
+Arguably, $\Im f_{\ell}$ is positive due to the unitarity condition, and
+so is $P_{\ell}(1 + t/2k_{s}^{2})$ for $t\geq 0$.
+
+Therefore each partial wave we have an estimate,
+\begin{subequations}
+  \begin{align}
+    \left(\frac{s}{s_{0}}\right)^{N}
+    &>\Im\amplitude(s,t) = \sum^{\infty}_{\ell=0}\Im(f_{\ell}(s))(2\ell+1)P_{\ell}\left(1+\frac{t}{2k_{s}^{2}}\right)\\
+    &>\Im c(s,\ell)\left(2\pi\ell\frac{\sqrt{t}}{k_{s}}\right)^{-1/2}\exp\left[\frac{\ell}{k_{s}}(\sqrt{t}-\sqrt{4\mu^{2}})\right].
+  \end{align}
+\end{subequations}
+Since this holds for arbitrary positive $t<4\mu^{2}$, we conclude
+\begin{equation}
+\Im c(s,\ell) < (s/s_{0})^{N},
+\end{equation}
+and, modulo an ``irrelevant pre-exponential factor'', that
+\begin{equation}
+\Im(f_{\ell}(s))\leq\left(\frac{s}{s_{0}}\right)^{N}\exp(-2\mu\ell/k).
+\end{equation}
+
+\N{Step 3: Estimate Imaginary Part of Forward Scattering Amplitude}
+We now can estimate
+\begin{equation}
+\Im\amplitude(s,t=0)\leq8\pi\sum^{L}_{\ell=0}(2\ell+1) + \sum^{\infty}_{\ell=L+1}\Im(f_{\ell}(s))(2\ell+1),
+\end{equation}
+where when $\ell<L$ in which the partial waves are large,
+$\Im(f_{\ell})\simeq|f_{\ell}|=\bigOh(1)$, and we can estimate the first
+term as
+\begin{equation}
+\sum^{L}_{\ell=0}(2\ell+1)\simeq L^{2}.
+\end{equation}
+
+\N[1]{Determining $L$}
+We can determine $L$ as the bound above which partial wave amplitudes
+become small
+\begin{equation}
+\Im(f_{\ell>L})\ll 1,
+\end{equation}
+and fall exponentially with $\ell$. According to
+$\Im(c(s,\ell))<(s/s_{0})^{N}$ from step 2, this means
+\begin{equation}
+(s/s_{0})^{N}\exp(-2\mu L/k_{s})\simeq1\implies \boxed{L\simeq\frac{k_{s}}{2\mu}\ln(s/s_{0}).}
+\end{equation}
+
+\N[-1]{Step 4: Estimate Infinite Sum in Tail}
+We can now estimate the infinite sum using $f_{L+n}\sim f_{K}\exp(-2\mu n/k_{s})$,
+and this turns out to be subdominant:
+\begin{equation}
+\sum^{\infty}_{n=0}2(L+n)\exp\left(\frac{-2\mu}{k_{s}}n\right)\simeq\frac{k_{s}}{\mu}L
++\frac{k_{s}^{2}}{2\mu^{2}},
+\end{equation}
+and as $s\to\infty$ we find
+\begin{equation}
+\lim_{s\to\infty}\frac{k_{s}}{\mu}L
++\frac{k_{s}^{2}}{2\mu^{2}}\ll L^{2}.
+\end{equation}
+That is to say, the infinite sum is dominated by the finite sum's
+contribution, which is approximately $L^{2}$.
+
+\N{Step 5: Combine Results}
+We have then step 4 simplifies the sum from step 3, giving us that
+$\Im\amplitude(s,t=0)\sim L^{2}$ (plus lower order terms) 
+and step 3 also gave us an estimate $L^{2}\propto s[\ln(s/s_{0})]^{2}$
+(since $L^{2}\simeq (k_{s}/2\mu)^{2}[\ln(s/s_{0})]^{2}$ and
+$k_{s}^{2}\simeq s$)
+which then together implies Froissart's theorem.\qquad\qedsymbol
+
+
+\section{The Pomeranchuk theorem}
+
+\begin{lemma}[{Schwarz Reflection Principle~\cite[Theorem 6.1.4]{marsden1998}}]
+Let $\mathcal{U}$ be a region in the upper half plane whose boundary
+$\partial\mathcal{U}$ intersects the real axis in an interval $[a,b]$
+(or finite union of disjoint intervals). Let $f\colon\mathcal{U}\to\CC$
+be analytic, and continuous on $\mathcal{U}\cup\partial\mathcal{U}$.
+Let $\mathcal{U}^{*}=\{z\mid\overline{z}\in\mathcal{U}\}$ be the
+reflection of $\mathcal{U}$ and define $g$ on $\mathcal{U}^{*}$ by
+\begin{equation}
+g(z) = \overline{f(\overline{z})}.
+\end{equation}
+Assume $f$ is real on the open interval $(a,b)$. Then $g$ is analytic
+and is the unique analytic continuation of $f$ to
+$\mathcal{U}\cup(a,b)\cup\mathcal{U}^{*}$. 
+\end{lemma}
+
+\N{Imaginary Part of $s$-Channel Amplitude}
+Gribov writes $\Im_{s}\amplitude(s,t)$ for the imaginary part of the
+$s$-channel amplitude, which is frustratingly vague. What he means is
+the following: recall the Schwarz reflection principle in complex
+analysis (see the preceding lemma for a formal statement), where if
+$f\colon U\subset\CC\to\CC$ is defined on a
+neighborhood $U\cap\RR\neq\emptyset$, then we can extend it by
+$f(z^{*})=(f(z))^{*}$.
+We do the same, finding
+\begin{equation}\label{eq:defn:discontinuity-in-s-channel}
+2\I\Im_{s}(\amplitude(s+\I\varepsilon,t)) = \amplitude(s+\I\varepsilon,t)-\amplitude(s-\I\varepsilon,t),
+\end{equation}
+taking the $\varepsilon\to0$ limit on both sides.
+Other authors call the right-hand side of Eq~\eqref{eq:defn:discontinuity-in-s-channel} the discontinuity in the $s$-channel and denote
+it $D_{s}(s,t,u)$.
+

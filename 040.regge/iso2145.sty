@@ -1,0 +1,100 @@
+\newcounter{chunk}[section]
+\@ifundefined{@addpunct}{
+  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
+  }{}
+
+\def\iso@setSection#1{\setcounter{chunk}{#1}}
+\def\stepSec{\refstepcounter{chunk}}
+
+% technically, sectionDepth is not needed, but it's to avoid popping off
+% "too many sections"
+\newcount\sectionDepth \sectionDepth=0
+
+% \secprefix will be redefined to append the current section number
+% followed by a period
+% 
+% The `paragraphprefix` is for users who want to prepend, say, the
+% section number (followed by a period or slash or whatever).
+\newcommand\paragraphprefix{}
+\def\secprefix{}
+\renewcommand\thechunk{\paragraphprefix\secprefix\arabic{chunk}.}
+
+% \pushSection simply appends "\arabic{chunk}." to \secprefix's current value
+\def\iso@pushSection{
+  \global\advance\sectionDepth by1
+  \let\sectmp\secprefix
+  \xdef\secprefix{\sectmp\arabic{chunk}.}
+}
+
+\def\resetParagraphChunks{
+  \gdef\secprefix{}
+  \global\sectionDepth=0
+}
+
+% update \secprefix from "a.b.(...).c.d" to "a.b.(...).c"
+% and set \chunk counter to "d" (as a number)
+\def\iso@popSection{
+  \def\newPrefix{}
+  \global\advance\sectionDepth by-1
+  \def\updatePrefix##1.##2\endUpdate{
+    \ifx##2\relax % if we are at the last number
+      % globally set \secprefix to be the leading (n-1) section numbers
+      \xdef\secprefix{\newPrefix}
+      % globally set \chunk to be the last section number from \secprefix
+      \iso@setSection{\number##1}
+    \else
+      \xdef\newPrefix{\newPrefix##1.}
+      \updatePrefix##2\endUpdate
+    \fi}
+  \ifx\secprefix\relax % if \secprefix is empty
+  \else
+    \expandafter\updatePrefix\secprefix\relax\endUpdate
+  \fi
+}
+
+\def\iso@downOne{\iso@pushSection\iso@setSection{0}}
+
+\def\iso@upOne{\iso@popSection}
+
+\newcount\secIter \secIter=0
+
+% \up ascends back to one of the parent sections, ascending #1 levels
+\def\iso@up#1{ % #1 is a negative integer
+  \ifnum\sectionDepth>0%
+    \secIter=#1%
+    % but \sectionDepth is a non-negative integer, so transform it
+    \multiply\secIter by-1
+    \ifnum\secIter>\sectionDepth%
+      \global\secIter=\sectionDepth
+    \fi%
+    \loop
+      \ifnum\secIter>0
+      \iso@upOne
+      \advance\secIter by-1
+    \repeat%
+  \fi%
+}
+
+% down appends #1 subsections to the given section number
+\def\iso@down#1{ % #1 is a positive integer
+  \global\secIter=#1%
+  \loop
+    \ifnum\secIter>0
+    \iso@downOne
+    \advance\secIter by-1
+  \repeat%
+}
+\def\adjustSection#1{\ifnum#1<0\iso@up{#1}\else{\ifnum#1>0\iso@down{#1}\fi}\fi}
+
+
+\newcommand\chunkbreak{\medbreak}
+\newcommand\chunkspace{\enspace}
+%% \M is used for unlabeled paragraphs
+\newcommand\M[1][0]{\adjustSection{#1}\chunkbreak%
+  \stepSec\noindent\ignorespaces%
+  \textbf{\thechunk\ignorespaces}\chunkspace\ignorespaces}
+
+%% \N is used for labeled paragraphs
+\newcommand\N[2][0]{\adjustSection{#1}\chunkbreak%
+  \stepSec\noindent\ignorespaces%
+  \textbf{\thechunk\ignorespaces\chunkspace#2\@addpunct{.}\ignorespaces}\chunkspace\ignorespaces}
