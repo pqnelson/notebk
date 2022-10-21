@@ -141,6 +141,8 @@ velocity vector field is the rate of change of $f$ as we move along the
 curve $\alpha$.
 \end{corollary}
 
+\subsection{Metric, Distances, Angles}
+
 \M
 In linear algebra, the key geometric tool is the concept of the inner
 product (``dot product''). Any vector space with an inner product
@@ -169,3 +171,1042 @@ $\RR^{3}$ given by
 \overbrace{\vec{v}\cdot\vec{w}}^{\text{usual dot product}}
 \end{equation}
 \end{example}
+
+\begin{example}
+  Suppose we have two curves $\alpha\colon I\to \RR^{n}$ and
+  $\beta\colon J\to\RR^{n}$ which intersects at a point
+  \begin{equation}
+\vec{p} = \alpha(s_{0}) = \beta(t_{0}).
+  \end{equation}
+\begin{center}
+\includegraphics{img/img.4}
+\end{center}
+We can define the angle between $\alpha$ and $\beta$ at $\vec{p}$ by
+\begin{equation}
+  \cos(\theta) = \frac{\langle\alpha'(s_{0}),\beta'(t_{0})\rangle}{\|\alpha'(s_{0})\|\cdot\|\beta'(t_{0})\|}.
+\end{equation}
+This breaks down if $\|\beta'(t_{0})\|=0$ or $\|\alpha'(s_{0})\|=0$.
+For this reason, we usually work with \define{Regular Curves} which always have
+nonzero velocity.
+\end{example}
+
+\begin{definition}
+We call a curve $\alpha\colon I\to\RR^{n}$ \define{Regular} if its
+velocity is never zero $\alpha'(t)\neq 0$ for all $t\in I$.
+\end{definition}
+
+\begin{example}
+  An example of a singular curve would be one with a cusp, for example,
+  $x^{2}-y^{5}=0$
+
+\begin{center}
+  \includegraphics{img/img.5}
+\end{center}
+\end{example}
+
+\N{Measuring Distance}
+The metric also allows us to measure distances along regular curves. The
+distance is found by integrating the \define{Speed} or magnitude of
+velocity. Let $\alpha\colon(a,b)\to\RR^{n}$ be a regular curve, then
+\begin{equation}
+\int^{b}_{a}\|\alpha'(t)\|\,\D t.
+\end{equation}
+A key fact in this for this to be well-defined, we need to check it's
+independent of (regular) parametrization. That is to say, suppose we
+have
+\begin{equation}
+t = t(s)
+\end{equation}
+where $s$ is another parameter, and define a \define{Reparametrization}
+of the curve by
+\begin{equation}
+\beta(s) = \alpha(t(s))
+\end{equation}
+where
+\begin{equation}
+\frac{\D t(s)}{\D s}>0
+\end{equation}
+for all $s\in J$, so $\beta$ is regular. Suppose $J=(a',b')$.
+Then we have to integrate from $a'$ to $b'$ of the magnitude of the
+velocity of $\beta$ and demand they be equal
+\begin{equation}
+\int^{b'}_{a'}\|\beta'(s)\|\,\D s = \int^{b}_{a}\|\alpha'(t)\|\,\D t.
+\end{equation}
+We see, actually, we could just unfold the definition of $\beta$ and use
+the chain rule,
+\begin{equation}
+\int^{b'}_{a'}\|\beta'(s)\|\,\D s = \int^{b'}_{a'}\|\alpha'(t(s))\frac{\D
+  t(s)}{\D s}\|\,\D s.
+\end{equation}
+Then using substitution rule for calculus on the right-hand side
+\begin{equation}
+\int^{b'}_{a'}\|\alpha'(t(s))\frac{\D t(s)}{\D s}\|\,\D s
+ = \int^{b}_{a}\|\alpha'(t)\|\,\D t.
+\end{equation}
+We have a particularly useful parametrization:
+
+\begin{proposition}
+  Any regular curve $\alpha$ has a reparametrization $\beta$ such that
+  \begin{equation}
+\|\beta'(s)\|=1
+  \end{equation}
+  for all $s$, called the \define{Unit Speed Reparametrization}.
+\end{proposition}
+
+\begin{proof}
+Let $\alpha\colon I\to\RR^{3}$ be our given curve. Suppose $I=(a,b)$.
+Define the distance function
+\begin{equation}
+s(t) = \int^{t}_{a}\|\alpha'(t)\|\,\D t.
+\end{equation}
+Since $\|\alpha'(t)\|\neq0$ (and speed is never negative, it follows the
+speed is always positive), hence $s$ is strictly increasing. In
+particular, this means
+\begin{equation}
+\frac{\D s}{\D t}>0.
+\end{equation}
+So far, so good.
+
+This also means $s(t)$ has an inverse. So we can write $t$ as a function
+of s,
+\begin{equation}
+t = t(s).
+\end{equation}
+Then we can reparametrize by letting
+\begin{equation}
+\beta(s) = \alpha(t(s)),
+\end{equation}
+and
+\begin{calculation}
+  \|\beta'(s)\|
+\step{chain rule}
+  \displaystyle\left\|\alpha'(t(s))\frac{\D t(s)}{\D s}\right\|
+\step{since $\D t(s)/\D s>0$ always}
+  \displaystyle\left\|\alpha'(t(s))\right\|\frac{\D t(s)}{\D s}
+\step{differentiating under the integral sign}
+  \displaystyle\frac{\D s}{\D t}\frac{\D t}{\D s}
+\step{basic calculus}
+  1.
+\end{calculation}
+Hence $\beta$ has unit-speed.
+\end{proof}
+
+\begin{remark}
+For any regular curve, we get a vector field on the curve called the
+\define{Unit Tangent Field} defined by taking the velocity of a unit
+speed reparametrization.
+\end{remark}
+
+\subsection{Frenet Frame}
+% HW 3:
+% 1.4 #2
+% 2.2 #3,4,5
+% 2.3 #1,5,6
+
+\M
+The basic idea is to study a curve by using a different frame at each
+point, suitably chosen at each point. Towards that end, we should
+probably make rigorous what we mean by a ``vector field along a curve''
+and whatnot.
+
+\begin{definition}
+Let $\alpha\colon I\to\RR^{3}$ be a (regular) curve.
+A \define{Vector Field on $\alpha$} $Y$ is an assignment of a tangent
+vector $Y(t)\in\T_{\alpha(t)}\RR^{3}$ for each $t\in I$.
+
+An \define{(Orthonormal) Frame Field on a curve} $\alpha$ is a triple of
+vector fields such that for each $t\in I$ they restrict to an
+(orthonormal) basis of $\T_{\alpha(t)}\RR^{3}$.
+
+We assume, without loss of generality, that frame fields are orthonormal
+unless explicitly stated otherwise.
+\end{definition}
+
+\M
+For now, we restrict attention to unit speed curves.
+
+We have constructed on natural unit vector field on $\beta$:
+\begin{equation}
+T(s) = \beta'(s)\in\T_{\beta(s)}\RR^{3}.
+\end{equation}
+We call $T(S)$ the \define{Unit Tangent}.
+To get a frame field, we need two more vector fields on $\beta$.
+
+First note,
+\begin{subequations}
+  \begin{equation}
+T(s)\cdot T(s)=1,
+  \end{equation}
+  because $T(s)$ is a unit tangent vector. It follows then that
+  \begin{align}
+    \frac{\D}{\D s}(T(s)\cdot T(s))
+    &= \frac{\D T(s)}{\D s}\cdot T(s) +
+    T(s)\cdot\frac{\D T(s)}{\D s}\\
+    &= 0,
+  \end{align}
+  and in particular
+  \begin{equation}
+\boxed{T(s)\cdot T'(s)=0.}
+  \end{equation}
+\end{subequations}
+If $T'(s)\neq 0$, then define the \define{Principal Normal} field on
+$\beta$ as
+\begin{equation}
+N(s) := \frac{T'(s)}{\|T'(s)\|}.
+\end{equation}
+We see (since the right-hand side is a vector divided by its norm)
+$N(s)$ is a unit vector field, i.e., for any $s$ we have
+\begin{equation}
+\|N(s)\|=1,
+\end{equation}
+and it is orthogonal to $T(s)$ by construction.
+
+Now, to obtain one last unit vector field on $\beta$, we can just take
+the cross-product of $T$ and $N$ to obtain the \define{Binormal Field}
+on $\beta$ as
+\begin{equation}
+B(s) := T(s)\times N(s).
+\end{equation}
+
+\begin{definition}
+Let $\beta$ be a unit speed curve, then we define the \define{Curvature}
+of $\beta$ as
+\begin{equation}
+\kappa(s) := \|T'(s)\|.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+If the curvature of $\beta$ is zero, we get nonunique frames from the
+construction we have just sketched.
+\end{remark}
+
+
+\begin{definition}
+Along a regular curve $\beta$, we define the \define{Frenet Frame}
+to consist of $T(s) := \beta'(s)$, $N(s) := T'(s)/\|T'(s)\|$, and
+$B(s) := T(s)\times N(s)$.
+\end{definition}
+
+\M
+For any regular curve with unit-speed parametrization $\beta$,
+we know that $T'(s)$ is proportional to $N(s)$. We claim that $B'(s)$ is
+also proportional to $N(s)$. How can we see this? We will prove $B'(s)$
+is orthogonal to both $B(s)$ and $T(s)$, which means it's either zero or
+directly proportional to the remaining orthonormal unit vector $N(s)$.
+
+First, observe that $B'(s)$ is orthogonal to $B(s)$. How? We see from it
+being a unit vector,
+\begin{subequations}
+\begin{equation}
+B(s)\cdot B(s) =1,
+\end{equation}
+taking the derivative with respect to $s$ of both sides,
+\begin{equation}
+\frac{\D}{\D s}(B(s)\cdot B(s)) = 0,
+\end{equation}
+the left-hand side expands according to the product rule as
+\begin{equation}
+\frac{\D}{\D s}(B(s)\cdot B(s)) = \frac{\D B(s)}{\D s}\cdot B(s) +
+B(s)\cdot\frac{\D B(s)}{\D s}.
+\end{equation}
+Thanks to commutativity of the dot product, the right hand side
+simplifies to:
+\begin{equation}
+\frac{\D}{\D s}(B(s)\cdot B(s)) = 2\frac{\D B(s)}{\D s}\cdot B(s).
+\end{equation}
+Thus we find
+\begin{equation}
+2\frac{\D B(s)}{\D s}\cdot B(s) = 0\implies\frac{\D B(s)}{\D s}\cdot B(s)=0.
+\end{equation}
+\end{subequations}
+Thus we conclude $B'(s)$ is orthogonal to $B(s)$.
+
+Our second step is to show $B'(s)$ is orthogonal to $T(s)$.
+We have
+\begin{subequations}
+\begin{equation}
+\frac{\D}{\D s}(B\cdot T) = B'(s)\cdot T(s) + B(s)\cdot T'(s).
+\end{equation}
+Now since
+\begin{equation}
+T'(s) = \kappa(s)N(s),
+\end{equation}
+we find
+\begin{equation}
+B'(s)\cdot T(s) + B(s)\cdot T'(s) = B'(s)\cdot T(s) + B(s)\cdot(\kappa(s)N(s)).
+\end{equation}
+But since
+\begin{equation}
+B(s)\cdot(\kappa(s)N(s)) = \kappa(s)(B(s)\cdot N(s)) = \kappa(s)(0) = 0,
+\end{equation}
+we find
+\begin{equation}
+B'(s)\cdot T(s) + B(s)\cdot T'(s) = B'(s)\cdot T(s).
+\end{equation}
+But remember, $B(s)\cdot T(s) = (T(s)\times N(s))\cdot T(s)$ using the
+definition of the binormal field, and recalling the basic property of
+the cross product (it produces a vector orthogonal to its factors), we
+find
+\begin{equation}
+B(s)\cdot T(s) = 0.
+\end{equation}
+Therefore its derivative with respect to $s$ vanishes, and we find
+\begin{equation}
+B'(s)\cdot T(s) = 0.
+\end{equation}
+\end{subequations}
+Hence $B'(s)$ is orthogonal to $T(s)$.
+
+Since $B'(s)$ is orthogonal to both $T(s)$ and $B(s)$, we conclude it
+must be directly proportional to $N(s)$:
+\begin{equation}
+B'(s) = -\tau(s)N(s)
+\end{equation}
+where ``$-\tau(s)$'' is the constant of proportionality. We call
+$\tau(s)$ the \define{Torsion} of the curve $\beta$.
+
+\begin{theorem}[The Frenet Formulas]
+Given a unit speed curve $\beta$, whose curvature $\kappa$ is
+nonvanishing and whose torsion is $\tau$, we have the \define{Frenet Formulas}:
+\begin{subequations}
+  \begin{alignat}{2}
+    T'(s) &=                & \kappa(s)N(s) & \\
+    N'(s) &= -\kappa(s)T(s) &               & +\tau(s)B(s)\\
+    B'(s) &=                & -\tau(s)N(s), &
+  \end{alignat}
+\end{subequations}
+or, using matrix multiplication,
+\begin{equation}
+\begin{bmatrix}T'(s)\\ N'(s)\\ B'(s)\end{bmatrix}
+=
+\begin{bmatrix}
+  0 & \kappa(s) & 0\\
+  -\kappa(s) & 0 & \tau(s)\\
+  0 & -\tau(s) & 0
+\end{bmatrix}
+\begin{bmatrix}T(s)\\ N(s)\\ B(s)\end{bmatrix}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We know the first and third formulas already, so we just need to prove
+the second formula. Since the Frenet field forms an orthonormal basis,
+we know
+\begin{equation}
+N'(s) = a(s)T(s) + b(s)N(s) + c(s)B(s).
+\end{equation}
+We just need to determine the coefficients. We take the inner product of
+both sides with $T$ and $B$.
+
+We know that
+\begin{subequations}
+\begin{equation}
+N'(s)\cdot T(s) = a(s).
+\end{equation}
+We also know $N(s)$ and $T(s)$ are orthonormal vector, in particular,
+\begin{equation}
+N(s)\cdot T(s) = 0.
+\end{equation}
+But taking the derivative of both sides, we find
+\begin{equation}
+\frac{\D}{\D s}(N(s)\cdot T(s)) = N'(s)\cdot T(s) + N(s)\cdot T'(s).
+\end{equation}
+We can use the Frenet formula $T'(s) = \kappa(s)N(s)$ to rewrite the
+right-hand side
+\begin{align}
+N'(s)\cdot T(s) + N(s)\cdot T'(s) &= N'(s)\cdot T(s) + N(s)\cdot(\kappa(s)N(s)\\
+&= N'(s)\cdot T(s) + \kappa(s),
+\end{align}
+and further, since $N'(s)\cdot T(s)=a(s)$, we conclude
+\begin{align}
+N'(s)\cdot T(s) + N(s)\cdot T'(s) &= N'(s)\cdot T(s) + \kappa(s)\nonumber\\
+&= a(s) + \kappa(s).
+\end{align}
+Returning to our original statement, we find
+\begin{equation}
+\frac{\D}{\D s}(N(s)\cdot T(s)) = a(s) + \kappa(s) = 0.
+\end{equation}
+Hence, in particular
+\begin{equation}
+\boxed{a(s) = -\kappa(s).}
+\end{equation}
+\end{subequations}
+
+We know $b(s)=0$ since
+\begin{subequations}
+\begin{equation}
+N(s)\cdot N(s)=1\implies\frac{\D}{\D s}(N(s)\cdot N(s)) = 0.
+\end{equation}
+This gives us $2b(s)=0$, which implies
+\begin{equation}
+\boxed{b(s)=0.}
+\end{equation}
+\end{subequations}
+
+Now for the last coefficient. Very similar to the first, since
+$N(s)\cdot B(s)=0$ (thanks to their being orthonormal vectors) we find
+their derivative with respect to $s$ is zero. (We will use the fact that
+$N(s)\cdot B'(s)=0$.)
+But we find
+\begin{subequations}
+\begin{align}
+\frac{\D}{\D s}(N(s)\cdot B(s)) &= N'(s)\cdot B(s) + N(s)\cdot B'(s)\\
+&= N'(s)\cdot B(s)\\
+&=\tau(s)
+\end{align}
+hence
+\begin{equation}
+\boxed{c(s) = \tau(s).}
+\end{equation}
+\end{subequations}
+This proves the remaining Frenet formula.
+\end{proof}
+
+\begin{proposition}
+A unit speed curve is a straight line if and only if its curvature
+vanishes $\kappa(s)=0$.
+\end{proposition}
+
+Our proof will consist of two direct proofs, one in the forward
+direction (straight line implies zero curvature), the other in the
+backwards direction (zero curvature implies straight line).
+
+\begin{proof}
+  Let $\beta(s)$ be a unit speed curve.
+
+  $(\implies)$ Assume $\beta$ is a straight line, then
+  \begin{equation}
+\beta(s) = \vec{p} + s\vec{v}
+  \end{equation}
+  for some $\vec{p}$ and (unit) vector $\vec{v}$. So
+  \begin{subequations}
+    \begin{align}
+      \kappa(s) &= \|T'(s)\|\\
+      &= \|\beta''(s)\|\\
+      &= \|0\| = 0.
+    \end{align}
+  \end{subequations}
+  Hence straight lines have zero curvature.
+
+  $(\impliedby)$ Conversely, assume for all $s$ we have $\kappa(s)=0$.
+  Write out the components of the curve as
+\begin{subequations}
+  \begin{equation}
+\beta(s) = (\beta_{1}(s), \beta_{2}(s), \beta_{3}(s)).
+  \end{equation}
+  We find
+  \begin{equation}
+\beta''(s) = (\beta_{1}''(s), \beta_{2}''(s), \beta_{3}''(s)).
+  \end{equation}
+  For the curvature to be zero everywhere, we need the second derivative
+  of each component to vanish, i.e., for each $s$ we have
+  \begin{equation}
+\beta_{j}''(s) = 0
+  \end{equation}
+  for $j=1,2,3$. We integrate this equation twice to find
+  \begin{equation}
+\beta_{j}(s) = p_{j} + sv_{j}
+  \end{equation}
+  for some constants of integration $v_{j}$, $p_{j}$. This means
+  \begin{equation}
+\beta(s) = \vec{p} + s\vec{v},
+  \end{equation}
+\end{subequations}
+  i.e., that $\beta$ is a straight line.
+\end{proof}
+
+\begin{proposition}
+A unit speed curve $\beta\colon I\to\RR^{3}$ with positive curvature
+$\kappa(s)>0$ has
+vanishing torsion if and only if $\beta$ is a \define{Plane Curve}
+(i.e., its image lies in some plane in $\RR^{3}$).
+\end{proposition}
+
+\begin{proof}
+$(\implies)$ Assume $\beta$ is a plane curve, i.e., it lies in the plane
+through $\vec{p}\in\RR^{3}$ with unit normal vector $\vec{n}$.
+For all $s$, we have
+\begin{subequations}
+\begin{equation}
+\vec{n}\cdot(\beta(s)-\vec{p})=0.
+\end{equation}
+By differentiating with respect to $s$ (and remembering $\vec{p}$ and
+$\vec{n}$ are constants), we find
+\begin{equation}
+\vec{n}\cdot\beta'(s) = 0 \implies \vec{n}\cdot T(s)=0.
+\end{equation}
+Differentiating once more, we find
+\begin{equation}
+\vec{n}\cdot\beta''(s) = 0\implies \vec{n}\cdot N(s)=0.
+\end{equation}
+But we assumed $\vec{n}$ is a unit vector (in particular, it's nonzero)
+and the Frenet frame is a collection of orthonormal vectors. This forces
+us to conclude,
+\begin{equation}
+\vec{n} = \pm B(s).
+\end{equation}
+In particular, $B(s)$ is constant. So
+\begin{equation}
+B'(s) = 0,
+\end{equation}
+and by the Frenet formulas
+\begin{equation}
+B'(s) = -\tau(s)N(s) = 0.
+\end{equation}
+Since $N(s)\neq0$ we conclude,
+\begin{equation}
+\boxed{\tau(s) = 0.}
+\end{equation}
+\end{subequations}
+This is the first half of the proof.
+
+$(\impliedby)$ Suppose $\tau(s)=0$. Then by the Frenet formulas, $B'(s)=0$.
+In particular, $B(s)$ is a constant unit vector. Pick some $s_{0}\in I$,
+and define
+\begin{equation}
+f(s) = (\beta(s)-\beta(s_{0}))\cdot B.
+\end{equation}
+We want to prove $f(s)=0$ for all $s\in I$.
+
+The first step is to consider its derivative, and since $B$ is constant
+(with respect to $s$), we find:
+\begin{equation}
+f'(s) = (\beta'(s) - 0)\cdot B = T(s)\cdot B.
+\end{equation}
+But we know $T(s)\cdot B=0$ since they are orthonormal vectors. Hence we
+conclude
+\begin{equation}
+f'(s) = 0.
+\end{equation}
+This just tells us that $f(s)$ is a constant.
+
+But we also know that
+\begin{equation}
+f(s_{0}) = 0.
+\end{equation}
+Hence we conclude, for all $s\in I$, that:
+\begin{equation}
+f(s) = 0.
+\end{equation}
+This is precisely the description of a plane,
+$\{\vec{x}\in\RR^{3}\mid (\vec{x}-\vec{p})\cdot B=0\}$.
+\end{proof}
+
+
+\begin{example}[Frenet field for circular helix]
+  Let
+  \begin{equation}
+\alpha(t) = (a\cos(t),a\sin(t),bt)
+  \end{equation}
+  where $a>0$, $b>0$ are constants. Find the Frenet field for this
+  curve.
+
+  First, we need to verify the curve is a unit-speed curve (and, if not,
+  find its unit-speed reparamtrization). We find
+\begin{subequations}
+\begin{align}
+s(t) &= \int^{t}_{0} \|\alpha'(u)\|\,\D u\\
+&= \int^{t}_{0} \sqrt{a^{2} + b^{2}}\,\D u\\
+&= t\sqrt{a^{2} + b^{2}}.
+\end{align}
+Then we can invert this to find $t$ as a function of $s$:
+\begin{equation}
+t(s) = \frac{s}{\sqrt{a^{2}+b^{2}}}.
+\end{equation}
+For simplicity, we will define
+\begin{equation}
+c = \sqrt{a^{2}+b^{2}},
+\end{equation}
+so
+\begin{equation}
+t(s) = s/c.
+\end{equation}
+\end{subequations}
+Then we find the unit-speed parametrization,
+\begin{equation}
+\boxed{\beta(s) = \alpha(t(s)) = (a \cos(s/c), a\sin(s/c), bs/c).}
+\end{equation}
+OK, the zeroeth step is complete.
+
+Now we may use the Frenet formulas to get the curvature and torsion. The
+unit tangent vector is
+\begin{equation}
+T(s) := \beta'(s) = \frac{1}{c} (-a\sin(s/c), a\cos(s/c),b).
+\end{equation}
+Now we find its derivative
+\begin{equation}
+T'(s) = \frac{-a}{c^{2}}(\cos(s/c),\sin(s/c),0),
+\end{equation}
+and the curvature is,
+\begin{equation}
+\kappa(s) := \|T(s)\| = \frac{a}{c^{2}}.
+\end{equation}
+That is to say, the curvature is constant.
+
+The next Frenet formulas give us
+\begin{equation}
+N(s) := \frac{T'(s)}{\kappa(s)} = (-\cos(s/c),-\sin(s,c),0).
+\end{equation}
+The binormal is obtained from the cross-product,
+\begin{equation}
+B(s) := N(s)\times T(s) = \frac{1}{c}(b\sin(s/c),-b\cos(s/c),a).
+\end{equation}
+The derivative of $B(s)$ with respect to $s$ gives us
+\begin{equation}
+B'(s) = \frac{b}{c^{2}}(\cos(s/c),\sin(s/c),0),
+\end{equation}
+but we know using the Frenet formula $B'(s) = -\tau(s)N(s)$, and
+inspection of terms forces us to conclude,
+\begin{equation}
+\tau(s) = \frac{-b}{c^{2}}.
+\end{equation}
+The torsion is also constant!
+
+In fact, any curve with constant [nonzero] curvature and nonzero torsion
+is either a helix ($\tau\neq0$) or a degenerate helix (a.k.a., a circle).
+\end{example}
+
+\subsection{Frenet Approximation at a Point}
+
+\M
+Consider the unit-speed curve $\beta$. Expand this in a Taylor series,
+e.g., about zero. We need to know several values:
+\begin{subequations}
+  \begin{align}
+    \beta'(0) &:= T(0) = T_{0}\\
+    \beta''(0) &:=\kappa(0)N(0) = \kappa_{0}N_{0}\\
+    \beta'''(0) &= (\kappa N)'(0) = \kappa'(0)N_{0} + \kappa_{0}(-\kappa_{0}T_{0}+\tau_{0}B_{0}).
+  \end{align}
+\end{subequations}
+Then the Taylor series expansion yields
+\begin{equation}
+  \beta(s)\approx\beta_{0} + s\beta'(0) + \frac{s^{2}}{2!}\beta''(0) + \frac{s^{3}}{3!}\beta'''(0).
+  %T_{0} + \frac{s^{2}}{2}\kappa_{0}N_{0} + \frac{s^{3}}{3!}\kappa_{0}\tau_{0}B_{0}.
+\end{equation}
+We find
+\begin{subequations}
+\begin{align}
+\beta(s)&\approx\beta_{0} + s\beta'(0) + \frac{s^{2}}{2!}\beta''(0) + \frac{s^{3}}{3!}\beta'''(0)\\
+&=\beta_{0} + sT_{0} + \frac{s^{2}}{2}(\kappa(0)N(0) = \kappa_{0}N_{0}) + \frac{s^{3}}{3!}(\kappa'(0)N_{0} + \kappa_{0}(-\kappa_{0}T_{0}+\tau_{0}B_{0}))\\
+&=\beta_{0} +\left(s - \frac{\kappa_{0}^{2}s^{3}}{3!}\right)T_{0}
++\left(\frac{\kappa_{0}}{2}s^{2} + \kappa'(0)\frac{s^{3}}{3!}\right)N_{0}
++\left(\tau_{0}\kappa_{0}\frac{s^{3}}{3!}\right)B_{0}.
+\end{align}
+\end{subequations}
+
+\M
+We can truncate this series to be scalar multiples of the Frenet vectors
+at $\beta(0)$, with the following interpretation:
+\begin{equation}
+  \begin{split}
+  \beta(s)&\approx
+  \overbrace{\beta_{0} +T_{0} s
++{\color{DarkRed}N_{0}s^{2}\frac{\kappa_{0}}{2}}}^{\begin{pmatrix}\mbox{Tangent Parabola}\\
+\mbox{in Osculating Plane}
+\end{pmatrix}}
++{\color{DarkGreen}B_{0}\tau_{0}\kappa_{0}\frac{s^{3}}{3!}}\\
+&\approx\begin{pmatrix}
+  \mbox{Linear}\\
+  \mbox{Approximation}
+\end{pmatrix}
++{\color{DarkRed}\begin{pmatrix}
+    \mbox{How Fast the Curve}\\
+    \mbox{Deviates From}\\
+    \mbox{Tangent Line}
+\end{pmatrix}}
++{\color{DarkGreen}\begin{pmatrix}\mbox{How fast the curve}\\
+  \mbox{moves out of}\\
+  \mbox{the osculating plane}
+\end{pmatrix}}
+  \end{split}
+\end{equation}
+
+\subsection{Frenet Data for Arbitrary Curves}
+
+\M
+We defined the Frenet field for unit-speed curves. But we want the
+Frenet data $T$, $N$, $B$, $\tau$, $\kappa$ to be independent of our
+choice of parametrization. The trick: given some regular curve
+$\alpha\colon I\to\RR^{3}$, let $\bar{\alpha}\colon \bar{I}\to\RR^{3}$
+be its unit-speed parametrization. 
+\begin{center}
+  \includegraphics{img/img.6}
+\end{center}
+We \emph{define} the Frenet data of $\alpha$ to be the Frenet data of
+$\bar{\alpha}$. The Frenet data of $\alpha$ are unbarred quantities, the
+Frenet data of $\bar{\alpha}$ are barred quantities. We define them by:
+\begin{subequations}
+  \begin{align}
+    T(t) &= \bar{T}(s) = \bar{T}(s(t))\\
+    N(t) &= \bar{N}(s)\\
+    B(t) &= \bar{B}(s)\\
+    \kappa(t) &= \bar{\kappa}(s)\\
+    \tau(t) &= \bar{\tau}(s)
+  \end{align}
+\end{subequations}
+In principle we can find $\bar{\alpha}$ and compute its Frenet data, but
+in practice this is usually impossible (analytically) because we must do
+two things:
+\begin{enumerate}
+\item calculate $\displaystyle s(t)=\int^{t}_{t_{0}}\|\alpha'(u)\|\,\D u$,
+\item invert this to get $t = t(s)$.
+\end{enumerate}
+Both are hard, sometimes impossible. We need a better way to calculate
+these things directly.
+
+\N{Unit Tangent}
+We find by direct calculation
+\begin{subequations}
+  \begin{align}
+    T(t) &= \bar{T}(s) = \bar{\alpha}'(s)\\
+    &= \frac{\D}{\D s}\alpha(t(s))\\
+    &= \alpha'(t)\frac{\D t}{\D s}.
+  \end{align}
+\end{subequations}
+But
+\begin{equation}
+\frac{\D s}{\D t}=\|\alpha'(t)\|,
+\end{equation}
+so
+\begin{equation}
+T(t) = \frac{\alpha'(t)}{\|\alpha'(t)\|}.
+\end{equation}
+
+\N{Curvature}
+We compute directly,
+\begin{subequations}
+  \begin{align}
+    \kappa(t) &=\bar{\kappa}(s) :=\left\|\frac{\D}{\D s}\bar{T}(s)\right\|\\
+    &=\left\|\frac{\D}{\D s}T(t)\right\|\\
+    &=\left\|T'(t)\frac{\D t}{\D s}\right\|\\
+    &=\frac{\|T'(t)\|}{\|\alpha'(t)\|}
+  \end{align}
+\end{subequations}
+
+\N{Principal Normal}
+We find, letting $v(t)=\|\alpha'(t)\|$,
+\begin{equation}
+N(t) = \bar{N}(s) = \frac{\bar{T}'(s)}{\bar{\kappa}(s)} = \frac{T'(t)/v(t)}{\kappa(t)}
+=\frac{T'(t)}{\|T'(t)\|}.
+\end{equation}
+This matches intuition of $N(t)\propto T'(t)$.
+
+\N{Binormal}
+Again, direct computation,
+\begin{equation}
+B(t) = \bar{B}(s) = \bar{T}(s)\times\bar{N}(s) = T(t)\times N(t).
+\end{equation}
+This matches intuition of the binormal as cross-product of $T$ and $N$.
+
+\N{Torsion}
+We know
+\begin{equation}
+\bar{B}'(s) = -\bar{\tau}(s)\bar{N}(s)
+\end{equation}
+and so, letting $v(t)=\|\alpha'(t)\|$,
+\begin{equation}
+\frac{\D}{\D s}B(t) = -\tau(t)v(t)N(t).
+\end{equation}
+To summarize our results, we have this handy theorem:
+
+\begin{theorem}
+If $\alpha\colon I\to\RR^{33}$ is a regular curve with positive
+curvature, then up to some factor $v(t)=\|\alpha'(t)\|$ we have,
+\begin{subequations}
+  \begin{alignat}{2}
+T'(t) &=                    & \kappa(t)v(t)N(t) & \\
+N'(t) &= -\kappa(t)v(t)T(t) &                   & + \tau(t)v(t)B(t)\\
+B'(t) &=                    & -\tau(t)v(t)N(t)  &
+  \end{alignat}
+\end{subequations}
+Or, using matrices,
+\begin{equation}
+\begin{bmatrix}T'(t)\\ N'(t)\\ B'(t)
+\end{bmatrix}
+=\begin{bmatrix}0 & \kappa(t)v(t) & 0\\
+-\kappa(t)v(t) & 0 & \tau(t)v(t)\\
+0 & -\tau(t)v(t) & 0
+\end{bmatrix}
+\begin{bmatrix}T(t)\\ N(t)\\ B(t)
+\end{bmatrix}.
+\end{equation}
+\end{theorem}
+
+\M
+Any vector field $Y$ on a regular curve $\alpha$ could be written as a
+linear combination of Frenet vector fields:
+\begin{equation}
+Y(t) = f(t)T(t) + g(t)N(t) + h(t)B(t).
+\end{equation}
+We find its derivative:
+\begin{subequations}
+\begin{align}
+  Y'(t) &= f'T + fT' + g'N + gN' + h'B + hB'\\
+  &= f'T + f\kappa vN + g'N + g(t)(-\kappa vT + \tau v B) + h'B +
+  h(t)(-\tau vN)\\
+  &= (f' - \kappa v g)T + (f\kappa v + g' - \tau v h)N + (g\tau v + h')B.
+\end{align}
+\end{subequations}
+If $Y$ has Frenet components $(f,g,h)$, then the Frenet components of
+$Y'(t)$ are
+\begin{equation}
+\begin{bmatrix}f'(t)\\g'(t)\\h'(t)
+\end{bmatrix}
++
+\begin{bmatrix}0 & -\kappa(t)v(t) & 0\\
+\kappa(t)v(t) & 0 & -\tau(t)v(t)\\
+0 & \tau(t)v(t) & 0
+\end{bmatrix}
+\begin{bmatrix}f(t)\\ g(t)\\ h(t)
+\end{bmatrix} = Y'(t).
+\end{equation}
+Note: we use the \emph{transpose} of the matrix from the Frenet
+formulas.
+
+\begin{remark}
+We should observe, when the frame we're working with is not the natural
+frame field, then we cannot write the derivative of a vector as just the
+derivatives of the components. We just saw this won't work with the
+Frenet frame. There was a correction term. This idea underlies the idea
+of covariant derivatives.
+\end{remark}
+
+\subsection{Covariant Differentiation}
+
+\M
+We want to differentiate vector fields. Suppose we are given some vector
+field $W\in\Vect(\RR^{n})$ and a tangent vector
+$\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{n}$. There is one obvious way to
+differentiate $W$ in the direction of $\vec{v}_{\vec{p}}$: consider
+expressing $W$ using coordinates relative to the natural frame field,
+\begin{equation}
+W = \sum_{j}w^{j}U_{j},
+\end{equation}
+then we just consider
+\begin{equation}
+\vec{v}_{\vec{p}}[W] = \sum_{j}\vec{v}_{\vec{p}}[w^{j}]U_{j}(\vec{p}).
+\end{equation}
+Why not?
+
+If we did this using a vector field $V\in\Vect(\RR^{n})$ at each point
+$\vec{p}\in\RR^{n}$, with $\vec{v}_{\vec{p}}=V(\vec{p})$, then we get
+\begin{equation}
+\begin{split}
+  \sum_{j}V(\vec{p})[w^{j}]U_{j}(\vec{p})&=\left(\sum_{j}V[w^{j}]U_{j}\right)(\vec{p})\\
+&=\nabla_{V}W\in\Vect(\RR^{n}).
+\end{split}
+\end{equation}
+So we get a vector field which is the natural covariant derivative of
+$W$ with respect to the vector field $V$. 
+
+\begin{definition}
+Let $V,W\in\Vect(\RR^{n})$. We define the \define{Natural Covariant Derivative}
+of $W$ with respect to $V$ is the vector field $\nabla_{V}W$ defined by
+coordinates relative to the natural frame field,
+\begin{equation}
+\nabla_{V}W = \sum_{j}V[w^{j}]U_{j},
+\end{equation}
+where $W=\sum_{j}w^{j}U_{j}$ are the coordinates of $W$ relative to the
+natural frame field $U_{j}$.
+\end{definition}
+
+\begin{remark}
+This is really dependent on the natural frame field, but we would like a
+notion of covariant differentiation \emph{independent} of the choice of
+frame field.
+\end{remark}
+
+\begin{example}
+Let $V=\sum_{i}v^{i}U_{i}$ and $W=\sum_{j}w^{j}U_{j}$ be the vector
+fields expressed in coordinates relative to the natural frame field
+$U_{j}$. Then
+\begin{subequations}
+  \begin{align}
+    \nabla_{V}W &= \sum_{j}V[w^{j}]U_{j}\\
+    &= \sum_{j}\left(\sum_{i}v^{i}U_{i}[w^{j}]\right)U_{j}\\
+    &= \sum_{j}\left(\sum_{i}v^{i}\frac{\partial w^{j}}{\partial x_{i}}\right)U_{j}\\
+ &= \sum_{j}\underbrace{\sum_{i}v^{i}\frac{\partial w^{j}}{\partial
+        x_{i}}}_{\text{coordinates of }\nabla_{V}W}U_{j}
+  \end{align}
+\end{subequations}
+  \end{example}
+
+\begin{theorem}[Essential properties of the covariant derivative]
+\begin{enumerate}
+\item $\nabla_{V}(aY + bZ) = a\nabla_{V}Y + b\nabla_{V}Z$
+\item $\nabla_{fV + gW}Z = f\nabla_{V}Z + g\nabla_{W}Z$
+\item $\nabla_{V}(fZ) = V[f]Z + f\nabla_{V}Z$
+\item Metric compatibility: $\nabla_{V}(Y\cdot Z) = V[Y\cdot Z] = (\nabla_{V}Y)\cdot Z + Y\cdot(\nabla_{V}Z)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+More generally, any operation $\bar\nabla$ taking two vector fields
+$V\times W\to Z$ and produces a third, which satisfies the first three
+properties is called a derivative operation. The fourth property is most
+geometric, as it deals with angles.
+\end{remark}
+
+% HW 4
+% 2.4 # 1,3
+% 2.5 # 2(a,b,f), 3, 5a
+
+\N{Connection Forms}
+Suppose $E_{i}$ are some orthonormal frame field on $\RR^{n}$, and we
+express $W\in\Vect(\RR^{n})$ in coordinates relative to $E_{i}$:
+\begin{equation}
+W = \sum_{i}w^{i}E_{i}.
+\end{equation}
+Let $V\in\Vect(\RR^{n})$. Then we want to find the coordinates of
+$\nabla_{V}W$ relative to $E_{i}$. We know, using linearity and the
+Leibniz property,
+\begin{equation}
+\nabla_{V}W = \sum_{i}\nabla_{V}(w^{i}E_{i}) = \sum_{i}V[w^{i}]E_{i} + w^{i}\nabla_{V}E_{i}.
+\end{equation}
+Now we just need to express $\nabla_{V}E_{i}$ in coordinates relative to
+the frame field $E_{i}$. We expect
+\begin{equation}
+\nabla_{V}E_{i} = \sum_{j}c_{ij}E_{j},
+\end{equation}
+and hope the coefficients $c_{ij}$ somehow depend on $V$. The usual
+notation is for these coefficients to be written $\omega_{ij}$, and we
+would have
+\begin{equation}
+\nabla_{V}E_{i} = \sum_{j}\omega_{ij}[V]E_{j}.
+\end{equation}
+We can get the components by applying $\langle-,E_{k}\rangle$ to both
+sides
+\begin{subequations}
+\begin{align}
+\langle\nabla_{V}E_{i},E_{k}\rangle
+&=\langle\sum_{j}\omega_{ij}[V]E_{j},E_{k}\rangle\\
+&=\sum_{j}\omega_{ij}[V]\langle E_{j},E_{k}\rangle\\
+&=\sum_{j}\omega_{ij}[V]\delta_{j,k} = \omega_{ik}[V].
+\end{align}
+\end{subequations}
+
+\M
+We can use metric compatibility to find
+\begin{subequations}
+\begin{align}
+  V[\langle E_{i},E_{j}\rangle] &= \langle\nabla_{V}E_{i},E_{j}\rangle
+  + \langle E_{i},\nabla_{V}E_{j}\rangle\\
+  &=\omega_{ij}[V] + \omega_{ji}[V]\\
+  &= V[\delta_{ij}] = 0.
+\end{align}
+\end{subequations}
+Hence in particular, we find the coefficients are antisymmetric,
+\begin{equation}
+\boxed{\omega_{ij}[V] =-\omega_{ji}[V].}
+\end{equation}
+The diagonal components would satisfy $\omega_{ii}[V]=-\omega_{ii}[V]$,
+which could only happen if $\omega_{ii}[V]=0$.
+
+When we look back on our system of equations, we find there are only
+$n(n-1)/2$ independent components (thanks to antisymmetry).
+
+\M
+For the case when $n=3$, and we work in $\RR^{3}$, we only needto know
+$\omega_{12}[V]$, $\omega_{13}[V]$, and $\omega_{23}[V]$ for all
+$V\in\Vect(\RR^{3})$. In fact $\omega_{ij}[V]$ depends linearly on
+$V$. Consider for arbitrary $f,g\in C^{\infty}(\RR^{3})$ and
+$V,W\in\Vect(\RR^{3})$,
+\begin{subequations}
+  \begin{align}
+    \omega_{ij}[fV + gW] &= \langle\nabla_{fV + gW}E_{i},E_{j}\rangle\\
+    &= \langle f\nabla_{V}E_{i} + g\nabla_{W}E_{i},E_{j}\rangle\\
+    &= f\omega_{ij}[V] + g\omega_{ij}[W].
+  \end{align}
+\end{subequations}
+These coefficients $\omega_{ij}$ take a vector field and produce
+functions. They are one-forms called \define{Connection Forms}.
+
+\subsection{Worked Example}
+
+\M This is a long example. Consider working in spherical coordinates in
+$\RR^{3}$. We want to find the spherical frame field on $\RR^{3}$ (or
+$\RR^{3}$ minus the $z$ axis). We say the order of the basis will be
+$(\rho,\theta,\lambda)$, as doodled below.
+\begin{center}
+  \includegraphics{img/img.7}
+\end{center}
+We use the standard Riemannian metric, and the frame field vectors have
+the following interpretations:
+\begin{itemize}
+\item $E_{1}$ is ``up''
+\item $E_{2}$ points ``East''
+\item $E_{3}$ points ``North''.
+\end{itemize}
+Recall, the coordinates are given by
+\begin{subequations}
+  \begin{align}
+x &=\rho\cos(\lambda)\cos(\theta)\\
+y &=\rho\cos(\lambda)\sin(\theta)\\
+z &= \rho\sin(\lambda)
+  \end{align}
+\end{subequations}
+
+\M
+How do we find $E_{1}$? Well, we find a curve passing through $(x,y,z)$
+that specifically changes $\rho\to\rho+t$, then its initial velocity
+unit vector gives us the coefficients for $E_{1}$ relative to the
+natural frame field. So
+\begin{equation}
+\alpha(t) = ((\rho+t)\cos(\lambda)\cos(\theta), (\rho+t)\cos(\lambda)\sin(\theta),(\rho+t)\sin(\lambda).
+\end{equation}
+Then we find
+\begin{equation}
+\alpha'(t) = (\cos(\lambda)\cos(\theta),\cos(\lambda)\sin(\theta),\sin(\lambda)).
+\end{equation}
+Hence
+\begin{equation}
+  \begin{split}
+    E_{1} &= \alpha'(0)\cdot(U_{1},U_{2},U_{3})\\
+    &= \cos(\lambda)\cos(\theta)U_{1} + \cos(\lambda)\sin(\theta)_{2} + \sin(\lambda)U_{3}.
+  \end{split}
+\end{equation}
+
+\M
+For $E_{2}$, a similar calculation with the curve
+\begin{equation}
+\alpha(t) = (\rho\cos(\lambda)\cos(\theta+t), \rho\cos(\lambda)\sin(\theta+t),\rho\sin(\lambda)).
+\end{equation}
+We find its velocity,
+\begin{equation}
+\alpha'(t) = (-\rho\cos(\lambda)\sin(\theta+t),\rho\cos(\lambda)\cos(\theta+t),0).
+\end{equation}
+We find its unit vector, since its length is
+\begin{equation}
+\|\alpha'(t)\| =
+\rho\cos(\lambda)\implies\frac{\alpha'(t)}{\|\alpha'(t)\|} = (-\sin(\theta),\cos(\theta),0).
+\end{equation}
+Its unit vector gives us the coordinates for $E_{2}$ relative to the
+natural frame field,
+\begin{equation}
+E_{2} = -\sin(\theta)U_{1} + \cos(\theta)U_{2}
+\end{equation}
+
+\M
+The last frame field we need the curve
+\begin{equation}
+\alpha(t) = (\rho\cos(\lambda+t)\cos(\theta), \rho\cos(\lambda+t)\sin(\theta),\rho\sin(\lambda+t)).
+\end{equation}
+The velocity vector for this curve,
+\begin{equation}
+\alpha'(t) = (-\rho\cos(\theta)\sin(\lambda+t), -\rho\sin(\theta)\sin(\lambda+t),
+\rho\cos(\lambda+t)).
+\end{equation}
+Its unit vector
+\begin{equation}
+\frac{\alpha'(t)}{\|\alpha'(t)\|} = (-\cos(\theta)\sin(\lambda+t), -\sin(\theta)\sin(\lambda+t),
+\cos(\lambda+t)).
+\end{equation}
+Hence we find
+\begin{equation}
+E_{3} = -\sin(\lambda)\cos(\theta)U_{1} - \sin(\lambda)\sin(\theta)U_{3}+\cos(\lambda)U_{3}.
+\end{equation}
+
+\N{Connection Coefficients}
+Now that we have obtained our spherical frame field, we can compute the
+connection coefficients $\omega_{ij}[V] = \nabla_{V}E_{i}\cdot E_{j}$.
