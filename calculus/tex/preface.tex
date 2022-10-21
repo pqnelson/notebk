@@ -1,0 +1,121 @@
+%%
+%% preface.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Nov  3 14:45:53 2011 alex
+%% Last update Wed May 30 10:11:45 2012 Alex Nelson
+%%
+%\phantomsection\addcontentsline{toc}{chapter}{Preface} 
+%\chapter*{Preface}
+This manuscript is intended to teach calculus using big O
+notation. Originally, Knuth suggested it in a letter~\cite{knuth}. It seems
+to explain the intuitive idea, which is my aim. This is done in a
+slightly less-than-orthodox manner, thinking ``microscopically''
+(``infinitesimally'') and ``macroscopically''. I found this
+really helps explain the concepts of differentiation and
+integration.
+
+As this is a calculus text, all the concerns are purely
+\emph{symbolic}. We do not care if something is well-defined or
+not, everything we do is symbolic manipulation. When we stop,
+think, and wonder if it makes sense, then we begin the field of
+real analysis. 
+
+Depending on how far things get, this text may be focused on
+calculus of a single variable only or more. If we got farther, we
+need to discuss linear algebra (even a provisional presentation
+of it will be necessary). 
+
+The focus varies, but consistently we are application
+oriented. The ``applications'' I am speaking of are computational
+in nature (e.g., how can we compute $\sin(1)$ to 7 digits of
+precision by hand?). This is useful when you forget your
+calculator, and wait for your plane at the airport.
+
+But really, this is a stepping stone towards other
+applications. Texts which will follow from this are my notes on
+classical physics; my notes on complex analysis; and so on.
+
+\bigskip
+A note when reading. There will be ``problems'' which come up in
+the text. They are sometimes exercises, other times they are
+motivating questions to guide the text. The reader should spend a
+moment thinking about them before moving on.
+
+Exercises appear in the ``exercises'' sections. They are numbered
+to indicate their difficulty on a logarithmic scale from 0
+(easiest) to 50 (open research problems). For a rough
+approximation of difficulty and explanation, consider the
+following table:
+
+\medskip
+\begin{tabular}{c | p{10cm}}
+\toprule
+Scale & Meaning \\
+\midrule 
+00 & ``Warmups.'' Every reader should try to do these when reading.\\
+10 & ``Basics.'' Exercises to develop facts that should be done
+from one's own derivations rather than glancing at someone else's.\\
+20 & ``Homework Exercises.'' Intended to deepen understanding of
+the material covered in the current section or chapter. \\
+30 & ``Exam Problems.'' These typically involve multiple sections
+of the book to gain a better insight into mathematics. \\
+40 & ``Bonus Problems.'' These problems extend the text in
+interesting ways. \\
+50 & ``Open Research Problems.'' These are open problems that may
+or may not have a solution. \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\noindent{}It should be noted that sometimes it is necessary to just do
+calculations in calculus. A python program was written to
+generate exercises, just for the sake of practicing calculations,
+and will be sectioned off into a subsection ``Calculator Exercises.''
+Here ``calculator'' refers to the historical connotation of a
+person who is skilled at calculations, not the electronic
+pocket-sized gadget.
+
+\medskip
+As far as the level of rigor is concerned, as stated, everything
+is purely symbolic manipulation. Proofs are given, but not always
+within the ``\emph{Proof}. \dots \slug'' pattern mathematicians
+have come to love.
+
+However, we are following Euler's example in applying the
+``Generality of Algebra'' to our thinking. That is to say, we are
+not being rigorous in the modern sense of the word because we are
+following symbolic rules that work in particular cases. We just
+assume that the rules work in \emph{any} situation.
+
+Although we are following Euler, our presentation of material
+differs slightly. We will stick to the outline in most modern
+calculus textbooks, namely: derivatives first and integrals
+second, single variables before multiple. We will also use
+convergence of series and sequences as a segue from single to
+many variable calculus.
+
+\vfill
+\begin{quotes}
+The heart of mathematics consists of 
+concrete examples and concrete problems.
+\Author P.\ R.\ Halmos, {\sl How to write mathematics} (1973)
+
+\bigskip
+It is downright sinful to teach 
+the abstract before the concrete.
+\Author Z.\ A.\ Melzak, {\sl Companion to Concrete Mathematics} (1973)
+
+\bigskip
+The advanced reader who skips parts that appear 
+too elementary may miss more than the less advanced reader 
+who skips parts that appear too complex.
+\Author G.\ Polya, {\sl Induction and Analogy in Mathematics} (1954)
+
+\bigskip
+The material of concrete mathematics may seem at first to be a disparate
+bag of tricks, but practice makes it into a disciplined set of tools.
+\Author D.\ E.\ Knuth, {\sl Concrete Mathematics} (1994)
+\end{quotes}

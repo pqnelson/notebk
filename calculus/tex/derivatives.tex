@@ -1,0 +1,515 @@
+%%
+%% derivatives.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Nov  3 14:31:59 2011 alex
+%% Last update Wed May 30 10:17:56 2012 Alex Nelson
+%%
+
+\subsection{Derivative}
+\M
+We still have these bonus parts when considering the slope. That
+is, for some nonzero $\Delta x$ and arbitrary $f(x)$, we have 
+\begin{equation}
+f(x+\Delta x)-f(x)=h(x)\Delta x+\bigO\left((\Delta x)^{2}\right)
+\end{equation}
+which gives us
+\begin{equation}
+\frac{\Delta f(x)}{\Delta x}=h(x)+\bigO(\Delta x).
+\end{equation}
+We want to get rid of that $\Delta x$ on the right hand side. How
+to do this?
+
+Lets be absolutely clear before moving on. We want to consider
+the slope of our function $f$. To do this we considered a nonzero
+$\Delta x$, and then constructed
+\begin{equation}
+\Delta f(x)=f(x+\Delta x)-f(x).
+\end{equation}
+This function described the difference between the values of $f$
+at $x+\Delta x$ and at $x$. So, to describe the \emph{rate of change}
+we take
+\begin{equation}
+\frac{\Delta f(x)}{\Delta x}= h(x)+\bigO(\Delta x).
+\end{equation}
+But we want to describe the \emph{instantaneous} rate of
+change. Although this sounds scary, it really means we don't want
+to work with some extra parameter $\Delta x$. We want to consider
+the rate of change and describe it in such a way that it doesn't
+depend on $\Delta x$. 
+
+So what do we do? Well, the first answer is to set $\Delta x$ to
+be 0. This is tempting, but wrong, because we end up with
+\begin{equation}
+\frac{f(x+\Delta x)-f(x)}{\Delta x}\mapsto \frac{f(x+0)-f(x)}{0}
+\end{equation}
+which is not well-defined. The second answer is to consider the
+limit $\Delta x\to 0$, so we can avoid division-by-zero
+errors. This is better, and we write
+\begin{equation}
+\lim_{\Delta x\to 0}\frac{\Delta f(x)}{\Delta x}=\frac{\D f(x)}{\D x}
+\end{equation}
+following Leibniz's notation. This is the definition of the
+derivative of $f$.
+
+%\subsection{Divide by Zero, and You Go To Hell!}
+\N{Divide by Zero, and You Go To Hell!}
+Well, formally, we need to take the limit $\Delta x\to 0$. What
+does that mean for the left hand side? Could we accidentally be
+dividing by $\Delta x$ and get infinities? This is a problem we
+have to seriously consider.
+
+The first claim is that
+\begin{equation}\label{eq:deltaFisLinearInDeltaX}
+f(x+\Delta x)=f(x)+\bigO(\Delta x).
+\end{equation}
+This would imply that
+\begin{equation}
+\frac{\Delta f(x)}{\Delta x} = h(x)+\bigO(\Delta x)
+\end{equation}
+for some function $h(x)$. There would be no division by zero
+errors, but still we have to prove that equation
+\eqref{eq:deltaFisLinearInDeltaX} is true \emph{in general},
+i.e. for \emph{every} function $f(x)$. We have seen it is true
+only for polynomials.
+
+So, let us consider a function
+\begin{equation}
+F(x)=\frac{1}{x^{n}}
+\end{equation}
+for some $n\in\NN$. What to do? Well, lets consider what happens
+when $x\mapsto x+\Delta x$, we change $x$ to be $x+\Delta x$. We have
+\begin{equation}
+F(x+\Delta x)=\frac{1}{(x+\Delta x)^{n}}
+\end{equation}
+by definition of $F$. We would expect then
+\begin{equation}
+\Delta F(x)=F(x+\Delta x)-F(x)=\frac{1}{(x+\Delta x)^{n}}-\frac{1}{x^{n}}.
+\end{equation}
+What to do? Well, lets gather the terms together
+\begin{equation}
+\Delta F(x)=\frac{x^{n}}{x^{n}(x+\Delta x)^{n}}-\frac{(x+\Delta
+x)^{n}}{x^{n}(x+\Delta x)^{n}}
+\end{equation}
+which we can do, since we multiply both terms by 1 (the first
+term is $x^{n}/x^{n}$, the second term is $(x+\Delta
+x)^{n}/(x+\Delta x)^{n}$). We can then add the fractions together
+\begin{equation}
+\Delta F(x)=\frac{x^{n}-(x+\Delta x)^{n}}{x^{n}(x+\Delta x)^{n}}
+\end{equation}
+and consider expanding the numerator and denominators out. We see
+that to first order, we have
+\begin{equation}
+x^{n}-(x+\Delta x)^{n}=-nx^{n-1}\Delta x+\bigO\left((\Delta
+x)^{2}\right)
+\end{equation}
+which shouldn't be surprising (we've proven this many times so
+far!). The denominator expands out to be
+\begin{equation}
+x^{n}(x+\Delta x)^{n}=x^{n}(x^{n}+\bigO(\Delta x))
+\end{equation}
+which, for nonzero $x$, cannot be made 0.
+
+We combine these results to write
+\begin{equation}
+\Delta F(x)=\frac{-nx^{n-1}\Delta x+\bigO\left((\Delta x)^{2}\right)}{x^{n}(x^{n}+\bigO(\Delta x))}.
+\end{equation}
+We observe that we can factor out a $\Delta x$ in the numerator
+(the upstairs part of the fraction) and then we can divide both
+sides by it:
+\begin{equation}
+\frac{\Delta F(x)}{\Delta x}=\frac{-nx^{n-1}+\bigO(\Delta x)}{x^{n}(x^{n}+\bigO(\Delta x))}.
+\end{equation}
+So what happens if we set $\Delta x=0$ on the right hand side? Do
+we run into problems? Well, we run into problems on the left hand
+side, but not on the right hand side.
+
+So what to do? Well, the formal mathematical procedure is to take
+the \emph{limit} $\Delta x\to0$, which then lets us write
+\begin{equation}
+\lim_{\Delta x\to0}\frac{\Delta F(x)}{\Delta x}=\frac{\D F(x)}{\D
+x}
+\end{equation}
+for the left hand side. For the right hand side, we can
+symbolically just set $\Delta x=0$. This is sloppy, because it's
+not quite true. But this is what's done in practice. We get
+\begin{equation}
+\lim_{\Delta x\to0}\frac{-nx^{n-1}+\bigO(\Delta x)}{x^{n}(x^{n}+\bigO(\Delta x))}
+= \frac{-nx^{n-1}}{x^{n}(x^{n}+0)}.
+\end{equation}
+Observe that we can combine these results to write
+\begin{equation}
+\frac{\D F(x)}{\D x}=\frac{-n}{x^{2n-(n-1)}}=-nx^{-n-1}.
+\end{equation}
+There was no risk of dividing by zero anywhere.
+
+%\subsection{Product Rule}
+\N{Product Rule}
+Suppose we have two arbitrary functions $f(x)$ and $g(x)$. Lets
+define a new function
+\begin{equation}\label{eq:whereWeDefinedH}
+h(x)=f(x)g(x),
+\end{equation}
+then what's 
+\begin{equation}
+\Delta h(x)=?
+\end{equation}
+I don't know, let us look. We see that we first pick some nonzero
+$\Delta x$ and then consider
+\begin{equation}
+\Delta h(x)=h(x+\Delta x)-h(x).
+\end{equation}
+Now we plug in this expression to equation
+\eqref{eq:whereWeDefinedH}, the equation where we defined $h$,
+and we find
+\begin{equation}
+h(x+\Delta x)-h(x)=f(x+\Delta x)g(x+\Delta x)-f(x)g(x).
+\end{equation}
+We do the following trick: add to both sides
+\begin{equation}
+0=f(x)g(x+\Delta x)-f(x)g(x+\Delta x)
+\end{equation}
+and we obtain
+\begin{equation}
+\begin{split}
+\Delta h(x)=&f(x+\Delta x)g(x+\Delta x)-f(x)g(x) \\
+&\quad+f(x)g(x+\Delta x)-f(x)g(x+\Delta x).
+\end{split}
+\end{equation}
+We can gather terms together
+\begin{equation}
+\Delta h(x)=(f(x+\Delta x)-f(x))g(x+\Delta
+x)+f(x)(-g(x)+g(x+\Delta x))
+\end{equation}
+which simplifies to
+\begin{equation}
+\Delta h(x)=\Delta f(x)\cdot g(x+\Delta x)+f(x)\cdot\Delta g(x).
+\end{equation}
+As usual, we divide both sides by $\Delta x$
+\begin{equation}
+\frac{\Delta h(x)}{\Delta x}=\frac{\Delta f(x)}{\Delta x}g(x+\Delta x)
++f(x)\frac{\Delta g(x)}{\Delta x}.
+\end{equation}
+By taking the limit $\Delta x\to 0$ we end up with
+\begin{equation}
+\frac{\D h(x)}{\D x}=\frac{\D f(x)}{\D x}g(x)+f(x)\frac{\D g(x)}{\D x}.
+\end{equation}
+Notice that we implicitly noted
+\begin{equation}
+\lim_{\Delta x\to 0}g(x+\Delta x)=g(x).
+\end{equation}
+Of course, we assume that $g$ is continuous at $x$, which turns
+out to be correct since differentiability implies continuity (we
+will prove this at some other time).
+
+\begin{thm}[Product Rule]
+Let $f$, $g$ be differentiable and
+\begin{equation}
+h(x)=f(x)g(x),
+\end{equation}
+then
+\begin{equation}
+\frac{\D h(x)}{\D x}=\frac{\D f(x)}{\D x}g(x)+f(x)\frac{\D g(x)}{\D x}
+\end{equation}
+is the derivative.
+\end{thm}
+
+We've already proven this. So lets consider an example.
+\begin{equation}
+f(x)=x^{n-1}
+\end{equation}
+where $(n-1)\in\NN$, and
+\begin{equation}
+g(x)=x.
+\end{equation}
+Thus
+\begin{equation}
+h(x)=x^{n}.
+\end{equation}
+The claim is that
+\begin{equation}
+\frac{\D h(x)}{\D x}=nx^{n-1}.
+\end{equation}
+Is this surprising? No, but the surprising part is that it is a
+\emph{consequence} of the product rule. How to prove this? Well,
+we need to do it by induction on $n$. 
+
+\textbf{Base Case} ($n=2$) we see that
+\begin{equation}
+f(x)=x
+\end{equation}
+and we can see immediately that
+\begin{equation}
+\frac{\D h(x)}{\D x}=\frac{\D f(x)}{\D x}g(x)+f(x)\frac{\D g(x)}{\D x}=1\cdot x+x\cdot 1=2x.
+\end{equation}
+So this proves the base case.
+
+\textbf{Inductive Hypothesis:} suppose this will work for
+arbitrary $n$.
+
+\textbf{Inductive Case:} for $n+1$, we have
+\begin{equation}
+\frac{\D h(x)}{\D x}=\frac{\D (x^{n-1}x)}{\D x}g(x)+x^{n}\frac{\D g(x)}{\D x}
+\end{equation}
+Observe we can consider the first term and apply the base case
+\begin{equation}
+\frac{\D (x^{n-1}x)}{\D x}g(x)=\frac{\D (x^{n-1})}{\D x}xg(x)+x^{n-1}\frac{\D (x)}{\D x}g(x)
+\end{equation}
+which is then
+\begin{equation}
+\frac{\D (x^{n-1}x)}{\D x}g(x)=(n-1)(x^{n-2})xg(x)+x^{n-1}g(x)=nx^{n-1}g(x).
+\end{equation}
+The second term is (recall $g(x)=x$) simpler
+\begin{equation}
+x^{n}\frac{\D g(x)}{\D x}=x^{n}.
+\end{equation}
+We add both of these together to find
+\begin{equation}
+\frac{\D h(x)}{\D x}=nx^{n}+x^{n}=(n+1)x^{n}.
+\end{equation}
+But this is precisely what we wanted! And that concludes the inductive proof.
+
+%\subsection{Chain Rule}
+\N{Chain Rule}
+We can combine functions together through composition. This looks
+like
+\begin{equation}
+h(x)=g(f(x)).
+\end{equation}
+The question is: what's the derivative (rate of change) of $h$ in
+terms of the derivatives of $g$ and $f$?
+
+Here we really take advantage of big-O notation. Observe for some
+nonzero $\Delta x$ we have
+\begin{equation}
+h(x+\Delta x)=g(f(x+\Delta x))
+\end{equation}
+Let us write
+\begin{equation}
+u = f(x)
+\end{equation}
+thus
+\begin{equation}
+h(x+\Delta x)=g(u+\Delta u).
+\end{equation}
+Its finite difference is then
+\begin{subequations}\label{eq:derivatives:intermediateResult}
+\begin{align}
+\Delta h(x) &= h(x+\Delta x)-h(x)\\
+&=g(u+\Delta u)-g(u)
+\end{align}
+\end{subequations}
+Observe
+\begin{subequations}\label{eq:chainRule:defnOfDeltaf}
+\begin{align}
+\Delta u &= \Delta f(x)\\
+&= f(x+\Delta x)-f(x)
+\end{align}
+\end{subequations}
+implies
+\begin{equation}
+g(u+\Delta u)=g(f(x+\Delta x)).
+\end{equation}
+We plug this back into Eq \eqref{eq:derivatives:intermediateResult}
+and obtain
+\begin{equation}
+\Delta h(x) = g(f(x+\Delta x))-g(f(x)).
+\end{equation}
+Divide both sides by $\Delta x$, in order to consider the
+derivative
+\begin{equation}
+\frac{\Delta h(x)}{\Delta x}=\frac{g\left(f(x+\Delta x)\right)-g\left(f(x)\right)}{\Delta{}x}.
+\end{equation}
+Now what do we do?
+%% \begin{comment}
+%% but we argued that
+%% \begin{equation}\label{eq:chainRule:defnOfDeltaf}
+%% f(x+\Delta x)=f(x)+F(x)\Delta x +\bigO\left((\Delta x)^{2}\right).
+%% \end{equation}
+%% Lets plug this in
+%% \begin{equation}
+%% h(x+\Delta x)=g(f(x)+F(x)\Delta x +\bigO\left((\Delta x)^{2}\right)).
+%% \end{equation}
+%% So we conclude that
+%% \begin{equation}
+%% \Delta h(x)=g(f(x)+F(x)\Delta x +\bigO\left((\Delta x)^{2}\right))-g(f(x)).
+%% \end{equation}
+%% We can divide both sides by $\Delta x$ simply
+%% \begin{equation}
+%% \frac{\Delta h(x)}{\Delta x}=\frac{g\left(f(x)+F(x)\Delta x+\bigO\left((\Delta x)^{2}\right)\right)-g(f(x))}{\Delta x}.
+%% \end{equation}
+%% Now what to do?
+%% \end{comment}
+
+Well, we can do the following trick: multiply both sides by
+\begin{equation}
+1=\frac{\Delta f(x)}{\Delta f(x)}.
+\end{equation}
+This would give us
+\begin{equation}
+\frac{\Delta h(x)}{\Delta x}=\frac{g\left(f(x+\Delta x)\right))-g\left(f(x)\right)}{\Delta f(x)}
+\frac{\Delta f(x)}{\Delta x}.
+\end{equation}
+But what is $\Delta f(x)$? We recall equation \eqref{eq:chainRule:defnOfDeltaf}
+and write
+\begin{equation}
+\Delta f(x) = f(x+\Delta x)-f(x)=F(x)\Delta x +\bigO\left((\Delta x)^{2}\right).
+\end{equation}
+Using this, we can simplify our equation
+\begin{equation}
+\frac{\Delta h(x)}{\Delta x}=\frac{g(f(x)+\Delta f(x))-g(f(x))}{\Delta f(x)}
+\frac{\Delta f(x)}{\Delta x}.
+\end{equation}
+Observe that we may take the limit as $\Delta x\to0$, which gives
+us
+\begin{equation}
+\frac{\D h(x)}{\D x}=\frac{\D g(f(x))}{\D f(x)}\frac{\D f(x)}{\D x}
+\end{equation}
+which intuitively looks like fractions cancelling out to give the
+right answer. Although this is the intuitive idea, \emph{DO NOT}
+cancel terms!
+
+Moreover, we should really clarify what is meant by
+\begin{equation}
+\frac{\D g(f(x))}{\D f(x)}=\dots
+\end{equation}
+Let us first consider
+\begin{equation}
+u=f(x).
+\end{equation}
+Then really
+\begin{equation}
+\frac{\D g(f(x))}{\D f(x)}=\frac{\D g(u)}{\D u}
+\end{equation}
+describes what we should do. Namely, first take the derivative of
+$g$ and then evaluate it at $u=f(x)$.
+
+\begin{thm}
+Let $f$, $g$ be differentiable at $x$, and let
+\begin{equation}
+h(x)=g(f(x)).
+\end{equation}
+Then
+\begin{equation}
+\frac{\D h(x)}{\D x}=\frac{\D g(f(x))}{\D f(x)}\frac{\D f(x)}{\D x}
+\end{equation}
+describes the derivative of $h$ at $x$.
+\end{thm}
+
+Again, we also proved this, which concludes this section.
+
+
+\begin{exercises}
+\suggestedExercise [14] Prove or find a counter-example: if
+$f'(x)=0$, then $f(x)$ is constant.
+
+\exercise [19] Find the derivative of $p(x)=(3x^{5}+x^{-1})(x^{9}+3x^{4}+x+4)$.
+
+\subsection*{Calculation Exercises}
+\noindent{}In these exercises, take the derivatives of the
+following expressions.
+\exercise [22] $\displaystyle - 20 x - \frac{9}{x} - \frac{20}{x^{8}} - \frac{25}{x^{7}} + \frac{7}{x^{2}} - 19 x^{6}$
+\exercise [20] $\displaystyle 22 x + \frac{14}{x^{9}} - 29 x^{2} + 26 x^{9} + 28 x^{10}$
+\exercise [28] $\displaystyle - 13 x + \frac{10}{x^{8}} + \frac{16}{x^{6}} + \frac{16}{x^{5}} + 18 x^{2} + 29 x^{4} + 14 x^{5} + 10 x^{9} - 20 x^{10}$
+\exercise [20] $\displaystyle - 18 x - \frac{24}{x^{4}} + 3 x^{2} - 26 x^{6} + 27 x^{8}$
+\exercise [19] $\displaystyle -19 + 28 x - \frac{9}{x^{4}} - \frac{18}{x^{2}} + 27 x^{10}$
+\exercise [19] $\displaystyle 28 - 25 x + 17 x^{2} - 17 x^{4} + 14 x^{7}$
+\exercise [24] $\displaystyle \frac{21}{x^{8}} - \frac{7}{x^{6}} - \frac{29}{x^{5}} + 9 x^{2} + 24 x^{3} + 29 x^{4} - 19 x^{7}$
+\exercise [18] $\displaystyle - 9 x - \frac{16}{x} - \frac{14}{x^{8}} + \frac{20}{x^{4}}$
+\exercise [23] $\displaystyle 2 - \frac{5}{x^{8}} - \frac{8}{x^{7}} + \frac{23}{x^{3}} + 25 x^{2} + 10 x^{6} + 4 x^{9}$
+\exercise [12] $\displaystyle - \frac{13}{x^{8}}$
+\exercise [17] $\displaystyle 26 - \frac{20}{x^{7}} - \frac{6}{x^{6}} - 24 x^{6}$
+\exercise [25] $\displaystyle -8 - \frac{3}{x^{8}} - \frac{29}{x^{7}} + 24 x^{2} - 18 x^{4} + 17 x^{5} - 28 x^{9} + 24 x^{10}$
+\begin{comment}
+\exercise [23] $\displaystyle 25 - \frac{9}{x} - \frac{28}{x^{7}} + \frac{13}{x^{3}} + 10 x^{4} + 14 x^{6} + 23 x^{9}$
+\exercise [14] $\displaystyle - \frac{23}{x} + 9 x^{10}$
+\exercise [28] $\displaystyle - \frac{7}{x^{10}} + \frac{17}{x^{9}} + \frac{6}{x^{8}} + \frac{28}{x^{7}} + \frac{5}{x^{2}} - 30 x^{2} + 12 x^{4} + 26 x^{5} + 13 x^{10}$
+\exercise [13] $\displaystyle -20 + 12 x^{2}$
+\exercise [26] $\displaystyle 26 x - \frac{9}{x^{10}} + \frac{15}{x^{7}} - \frac{17}{x^{6}} + \frac{8}{x^{4}} - \frac{12}{x^{2}} + 26 x^{7} + 12 x^{9}$
+\exercise [12] $\displaystyle 18 x^{8}$
+\exercise [12] $\displaystyle - \frac{4}{x^{7}}$
+\exercise [14] $\displaystyle \frac{7}{x^{5}} + 14 x^{5}$
+\exercise [29] $\displaystyle 18 + 24 x - \frac{26}{x^{9}} - \frac{17}{x^{5}} + \frac{13}{x^{4}} - \frac{6}{x^{2}} + 12 x^{2} - 22 x^{7} + 20 x^{8} - 17 x^{9}$
+\exercise [23] $\displaystyle 1 - \frac{4}{x} + \frac{17}{x^{10}} - \frac{14}{x^{7}} - \frac{11}{x^{2}} - 21 x^{2} + 19 x^{9}$
+\exercise [17] $\displaystyle 11 + \frac{4}{x^{10}} + 13 x^{4} + 6 x^{8}$
+\exercise [27] $\displaystyle -13 - \frac{28}{x} - \frac{7}{x^{10}} + \frac{25}{x^{4}} + 23 x^{3} - 21 x^{4} - 25 x^{6} - 20 x^{7} + 23 x^{8}$
+\exercise [24] $\displaystyle - \frac{25}{x^{10}} + \frac{10}{x^{8}} - \frac{20}{x^{3}} - 19 x^{3} - 15 x^{4} + 12 x^{5} - 8 x^{10}$
+\exercise [21] $\displaystyle 16 - \frac{11}{x^{9}} + \frac{5}{x^{6}} + 29 x^{2} + 26 x^{3} + 15 x^{5}$
+\exercise [20] $\displaystyle - \frac{11}{x^{8}} - \frac{30}{x^{7}} - \frac{4}{x^{4}} + 28 x^{2} + 12 x^{7}$
+\exercise [20] $\displaystyle - \frac{24}{x^{9}} - \frac{10}{x^{5}} - 12 x^{5} + 25 x^{6} + 19 x^{9}$
+\exercise [19] $\displaystyle 15 - 6 x - \frac{29}{x^{8}} - 7 x^{6} + 7 x^{7}$
+\exercise [29] $\displaystyle 21 - 29 x + \frac{21}{x} + \frac{13}{x^{6}} + \frac{21}{x^{3}} + \frac{27}{x^{2}} - 27 x^{3} - 4 x^{4} + 21 x^{8} - 5 x^{9}$
+\exercise [19] $\displaystyle 8 + \frac{13}{x} - \frac{27}{x^{7}} - \frac{15}{x^{3}} - 25 x^{9}$
+\exercise [21] $\displaystyle 7 - 11 x + \frac{4}{x} - \frac{22}{x^{7}} - \frac{15}{x^{3}} - 19 x^{10}$
+\exercise [16] $\displaystyle - \frac{24}{x^{10}} - \frac{7}{x^{7}} - 9 x^{9}$
+\exercise [27] $\displaystyle -29 + \frac{3}{x} - \frac{4}{x^{8}} - \frac{30}{x^{7}} + \frac{4}{x^{4}} + \frac{27}{x^{3}} + 2 x^{3} + 28 x^{4} - 15 x^{9}$
+\exercise [29] $\displaystyle 21 - 14 x + \frac{6}{x^{9}} - \frac{3}{x^{7}} + \frac{7}{x^{6}} + \frac{8}{x^{3}} + 15 x^{5} - 13 x^{7} + 29 x^{8} - 3 x^{9}$
+\exercise [28] $\displaystyle \frac{17}{x^{6}} - 15 x^{3} - 3 x^{4} - 9 x^{5} + 29 x^{6} - 30 x^{7} + 21 x^{8} - 13 x^{9} + 11 x^{10}$
+\exercise [26] $\displaystyle \frac{11}{x^{10}} + \frac{23}{x^{9}} + \frac{16}{x^{7}} + \frac{23}{x^{6}} - \frac{23}{x^{4}} + 20 x^{7} - 19 x^{8} - 27 x^{10}$
+\exercise [14] $\displaystyle \frac{20}{x^{2}} - 2 x^{7}$
+\exercise [18] $\displaystyle \frac{15}{x^{7}} + \frac{11}{x^{5}} + \frac{23}{x^{3}} + 12 x^{4}$
+\exercise [16] $\displaystyle \frac{19}{x} + \frac{2}{x^{6}} - 29 x^{10}$
+\exercise [12] $\displaystyle \frac{27}{x^{4}}$
+\exercise [24] $\displaystyle \frac{16}{x^{10}} - \frac{8}{x^{9}} + \frac{28}{x^{7}} + \frac{26}{x^{5}} - \frac{15}{x^{3}} + 7 x^{6} + 28 x^{9}$
+\exercise [18] $\displaystyle - \frac{20}{x^{10}} + 21 x^{3} - 25 x^{8} - 14 x^{10}$
+\exercise [25] $\displaystyle -17 - \frac{24}{x} + \frac{20}{x^{9}} - \frac{5}{x^{6}} + 14 x^{3} - 14 x^{7} + 25 x^{9} + 17 x^{10}$
+\exercise [27] $\displaystyle 2 + \frac{28}{x^{10}} - \frac{27}{x^{8}} + \frac{18}{x^{7}} + \frac{23}{x^{2}} - 6 x^{2} - 15 x^{3} + 20 x^{4} - 20 x^{5}$
+\exercise [16] $\displaystyle - \frac{21}{x^{8}} + \frac{15}{x^{5}} - \frac{19}{x^{2}}$
+\exercise [15] $\displaystyle -13 + \frac{15}{x^{6}} + \frac{29}{x^{3}}$
+\exercise [15] $\displaystyle 7 + \frac{18}{x^{8}} + 25 x^{3}$
+\exercise [22] $\displaystyle - \frac{26}{x^{4}} + \frac{8}{x^{2}} - 6 x^{3} - 19 x^{5} + 20 x^{8} + 28 x^{10}$
+\exercise [28] $\displaystyle - 24 x - \frac{24}{x} - \frac{4}{x^{6}} - \frac{10}{x^{3}} - 3 x^{3} - 3 x^{4} + 19 x^{5} + 25 x^{7} + 16 x^{8}$
+\exercise [16] $\displaystyle - \frac{27}{x} - 26 x^{8} - 3 x^{10}$
+\exercise [17] $\displaystyle -28 + \frac{13}{x} - \frac{16}{x^{9}} + \frac{5}{x^{3}}$
+\exercise [23] $\displaystyle -5 - \frac{18}{x^{9}} - \frac{11}{x^{7}} - \frac{28}{x^{5}} + \frac{29}{x^{2}} - 8 x^{5} + 4 x^{9}$
+\exercise [20] $\displaystyle \frac{23}{x^{10}} - \frac{3}{x^{9}} + \frac{3}{x^{5}} - 6 x^{4} + 18 x^{5}$
+\exercise [15] $\displaystyle -17 - 24 x^{5} + 29 x^{8}$
+\exercise [16] $\displaystyle - 24 x - \frac{17}{x^{5}} - 12 x^{8}$
+\exercise [22] $\displaystyle \frac{5}{x^{8}} + \frac{26}{x^{3}} + 11 x^{2} - 22 x^{7} - 7 x^{9} - 15 x^{10}$
+\exercise [18] $\displaystyle \frac{11}{x^{9}} + \frac{6}{x^{7}} - \frac{24}{x^{3}} + 27 x^{2}$
+\exercise [25] $\displaystyle -14 + \frac{10}{x^{10}} + \frac{29}{x^{8}} + 18 x^{4} - 5 x^{5} + 21 x^{6} + 5 x^{8} - 11 x^{10}$
+\exercise [22] $\displaystyle \frac{28}{x^{9}} + \frac{12}{x^{3}} - 19 x^{6} - 7 x^{8} + 27 x^{9} + 29 x^{10}$
+\exercise [15] $\displaystyle -17 - \frac{20}{x^{7}} + 3 x^{10}$
+\exercise [24] $\displaystyle - \frac{26}{x^{6}} + x^{-4} - 17 x^{2} + 5 x^{4} - 18 x^{6} - 10 x^{7} - 28 x^{9}$
+\exercise [15] $\displaystyle 20 + \frac{16}{x^{3}} + 2 x^{3}$
+\exercise [16] $\displaystyle 4 x + 22 x^{3} - 26 x^{10}$
+\exercise [17] $\displaystyle -14 - 24 x + 6 x^{3} - 26 x^{10}$
+\exercise [28] $\displaystyle - 11 x + \frac{3}{x} - \frac{25}{x^{10}} - \frac{30}{x^{9}} + \frac{7}{x^{7}} - \frac{2}{x^{5}} - 10 x^{3} + 5 x^{4} + 3 x^{7}$
+\exercise [28] $\displaystyle \frac{29}{x} + \frac{26}{x^{10}} - \frac{20}{x^{9}} + \frac{24}{x^{8}} - \frac{22}{x^{7}} - \frac{16}{x^{6}} + \frac{22}{x^{5}} - \frac{28}{x^{4}} + 28 x^{6}$
+\exercise [17] $\displaystyle -27 + \frac{9}{x^{9}} + \frac{25}{x^{5}} + 20 x^{3}$
+\exercise [17] $\displaystyle 11 + \frac{17}{x^{9}} + \frac{7}{x^{8}} + \frac{17}{x^{4}}$
+\exercise [27] $\displaystyle 9 + \frac{21}{x^{10}} + \frac{7}{x^{7}} - \frac{11}{x^{3}} + x^{-2} + 10 x^{2} - 16 x^{3} + 22 x^{4} + 27 x^{7}$
+\exercise [20] $\displaystyle - \frac{10}{x^{10}} - \frac{29}{x^{7}} - \frac{29}{x^{3}} - 30 x^{4} + 25 x^{9}$
+\exercise [19] $\displaystyle 10 + \frac{3}{x^{6}} + \frac{25}{x^{4}} - 8 x^{3} - 21 x^{5}$
+\exercise [17] $\displaystyle 10 - \frac{6}{x^{5}} - \frac{3}{x^{2}} - 16 x^{5}$
+\exercise [22] $\displaystyle - \frac{24}{x} + \frac{4}{x^{3}} - 30 x^{2} + 2 x^{5} + 11 x^{7} - 18 x^{8}$
+\exercise [18] $\displaystyle - \frac{19}{x^{10}} + \frac{22}{x^{9}} - 28 x^{4} + 14 x^{8}$
+\exercise [27] $\displaystyle -8 - \frac{7}{x} - \frac{20}{x^{8}} - \frac{25}{x^{5}} + \frac{13}{x^{4}} - \frac{18}{x^{2}} + 18 x^{8} - 24 x^{9} - 2 x^{10}$
+\exercise [20] $\displaystyle - \frac{15}{x^{8}} - \frac{14}{x^{5}} - \frac{11}{x^{4}} - 15 x^{4} + 10 x^{8}$
+\exercise [22] $\displaystyle - \frac{6}{x^{8}} + \frac{12}{x^{5}} - \frac{29}{x^{4}} + 24 x^{7} + 6 x^{9} - 25 x^{10}$
+\exercise [23] $\displaystyle -10 + \frac{3}{x^{10}} - \frac{7}{x^{9}} + \frac{17}{x^{6}} - \frac{9}{x^{5}} + 9 x^{4} - 8 x^{8}$
+\exercise [21] $\displaystyle -4 + 11 x + \frac{4}{x} - \frac{6}{x^{10}} + \frac{21}{x^{5}} + 18 x^{8}$
+\exercise [16] $\displaystyle - 16 x + \frac{10}{x^{5}} - 17 x^{6}$
+\exercise [16] $\displaystyle - 11 x - 5 x^{7} - 5 x^{9}$
+\exercise [21] $\displaystyle -20 + 20 x - \frac{25}{x^{9}} - \frac{16}{x^{7}} - \frac{17}{x^{6}} + 12 x^{3}$
+\exercise [13] $\displaystyle 16 - \frac{17}{x^{10}}$
+\exercise [23] $\displaystyle -7 + \frac{8}{x^{7}} - \frac{3}{x^{2}} - 12 x^{2} + 15 x^{3} + 19 x^{5} + 5 x^{10}$
+\exercise [26] $\displaystyle - \frac{23}{x^{9}} - \frac{5}{x^{5}} + \frac{14}{x^{3}} + 7 x^{3} + 27 x^{4} + 7 x^{5} + 14 x^{7} + 18 x^{8}$
+\exercise [19] $\displaystyle 7 + \frac{8}{x^{10}} - \frac{11}{x^{9}} - 16 x^{7} - 26 x^{9}$
+\exercise [17] $\displaystyle 10 - \frac{18}{x^{8}} + \frac{9}{x^{5}} - 6 x^{4}$
+\exercise [23] $\displaystyle -26 - 22 x - \frac{7}{x^{10}} + \frac{8}{x^{6}} - \frac{6}{x^{3}} - 18 x^{7} + 23 x^{10}$
+\exercise [13] $\displaystyle 15 + 26 x^{10}$
+\exercise [29] $\displaystyle 27 - \frac{12}{x^{10}} + \frac{7}{x^{6}} + \frac{14}{x^{4}} - \frac{15}{x^{3}} - \frac{3}{x^{2}} + 12 x^{2} - 12 x^{3} + 8 x^{6} - 25 x^{8}$
+\exercise [27] $\displaystyle 16 - \frac{25}{x} - \frac{30}{x^{6}} - \frac{6}{x^{5}} - 24 x^{2} + 22 x^{4} - 29 x^{7} + 13 x^{9} + 24 x^{10}$
+\exercise [12] $\displaystyle - \frac{2}{x^{2}}$
+\exercise [22] $\displaystyle - 18 x + \frac{21}{x} - \frac{23}{x^{9}} + \frac{27}{x^{2}} + 2 x^{4} - 23 x^{10}$
+\exercise [20] $\displaystyle - \frac{2}{x} - \frac{27}{x^{3}} - 9 x^{2} + 14 x^{4} + x^{6}$
+\exercise [15] $\displaystyle -2 - 13 x - 20 x^{7}$
+\exercise [14] $\displaystyle 28 x^{2} - 18 x^{8}$
+\exercise [27] $\displaystyle -26 + \frac{9}{x} - \frac{7}{x^{7}} + \frac{28}{x^{6}} + \frac{5}{x^{5}} - \frac{21}{x^{2}} - 13 x^{7} - 6 x^{8} + 16 x^{10}$
+\exercise [28] $\displaystyle \frac{6}{x^{10}} + \frac{28}{x^{6}} + x^{-5} - \frac{15}{x^{3}} + 14 x^{2} + 9 x^{6} - 26 x^{7} + 23 x^{8} + 12 x^{9}$
+\exercise [17] $\displaystyle 6 - \frac{9}{x^{6}} + \frac{7}{x^{5}} + \frac{19}{x^{2}}$
+\end{comment}
+\end{exercises}

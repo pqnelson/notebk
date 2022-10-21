@@ -1,0 +1,120 @@
+%%
+%% trig.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed May 30 10:19:45 2012 Alex Nelson
+%% Last update Wed May 30 13:20:15 2012 Alex Nelson
+%%
+\section{Differentiating Trigonometric Functions}
+
+\N{Review of Two Identities}
+We will remind the reader of two identities:
+\begin{subequations}
+\begin{align}
+\sin(\theta+\phi) &= \cos(\theta)\sin(\phi)+\sin(\theta)\cos(\phi)\\
+\cos(\theta+\phi) &= \cos(\theta)\cos(\phi)-\sin(\theta)\sin(\phi).
+\end{align}
+\end{subequations}
+It is also worthwhile to mention
+\begin{equation}
+\cos(-\theta)=\cos(\theta),\quad\mbox{and}\quad
+\sin(-\theta)=-\sin(\theta)
+\end{equation}
+for any $\theta$.
+
+\N{Derivative of Sine}
+Now consider, for some $\Delta\theta$,
+\begin{equation}
+\sin(\theta+\Delta\theta)=
+\cos(\theta)\sin(\Delta\theta)+\sin(\theta)\cos(\Delta\theta).
+\end{equation}
+We find then that
+\begin{equation}
+\begin{split}
+\Delta\sin(\theta)
+&=\sin(\theta+\Delta\theta)-\sin(\theta)\\
+&=\cos(\theta)\sin(\Delta\theta)+\sin(\theta)\bigl(\cos(\Delta\theta)-1\bigr).
+\end{split}
+\end{equation}
+The slope thus is
+\begin{equation}
+\frac{\Delta\sin(\theta)}{\Delta\theta}
+=\frac{\cos(\theta)\sin(\Delta\theta)+\sin(\theta)\bigl(\cos(\Delta\theta)-1\bigr)}{\Delta\theta}.
+\end{equation}
+What happens as $\Delta\theta\to0$? Well
+\begin{equation}
+\lim_{\Delta\theta\to0}\frac{\sin(\Delta\theta)}{\Delta\theta}=1,\quad
+\lim_{\Delta\theta\to0}\frac{\cos(\Delta\theta)-1}{\Delta\theta}=0.
+\end{equation}
+Thus the derivative of sine is
+\begin{equation}
+\frac{\D\sin(\theta)}{\D\theta}=\cos(\theta).
+\end{equation}
+
+\N{Derivative of Cosine}
+Likewise, we see that
+\begin{equation}
+\cos(\theta+\Delta\theta)=\cos(\theta)\cos(\Delta\theta)-\sin(\theta)\sin(\Delta\theta)
+\end{equation}
+thus
+\begin{equation}
+\begin{split}
+\Delta\cos(\theta)
+&=\cos(\theta+\Delta\theta)-\cos(\theta)\\
+&=\cos(\theta)\bigl(\cos(\Delta\theta)-1\bigr)-\sin(\theta)\sin(\Delta\theta).
+\end{split}
+\end{equation}
+The rate of change would be:
+\begin{equation}
+\frac{\Delta\cos(\theta)}{\Delta\theta}
+=\cos(\theta)\left(\frac{\cos(\Delta\theta)-1}{\Delta\theta}\right)-\sin(\theta)\frac{\sin(\Delta\theta)}{\Delta\theta}.
+\end{equation}
+We see that
+\begin{equation}
+\left(\frac{\cos(\Delta\theta)-1}{\Delta\theta}\right)=\bigO(\Delta\theta)
+\end{equation}
+and
+\begin{equation}
+\frac{\sin(\Delta\theta)}{\Delta\theta}=1-\bigO\bigl(\Delta\theta^{2}\bigr).
+\end{equation}
+We understand that $\Delta x^{2}=(\Delta x)^{2}$ and not $\Delta(x^{2})$.
+
+So when we take the limit $\Delta\theta\to0$ we obtain
+\begin{equation}
+\lim_{\Delta\theta\to0}\frac{\Delta\cos(\theta)}{\Delta\theta}
+=
+\lim_{\Delta\theta\to0}\cos(\theta)(\bigO(\Delta\theta))-\sin(\theta)+\bigO(\Delta\theta^{2}).
+\end{equation}
+This gives us the derivative
+\begin{equation}
+\frac{\D\cos(\theta)}{\D\theta}=-\sin(\theta).
+\end{equation}
+
+\N{Derivative of Tangent}
+We should recall
+\begin{equation}
+\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}.
+\end{equation}
+What is its derivative? Well, we can use the product rule:
+\begin{equation}
+\frac{\D\tan(\theta)}{\D\theta}=
+\frac{1}{\cos(\theta)}\frac{\D\sin(\theta)}{\D\theta}
++\sin(\theta)\frac{\D}{\D\theta}\left(\frac{1}{\cos(\theta)}\right).
+\end{equation}
+We see that the first term on the right hand side is $1$, and the
+second term we use the power rule and chain rule:
+\begin{equation}
+\frac{\D}{\D\theta}\frac{1}{\cos(\theta)}=\frac{-1}{\cos^{2}(\theta)}(-\sin(\theta))
+\end{equation}
+Thus we obtain for the derivative of tangent
+\begin{equation}
+\begin{split}
+\frac{\D\tan(\theta)}{\D\theta}&=1+\tan^{2}(\theta)\\
+&=\frac{\cos^{2}(\theta)+\sin^{2}(\theta)}{\cos^{2}(\theta)}\\
+&=\frac{1}{\cos^{2}(\theta)}=\sec^{2}(\theta).
+\end{split}
+\end{equation}
+
+

@@ -1,0 +1,240 @@
+%%
+%% weirdNumbers.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Thu Nov  3 14:44:05 2011 alex
+%% Last update Wed May 30 10:17:08 2012 Alex Nelson
+%%
+
+\subsection{Weird Numbers}
+%\subsection{Slope}
+
+\N{Slope}
+Consider some linear function
+\begin{equation}
+g(x)=mx+b
+\end{equation}
+for some nonzero real number $m$, and an arbitrary real number
+$b$. We can calculate the slope by considering
+\begin{equation}
+ \Delta x\not=0
+\end{equation}
+some constant ``shift'' in $x$, and using this to figure out the
+change in $g$
+\begin{equation}
+\Delta g(x)=g(x+\Delta x)-g(x).
+\end{equation}
+What is this? Well, we plug in the definition of $g$ to find
+\begin{equation}
+\Delta g(x)=(m(x+\Delta x)+b)-(mx+b)
+\end{equation}
+which reduces to 
+\begin{equation}
+\Delta g(x)=m\Delta x.
+\end{equation}
+Thus we may write the slope of $g$ as
+\begin{equation}
+m=\frac{\Delta g(x)}{\Delta x}
+\end{equation}
+which is independent of both $x$ and the choice of $\Delta x$.
+
+Can we do this in general for a polynomial
+\begin{equation}\label{eq:definitionOfF}
+f(x)=x^{n}
+\end{equation}
+for some $n\in\NN$? Let us try! We consider some nonzero $\Delta
+x$ term, and we write (for $n>1$)
+\begin{equation}
+f(x+\Delta x)=(x+\Delta x)^{n}=x^{n}+nx^{n-1}\Delta
+x+(\Delta x)^{2}(\mbox{bonus parts})
+\end{equation}
+where the ``bonus parts'' are other stuff. Actually by the binomial
+theorem, it would have to be a polynomial in $\Delta x$ with a
+nonzero constant term. This information is really encoded in
+\begin{equation}
+(\Delta x)^{2}(\mbox{bonus parts})=\bigO\left((\Delta x)^{2}\right)
+\end{equation}
+where $\bigO(\dots)$ is a more rigorous way of saying ``bonus
+parts at least quadratic in $\Delta x$.'' This gives us a more
+precise way to specify the error when writing out terms at most
+linear in $\Delta x$.
+
+\begin{problem}
+What is $\Delta x\bigO(\Delta x)$? What is $(\Delta
+x)^{-1}\bigO\left((\Delta x)^{2}\right)$? 
+\end{problem}
+
+We see that we are abusing notation and writing
+\begin{equation}
+h(x)\Delta x+(\Delta x)^{2}(\mbox{bonus parts})=h(x)\Delta x+\bigO\left((\Delta x)^{2}\right)
+\end{equation}
+for some $h(x)$. So by dividing through by $\Delta x$ we obtain
+\begin{equation}
+h(x)+(\Delta x)(\mbox{bonus parts})=h(x)+\bigO(\Delta x).
+\end{equation}
+This implies
+\begin{equation}
+(\Delta x)^{-1}\bigO\left((\Delta x)^{2}\right)=\bigO(\Delta x)
+\end{equation}
+and similar reasoning suggests
+\begin{equation}
+(\Delta x)\bigO\left((\Delta x)^{2}\right)=\bigO\left((\Delta x)^{3}\right).
+\end{equation}
+So let us go on with our considerations.
+
+We then have
+\begin{equation}
+f(x+\Delta x)=f(x)+nx^{n-1}\Delta x+\bigO\left((\Delta x)^{2}\right),
+\end{equation}
+where we were slick and noted the definition of $f$ in order to
+plug it in. So, we can rewrite this as
+\begin{equation}
+f(x+\Delta x)-f(x)=nx^{n-1}\Delta x+\bigO\left((\Delta x)^{2}\right)
+\end{equation}
+and we want to divide both sides by $\Delta x$. But we know how
+to do this now! First we will write
+\begin{equation}
+\Delta f(x)=f(x+\Delta x)-f(x)
+\end{equation}
+as shorthand, and rewrite our equation as
+\begin{equation}
+\Delta f(x)=nx^{n-1}\Delta x+\bigO\left((\Delta x)^{2}\right).
+\end{equation}
+We divide both sides by $\Delta x$
+\begin{equation}
+\frac{\Delta f(x)}{\Delta x}=nx^{n-1}+\bigO(\Delta x).
+\end{equation}
+But we have a problem that we didn't have before: the slope
+depends on $\Delta x$ and $x$. 
+
+Historically, people noted that we were working with a term
+$\bigO((\Delta x)^{2})$. If we could make that term equal to 0,
+then everything would work out nicely. How do we do this? Well,
+we formally invent a number $\varepsilon$ and use it instead of a
+finite nonzero number $\Delta x$.
+
+%\subsection{$\varepsilon$ and $\sqrt{-1}$}
+\N{$\varepsilon$ and $\sqrt{-1}$} 
+We know that we have a ``number'' $\I$ satisfying
+\begin{equation}
+\I^{2}=-1.\label{eq:definingPropertyForI}
+\end{equation}
+There is no real number which satisfies this, but we can ``adjoin''
+$\I$ to $\RR$. That is, we pretend that $\I$ is a variable
+satisfying equation \eqref{eq:definingPropertyForI}, then we have
+polynomials of the form
+\begin{equation}
+p(x,y)=x+\I\cdot y.
+\end{equation}
+Of course, we can formally multiply these polynomials together,
+and we end up with the number system (``ring'') of complex numbers
+$\CC$ (we would have to prove that $1/\I$ exists to make it a
+field). 
+\begin{problem}
+Why do we not have higher order terms in $\I$? That is, a general
+polynomial $x+\I\cdot y+\I^{2}\cdot z + \dots$?
+\end{problem}
+Lets consider it. Suppose we did have
+\begin{equation}
+p(x,y)=x+\I\cdot y+\I^{2}\cdot z.
+\end{equation}
+Then we plug in \eqref{eq:definingPropertyForI} to find
+\begin{equation}
+p(x,y)=x+\I\cdot y+(-1) z
+\end{equation}
+which simplifies to merely
+\begin{equation}
+p(x,y)=(x-z)+\I\cdot y.
+\end{equation}
+But this is precisely of the form we described: there is some
+term which is a multiple of $\I$ (the \emph{imaginary} term) and
+another independent of $\I$ (the \emph{real} term).
+
+Lets consider a similar problem. We want a nonzero ``number''
+$\varepsilon$ which is the ``smallest'' number possible. What would
+this mean? Suppose we have a ``small'' finite number
+\begin{equation}
+0<x<1.
+\end{equation}
+Then we see the property specifying that $x$ is small would be
+\begin{equation}
+0<x^{2}<x.
+\end{equation}
+But if we had the \emph{smallest} number, then the general
+argument is we expect
+\begin{equation}
+\varepsilon^2=0.
+\end{equation}
+We call such a $\varepsilon$ an \define{Infinitesimal} number.
+If we formally consider such an $\varepsilon$ (i.e., pretend it
+exists and obeys this relationship), then we can run into some
+problems. For example: what is $\varepsilon^{-1}$?
+
+
+%\subsection{Division by Zero?}
+\N{Division by Zero?}
+The problem is: what is $\varepsilon^{-1}$? The answer is: we
+don't know. 
+
+However, why would $\varepsilon$ ever be useful? We can consider
+\begin{equation}
+f(x)=x^{n}
+\end{equation}
+for some $n\in\NN$. Then
+\begin{equation}
+f(x+\varepsilon)=(x+\varepsilon)^{n}
+\end{equation}
+can be simplified to what? Lets consider the $n=2$ case:
+\begin{equation}
+(x+\varepsilon)^{2}=x^{2}+2\varepsilon\cdot x+\varepsilon^{2}.
+\end{equation}
+But the $\varepsilon^{2}$ term vanishes, so
+\begin{equation}
+(x+\varepsilon)^{2}=x^{2}+2\varepsilon\cdot x.
+\end{equation}
+We see that
+\begin{equation}
+(x+\varepsilon)^{3}=(x^{2}+2\varepsilon\cdot x)(x+\varepsilon)
+\end{equation}
+can be carried out as if it were polynomial multiplication. We
+then obtain
+\begin{equation}
+x^{2}(x+\varepsilon)+2\varepsilon\cdot x(x+\varepsilon)=
+x^{3}+x^{2}\varepsilon+2\varepsilon x^{2}+2\varepsilon^{2}x
+\end{equation}
+and again, the $\varepsilon^{2}$ term vanishes. We thus obtain
+\begin{equation}
+(x+\varepsilon)^{3} = x^{3}+3\varepsilon\cdot x.
+\end{equation}
+Indeed  the general pattern appears to be
+\begin{equation}
+(x+\varepsilon)^{n}=(x)^{n}+n\varepsilon\cdot x^{n-1}.
+\end{equation}
+We would like to write
+\begin{equation}
+(x+\varepsilon)^{n}-(x)^{n}=n\varepsilon\cdot x^{n-1}.
+\end{equation}
+Notice the difference this time: we don't have any
+$\bigO(\varepsilon^{2})$ terms. The only price we paid is we
+cannot get rid of the factor $\varepsilon$.
+
+%\subsection{Big O for the Bonus Parts}
+\N{Big O for the Bonus Parts}
+The take home moral is that $\bigO(\dots)$ enables us to
+\emph{rigorously} consider infinitesimals. How? Well, the most
+significant terms are written out explicitly, and the rest are
+swept under the rug with $\bigO(\dots)$. For our example of 
+\begin{equation}
+f(x)=x^{n}
+\end{equation}
+we saw we could write
+\begin{equation}
+f(x+\Delta x)-f(x)=nx^{n-1}\Delta x+\bigO\left((\Delta
+x)^{2}\right)
+\end{equation}
+which tells us the error of ``truncating,'' or cutting off the
+polynomial to be explicitly first order plus some change. This
+change we consider to be \emph{in effect} ``infinitesimal'' in
+comparison to the $\Delta x$ term.

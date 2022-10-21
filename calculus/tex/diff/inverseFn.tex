@@ -1,0 +1,95 @@
+%%
+%% inverseFn.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue May 29 14:16:57 2012 alex
+%% Last update Tue May 29 14:16:57 2012 alex
+%%
+
+\section{Differentiating Inverse Functions}
+
+Let $y=f(x)$ be a function. Recall the inverse function $f^{-1}$
+is defined to satisfy
+\begin{equation}
+f^{-1}(y)=x.
+\end{equation}
+It basically ``undoes'' $f$. What is its derivative? Well, take
+the derivative with respect to $x$ on both sides:
+\begin{equation}
+\frac{\D f^{-1}(y)}{\D x}=\frac{\D x}{\D x}
+\end{equation}
+Observe the left hand side requires the chain rule, whereas the
+right hand side is 1. Thus
+\begin{equation}
+\frac{\D f^{-1}(y)}{\D y}\frac{\D y}{\D x}=1.
+\end{equation}
+Divide both sides by $(\D y/\D x)$:
+\begin{equation}
+\frac{\D f^{-1}(y)}{\D y} = \frac{1}{\D y/\D x}.
+\end{equation}
+This gives us the rule for considering differentiating inverse
+functions. We can substitute $y=f(x)$ making it
+\begin{equation}
+\frac{\D f^{-1}(y)}{\D y}=\frac{1}{\D f(x)/\D x}.
+\end{equation}
+Lets consider some examples.
+
+\N{Example (Sine Function)}
+Let
+\begin{equation}
+\phi=\sin(\theta).
+\end{equation}
+We recall that
+\begin{equation}
+\arcsin\bigl(\sin(\theta)\bigr)=\theta.
+\end{equation}
+So by our calculations, we expect
+\begin{equation}\label{eq:ex-arcsin:der}
+\frac{\D\arcsin(\phi)}{\D\phi}=\frac{1}{\cos(\theta)}.
+\end{equation}
+The problem is we need to rewrite $\cos(\theta)$ in terms of
+\begin{equation}
+\phi=\sin(\theta).
+\end{equation}
+Well, it's simple when we recall
+\begin{equation}
+\begin{split}
+\cos^{2}(\theta)&=1-\sin^{2}(\theta)\\
+&=1-\phi^{2}.
+\end{split}
+\end{equation}
+Taking the squareroot of both sides gives us
+\begin{equation}
+\cos(\theta)=\sqrt{1-\phi^{2}}.
+\end{equation}
+Thus we plug this back into our derivative expression, Eq \eqref{eq:ex-arcsin:der},
+obtaining
+\begin{equation}
+\frac{\D\arcsin(\phi)}{\D\phi}=\frac{1}{\sqrt{1-\phi^{2}}}.
+\end{equation}
+That concludes our example.
+
+\N{Example (Cosine)}
+We can do likewise
+\begin{equation}
+\phi=\cos(\theta)
+\end{equation}
+thus
+\begin{equation}
+\arccos(\phi) = \theta.
+\end{equation}
+Taking its derivative produces
+\begin{equation}
+\frac{\D\arccos(\phi)}{\D\phi}=\frac{1}{-\sin(\theta)}
+\end{equation}
+We see
+\begin{equation}
+\sin(\theta) = \sqrt{1-\cos^{2}(\theta)}=\sqrt{1-\phi^{2}}.
+\end{equation}
+Thus
+\begin{equation}
+\frac{\D\arccos(\phi)}{\D\phi}=\frac{-1}{\sqrt{1-\phi^{2}}}.
+\end{equation}
+This gives us the derivative of arc-cosine.

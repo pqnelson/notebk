@@ -1,0 +1,453 @@
+%%
+%% macros.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Fri May 25 10:50:22 2012 alex
+%% Last update Fri Jun  1 10:23:53 2012 Alex Nelson
+%%
+
+\makeatletter
+\hyphenpenalty=500
+\vbadness=200
+\widowpenalty=10000
+\clubpenalty=10000
+% automatically generate the author information
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage[12hr,us]{datetime}
+
+\author{Alex Nelson\footnote{This is a page from \url{http://code.google.com/p/notebk/}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}\\\texttt{Email:\enspace\href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}
+
+\usepackage{amsmath,amsfonts,amscd,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{float,framed}
+\usepackage{ifpdf}
+\usepackage{graphicx}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{microtype}
+\fi
+\usepackage{color}
+\usepackage{marginnote}
+\definecolor{BrickRed}{rgb}{0.45,0,0}
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+            citecolor=BrickRed,
+            filecolor=BrickRed,
+            menucolor=BrickRed,
+            linkcolor=BrickRed,
+            urlcolor=BrickRed,
+            bookmarksopen=true,
+            pdfauthor={Alex Nelson},
+            unicode=false]{hyperref}
+\usepackage[all]{hypcap}
+\font\chapterfont=cmssbx10 scaled\magstep2
+\font\twelvess=cmss12
+\def\sectionfont{\large\sffamily\bfseries} %=cmssbx10 at 12pt
+\def\subsectionfont{\large\sffamily\bfseries} %\font\subsectionfont=cmssbx10
+\font\manual=manfnt
+\font\titlefont=cmssbx10 scaled\magstep4
+\font\eightss=cmssq8
+\font\eightssi=cmssqi8
+\font\sixss=cmssq8 scaled 800
+
+\setlength\parindent{20pt}
+\setlength\parskip{0pt plus 1pt}
+\newskip\smallskipamount \smallskipamount=3pt plus 1pt minus 1pt
+\newskip\medskipamount \medskipamount=6pt plus 2pt minus 2pt
+\newskip\bigskipamount \bigskipamount=12pt plus 4pt minus 4pt
+
+\def\smallskip{\vskip\smallskipamount}
+\def\medskip{\vskip\medskipamount}
+\def\bigskip{\vskip\bigskipamount}
+\def\removelastskip{\ifdim\lastskip=\z@\else\vskip-\lastskip\fi}
+\def\smallbreak{\par\ifdim\lastskip<\smallskipamount
+  \removelastskip\penalty-50\smallskip\fi}
+\def\medbreak{\par\ifdim\lastskip<\medskipamount
+  \removelastskip\penalty-100\medskip\fi}
+\def\bigbreak{\par\ifdim\lastskip<\bigskipamount
+  \removelastskip\penalty-200\bigskip\fi}
+
+\numberwithin{equation}{section}
+
+\def\specialsection{\@startsection{section}{1}%
+  \z@{\baselineskip\@plus\baselineskip}{.25\baselineskip}%
+  {\sectionfont}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\subsectionfont}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\subsectionfont}}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Author Quotes
+%%%%%%%%%%%%%%%%%%%%%
+\def\quoteformat{
+  \baselineskip 10pt
+  \parfillskip \z@
+  \interlinepenalty 10000
+  \leftskip \z@ plus 40pc minus \parindent
+  \let\rm=\eightss \let\sl=\eightssi \let\adbcfont=\sixss
+  \everypar{\sl}
+  \def\\{\hskip.05em} % can say 3\\:\\16
+  \obeylines}
+\newenvironment{quotes}{
+  \baselineskip 10pt
+  \parfillskip \z@
+  \interlinepenalty 10000
+  \leftskip \z@ plus 40pc minus \parindent
+  \let\rm=\eightss \let\sl=\eightssi \let\adbcfont=\sixss
+  \everypar{\sl}
+  \def\\{\hskip.05em} % can say 3\\:\\16
+  \obeylines}{}
+\def\Author#1(#2){\par\nobreak\smallskip\noindent\rm--- #1\unskip\enspace(#2)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\dbend{{\manual\char127}} % dangerous bend sign
+\let\dangersize\footnotesize
+% Danger, Will Robinson!
+\newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\dangersize\ignorespaces}%
+  {\medbreak\par}
+
+% Danger! Danger!
+\newenvironment{ddanger}{\medbreak\noindent\hangindent=3pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\dangersize\ignorespaces}%
+  {\medbreak\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\textindent#1{\indent \llap {#1\enspace }\ignorespaces}
+\newcounter{exercise}[section]
+\renewcommand{\theexercise}{\thesection.\arabic{exercise}}
+\def\exercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\textbf{\arabic{exercise}.}}[\textit{#1\/}]\kern6pt}
+\def\suggestedExercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\llap{\manual x\hskip3pt}\bf{\hbox to
+     \ifnum \value{exercise}>99 1.5em\else 1em\fi{\hfil\arabic{exercise}}}.}[\textit{#1\/}]\kern6pt}
+
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+
+\newenvironment{exercises}{\medskip\phantomsection%\addcontentsline{toc}{section}{Exercises}%
+        \noindent\ignorespaces\section*{EXERCISES}%
+        \parindent=0pt%
+        \setcounter{exercise}{0}}{}
+
+\newwrite\ans%
+\immediate\openout\ans=tex/answers % file for answers to exercises
+\def\ansSec#1{\immediate\write\ans{\detokenize{\section*}{#1}}}
+\def\ansSec#1{\immediate\write\ans{\detokenize{\section*{#1}}}}
+\def\ansno#1:{\smallbreak\textindent{\textbf{#1.\enspace}}}
+\newenvironment{answer}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\indent\string\ansno\arabic{exercise}:}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+
+%% Sometimes there's an alternate way to solve the problem
+%% TODO: Make this include an optional argument specifying how it
+%%       was done, so one can use the following code snippet
+%% \begin{altAns}[Using Complex Analysis]
+%% ...
+%% \end{altAns}
+\newenvironment{altAns}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\arabic{exercise}:}%
+    \immediate\write\ans{\detokenize{\textbf{(Alternate)}}}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\arXiv#1{\href{http://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+%{\MakeFramed {\advance\hsize-\width \FrameRestore}}%
+%  {\endMakeFramed}
+\newcounter{boxed}[section]
+\newenvironment{Boxed}[1]{\refstepcounter{boxed}\MakeFramed {\advance\hsize 2pc\advance \leftskip 0.5pc \advance \rightskip 0.5pc\FrameRestore}\noindent{\subsectionfont Box \theboxed. #1}\vskip .7\baselineskip}{\endMakeFramed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem*{ExtensionPrinciple}{Extension Principle}
+\newtheorem*{DiracConjecture}{Dirac's Conjecture}
+\newtheorem*{bessel}{Bessel Inequality}
+\newtheorem*{parseval}{Parseval Equality}
+\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
+\newtheorem*{invFourier}{Fourier Inversion Theorem}
+\newtheorem*{plancherel}{Plancherel Theorem}
+\newtheorem*{samplingthm}{Sampling Theorem}
+\newtheorem*{dual}{Dual Principle for Categories}
+\newtheorem*{yoneda}{Yoneda Lemma}
+\newtheorem*{schur}{Schur's Lemma}
+\newtheorem*{implicitFunctionThm}{Implicit Function Theorem}
+\newtheorem*{minNum}{Minimal Number Principle}
+\newtheorem*{continuumHypothesis}{Continuum Hypothesis}
+\newtheorem*{archimedeanProperty}{Archimedean Property}
+\theoremstyle{definition}
+\newtheorem{xca}{Exercise}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{nonex}[thm]{NON-Example}
+\newtheorem{futureEx}[thm]{Future Example}
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{fact}{Experimental Fact}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{notation}[thm]{Notation}
+\newtheorem{problem}[thm]{Problem}
+\newtheorem{construction}[thm]{Construction}
+\newtheorem*{assume}{Assumption}
+\newtheorem*{quest}{Question}
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{sch}[thm]{Scholium}
+
+\renewcommand{\qedsymbol}{\slug}
+
+\providecommand{\sketchname}{Sketch of Proof}
+\newenvironment{sketch}[1][\sketchname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
+[\@bracketheight]}}
+\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
+{\@over@bracket[#1][0.3em]}}
+\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
+\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
+\nointerlineskip }\downbracketfill {#1}{#2}
+                              \crcr \noalign {\kern 3\p@ }
+                              \crcr  $\hfil \displaystyle {#3}\hfil $%
+                              \crcr} }}\limits}
+\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+\downbracketend{#1}{#2}$}
+\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
+
+
+\def\underbracket{%
+  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
+}
+\def\@underbracket[#1]{%
+  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
+}
+\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
+ \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
+ \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
+       \crcr \noalign {\kern 3\p@ }}}}\limits}
+\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
+                      {#1}{#2}$}
+\def\bracketend#1#2{\vrule height #2 width #1\relax}
+
+\allowdisplaybreaks
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\xskip{\hskip 7pt plus 3pt minus 4pt}
+\newdimen\algindent
+\newif\ifitempar \itempartrue % normally true unless briefly set false
+\def\algindentset#1{\setbox0\hbox{{\bf #1.\kern.25em}}\algindent=\wd0\relax}
+\def\algbegin #1 #2{\algindentset{#21}\alg #1 #2} % when steps all have 1 digit
+\def\aalgbegin #1 #2{\algindentset{#211}\alg #1 #2} % when 10 or more steps
+\def\alg#1(#2). {\medbreak % Usage: \algbegin Algorithm A (algname). This...
+  \noindent{\bf#1}({\it#2\/}).\xskip\ignorespaces}
+\def\algstep#1.{\ifitempar\smallskip\noindent\else\itempartrue
+  \hskip-\parindent\fi
+  \hbox to\algindent{\bf\hfil #1.\kern.25em}%
+  \hangindent=\algindent\hangafter=1\ignorespaces}
+% end of borrowed macros
+
+% For Example, with less than 10 steps:
+% \algbegin X (Multiplication). blah blah blah blah...
+% \algstep X1. [{\it Do stuff\/}] blah blah blah
+% \algstep X2. Terminate the algorithm.\quad\slug
+
+
+\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\aut}{\mathop{\mathrm{Aut}}\nolimits}
+\renewcommand{\ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\coker}{\mathop{\mathrm{Coker}}\nolimits}
+\newcommand{\erfi}{\mathop{\mathrm{erfi}}\nolimits}
+\newcommand{\erf}{\mathop{\mathrm{erf}}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\let\eqdef\equalsdef
+\newcommand{\define}[1] {``\/\textbf{#1}\/\/''}%\index{#1}}
+\newcommand{\lie}{\mathop{\mathrm{Lie}}\nolimits}
+\let\Lie\lie
+\renewcommand{\arctan}{\mathop{\mathrm{ArcTan}}\nolimits}
+\renewcommand{\arcsin}{\mathop{\mathrm{ArcSin}}\nolimits}
+\renewcommand{\arccos}{\mathop{\mathrm{ArcCos}}\nolimits}
+\renewcommand{\hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand\fun{\mathop{\mathrm{Fun}}\nolimits} % like \hom but for categories
+\newcommand\nat{\mathop{\mathrm{Nat}}\nolimits} % like \hom but for functors
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathrm{Ob}(#1)}
+\newcommand{\cat}[1]{\mathbf{#1}} % notation for a category, e.g. $\cat{Set}$
+\newcommand\powerset[1]{\mathcal{P}(#1)}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+\newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
+\newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
+\newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
+\newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
+%% Frequently used sets
+\let\logic\texttt
+%\def\logic#1{\relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi}
+\newcommand\CC{\mathbb{C}}
+\newcommand\FF{\mathbb{F}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\OO{\mathbb{O}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\ZZ{\mathbb{Z}}
+\let\oldsetminus\setminus
+\renewcommand\setminus{-}
+\newcommand\universe{\mathcal{U}}
+\newcommand\domain{\mathop{\mathrm{dom}}\nolimits}
+\newcommand\codomain{\mathop{\mathrm{cod}}\nolimits}
+\let\propersubset\subset
+\let\propersupset\supset
+\let\oldsubset\subset
+\let\oldsupset\supset
+\let\subset\subseteq
+\let\supset\supseteq
+\newcommand\1{\mathbf{1}}
+\newcommand\cardinality[1]{\left|#1\right|}
+\newcommand\continuumCardinality{\mathfrak{c}}
+%% Lie groups frequently used
+\def\GL#1{\mathrm{GL}(#1)}
+\def\SL#1{\mathrm{SL}(#1)}
+\def\SO#1{\mathrm{SO}(#1)}
+\def\ORTH#1{\mathrm{O}(#1)}
+\def\U#1{\mathrm{U}(#1)}
+\def\SU#1{\mathrm{SU}(#1)}
+\def\Sp#1{\mathrm{Sp}(#1)}
+
+%% Differential Geometry refers to these quantities frequently as well
+\def\diff{\mathrm{Diff}}
+\def\vect{\mathrm{Vect}}
+
+%% Categories frequently used
+\newcommand\Set{\cat{Set}} 		% category of sets
+\newcommand\FinSet{\cat{FinSet}} 	% category of finite sets
+\newcommand\Cat{\cat{Cat}} 		% category of categories
+\newcommand\Vect{\cat{Vect}} 		% category of vector spaces
+\newcommand\Top{\cat{Top}} 		% category of topological spaces
+\newcommand\Grp{\cat{Grp}} 		% category of groups
+\newcommand\Ab{\cat{Ab}}   		% category of Abelian groups
+\newcommand\Gpd{\cat{Gpd}} 		% category of groupoids
+\newcommand\Alg{\cat{Alg}} 		% category of algebras over a field
+\newcommand\Magm{\cat{Magm}} 		% category of Magmas
+\newcommand\Ord{\cat{Ord}} 		% category of ordinals
+\newcommand\FinOrd{\cat{FinOrd}} 	% category of FINITE ordinals
+
+\def\weak={\approx} % weak equality when working in classical gauge theory
+\def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
+
+\newcommand\ClassicalGroup[1]{\mathsf{#1}}
+\newcommand\Antisymmetric{{\textstyle\bigwedge\nolimits}}
+
+%\let\oldemptyset\emptyset
+\let\varemptyset\varnothing
+
+% number theoretic notation
+\let\totient\varphi
+\DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+\DeclareFontShape{U}{matha}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * matha
+      <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+      }{}
+\DeclareSymbolFont{matha}{U}{matha}{m}{n}
+\DeclareMathSymbol{\divides}{3}{matha}{"17}
+\DeclareMathSymbol{\notdivides}{3}{matha}{"1F} 
+%\newcommand{\divides}{\mathrel{\vert}}
+%\newcommand{\notdivides}{\negthinspace\mathrel{\not\mskip-0.5mu\vert}}
+
+% Notation used for algebraic topology
+\let\homotopic\sim
+
+% Notation for mathematical logic
+\def\tee{\logic{true}}
+\def\falsum{\logic{false}}
+\let\entails\implies
+\def\lst{\texttt{\thinspace{}:\thinspace{}}} % logical ``such that'' notation
+
+\def\bigO{\mathcal{O}}
+\newcommand\identify{\noindent\llap{\rm1.\kern.5em}\textbf{Identify:}}
+\newcommand\setup{\noindent\llap{\rm2.\kern.5em}\textbf{Set up:}}
+\newcommand\execute{\noindent\llap{\rm3.\kern.5em}\textbf{Execute:}}
+\newcommand\evaluate{\noindent\llap{\rm4.\kern.5em}\textbf{Evaluate:}}
+
+\newcommand\D{\mathrm{d}}
+\newcommand\E{\mathrm{e}}
+\let\eul=\E
+\newcommand\I{\mathrm{i}}
+
+
+\newcounter{@chunk}[section]
+\renewcommand\the@chunk{\thesection.\arabic{@chunk}}
+
+\def\M{\medbreak
+  \noindent\refstepcounter{@chunk}%
+  \textbf{\the@chunk\@addpunct{.}\quad}\ignorespaces}
+\def\N#1{\M\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+
+
+\makeatother

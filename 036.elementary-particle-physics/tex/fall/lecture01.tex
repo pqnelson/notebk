@@ -1,0 +1,136 @@
+%%% lecture01.tex --- 
+%% 
+%% Filename: lecture01.tex
+%% Description: 
+%% Author: alex
+%% Maintainer: 
+%% Created: Sat Oct  1 11:19:46 2016 (-0700)
+%% Version: 
+%% Package-Requires: ()
+%% Last-Updated: 
+%%           By: 
+%%     Update #: 0
+%% URL: 
+%% Doc URL: 
+%% Keywords: 
+%% Compatibility:
+\lecture{}
+\subsection{Review of Gauge Theory}
+\N{Review: Quantum Electrodynamics.}
+In QED, we start with some field $\psi_{\alpha}(x)$ which is a
+4-component Dirac spinor. The theory should be invariant under
+\begin{equation}\label{eq:fall:lecture01:qed-gauge-transformation}
+  \psi_{\alpha}(x)\to\E^{\I\elementarycharge\gamma(x)}\psi_{\alpha}(x)
+\end{equation}
+where
+\begin{equation}
+  \gamma\colon\RR^4\to\RR^4.
+\end{equation}
+Then the usual derivatives are not invariant, they transform in some
+complicated way involving the derivatives of $\gamma(x)$. Let
+$A_{\mu}(x)$ be a \define{Gauge Field} which means it transforms like
+\begin{equation}
+  A_{\mu}(x) \to A_{\mu}(x) - \frac{1}{\elementarycharge}\partial_{\mu}\gamma(x)
+\end{equation}
+We can then introduce the gauge covariant derivative
+\begin{equation}
+  (\gaugeDerivative_{\mu}\psi)_{\alpha}
+  = (\partial_{\mu} + \I\elementarycharge A_{\mu})\psi_{\alpha}.
+\end{equation}
+
+Now we may construct the action by starting with the usual Dirac action,
+but we use gauge covariant derivatives instead:
+\begin{equation}
+  \action[\psi, A] =
+  \int(\bar{\psi}\I\gamma^{\mu}\gaugeDerivative_{\mu}\psi
+       - m\bar{\psi}\psi)\D^{4}x + \action_{YM}[A]
+\end{equation}
+where $\action_{YM}[A]$ is the kinetic term for the gauge field $A$,
+given by
+\begin{equation}
+  \action_{YM}[A] = \frac{-1}{4}\int F_{\mu\nu}F^{\mu\nu}\,\D^{4}x
+\end{equation}
+where $F_{\mu\nu} = \partial_{\nu}A_{\mu} - \partial_{\mu}A_{\nu}$.
+Observe that $F_{\mu\nu}$ is gauge-invariant.
+
+\N{Yang-Mills}
+Yang-Mills theory is a direct generalization. We suppose that $\psi$ now
+has $N$ components: $\psi^{i}$. (The indices are spinor indices, which
+we may suppress [i.e., drop] without warning.) The generalized version
+of the gauge symmetry, Eq \eqref{eq:fall:lecture01:qed-gauge-transformation}, is
+\begin{equation}
+  \psi^{i}\to{U^{i}}_{j}(x)\psi^{j}
+\end{equation}
+where ${U^{i}}_{j}$ is a function from $\RR^{4}$ (spacetime) to $\U{N}$
+(the gauge group, i.e., the space of $N\times N$ unitary matrices). We
+have replace $\exp(\I\elementarycharge\gamma(x))$ with the ${U^{i}}_{j}(x)$
+factor. Indeed, QED is when we fix $\U{N}=\U{1}$. 
+
+Since ${U^{i}}_{j}\in\U{N}$, we have ${U^{i}}_{j}$ obey
+\begin{equation}
+  U^{\dagger}(x) U(x) = U(x) U^{\dagger}(x) = 1
+\end{equation}
+We may also restrict focus to $\SU{N}$ (i.e., demand $\det(U)=1$).
+
+We now introduce the gauge field $A^{i}_{\mu j}(x)$. Observe it
+satisfies, for $\U{N}$ symmetry,
+\begin{equation}
+  A_{\mu}^{\dagger}(x) = A_{\mu}(x)
+\end{equation}
+and for $\SU{N}$ we have
+\begin{equation}
+  \tr(A_{\mu}(x)) = 0.
+\end{equation}
+Hence $A_{\mu}\colon\RR^{4}\to\lie(\U{N})$ is a mapping from spacetime
+to the Lie algebra of $\U{N}$. (Technically, the gauge field is an
+Ehresmann connection on the principal $\U{N}$-bundle over spacetime. It
+is \emph{not} a section of the bundle.) The gauge covariant derivative
+for this is
+\begin{subequations}
+\begin{equation}
+  (\gaugeDerivative_{\mu}\psi)^{i} = \partial_{\mu}\psi^{i}
+                                     + \I g A^{i}_{\mu j}\psi^{j}
+\end{equation}
+where $g$ is the coupling constant (analogous to the $\elementarycharge$
+in QED), when the fields transform as
+\begin{equation}
+  \psi\to U(x)\psi
+\end{equation}
+and
+\begin{equation}
+  A_{\mu}(x)\to U(x)A_{\mu}(x)U(x)^{-1} - \frac{\I}{g}U\partial_{\mu}U^{-1}.
+\end{equation}
+\end{subequations}
+
+Now we may construct the action analogous to the QED case. The field
+strength tensor's components are, well, they look like a linear
+combination of Lie Algebra elements whose coefficients are functions of
+spacetime. So the naive generalization (``do the same thing as we did for QED'')
+will give us a Lagrangian that's not a number but some peculiar Lie
+algebra element parametrized by functions of spacetime. We need to get a
+number, and to do that we simply take the trace of the Lie algebra
+elements
+\begin{equation}
+  \action_{YM}[A] = \frac{-1}{2}\int\tr(F_{\mu\nu}F^{\mu\nu})\,\D^{4}x.
+\end{equation}
+What is the field strength tensor in this case? Yang and Mills observed,
+for QED, we had the property that the commutator of gauge-covariant
+derivatives is proportional to the field-strength tensor:
+\begin{equation}
+  [\gaugeDerivative_{\mu}, \gaugeDerivative_{\nu}]
+  = \I\elementarycharge F^{(\text{qed})}_{\mu\nu}.
+\end{equation}
+If we try the same thing for Yang-Mills theory, we get
+\begin{equation}
+  [\gaugeDerivative_{\mu}, \gaugeDerivative_{\nu}]
+  = \I g F_{\mu\nu}\eqdef \I g(\partial_{\mu}A_{\nu}
+  -\partial_{\nu}A_{\mu} + \I g[A_{\mu}, A_{\nu}]).
+\end{equation}
+We can check $F^{\dagger}_{\mu\nu} = F_{\mu\nu}$ and if
+$\tr(A_{\mu})=0$, then $\tr(F_{\mu\nu})=0$.
+
+\subsection{Observables}
+
+\subsection{Faddeev--Poppov Quantization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% lecture01.tex ends here

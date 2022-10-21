@@ -1,0 +1,30 @@
+%%
+%% todo.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Tue Feb 28 13:34:25 2012 alex
+%% Last update Wed May 30 13:24:22 2012 Alex Nelson
+%%
+\section{To Do List}
+
+\N{Logarithms}
+It'd be nice to have a method of calculating $\ln(n)$ for
+$n\in\NN$. Why? Because we can always approximate any real number
+by a rational one, and the logarithm of a rational number is
+\begin{equation}
+\ln(m/n)=\ln(m)-\ln(n).
+\end{equation}
+This could be computed if we had some method of computing
+$\ln(n)$. Again, this can be simplified if we consider only prime
+numbers by the fundamental theorem of arithmetic.
+
+Another approach would be to take any positive real number $x$
+and write it out as
+\begin{equation}
+x=x^{*}\times 10^{n}
+\end{equation}
+where $n\in\NN_{0}$ and $0\leq x^{*}<10$. Thus one needs only
+compute $\ln(10)$ and $\ln(x^{*})$, which may or may not be
+terribly easy to do.

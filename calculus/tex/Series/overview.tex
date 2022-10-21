@@ -1,0 +1,75 @@
+%%
+%% overview.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun  1 10:29:47 2012 Alex Nelson
+%% Last update Fri Jun  1 10:46:31 2012 Alex Nelson
+%%
+
+\section{Overview of Series}
+\begin{defn}
+We have a \define{Series} be an infinite sum
+\begin{equation}
+\sum^{\infty}_{k=0}s_{k}
+\end{equation}
+which may or may not be finite. 
+\end{defn}
+
+\N{Naive Properties}
+What are some properties we expect to hold? Well, we expect three
+main properties. If we consider the sequence of numbes
+$p_{k+1}=p_{k}+s_{k+1}$ which are partial sums (i.e.,
+$p_{k}=s_{0}+\dots+s_{k}$), then we want the following properties
+to hold:
+\begin{description}
+\item[Regularity:] If the sequence of partial sums $p_{k}$
+  converges to $x$, then the series should be equal to $x$.
+\item[Linearity:] We expect
+  $\sum_{n}(a_{n}+b_{n})=(\sum_{n}a_{n})+(\sum_{n}b_{n})$ and,
+  for any constant $c$, $\sum_{n}ca_{n}=c\sum_{n}a_{n}$.
+\item[Stability:] This lets us do things like
+  $\sum_{n=0}a_{n}=a_{0}+\sum_{n=0}a_{n+1}$. 
+\end{description}
+So lets consider an example.
+
+\begin{ex}
+Lets consider the classic geometric series
+\begin{equation}
+\begin{split}
+f(x) &= 1 + x + x^{2} + x^{3} + \dots + x^{n} + \dots \\
+&=\sum^{\infty}_{n=0}x^{n}.
+\end{split}
+\end{equation}
+Observe that stability lets us write
+\begin{equation}
+\begin{split}
+f(x) &= \sum_{n=0}^{\infty}x^{n}\\
+&= 1 + \sum^{\infty}_{n=0}x^{n+1}.
+\end{split}
+\end{equation}
+Linearity lets us factor out an $x$:
+\begin{equation}
+1+\sum^{\infty}_{n=0}x^{n+1} = 1+x\sum^{\infty}_{n=0}x^{n}
+\end{equation}
+We also may observe the series on the right hand side is
+precisely $f(x)$, we may plug this in:
+\begin{equation}
+1+\sum^{\infty}_{n=0}x^{n+1} = 1+xf(x).
+\end{equation}
+But tracing back through our equalities, this is equal to
+$f(x)$. In other words, we have the relationship
+\begin{equation}
+f(x) = 1 + xf(x).
+\end{equation}
+So we subtract $xf(x)$ from both sides
+\begin{equation}
+(1-x)f(x) = 1
+\end{equation}
+Then divide through by $1-x$ obtaining
+\begin{equation}
+f(x)=\frac{1}{1-x}.
+\end{equation}
+Thus we have deduced the geometric series ``converges'' to $(1-x)^{-1}$.
+\end{ex}

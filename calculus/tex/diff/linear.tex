@@ -1,0 +1,121 @@
+%%
+%% linear.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Fri Jun  1 10:03:00 2012 Alex Nelson
+%% Last update Fri Jun  1 10:26:21 2012 Alex Nelson
+%%
+\section{Linear Approximations, Tangent Lines}
+\N{Tangent Lines}
+So the derivative gives us the ``instantaneous'' slope of a curve
+at a point. In fact, we can construct the tangent line to a curve
+$y=y(x)$ using the following function
+\begin{equation}
+t(x) = y(x_{0})+y'(x_{0})\cdot(x-x_{0}).
+\end{equation}
+Lets look at this a moment. The general structure looks like
+\begin{equation}
+t(x) = b + m(x-x_{0})
+\end{equation}
+where $b=y(x_{0})$ guarantees the line passes through the point
+$(x_{0},y_{0})$ for $y_{0}=y(x_{0})$. The slope is the derivative
+of the curve evaluated at $x_{0}$. We also make certain that the
+second term $m(x-x_{0})$ vanishes at $x_{0}$, so
+$t(x_{0})=y_{0}$.
+
+\begin{ex}
+Consider the polynomial
+\begin{equation}
+f(x) = x^{5}+3x^{2}+2.
+\end{equation}
+What is its tangent line at $x_{0}=2$? 
+
+We first find its derivative
+\begin{equation}
+\frac{\D f}{\D x}= 5x^{4} + 6x
+\end{equation}
+Then we consider the tangent line
+\begin{equation}
+t(x) = f(x_{0}) + f'(x_{0})\cdot(x-x_{0}).
+\end{equation}
+Observe
+\begin{equation}
+\begin{split}
+f(2) &= 2^{5} + 3(2^{2})+2\\
+&= 32 + 12 + 2 = 46
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+f'(2) &= 5(2^{4}) + 6(2)\\
+&=5(16) + 12 = 92.
+\end{split}
+\end{equation}
+Thus the tangent line to $y=f(x)$ at $x=2$ is
+\begin{equation}
+t(x) = 46 + 92(x-2).
+\end{equation}
+\end{ex}
+
+\begin{ex}
+We can also use the tangent line as a good approximation for
+$x\approx x_{0}$. Suppose we wanted to find
+\begin{equation}
+q = \sqrt{4.1}
+\end{equation}
+What can we do? Well, consider the function
+\begin{equation}
+g(x)=\sqrt{4+x}.
+\end{equation}
+We take its linear approximation at $x=0$, so
+\begin{equation}
+t(x)=g(0) + g'(0)\cdot x
+\end{equation}
+Observe that $g(0)=2$ and
+\begin{equation}
+g'(x)=\frac{1}{2\sqrt{4+x}}
+\end{equation}
+thus $g'(0)=1/4$. We find
+\begin{equation}
+t(x) = 2 + \frac{x}{4}.
+\end{equation}
+We approximate the solution
+\begin{equation}
+\begin{split}
+q &\approx t(0.1)\\
+&=2+\frac{1}{40}.
+\end{split}
+\end{equation}
+Is this a good approximation? Well, lets check!
+
+Observe
+\begin{equation*}
+2+\frac{1}{40} = \frac{81}{40}.
+\end{equation*}
+Then we square it
+\begin{equation}
+\begin{split}
+\left(\frac{81}{40}\right)^{2} &= \frac{6561}{1600}\\
+&=\frac{6400}{1600}+\frac{161}{1600}.
+\end{split}
+\end{equation}
+What's the error in this approximation? Well, we see
+\begin{equation}
+\left|q^{2}-\left(\frac{81}{40}\right)^{2}\right| =
+\frac{1}{1600} = 0.000625,
+\end{equation}
+so it's correct until the fourth decimal place.
+\end{ex}
+\begin{rmk}
+The general scheme is, if we know what $f(x_{0})$ is exactly, and
+we want to consider $f(x_{0}+\Delta x)$ for ``small enough''
+$\Delta x$, what to do? We approximate $f(x_{0}+\Delta
+x)=t(x+\Delta x)$ where $t(x)$ is the tangent to $f$ at $x_{0}$. 
+\end{rmk}
+
+\begin{xca}
+Recall that $\sin(\pi/4)=1/\sqrt{2}$. What is $\sin(3\pi/16)$?
+\end{xca}

@@ -1,0 +1,61 @@
+%%
+%% intro.tex
+%% 
+%% Made by alex
+%% Login   <alex@tomato>
+%% 
+%% Started on  Mon May 21 15:09:58 2012 alex
+%% Last update Wed May 30 10:11:39 2012 Alex Nelson
+%%
+\chapter*{\phantomsection\addcontentsline{toc}{chapter}{Introduction}Introduction}
+
+\textbf{Warning:\quad\ignorespaces} This introduction may be
+skipped for most readers. The intended audience are logicians
+interested in the foundations used throughout, and people
+attempting to write ``formal mathematics''.
+
+We will be working without much ``formal'' framework. That is, we
+are largely working symbolically and not rigorously. The logical
+foundation made could be described as ``High School Algebra''. We
+use variables (uncontroversial for logicians). Our operations
+are:
+\begin{enumerate}
+\item Addition. We have $a+b$ be commutative, so $a+b=b+a$ and
+  associatve $(a+b)+c=a+(b+c)$. There is an identity element $0$
+  such that $0+a=a$ for any $a$. Negation produces the additive
+  inverse $-(a)=-a$. 
+\item Subtraction. This is just adding by the additive inverse:
+  $a-b = a+(-(b))$. 
+\item Multiplication. Written $a\cdot{b}$, it's commutative
+  $a\cdot{b}=b\cdot{a}$ and associative
+  $a\cdot(b\cdot{c})=(a\cdot{b})\cdot{c}$. Its identity element
+  is denoted $1\cdot{a}=a$ for any $a$. Multiplicative inverse is
+  denoted $1/a$ for any nonzero $a$ (i.e., $a\not=0$).
+\item Division. This, like subtraction, multiplies by the
+  multiplicative inverse.
+\item Exponentiation. We write $a^b$. It is the first
+  noncommutative operation $a^b\not=b^a$ and it is not
+  associative $a^{(b^{c})}\not=(a^{b})^{c}$. It has an identity
+  element in the sense that $a^{1}=a$ for any $a$.
+\end{enumerate}
+Tacitly, we have an ordering of numbers:
+\begin{equation}
+a<b\iff b-a\mbox{ is positive}
+\end{equation}
+We have an ordered field. 
+
+The astute student would realize that exponentiation could have
+two inverses: the logarithm and the $n^{\rm th}$-root. We say
+\begin{equation}
+\log_{b}(x)=y\iff b^{y}=x.
+\end{equation}
+The root-approach specifies for any number $a$ another number is
+produced $a^{1/n}$ satisfying
+\begin{equation}
+(a^{1/n})^{n}=a.
+\end{equation}
+What about $\sqrt{-1}$? We run into difficulties: the root
+approach gives us unreal (or \emph{imaginary}) numbers. Really,
+we work with real numbers ``embedded'' in an ambient complex
+number system.
+

@@ -1,0 +1,51 @@
+%%
+%% exp.tex
+%% 
+%% Made by Alex Nelson
+%% Login   <alex@black-cherry>
+%% 
+%% Started on  Wed May 30 13:29:13 2012 Alex Nelson
+%% Last update Fri Jun  1 10:53:26 2012 Alex Nelson
+%%
+\section{Exponential}
+\N{Problem:}Consider a curve $y=y(x)$ such that at any point
+$(x,y)$ on the curve, the tangent line has its slope be
+\begin{equation}
+\frac{\D y}{\D x}=y.
+\end{equation}
+What does $y(x)$ look like?
+
+Lets write its tangent line at $x_{0}$ as
+\begin{equation}
+\begin{split}
+t(x) &= y(x_{0})+y'(x_{0})(x-x_{0})\\
+&=y(x_{0})(1+x-x_{0}).
+\end{split}
+\end{equation}
+We see that
+\begin{equation}
+t(a)=0\iff a=x_{0}-1.
+\end{equation}
+Well we should note that if we change $x$ to $x+b$ (for a ``small
+$b$''), then $y(x)$ changes to
+\begin{equation}
+y(x+b)\approx y(x)+y'(x)b
+\end{equation}
+Note that 
+
+\M
+Consider the following function of positive integers
+\begin{equation}
+e(n) = \left(1+\frac{1}{n}\right)^{n}=\frac{(1+n)^{n}}{n^{n}}.
+\end{equation}
+Lets calculate some values: $e(1)=2$, 
+\begin{equation*}
+\begin{split}
+e(10) &= \frac{25937424601}{10^{10}}=2.5937424601\\
+e(20) &\approx 2.65329\\
+e(100) &\approx 2.7048
+\end{split}
+\end{equation*}
+If $e(n)$ converges to some constant, then it does so slowly as
+$n\to\infty$. 
+

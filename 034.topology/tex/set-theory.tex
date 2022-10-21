@@ -1,0 +1,76 @@
+%%% set-theory.tex --- 
+%% 
+%% Filename: set-theory.tex
+%% Description: 
+%% Author: alex
+%% Maintainer: 
+%% Created: Thu Jun  9 19:38:23 2016 (-0700)
+%% Version: 
+%% Package-Requires: ()
+%% Last-Updated: 
+%%           By: 
+%%     Update #: 0
+%% URL: 
+%% Doc URL: 
+%% Keywords: 
+%% Compatibility: 
+
+\section{Set Theory}
+\M
+As an appendix, we formalize various theorems used throughout the notes,
+and standardize the notation we use.
+
+\N{Definitions} We have a grocery list of definitions.
+\begin{enumerate}
+\item A \define{Set} consists of an unordered collection of objects without
+  duplicates.
+
+\item An \define{Element} of a set $A$ is an object $x$ belonging to the
+  collection, denoted $x\in A$.
+
+\item A \define{Subset} of a given set $A$ consists of a set $B$ such that
+  every element $b\in B$ belongs to $A$. We denote $B$ is a subset of $A$
+  as $B\subset A$.
+
+\item Two sets are \define{Equal} if and only if $A\subset B$ and $B\subset A$.
+  We denote this as $A=B$ if they are equal, and $A\neq B$ otherwise.
+
+\item A \define{Proper Subset} is a subset $B\subset A$ such that $B\neq A$.
+  We denote a proper subset as $B\propersubset A$. The notation is
+  analogous to ordering natural numbers $m\leq n$ allows the possibility
+  $m=n$, whereas $m<n$ does not.
+\end{enumerate}
+
+\N{More Definitions}
+We have various operations involving many sets.
+
+\begin{enumerate}
+\item A \define{Family of Sets} consists of a collection $J$ called the
+  \emph{indexing set}, and a collection of sets $\{U_{\alpha} : \alpha\in J\}$.
+  Sometimes this is simply denoted $\{U_{\alpha}\}_{\alpha\in J}$ or
+  simply $\{U_{\alpha}\}$.
+\item The \define{Union} of a family of sets consists of a set
+  \begin{equation}
+    \bigcup_{\alpha}U_{\alpha} = \{x : x\in U_{\alpha}\mbox{ for some $\alpha$}\}.
+  \end{equation}
+\item The \define{Intersection} of a family of sets $\{U_{\alpha}\}_{\alpha\in{J}}$ consists of a set
+  \begin{equation}
+    \bigcap_{\alpha}U_{\alpha} = \{x : x\in U_{\alpha}\mbox{ for all
+      $\alpha\in J$}\}.
+  \end{equation}
+\end{enumerate}
+
+\begin{thm}
+  The union of a family of sets contains any family member as a subset:
+  \begin{equation}
+    \forall\beta,\enspace U_{\beta}\subset\bigcup_{\alpha}U_{\alpha}
+  \end{equation}
+\end{thm}
+
+\begin{thm}
+  The intersection of a family of sets is contained in any family member
+  as a subset:
+  \begin{equation}
+    \forall\beta,\enspace \bigcap_{\alpha}U_{\alpha}\subset U_{\beta}
+  \end{equation}
+\end{thm}

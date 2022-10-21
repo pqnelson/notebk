@@ -1,0 +1,100 @@
+\exercise [ 22 ] $\displaystyle - 20 x - \frac{9}{x} - \frac{20}{x^{8}} - \frac{25}{x^{7}} + \frac{7}{x^{2}} - 19 x^{6}$
+\exercise [ 20 ] $\displaystyle 22 x + \frac{14}{x^{9}} - 29 x^{2} + 26 x^{9} + 28 x^{10}$
+\exercise [ 28 ] $\displaystyle - 13 x + \frac{10}{x^{8}} + \frac{16}{x^{6}} + \frac{16}{x^{5}} + 18 x^{2} + 29 x^{4} + 14 x^{5} + 10 x^{9} - 20 x^{10}$
+\exercise [ 20 ] $\displaystyle - 18 x - \frac{24}{x^{4}} + 3 x^{2} - 26 x^{6} + 27 x^{8}$
+\exercise [ 19 ] $\displaystyle -19 + 28 x - \frac{9}{x^{4}} - \frac{18}{x^{2}} + 27 x^{10}$
+\exercise [ 19 ] $\displaystyle 28 - 25 x + 17 x^{2} - 17 x^{4} + 14 x^{7}$
+\exercise [ 24 ] $\displaystyle \frac{21}{x^{8}} - \frac{7}{x^{6}} - \frac{29}{x^{5}} + 9 x^{2} + 24 x^{3} + 29 x^{4} - 19 x^{7}$
+\exercise [ 18 ] $\displaystyle - 9 x - \frac{16}{x} - \frac{14}{x^{8}} + \frac{20}{x^{4}}$
+\exercise [ 23 ] $\displaystyle 2 - \frac{5}{x^{8}} - \frac{8}{x^{7}} + \frac{23}{x^{3}} + 25 x^{2} + 10 x^{6} + 4 x^{9}$
+\exercise [ 12 ] $\displaystyle - \frac{13}{x^{8}}$
+\exercise [ 17 ] $\displaystyle 26 - \frac{20}{x^{7}} - \frac{6}{x^{6}} - 24 x^{6}$
+\exercise [ 25 ] $\displaystyle -8 - \frac{3}{x^{8}} - \frac{29}{x^{7}} + 24 x^{2} - 18 x^{4} + 17 x^{5} - 28 x^{9} + 24 x^{10}$
+\exercise [ 23 ] $\displaystyle 25 - \frac{9}{x} - \frac{28}{x^{7}} + \frac{13}{x^{3}} + 10 x^{4} + 14 x^{6} + 23 x^{9}$
+\exercise [ 14 ] $\displaystyle - \frac{23}{x} + 9 x^{10}$
+\exercise [ 28 ] $\displaystyle - \frac{7}{x^{10}} + \frac{17}{x^{9}} + \frac{6}{x^{8}} + \frac{28}{x^{7}} + \frac{5}{x^{2}} - 30 x^{2} + 12 x^{4} + 26 x^{5} + 13 x^{10}$
+\exercise [ 13 ] $\displaystyle -20 + 12 x^{2}$
+\exercise [ 26 ] $\displaystyle 26 x - \frac{9}{x^{10}} + \frac{15}{x^{7}} - \frac{17}{x^{6}} + \frac{8}{x^{4}} - \frac{12}{x^{2}} + 26 x^{7} + 12 x^{9}$
+\exercise [ 12 ] $\displaystyle 18 x^{8}$
+\exercise [ 12 ] $\displaystyle - \frac{4}{x^{7}}$
+\exercise [ 14 ] $\displaystyle \frac{7}{x^{5}} + 14 x^{5}$
+\exercise [ 29 ] $\displaystyle 18 + 24 x - \frac{26}{x^{9}} - \frac{17}{x^{5}} + \frac{13}{x^{4}} - \frac{6}{x^{2}} + 12 x^{2} - 22 x^{7} + 20 x^{8} - 17 x^{9}$
+\exercise [ 23 ] $\displaystyle 1 - \frac{4}{x} + \frac{17}{x^{10}} - \frac{14}{x^{7}} - \frac{11}{x^{2}} - 21 x^{2} + 19 x^{9}$
+\exercise [ 17 ] $\displaystyle 11 + \frac{4}{x^{10}} + 13 x^{4} + 6 x^{8}$
+\exercise [ 27 ] $\displaystyle -13 - \frac{28}{x} - \frac{7}{x^{10}} + \frac{25}{x^{4}} + 23 x^{3} - 21 x^{4} - 25 x^{6} - 20 x^{7} + 23 x^{8}$
+\exercise [ 24 ] $\displaystyle - \frac{25}{x^{10}} + \frac{10}{x^{8}} - \frac{20}{x^{3}} - 19 x^{3} - 15 x^{4} + 12 x^{5} - 8 x^{10}$
+\exercise [ 21 ] $\displaystyle 16 - \frac{11}{x^{9}} + \frac{5}{x^{6}} + 29 x^{2} + 26 x^{3} + 15 x^{5}$
+\exercise [ 20 ] $\displaystyle - \frac{11}{x^{8}} - \frac{30}{x^{7}} - \frac{4}{x^{4}} + 28 x^{2} + 12 x^{7}$
+\exercise [ 20 ] $\displaystyle - \frac{24}{x^{9}} - \frac{10}{x^{5}} - 12 x^{5} + 25 x^{6} + 19 x^{9}$
+\exercise [ 19 ] $\displaystyle 15 - 6 x - \frac{29}{x^{8}} - 7 x^{6} + 7 x^{7}$
+\exercise [ 29 ] $\displaystyle 21 - 29 x + \frac{21}{x} + \frac{13}{x^{6}} + \frac{21}{x^{3}} + \frac{27}{x^{2}} - 27 x^{3} - 4 x^{4} + 21 x^{8} - 5 x^{9}$
+\exercise [ 19 ] $\displaystyle 8 + \frac{13}{x} - \frac{27}{x^{7}} - \frac{15}{x^{3}} - 25 x^{9}$
+\exercise [ 21 ] $\displaystyle 7 - 11 x + \frac{4}{x} - \frac{22}{x^{7}} - \frac{15}{x^{3}} - 19 x^{10}$
+\exercise [ 16 ] $\displaystyle - \frac{24}{x^{10}} - \frac{7}{x^{7}} - 9 x^{9}$
+\exercise [ 27 ] $\displaystyle -29 + \frac{3}{x} - \frac{4}{x^{8}} - \frac{30}{x^{7}} + \frac{4}{x^{4}} + \frac{27}{x^{3}} + 2 x^{3} + 28 x^{4} - 15 x^{9}$
+\exercise [ 29 ] $\displaystyle 21 - 14 x + \frac{6}{x^{9}} - \frac{3}{x^{7}} + \frac{7}{x^{6}} + \frac{8}{x^{3}} + 15 x^{5} - 13 x^{7} + 29 x^{8} - 3 x^{9}$
+\exercise [ 28 ] $\displaystyle \frac{17}{x^{6}} - 15 x^{3} - 3 x^{4} - 9 x^{5} + 29 x^{6} - 30 x^{7} + 21 x^{8} - 13 x^{9} + 11 x^{10}$
+\exercise [ 26 ] $\displaystyle \frac{11}{x^{10}} + \frac{23}{x^{9}} + \frac{16}{x^{7}} + \frac{23}{x^{6}} - \frac{23}{x^{4}} + 20 x^{7} - 19 x^{8} - 27 x^{10}$
+\exercise [ 14 ] $\displaystyle \frac{20}{x^{2}} - 2 x^{7}$
+\exercise [ 18 ] $\displaystyle \frac{15}{x^{7}} + \frac{11}{x^{5}} + \frac{23}{x^{3}} + 12 x^{4}$
+\exercise [ 16 ] $\displaystyle \frac{19}{x} + \frac{2}{x^{6}} - 29 x^{10}$
+\exercise [ 12 ] $\displaystyle \frac{27}{x^{4}}$
+\exercise [ 24 ] $\displaystyle \frac{16}{x^{10}} - \frac{8}{x^{9}} + \frac{28}{x^{7}} + \frac{26}{x^{5}} - \frac{15}{x^{3}} + 7 x^{6} + 28 x^{9}$
+\exercise [ 18 ] $\displaystyle - \frac{20}{x^{10}} + 21 x^{3} - 25 x^{8} - 14 x^{10}$
+\exercise [ 25 ] $\displaystyle -17 - \frac{24}{x} + \frac{20}{x^{9}} - \frac{5}{x^{6}} + 14 x^{3} - 14 x^{7} + 25 x^{9} + 17 x^{10}$
+\exercise [ 27 ] $\displaystyle 2 + \frac{28}{x^{10}} - \frac{27}{x^{8}} + \frac{18}{x^{7}} + \frac{23}{x^{2}} - 6 x^{2} - 15 x^{3} + 20 x^{4} - 20 x^{5}$
+\exercise [ 16 ] $\displaystyle - \frac{21}{x^{8}} + \frac{15}{x^{5}} - \frac{19}{x^{2}}$
+\exercise [ 15 ] $\displaystyle -13 + \frac{15}{x^{6}} + \frac{29}{x^{3}}$
+\exercise [ 15 ] $\displaystyle 7 + \frac{18}{x^{8}} + 25 x^{3}$
+\exercise [ 22 ] $\displaystyle - \frac{26}{x^{4}} + \frac{8}{x^{2}} - 6 x^{3} - 19 x^{5} + 20 x^{8} + 28 x^{10}$
+\exercise [ 28 ] $\displaystyle - 24 x - \frac{24}{x} - \frac{4}{x^{6}} - \frac{10}{x^{3}} - 3 x^{3} - 3 x^{4} + 19 x^{5} + 25 x^{7} + 16 x^{8}$
+\exercise [ 16 ] $\displaystyle - \frac{27}{x} - 26 x^{8} - 3 x^{10}$
+\exercise [ 17 ] $\displaystyle -28 + \frac{13}{x} - \frac{16}{x^{9}} + \frac{5}{x^{3}}$
+\exercise [ 23 ] $\displaystyle -5 - \frac{18}{x^{9}} - \frac{11}{x^{7}} - \frac{28}{x^{5}} + \frac{29}{x^{2}} - 8 x^{5} + 4 x^{9}$
+\exercise [ 20 ] $\displaystyle \frac{23}{x^{10}} - \frac{3}{x^{9}} + \frac{3}{x^{5}} - 6 x^{4} + 18 x^{5}$
+\exercise [ 15 ] $\displaystyle -17 - 24 x^{5} + 29 x^{8}$
+\exercise [ 16 ] $\displaystyle - 24 x - \frac{17}{x^{5}} - 12 x^{8}$
+\exercise [ 22 ] $\displaystyle \frac{5}{x^{8}} + \frac{26}{x^{3}} + 11 x^{2} - 22 x^{7} - 7 x^{9} - 15 x^{10}$
+\exercise [ 18 ] $\displaystyle \frac{11}{x^{9}} + \frac{6}{x^{7}} - \frac{24}{x^{3}} + 27 x^{2}$
+\exercise [ 25 ] $\displaystyle -14 + \frac{10}{x^{10}} + \frac{29}{x^{8}} + 18 x^{4} - 5 x^{5} + 21 x^{6} + 5 x^{8} - 11 x^{10}$
+\exercise [ 22 ] $\displaystyle \frac{28}{x^{9}} + \frac{12}{x^{3}} - 19 x^{6} - 7 x^{8} + 27 x^{9} + 29 x^{10}$
+\exercise [ 15 ] $\displaystyle -17 - \frac{20}{x^{7}} + 3 x^{10}$
+\exercise [ 24 ] $\displaystyle - \frac{26}{x^{6}} + x^{-4} - 17 x^{2} + 5 x^{4} - 18 x^{6} - 10 x^{7} - 28 x^{9}$
+\exercise [ 15 ] $\displaystyle 20 + \frac{16}{x^{3}} + 2 x^{3}$
+\exercise [ 16 ] $\displaystyle 4 x + 22 x^{3} - 26 x^{10}$
+\exercise [ 17 ] $\displaystyle -14 - 24 x + 6 x^{3} - 26 x^{10}$
+\exercise [ 28 ] $\displaystyle - 11 x + \frac{3}{x} - \frac{25}{x^{10}} - \frac{30}{x^{9}} + \frac{7}{x^{7}} - \frac{2}{x^{5}} - 10 x^{3} + 5 x^{4} + 3 x^{7}$
+\exercise [ 28 ] $\displaystyle \frac{29}{x} + \frac{26}{x^{10}} - \frac{20}{x^{9}} + \frac{24}{x^{8}} - \frac{22}{x^{7}} - \frac{16}{x^{6}} + \frac{22}{x^{5}} - \frac{28}{x^{4}} + 28 x^{6}$
+\exercise [ 17 ] $\displaystyle -27 + \frac{9}{x^{9}} + \frac{25}{x^{5}} + 20 x^{3}$
+\exercise [ 17 ] $\displaystyle 11 + \frac{17}{x^{9}} + \frac{7}{x^{8}} + \frac{17}{x^{4}}$
+\exercise [ 27 ] $\displaystyle 9 + \frac{21}{x^{10}} + \frac{7}{x^{7}} - \frac{11}{x^{3}} + x^{-2} + 10 x^{2} - 16 x^{3} + 22 x^{4} + 27 x^{7}$
+\exercise [ 20 ] $\displaystyle - \frac{10}{x^{10}} - \frac{29}{x^{7}} - \frac{29}{x^{3}} - 30 x^{4} + 25 x^{9}$
+\exercise [ 19 ] $\displaystyle 10 + \frac{3}{x^{6}} + \frac{25}{x^{4}} - 8 x^{3} - 21 x^{5}$
+\exercise [ 17 ] $\displaystyle 10 - \frac{6}{x^{5}} - \frac{3}{x^{2}} - 16 x^{5}$
+\exercise [ 22 ] $\displaystyle - \frac{24}{x} + \frac{4}{x^{3}} - 30 x^{2} + 2 x^{5} + 11 x^{7} - 18 x^{8}$
+\exercise [ 18 ] $\displaystyle - \frac{19}{x^{10}} + \frac{22}{x^{9}} - 28 x^{4} + 14 x^{8}$
+\exercise [ 27 ] $\displaystyle -8 - \frac{7}{x} - \frac{20}{x^{8}} - \frac{25}{x^{5}} + \frac{13}{x^{4}} - \frac{18}{x^{2}} + 18 x^{8} - 24 x^{9} - 2 x^{10}$
+\exercise [ 20 ] $\displaystyle - \frac{15}{x^{8}} - \frac{14}{x^{5}} - \frac{11}{x^{4}} - 15 x^{4} + 10 x^{8}$
+\exercise [ 22 ] $\displaystyle - \frac{6}{x^{8}} + \frac{12}{x^{5}} - \frac{29}{x^{4}} + 24 x^{7} + 6 x^{9} - 25 x^{10}$
+\exercise [ 23 ] $\displaystyle -10 + \frac{3}{x^{10}} - \frac{7}{x^{9}} + \frac{17}{x^{6}} - \frac{9}{x^{5}} + 9 x^{4} - 8 x^{8}$
+\exercise [ 21 ] $\displaystyle -4 + 11 x + \frac{4}{x} - \frac{6}{x^{10}} + \frac{21}{x^{5}} + 18 x^{8}$
+\exercise [ 16 ] $\displaystyle - 16 x + \frac{10}{x^{5}} - 17 x^{6}$
+\exercise [ 16 ] $\displaystyle - 11 x - 5 x^{7} - 5 x^{9}$
+\exercise [ 21 ] $\displaystyle -20 + 20 x - \frac{25}{x^{9}} - \frac{16}{x^{7}} - \frac{17}{x^{6}} + 12 x^{3}$
+\exercise [ 13 ] $\displaystyle 16 - \frac{17}{x^{10}}$
+\exercise [ 23 ] $\displaystyle -7 + \frac{8}{x^{7}} - \frac{3}{x^{2}} - 12 x^{2} + 15 x^{3} + 19 x^{5} + 5 x^{10}$
+\exercise [ 26 ] $\displaystyle - \frac{23}{x^{9}} - \frac{5}{x^{5}} + \frac{14}{x^{3}} + 7 x^{3} + 27 x^{4} + 7 x^{5} + 14 x^{7} + 18 x^{8}$
+\exercise [ 19 ] $\displaystyle 7 + \frac{8}{x^{10}} - \frac{11}{x^{9}} - 16 x^{7} - 26 x^{9}$
+\exercise [ 17 ] $\displaystyle 10 - \frac{18}{x^{8}} + \frac{9}{x^{5}} - 6 x^{4}$
+\exercise [ 23 ] $\displaystyle -26 - 22 x - \frac{7}{x^{10}} + \frac{8}{x^{6}} - \frac{6}{x^{3}} - 18 x^{7} + 23 x^{10}$
+\exercise [ 13 ] $\displaystyle 15 + 26 x^{10}$
+\exercise [ 29 ] $\displaystyle 27 - \frac{12}{x^{10}} + \frac{7}{x^{6}} + \frac{14}{x^{4}} - \frac{15}{x^{3}} - \frac{3}{x^{2}} + 12 x^{2} - 12 x^{3} + 8 x^{6} - 25 x^{8}$
+\exercise [ 27 ] $\displaystyle 16 - \frac{25}{x} - \frac{30}{x^{6}} - \frac{6}{x^{5}} - 24 x^{2} + 22 x^{4} - 29 x^{7} + 13 x^{9} + 24 x^{10}$
+\exercise [ 12 ] $\displaystyle - \frac{2}{x^{2}}$
+\exercise [ 22 ] $\displaystyle - 18 x + \frac{21}{x} - \frac{23}{x^{9}} + \frac{27}{x^{2}} + 2 x^{4} - 23 x^{10}$
+\exercise [ 20 ] $\displaystyle - \frac{2}{x} - \frac{27}{x^{3}} - 9 x^{2} + 14 x^{4} + x^{6}$
+\exercise [ 15 ] $\displaystyle -2 - 13 x - 20 x^{7}$
+\exercise [ 14 ] $\displaystyle 28 x^{2} - 18 x^{8}$
+\exercise [ 27 ] $\displaystyle -26 + \frac{9}{x} - \frac{7}{x^{7}} + \frac{28}{x^{6}} + \frac{5}{x^{5}} - \frac{21}{x^{2}} - 13 x^{7} - 6 x^{8} + 16 x^{10}$
+\exercise [ 28 ] $\displaystyle \frac{6}{x^{10}} + \frac{28}{x^{6}} + x^{-5} - \frac{15}{x^{3}} + 14 x^{2} + 9 x^{6} - 26 x^{7} + 23 x^{8} + 12 x^{9}$
+\exercise [ 17 ] $\displaystyle 6 - \frac{9}{x^{6}} + \frac{7}{x^{5}} + \frac{19}{x^{2}}$

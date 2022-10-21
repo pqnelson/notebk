@@ -1,0 +1,527 @@
+\usepackage{sidecap}
+\usepackage{cancel}
+\usepackage{xmpincl}
+\let\oldmessage\message
+\def\message#1{}
+\usepackage[nohug]{diagrams}
+\let\message\oldmessage
+\usepackage[12hr,us]{datetime}
+
+
+\author{Alex Nelson\footnote{This is a page from \url{http://code.google.com/p/notebk/}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}\\\texttt{Email:\enspace\href{mailto:pqnelson@gmail.com}{pqnelson@gmail.com}}}
+
+\usepackage{booktabs}
+\usepackage[top=6pc,textheight=8.9in,textwidth=33pc,inner=6pc,marginparwidth=9pc,marginparsep=1.5pc]{geometry}
+\usepackage{amsmath,amsfonts,amscd,amssymb}
+\usepackage{extpfeil,manfnt}
+%\usepackage{epic,eepic}
+\usepackage{arydshln} % for the dashed lines in the ADM metric
+\usepackage{float}
+\usepackage{framed}
+\usepackage{ifpdf}
+\usepackage[final]{graphicx}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage[kerning]{microtype}
+\fi
+\usepackage{mathrsfs}
+\usepackage{comment}
+\usepackage{verbatim}
+\usepackage{slashed}
+\usepackage{paralist}
+\usepackage{marginnote}
+\usepackage{subfigure}
+\usepackage{wrapfig} % used for wrapping figures!
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage[final,colorlinks=true, 
+            hyperindex=true,
+            citecolor=black,
+            filecolor=black,
+            menucolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            bookmarksopen=true,
+            pdfauthor={Alex Nelson}]{hyperref}
+\usepackage[all]{hypcap}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font used...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\manual=manfnt
+\font\chapterfont=cmssbx10 scaled\magstep2
+\font\twelvess=cmss12
+\font\sectionfont=cmssbx10 at 12pt
+\font\subsectionfont=cmssbx10 %at 12pt
+\def\upbf#1#2{\textbf{#1\uppercase{{\footnotesize#2}}}}
+\font\eightss=cmssq8
+\font\eightssi=cmssqi8
+\font\sixss=cmssq8 scaled 800
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fix the line skip amounts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength\parindent{20pt}
+\setlength\parskip{0pt plus 1pt}
+\newskip\smallskipamount \smallskipamount=3pt plus 1pt minus 1pt
+\newskip\medskipamount \medskipamount=6pt plus 2pt minus 2pt
+\newskip\bigskipamount \bigskipamount=12pt plus 4pt minus 4pt
+\def\smallskip{\vskip\smallskipamount}
+\def\medskip{\vskip\medskipamount}
+\def\bigskip{\vskip\bigskipamount}
+\def\removelastskip{\ifdim\lastskip=\z@\else\vskip-\lastskip\fi}
+\def\smallbreak{\par\ifdim\lastskip<\smallskipamount
+  \removelastskip\penalty-50\smallskip\fi}
+\def\medbreak{\par\ifdim\lastskip<\medskipamount
+  \removelastskip\penalty-100\medskip\fi}
+\def\bigbreak{\par\ifdim\lastskip<\bigskipamount
+  \removelastskip\penalty-200\bigskip\fi}
+
+
+\newenvironment{quotes}{
+  \baselineskip 10pt
+  \parfillskip \z@
+  \interlinepenalty 10000
+  \leftskip \z@ plus 40pc minus \parindent
+  \let\rm=\eightss \let\sl=\eightssi \let\adbcfont=\sixss
+  \everypar{\sl}
+  \def\\{\hskip.05em} % can say 3\\:\\16
+  \obeylines}{}
+\def\Author#1(#2){\par\nobreak\smallskip\noindent\rm--- #1\unskip\enspace(#2)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We customize theorem styles...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\Bbb=\mathbb
+\let\frak=\mathfrak
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem*{ClassificationCliff}{Classification Theorem for Representations of Clifford Algebras}
+\newtheorem*{DiracConjecture}{Dirac's Conjecture}
+\newtheorem*{bessel}{Bessel Inequality}
+\newtheorem*{parseval}{Parseval Equality}
+\newtheorem*{riemleb}{Riemann-Lebesgue Theorem}
+\newtheorem*{riemMap}{Riemann Mapping Theorem}
+\newtheorem*{invFourier}{Fourier Inversion Theorem}
+\newtheorem*{plancherel}{Plancherel Theorem}
+\newtheorem*{samplingthm}{Sampling Theorem}
+\newtheorem*{dual}{Dual Principle for Categories}
+\newtheorem*{yoneda}{Yoneda Lemma}
+\newtheorem*{schur}{Schur's Lemma}
+\newtheorem*{implicitFunctionThm}{Implicit Function Theorem}
+\newtheorem*{minNum}{Minimal Number Principle}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\def\example{\ex}
+\def\endexample{\hfill$\square$\endex}
+\newtheorem{nonex}[thm]{NON-Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem{fact}{Experimental Fact}
+\newtheorem{problem}[thm]{Problem}
+\newtheorem{construction}[thm]{Construction}
+\def\construct{\construction}
+\def\endconstruct{\hfill$\square$\endconstruction}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem*{notation}{Notation}
+\newtheorem*{assume}{Assumption}
+\newtheorem*{quest}{Question}
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{sch}[thm]{Scholium}
+
+
+
+\newcommand{\slug}{\hbox{\kern1.5pt\vrule width2.5pt height6pt depth1.5pt\kern1.5pt}}
+\newcommand{\slugonright}{\vrule width0pt\nobreak\hfill\slug}
+\renewcommand{\qedsymbol}{\slug}
+
+
+\providecommand{\sketchname}{Sketch of Proof}
+\newenvironment{sketch}[1][\sketchname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+
+\allowdisplaybreaks
+
+%\numberwithin{figure}{section}
+\numberwithin{equation}{chapter}
+
+\pagestyle{fancy}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyheadoffset[OR,EL]{8pc}
+\else
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{8pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\headsep=5pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We also make the margin notes look prettier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if@twoside
+\renewcommand\marginpar[1]{\-\marginnote{\footnotesize{{#1}}}}
+\else
+\renewcommand\marginpar[1]{\-\marginnote{\raggedright\footnotesize{{#1}}}}%
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bracket macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\overbracket{\@ifnextchar [ {\@overbracket} {\@overbracket
+[\@bracketheight]}}
+\def\@overbracket[#1]{\@ifnextchar [ {\@over@bracket[#1]}
+{\@over@bracket[#1][0.3em]}}
+\def\@over@bracket[#1][#2]#3{%\message {Overbracket: #1,#2,#3}
+\mathop {\vbox {\m@th \ialign {##\crcr \noalign {\kern 3\p@
+\nointerlineskip }\downbracketfill {#1}{#2}
+                              \crcr \noalign {\kern 3\p@ }
+                              \crcr  $\hfil \displaystyle {#3}\hfil $%
+                              \crcr} }}\limits}
+\def\downbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                  \edef\@bracketheight{\the\ht\z@}\downbracketend{#1}{#2}
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+                  \leaders \vrule \@height #1 \@depth \z@ \hfill
+\downbracketend{#1}{#2}$}
+\def\downbracketend#1#2{\vrule depth #2 width #1\relax}
+
+
+\def\underbracket{%
+  \@ifnextchar[{\@underbracket}{\@underbracket [\@bracketheight]}%
+}
+\def\@underbracket[#1]{%
+  \@ifnextchar[{\@under@bracket[#1]}{\@under@bracket[#1][0.4em]}%
+}
+\def\@under@bracket[#1][#2]#3{%\message {Underbracket: #1,#2,#3}
+ \mathop{\vtop{\m@th \ialign {##\crcr $\hfil \displaystyle {#3}\hfil $%
+ \crcr \noalign {\kern 3\p@ \nointerlineskip }\upbracketfill {#1}{#2}
+       \crcr \noalign {\kern 3\p@ }}}}\limits}
+\def\upbracketfill#1#2{$\m@th \setbox \z@ \hbox {$\braceld$}
+                    \edef\@bracketheight{\the\ht\z@}\bracketend{#1}{#2}
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill
+                    \leaders \vrule \@height #1 \@depth \z@ \hfill \bracketend
+	              {#1}{#2}$}
+\def\bracketend#1#2{\vrule height #2 width #1\relax}
+
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dangerous bend macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\def\dbend{{\manual\char127}} % dangerous bend sign
+
+% Danger, Will Robinson!
+\newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
+
+% Danger! Danger!
+\newenvironment{ddanger}{\medbreak\noindent\hangindent=3pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
+
+%% % Danger, Will Robinson!
+%% \def\danger{\begin{footnotesize}\noindent%
+%% \hangindent=20pt\hangafter=-2%
+%% \hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+%% \def\enddanger{\par\end{footnotesize}\medbreak}
+%%
+%% % Danger! Danger!
+%% \def\ddanger{\medbreak\begin{footnotesize}\noindent%
+%% \hangindent=36pt\hangafter=-2%
+%% \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+%% \def\endddanger{\par\end{footnotesize}\medbreak}
+
+%==============================================================================
+% section commands
+%\iffalse
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 40\p@
+    \gdef\@chaptername{#1}\gdef\@currentSection{\thechapter}
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \chapterfont \hfill #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+\def\specialsection{\@startsection{section}{1}%
+  \z@{\baselineskip\@plus\baselineskip}{.25\baselineskip}%
+  {\sectionfont}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+  {\sectionfont}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\subsectionfont}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.125\baselineskip}%
+%  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\subsectionfont}}
+\begin{comment}
+\renewenvironment{thebibliography}[1]
+     {\pagebreak\section*{\refname}\addcontentsline{toc}{section}{\refname} %
+      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+      \begin{footnotesize}\list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist\end{footnotesize}}
+\end{comment}
+
+%%%%%%%%%%
+% Exercise Macros
+%%%%%%%%%%
+\def\textindent#1{\indent \llap {#1\enspace }\ignorespaces}
+\newcounter{exercise}
+\def\exercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\textbf{\theexercise.}}[\textit{#1\/}]\kern6pt}
+\def\suggestedExercise [#1]{\refstepcounter{exercise}\ifnum\value{exercise}>1 \smallbreak\fi
+  \textindent{\llap{\manual x\hskip3pt}\bf{\hbox to
+     \ifnum \value{exercise}>99 1.5em\else 1em\fi{\hfil\theexercise}}.}[\textit{#1\/}]\kern6pt}
+
+\def\HM{H\kern-.1em M} % used for "higher math" exercise ratings
+\def\MN{M\kern-.1em N} % used in Section 4.3.1 when $MN$ appears frequently
+
+\newenvironment{exercises}{\medskip\phantomsection\addcontentsline{toc}{section}{Exercises}%
+        \noindent\ignorespaces\section*{Exercises}%
+        \parindent=0pt%
+        \setcounter{exercise}{0}}{}
+
+\newwrite\ans%
+\immediate\openout\ans=tex/answers % file for answers to exercises
+\def\ansSec#1{\immediate\write\ans{\detokenize{\section*}{#1}}}
+\def\ansno#1:{\smallbreak\textindent{\textbf{#1.\enspace}}}
+\newenvironment{answer}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\arabic{exercise}:}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+
+%% Sometimes there's an alternate way to solve the problem
+%% TODO: Make this include an optional argument specifying how it
+%%       was done, so one can use the following code snippet
+%% \begin{altAns}[Using Complex Analysis]
+%% ...
+%% \end{altAns}
+\newenvironment{altAns}%
+ {\par\medbreak
+    \immediate\write\ans{}%
+    \immediate\write\ans{\string\ansno\theexercise (Alternate):}%
+  \@bsphack
+  \let\do\@makeother\dospecials\catcode`\^^M\active
+  \def\verbatim@processline{%
+    \immediate\write\ans{\the\verbatim@line}}%
+  \verbatim@start}%
+ {\@esphack} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% We also customize commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\noparskip{}
+\newcommand\Sym{\mathop{\rm Sym}\nolimits}
+\newcommand\diag{\mathop{\rm diag}\nolimits}
+\newcommand\cliff{C\ell}
+\newcommand\rank{\mathop{\rm rank}\nolimits}
+\newcommand\Span{\mathop{\rm span}\nolimits}
+
+
+\newcommand{\re}{\mathop{\mathrm{Re}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\aut}{\mathop{\mathrm{Aut}}\nolimits}
+\renewcommand{\ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\coker}{\mathop{\mathrm{Coker}}\nolimits}
+\newcommand{\erfi}{\mathop{\mathrm{erfi}}\nolimits}
+\newcommand{\erf}{\mathop{\mathrm{erf}}\nolimits}
+\let\<\langle
+\let\>\rangle
+\let\iso\cong
+\newcommand{\equalsdef}{\stackrel{\text{def}}{=}}
+\let\eqdef\equalsdef
+\newcommand{\define}[1] {``\/\textbf{#1}\/\/''}%\index{#1}}
+\newcommand{\lie}{\mathop{\mathrm{Lie}}\nolimits}
+\let\Lie\lie
+\renewcommand{\arctan}{\mathop{\mathrm{ArcTan}}\nolimits}
+\renewcommand{\hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand\fun{\mathop{\mathrm{Fun}}\nolimits} % like \hom but for categories
+\newcommand\nat{\mathop{\mathrm{Nat}}\nolimits} % like \hom but for functors
+\let\Hom\hom
+\def\noparskip{}
+\newcommand{\id}[1]{\mathop{\mathrm{id}}\nolimits_{#1}}
+\newcommand{\ob}[1]{\mathrm{Ob}(#1)}
+\newcommand{\cat}[1]{\mathbf{#1}} % notation for a category, e.g. $\cat{Set}$
+\newcommand\powerset[1]{\mathcal{P}(#1)}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}\nolimits}
+\newcommand{\mat}{\mathop{\mathrm{Mat}}\nolimits}
+\newcommand{\der}{\mathop{\mathrm{Der}}\nolimits}
+\newcommand{\Ad}{\mathop{\mathrm{Ad}}\nolimits}
+\newcommand{\ad}{\mathop{\mathrm{ad}}\nolimits}
+\newcommand\op{\mathrm{op}}
+%% Frequently used sets
+\let\logic\texttt
+%\def\logic#1{\relax\ifmmode\mathtt{#1}\else\texttt{#1}\fi}
+\newcommand\CC{\mathbb{C}}
+\newcommand\CP{\mathbb{CP}}
+\newcommand\EE{\mathbb{E}}
+\newcommand\FF{\mathbb{F}}
+\newcommand\HH{\mathbb{H}}
+\newcommand\HP{\mathbb{HP}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\OO{\mathbb{O}}
+\newcommand\OP{\mathbb{OP}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\RP{\mathbb{RP}}
+\newcommand\ZZ{\mathbb{Z}}
+\let\oldsetminus\setminus
+\renewcommand\setminus{-}
+\newcommand\universe{\mathcal{U}}
+\newcommand\domain{\mathop{\mathrm{dom}}\nolimits}
+\newcommand\codomain{\mathop{\mathrm{cod}}\nolimits}
+\let\propersubset\subset
+\let\propersupset\supset
+\let\oldsubset\subset
+\let\oldsupset\supset
+\let\subset\subseteq
+\let\supset\supseteq
+\let\into\hookrightarrow
+\let\onto\twoheadrightarrow
+\let\xonto\xtwoheadrightarrow
+\newcommand\1{\mathbf{1}}
+\newcommand\cardinality[1]{\left|#1\right|}
+\newcommand\continuumCardinality{\mathfrak{c}}
+%% Lie groups frequently used
+\newcommand\GL[2][\relax]{\ifx#1\relax\mathrm{GL}(#2)\else\mathrm{GL}_{#1}(#2)\fi}
+\newcommand\SL[2][\relax]{\ifx#1\relax\mathrm{SL}(#2)\else\mathrm{SL}_{#1}(#2)\fi}
+\newcommand\SO[2][\relax]{\ifx#1\relax\mathrm{SO}(#2)\else\mathrm{SO}_{#1}(#2)\fi}
+\newcommand\ORTH[2][\relax]{\ifx#1\relax\mathrm{O}(#2)\else\mathrm{O}_{#1}(#2)\fi}
+\newcommand\U[2][\relax]{\ifx#1\relax\mathrm{U}(#2)\else\mathrm{U}_{#1}(#2)\fi}
+\newcommand\SU[2][\relax]{\ifx#1\relax\mathrm{SU}(#2)\else\mathrm{SU}_{#1}(#2)\fi}
+\newcommand\Sp[2][\relax]{\ifx#1\relax\mathrm{Sp}(#2)\else\mathrm{Sp}_{#1}(#2)\fi}
+\newcommand\PGL[2][\relax]{\ifx#1\relax\mathrm{PGL}(#2)\else\mathrm{PGL}_{#1}(#2)\fi}
+\newcommand\PSU[2][\relax]{\ifx#1\relax\mathrm{PSU}(#2)\else\mathrm{PSU}_{#1}(#2)\fi}
+
+%% Differential Geometry refers to these quantities frequently as well
+\def\diff{\mathrm{Diff}}
+\def\vect{\mathrm{Vect}}
+
+%% Categories frequently used
+\newcommand\Set{\cat{Set}} % category of sets
+\newcommand\FinSet{\cat{FinSet}} % category of finite sets
+\newcommand\Cat{\cat{Cat}} % category of categories
+\newcommand\Vect{\cat{Vect}} % category of vector spaces
+\newcommand\Top{\cat{Top}} % category of topological spaces
+\newcommand\Grp{\cat{Grp}} % category of groups
+\newcommand\Gpd{\cat{Gpd}} % category of groupoids
+\newcommand\Alg{\cat{Alg}} % category of algebras over a field
+\newcommand\Magm{\cat{Magm}} % category of Magmas
+\newcommand\Ord{\cat{Ord}} % category of ordinals
+\newcommand\FinOrd{\cat{FinOrd}} % category of FINITE ordinals
+
+\def\weak={\approx} % weak equality when working in classical gauge theory
+\def\PB(#1,#2){\left\{#1,#2\right\}} % the Poisson bracket for field theory and mechanics
+
+\newcommand\ClassicalGroup[1]{\mathsf{#1}}
+\newcommand\Antisymmetric{{\textstyle\bigwedge\nolimits}}
+
+%\let\oldemptyset\emptyset
+\let\varemptyset\varnothing
+
+% Notation used for algebraic topology
+\let\homotopic\sim
+
+% Notation for mathematical logic
+\def\tee{\logic{true}}
+\def\falsum{\logic{false}}
+\let\entails\implies
+\def\lst{\mbox{\texttt{:}}} % logical ``such that'' notation
+\def\lst{\;\mid\;}
+%
+%  special signs and characters
+%\newcommand{\D}{\mathrm{d}}
+%\newcommand{\E}{\mathrm{e}}
+%\let\eul=\E
+%\newcommand{\I}{{\rm i}}
+%\let\imag=\I
+
+
+\newcounter{boxed}[section]
+\newenvironment{Boxed}[1]{\refstepcounter{boxed}\MakeFramed {\advance\hsize 2pc\FrameRestore}\noindent{\subsectionfont Box \theboxed. #1}\vskip .125\baselineskip}{\endMakeFramed}
+\def\arXiv#1{\href{http://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+
+\def\bigO{\mathcal{O}}
+\newcommand\units[1]{\ensuremath{\, \mathrm{#1}}}
+
+\newcommand\identify{\noindent\llap{\rm1.\kern.5em}\textbf{Identify:}}
+\newcommand\setup{\noindent\llap{\rm2.\kern.5em}\textbf{Set up:}}
+\newcommand\execute{\noindent\llap{\rm3.\kern.5em}\textbf{Execute:}}
+\newcommand\evaluate{\noindent\llap{\rm4.\kern.5em}\textbf{Evaluate:}}
+\makeatother
+

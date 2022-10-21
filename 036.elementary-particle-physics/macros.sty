@@ -1,0 +1,30 @@
+%%% macros.sty --- 
+%% 
+%% Filename: macros.sty
+%% Description: 
+%% Author: alex
+%% Maintainer: 
+%% Created: Sat Oct  1 11:18:59 2016 (-0700)
+%% Version: 
+%% Package-Requires: ()
+%% Last-Updated: 
+%%           By: 
+%%     Update #: 0
+%% URL: 
+%% Doc URL: 
+%% Keywords: 
+%% Compatibility: 
+%% 
+\def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
+\def\@lectureWith[#1]{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
+\def\@lectureWithout{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+  \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}\sectionfont Lecture \thesection.}\medbreak}
+
+% notation
+% \elementarycharge borrowed from siunitx
+\providecommand{\elementarycharge}{\text{\ensuremath{e}}}
+\providecommand{\gaugeDerivative}{\ensuremath{D}}
+\def\action{I}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% macros.sty ends here
