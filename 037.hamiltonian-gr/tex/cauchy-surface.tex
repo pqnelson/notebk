@@ -11,6 +11,10 @@ hypersurfaces. For now, suppose we have such a ``time-slicing'', a
 foliation of spacetime into spatial hypersurfaces $\Sigma_{t}$ indexed
 by the time parameter.
 
+\begin{center}
+  \includegraphics{img/img.0}
+\end{center}
+
 The two points have local coordinates $(t,x^{i})$ and $(t+\D t, x^{i} + \D x^{i})$.
 The basic steps are as follows:
 \begin{enumerate}
@@ -46,7 +50,7 @@ We use Latin indices starting from $i$ to track spatial components and
 3-tensors. The convention will be to raise and lower spatial indices by
 $q^{ij}$ (the inverse of the 3-metric $q_{ij}$) and $q_{ij}$, respectively; in particular, $\shift_{i}=q_{ij}\shift^{j}$.
 We can rewrite the ADM line element as
-\begin{equation}
+\begin{equation}\label{eq:cauchy-surface:adm-line-element}
   \D s^{2} = (-\lapse^{2} + \shift_{i}\shift^{i})\,\D t^{2}
   + 2 \shift_{k}\,\D x^{k}\D t
   + q_{ij}\,\D x^{i}\D x^{j}.
@@ -96,6 +100,13 @@ we find
 \begin{equation}\label{eq:cauchy-surface:determinant-of-metric}
 \det(g_{\mu\nu}) = -N^{2}\det(q_{ij}).
 \end{equation}
+
+\begin{exercise}
+If we let ${}^{(3)}\Gamma^{i}_{jk} = q^{i\ell}(\partial_{j}q_{k\ell}+\partial_{k}q_{j\ell}-\partial_{\ell}q_{jk})$
+be the spatial Christoffel symbols, express
+${}^{(4)}\Gamma^{0}_{\mu\nu}$ in terms of ${}^{(3)}\Gamma^{i}_{jk}$,
+$\shift^{i}$, $\lapse$, the 3-metric $q_{ij}$, and their derivatives.
+\end{exercise}
 
 \subsection{Choice of Time-Slicing}
 
@@ -188,7 +199,7 @@ Then we claim that
 The components of the normal vector can be found from the one-form
 $n_{\mu}\,\D x^{\mu}=-\lapse\,\D t$ (which matches the motivation for the
 lapse function in the first place) as
-\begin{equation}
+\begin{equation}\label{eq;cauchy-surface:normal-vector-in-obvious-time-slicing}
 n^{\mu} = g^{\mu\nu}n_{\nu} = \left(\frac{-1}{\lapse},\frac{\shift^{i}}{\lapse}\right).
 \end{equation}
 When compared to Eq~\eqref{eq:lapse-and-shift-in-terms-of-t-and-normal},

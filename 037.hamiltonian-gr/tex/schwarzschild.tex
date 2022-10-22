@@ -1,0 +1,183 @@
+\section{Schwarzschild Solution in ADM Formalism}
+
+\textbf{TODO:} This turns out to be a very lengthy series of
+calculations. It is probably a good idea to transform this into a series
+of exercises, or isolate this into its own article.
+
+\bigbreak
+
+We will study the Schwarzschild metric
+\begin{equation}
+\D s^{2} = -\left(1 - \frac{2GM}{c^{2}}\frac{1}{r}\right)c^{2}\,\D t^{2}
++\left(1 - \frac{2GM}{c^{2}}\frac{1}{r}\right)^{-1}\D r^{2}
++r^{2}\,\D\Omega^{2}
+\end{equation}
+where $M$ is the mass of the gravitating body, $G$ is Newton's
+gravitational constant, and
+\begin{equation}
+\D\Omega^{2} = \D\theta^{2} + \sin^{2}(\theta)\,\D\phi^{2}
+\end{equation}
+is the metric for the 2-sphere. Let us consider spatial hypersurfaces in
+this choice of coordinates. We may frequently rely upon the parameter,
+\begin{equation}
+r_{s} = \frac{2GM}{c^{2}},
+\end{equation}
+known as the Schwarzschild radius.
+
+We observe there is no term of the form $\D t\,\D x^{i}$ in the
+Schwarzschild line element, which means the shift function is zero,
+\begin{subequations}
+\begin{equation}
+\shift_{i}=\shift^{i}=0.
+\end{equation}
+But then examining the ADM line element in
+Eq~\eqref{eq:cauchy-surface:adm-line-element},
+we see that
+\begin{equation*}
+-\lapse^{2} = -\left(1 - \frac{2GM}{c^{2}}\frac{1}{r}\right),
+\end{equation*}
+or explicitly,
+\begin{equation}
+\lapse = \sqrt{1 - \frac{2GM}{c^{2}}\frac{1}{r}} = \sqrt{1 - \frac{r_{s}}{r}}.
+\end{equation}
+We can also determine the nonzero components of the 3-metric:
+\begin{align}
+  q_{rr} &= \left(1 - \frac{2GM}{c^{2}}\frac{1}{r}\right)^{-1}\\
+  q_{\theta\theta} &= r^{2}\\
+  q_{\phi\phi} &= r^{2}\sin^{2}(\theta).
+\end{align}
+\end{subequations}
+All other components of the 3-metric vanish. The normal vector for this
+particular choice of time-slicing is, using Eq~\eqref{eq;cauchy-surface:normal-vector-in-obvious-time-slicing},
+\begin{subequations}
+\begin{equation}
+n^{\mu} = (-1/\lapse,\vec{0}),
+\end{equation}
+and
+\begin{equation}
+n_{\mu} = (\lapse,\vec{0}).
+\end{equation}
+\end{subequations}
+So far, so good.
+
+\begin{exercise}
+Verify the non-vanishing spatial Christoffel symbols ${}^{(3)}{\Gamma^{i}}_{jk}$
+associated with the 3-metric are:
+\begin{subequations}
+\begin{align}
+{}^{(3)}{\Gamma^{r}}_{rr} &= \frac{-r_{s}}{2r(r-r_{s})}\\
+{}^{(3)}{\Gamma^{r}}_{\theta\theta} &= -(r-r_{s})\\
+{}^{(3)}{\Gamma^{r}}_{\phi\phi} &= -(r-r_{s})\sin^{2}(\theta)\\
+{}^{(3)}{\Gamma^{\theta}}_{r\theta} &= 1/r\\
+{}^{(3)}{\Gamma^{\phi}}_{r\phi} &= 1/r\\
+{}^{(3)}{\Gamma^{\phi}}_{\theta\phi} &= \cot(\theta).
+\end{align}
+\end{subequations}
+\end{exercise}
+
+The first step in the canonical analysis is to write down the conjugate
+momenta. We see from Eq~\eqref{eq:canonical-action:momentum-density-defn}
+we need the extrinsic curvature $K^{ij}$ and its trace $K$.
+We use Eq~\eqref{eq:extrinsic-curvature:as-time-derivative-of-metric}
+to compute (neglecting terms involving $\shift_{i}$, since they're zero),
+\begin{equation}
+K_{ij} = \frac{1}{2N}\partial_{t}q_{ij} = 0,
+\end{equation}
+since $\partial_{0}q_{ij}=0$.
+
+\subsection{Isotropic Radial Coordinates}
+
+We have encountered a difficulty due to our choice of coordinates. Let
+us see what happens with isotropic radial coordinates, where we use a
+new radial coordinate $\bar{r}$ related to our old $r$ by:
+\begin{equation}
+r = \bar{r}\left(1 + \frac{r_{s}}{2\bar{r}}\right)^{2}.
+\end{equation}
+The line element becomes,
+\begin{equation}
+\D s^{2} = -\left(\frac{\displaystyle 1 - \frac{r_{s}}{4\bar{r}}}{\displaystyle 1 + \frac{r_{s}}{4\bar{r}}}\right)^{2}\,c^{2}\,\D t^{2} +
+\left(1 + \frac{r_{s}}{4\bar{r}}\right)^{4}(\D\bar{r}^{2} +\bar{r}^{2}\,\D\theta^{2}+\bar{r}^{2}\sin^{2}(\theta)\,\D\varphi^{2}).
+\end{equation}
+Note: this is valid only for $\bar{r}>r_{s}/4$.
+
+We find, in these new coordinates, as there is no term like $\D x^{i}\,\D t$
+in the line element, the shift function is zero:
+\begin{equation}
+\shift^{i}=\shift_{i}=0.
+\end{equation}
+The lapse function is then
+\begin{equation}
+\lapse = \frac{\displaystyle 1 - \frac{r_{s}}{4\bar{r}}}{\displaystyle 1 + \frac{r_{s}}{4\bar{r}}}.
+\end{equation}
+The spatial metric has nonzero components
+\begin{subequations}
+\begin{align}
+q_{rr} &= \left(1 + \frac{r_{s}}{4\bar{r}}\right)^{4},\\
+q_{\theta\theta} &= \left(1 + \frac{r_{s}}{4\bar{r}}\right)^{4}\bar{r}^{2},\\
+q_{\varphi\varphi} &= \left(1 + \frac{r_{s}}{4\bar{r}}\right)^{4}\bar{r}^{2}\sin^{2}(\theta).
+\end{align}
+\end{subequations}
+This experiences the same problem as before, the extrinsic curvature
+vanishes.
+
+\subsection{Painlev\'{e}--Gullstrand Coordinates}
+The really interesting situation is when we use the
+Painlev\'{e}--Gullstrand coordinates,
+\begin{equation}
+\D s^{2} = -c^{2}\,\D t^{2} + \left(\D r + \sqrt{\frac{r_{s}}{r}}c\,\D t\right)^{2}
++r^{2}\,\D\Omega^{2}.
+\end{equation}
+We find
+\begin{subequations}
+\begin{align}
+\shift &= 1\\
+\lapse^{i} &= (\sqrt{r_{s}/r}, 0, 0)\\
+q_{ij} &= \mathrm{diag}(1,r^{2},r^{2}\sin^{2}(\theta)).
+\end{align}
+\end{subequations}
+We can observe that $q_{ij}$ describes a flat metric.
+
+We find
+\begin{subequations}
+\begin{align}
+K_{rr} &= -\sqrt{\frac{r_{s}}{4r^{3}}}\\
+K_{\theta\theta} &= \sqrt{r_{s}r}\\
+K_{\varphi\varphi} &= \sqrt{r_{s}r}\sin^{2}(\theta).
+\end{align}
+\end{subequations}
+This implies the trace of the extrinsic curvature is
+\begin{equation}
+  \begin{split}
+K &= K_{ij}q^{ij} = -\sqrt{\frac{r_{s}}{4r^{3}}} + \sqrt{\frac{r_{s}}{r}} + \sqrt{\frac{r_{s}}{r}}\\
+&= \left(2 - \frac{1}{2r}\right)\sqrt{\frac{r_{s}}{r}}.
+  \end{split}
+\end{equation}
+The inverse of the extrinsic curvature is given by
+$K^{ij}=q^{ik}q^{j\ell}K_{k\ell}$, so we find
+\begin{align*}
+K^{rr} = q^{rk}q^{r\ell}K_{k\ell} = q^{rr}q^{rr}K_{rr}\\
+K^{\theta\theta}=q^{\theta k}q^{\theta\ell}K_{k\ell} = q^{\theta\theta}q^{\theta\theta}K_{\theta\theta}\\
+K^{\varphi\varphi}=q^{\varphi k}q^{\varphi\ell}K_{k\ell} = q^{\varphi\varphi}q^{\varphi\varphi}K_{\varphi\varphi}.
+\end{align*}
+These have components
+\begin{subequations}
+\begin{align}
+K^{rr} &= K_{rr} = -\sqrt{\frac{r_{s}}{4r^{3}}}\\
+K^{\theta\theta} &= r^{-4}K_{\theta\theta} = \frac{1}{r^{3}}\sqrt{\frac{r_{s}}{r}}\\
+K^{\varphi\varphi} &= \frac{1}{r^{4}\sin^{4}(\theta)}K_{\varphi\varphi}
+= \frac{1}{r^{2}\sin^{2}(\theta)}\sqrt{r_{s}r}.
+\end{align}
+\end{subequations}
+Observe $\sqrt{q}=r^{2}\sin(\theta)$.
+We then find the conjugate momenta using
+Eq~\eqref{eq:canonical-action:momentum-density}, which is diagonal with components:
+\begin{subequations}
+\begin{align}
+\pi^{rr} &= \frac{\sqrt{q}}{8\pi G}\left(-\sqrt{\frac{r_{s}}{4r^{3}}}-\left(2 - \frac{1}{2r}\right)\sqrt{\frac{r_{s}}{r}}\right)\\
+\pi^{\theta\theta} &= \frac{\sqrt{q}}{8\pi G}\left(\frac{\sqrt{r_{s}r}}{r^{4}}-\left(2 - \frac{1}{2r}\right)\sqrt{\frac{r_{s}}{r}}\right)\\
+\pi^{\varphi\varphi} &= \frac{\sqrt{q}}{8\pi G}\left(
+\frac{\sqrt{r_{s}r}}{r^{2}\sin^{2}(\theta)} - \left(2 - \frac{1}{2r}\right)\sqrt{\frac{r_{s}}{r}}.
+\right)
+\end{align}
+\end{subequations}
+We see that $\pi^{ii}\sim\sqrt{q}\sqrt{r_{s}r}/r^{3\pm1}$.

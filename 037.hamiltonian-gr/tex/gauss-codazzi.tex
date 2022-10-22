@@ -16,9 +16,9 @@ We arrive at the relation
 ={{}^{(3)}\!}{R^{\rho}}_{\sigma\mu\nu} + {K^{\rho}}_{\mu}K_{\sigma\nu}-{K^{\rho}}_{\nu}K_{\sigma\mu}.
 \end{equation}
 Contracting indices gives us Gauss's \textit{Theorema Egregium}:
-\begin{equation}
-{{}^{(4)}\!}{R} + 2{{}^{(4)}\!}{R}_{\mu\nu}n^{\mu}n^{\nu}
-={{}^{(3)}\!}{R} + K^{2} - K_{\mu\nu}K^{\mu\nu}.
+\begin{equation}\label{eq:gauss-codazzi:theorem-egregium}
+\boxed{{{}^{(4)}\!}{R} + 2{{}^{(4)}\!}{R}_{\mu\nu}n^{\mu}n^{\nu}
+={{}^{(3)}\!}{R} + K^{2} - K_{\mu\nu}K^{\mu\nu}.}
 \end{equation}
 Note, here $K=K_{ij}q^{ij}$ is the trace of the extrinsic curvature, so
 the second term $K^{2}$ is the square of the trace.
@@ -29,17 +29,32 @@ We may cleverly pick the normal vector field in our considerations
 {}^{(4)}{R^{\rho}}_{\sigma\mu\nu}n^{\sigma}
   = [{}^{(4)}\nabla_{\mu}, {}^{(4)}\nabla_{\nu}]n^{\rho}.
 \end{equation}
-\textbf{TODO:} finish the calculations here.
-
+We have, projecting the noncontracted 4-indices to spatial components
+\begin{subequations}
+\begin{align}
+{q^{\alpha}}_{\rho}{q^{\mu}}_{\beta}{q^{\nu}}_{\gamma}\,
+  {}^{(4)}{R^{\rho}}_{\sigma\mu\nu}n^{\sigma}
+&={q^{\alpha}}_{\rho}{q^{\mu}}_{\beta}{q^{\nu}}_{\gamma}[{}^{(4)}\nabla_{\mu}, {}^{(4)}\nabla_{\nu}]n^{\rho}\\
+&=-{q^{\alpha}}_{\rho}{q^{\mu}}_{\beta}{q^{\nu}}_{\gamma}[\nabla_{\mu}({K_{\nu}}^{\rho}+n_{\nu}a^{\rho})-\nabla_{\nu}({K_{\mu}}^{\rho}-n_{\mu}a^{\rho})]\\
+&=-[{}^{(3)}\nabla_{\beta}{K_{\gamma}}^{\alpha} - {}^{(3)}\nabla_{\gamma}{K_{\beta}}^{\alpha}]-[a^{\alpha}K_{\beta\gamma}-a^{\alpha}K_{\gamma\beta}]
+\end{align}
+\end{subequations}
+But we know the extrinsic curvature is symmetric, which kills the second
+term in the last line of the previous equation. Hence we obtain the
+Codazzi relation:
+\begin{equation}
+\boxed{{q^{\alpha}}_{\rho}{q^{\mu}}_{\beta}{q^{\nu}}_{\gamma}\, {}^{(4)}{R^{\rho}}_{\sigma\mu\nu}n^{\sigma}
+=-[{}^{(3)}\nabla_{\beta}{K_{\gamma}}^{\alpha} - {}^{(3)}\nabla_{\gamma}{K_{\beta}}^{\alpha}].}
+\end{equation}
 These slick considerations may be found in Danieli's thesis~\cite[see \S2.3]{danieli}.
 
 \subsection{Rewriting the Lagrangian}
 
-We may then rewrite the Einstein--Hilbert Lagrangian density
+We may start with the Einstein--Hilbert Lagrangian density,
 \begin{equation}
 \mathcal{L}_{EH} = {}^{(4)}R\sqrt{-g}.
 \end{equation}
-We find
+We use Gauss's~Eq~\eqref{eq:gauss-codazzi:theorem-egregium},
 \begin{equation}
   \begin{split}
 \mathcal{L}_{EH} &= [{}^{(3)}R - K^{2} + K^{ij}K_{ij}-2\nabla_{\alpha}(n^{\mu}\nabla_{\mu}n^{\alpha}-n^{\alpha}\nabla_{\mu}n^{\mu})]\lapse\sqrt{q}\\

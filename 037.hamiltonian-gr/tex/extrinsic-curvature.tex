@@ -18,7 +18,7 @@ If we have foliated space-time into spatial hypersurfaces $\Sigma_{t}$,
 then we may consider unit normal 4-vectors $n^{\mu}$. The extrinsic
 curvature may be computed using the Lie derivative of the 3-metric with
 respect to $n^{\mu}$ as
-\begin{equation}\label{eq:extrinsic-curvature:as-time-derivative-of-metric}
+\begin{equation}\label{eq:extrinsic-curvature:as-lie-derivative-of-metric}
   \begin{split}
   K_{ij} &= \frac{-1}{2}(\lieD_{\mathbf{n}}q)_{ij}\\
   &= \frac{-1}{2}n^{\mu}\partial_{\mu}q_{ij} - \frac{1}{2} q_{\mu j}(\partial_{i}n^{\mu}) - \frac{1}{2} q_{i\mu}(\partial_{j}n^{\mu}),
@@ -60,7 +60,7 @@ Specifically, the useful \emph{fourth} version of extrinsic curvature,
 \begin{equation}\label{eq:extrinsic-curvature:as-time-derivative-of-three-metric}
 K_{ij} = \frac{1}{2N}(\partial_{t}q_{ij} - {{}^{(3)}}\nabla_{i}N_{j} - {{}^{(3)}}\nabla_{j}N_{i}).
 \end{equation}
-This requires a length calculation. The basic idea is to define the
+This requires a lengthy calculation. The basic idea is to define the
 extrinsic curvature in a coordinate-free manner,\footnote{See John
 Baez~\cite{baez} for details, specifically part III.}
 \begin{equation}
@@ -70,7 +70,7 @@ K(u,v) = -g(\nabla_{u}v,\vec{n}).
 \begin{lemma}
 In local coordinates, $K_{ij} = N\Gamma^{0}_{ij}$.
 \end{lemma}
-\begin{proof}[Proof (length calculation)]
+\begin{proof}[Proof (lengthy calculation)]
 Using local coordinates, we find the components of the extrinsic curvature as
 \begin{subequations}
   \begin{align}
@@ -92,7 +92,7 @@ $n_{\mu}=g_{\mu\nu}n^{\nu}=(-N,0,0,0)$.
 \Gamma^{0}_{ij} = \frac{1}{2N^{2}}(\partial_{t}q_{ij} - {{}^{(3)}}\nabla_{i}N_{j} - {{}^{(3)}}\nabla_{j}N_{i}).
   \end{equation}
 \end{lemma}
-\begin{proof}[Proof (length calculation)]
+\begin{proof}[Proof (lengthy calculation)]
   We can compute this directly,
   \begin{subequations}
     \begin{align}

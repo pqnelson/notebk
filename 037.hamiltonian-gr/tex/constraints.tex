@@ -1,0 +1,48 @@
+\section{Constraint Algebra}
+
+We have two constraints in our canonical analysis: the diffeomorphism
+constraint (a.k.a., the Hamiltonian constraint),
+\begin{subequations}
+  \begin{align}
+    \mathcal{H}_{\perp} &\approx0\\
+    \intertext{and the momentum constraints,}
+    \mathcal{H}^{i} &\approx0.
+  \end{align}
+\end{subequations}
+We want to compute the following Poisson brackets:
+\begin{enumerate}
+\item $\{\mathcal{H}_{\perp}(\vec{x}),\mathcal{H}^{i}(\vec{y})\}$
+\item $\{\mathcal{H}^{i}(\vec{x}),\mathcal{H}^{i}(\vec{y})\}$
+\item $\{\mathcal{H}_{\perp}(\vec{x}),\mathcal{H}_{\perp}(\vec{y})\}$
+\end{enumerate}
+We want the constraints to form a closed algebra, so these Poisson
+brackets should produce something like
+\begin{equation}
+\begin{split}
+  &\{\mbox{(constraint)}(\vec{x}), \mbox{(constraint)}(\vec{y})\}\\
+ &\sim  a(\vec{x})\mathcal{H}_{\perp}(\vec{x})\delta^{(3)}(\vec{x}-\vec{y})
++b^{i}(\vec{x})\mathcal{H}_{i}(\vec{x})\delta^{(3)}(\vec{x}-\vec{y}).
+\end{split}
+\end{equation}
+We just need to determine the coefficients $a$ and $b^{i}$.
+
+The only catch is, well, the physically interesting thing is to study
+the Poisson bracket of \emph{smeared} constraints. So given arbitrary
+scalar functions $\xi^{\perp}$ and vector functions $\widehat{\xi}^{i}$, we'd
+have
+\begin{subequations}
+\begin{equation}
+\mathcal{H}[\xi^{\perp}] = \int_{\Sigma}\xi^{\perp}\mathcal{H}_{\perp}\,\D^{3}x,
+\end{equation}
+and
+\begin{equation}
+\widehat{\mathcal{H}}[\widehat{\xi}]
+  = \int_{\Sigma}\widehat{\xi}^{i}\mathcal{H}_{i}\,\D^{3}x.
+\end{equation}
+\end{subequations}
+Then we want to compute the Poisson brackets,
+\begin{enumerate}
+\item $\{\mathcal{H}[\xi^{\perp}],\widehat{\mathcal{H}}[\widehat{\zeta}]\}$
+\item $\{\widehat{\mathcal{H}}[\widehat{\xi}],\widehat{\mathcal{H}}[\widehat{\zeta}]\}$
+\item $\{\mathcal{H}[\xi^{\perp}],\mathcal{H}[\zeta^{\perp}]\}$
+\end{enumerate}
