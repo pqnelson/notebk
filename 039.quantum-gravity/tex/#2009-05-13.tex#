@@ -1,0 +1,40 @@
+\lecture
+
+The Hamiltonian constraint gives surface deformations. So far we have
+not looked at the momentum or Hamiltonian constraints. It's like
+Einstein's field equations are missing. We have
+\begin{equation}
+V_{i} = F^{\widehat{I}}_{ij}\widetilde{E}^{j}_{\widehat{I}}=0.
+\end{equation}
+Let us first consider a trick useful in many circumstances. Consider
+\begin{subequations}
+\begin{align}
+\xi^{i}F_{ij}^{\widehat{I}}
+&= \xi^{i}(\partial_{i}A^{\widehat{I}}_{j} -
+    \partial_{j}A^{\widehat{I}}_{i} + \epsilon^{\widehat{I}\widehat{M}\widehat{N}}A_{i\widehat{M}}A_{j\widehat{N}})\\
+&= \xi^{i}\partial_{i}A^{\widehat{I}}_{j} - \partial_{j}(\xi^{i}A^{\widehat{I}}_{i}) +
+    (\partial_{j}\xi^{i})A^{\widehat{I}}_{i} + \epsilon^{\widehat{I}\widehat{M}\widehat{N}}\xi^{i}A_{i\widehat{M}}A_{j\widehat{N}}\\
+&=
+    \underbrace{\xi^{i}\partial_{i}A^{\widehat{I}}_{j}+(\partial_{j}\xi^{i})A^{\widehat{I}}_{i}}_{\substack{\text{change of }
+        A\text{ under an}\\
+        \text{infinitesimal change of}\\
+        \text{coordinates}}} - D_{j}(\xi^{i}A_{i}^{\widehat{I}})\\
+&= \underbrace{\delta_{\xi}A^{\widehat{I}}_{i}}_{\text{Lie derivative}} - D_{j}(\xi^{i}A_{i}^{\widehat{I}}).
+\end{align}
+\end{subequations}
+The moral is that a vector contracted with the field strength tensor
+looks liek a covariant derivative and a diffeomorphism (gauge
+transformation). So we have
+\begin{subequations}
+\begin{equation}
+\int\xi^{i}V_{i}\,\D^{3}x\sim\int(-D_{i}(\xi^{i}A^{\widehat{I}}_{i}) +
+\delta_{\xi}A^{\widehat{I}}_{i})\frac{\delta}{\delta A^{\widehat{I}}_{i}}\D^{3}x,
+\end{equation}
+which acts on fields like:
+\begin{equation}
+A\to A - D\varepsilon + \delta_{\xi}A,
+\end{equation}
+\end{subequations}
+where $\varepsilon^{\widehat{I}} = \xi^{i}A^{\widehat{I}}_{i}$.
+This is exactly analogous to the statement in quantum mechanics that
+$\widehat{p}$ generates translations in position.

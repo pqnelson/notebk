@@ -115,3 +115,52 @@ E_{\widehat{I}}\,\mathcal{U}(s_{2},s_{1}) =
 8\pi G_{N}\immirzi I(C,\Sigma)\mathcal{U}(s_{2},s)\tau_{\widehat{I}}\,\mathcal{U}(s,s_{1}),
 \end{equation}
 where $C(s)$ is the point of intersection.
+
+Lets consider
+\begin{equation}
+E_{\widehat{I}}E^{\widehat{I}}\mathcal{U}(s_{2},s_{1}) =(8\pi G_{N}\immirzi)^{2}\mathcal{U}(s_{2},s)\tau_{\widehat{I}}\tau^{\widehat{I}}\,\mathcal{U}(s,s_{1}).
+\end{equation}
+We see for $\SU(2)$, $\tau_{\widehat{I}}\tau^{\widehat{I}}$ is the
+quadratic Casimir (it's $J^{2}$ in quantum angular momentum), so we can
+plug in its eigenvalue $j(j+1)$ giving us
+\begin{equation}
+E_{\widehat{I}}E^{\widehat{I}}\mathcal{U}(s_{2},s_{1}) =(8\pi G_{N}\immirzi)^{2}j(j+1)\mathcal{U}(s_{2},s_{1}),
+\end{equation}
+assuming there is an intersection. We can write a spin network state
+$\mid s\rangle$, so
+\begin{equation}
+E_{\widehat{I}}E^{\widehat{I}}\mid s\rangle = \sum_{\text{intersections}}(8\pi G_{N}\immirzi)^{2}j(j+1)\mid s\rangle.
+\end{equation}
+We can now define the area operator
+\begin{equation}
+\widehat{A} = \sum_{\substack{\text{small regions}\\\text{of }\Sigma}}\sqrt{E_{\widehat{I}}E^{\widehat{I}}}.
+\end{equation}
+Classically we had
+\begin{equation}
+A = \int (E^{3}_{\widehat{I}}E^{3,\widehat{I}})^{1/2},
+\end{equation}
+so we see a direct connection really, it's a sensible definition. Given
+this area operator, we see that when it acts on a spin network that
+\begin{equation}
+\widehat{A}_{\Sigma}\mid s\rangle = \sum_{\text{intersections}}8\pi G_{N}\immirzi\sqrt{j(j+1)}\mid s\rangle.
+\end{equation}
+The spetrum of the area operator is discrete. The spacing between high
+$j$'s is smaller than the spacing for low $j$'s. There are some attempts
+at number theoretic explanations.
+
+The volume operator can be defined similarly using the product of 3
+$\widetilde{E}$ factors instead of 2. Its construction is horrible. The
+area operator has contributions from edges, but the volume operator has
+contributions from vertices ``with enough edges'' (4 edges at a node
+should be viewed as dual to a tetrahedron, 3 edges has area but no
+volume). At this point, the volume spectrum is not well understood.
+
+If we have a cubic network, if we have too many edges, then the metric
+``looks flat''. There are angle operators with fairly odd properties.
+One fairly old reference but a beautiful introduction to these geometric
+operators:
+\begin{itemize}
+\item C.~Rovelli and P.~Upadhya,
+``Loop quantum gravity and quanta of space: A Primer''.
+\arXiv{gr-qc/9806079}.
+\end{itemize}
