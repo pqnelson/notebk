@@ -24,6 +24,35 @@ Note, here $K=K_{ij}q^{ij}$ is the trace of the extrinsic curvature, so
 the second term $K^{2}$ is the square of the trace.
 This is half the battle.
 
+We will need a technical lemma concerning the extrinsic curvature and
+``acceleration'',
+\begin{equation}
+a^{\mu} := \nabla_{\vec{n}}n^{\mu}.
+\end{equation}
+Namely:
+\begin{lemma}
+  The extrinsic curvature satisfies
+  \begin{equation}
+K_{\mu\nu}=-{}^{(4)}\nabla_{\mu}n_{\nu}-n_{\mu}a_{\nu}.
+  \end{equation}
+\end{lemma}
+\begin{proof}[Proof (lengthy calculation)]
+Let $u^{\mu}$, $v^\nu\in T_{p}M$. We compute
+$K_{\mu\nu}u^{\mu}v^{\nu}$. We find
+\begin{subequations}
+\begin{align}
+K_{\mu\nu}u^{\mu}v^{\nu} &= -{}^{(4)}\nabla_{\mu}n_{\nu}[{q^{\mu}}_{\alpha}u^{\alpha}]
+[{q^{\nu}}_{\beta}v^{\beta}]\\
+&= -{}^{(4)}\nabla_{\mu}n_{\nu}
+[u^{\mu} + n^{\mu}n_{\alpha}u^{\alpha}]
+[v^{\nu} + n^{\nu}n_{\beta}v^{\beta}]\\
+&=-u^{\mu}v^{\nu}{}^{(4)}\nabla_{\mu}n_{\nu}-u^{\mu}v^{\nu}n_{\mu}\nabla_{\vec{n}}n_{\nu}\\
+&=-u^{\mu}v^{\nu}[{}^{(4)}\nabla_{\mu}n_{\nu} + n_{\mu}\nabla_{\vec{n}}n_{\nu}].
+\end{align}
+\end{subequations}
+Since this was for arbitrary $u^{\mu}$, $v^{\nu}$, we obtain the desired result.
+\end{proof}
+
 We may cleverly pick the normal vector field in our considerations
 \begin{equation}
 {}^{(4)}{R^{\rho}}_{\sigma\mu\nu}n^{\sigma}
