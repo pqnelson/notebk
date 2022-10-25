@@ -1,0 +1,915 @@
+\section{Surfaces}
+
+\M What is a surface? Intuitively, it's an ``$\RR^{2}$'' subset of
+$\RR^{3}$. What does that even mean?
+
+A set should be two-dimensional if it can be built out of pieces that
+look like open sets of $\RR^{2}$, i.e., with two-dimensional patches of
+``fabric'' we may ``sew'' together. Conceptually captured by this picture:
+\begin{center}
+  \includegraphics{img/surfaces.0}
+\end{center}
+The map like the one above gives ``coordinates'' to each point on a
+surface. So a map like this is called a \emph{coordinate
+patch}.\footnote{This will be made precise shortly, but caution should
+be given: the literature is inconsistent on which way the arrow
+goes. Some authors prefer taking the green patch of the surface, and
+mapping it to some subset of $\RR^{2}$. It is a matter of convention,
+and either choice is perfectly acceptable.}
+
+\N{Possible Problems With Our Definition} We should pause a moment and
+ponder if our notion of a surface is really well-defined, or if there
+are some problems with it. The main issues we should think about:
+\begin{enumerate}
+\item The coordinates could be ``degenerate'', meaning that different
+  values of $(u,v)$ correspond to the same point on the surface.
+
+  \textsc{Solution:} We demand the coordinate patch be
+  injective\footnote{Recall, a function $f\colon X\to Y$ is injective
+  means for every $x_{1}$, $x_{2}\in X$ we have $f(x_{1})=f(x_{2})$ implies $x_{1}=x_{2}$.} to
+  avoid this problem.
+\item Even if $\chart{x}$ is injective, it could behave badly in other
+  ways and not define a smooth surface. For example, the following
+  ``surfaces'' are too ``pointy'' to be smooth:
+  \begin{center}
+    \includegraphics{img/surfaces.1} \includegraphics{img/surfaces.2}
+  \end{center}
+
+  \textsc{Solution:} Require that $\chart{x}$ be \emph{regular}.
+\end{enumerate}
+
+\begin{definition}
+Given a map $F\colon \RR^{m}\to\RR^{n}$ (suppose $m\leq n$), its
+\define{Tangent Map} at $\vec{p}\in\RR^{m}$
+\begin{equation*}
+F_{*\vec{p}}\colon\T_{\vec{p}}\RR^{m}\to\T_{F(\vec{p})}\RR^{n}
+\end{equation*}
+is defined as follows: given any $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{m}$,
+pick some curve $\alpha\colon I\to\RR^{m}$ such that $\alpha(0)=\vec{p}$
+and $\alpha'(0) = \vec{v}_{\vec{p}}$. Then define
+\begin{equation}
+F_{*\vec{p}}(\vec{v}_{\vec{p}}) = \left.\frac{\D}{\D t}F\bigl(\alpha(t)\bigr)\right|_{t=0}.
+\end{equation}
+\begin{center}
+  \includegraphics{img/surfaces.3}
+\end{center}
+\end{definition}
+
+\begin{remark}
+We should intuitively think of $F_{*\vec{p}}$ as ``the best linear
+approximation to $F$ at $\vec{p}$''.
+\end{remark}
+
+\begin{remark}
+This definition does not depend on choice of the curve $\alpha$.
+\end{remark}
+
+\begin{definition}
+A map $F\colon\RR^{m}\to\RR^{n}$ is \define{Regular} if for every
+$\vec{p}\in\RR^{m}$ we have $F_{*\vec{p}}$ be injective.
+\end{definition}
+
+\begin{remark}
+%The intuition is that regular maps act like infinitesimals on tangent vectors.
+This is a good definition, because if $\alpha$ is a regular curve, and
+$F$ is a regular map, then the composition $F\circ\alpha$ is a regular
+curve. Composing regular stuff together gives us something regular.
+\end{remark}
+
+\begin{definition}
+A \define{(Coordinate) Chart} in $\RR^{3}$ is an injective regular map
+$\chart{x}\colon D\to\RR^{3}$ where $D\subset\RR^{2}$ is some open
+subset called the \define{Patch}.
+
+Further, we call a chart \define{Proper} if $\chart{x}^{-1}\colon\chart{x}(D)\to\RR^{2}$
+is continuous.
+
+We may abuse language, and refer to the $D$ as the patch, and
+$\chart{x}$ as the chart or parametrization. Technically, the local
+coordinates refer to the components of the vector-valued function
+$\chart{x}^{-1}\colon\chart{x}(D)\to D$ mapping a patch of our surface
+to Euclidean space (the ``space of parameters'').
+\end{definition}
+
+\begin{remark}[Abuse of language]
+Again, just to reiterate, people mix up what they're referring to when
+using the terms ``chart'' and ``patch''. Undoubtedly \emph{we} will
+too. 
+\end{remark}
+
+\begin{remark}
+We must stress the importance of a patch $\chart{x}\colon D\to\RR^{3}$
+being regular, which means for any $(u,v)\in D$, the map
+\begin{equation}
+\chart{x}_{*}\colon\T_{(u,v)}\RR^{2}\to\T_{\chart{x}(u,v)}\RR^{3}
+\end{equation}
+is injective.
+\end{remark}
+
+\begin{remark}
+``Proper'' patches convey topological information. 
+\end{remark}
+
+\begin{remark}
+The image of any coordinate patch gives an example of a surface.
+\end{remark}
+
+\M
+Most surfaces cannot be covered by one coordinate patch. The famous
+example: any coordinates on a sphere is degenerate around the
+poles. Consequently, we need to use a set of patches to define a
+surface.
+
+\begin{definition}
+Given a subset $M\subset\RR^{3}$ and a point $\vec{p}\in M$, a
+\define{Neighborhood} of $\vec{p}$ is a set consisting of all points in
+$M$ whose Euclidean distance to $\vec{p}$ is less than $\varepsilon$,
+for some $\varepsilon>0$ [fixed for the neighborhood].
+\end{definition}
+
+\begin{definition}
+A \define{Surface} in $\RR^{3}$ is a subset $M\subset\RR^{3}$ such that
+for each point $\vec{p}\in M$ there exists a neighborhood $N$
+of $\vec{p}$ in $M$ and a proper patch $\chart{x}\colon D\to\RR^{3}$
+such that $N\subset\chart{x}(D)\subset M$.
+
+\begin{center}
+  \includegraphics{img/surfaces.4}
+\end{center}
+\end{definition}
+
+\medbreak
+\begin{remark}
+We don't want self-intersecting surfaces, we want to avoid the following
+doodle:
+\begin{center}
+\includegraphics{img/surfaces.5}
+\end{center}
+This is because there's no way to have a neighborhood ``near the
+intersection''. It would locally look like:
+\begin{center}
+\includegraphics{img/surfaces.6}
+\end{center}
+Why is this a problem?\footnote{It's not Hausdorff, that's the problem.} This is a neighborhood of some point on the
+intersection, say $N(\vec{p})$. We would like to find a chart
+$\chart{x}\colon D\to\RR^{3}$ such that $N(\vec{p})\subset\chart{x}(D)$.
+But this is impossible, because $\chart{x}(D)$ couldn't contain an
+intersection (thanks to topology).
+\end{remark}
+
+\N{Determining if a Patch is Regular}
+How do we even determine if a patch is regular, anyways?
+Well, if $F\colon\RR^{m}\to\RR^{n}$ were regular at $\vec{p}\in\RR^{m}$,
+then $F_{*\vec{p}}$ is injective. We know from linear algebra this means
+the dimension of the image equals the dimension of the domain, i.e.,
+\begin{equation}
+\dim(\T_{F(\vec{p})}\RR^{n})=\dim(\T_{\vec{p}}\RR^{m}).
+\end{equation}
+This is equivalent to saying that the rank of $F_{*\vec{p}}$ is of
+maximal rank for every $\vec{p}\in\RR^{m}$.
+In other words, we know a patch $\chart{x}\colon D\to\RR^{3}$ is regular
+if for each $\vec{p}\in D$ we have $\chart{x}_{*\vec{p}}$ be of maximal
+rank. Our strategy for checking this will be to find some frame field
+$\vec{e}_{1}$, $\vec{e}_{2}$ defined on $D$ and some frame field
+$E_{1}$, $E_{2}$, $E_{3}$ on $\chart{x}(D)\subset\RR^{3}$. Then we will
+express $\chart{x}_{*}$ as a $2\times3$ matrix, and we could use row
+reduction to find the rank.
+
+What we do is we consider the following diagram:
+\begin{center}
+  \includegraphics{img/surfaces.7}
+\end{center}
+Consider a curve $\alpha\colon I\to\RR^{2}$ such that
+$\alpha(0)=\vec{p}$ and $\alpha'(0)=\vec{e}_{1}$ --- i.e., the curve
+points in the $u$-direction. We compute
+$\chart{x}_{*}(\vec{e}_{1})$ to get the components in the first column of
+the matrix representing $\chart{x}_{*}$, and we find another curve
+pointing in the $\vec{e}_{2}$ (i.e., in the $v$) direction to find the
+second column of the matrix of $\chart{x}_{*}$.
+
+We find,
+\begin{subequations}
+  \begin{align}
+    \chart{x}_{*}(\vec{e}_{1}) &= \left.\frac{\D}{\D t}\chart{x}\bigl(\alpha(t)\bigr)\right|_{t=0}\\
+&= \left.\left(\frac{\partial x^{1}}{\partial\alpha^{1}}\frac{\D\alpha^{1}}{\D t} +
+\frac{\partial x^{1}}{\partial\alpha^{2}}\frac{\D\alpha^{2}}{\D t},
+\frac{\partial x^{2}}{\partial\alpha^{1}}\frac{\D\alpha^{1}}{\D t} +
+\frac{\partial x^{2}}{\partial\alpha^{2}}\frac{\D\alpha^{2}}{\D t},
+\frac{\partial x^{3}}{\partial\alpha^{1}}\frac{\D\alpha^{1}}{\D t} +
+\frac{\partial x^{3}}{\partial\alpha^{2}}\frac{\D\alpha^{2}}{\D t}\right)
+\right|_{t=0}\\
+&=\left(\frac{\partial x^{1}}{\partial u},
+\frac{\partial x^{2}}{\partial u},
+\frac{\partial x^{3}}{\partial u}\right)=\sum^{3}_{j=1}\frac{\partial x^{j}}{\partial u}E_{j}=:\chart{x}_{u}.
+  \end{align}
+\end{subequations}
+Similarly, we find
+\begin{equation}
+\chart{x}_{*}(\vec{e}_{2})=\left(\frac{\partial x^{1}}{\partial v},
+\frac{\partial x^{2}}{\partial v},
+\frac{\partial x^{3}}{\partial v}\right)=\sum^{3}_{j=1}\frac{\partial x^{j}}{\partial v}E_{j}=: \chart{x}_{v}.
+\end{equation}
+We call the quantities $x_{u}$ and $x_{v}$ \define{Partial Velocities}.
+Hence, if
+$\vec{w}_{\vec{p}}=(w^{1},w^{2})_{\vec{p}}\in\T_{\vec{p}}\RR^{2}$, then
+\begin{equation}
+\chart{x}_{*}\begin{pmatrix}w^{1}\\w^{2}
+\end{pmatrix}=\begin{pmatrix}
+\displaystyle\frac{\partial x^{1}}{\partial u} &\displaystyle\frac{\partial x^{1}}{\partial v}\\
+\displaystyle\frac{\partial x^{2}}{\partial u} &\displaystyle\frac{\partial x^{2}}{\partial v}\\
+\displaystyle\frac{\partial x^{3}}{\partial u} &\displaystyle\frac{\partial x^{3}}{\partial v}
+\end{pmatrix}\begin{pmatrix}w^{1}\\w^{2}
+\end{pmatrix}.
+\end{equation}
+Now that we have expressed $\vec{x}_{*}$ as a matrix, we just need to
+check there are at least 2 linearly independent rows, which can be done
+by row reduction. Enough humourless logic, let us look at some examples.
+
+\begin{example}
+Consider the unit sphere $S^{2}=\{(x,y,z)\in\RR^{3}\mid x^{2}+y^{2}+z^{2}=1\}$
+in three-dimensions. We have a path formed by ``bending'' the 
+open unit disc $D^{2}=\{(x,y)\in\RR^{2}\mid x^{2}+y^{2}<1\}$.
+More explicitly,
+\begin{subequations}
+\begin{equation}
+\chart{x}\colon D^{2}\to\RR^{3}
+\end{equation}
+defined by
+\begin{equation}
+\chart{x}(u,v) = (u, v, \sqrt{1 - u^{2} - v^{2}}).
+\end{equation}
+\end{subequations}
+This is just one possible patch, we could consider another by taking the
+third component to be $-\sqrt{1-u^{2}-v^{2}}$, and we can consider
+others by swapping the third component with either the first or second
+components.
+
+Now, our patch is clearly injective. If you do not believe it, then just
+examine $\chart{x}(u_{1},v_{1})=\chart{x}(u_{2},v_{2})$; the first two
+components reads $u_{1}=u_{2}$ and $v_{1}=v_{2}$. It follows that
+$(u_{1},v_{1})=(u_{2},v_{2})$ and moreover $\chart{x}$ is injective.
+
+But is our patch \emph{regular}? We can find the matrix of
+$\chart{x}_{*}$ relative to the canonical frame fields, which reads
+\begin{equation}
+\chart{x}_{*} = \begin{bmatrix}1 & 0\\0 & 1\\\mbox{stuff}_{1} & \mbox{stuff}_{2}
+\end{bmatrix}.
+\end{equation}
+Since the top $2\times 2$ submatrix is the identity matrix, it follows
+that $\chart{x}_{*}$ has rank 2. Hence our patch is regular.
+\end{example}
+
+\begin{remark}
+This example is a special case of a more general fact: if we have a
+smooth function $f\colon D\to\RR$, and we consider its graph
+$\Gamma(f)=\{(x,y,f(x,y))\in\RR^{3}\mid(x,y)\in D\}$ (or more generally,
+for any $D\subset\RR^{n}$, we have
+$\Gamma(f)=\{(\vec{x},f(\vec{x}))\in\RR^{n+1}\mid\vec{x}\in D\}$), then
+this graph is a patch of a surface.
+
+Algebraic geometry generalizes this further, by studying the zero sets
+of functions $\{\vec{x}\in\RR^{n}\mid f(\vec{x})=0\}$. These generalize
+the notion of surfaces. A lot of differential geometry is generalized in
+this manner, it's very deep and profound.
+\end{remark}
+
+\begin{example}[Surface of revolution]
+%% Suppose we have a regular curve $\alpha\colon I\to\RR^{2}$.
+%% We can embed it in three-dimensions by mapping it into the $xy$-plane:
+%% \begin{equation}
+%% t\mapsto(\alpha^{1}(t),\alpha^{2}(t),0).
+%% \end{equation}
+Undergraduates are taught in integral calculus of a single variable
+about a surface of revolution by taking a curve $y=f(x)$, then sweeping
+it out around the $x$-axis, in the sense that
+\begin{equation}
+y^{2}+z^{2}=f(x)^{2}.
+\end{equation}
+This yields a parametrization in terms of $x$ and $\theta$. Our patch
+would be
+\begin{equation}
+\chart{x}(x,\theta) = \left(x, f(x)\cos(\theta),f(x)\sin(\theta)\right).
+\end{equation}
+If $f$ is a regular curve, then we have a regular surface.
+\end{example}
+
+\N{What Patches Give Us}
+The basic idea for patches is that they let us transfer data on the
+surface $M$ to data (of various kinds) on the domain $D\subset\RR^{2}$
+where we know how to do calculus. What kinds of things do patches give
+us?
+\begin{enumerate}
+\item \textsc{``Local coordinates'' on $M$.} Grid lines in $D$ are paths like
+  $\alpha(t)=(u_{0},v_{0}+t)$ which pass through the point
+  $(u_{0},v_{0})$. These induce grid lines on $M$ by
+  $\chart{x}\circ\alpha(t)=\chart(u_{0},v_{0}+t)$. (Although these
+  describe grid lines of constant $u_{0}$, we can form grid lines of
+  constant $v_{0}$ by examining $\chart(u_{0}+t,v_{0})$ for example.)
+  \begin{center}
+    \includegraphics{img/surfaces.8}
+  \end{center}
+\item \textsc{Convenient ways to get tangent vectors on $M$.} We have
+  regularity map basis vectors (frame fields) to basis vectors (frame
+  fields) by $\chart{x}_{*\vec{p}}\colon\T_{\vec{p}}\RR^{2}\to\T_{\chart{x}(\vec{p})}M$.
+  Regularity guarantees we get a whole tangent plane, not just a line.
+  \begin{center}
+    \includegraphics{img/surfaces.9}
+  \end{center}
+\item \textsc{``Local'' frame fields on $M$.} This is given to us by the
+  partial velocities $\chart{x}_{u}(u,v)$ and $\chart{x}_{v}(u,v)$.
+  \begin{center}
+    \includegraphics{img/surfaces.10}
+  \end{center}
+\item \textsc{Convenient ways to compute ``the normal vector'' to a surface.}
+  Since we have found $\chart{x}_{u}(u,v)$ and $\chart{x}_{v}(u,v)$ are
+  frame fields for the tangent vectors on the surface, we can consider
+  their cross product
+  $\vec{n}=\chart{x}_{u}(u,v)\times\chart{x}_{v}(u,v)$ which is normal
+  to the surface.
+  We can do this globally only for ``orientable'' surfaces (e.g., not
+  for the M\"{o}bius strip).
+  \begin{center}
+    \includegraphics{img/surfaces.11}
+  \end{center}
+\end{enumerate}
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+%% This roughly is before \S2.2 in Arcade's transcription of the notes.
+
+%% At this point, homework 5 would be due [May 7, 2008].
+%% It consisted of the following
+%% exercises from O'Neill's \emph{Elementary Differential Geometry}
+%% (Revised second ed.),
+%% \begin{itemize}
+%% \item 2.7 \# 1, 4, 5
+%% \item 2.8 \# 2, 4
+%% \end{itemize}
+
+Here are some review questions, to make sure you don't forget too
+quickly what we learned from section 2. (This is an experiment, let me
+know if you hate this technique. It probably won't happen again in these
+notes, though.)
+
+\begin{enumerate}
+  % 2.7 #4 
+\item Recall Parabolic coordinates --- we have $0\leq u<\infty$,
+$0\leq v<\infty$, and $0\leq\varphi<2\pi$, and the Cartesian coordinates
+  are parametrized as
+  \begin{subequations}
+    \begin{align}
+      x &= uv\cos(\varphi)\\
+      y &= uv\sin(\varphi)\\
+      z &= \frac{1}{2}(u^{2}-v^{2}).
+    \end{align}
+  \end{subequations}
+  \begin{enumerate}
+  \item Compute the Parabolic frame field $E_{1}$, $E_{2}$, $E_{3}$
+  \item Compute the connection forms for the parabolic frame field.
+  \end{enumerate}
+% 2.7 # 5
+\item Let $E_{1}$, $E_{2}$, $E_{3}$ constitute a frame field and
+  $W=\sum_{j}f_{j}E_{j}$. Let $V$ be an arbitrary vector field.
+  Prove or find a counter-example: the covariant derivative satisfies,
+\begin{equation}
+\nabla_{V}W = \sum_{j}\left(V[f_{j}] + \sum_{i}f_{i}\omega_{ij}[V]\right)E_{j}.
+\end{equation}
+\item Check the structure equations for the parabolic frame field.
+% 2.8 # 4, frame fields on \RR^2. Prove there is an angle \theta such that
+  % E_{1} = \cos(\theta)U_{1} + \sin(\theta)U_{2}
+  % E_{2} = -\sin(\theta)U_{1} + \cos(\theta)U_{2}
+  % (a) Express the connection form and dual 1-forms in terms of
+  % $\theta$ and the natural coordinates $x$ and $y$
+  % (b) What are the structural equations in this case? Check the
+  % results of (a) satisfy them.
+\end{enumerate}
+
+% calculus on a surface
+\subsection{Calculus on a Surface}
+
+OK, we're on the home stretch now. We've generalized calculus in
+$\RR^{n}$ using the machinery of tangent vectors and differential forms,
+talked about curves and surfaces. Now our goal is to figure out how to
+do calculus on surfaces. Ready? Let's go!
+
+\M
+Our goal is to completely generalize what we know about calculus on
+$\RR^{2}$ to any surface.
+
+This means we need to define: tangent vectors, vector fields, frame
+fields, one-forms, differential forms, smooth functions, covariant
+derivatives, etc., \emph{on a surface}.\footnote{The generalization to arbitrary
+manifolds will be simple.} We'll use this to study various surfaces and
+properties they have.
+
+\emph{What's most fundamental in mathematics is making the correct definitions.}
+
+\begin{figure}[h]
+\centering
+  \includegraphics{img/surfaces.12}
+\caption{Intuition of a function $f\colon M\to\RR^{n}$ being smooth}\label{fig:surfaces:smooth-function-from-surface}
+\end{figure}
+
+\begin{definition}\label{defn:surfaces:smooth-function-from-surface}
+Let $M\subset\RR^{3}$ be a surface, $f\colon M\to\RR^{n}$ be some
+function on the surface.
+We say that $f$ is \define{Smooth} if, for every patch $\chart{x}\colon D\to M$
+(where $D\subset\RR^{2}$ is open),
+\begin{equation}
+f\circ\chart{x}\colon D\to\RR^{n}
+\end{equation}
+is smooth in the usual sense, i.e., $f\circ\chart{x}\in C^{\infty}(D)$.
+This is schematically doodled in Figure~\ref{fig:surfaces:smooth-function-from-surface}.
+\end{definition}
+
+\begin{figure}[h]
+\centering
+  \includegraphics{img/surfaces.13}
+\caption{Intuition of a function $f\colon \RR^{n}\to M$ being smooth}\label{fig:surfaces:smooth-function-to-surface}
+\end{figure}
+
+\begin{definition}\label{defn:surfaces:smooth-function-to-surface}
+Let $M\subset\RR^{3}$ be a surface, $f\colon\RR^{n}\to M$ be a function
+to the surface. We call $f$ \define{Differentiable} if, for every patch
+$\chart{x}\colon D\to M$, the map
+\begin{equation}
+\chart{x}^{-1}\circ f\colon\mathcal{E}\to D,
+\end{equation}
+where $\mathcal{E}=f^{-1}(\chart{x}(D))\subset\RR^{n}$ is the preimage
+of the patch under $f$, is a smooth ($C^{\infty}$) function. Note: we \emph{do
+not} require $f(\RR^{n})=M$.
+
+The intuition of this definition is doodled in Figure~\ref{fig:surfaces:smooth-function-to-surface}.
+\end{definition}
+
+\begin{remark}
+This requires a bit of explanation. Consider the preimage of
+$\chart{x}(D)$ under $f$, i.e., the set of points $\vec{x}\in\RR^{n}$
+which $f$ maps into the image of the chart $\mathbf{x}(D)$; call this
+set $\mathcal{E} = \{\vec{x}\in\RR^{n}\mid f(\vec{x})\in\chart(D)\}$.
+We want this to be an open set for topological reasons (this makes $f$
+continuous, a necessary prerequisite for derivatives). Now we could
+consider $f|_{\mathcal{E}}\colon\mathcal{E}\to M$ by restricting $f$.
+We know its image will be within the image of the chart, so we
+then take the preimage of $f(\mathcal{E})\subset M$ under the chart
+$\chart{x}$ to produce the mapping
+$\chart{x}^{-1}\colon f|_{\mathcal{E}}(\mathcal{E})\to D$.
+But this is the same as considering the composition
+$\chart(x)^{-1}\circ f|_{\mathcal{E}}\colon\mathcal{E}\to D$.
+The restriction of $f$ to $\mathcal{E}$ has been purely a crutch, the
+preimage of $\chart{x}$ will restrict the composite function for us. So
+we arrive at our definition.
+\end{remark}
+
+\begin{remark}
+As a quick check, we could consider $M=\RR^{3}$ with $\chart{x}=\id$
+being the identity function. Then $f\colon\RR^{n}\to\RR^{3}$ being
+differentiable is the same as $f\in C^{\infty}(\RR^{n},\RR^{3})$. This
+is good! Our definition of differentiable functions to surfaces
+coincides with our pre-existing definition of differentiable
+multivariate vector-valued functions.
+\end{remark}
+
+\begin{example}
+Let $M\subset\RR^{3}$ be a surface, and consider a [smooth] path
+$\alpha\colon I\to\RR^{3}$
+such that the curve lies on the surface $\alpha(I)\subset M$.
+For any patch $\chart{x}\colon D\to M$, we could consider 
+the interval $J=\alpha^{-1}(\chart{x}(D))$ given by the preimage of the
+curve which lies in $\chart{x}(D)$. The situation is as doodled below:
+\begin{center}
+  \includegraphics{img/surfaces.14}
+\end{center}
+Proving $\alpha$ is smooth on $M$ amounts to proving, for every patch
+$\chart{x}\colon D\to M$ such that $\chart{x}(D)$ contains some part of
+the path, the restriction $\alpha|_{J}$ is smooth in the preimage of the
+chart in the familiar way. 
+\end{example}
+
+\N{Smooth Functions Between Surfaces}
+Suppose now we have two surfaces $M_{1}$ and $M_{2}$. We can construct a
+notion of a smooth function $f\colon M_{1}\to M_{2}$ between these
+surfaces. The solution is to cheat.
+
+Given arbitrary patches $\chart{x}\colon D\to M_{1}$ on $M_{1}$
+and $\chart{y}\colon E\to M_{2}$ on $M_{2}$, we have the situation as
+doodled below:
+\begin{center}
+  \includegraphics{img/surfaces.15}
+\end{center}
+Now we have to make sense of $f$. We first take the preimage of
+$\chart{y}(E)$ under $f$, which may or may not intersect $\chart{x}(D)$
+on $M_{1}$. If it doesn't, then we're in the trivial situation, and
+everything works out fine. So let's examine the exciting case where
+$f^{-1}\left(\chart{y}(E)\right)\cap\chart{x}(D)\neq\emptyset$. This
+gives us the etched region doodled below:
+\begin{center}
+  \includegraphics{img/surfaces.16}
+\end{center}
+We can pull back $f^{-1}\left(\chart{y}(E)\right)$ to the patch $D$
+using the preimage of $\chart{x}$, which produces the following
+situation (with the hatched region indicating the $\chart{x}^{-1}\circ f^{-1}$
+preimage):
+\begin{center}
+  \includegraphics{img/surfaces.17}
+\end{center}
+It looks like we're making this more complicated, doesn't it? There is
+one thing we have not yet exploited: we can move \emph{forward} as well
+as backward. If we start with $\chart{x}|_{f^{-1}(E)}^{-1}(D)$ the
+portion of the patch which, when charted onto $M_{1}$ will be mapped by
+$f$ to part of $\chart{y}(E)$, then move forward along these lines, we
+end up with a subset
+\begin{equation}
+(f\circ\chart{x})\left(\chart{x}|_{f^{-1}(E)}^{-1}(D)\right)\subset\chart{y}(E).
+\end{equation}
+We can take its preimage under $\chart{y}$ to get a subset in
+$E\subset\RR^{2}$. This gives us a mapping, however, from $D$ to $E$:
+\begin{equation}
+\chart{y}^{-1}\circ f\circ\chart{x}\colon D\to E,
+\end{equation}
+which is a function where we can sensibly discuss smoothness and
+derivatives. In pictures, we get the situation as follows:
+\begin{center}
+  \includegraphics{img/surfaces.18}
+\end{center}
+The induced function is drawn with a dashed arrow, and it is the one
+\emph{we know} how to determine if it's smooth or not (because it's a
+function of an open subset in $\RR^{2}$ to an open subset in $\RR^{2}$).
+And if we do this for every possible pair of patches on $M_{1}$ and
+$M_{2}$, we end up verifying $f$ is smooth and differentiable.
+
+More precisely, we have $f\circ\chart{x}$ be smooth function to $M_{2}$
+in the sense of Definition~\ref{defn:surfaces:smooth-function-to-surface}
+We also have $\chart{y}^{-1}\circ f$ be a smooth function on $M_{1}$, in
+the sense of Definition~\ref{defn:surfaces:smooth-function-from-surface}.
+Since this is done for every possible charts on $M_{1}$ and $M_{2}$, we
+conclude that $f\colon M_{1}\to M_{2}$ is smooth.
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+%% This roughly is before \S2.2 in Arcade's transcription of the notes.
+
+%% At this point, homework 6 would be due [May 26(?), 2008].
+%% It consisted of the following
+%% exercises from O'Neill's \emph{Elementary Differential Geometry}
+%% (Revised second ed.),
+%% \begin{itemize}
+%% \item 4.2 \# 2
+%% \item 4.3 \# 2, 4
+%% \end{itemize}
+
+\begin{enumerate}
+\item Partial velocities $\chart{x}_{u}$, $\chart{x}_{v}$ are defined for
+  an arbitrary mapping $\chart{x}\colon D\subset\RR^{2}\to\RR^{3}$, so
+  we can consider the [real-valued] functions
+  \begin{equation}
+E=\chart{x}_{u}\cdot\chart{x}_{u},\quad
+F=\chart{x}_{u}\cdot\chart{x}_{v},\quad
+G=\chart{x}_{v}\cdot\chart{x}_{v}
+  \end{equation}
+  on $D$.
+\begin{enumerate}
+\item Prove $\|\chart{x}_{u}\times\chart{x}_{v}\|^{2} = EG-F^{2}$.
+\item Prove $\chart{x}$ is regular if and only if $EG-F^{2}$ is never zero.
+\end{enumerate}
+% 4.3 # 2, 4  
+\end{enumerate}
+
+\begin{framed}
+\begin{quotation}
+  \begin{center}
+    {\large\bfseries Homework: Stereographic Projection}\medbreak
+
+    \textbf{Mathematics 116 --- Differential Geometry}
+
+    Spring 2008
+
+    Derek Wise
+  \end{center}
+  
+Stereographic projection gives a nice coordinate patch on the unit
+sphere $x^{2}+y^{2}+z^{2}=1$. It is defined by
+\begin{equation*}
+\vec{x}\colon\RR^{2}\to\RR^{3}
+\end{equation*}
+where $\vec{x}(u,v)$ is defined to be the unique point in $\RR^{3}$ that
+lies both on the unit sphere and the ray from $(0,0,1)$ through $(u,v,0)$.
+
+\begin{enumerate}
+\item Derive an explicit formula for $\vec{x}(u,v)$. [Hint: use a
+  parameterization of the line, and solve for the time $t$ when it
+  passes through the unit sphere.]
+\item Find the matrix of the tangent map $\vec{x}_{*}$, relative to the
+  natural frame fields on $\RR^{2}$ and $\RR^{3}$.
+\item Prove that $\vec{x}$ is a patch.
+\item Show that $\vec{x}$ is \emph{conformal}, meaning that it preserves
+  angles. That is, given a pair of tangent vectors $w_{p}$, $z_{p}$ at
+  the same point in $\RR^{2}$, show that the angle between them (defined
+  by the dot product in $\RR^{2}$) is the same as the angle between
+  $\vec{x}_{*}(w_{p})$ and $\vec{x}_{*}(z_{p})$ (defined by the dot
+  product in $\RR^{3}$).
+\end{enumerate}
+\end{quotation}
+\end{framed}
+
+\vfill\eject
+
+\subsection{Vectors on Surfaces}
+
+\M We require $\chart{x}\colon D\to\RR^{3}$ be smooth ($C^{\infty}$) and
+$\chart{x}^{-1}\colon D\gets\chart{x}(D)$ be continuous. We require an
+additional property for the inverse to be differentiable.
+
+\begin{definition}
+Let $M$ be a surface, let $\vec{p}\in M$ be some point.
+We define the \define{Tangent Space} to $\vec{p}$ in $M$, denoted
+$\T_{\vec{p}}M$, is the set of all vectors
+$\vec{v}_{\vec{p}}\in\T_{\vec{p}}\RR^{3}$ such that
+$\vec{v}_{\vec{p}}=\alpha'(0)$ for some curve on the surface $\alpha\colon I\to M$.
+\end{definition}
+
+\N{Base points are important}
+In $\RR^{2}$, we often just ignored the point of tangency and pretended
+that $\T_{\vec{p}}\RR^{2}$ and $\T_{\vec{q}}\RR^{2}$ are the same just
+by sliding $\vec{p}$ to $\vec{q}$. But for general surfaces (of which
+$\RR^{2}$ is just the most boring example), we cannot do this. There is
+no way to slide $\T_{\vec{p}}M$ to $\T_{\vec{q}}M$ without embedding $M$
+into $\RR^{2}$.
+\begin{center}
+  \includegraphics{img/surfaces.19}
+\end{center}
+
+\begin{definition}
+A \define{Vector Field} $V$ on a surface $M$ is an assignment to each
+point $\vec{p}\in M$ a vector $V(\vec{p})\in\T_{\vec{p}}M$.
+\end{definition}
+
+\M
+Originally, we defined the derivative of $f$ in the direction of some tangent
+vector $\vec{v}_{\vec{p}}$ as
+\begin{equation}
+\vec{v}_{\vec{p}}[f] = \left.\frac{\D}{\D t}f(\vec{p}+t\vec{v})\right|_{t=0}.
+\end{equation}
+This captures the information of how much $f$ changes in the direction
+of $\vec{v}$ (at base-point $\vec{p}$). There's a problem generalizing
+this to a surface: it doesn't work if $f$ is defined only on $M$. Why
+not? Well, the line $\vec{p}+t\vec{v}$ will leave the surface, and $f$
+is undefined off the surface, so we're out of luck.
+
+But later we proved, if $\alpha\colon I\to\RR^{n}$ passes through
+$\vec{p}=\alpha(0)$ and it has velocity $\vec{v}_{\vec{p}}=\alpha'(0)$
+there, then we could define the directional derivative as:
+\begin{equation}
+\vec{v}_{\vec{p}}[f] = \left.\frac{\D}{\D t}f(\alpha(t))\right|_{t=0}.
+\end{equation}
+So if $\alpha\colon I\to M$ has initial position $\alpha(0)=\vec{p}$ and
+initial velocity $\alpha'(0)=\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$, and
+if $f\colon M\to\RR$ is smooth, then we can define the directional
+derivative of a function on our surface by
+\begin{equation}
+\vec{v}_{\vec{p}}[f] = \left.\frac{\D}{\D t}f(\alpha(t))\right|_{t=0}.
+\end{equation}
+This is independent of the choice of such $\alpha$.
+
+If we do this at every point, we can differentiate functions with
+respect to vector fields using
+\begin{equation}
+V[f](\vec{p}) = V(\vec{p})[f].
+\end{equation}
+This works out perfectly.
+
+\begin{remark}[Boring]
+This should be boring, because we defined things in a clever way.
+Generalizations follow easily once we have the right definitions.
+So if you find this boring, good: it means you have a grasp of the
+concepts underlying the definitions.
+\end{remark}
+
+\subsection{Differential Forms on Surfaces}
+
+\M A one-form $\phi$ on $M$ assigns to each point $\vec{p}\in M$ a
+covector on $\T_{\vec{p}}M$, i.e., a linear function
+\begin{equation}
+\phi_{\vec{p}}\colon \T_{\vec{p}}M\to\RR.
+\end{equation}
+The most important examples: let $f\colon M\to\RR$ be a smooth function,
+then $\D f$ is a one-form given by
+\begin{equation}
+\D f[\vec{v}_{\vec{p}}] = \vec{v}_{\vec{p}}[f],
+\end{equation}
+for every $\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$.
+But let us see what the zoo of differential forms becomes on a surface.
+
+\N{Zero-Forms}The 0-forms are just smooth functions on $M$, i.e.,
+functions like $\phi\colon M\to\RR$ such thatfor every patch
+$\chart{x}\colon D\to M$, the function $\phi\colon\chart{x}\colon D\to\RR$
+is smooth.
+
+\N{One-Forms}
+The 1-forms are defined just like in Euclidean space. A
+\define{One-Form} $\phi$ is a linear map at each point $\vec{p}\in M$
+taking tangent vectors to real numbers
+\begin{equation}
+\phi_{\vec{p}}\colon\T_{\vec{p}}M\to\RR
+\end{equation}
+in a linear way, and taking vector fields to functions
+\begin{equation}
+\phi\colon\Vect(M)\to C^{\infty}(M).
+\end{equation}
+Given a zero-form $f$, the differential $\D f$ is the one-form given by
+\begin{equation}
+\D f[V] = V[f],
+\end{equation}
+for any vector field $V\in\Vect(M)$.
+
+\N{Two-Forms} Now we have something slightly different. But it tells us
+what 2-forms \emph{do}. A 2-form $\eta$ on $M$ is a map at each point
+$\vec{p}\in M$ that takes an \emph{ordered pair} of tangent vectors and
+gives a number, that is to say,
+\begin{equation}
+\eta_{\vec{p}}\colon\T_{\vec{p}}M\times\T_{\vec{p}}M\to\RR
+\end{equation}
+such that
+\begin{enumerate}
+\item Antisymmetry: $\eta(\vec{v},\vec{w}) = -\eta(\vec{w},\vec{v})$
+\item Linearity in first slow: for any $a,b\in\RR$,
+  $\eta(a\vec{u}+b\vec{v},\vec{w}) = a\eta(\vec{u},\vec{w})+b\eta(\vec{v},\vec{w})$.
+\end{enumerate}
+It's easy to prove from these two properties that a 2-form is also
+linear in the second slot; that is to say, it's \emph{bilinear}.
+
+If we use $\eta$ at every point, we get a mapping
+\begin{equation}
+\eta\colon\Vect(M)\times\Vect(M)\to C^{\infty}(M).
+\end{equation}
+
+\N{But\dots the wedge product?}
+Earlier we defined 2-forms in terms of the formal wedge product. Let us now
+endeavour to produce a definition of the wedge product for differential
+forms on a surface which is consistent with how we defined 2-forms.
+
+Let $\phi$, $\psi$ be two 1-forms on $M$. We want to make a 2-form out
+of them, and call it $\phi\wedge\psi$ (and make it a mapping
+$\Vect(M)\times\Vect(M)\to C^{\infty}(M)$). The most obvious thing we
+could try is,
+\begin{equation}
+(\phi\wedge\psi)(V,W) = \phi(V)\psi(W).
+\end{equation}
+Does it work? No, not by a long shot, since
+\begin{equation}
+(\phi\wedge\psi)(V,W)=\phi(V)\psi(W)\neq-\phi(W)\psi(V)\mbox{ in general}.
+\end{equation}
+Let us try
+\begin{equation}
+(\phi\wedge\psi)(V,W)\stackrel{???}{=}\phi(V)\psi(W)-\phi(W)\psi(V).
+\end{equation}
+Does it work?
+
+We can see it is antisymmetric, since
+\begin{subequations}
+  \begin{align}
+    (\phi\wedge\psi)(V,W)=\phi(V)\psi(W)-\phi(W)\psi(V)\\
+    &=-\phi(W)\psi(V)-(-\phi(V)\psi(W))\\
+    &=-(\phi\wedge\psi)(W,V),
+  \end{align}
+\end{subequations}
+which is a relief. So this is possibly a good definition.
+
+Now the real moment of truth: is it linear in the
+first slot? We have something stronger than \emph{mere} linearity, it's
+linear with respect to arbitrary smooth function $f,g\in C^{\infty}(M)$,
+we have
+\begin{equation}
+(\phi\wedge\psi)(fU + gV,W) = f(\phi\wedge\psi)(U,W) + g(\phi\wedge\psi)(V,W).
+\end{equation}
+This is awesome!
+
+And what's really cute: we had an axiom
+(\S\ref{sec:introduction:axioms-of-wedge-product}) that the formal wedge
+product is anticommutative on 1-forms. We see that
+\begin{subequations}
+  \begin{align}
+    (\phi\wedge\psi)(V,W)
+    &=\phi(V)\psi(W) -\phi(W)\psi(V)\\
+    &=-(-\phi(V)\psi(W)+\phi(W)\psi(V))\\
+    &=-(-\psi(W)\phi(V)+\psi(V)\phi(W))\\
+    &=-(\psi\wedge\phi)(V,W).
+  \end{align}
+\end{subequations}
+In fact we have
+\begin{equation}
+\begin{array}{ccc}
+(\phi\wedge\psi)(V,W) &=& -(\phi\wedge\psi)(W,V)\\
+\rotatebox[origin=c]{-90}{$=$} & & \rotatebox[origin=c]{-90}{$=$}\\
+-(\psi\wedge\phi)(V,W) &=& (\psi\wedge\phi)(W,V).
+\end{array}
+\end{equation}
+It's consistent!
+
+\begin{remark}
+We see the 3-form a 2-dimensional surface $M\subset\RR^{3}$ is zero.
+\end{remark}
+
+\N{Corollary: Nilpotence}
+The reader can verify that, for any one-form $\phi$, we have
+$\phi\wedge\phi=0$. We proved this formally, as a consequence of
+antisymmetry, but the reader may verify this is true for our concrete
+realization of the wedge product.
+
+\M
+Let us consider a 2-form $\eta$ and suppose $\vec{e}_{1}$,
+$\vec{e}_{2}\in\T_{\vec{p}}M$ is a basis. We will do some multilinear
+algebra: once we know how $\eta$ acts on all possible linear
+combinations of our basis vectors $\vec{e}_{1}$ and $\vec{e}_{2}$,
+then we will know how it acts on any arbitrary vector in $\T_{\vec{p}}M$.
+
+Consider
+\begin{subequations}
+\begin{align}
+\eta(\alpha\vec{e}_{1}+\beta\vec{e}_{2},
+\gamma\vec{e}_{1}+\delta\vec{e}_{2})
+&=\alpha\eta(\vec{e}_{1}, \gamma\vec{e}_{1}+\delta\vec{e}_{2})
++\beta\eta(\vec{e}_{2}, \gamma\vec{e}_{1}+\delta\vec{e}_{2})\\
+&=\alpha(\gamma\eta(\vec{e}_{1}, \vec{e}_{1}) +\delta\eta(\vec{e}_{1}, \vec{e}_{2}))
++\beta(\gamma\eta(\vec{e}_{2}, \vec{e}_{1}) +\delta\eta(\vec{e}_{2}, \vec{e}_{2}))\\
+&=\alpha\gamma\eta(\vec{e}_{1}, \vec{e}_{1})
++\alpha\delta\eta(\vec{e}_{1}, \vec{e}_{2})
++\beta\gamma\eta(\vec{e}_{2}, \vec{e}_{1})
++\beta\delta\eta(\vec{e}_{2}, \vec{e}_{2})\\
+&=0 +\alpha\delta\eta(\vec{e}_{1}, \vec{e}_{2})
+-\beta\gamma\eta(\vec{e}_{1}, \vec{e}_{2})
++ 0\\
+&= (\alpha\delta-\beta\gamma)\eta(\vec{e}_{1}, \vec{e}_{2})\\
+&=\det\begin{pmatrix}\alpha & \beta\\
+\gamma & \delta
+\end{pmatrix}\eta(\vec{e}_{1}, \vec{e}_{2}).
+\end{align}
+\end{subequations}
+We only need to compute $\eta(\vec{e}_{1}, \vec{e}_{2})$ once, and then
+computing $\eta(\vec{v},\vec{w})$ amounts to computing a determinant.
+
+
+
+\begin{comment}
+  \subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+%% June 4, 2008 due date.
+%% At this point, homework 7 would be due [June 4, 2008].
+%% It consisted of the following
+%% exercises from O'Neill's \emph{Elementary Differential Geometry}
+%% (Revised second ed.),
+%% \begin{itemize}
+%% \item 4.4 \# 3
+%% \item 5.1 \# 1, 4, 5, 6
+%% \item 5.2 \# 4 a,c
+%% \item 5.3 \# 4a
+%% \end{itemize}
+
+\begin{enumerate}
+\item Let $f\colon\Sigma\to\RR$ be a real-valued function on the surface
+  $\Sigma$, let $g\colon\RR\to\RR$ be some smooth function.
+  \begin{enumerate}
+  \item Prove or find a counter-example: for any
+    $\vec{v}_{\vec{p}}\in\T_{\vec{p}}\Sigma$, we have $\vec{v}_{\vec{p}}[g\circ f] = g'(f(\vec{p}))\vec{v}_{\vec{p}}[f]$
+  \item Deduce $\D(g\circ f) = (g'\circ f)\,\D f$.
+  \end{enumerate}
+% 5.1 # 4: describe the Gauss map for a variety of surfaces (the plane,
+% sphere, cylinder, cone)
+\item Let $T^{2}$ be the familiar torus.
+  \begin{enumerate}
+  \item What are the image curves under
+    the Gauss map for meridians and parallels of $T^{2}$?
+  \item Are there any points $\vec{q}\in G(T^{2})$ for which exactly two
+    distinct points on the torus $\vec{p}_{1}\in T^{2}$ and
+    $\vec{p}_{2}\in T^{2}$ are mapped to $G(\vec{p}_{1})=G(\vec{p}_{2})=\vec{q}$?
+  \end{enumerate}
+\item Consider the surface $\Sigma$ defined by $z=xy$.
+  \begin{enumerate}
+  \item What are the image curves under
+    the Gauss map for $x=\mbox{constant}$ on $\Sigma$?
+  \item Are there any points $\vec{q}\in G(\Sigma)$ for which exactly two
+    distinct points on the surface $\vec{p}_{1}\in\Sigma$ and
+    $\vec{p}_{2}\in\Sigma$ (so $\vec{p}_{1}\neq\vec{p}_{2}$) which are mapped to $G(\vec{p}_{1})=G(\vec{p}_{2})=\vec{q}$?
+  \end{enumerate}
+\item For each of the following surfaces, find the quadratic
+  approximation near the origin:
+  \begin{enumerate}
+  \item $z = x^{2}+y^{2}$
+  \item $z = x^{2}-y^{2}$
+  \item $x^{2}+y^{2}-z^{2}=0$.
+  \item $z = (2x + 3y)^{5}$.
+  \end{enumerate}
+\item Recall from linear algebra, if $A$ is any $n\times n$ matrix, the
+  \define{Characteristic Polynomial} of $A$ is the polynomial in
+  $\lambda$ defined by
+  \begin{equation*}
+p(\lambda) = \det(A - \lambda\cdot I_{n}),
+  \end{equation*}
+  where $I_{n}$ is the $n\times n$ identity matrix. \textbf{Compute} the
+  characteristic polynomial for the shape operator.
+\end{enumerate}
+\end{comment}

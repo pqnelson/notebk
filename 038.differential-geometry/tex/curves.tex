@@ -193,6 +193,7 @@ nonzero velocity.
 \begin{definition}
 We call a curve $\alpha\colon I\to\RR^{n}$ \define{Regular} if its
 velocity is never zero $\alpha'(t)\neq 0$ for all $t\in I$.
+If $\alpha$ is not regular, then we call it \define{Singular}.
 \end{definition}
 
 \begin{example}
@@ -298,10 +299,6 @@ speed reparametrization.
 \end{remark}
 
 \subsection{Frenet Frame}
-% HW 3:
-% 1.4 #2
-% 2.2 #3,4,5
-% 2.3 #1,5,6
 
 \M
 The basic idea is to study a curve by using a different frame at each
@@ -822,6 +819,78 @@ at $\beta(0)$, with the following interpretation:
   \end{split}
 \end{equation}
 
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+% HW 3:
+% 1.4 #2 (Find the unique curve $\alpha(0)=(1,0,5)$ and $\alpha'(t)=(t^{2},t,\E^{t})$.
+% 2.2 #3,4,5
+% 2.3 #1,5,6
+
+
+%% At this point, homework 3 would be due.
+
+%% It consisted of the following
+%% exercises from O'Neill's \emph{Elementary Differential Geometry}
+%% (Revised second ed.),
+%% \begin{itemize}
+%% \item 1.4 \#2,
+%% \item 2.2 \#3, 4, 5
+%% \item 2.3 \#1, 5, 6
+%% \end{itemize}
+
+\begin{enumerate}
+\item Consider the hyperbolic helix,
+  $\alpha(t)=(\cosh(t),\sinh(t),t)$. Compute its arclength $s(t)$ and
+  find its unit-speed reparametrization.
+\item Consider the curve $\alpha(t) = (1/(1+t^{3}), t^{3}, \ln(1+t^{2}))$ on $I=(0,\infty)$.
+  It passes through $\vec{p}=(1/4,\;3,\;\ln(1+3^{2/3}))$ and
+  $\vec{q} = (1/9,\; 8,\; \ln(5))$.
+  Compute the arclength of the curve between these points.
+\item Let $\alpha\colon I\to\RR^{n}$ be a curve. Suppose $\beta_{1}$,
+  $\beta_{2}$ are two unit-speed reparametrizations of $\alpha$.
+  Prove or find a counter-example: there exists an $s_{0}\in\RR$ such
+  that for any $s\in (0, \ell(\alpha))$ we have $\beta_{1}(s)=\beta_{2}(s+s_{0})$
+  (where $\ell(\alpha)$ is the arclength of $\alpha$).
+% \item Given a unit-speed parametrization of the unit circle on the (x,y)-plane in $\RR^{3}$, rotated by some
+% random Euler-angles, then translated by a random vector (5,4,-2),
+  % give this transformed curve $\beta(s)$.
+  % Ask the reader to verify $\beta(s)$ is a unit-speed curve and then compute the Frenet data for $\beta$.
+\item Prove or find a counter-example: given a unit-speed curve $\beta$,
+  consider the vector field $A=\tau T+\kappa B$ on $\beta$. The Frenet
+  formulas become:
+  \begin{align*}
+    T' &= A\times T\\
+    B' &= A\times B\\
+    N' &= A\times N.
+  \end{align*}
+\item Prove or find a counter-example: if $\alpha\colon I\to\RR^{n}$ is
+  any curve, and $c\in I$ is some [arbitrary but fixed] value, then
+  (a) $\sigma(t) = \int^{t}_{c}\|\alpha'(u)\|\,\D u$ is a perfectly good
+  distance function, (b) which could be inverted to $t=t(\sigma)$, and
+  (c) $\beta(\sigma) = \alpha(t(\sigma))$ is a unit-speed
+  parametrization. [A counter-example would be a curve $\alpha$ for
+    which at least one of these three claims fails to hold.]
+\item The unit-speed parametrization of the circle may be written as
+  \begin{equation}
+\gamma(s) = \vec{c} + r\cos(s/r)\,\vec{e}_{1} + r\sin(s/r)\,\vec{e}_{2}
+  \end{equation}
+  where $\vec{e}_{i}$ are orthonormal unit vectors $\vec{e}_{i}\cdot\vec{e}_{j}=\delta_{ij}$.
+
+If $\beta\colon\bar{I}\to\RR^{3}$ is a unit speed curve with (assuming
+$0\in\bar{I}$) $\kappa(0)>0$, then there exists exactly one circle
+$\gamma$ which approximates $\beta$ near $\beta(0)$ in the sense that
+\begin{equation}
+\gamma(0) = \beta(0),\quad\gamma'(0)=\beta'(0),\quad\gamma''(0)=\beta''(0).
+\end{equation}
+Show that $\gamma$ lies in the osculating plane of $\beta$ at $\beta(0)$
+and find its center $\vec{c}$ and radius $r$. The circle is called the
+\define{Osculating Circle}, and $\vec{c}$ is called the \define{Center of Curvature} of $\beta$ at $\beta(0)$.
+(The same result holds if we replace $0$ by any other $s_{0}\in\bar{I}$.)
+\end{enumerate}
+
+
 \subsection{Frenet Data for Arbitrary Curves}
 
 \M
@@ -1153,60 +1222,278 @@ that specifically changes $\rho\to\rho+t$, then its initial velocity
 unit vector gives us the coefficients for $E_{1}$ relative to the
 natural frame field. So
 \begin{equation}
-\alpha(t) = ((\rho+t)\cos(\lambda)\cos(\theta), (\rho+t)\cos(\lambda)\sin(\theta),(\rho+t)\sin(\lambda).
+\begin{split}
+\alpha(t)
+  &= (x(\rho + t,\theta,\lambda),\; y(\rho+t,\theta,\lambda),\; z(\rho+t,\theta,\lambda))\\
+  &= ((\rho+t)\cos(\lambda)\cos(\theta), (\rho+t)\cos(\lambda)\sin(\theta),(\rho+t)\sin(\lambda).
+\end{split}
 \end{equation}
 Then we find
 \begin{equation}
-\alpha'(t) = (\cos(\lambda)\cos(\theta),\cos(\lambda)\sin(\theta),\sin(\lambda)).
+\alpha'(t) = (\cos(\lambda)\cos(\theta),\;\cos(\lambda)\sin(\theta),\;\sin(\lambda)).
 \end{equation}
+We observe this \emph{is} a unit vector.
 Hence
 \begin{equation}
   \begin{split}
     E_{1} &= \alpha'(0)\cdot(U_{1},U_{2},U_{3})\\
-    &= \cos(\lambda)\cos(\theta)U_{1} + \cos(\lambda)\sin(\theta)_{2} + \sin(\lambda)U_{3}.
+    &= \cos(\lambda)\cos(\theta)U_{1} + \cos(\lambda)\sin(\theta)U_{2} + \sin(\lambda)U_{3}.
   \end{split}
 \end{equation}
 
 \M
 For $E_{2}$, a similar calculation with the curve
 \begin{equation}
-\alpha(t) = (\rho\cos(\lambda)\cos(\theta+t), \rho\cos(\lambda)\sin(\theta+t),\rho\sin(\lambda)).
+\begin{split}
+\alpha(t)
+  &= (x(\rho,\theta + t,\lambda),\; y(\rho,\theta + t,\lambda),\; z(\rho,\theta + t,\lambda))\\
+  &= (\rho\cos(\lambda)\cos(\theta+t),\; \rho\cos(\lambda)\sin(\theta+t),\;\rho\sin(\lambda)).
+\end{split}
 \end{equation}
 We find its velocity,
 \begin{equation}
-\alpha'(t) = (-\rho\cos(\lambda)\sin(\theta+t),\rho\cos(\lambda)\cos(\theta+t),0).
+\alpha'(t) = (-\rho\cos(\lambda)\sin(\theta+t),\;\rho\cos(\lambda)\cos(\theta+t),\;0).
 \end{equation}
 We find its unit vector, since its length is
 \begin{equation}
 \|\alpha'(t)\| =
-\rho\cos(\lambda)\implies\frac{\alpha'(t)}{\|\alpha'(t)\|} = (-\sin(\theta),\cos(\theta),0).
+\rho\cos(\lambda)\implies\frac{\alpha'(t)}{\|\alpha'(t)\|} = (-\sin(\theta),\;\cos(\theta),\;0).
 \end{equation}
 Its unit vector gives us the coordinates for $E_{2}$ relative to the
 natural frame field,
-\begin{equation}
+\begin{equation}\label{eq:example:e2-in-spherical-coordinates}
 E_{2} = -\sin(\theta)U_{1} + \cos(\theta)U_{2}
 \end{equation}
 
 \M
 The last frame field we need the curve
 \begin{equation}
-\alpha(t) = (\rho\cos(\lambda+t)\cos(\theta), \rho\cos(\lambda+t)\sin(\theta),\rho\sin(\lambda+t)).
+\begin{split}
+\alpha(t)
+  &= (x(\rho,\theta,\lambda + t),\; y(\rho,\theta,\lambda + t),\; z(\rho,\theta,\lambda + t)\\
+&= (\rho\cos(\lambda+t)\cos(\theta),\; \rho\cos(\lambda+t)\sin(\theta),\;\rho\sin(\lambda+t)).
+\end{split}
 \end{equation}
 The velocity vector for this curve,
 \begin{equation}
-\alpha'(t) = (-\rho\cos(\theta)\sin(\lambda+t), -\rho\sin(\theta)\sin(\lambda+t),
+\alpha'(t) = (-\rho\cos(\theta)\sin(\lambda+t),\; -\rho\sin(\theta)\sin(\lambda+t),\;
 \rho\cos(\lambda+t)).
 \end{equation}
 Its unit vector
 \begin{equation}
-\frac{\alpha'(t)}{\|\alpha'(t)\|} = (-\cos(\theta)\sin(\lambda+t), -\sin(\theta)\sin(\lambda+t),
+\frac{\alpha'(t)}{\|\alpha'(t)\|} = (-\cos(\theta)\sin(\lambda+t),\; -\sin(\theta)\sin(\lambda+t),\;
 \cos(\lambda+t)).
 \end{equation}
 Hence we find
 \begin{equation}
-E_{3} = -\sin(\lambda)\cos(\theta)U_{1} - \sin(\lambda)\sin(\theta)U_{3}+\cos(\lambda)U_{3}.
+E_{3} = -\sin(\lambda)\cos(\theta)U_{1} - \sin(\lambda)\sin(\theta)U_{2}+\cos(\lambda)U_{3}.
 \end{equation}
+
+\N{Frame field as partial derivatives}
+We emphasize, for clarity, that if we had a smooth function
+$f\colon\RR^{3}\to\RR$ that
+\begin{subequations}
+  \begin{align}
+    E_{1}[f] &= \frac{\partial f}{\partial\rho}\\
+    E_{2}[f] &= \frac{\partial f}{\partial\theta}\\
+    E_{3}[f] &= \frac{\partial f}{\partial\lambda}.
+  \end{align}
+\end{subequations}
 
 \N{Connection Coefficients}
 Now that we have obtained our spherical frame field, we can compute the
 connection coefficients $\omega_{ij}[V] = \nabla_{V}E_{i}\cdot E_{j}$.
+We suppose $V$ has local coordinates relative the $E_{i}$,
+\begin{equation}
+V = \sum^{3}_{j=1}v^{j}E_{j}.
+\end{equation}
+We have three connection components to find.
+
+\M We begin with $\omega_{12}[V] = \langle\nabla_{V}E_{1},E_{2}\rangle$.
+We compute the directional derivative,
+\begin{subequations}
+  \begin{align}
+    \nabla_{V}E_{1}
+    &=\nabla_{V}(\cos(\lambda)\cos(\theta)U_{1} +
+    \cos(\lambda)\sin(\theta)_{2} + \sin(\lambda)U_{3})\\
+    &= V[\cos(\lambda)\cos(\theta)]U_{1}
+    + V[\cos(\lambda)\sin(\theta)]U_{2} + V[\sin(\lambda)]U_{3}.
+  \end{align}
+\end{subequations}
+Now, we use the expansion of $V$ relative to the frame field $E_{j}$ to
+find the first summand,
+\begin{subequations}
+\begin{align}
+V[\cos(\lambda)\cos(\theta)] &= (v^{1}\partial_{\rho} +
+v^{2}\partial_{\theta}+v^{3}\partial_{\lambda})(\cos(\lambda)\cos(\theta))\\
+&=v^{1}\partial_{\rho}(\cos(\lambda)\cos(\theta))
++v^{2}\partial_{\theta}(\cos(\lambda)\cos(\theta))
++v^{3}\partial_{\lambda}(\cos(\lambda)\cos(\theta))\\
+&=v^{1}\cdot0 - v^{2}\cos(\lambda)\sin(\theta)-v^{3}\sin(\lambda)\cos(\theta).
+\end{align}
+\end{subequations}
+Similarly, the second summand
+\begin{subequations}
+\begin{align}
+V[\cos(\lambda)\sin(\theta)]
+&=  (v^{1}\partial_{\rho} +
+v^{2}\partial_{\theta}+v^{3}\partial_{\lambda})(\cos(\lambda)\sin(\theta))\\
+&= v^{2}\cos(\lambda)\cos(\theta)-v^{3}\sin(\lambda)\sin(\theta).
+\end{align}
+\end{subequations}
+The last summand,
+\begin{subequations}
+\begin{align}
+V[\sin(\lambda)] &= (v^{1}\partial_{\rho} +
+v^{2}\partial_{\theta}+v^{3}\partial_{\lambda})(\sin(\lambda))\\
+&=v^{3}\cos(\lambda).
+\end{align}
+\end{subequations}
+Now, we combine everything together again,
+\begin{equation}
+  \begin{split}
+\nabla_{V}E_{1}
+&=-\left(v^{2}\cos(\lambda)\sin(\theta)+v^{3}\sin(\lambda)\cos(\theta)\right)U_{1}\\
+&\qquad+\left(v^{2}\cos(\lambda)\cos(\theta)-v^{3}\sin(\lambda)\sin(\theta)\right)U_{2}
++v^{3}\cos(\lambda)U_{3}.
+  \end{split}
+\end{equation}
+Now we take the dot product with $E_{2}$ (recall
+Eq~\eqref{eq:example:e2-in-spherical-coordinates}).
+We find
+\begin{equation}
+  \begin{split}
+E_{2}\cdot\nabla_{V}E_{1}&=
+(-\sin(\theta))(-1)\left(v^{2}\cos(\lambda)\sin(\theta)+v^{3}\sin(\lambda)\cos(\theta)\right)\\
+&\phantom{=}\quad+ \cos(\theta)\left(v^{2}\cos(\lambda)\cos(\theta)-v^{3}\sin(\lambda)\sin(\theta)\right)
+  \end{split}
+\end{equation}
+After much algebra, this simplifies to
+\begin{equation}
+E_{2}\cdot\nabla_{V}E_{1} = v^{2}\cos(\lambda).
+\end{equation}
+Thus we conclude $\omega_{12}[V]$ simply picks out the second component
+of $V$ relative to the $E_{i}$ frame field and multiplies it by
+$\cos(\lambda)$, which is precisely what the one-form
+$\cos(\lambda)\,\D\theta$ does. We summarize this with the result:
+\begin{equation}
+\boxed{\omega_{12}=\cos(\lambda)\,\D\theta.}
+\end{equation}
+At this point, the reader is invited to work through computing
+$\omega_{13}$, $\omega_{23}$ for themselves. We will include the
+calculations later, so as to not tempt the reader.
+
+\N{Using the Covariant Derivative}
+If we want to know how fast the vector field $W$ is changing with
+respect to the vector field $V$, we take the covariant derivative
+$\nabla_{V}W$. Given vector fields $V$, $W$, we can compute $\nabla_{V}W$
+relative to the frame field $E_{i}$ by this method:
+\begin{equation}
+  \begin{split}
+    \nabla_{V}W &= \nabla_{V}\left(\sum_{i}w^{i}E_{i}\right)\\
+    &= \vdots\quad(\mbox{exercise})\\
+    &= \sum_{i}\left(V[w^{i}] - \sum_{j}\omega_{ij}[V]w^{j}\right)E_{i}.
+  \end{split}
+\end{equation}
+More explicitly,
+\begin{equation}
+\begin{bmatrix}w^{1}\\w^{2}\\w^{3}
+\end{bmatrix}\mapsto
+\begin{bmatrix}V[w^{1}]\\V[w^{2}]\\V[w^{3}]
+\end{bmatrix} + 
+\begin{bmatrix}
+  0           & -\omega_{12}[V] & -\omega_{13}[V]\\
+\omega_{12}[V] &      0         & \omega_{23}[V]\\
+\omega_{13}[V] & -\omega_{23}[V] & 0
+\end{bmatrix}
+\begin{bmatrix}w^{1}\\w^{2}\\w^{3}
+\end{bmatrix}.
+\end{equation}
+Compare this to the Frenet situation,
+\begin{equation}
+\begin{bmatrix}f\\g\\h
+\end{bmatrix}\mapsto
+\begin{bmatrix}f'\\g'\\h'
+\end{bmatrix} + 
+\begin{bmatrix}
+  0    & -\kappa & 0\\
+\kappa &      0  & -\tau\\
+0      & \tau    & 0
+\end{bmatrix}
+\begin{bmatrix}f\\g\\h
+\end{bmatrix},
+\end{equation}
+where the $(f',g',h')$ vector is really the directional derivative in
+the $\alpha(t)$ direction.
+
+\subsection{Cartan Structure Equations}
+
+(This is really important, but it's hard to grasp until we see some
+examples.)
+
+\M Given some orthonormal frame fields $E_{1}$, $E_{2}$, $E_{3}$, we
+have two sets of associated one-forms:
+\begin{itemize}
+\item the coframe field $\theta^{1}$, $\theta^{2}$, $\theta^{3}$ defined
+  by $\theta^{i}[E_{j}]=\delta^{i}_{j}$.
+\item The connection forms $\omega_{ij}$.
+\end{itemize}
+We may wonder how they are related to each other, and they're related in
+a very important way called the ``Cartan Structure Equations'':
+\begin{subequations}
+\begin{equation}
+\D\theta^{i} = \sum_{j}\omega_{ij}\wedge\theta^{j}
+\end{equation}
+which describes a ``torsion free'' condition, and
+\begin{equation}
+\D\omega_{ij} = \sum_{k}\omega_{ik}\wedge\omega_{kj}.
+\end{equation}
+\end{subequations}
+This latter equation is the most important one, it's what will be
+generalized in differential geometry.
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+%% At this point, homework 4 would be due.
+%% It consisted of the following
+%% exercises from O'Neill's \emph{Elementary Differential Geometry}
+%% (Revised second ed.),
+%% \begin{itemize}
+%% \item 2.4 \# 1,3
+%% \item 2.5 \# 2(a, b, f); 3; 5a.
+%% \end{itemize}
+
+\begin{enumerate}
+\item For the curve $\alpha(t) = (t^{4},-2t^{2},3t^{-1})$ for $t>0$,
+\begin{enumerate}
+\item Compute the Frenet data;
+\item Sketch the curve for $2\leq t\leq 4$ show $T$, $N$, $B$ at $t=3$;
+\item Find the limiting values of $T$, $N$, and $B$ as $t\to+\infty$ and $t\to0$.
+\end{enumerate}
+\item (O'Neill, 2.4\#3) The curve $\alpha(t)=(t\cos(t),t\sin(t),t)$ lies on a double cone
+  and passes through the vertex at $t=0$
+  \begin{enumerate}
+\item Find the Frenet data of $\alpha$ at $t=0$;
+\item Sketch the curve for $-2\pi\leq t\leq2\pi$, showing $T$, $N$, $B$
+  at $t=0$.
+  \end{enumerate}
+% 2.5 \# 2(a, b, f); 3; 5a.
+\item Let $V = -z^{2}U_{1}-4x U_{2} + 5yU_{3}$,
+  $W = \cos(xy)U_{1} + z^{2}U_{2}$, compute the following:
+  \begin{enumerate}
+  \item $\nabla_{V}W$
+  \item $\nabla_{V}V$
+  \item $\nabla_{V}(zV-yW)$.
+  \end{enumerate}
+\item Prove or find a counter-example: if $W$ is a vector field with
+  constant length $\|W\|=\mbox{constant}$, and if $V$ is any vector
+  field, then the covariant derivative $\nabla_{V}W$ is everywhere
+  orthogonal to $W$.
+\item Prove or find a counter-example: if $\Sigma\subset\RR^{n}$ is a
+  region containing a regular curve $\alpha\colon I\to\RR^{n}$ (i.e.,
+  $\alpha(I)\subset\Sigma$), and if $W$ is a vector field defined on
+  $\Sigma$, then the mapping $t\mapsto W(\alpha(t))$ is a vector field
+  on $\alpha$ called the \define{Restriction} of $W$ to $\alpha$ and
+  denoted $W|_{\alpha}$. The claim: $\nabla_{\alpha'(t)}W = (W|_{\alpha})'(t)$.
+\end{enumerate}

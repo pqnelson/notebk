@@ -1,8 +1,14 @@
 \documentclass{article}
+\usepackage[12hr,us]{datetime}
 \usepackage{macros}
 \usepackage{notation}
+
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+
 \title{Differential Geometry Prospectus}
-\author{Alex Nelson}
+
+\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}
+
 \date{October 17, 2022}
 
 \begin{document}
@@ -10,4 +16,5 @@
 \tableofcontents
 \input{tex/introduction}
 \input{tex/curves}
+\input{tex/surfaces}
 \end{document}

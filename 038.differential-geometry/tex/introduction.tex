@@ -681,7 +681,7 @@ On $\RR^{15}$, we have $\D x^{1}\wedge\D x^{2}+\sin(x^{1})\,\D x^{2}\wedge\D x^{
 be a perfectly good 2-form.
 \end{example}
 
-\N{Axioms of Wedge Product}
+\N{Axioms of Wedge Product}\label{sec:introduction:axioms-of-wedge-product}
 We stipulate the wedge product satisfies the following axioms:
 \begin{enumerate}
 \item Associativity: $\phi\wedge(\psi\wedge\mu)=(\phi\wedge\psi)\wedge\mu$
@@ -933,3 +933,66 @@ $\D(f\,\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}}) = \D f\wedge(\D x^{i_{1}}\wedg
 (Since the other term from graded Leibniz is $(-1)^{0}f\wedge\D(\D x^{i_{1}}\wedge\dots\wedge\D x^{i_{k}})=f\wedge(0)=0$.)
 \end{enumerate}
 
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{enumerate}
+\item Let $\vec{v}=(-2,0,4)$, $\vec{p}=(2,1,-3)$. Working directly from
+  the definition, compute the directional derivative
+  $\vec{v}_{\vec{p}}[f]$ where
+  \begin{enumerate}
+  \item $f=z/y$
+  \item $f=\ln(1+x^{2})\tan(z)$.
+  \end{enumerate}
+\item Let $V = -z^{2}U_{1} + \cos(xy)U_{3}$, $f=x^{2}y^{5}z^{3}$, $g=(x/y)\sin(z)$.
+  Compute:
+  \begin{enumerate}
+  \item $V[f]$
+  \item $V[fg]$.
+  \end{enumerate}
+\item Prove or find a counter-example: if $V$, $W$ are vector fields on
+  $\RR^{n}$ such that every $f\colon\RR^{n}\to\RR$ we have $V[f]=W[f]$,
+  then $V=W$.
+\end{enumerate}
+
+\begin{framed}
+\begin{quotation}
+  \begin{center}
+    {\large\bfseries Homework on Frame Fields}\medbreak
+
+    \textbf{Mathematics 116 --- Differential Geometry}
+
+    Spring 2008
+
+    Derek Wise
+  \end{center}
+
+  Define two vector fields on $\RR^{2}$ by
+\begin{align*}
+E_{1} &= \frac{1}{4}U_{1} + \frac{(x^{1})^{2}}{4}U_{2}\\
+E_{2} &= U_{2}
+\end{align*}
+(Note: the superscript ``$1$'' is just a label, indicating the first of
+the coordinate functions $x^{1}$, $x^{2}$ of $\RR^{2}$. The superscript
+outside parentheses indicates the \emph{square} of the coordinate.)
+\begin{enumerate}
+\item Draw the vector fields $E_{1}$, $E_{2}$
+\item Recall that a \textbf{frame field} on $\RR^{n}$ is a list of $n$
+  smooth vector fields such that at each point they give a basis of the
+  tangent space. Show $E_{1}$, $E_{2}$ is a frame field on $\RR^{2}$.
+\item Frame fields in differential geometry play essentially the same
+  role that bases do in linear algebra. For example, given a vector
+  field $V = v^{1}U_{1} + v^{2}U_{2}$ (where $v^{1}$, $v^{2}$ are smooth
+  functions), defined in terms of the natural frame field, we can
+  rewrite $V$ in terms of the frame field $E_{1}$, $E_{2}$. Do it!
+\item The 1-forms $\D x^{i}$ on $\RR^{n}$ are called \textbf{dual} to
+  the vector fields $U_{j}$ in the natural frame field, meaning that $\D x^{i}[U_{j}]=\delta^{i}_{j}$.
+  That is, $\D x^{i}[U_{j}]$ equals the constant function 1 if $i=j$, or
+  the constant function 0 if $i\neq j$. Find a pair of 1-forms
+  $\theta^{1}$, $\theta^{2}$ that are dual to the vector fields $E_{1}$,
+  $E_{2}$. That is, $\theta^{1}$, $\theta^{2}$ should satisfy
+  $\theta^{i}[E_{j}]=\delta^{i}_{j}$. [Hint: write the $\theta^{i}$ as a
+    linear combination of $\D x^{i}$ and solve for the coefficients.]
+\end{enumerate}
+\end{quotation}
+\end{framed}
