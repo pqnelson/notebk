@@ -1,0 +1,129 @@
+\usepackage{fullpage}
+%\usepackage{longtable}
+\usepackage{framed}
+%\usepackage{comment}
+\usepackage[final]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{amsthm,amsmath}
+\usepackage{enumitem}
+\setlist{topsep=0pt,noitemsep}
+\usepackage{manfnt}
+\usepackage{fancyvrb}
+\newcounter{chunk@ctr}[section]
+\usepackage{ifpdf}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+  pdfauthor={Alex Nelson},
+  pdftitle={Differential Geometry},
+  \ifpdf\else dvipdfmx\fi
+]{hyperref}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\newskip\interchunkskip \interchunkskip=\medskipamount%
+% cwebmac.tex has \interchunkskip=12pt minus 3pt
+% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
+\newskip\thmskip \thmskip=\interchunkskip%\topsep
+
+\newtheoremstyle{thmstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{defnstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{rmkstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\itshape} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
+
+\theoremstyle{thmstyle}
+\newtheorem{theorem}[chunk@ctr]{Theorem}
+\newtheorem{proposition}[chunk@ctr]{Proposition}
+\newtheorem{corollary}[chunk@ctr]{Corollary}
+\newtheorem{lemma}[chunk@ctr]{Lemma}
+\newtheorem{conjecture}[chunk@ctr]{Conjecture}
+
+\theoremstyle{plain}
+\newtheorem{puzzle}{Puzzle}
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk@ctr]{Definition}
+\newtheorem{example}[chunk@ctr]{Example}
+% \newtheorem{axiom}{Axiom}
+\newtheorem{problem}[chunk@ctr]{Problem}
+\newtheorem{question}[chunk@ctr]{Question}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk@ctr]
+\newtheorem{claim}[chunk@ctr]{Claim}
+
+\newcommand\define[1]{\textbf{``#1''}}
+
+
+\@ifundefined{@addpunct}{
+  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
+  }{}
+
+\newcommand\chunkskip{\vskip\interchunkskip}
+
+\def\chunkbreak{\par\ifdim\lastskip<\interchunkskip
+  \removelastskip\penalty-100\chunkskip\fi}
+
+\newcommand\M{\chunkbreak\noindent%
+  \refstepcounter{chunk@ctr}%
+  \textbf{\thechunk@ctr\@addpunct{.}}\quad\ignorespaces}
+\renewcommand\thechunk@ctr{\thesection.\arabic{chunk@ctr}}
+
+% deprecated macro:
+% \newcommand\N[1]{\M\textbf{#1\@addpunct{.}}\quad\ignorespaces}
+
+% superior implementation:
+
+\def\N{\@ifstar
+        \NStar%
+        \NNoStar%
+}
+\def\NStar#1{\chunkbreak\noindent\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+\def\NNoStar#1{\M\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+
+% permits writing \N*{Un-numbered chunk} for a chunk
+% without a numeric label!
+
+% arXiv links
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+
+
+\numberwithin{equation}{section}
+\definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
+\definecolor{DarkRed}{rgb}{.3545,0,0}

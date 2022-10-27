@@ -1,0 +1,33 @@
+\section{Structured Derivations}
+\M I am thinking about writing a text about elementary linear algebra
+using structured derivations. Instead of writing a sequence of
+equations, possibly with hints, like:
+\begin{subequations}
+\begin{align}
+  A &= B \qquad\mbox{(hint 1)}\\
+  &= C \qquad\mbox{(hint 2)}\\
+  &= D \qquad\mbox{(hint 3)}
+\end{align}
+\end{subequations}
+where it is unclear if ``hint 2'' refers to why $B=C$ follows from
+$A=B$, or perhaps why $A=C$ follows from $A=B$; and what ``hint 3''
+attempts to explain is anyone's guess. Instead, we would have:
+\begin{calculation}
+  A
+  \step{hint why $A=B$}
+  B
+  \step*{hint why $B=C$}
+  C
+  \step{hint why $B=D$}
+  D
+\end{calculation}
+I have endeavoured to imitate the vertical spacing of equations (using
+\verb#\displayskip# and \verb#\belowdisplayskip#), as well as the
+horizontal spacing amount which the \verb#fleqn# document option would
+use.
+\begin{align*}
+  A &= B \qquad\mbox{(hint 1)}\\
+  &= C \qquad\mbox{(hint 2)} \\
+  &= D \qquad\mbox{(hint 3)}
+\end{align*}
+
