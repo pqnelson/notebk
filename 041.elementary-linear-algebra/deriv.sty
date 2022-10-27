@@ -117,8 +117,8 @@
 
 % The "calculation" environment is where we do structured derivations in
 % the spirit of Dijkstra.
-\newenvironment{calculation}{\gdef\nonumber{\global\@first@exptrue}\nonumber\abovecalculationbreak\noindent\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}%
-  {\)\if@leqno\else\if@first@exp\else\hfill\step@number\fi\fi\bewlowcalculationbreak\noindent\gdef\nonumber{\global\@eqnswfalse}\@ignoretrue}
+\newenvironment{calculation}{\nonumber\abovecalculationbreak\noindent\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}%
+  {\)\if@leqno\else\if@first@exp\else\hfill\step@number\fi\fi\bewlowcalculationbreak\noindent\@ignoretrue}
 
 
 \endinput
