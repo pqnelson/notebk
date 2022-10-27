@@ -805,10 +805,46 @@ Hence we conclude $\mat{B}_{1}=\mat{B}_{2}$, as desired.
 Since the inverse matrix is unique (if it exists), we will denote the
 matrix inverse of $\mat{A}$ by $\mat{A}^{-1}$.
 
+\begin{example}
+  Consider the matrix
+  \begin{equation}
+\varepsilon = \begin{bmatrix}0 & 1\\
+0 & 0
+\end{bmatrix}.
+  \end{equation}
+  This is noninvertible. How can we see it? Well, we observe
+  \begin{equation}\label{eq:example-of-nilpotent-matrix}
+\varepsilon^{2}=\mat{0}.
+  \end{equation}
+  If $\varepsilon$ had an inverse matrix $\mat{A}$, then
+\begin{subequations}
+\begin{calculation}
+  \varepsilon
+\step{defining property of identity matrix}
+  \mat{I}_{2}\varepsilon
+\step{using the fact $\mat{A}$ is an inverse matrix}
+  (\mat{A}\varepsilon)\varepsilon 
+\step{associativity of matrix multiplication}
+  \mat{A}(\varepsilon^{2})
+\step{by Eq~\eqref{eq:example-of-nilpotent-matrix}}
+  \mat{A}(\mat{0})
+\step{defining property of zero matrix}
+  \mat{0}.
+\end{calculation}
+\end{subequations}
+Hence if $\varepsilon$ were invertible, we would have
+$\varepsilon=\mat{0}$. But this contradicts the definition of $\varepsilon$,
+which is a nonzero matrix. Thus we are forced to conclude $\varepsilon$
+is noninvertible.
+\end{example}
+
 \N{Solving Systems of Linear Equations}
 Returning to our original motivation for this diversion into matrix
 algebra, we can now use matrix inversion to solve systems of linear
-equations. We do it thus:
+equations. We do it thus:\footnote{Since we are proving equations are
+logically equivalent to each other, we write $(A=B)\equiv(A'=B')$ for
+``$(A=B)$ is logically equivalent to $(A'=B')$, in the sense that one
+implies the other \emph{and} vice-versa''.}
 \begin{subequations}
 \begin{calculation}\gdef\defaultrelation{\equiv}
   \mat{A}\vec{x} = \vec{b}
