@@ -89,15 +89,17 @@
 %%   \noindent$#1$\quad(#2)
 %%   \belowstepbreak\noindent\next@step\if@leqno\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
 
-\def\step@numbered@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\hfill\step@number}\fi}\fi\abovestepbreak
+\def\step@numbered@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
   \noindent$#1$\quad(#2)
-  \belowstepbreak\noindent\next@step\if@leqno\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
+  \belowstepbreak\noindent\if@leqno\next@step\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
 
-\def\step@numbered{\@ifnextchar[\step@numbered@bracket\step@numbered@bracket[\defaultrelation]}
+\def\step@numbered@nobracket#1{\step@numbered@bracket[\defaultrelation]{#1}}
 
-\def\step@no@number@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\hfill\step@number}\fi}\fi\abovestepbreak
+\def\step@numbered{\@ifnextchar[\step@numbered@bracket\step@numbered@nobracket}
+
+\def\step@no@number@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
   \global\@first@exptrue\noindent$#1$\quad(#2)
-  \belowstepbreak\noindent\if@first@exp{\global\@first@expfalse\if@leqno\phantom{\step@number}\fi}\else{\next@step\if@leqno\step@number\fi}\fi\deriv@indent\(\displaystyle\@ignoretrue}
+\belowstepbreak\noindent\nonumber\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}
 
 \def\step@no@number@unbracket#1{\step@no@number@bracket[\defaultrelation]{#1}}
 
@@ -117,8 +119,10 @@
 
 % The "calculation" environment is where we do structured derivations in
 % the spirit of Dijkstra.
-\newenvironment{calculation}{\nonumber\abovecalculationbreak\noindent\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}%
-  {\)\if@leqno\else\if@first@exp\else\hfill\step@number\fi\fi\bewlowcalculationbreak\noindent\@ignoretrue}
+\newenvironment{calculation}{\xdef\old@defaultrelation{\defaultrelation}\@first@exptrue%
+  \gdef\nonumber{\global\@first@exptrue}\nonumber%
+  \abovecalculationbreak\noindent\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}%
+  {\)\if@leqno\else\if@first@exp\else\hfill\next@step\step@number\fi\fi\bewlowcalculationbreak\noindent\gdef\nonumber{\global\@eqnswfalse}\xdef\defaultrelation{\old@defaultrelation}\@ignoretrue}
 
 
 \endinput

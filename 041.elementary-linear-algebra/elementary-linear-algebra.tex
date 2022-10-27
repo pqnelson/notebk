@@ -1,8 +1,9 @@
-\documentclass[leqno]{article}
+\documentclass{article}
 \usepackage[12hr,us]{datetime}
 \usepackage{macros}
+\usepackage{danger}
 \usepackage{notation}
-\usepackage[equation,reqno]{deriv}
+\usepackage[equation,leqno]{deriv}
 
 \def\homeurl{\url{https://pqnelson.github.io/notebk/}}
 
@@ -15,9 +16,16 @@
 
 \begin{document}
 \maketitle
-
+\tableofcontents
+\include{tex/preface}
+\part{Problem Statement}
+\input{tex/systems-of-equations}
+\part{Matrices}
+\input{tex/matrix-zoo}
+\input{tex/matrix-algebra}
 \appendix
 \include{tex/appendix-1-style}
+\include{tex/bib}
 
 
 \end{document}

@@ -23,12 +23,11 @@
 \def\E{\mathrm{e}}
 \def\I{\mathrm{i}} % = \sqrt{-1}
 
+\DeclareMathOperator{\diag}{diag}
+
+\let\oldvec\vec
 \let\vec\boldsymbol
-\newcommand\T{\mathrm{T}}
-\def\deg{\operatorname{deg}}
-\DeclareMathOperator{\Vect}{Vect}
-%\DeclareMathOperator{\id}{id}
-%\newcommand\patch[1]{\mathbf{#1}}
-\newcommand\chart[1]{\mathbf{#1}}
-%\DeclareMathOperator{\Gauss}{G}
-\newcommand\Gauss{G}
+% Apparently, the ISO 80000-2:2013 suggests using $\mathsf{T}$ for
+% matrix transpose, so who am I to argue?
+\newcommand\transpose[1]{#1^{\mathsf{T}}}
+\newcommand\mat[1]{\mathbf{#1}}

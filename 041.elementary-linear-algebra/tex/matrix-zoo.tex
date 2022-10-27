@@ -1,0 +1,235 @@
+\section{Matrix Zoo}
+
+We need to introduce the terminology first, before introducing notions
+of matrix addition (or matrix multiplication).
+
+\begin{definition}
+Let $m$, $n$ be positive integers.
+We define an $m$-by-$n$ \define{Matrix} $A$ to be a rectangular array of
+$mn$ real [or complex] numbers arranged in $m$ horizontal \define{Rows}
+and $n$ vertical \define{Columns}, written:
+\begin{equation}
+\mat{A}
+= \left(\begin{array}{ccc>{\columncolor{olive!20}}ccc}
+  a_{11} & a_{12} & \dots & a_{1j} & \dots & a_{1n} \\
+a_{21} & a_{22} & \dots & a_{2j} & \dots & a_{2n}  \\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+\rowcolor{olive!20}a_{i1} & a_{i2} & \dots & a_{ij} & \dots & a_{in} \\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \dots   & a_{mj} & \dots  & a_{mn} 
+\end{array}\right)
+\begin{array}{c}
+  \\
+  \gets i^{\text{th}}\mbox{\ row}
+\end{array}
+\end{equation}
+We have highlighted the $i^{\text{th}}$ row, and the $j^{\text{th}}$ column.
+
+If further $m=n$ (so we have an $n$-by-$n$ matrix), then we call it a
+\define{Square Matrix}. In this case, we can refer to the \define{Main Diagonal} 
+as the components $a_{1,1}$, $a_{2,2}$, \dots, $a_{n,n}$.
+\end{definition}
+
+\begin{remark}
+We abbreviate ``$m$-by-$n$ matrix'' as ``$m\times n$ matrix''. The
+pair of numbers $(m,n)$ is called the \define{Dimensions} of the matrix.
+
+Also note, some people use parentheses in writing matrices, other people
+use square brackets. Both are acceptable.
+\end{remark}
+
+\N{Matrix and Components}
+If we want to refer to a generic component of an $m$-by-$n$ matrix $\mat{A}$,
+we write $\mat{A}=(a_{ij})$ to indicate we will use $a_{ij}$ to refer to the
+component found in the $i^{\text{th}}$ row and $j^{\text{th}}$ column.
+
+Also, very important, if we have some $m$-by-$n$ matrix
+$\mat{A}=(a_{i,j})$ and we wanted to refer to its component in row $r$,
+column $c$, we may refer to that component by writing $(\mat{A})_{r,c}$.
+This is, of course, the same as $a_{r,c}$, but it will be useful [much
+later] to take a matrix and refer to certain components without
+introducing $(a_{i,j})$ first.
+
+\N{Example: Zero Matrix}
+For any positive integers $m$, $n$, we have the $m\times n$ \define{Zero Matrix}
+to be the matrix whose components are all zero. We denote this by
+$\mat{0}$ or $0$
+because it will play the analogous counterpart that $0\in\RR$ plays. 
+
+\N{Example: Identity Matrix}
+For any positive integer $n$, we have the $n\times n$ \define{Identity Matrix}
+to be
+\begin{equation}
+  \mat{I}_{n} = (\delta_{i,j}) = \begin{cases}1 &\mbox{if }i=j,\\
+    0 &\mbox{if }i\neq j
+  \end{cases}
+\end{equation}
+where the components $\delta_{i,j}$ are referred to as the
+\define{Kronecker Delta}. If $n$ is clear from context, we may suppress
+the subscript and write $\mat I$ instead of $\mat{I}_{n}$. Some authors write
+$\mathbf{1}$ for the identity matrix, because (as we will see) it is
+analogous to the number $1\in\RR$.
+
+\begin{definition}
+A \define{Column Vector} refers to an $n\times1$ matrix.
+
+A \define{Row Vector} refers to a $1\times m$ matrix.
+
+A \define{Vector} may refer to either row vectors or column vectors; in
+these notes, we will reserve the word ``vector'' specifically for
+``column vector''.
+\end{definition}
+
+\begin{ddanger}
+In vector calculus, we were quite cavalier about our notion of vectors. 
+There a vector consisted of a \textsc{base point} and an ``arrow''
+of some magnitude pointing in some direction from the base point. We
+could freely move the base point around willy-nilly. In linear algebra,
+we will be working with vectors, but they all share \emph{the same} base
+point. 
+\end{ddanger}
+
+\begin{definition}
+A square matrix $\mat{A}=(a_{i,j})$ for which $a_{i,j}=0$ when $i\neq j$ is
+called a \define{Diagonal Matrix}. We may write
+$\mat{A}=\diag(a_{1,1}, a_{2,2},\dots, a_{n,n})$ to indicate $\mat{A}$
+is a diagonal matrix. 
+
+If further $a_{i,i}=c$ for all $i$, then we call $\mat{A}$ a
+\define{Scalar Matrix}. 
+\end{definition}
+
+\begin{remark}[``Scalars'']
+The word ``scalar'' means ``number''. We motivated our diversion into
+matrices by trying to create some gadget which resembles numbers. Scalar
+matrices are the ``most number-like'' among matrices.
+\end{remark}
+
+\N{Examples}
+\begin{enumerate}
+\item 
+The following is a diagonal matrix which is not a scalar matrix
+\begin{subequations}
+\begin{equation}
+  \mat{A} = \begin{pmatrix}1 & 0\\
+    0 & 2
+  \end{pmatrix}.
+\end{equation}
+\item 
+The following is not a diagonal matrix,
+\begin{equation}
+  \mat{J} = \begin{bmatrix}0 & -1\\
+    1 & 0
+  \end{bmatrix}.
+\end{equation}
+\item The following is a scalar matrix,
+\begin{equation}
+  \mat{B} = \begin{pmatrix}-\pi & 0\\
+    0 & -\pi
+  \end{pmatrix}.
+\end{equation}
+\item The identity matrix $\mat{I}_{n}$ is a scalar matrix.
+\item The $n\times n$ zero matrix is a scalar matrix.
+\end{subequations}
+\end{enumerate}
+
+\begin{definition}
+Let $\mat{A}=[a_{i,j}]$ and $\mat{B}=[b_{i,j}]$ be two $m\times n$ matrices.
+We say $\mat{A}$ and $\mat{B}$ are \define{Equal} if they have identical components
+in identical positions, i.e., if for each $i=1,\dots,m$ and
+$j=1,\dots,n$ we have $a_{i,j}=b_{i,j}$. We indicate the matrices are
+equal by writing $\mat{A}=\mat{B}$.
+
+If $\mat{A}$ and $\mat{B}$ are not equal, then we write $\mat{A}\neq\mat{B}$.
+\end{definition}
+
+\begin{remark}
+We are technically introducing a new binary relation, \define{Matrix Equality}.
+\end{remark}
+
+\begin{remark}[Same dimensions]
+If $\mat{A}$ and $\mat{B}$ do not have the same number of rows and columns, then
+they cannot possibly be equal. In this case (if they have different
+dimensions), we can still sensibly write $\mat{A}\neq\mat{B}$.
+\end{remark}
+
+\begin{definition}
+We call an $m\times n$ matrix $\mat{A}=(a_{i,j})$:
+\begin{enumerate}
+\item \define{Upper Triangular} if $a_{i,j}=0$ for $i>j$, e.g., when
+  $m=n$ it looks like:
+  \[ \mat{A} = \begin{bmatrix}
+    a_{1,1} & a_{1,2} & a_{1,3} & \dots & a_{1,n}\\
+    0      & a_{2,2} & a_{2,3} & \dots & a_{2,n}\\
+    0      & 0       & a_{3,3} & \dots & a_{3,n}\\
+    \vdots & \vdots & \vdots & \ddots & \vdots\\
+    0      & 0      & 0      & \dots  & a_{n,n}
+  \end{bmatrix} \]
+\item \define{Lower Triangular} if $a_{i,j}=0$ for $i<j$, e.g., when
+  $m=n$ it looks like:
+  \[ \mat{A} = \begin{bmatrix}
+    a_{1,1} & 0      & 0       & \dots & 0\\
+    a_{2,1} & a_{2,2} & 0       & \dots & 0\\
+    a_{3,1} & a_{3,2} & a_{3,3} & \dots & 0\\
+    \vdots & \vdots & \vdots & \ddots & \vdots\\
+    a_{n,1} & a_{n,2} & a_{n,3} & \dots  & a_{n,n}
+  \end{bmatrix} \]
+\item If $\mat{A}$ is upper-triangular and the diagonal entries are all zero,
+  then we call $\mat{A}$ \define{Strictly Upper Triangular}.
+\item Similarly, if $\mat{A}$ is lower-triangular and the diagonal entries are
+  all zero, then we call $\mat{A}$ \define{Strictly Lower Triangular}.
+\end{enumerate}
+\end{definition}
+
+\N{Block matrix}
+It is useful to draw horizontal and vertical lines (either dashed or
+slid, it makes no difference except for typography), to partition a
+matrix into blocks, permitting us to write
+\begin{equation}
+\mat{A} = \left[
+    \begin{array}{c:c}
+        \mat{B} & \mat{C} \\ \hdashline
+        \mat{D} & \mat{E} 
+    \end{array}
+\right] = \left[
+    \begin{array}{c|c}
+        \mat{B} & \mat{C} \\ \hline
+        \mat{D} & \mat{E} 
+    \end{array}
+\right].
+\end{equation}
+We could partition a matrix however we want, and we call the blocks
+\define{Submatrices} of $\mat{A}$. Writing $\mat{A}$ in this manner is
+called a \define{Block Decomposition} of $\mat{A}$.
+
+\begin{example}
+  Let us consider some $3\times 5$ matrix $\mat{A}$ whose components are
+  partitioned into block form:
+  \begin{equation}
+    \mat{A} = \left[\begin{array}{cc:ccc}
+      a_{11} & a_{12} & a_{13} & a_{14} & a_{15}\\
+      a_{21} & a_{22} & a_{23} & a_{24} & a_{25}\\ \hdashline
+      a_{31} & a_{32} & a_{33} & a_{34} & a_{35}
+    \end{array}\right] = \left[
+    \begin{array}{c:c}
+        \mat{B} & \mat{C} \\ \hdashline
+        \mat{D} & \mat{E} 
+    \end{array}
+\right]
+  \end{equation}
+  This partitions $\mat{A}$ into a $2\times 2$ matrix $\mat{B}$, a
+  $2\times3$ matrix $\mat{C}$, a $1\times2$ matrix $\mat{D}$, and a
+  $1\times 3$ matrix $\mat{E}$. We could also partition it in other
+  ways, for example,
+\begin{equation}
+    \mat{A} = \left[\begin{array}{c:ccc:c}
+      a_{11} & a_{12} & a_{13} & a_{14} & a_{15}\\
+      a_{21} & a_{22} & a_{23} & a_{24} & a_{25}\\ \hdashline
+      a_{31} & a_{32} & a_{33} & a_{34} & a_{35}
+    \end{array}\right].
+\end{equation}
+\end{example}
+
+\begin{exercise}
+Can we have a (row or column) vector which is also a scalar matrix?
+\end{exercise}

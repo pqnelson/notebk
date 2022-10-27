@@ -12,7 +12,7 @@
 \usepackage{fancyvrb}
 \newcounter{chunk@ctr}[section]
 \usepackage{ifpdf}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table]{xcolor}
 \usepackage[colorlinks=true,
   linkcolor=BrickRed,
   citecolor=BrickRed,
@@ -20,10 +20,11 @@
   urlcolor=BrickRed,
   runcolor=BrickRed,
   pdfauthor={Alex Nelson},
-  pdftitle={Differential Geometry},
+  pdftitle={Elementary Linear Algebra},
   \ifpdf\else dvipdfmx\fi
 ]{hyperref}
 
+\usepackage{arydshln} % dashed block matrices
 \usepackage{titlesec}
 \titleformat*{\section}{\Large\bfseries\sffamily}
 \titleformat*{\subsection}{\large\bfseries\sffamily}
@@ -76,11 +77,12 @@
 \newtheorem{definition}[chunk@ctr]{Definition}
 \newtheorem{example}[chunk@ctr]{Example}
 % \newtheorem{axiom}{Axiom}
-\newtheorem{problem}[chunk@ctr]{Problem}
+%\newtheorem{problem}[chunk@ctr]{Problem}
 \newtheorem{question}[chunk@ctr]{Question}
 
 \theoremstyle{definition}
 \newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+\newtheorem{problem}{\llap{\mantriangleright\kern.15em}Problem}
 
 \theoremstyle{rmkstyle}
 \newtheorem{remark}{Remark}[chunk@ctr]

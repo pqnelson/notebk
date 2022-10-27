@@ -1,0 +1,272 @@
+\section{Solving Systems of Equations}
+
+\begin{example}[{Sraffa~\cite{sraffa}}]\label{ex:systems-of-equations:sraffa}
+One class of systems of linear equations occurs naturally in
+Neo-Ricardian economics. Consider a hypothetical economy consisting of
+two industry sectors, wheat and iron, whose production processes are
+described by the system of equations (where the left of the arrow refers
+to the inputs at the start of the production period, and the quantities
+to the right of the arrows are produced at the end of the period, and
+then an annual market takes place where iron is traded for wheat):
+\begin{equation}
+\begin{array}{rcl} \mbox{inputs} & \to & \mbox{outputs}\\
+280~\mbox{qr. wheat} + 12~\mbox{t. iron} & \to & 400~\mbox{qr. wheat}\\
+120~\mbox{qr. wheat} + 8~\mbox{t. iron}  & \to &  20~\mbox{t. iron}.
+\end{array}
+\end{equation}
+The question we want to know: what is the exchange rate between
+quarters\footnote{A ``quarter'' of wheat refers to an obscure
+measurement choice of 18th century Britain, which varied port to
+port. We may assume it refers to a ``quarter ton''.}
+of wheat and tons of iron? We can create a system of equations by
+introducing two unknowns $p_{w}$ for the price of 1 quarter of wheat,
+and $p_{i}$ for the price of 1 ton of iron. We assume society is in a
+``self reproducing state'', in the sense that the wheat sector exchanges
+enough wheat-for-iron to continue producing wheat (and the iron sector
+exchanges enough iron-for-wheat to continue producing iron):
+\begin{subequations}
+\begin{equation}
+  \begin{array}{rcl}
+    280p_{w} + 12p_{i} &=& 400p_{w}\\
+    120p_{w} + 8p_{i} &=& 20p_{i}.
+  \end{array}
+\end{equation}
+We can rewrite the first equation (by subtracting both sides by $280p_{w}$):
+\begin{equation}
+  \begin{array}{rcl}
+    12p_{i} &=& 120p_{w}\\
+    120p_{w} + 8p_{i} &=& 20p_{i}.
+  \end{array}
+\end{equation}
+Then we rewrite the second equation (by subtracting both sides by $8p_{i}$):
+\begin{equation}
+  \begin{array}{rcl}
+    12p_{i} &=& 120p_{w}\\
+    120p_{w} &=& 12p_{i}.
+  \end{array}
+\end{equation}
+These are redundant equations! We end up with a class of solutions,
+described by
+\begin{equation}
+\boxed{10p_{w} = p_{i},}
+\end{equation}
+\end{subequations}
+that is to say, the price of 1 ton iron is equal to the price of 10
+quarters of wheat.
+\end{example}
+
+\begin{remark}
+This method of solving such equations in Neo-Ricardian economics works
+fine when there is no surplus; that is to say, when there is exactly as
+much produced (for each commodity) used as inputs in the
+economy. However, when there is surplus, we need more sophisticated
+techniques of linear algebra, because we will have an eigenvalue problem.
+\end{remark}
+
+\begin{example}[Motivating Example]
+  Suppose we have two equations with two variables $x$ and $y$ given by:
+  \begin{subequations}
+    \begin{align}
+      -x-2y  &= -2\\
+      5x+6y  &= 1.
+    \end{align}
+  \end{subequations}
+  Are there [real] values for $x$ and $y$ which makes this hold? We can
+  add 5 times the first equation to the second equation, giving us:
+  \begin{subequations}
+    \begin{align}
+      -x-2y  &= -2\\
+      0-4y  &= -9.
+    \end{align}
+  \end{subequations}
+  The second equation may be solved for $y=9/4$, then we may substitute
+  this into the first equation giving us
+  \begin{equation}
+-x-2(9/4) = -2\implies -x=2(9/4)-2=\frac{9}{2}-\frac{4}{2}=\frac{5}{2}.
+  \end{equation}
+  Hence we obtain the solutions
+  \begin{equation}
+\boxed{x=\frac{5}{2}}\quad\mbox{and}\quad\boxed{y=\frac{9}{4}.}
+  \end{equation}
+\end{example}
+
+\N{Index Notation}
+We will rely heavily on index notation. Why? Well, there are 26 possible
+symbols (using lowercase Latin letters), which means we could not
+discuss anything beyond systems of 5 equations in 5 variables; if we
+also use the 26 uppercase Latin letters, then we cannot discuss anything
+beyond systems of 7 equations in 7 unknowns. Rather than struggle with
+new symbols, we will use indices: appending numbers as subscripts to
+letters to refer to distinct quantities. Thus we write $x_{1}$, $x_{2}$,
+$x_{3}$ instead of $x$, $y$, $z$.
+
+We may use \define{Dummy Variables} to affix a variable as a subscript,
+writing $x_{i}$ where $i$ could be $1$, $2$, or $3$. Here $i$ is the
+dummy variable in the expression $x_{i}$. We often will write ``$x_{i}$
+where $i=1,2,3$'' to indicate $i$ is a dummy variable ranging over the
+values $1$, $2$, $3$.
+
+We can have several indices [plural of ``index''] affixed to a
+symbol. We have seen this with coefficients, which had two indices
+separated by a comma. Some authors use a comma to separate indices,
+other authors do not.
+
+Also we should note, some authors use superscripts indices. This will
+occur in some parts of mathematics, but we will avoid it in these notes
+whenever possible (because it's hard to tell if a superscript number is an
+exponent or an index).
+
+\N{Basic Terminology}
+A \define{linear equation in one variable} $x$ looks like
+\begin{equation}
+b = ax
+\end{equation}
+where $a$ and $b$ are real constants.
+
+A single \define{linear equation in two variables} $x$ and $y$ looks like
+\begin{equation}
+  ax + by = c
+\end{equation}
+where $a$, $b$, and $c$ are real constants.
+
+A single linear equation in $n$ variables $x_{1}$, \dots, $x_{n}$ looks
+like
+\begin{equation}
+a_{1}x_{1} + \dots + a_{n}x_{n} = b
+\end{equation}
+where $a_{1}$, \dots, $a_{n}$, and $b$ are real constants.
+
+\N{Terminology: Systems of equations}
+More generally, a \define{System of $m$ Linear Equations in $n$ Unknowns} 
+$x_{1}$, \dots, $x_{n}$ (where the subscripts are \define{Indices} to
+append to one symbol $x$ a number or ``dummy variable'' [a variable
+ranging over the index values], giving us any
+number of variables for the price of one symbol) looks like:
+\begin{equation}
+\begin{array}{rcl}
+a_{1,1}x_{1} + a_{1,2}x_{2} + \dots + a_{1,n}x_{n} &=& b_{1}\\
+a_{2,1}x_{1} + a_{2,2}x_{2} + \dots + a_{2,n}x_{n} &=& b_{2}\\
+\vdots\quad \qquad\vdots\quad\qquad\ddots\quad\qquad\vdots\quad & \vdots & \vdots\\
+a_{m,1}x_{1} + a_{m,2}x_{2} + \dots + a_{m,n}x_{n} &=& b_{m}
+\end{array}
+\end{equation}
+where $b_{1}$, \dots, $b_{m}$ are $m$ real constants, and we have
+$a_{1,1}$, $a_{1,2}$, \dots, $a_{m,n}$ be $mn$ real constants called the
+\define{Coefficients}. 
+
+A \define{Solution} to a system of equations in $n$ variables $x_{1}$,
+\dots, $x_{n}$ is an assignment of $n$ real values $s_{1}$, \dots,
+$s_{n}$ to the variables (so $x_{1}=s_{1}$, \dots, $x_{n}=s_{n}$) which
+satisfies the system of equations.
+
+
+\begin{example}[System of Nonlinear Equations]
+We have to distinguish a system of linear equations from nonlinear
+equations. For example, the following is a nonlinear equation
+\begin{equation}
+3x^{2} + x = 2,
+\end{equation}
+because a polynomial of order $n>1$ will be nonlinear. If you have a
+function $f(x)$ and you don't know if it's linear or not, check if
+$f(ax+by)=af(x)+bf(y)$ holds or not --- this is the criteria of linearity.
+
+The following equation is also nonlinear:
+\begin{equation}
+x + yz =3.
+\end{equation}
+We cannot multiply two [or more] unknowns together in a linear equation.
+
+So the following equation is nonlinear:
+\begin{equation}
+x + y\cos(z) = 3,
+\end{equation}
+on two counts: first, $\cos(z)$ is nonlinear; and second, $y\cos(z)$ is
+not allowed in a linear equation.
+\end{example}
+
+\N{Method of Elimination}
+One method to find a solution, which has been taught to high school
+students for decades, is to take the first equation and use it to
+rewrite one variable in terms of the remaining. For example, in:
+\begin{equation}
+  \begin{array}{rcrcrcl}
+    0      & + & 2x_{2} & + & 3x_{3} & = & 5\\
+    2x_{1} & + & 0      & + & 3x_{3} &=& -1\\
+    x_{1}  & + & x_{2}  & + & x_{3} &=& 1.
+  \end{array}
+\end{equation}
+We would use the first equation to substitute $x_{2}=(5 - 3x_{3})/2$ in
+the remaining equations, and discard the first equation, giving us:
+\begin{equation}
+  \begin{array}{rcrcrcl}
+    2x_{1} & + & 0      & + & 3x_{3} &=& -1\\
+    x_{1}  & + & \displaystyle\left(\frac{5 - 3x_{3}}{2}\right)  & + & x_{3} &=& 1.
+  \end{array}
+\end{equation}
+We do this again, to use the first equation to write $x_{1} = (-1-3x_{3})/2$,
+and plug this into the last equation, which gives us a value for
+$x_{3}$.
+We backsubstitute this into the second equation to obtain a value for
+$x_{1}$, then together these are backsubstituted into either the first
+or third equation of our original system to find the solution for
+$x_{2}$.
+
+\N{Issues with Method of Elimination}
+Doing this ``method of elimination'' is tedious. \emph{I} [the author]
+does not want to do this, it's too much work. Is there a better way to
+find a solution to a system of linear equations?
+
+A second issue with the method of elimination, it does not tell us when
+a solution exists. Or if there is a family of solutions, which we saw in
+Example~\ref{ex:systems-of-equations:sraffa} (the price of 1 ton of iron
+was 10 times the price of a quarter of wheat, whatever that is).
+
+\N{Roadmap: Enter the Matrix}
+Remember what a system of 1 linear equation in 1 variable looks like? We
+saw it was $ax=b$. We could solve this easily when $a\neq0$, simply take
+$x=b/a$ or $x = a^{-1}b$. It would be lovely if all systems of linear
+equations could be so easy.
+
+We will try to make it easy by generalizing the notion of a
+``number''. Instead of writing a system of equations as
+\begin{equation}
+\begin{array}{rcl}
+a_{1,1}x_{1} + a_{1,2}x_{2} + \dots + a_{1,n}x_{n} &=& b_{1}\\
+a_{2,1}x_{1} + a_{2,2}x_{2} + \dots + a_{2,n}x_{n} &=& b_{2}\\
+\vdots\quad \qquad\vdots\quad\qquad\ddots\quad\qquad\vdots\quad & \vdots & \vdots\\
+a_{m,1}x_{1} + a_{m,2}x_{2} + \dots + a_{m,n}x_{n} &=& b_{m}
+\end{array}
+\end{equation}
+we will introduce a notion of a matrix $\mat{A}$ as an array of $m$ rows and
+$n$ columns, and vectors $\vec{x}$, $\vec{b}$, then rewrite our system
+as
+\begin{equation}
+\mat{A}\vec{x}=\vec{b}.
+\end{equation}
+Just as with our simpler system with one equation in one unknown $ax=b$
+where we multiplied both sides by the number $a^{-1}$ (assuming $a$ is
+invertible), we can imitate this and try ``multiplying'' both sides by a
+matrix $\mat{B}$ to transform our system to something like
+\begin{equation}
+\vec{x} = \mat{B}\vec{b}.
+\end{equation}
+The problem: we will have to define a notion of matrix multiplication,
+and prove it satisfies the familiar properties which the multiplication
+of numbers enjoy.
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}[{Sraffa~\cite[\S2]{sraffa}}]
+Find the exchange-values which ensure a
+self-reproducing state for the following economy:
+\begin{equation}
+  \begin{array}{rcl}
+240~\mbox{qr. wheat} + 12~\mbox{t. iron} + 18~\mbox{pigs} &\to& 450~\mbox{qr. wheat}\\
+ 90~\mbox{qr. wheat} +  6~\mbox{t. iron} + 12~\mbox{pigs} &\to& 21~\mbox{t. iron}\\
+120~\mbox{qr. wheat} +  3~\mbox{t. iron} + 30~\mbox{pigs} &\to& 60~\mbox{pigs}.
+  \end{array}
+  \end{equation}
+\end{exercise}
+

@@ -1,0 +1,45 @@
+\phantomsection
+\section*{Preface}
+\addcontentsline{toc}{section}{Preface}
+
+These are notes about elementary linear algebra, roughly at the level of
+Math 22A at UC Davis. Our presentation is heavily inspired from Dr
+Andrew Waldron's 2007 Spring course. Later Dr Waldron and colleagues
+wrote their own textbook~\cite{waldron}.
+
+We try to keep discussion informal and conversational, we will delimit
+examples and definitions and theorems and whatnot. Towards this end, we
+will use ``paragraph numbers'' with some kind of label summarizing the
+paragraph chunk or mathematical register [``Theorem'', ``Definition'',
+``Example'', etc.].
+
+Examples and exercises are randomly generated using Lisp scripts, or
+from various cited sources. The reader is encouraged to work their way
+through the excercises found in, say, Kolman and Hill~\cite{kolman}.
+
+We rely on structured derivations to explain derivations involving
+chains of equations. It's explained a little in appendix A, but for the
+most part it looks like
+\begin{calculation}
+  A
+\step*{hint why $A=B$}
+  B
+\step*{hint why $B=C$}
+  C
+\step*{hint why $C=D$}
+  D
+\end{calculation}
+From which we can conclude $A=B=C=D$ are all equal to each
+other. Usually we are trying to prove $A=D$.
+
+Occasionally we may have discussions of difficult or subtle points. We
+reserve them in ``dangerous bend'' paragraphs, which begin with
+\begin{center}
+  \dbend\smallbreak
+\end{center}
+The font is smaller for such discussions, and make be skipped on first
+reading.
+
+Lastly, I have haphazardly added exercises and problems
+throughout. ``Problems'' are scattered wherever I think they might be
+fun or useful. ``Exercises'' are consolidated in their own subsection.
