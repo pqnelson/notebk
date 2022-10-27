@@ -38,7 +38,7 @@ are some problems with it. The main issues we should think about:
   \textsc{Solution:} Require that $\chart{x}$ be \emph{regular}.
 \end{enumerate}
 
-\begin{definition}
+\begin{definition}\label{defn:euclidean-space:tangent-map}
 Given a map $F\colon \RR^{m}\to\RR^{n}$ (suppose $m\leq n$), its
 \define{Tangent Map} at $\vec{p}\in\RR^{m}$
 \begin{equation*}
@@ -333,6 +333,8 @@ us?
   \end{center}
 \end{enumerate}
 
+
+\phantomsection{}
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
 
@@ -384,6 +386,7 @@ $0\leq v<\infty$, and $0\leq\varphi<2\pi$, and the Cartesian coordinates
   % (b) What are the structural equations in this case? Check the
   % results of (a) satisfy them.
 \end{enumerate}
+\vfill\eject
 
 % calculus on a surface
 \subsection{Calculus on a Surface}
@@ -487,7 +490,7 @@ the path, the restriction $\alpha|_{J}$ is smooth in the preimage of the
 chart in the familiar way. 
 \end{example}
 
-\N{Smooth Functions Between Surfaces}
+\N{Smooth Functions Between Surfaces}\label{defn:smooth-functions-between-surfaces}
 Suppose now we have two surfaces $M_{1}$ and $M_{2}$. We can construct a
 notion of a smooth function $f\colon M_{1}\to M_{2}$ between these
 surfaces. The solution is to cheat.
@@ -545,8 +548,9 @@ We also have $\chart{y}^{-1}\circ f$ be a smooth function on $M_{1}$, in
 the sense of Definition~\ref{defn:surfaces:smooth-function-from-surface}.
 Since this is done for every possible charts on $M_{1}$ and $M_{2}$, we
 conclude that $f\colon M_{1}\to M_{2}$ is smooth.
+\vfill\eject
 
-
+\phantomsection{}
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
 
@@ -687,6 +691,7 @@ Generalizations follow easily once we have the right definitions.
 So if you find this boring, good: it means you have a grasp of the
 concepts underlying the definitions.
 \end{remark}
+\vfill\eject
 
 \subsection{Differential Forms on Surfaces}
 
@@ -819,7 +824,7 @@ $\phi\wedge\phi=0$. We proved this formally, as a consequence of
 antisymmetry, but the reader may verify this is true for our concrete
 realization of the wedge product.
 
-\M
+\N{Computing 2-form using basis vectors}
 Let us consider a 2-form $\eta$ and suppose $\vec{e}_{1}$,
 $\vec{e}_{2}\in\T_{\vec{p}}M$ is a basis. We will do some multilinear
 algebra: once we know how $\eta$ acts on all possible linear
@@ -852,9 +857,444 @@ We only need to compute $\eta(\vec{e}_{1}, \vec{e}_{2})$ once, and then
 computing $\eta(\vec{v},\vec{w})$ amounts to computing a determinant.
 
 
+\N{Exterior Derivative}
+Let us talk about one forms on $\RR^{2}$, call such a 1-form $\phi$
+and let $\vec{e}_{1}$, $\vec{e}_{2}$ be the natural frame field in the
+$u^{1}$, $u^{2}$ coordinate directions. By the above formula, to figure
+out $\D\phi$, we just need to know what $\D\phi(\vec{e}_{1}, \vec{e}_{2})$
+is. In $\RR^{2}$, we know any one-form can be written as
+\begin{equation}\label{eq:surfaces:one-form-as-linear-combo-of-coframe}
+\phi = f_{1}\,\D u^{1} + f_{2}\,\D u^{2}.
+\end{equation}
+We have
+\begin{subequations}
+\begin{align}
+\D\phi(\vec{e}_{1}, \vec{e}_{2})
+&=\D(f_{1}\,\D u^{1} + f_{2}\,\D u^{2})(\vec{e}_{1}, \vec{e}_{2})
+=(\D f_{1}\wedge\D u^{1} + \D f_{2}\wedge\D u^{2})(\vec{e}_{1}, \vec{e}_{2})\\
+&=\left(\left(\frac{\partial f_{1}}{\partial u^{1}}\D u^{1} + \frac{\partial f_{1}}{\partial u^{2}}\D u^{2}\right)\wedge\D u^{1} + \left(\frac{\partial f_{2}}{\partial u^{1}}\D u^{1} + \frac{\partial f_{2}}{\partial u^{2}}\D u^{2}\right)\wedge\D u^{2}\right)(\vec{e}_{1}, \vec{e}_{2})\\
+&=\left(\frac{\partial f_{1}}{\partial u^{2}}\D u^{2}\wedge\D u^{1}
++\frac{\partial f_{2}}{\partial u^{1}}\D u^{1}\wedge\D u^{2}\right)(\vec{e}_{1}, \vec{e}_{2})\\
+&=\left[\left(\frac{\partial f_{2}}{\partial u^{1}} - \frac{\partial f_{1}}{\partial u^{2}}\right)\D u^{1}\wedge\D u^{2}\right](\vec{e}_{1}, \vec{e}_{2})\\
+&=\left(\frac{\partial f_{2}}{\partial u^{1}} - \frac{\partial f_{1}}{\partial u^{2}}\right)\left(\D u^{1}(\vec{e}_{1})\D u^{2}(\vec{e}_{2})-\D u^{1}(\vec{e}_{2})\D u^{2}(\vec{e}_{1})\right)\\
+&=\left(\frac{\partial f_{2}}{\partial u^{1}} - \frac{\partial f_{1}}{\partial u^{2}}\right)(1-0)=\left(\frac{\partial f_{2}}{\partial u^{1}} - \frac{\partial f_{1}}{\partial u^{2}}\right).
+\end{align}
+\end{subequations}
+We stipulated in
+Eq~\eqref{eq:surfaces:one-form-as-linear-combo-of-coframe} that we could
+write a one-form $\phi$ using $f_{1}$, $f_{2}$. This let us find $\D\phi(\vec{e}_{1}, \vec{e}_{2})$.
+Could we perform our calculation without this stipulation? That is to
+say, can we write $\D\phi(\vec{e}_{1}, \vec{e}_{2})$ in terms of
+derivatives of $\phi$? Yes! We can, thus:
+\begin{equation}
+\D\phi(\vec{e}_{1}, \vec{e}_{2}) = \frac{\partial}{\partial u^{2}}\phi(u^{1})-
+\frac{\partial}{\partial u^{1}}\phi(u^{2}).
+\end{equation}
+This motivates the following definition of exterior derivatives of
+one-forms on surfaces, recalling the partial velocities form a frame
+field on the surface.
 
-\begin{comment}
-  \subsection*{Exercises}
+\begin{definition}
+On a surface $M\subset\RR^{3}$, in a given patch, we have coordinate
+vector fields $\chart{x}_{u}$, $\chart{x}_{v}$. We define for any 1-form
+$\phi$ on $M$ the 2-form $\D\phi$ on $M$ given by
+\begin{equation}
+\D\phi(\chart{x}_{u}, \chart{x}_{v}) = \frac{\partial}{\partial u}\phi(\chart{x}_{v})-
+\frac{\partial}{\partial v}\phi(\chart{x}_{u}),
+\end{equation}
+for any patch.
+\end{definition}
+
+
+\N{Consistency of Definitions}
+One potential problem is that our definition might not make sense. We
+demand consistency when the patches overlap, like the situation doodled
+below:
+\begin{center}
+  \includegraphics{img/surfaces.20}
+\end{center}
+Whenever we define \emph{anything} in differential geometry, we
+\emph{must} worry about consistency on the overlap of patches.
+
+\vfill\eject
+\N{Maps of Surfaces}
+Recall our discussion of smooth maps between surfaces
+(\S\ref{defn:smooth-functions-between-surfaces}).
+If we have smooth surfaces $M$ and $N$, is there a smooth function
+$F\colon M\to N$? In order for $F$ to be smooth, we need for any patch
+$D\subset\RR^{2}$ with chart $\chart{x}\colon D\to M$ and for any patch
+$E\subset\RR^{2}$ with chart $\chart{y}\colon E\to N$, there exists a
+map $f\colon D\to E$ (defined by $f=\chart{y}^{-1}\circ
+F\circ\chart{x}$) which is smooth in the usual sense.
+We have the situation similar to what we have doodled below:
+\begin{center}
+  \includegraphics{img/surfaces.21}
+\end{center}
+Now, we have the tangent map in such an approach, defined for $f\colon D\to E$
+using Definition~\ref{defn:euclidean-space:tangent-map}. We patch them
+together to induce a tangent map associated for $F$.
+
+\begin{definition}
+Let $M$, $N$ be surfaces, $F\colon M\to N$ be a smooth map.
+The \define{Tangent Map} is defined, for each $\vec{p}\in M$, as
+$F_{*}\colon\T_{\vec{p}}M\to\T_{F(\vec{p})}N$.
+\end{definition}
+
+\M
+The really slick way to approach this is if we have some path
+$\alpha(t)$ that goes through the given point $\vec{p}=\alpha(0)$. Then
+we have
+\begin{equation}
+F_{*}(\alpha'(0)) = \left.\frac{\D}{\D t}F(\alpha(t))\right|_{t=0}.
+\end{equation}
+We call $F_{*}(\vec{v}_{\vec{p}})$ the \define{Pushforward}
+of $\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$ along $F$.
+
+\M
+Recall that one-forms are maps from tangent vector spaces to
+$\RR$. Given a one-form $\phi$ on $N$, and a smooth map $F\colon M\to N$,
+we can obtain a one-form on $M$ called the \define{Pullback} of $\phi$
+along $F$, denoted $F^{*}(\phi)$. This is defined by, for any $\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$,
+\begin{equation}
+(F^{*}\phi)[\vec{v}_{\vec{p}}] = \phi[F_{*}(\vec{v}_{\vec{p}})].
+\end{equation}
+In short, any smooth map $F\colon M\to N$ on surfaces gives me two
+induced maps, the pushforward
+\begin{equation*}
+F_{*}\colon\{\mbox{tangent vectors on $M$}\}\to\{\mbox{tangent vectors on $N$}\}
+\end{equation*}
+and, going in the opposite direction, the pullback which maps one-forms
+to one-form,
+\begin{equation*}
+F^{*}\colon\{\mbox{1-forms on $M$}\}\gets\{\mbox{1-forms on $N$}\}.
+\end{equation*}
+
+\subsection{Shape Operators}
+
+\N{Gauss Map}
+The most important map for differential geometry is the Gauss map. Let
+us try to describe it.
+
+Given any oriented surface $M\subset\RR^{3}$ (meaning we can choose a
+specific unit normal vector field, i.e., $M$ is equipped with a chosen
+unit normal vector field $U$). There is a canonical map of surfaces
+(``canonical'' meaning we have no need to make arbitrary choices):
+\begin{equation}
+\Gauss\colon M\to S^{2},
+\end{equation}
+where $S^{2}$ is the unit sphere in $\RR^{3}$. This is defined by taking
+$U$ at each point $\vec{p}\in M$ and translating it to the origin of
+$\RR^{3}$. More explicitly, if we have
+$\vec{n}_{\vec{p}}=(\vec{n})_{\vec{p}}=U(\vec{p})$ be the unit normal
+vector at $\vec{p}$ with vector part $\vec{n}\in\RR^{3}$, then
+$G(\vec{p})=\vec{n}$ is the vector part of $\vec{n}_{\vec{p}}$ \emph{as
+a point on the unit sphere, \textbf{not} a tangent vector on the unit sphere}.
+This tells us how the unit normal $U$ rotates as we move
+$\vec{p}$ infinitesimally. The intuition is sketched in Figure~\ref{fig:gauss-map-intuition}.
+\begin{figure}[t]
+\centering
+  \includegraphics{img/surfaces.22}
+\caption{Gauss map for a generic surface. The value of
+  $\Gauss(\vec{p})$ is identical to the vector part of the unit normal vector $U(\vec{p})$.}\label{fig:gauss-map-intuition}
+\end{figure}
+
+\begin{example}
+If $M$ is a plane, then $\Gauss(\vec{p})$ is a constant, since the plane
+has a constant normal vector (so the Gauss map sends everything in the
+surface to a single point on the unit sphere).
+\end{example}
+
+\begin{example}
+If $M$ is a sphere of radius $r>0$, then the Gauss map is just a
+``rescaling'' of the sphere together with a translation to the origin.
+\end{example}
+
+\N{Differential of Gauss Map}
+For \emph{any} surface $M\subset\RR^{3}$, at any point $\vec{p}\in M$,
+the tanget space $\T_{\vec{p}}M$ and its pushforward along the Gauss map
+to $\T_{\Gauss(\vec{p})}S^{2}$, they are parallel. What's
+more: they are \emph{canonically isomorphic}, which is nicer than
+``just'' isomorphic, because we just have to change basis vectors.
+
+This is a bold claim, so let us prove it more explicitly. Let
+$\alpha\colon I\to M$ be a map such that $\alpha(0)=\vec{p}$ and
+$\alpha'(0)=\vec{v}_{\vec{p}}$. We find, by definition of the pushforward,
+\begin{equation}
+\Gauss_{*}(\vec{v}_{\vec{p}}) = \left.\frac{\D}{\D t} \Gauss\left(\alpha(t)\right)\right|_{t=0}.
+\end{equation}
+But $\Gauss\left(\alpha(t)\right)$ ``is'' $U\left(\alpha(t)\right)$, in
+the sense that the vector part of $U\left(\alpha(t)\right)$ equals the
+coordinates of the point $\Gauss\left(\alpha(t)\right)\in S^{2}$. So we
+have
+\begin{subequations}
+\begin{align}
+\Gauss_{*}(\vec{v}_{\vec{p}}) &= \left.\frac{\D}{\D t}U\left(\alpha(t)\right)\right|_{t=0}\\
+&= \left.\frac{\D}{\D t}\left(\sum_{i}u^{i}\left(\alpha(t)\right)U_{i}\right)\right|_{t=0}\\
+&= \sum_{i}\left(\left.\frac{\D}{\D t}u^{i}\left(\alpha(t)
+\right)\right|_{t=0}U_{i}\right)\\
+&= \sum_{i}\vec{v}_{\vec{p}}[u^{i}]U_{i}\\
+&= \nabla_{\vec{v}_{\vec{p}}}U.
+\end{align}
+\end{subequations}
+
+\begin{definition}
+Let $M\subset\RR^{3}$ be a surface, $\vec{p}\in M$ be an arbitrary point.
+We define a \define{Shape Operator} $S_{\vec{p}}$ to be a function that
+maps tangent vectors from $\T_{\vec{p}}M$ and gives new tangent vectors
+(i.e., $S_{\vec{p}}\colon\T_{\vec{p}}M\to\T_{\vec{p}}M$)
+by the following formula:
+\begin{equation}
+S_{\vec{p}}(\vec{v}_{\vec{p}}) = -\nabla_{\vec{v}_{\vec{p}}}U = -\Gauss_{*}(\vec{v}_{\vec{p}})+\mbox{translation},
+\end{equation}
+where $U$ is the unit normal vector field on $M$ and
+$\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$. 
+\end{definition}
+
+\begin{remark}
+We should worry that $U$ is defined only on the surface, so the
+covariant derivative operation may not be defined everywhere. However,
+if we demand the vector $\vec{v}_{\vec{p}}$ be on the surface, then
+we're golden.
+\end{remark}
+
+\begin{remark}
+We see the shape operator is \emph{linear} since the covariant
+derivative is linear. Also (and this is not obvious) it's symmetric with
+respect to the dot product [i.e., it's self-adjoint]:
+$S_{\vec{p}}(\vec{w})\cdot\vec{v}=S_{\vec{p}}(\vec{v})\cdot\vec{w}$. 
+\end{remark}
+
+\begin{example}
+Let $M$ be a plane, then $S_{\vec{p}}(\vec{v}) = -\nabla_{\vec{v}}U = 0$
+since the normal vector is constant.
+\end{example}
+
+\begin{example}
+Let $M$ be a sphere of radius $r$ centered at $(x_{0},y_{0},z_{0})$. We
+find
+\begin{subequations}
+\begin{align}
+S_{\vec{p}}(\vec{v})
+&= -\nabla_{\vec{v}}U\\
+&= -\nabla_{\vec{v}}\left(\sum_{i}\frac{x^{i}-x^{i}_{0}}{r}U_{i}\right)\\ 
+&= -\sum_{i}\vec{v}\left[\frac{x^{i}-x^{i}_{0}}{r}\right]U_{i}\\
+&= -\sum_{i}\sum_{j}v^{j}U_{j}\left[\frac{x^{i}-x^{i}_{0}}{r}\right]U_{i}\\
+&= -\sum_{i}\sum_{j}\frac{v^{j}}{r}{\delta^{i}}_{j}U_{i}\\
+&= \frac{-1}{r}\sum_{i}v^{i}U_{i}\\
+&= \frac{-\vec{v}}{r}.
+\end{align}
+\end{subequations}
+Hence $S_{\vec{p}}(\vec{v}) = -\vec{v}/r$ for any tangent vector $\vec{v}\in\T_{\vec{p}}M$.
+\end{example}
+
+\begin{example}\label{ex:shape-operator:cylinder}
+  We see on the cylinder, pick some frame field as sketched thus:
+  \begin{center}
+    \includegraphics{img/surfaces.23}
+  \end{center}
+  In the $v$-direction, it's geometrically ``a line''; whereas in the
+  $w$-direction, it's geometrically ``a circle''. The reader can verify
+  therefore:
+  \begin{subequations}
+    \begin{align}
+      S_{\vec{p}}(\vec{v}_{\vec{p}}) &= 0\\
+      S_{\vec{p}}(\vec{w}_{\vec{p}}) &= \frac{-1}{r}\vec{w}_{\vec{p}}.
+    \end{align}
+  \end{subequations}
+\end{example}
+
+\N{Shape Operator as Matrix}
+Let $M$ be a surface in $\RR^{3}$, and suppose we have a frame field
+$E_{1}$, $E_{2}$ for $M$.
+We can find a matrix representation of the shape operator relative to
+the frame field in the usual way,
+\begin{equation}
+  \begin{split}
+S_{\vec{p}}(E_{1}) &= s^{1,1}E_{1} + s^{1,2}E_{2},\\
+S_{\vec{p}}(E_{2}) &= s^{2,1}E_{1} + s^{2,2}E_{2}.
+  \end{split}
+\end{equation}
+Recall the eigenvalues $\lambda_{j}$ for a square matrix $M$ contain
+nearly all possible information about the matrix and further
+\begin{subequations}
+\begin{align}
+\det(M) = \prod_{j}\lambda_{j}\\
+\tr(M) = \sum_{j}\lambda_{j}.
+\end{align}
+\end{subequations}
+For the shape operator, we find the trace and determinant contain
+crucial geometric information. Specifically, these quantities encode
+different aspects of the curvature of the surface.
+
+\subsection{Curvature of a Surface}
+
+\begin{proposition}
+If $\alpha\colon I\to M$ is any curve on the surface $M$ with
+$\alpha(0)=\vec{p}$ and $\alpha'(0)=\vec{v}_{\vec{p}}$, then the normal
+components of its acceleration is given by $\vec{v}_{\vec{p}}\cdot S_{\vec{p}}(\vec{v}_{\vec{p}})$.
+\end{proposition}
+
+\begin{proof}
+Let $M$ be a surface with unit normal vector field $U$, let $\alpha$ be
+an arbitrary curve given by hypothesis. We can restrict $U$ to the curve
+$\alpha$, denote it $U_{\alpha}(t) := U\left(\alpha(t)\right)$.
+Now, the velocity vector of $\alpha$ at time $t\in I$ is tangent to $M$,
+\emph{not normal to $N$}. This means $\alpha'(t)$ is orthogonal to the
+normal vector at $\alpha(t)$. Consequently, we find
+\begin{equation}
+\alpha'(t)\cdot U_{\alpha}(t)=0.
+\end{equation}
+We can take the time derivative to find
+\begin{equation}
+\alpha''(t)\cdot U_{\alpha}(t) + \alpha'(t)\cdot U_{\alpha}'(t) = 0,
+\end{equation}
+where
+\begin{equation}
+U_{\alpha}'(t) = \nabla_{\alpha'}U = -S_{\alpha'}(\alpha').
+\end{equation}
+In particular, we find
+\begin{equation}
+\alpha'(t)\cdot S_{\alpha(t)}(\alpha'(t)) = \alpha''(t)\cdot U_{\alpha}(t).
+\end{equation}
+What this tells us is $\alpha''(t)\cdot U_{\alpha}(t)$ is the component
+of the acceleration in the direction to the normal of the surface.
+\end{proof}
+
+In fact, this motivates the following definition:
+
+\begin{definition}
+Let $M\subset\RR^{3}$ be a surface and
+$\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$ be a unit vector. We define the
+\define{Normal Curvature} of $M$ in the direction spanned by
+$\vec{v}_{\vec{p}}$ is
+\begin{equation}
+k(\vec{v}_{\vec{p}}) = \vec{v}_{\vec{p}}\cdot S_{\vec{p}}(\vec{v}_{\vec{p}}).
+\end{equation}
+\end{definition}
+
+
+\begin{example}
+Recall Example~\ref{ex:shape-operator:cylinder}
+where we worked out the shape operator for a cylinder of radius $r$. We
+have two unit vectors $\vec{v}_{\vec{p}}$ and $\vec{w}_{\vec{p}}$ sketched:
+  \begin{center}
+    \includegraphics{img/surfaces.23}
+  \end{center}
+  We find
+\begin{subequations}
+\begin{align}
+k(\vec{v}_{\vec{p}}) &= \vec{v}_{\vec{p}}\cdot S_{\vec{p}}(\vec{v}_{\vec{p}})=0\\
+k(\vec{w}_{\vec{p}}) &= \vec{w}_{\vec{p}}\cdot S_{\vec{p}}(\vec{w}_{\vec{p}})=\frac{-1}{r}.
+\end{align}
+\end{subequations}
+    \end{example}
+
+\N{On the Normal ``Curvature''}
+If we have our surface $M\subset\RR^{3}$ with unit normal vector field
+$U$ and, at some point $\vec{p}\in M$, a [unit] vector
+$\vec{v}_{\vec{p}}\in\T_{\vec{p}}M$, then we can construct a plane
+$P\subset\RR^{3}$ spanned by $U(\vec{p})$ and $\vec{v}_{\vec{p}}$ (so $P=\{c_{1}U(\vec{p})+c_{2}\vec{v}_{\vec{p}}\in\RR^{3}\mid c_{1},c_{2}\in\RR\}$).
+We obtain a curve given by the intersection of the surface with this plane,
+$\gamma = P\cap M$. Observe $\gamma$ passes through $\vec{p}$.
+We can further observe the curvature of $\gamma$ at $\vec{p}$ is exactly
+equal to the normal curvature
+$k(\vec{v}_{\vec{p}})$.
+
+\begin{definition}
+Given a point $\vec{p}\in M$, we define the \define{Principal Curvature}
+at $\vec{p}$ to be:
+\begin{subequations}
+\begin{align}
+k_{1} &= \max\{k(\vec{v}_{\vec{p}})\mid \vec{v}_{\vec{p}}\in\T_{\vec{p}}M,\|\vec{v}_{\vec{p}}\|=1\},\\
+%\intertext{and}
+k_{2} &= \min\{k(\vec{v}_{\vec{p}})\mid \vec{v}_{\vec{p}}\in\T_{\vec{p}}M,\|\vec{v}_{\vec{p}}\|=1\}.
+\end{align}
+\end{subequations}
+\end{definition}
+
+\begin{remark}
+If $k_{1}\neq k_{2}$ at a point $\vec{p}\in M$, then there is a unique
+vector pointing in the $k_{1}$-direction and a unique vector pointing in
+the $k_{2}$-direction. Furthermore, these vectors are orthogonal.
+\end{remark}
+
+\begin{proposition}
+Let $M$ be a surface.
+If $k_{1}\neq k_{2}$ at $\vec{p}\in M$,
+and $\vec{e}_{1},\vec{e}_{2}\in\T_{\vec{p}}M$ are unit vectors such that
+$k(\vec{e}_{1})=k_{1}$ and $k(\vec{e}_{2})=k_{2}$,
+then $\vec{e}_{1}$ and $\vec{e}_{2}$ are unique up to sign, and
+$\vec{e}_{1}\cdot\vec{e}_{2}=0$ and $S_{\vec{p}}(\vec{e}_{1})=k_{1}\vec{e}_{1}$
+and $S_{\vec{p}}(\vec{e}_{2})=k_{2}\vec{e}_{2}$.
+We call the directions given by $\vec{e}_{1}$, $\vec{e}_{2}$ the
+\define{Principal Directions} tangent to $\vec{p}$.
+\end{proposition}
+
+\M
+Why is this so great? We can rewrite the shape operator. The recurring
+theme of the course is that we may choose a frame that is particularly
+nice for the situation. We have a nice basis of eigenvectors. This is
+great because we have the operator (which these are eigenvectors of) be
+diagonal,
+\begin{equation}
+S_{\vec{p}}(\alpha\vec{e}_{1} + \beta\vec{e}_{2}) = 
+\alpha k_{1}\vec{e}_{1} + \beta k_{2}\vec{e}_{2}.
+\end{equation}
+So with respect to this basis $\vec{e}_{1}$, $\vec{e}_{2}$ (which are
+the principal directions) the shape operator acts by
+\begin{equation}
+\begin{bmatrix}\alpha\\ \beta
+\end{bmatrix}\mapsto
+\begin{bmatrix}k_{1}\alpha\\ k_{2}\beta
+\end{bmatrix}=\begin{bmatrix}k_{1} & 0\\0 & k_{2}
+\end{bmatrix}
+\begin{bmatrix}\alpha\\ \beta
+\end{bmatrix}.
+\end{equation}
+This leads to a much more beautiful notion of curvature. We'd like to
+get ``just a number'' at each point (or something like that) for
+describing curvature of a surface. We have:
+
+\begin{definition}
+Let $M$ be a surface. We define the \define{Gaussian Curvature}
+$K=\det(S)$ as the determinant of the shape operator, and the
+\define{Mean Curvature} $H=\tr(S)/2$ as the trace divided by the number
+of dimensions of $M$.
+\end{definition}
+
+\begin{remark}
+The Gaussian curvature is an intrinsic geometric quantity. Often finding
+the principal curvatures is hard, but computing the Gaussian curvature
+can be easier.
+\end{remark}
+
+\begin{remark}
+The mean curvature is an extrinsic geometric quantity.
+\end{remark}
+
+\N{Examples}
+Here are a few examples of the Gaussian and mean curvatures:
+\begin{enumerate}
+\item Cylinder: $K = (0)\cdot(-1/r) = 0$, $H=-1/(2r)$
+\item Sphere: $K = 1/r^{2}$, $H=-1/r$
+\item Plane: $K=0$, $H=0$.
+\end{enumerate}
+
+\begin{definition}
+  Let $M$ be a surface.
+\begin{enumerate}
+\item We call $M$ \define{Flat} if its Gaussian curvature is zero, $K=0$.
+\item We call $M$ \define{Minimal} (or \emph{minimum}) if its mean
+  curvature is zero, $H=0$.
+\end{enumerate}
+\end{definition}
+
+
+
+
+
+\phantomsection{}
+\subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
 
 %% June 4, 2008 due date.
@@ -870,6 +1310,11 @@ computing $\eta(\vec{v},\vec{w})$ amounts to computing a determinant.
 %% \end{itemize}
 
 \begin{enumerate}
+\item Compute the Gaussian and mean curvature for:
+  \begin{enumerate}
+  \item the saddle $z=x^{2}-y^{2}$,
+  \item the monkey saddle: $z=x^{3}-3xy$.
+  \end{enumerate}
 \item Let $f\colon\Sigma\to\RR$ be a real-valued function on the surface
   $\Sigma$, let $g\colon\RR\to\RR$ be some smooth function.
   \begin{enumerate}
@@ -912,4 +1357,3 @@ p(\lambda) = \det(A - \lambda\cdot I_{n}),
   where $I_{n}$ is the $n\times n$ identity matrix. \textbf{Compute} the
   characteristic polynomial for the shape operator.
 \end{enumerate}
-\end{comment}

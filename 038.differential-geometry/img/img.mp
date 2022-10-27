@@ -1568,4 +1568,328 @@ beginfig(19) % Normal Vector
 %   label.lrt(btex ${\bf x}_{u}$ etex, z2) withcolor darkgreen;
 endfig;
 
+beginfig(20) % Overlapping patch
+  path patch[], image[], chart[], transition[];
+  path surface, x_in_y, y_in_x;
+  numeric i,l,r,dx,dy;
+  color lightgreen,lightred;
+  lightgreen = 0.5[white,green]; lightred = 0.5[white,red];
+  dx = 2;
+  dy = 2;
+  
+  patch0 = unitsquare scaled 3u shifted (0,-3u);
+  patch1 = unitsquare scaled 3u shifted (0,3u);
+  
+  r = 3u;
+  z0 = (2r + 4u,1.5u);
+  surface = fullcircle scaled 2r shifted z0;
+
+  l = length patch0;
+  z1 = (point (0.5[l/4,l/2]) of patch0) + (3,0);
+  z3 = (z0 + r*(cosd(180+45),sind(180+45))+(3/sqrt(2))*(-1,-1));
+  z2 = 0.5[z1,z3] + (0,-0.5u);
+  chart0 = z1..z2..z3;
+
+  z4 = (point (0.5[l/4,l/2]) of patch1) + (3,0);
+  z6 = (z0 + r*(cosd(90+45),sind(90+45))+(3/sqrt(2))*(-1,1));
+  z5 = 0.5[z4,z6] + (0,0.5u);
+  chart1 = z4..z5..z6;
+
+  image1 = ((0,0)--(2u,0)--(2u,2.5u)--(0,0.75u)--cycle) shifted (z0+(-2u,0));
+  image0 = ((-u,u)--(2u,-u)--(-u,-u)--cycle) shifted z0;
+  fill image0 withcolor lightgreen;
+  fill image1 withcolor lightred;
+  fill patch0 withcolor lightgreen;
+  fill patch1 withcolor lightred;
+
+
+  x_in_y = (0,0u)--(1u,-1.5u)--(2u,0u);
+  y_in_x = quartercircle scaled r shifted (0,3u);
+  for i=1 upto 8:
+    draw (((i*dx,3u)--(i*dx,6u)) cutafter y_in_x) withcolor green;
+  endfor;
+  for x=dx step dx until (u):
+    draw (x,0)--(x,-1.5x) withcolor red;
+  endfor;
+  for x=u step dx until (2u):
+    draw (x,0)--(x,-0.75u+1.5(x-1.5u)) withcolor red;
+  endfor;
+  draw x_in_y dashed evenly withcolor 0.5[black,red];
+  draw y_in_x dashed evenly withcolor 0.5[black,green];
+
+  z7 = point 0 of image0;
+  z8 = z0 + (0,2.5u);
+  z9 = z0 + (2u,-u);
+  z10 = (z7--z9) intersectionpoint (z0--z8);
+  y := ypart z0;
+  numeric slope;
+  for x=(xpart z7) step dx until (xpart z10):
+    draw ((x,y)--(x,y+2u) cutafter image0) withcolor lightgreen;
+  endfor;
+
+  z11 = (point ((1/3)[0.75l,l/2]) of patch0) + (0,3);
+  z13 = (point ((1/3)[0,l/4]) of patch1) + (0,-3);
+  z12 = 0.5[z11,z13] + (-0.5u,0);
+  transition0 = z11..z12..z13;
+
+  z14 = (point ((2/3)[0.75l,l/2]) of patch0) + (0,3);
+  z16 = (point ((2/3)[0,l/4]) of patch1) + (0,-3);
+  z15 = 0.5[z14,z16] + (0.5u,0);
+  transition1 = z16..z15..z14;
+  
+  
+  for i=0 upto 1:
+    draw patch[i];
+    drawarrow chart[i];
+    draw image[i];
+    drawarrow transition[i];
+  endfor;
+  draw surface;
+  label.rt(btex ${\bf y}^{-1}\circ{\bf x}$ etex, z15);
+  label.lft(btex ${\bf x}^{-1}\circ{\bf y}$ etex, z12);
+  label.bot(btex ${\bf y}$ etex, z2);
+  label.top(btex ${\bf x}$ etex, z5);
+  label.top(btex $D$ etex, point 0.5[l/2,3l/4] of patch1);
+  label.bot(btex $E$ etex, point l/8 of patch0);
+endfig;
+
+
+beginfig(21) % Mappings between surfaces
+  path preimage[], hole[], surface[], patch[], image[], chart[], pullback[];
+  numeric r; r = 4u;
+  numeric l,x,y;
+  numeric ps; ps=0.75;
+  numeric dx,dy; dx=u/4; dy=u/4;
+  surface0 = (fullcircle xscaled 2r yscaled r);
+
+  surface1 = (fullcircle xscaled 2r yscaled r) shifted (3r,0);
+  draw surface0;
+  draw surface1;
+
+  hole0 = (halfcircle rotated 180 xscaled 2u yscaled u) shifted (-u,0);
+  hole1 = (halfcircle xscaled 2u yscaled u shifted (-u,-0.5u)) cutbefore
+    hole0 cutafter hole0;
+  hole2 = (halfcircle rotated 180 xscaled 1.25u yscaled 0.625u) shifted (3r+u,u);
+  hole3 = (halfcircle xscaled 1.25u yscaled 0.5u shifted (3r+u,0.625u)) cutbefore
+    hole2 cutafter hole2;
+  hole4 = hole2 shifted (u,-u);
+  hole5 = hole3 shifted (u,-u);
+  hole6 = hole2 shifted (0,-2u);
+  hole7 = hole3 shifted (0,-2u);
+  numeric i;
+  for i=0 upto 7:
+    draw hole[i];
+  endfor;
+
+  patch1 = unitsquare scaled 2u shifted (2.25r,-1.25r-u);
+  patch0 = unitsquare scaled 2u shifted (0.25r,-1.25r-u);
+  fill patch0 withcolor 0.5[white,red];
+  fill patch1 withcolor 0.5[white,green];
+
+  path y_in_x,x_in_y,top_of_intersection[];
+  l = length(patch0);
+  x = xpart (point ((1/2)[0,1/4]*l) of patch0);
+  y = ypart (point ((1/2)[1/4,1/2]*l) of patch0);
+  y_in_x = (point ((1/3)[0,1/4]*l) of patch0)--(point (l/4) of
+      patch0)--(point ((1/3)[1/4,1/2]*l) of patch0)--(x,y)--cycle;
+  pair start_point[];
+  top_of_intersection0 = (point ((1/3)[1/4,1/2]*l) of patch0)--(x,y)--(point ((1/3)[0,1/4]*l) of patch0);
+  start_point0 =point 0 of y_in_x;
+  dx:=u/6; dy:=u/6;
+  for i=0 upto 11:
+    draw (((start_point0+(i*dx,0))--(start_point0+(0,i*dy))) cutbefore
+  y_in_x cutafter top_of_intersection0) withcolor green; 
+%    draw (((start_point+(0,i*dy))--(start_point+(i*dx,0))) cutafter y_in_x) withcolor green;
+  endfor;
+  draw patch0; draw patch1;
+  dx:=u/4; dy:=u/4;
+  draw top_of_intersection0 dashed evenly withcolor 0.5[black,green];
+  l := length(patch1);
+  y := ypart (point (0.5[3/4,1]*l) of patch1);
+  x := xpart (point (l/8) of patch1);
+  x_in_y = (point ((2/3)[0,1/4]*l) of patch1)--(x,y)--(point (0.5[3/4,1]*l) of
+      patch1)--(point 0 of patch1)--cycle;
+  start_point1 = point 0 of x_in_y;
+  top_of_intersection1 = (point ((2/3)[0,1/4]*l) of patch1)--(x,y)--(point (0.5[3/4,1]*l) of patch1);
+  for i=1 upto 4:
+    draw (((start_point1+(-i*dx,0))--(start_point1+(0,i*dy))) cutafter top_of_intersection1) withcolor red;
+  endfor;
+  for i=5 upto 6:
+    draw (((start_point1+(-i*dx,0))--(start_point1+(0,i*dy))) cutafter
+  top_of_intersection1 cutbefore patch1) withcolor red;
+  endfor;
+  for i=7 upto 9:
+    draw (((start_point1+(-6dx,(i-6)*dy))--(start_point1+(0,i*dy)))
+  cutafter top_of_intersection1 cutbefore patch1) withcolor red;
+  endfor;
+  draw x_in_y dashed evenly withcolor 0.5[black,red];
+%  fill x_in_y withcolor red;
+  
+  z1 = (point (0.625*length(patch0)) of patch0) + (0,3);
+  z3 = ((z1--(z1+(0,r))) intersectionpoint surface0) + (0,-3);
+  z2 = 0.5[z1,z3] + (-0.5u,0);
+  chart0 = z1..z2..z3;
+  drawarrow chart0;
+  z22 = 0.5[z1,z3] + (0.5u,0);
+  pullback0 = (z3..z22..z1) shifted (3,0);
+%  drawarrow pullback0;
+
+  z4 = (point (0.625*length(patch1)) of patch1) + (0,3);
+  z6 = ((z4--(z4+(0,r))) intersectionpoint surface1) + (0,-3);
+  z5 = 0.5[z4,z6] + (0.5u,0);
+  chart1 = z4..z5..z6;
+  drawarrow chart1;
+
+  image0 = (0.5u,u)--(3u,0.5u)--(3u,-u)--(0.5u,-u)--cycle;
+  fill image0 withcolor 0.5[red,white];
+
+  l := length(image0);
+  x := xpart (point (l/8) of image0);
+  y := ypart (point (3l/8) of image0);
+  preimage0 = (point (l/8) of image0)--(point (l/4) of image0)--(point (3l/8) of image0)--(x,y)--cycle;
+
+  for i=0 upto 4:
+    draw (((x,y+i*dy)--(x+i*dx,y)) cutafter
+        preimage0) withpen pencircle scaled ps withcolor 0.5[white,green];
+  endfor;
+  for i=4 upto 5:
+    draw (((x,y+i*dy)--(x+i*dx,y)) cutbefore
+        preimage0) withpen pencircle scaled ps withcolor 0.5[white,green];
+  endfor;
+  for i=6 upto 8:
+    draw (((x,y+i*dy)--(x+i*dx,y)) cutbefore
+        preimage0 cutafter preimage0) withpen pencircle scaled ps withcolor 0.5[white,green];
+  endfor;
+  draw preimage0 dashed evenly withcolor 0.5[green,white];
+%  fill preimage0 withcolor 0.5[green,white];
+
+  image1 = (3r-3u,u)--(3r,1.25u)--(3r,-u)--(3r-3u,-0.5u)--cycle;
+  fill image1 withcolor 0.5[green,white];
+
+  l := length(image1);
+  x := xpart (point (5l/8) of image1);
+  y := ypart (point (3l/8) of image1);
+  preimage1 = (point (5l/8) of image1)--(point (l/2) of image1)--(point (3l/8) of image1)--(x,y)--cycle;
+  for i=1 upto 3:
+    draw (((x,y-i*dy)--(x+i*dx,y)) cutafter preimage1) withcolor 0.5[red,white];
+  endfor;
+  for i=3 upto 6:
+    draw (((x,y-i*dy)--(x+i*dx,y)) cutbefore preimage1) withcolor 0.5[red,white];
+  endfor;
+  for i=6 upto 10:
+    draw (((x,y-i*dy)--(x+6dx,y+(6-i)*dy)) cutbefore preimage1) withcolor 0.5[red,white];
+  endfor;
+  draw preimage1 dashed evenly withcolor 0.5[red,white];
+  
+  path induced_fun;
+  path fun;
+  z7 = (point 0 of surface0) + (3,0);
+  z9 = (point (0.5*length(surface1)) of surface1) + (-3,0);
+  z8 = 0.5[z7,z9] + (0,0.5u);
+  fun = z7..z8..z9;
+  drawarrow fun;
+  z10 = (point (0.5[1/4,1/2]*length(patch0)) of patch0) + (3,0);
+  z12 = (point (0.5[3/4,1]*length(patch1)) of patch1) + (-3,0);
+  z11 = 0.5[z10,z12] + (0,-.5u);
+  induced_fun = z10..z11..z12;
+  drawarrow induced_fun dashed evenly;
+  label.top(btex $F$ etex, z8);
+  label.lft(btex ${\bf x}$ etex, z2);
+%  label.rt(btex ${\bf x}^{-1}$ etex, point (0.5*length(pullback)) of pullback);
+  label.rt(btex ${\bf y}$ etex, z5);
+  label.top(btex $M$ etex, point (0.25*length(surface0)) of surface0);
+  label.top(btex $N$ etex, point (0.25*length(surface1)) of surface1);
+  label.bot(btex $D$ etex, point (0.125*length(patch0)) of patch0);
+  label.bot(btex $E$ etex, point (0.125*length(patch1)) of patch1);
+%  label.top(btex $F^{-1}({\bf y}(E))$ etex, point (0.125*length(preimage0)) of preimage0);
+  label.bot(btex ${\bf y}^{-1}\circ F\circ{\bf x}$ etex, z11);
+endfig;
+
+beginfig(22)
+  vardef project(expr x,y,z) =
+    x*(-1/sqrt(2),-1/sqrt(2)) + y*(1,0) + z*(0,1)
+  enddef;
+  path axes[],equator[], hole[];
+  path unit_sphere, surface;
+  numeric i,r,delta;
+  r=3u;
+  delta=u;
+  axes0 = (0,0)--project(1.25u,0,0);
+  axes1 = (0,0)--project(0,r+delta,0);
+  axes2 = (0,0)--project(0,0,r+delta);
+  unit_sphere = fullcircle scaled 2r;
+  equator0 = halfcircle xscaled 2r yscaled u;
+  equator1 = halfcircle rotated 180 xscaled 2r yscaled u;
+  draw equator0 dashed evenly;
+  draw equator1;
+  draw unit_sphere;
+  for i=0 upto 2:
+    drawarrow axes[i] withcolor 0.375[white,black];
+  endfor;
+
+  z0 = (5r,r);
+  surface = fullcircle xscaled 4r yscaled 2r shifted z0;
+  draw surface;
+  hole0 = halfcircle rotated 180 xscaled 2u yscaled u shifted (z0 + (-2u,0));
+  hole1 = (halfcircle xscaled 2u yscaled u shifted (z0 + (-2u,-0.5u)))
+    cutbefore hole0 cutafter hole0;
+  draw hole0; draw hole1;
+  numeric phi,theta,eps;
+  pair diff[];
+  theta = 50;
+  eps = 1e-3; % 0.001;
+  phi = 75;
+  z1 = z0 + project(r*cosd(phi)*cosd(theta),2r*cosd(phi)*sind(theta),r*sind(phi));
+  diff0 = z0 + project(r*cosd(phi+eps)*cosd(theta),2r*cosd(phi+eps)*sind(theta),r*sind(phi+eps));
+  diff1 = z0 + project(r*cosd(phi)*cosd(theta+eps),2r*cosd(phi)*sind(theta+eps),r*sind(phi));
+  z2 = z1 + 2u*unitvector(diff0 - z1);
+  z3 = z1 + 2u*unitvector(diff1 - z1);
+
+  numeric dr; dr = u + ahlength;
+  diff2 = z0 + project((r+dr)*cosd(phi)*cosd(theta),2(r + dr)*cosd(phi)*sind(theta),(r+dr)*sind(phi));
+  z4 = z1 + 2u*unitvector(diff2 - z1);
+%  z1 = z0 + (u,u);
+%  z2 = z1 + (u + ahlength)*(sqrt(2)/2)*(1,1);
+  pair dx,dy;
+  path tangent_space;
+  dx = z2 - z1;
+  dy = z3 - z1;
+%  draw surface;
+  tangent_space = (z1+dx+dy)--(z1+dy-dx)--(z1-dy-dx)--(z1-dy+dx)--cycle;
+  fill tangent_space withcolor 0.75[black,white];
+  drawdot z1 withpen pencircle scaled 3;
+  drawarrow z1--z2;
+  drawarrow z1--z3;
+  drawarrow z1--z4;
+  path normal_vector, tmp;
+  normal_vector = (0,0)--(r*unitvector(diff2 - z1));
+ % normal_vector = subpath (0,length(tmp)-0.075) of tmp;
+  draw normal_vector;
+  z5 = point length(normal_vector) of normal_vector;
+  label(btex $\bullet$ etex, z1);
+  label(btex $\bullet$ etex, z5);
+  label.bot(btex $\boldsymbol{p}$ etex, z1);
+  label.top(btex $U$ etex, z4);
+  label.urt(btex $G(\boldsymbol{p})$ etex, z5);
+endfig;
+beginfig(23)
+  numeric h, r; h=3u; % h=4u;
+  r=2u;
+  color lightgray; lightgray = (1/3)[white,black];
+  draw (0,h-u)--(0,-h-u) withcolor gray;
+  draw fullcircle xscaled 2r yscaled r shifted (0,h);
+  draw halfcircle xscaled 2r yscaled r shifted (0,-h) dashed evenly;
+  draw halfcircle rotated 180 xscaled 2r yscaled r shifted (0,-h);
+  draw halfcircle xscaled 2r yscaled r dashed evenly withcolor lightgray;
+  draw halfcircle rotated 180 xscaled 2r yscaled r withcolor lightgray;
+  draw (r,h)--(r,-h);
+  draw (-r,h)--(-r,-h);
+  drawarrow (0,-u)--(0,-u+u+ahlength);
+  drawarrow (0,-u)--(u+ahlength,-u);
+
+  label(btex $\bullet$ etex, (0,-u));
+  label.llft(btex $\boldsymbol{p}$ etex, (0,-u));
+  label.lft(btex $\boldsymbol{v}_{\boldsymbol{p}}$ etex, (0,ahlength));
+  label.bot(btex $\boldsymbol{w}_{\boldsymbol{p}}$ etex, (u+ahlength,-u));
+endfig;
 end;
