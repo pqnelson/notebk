@@ -1,11 +1,11 @@
 \documentclass{article}
 \usepackage[12hr,us]{datetime}
-\usepackage{macros}
+\usepackage[oldstylenum]{macros}
 \usepackage{danger}
 \usepackage{notation}
 \usepackage[equation,leqno]{deriv}
 
-\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\def\homeurl{}% \url{https://pqnelson.github.io/notebk/}}
 
 \title{Elementary Linear Algebra}
 
@@ -14,7 +14,7 @@
 
 
 
-\begin{document}
+\begin{document}%\tracingall
 \maketitle
 \tableofcontents
 \include{tex/preface}
@@ -23,6 +23,8 @@
 \part{Matrices}
 \input{tex/matrix-zoo}
 \input{tex/matrix-algebra}
+\input{tex/augmented-matrix}
+
 \appendix
 \include{tex/appendix-1-style}
 \include{tex/bib}

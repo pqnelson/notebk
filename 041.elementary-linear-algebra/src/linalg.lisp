@@ -18,3 +18,17 @@ See: http://www0.cs.ucl.ac.uk/staff/d.jones/GoodPracticeRNG.pdf"
         ((or (not nonzero) (not (zerop result)))
          result))))
 
+(defun random-equation (n-vars &optional (leading-nonzero nil)
+                        &key (coef-low -5) (coef-high 5))
+  (let ((result nil))
+    (do ((i 0 (1+ i)))
+        ((= (1+ n-vars) i) (nreverse result))
+      (setq result (cons (random-between coef-low coef-high :nonzero (= leading-nonzero i)) result)))))
+
+(defun random-system-of-equations (n-vars n-equations &key (wiggle 1))
+  (let ((result nil))
+    (do ((i 0 (1+ i))
+         (coef-high (+ wiggle n-equations) (1- coef-high))
+         (coef-low (- (+ wiggle n-equations)) (1+ coef-low)))
+        ((= (1+ n-equations) i) (nreverse result))
+      (setq result (cons (random-equation n-vars i :coef-low coef-low :coef-high coef-high) result)))))

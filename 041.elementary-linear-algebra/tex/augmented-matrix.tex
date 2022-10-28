@@ -1,0 +1,384 @@
+\section{Solving Linear Equations with Augmented Matrices}
+
+\M
+Recall (\S\ref{par:matrix-algebra:solving-systems-of-equations})
+we found a way to encode a system of linear equations using matrix
+notation as
+\begin{equation}
+\mat{A}\vec{x}=\vec{b}.
+\end{equation}
+But we got no farther than that. Now we will begin to solve such a
+system in an algorithmic manner.
+
+Our first step will be to work with an \define{Augmented Matrix}, which
+has block form
+\begin{equation}
+(\mat{A}\mid\vec{b}).
+\end{equation}
+Since the unknowns (encoded in the vector $\vec{x}$) are not known, we
+omit them from the augmented matrix. For a concrete example:
+\begin{equation}
+  \begin{pmatrix}
+  4 &  3 &  3\\
+ -4 & -1 &  1\\
+ -1 & -1 & -1\\
+  0 &  2 &  1\\
+  \end{pmatrix}\begin{pmatrix}x_{1}\\x_{2}\\x_{3}\\x_{4}
+  \end{pmatrix} =
+  \begin{pmatrix}-5\\1\\-2\\-1
+  \end{pmatrix}
+\mapsto
+  \left[\begin{array}{ccc|c}
+  4 &  3 &  3 & -5\\
+ -4 & -1 &  1 &  1\\
+ -1 & -1 & -1 & -2\\
+  0 &  2 &  1 & -1 
+  \end{array}\right]
+\end{equation}
+This is our first step, now what?
+
+We will apply certain elementary row operations to repeatedly modify our
+augmented matrix until it's in a form suitable for solving. Let us
+define our elementary row operations, then lay out the criteria for an
+augmented matrix being ``suitably nice''.
+
+\begin{definition}
+Let $\mat{A}$ be a matrix. We define an \define{Elementary Row Operation}
+to be one of the following:
+\begin{enumerate}
+\item Multiply row $i$ by a nonzero scalar $r$,
+\item Add a multiple of row $i$ to row $j$,
+\item Swap rows $i$ and $j$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+These elementary row operations correspond to (respectively):
+\begin{enumerate}
+\item Multiply both sides of equation $i$ by a nonzero number $r$,
+\item Add a multiple of equation $i$ to equation $j$,
+\item Swap equations $i$ and $j$.
+\end{enumerate}
+We see this is permitted by elementary algebra.
+\end{remark}
+
+\begin{definition}
+Let $\mat{A}$ be a matrix. We say it is in \define{Reduced Row Echelon Form}
+\begin{enumerate}
+\item All rows consisting of zeroes are at the bottom of the matrix, and
+\item The leading coefficient of a nonzero row is strictly ``to the
+  right'' of the leading coefficient of the row above it, and
+\item The leading coefficient is 1.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Some authors do not require ``the leading coefficient is 1'' to the
+criteria, but we require it.
+\end{remark}
+
+\begin{example}
+  A generic reduced row echelon form matrix looks like
+  \begin{equation}
+\begin{bmatrix}
+1 & a_{1,2} & a_{1,3} & \dots & a_{1,j} & a_{1,j+1} & a_{1,j+2} & a_{1,j+3} & \dots& a_{1,n}\\
+0 & 1 & a_{2,3} & \dots & a_{2,j} & a_{2,j+1} & a_{2,j+2} & a_{2,j+3} & \dots& a_{2,n}\\
+0 & 0 & 1 & \dots & a_{3,j} & a_{3,j+1} & a_{3,j+2} & a_{3,j+3} & \dots& a_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \dots & 0 & 1 & a_{i,j+2} & a_{i,j+3} & \dots & a_{i,n}\\
+0 & 0 & 0 & \dots & 0 & 0 & 0        & 1        & \dots & a_{i+1,n}\\ 
+0 & 0 & 0 & \dots & 0 & 0 & 0 & 0 & \dots & 0\\
+0 & 0 & 0 & \dots & 0 & 0 & 0 & 0 & \dots & 0\\
+0 & 0 & 0 & \dots & 0 & 0 & 0 & 0 & \dots & 0
+\end{bmatrix}
+  \end{equation}
+\end{example}
+
+\begin{example}
+  For an augmented matrix in reduced row echelon form, we have
+  \begin{equation}
+\left[\begin{array}{ccc|c}
+1 & 2 & 0 & 1\\
+0 & 1 & 0 & 1\\
+0 & 0 & 1 & 2
+  \end{array}\right]  
+  \end{equation}
+  This would correspond to the system of equations
+\begin{alignat*}{7}
+1x_{1} && + && 2x_{2} && + && 0x_{3} &&\;=\;&&1\\
+0x_{1} && + && 1x_{2} && + && 0x_{3} &&\;=\;&&1\\
+0x_{1} && + && 0x_{2} && + && 1x_{3} &&\;=\;&&2
+\end{alignat*}
+We can solve this immediately, finding $x_{3}=2$, $x_{2}=1$, and $x_{1}=-1$.
+\end{example}
+
+\subsection{Gauss--Jordan Elimination}
+
+\M
+The idea is to use elementary row operations to transform our augmented
+matrix $(\mat{A}\mid\vec{b})$ to reduced row echelon form $(\mat{B}\mid\vec{c})$,
+then solve the system of equations $\mat{B}\vec{x}=\vec{c}$ which will
+also be a solution to $\mat{A}\vec{x}=\vec{b}$.
+
+We see that the two augmented matrices $(\mat{A}\mid\vec{b})$ and
+$(\mat{B}\mid\vec{c})$ are ``the same'', very analogous to how the
+fractions $1/2$ and $2/4$ are ``the same'' despite having different
+numerators and denominators. Before demonstrating Gaussian elimination,
+let us formalize this notion of ``sameness''.
+
+\begin{definition}
+We call two augmented matrices $(\mat{A}\mid\vec{b})$ and
+$(\mat{B}\mid\vec{c})$ \define{Equivalent} if they have the same
+solutions, and denote this by $(\mat{A}\mid\vec{b})\sim(\mat{B}\mid\vec{c})$.
+
+More generally, any two $m\times n$ matrices $\mat{A}$, $\mat{B}$
+are \define{Equivalent} if there is a finite sequence of elementary row
+operations that transforms $\mat{A}$ into $\mat{B}$. (Further,
+``equivalence of augmented matrices'' coincides with ``equivalence of matrices'',
+so we will use the same symbol $\sim$ for both of them.)
+\end{definition}
+
+\begin{proposition}
+  Matrix equivalence satisfies the following properties:
+  \begin{enumerate}
+  \item Reflexivity: for any matrix $\mat{A}$, we have $\mat{A}\sim\mat{A}$
+  \item Symmetry: for any $m\times n$ matrices $\mat{A}$ and $\mat{B}$,
+    we have $\mat{A}\sim\mat{B}$ implies $\mat{B}\sim\mat{A}$
+  \item Transitivity: for any $m\times n$ matrices $\mat{A}$, $\mat{B}$, $\mat{C}$,
+    we have $\mat{A}\sim\mat{B}$ and $\mat{B}\sim\mat{C}$ implies $\mat{A}\sim\mat{C}$.
+  \end{enumerate}
+\end{proposition}
+
+
+\N{Gauss--Jordan Elimination}
+Consider the augmented matrix
+\begin{subequations}
+\begin{equation}
+\left[\begin{array}{ccc;{2pt/2pt}c}
+    0 & 0 & 1 & 6\\
+    2 & 4 & 6 & 8\\
+    2 & 3 & 4 & 5
+  \end{array}\right]
+\end{equation}
+The algorithm for transforming it to reduced row echelon form consists
+of the following steps.
+
+\N*{Step 1: Locate nonzero column} Look for the first column that is not all zeroes. We can
+see this is the first column (highlighted):
+\begin{equation}
+\left[\begin{array}{>{\columncolor{red!20}}ccc;{2pt/2pt}c}
+    0 & 0 & 1 & 6\\
+    2 & 4 & 6 & 8\\
+    2 & 3 & 4 & 5
+  \end{array}\right]
+\end{equation}
+If, for some reason, the first column is a zero column vector, move to
+the next column to the right (and keep moving until you find the first
+column vector which is not a zero column vector); we will ignore the
+zero columns, and refer to the first nonzero column vector as ``the
+first column'' or ``the leading column''.
+
+\N*{Step 2: Pivot} If the first row has a zero entry in the leading
+column, swap a row with a nonzero entry in the leading column. We could
+pick \emph{any} such row with a nonzero entry in the leading column, we
+will swap the second row
+\begin{equation}
+\left[\begin{array}{ccc;{2pt/2pt}c}
+\rowcolor{olive!20}    0 & 0 & 1 & 6\\
+\rowcolor{red!20}    2 & 4 & 6 & 8\\
+    2 & 3 & 4 & 5
+  \end{array}\right]\sim
+\left[\begin{array}{ccc;{2pt/2pt}c}
+\rowcolor{red!20}    2 & 4 & 6 & 8\\
+\rowcolor{olive!20}    0 & 0 & 1 & 6\\
+    2 & 3 & 4 & 5
+  \end{array}\right].
+\end{equation}
+\N*{Step 3: Normalize} We now normalize the top row by diving through by
+the nonzero pivot (or, equivalent, multiplying by
+$1/(\mbox{pivot})$). For us, this is dividing the first row by 2:
+\begin{equation}
+\left[\begin{array}{ccc;{2pt/2pt}c}
+\rowcolor{red!20}    2 & 4 & 6 & 8\\
+0 & 0 & 1 & 6\\
+    2 & 3 & 4 & 5
+  \end{array}\right]\sim
+\left[\begin{array}{ccc;{2pt/2pt}c}
+\rowcolor{red!20}    1 & 2 & 3 & 4\\
+0 & 0 & 1 & 6\\
+    2 & 3 & 4 & 5
+  \end{array}\right]
+\end{equation}
+
+\N*{Step 4: Transform lower rows.} For each row \emph{below the first row} with a nonzero
+leading component, we will subtract a multiple of the first row from
+it. The idea is to transform each row \emph{below the first row} to have
+a zero entry in the leading column.
+For us, we see there is one row [beneath the first row] with a nonzero
+entry in the leading column, highlighted in blue:
+\begin{equation}
+\left[\begin{array}{ccc;{2pt/2pt}c}
+    1 & 2 & 3 & 4\\
+0 & 0 & 1 & 6\\
+\rowcolor{blue!20}    2 & 3 & 4 & 5
+  \end{array}\right]
+\end{equation}
+We then add $-2$ times the first row to the third row, giving us
+\begin{equation}
+\left[\begin{array}{ccc;{2pt/2pt}c}
+    1 & 2 & 3 & 4\\
+0 & 0 & 1 & 6\\
+\rowcolor{blue!20}    2 & 3 & 4 & 5
+  \end{array}\right]\sim
+\left[\begin{array}{ccc;{2pt/2pt}c}
+    1 & 2 & 3 & 4\\
+0 & 0 & 1 & 6\\
+\rowcolor{blue!20}    0 & -1 & -2 & -3
+  \end{array}\right]
+\end{equation}
+At this point, the first column with a nonzero entry will have its
+general form look like $(1,0,0,\dots,0)$ (i.e., it leads with 1 and all
+entries below it are zero).
+
+\N*{Step 5: Repeat on the submatrix}
+We take the submatrix for the remaining rows and remaining columns, then
+return to step 1, and transform the submatrix to reduced row echelon
+form. 
+\begin{equation}
+\left[\begin{array}{ccc;{2pt/2pt}c}
+1 & 2 & 3 & 4\\ \cline{2-4}
+0 & \multicolumn{1}{|c}{0} & 1 & 6\\
+0 & \multicolumn{1}{|c}{-1} & -2 & -3
+  \end{array}\right]
+\end{equation}
+We will find, for our particular example, the matrix has reduced row
+echelon form
+\begin{equation}\dots\sim
+\left[\begin{array}{ccc;{2pt/2pt}c}
+1 & 2 & 3 & 4\\
+0 & 1 & 2 & 3\\
+0 & 0 & 1 & 6
+\end{array}\right].
+\end{equation}
+\end{subequations}
+
+\begin{remark}
+We may optionally skip normalizing the ``pivot'' (step 3), but continue
+to transform the lower rows so everything below the pivot is zero. This
+produced \define{Row Echelon Form}. It is no longer ``reduced'', because
+the pivots are not $1$.
+\end{remark}
+
+\begin{remark}
+We should prove that Gauss-Jordan elimination produces a unique
+augmented matrix, in some sense. It's obviously not true the results
+will be identical, since we had some choice in swapping rows. But the
+solutions produced from the resulting augmented matrices \emph{will} be
+identical. After a few examples, we will prove this.
+\end{remark}
+
+\begin{example}
+  Suppose we have a $2\times2$ matrix $\mat{A}$ with generic entries
+  \begin{equation}
+\mat{A} = \begin{bmatrix}a & b\\c & d
+\end{bmatrix}.
+  \end{equation}
+  Suppose $\mat{A}$ is invertible. What are the components of
+  $\mat{A}^{-1}$?
+
+  Right now, they are unknowns
+\begin{subequations}
+  \begin{equation}
+\mat{A}^{-1} = \begin{bmatrix}x & y\\z & w
+\end{bmatrix}.
+  \end{equation}
+  Matrix multiplication gives us
+  \begin{equation}
+\mat{A}\mat{A}^{-1} = \begin{bmatrix}a & b\\c & d
+\end{bmatrix} \begin{bmatrix}x & y\\z & w
+\end{bmatrix}
+= \begin{bmatrix}
+ax+bz & ay+bw\\
+cx+dz & cy+dw
+\end{bmatrix}.
+  \end{equation}
+  Which\dots does not really seem to improve the situation. Or does it?
+  We expect this to be equal to the identity matrix, and really this is
+  a system of 4 linear equations
+\begin{equation}
+\left.\begin{array}{cccccc}
+ax &    & +bz &     & = & 1\\
+   & ay &     & +bw & = & 0\\
+cx &    & +dz &     & = & 0\\
+   & cy &     & +dw & = & 1
+\end{array}\right\}\equiv
+\left(\begin{array}{cccc;{2pt/2pt}c}
+  a &   & b &   & 1\\
+    & a &   & b & 0\\
+  c &   & d &   & 0\\
+    & c &   & d & 1
+\end{array}\right)
+\end{equation}
+\end{subequations}
+We can now transform this augmented matrix to row echelon form (not
+reduced, but still row echelon form).
+\begin{subequations}
+\begin{calculation}\gdef\defaultrelation{\sim}
+\left(\begin{array}{cccc;{2pt/2pt}c}
+  a & 0 & b & 0 & 1\\
+  0 & a & 0 & b & 0\\
+  c & 0 & d & 0 & 0\\
+  0 & c & 0 & d & 1
+\end{array}\right)
+\step{add $(-c/a)(\mbox{row 1})$ to row 3} 
+\left(\begin{array}{cccc;{2pt/2pt}c}
+  a & 0 & b & 0 & 1\\
+  0 & a & 0 & b & 0\\
+  0 & 0 & \displaystyle d-\frac{bc}{a} & 0 & \displaystyle \frac{-c}{a}\\
+  0 & c & 0 & d & 1
+\end{array}\right)
+\step{add $(-c/a)(\mbox{row 2})$ to row 4} 
+\left(\begin{array}{cccc;{2pt/2pt}c}
+  a & 0 & b & 0 & 1\\
+  0 & a & 0 & b & 0\\
+  0 & 0 & \displaystyle d-\frac{bc}{a} & 0 & \displaystyle \frac{-c}{a}\\
+  0 & 0 & 0 & \displaystyle  d-\frac{bc}{a} & 1
+\end{array}\right)
+\step{since $d - (bc/a) = (ad - bc)/a$}
+\left(\begin{array}{cccc;{2pt/2pt}c}
+  a & 0 & b & 0 & 1\\
+  0 & a & 0 & b & 0\\
+  0 & 0 & \displaystyle\frac{ad - bc}{a} & 0 & \displaystyle \frac{-c}{a}\\
+  0 & 0 & 0 & \displaystyle\frac{ad-bc}{a} & 1
+\end{array}\right)
+\end{calculation}
+\end{subequations}
+This has solution
+\begin{subequations}
+\begin{align}
+w &= \frac{a}{ad-bc}\\
+z &= \frac{-c}{ad-bc}\\
+y &= \frac{-b}{ad-bc}\\
+ax - \frac{bc}{ad - bc} &= 1\nonumber\\
+\implies ax &= \frac{bc}{ad-bc}+1 = \frac{ad}{ad-bc}\nonumber\\
+\implies x &= \frac{d}{ad-bc}.
+\end{align}
+\end{subequations}
+Hence
+\begin{equation}
+\boxed{\mat{A}^{-1} = \frac{1}{ad-bc}\begin{pmatrix}d & -b\\
+-c & a
+\end{pmatrix}.}
+\end{equation}
+\end{example}
+
+\N{Algorithm to determine inverse matrix}
+From the previous example, we see that we could rephrase our process as
+considering the $2n\times n$ augmented matrix $(\mat{A}\mid\mat{I})$,
+then ``applying Gauss--Jordan elimination and backsubstituting'' (i.e.,
+applying elementary row operations until) we obtain
+\begin{equation}
+(\mat{A}\mid\mat{I})\sim(\mat{I}\mid\mat{A}^{-1}).
+\end{equation}
+If elementary row operations cannot transform $\mat{A}$ to the identity
+matrix $\mat{A}\not\sim\mat{I}$, then $\mat{A}$ is singular.
