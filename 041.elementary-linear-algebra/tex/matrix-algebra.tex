@@ -635,7 +635,7 @@ $\mat{B}$ be an $n\times p$ matrix.
 Then $\mat{A}(r\mat{B})=r(\mat{A}\mat{B})=(r\mat{A})\mat{B}$.
 \end{proposition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:product-of-transpose}
 Let $\mat{A}$ be an $m\times n$ matrix, let $\mat{B}$ be an $n\times p$ matrix.
 Then the transpose of matrix product is the matrix multiplication of the
 transposes, $\transpose{(\mat{A}\mat{B})} = \transpose{\mat{B}}\transpose{\mat{A}}$.
@@ -936,7 +936,9 @@ Hence we obtain the desired result.
 \end{proposition}
 
 \begin{proof}
-Recall $\transpose{(\mat{A}\mat{B})} = \transpose{\mat{B}}\transpose{\mat{A}}$.
+Recall Proposition~\ref{prop:product-of-transpose} which established the
+product of the transpose is the product-in-reverse-order of transposes
+$\transpose{(\mat{A}\mat{B})} = \transpose{\mat{B}}\transpose{\mat{A}}$.
 Set $\mat{B}=\mat{A}^{-1}$.
 We find the left hand side becomes,
 \begin{equation}
