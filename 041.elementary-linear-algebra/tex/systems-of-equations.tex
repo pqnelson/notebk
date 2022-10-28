@@ -1,5 +1,47 @@
 \section{Solving Systems of Equations}
 
+\begin{example}[{Euler~\cite[Ch.IV \S4 question 3 \P612]{euler:algebra}}]
+A mule and donkey carry a large load. The donkey complained of his load
+and said to the mule, ``I need only 100 pounds of your load to make mine
+twice as heavy as yours would be.'' To which the mule answered, ``But if you gave
+me 100 pounds of your load, I'd be carrying three times you would
+carry.''
+How much did they carry?
+
+Let $d$ be the donkey's load, $m$ be the mule's load. The donkey's
+statement could be presented in the equation,
+\begin{subequations}
+\begin{equation}
+d + 100 = 2(m - 100),
+\end{equation}
+whereas the mule's response,
+\begin{equation}
+m + 100 = 3(d - 100).
+\end{equation}
+\end{subequations}
+From the first of these equations, we find
+\begin{equation}
+d = 2m - 300.
+\end{equation}
+We plug this into the second equation to find
+\begin{equation}
+\begin{split}
+  m + 100 &= 3(2m - 400)\\
+  &= 6m - 1200.
+\end{split}
+\end{equation}
+Hence the mule carries,
+\begin{subequations}
+\begin{equation}
+m = \frac{1300}{5} = 260~\mbox{pounds},
+\end{equation}
+and this means the donkey carries,
+\begin{equation}
+d = 520 - 300 = 220~\mbox{pounds}.
+\end{equation}
+\end{subequations}
+\end{example}
+
 \begin{example}[{Sraffa~\cite{sraffa}}]\label{ex:systems-of-equations:sraffa}
 One class of systems of linear equations occurs naturally in
 Neo-Ricardian economics. Consider a hypothetical economy consisting of

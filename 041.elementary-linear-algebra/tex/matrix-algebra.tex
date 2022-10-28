@@ -734,6 +734,40 @@ $90^{\circ}$. This is precisely what happens if we multiply numbers in
 the complex plane by $\I=\sqrt{-1}$.
 \end{example}
 
+\begin{example}
+  The Fibonacci sequence is defined by $F_{0}=0$, $F_{1}=1$, and
+  \begin{equation}
+F_{n+1} = F_{n} + F_{n-1}.
+  \end{equation}
+  We see that
+  \begin{equation}
+F_{n+2} = F_{n+1} + F_{n} = (F_{n} + F_{n-1}) = 2F_{n}+F_{n-1}.
+  \end{equation}
+  Then we can describe it using a system of equations
+  \begin{equation}
+\begin{pmatrix}
+1 & 1\\
+1 & 2
+\end{pmatrix}
+\begin{pmatrix}F_{n-1}\\ F_{n}
+\end{pmatrix} = \begin{pmatrix}F_{n+1}\\ F_{n+2}
+\end{pmatrix}.
+  \end{equation}
+  We can use matrix power to simplify calculations to
+  \begin{equation}
+\begin{pmatrix}
+1 & 1\\
+1 & 2
+\end{pmatrix}^{n}
+\begin{pmatrix}0\\1
+\end{pmatrix} = \begin{pmatrix}F_{n}\\ F_{n+1}
+\end{pmatrix}.
+\end{equation}
+We will later find a really slick way to compute the powers of a matrix
+quickly, because right now all we've done is rephrased the recurrence
+relation in new notation.
+\end{example}
+
 \begin{problem}
   For any square matrix $\mat{A}$ and non-negative integers $p$ and $q$,
   prove $(\mat{A}^{p})^{q} = \mat{A}^{pq}$
@@ -864,3 +898,76 @@ still meaningfully prove properties about the matrix inverse (a useful
 skill for mathematicians to know, how to prove things despite lacking an
 algorithm for computing it). But we will address this problem in the
 next couple sections.
+
+\begin{theorem}[Inverse of products]
+Let $\mat{A}$, $\mat{B}$ be invertible [square] matrices.
+Then $(\mat{A}\mat{B})^{-1} = \mat{B}^{-1}\mat{A}^{-1}$.
+\end{theorem}
+
+\begin{proof}
+  We compute directly
+\begin{subequations}
+\begin{calculation}\gdef\defaultrelation{\equiv}
+  (\mat{A}\mat{B})^{-1}\mat{A}\mat{B} = \mat{I}
+\step{multiply on right by $\mat{B}^{-1}$}
+  (\mat{A}\mat{B})^{-1}\mat{A}\mat{B}\mat{B}^{-1} = \mat{I}\mat{B}^{-1}
+\step{associativity of matrix multiplication, defining property of $\mat{I}$}
+  (\mat{A}\mat{B})^{-1}\mat{A}(\mat{B}\mat{B}^{-1}) = \mat{B}^{-1}
+\step{definition of matrix inverse of $\mat{B}$}
+  (\mat{A}\mat{B})^{-1}\mat{A}\mat{I} = \mat{B}^{-1}
+\step{defining property of identity matrix}
+  (\mat{A}\mat{B})^{-1}\mat{A} = \mat{B}^{-1}
+\step{multiply both sides on right by $\mat{A}^{-1}$}
+  (\mat{A}\mat{B})^{-1}\mat{A}\mat{A}^{-1} = \mat{B}^{-1}\mat{A}^{-1}
+\step{associativity of matrix multiplication}
+  (\mat{A}\mat{B})^{-1}(\mat{A}\mat{A}^{-1}) = \mat{B}^{-1}\mat{A}^{-1}
+\step{definition of matrix inverse}
+  (\mat{A}\mat{B})^{-1}\mat{I} = \mat{B}^{-1}\mat{A}^{-1}
+\step{defining property of identity matrix}
+  (\mat{A}\mat{B})^{-1} = \mat{B}^{-1}\mat{A}^{-1}
+\end{calculation}
+\end{subequations}
+Hence we obtain the desired result.
+\end{proof}
+
+\begin{proposition}[Inverse commutes with transpose]
+  Let $\mat{A}$ be an invertible matrix. Then
+  $\transpose{(\mat{A}^{-1})} = (\transpose{\mat{A}})^{-1}$.
+\end{proposition}
+
+\begin{proof}
+Recall $\transpose{(\mat{A}\mat{B})} = \transpose{\mat{B}}\transpose{\mat{A}}$.
+Set $\mat{B}=\mat{A}^{-1}$.
+We find the left hand side becomes,
+\begin{equation}
+\transpose{(\mat{A}\mat{B})} = \transpose{(\mat{A}\mat{A}^{-1})} = \transpose{\mat{I}}=\mat{I};
+\end{equation}
+the right-hand side becomes
+\begin{equation}
+\transpose{\mat{B}}\transpose{\mat{A}} = \transpose{(\mat{A}^{-1})}\transpose{\mat{A}}.
+\end{equation}
+Setting these equal yields
+\begin{subequations}
+\begin{calculation}\gdef\defaultrelation{\equiv}
+  \transpose{(\mat{A}^{-1})}\transpose{\mat{A}} = \mat{I}
+\step{multiply both sides on the right by $(\transpose{\mat{A}})^{-1}$}
+  \transpose{(\mat{A}^{-1})}\transpose{\mat{A}}(\transpose{\mat{A}})^{-1} = \mat{I}(\transpose{\mat{A}})^{-1}
+\step{associativity of matrix multiplication, defining property of identity matrix}
+  \transpose{(\mat{A}^{-1})}(\transpose{\mat{A}}(\transpose{\mat{A}})^{-1}) = (\transpose{\mat{A}})^{-1}
+\step{definition of matrix inverse}
+  \transpose{(\mat{A}^{-1})}\mat{I} = (\transpose{\mat{A}})^{-1}
+\step{defining property of identity matrix}
+  \transpose{(\mat{A}^{-1})} = (\transpose{\mat{A}})^{-1}
+\end{calculation}
+\end{subequations}
+Hence we obtain the desired result.
+\end{proof}
+
+\begin{proposition}[Matrix inversion is idempotent]
+Let $\mat{A}$ be an invertible matrix. Then $(\mat{A}^{-1})^{-1}=\mat{A}$
+\end{proposition}
+
+\begin{proof}
+Let $\mat{B}=\mat{A}^{-1}$. Then $\mat{A}\mat{B}=\mat{B}\mat{A}=\mat{I}$.
+But this implies $\mat{A} = \mat{B}^{-1} = (\mat{A}^{-1})^{-1}$, as desired.
+\end{proof}
