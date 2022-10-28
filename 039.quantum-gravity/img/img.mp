@@ -7,8 +7,9 @@ enddef;
 vardef cos
 primary x = (cosd(x*radian))
 enddef;
-
-
+vardef midpoint(expr p) =
+  point (0.5*length(p)) of p
+enddef;
 outputtemplate := "2009-04-01.%c";
 
 beginfig(0);
@@ -442,4 +443,214 @@ beginfig(4);
   label(btex $\{$ etex yscaled 2.5w xscaled 1.5 rotated -75, z4 + (0.75u)*(-2cosd(90-15.17),sind(90-15.17)));
   label.top(btex $s\pm\varepsilon$ etex rotated 15, z4 + (0.75u)*(-cosd(90-15.17),sind(90-15.17)));
 endfig;
+
+
+% From https://tex.stackexchange.com/a/162406
+%
+% Be reasonable with these lengths.  If you use `drawarrow` then
+% you should ensure that s_lambda > ahlength
+numeric s_lambda; s_lambda = 4; % the length of the waves
+numeric s_angle; s_angle := 0.5[45,90]; % the angle of attack
+
+vardef sinuous expr p =
+   save ut; hide( ut := arctime s_lambda of p;)
+   point 0 of p {curl 0} ..
+      for i=1 step 2 until floor(length p / ut)-2:
+            point     i*ut of p { (direction     i*ut of p) rotated +s_angle } ..
+            point (i+1)*ut of p { (direction (i+1)*ut of p) rotated -s_angle } ..
+          endfor
+          { direction length p of p } point length p of p
+   enddef;
+
+outputtemplate := "2009-05-13.%c";
+beginfig(0)
+  path p[];
+  z0 = (-4u,0);
+  z1 = (4u,0);
+  z2 = (8u,0);
+  z3 = z2 + (z1 - z0);
+
+  p0 = halfcircle xscaled 8u yscaled 4u;
+  p1 = z0--z1;
+  p2 = halfcircle rotated 180 xscaled 8u yscaled 4u;
+
+  draw p0; draw p1; draw p2;
+  numeric i;
+  for i=0 upto 3:
+    label(btex $\bullet$ etex, z[i]);
+  endfor;
+
+  label.top(btex $j_{1}$ etex, point (0.5*length(p0)) of p0);
+  label.top(btex $j_{2}$ etex, point (0.6*length(p1)) of p1);
+  label.bot(btex $j_{3}$ etex, point (0.5*length(p2)) of p2);
+
+  numeric x,dx;
+  dx = 1;
+  % p3 = z2
+  %   for x=((xpart z2)+dx) step dx until ((xpart z3)+dx):
+  %   ..(x,0.5u*sind(180*(2x/u)))
+  % endfor;
+  p3 = z2--z3;
+  p4 = halfcircle xscaled 8u yscaled 6u shifted 0.5[z2,z3];
+  p5 = halfcircle rotated 180 xscaled 8u yscaled 6u shifted 0.5[z2,z3];
+ % p4 = z2..((0,2u) + 0.5[z2,z3])..z3;
+  draw sinuous p3;
+  draw sinuous p4;
+  draw sinuous p5;
+  label.top(btex $j_{1}$ etex, point (0.5*length(p4)) of p4);
+  label.top(btex $j_{2}$ etex, point (0.6*length(p3)) of p3);
+  label.bot(btex $j_{3}$ etex, point (0.5*length(p5)) of p5);
+endfig;
+beginfig(1)
+  path p[];
+  path surface;
+  z0 = (-4u,0);
+  z1 = (4u,0);
+
+  p0 = z0..(0,3u)..z1; % halfcircle xscaled 8u yscaled 4u;
+  p1 = z0--z1;
+  p2 = halfcircle rotated 180 xscaled 8u yscaled 4u;
+  p3 = (0,0)--(5u*(cosd(60),sind(60)));
+
+  % t = xpart (p0 intersectiontimes p3);
+  numeric l; l = length(p3);
+  p4 = (subpath(0.35l,l) of p3) shifted (u*(cosd(-45),sind(-45)));
+  p5 = (subpath(0.25l,l) of p3) shifted (u*(cosd(180-45),sind(180-45)));
+  z2 = point (length(p4)) of p4;
+  z3 = point (length(p5)) of p5;
+  p6 = z2..(0.5[z2,z3] + 0.5u*(cosd(45),sind(45)))..z3;
+  draw p6;
+  z4 = point 0 of p4;
+  z5 = point 0 of p5;
+  draw sinuous (z4--z5);
+  % draw (p0 cutbefore p4);
+  % draw (p0 cutbefore p3 cutafter p4) dashed evenly;
+
+  % draw p0 withcolor green;
+  draw p4; draw p5;
+  draw p1; draw p2;
+  pair delta; delta = (-3,3);
+  t := xpart (p0 intersectiontimes (p3 shifted delta));
+  draw (subpath (0,t) of p0) withpen pencircle scaled 3 withcolor white;
+  draw (subpath (0,t) of p0);
+  t_uh := xpart (p0 intersectiontimes p4);
+  draw (subpath (t,t_uh) of p0) dashed evenly;
+  draw (subpath (t_uh, length(p0)) of p0);
+  z6 = point t of p0;
+  label(btex $\bullet$ etex, z6);
+ % draw p3 withcolor red;
+  numeric i;
+  for i=0 upto 1:
+    label(btex $\bullet$ etex, z[i]);
+  endfor;
+  label(btex $\Sigma$ etex, z6 + (u,u));
+  % label.top(btex $j_{1}$ etex, point (0.5*length(p0)) of p0);
+  % label.top(btex $j_{2}$ etex, point (0.6*length(p1)) of p1);
+  % label.bot(btex $j_{3}$ etex, point (0.5*length(p2)) of p2);
+endfig; % 240 + x = 360 - 90 = 300 - 30 = 270
+beginfig(2)
+  numeric l,i,theta; l := 4u;
+  z0 =(0,0);
+  theta = 30;
+  for i=0 upto 2:
+    z[1+i] = 4u*(cosd(theta + 120i), sind(theta + 120i));
+  endfor;
+  for i=1 upto 3:
+    draw z0--z[i];
+  endfor;
+  z5 = midpoint(z0--z1);
+  z4 = midpoint(z0--z2);
+  draw z4--z5 dashed evenly;
+  label(btex $\bullet$ etex, z0);
+endfig;
+beginfig(3);
+  path t[];
+  path b[];
+  pair dt;
+  dt = (0,-6u);
+  z0 = (0,0);
+  z1 = (-4u,0);
+  z2 = 1.25*(3u,1.5u);
+  z3 = 1.25*(4u,-1.5u);
+  for i=1 upto 3:
+    t[i-1] = z0--z[i];
+    b[i-1] = (z0 + dt)--(z[i]+dt);
+  endfor;
+  z4 = midpoint (z0--z2);
+  z5 = midpoint (z0--z3);
+  z6 = midpoint (z0--(z0+dt));
+  fill (z4--z5--z6--cycle) withcolor 0.5[red,white];
+  draw z4--z6 dashed evenly;
+  draw z5--z6 dashed evenly;
+  draw z4--z5;
+  for i=0 upto 3:
+    draw (z[i] -- (z[i] + dt)) dashed evenly;
+  endfor;
+  for i=0 upto 2:
+    draw t[i];
+    draw b[i];
+  endfor;
+  label.rt(btex $t=1$ etex, z3);
+  label.rt(btex $t=0$ etex, z3+dt);
+endfig;
+beginfig(4);
+  pair w,one, centroid;
+  numeric i;
+  w = 2u*(cosd(120),sind(120));
+  one = (2u,0);
+  z0 = (0,0);
+  z1 = one;
+  z2 = one+w;
+  z3 = w;
+  z4 =-one;
+  z5 = -z2;
+  z6 = -w;
+  z7 = z2 + one;
+  z8 = z6 + one;
+  for i=1 upto 5:
+    draw z0--z[i];
+    draw z[i]--z[i+1];
+  endfor;
+  draw z0--z[6];
+  draw z[6]--z[1];
+  draw z1--z7; draw z2--z7;
+  draw z6--z8; draw z1--z8;
+  centroid = (z0--0.5[z1,z2]) intersectionpoint (z1--0.5[z0,z2]);
+  pair dual[]; path p[];
+  dual0 = centroid;
+  dual1 =  (z3--0.5[z0,z2]) intersectionpoint (z0--0.5[z3,z2]);
+  dual2 = (-(xpart centroid),ypart centroid);
+  dual3 = -dual0;
+  dual4 = (xpart dual1, -(ypart dual1));
+  dual5 = (xpart dual0, -(ypart dual0));
+  dual6 = (z6--0.5[z1,z8]) intersectionpoint (z8--0.5[z6,z1]);
+  dual7 = (z7--0.5[z1,z2]) intersectionpoint (z1--0.5[z7,z2]);
+  pair north; north = (dual0 - dual5);
+  pair sw; sw = dual5 - dual4;
+  pair nw, se; nw = dual1 - dual0; se = -nw;
+  pair ne; ne = dual7 - dual0;
+  dual8 = dual7 + north; % (dual0 - dual5);
+  dual9 = dual7 + se; % (dual0 - dual1);
+  dual10 = dual6 - north; % (dual5 - dual0);
+  dual11 = dual6 + sw; % (dual5 - dual4);
+
+
+  p0 = dual0--dual1;
+  p1 = dual1--dual2; p2 = dual2--dual3;
+  p3 = dual3--dual4; p4 = dual4--dual5;
+  p5 = dual0--dual5;
+  p6 = dual5--dual6;
+  p7 = dual0--dual7; p8 = dual7--dual8;
+  p9 = dual7--dual9;
+  p10 = dual6--dual10; p11 = dual6--dual11;
+  p12 = dual1--(dual1 + north);
+  p13 = dual2--(dual2 + nw);
+  p14 = dual3--(dual3 - sw);
+  p15 = dual4--(dual4 - north);
+  for i=0 upto 15:
+    draw p[i] withcolor red;
+  endfor;
+endfig;
+
+
 end;

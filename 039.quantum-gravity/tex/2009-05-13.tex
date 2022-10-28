@@ -38,3 +38,94 @@ A\to A - D\varepsilon + \delta_{\xi}A,
 where $\varepsilon^{\widehat{I}} = \xi^{i}A^{\widehat{I}}_{i}$.
 This is exactly analogous to the statement in quantum mechanics that
 $\widehat{p}$ generates translations in position.
+
+We have these spin network states. We would like them to be invariant
+under gauge transformations. Forget about position and think about a
+spin network in the graph theoretic notion of a network. For instance
+consider the two spin networks doodled below:
+\begin{center}
+\includegraphics{img/2009-05-13.0}
+\end{center}
+We now treat them as the same spin network (despite in our earlier
+treatment, we would have treated them as distinct spin networks).
+That is to say, \emph{before} we would have found the inner product of
+these two spin states would vanish, \emph{but now} we will find their
+inner product is unity (i.e., 1). There is an obvious problem here,
+though: spin networks are not ``functions'' of connections since thre is
+no longer any background space. This is fine on the one hand, but it's
+harder to find how to get physics from this. The trick is to define a
+diffeomorphism invariant notion of what a surface is, so whn we perform
+some diffeomorphism of a surface, and the surface $\Sigma$ is punctured
+by a spin network, dragging the surface $\Sigma$ would cause a
+diffeomorphism in the spin network; i.e., everything is dragged along.
+\begin{center}
+\includegraphics{img/2009-05-13.1}
+\end{center}
+Here we need some extra parameters, e.g., if we had a scalar field,
+there would be some extra information that needs to be preserved under
+diffeomorphisms. (This is what we do in practice.)
+
+Thus far we have left out the Hamiltonian constraint, but for agood
+reason: no one knows how to deal with it. Recall it looks like
+\begin{equation}
+S\sim FEE + (1+\immirzi^{2})(\mbox{big mess}).
+\end{equation}
+Here the Hamiltonian is quadratic in functional derivatives. There are
+some tricks that may possibly work; e.g., we can see the volume operator
+looks like $V\sim E^{3}$, so we have the Poisson bracket $\{V,A\}\sim E^{2}$,
+which permits us to rewrite the first term as
+\begin{equation}
+FEE\sim F\{V,A\}.
+\end{equation}
+
+\begin{wrapfigure}{R}{5pc}
+\centering\vskip-1pc
+\includegraphics{img/2009-05-13.2}
+\end{wrapfigure}
+Recall, to get $F$ we found the path ordered exponential integral
+(a.k.a., the holonomy)
+%\begin{equation*}
+$\displaystyle \mathcal{P}\E^{-\int A}\sim 1 + \int F + \cdots$
+%\end{equation*}
+But to do that for a spin network, we work around a node and take the
+dashed line (doodled to the right) to go to the node (its length
+vanishing). But diffeomorphism invariance allows us towiggle the line,
+so its vanishing no longer really matters. The regulation becomes
+independent of the regulator.
+
+As far as the ``big mess'' term in the Hamiltonian constraint, Thomas
+Thiemann has done a lot of work trying to simplify it.
+
+\begin{wrapfigure}{r}{10pc}
+\centering\vskip-1pc
+\includegraphics{img/2009-05-13.3}
+\end{wrapfigure}
+Another problem is that the Hamiltonian acts node by node, so it may be
+too local (resulting in nothing propagating).
+
+It may be these are not problems, we just don't know. We'd need to know
+information about the solution to the Hamiltonian constraint.
+
+Spin foams may give an alternative point of view to time evolution of
+spin networks. If we want to consider how a spin network changes, we can
+change the spin label or the intertwiners (which is hard) or we can add
+edges (or remove edges). We have several ingredients: the node of a spin
+network is promoted to an edge in the spin foam, the edge becomes a
+plane, and we need some way to deal with the vertex in the spin foam.%\wrapfill
+
+
+\begin{wrapfigure}{l}{10pc}
+\centering\vskip-1pc
+\includegraphics{img/2009-05-13.4}
+\end{wrapfigure}
+Recall the notion of duals to simplices. In two dimensions, the dual is
+doodled to the left in red, and in three dimensions it is generalized
+accordingly. The trick is for the spin foam, we have a sort of
+dictionary identifying various things to arious other parts of the dual
+4-simplex. The use of a spin foam is to give transition amplitudes to
+evolving spin networks.
+
+As a closing remark, there are field theories which use group elements
+on the edges of its Feynman diagrams, but these appear to be ``dual'' to
+spin foams---so in a sense, gravity ``emerges''.\footnote{I believe this
+remark refers to group field theory.}

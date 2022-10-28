@@ -68,3 +68,11 @@
 
 \let\journal\textit
 \let\volume\textbf
+
+
+% https://tex.stackexchange.com/a/526594
+\newcommand{\wrapfill}{\par\ifnum\value{WF@wrappedlines}>0
+  \addtocounter{WF@wrappedlines}{-1}%
+  \null\vspace{\arabic{WF@wrappedlines}\baselineskip}%
+  \WFclear
+\fi}
