@@ -1,0 +1,82 @@
+\lecture
+
+References for loop quantum gravity.
+\begin{itemize}
+\item About Spin Foams\begin{itemize}
+\item J.~C.~Baez,
+``An Introduction to Spin Foam Models of $BF$ Theory and Quantum Gravity''.
+\journal{Lect. Notes Phys.} \volume{543} (2000), 25-93;
+\arXiv{gr-qc/9905087}\\
+{\tt\doi{10.1007/3-540-46552-9_2}}
+\item A.~Perez,
+``Spin foam models for quantum gravity''.
+\journal{Class. Quant. Grav.} \textbf{20} (2003) R43;
+\arXiv{gr-qc/0301113}\\
+{\tt\doi{10.1088/0264-9381/20/6/202}}
+\end{itemize}
+\item Group Field Theory
+  \begin{itemize}
+  \item D.~Oriti,
+``The Group field theory approach to quantum gravity''.
+\arXiv{gr-qc/0607032}.
+  \end{itemize}
+\item Critique of Loop Quantum Gravity:
+  \begin{itemize}
+  \item H.~Nicolai and K.~Peeters,
+``Loop and spin foam quantum gravity: A Brief guide for beginners''.
+\journal{Lect.\ Notes Phys.} \textbf{721} (2007) 151-184;
+\arXiv{hep-th/0601129}.\\
+{\tt\doi{10.1007/978-3-540-71117-9_9}}
+  \end{itemize}
+\item Covariant Canonical Quantization
+  \begin{itemize}
+  \item A.~Ashtekar, L.~Bombelli and O.~Reula,
+``The Covariant Phase Space of Asymptotically Flat Gravitational Fields''.
+In \textit{Mechanics, Analysis and Geometry: 200 Years After Lagrange},
+pp.417--450, Elsevier, 1991. \\
+{\tt\doi{10.1016/B978-0-444-88958-4.50021-5}}.
+  \end{itemize}
+\end{itemize}
+
+\subsection{String Theory}
+
+A very brief introduction to string theory, but we'll focus on its
+relevance to gravity. There are several points to consider
+\begin{enumerate}
+\item Closed loops have a massless spin-2 excitation (``graviton'')
+\item Strings propagate only in a spacetime satisfying the Einstein
+  field equations (plus some negligible corrections)
+\end{enumerate}
+(Any theory with self-interacting spin-2 massless excitations is a hint
+that gravity is in the game.)
+\begin{enumerate}[resume]
+\item Background spacetime of the second point is equivalent to a
+  coherent state of excitations of the first point.
+\end{enumerate}
+
+Let us examine the first point. We have the basic field be some tensor
+with two indices $h_{\mu\nu}$ and the field equations look like:
+\begin{equation}
+\Box h_{\mu\nu} + (\mbox{terms involving }\partial_{\rho}h^{\rho\sigma})
+= T_{\mu\nu}.
+\end{equation}
+The most general result is that we end up with a spin-2 part, a vector
+(spin-1) part and a scalar (spin-0) part. We need these extra (vector
+and scalar) parts vanish, which is a gauge choice (analogous to a spin-1
+field $\Box A_{\mu} + k\partial_{\mu}\partial_{\nu}A^{\nu}=J_{\mu}$
+requires $\partial^{\mu}J_{\mu}$, otherwise we do not have
+electromagnetism). The gauge invariance for us is
+\begin{equation}
+h_{\mu\nu}\to h_{\mu\nu} + \partial_{\mu}\xi_{\nu} + \partial_{\nu}\xi_{\mu}
+\end{equation}
+which demands
+\begin{equation}
+\partial_{\mu}T^{\mu\nu}=0
+\end{equation}
+for consistency.
+We can choose gauge $\partial_{\rho}h^{\rho\sigma}=0$ (Lorenz gauge,
+Harmonic gauge, de Donder gauge, Fock gauge, Harmonic gauge, Feynman
+gauge, Lorenz gauge, etc.). The reason harmonic is sometimes we write $\Box X^{\mu}$
+where $X^{\mu}$ is some parametrized version of the coordinates which
+individually transform as scalars (and $\Box$ uses derivatives with
+respect to the parameters).
