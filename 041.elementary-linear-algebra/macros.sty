@@ -1,18 +1,24 @@
+\newif\ifoldstylenumbering\oldstylenumberingfalse
+\DeclareOption{oldstylenum}{\oldstylenumberingtrue}
+\ProcessOptions
+
 \usepackage{fullpage}
-%\usepackage{longtable}
 \usepackage{framed}
-%\usepackage{comment}
 \usepackage[final]{graphicx}
 \DeclareGraphicsRule{*}{mps}{*}{}
 \usepackage{amsmath,amsthm,amssymb}
-%\usepackage{amsthm,amsmath}
 \usepackage{enumitem}
 \setlist{topsep=0pt,noitemsep}
 \usepackage{manfnt}
-\usepackage{fancyvrb}
-\newcounter{chunk@ctr}[section]
-\usepackage{ifpdf}
 \usepackage[dvipsnames,table]{xcolor}
+
+
+\usepackage{arydshln} % dashed block matrices
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
 \usepackage[colorlinks=true,
   linkcolor=BrickRed,
   citecolor=BrickRed,
@@ -21,19 +27,13 @@
   runcolor=BrickRed,
   pdfauthor={Alex Nelson},
   pdftitle={Elementary Linear Algebra},
-  \ifpdf\else dvipdfmx\fi
+%  \ifpdf\else dvipdfmx\fi
 ]{hyperref}
-
-\usepackage{arydshln} % dashed block matrices
-\usepackage{titlesec}
-\titleformat*{\section}{\Large\bfseries\sffamily}
-\titleformat*{\subsection}{\large\bfseries\sffamily}
-\titleformat*{\subsubsection}{\bfseries\sffamily}
-
 \newskip\interchunkskip \interchunkskip=\medskipamount%
 % cwebmac.tex has \interchunkskip=12pt minus 3pt
 % latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
 \newskip\thmskip \thmskip=\interchunkskip%\topsep
+
 
 \newtheoremstyle{thmstyle}
   {\thmskip}   % ABOVESPACE
@@ -53,15 +53,24 @@
   {.}         % HEADPUNCT
   {0.5em plus 1pt minus 1pt} % HEADSPACE
   {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+
+
+\def\numberstyle#1{\ifoldstylenumbering\oldstylenums{#1}\else#1\fi}
+
+\def\remarknumberstyle#1{\ifoldstylenumbering\textrm{\normalfont#1}\else#1\fi}
 \newtheoremstyle{rmkstyle}
   {\thmskip}   % ABOVESPACE
   {\thmskip}   % BELOWSPACE
   {}          % BODYFONT
   {0pt}       % INDENT (empty value is the same as 0pt)
-  {\itshape} % HEADFONT
+  {\itshape}  % HEADFONT
   {.}         % HEADPUNCT
   {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
+  {\remarknumberstyle{\thmnumber{#2\@addpunct{.}\enspace}}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
+
+% We will be using "chunks" for the smallest unit of numbered sections,
+% which resemble paragraph numbering.
+\newcounter{chunk@ctr}
 
 \theoremstyle{thmstyle}
 \newtheorem{theorem}[chunk@ctr]{Theorem}
@@ -88,6 +97,9 @@
 \newtheorem{remark}{Remark}[chunk@ctr]
 \newtheorem{claim}[chunk@ctr]{Claim}
 
+\renewcommand\theremark{\thechunk@ctr.\numberstyle{\arabic{remark}}}
+
+
 \newcommand\define[1]{\textbf{``#1''}}
 
 
@@ -103,7 +115,40 @@
 \newcommand\M{\chunkbreak\noindent%
   \refstepcounter{chunk@ctr}%
   \textbf{\thechunk@ctr\@addpunct{.}}\quad\ignorespaces}
-\renewcommand\thechunk@ctr{\thesection.\arabic{chunk@ctr}}
+
+
+
+\def\superthinspace{\kern .0625em }
+
+
+% I have had a run of bad luck with hyperref getting into infinite loops
+% around this character, so I am going to avoid that issue.
+\DeclareRobustCommand{\chunk@separator}{\ifoldstylenumbering%
+  \if@in@appendix.\else\superthinspace\textperiodcentered\superthinspace\fi
+\else.\fi}
+
+\pdfstringdefDisableCommands{%
+  \def\chunk@separator{.}%
+}
+
+\@ifundefined{chapter}{%
+  \@addtoreset{chunk@ctr}{section}
+}{%
+  \@addtoreset{chunk@ctr}{chapter}
+}
+
+\newif\if@in@appendix\@in@appendixfalse
+\let\oldappendix\appendix
+\renewcommand\appendix{\oldappendix\global\@in@appendixtrue}
+
+
+\def\chunkprefix{\@ifundefined{chapter}{%
+  \ifnum\value{section}>0 \if@in@appendix\thesection\else\numberstyle{\arabic{section}}\fi\chunk@separator\ignorespaces\else{}\fi
+}{%
+  \ifnum\value{chapter}>0 \if@in@appendix\thechapter\else\numberstyle{\arabic{chapter}}\fi\chunk@separator\ignorespaces\else{}\fi
+}}
+\renewcommand\thechunk@ctr{\chunkprefix\numberstyle{\arabic{chunk@ctr}}}
+
 
 % deprecated macro:
 % \newcommand\N[1]{\M\textbf{#1\@addpunct{.}}\quad\ignorespaces}
@@ -125,7 +170,11 @@
 \def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
 \def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
 
+%\numberwithin{equation}{section}
+\numberwithin{equation}{chunk@ctr}
+\renewcommand\theequation{\thechunk@ctr.\numberstyle{\arabic{equation}}}
 
-\numberwithin{equation}{section}
+
 \definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
 \definecolor{DarkRed}{rgb}{.3545,0,0}
+
