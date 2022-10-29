@@ -53,6 +53,29 @@ away all terms which do not contain a factor of $\theta_{k}$, then
 discard the $\theta_{k}$ factor. The result is the left (respectively,
 right) derivative of $f$ with respect to $\theta_{k}$.
 
+\begin{puzzle}
+What rules of normal differentiation hold for differentiation with
+respect to Grassmann generators? The most important rule are the product
+rule and chain-rule, we can derive everything else from these two rules.
+\end{puzzle}
+
+
+\begin{puzzle}
+For $f\in\Lambda^{1,1}$, does it makes sense to ask what is the
+derivative of $f$ with respect to $x+\theta$? What could it be?
+\end{puzzle}
+
+\begin{exercise}
+Prove that Taylor expansion about 0 holds for any $f\in\Lambda^{m,n}$, which
+will produce something like
+\begin{equation}
+f(x,\theta) = f(x)\sum^{n}_{\ell=0}f_{i_{1}\dots i_{\ell}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{\ell}}
+\end{equation}
+where $f(x)=f(x,0)$ is obtained by setting all Grassmann generators to
+zero (assuming that $f(x,0)$ has a Taylor expansion near $0$ --- what
+happens if we choose to Taylor expand about a different point?).
+\end{exercise}
+
 
 \begin{exercise}\label{xca:differentiation:taylor-series-for-exp}
 For any $\alpha\in\Lambda^{m,n}$ which looks like
@@ -64,4 +87,28 @@ function using the Taylor series expansion,
 \end{equation}
 Prove this works. What laws does it obey? Do we expect, for example, $\exp(\alpha+\gamma)=\exp(\alpha)\exp(\gamma)$?
 Is $\exp(-\alpha)=1/\exp(\alpha)$?
+\end{exercise}
+
+\begin{exercise}
+  Let $f\in\Lambda^{m,n}$.
+  \begin{enumerate}
+  \item Determine the trigonometric functions $\cos(f)$ and $\sin(f)$ in terms
+of the trigonometric functions of the body and soul $\cos(f_{B})$,
+$\cos(f_{S})$, $\sin(f_{B})$, and $\sin(f_{S})$.
+\item Do we get the same result if we use the Taylor expansion, as opposed to
+the identity $\exp(\I x)=\cos(x)+\I\sin(x)$? [I mean, we just computed
+  $\exp(f)$ in the previous exercise, it's natural to wonder if we can
+  use it to determine trigonometric functions, like we usually do.]
+\item Do the angle-addition identities still hold?
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}[A.~Schwarz 2008]
+  Compute
+  \begin{equation}
+\frac{\partial}{\partial\theta_{4}}\log(1 + \theta_{1}\theta_{2} + \theta_{3}\theta_{4}
++ \theta_{1}\theta_{2}\theta_{3}\theta_{4})
+  \end{equation}
+in two ways: using the chain rule and directly.
 \end{exercise}

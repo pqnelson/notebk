@@ -1,5 +1,11 @@
 \section{Introduction}
 
+\M
+We will study supermathematics by means of puzzles and exercises.
+``Puzzles'' are more ``longterm'' questions to ponder, which we may
+answer in future sections. ``Exercises'' are questions I want you to
+answer as you read them.
+
 \begin{definition}
 Let $\FF$ be a field (usually $\RR$ or $\CC$, but we could make $\FF$ a
 suitably nice unital ring).
@@ -22,6 +28,10 @@ In other words, we are introducing $n$ new ``numbers'' $\theta_{1}$,
 \dots, $\theta_{n}$ such that they anticommute with each other (and
 commute with ``actual numbers'' which belong to $\FF$).
 \end{remark}
+
+\begin{exercise}
+Are Grassmann algebras unital?
+\end{exercise}
 
 \begin{exercise}
 Prove $\theta_{i}^{2}=0$.
@@ -66,6 +76,11 @@ Grassmann generators $\theta_{1}$, \dots, $\theta_{n}$) and
 $a_{B}\in\FF$ is called the \define{Body} of $a$.
 \end{definition}
 
+\begin{remark}
+This terminology I found in Bryce DeWitt's \textit{Supermanifolds}
+(Second ed., Cambridge university press, 1992).
+\end{remark}
+
 \begin{exercise}
 Prove, for any Grassmann number $a\in\Lambda^{n}$, that its soul is nilpotent $a_{S}^{n+1}=0$.
 \end{exercise}
@@ -78,7 +93,7 @@ $f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\in\Lambda^{m,n}$ as
   \begin{split}
   f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})
 &= f_{B}(x_{1},\dots,x_{m}) + f_{S}(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\\
-&= f_{B}(x) + \sum_{n=1}f_{i_{1}\dots i_{n}}(x)\theta^{i_{1}}\dots\theta^{i_{n}}.
+&= f_{B}(x) + \sum_{N=1}f_{i_{1}\dots i_{N}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{N}}.
   \end{split}
 \end{equation}
 Here the coefficients are polynomials (or rational functions).
@@ -88,8 +103,32 @@ Here the coefficients are polynomials (or rational functions).
 We will frequently abuse notation and suppress indices, writing things
 like $f(x)$ instead of $f(x_{1},\dots,x_{1})$, and $f(x,\theta)$ instead
 of $f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})$.
+
+While we're abusing notation, we are fairly generous with what
+$\FF[x_{1},\dots,x_{m}]$ could be replaced by; we could have
+$C^{\infty}(\RR^{m})$ instead, for example.
 \end{remark}
 
 \begin{exercise}
 Prove, for any $f\in\Lambda^{m,n}$ that $(f_{S}(x,\theta))^{n+1}=0$.
 \end{exercise}
+
+\M
+The usefulness of $\Lambda^{m,n}$ is that we can now ``continuously
+vary'' generators among themselves. For example, in $\Lambda^{3,2}$, we
+have
+\begin{equation}
+  \begin{pmatrix}
+    \cos(t) & -\sin(t)\\
+    \sin(t) &  \cos(t)
+  \end{pmatrix}\begin{pmatrix}\theta_{1}\\\theta_{2}
+  \end{pmatrix} =: \begin{pmatrix}\theta_{1}(t)\\\theta_{2}(t)
+  \end{pmatrix}
+\end{equation}
+give a continuous rotation among the Grassmann generators as we move
+along the $t$-axis [i.e., forwards through time].
+
+\begin{puzzle}
+How can we do calculus (specifically differentiation and integration)
+using $\Lambda^{m,n}$?
+\end{puzzle}

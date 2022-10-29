@@ -48,7 +48,7 @@ we have
 This generalizes to functions on the complex plane $f\colon\Sigma\subset\CC\to\CC$
 defined by $f=u+\I v$,
 \begin{equation}
-\oint_{\partial\Sigma}f\,\D z = \iint\left(\frac{\partial f}{\partial
+\oint_{\partial\Sigma}f\,\D z = \iint_{\Sigma}\left(\frac{\partial f}{\partial
   z}\right)\,\D x\,\D(\I y).
 \end{equation}
 Does it generalize to to some ``simply-connected region'' of
@@ -71,3 +71,20 @@ I =
 %% = a + b\theta + (a^{2} + 2ab\theta)/2! + (a^{3} + 3a^{2}b\theta)/3!
 %% = 1+ (a + a^2/2! + a^3/3! + \dots) + (1 + a + a^2/2 + \dots)b\theta
 %% = \exp(a)(1 + b\theta)
+
+
+\begin{exercise}[A.~Schwarz 2008]
+  Compute
+  \begin{equation}
+\int\log(1 + \theta_{1}\theta_{2} + \theta_{3}\theta_{4}
++ \theta_{1}\theta_{2}\theta_{3}\theta_{4})\,\D^{4}\theta
+  \end{equation}
+where the $\theta_{i}$ are all anticommuting variables.
+\end{exercise}
+
+\begin{exercise}[A.~Schwarz 2008]
+  Calculate
+  \begin{equation}
+I = \int\exp(-x^{2}-2x\theta_{1}\theta_{2})\,\D x\,\D^{2}\theta.
+  \end{equation}
+\end{exercise}
