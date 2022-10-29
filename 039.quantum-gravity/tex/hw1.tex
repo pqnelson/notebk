@@ -1,0 +1,104 @@
+\section[Homework I]{Introduction to Quantum Gravity: Homework I\footnote{This was handed out April 2, 2009.}}
+
+
+I. \textbf{Planck scale}
+
+The planck length is $\ell_{Pl} = \sqrt{\hbar G/c^{3}}$.
+\begin{enumerate}[label=(\alph*),nosep]
+\item Suppose you wish to probe an area of characteristic size $R$ with
+  a relativistic particle (that is, one for which $E\sim pc$). Consider
+  the following two restrictions
+  \begin{itemize}
+  \item[--] uncertainty relation: $\Delta x\Delta p\gtrsim\hbar$
+  \item[--] no black hole formed by problem: $G\Delta E/R c^{4}\lesssim 1$.
+  \end{itemize}
+  Find an estimate of the smallest possible value of $R$. How would this
+  change if you allow a \emph{nonrelativistic} probe (that is, a massive
+  probe with $mc^{2}\gg pc$)?
+\item Consider a piece of matter of energy $E$ that is not already a
+  black hole. Its size must be greater than its Compton wavelength
+  (quantum mechanics) and also large enough that it is not a black hole
+  (general relativity). Approximately what is its minimum size?
+\item Recall that for any two quantum mechanical observables
+  $\widehat{A}$ and $\widehat{B}$ ann uncertainty principle holds
+  \begin{equation*}
+\Delta\widehat{A}\Delta\widehat{B}\geq\frac{1}{2}|\langle[\widehat{A},\widehat{B}]\rangle|
+  \end{equation*}
+  For a free particle (in the Heisenberg picture) with position operator
+  $\widehat{x}(t)$ and momentum operator $\widehat{p}$,
+  \begin{equation*}
+    \widehat{x}(t) = \widehat{x}(0) + \frac{t}{m}\widehat{p}
+  \end{equation*}
+  and $[\widehat{x}(0),\widehat{p}]=\I\hbar$. Assuming that $\Delta x(t)$
+  is of the same order as $\Delta x(0)$, find its minimum value as a
+  function of $t$ and $m$. (This is closely related to what is known as
+  the ``standard quantum limit''.)
+
+  Now consider measuring a distance $L$ between two points by sending a
+  particle from one to the other and timing its motion. By relativity,
+  we must have $L\leq ct$. If the particle is too massive, the two
+  points we are measuring will be inside a black hole; to avoid this we
+  need $Gm/Lc^{2}\lesssim1$. Find the resulting limit on $\Delta x$
+  on the accuracy to which we can measure $L$.
+\item Find loopholes in these arguments.
+\end{enumerate}
+\bigbreak\noindent{}II. \textbf{Van Hove's theorem}\bigbreak
+
+In the Hamiltonian formalism, a classical dynamical system typically has
+a phase space that is (at least locally) parametrized by (generalized)
+positions $\vec{q}$ and momenta $\vec{p}$. The basic rule in
+quantization is that ``Poisson brackets become commutators.'' One way to
+express this is by a quantization map $Q$ from functions of the phase
+space ($f(\vec{q},\vec{p})$, $g(\vec{q},\vec{p})$, etc.) to operators on
+a Hilbert space. Since we're physicists, we'll denote the action of $Q$
+by adding a ``hat'': $Q(f)=\widehat{f}$. An obvious set of conditions
+for $Q$ is:
+\begin{enumerate}[nosep]
+\item $Q(af+bg)=aQ(f)+bQ(g)$ (linearity)
+\item $Q(1)=1$
+\item $Q(\vec{x})$ and $Q(\vec{p})$ are represented irreducibly
+\item $[Q(f),Q(g)]=\I\hbar Q(\{f,g\})$ (where $\{f,g\}$ is the Poisson bracket)
+\end{enumerate}
+
+Van Hove's theorem say that this is not possible for a particle moving
+in one dimension. Prove this.
+
+Hint: In the phase space, one has hat $p^{2}q^{2} = -\frac{1}{9}\{p^{3},q^{3}\}$
+and $p^{2}q^{2} = -\frac{1}{3}\{p^{2}q,q^{2}p\}$. Show that these give
+different values for $Q(p^{2}q^{2})$. (To do this mathematically
+rigorously, you will have to use the irreducibility condition (3), which
+implies that if $[\widehat{q},\widehat{O}]=0$ and
+$[\widehat{p},\widehat{O}]=0$ for some operator $\widehat{O}$, then
+$\widehat{O}$ is proportional to the identity, that is, $\widehat{O}$ is
+a number. Most ``physicists' proofs'' don't pay too much attention to
+this.)
+
+Note: ``deformation quantization'' replaces condition 4 by
+\begin{itemize}
+\item[(4')] $[Q(f),Q(g)]=\I\hbar Q(\{f,g\}) + (\mbox{terms of order }\hbar^{2})$
+\end{itemize}
+
+
+\bigbreak\noindent{}III. \textbf{Affine commutators}\bigbreak
+
+\begin{enumerate}[label=(\alph*),nosep]
+\item Show that if $[\widehat{q},\widehat{p}]=\I\hbar$, then
+  $\widehat{q}$ generates translations in $\widehat{p}$, that is,
+  \begin{equation*}
+\E^{-\I a\widehat{q}/\hbar}\widehat{p}\E^{\I a\widehat{q}/\hbar}=\widehat{p}+a.
+  \end{equation*}
+\item Suppose that $[\widehat{q},\widehat{p}]=\I\hbar$. Show that if
+  there is any state that is an eigenfunction (or a generalized
+  eigenfunction---that is, the state need not be normalizable) of
+  $\widehat{p}$, then \emph{all} real numbers appear as eigenvalues of $\widehat{p}$.
+\item Suppose the fundamental operators are instead $\widehat{q}$ and
+  $\widehat{D}=\widehat{qp}$ with
+  $[\widehat{q},\widehat{D}]=\I\hbar\widehat{q}$. Show that
+  $\widehat{D}$ generates dilatations, that is,
+  \begin{equation*}
+\E^{-\I a\widehat{D}/\hbar}\widehat{p}\E^{\I a\widehat{D}/\hbar}=\E^{a}\widehat{p}.
+  \end{equation*}
+\item With affine commutators, show that if there is any state that is
+  an eigenfunction of $\widehat{p}$ with positive eigenvalue, then all
+  positive real numbers appear as an eigenvalue of $\widehat{p}$.
+\end{enumerate}

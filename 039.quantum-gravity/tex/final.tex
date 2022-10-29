@@ -1,0 +1,91 @@
+\section[Final Exam]{Final Exam\footnote{This was a handout given a few weeks before the final exam. It is transcribed verbatim.}}
+
+The final exam for ``Quantum Gravity'' will take place on Tuesday, June
+9, from 8--10 am in Roessler 158. The format of the exam will be as
+follows:
+
+I have listed below twelve topics that have been central themes of the
+course. On the exam, I will list six of these. You will choose four of
+the six, and write a short (3--4 paragraph) essay describing each of the
+four you have chosen.
+
+Your essays do not have to be heavily mathematical, but some
+mathematics---equations and simple derivations---are appropriate for
+most of these topics. The goal of the essays is to demonstrate the basic
+concepts, well enough to (for example) explain the fundamental ideas to
+another student or read and roughly follow a paper in which they are
+used. I have included a sample essay on the opposite side of this paper.
+
+Topics:
+\begin{enumerate}
+\item Ambiguities in quantizing a classical system
+\item Quantization of constrained systems: Dirac and reduced phase space methods
+\item Observables and the ``problem of time'' in quantum gravity
+\item The ADM form of the metric
+\item The diffeomorphism and Hamiltonian constraints in general relativity
+\item The Wheeler--DeWitt equation
+\item The parallel transport matrix, holonomies, and gauge-invariant observables
+\item Spin networks
+\item The area operator in loop quantum gravity
+\item The Nambu--Goto and Polyakov actions in string theory
+\item How string theory contains gravity
+\item Regge calculus and dynamical triangulations
+\end{enumerate}
+
+\vfill\eject\setlength{\parskip}{1ex}
+
+\noindent\textbf{Sample essay on the theme ``constraints and
+  symmetries''}
+
+(Note that this example is more heavily mathematical than would be
+appropriate for some of the other topics. Include derivations like this
+when you can make them simple enough; otherwise, describe them and give
+a few steps. Of course, this sample is also a bit more polished than I
+would expect on the exam.)
+
+A constraint is an equation of motion that involves only first time
+derivatives (in the Lagrangian formalism) or no time derivatives (in the
+Hamiltonian formalism). It therefore does not describe time evolution,
+but rather restricts (``constrains'') the initial data. In the action, a
+constraint is most easily described with a Lagrange multiplier. In the
+Hamiltonian form, for instance,
+\begin{equation*}\tag{1}
+I = \int(p\dot{q}-H-\lambda C)\,\D t
+\end{equation*}
+where the Lagrange multiplier $\lambda$ enforces the constraint
+$C(p,q)=0$. In order to be preserved under time evolution, the
+constraint must effectively have a vanishing Poisson bracket with the
+Hamiltonian:
+\begin{equation*}\tag{2}
+\{C,H\}=VC \implies \frac{\D C}{\D t}=0\mbox{ when }C=0.
+\end{equation*}
+
+With some technical exceptions, a constraint generates a symmetry of the
+classical action. That is, under the transformation
+\begin{equation*}\tag{3}
+  \delta q=\epsilon\{C,q\}=-\epsilon\frac{\D C}{\D p},\quad
+  \delta p=\epsilon\{C,p\}=\epsilon\frac{\D C}{\D q}
+\end{equation*}
+the action remains invariant. To see this, note that
+\begin{align*}
+\delta I
+&= \int\left[\delta q\left(\frac{\D p}{\D t}-\frac{\D H}{\D q}\right)
+  + \delta p\left(-\frac{\D q}{\D t}-\frac{\D H}{\D p}\right) -
+ \delta\lambda\;C\right]\D t\\
+&= \int\left[-\epsilon\frac{\D C}{\D p}\left(\frac{\D p}{\D t}-\frac{\D H}{\D q}\right)
+  + \epsilon\frac{\D C}{\D q}\left(-\frac{\D q}{\D t}-\frac{\D H}{\D p}\right) -
+ \delta\lambda\;C\right]\D t\\
+&= \int\left[-\epsilon\frac{\D C}{\D t} - \epsilon\{C,H\} + \delta\lambda\;C\right]\D t
+= \int\left(\frac{\D\epsilon}{\D t}-\epsilon V -
+\delta\lambda\right)C\,\D t
+\end{align*}
+which is zero if we choose $\delta\lambda = (\D\epsilon/\D t) - \epsilon V$.
+
+An example of a constrained system is electromagnetism. For an
+electromagnetic system, the vector potential $\vec{A}$ and the electric
+field $\vec{E}$ are canonically conjugate, and the Gauss law
+$G=\nabla\cdot\vec{E}-\rho=0$ is a constraint. It is easy to check that
+$G$ generates gauge transformations of $\vec{A}$. General relativity is
+also a constrained system, in which the constraints generate
+diffeomorphisms of space and ``surface deformations'' that are equialent
+to diffeomorphisms involving time when the equations of motion are satisfied.

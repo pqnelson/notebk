@@ -1,0 +1,110 @@
+\section[Homework II]{Introduction to Quantum Gravity: Homework II\footnote{This was handed out April 10, 2009.}}
+
+
+
+I.~Electrodynamics as a constrained system.
+\bigbreak
+Classical electrodynamics is described by a four-vector potential
+$A_{\mu}$ and an antisymmetric field strength tensor
+$F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$. The Lagrangian
+is
+\begin{equation*}
+L = \frac{1}{4}F_{\mu\nu}F^{\mu\nu} + A_{\mu}\mathcal{J}^{\mu}
+\end{equation*}
+where $\mathcal{J}^{\mu}$ is the current four-vector, and the ordinary
+electric and magnetic fields are
+\begin{equation*}
+E^{i}=F^{0i},\qquad B_{i}=\frac{1}{2}\epsilon_{ijk}F^{jk}
+\end{equation*}
+where $i$, $j$, $k$, \dots run from $1$ to $3$ and $\mu$, $\nu$, \dots
+run from $0$ to $3$.
+
+The tensor $F_{\mu\nu}$ is invariant under gauge transformations
+\begin{equation*}
+A_{\mu}\to A_{\mu}+\partial_{\mu}\Lambda
+\end{equation*}
+This suggests the system has constraints (to generate the gauge
+transformations).
+
+\begin{enumerate}[label=(\alph*),nosep]
+  \item If you are not familiar with this formalism, convince yourself
+    that it really does give you Maxwell's equations.
+  \item Show the canonical variables (``generalized positions and
+    momenta'') are $A_{i}$ and $E^{j}$, with Poisson brackets
+    $\{A_{i}(\vec{x}),E^{j}(\vec{y})\}=\delta^{j}_{i}\delta^{3}(\vec{x}-\vec{y})$.
+  \item Show that $A_{0}$ is a Lagrange multiplier, and the
+    corresponding constraint is the Gauss law $C=\vec{\nabla}\cdot\vec{E}=0$.
+  \item Show the constraint generates the gauge transformations of
+    $A_{i}$, that is, $\{\int\Lambda(\vec{x})C(\vec{x})\,\D^{3}x, A_{i}(\vec{x}')\}\sim(A_{i}+\partial_{i}\Lambda)(\vec{x}')$.
+  \item Correct any mistakes in algebra I have made.
+\end{enumerate}
+
+
+\bigbreak\noindent{}II. \textbf{Extrinsic Curvature: Symmetry}\bigbreak
+
+Let $n^{a}$ be the unit normal to a $t=const.$ hypersurface. (Note this
+implies $n_{a}=f\nabla_{a}t$ for some function $f$. Why?) Recall the
+extrinsic curvature tensor is
+\begin{equation}
+K_{ab} = {q_{a}}^{c}\nabla_{c}n_{b}
+\end{equation}
+where $g_{ab}=q_{ab}+n_{a}n_{b}$.
+
+\begin{enumerate}[label=(\alph*),nosep]
+\item Show $K_{ab}=K_{ba}$.
+
+  (Hint: use the fact $n_{a}=f\nabla_{a}t$ and find
+  $n^{c}\nabla_{c}n^{b}$ in terms of $f$. The vector
+  $a^{b}=n^{c}\nabla_{c}n^{b}$ is sometimes called the ``acceleration''.)
+\item Show $K=\nabla_{a}n^{a}$ (where $K={K^{a}}_{a}$).
+\end{enumerate}
+
+\bigbreak\noindent{}III. \textbf{Gauss--Codazzi}\bigbreak
+
+A ``spatial'' tensor ${T^{ab\dots}}_{cd\dots}$ is one with no normal
+components, i.e.,
+\begin{equation*}
+n_{a}{T^{ab\dots}}_{cd\dots} = n_{b}{T^{ab\dots}}_{cd\dots} =
+n^{c}{T^{ab\dots}}_{cd\dots} = \dots = 0
+\end{equation*}
+${q^{a}}_{b}$ is a projection operator, that is, it projects any index
+into a ``purely spatial'' one. (Why?)
+
+The three-dimensional (``spatial'') covariant derivative $D_{a}$ of a
+spatial tensor can be defined as
+\begin{equation*}
+D_{e}{T^{ab\dots}}_{cd\dots} = {q^{a}}_{g}{q^{b}}_{h}\dots{q_{c}}^{i}{q_{d}}^{j}\dots{q_{e}}^{f}\nabla_{f}{T^{gh\dots}}_{ij\dots}
+\end{equation*}
+(that is, we take the ordinary four-dimensional covariant derivative and
+then project all indices onto the $t=const.$ slice). The spatial
+curvature is defined by the condition
+\begin{equation*}
+[D_{a},D_{b}]v_{c}={}^{(3)}\!{R_{abc}}^{d}v_{d}
+\end{equation*}
+for any spatial vector $v_{d}$. Using these facts, show that
+\begin{enumerate}[label=(\alph*),nosep]
+\item ${}^{(3)}\!{R_{abcd}} = {q_{a}}^{e}{q_{b}}^{f}{q_{c}}^{g}{q_{d}}^{h}R_{efgh}+K_{ac}K_{bd}-K_{ad}K_{bc}$
+\item $R_{abcd}n^{d}=\nabla_{a}K_{bc} - \nabla_{b}K_{ac} - n_{a}(\nabla_{b}a_{c}-a_{b}a_{c}) + n_{b}(\nabla_{a}a_{c}-a_{a}a_{c})$
+\item $R = {}^{(3)}\!R - K_{ab}K^{ab} + K^{2} + 2\nabla_{a}(n^{b}\nabla_{b}n^{a} - n^{a}\nabla_{b}n^{b})$
+\end{enumerate}
+Note that sign conventions differ reference to reference.
+
+\bigbreak\noindent{}IV. \textbf{ADM metric and extrinsic curvature}\bigbreak
+
+Suppose we decompose the metric in ADM form as
+\begin{equation*}
+\D s^{2} = N^{2}\,\D t^{2} - q_{ij}(\D x^{i} + N^{i}\,\D t)(\D x^{j} + N^{j}\,\D t)
+\end{equation*}
+\begin{enumerate}[label=(\alph*),nosep]
+\item Confirm that the inverse metric is
+  $$g^{ab} = \begin{pmatrix}\frac{1}{N^{2}} & -\frac{N^{i}}{N^{2}}\\-\frac{N^{j}}{N^{2}} & -q^{ij} + \frac{N^{i}N^{j}}{N^{2}} \end{pmatrix}$$
+  where $q^{ij}$ is the inverse of $q_{ij}$ and I raise and lower
+  indices with the spatial metric tensor $q_{ij}$.
+\item Show that the extrinsic curvature tensor is
+  \begin{equation*}
+K_{ij} = \frac{1}{2N}\left(\partial_{t}q_{ij} - D_{i}N_{j} - D_{j}N_{i}\right)
+  \end{equation*}
+  Note that sign conventions differ from reference to reference.
+
+  (Hint: as noted in problem II, the unit normal is $n_{a} = f\nabla_{a}t$. What is this in these coordinates? What is $f$?)
+\end{enumerate}

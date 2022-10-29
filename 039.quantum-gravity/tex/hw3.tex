@@ -1,0 +1,66 @@
+\section[Homework III]{Introduction to Quantum Gravity: Homework III\footnote{I do not recall when this was handed out. This was never posted to the course website, unlike the other homework assignments.}}
+
+
+I.~\textbf{Lie Derivative of the Metric.}
+\bigbreak
+The Lie derivative of a metric along a vector $\xi^{a}$ is
+\begin{equation*}
+\mathcal{L}_{\xi}g_{ab} = g_{ac}\partial_{b}\xi^{c}+g_{bc}\partial_{a}\xi^{c}+\xi^{c}\partial_{c}g_{ab}
+\end{equation*}
+Show this may be rewritten as
+\begin{equation*}
+\mathcal{L}_{\xi}g_{ab} = \nabla_{a}\xi_{b}+\nabla_{b}\xi_{a}
+\end{equation*}
+where $\nabla$ is the standard covariant derivative.
+
+\bigbreak\noindent{}II. \textbf{Constraints generate diffeomorphism}\bigbreak
+
+Recall that the Hamiltonian and momentum constraints are
+\begin{equation*}
+\mathcal{H} = \frac{16\pi G}{\sqrt{q}}\left(\pi_{ij}\pi^{ij}-\frac{1}{2}\pi^{2}\right),\quad
+\mathcal{H}^{i}=-2D_{j}\pi^{ij}
+\end{equation*}
+and $\pi^{ij} = \frac{1}{16\pi G}\sqrt{q}(K^{ij}-q^{ij}q)$
+with $K_{ij} = \frac{1}{2N}(\partial_{t}q_{ij} - D_{i}N_{j} - D_{j}N_{i})$. Let
+\begin{equation*}
+H[\widehat{\xi}] = \int\left[\widehat{\xi}^{\bot}\mathcal{H}+\widehat{\xi}^{i}\mathcal{H}_{i}\right]\D^{3}x.
+\end{equation*}
+Show that $H[\widehat{\xi}]$ generates (spacetime) diffeomorphisms of
+$q_{ij}$, that is,
+\begin{equation*}
+\left\{H[\widehat{\xi}], q_{ij}\right\} = (\mathcal{L}_{\xi}q)_{ij}
+\end{equation*}
+where $\mathcal{L}_{\xi}$ is the full spacetime Lie derivative and the
+spacetime vector field $\xi^{\mu}$ is given by the full spacetime Lie
+derivative and the spacetime vector field $\xi^{\mu}$ is given by
+\begin{equation*}
+\widehat{\xi}^{\bot} = N\xi^{0},\quad\widehat{\xi}^{i} = \xi^{i}+N^{i}\xi^{0}
+\end{equation*}
+The parameters $(\widehat{\xi}^{\bot},\widehat{\xi}^{i})$ are known as
+``surface deformation'' parameters.
+
+(Hint: use problem 1 and express the Lie derivative of the spacetime
+metric in terms of the ADM decomposition.)
+
+\bigbreak\noindent{}III. \textbf{Surface deformation algebra}\bigbreak
+
+Show that
+\begin{equation*}
+\left\{H[\widehat{\xi}], H[\widehat{\eta}]\right\} = H[\{\widehat{\xi},\widehat{\eta}\}_{SD}]
+\end{equation*}
+where the ``surface deformation bracket'' $\{-,-\}_{SD}$ is
+\begin{align*}
+  \{\widehat{\xi},\widehat{\eta}\}_{SD}^{\bot} &= \widehat{\xi}^{i}\partial_{i}\widehat{\eta}^{\bot}-\widehat{\eta}^{i}\partial_{i}\widehat{\xi}^{\bot}\\
+  \{\widehat{\xi},\widehat{\eta}\}_{SD}^{i} &=
+  \widehat{\eta}^{j}\partial_{j}\widehat{\xi}^{i}
+  \widehat{\xi}^{j}\partial_{j}\widehat{\eta}^{i}
+  +q^{ij}\left(\widehat{\xi}^{\bot}\partial_{j}\widehat{\eta}^{\bot} - \widehat{\eta}^{\bot}\partial_{j}\widehat{\xi}^{\bot}\right)
+\end{align*}
+Show that for purely spatial deformations ($\xi^{0}=\eta^{0}=0$), the
+surface deformation bracket is equal to the ordinary commutator.
+
+(The surface deformation bracket is a ``canonical'' bracket, defined at
+one moment of time. For deformations with $\xi^{0}$ or $\eta^{0}$
+nonzero, the commutator involves time derivatives; it can be shown that
+the time derivatives of $\xi^{\mu}$ and $\eta^{\mu}$ can be chosen so
+that the surface deformation brackt is again equal to the commutator.)
