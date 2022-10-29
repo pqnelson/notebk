@@ -52,10 +52,11 @@
 \font\sectionfont=cmssbx10 at 12pt
 \font\subsectionfont=cmssbx10 %at 12pt
 
+\def\lecturebreak{\bigbreak}
 \def\lecture{\@ifnextchar[{\@lectureWith}{\@lectureWithout}}
-\def\@lectureWith[#1]{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+\def\@lectureWith[#1]{\lecturebreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
   \noindent{\addcontentsline{toc}{section}{Lecture \thesection: #1\@addpunct{.}}\sectionfont Lecture \thesection. #1\@addpunct{.}}\medbreak}
-\def\@lectureWithout{\medbreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
+\def\@lectureWithout{\lecturebreak\refstepcounter{section}\renewcommand{\leftmark}{Lecture \thesection}
   \noindent{\addcontentsline{toc}{section}{Lecture \thesection.}\sectionfont Lecture \thesection.}\medbreak}
 
 \let\newblock\newline
