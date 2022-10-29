@@ -1,21 +1,27 @@
-\documentclass{article}
-%\documentclass[oneside]{amsart}
+%\documentclass{article}
+\documentclass[oneside]{amsart}
+\title{Supermathematics}
 \usepackage[12hr,us]{datetime}
 \usepackage{macros}
 \usepackage{notation}
 
 \def\homeurl{\url{https://pqnelson.github.io/notebk/}}
 
-\title{Supermathematics}
+\makeatletter
+\@ifclassloaded{amsart}{
+\author{Alex Nelson}
+\thanks{This is a page from \homeurl{}\hfil\break\indent\ignorespaces Compiled:\enspace\today\ at \currenttime\ (PST)}
+  }{\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}}
+\makeatother
 
-\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}
-%% \author{Alex Nelson}
-%% \thanks{This is a page from \homeurl{}\hfil\break\indent\ignorespaces Compiled:\enspace\today\ at \currenttime\ (PST)}
 \date{October 28, 2022}
 
 \begin{document}
 \maketitle
 
+\input{tex/introduction}
+\input{tex/differentiation}
+\input{tex/integration}
 \input{tex/literature}
 
 \end{document}

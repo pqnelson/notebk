@@ -1,0 +1,95 @@
+\section{Introduction}
+
+\begin{definition}
+Let $\FF$ be a field (usually $\RR$ or $\CC$, but we could make $\FF$ a
+suitably nice unital ring).
+A \define{Grassmann Algebra} in $n$ generators $\theta_{1}$, \dots,
+$\theta_{n}$ over $\FF$ consists of the free algebra subject to the
+following restriction:
+\begin{subequations}
+\begin{equation}
+\theta_{i}\theta_{j}+\theta_{j}\theta_{i}=0
+\end{equation}
+for $i$, $j=1,\dots,n$, and for any $x\in\FF$,
+\begin{equation}
+x\theta_{i}=\theta_{i}x.
+\end{equation}
+\end{subequations}
+\end{definition}
+
+\begin{remark}
+In other words, we are introducing $n$ new ``numbers'' $\theta_{1}$,
+\dots, $\theta_{n}$ such that they anticommute with each other (and
+commute with ``actual numbers'' which belong to $\FF$).
+\end{remark}
+
+\begin{exercise}
+Prove $\theta_{i}^{2}=0$.
+\end{exercise}
+
+\begin{exercise}
+How would you define $(x+\theta y)^{-1}$ for $x,y\in\FF$ and $\theta$
+being a Grassmann generator?
+\end{exercise}
+
+\begin{exercise}
+Prove, for each $n\in\NN$, there exists up to [unique?] isomorphism
+exactly one Grassmann algebra in $n$ generators over $\FF$.
+\end{exercise}
+
+\N{Notation} As a consequence of Grassmann algebras being unique (up to
+isomorphism), we will denote the Grassmann algebra in $n$ generators as $\Lambda^{n}$.
+
+\begin{exercise}
+Let $\alpha\in\Lambda^{n}$. Prove we can write it as a finite linear
+combination of monomials of generators
+\begin{equation}
+a = a_{0} + \sum_{i}a_{i}\theta_{i} +
+\sum_{i,j}a_{i,j}\theta_{i}\theta_{j} + \dots + a_{1,2,3,\dots,n}\theta_{1}(\dots)\theta_{n}.
+\end{equation}
+Are there any restrictions on the coefficients $a_{i,j}$, $a_{i,j,k}$,
+etc.? [Can we have them be symmetric in their indices? Antisymmetric? Etc.]
+\end{exercise}
+
+\begin{definition}
+Let $a\in\Lambda^{n}$ be an arbitrary element of a Grassmann algebra
+with $n$ generators. We can write it as
+\begin{equation}
+a = a_{B} + a_{S}
+\end{equation}
+where
+\begin{equation}
+a_{S} = \sum_{n=1}\frac{1}{n!}a_{i_{1}\dots i_{n}}\theta_{i_{1}}(\dots)\theta_{i_{n}}
+\end{equation}
+is called the \define{Soul} of $a$ (and it contains all appearances of the
+Grassmann generators $\theta_{1}$, \dots, $\theta_{n}$) and
+$a_{B}\in\FF$ is called the \define{Body} of $a$.
+\end{definition}
+
+\begin{exercise}
+Prove, for any Grassmann number $a\in\Lambda^{n}$, that its soul is nilpotent $a_{S}^{n+1}=0$.
+\end{exercise}
+
+\begin{definition}
+We define $\Lambda^{m,n}$ to be a Grassmann algebra over the ring
+$\FF[x_{1},\dots,x_{m}]$. In this case, we write a generic element
+$f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\in\Lambda^{m,n}$ as
+\begin{equation}
+  \begin{split}
+  f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})
+&= f_{B}(x_{1},\dots,x_{m}) + f_{S}(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\\
+&= f_{B}(x) + \sum_{n=1}f_{i_{1}\dots i_{n}}(x)\theta^{i_{1}}\dots\theta^{i_{n}}.
+  \end{split}
+\end{equation}
+Here the coefficients are polynomials (or rational functions).
+\end{definition}
+
+\begin{remark}[Abuse of notation]
+We will frequently abuse notation and suppress indices, writing things
+like $f(x)$ instead of $f(x_{1},\dots,x_{1})$, and $f(x,\theta)$ instead
+of $f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})$.
+\end{remark}
+
+\begin{exercise}
+Prove, for any $f\in\Lambda^{m,n}$ that $(f_{S}(x,\theta))^{n+1}=0$.
+\end{exercise}

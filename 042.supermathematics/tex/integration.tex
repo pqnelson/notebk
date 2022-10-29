@@ -1,0 +1,73 @@
+\section{Integrals of Grassmann-valued Functions}
+
+\N{Desired properties of integration}
+Zinn--Justin\footnote{J.Zinn-Justin, ``Quantum Field Theory \& Critical
+Phenomena'', OUP, 2002.
+See specifically online supplement \url{http://ckw.phys.ncku.edu.tw/public/pub/Notes/PhaseTransitions/Zinn-Justin/QFT-RG/Main.php}}
+motivates integration of a function
+$f\colon\Lambda^{m,n}\to\Lambda^{m,n}$ (denote it $I(f)$) with the following desiderata:
+\begin{enumerate}
+\item It is a linear operation: $I(\lambda_{1}f_{1} + \lambda_{2}f_{2}) = \lambda_{1}I(f_{1}) + \lambda_{2}I(f_{2})$
+\item It's ``contour integral''-like, in the sense it has no boundary
+  terms; which means, in particular, for any derivative $D$ with respect to the
+  variable integrated, the integral of a derivative vanishes $ID=0$
+\item The derivative of a definit integral should vanish $DI=0$
+\item A constant factor [i.e., any $A$ such that $D(A)=0$] can be taken outside the integral
+$I(fA) = I(f)A$
+\item It changes the grading like $D$, so $PI+IP=0$ where the parity
+  operator acts on odd variables like $P(\theta_{i})=-\theta_{i}$ and
+  $P(\theta_{i_{1}}\dots\theta_{i_{j}})=P(\theta_{i_{1}})(\dots)P(\theta_{i_{j}})$,
+  but on even variables like $P(x)=x$.
+\end{enumerate}
+Since differentiation with respect to an odd variable $\theta_{k}$ is a
+nilpotent operation $D^{2}=0$, it follows from our desired criteria that
+integration is differentiation $I=D$.
+
+\M
+Consequently, we have left-integration
+\begin{subequations}
+\begin{equation}
+\int\D\theta\,(\theta) = 1,\quad\int\D\theta\,(1) = 0
+\end{equation}
+as well as right-integration,
+\begin{equation}
+\int(\theta)\,\D\theta=1,\quad\int(1)\,\D\theta = 0.
+\end{equation}
+\end{subequations}
+These correspond to left-differentiation and right-differentiation. The
+mnemonic is the ``left'' and ``right'' integration refers to where we
+place the differential $\D\theta$ relative to the integrand.
+
+
+\begin{puzzle}
+Recall Green's theorem states, for some simply-connected region $\Sigma$ in $\RR^{2}$,
+we have
+\begin{equation}
+\int_{\partial\Sigma}(L\,\D x+M\,\D y) = \iint\left(\frac{\partial M}{\partial x}-\frac{\partial L}{\partial y}\right)\,\D x\,\D y.
+\end{equation}
+This generalizes to functions on the complex plane $f\colon\Sigma\subset\CC\to\CC$
+defined by $f=u+\I v$,
+\begin{equation}
+\oint_{\partial\Sigma}f\,\D z = \iint\left(\frac{\partial f}{\partial
+  z}\right)\,\D x\,\D(\I y).
+\end{equation}
+Does it generalize to to some ``simply-connected region'' of
+$\Lambda^{1,1}$ with $f(x,\theta)=u(x)+v(x)\theta$?
+\end{puzzle}
+
+\begin{puzzle}
+Consider $\Lambda^{m,n}$, let
+$a_{i,j}\colon\Lambda^{m,n}\to\Lambda^{m,n}$ for $i,j=1,\dots,n$.
+What is the ``fermionic Gaussian integral''
+\begin{equation}
+I =
+\int\exp\left(\sum_{i,j}\theta_{i}a_{i,j}\theta_{j}\right)\,\D^{n}\theta
+= \mathbf{???}
+\end{equation}
+[Hint: Exercise~\ref{xca:differentiation:taylor-series-for-exp} may be useful.]
+\end{puzzle}
+
+%% 1 + (a + b\theta) + (a + b\theta)^{2} + (a + b\theta)^{3} + \dots
+%% = a + b\theta + (a^{2} + 2ab\theta)/2! + (a^{3} + 3a^{2}b\theta)/3!
+%% = 1+ (a + a^2/2! + a^3/3! + \dots) + (1 + a + a^2/2 + \dots)b\theta
+%% = \exp(a)(1 + b\theta)

@@ -1,0 +1,67 @@
+\section{Differentiating Functions of Grassmann Algebras}
+
+\M
+Suppose we have a Grassmann algebra
+$\Lambda[\theta_{1},\dots,\theta_{n}]=\Lambda^{m,n}$ over some field
+$\FF$ with bosonic generators $x_{1}$, \dots, $x_{m}$ and canonical odd
+generators $\theta_{1}$, \dots, $\theta_{n}$.
+For any function $f\colon\Lambda^{m,n}\to\Lambda^{m,n}$, we know it may
+be written as:
+\begin{equation}\label{eq:diff:expansion}
+\begin{split}
+  &f(x_{1},\dots,x_{m};\theta_{1},\dots,\theta_{n})\\
+&=f_{0}(x) + \sum_{i}f^{(1)}_{i}(x)\theta_{i} + \sum_{i<j}f^{(2)}_{ij}(x)\theta_{i}\theta_{j}+\dots
++f^{(n)}_{12\dots n}(x)\theta_{1}\theta_{2}\dots\theta_{n}.
+\end{split}
+\end{equation}
+We could define
+the left derivative with respect to $\theta_{k}$ by:
+\begin{enumerate}[label={\textsc{Step} \arabic*.}]
+\item Moving $\theta_{k}$ to the left in each term in the expansion Eq~\eqref{eq:diff:expansion}
+  and write this as
+%  \begin{equation}
+\begin{multline}
+f(x_{1},\dots,x_{m};\theta_{1},\dots,\theta_{k},\dots,\theta_{n})\\
+=f_{0}(x) + f^{(1)}_{k}\theta_{k} + \sum_{i\neq k}f^{(1)}_{i}(x)\theta_{i}
++ \sum_{i<k}f^{(2)}_{ik}\theta_{i}\theta_{k} + \sum_{k<j}f^{(2)}_{kj}\theta_{k}\theta_{j}
++ \dots\\
++ (-1)^{k-1}f^{(n)}_{12\dots n}\theta_{k}\theta_{1}\dots\theta_{k-1}\theta_{k+1}\dots\theta_{n}.
+\end{multline}
+%  \end{equation}
+\item Consider, for any arbitrary odd variable $\varepsilon\propto\theta_{k}$,
+\begin{multline}
+f(x;\theta_{1},\dots,\theta_{k}+\varepsilon,\dots,\theta_{n})\\
+= f(x;\theta_{1},\dots,\theta_{k},\dots,\theta_{n})
+ + \varepsilon
+ g(x;\underbrace{\theta_{1},\dots,\theta_{k-1},\theta_{k+1},\dots,\theta_{n}}_{n-1~\text{odd variables}}).
+\end{multline}
+\item We identify
+  $g(x;\theta_{1},\dots,\theta_{k-1},\theta_{k+1},\dots,\theta_{n})$ as
+  the left derivative of $f$ with respect to $\theta_{k}$
+\end{enumerate}
+We can define the right derivative of $f$ with respect to $\theta_{k}$
+analogously, just move everything to the right, then we expand
+$f(x;\theta+\varepsilon)=f(x;\theta)+h(x;\theta_{1},\dots,\theta_{k-1},\theta_{k+1},\dots,\theta_{n})\varepsilon$.
+We identify
+$h(x;\theta_{1},\dots,\theta_{k-1},\theta_{k+1},\dots,\theta_{n})$ as
+the right-derivative of $f$ with respect to $\theta_{k}$.
+
+In short, since every term of $f$ looks like some function of the
+bosonic variables $x$ multiplied by a monomial of the odd variables, we
+just move all instances of $\theta_{k}$ to the left (respectively, to the right), throw
+away all terms which do not contain a factor of $\theta_{k}$, then
+discard the $\theta_{k}$ factor. The result is the left (respectively,
+right) derivative of $f$ with respect to $\theta_{k}$.
+
+
+\begin{exercise}\label{xca:differentiation:taylor-series-for-exp}
+For any $\alpha\in\Lambda^{m,n}$ which looks like
+$\alpha=f(x)+\beta(x,\theta)$ (where all generators of the
+Grassmann algebra appear in $\beta$). We can formally define exponential
+function using the Taylor series expansion,
+\begin{equation}
+\exp(\alpha) = \E^{f}\left(1 + \beta + \frac{\beta^{2}}{2!} + \dots + \frac{\beta^{n}}{n!}\right).
+\end{equation}
+Prove this works. What laws does it obey? Do we expect, for example, $\exp(\alpha+\gamma)=\exp(\alpha)\exp(\gamma)$?
+Is $\exp(-\alpha)=1/\exp(\alpha)$?
+\end{exercise}

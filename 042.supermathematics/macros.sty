@@ -2,12 +2,13 @@
 % 8.5 inches = 48 + 3 picas = 51 picas
 % 11 inches = 66 picas
 % 2pc - 2pc + 5pt
-% 4pc + pc + 5pt = 
+% 4pc + pc + 5pt =
 % amsppt style sets \hsize=30pc and \vsize=50.5pc
 % The top and inner margins are about 1 inch (eyeballed)
 % inner + textwidth + marginparwidth + marginparsep = 8.5 inches = 51pc
 % Then marginparwidth + marginparsep = 11pc
-\usepackage[textwidth=30pc,textheight=50.5pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
+%\usepackage[textwidth=30pc,textheight=50.5pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
+\usepackage[textwidth=30pc,bottom=6pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
 %\usepackage{longtable}
 \usepackage{framed}
 %\usepackage{comment}
@@ -17,7 +18,7 @@
 \usepackage{amsmath,amsthm,amssymb}
 %\usepackage{amsthm,amsmath}
 \usepackage{enumitem}
-\setlist{topsep=0pt,noitemsep}
+\setlist{topsep=6pt,noitemsep}
 \usepackage{manfnt}
 \usepackage{fancyvrb}
 \newcounter{chunk@ctr}[section]
@@ -29,16 +30,18 @@
   filecolor=BrickRed,
   urlcolor=BrickRed,
   runcolor=BrickRed,
-  pdfauthor={Alex Nelson},
-  pdftitle={Elementary Linear Algebra},
+  pdfusetitle,
   \ifpdf\else dvipdfmx\fi
 ]{hyperref}
 
-\usepackage{arydshln} % dashed block matrices
-%% \usepackage{titlesec}
-%% \titleformat*{\section}{\Large\bfseries\sffamily}
-%% \titleformat*{\subsection}{\large\bfseries\sffamily}
-%% \titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\@ifclassloaded{amsart}{}{
+  \pagestyle{headings}
+  \usepackage{titlesec}
+  \titleformat*{\section}{\Large\bfseries\sffamily}
+  \titleformat*{\subsection}{\large\bfseries\sffamily}
+  \titleformat*{\subsubsection}{\bfseries\sffamily}
+}
 
 \newskip\interchunkskip \interchunkskip=\medskipamount%
 % cwebmac.tex has \interchunkskip=12pt minus 3pt
