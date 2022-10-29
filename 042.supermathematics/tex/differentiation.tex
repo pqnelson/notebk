@@ -59,6 +59,47 @@ respect to Grassmann generators? The most important rule are the product
 rule and chain-rule, we can derive everything else from these two rules.
 \end{puzzle}
 
+\begin{exercise}
+Let $\theta_{1}$, $\theta_{2}$ be generators for $\Lambda^{2,2}$.
+If we take the quantities
+\begin{equation}
+\phi_{\pm} = \frac{\theta_{1}\pm\theta_{2}}{\sqrt{2}},
+\end{equation}
+then what is the derivative
+\begin{equation*}
+\frac{\partial}{\partial\theta_{i}}(\phi_{+}\phi_{-})
+\end{equation*}
+equal to?
+\end{exercise}
+
+\begin{exercise}[Chain-rule lives!]
+  Let $a_{ij}$ be an $n\times n$ matrix of real numbers (or elements
+  from $\FF$), and let $\theta_{1}$, \dots, $\theta_{n}$ be generators
+  for $\Lambda^{m,n}$. Take
+\begin{subequations}
+  \begin{equation}
+z_{i} = \sum_{j}a_{ij}\theta_{j},\quad f(z)=f(z(\theta)).
+  \end{equation}
+  Then prove or find a counter-example:
+  \begin{align}
+    \frac{\overrightarrow{\partial}}{\partial\theta_{i}}f[z(\theta)] &\stackrel{???}{=} \sum_{i}\left.\frac{\overrightarrow{\partial}}{\partial z_{i}}f(z)\right|_{z=z(\theta)}a_{ij},\\
+    f[z(\theta)]\frac{\overleftarrow{\partial}}{\partial\theta_{i}} &\stackrel{???}{=} \sum_{i}\left.f(z)\frac{\overleftarrow{\partial}}{\partial z_{i}}\right|_{z=z(\theta)}a_{ij},
+  \end{align}
+\end{subequations}
+where the arrow indicates whether we use left differentiation (arrow
+points to the left) or right differentiation (arrow points to the right).
+\end{exercise}
+
+\begin{exercise}
+Prove or find a counter-example: Let $\theta_{1}$, $\theta_{2}$ be
+generators for $\Lambda^{2,2}$, and let $f\in\Lambda^{2,2}$ be
+arbitrary. Then the derivatives with respect to the Grassmann generators commute:
+\begin{equation}
+\frac{\partial}{\partial\theta_{2}}\frac{\partial}{\partial\theta_{1}}f
+\stackrel{???}{=}\frac{\partial}{\partial\theta_{1}}\frac{\partial}{\partial\theta_{2}}f
+\end{equation}
+\end{exercise}
+
 
 \begin{puzzle}
 For $f\in\Lambda^{1,1}$, does it makes sense to ask what is the
@@ -103,6 +144,19 @@ the identity $\exp(\I x)=\cos(x)+\I\sin(x)$? [I mean, we just computed
   \end{enumerate}
 \end{exercise}
 
+
+\begin{exercise}
+Let $f\in\Lambda^{m,n}$, let $\theta_{j}$ be some generator for the
+Grassmann algebra. Is it still true that
+\begin{equation}
+  \frac{\partial}{\partial\theta_{j}}\exp\left(f(x,\theta)\right)
+  \stackrel{???}{=} \frac{\partial f}{\partial\theta_{j}}\exp\left(f(x,\theta)\right)
+\end{equation}
+or not? For what $f$ can we take \emph{two} derivatives with respect to
+$\theta_{j}$ and obtain a nonzero quantity? If such an $f$ exists, are
+there any which permit taking $k\in\NN$ derivatives with respect to
+$\theta_{j}$ and obtaining a nonzero quantity?
+\end{exercise}
 
 \begin{exercise}[A.~Schwarz 2008]
   Compute

@@ -16,7 +16,7 @@ following restriction:
 \begin{equation}
 \theta_{i}\theta_{j}+\theta_{j}\theta_{i}=0
 \end{equation}
-for $i$, $j=1,\dots,n$, and for any $x\in\FF$,
+for $i$, $j=1,\dots,n$ (including $i=j$), and for any $x\in\FF$,
 \begin{equation}
 x\theta_{i}=\theta_{i}x.
 \end{equation}
@@ -86,6 +86,12 @@ Prove, for any Grassmann number $a\in\Lambda^{n}$, that its soul is nilpotent $a
 \end{exercise}
 
 \begin{definition}
+Let us define the \define{Degree} of a monomial
+$\theta^{i_{1}}(\cdots)\theta^{i_{j}}$ of $j\in\NN$ [distinct] Grassmann generators
+to be the integer $\deg(\theta^{i_{1}}(\cdots)\theta^{i_{j}})=j$.
+\end{definition}
+
+\begin{definition}
 We define $\Lambda^{m,n}$ to be a Grassmann algebra over the ring
 $\FF[x_{1},\dots,x_{m}]$. In this case, we write a generic element
 $f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\in\Lambda^{m,n}$ as
@@ -127,6 +133,35 @@ have
 \end{equation}
 give a continuous rotation among the Grassmann generators as we move
 along the $t$-axis [i.e., forwards through time].
+
+\begin{definition}
+Let $\Lambda^{m,n}$. We call a term $f\in\Lambda^{m,n}$ a
+\define{Homogeneous Element of Degree $k$} if we can write it as a
+linear combination of monomials of degree $k$:
+\begin{equation}
+f(x,\theta) = \sum_{i_{1}<\dots<i_{k}}f_{i_{1},\dots,i_{k}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{k}}
+\end{equation}
+Moreover, we will write $\Lambda^{m,n}_{\text{even}}$ for guys which are
+a linear combination of monomials of even degree,
+\begin{subequations}
+\begin{equation}
+f(x,\theta) = \sum_{k~\text{even}}\sum_{i_{1}<\dots<i_{k}}f_{i_{1},\dots,i_{k}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{k}}
+\end{equation}
+and call such $f\in\Lambda^{m,n}_{\text{even}}$ \define{Even} (or
+\emph{bosonic}). Similarly, we write $\Lambda^{m,n}_{\text{odd}}$ for
+guys which are a linear combination of monomials of odd degree,
+\begin{equation}
+f(x,\theta) = \sum_{k~\text{odd}}\sum_{i_{1}<\dots<i_{k}}f_{i_{1},\dots,i_{k}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{k}}
+\end{equation}
+\end{subequations}
+and call such $f\in\Lambda^{m,n}_{\text{odd}}$ \define{Odd} (or \emph{fermionic}).
+\end{definition}
+
+\begin{exercise}
+Prove or find a counter-example: every $f\in\Lambda^{m,n}$ can be
+written as a sum of $f_{0}\in\Lambda^{m,n}_{\text{even}}$ and $f_{1}\in\Lambda^{m,n}_{\text{odd}}$.
+Moreover, these $f_{0}$ and $f_{1}$ are unique (for each $f$).
+\end{exercise}
 
 \begin{puzzle}
 How can we do calculus (specifically differentiation and integration)
