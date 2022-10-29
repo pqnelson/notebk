@@ -1,0 +1,27 @@
+\RequirePackage{amsmath}
+
+\def\D{\mathrm{d}}
+\def\E{\mathrm{e}}
+\def\I{\mathrm{i}}
+
+% Thank you, egreg!
+% https://tex.stackexchange.com/a/618597/14751
+\newcommand{\makesuper}[2]{%
+  % #1 = \DeclareMathOperator or \newcommand or \DeclareRobustCommand
+  % #2 = macro name
+  \expandafter#1\csname super\string#2\endcsname
+}
+\DeclareRobustCommand{\super}[1]{%
+  \ifcsname super\string#1\endcsname
+    \csname super\string#1\expandafter\endcsname
+  \else
+    \expandafter\ERROR
+  \fi
+}
+
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\commutator}[2]{[#1,#2]}
+
+\makesuper\DeclareMathOperator{\det}{Ber}
+\makesuper\DeclareMathOperator{\tr}{str}
+\makesuper\newcommand{\commutator}[2]{[#1,#2\}}

@@ -1,0 +1,181 @@
+%\usepackage{fullpage}
+% 8.5 inches = 48 + 3 picas = 51 picas
+% 11 inches = 66 picas
+% 2pc - 2pc + 5pt
+% 4pc + pc + 5pt = 
+% amsppt style sets \hsize=30pc and \vsize=50.5pc
+% The top and inner margins are about 1 inch (eyeballed)
+% inner + textwidth + marginparwidth + marginparsep = 8.5 inches = 51pc
+% Then marginparwidth + marginparsep = 11pc
+\usepackage[textwidth=30pc,textheight=50.5pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
+%\usepackage{longtable}
+\usepackage{framed}
+%\usepackage{comment}
+\usepackage[final]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{microtype}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{amsthm,amsmath}
+\usepackage{enumitem}
+\setlist{topsep=0pt,noitemsep}
+\usepackage{manfnt}
+\usepackage{fancyvrb}
+\newcounter{chunk@ctr}[section]
+\usepackage{ifpdf}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage[colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+  pdfauthor={Alex Nelson},
+  pdftitle={Elementary Linear Algebra},
+  \ifpdf\else dvipdfmx\fi
+]{hyperref}
+
+\usepackage{arydshln} % dashed block matrices
+%% \usepackage{titlesec}
+%% \titleformat*{\section}{\Large\bfseries\sffamily}
+%% \titleformat*{\subsection}{\large\bfseries\sffamily}
+%% \titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\newskip\interchunkskip \interchunkskip=\medskipamount%
+% cwebmac.tex has \interchunkskip=12pt minus 3pt
+% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
+\newskip\thmskip \thmskip=\interchunkskip%\topsep
+
+\newtheoremstyle{thmstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{defnstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{rmkstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\itshape} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
+
+\theoremstyle{thmstyle}
+\newtheorem{theorem}[chunk@ctr]{Theorem}
+\newtheorem{proposition}[chunk@ctr]{Proposition}
+\newtheorem{corollary}[chunk@ctr]{Corollary}
+\newtheorem{lemma}[chunk@ctr]{Lemma}
+\newtheorem{conjecture}[chunk@ctr]{Conjecture}
+
+\theoremstyle{plain}
+\newtheorem{puzzle}{Puzzle}
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk@ctr]{Definition}
+\newtheorem{example}[chunk@ctr]{Example}
+% \newtheorem{axiom}{Axiom}
+%\newtheorem{problem}[chunk@ctr]{Problem}
+\newtheorem{question}[chunk@ctr]{Question}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+\newtheorem{problem}{\llap{\mantriangleright\kern.15em}Problem}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk@ctr]
+\newtheorem{claim}[chunk@ctr]{Claim}
+
+\newcommand\define[1]{\textbf{``#1''}}
+
+
+\@ifundefined{@addpunct}{
+  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
+  }{}
+
+\newcommand\chunkskip{\vskip\interchunkskip}
+
+\def\chunkbreak{\par\ifdim\lastskip<\interchunkskip
+  \removelastskip\penalty-100\chunkskip\fi}
+
+\newcommand\M{\chunkbreak\noindent%
+  \refstepcounter{chunk@ctr}%
+  \textbf{\thechunk@ctr\@addpunct{.}}\quad\ignorespaces}
+\renewcommand\thechunk@ctr{\thesection.\arabic{chunk@ctr}}
+
+% deprecated macro:
+% \newcommand\N[1]{\M\textbf{#1\@addpunct{.}}\quad\ignorespaces}
+
+% superior implementation:
+
+\def\N{\@ifstar
+        \NStar%
+        \NNoStar%
+}
+\def\NStar#1{\chunkbreak\noindent\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+\def\NNoStar#1{\M\textbf{#1\@addpunct{.}\quad}\ignorespaces}
+
+% permits writing \N*{Un-numbered chunk} for a chunk
+% without a numeric label!
+
+% arXiv links
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+
+
+\numberwithin{equation}{section}
+\definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
+\definecolor{DarkRed}{rgb}{.3545,0,0}
+
+
+\let\journal\textit
+\let\volume\textbf
+
+% From amsppt.sty
+\hyphenation{acad-e-my acad-e-mies af-ter-thought anom-aly anom-alies
+an-ti-deriv-a-tive an-tin-o-my an-tin-o-mies apoth-e-o-ses
+apoth-e-o-sis ap-pen-dix ar-che-typ-al as-sign-a-ble as-sist-ant-ship
+as-ymp-tot-ic asyn-chro-nous at-trib-uted at-trib-ut-able bank-rupt
+bank-rupt-cy bi-dif-fer-en-tial blue-print busier busiest
+cat-a-stroph-ic cat-a-stroph-i-cally con-gress cross-hatched data-base
+de-fin-i-tive de-riv-a-tive dis-trib-ute dri-ver dri-vers eco-nom-ics
+econ-o-mist elit-ist equi-vari-ant ex-quis-ite ex-tra-or-di-nary
+flow-chart for-mi-da-ble forth-right friv-o-lous ge-o-des-ic
+ge-o-det-ic geo-met-ric griev-ance griev-ous griev-ous-ly
+hexa-dec-i-mal ho-lo-no-my ho-mo-thetic ideals idio-syn-crasy
+in-fin-ite-ly in-fin-i-tes-i-mal ir-rev-o-ca-ble key-stroke
+lam-en-ta-ble light-weight mal-a-prop-ism man-u-script mar-gin-al
+meta-bol-ic me-tab-o-lism meta-lan-guage me-trop-o-lis
+met-ro-pol-i-tan mi-nut-est mol-e-cule mono-chrome mono-pole
+mo-nop-oly mono-spline mo-not-o-nous mul-ti-fac-eted mul-ti-plic-able
+non-euclid-ean non-iso-mor-phic non-smooth par-a-digm par-a-bol-ic
+pa-rab-o-loid pa-ram-e-trize para-mount pen-ta-gon phe-nom-e-non
+post-script pre-am-ble pro-ce-dur-al pro-hib-i-tive pro-hib-i-tive-ly
+pseu-do-dif-fer-en-tial pseu-do-fi-nite pseu-do-nym qua-drat-ic
+quad-ra-ture qua-si-smooth qua-si-sta-tion-ary qua-si-tri-an-gu-lar
+quin-tes-sence quin-tes-sen-tial re-arrange-ment rec-tan-gle
+ret-ri-bu-tion retro-fit retro-fit-ted right-eous right-eous-ness
+ro-bot ro-bot-ics sched-ul-ing se-mes-ter semi-def-i-nite
+semi-ho-mo-thet-ic set-up se-vere-ly side-step sov-er-eign spe-cious
+spher-oid spher-oid-al star-tling star-tling-ly sta-tis-tics
+sto-chas-tic straight-est strange-ness strat-a-gem strong-hold
+sum-ma-ble symp-to-matic syn-chro-nous topo-graph-i-cal tra-vers-a-ble
+tra-ver-sal tra-ver-sals treach-ery turn-around un-at-tached
+un-err-ing-ly white-space wide-spread wing-spread wretch-ed
+wretch-ed-ly Brown-ian Eng-lish Euler-ian Feb-ru-ary Gauss-ian
+Grothen-dieck Hamil-ton-ian Her-mit-ian Jan-u-ary Japan-ese Kor-te-weg
+Le-gendre Lip-schitz Lip-schitz-ian Mar-kov-ian Noe-ther-ian
+No-vem-ber Rie-mann-ian Schwarz-schild Sep-tem-ber}
