@@ -1,0 +1,212 @@
+\section{Grassmann Numbers and Algebras}
+
+\begin{definition}
+Let $\FF$ be a field (usually $\RR$ or $\CC$, but we could make $\FF$ a
+suitably nice unital ring).
+A \define{Grassmann Algebra} in $n$ generators $\theta_{1}$, \dots,
+$\theta_{n}$ over $\FF$ consists of the free algebra subject to the
+following restriction:
+\begin{subequations}
+\begin{equation}
+\theta_{i}\theta_{j}+\theta_{j}\theta_{i}=0
+\end{equation}
+for $i$, $j=1,\dots,n$ (including $i=j$), and for any $x\in\FF$,
+\begin{equation}
+x\theta_{i}=\theta_{i}x.
+\end{equation}
+\end{subequations}
+\end{definition}
+
+\begin{remark}
+In other words, we are introducing $n$ new ``numbers'' $\theta_{1}$,
+\dots, $\theta_{n}$ such that they anticommute with each other (and
+commute with ``actual numbers'' which belong to $\FF$).
+\end{remark}
+
+\begin{exercise}
+Are Grassmann algebras unital?
+\end{exercise}
+
+\begin{exercise}
+Prove $\theta_{i}^{2}=0$. What happens if we work in a field $\FF$ with
+characteristic 2?
+\end{exercise}
+
+\begin{exercise}
+We could you define $(x+\theta y)^{-1}$ for $x,y\in\FF$ and $\theta$
+being a Grassmann generator as $(x^{-1} - x^{-2}y\theta)$ --- verify
+their product is $1$ provided $x\neq0$.
+
+What would $(x_{0} + x_{1}\theta_{1} + x_{2}\theta_{2} + x_{1,2}\theta_{1}\theta_{2})^{-1}$
+be (assuming there are only two generators $\theta_{1}$, $\theta_{2}$
+for the algebra)? [Hint: setting $\theta_{i}=0$ while leaving the other
+generator nonzero $\theta_{j}\neq0$ should reproduce the solution to the
+previous scenario, i.e., $x_{0}^{-1}-x_{0}^{-2}x_{j}\theta_{j}$.]
+\end{exercise}
+
+%\begin{solution}
+\begin{answer}
+  We begin by trying to find the coefficients to
+  $(x_{0} + x_{1}\theta_{1} + x_{2}\theta_{2} + x_{1,2}\theta_{1}\theta_{2})^{-1}=(y_{0}+y_{1}\theta_{1}+y_{2}\theta_{2}+y_{1,2}\theta_{1}\theta_{2})$
+  by multiplying it out:
+\begin{multline}
+(x_{0} + x_{1}\theta_{1} + x_{2}\theta_{2} + x_{1,2}\theta_{1}\theta_{2})(y_{0}+y_{1}\theta_{1}+y_{2}\theta_{2}+y_{1,2}\theta_{1}\theta_{2})\\
+    = x_{0}y_{0} + (x_{1}y_{0} + y_{0}x_{1})\theta_{1}
+    + (x_{2}y_{0} + y_{2}x_{0})\theta_{2}\\
+    + (x_{0}y_{1,2} + x_{1,2}y_{0} + x_{1}y_{2} - x_{2}y_{1})\theta_{1}\theta_{2}.
+\end{multline}
+From the hint, we can deduce $y_{0}=1/x_{0}$ and $y_{j}=-x_{j}/x_{0}^{2}$
+for $j=1,2$. To get the coefficient of $\theta_{1}\theta_{2}$ to vanish,
+we need to solve $x_{0}y_{1,2}+x_{1,2}y_{0}+x_{1}y_{2}-x_{2}y_{0}=0$,
+which is 1 linear equation in 1 unknown. We obtain
+$y_{1,2} = -x_{1,2}/x_{0}$ since $x_{1}y_{2}=x_{2}y_{1}$.
+%$y_{1,2} = [(x_{1}^{2}/x_{0}) + (x_{2}^{2}/x_{0}) - x_{1,2}]/(x_{0}^{2})$.
+%\end{solution}
+\end{answer}
+
+\begin{exercise}
+Prove, for each $n\in\NN$, there exists up to [unique?] isomorphism
+exactly one Grassmann algebra in $n$ generators over $\FF$.
+\end{exercise}
+
+\N{Notation} As a consequence of Grassmann algebras being unique (up to
+isomorphism), we will denote the Grassmann algebra in $n$ generators as $\Lambda^{n}$.
+
+\begin{exercise}
+Let $a\in\Lambda^{n}$. Prove we can write it as a finite linear
+combination of monomials of generators
+\begin{equation}
+a = a_{0} + \sum_{i}a_{i}\theta_{i} +
+\sum_{i,j}a_{i,j}\theta_{i}\theta_{j} + \dots + a_{1,2,3,\dots,n}\theta_{1}(\dots)\theta_{n}.
+\end{equation}
+Are there any restrictions on the coefficients $a_{i,j}$, $a_{i,j,k}$,
+etc.? [Can we have them be symmetric in their indices? Antisymmetric? Etc.]
+\end{exercise}
+
+\N{Convention}
+We will implicitly order indices, so we write $a\in\Lambda^{n}$ as
+\begin{equation}
+a = a_{0} + \sum_{i}a_{i}\theta_{i} +
+\sum_{i<j}a_{i,j}\theta_{i}\theta_{j} +
+\sum_{i<j<k}a_{i,j,k}\theta_{i}\theta_{j}\theta_{k} +
+\dots + a_{1,2,3,\dots,n}\theta_{1}(\dots)\theta_{n}.
+\end{equation}
+We may be lazy and forget to order the dummy variables, but it is the
+convention we will use from now on.
+
+\begin{definition}
+Let $a\in\Lambda^{n}$ be an arbitrary element of a Grassmann algebra
+with $n$ generators. We can write it as
+\begin{equation}
+a = a_{B} + a_{S}
+\end{equation}
+where
+\begin{equation}
+a_{S} = \sum_{n=1}\frac{1}{n!}a_{i_{1}\dots i_{n}}\theta_{i_{1}}(\dots)\theta_{i_{n}}
+\end{equation}
+is called the \define{Soul} of $a$ (and it contains all appearances of the
+Grassmann generators $\theta_{1}$, \dots, $\theta_{n}$) and
+$a_{B}\in\FF$ is called the \define{Body} of $a$.
+\end{definition}
+
+\begin{remark}
+This terminology I found in Bryce DeWitt's \textit{Supermanifolds}
+(Second ed., Cambridge university press, 1992).
+\end{remark}
+
+\begin{exercise}
+Prove, for any Grassmann number $a\in\Lambda^{n}$, that its soul is nilpotent $a_{S}^{n+1}=0$.
+\end{exercise}
+
+\begin{definition}
+Let us define the \define{Degree} of a monomial
+$\theta^{i_{1}}(\cdots)\theta^{i_{j}}$ of $j\in\NN$ [distinct] Grassmann generators
+to be the integer $\deg(\theta^{i_{1}}(\cdots)\theta^{i_{j}})=j$.
+\end{definition}
+
+\begin{definition}
+We define $\Lambda^{m,n}$ to be a Grassmann algebra over the ring
+$\FF[x_{1},\dots,x_{m}]$. In this case, we write a generic element
+$f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\in\Lambda^{m,n}$ as
+\begin{equation}
+  \begin{split}
+  f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})
+&= f_{B}(x_{1},\dots,x_{m}) + f_{S}(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})\\
+&= f_{B}(x) + \sum_{N=1}f_{i_{1}\dots i_{N}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{N}}.
+  \end{split}
+\end{equation}
+Here the coefficients are polynomials (or rational functions).
+\end{definition}
+
+\begin{remark}[Abuses of notation]
+We will frequently abuse notation and suppress indices, writing things
+like $f(x)$ instead of $f(x_{1},\dots,x_{1})$, and $f(x,\theta)$ instead
+of $f(x_{1},\dots,x_{m},\theta_{1},\dots,\theta_{n})$.
+
+While we're abusing notation, we are fairly generous with what
+$\FF[x_{1},\dots,x_{m}]$ could be replaced by; we could have
+$C^{\infty}(\RR^{m})$ instead, for example.
+\end{remark}
+
+\begin{remark}[Formal calculus]
+We stress that we are working algebraically, so these are formal
+calculations. We do not care about convergence or whatnot. I believe, in
+practice, we usually work with the formal power series $\RR[[x_{1},\dots,x_{m}]]$
+or formal Laurent series $\CC(\!(x_{1},\dots,x_{m})\!)$ (which intuitively
+is just a formal Laurent polynomial plus a formal power series $\CC(x_{1},\dots,x_{m}) + \CC[[x_{1},\dots,x_{m}]]$).
+But there are analysts who worry about the superdetails, e.g., Andrei
+Khrennikov~\cite{Khrennikov:1999bd} discusses them further.
+\end{remark}
+
+\begin{exercise}
+Prove, for any $f\in\Lambda^{m,n}$ that $(f_{S}(x,\theta))^{n+1}=0$.
+\end{exercise}
+
+\M
+The usefulness of $\Lambda^{m,n}$ is that we can now ``continuously
+vary'' generators among themselves. For example, in $\Lambda^{3,2}$, we
+have
+\begin{equation}
+  \begin{pmatrix}
+    \cos(t) & -\sin(t)\\
+    \sin(t) &  \cos(t)
+  \end{pmatrix}\begin{pmatrix}\theta_{1}\\\theta_{2}
+  \end{pmatrix} =: \begin{pmatrix}\theta_{1}(t)\\\theta_{2}(t)
+  \end{pmatrix}
+\end{equation}
+give a continuous rotation among the Grassmann generators as we move
+along the $t$-axis [i.e., forwards through time].
+
+\begin{definition}
+Let $\Lambda^{m,n}$. We call a term $f\in\Lambda^{m,n}$ a
+\define{Homogeneous Element of Degree $k$} if we can write it as a
+linear combination of monomials of degree $k$:
+\begin{equation}
+f(x,\theta) = \sum_{i_{1}<\dots<i_{k}}f_{i_{1},\dots,i_{k}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{k}}
+\end{equation}
+Moreover, we will write $\Lambda^{m,n}_{\text{even}}$ for guys which are
+a linear combination of monomials of even degree,
+\begin{subequations}
+\begin{equation}
+f(x,\theta) = \sum_{k~\text{even}}\sum_{i_{1}<\dots<i_{k}}f_{i_{1},\dots,i_{k}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{k}}
+\end{equation}
+and call such $f\in\Lambda^{m,n}_{\text{even}}$ \define{Even} (or
+\emph{bosonic}). Similarly, we write $\Lambda^{m,n}_{\text{odd}}$ for
+guys which are a linear combination of monomials of odd degree,
+\begin{equation}
+f(x,\theta) = \sum_{k~\text{odd}}\sum_{i_{1}<\dots<i_{k}}f_{i_{1},\dots,i_{k}}(x)\theta^{i_{1}}(\cdots)\theta^{i_{k}}
+\end{equation}
+\end{subequations}
+and call such $f\in\Lambda^{m,n}_{\text{odd}}$ \define{Odd} (or \emph{fermionic}).
+\end{definition}
+
+\begin{exercise}
+Prove or find a counter-example: every $f\in\Lambda^{m,n}$ can be
+written as a sum of $f_{0}\in\Lambda^{m,n}_{\text{even}}$ and $f_{1}\in\Lambda^{m,n}_{\text{odd}}$.
+Moreover, these $f_{0}$ and $f_{1}$ are unique (for each $f$).
+\end{exercise}
+
+\begin{puzzle}
+How can we do calculus (specifically differentiation and integration)
+using $\Lambda^{m,n}$?
+\end{puzzle}

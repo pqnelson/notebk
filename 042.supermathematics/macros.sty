@@ -11,9 +11,8 @@
 \usepackage[textwidth=30pc,bottom=6pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
 %\usepackage{longtable}
 \usepackage{framed}
-%\usepackage{comment}
 \usepackage[final]{graphicx}
-\DeclareGraphicsRule{*}{mps}{*}{}
+%\DeclareGraphicsRule{*}{mps}{*}{}
 \usepackage{microtype}
 \usepackage{amsmath,amsthm,amssymb}
 %\usepackage{amsthm,amsmath}
@@ -23,6 +22,7 @@
 \usepackage{fancyvrb}
 \newcounter{chunk@ctr}[section]
 \usepackage{ifpdf}
+\usepackage{comment}
 \usepackage[dvipsnames,table]{xcolor}
 \usepackage[colorlinks=true,
   linkcolor=BrickRed,
@@ -34,6 +34,7 @@
   \ifpdf\else dvipdfmx\fi
 ]{hyperref}
 
+\usepackage{doi}
 
 \@ifclassloaded{amsart}{}{
   \pagestyle{headings}
@@ -182,3 +183,50 @@ wretch-ed-ly Brown-ian Eng-lish Euler-ian Feb-ru-ary Gauss-ian
 Grothen-dieck Hamil-ton-ian Her-mit-ian Jan-u-ary Japan-ese Kor-te-weg
 Le-gendre Lip-schitz Lip-schitz-ian Mar-kov-ian Noe-ther-ian
 No-vem-ber Rie-mann-ian Schwarz-schild Sep-tem-ber}
+
+\newif\ifDisplaySolutions
+%% \generalcomment{answer}
+%% {\begingroup
+%%   \edef\tmp{\def\noexpand\CommentCutFile
+%% {answers/\chapshortname-an\noexpand\arabic{exercise}.tex}}\tmp
+%% \def\ProcessCutFile{}}
+%% {\ifIncludeAnswers \begin{quote}
+%% \leavevmode
+%% \hbox{\kern-\unitindent
+%% \textbf Solution to exercise \arabic{section}.\arabic{exercise}.\hspace{1em}}
+%% \ignorespaces\it
+%% \input{\CommentCutFile}
+%% \end{quote}\fi
+%% \endgroup}
+
+%% \usepackage{fp}
+%% \generalcomment{solution}{%
+%%   \begingroup
+%%   \ifDisplaySolutions\else%
+%%   % if \DisplaySolutionstrue is not called, then we remove the contents
+%%   \def\ProcessCutFile{}\fi%
+%% }{%
+%%   \ifDisplaySolutions\else%
+%%     % aand,now (also when it's not called), we make a box
+%%     % and then we \input the \CommentCutFile.
+%%     \setbox1=\vbox{\input{\CommentCutFile}}%
+%%     \edef\boxheight{\strip@pt\ht1}
+%%     % Get the height from \ht1 and use \vskip to make appropriate space
+%%     \newcount\Scount
+%%     \Scount=0
+%%     \FPdiv\boxPartHeight{\boxheight}{10}
+%%     {\nullfont\loop\vskip 10pt\relax\advance\Scount by 1 \ifnum\Scount<\boxPartHeight\relax\repeat}
+%%   \fi
+%% \endgroup%
+%% }
+
+\DisplaySolutionstrue
+
+\ifDisplaySolutions
+\newenvironment{answer}[1][Answer]{\begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
+\else
+\excludecomment{answer}
+\fi

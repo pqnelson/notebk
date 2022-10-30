@@ -29,7 +29,7 @@ f(x_{1},\dots,x_{m};\theta_{1},\dots,\theta_{k},\dots,\theta_{n})\\
 \end{multline}
 %  \end{equation}
 \item Consider, for any arbitrary odd variable $\varepsilon\propto\theta_{k}$,
-\begin{multline}
+\begin{multline}\label{eq:differentiation:from-the-left}
 f(x;\theta_{1},\dots,\theta_{k}+\varepsilon,\dots,\theta_{n})\\
 = f(x;\theta_{1},\dots,\theta_{k},\dots,\theta_{n})
  + \varepsilon
@@ -58,6 +58,12 @@ What rules of normal differentiation hold for differentiation with
 respect to Grassmann generators? The most important rule are the product
 rule and chain-rule, we can derive everything else from these two rules.
 \end{puzzle}
+
+\begin{exercise}
+With our description of differentiation, is $g$ in
+Eq~\eqref{eq:differentiation:from-the-left} homogeneous? Will it be even
+(or odd)? Or is it inhomogeneous?
+\end{exercise}
 
 \begin{exercise}
 Let $\theta_{1}$, $\theta_{2}$ be generators for $\Lambda^{2,2}$.
