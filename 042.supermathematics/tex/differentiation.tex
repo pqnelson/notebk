@@ -73,7 +73,8 @@ equal to?
 \end{exercise}
 
 \begin{exercise}[Chain-rule lives!]
-  Let $a_{ij}$ be an $n\times n$ matrix of real numbers (or elements
+  \begin{enumerate}
+  \item  Let $a_{ij}$ be an $n\times n$ matrix of real numbers (or elements
   from $\FF$), and let $\theta_{1}$, \dots, $\theta_{n}$ be generators
   for $\Lambda^{m,n}$. Take
 \begin{subequations}
@@ -87,7 +88,28 @@ z_{i} = \sum_{j}a_{ij}\theta_{j},\quad f(z)=f(z(\theta)).
   \end{align}
 \end{subequations}
 where the arrow indicates whether we use left differentiation (arrow
-points to the left) or right differentiation (arrow points to the right).
+points from the left) or right differentiation (arrow points from the right).
+\item Suppose instead that $a_{ij}$ were functions of real variable $t$ (or
+  $t$ being a variable over $\FF$), so we would have $z_{i}(t) = \sum_{j}a_{ij}(t)\theta_{j}$
+  and $f(z) = f(z(\theta))$. What is the derivative of $f$ with respect
+  to $t$,
+  \begin{equation*}
+\frac{\D}{\D t}f(z(t)) = \hbox{\bfseries ???}
+  \end{equation*}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Graded product rule]
+  \begin{enumerate}
+  \item  Prove or find a counter-example: if $f,g\in\Lambda^{m,n}$ and if
+  further $f$ is a homogeneous element (but $g$ can be arbitrary), then
+  the left-derivative with respect to Grassmann generator $\theta_{i}$ satisfies
+  \begin{equation}
+\frac{\partial}{\partial\theta_{i}}(fg) = \frac{\partial f}{\partial\theta_{i}}g+(-1)^{\deg(f)}f\frac{\partial g}{\partial\theta_{i}}.
+  \end{equation}
+\item What does the right-derivative $(gf)\frac{\overleftarrow{\partial}}{\partial\theta_{i}}$
+  work out to?
+  \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
