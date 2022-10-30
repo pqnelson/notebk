@@ -1,6 +1,3 @@
-\newif\ifoldstylenumbering\oldstylenumberingfalse
-\DeclareOption{oldstylenum}{\oldstylenumberingtrue}
-\ProcessOptions
 
 \usepackage{fullpage}
 \usepackage{framed}
@@ -12,169 +9,69 @@
 \usepackage{manfnt}
 \usepackage[dvipsnames,table]{xcolor}
 
-
 \usepackage{arydshln} % dashed block matrices
 \usepackage{titlesec}
 \titleformat*{\section}{\Large\bfseries\sffamily}
 \titleformat*{\subsection}{\large\bfseries\sffamily}
 \titleformat*{\subsubsection}{\bfseries\sffamily}
 
-\usepackage[colorlinks=true,
+\usepackage[pdfusetitle]{hyperref}
+
+\usepackage[oldstylenum]{chunk}
+
+\hypersetup{colorlinks=true,
   linkcolor=BrickRed,
   citecolor=BrickRed,
   filecolor=BrickRed,
   urlcolor=BrickRed,
   runcolor=BrickRed,
-  pdfauthor={Alex Nelson},
-  pdftitle={Elementary Linear Algebra},
 %  \ifpdf\else dvipdfmx\fi
-]{hyperref}
-\newskip\interchunkskip \interchunkskip=\medskipamount%
-% cwebmac.tex has \interchunkskip=12pt minus 3pt
-% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
-\newskip\thmskip \thmskip=\interchunkskip%\topsep
+}
 
+\definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
+\definecolor{DarkRed}{rgb}{.3545,0,0}
 
-\newtheoremstyle{thmstyle}
-  {\thmskip}   % ABOVESPACE
-  {\thmskip}   % BELOWSPACE
-  {\itshape}  % BODYFONT
-  {0pt}       % INDENT (empty value is the same as 0pt)
-  {\bfseries} % HEADFONT
-  {.}         % HEADPUNCT
-  {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
-\newtheoremstyle{defnstyle}
-  {\thmskip}   % ABOVESPACE
-  {\thmskip}   % BELOWSPACE
-  {}          % BODYFONT
-  {0pt}       % INDENT (empty value is the same as 0pt)
-  {\bfseries} % HEADFONT
-  {.}         % HEADPUNCT
-  {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
-
-
-\def\numberstyle#1{\ifoldstylenumbering\oldstylenums{#1}\else#1\fi}
-
-\def\remarknumberstyle#1{\ifoldstylenumbering\textrm{\normalfont#1}\else#1\fi}
-\newtheoremstyle{rmkstyle}
-  {\thmskip}   % ABOVESPACE
-  {\thmskip}   % BELOWSPACE
-  {}          % BODYFONT
-  {0pt}       % INDENT (empty value is the same as 0pt)
-  {\itshape}  % HEADFONT
-  {.}         % HEADPUNCT
-  {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\remarknumberstyle{\thmnumber{#2\@addpunct{.}\enspace}}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
-
-% We will be using "chunks" for the smallest unit of numbered sections,
-% which resemble paragraph numbering.
-\newcounter{chunk@ctr}
-
+% Theorem environments using chunk style
 \theoremstyle{thmstyle}
-\newtheorem{theorem}[chunk@ctr]{Theorem}
-\newtheorem{proposition}[chunk@ctr]{Proposition}
-\newtheorem{corollary}[chunk@ctr]{Corollary}
-\newtheorem{lemma}[chunk@ctr]{Lemma}
-\newtheorem{conjecture}[chunk@ctr]{Conjecture}
-
-\theoremstyle{plain}
-\newtheorem{puzzle}{Puzzle}
+\newtheorem{theorem}[chunk]{Theorem}
+\newtheorem{proposition}[chunk]{Proposition}
+\newtheorem{corollary}[chunk]{Corollary}
+\newtheorem{lemma}[chunk]{Lemma}
+\newtheorem{conjecture}[chunk]{Conjecture}
 
 \theoremstyle{defnstyle}
-\newtheorem{definition}[chunk@ctr]{Definition}
-\newtheorem{example}[chunk@ctr]{Example}
+\newtheorem{definition}[chunk]{Definition}
+\newtheorem{example}[chunk]{Example}
 % \newtheorem{axiom}{Axiom}
-%\newtheorem{problem}[chunk@ctr]{Problem}
-\newtheorem{question}[chunk@ctr]{Question}
+%\newtheorem{problem}[chunk]{Problem}
+\newtheorem{question}[chunk]{Question}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk]
+\newtheorem{claim}[chunk]{Claim}
+
+\renewcommand\theremark{\thechunk.\numberstyle{\arabic{remark}}}
+
+% Theorems which follow "standard" styles
+\theoremstyle{plain}
+\newtheorem{puzzle}{Puzzle}
 
 \theoremstyle{definition}
 \newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
 \newtheorem{problem}{\llap{\mantriangleright\kern.15em}Problem}
 
-\theoremstyle{rmkstyle}
-\newtheorem{remark}{Remark}[chunk@ctr]
-\newtheorem{claim}[chunk@ctr]{Claim}
-
-\renewcommand\theremark{\thechunk@ctr.\numberstyle{\arabic{remark}}}
-
-
+% Definitions generically need something, you know, *defined*. Use this
+% macro, and then you can add indexed entries by modifying one line of code.
 \newcommand\define[1]{\textbf{``#1''}}
-
-
-\@ifundefined{@addpunct}{
-  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
-  }{}
-
-\newcommand\chunkskip{\vskip\interchunkskip}
-
-\def\chunkbreak{\par\ifdim\lastskip<\interchunkskip
-  \removelastskip\penalty-100\chunkskip\fi}
-
-\newcommand\M{\chunkbreak\noindent%
-  \refstepcounter{chunk@ctr}%
-  \textbf{\thechunk@ctr\@addpunct{.}}\quad\ignorespaces}
-
-
-
-\def\superthinspace{\kern .0625em }
-
-
-% I have had a run of bad luck with hyperref getting into infinite loops
-% around this character, so I am going to avoid that issue.
-\DeclareRobustCommand{\chunk@separator}{\ifoldstylenumbering%
-  \if@in@appendix.\else\superthinspace\textperiodcentered\superthinspace\fi
-\else.\fi}
-
-\pdfstringdefDisableCommands{%
-  \def\chunk@separator{.}%
-}
-
-\@ifundefined{chapter}{%
-  \@addtoreset{chunk@ctr}{section}
-}{%
-  \@addtoreset{chunk@ctr}{chapter}
-}
-
-\newif\if@in@appendix\@in@appendixfalse
-\let\oldappendix\appendix
-\renewcommand\appendix{\oldappendix\global\@in@appendixtrue}
-
-
-\def\chunkprefix{\@ifundefined{chapter}{%
-  \ifnum\value{section}>0 \if@in@appendix\thesection\else\numberstyle{\arabic{section}}\fi\chunk@separator\ignorespaces\else{}\fi
-}{%
-  \ifnum\value{chapter}>0 \if@in@appendix\thechapter\else\numberstyle{\arabic{chapter}}\fi\chunk@separator\ignorespaces\else{}\fi
-}}
-\renewcommand\thechunk@ctr{\chunkprefix\numberstyle{\arabic{chunk@ctr}}}
-
-
-% deprecated macro:
-% \newcommand\N[1]{\M\textbf{#1\@addpunct{.}}\quad\ignorespaces}
-
-% superior implementation:
-
-\def\N{\@ifstar
-        \NStar%
-        \NNoStar%
-}
-\def\NStar#1{\chunkbreak\noindent\textbf{#1\@addpunct{.}\quad}\ignorespaces}
-\def\NNoStar#1{\M\textbf{#1\@addpunct{.}\quad}\ignorespaces}
-
-% permits writing \N*{Un-numbered chunk} for a chunk
-% without a numeric label!
 
 % arXiv links
 \def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
 \def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
 \def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
 
-%\numberwithin{equation}{section}
-\numberwithin{equation}{chunk@ctr}
-\renewcommand\theequation{\thechunk@ctr.\numberstyle{\arabic{equation}}}
+% Number equations within each chunk (or whatever)
+\numberwithin{equation}{chunk}
+\renewcommand\theequation{\thechunk.\numberstyle{\arabic{equation}}}
+% \renewcommand\theHequation{eq\theHchunk.\number\value{equation}}
 
-
-\definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
-\definecolor{DarkRed}{rgb}{.3545,0,0}
-
+\endinput

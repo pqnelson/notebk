@@ -1,0 +1,160 @@
+\newif\ifoldstylenumbering\oldstylenumberingfalse
+\DeclareOption{oldstylenum}{\oldstylenumberingtrue}
+\ProcessOptions
+
+\RequirePackage{amsthm}
+%\RequirePackage{hyperref}
+%%%%
+%%%% Pretty Printing \thechunk
+%%%%
+
+% Are we using oldstyle numbers or not?
+\def\numberstyle#1{\ifoldstylenumbering\oldstylenums{#1}\else#1\fi}
+
+% We will be using "chunks" for the smallest unit of numbered sections,
+% which resemble paragraph numbering.
+%
+% The following vast amount of code is
+\newcounter{chunk}
+
+\@ifundefined{@addpunct}{
+  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
+  }{}
+
+
+\def\superthinspace{\kern .0625em } % = half of a thinspace
+
+
+% I have had a run of bad luck with hyperref getting into infinite loops
+% around this character, so I am going to avoid that issue.
+\DeclareRobustCommand{\chunk@separator}{\ifoldstylenumbering%
+  \if@in@appendix.\else\texorpdfstring{\superthinspace\textperiodcentered\superthinspace}{.}\fi
+\else.\fi}
+
+%% \pdfstringdefDisableCommands{%
+%%   \def\chunk@separator{.}%
+%% }
+
+\@ifundefined{chapter}{%
+  \@addtoreset{chunk}{section}%
+}{%
+  \@addtoreset{chunk}{chapter}%
+}
+
+%% % XXX: I ran into a "hyperref pdfTeX warning (ext4): destination with thesame identifier (name{equation.eq4.10.4}) has been already used, duplicate ignored"
+%% % bug, it turns out that hyperref MUST be loaded after other stuff.
+%% \@ifundefined{chapter}{%
+%%   \renewcommand{\theHchunk}{\theHsection.\number\value{chunk}}
+%% }{%
+%%   \renewcommand{\theHchunk}{\theHchapter.\theHsection.\number\value{chunk}}
+%% }
+
+% Toggle a flag to indicate if we're in the appendix or not; if we are,
+% just defer to the usual "\thechapter" or "\thesection" as prefix.
+\newif\if@in@appendix\@in@appendixfalse
+\let\oldappendix\appendix
+\renewcommand\appendix{\oldappendix\global\@in@appendixtrue}
+
+% Appendices are tricky, and screw things up
+\newcommand\chunk@appendix@thesection{\@ifundefined{chapter}{\thesection}{\numberstyle{\arabic{section}}}}
+\newcommand\chunk@appendix@thechapter{\thechapter}
+
+\newcommand\chunk@appendixstyle[1]{\expandafter\csname chunk@appendix@the\string#1\endcsname}
+
+\newcommand\chunk@counter@prefix[1]{\ifnum\value{#1}>0{\if@in@appendix\chunk@appendixstyle{#1}\else\numberstyle{\arabic{#1}}\fi\chunk@separator\ignorespaces}\else{}\fi}
+
+\newcommand\chunk@section@number[1][\relax]{\ifnum\value{section}>0 \if@in@appendix\thesection\else\numberstyle{\arabic{section}}\fi#1\else{}\fi}
+
+%%
+%% Number within chapter or section
+%%
+% If you wanted to use chunks in a book class, for example, and you
+% wanted to number them prefixed by "chapter.section", you can do so by
+% modifying one line of code.
+\def\chunkprefix{\@ifundefined{chapter}{%
+  \chunk@counter@prefix{section}%  \chunk@section@number{\chunk@separator\ignorespaces}%
+}{% Uncomment below to number chunks within each section, rather than each chapter.
+  \chunk@counter@prefix{chapter}%\chunk@counter@prefix{section}
+}}
+% Also uncomment (to reset within sections rather than chapters):
+% \@addtoreset{chunk}{section}
+
+
+\renewcommand\thechunk{\chunkprefix\numberstyle{\arabic{chunk}}}
+
+
+
+% cwebmac.tex has \interchunkskip=12pt minus 3pt
+% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
+\newskip\interchunkskip
+\interchunkskip=\medskipamount%
+
+\newcommand\chunkskip{\vskip\interchunkskip}
+
+\def\chunkbreak{\par\ifdim\lastskip<\interchunkskip
+  \removelastskip\penalty-100\chunkskip\fi}
+
+%%%%
+%%%% The actual code you use!
+%%%%
+\newlength{\chunk@hskip@amount}
+\setlength{\chunk@hskip@amount}{1em}
+\newcommand\chunk@hskip{\hskip\chunk@hskip@amount}
+
+% For an unlabeled chunk, use "\M".
+\newcommand\M{\chunkbreak\noindent%
+  \refstepcounter{chunk}%
+  \textbf{\thechunk\@addpunct{.}}\chunk@hskip\ignorespaces}
+
+% For a labeled chunk, use "\N{My chunk}". If you want to omit the
+% number, you can write "\N*{Un-numbered chunk}" for a chunk
+% without a numeric label!
+\def\N{\@ifstar
+        \NStar%
+        \NNoStar%
+}
+\def\NStar#1{\chunkbreak\noindent\textbf{#1\@addpunct{.}\chunk@hskip}\ignorespaces}
+\def\NNoStar#1{\M\textbf{#1\@addpunct{.}\chunk@hskip}\ignorespaces}
+
+
+%%%%
+%%%% Theorem Environment Styles
+%%%%
+% Provide theorem environments which are prefixed by numbers, using
+% horizontal spacing consistent with the usual chunks.
+\newskip\thmskip
+\thmskip=\interchunkskip%\topsep
+
+\newtheoremstyle{thmstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {\chunk@hskip@amount}%{0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\chunk@hskip}\thmname{#1}\thmnote{\chunk@hskip\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+
+  \newtheoremstyle{defnstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {\chunk@hskip@amount}%{0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\chunk@hskip}\thmname{#1}\thmnote{\chunk@hskip\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+
+\def\remarknumberstyle#1{\ifoldstylenumbering\textrm{\normalfont#1}\else#1\fi}
+\newtheoremstyle{rmkstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\itshape}  % HEADFONT
+  {.}         % HEADPUNCT
+  {\chunk@hskip@amount}%{0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\remarknumberstyle{\thmnumber{#2\@addpunct{.}\chunk@hskip}}\thmname{#1}\thmnote{\chunk@hskip\textrm{\normalfont(#3)}}}
+
+
+\endinput

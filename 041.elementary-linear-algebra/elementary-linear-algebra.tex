@@ -1,14 +1,18 @@
 \documentclass{article}
+
+
+
 \usepackage[12hr,us]{datetime}
-\usepackage[oldstylenum]{macros}
+\usepackage{macros}
 \usepackage{danger}
 \usepackage{notation}
 \usepackage[equation,leqno]{deriv}
 
-\def\homeurl{}% \url{https://pqnelson.github.io/notebk/}}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+
+
 
 \title{Elementary Linear Algebra}
-
 \author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}
 \date{October 26, 2022}
 
@@ -25,8 +29,10 @@
 \input{tex/matrix-algebra}
 \input{tex/augmented-matrix}
 
+\vfill\eject
+\part{Appendices}
 \appendix
-\include{tex/appendix-1-style}
+\input{tex/appendix-1-style}
 \include{tex/bib}
 
 
