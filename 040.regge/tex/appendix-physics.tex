@@ -127,30 +127,58 @@ Here we would have Eq~\eqref{eq:introduction:z-of-s} give us, with $\mu=0$,
 \begin{equation}
 \cos(\theta_{s}) = \frac{s+2t}{s} = \frac{t-u}{s} = z_{s}
 \end{equation}
-In particular, $sz = t-u$. If we note the mass-shell condition for
+In particular, $sz_{s} = t-u$. If we note the mass-shell condition for
 the graviton Mandelstam variables $s+t+u=0$ implies $s+t=-u$, then
-$sz = s+2t$. Rearranging terms gives us
+$sz_{s} = s+2t$. Rearranging terms gives us
 \begin{equation}
-t = \frac{z-1}{2}s,
+t = \frac{z_{s}-1}{2}s,
 \end{equation}
-$-u = s+t = s + (z-1)s/2 = (z + 1)s/2 = (4z+1)s/2$. That is,
+$-u = s+t = s + (z_{s}-1)s/2 = (z_{s} + 1)s/2 = (4z_{s}+1)s/2$. That is,
 \begin{equation}
-t = \frac{z-1}{2}s,\quad\mbox{and}\quad u = \frac{-(z+1)}{2}s.
+t = \frac{z_{s}-1}{2}s,\quad\mbox{and}\quad u = \frac{-(z_{s}+1)}{2}s.
 \end{equation}
 \end{subequations}
 Hence the
 amplitude would look like (suppressing the constant coefficient):
 \begin{equation}
   \begin{split}
-\amplitude(s,z)\sim\frac{s^{4}}{s[(z-1)s/2][-(z + 1)s/2]} &= \frac{-4s^{4}}{(z^{2}-1)s^{3}}
-=\frac{4s}{1-z^{2}}\\
-&=\left(\frac{1}{1-z}+\frac{1}{1+z}\right)2s.
+\amplitude(s,z_{s})\sim\frac{s^{4}}{s[(z_{s}-1)s/2][-(z_{s} + 1)s/2]} &= \frac{-4s^{4}}{(z_{s}^{2}-1)s^{3}}
+=\frac{4s}{1-z_{s}^{2}}\\
+&=\left(\frac{1}{1-z_{s}}+\frac{1}{1+z_{s}}\right)2s.
   \end{split}
   \end{equation}
 The $t$-channel amplitude enjoys similar manipulations, $\amplitude_{t\text{-channel}}\sim4t/(1-z_{t}^{2})$.
 We observe this does not look like
-$f_{\ell}P_{\ell}(z)\delta_{\ell,n_{0}}$, which would corroborate
+$f_{\ell}P_{\ell}(z_{s})\delta_{\ell,n_{0}}$, which would corroborate
 Gribov's claims.
+
+\M
+In the $t$-channel, we would have
+\begin{subequations}
+\begin{equation}
+z_{t} = 1 + \frac{2s}{t} = \frac{(t+s)+s}{t}=\frac{-u+s}{t}=\frac{s-u}{t}.
+\end{equation}
+We also find $tz_{t} = t+2s$ simplifies to
+\begin{equation}
+\frac{(z_{t}-1)}{2}t=s.
+\end{equation}
+The remaining Mandelstam variable for graviton scattering in the
+$t$-channel would be $u=-s-t$, or,
+\begin{equation}
+u = \frac{1-z_{t}}{2}t - t = \frac{-(1+z_{t})}{2}t.
+\end{equation}
+Hence we work out the amplitude
+\begin{equation}
+\amplitude(t,z_{t})\sim\frac{t^{4}}{stu} =
+\frac{t^{4}}{-(1+z_{t})(z_{t}-1)t^{3}/4} = \frac{4t}{1-z_{t}^{2}}.
+\end{equation}
+\end{subequations}
+This is consistent with our previous result, which is good.
+The problem is, the partial wave expansion would have coefficients like:
+\begin{equation}
+f_{\ell} = \int^{1}_{-1}\amplitude(t,z_{t}) P_{\ell}(z_{t})\,\D z_{t}\sim\int^{1}_{-1}\frac{P_{\ell}(z)}{1-z^{2}}\D z.
+\end{equation}
+This diverges, it has a logarithmic divergence.
 
 \N{Scattering Amplitude for Exchange of Spin $J$ Particle}
 It is a fact the scattering amplitude for a spin $J$ particle at high
