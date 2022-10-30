@@ -39,7 +39,7 @@ The particular case for a massive spin-1 particle:
 %% A few examples of the various different gauge choices:
 %% \begin{itemize}
 %% \item Unitary Gauge $
-%% The Landau gauge 
+%% The Landau gauge
 
 \N{Graviton Propagator}
 The spin-2 propagator is a nightmare, but simplifies in some settings.
@@ -64,9 +64,9 @@ For the graviton in the Prenkti gauge, see 't Hooft and
 Veltman~\cite[see Eq~(2.9)]{tHooft:1974toh}. The main difference is in
 the expression for scalar multiplet.
 
-\N{Graviton Propagator in Anti-de Sitter Spacetime}
-D'Hoker and friends~\cite[see \S5 \emph{et seq}.]{DHoker:1999bve} have
-computed the graviton propagator in $\mathrm{AdS}(d+1)$ spacetime as
+%% \N{Graviton Propagator in Anti-de Sitter Spacetime}
+%% D'Hoker and friends~\cite[see \S5 \emph{et seq}.]{DHoker:1999bve} have
+%% computed the graviton propagator in $\mathrm{AdS}(d+1)$ spacetime as
 
 \N[-1]{Propagator for Spin-$J$ Particles}
 The canonical reference\footnote{A
@@ -107,6 +107,51 @@ is (in center-of-mass frame):
 \amplitude(k) \sim g^{2}\frac{4\pi}{k^{2}+m^{2}}.
 \end{equation}
 
+\N{Graviton Scattering}
+When all four particles are gravitons, we have $s+t+u=0$ (since
+gravitons are massless) and the amplitude is
+\begin{equation}
+\amplitude_{\text{$s$-channel}}\sim\frac{\kappa^{2}}{4}\frac{s^{4}}{stu},
+\end{equation}
+where $\kappa^{2}=32\pi G_{N}$ is just Newton's constant times some
+numerical factor.
+For the $t$-channel, the only difference is the numerator: replace the
+$s^{4}$ by $t^{4}$. Similarly, the $u$-channel replaces $s^{4}$ by $u^{4}$.
+
+See \S2 of Diego Blas, Jorge Martin Camalich, Jose Antonio Oller, ``Unitarization of infinite-range forces: graviton-graviton scattering'' (\arXiv{2010.12459})
+who, in turn, cite the calculation done by Grisaru, van Nieuwenhuizen, and Wu~\cite{Grisaru:1975bx}
+in effective field theory.
+
+Here we would have Eq~\eqref{eq:introduction:z-of-s} give us, with $\mu=0$,
+\begin{subequations}
+\begin{equation}
+\cos(\theta_{s}) = \frac{s+2t}{s} = \frac{t-u}{s} = z_{s}
+\end{equation}
+In particular, $sz = t-u$. If we note the mass-shell condition for
+the graviton Mandelstam variables $s+t+u=0$ implies $s+t=-u$, then
+$sz = s+2t$. Rearranging terms gives us
+\begin{equation}
+t = \frac{z-1}{2}s,
+\end{equation}
+$-u = s+t = s + (z-1)s/2 = (z + 1)s/2 = (4z+1)s/2$. That is,
+\begin{equation}
+t = \frac{z-1}{2}s,\quad\mbox{and}\quad u = \frac{-(z+1)}{2}s.
+\end{equation}
+\end{subequations}
+Hence the
+amplitude would look like (suppressing the constant coefficient):
+\begin{equation}
+  \begin{split}
+\amplitude(s,z)\sim\frac{s^{4}}{s[(z-1)s/2][-(z + 1)s/2]} &= \frac{-4s^{4}}{(z^{2}-1)s^{3}}
+=\frac{4s}{1-z^{2}}\\
+&=\left(\frac{1}{1-z}+\frac{1}{1+z}\right)2s.
+  \end{split}
+  \end{equation}
+The $t$-channel amplitude enjoys similar manipulations, $\amplitude_{t\text{-channel}}\sim4t/(1-z_{t}^{2})$.
+We observe this does not look like
+$f_{\ell}P_{\ell}(z)\delta_{\ell,n_{0}}$, which would corroborate
+Gribov's claims.
+
 \N{Scattering Amplitude for Exchange of Spin $J$ Particle}
 It is a fact the scattering amplitude for a spin $J$ particle at high
 energies is
@@ -118,4 +163,4 @@ More precisely, we expect
 \begin{equation}
 \amplitude_{J}(s,t) = -\frac{g^{2}(p^{2})^{J}}{p^{2}-M^{2}}.
 \end{equation}
-The pole is determined by unitarity. 
+The pole is determined by unitarity.

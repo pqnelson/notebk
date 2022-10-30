@@ -17,8 +17,7 @@
   filecolor=BrickRed,
   urlcolor=BrickRed,
   runcolor=BrickRed,
-  pdfauthor={Alex Nelson},
-  pdftitle={Differential Geometry},
+  pdfusetitle,
   \ifpdf\else dvipdfmx\fi
 ]{hyperref}
 \usepackage{doi}
@@ -36,7 +35,7 @@
 % but I just want something that works.
 \titleformat{\chapter}[display]
   {\Large\bfseries\sffamily}{{\normalfont\large\sffamily\selectfont Chapter \thechapter}}{4pc}
-  {\hfill}[\resetParagraphChunks\vskip 1pc plus 1 pc minus 1 pc] 
+  {\hfill}[\resetParagraphChunks\vskip 1pc plus 1 pc minus 1 pc]
 
 \titleformat*{\section}{\resetParagraphChunks\Large\bfseries\sffamily}
 \titleformat*{\subsection}{\large\bfseries\sffamily}
