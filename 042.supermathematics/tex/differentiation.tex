@@ -1,6 +1,6 @@
 \section{Differentiating Functions of Grassmann Algebras}
 
-\M
+\N{Finite Difference in Anticommuting Variables}
 Suppose we have a Grassmann algebra
 $\Lambda[\theta_{1},\dots,\theta_{n}]=\Lambda^{m,n}$ over some field
 $\FF$ with bosonic generators $x_{1}$, \dots, $x_{m}$ and canonical odd
@@ -52,6 +52,23 @@ just move all instances of $\theta_{k}$ to the left (respectively, to the right)
 away all terms which do not contain a factor of $\theta_{k}$, then
 discard the $\theta_{k}$ factor. The result is the left (respectively,
 right) derivative of $f$ with respect to $\theta_{k}$.
+
+\N{Convention} We will write the left derivative of $f(x,\theta)$ with
+respect to $\theta_{i}$ as
+\begin{subequations}
+\begin{equation}
+\mbox{left derivative}:\quad\frac{\overrightarrow{\partial}}{\partial\theta_{i}}f(x,\theta).
+\end{equation}
+Similarly, the right-derivative will be written as
+\begin{equation}
+\mbox{right derivative}:\quad f(x,\theta)\frac{\overleftarrow{\partial}}{\partial\theta_{i}}.
+\end{equation}
+Without loss of generality, we will adopt the convention familiar with
+the usual calculus, namely, \emph{if there is no arrow, we will assume it is a left-derivative}:
+\begin{equation}
+\frac{\partial}{\partial\theta_{i}}f(x,\theta):=\frac{\overrightarrow{\partial}}{\partial\theta_{i}}f(x,\theta).
+\end{equation}
+\end{subequations}
 
 \begin{puzzle}
 What rules of normal differentiation hold for differentiation with
