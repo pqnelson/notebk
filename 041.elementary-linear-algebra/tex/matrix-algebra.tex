@@ -978,3 +978,65 @@ Let $\mat{A}$ be an invertible matrix. Then $(\mat{A}^{-1})^{-1}=\mat{A}$
 Let $\mat{B}=\mat{A}^{-1}$. Then $\mat{A}\mat{B}=\mat{B}\mat{A}=\mat{I}$.
 But this implies $\mat{A} = \mat{B}^{-1} = (\mat{A}^{-1})^{-1}$, as desired.
 \end{proof}
+
+
+\begin{definition}
+Let $\mat{A}\vec{x}=\vec{b}$ be a system of equations.
+We call a solution \define{Trivial} if $\vec{x}=\vec{0}$ it is the zero vector.
+If a solution is not the zero vector, then we call it a
+\define{Nontrivial} solution.
+\end{definition}
+
+\begin{theorem}
+Let $\mat{A}$ be an $n\times n$ matrix.
+The system of equations $\mat{A}\vec{x}=\vec{0}$
+has a nontrivial solution if and only if $\mat{A}$ is singular [i.e.,
+  noninvertible]. 
+\end{theorem}
+
+This statement is of the form ``$p$ if and only if $q$'', so there are
+two claims being made: (1) ``if $p$, then $q$'', and (2) ``if $q$, then $p$''.
+We will need to prove both claims.
+
+\begin{proof}
+$(\implies)$ We want to prove the claim ``if $\mat{A}\vec{x}=\vec{0}$
+  has a nontrivial solution, then $\mat{A}$ is noninvertible.''
+  We can prove the contrapositive --- that is, we recognize ``if $p$,
+  then $q$'' is logically equivalent to ``if not-$q$, then not-$p$''.
+  We assume that $\mat{A}$ is invertible, and we will show
+  $\mat{A}\vec{x}=\vec{0}$ has only trivial solutions. We can see this
+  by multiplying both sides on the left by $\mat{A}^{-1}$, which gives
+  us the system $\mat{A}^{-1}\mat{A}\vec{x} = \mat{A}^{-1}\vec{0}$.
+  The right-hand side is still the zero vector. The left-hand side is
+  just $\vec{x}$. Hence we deduce $\vec{x}=\vec{0}$ --- only the trivial
+  solutions satisfy the system.
+
+$(\impliedby)$ We need to prove if $\mat{A}$ is singular, then
+  $\mat{A}\vec{x}=\vec{0}$ has a nontrivial solution. Logically, this
+  looks like ``$p\implies q$'', which is logically equivalent to ``$(\neg p)\lor{q}$''
+  [either not-$p$, or $q$, or both]
+  and ``$\neg(p\land\neg{q})$'' [not ($p$ and not-$q$)].
+  We will prove this by contradiction: we will prove ``$p\land\neg{q}$
+  implies a contradiction''.
+
+  So assume that $\mat{A}$ is invertible \emph{and}
+  $\mat{A}\vec{x}=\vec{0}$ has a nontrivial solution. But then we just
+  proved $\mat{A}\vec{x}=\vec{0}$ implies $\mat{A}$ is noninvertible. We
+  therefore conclude that $\mat{A}$ is both invertible and
+  noninvertible, a contradiction.
+\end{proof}
+
+\begin{remark}
+Proofs by contradiction always feel lackluster. Did we, you know,
+\emph{do anything}? This feeling is normal.
+\end{remark}
+
+\N{Logically equivalent conditions to invertibility}
+Let $\mat{A}$ be an $n\times n$ matrix. The following are logically
+equivalent to each other:
+\begin{enumerate}
+\item $\mat{A}$ is invertible
+\item $\vec{x}=\vec{0}$ is the only solution to $\mat{A}\vec{x}=\vec{0}$
+\item $\mat{A}\vec{x}=\vec{b}$ has a unique solution for every column
+  $n$-vector $\vec{b}$.
+\end{enumerate}

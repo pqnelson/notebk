@@ -1,0 +1,324 @@
+\section{Neo-Ricardian Economics}
+
+\N{Matrix form of equations}
+We can express an economy in terms of its input matrix $\mat{A}$, and
+its output matrix $\mat{B}$
+\begin{equation}
+\mat{A}\vec{x}_{n} = \mat{B}\vec{x}_{n+1}
+\end{equation}
+where $\vec{x}_{n}$ is the stock of commodities at time $t=n$ production
+cycles (after some initial production cycle), and $\vec{x}_{n+1}$ is the
+stock of commodities \emph{after} the production cycle. We are trying to
+find price vectors $\vec{p}$ such that
+\begin{equation}
+\mat{A}\vec{p} = \mat{B}\vec{p}.
+\end{equation}
+We assume that, for each sector $i$, the total inputs is no less than
+the amount produced
+\begin{equation}
+\sum_{j=1}^{n}a_{i,j} \leq\sum_{j=1}^{n}b_{i,j}.
+\end{equation}
+Since usually $\mat{B}$ is diagonal, this simplifies to
+\begin{equation*}
+\sum_{j=1}^{n}a_{i,j} \leq b_{j,j}.
+\end{equation*}
+The trick is to first introduce a new vector
+\begin{equation}
+\vec{q} = \mat{B}\vec{p}\implies \vec{p}=\mat{B}^{-1}\vec{q},
+\end{equation}
+then rewrite our problem as
+\begin{equation}
+\mat{A}\vec{p} = \mat{B}\vec{p}\iff \mat{A}\mat{B}^{-1}\vec{q} = \vec{q}.
+\end{equation}
+For a subsistence economy, when no industry sector has an output, this
+is the situation we are trying to solve.
+
+\N{Production with a Surplus}
+When at least one industry sector produces more output than is needed
+across the entire economy, then there is surplus produced. In this case,
+there is a rate of profit $r$, and we are trying to solve the system of
+equations:
+\begin{equation}
+(1+r)\mat{A}\vec{p} = \mat{B}\vec{p}.
+\end{equation}
+We do the same trick, by writing
+\begin{equation}
+\vec{q} = \mat{B}\vec{p},
+\end{equation}
+then plugging this into the equations for an economy with a surplus
+gives us
+\begin{equation}
+(1+r)\mat{A}\vec{p} = \mat{B}\vec{p} \iff (1+r)\mat{A}\mat{B}^{-1}\vec{q}=\vec{q}.
+\end{equation}
+This is an eigenvalue problem! We divide both sides by $(1+r)$ to find
+\begin{equation}
+\mat{A}\mat{B}^{-1}\vec{q}=\frac{1}{1+r}\vec{q},
+\end{equation}
+where $\lambda=1/(1+r)$ is the eigenvalue and $\vec{q}$ is the
+eigenvector.
+
+\begin{example}[{Sraffa~\cite[see \S5]{sraffa}}]
+  Consider the economy given by the equations of production
+  \begin{subequations}
+    \begin{align}
+      280~\mbox{qr. wheat} + 12~\mbox{t. iron} &\to 575~\mbox{qr. wheat}\\
+      120~\mbox{qr. wheat} + 8~\mbox{t. iron} &\to 20~\mbox{t. iron}
+    \end{align}
+  \end{subequations}
+  We have
+  \begin{equation}
+    \mat{A} = \begin{pmatrix}280 & 12\\
+      120 & 8
+    \end{pmatrix},
+    \quad\mbox{and}\quad
+    \mat{B} = \begin{pmatrix}575 & 0\\
+      0 & 20
+    \end{pmatrix},
+  \end{equation}
+  and
+  \begin{equation}
+    \mat{A}\mat{B}^{-1} = \begin{pmatrix}280/575 & 12/20\\
+      120/575 & 8/20
+    \end{pmatrix}.
+  \end{equation}
+  We can find the eigenvalues using the characteristic polynomial
+  \begin{equation}
+p(\lambda) = \left(\frac{280}{575}-\lambda\right)\left(\frac{8}{20}-\lambda\right)-\frac{12}{20}\cdot\frac{120}{575},
+  \end{equation}
+  which has solutions $\lambda_{1}=2/23$ and $\lambda_{2}=4/5$. These correspond
+  to $1+r=23/2$ and $1+r=5/4$ --- or $r=1050\%$ and $r=25\%$, respectively.
+  The price vectors are
+  \begin{equation}
+\vec{p}_{1} = p_{w}\begin{pmatrix}1\\-115/6
+\end{pmatrix},\quad\mbox{and}\quad\vec{p}_{2}= p_{w}\begin{pmatrix}1\\15
+\end{pmatrix}.
+  \end{equation}
+  The viable price vector is $\vec{p}_{2}$ where the price of 1 ton of iron
+  $p_{i}$ is equal to the price of 15 quarters of wheat, $p_{i}=15p_{w}$.
+\end{example}
+
+
+\begin{example}[{Sraffa~\cite[see \S25]{sraffa}}]
+  Consider the more complicated equations of production:
+  \begin{subequations}
+    \begin{align}
+      200~\mbox{qr. wheat} + 40~\mbox{t. iron} + 40~\mbox{t. coal} &\to 480~\mbox{qr. wheat}\\
+      60~\mbox{qr. wheat} + 90~\mbox{t. iron} + 120~\mbox{t. coal} &\to 180~\mbox{t. iron}\\
+      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to 450~\mbox{t. coal}
+    \end{align}
+  \end{subequations}
+  Observe the inputs are 410 qr wheat, 285 tons coal, 180 tons iron. We
+  can compute the product $\mat{A}\mat{B}^{-1}$ as
+  \begin{equation}
+\mat{A}\mat{B}^{-1} = \begin{pmatrix}
+  (5/12) & (2/9) & (4/45)\\
+  (1/8) & (1/2) & (4/15)\\
+  (5/16) & (5/18) & (5/18)
+\end{pmatrix}.
+  \end{equation}
+  This has characteristic polynomial
+\begin{equation}
+p(\lambda) = \frac{35}{1296} - \frac{\lambda}{3} + \frac{43}{36}\lambda^{2}-\lambda^{3}.
+\end{equation}
+  We find its eigenvalues are $\lambda_{1}=5/6$, $\lambda_{2}=7/36$, and
+  $\lambda_{3}=1/6$ which correspond to rates of profit $r_{1}=1/5$,
+  $r_{2}=29/7$, and $r_{3}=5$.%%  The rates of profit $r_{2}$ and $r_{3}$
+%%   lead to negative prices, so $r_{1}$ is the economically realistic rate
+%%   of profit. The exchange rate is
+%%   \begin{equation}
+%% 8~\mbox{qr.\ wheat} = 11~\mbox{t.\ iron} = 10~\mbox{t.\ coal}
+%%   \end{equation}
+
+  If we consider $r_{1}=1/5$ as the rate of profit, the first equation
+\begin{subequations}
+  \begin{equation}
+(6/5)(200p_{w} + 40 p_{i} + 40 p_{c}) = 480p_{w}
+  \end{equation}
+  may be rewritten as
+  \begin{equation}
+40p_{w} + 8p_{i} + 8p_{c} = 80p_{w}
+  \end{equation}
+  which reduces to
+  \begin{equation}\label{eq:appendix-sraffa:system-2:wheat-sector}
+p_{i} + p_{c} = 5p_{w}.
+  \end{equation}
+\end{subequations}
+Now if we look at the second equation,
+\begin{subequations}
+  \begin{equation}
+(6/5)(60p_{w} + 90 p_{i} + 120 p_{c}) = 180p_{i}
+  \end{equation}
+  which simplifies to
+  \begin{equation}
+12p_{w} + 18p_{i} + 24p_{c} = 30p_{i},
+  \end{equation}
+  which gives us
+  \begin{equation}
+p_{w} + 2p_{c} = p_{i}.
+  \end{equation}
+\end{subequations}
+But if we add $p_{c}$ to both sides,
+\begin{equation}
+p_{w} + 3p_{c} = p_{i} + p_{c},
+\end{equation}
+we can use Eq~\eqref{eq:appendix-sraffa:system-2:wheat-sector} to
+rewrite the right-hand side as
+\begin{equation}
+p_{w} + 3p_{c} = 5p_{w},
+\end{equation}
+hence
+\begin{equation}
+\boxed{p_{c} = \frac{4}{3}p_{w}.}
+\end{equation}
+If we plug this back into Eq~\eqref{eq:appendix-sraffa:system-2:wheat-sector}
+we find
+\begin{equation}
+\boxed{p_{i} = \frac{11}{3}p_{w}.}
+\end{equation}
+Or if we want it in one big equation
+\begin{equation}
+\boxed{11p_{c} = 4p_{i} = \frac{44}{3}p_{w}.}
+\end{equation}
+
+We briefly mention the other choices of the rate of profit leads to
+negative prices. For example, if we took $r_{3}$, the first equation of
+production gives us
+\begin{subequations}
+\begin{equation}
+6(200p_{w} + 40p_{i} + 40p_{c}) = 480p_{w}
+\end{equation}
+which simplifies to
+\begin{equation}
+5p_{w} + p_{i} + p_{c} = 2p_{w}
+\end{equation}
+and thus
+\begin{equation}
+p_{i} + p_{c} = -3p_{w}.
+\end{equation}
+\end{subequations}
+If $p_{w}>0$, then either $p_{i}<0$ or $p_{c}<0$. If $p_{w}<0$, then $p_{w}<0$.
+Either way, we have negative prices.
+
+For $r_{2}=29/7$, we would have
+\begin{subequations}
+\begin{equation}
+(36/7)(200p_{w}+40p_{i}+40p_{c}) = 480p_{w}
+\end{equation}
+which reduces to
+\begin{equation}
+(36/7)(5p_{w}+p_{i}+p_{c}) = 12p_{w},
+\end{equation}
+or equivalently
+\begin{equation}
+35p_{w} + 7p_{i} + 7p_{c} = \frac{1}{3}p_{w}
+\end{equation}
+hence
+\begin{equation}
+7p_{i} + 7p_{c} = -\frac{104}{3}p_{w}.
+\end{equation}
+\end{subequations}
+And we're in exactly the same situation as before, we must have a
+negative price.
+\end{example}
+
+\N{Numerical values}
+A lot of these examples have nice numerical values. But if we, for
+example, reduced the surplus of the wheat sector to zero in the previous
+example, then there is no closed form expression for the eigenvalues of
+$\mat{A}\mat{B}^{-1}$. We need to use numerical approximations
+$\lambda_{1}\approx 0.955884$,
+$\lambda_{2}\approx 0.337684$, and
+$\lambda_{3}\approx-0.0279857$. The iron and coal sectors give us the
+relations
+\begin{subequations}
+\begin{equation}
+p_{i} = \frac{2(1+r)(18 + 7(1+r))}{108 - 84(1+r) + 7 (1+r)^{2}}p_{w}
+\end{equation}
+and
+\begin{align}
+p_{c} &= \frac{14}{72}(1+r)p_{i} + \frac{23-7r}{72}p_{w}\\
+&= \frac{2(11 + 4r - 7r^{2})}{31 - 70r + 7r^{2}}p_{w}
+\end{align}
+\end{subequations}
+which holds provided
+\begin{equation}
+31 - 70r + 7r^{2}\neq0.
+\end{equation}
+That is to say,
+\begin{equation}
+r\neq\frac{35\pm12\sqrt{7}}{7}=5\pm\frac{12}{\sqrt{7}}.
+\end{equation}
+We find the approximate prices, for
+$\lambda_{1}=(1+r_{1})^{-1}\approx 0.955884$ [$r_{1}\approx 4.61515\%$] we have
+$p_{i}(r_{1})\approx1.38421p_{w}$ and 
+$p_{c}(r_{1})\approx0.633981p_{w}$;
+for $\lambda_{2}\approx 0.337684$ [$r_{2}\approx196.135\%$], we find
+$p_{i}(r_{2})\approx0.170988p_{w}$ and $p_{c}(r_{2})\approx0.131292 p_{w}$; and for
+$\lambda_{3}\approx-0.0279857$ [$r_{3}\approx-3673.25\%$], we find
+$p_{i}(r_{3})\approx -0.00903004p_{w}$ and
+$p_{c}(r_{3})\approx-0.00922875p_{w}$.
+
+If we demand, as output of wheat continuously increased from 410
+quarters to 480 quarters, that the prices and rates of profit
+continuously vary as well, then the there is n$\lambda_{1}$ corresponds to the
+economically significant solution. This doesn't always work, leading to
+a mathematical phenomena known as ``bifurcations''.
+
+\N{Bifurcations}
+Suppose we have continuously varied the output of the coal sector with a
+parameter $c\in\RR$ such that $0\leq c$, so the economy's equations of
+production look like:
+  \begin{subequations}
+    \begin{align}
+      200~\mbox{qr. wheat} + 40~\mbox{t. iron} + 40~\mbox{t. coal} &\to 480~\mbox{qr. wheat}\\
+      60~\mbox{qr. wheat} + 90~\mbox{t. iron} + 120~\mbox{t. coal} &\to 180~\mbox{t. iron}\\
+      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to (285+c)~\mbox{t. coal}
+    \end{align}
+  \end{subequations}
+Then if we try to numerically solve the characteristic polynomial for
+$\mat{A}\mat{B}(c)^{-1}$, there will be 1 real solution and 2 complex
+solutions. The real solution leads to a rate of profit
+$r(c=0)\approx0.03799=3.799\%$ and $r(c=450-285)=6$. This doesn't match
+any rate of profit to the initial system in our second example.
+
+What does this mean? As we ``continuously vary'' the amount of surplus
+coal produced, there's a ``jump'' or ``discontinuity'' between the
+situation with no coal surplus ($c=0$) and the situation we are given
+($c=485-280$). This is called a \define{Bifurcation} and reflects some
+complexity in the model (in the sense of chaos theory). Robert Vieanneau
+researches this phenomena in Neo-Ricardian economics.
+  
+\N{Modeling supply shocks}
+We can model supply shocks by replacing $\mat{B}$ with
+$\mat{B}+\delta\mat{B}$ for some ``shock matrix'' $\delta\mat{B}$.
+
+\begin{example}
+If we consider a modification of the second example
+  \begin{subequations}
+    \begin{align}
+      200~\mbox{qr. wheat} + 40~\mbox{t. iron} + 40~\mbox{t. coal} &\to 480~\mbox{qr. wheat}\\
+      60~\mbox{qr. wheat} + 90~\mbox{t. iron} + 120~\mbox{t. coal} &\to 180~\mbox{t. iron}\\
+      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to (285+\delta)~\mbox{t. coal}
+    \end{align}
+  \end{subequations}
+  where $\delta\geq0$ is the ``shock'' to the coal supply, we see that
+  there are some rough upper bounds on the rate of profit from the coal
+  sector:
+  \begin{subequations}
+    \begin{equation}
+(1+r)(150p_{w} + 50p_{i} + 125p_{c}) = (285 + \delta)p_{c}
+    \end{equation}
+    has positive prices provided
+    \begin{equation}
+    (1+r)(125p_{c}) < (285 + \delta)p_{c}
+    \end{equation}
+    or equivalently
+    \begin{equation}
+r < 1.28 + \frac{\delta}{125}.
+    \end{equation}
+    The wheat sector induces a similar upper bound on the rate of profit
+    to be no more than $1 + r < 12/5$ or $r < 7/5$, and the iron sector
+    induces the upper bound $1 + r < 2$ or $r < 1$.
+  \end{subequations}
+\end{example}
+

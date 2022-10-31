@@ -1,0 +1,445 @@
+\subsection{LU-Decomposition}
+
+\M
+Some matrices are easier to work with than others. Scalar matrices are
+particular easy to invert, for example. We will consider what perhaps
+could be called the ``silver bullet of linear algebra'': factorizing a
+given matrix into a product of nicer matrices (i.e., writing $\mat{A}=\mat{M}_{1}\cdots\mat{M}_{n}$).
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix.
+Recall Definition~\ref{defn:matrix-zoo:triangular} where we defined
+upper triangular and lower triangular matrices. 
+We define the \define{LU-Decomposition} of $\mat{A}$ to consist of
+\begin{enumerate}
+\item a lower-triangular $n\times n$ matrix $\mat{L}$
+\item an upper-triangular $n\times n$ matrix $\mat{U}$
+\end{enumerate}
+such that
+\begin{enumerate}
+\item $\mat{A}=\mat{L}\mat{U}$
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Some texts add the condition that the diagonals of the lower-triangular
+matrix are either 1 or 0. Other texts change that condition to be
+imposed on the upper-triangular matrix instead. The reason for this is
+because there is a unique LU decomposition in those situations. Without
+either condition, there are many different possible LU decompositions.
+The reader should be aware that not one of these definitions is
+``better'' than another --- one is not ``the correct definition'' and
+the others are ``wrong definitions'' --- but under certain
+circumstances, it is preferable to \emph{adopt the convention} that we are
+working with the lower-triangular matrix with 1 or 0 on the diagonal (or
+whatever). 
+\end{remark}
+
+\M
+Why on Earth is this an improvement? Well, recall Gauss--Jordan
+elimination transformed $\mat{A}$ into an upper triangular matrix
+$\mat{U}$, and that was how we could algorithmically solve systems of
+equations. More explicitly, if $\mat{U}$ is upper triangular, we can
+solve the system of equations
+\begin{subequations}
+\begin{equation}
+\mat{U}\vec{x}=\vec{b}
+\end{equation}
+or, written explicitly with components,
+\begin{equation}
+\begin{pmatrix}
+u_{1,1} & u_{1,2} & u_{1,3} & \dots & u_{1,n}\\
+0      & u_{2,2} & u_{2,3} & \dots & u_{2,n}\\
+0      &   0    & u_{3,3} & \dots & u_{3,n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0      &   0    &   0    &   0    & u_{n,n}
+\end{pmatrix}\begin{pmatrix}x_{1}\\x_{2}\\x_{3}\\\vdots\\x_{n}
+\end{pmatrix}
+=\begin{pmatrix}b_{1}\\b_{2}\\b_{3}\\\vdots\\b_{n}
+\end{pmatrix}
+\end{equation}
+\end{subequations}
+The solution looks like, starting with the last equation in row $n$,
+\begin{subequations}
+  \begin{align}
+    x_{n} &= \frac{b_{n}}{u_{n,n}}\\
+    \intertext{then we plug this into the $n-1$ row to get,}
+    x_{n-1} &= \frac{1}{u_{n-1,n-1}}(b_{n-1}-u_{n-1,n}x_{n})\\
+    \vdots & \nonumber\\
+    \intertext{and continuing until we get to row $j$, which has the
+      generic solution:}
+    x_{j} &= \frac{1}{u_{j,j}}\left(b_{j} - \sum^{n}_{k=j+1}u_{j,k}x_{k}\right).
+  \end{align}
+\end{subequations}
+This procedure is known as \define{Backsubstitution}.
+
+\M
+We have a completely analogous way to handle lower-triangular matrices
+$\mat{L}$ in systems of equations
+\begin{equation}
+\begin{pmatrix}
+  \ell_{1,1} &  0        & 0         & \dots & 0\\
+  \ell_{2,1} & \ell_{2,2} & 0         & \dots & 0\\
+  \ell_{3,1} & \ell_{3,2} & \ell_{3,3} & \dots & 0\\
+  \vdots    & \vdots    & \vdots     & \ddots & \vdots\\
+  \ell_{n,1} & \ell_{n,2} & \ell_{n,3} & \dots & \ell_{n,n}
+\end{pmatrix}
+\begin{pmatrix}x_{1}\\x_{2}\\x_{3}\\\vdots\\x_{n}
+\end{pmatrix}
+=\begin{pmatrix}b_{1}\\b_{2}\\b_{3}\\\vdots\\b_{n}
+\end{pmatrix}
+\end{equation}
+This time, we start with the first row, to find its solution,
+\begin{subequations}
+\begin{align}
+x_{1} &= \frac{1}{\ell_{1,1}}(b_{1})\\
+\intertext{then plugging this into the second row gives the solution,}
+x_{2} &= \frac{1}{\ell_{2,2}}(b_{2} - \ell_{2,1}x_{1})\\
+\intertext{and continuing to the generic row $j$}
+x_{j} &= \frac{1}{\ell_{j,j}}\left(b_{j} - \sum^{j-1}_{k=1}\ell_{j,k}x_{k}\right).
+\end{align}
+\end{subequations}
+This is called \define{Forward Substitution}.
+
+\N{Algorithm: LU Factorization}
+The generic algorithm for LU decomposition is best illustrated by
+example. Given an $n\times n$ matrix $\mat{A}$.
+We will generate a sequence of matrices $\mat{L}_{1}$,
+$\mat{U}_{1}$, $\mat{L}_{2}$, $\mat{U}_{2}$, \dots, $\mat{L}_{n}$,
+$\mat{U}_{n}$ which progressively get ``more triangular'' until we reach
+the end result. Then we will call $\mat{U}:=\mat{U}_{n}$ and
+$\mat{L}:=\mat{L}_{n}$. Consider the matrix
+\begin{equation}
+  \mat{A} =
+  \begin{bmatrix}
+    -2 &  1 & 3  &  4 \\
+     1 &  2 & -5 & -2 \\
+    -1 &  1 & 25 &  3 \\
+     4 & -4 & 20 &  2 
+  \end{bmatrix} = \begin{bmatrix}\transpose{\vec{r}_{1}}\\
+    \transpose{\vec{r}_{2}}\\
+    \transpose{\vec{r}_{3}}\\
+    \transpose{\vec{r}_{4}}
+  \end{bmatrix}
+\end{equation}
+where $\transpose{\vec{r}_{1}}$ is the first row,
+$\transpose{\vec{r}_{2}}$ is the second row, and so on.
+
+\N*{Step 1}
+We form $\mat{U}_{1}$ by a process similar to Gauss-Jordan elimination,
+we will ``zero out'' the first column beneath the first row.
+We take subtract $a_{2,1}/a_{1,1}=(-1/2)$ times the first row to the second row, 
+subtract $a_{3,1}/a_{1,1}=(1/2)$ times the first row to the third row,
+and subtract $a_{4,1}/a_{1,1}=(-4/2)=-2$ times the first row to the fourth
+row, to obtain $\mat{U}_{1}$:
+\begin{equation}
+\mat{U}_{1} = \begin{pmatrix}\transpose{\vec{r}_{1}}\\
+  \transpose{\vec{r}_{2}} - (-1/2)\transpose{\vec{r}_{1}}\\
+  \transpose{\vec{r}_{3}} - (1/2)\transpose{\vec{r}_{1}}\\
+  \transpose{\vec{r}_{4}} - (-2)\transpose{\vec{r}_{1}}
+\end{pmatrix} = \begin{pmatrix}
+    -2 &  1  & 3    &  4 \\
+     0 & 5/2 & -7/2 &  0\\
+     0 & 1/2 & 47/2 &  1\\
+     0 &  -2 &   26 & 10
+\end{pmatrix} = \begin{pmatrix}\transpose{(\vec{u}^{(1)}_{1})}\\
+  \transpose{(\vec{u}^{(1)}_{2})}\\
+  \transpose{(\vec{u}^{(1)}_{3})}\\
+  \transpose{(\vec{u}^{(1)}_{4})}
+\end{pmatrix}
+\end{equation}
+We denote the rows of $\mat{U}_{1}$ using $\transpose{(\vec{u}^{(1)}_{j})}$.
+
+We construct $\mat{L}_{1}$ by taking $1$ along the diagonal, and in the
+first column setting $\ell_{j,1}$ equal to the these multipliers, i.e.,
+$\ell_{j,1}=a_{j,1}/a_{1,1}$:
+\begin{equation}
+\mat{L}_{1} = \begin{pmatrix}
+             1 & 0 & 0 & 0 \\
+a_{2,1}/a_{1,1} & 1 & 0 & 0\\
+a_{3,1}/a_{1,1} & ? & 1 & 0\\
+a_{4,1}/a_{1,1} & ? & ? & 1
+\end{pmatrix}= \begin{pmatrix}
+             1 & 0 & 0 & 0 \\
+-1/2 & 1 & 0 & 0\\
+1/2 & ? & 1 & 0\\
+-2 & ? & ? & 1
+\end{pmatrix}
+\end{equation}
+Why does this work? Well, when we examine the resulting first column
+from the product $\mat{L}_{1}\mat{U}_{1}$ we see we recover the first
+column of our original matrix $\mat{A}$. 
+
+\N*{Step 2} Now we assemble $\mat{U}_{2}$ from $\mat{U}_{1}$.
+We take $\mat{U}_{1}$ and ``zero out'' the entries in the second column
+beneath the second row. We do this by subtracting
+$(u^{(1)}_{3,2}/u^{(1)}_{2,2})=1/5$ times the second row from the third row,
+and subtracting
+$(u^{(1)}_{4,2}/u^{(1)}_{2,2})=-4/5$ time the second row from the fourth
+row:
+\begin{equation}
+\mat{U}_{2} = \begin{pmatrix}\transpose{(\vec{u}^{(1)}_{1})}\\
+  \transpose{(\vec{u}^{(1)}_{2})}\\
+  \transpose{(\vec{u}^{(1)}_{3})} - (1/5)\transpose{(\vec{u}^{(1)}_{2})}\\
+  \transpose{(\vec{u}^{(1)}_{4})} - (-4/5)\transpose{(\vec{u}^{(1)}_{2})}
+\end{pmatrix}
+=\begin{pmatrix}
+    -2 &  1  &     3 &  4 \\
+     0 & 5/2 &  -7/2 &  0\\
+     0 &  0  & 121/5 & 1\\
+     0 &  0  & 116/5 & 10
+\end{pmatrix} = \begin{pmatrix}\transpose{(\vec{u}^{(2)}_{1})}\\
+  \transpose{(\vec{u}^{(2)}_{2})}\\
+  \transpose{(\vec{u}^{(2)}_{3})}\\
+  \transpose{(\vec{u}^{(2)}_{4})}
+\end{pmatrix}.
+\end{equation}
+We denote the rows of $\mat{U}_{2}$ using $\transpose{(\vec{u}^{(2)}_{j})}$.
+
+Now we enter the multiples in the second column beneath the diagonal of
+$\mat{L}_{1}$ to obtain $\mat{L}_{2}$:
+\begin{equation}
+\mat{L}_{2} = \begin{pmatrix}
+1    & 0 & 0 & 0 \\
+-1/2 & 1 & 0 & 0\\
+1/2  & (u^{(1)}_{3,2}/u^{(1)}_{2,2}) & 1 & 0\\
+-2   & (u^{(1)}_{4,2}/u^{(1)}_{2,2}) & ? & 1
+\end{pmatrix}
+=\begin{pmatrix}
+1    &    0 & 0 & 0 \\
+-1/2 &    1 & 0 & 0\\
+1/2  &  1/5 & 1 & 0\\
+-2   & -4/5 & ? & 1
+\end{pmatrix}.
+\end{equation}
+The reader can verify that the product of $\mat{L}_{2}$ and the second
+column of $\mat{U}_{2}$ gives the second column of $\mat{A}$.
+
+\N*{Step 3}
+The last step for us, we need to subtract $116/121$ times the third row
+of $\mat{U}_{2}$ from the last row of $\mat{U}_{2}$ to construct
+$\mat{U}_{3}$:
+\begin{equation}
+\mat{U}_{3} = \begin{pmatrix}\transpose{(\vec{u}^{(2)}_{1})}\\
+  \transpose{(\vec{u}^{(2)}_{2})}\\
+  \transpose{(\vec{u}^{(2)}_{3})}\\
+  \transpose{(\vec{u}^{(2)}_{4})}-(116/121)\transpose{(\vec{u}^{(2)}_{3})}
+\end{pmatrix} =\begin{pmatrix}
+    -2 &  1  &     3 &  4\\
+     0 & 5/2 &  -7/2 &  0\\
+     0 &  0  & 121/5 &  1\\
+     0 &  0  &     0 & 1094/121.
+\end{pmatrix}
+\end{equation}
+We see this is upper-triangular.
+
+Now, the last entry in the lower-triangular matrix, we set it equal to
+\begin{equation}
+\mat{L}_{3} = \begin{pmatrix}
+1    &    0 & 0 & 0 \\
+-1/2 &    1 & 0 & 0\\
+1/2  &  1/5 & 1 & 0\\
+-2   & -4/5 & (u^{(2)}_{4,3}/u^{(2)}_{3,3}) & 1
+\end{pmatrix} = \begin{pmatrix}
+1    &    0 &       0 & 0 \\
+-1/2 &    1 &       0 & 0\\
+1/2  &  1/5 &       1 & 0\\
+-2   & -4/5 & 116/121 & 1
+\end{pmatrix}.
+\end{equation}
+The reader can verify that $\mat{L}_{3}$ times the third column of
+$\mat{U}_{3}$ produces the third column of $\mat{A}$, \emph{and} that
+$\mat{L}_{3}$ times the last column of $\mat{U}_{3}$ produces the last
+column of $\mat{A}$.
+
+\N*{Step 4} We then call $\mat{L} := \mat{L}_{3}$ and
+$\mat{U} := \mat{U}_{3}$, then return this as the LU-decomposition of
+$\mat{A}$.
+
+\begin{remark}
+The basic pattern is revealed, we are constructing $\mat{L}_{j+1}$ and
+$\mat{U}_{j+1}$ by modifying the $j+1$ columns of $\mat{L}_{j}$ and
+$\mat{U}_{j}$ such that the matrix multiplication of $\mat{L}_{j+1}$
+times the $(j+1)^{\text{th}}$ column of $\mat{U}_{j+1}$ equals the
+$(j+1)^{\text{th}}$ column of $\mat{A}$. Programmers call this
+``property which holds after every step of the loop'' an
+``invariant property'' of the algorithm.
+\end{remark}
+
+\begin{remark}
+This LU decomposition algorithm is analogous to ``long division'' of
+numbers we learn in elementary school: we construct the quotient one
+digit at a time, multiplying the latest digit by the divisor, then
+subtracting from the residue of the dividend this product.
+\end{remark}
+
+\N{LU Decomposition works on any matrix}
+There is no reason why we need $\mat{A}$ to be a square matrix. We could
+have let it be an $m\times n$ matrix.
+Then $\mat{L}$ would be an $m\times m$ matrix and $\mat{U}$ would be an
+$m\times n$ matrix. Or $\mat{L}$ could be an $m\times n$ matrix, and
+$\mat{U}$ would be an $n\times n$ matrix. The algorithm works the same,
+regardless.
+
+\N{Block LU Decomposition}
+Suppose we have a $2\times 2$ matrix
+\begin{equation}
+  \mat{M} = \begin{pmatrix}
+    a & b\\
+    c & d
+\end{pmatrix}.
+\end{equation}
+The reader can verify
+\begin{equation}
+ \begin{pmatrix}
+    a & b\\
+    c & d
+ \end{pmatrix} =
+ \begin{pmatrix}
+   1 & 0\\
+   c/a & 1
+ \end{pmatrix}
+ \begin{pmatrix}a & b\\
+   0 & d - (c/a)b
+ \end{pmatrix}.
+\end{equation}
+We can go farther, and observe:
+\begin{equation}
+ \begin{pmatrix}
+    a & b\\
+    c & d
+ \end{pmatrix} = 
+ \begin{pmatrix}
+   1 & 0\\
+   c/a & 1
+ \end{pmatrix}
+ \begin{pmatrix}
+   a & 0\\
+   0 & d - (cb/a)
+ \end{pmatrix}
+ \begin{pmatrix}
+   1 & b/a\\
+   0 & 1
+ \end{pmatrix}.
+\end{equation}
+What if we have a block matrix
+\begin{equation}
+  \mat{M} = \begin{pmatrix}
+    \mat{A} & \mat{B}\\
+    \mat{C} & \mat{D}
+  \end{pmatrix},
+\end{equation}
+where $\mat{A}$, $\mat{B}$, $\mat{C}$, and $\mat{D}$ are all square
+matrices of the same dimension --- say, they are all $n\times n$ matrices.
+could we factorize it similarly? Let us try!
+
+We, first of all, see that we will need to find the inverse of
+$\mat{A}$ (since this is the analog to dividing by $a$). So before we
+can do anything, we \emph{must} have $\mat{A}$ be an invertible
+matrix. If it is singular, then there is no hope of an analogous
+decomposition. 
+
+There is some ambiguity in trying to figure out the analog to $c/a$ ---
+should it be $\mat{A}^{-1}\mat{C}$ or $\mat{C}\mat{A}^{-1}$? For us to
+answer this question, we should ask ourselves, ``What are the dimensions
+of $\mat{A}^{-1}$ and $\mat{C}$?'' We assumed they are both $n\times n$,
+so either would work ostensibly. The $L$ matrix would be multiplied by a
+diagonal matrix
+\begin{equation}
+L\begin{pmatrix}
+\mat{A} & 0\\
+      0 & \mat{D} - \mbox{``$cb/a$''}
+\end{pmatrix}
+\end{equation}
+For this to make sense, we would have the ``$c/a$'' block multiplied on
+the right by $\mat{A}$. This means $\mat{C}\mat{A}^{-1}$ is the
+analogous quantity, and we find
+\begin{equation}
+L = \begin{pmatrix}\mat{I} & 0\\\mat{C}\mat{A}^{-1} & \mat{I}
+\end{pmatrix}.
+\end{equation}
+Similar reasoning suggests the upper triangular matrix should be
+\begin{equation}
+U = \begin{pmatrix}\mat{I} & \mat{A}^{-1}\mat{B}\\0 & \mat{I}
+\end{pmatrix}.
+\end{equation}
+Now, the diagonal matrix is the thorn in our side. If we multiply it out
+with the $U$ matrix, we find
+\begin{equation}
+\begin{pmatrix}
+\mat{A} & 0\\
+      0 & \mat{D} - \mbox{``$cb/a$''}
+\end{pmatrix}\begin{pmatrix}\mat{I} & \mat{A}^{-1}\mat{B}\\0 & \mat{I}
+\end{pmatrix}
+= \begin{pmatrix}
+\mat{A} & \mat{B}\\
+0 & (\mat{D} - \mbox{``$cb/a$''})\mat{I}
+\end{pmatrix}
+\end{equation}
+Multiplying this on the left by the $L$ matrix,
+\begin{equation}
+\begin{pmatrix}\mat{I} & 0\\\mat{C}\mat{A}^{-1} & \mat{I}
+\end{pmatrix}\begin{pmatrix}
+\mat{A} & \mat{B}\\
+0 & \mat{D} - \mbox{``$cb/a$''}
+\end{pmatrix} =\begin{pmatrix}
+\mat{A} & \mat{B}\\
+\mat{C} & \mat{C}\mat{A}^{-1}\mat{B} + (\mat{D} - \mbox{``$cb/a$''})
+\end{pmatrix}
+\end{equation}
+For this to equal our original matrix, we need
+\begin{equation}
+\mat{C}\mat{A}^{-1}\mat{B}- \mbox{``$cb/a$''}=0
+\end{equation}
+that is to say,
+\begin{equation}
+\mbox{``$cb/a$''} =\mat{C}\mat{A}^{-1}\mat{B}.
+\end{equation}
+This gives us the block LU decomposition of $\mat{M}$:
+\begin{equation}
+\boxed{
+\begin{pmatrix}
+  \mat{A} & \mat{B}\\
+  \mat{C} & \mat{D}
+\end{pmatrix}
+ = 
+\begin{pmatrix}
+             \mat{I} & 0\\
+  \mat{C}\mat{A}^{-1} & \mat{I}
+\end{pmatrix}
+\begin{pmatrix}
+  \mat{A} & 0\\
+        0 & \mat{D} - \mat{C}\mat{A}^{-1}\mat{B}
+\end{pmatrix}
+\begin{pmatrix}
+  \mat{I} & \mat{A}^{-1}\mat{B}\\
+        0 & \mat{I}
+\end{pmatrix}.}
+\end{equation}
+
+\begin{problem}
+What happens if $\mat{A}$ is $m\times q$, $\mat{B}$ is $m\times p$,
+$\mat{C}$ is $n\times q$, and $\mat{C}$ is $n\times p$? For what values
+of $m$, $n$, $p$, and $q$ would the block LU decomposition
+work? [Hint: $\mat{A}$ must be invertible, what constraints does that
+  place on its dimension?]\footnote{We could make this needlessly
+complicated, working with the three cases $m<q$, $m=q$, and $m>q$.
+For the sake of discussion, consider the two separate subcases of $m\neq q$
+[for a total of 4 cases --- 2 subcases of $m<q$ and 2 subcases of $m>q$]
+when there exists:
+\begin{enumerate}
+\item a matrix $\mat{A}_{L}$ is a $q\times m$
+matrix such that it acts like an inverse from the left
+$\mat{A}_{L}\mat{A}=\mat{I}_{q}$ (but not necessarily from the right),
+and separately
+\item a matrix $\mat{A}_{R}$ is an $q\times m$ matrix which acts like an inverse
+from the right $\mat{A}\mat{A}_{R}=\mat{I}_{m}$ (but not necessarily
+from the left).
+\end{enumerate}
+What happens if you try computing $\mat{A}_{R}\mat{A}$ (and
+$\mat{A}\mat{A}_{L}$) is --- at best! --- you end up with a block matrix
+of the form $(\mat{I}|0)$ or its transpose.
+You can work this out, if you want, but we will develop more tools later
+that will help you answer this pathological variant problem.}
+\end{problem}
+

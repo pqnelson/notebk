@@ -263,19 +263,29 @@ echelon form
 \end{subequations}
 
 \begin{remark}
-We may optionally skip normalizing the ``pivot'' (step 3), but continue
-to transform the lower rows so everything below the pivot is zero. This
-produced \define{Row Echelon Form}. It is no longer ``reduced'', because
-the pivots are not $1$.
-\end{remark}
-
-\begin{remark}
 We should prove that Gauss-Jordan elimination produces a unique
 augmented matrix, in some sense. It's obviously not true the results
 will be identical, since we had some choice in swapping rows. But the
 solutions produced from the resulting augmented matrices \emph{will} be
 identical. After a few examples, we will prove this.
 \end{remark}
+
+\N{Gaussian Elimination}
+We may optionally skip normalizing the ``pivot'' (step 3), but continue
+to transform the lower rows so everything below the pivot is zero. The
+slightly modified algorithm is referred to as \define{Gaussian Elimination},
+\emph{not} to be confused with Gauss--Jordan elimination.
+
+Gaussian elimination produces a matrix in \define{Row Echelon Form}.
+The matrix is no longer ``reduced'', because the pivots are not
+necessarily $1$.
+
+Is there a reason to prefer one or the other? Well, with Gaussian
+elimination, we could do it with a number system without division (like,
+the integers). But with Gauss--Jordan elimination, when solving the
+system of equations, step 3 avoids a division operation later on (which
+can be convenient). One method is not ``better'' than the other, but
+they are \emph{different} ``siblings''.
 
 \begin{example}
   Suppose we have a $2\times2$ matrix $\mat{A}$ with generic entries
@@ -365,7 +375,7 @@ ax - \frac{bc}{ad - bc} &= 1\nonumber\\
 \end{align}
 \end{subequations}
 Hence
-\begin{equation}
+\begin{equation}\label{eq:augmented-matrix:inverse-of-2-by-2-matrix}
 \boxed{\mat{A}^{-1} = \frac{1}{ad-bc}\begin{pmatrix}d & -b\\
 -c & a
 \end{pmatrix}.}
@@ -374,7 +384,7 @@ Hence
 
 \N{Algorithm to determine inverse matrix}
 From the previous example, we see that we could rephrase our process as
-considering the $2n\times n$ augmented matrix $(\mat{A}\mid\mat{I})$,
+considering the $n\times 2n$ augmented matrix $(\mat{A}\mid\mat{I})$,
 then ``applying Gauss--Jordan elimination and backsubstituting'' (i.e.,
 applying elementary row operations until) we obtain
 \begin{equation}
@@ -382,3 +392,11 @@ applying elementary row operations until) we obtain
 \end{equation}
 If elementary row operations cannot transform $\mat{A}$ to the identity
 matrix $\mat{A}\not\sim\mat{I}$, then $\mat{A}$ is singular.
+
+\input{tex/lu-decomposition}
+
+\N{STOP!!!} And take a break, go out for a walk, drink a glass of water.
+We've covered a lot in this section, introducing a general algorithm to
+solve systems of linear equations, and we introduced for the first
+time(!) a notion of ``factorization'' of matrices. That's a lot of new
+stuff.

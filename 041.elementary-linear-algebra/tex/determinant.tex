@@ -1,0 +1,192 @@
+\section{Determinant}
+
+\M
+Remember when we figured out the inverse of a $2\times 2$ matrix, in
+Eq~\eqref{eq:augmented-matrix:inverse-of-2-by-2-matrix} there was a
+funny common factor of $ad-bc$. That was odd.
+
+But if we try the same thing with a $3\times 3$ matrix, we end up with
+\begin{equation}
+\mat{A}^{-1} = \begin{pmatrix}a & b & c\\
+  d & e & f\\
+  g & h & i
+\end{pmatrix}^{-1} = \frac{1}{a(ei-fh)-b(di-fg)+c(dh-eg)}\begin{pmatrix}A & B & C\\
+  D & E & F\\
+  G & H & I
+\end{pmatrix}
+\end{equation}
+where $A$, $B$, $C$, etc., are all some mess. We're focused on the
+scalar factor out in front: if $b=c$ or $d=g=0$, then we recover a similar
+formula as in the $2\times 2$ case. Similarly, if $a=b=0$, we recover a
+similar factor.
+
+There is a recurring pattern here where, for a general $n\times n$
+matrix $\mat{A}$, there is a common factor when computing its inverse
+\begin{equation}
+\mat{A}^{-1} = \frac{1}{\mbox{(suspicious factor)}}\mat{B}.
+\end{equation}
+If we set $(n-1)$ entries in the first row to zero, we recover the
+suspicious factor from the $(n-1)\times(n-1)$ matrix inverse.
+
+This suspicious factor turns out to be extremely important.
+
+\N{Geometric Intuition}
+Think about $2$-dimensional space $\RR^{2}$. We could begin by examining
+the unit square:
+\begin{equation}
+C^{2} = \{(x_{1},x_{2})\in\RR^{2}\mid 0\leq x_{j}\leq 1, j=1,2\}.
+\end{equation}
+What is its area? This is very silly, everyone learns in High School it
+is the product of the lengths of its sides,
+\begin{equation}
+\operatorname{Area}(C^{2})=1\times1=1.
+\end{equation}
+
+But now suppose we ``deform'' the square to form a parallelogram with
+one vertex fixed at the origin. Then we have the two sides described by
+endpoints located at $\vec{a}=(a_{1},a_{2})$ and
+$\vec{b}=(b_{1},b_{2})$.
+
+What is its area? We can recall from vector
+calculus that it is the magnitude of the their cross product
+$|\vec{a}\times\vec{b}|=|a_{1}b_{2}-a_{2}b_{1}|$.
+
+Does it look familiar? It should: it's precisely the suspicious factor
+in Eq~\eqref{eq:augmented-matrix:inverse-of-2-by-2-matrix}.
+
+\M What about the case in $\RR^{3}$? What if we start with the unit cube
+\begin{equation}
+C^{3} = \{(x_{1},x_{2},x_{3})\in\RR^{3}\mid 0\leq x_{j}\leq 1, j=1,2,3\}.
+\end{equation}
+The analogous quantity of interest is now its \emph{volume}. What is the
+volume of the cube with side length equal to $1$? We recall
+\begin{equation}
+\operatorname{Vol}(C^{3})=1\times1\times1=1.
+\end{equation}
+Very simple.
+
+What if we deform the $(x_{1},x_{2})$ cross sections to be a
+parallelogram with sides at endpoints $(a_{1},a_{2},x_{3})$ and
+$(b_{1},b_{2},x_{3})$, like we did in the $\RR^{2}$ case? Intuitively, this is
+``dragging'' a parallelogram in the $(x_{1},x_{2})$-plane ``up'' the
+$x_{3}$-axis for a ways of 1 unit of length. What is the volume of this?
+It turns out to be the area of the parallelogram multiplied by the
+distance we drag it. Its volume would be
+\begin{equation}
+\operatorname{Vol}(P) = (a_{1}b_{2}-a_{2}b_{1})\times 1.
+\end{equation}
+This is not terribly surprising, so let us deform further.
+
+Specifically, we deform the unit cube to be a parallelepiped $P$ with a
+corner fixed at the origin. The endpoints for our parallelepepiped $P$ along
+its length, width, and height would be $\vec{a}=(a_{1},a_{2},a_{3})$,
+$\vec{b}=(b_{1},b_{2},b_{3})$ and $\vec{c}=(c_{1},c_{2},c_{3})$. What is
+its volume? The trick is to cheat and rotate axes until $\vec{a}$ and
+$\vec{b}$ live in the $(x_{1},x_{2})$ plane.
+
+But if we don't know that, then we can form the unit normal to the face
+formed by edges $\vec{a}$ and $\vec{b}$ by taking their cross-product,
+\begin{equation}
+\widehat{\vec{n}} = \frac{\vec{a}\times\vec{b}}{|\vec{a}\times\vec{b}|}.
+\end{equation}
+We find the height to be the projection of $\vec{c}$ onto this normal
+vector
+\begin{equation}
+h = \vec{c}\cdot\widehat{\vec{n}}.
+\end{equation}
+We can find the base area $B$ of the parallelogram formed by $\vec{a}$
+and $\vec{b}$ by
+\begin{equation}
+B = |\vec{a}\times\vec{b}|,
+\end{equation}
+and, as always, base times height yields volume:
+\begin{equation}
+\operatorname{Vol}(P) = Bh = |\vec{a}\times\vec{b}|\;\vec{c}\cdot\widehat{\vec{n}}.
+\end{equation}
+Great, but this doesn't seem to help much. We just unfold the definition
+of the unit normal, and we find
+\begin{equation}
+\operatorname{Vol}(P) = |\vec{a}\times\vec{b}|\frac{\vec{c}\cdot(\vec{a}\times\vec{b})}{|\vec{a}\times\vec{b}|}
+= \vec{c}\cdot(\vec{a}\times\vec{b}).
+\end{equation}
+What is this explicitly? Let's write it out:
+\begin{equation}
+\operatorname{Vol}(P) = c_{1}(a_{2}b_{3}-a_{3}b_{2}) - c_{2}(a_{1}b_{3}-a_{3}b_{1})
++ c_{3}(a_{1}b_{2}-a_{2}b_{1}).
+\end{equation}
+Does it look familiar? It should: it's the suspicious factor in the case
+of finding the inverse for a $3\times 3$ matrix.
+
+\M
+In short, this suspicious factor --- the exact same quantity --- appears
+in the volume of $n$-dimensional parallelograms, and when computing the
+inverse for an $n\times n$ matrix. This is strange, because one
+situation is geometry whereas the other situation is
+algebra. ``Strange'' is not the correct word for it: ``Profound'' should
+be employed.
+
+\N{Problem: How to compute this ``suspicious factor''?}
+Now that we've established the profundity of this ``suspicious factor'',
+how exactly do we compute it? What properties does it have? Why does it
+matter in linear algebra? And what should we call it?
+
+\begin{definition}
+Let $\mat{A}=(a_{i,j})$ be an $n\times n$ matrix. 
+We recursively define its \define{Determinant} to be a scalar, defined by:
+\begin{enumerate}
+\item if $n=1$, we just take $\det(\mat{A})=a_{1,1}$;
+\item if $n=2$, we simply take
+  \begin{equation}
+    \det(\mat{A}) = \det\begin{pmatrix}a_{1,1} & a_{1,2}\\
+    a_{2,1} & a_{2,2}
+    \end{pmatrix} = a_{1,1}a_{2,2} - a_{2,1}a_{1,2};
+  \end{equation}
+\item for $n>2$, we recursively define it using the formula
+  \begin{equation}
+\det(\mat{A}) = \sum_{j=1}^{n}(-1)^{j+1}a_{1,j}\det(\mat{M}_{j})
+  \end{equation}
+  where $\mat{M}_{j}$ is called a \emph{minor} of $\mat{A}$, obtained
+  from $\mat{A}$ by deleting its first row and its $j^{\text{th}}$ column.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+If $\mat{D}$ is a diagonal $n\times n$ matrix
+$\mat{D}=\diag(d_{1},\dots,d_{n})$, then its determinant is the product
+of the diagonal entries
+\begin{equation}
+\det(\mat{D}) = \prod^{n}_{j=1}d_{j}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}
+For any $n\times n$ matrices $\mat{A}$, $\mat{B}$,
+the determinant of their product is the product of their determinants
+\begin{equation}
+\det(\mat{A}\mat{B}) = \det(\mat{A})\det(\mat{B}).
+\end{equation}
+\end{theorem}
+
+\begin{theorem}
+Let $\mat{A}$ be an $n\times n$ matrix.
+The determinant of the transpose is the determinant of the original matrix:
+\begin{equation*}
+\det(\transpose{\mat{A}}) = \det(\mat{A}).
+\end{equation*}
+\end{theorem}
+
+
+\begin{exercise}
+Let $D$ be a function which eats in an $n\times n$ matrix $\mat{A}$
+treated as $n$ column vectors $\mat{A}=(\vec{a}_{1},\vec{a}_{2}, \dots,\vec{a}_{n})$;
+so $D(\mat{A}) = D(\vec{a}_{1},\vec{a}_{2},\dots,\vec{a}_{n})$ such that
+\begin{enumerate}
+\item $D(\mat{I})=1$ for the identity matrix
+\item it is linear in every slot: for any $\vec{u}$, $\vec{v}\in\RR^{n}$,
+  and every $a,b\in\RR$, we have
+  $D(\vec{a}_{1},\dots,a\vec{u}+b\vec{v},\dots,\vec{a}_{n})=aD(\vec{a}_{1},\dots,\vec{u},\dots,\vec{a}_{n}) + bD(\vec{a}_{1},\dots,\vec{v},\dots,\vec{a}_{n})$
+\item it is alternating: for any $i=1,2,\dots,n-1$, we have
+  $D(\vec{a}_{1},\dots,\vec{a}_{i},\vec{a}_{i+1},\dots,\vec{a}_{n})=-D(\vec{a}_{1},\dots,\vec{a}_{i+1},\vec{a}_{i},\dots,\vec{a}_{n})$.
+\end{enumerate}
+Prove or find a counter-example: the function $D$ is just the determinant $D(\mat{A})=\det(\mat{A})$.
+\end{exercise}

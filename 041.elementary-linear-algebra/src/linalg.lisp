@@ -18,7 +18,7 @@ See: http://www0.cs.ucl.ac.uk/staff/d.jones/GoodPracticeRNG.pdf"
         ((or (not nonzero) (not (zerop result)))
          result))))
 
-(defun random-equation (n-vars &optional (leading-nonzero nil)
+(defun random-equation (n-vars &optional (leading-nonzero -1)
                         &key (coef-low -5) (coef-high 5))
   (let ((result nil))
     (do ((i 0 (1+ i)))

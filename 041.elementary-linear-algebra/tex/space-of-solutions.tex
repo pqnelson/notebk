@@ -1,0 +1,44 @@
+
+\subsection{Solution Sets}
+
+\N{In 3-dimensions}
+Recall, in $\RR^{3}$ (three-dimensional real space), we describe a plane
+using a linear equation
+\begin{equation}
+ax + by + cz = d
+\end{equation}
+for some constants $a,b,c,d\in\RR$. This is a useful geometric fact,
+along with ``Two planes intersect each other in a line''.
+
+For a system of 3 linear equations in 3 unknowns,
+\begin{equation}
+\mat{A}\vec{x}=\vec{b}
+\end{equation}
+has the following possible outcomes:
+\begin{enumerate}
+\item \textsc{No solutions exist.} Some of the equations are
+  contradictory like $x=1$ and $x=0$, which means no solution exists.
+\item \textsc{Unique solution exists.} This we have seen before, when
+  $\mat{A}$ is invertible.
+\item \textsc{Line.} Two of the equations are multiples of each other,
+  so we really have a system of 2 \emph{distinct} linear equations in 3
+  unknowns. Each linear equation describes a plane. The solution to both
+  equations lie in the intersection of the corresponding planes. We end
+  up with our solution involving a free parameter $\lambda$, and it
+  would look like $\vec{x}(\lambda) = \vec{x}_{0} + \lambda\vec{m}$.
+\item \textsc{Plane.} All three equations are multiples of each
+  other. In this case, we have 1 distinct linear equation, which
+  describes a plane. Any point on the plane is a solution to our system
+  of equations. We describe our solutions with 2 free parameters,
+  $\lambda_{1}$ and $\lambda_{2}$, and the generic solution looks like
+  $\vec{x}(\lambda_{1},\lambda_{2}) = \vec{x}_{0} + \lambda_{1}\vec{x}_{1}+\lambda_{2}\vec{x}_{2}$.
+\item \textsc{All of $\RR^{3}$.} The matrix $\mat{A}$ is the zero
+  matrix \emph{and} the constant vector $\vec{b}$ is the zero
+  vector. Then every point in $\vec{x}\in\RR^{3}$ satisfies
+  $\mat{0}_{n\times n}\vec{x}=\vec{0}$.
+\end{enumerate}
+
+\M
+More generally, for a sytem of equation in $k$ unknowns, there are $k+2$
+possible outcomes (corresponding to the number of free parameters in the
+solution). 
