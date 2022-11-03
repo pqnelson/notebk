@@ -28,7 +28,7 @@
 % I have had a run of bad luck with hyperref getting into infinite loops
 % around this character, so I am going to avoid that issue.
 \DeclareRobustCommand{\chunk@separator}{\ifoldstylenumbering%
-  \if@in@appendix.\else\texorpdfstring{\superthinspace\textperiodcentered\superthinspace}{.}\fi
+  \if@in@appendix.\else\texorpdfstring{.}{\superthinspace\textperiodcentered\superthinspace}\fi
 \else.\fi}
 
 %% \pdfstringdefDisableCommands{%

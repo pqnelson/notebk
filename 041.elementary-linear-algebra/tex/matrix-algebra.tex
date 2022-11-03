@@ -238,15 +238,57 @@ Hence $\left(\transpose{(\transpose{\mat{A}})}\right)_{i,j} = (\mat{A})_{i,j}$,
 as desired.
 \end{proof}
 
-\begin{problem}
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix. We call $\mat{A}$
+\define{Symmetric} if it is equal to its transpose: $\mat{A}=\transpose{\mat{A}}$.
+Similarly, we call $\mat{A}$ \define{Antisymmetric} if it is the
+negation of its transpose $\mat{A}=-\transpose{\mat{A}}$.
+\end{definition}
+
+\begin{example}
+Let $\mat{A}$ be an anti-symmetric $3\times 3$ matrix. Then it must look
+like
+\begin{equation}
+\mat{A} = \begin{pmatrix}0 & a_{1,2} & a_{2,3} \\
+-a_{1,2} & 0 & -a_{3,1}\\
+a_{3,1} & - a_{2,3} 0
+\end{pmatrix}.
+\end{equation}
+In particular, the diagonal of an antisymmetric matrix consists of zero entries.
+\end{example}
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
 If $\mat{U}$ is an upper triangular matrix, then is
 $\transpose{\mat{U}}$ upper triangular or lower triangular?
-\end{problem}
+\end{exercise}
 
-\begin{problem}
+\begin{exercise}
 If $\mat{L}$ is an lower triangular matrix, then is
 $\transpose{\mat{L}}$ upper triangular or lower triangular?
-\end{problem}
+\end{exercise}
+
+\begin{exercise}
+Prove or find a counter-example: if $\mat{M}$ is an arbitrary $n\times n$
+matrix, then $\mat{A} = (\mat{M} - \transpose{\mat{M}})/2$ is an
+antisymmetric matrix and
+$\mat{S} = (\mat{M} + \transpose{\mat{M}})/2$ is a symmetric matrix.
+\end{exercise}
+
+\begin{exercise}
+Let $\mat{M}$ be an arbitrary $n\times n$ matrix.
+Prove or find a counter-example: there exists a unique symmetric 
+matrix $\mat{S}=\transpose{\mat{S}}$ and a unique antisymmetric matrix
+$\mat{A}=-\transpose{\mat{A}}$ such that $\mat{M}=\mat{S}+\mat{A}$. 
+\end{exercise}
+
+\begin{exercise}
+If $\mat{S}$ is a symmetric $n\times n$ matrix, is
+$\mat{S}\transpose{\mat{S}}$ symmetric? What about $\mat{S}+\transpose{\mat{S}}$?
+\end{exercise}
 
 \subsection{Dot Product and Matrix Multiplication}
 
@@ -790,6 +832,48 @@ Suppose we have an $m\times n$ matrix $\mat{A}$. When will there be an
 $n\times m$ matrix $\mat{B}$ such that $\mat{B}\mat{A}=\mat{I}_{n}$? Or
 $\mat{A}\mat{B}=\mat{I}_{m}$?
 
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
+  If you've never proven the geometric series formally, compute
+  \[ (1 - x)\left(\sum^{\infty}_{n=0}x^{n}\right)\]
+  formally (i.e., without worrying about convergence, just manipulate
+  things algebraically, assuming the usual rules of arithmetic apply to variables).
+\end{exercise}
+
+\begin{exercise}
+What is the computational complexity of matrix multiplication?
+That is to say, if $\mat{A}$ is an $m\times n$ matrix and $\mat{B}$ is an
+$n\times p$ matrix, how many addition and multiplication operations [of
+  numbers] are needed to compute $\mat{A}\mat{B}$? [Hint: do this for
+  the dot product of vectors, then do this for every entry in the result
+  of the matrix multiplication.]
+\end{exercise}
+
+\begin{exercise}[Discussion question]
+If we recall the Taylor series expansion for $\exp(x)$ from basic
+calculus,
+\[ \exp(x) = \sum^{\infty}_{n=0}\frac{x^{n}}{n!}, \]
+could we pretend this works when $x$ is a square matrix? Why or why not?
+Would this correspond to the limit definition of the exponential
+function
+\[ \exp(x) = \lim_{n\to\infty}\left(1 + \frac{x}{n}\right)^{n} \]
+if we could replace $x$ with a square matrix?
+\end{exercise}
+
+\begin{exercise}[Left distributivity over addition]
+Prove or find a counter-example: for any matrices [of suitable dimensions]
+$\mat{A}$, $\mat{B}$, and $\mat{C}$, we have $\mat{A}(\mat{B}+\mat{C}=\mat{A}\mat{B}+\mat{A}\mat{C}$.
+\end{exercise}
+
+\begin{exercise}[Right distributivity over addition]
+Prove or find a counter-example: for any matrices [of suitable dimensions]
+$\mat{A}$, $\mat{B}$, and $\mat{C}$, we have $(\mat{A}+\mat{B})\mat{C}=\mat{A}\mat{C}+\mat{B}\mat{C}$.
+\end{exercise}
+
+
 \subsection{Matrix Inverse}
 
 \begin{definition}
@@ -1040,3 +1124,41 @@ equivalent to each other:
 \item $\mat{A}\vec{x}=\vec{b}$ has a unique solution for every column
   $n$-vector $\vec{b}$.
 \end{enumerate}
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
+Prove or find a counter-example: if $\mat{P}$ is an invertible $n\times n$
+matrix and $\mat{A}$ is an $n\times n$ matrix, then for any $k\in\NN$ we
+have $(\mat{P}\mat{A}\mat{P}^{-1})^{k} = \mat{P}\mat{A}^{k}\mat{P}^{-1}$.
+\end{exercise}
+
+\begin{exercise}
+Let $\mat{U}$ be a strictly upper-triangular $n\times n$ matrix (i.e.,
+$\mat{U}$ is upper-triangular and its diagonal entries are zero).
+\begin{enumerate}
+\item Prove $\mat{U}^{n}=0$
+\item Prove $(\mat{I}+\mat{U})^{-1} = \sum^{n}_{k=0}\mat{U}^{k}$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Let $\mat{A}$ be an invertible $n\times n$ matrix, let $\mat{B}$ be an
+arbitrary $n\times n$ matrix, and let $0<\varepsilon\ll1$.
+Prove or find a counter-example:
+$(\mat{A}+\varepsilon\mat{B})^{-1} = \mat{A}^{-1}(1 + \varepsilon\mat{A}^{-1}\mat{B})^{-1}$.
+\end{exercise}
+
+\begin{exercise}
+We call a square matrix $\mat{A}$ \define{Orthogonal} if its transpose
+is its inverse $\mat{A}^{-1}=\transpose{\mat{A}}$.
+\begin{enumerate}
+\item Is the identity matrix orthogonal?
+\item If $\mat{A}$ is an orthogonal $n\times n$ matrix, then [letting
+  $0<\varepsilon\ll1$ be ``infinitesimal'', i.e., we ignore all terms of
+  order $\varepsilon^{2}$ but keep terms of first-order in $\varepsilon$]
+  when will $\mat{A}+\varepsilon\mat{B}$ be an orthogonal matrix?
+\end{enumerate}
+\end{exercise}

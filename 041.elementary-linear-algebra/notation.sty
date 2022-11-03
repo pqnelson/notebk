@@ -24,6 +24,7 @@
 \def\I{\mathrm{i}} % = \sqrt{-1}
 
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Span}{span}
 
 \let\oldvec\vec
 \let\vec\boldsymbol
@@ -31,3 +32,12 @@
 % matrix transpose, so who am I to argue?
 \newcommand\transpose[1]{#1^{\mathsf{T}}}
 \newcommand\mat[1]{\mathbf{#1}}
+
+% https://tex.stackexchange.com/a/594688
+\newcommand{\svdots}{%
+  \vbox{\fontsize{\sf@size}{\sf@size pt}\linespread{0.3}\selectfont
+    \kern0.2\baselineskip
+    \hbox{.}\hbox{.}\hbox{.}%
+    \kern0.1\baselineskip
+  }%
+}

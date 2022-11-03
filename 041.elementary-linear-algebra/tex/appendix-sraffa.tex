@@ -224,101 +224,132 @@ negative price.
 \N{Numerical values}
 A lot of these examples have nice numerical values. But if we, for
 example, reduced the surplus of the wheat sector to zero in the previous
-example, then there is no closed form expression for the eigenvalues of
-$\mat{A}\mat{B}^{-1}$. We need to use numerical approximations
-$\lambda_{1}\approx 0.955884$,
-$\lambda_{2}\approx 0.337684$, and
-$\lambda_{3}\approx-0.0279857$. The iron and coal sectors give us the
-relations
+example, giving us the equations of production:
+  \begin{subequations}
+    \begin{align}
+      200~\mbox{qr. wheat} + 40~\mbox{t. iron} + 40~\mbox{t. coal} &\to 410~\mbox{qr. wheat}\\
+      60~\mbox{qr. wheat} + 90~\mbox{t. iron} + 120~\mbox{t. coal} &\to 180~\mbox{t. iron}\\
+      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to 450~\mbox{t. coal}
+    \end{align}
+  \end{subequations}
+  Then the matrix $\mat{A}\mat{B}^{-1}$ has characteristic polynomial
+  \begin{equation}
+p(\lambda) = \frac{35}{1107} - \frac{1679}{4428}\lambda + \frac{467}{369}\lambda^{2}-\lambda^{3}.
+  \end{equation}
+  The closed form expression for the eigenvalues is rather unpleasant
+  and shockingly involves imaginary quantities
 \begin{subequations}
-\begin{equation}
-p_{i} = \frac{2(1+r)(18 + 7(1+r))}{108 - 84(1+r) + 7 (1+r)^{2}}p_{w}
-\end{equation}
-and
 \begin{align}
-p_{c} &= \frac{14}{72}(1+r)p_{i} + \frac{23-7r}{72}p_{w}\\
-&= \frac{2(11 + 4r - 7r^{2})}{31 - 70r + 7r^{2}}p_{w}
+\lambda_{1} &= \frac{467}{1107}+\frac{252805}{2214 \sqrt[3]{118352413+738\I\sqrt{3946737549}}}
++\frac{\sqrt[3]{118352413+738\I\sqrt{3946737549}}}{2214}
 \end{align}
+\begin{multline}
+\lambda_{2} = \frac{467}{1107}
+-\frac{252805}{4428 \sqrt[3]{118352413+738 \I\sqrt{3946737549}}}
+-\frac{252805\I}{1476 \sqrt{3} \sqrt[3]{118352413+738\I\sqrt{3946737549}}}\\
+-\frac{\sqrt[3]{118352413+738\I\sqrt{3946737549}}}{4428}\
++\frac{\I\sqrt[3]{118352413+738\I\sqrt{3946737549}}}{1476 \sqrt{3}}
+\end{multline}
+\begin{multline}
+  \lambda_{3} = \frac{467}{1107}
+  -\frac{252805}{4428 \sqrt[3]{118352413+738\I\sqrt{3946737549}}}
+  +\frac{252805\I}{1476 \sqrt{3}\sqrt[3]{118352413+738\I\sqrt{3946737549}}}\\
+  -\frac{\sqrt[3]{118352413+738\I\sqrt{3946737549}}}{4428}
+  -\frac{\I \sqrt[3]{118352413+738\I\sqrt{3946737549}}}{1476 \sqrt{3}}
+\end{multline}
 \end{subequations}
-which holds provided
-\begin{equation}
-31 - 70r + 7r^{2}\neq0.
-\end{equation}
-That is to say,
-\begin{equation}
-r\neq\frac{35\pm12\sqrt{7}}{7}=5\pm\frac{12}{\sqrt{7}}.
-\end{equation}
-We find the approximate prices, for
-$\lambda_{1}=(1+r_{1})^{-1}\approx 0.955884$ [$r_{1}\approx 4.61515\%$] we have
-$p_{i}(r_{1})\approx1.38421p_{w}$ and 
-$p_{c}(r_{1})\approx0.633981p_{w}$;
-for $\lambda_{2}\approx 0.337684$ [$r_{2}\approx196.135\%$], we find
-$p_{i}(r_{2})\approx0.170988p_{w}$ and $p_{c}(r_{2})\approx0.131292 p_{w}$; and for
-$\lambda_{3}\approx-0.0279857$ [$r_{3}\approx-3673.25\%$], we find
-$p_{i}(r_{3})\approx -0.00903004p_{w}$ and
-$p_{c}(r_{3})\approx-0.00922875p_{w}$.
+  There is no closed form expression for the eigenvalues of
+$\mat{A}\mat{B}^{-1}$ \emph{as real numbers}. We need to use numerical
+  approximations:
+  \begin{subequations}
+    \begin{align}
+      \lambda_{1} &\approx0.872546\\
+      \lambda_{2} &\approx0.147691\\
+      \lambda_{3} &\approx0.245346.
+    \end{align}
+  \end{subequations}
+  Only $\lambda_{1}$ corresponds to a rate of profit between 0 and 100\%
+  (namely, a rate of profit $r_{1}\approx0.146072$). This gives the
+  exchange rate of
+  \begin{equation}
+p_{i}(\lambda_{1})\approx2.85062p_{w},\quad\mbox{and}\quad
+p_{c}(\lambda_{1})\approx1.09298p_{w}.
+  \end{equation}
+If we tried the other rates of profit, we would find 
+  \begin{equation}
+    p_{i}(\lambda_{2})\approx-3.2122p_{w},\quad\mbox{and}\quad
+    p_{c}(\lambda_{2})\approx0.726998p_{w},
+  \end{equation}
+  which is implausible; and lastly
+  \begin{equation}
+    p_{i}(\lambda_{3})\approx-6.33286p_{w},\quad\mbox{and}\quad
+    p_{c}(\lambda_{3})\approx2.84669p_{w}.
+  \end{equation}
+  Again, this last case is implausible.
 
-If we demand, as output of wheat continuously increased from 410
-quarters to 480 quarters, that the prices and rates of profit
-continuously vary as well, then the there is n$\lambda_{1}$ corresponds to the
-economically significant solution. This doesn't always work, leading to
-a mathematical phenomena known as ``bifurcations''.
 
-\N{Bifurcations}
-Suppose we have continuously varied the output of the coal sector with a
-parameter $c\in\RR$ such that $0\leq c$, so the economy's equations of
-production look like:
+  \N{Perturbing Coal surplus, supply and demand}
+  Suppose we restore the surplus of wheat.
+  If we parametrize the surplus of coal as a variable $\Delta c$, then the
+  equations of production become:
   \begin{subequations}
     \begin{align}
       200~\mbox{qr. wheat} + 40~\mbox{t. iron} + 40~\mbox{t. coal} &\to 480~\mbox{qr. wheat}\\
       60~\mbox{qr. wheat} + 90~\mbox{t. iron} + 120~\mbox{t. coal} &\to 180~\mbox{t. iron}\\
-      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to (285+c)~\mbox{t. coal}
+      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to (285+\Delta c)~\mbox{t. coal}
     \end{align}
   \end{subequations}
-Then if we try to numerically solve the characteristic polynomial for
-$\mat{A}\mat{B}(c)^{-1}$, there will be 1 real solution and 2 complex
-solutions. The real solution leads to a rate of profit
-$r(c=0)\approx0.03799=3.799\%$ and $r(c=450-285)=6$. This doesn't match
-any rate of profit to the initial system in our second example.
+  We see that as $\Delta c$ increases, the value of coal (as measured in its
+  exchange-rate with wheat) decreases. We perform these calculations,
+  at increments of $\Delta c=10$ tons of coal, and find:
+  \begin{center}
+    \begin{tabular}{cccc}
+      \toprule
+      &\multicolumn{2}{c}{Value of 1 ton of coal}&\\
+      \cmidrule(r){2-3}
+    $\Delta c$ & $p_{c}$ in multiples of $p_{w}$ & $p_{c}$ in multiples of $p_{i}$&rate of profit\\ \midrule
+ $0$ & $ 2.39536 p_{w}$ & $ 0.57506 p_{i}$ & $3.79928\%$\\
+$10$ & $ 2.28951 p_{w}$ & $ 0.555297 p_{i}$ & $3.93706\%$\\
+$20$ & $ 2.19192 p_{w}$ & $ 0.536871 p_{i}$ & $4.07416\%$\\
+$30$ & $ 2.10173 p_{w}$ & $ 0.519652 p_{i}$ & $4.2106\%$\\
+$40$ & $ 2.01814 p_{w}$ & $ 0.503524 p_{i}$ & $4.34639\%$\\
+$50$ & $ 1.94051 p_{w}$ & $ 0.488387 p_{i}$ & $4.48152\%$\\
+$60$ & $ 1.86823 p_{w}$ & $ 0.474151 p_{i}$ & $4.616\%$\\
+$70$ & $ 1.80081 p_{w}$ & $ 0.460739 p_{i}$ & $4.74984\%$\\
+$80$ & $ 1.73777 p_{w}$ & $ 0.448081 p_{i}$ & $4.88303\%$\\
+$90$ & $ 1.67874 p_{w}$ & $ 0.436114 p_{i}$ & $5.0156\%$\\
+$100$ & $ 1.62335 p_{w}$ & $ 0.424783 p_{i}$ & $5.14753\%$\\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  We see as the surplus of coal $c$ increases, its exchange rate with
+  iron and wheat decreases. In other words, \emph{as supply increases, price decreases}.
+  That is to say, the ``law of supply'' is an emergent phenomenon in
+  Neo-Ricardian economics.
 
-What does this mean? As we ``continuously vary'' the amount of surplus
-coal produced, there's a ``jump'' or ``discontinuity'' between the
-situation with no coal surplus ($c=0$) and the situation we are given
-($c=485-280$). This is called a \define{Bifurcation} and reflects some
-complexity in the model (in the sense of chaos theory). Robert Vieanneau
-researches this phenomena in Neo-Ricardian economics.
-  
-\N{Modeling supply shocks}
-We can model supply shocks by replacing $\mat{B}$ with
-$\mat{B}+\delta\mat{B}$ for some ``shock matrix'' $\delta\mat{B}$.
+  The curious reader may experiment with the Mathematica code used to
+  produce this table:
+\begin{Verbatim}
+inverse_profit[c_]:=Eigenvalues[{{200/480,40/180,40/(285+c)},
+ {60/480,90/180,120/(285+c)},
+ {150/480,50/180,125/(285+c)}}]
 
-\begin{example}
-If we consider a modification of the second example
-  \begin{subequations}
-    \begin{align}
-      200~\mbox{qr. wheat} + 40~\mbox{t. iron} + 40~\mbox{t. coal} &\to 480~\mbox{qr. wheat}\\
-      60~\mbox{qr. wheat} + 90~\mbox{t. iron} + 120~\mbox{t. coal} &\to 180~\mbox{t. iron}\\
-      150~\mbox{qr. wheat} + 50~\mbox{t. iron} + 125~\mbox{t. coal} &\to (285+\delta)~\mbox{t. coal}
-    \end{align}
-  \end{subequations}
-  where $\delta\geq0$ is the ``shock'' to the coal supply, we see that
-  there are some rough upper bounds on the rate of profit from the coal
-  sector:
-  \begin{subequations}
-    \begin{equation}
-(1+r)(150p_{w} + 50p_{i} + 125p_{c}) = (285 + \delta)p_{c}
-    \end{equation}
-    has positive prices provided
-    \begin{equation}
-    (1+r)(125p_{c}) < (285 + \delta)p_{c}
-    \end{equation}
-    or equivalently
-    \begin{equation}
-r < 1.28 + \frac{\delta}{125}.
-    \end{equation}
-    The wheat sector induces a similar upper bound on the rate of profit
-    to be no more than $1 + r < 12/5$ or $r < 7/5$, and the iron sector
-    induces the upper bound $1 + r < 2$ or $r < 1$.
-  \end{subequations}
-\end{example}
+prices[c_,profit_]:=Reduce[{profit*(60 wheat + 90 iron + 120 coal) == 180 iron,
+ profit*(150 wheat + 50 iron + 125 coal) == (285 + c) coal},
+ {iron, coal}]
 
+exchange[c_] := prices[c, 1/(inverse_profit[c])[[1]]]
+
+Table[{10*c,
+   N[exchange[10*c]][[2]][[2]],
+   N[exchange[10*c]][[2]][[2]]/N[exchange[10*c]][[1]][[2]] iron,
+   N[(1/inverse_profit[c] - 1)[[1]]},
+ {c,0,10}]
+\end{Verbatim}
+The \verb#inverse_profit# produces a list of eigenvalues for
+$\mat{A}\mat{B}^{-1}$, the first eigenvalue corresponds to the
+economically significant solution. We then find the exchange-rate of
+iron, wheat, and coal using \verb#prices#, and finally produce a
+\verb#Table# of rows consisting of $\Delta c$, the price of 1 ton of
+coal in terms of the value of wheat $p_{w}$, and the price of 1 ton of
+coal in terms of the value of iron $p_{i}$.

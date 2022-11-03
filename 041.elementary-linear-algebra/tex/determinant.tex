@@ -143,12 +143,230 @@ We recursively define its \define{Determinant} to be a scalar, defined by:
   \end{equation}
 \item for $n>2$, we recursively define it using the formula
   \begin{equation}
-\det(\mat{A}) = \sum_{j=1}^{n}(-1)^{j+1}a_{1,j}\det(\mat{M}_{j})
+\det(\mat{A}) = \sum_{j=1}^{n}(-1)^{j+1}a_{1,j}\det(\mat{M}_{1,j})
   \end{equation}
-  where $\mat{M}_{j}$ is called a \emph{minor} of $\mat{A}$, obtained
-  from $\mat{A}$ by deleting its first row and its $j^{\text{th}}$ column.
+  where $\mat{M}_{1,j}$ is called a \emph{minor} of $\mat{A}$, obtained
+  from $\mat{A}$ by deleting its first row and its $j^{\text{th}}$
+  column --- more generally $\mat{M}_{i,j}$ is obtained by deleting row
+  $i$ and column $j$ from $\mat{A}$.
 \end{enumerate}
 \end{definition}
+
+\begin{lemma}
+Let $\mat{A}$ be an $n\times n$ matrix with a column or row consisting of
+zeros. Then $\det(\mat{A})=0$.
+\end{lemma}
+
+\begin{theorem}
+Let $\mat{T}=(t_{i,j})$ be a triangular $n\times n$ matrix (either
+upper-triangular, or lower-triangular, it doesn't matter).
+Then its determinant is just the product of diagonal entries
+$\det(\mat{T}) = \prod_{j=1}^{n}t_{j,j}$.
+\end{theorem}
+
+\begin{proof}
+  We do this by induction on $n$.
+
+  \textbf{Base Case:} $n=2$, for upper-triangular matrices we find
+  \begin{equation}
+\det\begin{pmatrix}t_{1,1} & t_{1,2}\\0 & t_{2,2}
+\end{pmatrix} = t_{1,1}t_{2,2} - t_{1,2}0 = t_{1,1}t_{2,2}.
+  \end{equation}
+  For lower-triangular matrices
+  \begin{equation}
+\det\begin{pmatrix}t_{1,1} & 0\\t_{2,1} & t_{2,2}
+\end{pmatrix} = t_{1,1}t_{2,2} - 0t_{2,1} = t_{1,1}t_{2,2}.
+  \end{equation}
+  Hence we establish the base case.
+
+  \textbf{Inductive Hypothesis:} We assume this is true for general $n$.
+
+  \textbf{Inductive Case:} For the $n\to n+1$ case, we will examine two
+  subcases. Subcase 1 is when $\mat{T}$ is upper-triangular, where we
+  write the block components out:
+  \begin{equation}
+    \mat{T} = \left(\begin{array}{cc}
+      t_{1,1} & \transpose{\vec{t}} \\
+      \vec{0} & \mat{T}^{(n)}
+    \end{array}\right)
+  \end{equation}
+  The inductive hypothesis assumed $\det(\mat{T}^{(n)}$ is the product
+  of diagonal components. We see that the minors $\mat{M}_{1,i}$ has a
+  zero column for $i>1$. Hence only the $i=1$ minor contributes to the
+  determinant, giving us
+  \begin{subequations}
+\begin{calculation}
+    \det(\mat{T})
+\step{definition of determinant}
+    \sum^{n+1}_{i=1}(-1)^{i+1}t_{1,i}\det(\mat{M}_{1,i})
+\step{pulling out the first term from the sum}
+    t_{1,1}\det(\mat{M}_{1,1}) + \sum^{n+1}_{i=2}(-1)^{i+1}t_{1,i}\det(\mat{M}_{1,i})
+\step{but $\det(\mat{M}_{1,i})=0$ for $i>1$}
+    t_{1,1}\det(\mat{M}_{1,1}) + \sum^{n+1}_{i=2}(-1)^{i+1}t_{1,i}\cdot0
+\step{the sum of zeros is zero}
+    t_{1,1}\det(\mat{M}_{1,1}) + 0
+\step{arithmetic}
+    t_{1,1}\det(\mat{M}_{1,1})
+\step{the minor $\mat{M}_{1,1} = \mat{T}^{(n)}$}
+    t_{1,1}\det(\mat{T}^{(n)})
+\step{inductive hypothesis}
+    t_{1,1}\prod^{n+1}_{j=2}t_{j,j}
+\step{associativity of multiplication}
+    \prod^{n+1}_{j=1}t_{j,j}.
+\end{calculation}
+\end{subequations}
+Hence we conclude for upper-triangular matrices, its determinant is
+just the product of diagonal components.
+
+\textsc{Subcase 2: Lower-triangular matrix.}
+The reasoning for lower-triangular matrices is similar. Its block
+components would look like
+\begin{equation}
+    \mat{T} = \left(\begin{array}{cc}
+      t_{1,1} & \transpose{\vec{0}} \\
+      \vec{t} & \mat{T}^{(n)}
+    \end{array}\right)
+  \end{equation}
+The steps would be exactly the same, but this time because $t_{1,j}=0$
+for $j>1$.
+\end{proof}
+
+\N{Levi-Civita Symbol}
+It is an unfortunate fact that the definition we have given for the
+determinant, while useful for \emph{performing calculations}, cannot
+easily be used to prove properties concerning the
+determinant. Consequently, we introduce an equivalent definition using a
+terrifying quantity known as the Levi--Civita symbol. Its terror stems
+from having multiple indices, but do not worry: it is used for book-keeping.
+
+Let us define the Levi--Civita symbol for three-dimensions as
+$\epsilon_{i,j,k}$ such that
+\begin{enumerate}
+\item $\epsilon_{1,2,3}=+1$, and
+\item swapping two adjacent indices costs us a sign: $\epsilon_{j,i,k}=-\epsilon_{i,j,k}=\epsilon_{i,k,j}$;
+$\epsilon_{k,i,j}=\epsilon_{i,j,k}=\epsilon{j,k,i}$.
+\end{enumerate}
+As a consequence of the second property, any repeated index will
+correspond to a zero entry: $\epsilon_{i,i,k}=0$, $\epsilon_{i,j,j}=0$,
+and so on. The Levi--Civita symbol in $n$ indices has analogous
+properties:
+\begin{enumerate}
+\item $\epsilon_{1,2,3,\dots,n-1,n}=+1$, and
+\item swapping two adjacent indices costs us a sign:
+  $\epsilon_{i_{1},\dots,i_{j},i_{j+1},\dots,i_{n}}=-\epsilon_{i_{1},\dots,i_{j+1},i_{j},\dots,i_{n}}$.
+\end{enumerate}
+Yes, we have subscripts \emph{on our subscripts} --- we've indexed the
+indexing variables!
+
+The determinant in three-dimensions for matrix $\mat{A}=(a_{i,j})$ is then
+\begin{equation}\label{eq:determinant:levi-civita:three-dim}
+\boxed{\det(\mat{A}) = \sum^{3}_{i=1}\sum^{3}_{j=1}\sum^{3}_{k=1}
+\epsilon_{i,j,k}a_{1,i}a_{2,j}a_{3,k}.}
+\end{equation}
+We can see this by performing the sums when $i=1$, we get
+\begin{equation}
+\sum^{3}_{j=1}\sum^{3}_{k=1}\epsilon_{1,j,k}a_{1,1}a_{2,j}a_{3,k}
+=a_{1,1}\left(\sum^{3}_{k=1}\epsilon_{1,2,k}a_{2,2}a_{3,k}+\epsilon_{1,3,k}a_{2,3}a_{3,k}\right)
+\end{equation}
+But the antisymmetry property forces us to have $k=3$ in the first term
+and $k=2$ in the second term as the only nonzero contribution in the
+right-hand side:
+\begin{equation}
+\sum^{3}_{j=1}\sum^{3}_{k=1}\epsilon_{1,j,k}a_{1,1}a_{2,j}a_{3,k}
+=a_{1,1}\left(\epsilon_{1,2,3}a_{2,2}a_{3,3}+\epsilon_{1,3,2}a_{2,3}a_{3,2}\right)
+\end{equation}
+Invoking antisymmetry to rearrange indices:
+\begin{equation}
+\sum^{3}_{j=1}\sum^{3}_{k=1}\epsilon_{1,j,k}a_{1,1}a_{2,j}a_{3,k}
+=a_{1,1}\left(\epsilon_{1,2,3}a_{2,2}a_{3,3}-\epsilon_{1,2,3}a_{2,3}a_{3,2}\right)
+\end{equation}
+then invoking the first property simplifies the right-hand side:
+\begin{equation}
+\sum^{3}_{j=1}\sum^{3}_{k=1}\epsilon_{1,j,k}a_{1,1}a_{2,j}a_{3,k}
+=a_{1,1}\left(a_{2,2}a_{3,3}-a_{2,3}a_{3,2}\right).
+\end{equation}
+This is precisely what we had as the coefficient to $a_{1,1}$ in the
+familiar definition of the determinant. If we continue along, we will
+find our new definition coincides with our old definition.
+
+If we had a $4\times4$ matrix $\mat{A}=(a_{i,j})$, then we would have
+\begin{equation}
+\det(\mat{A}) = \sum^{4}_{i=1}a_{1,i}\det(M_{1,i})
+\end{equation}
+using our familiar definition. But we can rewrite $\det(M_{1,i})$ using
+the Levi--Civita symbol as (remembering the minors are $3\times3$ matrices):
+\begin{equation}
+\det(\mat{A}) =
+\sum^{4}_{i=1}(-1)^{i+1}a_{1,i}\left(\sum^{3}_{j=1}\sum^{3}_{k=1}\sum^{3}_{\ell=1}\epsilon_{j,k,\ell}(M_{1,j})_{2,j}(M_{1,k})_{3,k}(M_{1,\ell})_{4,\ell}\right),
+\end{equation}
+or by suppressing the column $i$ explicitly and reindexing accordingly:
+\begin{equation}
+\det(\mat{A}) =
+\sum^{4}_{i=1}(-1)^{i+1}a_{1,i}\left(\sum^{4}_{\stackrel{j=1}{j\neq i}}\sum^{4}_{\stackrel{k=1}{k\neq i}}\sum^{4}_{\stackrel{\ell=1}{\ell\neq i}}\epsilon_{j,k,\ell}a_{2,j}a_{3,k}a_{4,\ell}\right),
+\end{equation}
+We observe the factor of $(-1)^{i+1}\epsilon_{j,k,\ell}$ could be
+replaced by $\epsilon_{i,j,k,\ell}$ (which will also enforce the
+conditions $i\neq j$ and $k\neq i$ and so on). Thus we find:
+\begin{equation}
+\det(\mat{A}) =
+\sum^{4}_{i=1}\epsilon_{i,j,k,\ell}a_{1,i}\sum^{4}_{j=1}\sum^{4}_{k=1}\sum^{4}_{\ell=1}a_{2,j}a_{3,k}a_{4,\ell}.
+\end{equation}
+We invoke distributivity to tidy up the right-hand side as:
+\begin{equation}
+\boxed{\det(\mat{A}) =
+\sum^{4}_{i=1}\sum^{4}_{j=1}\sum^{4}_{k=1}\sum^{4}_{\ell=1}\epsilon_{i,j,k,\ell}a_{1,i}a_{2,j}a_{3,k}a_{4,\ell}.}
+\end{equation}
+There seems to be a pattern emerging, when we examing the
+three-dimensional case in Eq~\eqref{eq:determinant:levi-civita:three-dim}
+and compare it to the four-dimensional case: we have a Levi--Civita
+symbol with $n$ indices, and $n$ factors of $a_{1,i_{1}}a_{2,i_{2}}(\cdots)a_{n,i_{n}}$.
+
+Thus we could argue, for any $n\times n$ matrix $\mat{A}=(a_{i,j})$, we have:
+\begin{equation}\label{eq:determinant:using-levi-civita}
+\boxed{\det(\mat{A}) = \sum^{n}_{i_{1}=1}\sum^{n}_{i_{2}=1}\cdots\sum^{n}_{i_{n}=1}\epsilon_{i_{1},i_{2},\dots,i_{n}}a_{1,i_{1}}a_{2,i_{2}}(\cdots)a_{n,i_{n}}.}
+\end{equation}
+We've shown this is true for $n=3$ and $n=4$, and we've shown how $n=4$
+boils down to $n=3$. The general argument is similar, we would argue by
+induction --- our base case has been established, we just need to prove
+the inductive case $n+1$ in terms of the ``arbitrary $n$'' inductive
+hypothesis. But this is precisely what we've done when moving from $n=3$
+to $n=4$. The only difference will be slight, writing
+\begin{align}
+    \det\mat{A} &= \sum^{n+1}_{i_{1}=1}(-1)^{i_{1}+1}a_{1,i_{1}}\det(\mat{M}_{1,i_{1}})\\
+    &= \sum^{n+1}_{i_{1}=1}(-1)^{i_{1}+1}a_{1,i_{1}}\left(\sum^{n}_{\mathclap{i_{2}=1}}(\cdots)\sum^{n}_{\mathclap{i_{n+1}=1}}\epsilon_{i_{2},\dots,i_{n},i_{n+1}}(\mat{M}_{i_{1},i_{2}})_{2,i_{2}}(\cdots)(\mat{M}_{i_{1},i_{n}})_{n,i_{n}}(\mat{M}_{i_{1},i_{n+1}})_{n+1,i_{n+1}}\right).\nonumber
+\end{align}
+The argument is exactly the same: rewrite the minors by components and
+explicitly enforce $i_{j}\neq i_{1}$ in the sums, then we would
+replace the
+$(-1)^{i_{1}+1}\epsilon_{i_{2},\dots,i_{n+1}}$ by
+$\epsilon_{i_{1},i_{2},\dots,i_{n+1}}$, and find the $i_{j}\neq i_{1}$
+conditions redundant (so we'd remove them), 
+then invoking distributivity to obtain Eq~\eqref{eq:determinant:using-levi-civita}.
+We will therefore take Eq~\eqref{eq:determinant:using-levi-civita}
+to be proven.
+
+\begin{lemma}
+The $n\times n$ identity matrix $\mat{I}$ has determinant 1.
+\end{lemma}
+
+\begin{proof}
+  We find
+\begin{calculation}
+\det(\mat{I})
+    \step{using Eq~\eqref{eq:determinant:using-levi-civita}}
+\sum^{n}_{i_{1}=1}\dots\sum^{n}_{i_{n}=1}\epsilon_{i_{1},\dots,i_{n}}\delta_{1,i_{1}}\dots \delta_{n,i_{n}}
+    \step{summing over $i_{n}$}
+\sum^{n}_{i_{1}=1}\dots\sum^{n}_{i_{n-1}=1}\epsilon_{i_{1},\dots,i_{n-1},n}\delta_{1,i_{1}}\dots \delta_{n-1,i_{n-1}}
+    \step{induction}
+\sum^{n}_{i_{1}=1}\epsilon_{i_{1},2,\dots,n-1,n}\delta_{1,i_{1}}
+    \step{defining property of the Kronecker--delta}
+\epsilon_{1,2,\dots,n}
+    \step{defining property of Levi--Civita}
++1
+\end{calculation}
+Hence we conclude, for any $n$, the $n\times n$ identity matrix has
+determinant $\det(\mat{I})=1$.
+\end{proof}
 
 \begin{theorem}
 If $\mat{D}$ is a diagonal $n\times n$ matrix
@@ -159,6 +377,26 @@ of the diagonal entries
 \end{equation}
 \end{theorem}
 
+This theorem is important, its proof is lengthy and involved. There are
+no tricks to learn from it, so its importance is just to ensure the
+result is true.
+
+\begin{proof}
+  We find
+  \begin{calculation}
+\det(\mat{D})
+    \step{Eq~\eqref{eq:determinant:using-levi-civita}}
+\sum^{n}_{i_{1}=1}\dots\sum^{n}_{i_{n}=1}\epsilon_{i_{1},\dots,i_{n}}d_{1,i_{1}}\dots d_{n,i_{n}}
+    \step{since $d_{1,i}=d_{1}\delta_{1,i}$, etc.}
+\sum^{n}_{i_{1}=1}\dots\sum^{n}_{i_{n}=1}\epsilon_{i_{1},\dots,i_{n}}\prod^{n}_{j=1}d_{j}\delta_{j,i_{j}}
+     \step{defining property of Kronecker-delta applied in each summation}
+\epsilon_{1,2,\dots,n}\prod^{n}_{j=1}d_{j}
+     \step{by definition of the Levi--Civita symbol}
+(+1)\prod^{n}_{j=1}d_{j}.
+  \end{calculation}
+This concludes the proof.
+\end{proof}
+
 \begin{theorem}
 For any $n\times n$ matrices $\mat{A}$, $\mat{B}$,
 the determinant of their product is the product of their determinants
@@ -166,6 +404,232 @@ the determinant of their product is the product of their determinants
 \det(\mat{A}\mat{B}) = \det(\mat{A})\det(\mat{B}).
 \end{equation}
 \end{theorem}
+
+\begin{proof}
+Let $\mat{C}=(c_{i,k})=\mat{A}\mat{B}$, $\mat{A}=(a_{i,j})$ and $\mat{B}=(b_{i,j})$.
+We know from the definition of matrix multiplication
+\begin{equation}\label{eq:determinant:pf-of-product:components-of-product}
+c_{i,k} = \sum^{n}_{j=1}a_{i,j}b_{j,k}.
+\end{equation}
+We find
+\begin{subequations}
+\begin{calculation}
+\det(\mat{C})
+    \step{using Eq~\eqref{eq:determinant:using-levi-civita}}
+\sum^{n}_{j_{1}=1}\cdots\sum^{n}_{j_{n}=1}\epsilon_{j_{1},\dots,j_{n}}c_{1,j_{1}}(\cdots)c_{n,j_{n}}
+    \step{using the formula for $c_{i,k}$ from Eq~\eqref{eq:determinant:pf-of-product:components-of-product}}
+\sum^{n}_{j_{1}=1}\cdots\sum^{n}_{j_{n}=1}\epsilon_{j_{1},\dots,j_{n}}\left(\sum^{n}_{k=1}a_{1,k}b_{k,j_{1}}\right)\left(\sum^{n}_{k=1}a_{2,k}b_{k,j_{2}}\right)
+(\cdots)\left(\sum^{n}_{k=1}a_{n,k}b_{k,j_{n}}\right)
+    \step{collapsing sums}
+\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}\epsilon_{j_{1},\dots,j_{n}}\left(\sum^{n}_{k=1}a_{1,k}b_{k,j_{1}}\right)\left(\sum^{n}_{k=1}a_{2,k}b_{k,j_{2}}\right)
+(\cdots)\left(\sum^{n}_{k=1}a_{n,k}b_{k,j_{n}}\right)
+    \step{reindexing}
+\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}\epsilon_{j_{1},\dots,j_{n}}\left(\sum^{n}_{i_{1}=1}a_{1,i_{1}}b_{i_{1},j_{1}}\right)\left(\sum^{n}_{i_{2}=1}a_{2,i_{2}}b_{i_{2},j_{2}}\right)
+(\cdots)\left(\sum^{n}_{i_{n}=1}a_{n,i_{n}}b_{i_{n},j_{n}}\right)
+    \step{distributivity}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}\epsilon_{j_{1},\dots,j_{n}}a_{1,i_{1}}b_{i_{1},j_{1}}a_{2,i_{2}}b_{i_{2},j_{2}}(\cdots)a_{n,i_{n}}b_{i_{n},j_{n}}
+\end{calculation}
+\end{subequations}
+If we start at the other end, we find
+\begin{subequations}
+\begin{calculation}
+\det(\mat{A})\det(\mat{B})
+    \step{using Eq~\eqref{eq:determinant:using-levi-civita}}
+\left(\sum^{n}_{i_{1}=1}\cdots\sum^{n}_{i_{n}=1}\epsilon_{i_{1},\dots,i_{n}}a_{1,i_{1}}(\cdots)a_{n,i_{n}}\right)
+\left(\sum^{n}_{j_{1}=1}\cdots\sum^{n}_{j_{n}=1}\epsilon_{j_{1},\dots,j_{n}}b_{1,j_{1}}(\cdots)b_{n,j_{n}}\right)
+    \step{collapsing indices into a single summation symbol}
+\left(\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\epsilon_{i_{1},\dots,i_{n}}a_{1,i_{1}}(\cdots)a_{n,i_{n}}\right)
+\left(\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}\epsilon_{j_{1},\dots,j_{n}}b_{1,j_{1}}(\cdots)b_{n,j_{n}}\right)
+    \step{using distributivity}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}\left(\epsilon_{i_{1},\dots,i_{n}}a_{1,i_{1}}(\cdots)a_{n,i_{n}}\epsilon_{j_{1},\dots,j_{n}}b_{1,j_{1}}(\cdots)b_{n,j_{n}}\right)
+    \step{reindexing the $j$ indices}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{i_{1}}=1\\\svdots\\j_{i_{n}}=1}}%
+\left(\epsilon_{i_{1},\dots,i_{n}}a_{1,i_{1}}(\cdots)a_{n,i_{n}}
+\epsilon_{j_{i_{1}},\dots,j_{i_{n}}}b_{i_{1},j_{i_{1}}}(\cdots)b_{i_{n},j_{i_{n}}}\right)
+\end{calculation}
+We want to show that reindexing the $j_{i_{k}}$ indices as $j_{k}$ will
+cost us a factor of the Levi--Civita symbol. Well, we would be applying
+a permutation $\pi$ to the $j$ indices, which \emph{would} cost us a
+Levi--Civita symbol.
+\begin{calculation}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{i_{1}}=1\\\svdots\\j_{i_{n}}=1}}%
+\left(\epsilon_{i_{1},\dots,i_{n}}a_{1,i_{1}}(\cdots)a_{n,i_{n}}
+\epsilon_{j_{i_{1}},\dots,j_{i_{n}}}b_{i_{1},j_{i_{1}}}(\cdots)b_{i_{n},j_{i_{n}}}\right)
+\step{permuting $j_{i_{k}}$ with $j_{k}$ costs us a Levi--Civita symbol}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}%
+\left(\epsilon_{i_{1},\dots,i_{n}}a_{1,i_{1}}(\cdots)a_{n,i_{n}}
+\epsilon_{i_{1},\dots,i_{n}}\epsilon_{j_{1},\dots,j_{n}}b_{i_{1},j_{1}}(\cdots)b_{i_{n},j_{n}}\right)
+\step{the $\epsilon_{j_{1},\dots,j_{n}}(\epsilon_{i_{1},\dots,i_{n}})^{2}$ is just $\epsilon_{j_{1},\dots,j_{n}}$}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}%
+\left(a_{1,i_{1}}(\cdots)a_{n,i_{n}}\epsilon_{j_{1},\dots,j_{n}}b_{i_{1},j_{1}}(\cdots)b_{i_{n},j_{n}}\right)
+\step{associativity}
+\sum^{n}_{\substack{i_{1}=1\\\svdots\\i_{n}=1}}\sum^{n}_{\substack{j_{1}=1\\\svdots\\j_{n}=1}}%
+\epsilon_{j_{1},\dots,j_{n}}
+a_{1,i_{1}}(\cdots)a_{n,i_{n}}b_{i_{1},j_{1}}(\cdots)b_{i_{n},j_{n}}
+\end{calculation}
+\end{subequations}
+The fact we could replace $\epsilon_{i_{1},\dots,i_{n}}\epsilon_{i_{1},\dots,i_{n}}\epsilon_{j_{1},\dots,j_{n}}$
+with $\epsilon_{j_{1},\dots,j_{n}}$ stems from the fact that we require
+the $i_{1}\neq i_{2}\neq\dots\neq i_{n}$ to be distinct in the sum, but
+this is also equivalent to demanding the $j_{1}\neq j_{2}\neq\dots\neq j_{n}$
+be distinct; however, the $\epsilon_{j_{1},\dots,j_{n}}$ factor
+guarantees this is always the case. So the $\epsilon_{i_{1},\dots,i_{n}}^{2}$
+would contribute only its magnitude (i.e., a factor of $+1$), hence we
+can drop it.
+But we see, this is precisely what we worked out for $\det(\mat{A}\mat{B})$.
+Hence the result follows.
+\end{proof}
+
+\begin{lemma}
+Let $\mat{A}=(a_{i,j})$ be an $n\times n$ matrix, let $r\in\RR$ be some
+number, and let $\mat{B}=(b_{i,j})$ be obtained from $\mat{A}$ by adding
+$r$ times row $\mu$ to row $\nu$ $b_{i,j} = a_{i,j} + ra_{\mu,j}\delta_{i,\nu}$.
+Then $\det(\mat{A})=\det(\mat{B})$.
+\end{lemma}
+\begin{proof}
+We see that $\mat{B} = (\mat{I} + r\mat{E}_{\mu,\nu})\mat{A}$, where
+$\mat{E}_{\mu\nu}$ has a single nonzero entry located at row $\mu$,
+column $\nu$, which is equal to 1. Then
+$\det(\mat{B}) = \det(\mat{I} + r\mat{E}_{\mu,\nu})\det(\mat{A})$ since
+the determinant of products is the product of determinants.
+But $\mat{I} + r\mat{E}_{\mu,\nu}$ is either upper-triangular (when
+$\mu<\nu$) or lower-triangular (when $\mu>\nu$), and in both cases the
+determinant would be just the product of the diagonal
+$\det(\mat{I} + r\mat{E}_{\mu,\nu})=\det(\mat{I})$ and we determined
+this is 1. Hence $\det(\mat{B})=(1)\det(\mat{A})$.
+\end{proof}
+
+\begin{theorem}
+Let $\mat{A}$ be an $n\times n$ matrix such that row $i$ is a multiple
+of row $j$. Then $\det(\mat{A})=0$.
+
+Let $\mat{B}$ be an $n\times n$ matrix such that column $i$ is a
+multiple of column $j$. Then $\det(\mat{B})=0$.
+\end{theorem}
+\begin{proof}
+Since we can add multiples of rows (or columns) to other rows without
+affecting the determinant, we see if we subtract a multiple of row $i$
+from row $j$ in $\mat{A}$ we will have a row consisting of zeroes. This
+obviously has determinant 0 (it was the first thing we proved after the
+definition of determinant).
+
+Similar reasoning holds for $\mat{B}$.
+\end{proof}
+
+\begin{lemma}
+Let $\mat{S}(i,j)$ be the $n\times n$ matrix obtained from the identity
+matrix, swapping row $i$ and row $j$. Then
+$\det(\mat{S}(i,j)) = (-1)^{i-j}$.
+\end{lemma}
+
+\begin{proof}
+Let us prove this for the case when $j=i+1$. The general case follows by
+applying this particular case repeatedly.
+In this case, our matrix would look, in block form, like
+\begin{equation}
+  \det(\mat{S}(i,i+1)) = \left(\begin{array}{c|cc|c}
+    \mat{I} & 0  & 0 & 0\\\hline
+    0 & 0 & 1 & 0\\
+    0 & 1 & 0 & 0\\\hline
+    0 & 0 & 0 & \mat{I}
+  \end{array}\right)
+\end{equation}
+We then add row $i+1$ to row $i$
+\begin{equation}
+(\mat{I} + \mat{E}_{i+1,i})(\mat{S}(i,i+1)) = \left(\begin{array}{c|cc|c}
+    \mat{I} & 0  & 0 & 0\\\hline
+    0 & 1 & 1 & 0\\
+    0 & 1 & 0 & 0\\\hline
+    0 & 0 & 0 & \mat{I}
+  \end{array}\right)
+\end{equation}
+Then we subtract row $i$ from row $i+1$:
+\begin{equation}
+(\mat{I} - \mat{E}_{i,i+1})(\mat{I} + \mat{E}_{i+1,i})(\mat{S}(i,i+1)) = \left(\begin{array}{c|cc|c}
+    \mat{I} & 0  & 0 & 0\\\hline
+    0 & 1 & 1 & 0\\
+    0 & 0 & -1 & 0\\\hline
+    0 & 0 & 0 & \mat{I}
+  \end{array}\right)
+\end{equation}
+Since this is upper-triangular,its determinant is just the product of
+diagonal entries:
+\begin{equation}
+\det\left((\mat{I} - \mat{E}_{i,i+1})(\mat{I} + \mat{E}_{i+1,i})(\mat{S}(i,i+1))\right)=-1.
+\end{equation}
+However, since adding a multiple of one row to another does not affect
+the determinant, we find
+\begin{equation}
+\det\left((\mat{I} - \mat{E}_{i+1,i})(\mat{I} + \mat{E}_{i,i+1})\mat{S}(i,i+1)\right)=\det(\mat{S}(i,i+1)).
+\end{equation}
+Hence we establish the case when $j=i+1$.
+
+This general reasoning holds when we restore $j$, namely that
+\begin{equation}
+\det\left((\mat{I} - \mat{E}_{i,j})(\mat{I} + \mat{E}_{j,i})(\mat{S}(i,j))\right)=-1,
+\end{equation}
+hence
+\begin{equation}
+\det(\mat{S}(i,j)) = -1.
+\end{equation}
+Precisely as desired.
+\end{proof}
+
+\begin{proposition}
+Let $\mat{A}$ be an $n\times n$ matrix, let $\mat{B}$ be obtained by
+swapping rows $i$ and $j$ in $\mat{A}$.
+Then $\det(\mat{B})=(-1)^{i-j}\det(\mat{A})$.
+\end{proposition}
+
+\begin{proof}
+We see that $\mat{B}=\mat{S}(i,j)\mat{A}$. Then by the determinant of
+products is the product of determinants, we find
+\begin{equation}
+\det(\mat{B})=\det(\mat{S}(i,j))\det(\mat{A}).
+\end{equation}
+We just proved $\det(\mat{S}(i,j))=(-1)^{i-j}$, so substituting this in
+yields the result.
+\end{proof}
+
+\begin{theorem}
+Let $\mat{A}$ be an invertible $n\times n$ matrix.
+If $\det(\mat{A})\neq0$,
+then $\det(\mat{A}^{-1}) = \left(\det(\mat{A})\right)^{-1}$.
+\end{theorem}
+
+\begin{proof}
+We know $\mat{A}\mat{A}^{-1}=\mat{I}$, and then taking the determinant
+of both sides yields
+\begin{equation}
+\det(\mat{A}\mat{A}^{-1}) = 1.
+\end{equation}
+We know the determinant of products is the product of determinants
+\begin{equation}
+\det(\mat{A}\mat{A}^{-1}) = \det(\mat{A})\det(\mat{A}^{-1}) = 1.
+\end{equation}
+Dividing both sides by $\det(\mat{A})$ yields the result.
+\end{proof}
+
+
+
+\begin{theorem}
+  Let $\mat{A}$ be an $n\times n$ matrix.
+  The determinant is zero if and only if $\mat{A}$ is singular;
+  equivalently, the determinant is nonzero if and only if $\mat{A}$ is
+  invertible. 
+\end{theorem}
+
+\begin{proof}
+Suppose $\mat{A}$ is invertible. Then
+$\det(\mat{A}\mat{A}^{-1})=\det(\mat{I})=1\neq0$. In particular, this
+means $\det(\mat{A})\neq0$.
+
+The other direction is just the contrapositive: ``if $p$, then $q$'' is
+logically equivalent to its contrapositive ``if not-$q$, then not-$p$''.
+Here $q$ is ``$\det(\mat{A})\neq0$'', and $p$ is ``$\mat{A}$ is invertible''.
+Hence the contrapositive is ``If $\det(\mat{A})=0$, then $\mat{A}$ is
+not invertible''. And that's what we wanted to prove! So, we're done.
+\end{proof}
 
 \begin{theorem}
 Let $\mat{A}$ be an $n\times n$ matrix.
@@ -175,6 +639,98 @@ The determinant of the transpose is the determinant of the original matrix:
 \end{equation*}
 \end{theorem}
 
+\begin{proof}
+  Either $\mat{A}$ is invertible or not. If not, then it is singular and
+  has zero determinant. Its transpose will be singular, and have zero
+  determinant. Hence the result holds for singular matrices.
+
+  For nonsingular matrices, we recall the LU-factorization
+  $\mat{A}=\mat{L}\mat{U}$ where $\mat{U}$ has nonzero diagonal entries
+  (because $\mat{A}$ is nonsingular) and $\mat{L}$ has 1 along its
+  diagonal (hence $\det(\mat{L})=1$. Hence
+  \begin{subequations}
+  \begin{calculation}
+    \det(\transpose{\mat{A}})
+\step{LU decomposition}
+    \det(\transpose{(\mat{L}\mat{U})})
+\step{transpose of products is reverse product of transposes}
+    \det(\transpose{\mat{U}}\transpose{\mat{L}})
+\step{determinant of product is product of determinants}
+    \det(\transpose{\mat{U}})\det(\transpose{\mat{L}})
+\step{$\transpose{\mat{L}}$ is triangular with 1 on diagonal}
+    \det(\transpose{\mat{U}})1 =\det(\transpose{\mat{U}})
+\step{$\transpose{\mat{U}}$ is triangular with the same diagonal entries
+  as $\mat{U}$}
+  \det(\mat{U})
+\step{$\mat{L}$ is triangular with 1 on diagonal}
+  1\det(\mat{U}) = \det(\mat{L})\det(\mat{U})
+\step{product of determinants is determinant of products}
+  \det(\mat{L}\mat{U})
+\step{by LU decomposition of $\mat{A}$}
+  \det(\mat{A}).
+  \end{calculation}
+  \end{subequations}
+  Hence the result.
+\end{proof}
+
+\begin{remark}
+This proof is important, because it shows the basic gambit in linear
+algebra: we take a matrix, and try factorizing it into a product of nice
+matrices. Then we use this factorization to prove the desired result.
+\end{remark}
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
+Let $\mat{M}$ be an $n\times n$ matrix.
+We call $\mat{M}$ \define{Antisymmetric} if $\transpose{\mat{M}}=-\mat{M}$.
+\begin{enumerate}
+\item What would the diagonal values be for an antisymmetric matrix?
+\item Write down a $3\times 3$ antisymmetric matrix.
+\item What would the determinant of a $3\times3$ antisymmetric matrix
+  be? What about a $4\times 4$ antisymmetric matrix?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Let $\mat{A}$ be an $n\times n$ matrix, let $c\neq 0$ be a nonzero number.
+Is $\det(c\mat{A})$ a multiple of $\det(\mat{A})$? If so, what is that multiple?
+If not, what is the determinant of a scalar matrix?
+\end{exercise}
+
+\begin{exercise}
+Prove or find a counter-example: if $\vec{a}=(a_{j})$ and
+$\vec{b}=(b_{k})$ are vectors in $\RR^{3}$, then their cross product has
+components $\vec{a}\times\vec{b} = (\sum_{j}\sum_{k}\epsilon_{i,j,k}a_{j}b_{k})$.
+\end{exercise}
+
+(This gives one generalization of the cross-product to other dimensions
+using the Levi--Civita symbol. We see the difficulty generalizing it to
+higher dimensions: the Levi--Civita symbol in $n$ dimensions has $n$
+indices. In other words, for $n\geq3$ dimensions, we need $n-1$ vectors
+to form a cross-product.)
+
+\begin{exercise}
+We call an $n\times n$ matrix $\mat{N}$ \define{Nilpotent} if there is a
+positive integer $m$ such that $\mat{N}^{m}=0$. If $\mat{N}$ is
+nilpotent, then what is its determinant?
+\end{exercise}
+
+\begin{exercise}
+We call an $n\times n$ matrix $\mat{A}$ \define{Idempotent} if
+$\mat{A}^{2}=\mat{A}$. What constraints does this impose on $\det(\mat{A})$?
+\end{exercise}
+
+\begin{exercise}
+Suppose $\mat{B}$ is an $n\times n$ matrix obtained from $\mat{A}$ by
+multiplying row $i$ in $\mat{A}$ by a nonzero number $\gamma$. What is
+$\det(\mat{B})$ in terms of $\det(\mat{A})$ and $\gamma$?
+
+[Hint: they are not equal to each other in general, only for $\gamma=1$
+  are the determinants equal.]
+\end{exercise}
 
 \begin{exercise}
 Let $D$ be a function which eats in an $n\times n$ matrix $\mat{A}$
@@ -189,4 +745,115 @@ so $D(\mat{A}) = D(\vec{a}_{1},\vec{a}_{2},\dots,\vec{a}_{n})$ such that
   $D(\vec{a}_{1},\dots,\vec{a}_{i},\vec{a}_{i+1},\dots,\vec{a}_{n})=-D(\vec{a}_{1},\dots,\vec{a}_{i+1},\vec{a}_{i},\dots,\vec{a}_{n})$.
 \end{enumerate}
 Prove or find a counter-example: the function $D$ is just the determinant $D(\mat{A})=\det(\mat{A})$.
+\end{exercise}
+
+\subsection{Trace of a Matrix}
+
+\begin{proposition}
+Let $\mat{X}$ be an $n\times n$ matrix, let $\varepsilon>0$ be ``small''
+(in the sense that we discard terms of order $\varepsilon^{2}$ or higher).
+Then
+\begin{equation}
+\det(\mat{I} + \varepsilon\mat{X}) = \varepsilon\sum^{n}_{j=1}(\mat{X})_{j,j}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+This follows from the fact that $1\gg\varepsilon^{2}$ and the product of
+off-diagonal components would contribute a $\varepsilon^{2}$ term (or
+some higher power of $\varepsilon$). So
+\begin{equation}
+\det(\mat{I} + \varepsilon\mat{X}) = \prod^{n}_{j=1}(1 + \varepsilon(\mat{X})_{j,j})+\mathcal{O}(\varepsilon^{2}).
+\end{equation}
+Expanding out the product, and keeping only the first-order
+$\varepsilon$ terms gives us the result.
+\end{proof}
+
+\begin{remark}
+From this perspective, the ``linear approximation'' to the determinant
+``near the identity matrix'' is precisely the sum of diagonal entries in
+the ``perturbation'' about the identity matrix. For this reason, it
+deserves to be defined.
+\end{remark}
+
+\begin{definition}
+Let $\mat{A}=(a_{i,j})$ be an $n\times n$ matrix.
+We define its \define{Trace} to be the sum of its diagonal components
+\begin{equation}
+\tr(A) = \sum^{n}_{j=1}a_{j,j}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}
+The trace of the transpose is the trace of the original matrix,
+$\tr(\transpose{\mat{A}})=\tr(\mat{A})$.
+\end{proposition}
+\begin{proof}
+Let $\mat{B}=\transpose{\mat{A}}$. Then its components would be
+$(\mat{B})_{i,j}=(\mat{A})_{j,i}$ and in particular the diagonal
+components are the same. So the sum of the diagonal components would be
+equal.
+\end{proof}
+
+\begin{proposition}
+Let $\mat{A}$ be an $n\times n$ matrix, let $c$ be some number.
+Then $\tr(c\mat{A})=c\tr(\mat{A})$.
+\end{proposition}
+
+\begin{proposition}
+Let $\mat{A}$ be an $m\times n$ matrix, let $\mat{B}$ be an $n\times m$ matrix.
+Then $\tr(\mat{A}\mat{B})=\tr(\mat{B}\mat{A})$.
+\end{proposition}
+
+\begin{corollary}[Cyclic property]
+Let $\mat{A}_{1}$, \dots, $\mat{A}_{k}$ be matrices of appropriate
+dimension. Then $\tr(\mat{A}_{1}\mat{A}_{2}\dots\mat{A}_{k})=\tr(\mat{A}_{2}\dots\mat{A}_{k}\mat{A}_{1})$.
+\end{corollary}
+
+\begin{proof}
+  We use associativity of matrix multiplication to write
+  \begin{equation}
+\tr(\mat{A}_{1}\mat{A}_{2}\dots\mat{A}_{k}) = \tr(\mat{A}_{1}(\mat{A}_{2}\dots\mat{A}_{k})),
+  \end{equation}
+  and then using the previous proposition we have
+  \begin{equation}
+\tr(\mat{A}_{1}(\mat{A}_{2}\dots\mat{A}_{k})) = \tr((\mat{A}_{2}\dots\mat{A}_{k})\mat{A}_{1}).
+  \end{equation}
+  Invoking associativity of matrix multiplication again yields the result.
+\end{proof}
+
+\begin{proposition}
+Let $\mat{A}$, $\mat{B}$ be $n\times n$ matrices.
+Then $\tr(\mat{A} + \mat{B}) = \tr(\mat{A}) + \tr(\mat{B})$.
+\end{proposition}
+
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
+Prove or find a counter-example: if $\mat{A}$ is an invertible $n\times n$
+matrix, $0<\varepsilon\ll1$ is a small real number, and $\mat{B}$ is an
+arbitrary $n\times n$ matrix, then
+$\det(\mat{A} + \varepsilon\mat{B})\approx \det(\mat{A})(1 + \varepsilon\tr(\mat{A}^{-1}\mat{B}))$
+(plus higher order corrections in $\varepsilon$).
+\end{exercise}
+
+\begin{exercise}
+If $\mat{A}$ is an $n\times n$ matrix such that $\transpose{\mat{A}}=\mat{A}^{-1}$,
+then what values could $\det(\mat{A})$ be?
+\end{exercise}
+
+\begin{exercise}
+In abstract algebra, the Vandermonde determinant is useful for studying
+the roots of polynomials. The Vandermonde determinant in three variables
+is given by the determinant
+\[ \det\begin{pmatrix}
+1     & 1     & 1 \\
+a     & b     & c\\
+a^{2} & b^{2} & c^{2}
+\end{pmatrix}=(a-b)(b-c)(c-a). \]
+Prove this formula actually holds. [Hint: expand both sides
+  independently, then show they are equal to each other.]
 \end{exercise}

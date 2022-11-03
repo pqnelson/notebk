@@ -1,7 +1,7 @@
 TEX=pdflatex
 FILE=elementary-linear-algebra
 
-all:
+all: images
 	$(TEX) $(FILE)
 	$(TEX) $(FILE)
 

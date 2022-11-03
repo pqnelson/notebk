@@ -1,0 +1,247 @@
+\section{Vectors in \texorpdfstring{$\RR^{n}$}{Rn}}
+
+\M
+We learn about vectors at university specifically so we could do vector
+calculus. But we have only mentioned vectors in our notes on linear
+algebra in passing as a particular ``species'' of matrices. Is this an
+unfortunate collision of language? That is to say, are these two notions
+distinct [not secretly the same] but unfortunately use the same term?
+
+Let us review what a ``vector'' was for the real plane $\RR^{2}$.
+
+\N{Real Number Line}
+Let us recall what happens in the simplest case of all: the real number
+line. The first thing we do is draw a line (in the Euclidean sense,
+which extends in both directions infinitely far) and pick some point $O$
+on the line:
+\begin{center}
+  \includegraphics{img/img.0}
+\end{center}
+We then pick a point $A\neq O$ on the line (which is not the same point
+as $O$):
+\begin{center}
+  \includegraphics{img/img.1}
+\end{center}
+We take the distance between point $O$ and $A$ to be 1 unit. We then
+construct the rest of the ``ticks'' along this line, and identify every
+point with a number in the real numbers. Intuitively corresponding to
+the picture:
+\begin{center}
+  \includegraphics{img/img.2}
+\end{center}
+How do we make this identification? We take a point $P$ on the line,
+find its distance [from $O$ to $P$] as a multiple of the distance from
+$O$ to $A$. In the case where, like point $Q$, it lies ``in the other
+direction'', we identify point $Q$ with the negative real numbers by
+dividing the distance between $O$ and $Q$ with the distance between $O$
+and $A$ (and multiplying the result by $-1$). This is a real number
+$x\in\RR$. Conversely, if $x\in\RR$, then we can identify with a point
+on the line by dilating the line segment $\overline{OA}$ by $x$.
+
+When we identify point $P$ on the line by the real number $x$, we call
+$x$ the \define{Coordinate} of $P$. The point $O$ has coordinate $0$,
+and the distance between points $P$ and $Q$ (who have coordinates
+$x_{P}$ and $x_{Q}$, respectively) by the magnitude of the difference in
+their coordinates $|x_{Q}-x_{P}|$.
+
+\N{Constructing the Plane}
+We can construct the plane by taking a line which passes through $O$ and
+forms a $90^{\circ}$ angle with our real line. If we just ``plop'' down
+such a line, we get:
+\begin{center}
+\includegraphics{img/img.3}
+\end{center}
+We can then form ``ticks'' along this new line, and call it the
+\define{$y$ Axis} (our old line is the \define{$x$ Axis}):
+\begin{center}
+\includegraphics{img/img.4}
+\end{center}
+Instead of identifying a point in the plane with \emph{one} real number,
+we now have a \emph{pair} of real numbers. These are obtained by
+projecting onto the axes (the projection to the $x$-axis is in red, the
+projection to the $y$-axis is in green):
+\begin{center}
+\includegraphics{img/img.5}
+\end{center}
+These give us points on the axes, which then give us coordinates $x_{P}$
+and $y_{P}$ for those points on the axes. We combine these in an ordered
+pair $(x_{P}, y_{P})$ and call them the \define{Coordinates} of $P$.
+Conversely, given any pair of numbers $(x,y)\in\RR^{2}$, we can
+construct a point in the plane by reversing the steps in this procedure.
+
+\N{Vectors in the Plane}
+Recall, we define a column 2-vector as a $2\times1$ matrix
+\begin{equation}
+\vec{v} = \begin{pmatrix}x_{1}\\x_{2}
+\end{pmatrix}.
+\end{equation}
+We identify $\vec{p}$ with a point in the plane by constructing an
+oriented line segment from $O$ (the point with coordinates $(0,0)$ in
+the plane) and the point $P$ (with coordinates $(x_{1},x_{2})$). We
+write this oriented line segment using the notation
+$\overrightarrow{OP}$. We call $O$ the \define{Base Point} and $P$ the
+\define{Endpoint} of $\overrightarrow{OP}$.
+\begin{center}
+\includegraphics{img/img.6}
+\end{center}
+The directed line segment $\overrightarrow{OP}$ has a \define{Direction} (given
+by the angle formed with the positive $x_{1}$-axis) and a
+\define{Magnitude} (given by its length).
+
+We identify any directed line segment $\overrightarrow{OP}$ with base
+point $O$ with a vector $\vec{v}$ by taking the components of $\vec{v}$
+to be the coordinates of $P$ relative to base-point $O$.
+
+Conversely, given any 2-vector $\vec{v}=(v_{1},v_{2})$, we identify it
+with a directed line segment [in the plane with axes and units] from $O$
+to $P$ where $P$ has coordinates $(v_{1},v_{2})$.
+
+\begin{ddanger}\textsc{Caution:}
+In physics, we often work with vectors with base point $Q$ and endpoint
+$P$ in the plane (or in $\RR^{3}$ or wherever) and quite cavalierly
+identify the oriented line segment $\overrightarrow{QP}$ with the line
+segment of equal length and direction $\overrightarrow{OP'}$ located at
+base-point $O$. This works because of the magic of $\RR^{n}$ being a
+flat manifold. It doesn't work in general. In fact, in linear algebra,
+we anchor all vectors to the same base point $O$.
+\end{ddanger}
+
+\begin{definition}
+Let $\vec{v}=(v_{1},v_{2})$ be a vector in the plane. We define its
+\define{Magnitude} by the non-negative real number
+$\|\vec{v}\| = \sqrt{v_{1}^{2}+v_{2}^{2}}$.
+\end{definition}
+
+\N{Parallelogram Law}
+When we have two vectors $\vec{u}$ and $\vec{v}$ in the plane (or in space), we can form a
+parallelogram using vectors $\vec{u}$ and $\vec{v}$ as edges and their
+shared base point as the origin. Their sum
+is the vector to the opposite diagonal vertex from the origin:
+\begin{center}
+  \includegraphics{img/img.7}
+\end{center}
+The reader may verify the origin plus the two vectors give us three
+vertices, and demanding a parallelogram gives us the remaining
+vertex. Further, the coordinates of the remaining vertex may be obtained
+by adding componentwise the coordinates of the endpoints for the vectors.
+
+\begin{remark}
+Fascinatingly, this ``parallelogram law'' is mistakenly attributed to
+Pseudo-Aristotle, but recent scholarship shows this is a
+misunderstanding. The first uses of the parallelogram law may be found
+in Fermat (of ``Last Theorem'' fame) and Thomas Hobbes (the pessimistic ``rude,
+short, and brutish'' philosopher). For further details, the reader is
+invited to enjoy David Marshall Miller's
+``The Parallelogram Rule from Pseudo-Aristotle to Newton''
+\journal{Archive for History of Exact Sciences} \volume{71} (2017) pp.157--191.
+\end{remark}
+
+\N{Scalar Multiplication}
+If we have a vector $\vec{v}$ corresponding to the oriented line segment
+$\overrightarrow{OP}$ and a real number $r$, we may form the
+scalar multiple $r\vec{v}$ by three cases:
+\begin{enumerate}
+\item Case 1 $r>0$: we just move the endpoint along the line passing
+  through $O$ and $P$ to have a magnitude $r$ times greater than what
+  the magnitude of $\overrightarrow{OP}$ is;
+\item Case 2 $r=0$: we have the coordinates of the resulting vector be
+  all zeroes.
+\item Case 3 $r<0$: we find $Q$ the point along the line passing
+  through $O$ and $P$ of the same magnitude but opposite direction of
+  $\overrightarrow{OP}$, and multiply the magnitude of the line segment
+  from $O$ to this new point $Q$ by $|r|>0$ to produce a point $R$ and
+  identify $\overrightarrow{OR}$ with our new vector.
+\end{enumerate}
+
+\N{Consistency and Coherence Checks: Vector Subtraction}
+We now may observe, for any vectors $\vec{u}$ and $\vec{v}$ in the
+plane, that $\vec{u}-\vec{v}$ corresponds to the vector sum of $\vec{u}$
+with the scalar multiple $-1\vec{v}$. Similarly, repeatedly adding a
+vector $\vec{u}$ to itself $n\in\NN$ times gives us the scalar multiple
+$n\vec{u}$.
+
+In other words, scalar multiplication produces results which make sense
+in light of vector addition \emph{via} the parallelogram law.
+
+\N{Angles Between Vectors}
+We can recall the law of cosines from trigonometry:
+\begin{equation}
+\|\vec{u}-\vec{v}\|^{2} = \|\vec{u}\|^{2} + \|\vec{v}\|^{2} - 2 \|\vec{u}\|\|\vec{v}\|\cos(\theta)
+\end{equation}
+where $\theta$ is the angle formed between the edges of the vector. We
+refresh our memory of the location of the variables with the sketch:
+\begin{center}
+  \includegraphics{img/img.8}
+\end{center}
+Now, we can compute using coordinates
+\begin{subequations}
+\begin{calculation}
+  \|\vec{u}-\vec{v}\|^{2}
+\step{by definition of the magnitude of a vector}
+  (u_{1}-v_{1})^{2} + (u_{2}-v_{2})^{2}
+\step{expanding the terms}
+  (u_{1}^{2}-2u_{1}v_{1}+v_{1}^{2}) + (u_{2}^{2}-2u_{2}v_{2}+v_{2}^{2})
+\step{associativity of addition}
+  (u_{1}^{2} + u_{2}^{2}) + (v_{1}^{2} + v_{2}^{2}) -2u_{1}v_{1}-2u_{2}v_{2}
+\step{distributivity}
+  (u_{1}^{2} + u_{2}^{2}) + (v_{1}^{2} + v_{2}^{2}) -2(u_{1}v_{1}+u_{2}v_{2}).
+\end{calculation}
+\end{subequations}
+We see this is just
+$\|\vec{u}\|^{2}+\|\vec{v}\|^{2}-2(\mbox{stuff})$. But we know what the
+``(stuff)'' is, by the law of cosines,
+\begin{equation}
+-2(u_{1}v_{1}+u_{2}v_{2}) = - 2 \|\vec{u}\|\|\vec{v}\|\cos(\theta),
+\end{equation}
+hence \emph{for nonzero vectors} we find,
+\begin{equation}
+\frac{(u_{1}v_{1}+u_{2}v_{2})}{\|\vec{u}\|\|\vec{v}\|} = \cos(\theta).
+\end{equation}
+But what's more, we see the numerator of the right-hand side is just the
+dot product of vectors $\vec{u}\cdot\vec{v}$. We conclude
+\begin{equation}
+\frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|} = \cos(\theta).
+\end{equation}
+We see this formula is symmetric if we switched places of $\vec{u}$ and
+$\vec{v}$, in the sense we get exactly the same result.
+
+But further, we can now \emph{define} the angle $\theta$ between
+\emph{any} two \emph{nonzero}(!!) vectors $\vec{u}$ and $\vec{v}$ by the
+relation: 
+\begin{equation}
+\boxed{\cos(\theta) := \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|}.}
+\end{equation}
+We stress these must be nonzero vectors (otherwise we divide by zero and
+horrible results follow).
+
+\begin{definition}
+If two nonzero vectors $\vec{u}$ and $\vec{v}$ are such that
+\begin{equation}
+\vec{u}\cdot\vec{v}=0,
+\end{equation}
+then we call them \define{Orthogonal} (usually we say one is orthogonal
+to the other).
+\end{definition}
+
+\N{Unit Vectors and Directions}
+If we wish to make a statement about ``directions'', then we can make it
+precise by using \define{Unit Vectors} --- vectors of ``unit magnitude''
+(i.e., length one). We follow tradition and use hats to indicate we have
+a unit vector. For any nonzero vector $\vec{u}$ of arbitrary length, we
+can \define{Normalize} it to produce the unit vector
+\begin{equation}
+\widehat{\vec{u}} = \frac{\vec{u}}{\|\vec{u}\|}.
+\end{equation}
+We see then that the angle between vectors may be found using their unit
+vectors's dot product, without worrying about dividing by anything:
+\begin{equation}
+\widehat{\vec{u}}\cdot\widehat{\vec{v}}=\cos(\theta).
+\end{equation}
+
+\N{Generalization to $n>2$}
+Everything we have discussed so far has been restricted to the real
+plane $\RR^{2}$. But we could generalize it to $\RR^{n}$ for $n\in\NN$
+arbitrary [but fixed]. Vectors then have $n$ components, but all our
+definitions generalize accordingly. Vector addition is given by adding
+components, scalar multiplication is given by multiplying each component
+by the given scalar, and so on.

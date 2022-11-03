@@ -417,7 +417,14 @@ This gives us the block LU decomposition of $\mat{M}$:
 \end{pmatrix}.}
 \end{equation}
 
-\begin{problem}
+
+
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
 What happens if $\mat{A}$ is $m\times q$, $\mat{B}$ is $m\times p$,
 $\mat{C}$ is $n\times q$, and $\mat{C}$ is $n\times p$? For what values
 of $m$, $n$, $p$, and $q$ would the block LU decomposition
@@ -441,5 +448,19 @@ $\mat{A}\mat{A}_{L}$) is --- at best! --- you end up with a block matrix
 of the form $(\mat{I}|0)$ or its transpose.
 You can work this out, if you want, but we will develop more tools later
 that will help you answer this pathological variant problem.}
-\end{problem}
+\end{exercise}
 
+\begin{exercise}
+Let $\mat{A}$ be an $m\times n$ matrix and $\mat{U}$ be an
+upper-triangular matrix. Will $\mat{A}\mat{U}$ be [upper or lower] triangular?
+\end{exercise}
+
+\begin{exercise}
+  Let
+  \[\mat{A} = \begin{pmatrix}
+    1 & 1 & 1\\
+    0 & 1 & 1\\
+    0 & 0 & 1
+  \end{pmatrix} \]
+  Compute $\mat{A}^{n}$ by induction on $n\in\NN$.
+\end{exercise}

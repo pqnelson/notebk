@@ -29,12 +29,40 @@
 \input{tex/matrix-algebra}
 \input{tex/augmented-matrix}
 \input{tex/determinant}
+% \input{tex/eigenstuff}
+
+\vfill\eject
+\part{Vector Spaces}
+
+\N*{Roadmap}
+We could stop here and die happily (after all, we have introduced a way
+to solve systems of linear equations using matrices, which was our
+mission statement), but it would be a shallow
+life. Instead, we will discuss one more layer of abstraction, one more
+shiny gadget that will help us understand systems of linear equations
+more profoundly: vector spaces. We can meaningfully discuss ``spaces of
+solutions'' to a problem, and it's the laboratory of mathematics which
+showcases ``how mathematicians do stuff''.
+
+% Vectors in R^{n}
+\input{tex/vectors-in-r-n}
+\input{tex/vector-spaces}
+\input{tex/subspaces}
+\input{tex/basis}
+% Sections left to write:
+% - Bases [basis vectors] and coordinates
+% - Linear Transformations
+% - Change of Coordinates
+% - Orthogonal Complement of Subspaces
+% - Constructing Orthonormal Bases
+% - Eigendecomposition(???)
+% - Rank-Nullity Theorem
 
 \vfill\eject
 \part{Appendices}
 \appendix
-\include{tex/appendix-1-style}
-\include{tex/appendix-sraffa}
+%\include{tex/appendix-1-style}
+\input{tex/appendix-sraffa}\vfill\eject
 \include{tex/bib}
 
 

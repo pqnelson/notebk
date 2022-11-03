@@ -1,0 +1,202 @@
+\section{Vector Spaces over \texorpdfstring{$\RR$}{R}}
+
+\M
+We have seen how $n$-tuples of real numbers form a vector space over the
+real numbers. Now we will create an abstraction that captures the
+crucial aspects of that family of examples.
+
+\begin{definition}
+A \define{Real Vector Space} consists of a set $V$ equipped with two
+operations $\odot\colon\RR\times V\to V$ and $\oplus\colon V\times V\to V$
+such that
+\begin{enumerate}[label=(\arabic*)]
+\item Closure of $\oplus$: If $\vec{u}$, $\vec{v}\in V$ are two arbitrary elements of $V$,
+  then $\vec{u}\oplus\vec{v}\in V$; in other words, $V$ is closed under
+  the $\oplus$ operation.
+\item Commutativity of $\oplus$: for any $\vec{u}$, $\vec{v}\in V$,
+  we have $\vec{u}\oplus\vec{v}=\vec{v}\oplus\vec{u}$
+\item Associativity of $\oplus$: for any $\vec{u}$, $\vec{v}$, $\vec{w}\in V$,
+  we have $\vec{u}\oplus(\vec{v}\oplus\vec{w})=(\vec{u}\oplus\vec{v})\oplus\vec{w}$
+\item\label{axiom:vector-space:existence-of-zero-vector} Unit of $\oplus$: there exists an element $\vec{0}\in V$ such that
+  for every $\vec{u}\in V$, $\vec{0}\oplus\vec{u}=\vec{u}\oplus\vec{0}=\vec{u}$.
+\item Existence of negation: for each $\vec{u}\in V$, there exists a
+  $-\vec{u}\in V$ such that $\vec{u}\oplus-\vec{u}=-\vec{u}\oplus\vec{u}=\vec{0}$
+\item Closure of $\odot$: for any real number $c\in\RR$ and element
+  $\vec{u}\in V$, we have $c\odot\vec{v}\in V$.
+\item Left distributivity of $\odot$ over $\oplus$:
+  for any $c\in\RR$ and $\vec{u}$, $\vec{v}\in V$, we have
+  $c\odot(\vec{u}\oplus\vec{v}) = (c\odot\vec{u})\oplus(c\odot\vec{v})$.
+\item Right distributivity of $\oplus$ over $\odot$:
+  for any $c$, $d\in\RR$ and $\vec{u}\in V$, we have
+  $(c+d)\odot\vec{u} = (c\odot\vec{u})\oplus(d\odot\vec{u})$.
+\item Unit of $\odot$: for any $\vec{u}\in V$, $1\odot\vec{u}=\vec{u}$.
+\end{enumerate}
+We call elements of $V$ \define{Vectors}, we call the operators $\oplus$
+\define{Vector Addition} and $\odot$ \define{Scalar Multiplication}.
+The vector $\vec{0}$ in condition~\ref{axiom:vector-space:existence-of-zero-vector}
+is called the \define{Zero Vector} of $V$.
+\end{definition}
+
+\begin{remark}
+We could replace all instances of $\RR$ by $\CC$, any real number by
+complex number, and we would obtain the definition of a \define{Complex Vector Space}.
+This suggests the notion of a ``real vector space'' could be generalized
+\emph{even further} to a ``vector space over [a suitably nice number system]''.
+\end{remark}
+
+\begin{example}
+When $V=\RR^{n}$, and $\oplus$ is defined componentwise, and $\odot$ is
+defined as multiplying each component by the given real number, then we
+see we have formed a real vector space. This is an important example,
+even if it seems trivial. Why? Because our definition is a
+\emph{generalization} of this; if $\RR^{n}$ were not an example of a
+real vector space, then our definition would \emph{fail as a generalization}.
+\end{example}
+
+\begin{example}
+Let $\Mat(\RR;m,n)$ be the set of all $m\times n$ matrices with real components.
+Then it forms a real vector space with $\oplus$ being addition of
+matrices, and $\odot$ being multiplying each component by a scalar.
+It is not enough to \emph{assert} this forms a vector space: we must
+\emph{prove} it satisfies \emph{every condition} in the definition.
+\begin{enumerate}[label=(\arabic*)]
+\item Closure of $\oplus$: Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
+  $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
+  We see $\mat{A}\oplus\mat{B}=(a_{i,j}+b_{i,j})$ which is an $m\times n$ 
+  real matrix. Thus $\mat{A}\oplus\mat{B}\in\Mat(\RR;m,n)$, and since
+  this was for \emph{arbitrary} $\mat{A}$ and $\mat{B}$, we have
+  established closure.
+\item Commutativity of $\oplus$: Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
+  $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
+  We want to prove $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$.
+  But we see $(\mat{A}\oplus\mat{B})_{i,j} = a_{i,j}+b_{i,j} = b_{i,j}+a_{i,j}$
+  by the commutativity of addition for real numbers, and this is
+  precisely
+  $b_{i,j}+a_{i,j} = (\mat{B}\oplus\mat{A})_{i,j}$. Since this is true
+  for \emph{every} component of $\mat{A}$ and $\mat{B}$, then it follows
+  $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$. 
+  And since this is true for \emph{arbitrary} $\mat{A}$ and
+  $\mat{B}$, then it follows that $\oplus$ is commutative. 
+\item Associativity of $\oplus$:
+Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
+  $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$, and
+  $\mat{C}=(c_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
+  We see every component of the sum $(\mat{A}\oplus(\mat{B}\oplus\mat{C}))_{i,j} = a_{i,j} + (b_{i,j}+c_{i,j}) = (a_{i,j} + b_{i,j})+c_{i,j}$
+  by associativity of addition over the real numbers,
+  and this equals $(a_{i,j} + b_{i,j})+c_{i,j} = ((\mat{A}\oplus\mat{B})\oplus\mat{C})_{i,j}$.
+  Since this holds for every component of the matrices, it follows that
+  $\mat{A}\oplus(\mat{B}\oplus\mat{C}) = (\mat{A}\oplus\mat{B})\oplus\mat{C}$.
+  Since this is true for arbitrary matrices $\mat{A}$, $\mat{B}$,
+  $\mat{C}$ in $V$, then the condition ``$\oplus$ is assocative'' is satisfied.
+\item Unit of $\oplus$: there exists an element $\mat{0}\in\Mat(\RR;m,n)$ such that
+  for every $\mat{A}\in\Mat(\RR;m,n)$,
+  $\mat{0}\oplus\mat{A}=\mat{A}\oplus\mat{0}=\mat{A}$. It suffices to
+  prove $\mat{0}\oplus\mat{A}=\mat{A}$, because commutativity guarantees $\mat{A}\oplus\mat{0}=\mat{0}\oplus\mat{A}$.
+  We see $(\mat{O}\oplus\mat{A})_{i,j} = 0 + (\mat{A})_{i,j} = (\mat{A})_{i,j}$.
+  Since this is true for every component $i$ and $j$, we conclude
+  $\mat{0}\oplus\mat{A}=\mat{A}$. Since this is true for arbitrary
+  $\mat{A}\in\Mat(\RR;m,n)$, then it follows that the zero matrix
+  $\mat{0}$ is the ``vector'' which satisfies the desired condition.
+\item Existence of negation: for every $\mat{A}\in\Mat(\RR;m,n)$,
+  there exists a $-\mat{A}\in\Mat(\RR;m,n)$ such that
+  $(-\mat{A})_{i,j} = -(\mat{A})_{i,j}$ hence
+  $(\mat{A}\oplus-\mat{A})_{i,j} = (\mat{A})_{i,j}+(-(\mat{A})_{i,j}) = 0$
+  for each component $i$ and $j$. Thus we conclude
+  $\mat{A}\oplus-\mat{A}=\mat{0}$ and by commutativity
+  $-\mat{A}\oplus\mat{A}=\mat{0}$.
+  Since this is true for arbitrary element $\mat{A}\in\Mat(\RR;m,n)$,
+  the condition is satisfied.
+\item Closure of $\odot$: for any real number $c\in\RR$ and element
+  $\mat{A}\in\Mat(\RR;m,n)$, we have $c\odot\mat{A}\in\Mat(\RR;m,n)$.
+  Multiplying the components of a $m\times n$ matrix by a real number
+  produces a new matrix with components $(c\odot\mat{A})_{i,j}=c(\mat{A})_{i,j}$
+  which is what we wanted to prove.
+\item Left distributivity of $\odot$ over $\oplus$:
+  for any $c\in\RR$ and
+  $\mat{A}$, $\mat{B}\in\Mat(\RR;m,n)$, we have
+  $c\odot(\mat{A}\oplus\mat{B}) = (c\odot\mat{A})\oplus(c\odot\mat{B})$.
+  We see the components of the left-hand side are
+  $(c\odot(\mat{A}\oplus\mat{B}))_{i,j} = c((\mat{A})_{i,j} + (\mat{B})_{i,j}) = c(\mat{A})_{i,j} + c(\mat{B})_{i,j}$
+  by distributivity of multiplying real numbers over adding real
+  numbers, and we see this is just the components of
+  $((c\odot\mat{A})\oplus(c\odot\mat{B}))_{i,j}$. That is to say, every
+  component of the matrices satisfy
+  $(c\odot(\mat{A}\oplus\mat{B}))_{i,j} = ((c\odot\mat{A})\oplus(c\odot\mat{B}))_{i,j}$,
+  hence by the definition of matrix equality
+  $c\odot(\mat{A}\oplus\mat{B}) = (c\odot\mat{A})\oplus(c\odot\mat{B})$.
+  Thus the condition is satisfied.
+\item Right distributivity of $\oplus$ over $\odot$:
+  for any $c$, $d\in\RR$ and $\mat{A}\in\Mat(\RR;m,n)$, we have
+  $(c+d)\odot\mat{A} = (c\odot\mat{A})\oplus(d\odot\mat{A})$.
+
+  We see every component of the left-hand side satisfies
+  $((c+d)\odot\mat{A})_{i,j} = (c+d)(\mat{A})_{i,j} = c(\mat{A})_{i,j} + d(\mat{A})_{i,j}$.
+  But this is precisely the component
+  $((c\odot\mat{A})\oplus(c\odot\mat{B}))_{i,j}$ of the right hand
+  side. Thus
+  $((c+d)\odot\mat{A})_{i,j} = ((c\odot\mat{A})\oplus(c\odot\mat{B}))_{i,j}$
+  holds for every component, and so by the definition of matrix equality
+  we have $(c+d)\odot\mat{A} = (c\odot\mat{A})\oplus(d\odot\mat{A})$.
+  Thus the condition is satisfied.
+\item Unit of $\odot$: for any $\mat{A}\in\Mat(\RR;m,n)$, we have
+  $1\odot\mat{A}=\mat{A}$.
+
+  We find the components of the left-hand side are
+  $(1\odot\mat{A})_{i,j} = 1(\mat{A})_{i,j} = (\mat{A})_{i,j}$ equal to
+  the corresponding components of the right-hand side, for every
+  component. Hence by the definition of matrix equality we have
+  $1\odot\mat{A}=\mat{A}$.
+  Since this is for arbitrary $\mat{A}$, the condition is satisfied.
+\end{enumerate}
+We have proven $\Mat(\RR;m,n)$ satisfies the conditions specified in our
+definition for a real vector space, and thus find it \emph{is} a real
+vector space.
+\end{example}
+
+\N{Puzzle}\label{puzzle:vector-spaces:solution-space}
+Consider the solutions to the linear equation in $n$ unknowns
+\begin{equation}
+V = \{(x_{1},\dots,x_{n})\in\RR\mid a_{1}x_{1}+\cdots+a_{n}x_{n}=b\}
+\end{equation}
+where $a_{1}$, \dots, $a_{n}$, $b\in\RR$ are fixed constants.
+Does $V$ form a vector space under the usual vector addition and scalar
+multiplication borrowed from $\RR^{n}$?
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
+Let $A$ be any non-empty set (say, the set of letters in the alphabet,
+or whatever). Consider the collection of real-valued functions
+$V=\{f\colon A\to\RR\}$. Define $\oplus$ and $\odot$ on $V$ by:
+\begin{enumerate}
+\item for any $f$, $g\in V$, for any $a\in A$, $(f\oplus g)(a) = f(a) + g(a)$,
+where the $\oplus$ is defined for functions and $+$ is the addition of
+real numbers, and
+\item for any $f\in V$ and $c\in\RR$ and $a\in A$, $(c\odot f)(a)=cf(a)$.
+\end{enumerate}
+Prove or find a counter-example: $V$ is a real vector space.
+
+[Hint: different choices of $A$ will not provide counter-examples, but
+  the condition that $A$ is nonempty is non-negotiable.]
+\end{exercise}
+
+\begin{exercise}
+  Recall a \define{Polynomial} with real coefficients looks like
+  \begin{equation}
+p(x) = p_{0} + p_{1}x + p_{2}x^{2} + \dots + p_{n}x^{n}
+  \end{equation}
+  where $n\in\NN$ is called the \define{Degree} of $p$. (We write
+  $\deg(p)$ if we wanted to refer to the degree of $p$.) The set of
+  \emph{all} polynomials with real coefficients in the same unknown $x$
+  (of all degrees) is denoted
+  \begin{equation}
+\RR[x] = \{p_{0} + p_{1}x + p_{2}x^{2} + \dots + p_{n}x^{n}\mid n\in\NN,
+  p_{j}\in\RR, j=1,\dots,j\}.
+  \end{equation}
+  \textsc{Prove or find a counter-example:} the set of polynomials with real
+  coefficients $\RR[x]$ is a real vector space.
+  Vector addition and scalar multiplication both are done componentwise.
+\end{exercise}
+

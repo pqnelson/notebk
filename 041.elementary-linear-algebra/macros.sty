@@ -1,4 +1,6 @@
-
+\usepackage{booktabs}
+\usepackage[numbib]{tocbibind}
+\usepackage{mathtools}
 \usepackage{fullpage}
 \usepackage{framed}
 \usepackage[final]{graphicx}
@@ -8,7 +10,7 @@
 \setlist{topsep=0pt,noitemsep}
 \usepackage{manfnt}
 \usepackage[dvipsnames,table]{xcolor}
-
+\usepackage{fancyvrb}
 \usepackage{arydshln} % dashed block matrices
 \usepackage{titlesec}
 \titleformat*{\section}{\Large\bfseries\sffamily}
@@ -16,6 +18,7 @@
 \titleformat*{\subsubsection}{\bfseries\sffamily}
 
 \usepackage[pdfusetitle]{hyperref}
+\usepackage{doi}
 
 \usepackage[oldstylenum]{chunk}
 
@@ -57,7 +60,7 @@
 \newtheorem{puzzle}{Puzzle}
 
 \theoremstyle{definition}
-\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}[section]
 \newtheorem{problem}{\llap{\mantriangleright\kern.15em}Problem}
 
 % Definitions generically need something, you know, *defined*. Use this
@@ -73,5 +76,52 @@
 \numberwithin{equation}{chunk}
 \renewcommand\theequation{\thechunk.\numberstyle{\arabic{equation}}}
 % \renewcommand\theHequation{eq\theHchunk.\number\value{equation}}
+
+
+\let\journal\textit
+\let\volume\textbf
+
+
+
+
+% Article.cls hacks
+\@ifclassloaded{article}{
+\renewcommand*\l@part[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty\@secpenalty
+    \addvspace{0.25pc \@plus\p@ \@minus\p@}%    \addvspace{2.25em \@plus\p@}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      {\leavevmode
+       \large \bfseries #1\hfil
+       \hb@xt@\@pnumwidth{\hss #2%
+                          \kern-\p@\kern\p@}}\par
+       \nobreak
+       \if@compatibility
+         \global\@nobreaktrue
+         \everypar{\global\@nobreakfalse\everypar{}}%
+      \fi
+    \endgroup
+  \fi}
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{2pt \@plus\p@ \@minus\p@}%    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil
+      \nobreak\hb@xt@\@pnumwidth{\hss #2%
+                                 \kern-\p@\kern\p@}\par
+    \endgroup
+  \fi}
+}{}
+
 
 \endinput

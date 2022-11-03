@@ -1,0 +1,230 @@
+\section{Subspaces}
+
+\M
+Example~\ref{puzzle:vector-spaces:solution-space} motivates the
+following definition:
+
+\begin{definition}
+Let $V$ be a real vector space with vector addition $\oplus$ and scalar
+multiplication $\odot$.
+Let $U\subset V$ be some subset. We call $U$ a \define{Subspace} of $V$
+if
+it forms a real vector space using
+the vector addition $\oplus$ from $V$ and the scalar multiplication $\odot$ from $V$.
+\end{definition}
+
+\begin{remark}
+  Several things to note about this definition:
+  \begin{enumerate}
+  \item The zero vector of $U$ must be the zero vector of $V$.
+  \item The binary operators on $U$ must be those of $V$ restricted to
+    $U$. We cannot change them.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+This is a clunky definition. No one wants to prove $U$ satisfies 9
+conditions when we know $V$ satisfies them. One of our first goals is to
+simplify the criteria for determining if $U$ is a subspace of $V$ or not.
+\end{remark}
+
+\begin{theorem}
+Let $V$ be a real vector space with vector addition $\oplus$ and scalar
+multiplication $\odot$. Then the subset $U\subset V$ forms a subspace of
+$V$ provided:
+\begin{enumerate}
+\item for any $\vec{u}$, $\vec{v}\in U$, we have
+  $\vec{u}\oplus\vec{v}\in U$; and
+\item for any $c\in\RR$ and $\vec{u}\in U$, we have $c\odot\vec{u}\in U$.
+\end{enumerate}
+\end{theorem}
+
+In other words, if $U$ is closed under the vector addition
+$\oplus$ and scalar multiplication $\odot$ from $V$, then $U$ is a
+subspace of $V$.
+
+\begin{proof}
+Assume $U\subset V$ satisfies the two conditions
+\begin{enumerate}[label=(\alph*)]
+\item\label{assume:closed-under-addition} for any $\vec{u}$, $\vec{v}\in U$, we have
+  $\vec{u}\oplus\vec{v}\in U$; and
+\item\label{assume:closed-under-scalar-multiplication} for any $c\in\RR$ and $\vec{u}\in U$, we have $c\odot\vec{u}\in U$.
+\end{enumerate}
+We want to prove the following:
+\begin{enumerate}[label=(\arabic*)]
+\item Closure of $\oplus$: If $\vec{u}$, $\vec{v}\in U$ are two arbitrary elements of $U$,
+  then $\vec{u}\oplus\vec{v}\in U$; in other words, $U$ is closed under
+  the $\oplus$ operation.
+
+  \textsc{Proof:} this is precisely assumption \ref{assume:closed-under-addition}.
+\item Commutativity of $\oplus$: for any $\vec{u}$, $\vec{v}\in U$,
+  we have $\vec{u}\oplus\vec{v}=\vec{v}\oplus\vec{u}$.
+
+  \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
+  $\vec{u}$ and $\vec{v}$ as elements of $V$. Then the condition holds
+  (since $V$ is a real vector space).
+\item Associativity of $\oplus$: for any $\vec{u}$, $\vec{v}$, $\vec{w}\in U$,
+  we have $\vec{u}\oplus(\vec{v}\oplus\vec{w})=(\vec{u}\oplus\vec{v})\oplus\vec{w}$.
+
+  \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
+  $\vec{u}$, $\vec{v}$, and $\vec{w}$ as elements of $V$. Then the
+  condition holds (since $V$ is a real vector space).
+\item Unit of $\oplus$: there exists an element $\vec{0}\in U$ such that
+  for every $\vec{u}\in U$, $\vec{0}\oplus\vec{u}=\vec{u}\oplus\vec{0}=\vec{u}$.
+
+  \textsc{Proof:} since $U$ is closed under scalar multiplication by assumption~\ref{assume:closed-under-scalar-multiplication}, we
+  know $0\odot\vec{u}=\vec{0}$ which must be in $U$.
+\item Existence of negation: for each $\vec{u}\in U$, there exists a
+  $-\vec{u}\in U$ such that $\vec{u}\oplus-\vec{u}=-\vec{u}\oplus\vec{u}=\vec{0}$
+
+  \textsc{Proof:} since $U$ is closed under scalar multiplication by assumption~\ref{assume:closed-under-scalar-multiplication}, we
+  identify $-\vec{u} = -1\odot\vec{u}$ which would be in $U$ and
+  satisfies the desired properties.
+\item Closure of $\odot$: for any real number $c\in\RR$ and element
+  $\vec{u}\in U$, we have $c\odot\vec{v}\in U$.
+
+  \textsc{Proof:} This is assumption~\ref{assume:closed-under-scalar-multiplication}.
+\item Left distributivity of $\odot$ over $\oplus$:
+  for any $c\in\RR$ and $\vec{u}$, $\vec{v}\in U$, we have
+  $c\odot(\vec{u}\oplus\vec{v}) = (c\odot\vec{u})\oplus(c\odot\vec{v})$.
+
+  \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
+  $\vec{u}$ and $\vec{v}$ as elements of $V$. Then the condition holds
+  (since $V$ is a real vector space).
+\item Right distributivity of $\oplus$ over $\odot$:
+  for any $c$, $d\in\RR$ and $\vec{u}\in U$, we have
+  $(c+d)\odot\vec{u} = (c\odot\vec{u})\oplus(d\odot\vec{u})$.
+  
+  \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
+  $\vec{u}$ as elements of $V$. Then the condition holds
+  (since $V$ is a real vector space).
+\item Unit of $\odot$: for any $\vec{u}\in U$, $1\odot\vec{u}=\vec{u}$.
+  
+  \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
+  $\vec{u}$ as elements of $V$. Then the condition holds
+  (since $V$ is a real vector space).
+\end{enumerate}
+Hence $U$ satisfies the conditions to be a real vector space when
+equipped with $\oplus$ and $\odot$ from $V$.
+\end{proof}
+
+\begin{example}
+Let $V$ be any real vector space. We can define the \define{Trivial Subspace}
+of $V$ to be the set $0=\{\vec{0}\in V\}$ consisting of just the zero
+vector. This is closed under addition $\vec{0}\oplus\vec{0}=\vec{0}$ and
+under scalar multiplication $\forall c\in\RR,c\odot\vec{0}=\vec{0}$.
+Hence $0$ is a subspace of $V$.
+\end{example}
+
+\begin{corollary}[Subspace iff closed under arbitrary linear combinations]\label{cor:subspaces:subspace-iff-closed-under-linear-combos}
+Let $V$ be a real vector space and $U\subset V$.
+Then $U$ is a subspace of $V$ if and only if for every $u_{1},u_{2}\in U$
+and $c_{1},c_{2}\in\RR$ we have $(c_{1}\odot u_{1})\oplus(c_{2}\odot u_{2})\in U$.
+\end{corollary}
+
+\begin{proof}
+$(\implies)$ Assume $U$ is a subspace of $V$.
+Then for any $\vec{u}_{1},\vec{u}_{2}\in U$
+and $c_{1},c_{2}\in\RR$ we see $c_{1}\odot\vec{u}_{1}$ and $c_{2}\odot\vec{u}_{2}$
+are both in $U$ and therefore their vector sum is in $U$ as well, i.e.,
+$(c_{1}\odot\vec{u}_{1})\oplus(c_{2}\odot\vec{u}_{2})\in U$.
+
+$(\impliedby)$ Assume for every $\vec{u}_{1},\vec{u}_{2}\in U$
+and $c_{1},c_{2}\in\RR$ we have $(c_{1}\odot \vec{u}_{1})\oplus(c_{2}\odot \vec{u}_{2})\in U$.
+Then we see when $c_{1}=1$ and $c_{2}=1$ we have our assumption become:
+\begin{enumerate}[label=(\alph*)]
+\item for every $\vec{u}_{1},\vec{u}_{2}\in U$ their vector sum
+  $\vec{u}_{1}\oplus\vec{u}_{2}\in U$.
+\end{enumerate}
+When $c_{2}=0$ (and/or $\vec{u}_{2}=\vec{0}$), our assumption becomes:
+\begin{enumerate}[resume*]
+\item For every $c_{1}\in\RR$ and $\vec{u}_{1}\in U$,
+  $c_{1}\odot\vec{u}_{1}\in U$.
+\end{enumerate}
+These are precisely stating $U$ is closed under $\oplus$ and $\odot$,
+which implies $U$ is a subspace of $V$.
+\end{proof}
+
+\begin{remark}
+The notion of ``arbitrary linear combinations [of elements of a subset
+  of a vector space]'' turns out to be the critical key idea here. We
+want to give it a name, because we will use it quite a bit.
+\end{remark}
+
+\begin{definition}
+Let $V$ be a real vector space, let $S\subset V$ be a (possibly
+infinite) set of a vectors. Then the \define{Span} of $S$ is the set of
+\emph{finite} linear combinations of elements of $S$:
+\begin{equation}
+\Span(S) =
+\{\sum^{k}_{j=1}\lambda_{j}\vec{v}_{j}\mid\lambda_{j}\in\RR,\vec{v}_{j}\in S,k\in\NN,j=1,\dots,k\}
+\end{equation}
+If $W\subset V$ is a subspace of $V$ such that $\Span(S) = W$, then we
+call $S$ a \define{Spanning Set} of $W$.
+\end{definition}
+
+\begin{remark}
+Did I mention that only finite linear combinations of elements of $S$
+are allowed in the $\Span(S)$? Because that ``finite'' part is critical. 
+\end{remark}
+
+\begin{proposition}[Spans are subspaces]
+Let $V$ be a real vector space, $S\subset V$ a nonempty subset.
+Then $\Span(S)$ is a subspace of $V$.
+\end{proposition}
+
+\begin{proof}
+This follows from Corollary~\ref{cor:subspaces:subspace-iff-closed-under-linear-combos}.
+The sum of two linear combinations is another linear combination.
+\end{proof}
+
+\N{Puzzle: ``Best'' Spanning Sets?}
+If we have a vector space $V$, is there a ``best'' spanning set
+$S\subset V$ (such that $\Span(S)=V$)? We may have ``redundancies'', for
+example if $s_{1}\in S$ and $s_{2}\in S$, then we don't really need
+$s_{1}+s_{2}\in S$. So it seems ``minimal'' is a good measure of
+``best-ness''. Is there a ``minimal'' spanning set (in some appropriate
+sense)?
+
+\phantomsection
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{exercise}
+Consider the set of polynomials with real coefficients 
+  of degree less than or equal to $2$,
+  $V=\{p\in\RR[x]\mid\deg(p)\leq2\}$ forms a real vector space 
+  where $(p_{0}+p_{1}x+p_{2}x^{2})\oplus(q_{0}+q_{1}x+q_{2}x^{2})=(p_{0}+q_{0})+(p_{1}+q_{1})x+(p_{2}+q_{2})x^{2}$
+  and $c\odot(p_{0}+p_{1}x+p_{2}x^{2})=(cp_{0})+(cp_{1})x+(cp_{2})x^{2}$
+  for arbitrary $c\in\RR$,
+  $(p_{0}+p_{1}x+p_{2}x^{2})$, $(q_{0}+q_{1}x+q_{2}x^{2})\in V$.
+  Is $V$ a subspace of the set of all polynomials with real coefficients $\RR[x]$?
+  We know it's a subset, but is it a sub\emph{space}?
+\end{exercise}
+
+\begin{exercise}
+Let $W$ be a real vector space.
+
+Prove or find a counter-example: If $U$ is a subspace of $V$ and $V$ is
+a subspace of $W$, then is $U$ a subspace of $W$?
+\end{exercise}
+
+\begin{exercise}
+Consider the set $C^{\infty}(\RR)$ of smooth real functions.
+Is this a subspace of $C(\RR)$ all continuous functions from the reals
+to the real numbers?
+Is it a subspace of $\{f\colon\RR\to\RR\}$ all functions (all of them --- continuous,
+discontinuous, nowhere continuous --- it doesn't matter, all of them)?
+\end{exercise}
+
+\begin{exercise}
+Consider the set of Riemann integrable functions on some interval
+$[a,b]\subset\RR$. Prove or find a counter-example: this a subspace of all functions $\{f\colon[a,b]\to\RR\}$?
+
+[Hint: can you construct a sequence of integrable functions which
+  converges to a nonintegrable function?]
+\end{exercise}
+
+\begin{exercise}
+Consider the subset $S = \{1,x,1-x^{2}\}\subset\RR[x]$. Compute $\Span(S)$.
+\end{exercise}

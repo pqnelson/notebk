@@ -1,0 +1,142 @@
+\section{Eigenstuff}
+
+\N{Note to self}
+I wanted to include this as the ending of part II, but I realized the
+usefulness of eigenstuff is in having eigenvectors forming a basis, and
+then diagonalizing the matrix. This requires putting this section in part III.
+
+\begin{example}
+  Consider the matrix
+  \begin{equation}
+\mat{M} = \begin{pmatrix}2 & -1\\
+-1 & 2
+\end{pmatrix}.
+  \end{equation}
+  We find that there are two ``directions'' (distinct vectors) which are
+  just dilated when we multiply by $\mat{M}$,
+  \begin{subequations}
+    \begin{equation}
+\mat{M}\begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}1\\1\end{pmatrix},
+    \end{equation}
+    and
+    \begin{equation}
+\mat{M}\begin{pmatrix}1\\-1\end{pmatrix} = 3\begin{pmatrix}1\\-1\end{pmatrix}.
+    \end{equation}
+  \end{subequations}
+  This isn't a neat parlor trick: it turns out any invertible $n\times n$
+  matrix will have at most $n$ vectors which are ``dilated'' by the matrix.
+\end{example}
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix.
+We define an \define{Eigenvector} of $\mat{A}$ to be a [column]
+$n$-vector $\vec{v}$ such that there is a nonzero $\lambda\in\RR$
+[called the \define{Eigenvalue} associated with $\vec{v}$] satisfying
+\begin{equation}\label{eq:defn:eigenvector}
+\mat{A}\vec{v}=\lambda\vec{v}.
+\end{equation}
+\end{definition}
+
+\N{Finding Eigenvalues and Eigenvectors}
+This is great, but how do we find eigenvalues and eigenvectors?
+The first thing to note is we can rewrite Eq~\eqref{eq:defn:eigenvector}
+by subtracting $\lambda\vec{v}$ from both sides:
+\begin{equation}
+\mat{A}\vec{v}-\lambda\vec{v}=\vec{0}.
+\end{equation}
+We insert a secret identity operator (the matrix analog of ``multiply by $1$''):
+\begin{equation}
+\mat{A}\vec{v}-\lambda\mat{I}\vec{v}=\vec{0}.
+\end{equation}
+We can factor out $\vec{v}$ by distributivity:
+\begin{equation}
+(\mat{A}-\lambda\mat{I})\vec{v}=\vec{0}.
+\end{equation}
+For this equation to hold, either $\vec{v}=0$ or
+$(\mat{A}-\lambda\mat{I})=0$, right?
+
+Wrong: $(\mat{A}-\lambda\mat{I})$ could be nonzero and noninvertible.
+That is when
+\begin{equation}
+\det(\mat{A}-\lambda\mat{I})=0.
+\end{equation}
+But the left-hand side is not identically zero. In fact, the left-hand
+side is a polynomial in $\lambda$.
+\emph{This polynomial is how we find eigenvalues for matrices.}
+
+Once we have an eigenvalue, we can plug it in and then solve the system
+of equations for the eigenvector. But first, let us define this
+polynomial quantity.
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix.
+The \define{Characteristic Polynomial} of $\mat{A}$ is 
+\begin{equation}
+p(\lambda) = \det(\mat{A}-\lambda\mat{I}).
+\end{equation}
+Some authors use $\det(\lambda\mat{I}-\mat{A})$, it doesn't matter since
+they have the same roots (which are the eigenvalues of $\mat{A}$ and the
+\emph{actual} quantity of interest).
+\end{definition}
+
+\begin{example}
+Recall our motivating example at the start of this section, we had
+\begin{equation}
+\mat{M} = \begin{pmatrix}2 & -1\\
+-1 & 2
+\end{pmatrix}.
+\end{equation}
+Its characteristic polynomial is
+\begin{equation}
+\det\begin{pmatrix}2-\lambda & -1\\
+-1 & 2-\lambda
+\end{pmatrix} = (2-\lambda)^{2}-1 = \lambda^{2}-4\lambda+3.
+\end{equation}
+We find this has roots $\lambda=1$ and $\lambda=3$.
+
+We can find the eigenvector for $\lambda=1$ by solving
+\begin{subequations}
+  \begin{align}
+    2x_{1} -x_{2} &= x_{1}\\
+    -x_{1} + 2x_{2} &= x_{2}.
+  \end{align}
+\end{subequations}
+These give us 2 copies of the same line described by
+\begin{equation}
+-x_{1} = -x_{2},\quad\mbox{or}\quad x_{1}=x_{2}.
+\end{equation}
+We have a generic eigenvector look like
+\begin{equation*}
+\vec{v}_{1} = m\begin{pmatrix}1\\1
+\end{pmatrix}
+\end{equation*}
+where $m\in\RR$. Usually we normalize the eigenvector to be a unit
+vector (so we fix any such parameters), which gives us
+\begin{equation}
+  \vec{v}_{1} = \begin{pmatrix}1/\sqrt{2}\\
+    1/\sqrt{2}
+  \end{pmatrix}.
+\end{equation}
+This is one eigenvector.
+
+The other eigenvector, the one associated with $\lambda=3$, requires
+solving the system of equations
+\begin{subequations}
+  \begin{align}
+    2x_{1} -x_{2} &= 3x_{1}\\
+    -x_{1} + 2x_{2} &= 3x_{2}.
+  \end{align}
+\end{subequations}
+This gives us two copies of the same line, described by the equation
+\begin{equation}
+x_{1} = -x_{2}.
+\end{equation}
+The unit eigenvector is then
+\begin{equation}
+\vec{v}_{2} = \begin{pmatrix}1/\sqrt{2}\\
+-1/\sqrt{2}
+\end{pmatrix}.
+\end{equation}
+The reader may verify these satisfy the equation $\mat{M}\vec{v}=\lambda\vec{v}$
+for eigenvectors of $\mat{M}$.
+\end{example}

@@ -1,0 +1,301 @@
+\section{Linear Dependence and Bases}
+
+\M
+We want to address the question of whether this is a ``best'' spanning
+set for a subspace, and we saw in some sense ``redundant elements''
+should be avoided. If $\vec{s}_{1}\in S$ and $\vec{s}_{2}\in S$, then it
+would be redundant to have $\vec{s}_{1}+\vec{s}_{2}\in S$. Let us try to
+formalize this intuition of ``redundant combinations''.
+
+\begin{definition}\label{defn:basis:linearly-dependent}
+Let $V$ be a vector space, let $\vec{v}_{1}$, \dots, $v_{n}\in V$ be
+nonzero vectors $\vec{v}_{j}\neq\vec{0}$ for $j=1,\dots,n$.
+We call them \define{Linearly Dependent} if there are coefficients (not
+all zero) $c_{1},\dots,c_{n}\in\RR$ such that
+\begin{equation}
+c_{1}\vec{v}_{1} + c_{2}\vec{v}_{2}+\cdots+c_{n}\vec{v}_{n}=\vec{0}.
+\end{equation}
+If the only solution for this is $c_{1}=c_{2}=\cdots=c_{n}=0$ for all
+coefficients to be zero, then we call the vectors \define{Linearly Independent}.
+\end{definition}
+
+\begin{example}
+  In $\RR^{2}$, consider the vectors
+  \begin{equation}
+\vec{v}_{1} = \begin{pmatrix} 1\\0 \end{pmatrix},
+\vec{v}_{2} = \begin{pmatrix} 0\\1 \end{pmatrix},
+\vec{v}_{3} = \begin{pmatrix} 1\\1 \end{pmatrix},
+\vec{v}_{4} = \begin{pmatrix} 1\\-1 \end{pmatrix}.
+  \end{equation}
+  Any three or more vectors from this list are linearly dependent since
+  $\vec{v}_{3}=\vec{v}_{1}+\vec{v}_{2}$ and
+  $\vec{v}_{4}=\vec{v}_{1}-\vec{v}_{2}$. But
+  any two vectors from this list are linearly independent.
+\end{example}
+
+\begin{theorem}[Criterion for Linear Dependence]
+A set of nonzero vectors $\{\vec{v}_{1},\dots,\vec{v}_{n}\}$ is linearly
+dependent if and only if at least one of the vectors $\vec{v}_{k}$ is
+expressible as a linear combination of the others
+\begin{equation}
+\vec{v}_{k} = \sum^{n}_{\substack{j=1\\j\neq k}}c_{j}\vec{v}_{j} =c_{1}\vec{v}_{1} + \cdots + c_{k-1}\vec{v}_{k-1} + c_{k+1}\vec{v}_{k+1} +
+  \cdots + c_{n}\vec{v}_{n},
+\end{equation}
+where not all coefficients $c_{j}\in\RR$ are zero.
+\end{theorem}
+
+\begin{proof}
+  $(\implies)$ Assume the vectors $\vec{v}_{1}$, \dots, $\vec{v}_{n}$
+  are linearly dependent. Then by Definition~\ref{defn:basis:linearly-dependent},
+  there are coefficients $c_{1}$, \dots, $c_{n}$ (not all zero) such that
+\begin{equation}
+c_{1}\vec{v}_{1} + c_{2}\vec{v}_{2}+\cdots+c_{n}\vec{v}_{n}=\vec{0}.
+\end{equation}
+Let $k$ be the last index for which $c_{k}\neq0$ (so for indices $\ell$
+such that  $k<\ell\leq n$, then $c_{\ell}=0$). Then we can subtract
+$c_{k}\vec{v}_{k}$ from both sides to get
+\begin{equation}
+c_{1}\vec{v}_{1} + c_{2}\vec{v}_{2}+\cdots+c_{k}\vec{v}_{k}-c_{k}\vec{v}_{k}=\vec{0}-c_{k}\vec{v}_{k},
+\end{equation}
+and dividing both sides by $-c_{k}$ gives us $\vec{v}_{k}$ as a linear
+combination of $\vec{v}_{1}$, \dots, $\vec{v}_{k-1}$. This concludes the
+forward direction of the proof.
+  
+  $(\impliedby)$ Assume there exists a vector $\vec{v}_{k}$ such that we
+  can write it as a linear combination of the remaining vectors
+\begin{equation}
+\begin{split}
+  \vec{v}_{k} &= \sum^{n}_{\substack{j=1\\j\neq k}}c_{j}\vec{v}_{j}\\
+  &=c_{1}\vec{v}_{1} + \cdots + c_{k-1}\vec{v}_{k-1} + c_{k+1}\vec{v}_{k+1} +
+  \cdots + c_{n}\vec{v}_{n},
+\end{split}
+\end{equation}
+where not all $c_{j}\in\RR$ are zero. Then subtracting $\vec{v}_{k}$
+from both sides gives us
+\begin{equation}
+\vec{0} = c_{1}\vec{v}_{1} + \cdots + c_{k-1}\vec{v}_{k-1} - \vec{v}_{k} + c_{k+1}\vec{v}_{k+1} +
+  \cdots + c_{n}\vec{v}_{n}.
+\end{equation}
+Then by Definition~\ref{defn:basis:linearly-dependent}, since not all
+coefficients $c_{j}$ are zero, we have the vectors are linearly dependent.
+\end{proof}
+
+\begin{theorem}[Nonzero determinant iff columns are linearly independent]
+Let $\{\vec{v}_{1},\dots,\vec{v}_{n}\}\subset\RR^{n}$ be a list of $n$
+distinct $n$-vectors, and
+\begin{equation}
+\mat{M} = (\vec{v}_{1}|\dots|\vec{v}_{n})
+\end{equation}
+be a matrix whose columns are the given $n$ column vectors.
+Then $\det(\mat{M})\neq0$ if and only if $\{\vec{v}_{1},\dots,\vec{v}_{n}\}$
+are linearly independent.
+\end{theorem}
+
+\begin{proof}
+$(\implies)$ Assume $\det(\mat{M})\neq0$. Then $\mat{M}$ is invertible.
+Then $\mat{M}\vec{x}=\vec{0}$ has a unique solution, namely $\vec{x}=\vec{0}$.
+This is equivalent to saying
+\begin{equation}
+x_{1}\vec{v}_{1} + x_{2}\vec{v}_{2} + \cdots + x_{n}\vec{v}_{n} = 0
+\end{equation}
+implies $x_{1}=x_{2}=\cdots=x_{n}=0$. But by Definition~\ref{defn:basis:linearly-dependent},
+this is precisely the condition for $\vec{v}_{1}$, \dots, $\vec{v}_{n}$
+being linearly independent.
+
+$(\impliedby)$ Assume $\vec{v}_{1}$, \dots, $\vec{v}_{n}$ are linearly
+independent. Then by Definition~\ref{defn:basis:linearly-dependent}, the
+only solution to
+\begin{equation}
+c_{1}\vec{v}_{1} + \cdots + c_{n}\vec{v}_{n} = \vec{0}
+\end{equation}
+is $c_{1}=\cdots=c_{n}=0$. In matrix form, if $\vec{x}=(c_{1},\dots,c_{n})$
+is a column $n$-vector, then
+\begin{equation}
+\mat{M}\vec{x} = \vec{0}
+\end{equation}
+has $\vec{x}=\vec{0}$ be its only solution. This is true if and only if
+$\mat{M}$ is invertible. But $\mat{M}$ is invertible if and only if
+$\det(\mat{M})\neq0$. And by our assumption, $\vec{x}=\vec{0}$ is the
+only solution, hence the result.
+\end{proof}
+
+\begin{definition}
+Let $V$ be a real vector space and $B$ a set of vectors from $V$ such
+that
+\begin{enumerate}
+\item it spans $V$: $\Span(B)=V$
+\item there is no $A\subset B$ such that $\Span(A)=V$.
+\end{enumerate}
+Then we call $B$ a \define{Basis} of $V$.
+\end{definition}
+
+\begin{example}
+  In $\RR^{2}$, the vectors
+  \begin{equation}
+\vec{z} = \begin{pmatrix}1 & 1
+\end{pmatrix},\quad\mbox{and}\quad\bar{\vec{z}} = \begin{pmatrix}1 & -1
+\end{pmatrix}.
+  \end{equation}
+  Then $\{\vec{z}, \bar{\vec{z}}\}$ form a basis for $\RR^{2}$.
+\end{example}
+\begin{proof}
+  We need to show
+  \begin{enumerate}
+  \item $\Span\{\vec{z}, \bar{\vec{z}}\}=\RR^{2}$
+  \item there is no $A\subset\{\vec{z}, \bar{\vec{z}}\}$ such that $\Span(A)=\RR^{2}$.
+  \end{enumerate}
+  The first claim may be proven by picking any element
+  $\vec{v}\in\RR^{2}$, then showing it may be written as a linear
+  combination of $\vec{z}$ and $\bar{\vec{z}}$. We see, if
+  \begin{equation}
+\vec{v} = \begin{pmatrix}v_{1}\\v_{2}
+\end{pmatrix},
+  \end{equation}
+  then
+  \begin{calculation}
+    \displaystyle\frac{v_{1}+v_{2}}{2}\vec{z} + \frac{v_{1}-v_{2}}{2}\bar{\vec{z}}
+\step{unfolding the definition of $\vec{z}$, $\bar{\vec{z}}$}
+    \displaystyle\frac{v_{1}+v_{2}}{2}\begin{pmatrix}1\\1
+    \end{pmatrix}
+    + \frac{v_{1}-v_{2}}{2}\begin{pmatrix}1\\-1
+    \end{pmatrix}
+\step{scalar multiplication}
+    \displaystyle\frac{1}{2}\begin{pmatrix}v_{1}+v_{2}\\v_{1}+v_{2}
+    \end{pmatrix}
+    + \frac{1}{2}\begin{pmatrix}v_{1}-v_{2}\\-v_{1}+v_{2}
+    \end{pmatrix}
+\step{distributivity}
+    \displaystyle\frac{1}{2}\left[\begin{pmatrix}v_{1}+v_{2}\\v_{1}+v_{2}
+    \end{pmatrix}
+    + \begin{pmatrix}v_{1}-v_{2}\\-v_{1}+v_{2}
+    \end{pmatrix}\right]
+\step{vector addition}
+    \displaystyle\frac{1}{2}\begin{pmatrix}(v_{1}+v_{2})+(v_{1}-v_{2})\\(v_{1}+v_{2})+(-v_{1}+v_{2})
+    \end{pmatrix}
+\step{arithmetic}
+    \displaystyle\frac{1}{2}\begin{pmatrix}2v_{1}\\2v_{2}
+      \end{pmatrix}
+\step{scalar multiplication}
+    \displaystyle\begin{pmatrix}v_{1}\\v_{2}
+      \end{pmatrix} = \vec{v}
+  \end{calculation}
+  as desired. Hence any element of $\RR^{2}$ may be written as a linear
+  combination of $\vec{z}$ and $\bar{\vec{z}}$, hence $\Span(\{\vec{z},\bar{\vec{z}}\})=\RR^{2}$.
+
+  As to the second claim, there is no $A\subset\{\vec{z},\bar{\vec{z}}\}$,
+  suppose there were such an $A$. Then either $A=\{\vec{z}\}$ or
+  $A=\{\bar{\vec{z}}\}$. Pick $\vec{v}\in\{\vec{z},\bar{\vec{z}}\}$ but
+  $\vec{v}\notin A$. Then we claim $\vec{v}\notin\Span(A)$.
+
+  It suffices to show $\vec{z}$ is not a multiple of $\bar{\vec{z}}$
+  (which corresponds to $A=\{\bar{\vec{z}}\}$ --- in the other case, it
+  boils down to the same proof). If $\vec{z}$ were a multiple of
+  $\bar{\vec{z}}$, then there is a $c\in\RR$ nonzero such that
+  \begin{equation}
+c\begin{pmatrix}1\\1
+\end{pmatrix} = \begin{pmatrix}1\\-1
+\end{pmatrix}
+  \end{equation}
+  This is a system of 2 equations in 1 unknown:
+  \begin{equation}
+c=1,\quad\mbox{and}\quad c=-1.
+  \end{equation}
+  But this is impossible. So $\vec{z}$ cannot be a multiple of
+  $\bar{\vec{z}}$, which means $\vec{z}\notin\Span(\{\bar{\vec{z}}\})$.
+  The same reasoning shows $\bar{\vec{z}}$ is not a multiple of
+  $\vec{z}$, which means $\bar{\vec{z}}\notin\Span(\{\vec{z}\})$.
+
+  Hence there is no $A\subset\{\vec{z},\bar{\vec{z}}\}$ such that $\Span(A)=\RR^{2}$.
+\end{proof}
+
+\begin{example}
+Let $\vec{e}_{j}\in\RR^{n}$ have $1$ in its $j^{\text{th}}$ component
+and $0$ in all other components. Then the set
+$\{\vec{e}_{1},\dots,\vec{e}_{n}\}$ forms a basis of $\RR^{n}$ and is
+called its \define{Canonical Basis}.
+\end{example}
+
+\N{Vector spaces have many bases}
+We see that a vector space may have more than one basis. In fact, they
+will have many different possible bases (plural of basis). We saw one
+basis in $\RR^{2}$ given by $\vec{z}=(1,1)$ and
+$\bar{\vec{z}}=(1,-1)$. We also see there is the canonical basis for
+$\RR^{2}$, which is different from the first basis.
+
+The moral of the story is that we may have many inequivalent bases for
+any given vector space.
+
+\begin{lemma}
+Let $V$ be a real vector space.
+Let $B=\{\vec{v}_{1},\dots,\vec{v}_{n}\}$ form a basis for $V$.
+Let $T=\{\vec{w}_{1},\dots,\vec{w}_{m}\}$ be a set of linearly
+independent vectors from $V$.
+Then $m\leq n$ (i.e., $|T|\leq|B|$).
+\end{lemma}
+
+\begin{proof}
+Since $T$ consists of linearly independent vectors, we can write
+$\vec{w}_{m}$ as a linear combination of basis vectors
+\begin{equation}
+\vec{w}_{m} = c^{(m)}_{1}\vec{b}_{1}+c^{(m)}_{2}\vec{b}_{2}+\cdots+c^{(m)}_{n}\vec{b}_{n}.
+\end{equation}
+We can reindex the basis vectors such that $c^{(m)}_{1}\neq0$. In that
+case, we ``swap out'' $\vec{b}_{1}$ for $\vec{w}_{m}$ since we can write
+$\vec{b}_{1}$ as a linear combination:
+\begin{equation}
+\vec{b}_{1}=\frac{1}{c^{(m)}_{1}}\vec{w}_{m} - \frac{c^{(m)}_{2}\vec{b}_{2}+\cdots+c^{(m)}_{n}\vec{b}_{n}}{c^{(m)}_{1}}.
+\end{equation}
+This gives us a new set of basis vectors $B_{1}$, and we consider $T_{1}=T\setminus\{\vec{w}_{m}\}$
+the collection of elements from $T$ which are not $\vec{w}_{m}$. In
+particular, there are $m-1$ elements of $T_{1}$.
+
+We can reiterate this step, swapping one element out of $T_{1}$ and
+putting it into $B_{1}$ (and throwing away an element from $B_{1}$ which
+has been replaced) to produce a new basis $B_{2}$. We produce $T_{2}$
+from $T_{1}$ by taking the remaining elements of $T_{1}$ which are not
+in $B_{2}$ into $T_{2}$. We see $T_{2}$ has $m-2$ elemeents.
+
+Eventually one of two possibilities occurs:
+\begin{enumerate}
+\item We'll reach $B_{k}$ which no longer has any original basis
+  elements from $B$ in it --- they are disjoint $B\cap B_{k}=\emptyset$.
+  But this would imply there are elements in $T_{k}$ which cannot be
+  written as a linear combination of the basis, which is a
+  contradiction; or
+\item We'll exhaust $T_{k}$ and have no more elements from $T$ to add to $B_{k}$.
+\end{enumerate}
+We iterate this until we get to $B_{m}$ and $T_{m}$, because $T_{m+1}$
+will be empty.
+\end{proof}
+
+\begin{theorem}[Any two bases have same number of elements]
+Let $V$ be a real vector space. Suppose there exists at least one basis
+$B$ for $V$, and suppose $B$ has finitely many element. 
+Then any two bases for $V$ have the same number of elements as each other.
+\end{theorem}
+
+\begin{proof}
+Let $B_{1}$, $B_{2}$ be any two bases for $V$. Let $m=|B_{1}|$ and $n=|B_{2}|$.
+We claim
+\begin{enumerate}
+\item $m\leq n$ by the previous lemma, and
+\item $n\leq m$ by the previous lemma.
+\end{enumerate}
+Hence $m=n$.
+\end{proof}
+
+\begin{definition}
+Let $V$ be a real vector space, let $B$ be a basis for $V$. If $B$ has
+finitely many elements, then we say $V$ is
+\define{Finite-Dimensional}. In that case, we call the number of vectors
+in $B$ the \define{Dimension} of $V$.
+\end{definition}
+
+\begin{remark}
+Reasoning about infinite-dimensional spaces can be tricky. We have
+already seen one example, $\RR[x]$ the space of polynomials. The linear
+algebra of inifnite-dimensional spaces usually goes by the name
+``functional analysis''. A particularly friendly subfield is ``Fourier
+analysis'', where many intuitions from finite-dimensional linear algebra
+carries over.
+\end{remark}
