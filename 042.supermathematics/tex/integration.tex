@@ -121,3 +121,28 @@ where we indicate left differentiation and right differentiation with
 the arrow telling us which way to differentiate. [Hint: it suffices to
   work with monomials $f$ and $g$, not necessarily of the same degree $\deg(f)\neq\deg(g)$.]
 \end{exercise}
+
+\begin{exercise}
+In $\Lambda^{2,4}$ consider, for a $2\times 2$ matrix $A$ consisting of
+complex numbers (no condition of antisymmetry imposed), if the
+anticommuting variables are $\theta_{1}$, $\theta_{2}$, $\eta_{1}$, $\eta_{2}$,
+then
+\begin{equation}
+\int\exp\left(\sum_{i,j}\theta_{i}(A)_{i,j}\eta_{j}\right)\D^{2}\theta\D^{2}\eta=\det(A).
+\end{equation}
+\end{exercise}
+
+% See proposition A.14 of https://arxiv.org/pdf/1105.6270.pdf
+\begin{exercise}
+In $\CC^{m|2m}$, let $A$ be an $m\times m$ matrix over $\CC$.
+Let the anticommuting variables $\theta_{1}$, \dots, $\theta_{2m}$ be
+organized into $\psi_{j}=(\theta_{j}+\I\theta_{m+j})/\sqrt{2}$ and $\bar{\psi}_{j} = (\theta_{j} - \I\theta_{m+j})/\sqrt{2}$.
+Prove or
+find a counter-example:
+\begin{equation}
+\int\exp\left(\sum_{i,j}\bar{\psi}_{i}(A)_{i,j}\psi_{j}\right)\D\psi_{1}\D\bar{\psi}_{1}\cdots\D\psi_{m}\D\bar{\psi}_{m}=\det(A).
+\end{equation}
+Note: $A$ is an \emph{arbitrary} matrix, no condition of antisymmetry is
+imposed; and the sums have no restriction on $i$ and $j$ (besides
+ranging from $1$ to $m$).
+\end{exercise}
