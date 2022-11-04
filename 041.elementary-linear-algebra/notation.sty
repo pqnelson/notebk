@@ -41,3 +41,20 @@
     \kern0.1\baselineskip
   }%
 }
+
+% Thank you, Heiko Oberdiek! Comment on https://tex.stackexchange.com/q/183686
+\newcommand*{\math@rotate}[3]{%
+  % #1: rotation angle       % #2: math style       % #3: symbol
+  \sbox0{$#2\vcenter{}$}% location of the math axis
+  \rotatebox[y=\ht0]{90}{$#2#3\m@th$}%
+}
+\newcommand*{\vertneq}{%
+  \mathrel{%
+    \mathpalette{\math@rotate{90}}{\neq}%
+  }%
+}
+\newcommand*{\verteq}{%
+  \mathrel{%
+    \mathpalette{\math@rotate{90}}{=}%
+  }%
+}

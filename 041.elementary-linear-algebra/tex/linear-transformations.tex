@@ -1,0 +1,992 @@
+\section{Linear Transformations}
+
+\M
+We have, so far, introduced a new shiny toy, a new mathematical gadget
+called a ``vector space''. So far, we have discussed quite a few aspects
+about them, except for one very important thing: how do we ``map'' one
+vector space into another?
+
+\begin{definition}
+Let $V$, $W$ be real vector spaces.
+A \define{Linear Transformation} is a function $L\colon V\to W$ such
+that for each $\vec{u}$, $\vec{v}\in V$ and for any $c_{1},c_{2}\in\RR$,
+we have it map linear combinations in $V$ to linear combinations in $W$: 
+\begin{equation}
+L(c_{1}\vec{u} + c_{2}\vec{v}) = c_{1}L(\vec{u}) + c_{2}L(\vec{v}).
+\end{equation}
+If further $V=W$, then we call $L$ a \define{Linear Operator}.
+We may also just refer to the function $f$ as \emph{Linear}.
+\end{definition}
+
+\begin{remark}
+  Some authors give two conditions for $L$ being a linear transformation:
+  \begin{enumerate}
+  \item homogeneity: $L(c\vec{v})=cL(\vec{v})$ for every $c\in\RR$ and
+    $\vec{v}\in V$
+  \item additive: $L(\vec{u}+\vec{v})=L(\vec{u})+L(\vec{v})$ for every
+    $\vec{u}$, $\vec{v}\in V$.
+  \end{enumerate}
+  Can you prove these two versions are secretly the same?
+\end{remark}
+
+\begin{example}
+Let $V$ be a real vector space. The identity function $\id\colon V\to V$,
+defined by $\id(\vec{v})=\vec{v}$ for all $\vec{v}\in V$, is a linear
+operator on $V$.
+
+\begin{proof}
+Let $\vec{u}$, $\vec{v}\in V$ be arbitrary. Let $c_{1},c_{2}\in\RR$ be arbitrary.
+We want to prove
+\begin{equation}
+\id(c_{1}\vec{u} + c_{2}\vec{v}) = c_{1}\id(\vec{u}) + c_{2}\id(\vec{v}).
+\end{equation}
+We see that the left-hand side expands to
+\begin{equation}
+\id(c_{1}\vec{u} + c_{2}\vec{v}) = c_{1}\vec{u} + c_{2}\vec{v},
+\end{equation}
+and the right-hand side expands to
+\begin{equation}
+c_{1}\id(\vec{u}) + c_{2}\id(\vec{v}) = c_{1}\vec{u} + c_{2}\vec{v}.
+\end{equation}
+Then we invoke the well-known fact that,
+\begin{equation}
+c_{1}\vec{u} + c_{2}\vec{v} = c_{1}\vec{u} + c_{2}\vec{v}
+\end{equation}
+to conclude we must have
+\begin{equation}
+\id(c_{1}\vec{u} + c_{2}\vec{v}) = c_{1}\id(\vec{u}) + c_{2}\id(\vec{v}).
+\end{equation}
+as desired.
+\end{proof}
+\end{example}
+
+\begin{non-example}[Shifting is not a linear transformation]
+Let $V$ be a vector space, let $\vec{v}_{0}\in V$ be a nonzero vector.
+Define $f\colon V\to V$ by
+\begin{equation}
+f(\vec{v})=\vec{v}+\vec{v}_{0}.
+\end{equation}
+This is not a linear transformation. Why not? Well, suppose we have
+$\vec{u}\in V$ and $\vec{v}\in V$, then
+\begin{calculation}
+  f(\vec{u} + \vec{v})
+\step{unfold definition of $f$}
+  (\vec{u} + \vec{v})+\vec{v}_{0}
+\end{calculation}
+However,
+\begin{calculation}
+  f(\vec{u}) + f(\vec{v})
+\step{unfold definition of $f$}
+  (\vec{u} +\vec{v}_{0}) + (\vec{v}+\vec{v}_{0})
+\end{calculation}
+We see that, in general,
+\begin{equation}
+(\vec{u} +\vec{v}_{0}) + (\vec{v}+\vec{v}_{0})\neq(\vec{u} + \vec{v})+\vec{v}_{0}.
+\end{equation}
+Hence
+\begin{equation}
+f(\vec{u} + \vec{v})\neq f(\vec{u}) + f(\vec{v}).
+\end{equation}
+Or to summarize it in a single equation
+\begin{equation}
+\begin{array}{ccc}
+f(\vec{u} + \vec{v}) &\stackrel{???}{=}& f(\vec{u}) + f(\vec{v})\\
+\verteq & & \verteq\\
+(\vec{u} + \vec{v})+\vec{v}_{0} & \neq & (\vec{u} +\vec{v}_{0}) + (\vec{v}+\vec{v}_{0})
+\end{array}
+\end{equation}
+which means $f$ cannot be linear.
+\end{non-example}
+
+\begin{example}
+Let $c\in\RR$ be a nonzero constant $c\neq0$, let $V$ be a real vector space.
+Let $f\colon V\to V$ be defined by
+\begin{equation}
+f(\vec{v}) = c\vec{v}.
+\end{equation}
+Then $f$ is a linear operator.
+
+\begin{proof}
+Let $\vec{u},\vec{v}\in V$ be arbitrary, let $c_{1},c_{2}\in\RR$ be arbitrary.
+We will show $f(c_{1}\vec{u}+c_{2}\vec{v})=c_{1}f(\vec{u})+c_{2}f(\vec{v})$.
+We begin by expanding
+\begin{calculation}
+  f(c_{1}\vec{u}+c_{2}\vec{v})
+\step{unfold definition of $f$}
+  c(c_{1}\vec{u}+c_{2}\vec{v})
+\step{distributivity of scalar multiplication}
+  cc_{1}\vec{u}+cc_{2}\vec{v}
+\step{associativity of scalar multiplication}
+  c(c_{1}\vec{u})+c(c_{2}\vec{v})
+\step{folding the definition of $f$}
+  f(c_{1}\vec{u})+f(c_{2}\vec{v})
+\end{calculation}
+This proves $f$ is linear.  
+\end{proof}
+\end{example}
+
+\N{Other examples}
+There are a few other examples which are useful, in particular, if
+$V$ is a vector space and $U\subset V$ is a subspace, then the inclusion
+map
+\begin{equation}
+\iota\colon U\to V
+\end{equation}
+defined by $\iota(\vec{u})=\vec{u}$ for every $\vec{u}\in U$, this is a
+linear transformation. We could also go the other way around: we could
+construct a mapping
+\begin{equation}
+p\colon V\to U
+\end{equation}
+which projects to $U$. It's a little trickier \emph{at this point} to
+prove it, though.
+
+\begin{definition}
+  When $L\colon V\to W$ is a linear transformation, we call:
+\begin{itemize}
+\item the inputs $V$ the \define{Domain} of $L$, 
+\item the possible outputs $W$ the \define{Codomain} of $L$,
+\item the \define{Image} of $L$ is the subset $L(V) = \{L(\vec{v})\in W\mid\vec{v}\in V\}$
+of vectors in $W$ which are the output of $L$.
+\end{itemize}
+Note: the codomain consists of the \emph{possible} outputs, the image
+consists of the \emph{actual} outputs.
+\end{definition}
+
+\begin{definition}
+If $L\colon V\to W$ is a linear transformation, we can define its
+\define{Inverse} to be a linear transformation $L^{-1}\colon W\to V$
+such that $L^{-1}\circ L=\id_{V}$ and $L\circ L^{-1}=\id_{W}$.
+\end{definition}
+
+\M
+A lot of the terminology for matrices carries over to linear
+transformations. For example, if $L\colon V\to V$ is a linear operator,
+we call it \define{Similar} to a linear operator $M\colon V\to V$ if
+there exists an invertible linear operator $P\colon V\to V$ such that
+$L = P^{-1}\circ M \circ P$.
+Compare this to similar matrices, $\mat{A} \sim\mat{B}$ if there exists
+an invertible $\mat{P}$ such that $\mat{A}=\mat{P}^{-1}\mat{B}\mat{P}$.
+We may abuse notation and write $L\sim M$ when two linear operators are
+similar. 
+
+\subsection{Matrices as ``Coordinates'' of Linear Transformations}
+
+\M
+We saw how basis vectors, for a finite-dimensional vector space $V$,
+allows us to introduce coordinates for vectors (in
+Definition~\ref{defn:basis:coordinates}).
+This was great because it allowed us to use some of our matrix machinery
+we built in Part~\ref{part:matrices} when computing vector operations.
+But there is more: basis vectors let us express a linear transformation
+as a matrix, and ``the linear transformation acting on a vector'' as
+mere matrix multiplication.
+
+\begin{definition}
+Let $V$, $W$ be [finite-dimensional] vector spaces with bases
+$B_{V}=(\vec{e}_{1},\dots,\vec{e}_{m})$ and $B_{W}=(\vec{f}_{1},\dots,\vec{f}_{n})$
+respectively. Let $L\colon V\to W$ be a linear transformation.
+Then the \define{Matrix for $L$ relative to $B_{V}$ and $B_{W}$}
+is the matrix $\mat{M}$ whose $j^{\text{th}}$ column is the coordinate vector
+for $L(\vec{e}_{j})$ relative to $B_{W}$.
+Then, for any $\vec{v}\in V$, we may compute $L(\vec{v})$ using
+$\mat{M}$ multiplied by the coordinate vector of $\vec{v}$ relative to
+basis $\vec{e}_{j}$.
+\end{definition}
+
+\begin{remark}
+Just because we \emph{defined} something doesn't mean it works as
+intended, or even exists. We need to \emph{prove it} in a theorem.
+\end{remark}
+
+\begin{theorem}[This stuff works]
+Let $L\colon V\to W$ be a linear transformation from an $m$-dimensional
+real vector space $V$ to an $n$-dimensional real vector space $W$.
+Let $B_{V}=(\vec{e}_{1}, \dots, \vec{e}_{m})$ be a basis for $V$; let
+$B_{W}=(\vec{f}_{1}, \dots, \vec{f}_{n})$ be a basis for $W$.
+
+Then the $n\times m$ matrix $\mat{M}$ --- whose $j^{\text{th}}$ column is
+the coordinate vector $[L(\vec{e}_{j})]_{B_{W}}$ of $L(\vec{e}_{j})$
+relative to the basis $B_{W}$ --- is associated with $L$ and has the
+following property: For any $\vec{v}\in V$, we have
+\begin{equation}
+[L(\vec{v})]_{B_{W}} = \mat{M}[\vec{v}]_{B_{V}}
+\end{equation}
+where $[\vec{v}]_{B_{V}}$ is the $m\times1$ coordinate vector of
+$\vec{v}$ relative to $B_{V}$, and $[L(\vec{v})]_{B_{W}}$ is the $n\times1$
+coordinate vector of $L(\vec{v})$ relative to $B_{W}$. Moreover,
+$\mat{M}$ is the only matrix with this property.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The idea is to to construct such a matrix $\mat{M}$ from $L\colon V\to W$
+and bases $B_{V}=(\vec{e}_{1},\dots,\vec{e}_{m})$ and
+$B_{W}=(\vec{f}_{1},\dots,\vec{f}_{n})$, as follows:
+\begin{itemize}
+\item[Step 1.] Compute $L(\vec{e}_{j})$ for $j=1,\dots,m$.
+\item[Step 2.] Find the coordinate vector $[L(\vec{e}_{j})]_{B_{W}}$ for
+  $L(\vec{e}_{j})$ relative to the basis $B_{W}$. This means expressing
+  $L(\vec{e}_{j})$ as a linear combination of the $\vec{f}_{i}$.
+\item[Step 3.] The matrix $\mat{M}$ of $L$ with respect to $B_{V}$ and
+  $B_{W}$ is formed by choosing $[L(\vec{e}_{j})]_{B_{W}}$ as the
+  $j^{\text{th}}$ column of $\mat{M}$.
+\end{itemize}
+In this way, any vector $\vec{v} = c_{1}\vec{e}_{1}+\dots+c_{m}\vec{e}_{m}$
+is mapped to $L(\vec{v}) = c_{1}L(\vec{e}_{1}) + c_{2}L(\vec{e}_{2}) + \dots + c_{m}L(\vec{e}_{m})$
+by definition of a linear transformation, and this coincides with matrix
+multiplication $\mat{M}[\vec{v}]_{B_{V}}$.
+\end{proof}
+
+\M
+What do we do if the bases for either vector space is not canonical or
+orthogonal? The trick is to form an augmented matrix
+\begin{equation}
+[\vec{f}_{1}\quad\dots\quad f_{n}\mid L(\vec{e}_{1})\quad\dots\quad L(\vec{e}_{m})]
+\end{equation}
+then applying elementary row operations, we transform it to reduced row
+echelon form, and then keep transforming it until it becomes
+\begin{equation}
+[\vec{f}_{1}\quad\dots\quad f_{n}\mid L(\vec{e}_{1})\quad\dots\quad L(\vec{e}_{m})]\sim[\mat{I}\mid\mat{M}].
+\end{equation}
+We then identify $\mat{M}$ as the matrix for $L$ relative to the basis
+$B_{V}$ and $B_{W}$.
+
+\subsection{Eigenstuff for Matrices}
+
+\begin{example}[Motivating Example]
+  Consider the matrix
+  \begin{equation}
+\mat{M} = \begin{pmatrix}2 & -1\\
+-1 & 2
+\end{pmatrix}.
+  \end{equation}
+  We find that there are two ``directions'' (distinct vectors) which are
+  just dilated when we multiply by $\mat{M}$,
+  \begin{subequations}
+    \begin{equation}
+\mat{M}\begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}1\\1\end{pmatrix},
+    \end{equation}
+    and
+    \begin{equation}
+\mat{M}\begin{pmatrix}1\\-1\end{pmatrix} = 3\begin{pmatrix}1\\-1\end{pmatrix}.
+    \end{equation}
+  \end{subequations}
+  This isn't a neat parlor trick: it turns out any invertible $n\times n$
+  matrix will have at most $n$ vectors which are ``dilated'' by the matrix.
+\end{example}
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix.
+We define an \define{Eigenvector} of $\mat{A}$ to be a [column]
+$n$-vector $\vec{v}$ such that there is a nonzero $\lambda\in\RR$
+[called the \define{Eigenvalue} associated with $\vec{v}$] satisfying
+\begin{equation}\label{eq:defn:eigenvector}
+\mat{A}\vec{v}=\lambda\vec{v}.
+\end{equation}
+\end{definition}
+
+\begin{remark}[Linear Operators can have eigenstuff]
+We also have an eigenvector for a linear operator $L\colon V\to V$
+be a vector $\vec{v}\in V$ such that there is a nonzero $\lambda\in\RR$
+satisfying $L(\vec{v})=\lambda\vec{v}$.
+We don't even require $V$ to be finite-dimensional (but it's far easier
+when $\dim(V)<\infty$).
+\end{remark}
+
+\N{Finding Eigenvalues and Eigenvectors}
+This is great, but how do we find eigenvalues and eigenvectors?
+The first thing to note is we can rewrite Eq~\eqref{eq:defn:eigenvector}
+by subtracting $\lambda\vec{v}$ from both sides:
+\begin{equation}
+\mat{A}\vec{v}-\lambda\vec{v}=\vec{0}.
+\end{equation}
+We insert a secret identity operator (the matrix analog of ``multiply by $1$''):
+\begin{equation}
+\mat{A}\vec{v}-\lambda\mat{I}\vec{v}=\vec{0}.
+\end{equation}
+We can factor out $\vec{v}$ by distributivity:
+\begin{equation}
+(\mat{A}-\lambda\mat{I})\vec{v}=\vec{0}.
+\end{equation}
+For this equation to hold, either $\vec{v}=0$ or
+$(\mat{A}-\lambda\mat{I})=0$, right?
+
+Wrong: $(\mat{A}-\lambda\mat{I})$ could be nonzero and noninvertible.
+That is when
+\begin{equation}
+\det(\mat{A}-\lambda\mat{I})=0.
+\end{equation}
+But the left-hand side is not identically zero. In fact, the left-hand
+side is a polynomial in $\lambda$.
+\emph{This polynomial is how we find eigenvalues for matrices.}
+
+Once we have an eigenvalue, we can plug it in and then solve the system
+of equations for the eigenvector. But first, let us define this
+polynomial quantity.
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix.
+The \define{Characteristic Polynomial} of $\mat{A}$ is 
+\begin{equation}
+p(\lambda) = \det(\mat{A}-\lambda\mat{I}).
+\end{equation}
+Some authors use $\det(\lambda\mat{I}-\mat{A})$, it doesn't matter since
+they have the same roots (which are the eigenvalues of $\mat{A}$ and the
+\emph{actual} quantity of interest).
+\end{definition}
+
+\begin{example}
+Recall our motivating example at the start of this section, we had
+\begin{equation}
+\mat{M} = \begin{pmatrix}2 & -1\\
+-1 & 2
+\end{pmatrix}.
+\end{equation}
+Its characteristic polynomial is
+\begin{equation}
+\det\begin{pmatrix}2-\lambda & -1\\
+-1 & 2-\lambda
+\end{pmatrix} = (2-\lambda)^{2}-1 = \lambda^{2}-4\lambda+3.
+\end{equation}
+We find this has roots $\lambda=1$ and $\lambda=3$.
+
+We can find the eigenvector for $\lambda=1$ by solving
+\begin{subequations}
+  \begin{align}
+    2x_{1} -x_{2} &= x_{1}\\
+    -x_{1} + 2x_{2} &= x_{2}.
+  \end{align}
+\end{subequations}
+These give us 2 copies of the same line described by
+\begin{equation}
+-x_{1} = -x_{2},\quad\mbox{or}\quad x_{1}=x_{2}.
+\end{equation}
+We have a generic eigenvector look like
+\begin{equation*}
+\vec{v}_{1} = m\begin{pmatrix}1\\1
+\end{pmatrix}
+\end{equation*}
+where $m\in\RR$. Usually we normalize the eigenvector to be a unit
+vector (so we fix any such parameters), which gives us
+\begin{equation}
+  \vec{v}_{1} = \begin{pmatrix}1/\sqrt{2}\\
+    1/\sqrt{2}
+  \end{pmatrix}.
+\end{equation}
+This is one eigenvector.
+
+The other eigenvector, the one associated with $\lambda=3$, requires
+solving the system of equations
+\begin{subequations}
+  \begin{align}
+    2x_{1} -x_{2} &= 3x_{1}\\
+    -x_{1} + 2x_{2} &= 3x_{2}.
+  \end{align}
+\end{subequations}
+This gives us two copies of the same line, described by the equation
+\begin{equation}
+x_{1} = -x_{2}.
+\end{equation}
+The unit eigenvector is then
+\begin{equation}
+\vec{v}_{2} = \begin{pmatrix}1/\sqrt{2}\\
+-1/\sqrt{2}
+\end{pmatrix}.
+\end{equation}
+The reader may verify these satisfy the equation $\mat{M}\vec{v}=\lambda\vec{v}$
+for eigenvectors of $\mat{M}$.
+\end{example}
+
+% \subsection{Eigenstuff for Linear Operators}
+
+\M
+Everything we've said carries over to linear operators acting on a
+vector space $L\colon V\to V$.
+
+\begin{lemma}\label{lemma:linear-transformations:det-and-tr-using-eigenvalues}
+If $\mat{A}$ is an $n\times n$ matrix with eigenvalues $\lambda_{1}$,
+$\dots$, $\lambda_{n}$, then
+\begin{equation}
+\det(\mat{A}) = \prod^{n}_{j=1}\lambda_{j}
+\end{equation}
+and
+\begin{equation}
+\tr(\mat{A}) = \sum^{n}_{j=1}\lambda_{j}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We suppose there are
+$n$ eigenvalues for our $n\times n$ matrix $\lambda_{1}$, \dots, $\lambda_{n}$.
+We have the following, starting from the characteristic polynomial for $\mat{A}$:
+\begin{calculation}
+  p_{\mat{A}}(\lambda)
+  \step{definition of characteristic polynomial}
+  \det(\mat{A} - \lambda\mat{I})
+  \step{fundamental theorem of algebra, Theorem~\ref{thm:fundamental-theorem-of-algebra}}
+  (\lambda_{1} - \lambda)(\cdots)(\lambda_{n} - \lambda)
+\end{calculation}
+(Recall (\S\ref{thm:fundamental-theorem-of-algebra}), the fundamental
+theorem of algebra states if $p(\lambda)$ is a polynomial of degree $n$
+with roots $\lambda_{1}$, \dots, $\lambda_{n}$, then $p(\lambda)=c(\lambda-\lambda_{1})(\cdots)(\lambda-\lambda_{n})$.)
+Now, if we set $\lambda=0$ to the characteristic polynomial, we find
+\begin{equation}
+\det(\mat{A}) = \prod^{n}_{j=1}\lambda_{j},
+\end{equation}
+as desired.
+
+For the trace, we again start with the characteristic polynomial, but
+divided by $(-\lambda)^{n}$,
+\begin{equation}
+\frac{p_{\mat{A}}(\lambda)}{(-\lambda)^{n}} =\det\left(\mat{I} + \frac{\mat{A}}{\lambda}\right).
+\end{equation}
+Set $\varepsilon=1/\lambda$ and take $\lambda$ large enough so
+$0<\varepsilon\ll1$, then by Proposition~\ref{prop:determinant:trace-as-infinitesimal-determinant},
+\begin{equation}
+  \det\left(\mat{I} + \frac{\mat{A}}{\lambda}\right) =
+  1 + \frac{\tr(\mat{A})}{\lambda} + \mathcal{O}(\lambda^{-2}).
+\end{equation}
+Here $\mathcal{O}(\lambda^{-2})$ means there are terms involving factors
+of $\lambda^{-2}$ or some power of it, which we do not care about, and
+``sweep under the rug''.
+
+But we see, by expanding out the left-hand side,
+\begin{equation}
+\frac{\det\left(\lambda\mat{I} + \mat{A}\right)}{\lambda^{n}} =
+\prod^{n}_{j=1}\frac{\lambda + \lambda_{j}}{\lambda}
+=\prod^{n}_{j=1}\left(1 + \frac{\lambda_{j}}{\lambda}\right). 
+\end{equation}
+Again, taking $\varepsilon=1/\lambda$ and expanding out the product
+gives us
+\begin{equation}
+\frac{\det\left(\lambda\mat{I} + \mat{A}\right)}{\lambda^{n}}
+=\prod^{n}_{j=1}\left(1 + \frac{\lambda_{j}}{\lambda}\right)
+=1 + \frac{1}{\lambda}\sum^{n}_{j=1}\lambda_{j} + \mathcal{O}(\lambda^{-2}).
+\end{equation}
+Then equating results, we find
+\begin{equation}
+\tr(\mat{A}) = \sum^{n}_{j=1}\lambda_{j}
+\end{equation}
+as desired.
+\end{proof}
+
+\begin{remark}
+As a consistency check, observe if $\mat{A}$ is singular, then it has a
+zero eigenvalue. The product of its eigenvalues would be zero. Its
+determinant (as a singular matrix) would be zero. So our lemma is
+consistent with this special case.
+\end{remark}
+
+\subsection{Diagonalization}
+
+\begin{definition}
+  We call an $n\times n$ matrix $\mat{M}$ \define{Diagonalizable} if
+  there exists a diagonal $n\times n$ matrix $\mat{D}$ such that
+  $\mat{M}\sim\mat{D}$; i.e., if there is an invertible $n\times n$
+  matrix $\mat{P}$ such that
+  $\mat{M} = \mat{P}^{-1}\mat{D}\mat{P}$.
+\end{definition}
+
+\begin{lemma}
+The identity matrix is similar only to itself.
+\end{lemma}
+\begin{proof}
+  For $\mat{I}_{n}$, pick any invertible matrix $\mat{P}$. We find
+\begin{calculation}
+  \mat{P}^{-1}\mat{I}_{n}\mat{P}
+  \step{associativity of matrix multiplication}
+  \mat{P}^{-1}(\mat{I}_{n}\mat{P})
+  \step{defining property of identity matrix}
+  \mat{P}^{-1}\mat{P}
+  \step{defining property of matrix inverse}
+  \mat{I}_{n}.
+\end{calculation}
+Hence the result.
+\end{proof}
+
+\begin{theorem}
+Similar $n\times n$ matrices $\mat{A}\sim\mat{B}$ have the same eigenvalues.
+\end{theorem}
+\begin{proof}
+Let $\mat{P}$ be such that $\mat{A}=\mat{P}^{-1}\mat{B}\mat{P}$.
+We will prove the characteristic polynomial for $\mat{A}$ is the same as
+for $\mat{B}$. We just unfold the characteristic polynomial for $\mat{B}$,
+\begin{calculation}
+  p_{\mat{B}}(\lambda)
+\step{definition of characteristic polynomial}
+  \det(\lambda\mat{I}_{n} - \mat{B})
+\step{unfolding definition of $\mat{B}$}
+  \det(\lambda\mat{I}_{n} - \mat{P}^{-1}\mat{A}\mat{P})
+\step{identity matrix is always similar to itself}
+  \det(\lambda\mat{P}^{-1}\mat{I}_{n}\mat{P} - \mat{P}^{-1}\mat{A}\mat{P})
+\step{distributivity}
+  \det(\mat{P}^{-1}(\lambda\mat{I}_{n} - \mat{A})\mat{P})
+\step{determinant of product is product of determinants}
+  \det(\mat{P}^{-1})\det(\lambda\mat{I}_{n} - \mat{A})\det(\mat{P})
+\step{commutativity of multiplication of numbers}
+  \det(\lambda\mat{I}_{n} - \mat{A})\det(\mat{P}^{-1})\det(\mat{P})
+\step{product of determinants is determinant of product}
+  \det(\lambda\mat{I}_{n} - \mat{A})\det(\mat{P}^{-1}\mat{P})
+\step{definition of matrix inverse}
+  \det(\lambda\mat{I}_{n} - \mat{A})\det(\mat{I})
+\step{determinant of identity matrix is $1$}
+  \det(\lambda\mat{I}_{n} - \mat{A})
+\step{definition of characteristic polynomial}
+  p_{\mat{A}}(\lambda)
+\end{calculation}
+Then $\mat{A}$ and $\mat{B}$ have identical characteristic polynomials
+and, moreover, this means they have identical eigenvalues.
+\end{proof}
+
+\begin{theorem}\label{thm:linear-transformations:diagonalizable-iff-eigenvectors-linearly-independent}
+An $n\times n$ matrix $\mat{A}$ can be diagonalized if and only if it
+has $n$ linearly independent eigenvectors.
+\end{theorem}
+
+\begin{proof}
+\begin{subequations}
+$(\implies)$ Assume $\mat{A}$ can be diagonalized. Then there exists an
+  invertible matrix $\mat{P}$ and a diagonal matrix $\mat{D}$ such that
+\begin{equation}
+\mat{P}^{-1}\mat{A}\mat{P}=\mat{D}.
+\end{equation}
+  We can multiply both sides on the left by $\mat{P}$ to get
+\begin{equation}
+\mat{A}\mat{P}=\mat{P}\mat{D}.
+\end{equation}
+If $\mat{P} = (\vec{p}_{1}|\dots|\vec{p}_{n})$ is written out as $n$
+column vectors, and if $\mat{D} = \diag(\lambda_{1},\dots,\lambda_{n})$,
+then we have our equation become:
+\begin{equation}
+  (\mat{A}\vec{p}_{1}|\dots|\mat{A}\vec{p}_{n}) = (\lambda_{1}\vec{p}_{1}|\dots|\lambda_{n}\vec{p}_{n}).
+\end{equation}
+This is a system of $n$ eigenvectors $\vec{p}_{1}$, \dots, $\vec{p}_{n}$
+and $n$ eigenvalues $\lambda_{1}$, \dots, $\lambda_{n}$. Since $\mat{P}$
+is invertible, its columns are linearly independent. Hence the columns
+of $\mat{P}$ (which are the eigenvectors of $\mat{A}$) form a basis and,
+in particular, are all nonzero.
+\end{subequations}
+
+\begin{subequations}
+$(\impliedby)$ Assume $\mat{A}$ has $n$ linearly independent
+eigenvectors $\vec{x}_{1}$, \dots, $\vec{x}_{n}$ with associated
+eigenvalues $\lambda_{1}$, \dots, $\lambda_{n}$. Construct the matrix
+\begin{equation}
+\mat{P} = (\vec{x}_{1}\mid\dots\mid\vec{x}_{n}).
+\end{equation}
+The columns of $\mat{P}$ are linearly independent, hence $\mat{P}$ is
+invertible. We find
+\begin{equation}
+\mat{A}\mat{P} = (\mat{A}\vec{x}_{1}\mid\dots\mid\mat{A}\vec{x}_{n})
+\end{equation}
+and since the $\vec{x}_{i}$ are all eigenvectors, we have,
+\begin{equation}
+\mat{A}\mat{P} = (\lambda_{1}\vec{x}_{1}\mid\dots\mid\lambda_{n}\vec{x}_{n}).
+\end{equation}
+But in the first half of the proof, we saw the right-hand side is
+precisely equal to $\mat{P}\mat{D}$ where
+$\mat{D}=\diag(\lambda_{1},\dots,\lambda_{n})$. This establishes
+$\mat{A}\sim\mat{D}$ and that $\mat{A}$ is diagonalizable.
+\end{subequations}
+\end{proof}
+
+\begin{remark}
+We accidentally proved too much in the forward direction. Namely, we
+established the eigenvectors form a basis.
+\end{remark}
+
+\begin{theorem}
+If the roots of the characteristic polynomial for an $n\times n$ matrix
+$\mat{A}$ are all distinct (i.e., there are $n$ distinct roots with no
+duplicates), then $\mat{A}$ is diagonalizable.
+\end{theorem}
+
+In other words, if $\mat{A}$ has $n$ distinct eigenvalues, then
+$\mat{A}$ is diagonalizable.
+
+\begin{proof}
+Let $\mat{A}$ have eigenvalues $\lambda_{1}$, \dots, $\lambda_{n}$ and
+associated eigenvectors $\vec{x}_{1}$, \dots, $\vec{x}_{n}$. Our goal is
+to prove the eigenvectors are linearly independent (since they would
+form the columns of a matrix $\mat{P}$, as outlined in the proof of the
+previous theorem).
+
+Assume for contradiction that the eigenvectors are not all linearly
+independent. Then we can find some $\vec{x}_{j}$ which is a linear
+combination of the vectors $\vec{x}_{1}$, \dots, $\vec{x}_{j-1}$ and
+that these $j-1$ vectors $S=\{\vec{x}_{1}, \dots, \vec{x}_{j-1}\}$
+are linearly independent.
+
+So we find
+\begin{equation}\label{eq:linear-transformations:diagonalizable-iff-distinct-eigenvalues:first-step}
+\vec{x}_{j} = c_{1}\vec{x}_{1} + \cdots + c_{j-1}\vec{x}_{j-1}.
+\end{equation}
+This is the first step.
+
+Now we multiply on the left of both sides of Eq~\eqref{eq:linear-transformations:diagonalizable-iff-distinct-eigenvalues:first-step}
+by $\mat{A}$ which gives us
+\begin{equation}
+\mat{A}\vec{x}_{j} = c_{1}\mat{A}\vec{x}_{1} + \cdots + c_{j-1}\mat{A}\vec{x}_{j-1}.
+\end{equation}
+But these are eigenvectors, so we can plug in their eigenvalues
+\begin{equation}\label{eq:linear-transformations:diagonalizable-iff-distinct-eigenvalues:second-step}
+\lambda_{j}\vec{x}_{j} = c_{1}\lambda_{1}\vec{x}_{1} + \cdots + c_{j-1}\lambda_{j-1}\vec{x}_{j-1}.
+\end{equation}
+This is the second step.
+
+Now we return to Eq~\eqref{eq:linear-transformations:diagonalizable-iff-distinct-eigenvalues:first-step},
+and multiply both sides by $\lambda_{j}$
+\begin{equation}
+\lambda_{j}\vec{x}_{j} = c_{1}\lambda_{j}\vec{x}_{1} + \cdots + c_{j-1}\lambda_{j}\vec{x}_{j-1}.
+\end{equation}
+We subtract from this equation the result of our second step, i.e., Eq~\eqref{eq:linear-transformations:diagonalizable-iff-distinct-eigenvalues:second-step}
+\begin{subequations}
+\begin{align}
+    \vec{0} &= \lambda_{j}\vec{x}_{j} - \lambda_{j}\vec{x}_{j}\\
+    &= (c_{1}\lambda_{j}\vec{x}_{1} + \cdots + c_{j-1}\lambda_{j}\vec{x}_{j-1})
+ - (c_{1}\lambda_{1}\vec{x}_{1} + \cdots + c_{j-1}\lambda_{j-1}\vec{x}_{j-1})\\
+&= c_{1}(\lambda_{j}-\lambda_{1})\vec{x}_{1} + \cdots + c_{j-1}(\lambda_{j}-\lambda_{j-1})\vec{x}_{j-1}.
+\end{align}
+\end{subequations}
+We see for this to work, we need every term to vanish. Since
+$\vec{x}_{i}\neq\vec{0}$ for every $i=1,\dots,n$, we need the
+coefficients to vanish. But since $\lambda_{j}\neq\lambda_{i}$ for
+$i\neq j$, it would be impossible for $\lambda_{j}-\lambda_{i}=0$. We are
+forced to conclude that $c_{i}=0$ for $i=1,\dots,j-1$.
+
+This contradicts the assumption that the eigenvectors are linearly dependent,
+and we conclude they are all linearly independent. Then by Theorem~\ref{thm:linear-transformations:diagonalizable-iff-eigenvectors-linearly-independent}
+it follows $\mat{A}$ is diagonalizable.
+\end{proof}
+
+\N{Importance of diagonalizable matrices}
+If $\mat{A}$ is diagonalizable, then
+$\mat{A}=\mat{P}\mat{D}\mat{P}^{-1}$. We see
+\begin{subequations}
+\begin{calculation}
+  \mat{A}^{2}
+\step{unfolding $\mat{A}$}
+  (\mat{P}\mat{D}\mat{P}^{-1})(\mat{P}\mat{D}\mat{P}^{-1})
+\step{associativity of matrix multiplication}
+  \mat{P}\left(\mat{D}(\mat{P}^{-1}\mat{P})\mat{D}\right)\mat{P}^{-1}
+\step{defining property of matrix inverse}
+  \mat{P}\left(\mat{D}\mat{I}\mat{D}\right)\mat{P}^{-1}
+\step{defining property of identity matrix}
+  \mat{P}\left(\mat{D}\mat{D}\right)\mat{P}^{-1}
+\step{definition of matrix power}
+  \mat{P}\mat{D}^{2}\mat{P}^{-1}
+\end{calculation}
+\end{subequations}
+We can similarly find
+\begin{subequations}
+\begin{calculation}
+  \mat{A}^{3}
+\step{unfolding definition of matrix power}
+  \mat{A}^{2}\mat{A}
+\step{unfolding definition of $\mat{A}$ and previous calculation}
+  (\mat{P}\mat{D}^{2}\mat{P}^{-1})(\mat{P}\mat{D}\mat{P}^{-1})
+\step{associativity of matrix multiplication}
+  \mat{P}\left(\mat{D^{2}}(\mat{P}^{-1}\mat{P})\mat{D}\right)\mat{P}^{-1}
+\step{defining property of matrix inverse}
+  \mat{P}\left(\mat{D}^{2}\mat{I}\mat{D}\right)\mat{P}^{-1}
+\step{defining property of identity matrix}
+  \mat{P}\left(\mat{D}^{2}\mat{D}\right)\mat{P}^{-1}
+\step{definition of matrix power}
+  \mat{P}\mat{D}^{3}\mat{P}^{-1}.
+\end{calculation}
+\end{subequations}
+The pattern is clear, now; if we assume (the so-called ``inductive hypothesis''), for arbitrary $n\in\NN$,
+\begin{equation}
+\mat{A}^{n} = \mat{P}\mat{D}^{n}\mat{P}^{-1}.
+\end{equation}
+Then we have
+\begin{subequations}
+\begin{calculation}
+  \mat{A}^{n+1}
+\step{unfolding definition of matrix power}
+  \mat{A}^{n}\mat{A}
+\step{unfolding definition of $\mat{A}$ and inductive hypothesis}
+  (\mat{P}\mat{D}^{n}\mat{P}^{-1})(\mat{P}\mat{D}\mat{P}^{-1})
+\step{associativity of matrix multiplication}
+  \mat{P}\left(\mat{D^{n}}(\mat{P}^{-1}\mat{P})\mat{D}\right)\mat{P}^{-1}
+\step{defining property of matrix inverse}
+  \mat{P}\left(\mat{D}^{n}\mat{I}\mat{D}\right)\mat{P}^{-1}
+\step{defining property of identity matrix}
+  \mat{P}\left(\mat{D}^{n}\mat{D}\right)\mat{P}^{-1}
+\step{definition of matrix power}
+  \mat{P}\mat{D}^{n+1}\mat{P}^{-1}.
+\end{calculation}
+\end{subequations}
+This is an inductive proof for the claim:
+\begin{equation}
+\boxed{\mat{A}^{n} = \mat{P}\mat{D}^{n}\mat{P}^{-1}.}
+\end{equation}
+
+\begin{ddanger}
+\textsc{Caution:} not all invertible matrices are diagonalizable. Do not
+make this mistake! The following example provides a counter-example.
+\end{ddanger}
+
+\begin{example}
+  The matrix
+  \begin{equation}
+\mat{J} = \begin{pmatrix}0 & -1\\1 & 0
+\end{pmatrix}
+  \end{equation}
+  is not diagonalizable in $\Mat(\RR;2)$.
+\end{example}
+\begin{proof}
+  We see the characteristic polynomial for $\mat{J}$ is
+  \begin{equation}
+p(\lambda) = \det\begin{pmatrix}-\lambda & -1\\1 & -\lambda
+\end{pmatrix}=\lambda^{2}+1.
+  \end{equation}
+  This has roots at $\lambda_{\pm}=\pm\sqrt{-1}$, which is not a real
+  number. In $\mat(\CC;2)$, we could diagonalize $\mat{J}$ with
+  eigenvectors $\vec{v}_{+}=(\I,1)$ and $\vec{v}_{-}=(-\I,1)$. There is
+  no way to construct a matrix $\mat{P}\in\Mat(\RR;2)$ that would
+  diagonalize $\mat{J}$.
+\end{proof}
+
+\N{Puzzle} When will a real $n\times n$ matrix be diagonalizable?
+
+\begin{lemma}\label{lemma:linear-transformations:symmetric-matrices-have-orthogonal-eigenvectors-associated-with-different-eigenvalues}
+  Let $\mat{A}$ be a real $n\times n$ matrix.
+  If $\mat{A}$ is symmetric (i.e., $\mat{A} = \transpose{\mat{A}}$),
+  then eigenvectors associated with distinct eigenvalues are orthogonal.
+\end{lemma}
+
+\begin{proof}
+Assume $\mat{A}$ is symmetric. We will prove the
+eigenvectors (associated with distinct eigenvalues) of $\mat{A}$ are
+orthogonal. Let $\lambda_{i}$, $\lambda_{j}$ be eigenvalues with respective eigenvectors $\vec{x}_{i}$,
+$\vec{x}_{j}$ which are distinct $\lambda_{i}\neq\lambda_{j}$. Then
+\begin{calculation}
+  \lambda_{i}(\vec{x}_{i}\cdot\vec{x}_{j})
+  \step{compatibility of scalar multiplication and dot product}
+  (\lambda_{i}\vec{x}_{i})\cdot\vec{x}_{j}
+  \step{since $\vec{x}_{i}$ is an eigenvector with eigenvalue $\lambda_{i}$}
+  (\mat{A}\vec{x}_{i})\cdot\vec{x}_{j}
+  \step{definition of dot product using matrices}
+  \transpose{(\mat{A}\vec{x}_{i})}\vec{x}_{j}
+  \step{transpose of product is reverse product of transposes}
+  (\transpose{\vec{x}_{i}}\transpose{\mat{A}})\vec{x}_{j}
+  \step{associativity of matrix multiplication, and restore dot product}
+  \vec{x}_{i}\cdot(\transpose{\mat{A}}\vec{x}_{j})
+  \step{since $\mat{A}$ is symmetric}
+  \vec{x}_{i}\cdot(\mat{A}\vec{x}_{j})
+  \step{since $\vec{x}_{j}$ is an eigenvalue}
+  \vec{x}_{i}\cdot(\lambda_{j}\vec{x}_{j})
+  \step{scalar multiplication is compatible with dot product}
+  \lambda_{j}(\vec{x}_{i}\cdot\vec{x}_{j})
+\end{calculation}
+then we have (subtracting one side from the other)
+\begin{equation}
+(\lambda_{i} - \lambda_{j})(\vec{x}_{i}\cdot\vec{x}_{j}) = 0.
+\end{equation}
+Either $\lambda_{i}=\lambda_{j}$ or $\vec{x}_{i}\cdot\vec{x}_{j}=0$.
+But we assumed the eigenvalues are distinct, so $\lambda_{i}\neq\lambda_{j}$.
+Hence $\vec{x}_{i}\cdot\vec{x}_{j}=0$ as desired.
+\end{proof}
+
+\begin{theorem}[Fundamental Theorem of Algebra]\label{thm:fundamental-theorem-of-algebra}
+Any polynomial of degree $n$ $p(x)=p_{0} + p_{1}x + p_{2}x^{2} + \cdots + x^{n}$
+may be factorized as a product of its roots $p(x)=(x-x_{1})(x-x_{2})(\cdots)(x-x_{n})$.
+\end{theorem}
+
+I am taking this as ``given'', its proof lies outside the scope of these notes.
+In upcoming notes on intermediate linear algebra, a proof will be given.
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix. We say an eigenvalue
+$\lambda_{j}$ of $\mat{A}$ has \define{Multiplicity} $k_{j}$ if the
+characteristic polynomial of $\mat{A}$ has $k_{j}$ factors of
+$(\lambda-\lambda_{j})$ appearing in it, i.e.,
+\begin{equation}
+p(\lambda) = (\lambda-\lambda_{j})^{k_{j}}\prod^{n-k_{j}}_{\substack{i\neq j\\\lambda_{i}\neq\lambda_{j}}}(\lambda - \lambda_{i})
+\end{equation}
+\end{definition}
+
+\begin{definition}
+Let $\mat{A}$ be an $n\times n$ matrix with eigenvalue $\lambda_{j}$ of
+multiplicity $k_{j}$.
+We define the \define{Eigenspace} of $\mat{A}$ for eigenvalue
+$\lambda_{j}$ to be the subspace spanned by all $k_{j}$ linearly independent eigenvectors of $\lambda_{j}$
+\begin{equation}
+U = \Span\{\vec{v}\in V\mid \mat{A}\vec{v}=\lambda_{j}\vec{v}\}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}
+If $\mat{A}$ is an $n\times n$ matrix with eigenvalue $\lambda$ and two
+linearly independent eigenvectors $\vec{v}_{1}$, $\vec{v}_{2}$ both with
+eigenvalue $\lambda$, then $\vec{v}_{2} - (\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1}$
+is an eigenvector of $\mat{A}$ with eigenvalue $\lambda$.
+\end{lemma}
+
+\begin{proof}
+  We find by direct computation,
+  \begin{calculation}
+    \mat{A}(\vec{v}_{2} - (\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1})
+    \step{distributivity}
+    \mat{A}\vec{v}_{2} - \mat{A}(\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1}
+    \step{since $\vec{v}_{2}$ is an eigenvector}
+    \lambda\vec{v}_{2} - \mat{A}(\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1}
+    \step{linearity}
+    \lambda\vec{v}_{2} - (\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\mat{A}\widehat{\vec{v}}_{1}
+    \step{since $\widehat{\vec{v}}_{1}$ is an eigenvector}
+    \lambda\vec{v}_{2} - (\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\lambda\widehat{\vec{v}}_{1}
+    \step{commutativity of multiplication for numbers}
+    \lambda\vec{v}_{2} - \lambda(\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1}
+    \step{distributivity}
+    \lambda(\vec{v}_{2} - (\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1})
+  \end{calculation}
+  Hence we conclude $(\vec{v}_{2} - (\vec{v}_{2}\cdot\widehat{\vec{v}}_{1})\widehat{\vec{v}}_{1})$
+  is an eigenvector of $\mat{A}$ with eigenvalue $\lambda$.
+\end{proof}
+
+\begin{remark}
+As an immediate corollary to this, we can apply the Graham--Schmidt
+algorithm (\S\ref{chunk:graham-schmidt}) to eigenvectors of the same
+eigenvalue $\lambda$ to construct an orthonormal basis for the
+eigenspace of $\lambda$. 
+\end{remark}
+
+\begin{theorem}[Spectral theorem for real matrices]\label{thm:spectral-theorem}
+  Let $\mat{A}$ be a real $n\times n$ matrix. Assume $\det(\mat{A})\neq0$.
+  Then $\mat{A}$ is diagonalizable by an orthogonal matrix $\mat{P}$
+  (i.e., $\mat{A}=\mat{P}\mat{D}\mat{P}^{-1}$ where $\mat{D}$ is diagonal) if and only if
+  $\mat{A}$ is symmetric, that is,
+\begin{equation}
+\mat{A} = \transpose{\mat{A}}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$(\implies)$ Assume $\mat{A}$ is diagonalizable, so $\mat{A}=\mat{P}\mat{D}\mat{P}^{-1}$
+  where $\mat{P}$ is orthogonal. Then $\mat{P}^{-1} = \transpose{\mat{P}}$.
+  Then $\mat{A} = \mat{P}\mat{D}\transpose{\mat{P}}$ is clearly
+  symmetric, since $\transpose{\mat{A}}=\transpose{(\transpose{\mat{P}})}\mat{D}\transpose{\mat{P}}$.
+  Recall the transpose is idempotent $\transpose{(\transpose{\mat{P}})}=\mat{P}$
+  which implies $\transpose{\mat{A}}=\mat{P}\mat{D}\transpose{\mat{P}}=\mat{A}$.
+  Hence $\mat{A}$ is symmetric.
+
+  \medbreak
+  $(\impliedby)$ Assume $\mat{A}$ is symmetric.
+For each eigenvalue $\lambda_{j}$ of multiplicity $k_{j}>1$ (i.e., there
+are $k_{j}>1$ linearly independent eigenvectors with the same eigenvalue
+$\lambda_{j}$), we find $k_{j}$ linearly independent eigenvectors.
+
+Then applying our beloved Graham--Schmidt algorithm
+(\S\ref{chunk:graham-schmidt}), we transform these eigenvectors into
+orthonormal vectors for the eigenspace.
+
+
+Then we have the eigenvectors for distinct eigenvalues be orthogonal by Lemma~\ref{lemma:linear-transformations:symmetric-matrices-have-orthogonal-eigenvectors-associated-with-different-eigenvalues},
+and we have just constructed orthonormal eigenvectors when they share
+the same eigenvalue, and taken altogether these form an orthonormal
+basis. These
+form the columns of matrix $\mat{P}$, which is an orthogonal matrix (\S\ref{chunk:basis:change-of-basis-matrix-among-orthonormal-bases}), and
+we have $\mat{D}=\mat{P}^{-1}\mat{A}\mat{P}=\transpose{\mat{P}}\mat{A}\mat{P}$
+be the diagonal matrix of eigenvalues. Then we have the data for
+diagonalizing $\mat{A}=\mat{P}\mat{D}\mat{P}^{T}$.
+\end{proof}
+
+\subsection{Matrix Exponential}
+
+\N{Matrix Exponential}
+In particular, we can define the matrix exponential as
+\begin{equation}
+\exp(\mat{A}) = \mat{P}\exp(\mat{D})\mat{P}^{-1}
+\end{equation}
+where
+\begin{equation}
+\exp(\mat{D}) = \diag(\exp(d_{1}), \dots, \exp(d_{n}))
+\end{equation}
+the matrix exponential of the diagonal matrix is just the diagonal of
+exponentials.
+
+If further $\mat{D}$ consists of strictly positive entries, we could
+define the matrix logarithm as
+\begin{equation}
+\log(\mat{A}) = \mat{P}\log(\mat{D})\mat{P}^{-1}
+\end{equation}
+where, again, the matrix logarithm of the diagonal is just the
+component-wise logarithm of its entries,
+\begin{equation}
+\log(\mat{D}) = \diag(\log(d_{1}), \dots, \log(d_{n})).
+\end{equation}
+
+
+\begin{theorem}
+  For any matrix $\mat{A}$, we have
+  \begin{equation}
+\det(\exp(\mat{A})) = \E^{\tr(\mat{A})}.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+We see that $\exp(\mat{A})=\mat{P}\exp(\mat{D})\mat{P}^{-1}$ has
+eigenvalues $\E^{\lambda_{j}}$ where $\lambda_{j}$ are the eigenvalues
+of $\mat{A}$. Then by Lemma~\ref{lemma:linear-transformations:det-and-tr-using-eigenvalues},
+\begin{equation}
+\det(\exp(\mat{A})) = \prod^{n}_{j=1}\E^{\lambda_{j}}
+\end{equation}
+and the right-hand side can be written as
+\begin{equation}
+\det(\exp(\mat{A})) = \E^{\sum^{n}_{j=1}\lambda_{j}}.
+\end{equation}
+But by Lemma~\ref{lemma:linear-transformations:det-and-tr-using-eigenvalues},
+\begin{equation}
+  \begin{split}
+    \det(\exp(\mat{A})) &= \E^{\sum^{n}_{j=1}\lambda_{j}}\\
+    &= \E^{\tr(\mat{A})}.
+  \end{split}
+\end{equation}
+Hence the result.
+\end{proof}
+
+\begin{remark}
+In quantum field theory, we often work with infinite-dimensional vector
+spaces (like the smooth functions on spacetime). Linear operators on
+these vector spaces include derivatives. For peculiar reasons,
+physicists want to compute the ``determinant'' of the differentiation
+operator. The previous theorem offers one way to approach such a
+concept. We could define ``eigenfunctions'' for a differential operator
+$D$ as $D(f)=\lambda f$, then the trace is just the sum over all eigenvalues.
+We could define $\det(\exp(D))=\exp(\sum\lambda)$, for example. This is
+done more precisely with zeta functions, and is known as the zeta
+functional regularization of the functional determinant.
+\end{remark}
+
+\begin{corollary}
+  For any matrix $\mat{A}$ with real or complex entries,
+  we have $\exp(\mat{A})$ be nonsingular.
+\end{corollary}
+
+\begin{proof}
+We see $\tr(\mat{A})$ is finite --- call it $z=\tr(\mat{A})$ --- and
+by the previous theorem
+\begin{equation}
+\det(\exp(\mat{A})) = \E^{\tr(\mat{A})} = \E^{z}.
+\end{equation}
+But $\E^{z}\neq0$ ever for $z\in\CC$ (or $z\in\RR$), which means the
+determinant of $\exp(\mat{A})$ is never zero. Hence $\exp(\mat{A})$ must
+be invertible.
+\end{proof}
+
+\N{Analytic Function of a Matrix}
+More generally, if $f\colon\RR\to\RR$ is a function with a Taylor series about $x_{0}$
+given by
+\begin{equation}
+f(x_{0}+h)=\sum^{\infty}_{n=0}\frac{a_{n}}{n!}h^{n},
+\end{equation}
+then it may be applied to a diagonalizable matrix
+$\mat{A}=\mat{P}\mat{D}\mat{P}^{-1}$ provided every entry of $\mat{D}$
+lies within the neighborhood of convergence for the Taylor series. If
+$\mat{D} = \diag(x_{0} + d_{1}, \dots, x_{0} + d_{n})$, then
+\begin{equation}
+f(\mat{A}) = \mat{P}f(\mat{D})\mat{P}^{-1}
+\end{equation}
+where $f(\mat{D}) = \diag(f(x_{0} + d_{1}), \dots, f(x_{0}+d_{n}))$.
+This follows from $\mat{A}^{n}=\mat{P}\mat{D}^{n}\mat{P}^{-1}$ for every
+$n\in\NN_{0}$ and just plugging it into the series expansion.

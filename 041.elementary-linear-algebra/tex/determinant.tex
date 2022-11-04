@@ -612,7 +612,7 @@ Dividing both sides by $\det(\mat{A})$ yields the result.
 
 
 
-\begin{theorem}
+\begin{theorem}\label{thm:determinant:singular-matrices-have-zero-det}
   Let $\mat{A}$ be an $n\times n$ matrix.
   The determinant is zero if and only if $\mat{A}$ is singular;
   equivalently, the determinant is nonzero if and only if $\mat{A}$ is
@@ -749,12 +749,12 @@ Prove or find a counter-example: the function $D$ is just the determinant $D(\ma
 
 \subsection{Trace of a Matrix}
 
-\begin{proposition}
+\begin{proposition}\label{prop:determinant:trace-as-infinitesimal-determinant}
 Let $\mat{X}$ be an $n\times n$ matrix, let $\varepsilon>0$ be ``small''
 (in the sense that we discard terms of order $\varepsilon^{2}$ or higher).
 Then
 \begin{equation}
-\det(\mat{I} + \varepsilon\mat{X}) = \varepsilon\sum^{n}_{j=1}(\mat{X})_{j,j}.
+\det(\mat{I} + \varepsilon\mat{X}) = 1 + \varepsilon\sum^{n}_{j=1}(\mat{X})_{j,j}.
 \end{equation}
 \end{proposition}
 

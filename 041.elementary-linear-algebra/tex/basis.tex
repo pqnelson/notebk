@@ -92,8 +92,9 @@ are linearly independent.
 \end{theorem}
 
 \begin{proof}
-$(\implies)$ Assume $\det(\mat{M})\neq0$. Then $\mat{M}$ is invertible.
-Then $\mat{M}\vec{x}=\vec{0}$ has a unique solution, namely $\vec{x}=\vec{0}$.
+$(\implies)$ Assume $\det(\mat{M})\neq0$. Then $\mat{M}$ is invertible
+  (by Theorem~\ref{thm:determinant:singular-matrices-have-zero-det}).
+Then $\mat{M}\vec{x}=\vec{0}$ has a unique solution (\S\ref{par:matrix-algebra:solving-systems-of-equations}), namely $\vec{x}=\vec{0}$.
 This is equivalent to saying
 \begin{equation}
 x_{1}\vec{v}_{1} + x_{2}\vec{v}_{2} + \cdots + x_{n}\vec{v}_{n} = 0
@@ -299,3 +300,397 @@ algebra of inifnite-dimensional spaces usually goes by the name
 analysis'', where many intuitions from finite-dimensional linear algebra
 carries over.
 \end{remark}
+
+\begin{definition}
+Let $V$ be a finite-dimensional vector space, let
+$B=\{\vec{f}_{1},\dots,\vec{f}_{n}\}$ be a basis for $V$.
+We define an \define{Ordered Basis} to be a tuple $(\vec{f}_{1},\dots,\vec{f}_{n})$.
+
+Futhermore, if the vectors $\vec{f}_{1}$, \dots, $\vec{f}_{n}$ form a
+basis such that
+\begin{equation}
+\vec{f}_{i}\cdot\vec{f}_{j}=0\quad\mbox{if }i\neq j,
+\end{equation}
+then we call it an \define{Orthogonal Basis} for $V$. If, even further,
+we have
+\begin{equation}
+\vec{f}_{i}\cdot\vec{f}_{j}=\delta_{i,j}=\begin{cases}0&\mbox{if }i\neq j\\
+1 & \mbox{if }i=j
+\end{cases}
+\end{equation}
+then we call it an \define{Orthonormal Basis}.
+\end{definition}
+
+\begin{remark}
+This might seem silly (and, I guess, it is), but sets are not
+ordered. There are times when we will want to specifically note the
+order of basis vectors. The ordering may be arbitrary (for example, an
+accidental artifact induced by the indexing), but important.
+\end{remark}
+
+\begin{remark}
+In differential geometry, we sometimes see the term ``frame'' used for
+an ordered basis.
+\end{remark}
+
+\subsection{Coordinates Relative to a Basis}
+
+\M
+Recall, when we began discussing vector spaces like $\RR^{1}$ and
+$\RR^{2}$ (back in section~\ref{section:vectors-in-r-n}), we began by
+drawing a line, picking a point $O$ (calling it the origin), and then
+picking another point $P$. We identified the oriented line segment
+$\overrightarrow{OP}$ as a unit vector. Then any other point $Q$ could
+be identified as a multiple of $\overrightarrow{OP}$ such that
+$\|\overrightarrow{OQ}\|/\|\overrightarrow{OP}\|=|x|\in\RR$ and if $Q$
+is not ``in the $P$ direction'', we said
+$-|x|\overrightarrow{OP}=\overrightarrow{OQ}$. In this way, we
+identified $x$ as the coordinate of $Q$.
+
+\M In $\RR^{2}$, we did the same thing, but we now have two axes. Any
+point $S$ on the plane could be identified by a pair of real numbers
+$(x,y)\in\RR^{2}$ by similar means.
+
+\M
+In general, this is what happens with a vector in a vector space
+relative to a basis. We obtain ``coordinates'' for the vector, enabling
+us to write our vector as a linear combination of basis vectors. This is
+a crucial point, because an $n$-dimensional real vector space $V$ \emph{is not}
+\emph{identical} to $\RR^{n}$ --- but by choosing a basis, we can
+identify vectors in $V$ with tuples of real numbers in $\RR^{n}$, namely
+their coordinates. This should be familiar, we've been working with
+$n\times1$ matrices and calling them vectors (but really, they're just
+inhabitants of $\RR^{n}$). We have been stretching the truth all this
+time.
+
+\begin{ddanger}
+This is a really critical point to appreciate: vectors are ``points in
+the plane'' \emph{not} an $n\times 1$ matrix. \textbf{Vectors are not matrices}.
+But we can turn a vector in a finite-dimensional vector space
+\emph{into} a column $n\times1$ matrix, and vice-versa, \emph{given some basis}
+for $V$.
+\end{ddanger}
+
+Let us try to make things concrete.
+
+\begin{definition}\label{defn:basis:coordinates}
+Let $V$ be a finite-dimensional vector space, let
+$B=(\vec{f}_{1},\dots,\vec{f}_{n})$ be an ordered basis for $V$, and let
+$\vec{v}\in V$ be an arbitrary vector. Then we call the coefficients
+$\lambda_{1},\dots,\lambda_{n}\in\RR$ in
+\begin{equation}
+\vec{v} = \lambda_{1}\vec{f}_{1} + \cdots + \lambda_{n}\vec{f}_{n}
+\end{equation}
+the \define{Coordinates} of $\vec{v}$ over $B$ (or ``relative to $B$'').
+We may write
+\begin{equation}
+[\vec{v}]_{B} = \begin{pmatrix}\lambda_{1}\\\vdots\\\lambda_{n}
+\end{pmatrix}
+\end{equation}
+for the coordinates of $\vec{v}$ relative to basis $B$.
+\end{definition}
+
+\begin{remark}
+If we can write $\vec{v} = \lambda_{1}\vec{f}_{1} + \lambda_{2}\vec{f}_{2} + \cdots + \lambda_{n}\vec{f}_{n}$,
+then we can identify $\vec{v}$ with the column vector of its coordinates
+relative to the $\vec{f}_{j}$:
+\begin{equation}
+  \vec{v} \mathrel{\mbox{``=''}}
+  \begin{pmatrix}\lambda_{1}\\\lambda_{2}\\\vdots\\\lambda_{n}
+  \end{pmatrix}.
+\end{equation}
+The equality is in quotation marks because it's not an equality but an \emph{isomorphism},
+a slightly weaker notion of ``the same''.
+\end{remark}
+
+\begin{problem}
+Suppose we have a finite-dimensional vector space $V$.
+Suppose we have one ordered basis $B=(\vec{e}_{1},\dots,\vec{e}_{n})$
+and a distinct ordered basis $B'=(\vec{f}_{1},\dots,\vec{f}_{n})$
+which share no vectors --- we have $\vec{f}_{i}\neq\vec{e}_{j}$
+for all $i$, $j=1,\dots,n$.
+
+If we have a vector $\vec{v}\in V$ and have found its coordinates
+relative to $\vec{f}_{j}$,
+\begin{equation}
+\vec{v} = \lambda_{1}\vec{f}_{1} + \cdots + \lambda_{n}\vec{f}_{n},
+\end{equation}
+then how do we transform these into coordinates relative to $\vec{e}_{i}$?
+\end{problem}
+
+\subsection{Changing Bases}
+
+\N{Change of Basis Matrix}
+Let $V$ be a finite-dimensional real vector space.
+Let $B=(\vec{e}_{1},\dots,\vec{e}_{n})$ and
+$C=(\vec{f}_{1},\dots,\vec{f}_{n})$ be two ordered bases for $V$.
+Then the change of bases from $B$ to $C$ transforms coordinates for
+vectors $[\vec{v}]_{B}$ according to the matrix
+\begin{equation}
+  \mat{M}^{B}_{C} = \left(\begin{array}{c|c|c}
+      [\vec{e}_{1}]_{C} & \dots & [\vec{e}_{n}]_{C}
+  \end{array}\right),
+\end{equation}
+so any vector $\vec{v}\in V$ expressed in coordinates $[\vec{v}]_{B}$
+relative to $B$ may be expressed in coordinates relative to $C$ as
+\begin{equation}
+[\vec{v}]_{C} = \mat{M}^{B}_{C}[\vec{v}]_{B}.
+\end{equation}
+Why would this work? Well, if we expand the right-hand side, we would
+find
+\begin{equation}
+ \left(\begin{array}{c|c|c}
+      [\vec{e}_{1}]_{C} & \dots & [\vec{e}_{n}]_{C}\\
+  \end{array}\right)\begin{pmatrix}\lambda_{1}\\\vdots\\\lambda_{n}
+ \end{pmatrix} =  
+      \lambda_{1}[\vec{e}_{1}]_{C} + \lambda_{2}[\vec{e}_{2}]_{C} +
+      \dots + \lambda_{n} [\vec{e}_{n}]_{C}.
+\end{equation}
+But since $[\vec{e}_{j}]_{C}$ is a linear combination of the basis
+vectors $\vec{f}_{1}$, \dots, $\vec{f}_{n}$, this expands out to form a
+linear combination of $\vec{f}_{1}$, \dots, $\vec{f}_{n}$.
+
+\begin{theorem}\label{thm:basis:inverse-matrix}
+If $V$ is a finite dimensional vector space with ordered bases $B$ and
+$C$, if $[\mat{M}]^{B}_{C}$ is the change-of-coordinate matrix from $B$
+to $C$, then the change-of-coordinate matrix from $C$ back to $B$ 
+(i.e., $[\mat{M}]^{C}_{B}$) satisfies
+\begin{equation}
+[\mat{M}]^{C}_{B} = ([\mat{M}]^{B}_{C})^{-1}.
+\end{equation}
+That is to say, they are inverses of each other.
+\end{theorem}
+
+This partly motivated the bizarre superscript/subscript convention, it
+resembles a fraction.
+
+\N{Relating Coordinates Between Orthonormal Bases}
+If $B$ and $C$ are both orthonormal bases for $V$, there is no reason to
+believe they consist of the same basis vectors. One way to obtain a
+different set of orthonormal basis vectors from $B$ is by an arbitrary
+rotation, and possibly reflection about an axis (or about a nonzero
+vector). These transformations produce a different basis, but do not
+affect the orthonormality of the new basis.
+
+What does the change of coordinates matrix look like between them?
+
+\M\label{chunk:basis:change-of-basis-matrix-among-orthonormal-bases}
+We can write out the matrix components explicitly for orthonormal
+coordinates $\vec{e}_{1}$, \dots, $\vec{e}_{n}$ and other orthonormal
+coordinates $\vec{f}_{1}$, \dots, $\vec{f}_{n}$ as
+\begin{align}
+  \vec{f}_{1} &= (\vec{f}_{1}\cdot\vec{e}_{1})\vec{e}_{1} + (\vec{f}_{1}\cdot\vec{e}_{2})\vec{e}_{2} + \cdots + (\vec{f}_{1}\cdot\vec{e}_{n})\vec{e}_{n}\\
+  \vec{f}_{2} &= (\vec{f}_{2}\cdot\vec{e}_{1})\vec{e}_{1} + (\vec{f}_{2}\cdot\vec{e}_{2})\vec{e}_{2} + \cdots + (\vec{f}_{2}\cdot\vec{e}_{n})\vec{e}_{n}\\
+  \vdots &\mathrel{\phantom{=(\vec{f}_{2}\cdot\vec{e}_{1})}}\vdots\quad\phantom{+ (\vec{f}_{1}\cdot\vec{e}_{2})}\vdots\qquad\ddots\qquad\vdots\nonumber\\
+  \vec{f}_{n} &= (\vec{f}_{n}\cdot\vec{e}_{1})\vec{e}_{1} + (\vec{f}_{n}\cdot\vec{e}_{2})\vec{e}_{2} + \cdots + (\vec{f}_{n}\cdot\vec{e}_{n})\vec{e}_{n}
+\end{align}
+The components of the matrix
+$[\mat{M}]^{B}_{C}=(\vec{f}_{i}\cdot\vec{e}_{j})$.
+What is the inverse of this matrix?
+
+We could do some complicated math, or we could wonder the simpler
+problem: what is $[\mat{M}]^{B}_{C}\transpose{([\mat{M}]^{B}_{C})}$?
+\begin{calculation}
+  ([\mat{M}]^{B}_{C}\transpose{([\mat{M}]^{B}_{C})})_{i,k}
+\step{unfold the definition of matrix multiplication}
+  \sum^{n}_{j=1}([\mat{M}]^{B}_{C})_{i,j}(\transpose{([\mat{M}]^{B}_{C})})_{j,k}
+\step{unfold the definition of $[\mat{M}]^{B}_{C}$ into components}
+  \sum^{n}_{j=1}(\transpose{\vec{f}}_{i}\vec{e}_{j})(\transpose{\vec{e}}_{j}\vec{f}_{k})
+\step{distributivity}
+  \transpose{\vec{f}}_{i}\left(\sum^{n}_{j=1}\vec{e}_{j}\transpose{\vec{e}}_{j}\right)\vec{f}_{k}
+\step{matrix multiplication, see Lemma~\ref{lemma:basis:outer-product-of-orthonormal-basis} below}
+  \transpose{\vec{f}}_{i}\left(\mat{I}_{n}\right)\vec{f}_{k}
+\step{defining property of the identity matrix, associativity of multiplication}
+  \transpose{\vec{f}}_{i}\vec{f}_{k}
+\step{by definition of orthonormality}
+  \delta_{i,k}
+\end{calculation}
+In other words,
+\begin{equation}
+[\mat{M}]^{B}_{C}\transpose{([\mat{M}]^{B}_{C})} = \mat{I}.
+\end{equation}
+This implies
+\begin{equation}
+([\mat{M}]^{B}_{C})^{-1} = \transpose{([\mat{M}]^{B}_{C})}.
+\end{equation}
+In other words, the change of basis matrix is an orthogonal matrix
+(c.f., Exercise~\ref{xca:matrix-algebra:orthogonal-matrix}).
+
+\begin{lemma}\label{lemma:basis:outer-product-of-orthonormal-basis}
+Let $V$ be a finite-dimensional vector space, let $\vec{e}_{1}$, \dots,
+$\vec{e}_{n}$ be an orthonormal basis for $V$. Then
+\begin{equation}
+\sum^{n}_{j=1}\vec{e}_{j}\transpose{\vec{e}}_{j} = \mat{I}_{n}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+We consider how this acts on an arbitrary vector $\vec{v}\in V$.
+\begin{calculation}
+  \left(\sum^{n}_{j=1}\vec{e}_{j}\transpose{\vec{e}}_{j}\right)\vec{v}
+\step{expanding $\vec{v}$ in the basis}
+  \left(\sum^{n}_{j=1}\vec{e}_{j}\transpose{\vec{e}}_{j}\right)\left(\sum^{n}_{k=1}c_{k}\vec{e}_{k}\right)
+\step{by linearity}
+  \sum^{n}_{k=1}c_{k}\left(\sum^{n}_{j=1}\vec{e}_{j}\transpose{\vec{e}}_{j}\vec{e}_{k}\right)
+\step{by definition of orthonormality}
+  \sum^{n}_{k=1}c_{k}\left(\sum^{n}_{j=1}\vec{e}_{j}\delta_{j,k}\right)
+\step{unrolling the inner sum over $j$}
+  \sum^{n}_{k=1}c_{k}\left(\vec{e}_{1}\delta_{1,k}+\dots+\vec{e}_{k-1}\delta_{k-1,k}+\vec{e}_{k}\delta_{k,k}+\vec{e}_{k+1}\delta_{k+1,k}+\dots+\vec{e}_{n}\delta_{n,k}\right)
+\step{definition of $\delta_{j,k}$}
+  \sum^{n}_{k=1}c_{k}\left(\vec{e}_{1}0+\dots+\vec{e}_{k-1}0+\vec{e}_{k}1+\vec{e}_{k+1}0+\dots+\vec{e}_{n}0\right)
+\step{arithmetic}
+  \sum^{n}_{k=1}c_{k}\left(\vec{e}_{k}\right)
+\step{multiplication}
+  \sum^{n}_{k=1}c_{k}\vec{e}_{k}
+\step{since this is the expansion of $\vec{v}$ in the basis $\vec{e}_{k}$, ``undoing'' the first step of this chain of calculations}
+  \vec{v}.
+\end{calculation}
+Since this was for arbitrary $\vec{v}\in V$, it follows that
+\begin{equation}
+\sum^{n}_{j=1}\vec{e}_{j}\transpose{\vec{e}}_{j} = \mat{I}_{n},
+\end{equation}
+as desired.
+\end{proof}
+
+\subsection{Graham--Schmidt Method}
+
+\N{Puzzle}
+If we have an $n$-dimensional vector space $V$ with $n$ linearly
+independent [nonzero] vectors $\vec{x}_{1}$, \dots, $\vec{x}_{n}$, then is there
+any way to construct an orthonormal basis out of them?
+
+\N{Solution}
+We will construct an orthonormal basis, one vector at a time.
+
+The first step is to construct our initial vector
+\begin{equation}
+\widehat{\vec{v}_{1}} = \frac{\vec{x}_{1}}{\|\vec{x}_{1}\|}. 
+\end{equation}
+This is a unit vector, and now we will use it to start our collection.
+We could have easily have chosen $\vec{v}_{1}=\vec{x}_{1}$, as well, it
+would just make things a little longer.
+
+We now find the second vector $\vec{v}_{2}$. Since $\vec{x}_{2}$ and
+$\vec{x}_{1}$ are linearly independent, it follows that $\vec{x}_{2}$
+and $\vec{v}_{1}$ are linearly independent. Then we hope to find
+coefficients $c_{1}$ and $c_{2}$ such that
+\begin{equation}
+\vec{v}_{2} = c_{1}\widehat{\vec{v}_{1}} + c_{2}\vec{x}_{2}
+\end{equation}
+is a unit vector orthogonal to $\vec{v}_{1}$. So
+\begin{equation}
+\widehat{\vec{v}_{1}}\cdot\vec{v}_{2} = 0,
+\end{equation}
+which forces us to admit
+\begin{subequations}
+  \begin{align}
+    0 &= \widehat{\vec{v}_{1}}\cdot(c_{1}\widehat{\vec{v}_{1}} + c_{2}\vec{x}_{2})\\
+    &= c_{1}\widehat{\vec{v}_{1}}\cdot\widehat{\vec{v}_{1}} + c_{2}\widehat{\vec{v}_{1}}\cdot\vec{x}_{2}\\
+    &=c_{1} + c_{2}\widehat{\vec{v}_{1}}\cdot\vec{x}_{2}
+  \end{align}
+  hence
+  \begin{equation}
+c_{1} = -c_{2}\widehat{\vec{v}_{1}}\cdot\vec{x}_{2}.
+  \end{equation}
+  Setting $c_{2}=1$ (since it's arbitrary), we find
+  \begin{equation}
+\vec{v}_{2} = -(\widehat{\vec{v}_{1}}\cdot\vec{x}_{2})\widehat{\vec{v}_{1}}+\vec{x}_{1}
+=\vec{x}_{2} -(\widehat{\vec{v}_{1}}\cdot\vec{x}_{2})\widehat{\vec{v}_{1}}.
+  \end{equation}
+\end{subequations}
+We can quickly check that $\widehat{\vec{v}_{1}}\cdot\vec{v}_{2}=0$.
+
+We now can see that $\vec{v}_{1}$, $\vec{v}_{2}$ span everything which
+$\vec{x}_{1}$, $\vec{x}_{2}$ spanned. Since $\vec{x}_{3}$ was
+independent of $\vec{x}_{1}$ and $\vec{x}_{2}$, we have
+$\vec{x}_{3}\notin\Span(\{\vec{x}_{1},\vec{x}_{2})$. Therefore we will
+use $\vec{x}_{3}$ to construct $\vec{v}_{3}$ by writing
+\begin{equation}
+  \vec{v}_{3} = c_{1}\vec{v}_{1} + c_{2}\vec{v}_{2} + c_{3}\vec{x}_{3}.
+\end{equation}
+We are trying to determine the unknown coefficients $c_{1}$, $c_{2}$,
+$c_{3}$. We know $\vec{v}_{3}$ will be orthogonal to $\vec{v}_{1}$ and
+$\vec{v}_{2}$:
+\begin{equation}
+\vec{v}_{3}\cdot\vec{v}_{2}=0,\quad\mbox{and}\quad\vec{v}_{3}\cdot\vec{v}_{1}=0.
+\end{equation}
+The first of these give us (recalling $\vec{v}_{2}\cdot\vec{v}_{1}=0$),
+\begin{equation}
+\vec{v}_{3}\cdot\vec{v}_{2} = 0 = c_{2}\vec{v}_{2}\cdot\vec{v}_{2} + c_{3}\vec{x}_{3}\cdot\vec{v}_{2},
+\end{equation}
+hence
+\begin{equation}
+c_{2} = -c_{3}\frac{\vec{x}_{3}\cdot\vec{v}_{2}}{\vec{v}_{2}\cdot\vec{v}_{2}}.
+\end{equation}
+Similarly, we find
+\begin{equation}
+\vec{v}_{3}\cdot\vec{v}_{1} = 0 = c_{1}\vec{v}_{1}\cdot\vec{v}_{1} + c_{3}\vec{x}_{3}\cdot\vec{v}_{1},
+\end{equation}
+give us
+\begin{equation}
+c_{1} = -c_{3}\frac{\vec{x}_{3}\cdot\vec{v}_{1}}{\vec{v}_{1}\cdot\vec{v}_{1}}.
+\end{equation}
+Setting $c_{3}=1$ give us
+\begin{equation}
+\vec{v}_{3} = \vec{x}_{3} - \left(\frac{\vec{x}_{3}\cdot\vec{v}_{1}}{\vec{v}_{1}\cdot\vec{v}_{1}}\right)\vec{v}_{1}
+-\left(\frac{\vec{x}_{3}\cdot\vec{v}_{2}}{\vec{v}_{2}\cdot\vec{v}_{2}}\right)\vec{v}_{2}.
+\end{equation}
+Now we have three basis vectors in our collection.
+
+We see that
+\begin{equation}
+\vec{v}_{3} = \vec{x}_{3} - (\vec{x}_{3}\cdot\widehat{\vec{v}_{1}})\widehat{\vec{v}_{1}} - (\vec{x}_{3}\cdot\widehat{\vec{v}_{2}})\widehat{\vec{v}_{2}}.
+\end{equation}
+The general pattern seems to be
+\begin{equation}
+\vec{v}_{n+1} = \vec{x}_{n+1} - \sum^{n}_{k=1}\left(\frac{\vec{x}_{n+1}\cdot\vec{v}_{k}}{\vec{v}_{k}\cdot\vec{v}_{k}}\right)\vec{v}_{k}.
+\end{equation}
+Is this actually true?
+
+Well, we've proven it works for $n=2$ and $n=3$, so we can try proving
+it by induction. We assume this works for arbitrary $(n+1)\in\NN$. Then
+the inductive case, supposing we have $n+1$ orthogonal vectors
+$\vec{v}_{1}$, $\vec{v}_{2}$, \dots, $\vec{v}_{n+1}$, and we have a
+vector $\vec{x}_{n+2}\notin\Span(\{\vec{v}_{1},\dots,\vec{v}_{n+1}\})$.
+Then we claim
+\begin{equation}
+\vec{v}_{n+2} = \vec{x}_{n+2} - \sum^{n+1}_{k=1}\left(\frac{\vec{x}_{n+1}\cdot\vec{v}_{k}}{\vec{v}_{k}\cdot\vec{v}_{k}}\right)\vec{v}_{k}
+\end{equation}
+is orthogonal to $\vec{v}_{j}$ for $j=1,\dots,n+1$. To see this, we
+compute,
+\begin{calculation}
+  \vec{v}_{j}\cdot\vec{v}_{n+2}
+  \step{unfolding definition of $\vec{v}_{n+2}$}
+  \vec{v}_{j}\cdot\left(\vec{x}_{n+2} - \sum^{n+1}_{k=1}\left(\frac{\vec{x}_{n+1}\cdot\vec{v}_{k}}{\vec{v}_{k}\cdot\vec{v}_{k}}\right)\vec{v}_{k}\right)
+  \step{distributivity of dot product}
+  \vec{v}_{j}\cdot\vec{x}_{n+2} - \sum^{n+1}_{k=1}\left(\frac{\vec{x}_{n+1}\cdot\vec{v}_{k}}{\vec{v}_{k}\cdot\vec{v}_{k}}\right)\vec{v}_{j}\cdot\vec{v}_{k}
+  \step{orthogonality of $\vec{v}_{j}\cdot\vec{v}_{k}=\delta_{j,k}\vec{v}_{j}\cdot\vec{v}_{j}$}
+  \vec{v}_{j}\cdot\vec{x}_{n+2} - \sum^{n+1}_{k=1}\left(\frac{\vec{x}_{n+1}\cdot\vec{v}_{k}}{\vec{v}_{k}\cdot\vec{v}_{k}}\right)\delta_{j,k}\vec{v}_{j}\cdot\vec{v}_{j}
+  \step{defining property of $\delta_{j,k}$}
+  \vec{v}_{j}\cdot\vec{x}_{n+2} - \left(\frac{\vec{x}_{n+1}\cdot\vec{v}_{j}}{\vec{v}_{j}\cdot\vec{v}_{j}}\right)\vec{v}_{j}\cdot\vec{v}_{j}
+  \step{commutativity of multiplication}
+  \vec{v}_{j}\cdot\vec{x}_{n+2} - \vec{x}_{n+1}\cdot\vec{v}_{j}\left(\frac{\vec{v}_{j}\cdot\vec{v}_{j}}{\vec{v}_{j}\cdot\vec{v}_{j}}\right)
+  \step{since $\vec{v}_{j}\neq\vec{0}$ hence $\vec{v}_{j}\cdot\vec{v}_{j}\neq0$}
+  \vec{v}_{j}\cdot\vec{x}_{n+2} - \vec{x}_{n+1}\cdot\vec{v}_{j}
+  \step{arithmetic}
+  0.
+\end{calculation}
+Hence $\vec{v}_{n+2}$ is orthogonal to $\vec{v}_{j}$ for every
+$j=1,\dots,n+1$.
+
+\N{Graham--Schmidt Algorithm}\label{chunk:graham-schmidt}
+Given $m$ linearly independent nonzero vectors $\vec{x}_{1}$, \dots,
+$\vec{x}_{m}$, we can construct an orthonormal basis for
+$\Span(\{\vec{x}_{1},\dots,\vec{x}_{m}\})$ as follows:
+
+\N*{Step 1.} Set $\vec{f}_{1}=\widehat{\vec{x}_{1}}$. Then go to step 2.
+
+\N*{Step 2.} For each $\vec{x}_{2}$, \dots, $\vec{x}_{m}$, compute
+$\vec{v}_{k}$ by
+\begin{equation}
+\vec{v}_{k} = \vec{x}_{k} - \sum^{k}_{j=1}(\vec{x}_{k}\cdot\vec{f}_{j})\vec{f}_{j},
+\end{equation}
+and then set
+\begin{equation}
+\vec{f}_{k} = \widehat{\vec{v}_{k}} = \frac{\vec{v}_{k}}{\|\vec{v}_{k}\|}.
+\end{equation}
+This produces an orthonormal basis $B=\{\vec{f}_{1},\dots,\vec{f}_{m}\}$.
