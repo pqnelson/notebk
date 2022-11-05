@@ -60,7 +60,7 @@ c_{1}\vec{v}_{1} + c_{2}\vec{v}_{2}+\cdots+c_{k}\vec{v}_{k}-c_{k}\vec{v}_{k}=\ve
 and dividing both sides by $-c_{k}$ gives us $\vec{v}_{k}$ as a linear
 combination of $\vec{v}_{1}$, \dots, $\vec{v}_{k-1}$. This concludes the
 forward direction of the proof.
-  
+
   $(\impliedby)$ Assume there exists a vector $\vec{v}_{k}$ such that we
   can write it as a linear combination of the remaining vectors
 \begin{equation}
@@ -118,6 +118,19 @@ has $\vec{x}=\vec{0}$ be its only solution. This is true if and only if
 $\mat{M}$ is invertible. But $\mat{M}$ is invertible if and only if
 $\det(\mat{M})\neq0$. And by our assumption, $\vec{x}=\vec{0}$ is the
 only solution, hence the result.
+\end{proof}
+
+\begin{corollary}\label{cor:basis:invertible-matrix-iff-columns-are-linearly-independent}
+An $n\times n$ matrix $\mat{M}$ is invertible if and only if its columns are
+linearly independent vectors.
+\end{corollary}
+\begin{proof}
+We know from the previous theorem $\mat{M}$ has nonzero determinant if
+and only if its columns are linearly independent vectors. We know from Theorem~\ref{thm:determinant:singular-matrices-have-zero-det}
+$\mat{M}$ has a nonzero determinant if and only if $\mat{M}$ is
+invertible.
+Therefore, we know $\mat{M}$ is invertible if and only if its columns
+are linearly independent vectors.
 \end{proof}
 
 \begin{definition}
@@ -271,7 +284,7 @@ will be empty.
 
 \begin{theorem}[Any two bases have same number of elements]
 Let $V$ be a real vector space. Suppose there exists at least one basis
-$B$ for $V$, and suppose $B$ has finitely many element. 
+$B$ for $V$, and suppose $B$ has finitely many element.
 Then any two bases for $V$ have the same number of elements as each other.
 \end{theorem}
 
@@ -442,7 +455,7 @@ find
  \left(\begin{array}{c|c|c}
       [\vec{e}_{1}]_{C} & \dots & [\vec{e}_{n}]_{C}\\
   \end{array}\right)\begin{pmatrix}\lambda_{1}\\\vdots\\\lambda_{n}
- \end{pmatrix} =  
+ \end{pmatrix} =
       \lambda_{1}[\vec{e}_{1}]_{C} + \lambda_{2}[\vec{e}_{2}]_{C} +
       \dots + \lambda_{n} [\vec{e}_{n}]_{C}.
 \end{equation}
@@ -453,7 +466,7 @@ linear combination of $\vec{f}_{1}$, \dots, $\vec{f}_{n}$.
 \begin{theorem}\label{thm:basis:inverse-matrix}
 If $V$ is a finite dimensional vector space with ordered bases $B$ and
 $C$, if $[\mat{M}]^{B}_{C}$ is the change-of-coordinate matrix from $B$
-to $C$, then the change-of-coordinate matrix from $C$ back to $B$ 
+to $C$, then the change-of-coordinate matrix from $C$ back to $B$
 (i.e., $[\mat{M}]^{C}_{B}$) satisfies
 \begin{equation}
 [\mat{M}]^{C}_{B} = ([\mat{M}]^{B}_{C})^{-1}.
@@ -563,7 +576,7 @@ We will construct an orthonormal basis, one vector at a time.
 
 The first step is to construct our initial vector
 \begin{equation}
-\widehat{\vec{v}_{1}} = \frac{\vec{x}_{1}}{\|\vec{x}_{1}\|}. 
+\widehat{\vec{v}_{1}} = \frac{\vec{x}_{1}}{\|\vec{x}_{1}\|}.
 \end{equation}
 This is a unit vector, and now we will use it to start our collection.
 We could have easily have chosen $\vec{v}_{1}=\vec{x}_{1}$, as well, it
@@ -694,3 +707,49 @@ and then set
 \vec{f}_{k} = \widehat{\vec{v}_{k}} = \frac{\vec{v}_{k}}{\|\vec{v}_{k}\|}.
 \end{equation}
 This produces an orthonormal basis $B=\{\vec{f}_{1},\dots,\vec{f}_{m}\}$.
+
+\begin{remark}
+If we have a subspace $U\subset V$ and have found an orthonormal basis
+$B_{U}$ of $B$, then we can extend it to a basis $B$ of $V$ by taking
+$n=\dim(V)$ linearly independent vectors in $V$, and applying the
+Graham--Schmidt algorithm to add them to $B_{V}$.
+\end{remark}
+
+\begin{definition}\label{defn:basis:projection}
+Let $\vec{u},\vec{v}\in V$ be vectors. Assume $\vec{u}\neq\vec{0}_{V}$.
+We define the \define{Projection} of $\vec{v}$ along the $\vec{u}$
+direction to be the vector
+\begin{equation}
+\operatorname{Proj}_{\vec{u}}(\vec{v}) = \frac{\vec{u}\cdot\vec{v}}{\vec{u}\cdot\vec{u}}\vec{u}=(\widehat{\vec{u}}\cdot\vec{v})\widehat{\vec{u}}
+\end{equation}
+where $\widehat{\vec{u}}=\vec{u}/\|\vec{u}\|$ is a unit vector.
+\end{definition}
+
+\begin{remark}
+We can see that the Graham--Schmidt algorithm can be rephrased as taking
+$n$ linearly independent vectors $\vec{x}_{1}$, $\vec{x}_{2}$, \dots,
+$\vec{x}_{n}$, and forming
+\begin{subequations}
+\begin{align}
+  \vec{u}_{1} &= \vec{x}_{1}\\
+  \vec{u}_{2} &= \vec{x}_{2} - \operatorname{Proj}_{\vec{u}_{1}}(\vec{x}_{2})\\
+  \vec{u}_{3} &= \vec{x}_{3} - \operatorname{Proj}_{\vec{u}_{1}}(\vec{x}_{3}) - \operatorname{Proj}_{\vec{u}_{2}}(\vec{x}_{3})\\
+  \vdots \nonumber\\
+  \vec{u}_{n} &= \vec{x}_{n} - \sum^{n-1}_{k=1}\operatorname{Proj}_{\vec{u}_{k}}(\vec{x}_{n}).
+\end{align}
+\end{subequations}
+This produces a set of $n$ orthogonal vectors, and we could normalize
+them (``put hats on them'') to obtain $n$ orthonormal vectors.
+\end{remark}
+
+
+\begin{definition}
+Let $\vec{u},\vec{v}\in V$ be vectors. Assume $\vec{u}\neq\vec{0}_{V}$.
+We define the \define{Orthogonal Decomposition} of $\vec{v}$ with
+respect to $\vec{u}$ as consisting of two vectors:
+\begin{enumerate}
+\item the parallel part $\vec{v}^{\parallel} = \operatorname{Proj}_{\vec{u}}(\vec{v})$,
+and
+\item the perpendicular part $\vec{v}^{\perp} = \vec{v} - \vec{v}^{\parallel}$.
+\end{enumerate}
+\end{definition}

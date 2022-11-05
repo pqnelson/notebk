@@ -28,7 +28,7 @@ conditions when we know $V$ satisfies them. One of our first goals is to
 simplify the criteria for determining if $U$ is a subspace of $V$ or not.
 \end{remark}
 
-\begin{theorem}
+\begin{theorem}\label{thm:subspaces:subset-closed-under-linear-combos-is-a-subspace}
 Let $V$ be a real vector space with vector addition $\oplus$ and scalar
 multiplication $\odot$. Then the subset $U\subset V$ forms a subspace of
 $V$ provided:
@@ -94,12 +94,12 @@ We want to prove the following:
 \item Right distributivity of $\oplus$ over $\odot$:
   for any $c$, $d\in\RR$ and $\vec{u}\in U$, we have
   $(c+d)\odot\vec{u} = (c\odot\vec{u})\oplus(d\odot\vec{u})$.
-  
+
   \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
   $\vec{u}$ as elements of $V$. Then the condition holds
   (since $V$ is a real vector space).
 \item Unit of $\odot$: for any $\vec{u}\in U$, $1\odot\vec{u}=\vec{u}$.
-  
+
   \textsc{Proof:} any elements of $U$ are elements of $V$, so reconsider
   $\vec{u}$ as elements of $V$. Then the condition holds
   (since $V$ is a real vector space).
@@ -152,6 +152,15 @@ want to give it a name, because we will use it quite a bit.
 \end{remark}
 
 \begin{definition}
+Let $\vec{v}_{1}$, \dots, $\vec{v}_{k}\in V$ be vectors. We call
+$\vec{u}\in V$ a \define{Linear Combination} of $\vec{v}_{1}$, \dots,
+$\vec{v}_{k}$ if there exists $c_{1},\dots,c_{k}\in\RR$ such that
+\begin{equation}
+\vec{u} = c_{1}\vec{v}_{1} + \cdots + c_{k}\vec{v}_{k}.
+\end{equation}
+\end{definition}
+
+\begin{definition}
 Let $V$ be a real vector space, let $S\subset V$ be a (possibly
 infinite) set of a vectors. Then the \define{Span} of $S$ is the set of
 \emph{finite} linear combinations of elements of $S$:
@@ -165,7 +174,7 @@ call $S$ a \define{Spanning Set} of $W$.
 
 \begin{remark}
 Did I mention that only finite linear combinations of elements of $S$
-are allowed in the $\Span(S)$? Because that ``finite'' part is critical. 
+are allowed in the $\Span(S)$? Because that ``finite'' part is critical.
 \end{remark}
 
 \begin{proposition}[Spans are subspaces]
@@ -191,9 +200,9 @@ sense)?
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{exercise}
-Consider the set of polynomials with real coefficients 
+Consider the set of polynomials with real coefficients
   of degree less than or equal to $2$,
-  $V=\{p\in\RR[x]\mid\deg(p)\leq2\}$ forms a real vector space 
+  $V=\{p\in\RR[x]\mid\deg(p)\leq2\}$ forms a real vector space
   where $(p_{0}+p_{1}x+p_{2}x^{2})\oplus(q_{0}+q_{1}x+q_{2}x^{2})=(p_{0}+q_{0})+(p_{1}+q_{1})x+(p_{2}+q_{2})x^{2}$
   and $c\odot(p_{0}+p_{1}x+p_{2}x^{2})=(cp_{0})+(cp_{1})x+(cp_{2})x^{2}$
   for arbitrary $c\in\RR$,
@@ -228,3 +237,68 @@ $[a,b]\subset\RR$. Prove or find a counter-example: this a subspace of all funct
 \begin{exercise}
 Consider the subset $S = \{1,x,1-x^{2}\}\subset\RR[x]$. Compute $\Span(S)$.
 \end{exercise}
+
+\subsection{Orthogonal Complements and Direct Sums}
+
+\begin{definition}
+Let $U\subset V$ be a subspace. We define its \define{Orthogonal Complement}
+of $U$ to be the set (not subspace, but a set) of vectors
+\begin{equation}
+U^{\perp} = \{\vec{w}\in V\mid \mbox{for every}~\vec{u}\in U, \vec{w}\cdot\vec{u}=0\}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}
+For any $U\subset V$ subspace, its orthogonal complement $U^{\perp}$ is
+a subspace of $V$.
+\end{proposition}
+
+\begin{proof}
+  We will invoke Theorem~\ref{thm:subspaces:subset-closed-under-linear-combos-is-a-subspace}
+  and prove $U^{\perp}$ is closed under vector addition and scalar
+  multiplication.
+
+  Let $\vec{w}_{1},\vec{w}_{2}\in U^{\perp}$ be arbitrary. Then for any
+$\vec{u}\in U$ we have
+\begin{calculation}
+  \vec{u}\cdot(\vec{w}_{1}+\vec{w}_{2})
+  \step{distributivity of scalar multiplication over vector addition}
+  \vec{u}\cdot\vec{w}_{1}+\vec{u}\cdot\vec{w}_{2}
+  \step{since $\vec{w}_{1},\vec{w}_{2}\in U^{\perp}$, definition of $U^{\perp}$}
+  0 + 0 = 0
+\end{calculation}
+hence $(\vec{w}_{1}+\vec{w}_{2})\in U^{\perp}$. So it is closed under
+vector addition.
+
+Let $\vec{w}\in U^{\perp}$ and $c\in\RR$ be arbitrary. For any
+$\vec{u}\in U$, we have
+\begin{calculation}
+  (c\vec{w})\cdot\vec{u}
+  \step{associativity}
+  c(\vec{w}\cdot\vec{u})
+  \step{definition of orthogonal complement}
+  c(0) = 0.
+\end{calculation}
+Hence $c\vec{w}\in U^{\perp}$ and moreover $U^{\perp}$ is closed under
+scalar multiplication.
+
+Thus $U^{\perp}$ is a subspace of $V$ by Theorem~\ref{thm:subspaces:subset-closed-under-linear-combos-is-a-subspace}.
+\end{proof}
+
+\begin{definition}
+Let $U_{1}\subset V$ and $U_{2}\subset V$ be subspaces with a trivial
+intersection $U_{1}\cap U_{2}=\{\vec{0}_{V}\}$.
+Then we define the \define{Direct Sum} of $U_{1}$ with $U_{2}$ to be the
+set
+$U_{1}\oplus U_{2}=\{\vec{u}_{1} + \vec{u}_{2}\in V\mid \vec{u}_{1}\in U_{1}, \vec{u}_{2}\in U_{2}\}$.
+\end{definition}
+
+\begin{proposition}
+If $U_{1}\subset V$ and $U_{2}\subset V$ are subspaces with trivial
+intersection $U_{1}\cap U_{2}=\{\vec{0}_{V}\}$, then their direct sum
+$U_{1}\oplus U_{2}$ is a subspace of $V$.
+\end{proposition}
+
+\begin{proposition}
+For any subspace $U\subset V$, we have $V=U^{\perp}\oplus U$.
+\end{proposition}

@@ -38,6 +38,12 @@ is called the \define{Zero Vector} of $V$.
 \end{definition}
 
 \begin{remark}
+We will use the $\oplus$ and $\odot$ notation briefly, just to
+explicitly distinguish vector addition from addition of numbers, and to
+distinguish scalar multiplication from multiplication of numbers.
+\end{remark}
+
+\begin{remark}
 We could replace all instances of $\RR$ by $\CC$, any real number by
 complex number, and we would obtain the definition of a \define{Complex Vector Space}.
 This suggests the notion of a ``real vector space'' could be generalized
@@ -62,7 +68,7 @@ It is not enough to \emph{assert} this forms a vector space: we must
 \begin{enumerate}[label=(\arabic*)]
 \item Closure of $\oplus$: Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
   $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
-  We see $\mat{A}\oplus\mat{B}=(a_{i,j}+b_{i,j})$ which is an $m\times n$ 
+  We see $\mat{A}\oplus\mat{B}=(a_{i,j}+b_{i,j})$ which is an $m\times n$
   real matrix. Thus $\mat{A}\oplus\mat{B}\in\Mat(\RR;m,n)$, and since
   this was for \emph{arbitrary} $\mat{A}$ and $\mat{B}$, we have
   established closure.
@@ -74,9 +80,9 @@ It is not enough to \emph{assert} this forms a vector space: we must
   precisely
   $b_{i,j}+a_{i,j} = (\mat{B}\oplus\mat{A})_{i,j}$. Since this is true
   for \emph{every} component of $\mat{A}$ and $\mat{B}$, then it follows
-  $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$. 
+  $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$.
   And since this is true for \emph{arbitrary} $\mat{A}$ and
-  $\mat{B}$, then it follows that $\oplus$ is commutative. 
+  $\mat{B}$, then it follows that $\oplus$ is commutative.
 \item Associativity of $\oplus$:
 Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$, and
@@ -162,6 +168,11 @@ where $a_{1}$, \dots, $a_{n}$, $b\in\RR$ are fixed constants.
 Does $V$ form a vector space under the usual vector addition and scalar
 multiplication borrowed from $\RR^{n}$?
 
+\N{NOTATION CHANGE:}
+We will cease using $\oplus$ and $\odot$ consistently for vector
+addition and scalar multiplication. Instead, we will use the symbol $+$
+for vector addition, and $\cdot$ (if anything) for scalar multiplication.
+
 \phantomsection
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
@@ -199,4 +210,3 @@ p(x) = p_{0} + p_{1}x + p_{2}x^{2} + \dots + p_{n}x^{n}
   coefficients $\RR[x]$ is a real vector space.
   Vector addition and scalar multiplication both are done componentwise.
 \end{exercise}
-
