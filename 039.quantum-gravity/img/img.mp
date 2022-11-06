@@ -10,8 +10,16 @@ enddef;
 vardef midpoint(expr p) =
   point (0.5*length(p)) of p
 enddef;
-outputtemplate := "2009-04-01.%c";
+vardef endpoint(expr p) =
+  point (length(p)) of (p)
+enddef;
+vardef startpoint(expr p) = point 0 of p enddef;
 
+
+
+
+outputtemplate := "2009-04-01.%c";
+show outputtemplate;
 beginfig(0);
   numeric x,dx;
   path pts_f;
@@ -66,7 +74,7 @@ beginfig(1);
   label.lrt(btex $f$ etex, 0.5[(0,0), (r*u*pi*sind(angle), r*u*pi*cosd(angle))]+(1.5u,0));
 endfig;
 
-outputtemplate := "2009-04-03.%c";
+outputtemplate := "2009-04-03.%c"; show outputtemplate;
 beginfig(0);
   numeric y,dy,y_mid,x_max;
   path pts_f;
@@ -104,8 +112,44 @@ beginfig(1);
   label.top(btex $|\psi_{2}(t)\rangle$ etex, (0.5x_max,2y_mid));
 endfig;
 
-outputtemplate := "2009-04-24.%c";
+outputtemplate := "2009-04-08.%c";
+show outputtemplate;
+beginfig(0)
+  path orbit, section, edges[];
+  path surface, tmp;
+  orbit = ((0,0)..(2u,u)..(4u,0)..(6u,u)) rotated -45;
+  z0 = (10u,3u);
+  edges0 = orbit;% tmp = reverse(orbit) shifted z0;
+  edges1 = ((6u,u)..(4u,0)..(2u,u)..(0,0)) rotated -45 shifted z0;
+  edges2 = orbit shifted z0;
+  surface = edges0 -- (endpoint(orbit)+z0)--(edges1)--startpoint(edges2)--cycle;
+  numeric i,l;
+  color darkgreen, darkred;
+  darkred = (1/2)[black,red];
+  darkgreen = (2/5)[green,black];
+  z1 = (9u,-6u);
+  for i=2 upto 8:
+    draw orbit shifted (i*unitvector(z0)*u) withcolor darkred;
+    drawarrow ((z1--endpoint(orbit shifted (i*unitvector(z0)*u))) cutbefore (fullcircle scaled 4u shifted z1)) withcolor darkred;
+  endfor;
+  l = length(edges0);
+  for i=1 upto 3:
+    draw ((point (i*l/4) of edges0) -- (point (i*l/4) of edges2)) withcolor darkgreen;
+    drawarrow (-u,-2u-i*u)--(point (i*l/4) of edges0) withcolor darkgreen;
+  endfor;
+  draw surface;
+  label(btex Constraint etex, (0,2u));
+  label(btex Surface etex, (0,u));
+  label.lft(btex $C=0$ etex, (0,0));
+ % darkgreen := (3/5)[green,black];
+  label(btex Gauge Orbits etex, z1 + (0,u)) withcolor darkred;
+  label.lft(btex Physically etex, (-u,-3u)) withcolor (3/5)[green,black];
+  label.lft(btex Interesting etex, (-u,-4u)) withcolor (3/5)[green,black];
+  label.lft(btex ``Sections'' etex, (-u,-5u)) withcolor (3/5)[green,black];
+endfig;
 
+outputtemplate := "2009-04-24.%c";
+show outputtemplate;
 beginfig(0)
   numeric r; r := 4u;
   draw fullcircle scaled r;
@@ -147,7 +191,7 @@ beginfig(1)
   label(btex $\dots$ etex, (8r,0));
 endfig;
 
-outputtemplate := "2009-05-01.%c";
+outputtemplate := "2009-05-01.%c"; show outputtemplate;
 beginfig(0)
   numeric r,a,whatever;
   path p[];
@@ -171,7 +215,7 @@ beginfig(0)
 endfig;
 
 
-outputtemplate := "2009-05-06.%c";
+outputtemplate := "2009-05-06.%c"; show outputtemplate;
 beginfig(0)
   numeric length_j_three;
   path p[];
@@ -274,7 +318,7 @@ beginfig(3)
   label(btex $\neq$ etex, (2R,0));
 endfig;
 
-outputtemplate := "2009-05-08.%c";
+outputtemplate := "2009-05-08.%c"; show outputtemplate;
 beginfig(0);
   path p[];
   p0 = halfcircle xscaled 8u yscaled 4u;
@@ -462,7 +506,7 @@ vardef sinuous expr p =
           { direction length p of p } point length p of p
    enddef;
 
-outputtemplate := "2009-05-13.%c";
+outputtemplate := "2009-05-13.%c"; show outputtemplate;
 beginfig(0)
   path p[];
   z0 = (-4u,0);
@@ -651,6 +695,5 @@ beginfig(4);
     draw p[i] withcolor red;
   endfor;
 endfig;
-
 
 end;

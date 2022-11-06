@@ -1,0 +1,107 @@
+\lecture
+
+Now the massless state for the open string
+$\alpha^{i}_{-1}\mid0,k\rangle$ acting on the vacuum, this corresponds
+to $A^{i}$ ($i=2,\dots,D$). This either is a massless field, or we've
+broken Lorentz invariance.
+
+For the closed string, the procedure is pretty much the same. We have
+the Fourier expansion be,
+\begin{equation}
+X^{i} = \bar{X}^{i} + \left(\frac{p^{i}}{p^{+}}\right)\tau
++\I\sqrt{\frac{\alpha'}{2}}\sum^{\infty}_{n\neq0}\left[
+\frac{\alpha^{i}_{n}}{n}\E^{-\I2\pi n(\sigma+\tau)/\ell}
++\frac{\widetilde{\alpha}^{i}_{n}}{n}\E^{-\I2\pi n(\sigma-\tau)/\ell}
+  \right].
+\end{equation}
+If we're fixing the endpoints, the modes obey this boundary condition.
+If we've got a closed string, then the waves can propagate.
+
+Now, we find the mass squared as,
+\begin{equation}
+m^{2}=\frac{2}{\alpha'}\left(N+\widetilde{N}+2\left(\frac{2-D}{24}\right)\right).
+\end{equation}
+There are two number operators now. There is an extra symmetry, the
+zero-point for $\sigma$ is arbitrary. Working through the constraints we
+find that,
+\begin{equation}
+P = -\int\pi^{i}\partial_{\sigma}X^{i}\,\D\sigma = -\frac{2\pi}{\ell}(N-\widetilde{N})=0.
+\end{equation}
+For the excited state above the vacuum,
+\begin{equation}
+\alpha^{i}_{-1}\widetilde{\alpha}^{j}_{-1}\mid0,0,k\rangle\qquad m^{2}=\frac{2}{\alpha'}\left(2+2\left(\frac{2-D}{24}\right)\right)
+\end{equation}
+we see $m^{2}=0$ if $D=26$.
+
+\marginnote{String spectrum:\\$G^{ij}$ graviton\\$\Phi$ dilaton\\$B^{ij}$ axion}
+Since $\alpha$, $\widetilde{\alpha}$ are not symmetric, we can break
+their product up into a symmetric traceless part (which transforms as a
+spin-2 particle) $G^{ij}$, the trace which is just a scalar $\Phi$
+called the dilaton, and there is also the antisymmetric part $B^{ij}$
+(sometimes referred to as the axion). The axion acts like a sort of
+gauge potential,
+\begin{subequations}
+\begin{equation}
+B_{ij}\to B_{ij} +\partial_{i}\Lambda_{j}-\partial_{j}\Lambda_{i}.
+\end{equation}
+The analog of the field-strength tensor would be,
+\begin{equation}
+H_{ijk} = \partial_{i}B_{jk} + \partial_{j}B_{ki} + \partial_{k}B_{ij}.
+\end{equation}
+\end{subequations}
+This is the string spectrum (or particles present) in our action.
+
+Now, let's look at a string interaction. We will examing the asymptotic
+behaviour of incoming and outgoing strings, something like:
+\begin{center}
+  $\vcenter{\hbox{\includegraphics{img/2009-05-15.1}}}$\quad$\longrightarrow$\quad$\vcenter{\hbox{\includegraphics{img/2009-05-22.0}}}$
+\end{center}
+Consider the metric of a 2-dimensional cylinder, labeling the height
+with the $r$ coordinate,
+\begin{equation}
+\D s^{2} = \E^{2\sigma}(\D r^{2} + \D\theta^{2})
+\end{equation}
+Let $z=\exp(-r+\I\theta)$ and $\bar{z}=\exp(-r-\I\theta)$, then as
+$r\to\infty$ we have $z\to0$ and $\bar{z}\to0$. We similarly find, as
+$r\to0$ that $z\to\exp(+\I\theta)$ (that is, $z$ and $\bar{z}$ go to the unit circle)
+This gives us a way to describe interactions using the unit disk.
+\begin{center}\includegraphics{img/2009-05-22.1}
+\end{center}
+The state-operator correspondence specifies the outcome of a string
+interaction by examining an operator near the center of the disk. We
+have
+\begin{equation}
+\begin{split}
+\alpha^{\mu}_{-m} &= \sqrt{\frac{2}{\alpha'}}\int
+z^{-m}\partial_{z}X^{m}\frac{\D z}{2\pi}\\
+&\sim (\partial_{z}^{m}X^{\mu})(0).
+\end{split}
+\end{equation}
+This is a vertex operator. In practice we rarely work with string
+diagrams, we usually have vertex operators acting on some [Riemann] sphere.
+We see that
+\begin{equation}
+\mid0,k\rangle = \normalorder{\E^{\I kx}}\mid0,0\rangle.
+\end{equation}
+Then we have a \define{Vertex Operator},
+\begin{equation}
+V = (\mbox{const.})\int\left[
+(\gamma^{ab}S_{\mu\nu}+\I\varepsilon^{ab}a_{\mu\nu})\partial_{a}X^{\mu}\partial_{b}X^{\nu}
++\alpha'\phi\,{}^{(2)}\!R\E^{\I kx}
+  \right]\sqrt{-\gamma}\,\D^{2}\sigma
+\end{equation}
+where $S_{\mu\nu}$ is symmetric, $a_{\mu\nu}$ is antisymmetric which
+corresponds to the graviton and axion vertex operators (respectively).
+The last term corresponds to the dilaton. We can work backwords starting
+from
+\begin{equation}
+G_{\mu\nu} = \eta_{\mu\nu}+S_{\mu\nu},
+\end{equation}
+then the action
+\begin{equation}
+\action = \int \gamma^{ab}\partial_{a}X^{\mu}\partial_{b}X^{\nu}G_{\mu\nu}\sqrt{-\gamma}\,\D^{2}\sigma
+\end{equation}
+has its path-integral's integrand expands in powers of $S_{\mu\nu}$ like
+\begin{equation}
+\E^{\I\action}=\E^{\I\action(G=\eta)}\left(1 + \int\gamma^{ab}\partial_{a}X^{\mu}\partial_{b}X^{\nu}S_{\mu\nu}\sqrt{-\gamma}\,\D^{2}\sigma+\dots\right).
+\end{equation}

@@ -101,3 +101,70 @@ Let's start with string theory, we will start by talking about strings.
 Open strings trace out a 2-dimensional surface with intrinsic
 coordinates $(\sigma,\tau)=(\sigma^{0},\sigma^{1})$. We can write the
 4-coordinates of the surface in terms of $\sigma$ and $\tau$.
+\begin{center}
+\includegraphics{img/2009-05-15.0}
+\end{center}
+We can model interactions using pant diagrams, for example:
+\begin{center}
+\includegraphics{img/2009-05-15.1}\includegraphics{img/2009-05-15.2}\includegraphics{img/2009-05-15.3}
+\end{center}
+These are the only possible interactions. These are, of course, in a
+fixed background. The common statistic is that there are $10^{500}$
+possible backgrounds.
+We write the metric for this background as $G_{\mu\nu}$ and the induced
+metric on the worldsheet is,
+\begin{equation}
+h_{ab} = G_{\mu\nu}\frac{\partial X^{\mu}}{\partial\sigma^{a}}\frac{\partial X^{\nu}}{\partial\sigma^{b}}.
+\end{equation}
+The generalization of the action for a world line is the area of the
+worldsheet,\marginnote{Nambu--Goto Action\\Polyakov Action}
+\begin{equation}
+\action = \frac{-1}{2\pi\alpha'}\int\sqrt{-h}\,\D^{2}\sigma.
+\end{equation}
+This is the Nambu--Goto action.
+
+Quantizing the Nambu--Goto action turns out to be quite difficult, which
+we should expect with any Lagrangian involving the squareroot of
+quadratic terms. This leads us to consider the generalization of this
+action, the Polyakov action, which requires us to use a new induced
+metric $\gamma_{ab}$,
+\begin{equation}
+\action=\frac{-1}{4\pi\alpha'}\int\gamma^{ab}\partial_{a}X^{\mu}\partial_{b}X^{\nu}G_{\mu\nu}\sqrt{-\gamma}\,\D^{2}\sigma.
+\end{equation}
+Classically this is equivalent to the Nambu--Goto action, where the
+metric $\gamma$ behaves as a Lagrange multiplier (since its derivatives
+do not appear in the action). We see varying the action with respect to
+$\gamma$ yields
+\begin{equation}
+\partial_{a}X^{\mu}\partial_{b}X^{\nu}G_{\mu\nu} - \frac{1}{2}\gamma_{ab}\gamma^{cd}\partial_{c}X^{\mu}\partial_{d}X^{\nu}G_{\mu\nu}=0.
+\end{equation}
+We can solve this equation for $\gamma_{ab}$ to write the induced metric
+as
+\begin{equation}
+\gamma_{ab}=2f(\sigma^{0},\sigma^{1})\partial_{a}X^{\mu}\partial_{b}X^{\nu}G_{\mu\nu}
+\end{equation}
+where
+\begin{equation}
+\frac{1}{f(\sigma^{0},\sigma^{1})} = \gamma^{cd}\partial_{c}X^{\mu}\partial_{d}X^{\nu}G_{\mu\nu}.
+\end{equation}
+This action has Weyl symmetry,
+\begin{equation}
+\gamma_{ab}\to \Omega(\sigma^{c})\gamma_{ab},
+\end{equation}
+where $\Omega$ is everywhere positive. We see that the Polyakov action
+may be rewritten as,
+\begin{equation}
+\action=\frac{-1}{4\pi\alpha'}\int\frac{\sqrt{-\gamma}}{f(\sigma^{0},\sigma^{1})}\,\D^{2}\sigma.
+\end{equation}
+Taking advantage of the fact $f$ is everywhere positive, we see we can
+classically recover the Nambu--Goto action by the Weyl symmetry
+transformation $\gamma_{ab}\to\gamma_{ab}/\sqrt{f}$. Polchinski proved
+the two actions are the same quantum mechanically. %% We can look at its
+%% four-dimensional position of the worldsheet $X^{\mu}$
+We can look at the string worldsheet as fundamental, then view the
+$X^{\mu}$ living on the worldsheet, and four-dimensional spacetime
+``emerges''.\footnote{Ed Witten's ``Reflections on the Fate of
+Spacetime'' (\journal{Physics Today}, April 1996, pp.24--30) argues this
+heuristically; Nick Huggett and Christian W\"{u}thrich's ``Out of
+Nowhere: The `emergence' of spacetime in string theory''
+(\arXiv{2005.10943}) reviews this general subject.}

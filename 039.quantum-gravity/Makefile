@@ -8,4 +8,4 @@ all: images
 	$(TEX) $(FILE)
 
 images:
-	cd img && mpost img
+	cd img && mpost img && mpost string-theory.mp

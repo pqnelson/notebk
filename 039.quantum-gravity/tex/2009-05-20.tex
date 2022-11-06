@@ -1,0 +1,192 @@
+\lecture
+
+Today we will discuss only a crude quantization of strings, just to see
+how a picture of quantum gravity might look like.
+
+We will first consider an open string in flat Minkowski spacetime. Its
+action,
+\begin{equation}
+\action=\frac{-1}{4\pi\alpha'}\int\gamma^{ab}\partial_{a}X^{\mu}\partial_{b}X^{\nu}\eta_{\mu\nu}\sqrt{-\gamma}\,\D^{2}\sigma.
+\end{equation}
+The equations of motion are roughly
+\begin{equation}
+\partial^{a}\partial_{a}X^{\mu}\sim0.
+\end{equation}
+We need to impose boundary conditions; the two obvious ones are Neumann
+$\vec{n}^{a}\partial_{a}X^{\mu}=0$ at the endpoints (where $\vec{n}^{a}$
+is the normal vector at the endpoints), and the Dirichlet
+$X^{\mu}=\mbox{fixed}$ at the endpoints.
+
+Observe the graviton has no such boundary conditions, \addenda{and open
+  strings cannot describe massless particles of spin greater than 1, so we must
+  use a closed string for the graviton.}\footnote{For more
+on open strings, see Carlo Angelantonj and Augusto Sagnotti's review article \arXiv{hep-th/0204089}.}
+We have 3 gauge invariances (2 diffeomorphisms, 1 Weyl invariance). This
+is simple enough that we can choose 3 gauge conditions (technically we
+should verify the consistency with the constraints, but it doesn't get
+to the interesting point):
+\begin{enumerate}[start=0]
+\item Define $X^{\pm} = (X^{0}\pm X^{1})/\sqrt{2}$ (observe: this breaks
+  Lorentz invariance),
+\item Choose $X^{+}=\tau$ ``light-front coordinates'' (or ``light-cone coordinates'' or ``light-cone gauge''),
+\item Choose $\partial_{\sigma}\gamma_{\sigma\sigma}=0$, and
+\item Choose $\det(\gamma_{ab})=-1$.
+\end{enumerate}
+These choices have no deep physical meaning, they just simplify the
+mathematics. The first two gauge conditions ($X^{+}=\tau$ and
+$\partial_{\sigma}\gamma_{\sigma\sigma}=0$) deal with the
+diffeomorphisms, whereas the last gauge condition
+($\det(\gamma_{ab})=-1$) deals with Weyl invariance.
+Before going further, we use the notation
+\begin{equation}
+\bar{X}^{-} = \frac{1}{\ell}\int^{\ell}_{0}X^{-}\,\D\sigma
+\end{equation}
+for the center-of-mass for the $X^{-}$ coordinate.
+
+Plugging these choices into the action gives us,
+\begin{multline}
+  \action=\frac{-1}{4\pi\alpha'}\iint%\int\int^{\ell}_{0}
+  \left[
+\gamma_{\sigma\sigma}(2\partial_{\tau}\bar{X}^{-}-\partial_{\tau}X^{'}\partial_{\tau}X^{'})\phantom{\frac{1}{\gamma_{\sigma\sigma}}}\right.\\
+-2\gamma_{\sigma\tau}(\partial_{\sigma}Y^{-}-\partial_{\tau}X^{i}\partial_{\sigma}X^{i})\\
++\left.\frac{1}{\gamma_{\sigma\sigma}}(1-\gamma_{\sigma\tau}^{2})\partial_{\sigma}X^{i}\partial_{\sigma}X^{i}
+\right]\D\sigma\D\tau
+\end{multline}
+where $i=2,\dots,D$ and $X^{-}=\bar{X}^{-}+Y^{-}$.
+
+By varying the action with respect to $Y^{-}$ gives us the equations of
+motion
+\begin{equation}
+\partial_{\sigma}\gamma_{\sigma\tau}=0.
+\end{equation}
+Observe, since $Y^{-}$ doesn't appear in the action with a time
+derivative, it acts like a Lagrange multiplier. Since
+$\gamma_{\sigma\tau}=0$ at the boundary, and
+$\partial_{\sigma}\gamma_{\sigma\tau}=0$ at the boundary, it follows
+that $\gamma_{\sigma\tau}=0$ everywhere. This simplifies the action to
+two pieces
+\begin{equation}\label{eq:2009-05-20:reduced-action}
+  \action=\frac{-1}{4\pi\alpha'}\iint%\int\int^{\ell}_{0}
+  \left[
+\gamma_{\sigma\sigma}(2\partial_{\tau}\bar{X}^{-}-\partial_{\tau}X^{'}\partial_{\tau}X^{'})+\frac{1}{\gamma_{\sigma\sigma}}\partial_{\sigma}X^{i}\partial_{\sigma}X^{i}
+\right]\D\sigma\D\tau.
+\end{equation}
+We've eliminated $X^{+}$ and $Y^{-}$, so roughly speaking we have $D-2$
+components. The transverse fluctuations are described by the second
+term, the motion of the center-of-mass is described by the first term.
+We write for the first term's momentum,
+\begin{subequations}
+\begin{equation}
+p_{-} = \frac{-\ell}{2\pi\alpha'}\gamma_{\sigma\sigma} = -p^{+},
+\end{equation}
+and the second term's momentum,
+\begin{equation}
+\pi^{i} = \frac{p^{+}}{\ell}\partial_{\tau}X^{i}.
+\end{equation}
+\end{subequations}
+We see the first term in the action
+Eq~\eqref{eq:2009-05-20:reduced-action} is just the relativistic
+particle, and the second term is just a harmonic oscillator. We can now write,
+\begin{equation}
+H = \frac{\ell}{4\pi\alpha' p^{+}}\int\left[2\pi\alpha'(\pi^{i})^{2}+\frac{1}{2\pi\alpha'}(\partial_{\sigma}X^{i})^{2}\right]\D\sigma
+\end{equation}
+We see
+\begin{subequations}
+  \begin{align}
+    \partial_{\tau}p^{+} &= \frac{\partial H}{\partial\bar{X}^{-}}\quad\mbox{by Hamilton's equations}\\
+    &= 0
+  \end{align}
+\end{subequations}
+hence $p^{+}$ is a constant of motion. We can choose units $\ell/(2\pi\alpha'p^{+})=1$.
+
+We now want to quantize it, we see that $\bar{X}^{-}$ and $p^{+}$ are
+conjugate variables, so
+\begin{equation}
+[\bar{X}^{-},p^{+}]=\I.
+\end{equation}
+We can now write
+\begin{equation}
+X^{i}(\sigma,\tau) = \bar{X}^{i}
++ \underbrace{\left(\frac{p^{i}}{p^{+}}\right)\tau}_{\mathclap{\substack{\text{arbitrary choice}\\\text{makes life}\\\text{easier}}}}
++
+\underbrace{\I\sqrt{2\alpha'}\sum_{n\neq0}\frac{1}{n}\alpha^{i}_{n}\E^{-\I\pi n\tau/\ell}\cos\left(\frac{\pi n\sigma}{\ell}\right)}_{\text{just a Fourier series expansion for } X}
+\end{equation}
+If we plug this in and find the conjugate momentum, we find the
+commutation relations
+\begin{equation}
+[\bar{X}^{i},p^{j}]=\I\delta^{ij},
+\end{equation}
+and similarly
+\begin{equation}
+[\alpha^{i}_{m},\alpha^{j}_{n}]=m\delta^{ij}\delta_{0,m+n}.
+\end{equation}
+This shouldn't be too surprising,
+$\alpha^{i}_{-n}=(\alpha^{i}_{n})^{\dagger}$ for $X$ to be real. (This
+should be familiar: it \emph{is} a simple harmonic oscillator.)
+
+Let's look at the states of the string, there is a vacuum
+$\mid0,k\rangle$ with
+\begin{subequations}
+\begin{align}
+p^{+}\mid0,k\rangle &= k^{+}\mid0,k\rangle\\
+p^{i}\mid0,k\rangle &= k^{i}\mid0,k\rangle\\
+\alpha^{i}_{m}\mid0,k\rangle &= 0\quad\mbox{for $m\geq0$}.
+\end{align}
+\end{subequations}
+We basically have a bunch of harmonic oscillators.
+
+Now, we can work out the Hamiltonian, and we will find,
+\begin{equation}
+H = \frac{1}{2p^{+}}(p^{i})^{2} +
+\frac{1}{2p^{+}\alpha'}\sum^{\infty}_{n=1}\alpha^{i}_{-n}\alpha^{i}_{n}+\underbrace{A}_{\mathclap{\text{constant, zero-point energy}}}
+\end{equation}
+This is just the harmonic oscillator Hamiltonian. The constant term is
+thus
+\begin{equation}
+A = (D - 2)\sum^{\infty}_{n=1}\frac{1}{2}n
+\end{equation}
+As everyone knows
+\begin{equation}
+\sum^{\infty}_{n=1}n = \frac{-1}{12}.
+\end{equation}
+There are two ways to see this. The first way is to use the Riemann zeta
+function $\zeta(s) = \sum^{\infty}_{n=1}n^{-s}$. We analytically
+continue it, and its value at $s=-1$ is $\zeta(-1)=-1/12$.
+
+The second way, the physicist's way, is to consider
+\begin{equation}
+\sum^{\infty}_{n=1}n\E^{-\varepsilon n} = -\frac{\D}{\D\varepsilon}\sum^{\infty}_{n=1}\E^{-\varepsilon n}=-\frac{\D}{\D\varepsilon}\left(\frac{\E^{-\varepsilon}}{1-\E^{-\varepsilon}}\right)
+=\frac{1}{\varepsilon^{2}}-\frac{1}{12}+\bigOh(\varepsilon).
+\end{equation}
+Being physicists, we throw away the divergent part, then take $\varepsilon\to0$.
+
+Either way, we plug this into our Hamiltonian, we find:
+\begin{equation}
+\begin{split}
+H & =\frac{1}{2p^{+}}(p^{i})^{2} +
+\frac{1}{2p^{+}\alpha'}\sum^{\infty}_{n=1}N_{n} - \frac{D-2}{24}\\
+&= p^{-}
+\end{split}
+\end{equation}
+since $p^{-}$ generates time translations and we chose $X^{+}=\tau$. We
+can use creation operators on the vacuum which gives excited states on
+the string. We can ask what is the value for the mass squared (since
+mass squared is a Lorentz invariant quantity),
+\begin{equation}
+\begin{split}
+m^{2} &= p_{\mu}p^{\mu} = 2p^{+}p^{-} - (p^{i})^{2}\\
+&= \frac{1}{\alpha'}\left(N-\frac{D-2}{24}\right)
+\end{split}
+\end{equation}
+This means for the states of the string, $N=0$ (vacuum) has $m^{2}<0$,
+so it's Tachyonic (which is bad!). For $N=1$,
+\begin{equation}
+m^{2} = \frac{1}{\alpha'}\left(1 - \frac{D-2}{24}\right)
+\end{equation}
+and the states are just $\alpha^{i}_{-1}\mid0,k\rangle$.
+
+Lorentz invariance requires $m^{2}=0$, which requires
+\begin{equation}
+\frac{D-2}{24}=1\implies D=24+2=26.
+\end{equation}
+We can use the Chan--Paton generators to do some fancy tricks.

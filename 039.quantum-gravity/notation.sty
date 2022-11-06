@@ -2,6 +2,9 @@
 \newcommand\E{\mathrm{e}}
 \newcommand\I{\mathrm{i}}
 
+
+\let\oldvec\vec
+\let\vec\boldsymbol
 \newcommand\action{I}
 \newcommand\shift{N}
 \newcommand\lapse{N}
@@ -38,3 +41,5 @@
     cdraw p;
   enddef;}
 }
+
+\newcommand\normalorder[1]{\mathopen{:}#1\mathclose{:}}
