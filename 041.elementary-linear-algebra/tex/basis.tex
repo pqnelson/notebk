@@ -146,8 +146,8 @@ Then we call $B$ a \define{Basis} of $V$.
 \begin{example}
   In $\RR^{2}$, the vectors
   \begin{equation}
-\vec{z} = \begin{pmatrix}1 & 1
-\end{pmatrix},\quad\mbox{and}\quad\bar{\vec{z}} = \begin{pmatrix}1 & -1
+\vec{z} = \begin{pmatrix}1\\ 1
+\end{pmatrix},\quad\mbox{and}\quad\bar{\vec{z}} = \begin{pmatrix}1\\ -1
 \end{pmatrix}.
   \end{equation}
   Then $\{\vec{z}, \bar{\vec{z}}\}$ form a basis for $\RR^{2}$.
@@ -463,7 +463,7 @@ But since $[\vec{e}_{j}]_{C}$ is a linear combination of the basis
 vectors $\vec{f}_{1}$, \dots, $\vec{f}_{n}$, this expands out to form a
 linear combination of $\vec{f}_{1}$, \dots, $\vec{f}_{n}$.
 
-\begin{theorem}\label{thm:basis:inverse-matrix}
+\begin{theorem}
 If $V$ is a finite dimensional vector space with ordered bases $B$ and
 $C$, if $[\mat{M}]^{B}_{C}$ is the change-of-coordinate matrix from $B$
 to $C$, then the change-of-coordinate matrix from $C$ back to $B$
@@ -476,6 +476,8 @@ That is to say, they are inverses of each other.
 
 This partly motivated the bizarre superscript/subscript convention, it
 resembles a fraction.
+
+We can ketch the proof out in (\S\ref{chunk:basis:change-of-basis-matrix-among-orthonormal-bases}).
 
 \N{Relating Coordinates Between Orthonormal Bases}
 If $B$ and $C$ are both orthonormal bases for $V$, there is no reason to
