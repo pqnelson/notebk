@@ -15,7 +15,13 @@
 \fi
 \usepackage{mathrsfs}
 \usepackage{enumitem}
+\setlist{topsep=0pt,listparindent=\parindent,noitemsep}
+\setlist[enumerate]{label=(\arabic*)}
+\setlist[itemize]{label={\manual\char'170\rm\kern.15em}}
 \usepackage{marginnote}
+%\renewcommand*{\marginfont}{\strut\footnotesize}
+\renewcommand*{\marginfont}{\footnotesize}
+
 \usepackage{wrapfig} % used for wrapping figures!
 \usepackage{amsthm}
 \usepackage{fancyhdr}

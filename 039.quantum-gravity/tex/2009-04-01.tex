@@ -204,8 +204,40 @@ We can solve for $m(\varepsilon)$ to find that this is finite, it is
 something like the Planck mass times $137$ or $1/137$.
 
 We can also see the sum of Feynman diagrams of the gravitational
-self-interaction of the electron is a finite sum, despite each term
-being divergent! (People are finding sets of finite sums of Feynman
+self-interaction of the electron is a finite sum,
+\begin{equation}
+  \eqgraph{5pt}{5pt}{  \begin{fmfgraph}(120,20)
+    \fmthinpen
+    %% \fmfcmd{save arrow_len; arrow_len := ahlength;
+    %% save arrow_ang; arrow_ang := ahangle;}
+    \fmfcmd{arrow_len := 2ahlength;% arrow_ang := ahangle;
+    arrow_len := 7pt;}
+\fmfleft{i1,d1}
+\fmfright{o1,d2}
+\fmf{fermion}{i1,i2}
+\fmf{fermion}{i2,o2}
+\fmf{fermion}{o2,o1}
+\fmffreeze
+\fmf{graviton,left}{i2,o2}
+  \end{fmfgraph}
+}\mspace{-24mu}
++\mspace{-24mu}
+  \eqgraph{5pt}{5pt}{
+\begin{fmfgraph}(132,20)
+    \fmthinpen
+\fmfleft{i1,d1}
+\fmfright{o1,d2}
+\fmfn{fermion}{i}{3}
+\fmf{fermion}{i3,o3}
+\fmf{fermion}{o3,o2,o1}
+\fmffreeze
+\fmf{graviton,left}{i2,o2}
+\fmf{graviton,left}{i3,o3}
+  \end{fmfgraph}
+}\mspace{-24mu}
++\mspace{6mu} \cdots = \mbox{finite},
+\end{equation}
+despite each term being divergent! (People are finding sets of finite sums of Feynman
 diagrams in supergravity. There is no proof yet.)
 
 \item There are a few physical systems we would like to understand that

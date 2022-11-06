@@ -17,3 +17,24 @@
 \DeclareMathOperator{\Tr}{Tr}
 
 \newcommand\bigOh{\mathcal{O}}
+
+\RequirePackage{feynmp}
+% https://www.tug.org/docs/metapost/mpintro.pdf
+% "The default unit of measurement in METAPOST is 1 bp = 1/72 in, and the default thickness of all stroked paths is 0.5 bp."
+\newcommand\fmthinpen{\fmfpen{0.5bp}}
+
+\newcommand{\eqgraph}[3]{%
+  % #1 = adjustment above, #2 = adjustment below, #3 = graph
+  \begin{gathered}
+  \raisebox{0pt}[\dimexpr\height+#1][\dimexpr\depth+#2]{\ignorespaces#3\unskip}%
+  \end{gathered}
+}
+\newcommand*{\fmfcustomparticles}{
+  \fmfcmd{style_def graviton expr p = draw_dbl_zigzag p enddef;}
+  \fmfcmd{style_def gravitino expr p =
+    save wiggly_len; wiggly_len := 6mm;
+    cdraw (wiggly p);
+    % cdraw (zigzag p);
+    cdraw p;
+  enddef;}
+}
