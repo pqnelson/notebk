@@ -1,0 +1,101 @@
+\lecture
+
+Remember, if we look at the massless states for open and closed strings
+we get $G_{\mu\nu}$, $B_{\mu\nu}$, $\Phi$, and $A_{\mu}$.
+
+We can also add fermions in two ways. We can look at spacetime fermions
+(described not just by $x$ but also by fermionic coordinates). We end up
+with the Green--Schwartz model.
+
+The other way is to add world sheet fermions. We have
+$X^{\mu}(\sigma,\tau)$ be our coordinates, $\psi^{\mu}(\sigma,\tau)$ be
+our fermion.
+To do this, it's easier to use $2$-spinors:
+\begin{equation}
+  \psi^{\mu} = \begin{pmatrix}
+    \psi^{\mu}\\ \widetilde{\psi}^{\mu}
+\end{pmatrix}
+\end{equation}
+There is a nice supersymmetry of the form
+\begin{subequations}
+\begin{align}
+\delta X^{\mu} &\sim\eta\psi^{\mu}-\eta^{*}\widetilde{\psi}^{\mu}\\
+\delta\psi^{\mu}&\sim\eta\partial_{z}X^{\mu}\\
+\delta\widetilde{\psi}^{\mu}&\sim\eta^{*}\partial_{\bar{z}}X^{\mu},
+\end{align}
+\end{subequations}
+where $z=\tau+\I\sigma$.
+The Lagrangian looks like
+\begin{equation}
+  \mathcal{L}\sim\partial_{z}X^{\mu}\partial_{\bar{z}}X_{\mu}
+  + \psi^{\mu}\partial_{\bar{z}}\psi_{\mu}
+  + \widetilde{\psi}^{\mu}\partial_{z}\widetilde{\psi}_{\mu}.
+\end{equation}
+For a closed string, we can have boundary conditions
+$\psi(\sigma+\ell)=\psi(\sigma)$ or $\psi(\sigma+\ell)=-\psi(\sigma)$.
+We can make either choice consistently, the former is known as Ramond
+boundary conditions, the latter is Neveu--Schwartz boundary condition.
+We can consider a mode expansion
+\begin{equation}
+  \begin{split}
+  R\colon\qquad\psi^{\mu} &= \sum_{m\in\ZZ} d^{\mu}_{m}\E^{\I 2\pi m\sigma/\ell}\\
+NS\colon\qquad\psi^{\mu} &= \sum_{m\in\ZZ+\frac{1}{2}}b^{\mu}_{m}\E^{\I2\pi m\sigma/\ell}
+  \end{split}
+\end{equation}
+We can look at the coefficients as creation/annihilation
+operators\marginnote{Vacuum states}
+\begin{equation}
+  \begin{split}
+  R\colon\qquad d^{\mu}_{r}\mid0\rangle &= 0\mbox{ for }r\geq1\\
+NS\colon\qquad b^{\mu}_{r}\mid 0\rangle &= 0\mbox{ for } r\geq\frac{1}{2}
+  \end{split}
+\end{equation}
+We can work out the commutators and anticommutators
+\begin{equation}
+\{d^{\mu}_{0},d^{\nu}_{0}\}=\eta^{\mu\nu},
+\end{equation}
+so the $d_{0}$ are $\Gamma$ matrices. The Ramond boundary conditions
+yields spacetime spinors.
+
+We can now ask what are the consistency conditions. There are five
+types:
+\begin{center}\let\oldarraystretch\arraystretch\renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{cccc}
+    type & fields & strings allowed & boundary conditions imposed\\\hline
+IIA & $\psi_{+}$, $\widetilde{\psi}_{-}$ & closed & $\psi$ has Ramond, $\widetilde{\psi}$ has NS\\
+IIB & $\psi_{+}$, $\widetilde{\psi}_{+}$ & closed & both have Ramond\\
+I & $\SO(32)$ & open and closed & \\
+heterotic & $\SO(32)$ & half closed, half open and closed & \\
+heterotic & $\mathtt{E}_{8}$ & half closed, half open and closed &
+\end{tabular}\renewcommand{\arraystretch}{\oldarraystretch}
+\end{center}\marginnote{T-duality}
+A few more string theory miracles. Suppose $X^{9}\sim X^{9}+2\pi R$ (so
+we have a cylinder). There are two implications:
+\begin{enumerate}
+\item The momentum is quantized $p^{9}=n/R$,
+\item If we fix time, $X^{9}(\sigma+\ell)=X^{9}(\sigma) + 2\pi R\omega$
+  where $\omega\in\ZZ$ (and it is, in fact, the winding number).
+\end{enumerate}
+We Fourier expand it,
+\begin{equation}
+X^{9} = \frac{2\pi R\omega}{\ell}\sigma + \frac{n}{R}\tau + \mbox{(oscillators)}.
+\end{equation}
+We can work out the mass spectrum
+\begin{equation}
+m^{2} = \frac{n^{2}}{R^{2}} + \frac{\omega^{2}R^{2}}{(\alpha')^{2}} +
+\mbox{(oscillator contributions)}.
+\end{equation}
+Observe as $R\to\alpha'/R$ and $n\leftrightarrow\omega$, we end up with
+exactly the same mass. The winding modes and momentum modes get switched.
+
+This switching of $n$ and $\omega$ is equivalent to switching $\tau$ and
+$\sigma$. The left moving momentum $p_{L}\to p_{L}$ but the right moving
+momentum $p_{R}\to -p_{R}$. The fermions also change sign
+$\widetilde{\psi}\to-\widetilde{\psi}$. This means
+$\mbox{IIA}\leftrightarrow\mbox{IIB}$. This is the gist of T-duality.
+
+For open strings, $R\to0$ corresponds to the center-of-mass motion as
+$m\to\infty$. If we consider $\sigma\leftrightarrow\tau$, then Neumann
+boundary conditions $\partial_{\sigma}X^{9}=0$ become Dirichlet boundary
+conditions $\partial_{\tau}X^{9}=0$. The endpoints of the string sees
+$D-1$ dimensions, the rest of the string sees all $D$ dimensions.

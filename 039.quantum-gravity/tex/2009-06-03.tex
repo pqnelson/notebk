@@ -1,0 +1,142 @@
+\lecture[Black Hole Thermodynamics]
+
+The reference for today's lecture will be:
+\begin{itemize}
+\item Steven Carlip,
+  ``Black Hole Thermodynamics and Statistical Mechanics''.
+  \arXiv{0807.4520}, 35 pages.
+\end{itemize}
+Black holes are not black but thermal objects
+\begin{equation}
+kT=\frac{\hbar \kappa}{2\pi}
+\end{equation}
+where $\kappa$ is the ``surface gravity'' (which is $1/4 GM$ for
+Schwarzschild black holes). They also have entropy
+\begin{equation}
+S_{BH} = \frac{A_{\text{horizon}}}{4\hbar G}.
+\end{equation}
+In a sense, this is part of quantum gravity, since it involves $\hbar$,
+$G$.
+
+Suppose we have a black hole with mass $M$, there is a ``box of gas''
+with [characteristic] length $L$, temperature $T$, and mass $m$. We see
+that the change in entropy is
+\begin{equation}
+\Delta S = \frac{\Delta E}{T} = -\frac{m}{T}.
+\end{equation}
+We better have a corresponding change in entropy for the black hole, or
+else a black hole could be used for a perpetual motion machine. Suppose
+the black hole is Schwarzschild, so its metric is
+\begin{equation}
+\D s^{2} = \left(1 - \frac{2GM}{r}\right)\D t^{2} - \left(1 -
+\frac{2GM}{r}\right)^{-1}\D r^{2} - r^{2}\,\D\Omega^{2}.
+\end{equation}
+The proper distance $\rho$ in the Schwarzschild metric for the box to be
+on the surface of the black hole is
+\begin{equation}
+\rho =\int^{2GM+\delta r}_{2GM}\frac{\D r}{\sqrt{1 - 2GM/r}}
+\sim\sqrt{GM\,\delta r}
+\end{equation}
+We have $\rho=L$ when $\delta r\sim L^{2}/GM$. The mass $m$ is
+redshifted when w eare far from the black hole, so the change of mass
+for the black hole would be,
+\begin{equation}
+\Delta M\sim m\sqrt{1 - \frac{2GM}{2GM+\delta r}}\sim\frac{m L}{GM}.
+\end{equation}
+To maximize the loss of entropy, we need $L\sim\hbar/T$. We find then
+\begin{equation}
+\Delta S\sim\frac{GM\Delta M}{\hbar}\sim\frac{\Delta A}{\hbar G}.
+\end{equation}
+One of the laws of Black Hole Thermodynamics is $\Delta M=\frac{\kappa}{8\pi G}\Delta A$.
+
+By the uncertainty principle, a virtual pair with energy $E$ can exist
+for time $\sim \hbar/E$. Fort a virtual pair, with the negative energy
+particle entering the black hole, locally it's as though the black hole
+swallowed a particle of positive energy. Far away, it looks as though it
+emitted a particle of energy $E$.
+\begin{center}
+  \includegraphics{img/2009-06-03.0}
+\end{center}
+The proper time for the particle to fall into the bacl hole would be
+\begin{equation}
+\tau\sim\sqrt{GM\,\delta r}\sim\frac{\hbar}{E}
+\end{equation}
+hence
+\begin{equation}
+E\sim\frac{\hbar}{\sqrt{GM\,\delta r}}.
+\end{equation}
+So to an observer far away, the energy is redshifted, so as seen from
+infinity,
+\begin{equation}
+E_{\infty}\sim\frac{\hbar}{\sqrt{GM\,\delta r}}\sqrt{1 -
+  \frac{2GM}{2GM+\delta r}}\sim\frac{\hbar}{GM}.
+\end{equation}
+This is precisely the energy corresponding to the black hole temperature.
+(Usually temperature is derived first, then standard thermodynamics is
+used to derive entropy.)
+
+\marginnote{Review: QFT in curved spacetime}
+Let us briefly review quantum field theory, using discrete momentum. Let
+\begin{equation}
+u_{k} = \exp(\I\vec{k}\cdot\vec{x}-\I\omega_{k}t),
+\end{equation}
+where $\omega_{k}=+\sqrt{|k|^{2}+m^{2}}$. The Fourier decomposition of
+the free field,
+\begin{equation}
+\varphi = \sum_{k}(a_{k}u_{k} + a^{\dagger}_{k}u^{*}_{k}),
+\end{equation}
+we observe the commutation relations are such that
+\begin{subequations}
+\begin{align}
+[a^{\dagger}_{k},a_{k'}] &= \delta_{k,k'},\\
+a_{k}\mid0\rangle &= 0.
+\end{align}
+\end{subequations}
+We generalize to curved spacetime,
+\begin{equation}
+(\Box + m^{2})u_{k}=0
+\end{equation}
+where $\Box=\nabla_{\mu}\nabla^{\mu}$ uses covariant derivatives.
+There's an infinite number of orthogonal solutions (this happens in flat
+spacetimes, too, e.g., Bessel functions, Fourier decomposition, etc.\
+etc.\ etc.). We can choose two different modes
+\begin{subequations}
+\begin{equation}
+\varphi = \sum_{k}(a_{k}u_{k} + a^{\dagger}_{k}u^{*}_{k})
+ = \sum_{k}(\bar{a}_{k}\bar{u}_{k} + \bar{a}^{\dagger}_{k}\bar{u}^{*}_{k})
+\end{equation}
+where
+\begin{equation}
+\bar{u}_{k} =
+\sum(\underbrace{\alpha_{ki}}_{\mkern-60mu\mathrlap{\text{Bogoliubov coefficients}}}u_{i} +\underbrace{\beta_{ki}}u^{*}_{i})
+\end{equation}
+\end{subequations}
+We have two number operators, $N_{k}$ and $\bar{N}_{k}$. Using the
+orthogonality of mode functions, we can prove,
+\begin{equation}
+\langle\bar{0}\mid N_{k}\mid\bar{0}\rangle=\sum_{j}|\beta_{jk}|^{2},
+\end{equation}
+so how do we choose what vacuum to work in? Hawking argued if we're far
+away looking at the black hole region prior to collapse, there is a
+natural vacuum: the Minkowski vacuum.
+
+There is another derivation from Parikh and Wilczek~\cite{Parikh:1999mf}. It's a tunneling
+approach, where particles tunnel from inside the black hole to the
+outside. The particle position doesn't move outward, the position of the
+event horizon moves inward. Then apply the WKB approximation. We have
+\begin{equation}
+\Gamma = \E^{-2\Im(\action/\hbar)}
+\end{equation}
+where $\action$ is the action.
+Now we just write
+\begin{equation}
+\action = \int^{r_{\text{out}}}_{r_{\text{in}}}p_{r}\,\D r.
+\end{equation}
+We use the metric and there is a pole $\sqrt{1-2GM/r}$.
+
+In ordinary quantum mechanics, time translation operator is
+$\langle\mbox{out}\mid\exp(\I tH)\mid\mbox{in}\rangle$, for
+thermodynamics it is $\operatorname{Tr}(\E^{-\beta H})$, if we make time imaginary we
+get a partition function.
+
+There are at least a dozen different modern ways to derive black hole entropy.

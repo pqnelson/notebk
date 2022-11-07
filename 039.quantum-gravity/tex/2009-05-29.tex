@@ -1,0 +1,117 @@
+\lecture[AdS/CFT Correspondence, Causal Dynamical Triangulations]
+
+The AdS/CFT [anti de Sitter Space, Conformal Field Theory]
+correspondence is a really interesting, nonperturbative string theory
+requiring a negative cosmological constant. Although unphysical, it
+could contain interesting analogies for our purposes.
+Recall Anti-De Sitter space is a flat solution to the Einstein field
+equations with a negative cosmological constant. We usually write the
+cosmological constant as
+\begin{equation}
+\Lambda=\frac{-1}{\ell^{2}}
+\end{equation}
+where $\ell$ is the radius of the universe. The metric is
+\begin{equation}
+\D s^{2} = \frac{\D r^{2}}{1 + (r/\ell)^{2}} + r^{2}\,\D\Omega^{2} -
+\left(1 + \frac{r^{2}}{\ell^{2}}\right)\,\D t^{2}.
+\end{equation}
+There is another set of coordinates $r=\ell\sinh(\rho)$, so
+\begin{equation}
+  \D s^{2} = \ell^{2}\left(
+  \D\rho^{2} + \sinh^{2}(\rho)\,\D\Omega^{2} - \cosh^{2}(\rho)\,\D t^{2}
+  \right).
+\end{equation}
+Observe that $\rho$ is just the proper distance. If we look at the limit
+as $\rho\to\infty$, the asymptotic limit, we have
+\begin{equation}
+\D s^{2}\sim\ell^{2}\,\D\rho^{2} +
+\frac{\ell^{2}}{4}\E^{2\rho}(\D\Omega^{2}-\D t^{2}).
+\end{equation}
+Near infinity, AdS space looks like a flat cylinder with a radial
+coordinate added. If we look at geodesics, we can doodle timelike
+geodesics [solid line] and lightlike geodesics [dashed line] in the
+Penrose diagram:
+\begin{center}
+  \includegraphics{img/2009-05-29.0}
+\end{center}
+Timelike geodesics which
+start at the center of the cylinder will try to ``move out'', but
+the cosmological constant then acts like an attractive potential. For
+lightlike geodesics, such geodesics will reflect off of the boundary. In
+theory, an observer could receive back a pulse of light they sent
+provided they live long enough. The isometry group for AdS is
+$\SO(d-1,2)$.
+
+If we have a pair of $D$-branes, we can have the endpoints of a string be both on
+one $D$-brane, or one endpoint on each $D$-brane; something like
+sketched below:
+\begin{center}
+  \includegraphics{img/2009-05-29.1}
+\end{center}
+On 2 $D$-branes, open string states have 2 indices varying from $1$, $2$.
+For $N$ $D$-branes we have $N$ indices with values being $1$, $2$. This
+may be oriented, not necessarily symmetrized. It turns out these indices
+have an $\SU(N)$ symmetry. There is an $N\to\infty$ limit where we may
+take to decouple gravitons, giving us an $\SU(N)$ Yang--Mills theory
+with a supersymmetry. We can look at the strong coupling limit, we end
+up with charged black branes.
+
+We can look at things quite simply: these are dual to each other. That
+is, they each describe the entire picture at various limits. What we
+find is the near horizon geometry of charged black branes is
+$\AdS\times{(compact)}$. If we look at $N$ coincident $3$-branes (3
+spatial dimensions $+$ time), this gives $\AdS_{5}\times S^{5}$ and its
+boundary is a four-dimensional flat cylinder.
+
+Maldacena AdS/CFT conjecture: string theory in bulk ($\AdS_{5}\times S^{5}$)
+$\iff$ $N=4$ Supersymmetric $\SU(N)$ Yang--Mills theory on a flat
+4-dimensional cylinder.
+That is, ``in bulk'' means ``in spacetime that's asymptotically $\AdS_{5}\times S^{5}$''.
+
+\subsection{Causal Dynamical Triangulations}
+A lattice approach to quantum gravity. Nonrenormalizability may be a
+statement about the perturbative approach, we're doing the perturbation
+wrong---there's nothing wrong with the theory. We have the path integral
+approach, which has of supreme importance the partition function
+\begin{equation}
+Z = \int\E^{\I(\action[g] + \int g_{\mu\nu}J^{\mu\nu})}\,[\D g]
+\end{equation}
+where $J^{\mu\nu}$ is a fixed source. We approximate this as a sum over
+finite geometries, so we havea discrete approach using lattices (e.g.,
+Regge calculus approach). The defecit angle $\delta$, the Ricci scalar
+is determined by parallel transport $R =
+\delta\cdot\delta^{(2)}(\vec{x})$. For three dimensions, we work with
+3-simplices, so imagine an edge sticking out of the paper at the vertex
+doodled below and making each triangle a face on the tetrahedron.
+\begin{center}
+  \includegraphics{img/2009-05-29.2}
+\end{center}
+We find that, in three-dimensions,
+\begin{equation}
+\int R\sqrt{|g|}\,\D^{3}x = \sum_{i}\delta_{i}\ell_{i}.
+\end{equation}
+In four-dimensions, we have,
+\begin{equation}
+\int R\sqrt{|g|}\,\D^{4}x = \sum_{\text{2-d hinges}}\delta_{i}A_{i}.
+\end{equation}
+Regge figured this out in 1961.
+
+So we end up with a discretization of the path integral
+\begin{equation}
+Z\approx\sum_{\substack{\text{discrete}\\\text{geometries}}}\E^{\I(\action_{\text{regge}}+\Lambda\sum_{n}V_{n})}
+\end{equation}
+There are several approaches to summing over geometries.
+
+Regge advocated fixing ttriangulation, summing over lengths (and
+angles). The other approach is dynamical triangulations fix edge-lengths
+and sum over triangulations. In principle, either approach approximates
+smooth surfaces. The dynamical triangulations approach walks over the
+space of possible states. There are two phases in the computation
+\begin{enumerate}
+\item The crumpled phase
+\item The branched polymer phase.
+\end{enumerate}
+Dynamical triangulations is modified to become Causal Dynamical
+Triangulations, prohibiting polymer phases. We have a sort of timelike
+foliation, restricting the sort of triangulations. It's not entirely
+clear how to recover the Newtonian limit.
