@@ -1,0 +1,100 @@
+\section{Equations of Motion in Non-inertial Reference Frames}\label{section:eom-in-non-inertial-frame}
+
+\M
+For non-inertial reference frames, we start by considering the position
+of the origin of the non-inertial frame relative to an inertial frame
+\begin{equation}
+  \vec{R}(t) = \begin{pmatrix}\mbox{Position of the origin for the}\\
+    \mbox{non-inertial reference frame}\\
+    \mbox{relative to an inertial observer}
+\end{pmatrix}.
+\end{equation}
+We are trying to describe the trajectory of a body relative to a
+noninertial reference frame $\vec{r}'(t)$ (primes indicate the quantity
+is relative to the noninertial reference frame --- this is the physics
+convention, not my own idiosyncratic notation) in terms of $\vec{R}(t)$
+and the position of the body relative to the inertial observer
+$\vec{r}(t)$. The picture we should have in mind (with subscripts
+``inert'' and ``non'' to emphasize the different reference frames):
+\begin{center}
+  \includegraphics{img/img.0}
+\end{center}
+We can write this as
+\begin{equation}
+\vec{r}(t) = \vec{R}(t) + \vec{r}'(t).
+\end{equation}
+Note that $\vec{R}(t)$ is taken relative to the inertial reference frame.
+Now we take derivatives of both sides to get velocities
+\begin{equation}
+\frac{\D\vec{r}(t)}{\D t} = \frac{\D\vec{R}(t)}{\D t} + \frac{\D\vec{r}'(t)}{\D t}
+\end{equation}
+and again for accelerations
+\begin{equation}
+\frac{\D^{2}\vec{r}(t)}{\D t^{2}} = \frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \frac{\D^{2}\vec{r}'(t)}{\D t^{2}}.
+\end{equation}
+For accelerating reference frames, $\D^{2}\vec{R}/\D t^{2}\neq0$, and
+for rotating reference frames things get more interesting.
+
+\M
+We need to start by writing the
+velocity of the a body relative to an inertial frame
+$\vec{v}_{i}=\D\vec{r}/\D t$ in
+terms of the velocity of the body relative to a non-inertial frame
+$\vec{v}_{n}$ (which is just the time derivative of the components of
+the vector, since the basis vectors $\vec{e}'_{j}$ are constant relative to the
+non-inertial observer),
+\begin{align}
+\vec{v}_{i} &=\frac{\D\vec{R}(t)}{\D t} + \frac{\D}{\D t}\left(r'_{1}(t)\vec{e}'_{1}(t) + r'_{2}(t)\vec{e}'_{2}(t) + r'_{3}(t)\vec{e}'_{3}(t)\right)\\
+&=\frac{\D\vec{R}(t)}{\D t} + \frac{\D}{\D t}\sum^{3}_{j=1}r'_{j}(t)\vec{e}'_{j}(t)\\
+&=\frac{\D\vec{R}(t)}{\D t} + \sum^{3}_{j=1}\frac{\D r'_{j}(t)}{\D t}\vec{e}'_{j}(t) +
+r'_{j}(t)\frac{\D\vec{e}'_{j}(t)}{\D t}\\
+&=\frac{\D\vec{R}(t)}{\D t} + \vec{v}_{n} + \sum^{3}_{j=1}r'_{j}(t)\frac{\D\vec{e}'_{j}(t)}{\D t}
+\end{align}
+where $r'_{j}(t)$ are the coordinates for the position relative to the
+non-inertial frame, $\vec{e}'_{j}(t)$ are the unit vectors in the
+non-inertial reference frame which vary over time (by, e.g., rotating); the
+$\vec{v}_{n}$ is the velocity of the body as viewed by the non-inertial observer.
+Acceleration relative to an inertial reference frame is obtained by
+taking the time derivative with respect to both sides.
+\begin{align}
+  \frac{\D}{\D t}\vec{v}_{i}
+  &= \frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \frac{\D}{\D t}\sum^{3}_{j=1}\frac{\D r'_{j}(t)}{\D t}\vec{e}'_{j}(t) +
+  r'_{j}(t)\frac{\D\vec{e}'_{j}(t)}{\D t}\\
+  &= \frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \sum^{3}_{j=1}\frac{\D}{\D t}\left(\frac{\D r'_{j}(t)}{\D t}\vec{e}'_{j}(t)\right) +
+  \frac{\D}{\D t}\left(r'_{j}(t)\frac{\D\vec{e}'_{j}(t)}{\D t}\right)\\
+  &= \frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \sum^{3}_{j=1}\left(\frac{\D^{2} r'_{j}(t)}{\D t^{2}}\vec{e}'_{j}(t) +
+  \frac{\D r'_{j}(t)}{\D t}\frac{\D\vec{e}'_{j}(t)}{\D t}\right) +
+  \left(\frac{\D r'_{j}(t)}{\D t}\frac{\D\vec{e}'_{j}(t)}{\D t}
+  +r'_{j}(t)\frac{\D^{2}\vec{e}'_{j}(t)}{\D t^{2}}\right)\\
+&= \frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \vec{a}_{n} + \sum^{3}_{j=1}2\frac{\D r'_{j}(t)}{\D t}\frac{\D\vec{e}'_{j}(t)}{\D t} +r'_{j}(t)\frac{\D^{2}\vec{e}'_{j}(t)}{\D t^{2}}
+\end{align}
+where $\vec{a}_{n}$ is the acceleration relative to the non-inertial frame.
+
+\N{Rewriting the equations of motion}
+Newton's second Law for a body with constant mass is then,
+\begin{equation}
+\vec{F} = m\frac{\D}{\D t}\vec{v}_{i}
+\end{equation}
+For a non-inertial observer, we just rewrite $\D\vec{v}_{i}/\D t$ by the
+complicated mess
+\begin{equation}
+\vec{F} = m\vec{a}_{n} + m\left(\frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \sum^{3}_{j=1}2\frac{\D r'_{j}(t)}{\D t}\frac{\D\vec{e}'_{j}(t)}{\D t} +r'_{j}(t)\frac{\D^{2}\vec{e}'_{j}(t)}{\D t^{2}}\right).
+\end{equation}
+The ``extra terms'' on the right may be interpreted as ``pseudoforces'',
+and moved to the left-hand side as:
+\begin{equation}
+\vec{F}_{\text{pseudo}} = -m\left(\frac{\D^{2}\vec{R}(t)}{\D t^{2}} + \sum^{3}_{j=1}2\frac{\D r'_{j}(t)}{\D t}\frac{\D\vec{e}'_{j}(t)}{\D t} +r'_{j}(t)\frac{\D^{2}\vec{e}'_{j}(t)}{\D t^{2}}\right),
+\end{equation}
+so Newton's laws of motion for a non-inertial frame is,
+\begin{equation}
+\vec{F} + \vec{F}_{\text{pseudo}} = m\vec{a}_{n}.
+\end{equation}
+As a consistency check, we see when we make $\vec{e}'_{j}(t)$ constants
+and $\vec{R}(t)$ constant, we recover Newton's laws for an inertial observer.
+
+If you want to account for the rotation of the Earth, or the
+acceleration of the universe, then we can do it. The contributions may
+be small depending on what we want to do. For example, modeling a
+planet's atmosphere as a fluid surrounding a rotating sphere requires
+accounting for pseudoforces from the planet's rotation. But the
+contribution from the acceleration of the universe is rather negligible.

@@ -1,0 +1,129 @@
+\usepackage{booktabs}
+\usepackage[numbib]{tocbibind}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{framed}
+\usepackage[final]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{enumitem}
+\setlist{topsep=0pt,listparindent=\parindent,noitemsep}
+%\setlist{topsep=0pt,noitemsep}
+\usepackage{manfnt}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{fancyvrb}
+\usepackage{arydshln} % dashed block matrices
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\usepackage[pdfusetitle]{hyperref}
+\usepackage{doi}
+
+\usepackage[oldstylenum]{chunk}
+
+\hypersetup{colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+%  \ifpdf\else dvipdfmx\fi
+}
+
+\definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
+\definecolor{DarkRed}{rgb}{.3545,0,0}
+
+% Theorem environments using chunk style
+\theoremstyle{thmstyle}
+\newtheorem{theorem}[chunk]{Theorem}
+\newtheorem{proposition}[chunk]{Proposition}
+\newtheorem{corollary}[chunk]{Corollary}
+\newtheorem{lemma}[chunk]{Lemma}
+\newtheorem{conjecture}[chunk]{Conjecture}
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk]{Definition}
+\newtheorem{example}[chunk]{Example}
+\newtheorem{non-example}[chunk]{Non-Example}
+% \newtheorem{axiom}{Axiom}
+%\newtheorem{problem}[chunk]{Problem}
+\newtheorem{question}[chunk]{Question}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk]
+\newtheorem{claim}[chunk]{Claim}
+
+\renewcommand\theremark{\thechunk.\numberstyle{\arabic{remark}}}
+
+% Theorems which follow "standard" styles
+\theoremstyle{plain}
+\newtheorem{puzzle}{Puzzle}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}[section]
+\newtheorem{problem}{\llap{\mantriangleright\kern.15em}Problem}
+
+% Definitions generically need something, you know, *defined*. Use this
+% macro, and then you can add indexed entries by modifying one line of code.
+\newcommand\define[1]{\textbf{``#1''}}
+
+% arXiv links
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+
+% Number equations within each chunk (or whatever)
+\numberwithin{equation}{chunk}
+\renewcommand\theequation{\thechunk.\numberstyle{\arabic{equation}}}
+% \renewcommand\theHequation{eq\theHchunk.\number\value{equation}}
+
+
+\let\journal\textit
+\let\volume\textbf
+
+
+
+
+% Article.cls hacks
+\@ifclassloaded{article}{
+\renewcommand*\l@part[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty\@secpenalty
+    \addvspace{0.25pc \@plus\p@ \@minus\p@}%    \addvspace{2.25em \@plus\p@}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      {\leavevmode
+       \large \bfseries #1\hfil
+       \hb@xt@\@pnumwidth{\hss #2%
+                          \kern-\p@\kern\p@}}\par
+       \nobreak
+       \if@compatibility
+         \global\@nobreaktrue
+         \everypar{\global\@nobreakfalse\everypar{}}%
+      \fi
+    \endgroup
+  \fi}
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{2pt \@plus\p@ \@minus\p@}%    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil
+      \nobreak\hb@xt@\@pnumwidth{\hss #2%
+                                 \kern-\p@\kern\p@}\par
+    \endgroup
+  \fi}
+}{}
+
+
+\endinput

@@ -1,0 +1,63 @@
+\def\CC{\mathbb{C}}
+\def\NN{\mathbb{N}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+
+
+\let\into\hookrightarrow
+\let\onto\twoheadrightarrow
+
+\def\id{\mathrm{id}}
+\def\dihedral#1{D_{#1}}
+\def\GL{\mathrm{GL}}
+\def\Mat{\mathrm{Mat}}
+\def\SL{\mathrm{SL}}
+%\def\normalSubgroup{\triangleleft}%{\mathrel{\unlhd}}
+\def\properNormalSubgroup{\trianglelefteq}%{\mathrel{\lhd}}
+\def\normalSubgroup{\mathrel{\lhd}}
+
+\def\powerset{\mathcal{P}}
+\def\hom{\mathop{\rm Hom}\nolimits}
+\def\tr{\mathop{\rm tr}\nolimits}
+
+% calculus
+\def\D{\mathrm{d}}
+\def\E{\mathrm{e}}
+\def\I{\mathrm{i}} % = \sqrt{-1}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Span}{span}
+
+\let\oldvec\vec
+\let\vec\boldsymbol
+% Apparently, the ISO 80000-2:2013 suggests using $\mathsf{T}$ for
+% matrix transpose, so who am I to argue?
+\newcommand\transpose[1]{#1^{\mathsf{T}}}
+\newcommand\mat[1]{\mathbf{#1}}
+
+% https://tex.stackexchange.com/a/594688
+\newcommand{\svdots}{%
+  \vbox{\fontsize{\sf@size}{\sf@size pt}\linespread{0.3}\selectfont
+    \kern0.2\baselineskip
+    \hbox{.}\hbox{.}\hbox{.}%
+    \kern0.1\baselineskip
+  }%
+}
+
+% Thank you, Heiko Oberdiek! Comment on https://tex.stackexchange.com/q/183686
+\newcommand*{\math@rotate}[3]{%
+  % #1: rotation angle       % #2: math style       % #3: symbol
+  \sbox0{$#2\vcenter{}$}% location of the math axis
+  \rotatebox[y=\ht0]{90}{$#2#3\m@th$}%
+}
+\newcommand*{\vertneq}{%
+  \mathrel{%
+    \mathpalette{\math@rotate{90}}{\neq}%
+  }%
+}
+\newcommand*{\verteq}{%
+  \mathrel{%
+    \mathpalette{\math@rotate{90}}{=}%
+  }%
+}

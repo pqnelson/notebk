@@ -1,0 +1,25 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{danger}[2009/08/06 Danger and Double Danger Environments]
+\usepackage{manfnt}
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+\font\manual=manfnt
+\def\dbend{{\manual\char127}} % dangerous bend sign
+
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\begin{footnotesize}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{footnotesize}\end{trivlist}}
+
+% Danger! Danger!
+\def\ddanger{\begin{trivlist}\begin{footnotesize}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\par\end{footnotesize}\end{trivlist}}
+
+

@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage[12hr,us]{datetime}
+\usepackage{macros}
+\usepackage{notation}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+
+
+
+\title{Newtonian Mechanics in a Nutshell}
+\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}
+\date{November 5, 2022}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\input{tex/introduction}
+\include{tex/newton-laws}
+\vfill\eject
+\appendix
+\part*{Appendices}
+\input{tex/non-inertial-frames}
+\end{document}

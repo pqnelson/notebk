@@ -1,0 +1,300 @@
+\section{Newton's Laws of Motion}
+
+\M
+Newton laid down three ``laws'' of motion. The first Law is necessary
+for the second Law, but the third Law may be viewed as a consequence of
+the second Law.
+
+\subsection{Newton's First Law}
+
+\N{First Law of Motion}
+This is the famous, ``A body at rest tends to stay at rest, a body in
+motion [in a constant rectlinear velocity] tends to stay in motion,
+unless acted upon by a force.''
+
+Implicitly there are two claims being made:
+\begin{enumerate}
+\item For any trajectory $\gamma\colon I\to\RR^{3}$, we have
+  $\D\gamma(t)/\D t$ be constant unless there is a force acting upon the body;
+\item When we apply this to observers, there is a special class of
+  observers whose trajectories are described by $\D\gamma(t)/\D t$ being
+  constant --- these are \define{Inertial Observers}. These are special
+  because the laws of physics ``look the same'' to all inertial observers.
+\end{enumerate}
+
+\M
+This second claim strains credulity, it's not immediately obvious
+\emph{this} is the result of Newton's First Law of Motion.
+But this is because if an obsever is non-inertial, there are forces
+acting on the observer which must be ``accounted for'' when setting up
+the equations of motion for other bodies. Inertial observers lack such
+``bonus parts'' in equations of motion relative to inertial coordinate
+systems.
+
+\N{Galilean Relativity}
+If we have two different inertial observers $K_{1}$ and $K_{2}$ with coordinates $\vec{r}_{1}$
+and $\vec{r}_{2}$, respectively, and if $K_{2}$ moves relative to
+$K_{1}$ with a constant velocity $\vec{v}_{2|1}$, then we have:
+\begin{equation}
+\vec{r}_{1} = \vec{r}_{2} + \vec{v}_{2|1}t.
+\end{equation}
+The time is the same in the two frames, in the sense that when we agree
+on the units the clocks can differ by a constant displacement $t_{2}=t_{1}+\mbox{(constant)}$.
+This is known as \define{Galilean Relativity} and relates inertial
+reference frames to each other.
+
+\N{Non-inertial reference frames}
+There are two ways to have a non-inertial reference frame (either one
+disqualifies a reference frame from being inertial):
+\begin{enumerate}[label=(\arabic*)]
+\item Rotating reference frames are not inertial,
+\item Accelerating reference frames are not inertial.
+\end{enumerate}
+
+\N{Objection: Status of Inertial Observers}
+The clever reader may object that inertial observers cannot possibly
+exist. There are two separate arguments:
+\begin{enumerate}[label=(\arabic*)]
+\item We are on a rotating planet, Earth, which also revolves around the
+  Sun --- that is, we experience rotation. So we're a rotating reference
+  frame, which is not inertial.
+\item We are told rumour that the expansion of the universe is
+  accelerating. \emph{We} are in the universe. Therefore \emph{we} are
+  an accelerating reference frame.
+\end{enumerate}
+This is all true, and in
+Appendix~\ref{section:eom-in-non-inertial-frame} we modify Newton's
+laws of motion to facilitate these claims (and quantify the degree to
+which they affect experiments).
+
+\N{Puzzle}
+Consider the trajectory of a body moving in uniform circular motion,
+something like:
+\begin{equation}
+\gamma(t) = r_{0}\cos(\omega t)\vec{e}_{1} + r_{0}\sin(\omega t)\vec{e}_{2},
+\end{equation}
+where $\vec{e}_{1}$, $\vec{e}_{2}$ are unit vectors for the $x$, $y$
+axes in Cartesian coordinates (relative to some inertial observer);
+$r_{0}>0$ is the radius of the circular motion; $\omega\neq0$ is the
+constant ``angular velocity'' ($\omega=2\pi/T$ where it takes a time
+interval $T$ seconds long to orbit the circle once).
+
+But this is not a trajectory with a ``uniform rectilinear velocity''. We
+can see this by taking its time derivative:
+\begin{equation}
+\frac{\gamma(t)}{\D t} = -r_{0}\omega\sin(\omega t)\vec{e}_{1} + r_{0}\omega\cos(\omega t)\vec{e}_{2}.
+\end{equation}
+We see the \emph{speed} is constant $\|\D\gamma/\D t\|=r_{0}\omega$, so
+the direction of the velocity changes.
+But by Newton's first Law, this means there is some force acting on the
+body. What ``force'' could this be?
+
+\subsection{Newton's Second Law}
+
+\N{Mathematical Statement}
+This is the big contribution, the main tool, of Newtonian mechanics. It
+is often presented as: The equations of motion for a body looks like
+(for every coordinate of the body):
+\begin{equation}
+\mbox{Force} = (\mbox{mass})(\mbox{acceleration}).
+\end{equation}
+This is a special case of Newton's second Law, it's true when a body's
+mass is constant. When a body's mass can change over time $m=m(t)$, we
+instead need the notion of momentum
+\begin{equation}
+  \begin{split}
+    \vec{p}(t) &:= m(t)\vec{v}(t)\\
+    \mbox{(momentum)}(t) &:= \mbox{(mass)}(t)\mbox{(velocity)}(t)
+  \end{split}
+\end{equation}
+where ``$:=$'' means ``is defined as''. Then Newton's second Law is
+\begin{equation}
+\boxed{\vec{F} = \frac{\D\vec{p}(t)}{\D t}}
+\end{equation}
+where $\vec{F}$ is the sum of all forces acting on the body.
+Usually mass $m$ is constant, which is how we obtained the
+$\vec{F}=m\vec{a}$ form of Newton's second Law.
+
+\begin{remark}[Physical bodies with changing mass]
+  Rockets have variable mass because fuel is expended continuously. We
+  would predict incorrcet motion with $\vec{F}=m\vec{a}$: we would be neglecting the
+  entire source of the rocket's motion.
+
+  Other systems (like automobiles or airplanes) experience a similar
+  phenomenon, but it is much less pronounced. For an automobile, $10$
+  gallons of gas weighs $61$ pounds (or $27.67~\mathrm{kg}$) compared to
+  about $1500~\mathrm{kg}$ for the rest of the car, i.e., the gas is
+  less than $1.85\%$ the mass of the total car, less than the weight of one
+  adult passenger.
+
+  Airplanes, like the Boeing 737, have around $26\,000~\mathrm{L}$ fuel
+  capacity, and airplane fuel has a density of
+  $0.8~\mathrm{kg}/\mathrm{L}$ for a total mass of
+  $20\,828~\mathrm{kg}$. The maximum weight of a 737 is around
+  $55\times10^{3}~\mathrm{kg}$, the fuel's consumption is non-negligible
+  in this case (since the fuel is greater than $36\%$ of the initial mass).
+\end{remark}
+
+\begin{remark}[Inertial mass and equivalence principle]
+The mass which appears in Newton's second law is sometimes referred to
+as a body's \emph{inertial mass}. This is contrasted with a body's
+\emph{gravitational mass} --- analogous to a body's \emph{electric charge}
+which generates an electric field, the gravitational mass generates a
+gravitational field. Galileo determined experimentally these two masses
+are the same, and this is the celebrated \emph{equivalence principle}.
+\end{remark}
+
+\N{Equations of Motion}
+Newton's second Law gives us the equations of motion relative to an
+inertial reference frame. All we need to do is write down the forces
+acting on the body, sum them together, then plug the net force vector
+into the left-hand side of Newton's second Law.
+
+\N{How to Study This}
+The way we should study this is by introducing new forces, one at a
+time, and studying how they act on physical bodies. For a rough roadmap
+of how most texts study forces:
+\begin{enumerate}[label=(\arabic*)]
+\item Uniform gravitational force --- on Earth, the gravitational force
+  from the Earth is approximately constant $\vec{F}_{\text{const.~gravity}}=m_{\text{body}}g\vec{e}_{\text{downwards}}$
+  where $g\approx 9.8~\mathrm{m}/\mathrm{s}^{2}$ and $m_{\text{body}}$
+  is the mass of the body experiencing the gravitational force. Newton's
+  second Law becomes $\D^{2}\gamma(t)/\D t^{2}=g\vec{e}_{\text{downwards}}$.
+  This is studied in the variety of problems:
+  \begin{itemize}
+  \item Projectile motion
+  \item Block on inclined plane, which experiences on uniform
+    gravitational force.
+  \item Simple pendulum whose ``bob'' experiences uniform gravitational
+    force, and is connected to the ceiling by a massless rigid rod.
+  \end{itemize}
+\item Tension (in a rope or chain), which ``pulls'' on a body
+  \begin{itemize}
+  \item Atwoods machines attaches point masses to a [massless] rope
+    which passes through a [massless, frictionless] pulley. The masses
+    experience uniform gravitational force, possibly placed on an
+    inclined plane. This can be ``iterated'' --- we could replace one of
+    the point masses with another Atwood's machine, the rope is holding
+    up the [massless, frictionless] pulley.
+  \end{itemize}
+\item Various contact forces --- static friction (the
+  ``hesitation'' of a body from accelerating due to the floor's
+  microscopic ``jaggedness''), kinetic friction (the ``ongoing'' friction once the
+  static friction has been overcome), normal force (the floor ``pushing
+  against'' the object placed against it, to prevent the object falling
+  through the floor), and fluid resistance (recall, a fluid is either a
+  liquid or a gas, and air is a gas, so a body needs to ``push through''
+  the stagnant air which is precisely air resistance).
+
+  These are introduced one at a time, which is used to re-examing the
+  previous examples of tension and uniform gravitational force.
+\item Hooke's law for simple harmonic motion. This is usually presented
+  as a way to describe how [massless] springs work, with a force
+  proportional to the distance the spring is dislocated from
+  equilibrium.
+
+  More generally, any force proportional to displacement
+  $\vec{F}=k\vec{x}$ follows Hooke's law. This is important because
+  every [non-constant] force can be Taylor expanded, and Hooke's law
+  describes the first nontrivial contribution.
+\end{enumerate}
+This actually guides the ``next steps'' in a physics textbook, because
+the other forces of interest are electromagnetism and gravity.
+
+\N{``Composite'' Problems}
+We can compose these forces together to form more complicated problems.
+For example, we could attach a massless pulley to the ceiling by a thin
+massless rod (or, respectively, we could replace the point-mass ``bob''
+of a simple pendulum by an Atwood's machine); we could consider a
+``double pendulum'' (attach a thin massless rod to the ceiling, and
+attach bob $A$ to the other end; we attach a thin massless rod to bob
+$A$ and then attach a point-mass $B$ to the other end of this second
+massless rod); we could replace ropes (or massless rods) with springs;
+so on and so forth.
+
+As we invent more complicated problems, we should think about how we
+could ``freeze out'' complications to recover simpler problems. The
+solutions to the complicated problems should have some ``limiting behaviour''
+to recover solutions to the simpler problems. This guides one part of
+the ``evaluate'' step to writing solutions to these problems.
+
+\subsection{Newton's Third Law}
+
+\M This is the famous, ``To every action there is always opposed an
+equal reaction; or, the mutual actions of two bodies upon each other are
+always equal, and directed to contrary parts'', law. Sadly, this is
+misunderstood. We should interpret this as ``If body $A$ acts on body
+$B$ by a force $\vec{F}_{A~\text{on}~B}$, then $B$ acts on body $A$ by
+an equal but opposite force [i.e., a force equal in magnitude]
+$\vec{F}_{B~\text{on}~A}=-\vec{F}_{A~\text{on}~B}$''.
+
+This is assuming there are no external forces, the only force which body
+$B$ experiences is $\vec{F}_{A~\text{on}~B}$ and the only force which
+body $A$ experiences is $\vec{F}_{B~\text{on}~A}$.
+
+In light of Newton's second Law, we see this is precisely the
+conservation of momentum (i.e., the momentum for the total system
+$\vec{p}=\vec{p}_{A} + \vec{p}_{B}$ [being the sum of momentum for body
+  $A$ and the momentum for body $B$] is a constant in time):
+\begin{equation}
+\frac{\D\vec{p}}{\D t} = \frac{\D\vec{p}_{A}}{\D t} +
+\frac{\D\vec{p}_{B}}{\D t} = \vec{0}.
+\end{equation}
+Why believe this? Well, this is because the sum of forces, which
+Newton's third Law asserts are equal in magnitude but opposite in sign
+(hence sums to zero).
+
+\N{Conservation of Momentum}
+Thus, we identify Newton's third Law with the conservation of momentum
+for a composite system.
+Phrased differently: an isolated system experiences no force.
+
+\begin{remark}[Rockets move by conservation of momentum]
+The conservation of momentum may be used to \emph{propel} bodies
+forward. This is how a rocket works.
+
+The same principle applies if you were in a boat with a load of bricks.
+By throwing one brick out at a time, with most of the initial momentum
+of the brick being in the direction parallel to the water, you could
+move your boat foward. Conservation laws are powerful.
+\end{remark}
+
+\subsection{Concluding Remarks about Newton's Laws}
+
+\N{Free Body Diagrams}
+We have a nice way to obtain the equations of motion by invoking
+physical principles to obtain the force vector acting on bodies.
+It is useful to draw a diagram for each body in the system, where each
+force acting on the body is drawn. This is known as a ``free body
+diagram''. [It should be drawn in the ``setup'' step of writing a solution.]
+
+\N{Rigid body motion}
+Advanced Newtonian mechanics just works with more complicated
+situations, like modeling a coin as a rigid body. Euler pioneered this
+study of rigid body motion --- the analogous propositions to Newton's
+Laws of motion for rigid body motion is called ``Euler's Laws of motion''.
+It turns out the problem may be decomposed as:
+\begin{enumerate}[label=(\arabic*)]
+\item Treat the center-of-mass of the system as a point particle subject
+  to Newton's laws of motion, and
+\item Treat the rigid body as rotating about its center of mass; by
+  choosing the center-of-mass as the origin, this problem simplifies considerably.
+\end{enumerate}
+Euler proved this all works fine, but it's tedious to do the
+calculations here.
+
+\N{Differential Equations are Hard}
+Newton's laws of motion gives us a system of second-order [ordinary] differential
+equations. In general, second-order ordinary differential equations are
+hard to solve. This motivates us to find ways to extract information
+about physical systems which avoids explicitly solving these equations
+of motion, like the ``work--energy theorem'' relating the force applied
+to a body over some distance is equal to the change in the body's
+kinetic energy.
+
+\N{Setting up problems is hard}
+It is surprisingly nontrivial to setup a problem correctly. We could
+easily forget or overlook certain forces, or translate it as an
+incorrect vector. For this reason, physicists invented different
+formalisms for classical mechanics like Lagrangian mechanics and
+Hamiltonian mechanics.

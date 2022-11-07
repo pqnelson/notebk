@@ -1,0 +1,152 @@
+\section{Big Picture}
+
+\N{Goal of Mechanics}
+We model physical bodies and try to predict their motion. This is the
+entire goal of Newtonian mechanics (and classical mechanics more
+broadly).
+
+\N{Physical Body}
+We model a physical body as a point-particle. That is to say, at any
+given moment, the location of a physical body is modeled as a point. The
+motion of a physical body is modeled as a [suitably smooth] curve $\gamma\colon I\to\RR^{3}$
+where $I$ is some interval of ``time''. This works well as an
+approximation when we use the center-of-mass as the location of the
+body.
+
+In short, using a point-particle as an idealized approximation of a
+physical body is ``good enough'' for most purposes.
+
+\begin{remark}[Extended bodies, rigidity condition]
+There are also extended bodies. For classical mechanics, this is a rigid
+body. We model a rigid body by a set of trajectories such that the
+distance between any two points in the body is fixed. For example, a
+coin is modeled as a family of trajectories $\gamma(t;\vec{x}_{0})$ with
+initial position $\gamma(0;\vec{x}_{0})=\vec{x}_{0}$ such that the
+coin's position at time $t$ is the region
+\begin{equation}
+\mathcal{C}_{t} = \{\gamma(t;\vec{x})\mid\vec{x}\in\mathcal{C}_{0}\}.
+\end{equation}
+The ``rigidity condition'' is: for any $\vec{x}_{1},\vec{x}_{2}\in\mathcal{C}_{0}$, we have
+$\|\gamma(t;\vec{x}_{1})-\gamma(t;\vec{x}_{2})\|$ be a constant (``rigid'') with
+respect to time. When this condition holds, we call an extended body a
+``rigid body''.
+
+For rigid bodies, we need to model rotational mechanics of the rigid
+body in addition to the translational mechanics of the rigid body. Euler
+studied this problem quite extensively. If rotational contributions to a
+rigid body is negligible, then we may model it as a point-particle
+located at its center of mass.
+\end{remark}
+
+\begin{remark}[Continuum mechanics]
+If we remove the ``rigidity condition'' [i.e., we could allow the
+distance between points in an extended body to change over time] for an
+extended body, then we end up with continuum mechanics. This is an
+extroardinarily difficult field. Fluid mechanics is a subfield of
+continuum mechanics, and we don't know how to solve the equations of
+motion in fluid mechanics.
+\end{remark}
+
+%% \N{Rigid bodies, continuum mechanics}
+%% There are also extended bodies. For classical mechanics, this is a rigid
+%% body. We model a rigid body by a set of trajectories such that the
+%% distance between any two points in the body is fixed. For example, a
+%% coin is modeled as a family of trajectories $\gamma(t;\vec{x}_{0})$ with
+%% initial position $\gamma(0;\vec{x}_{0})=\vec{x}_{0}$ such that the
+%% coin's position at time $t$ is the region
+%% \begin{equation}
+%% \mathcal{C}_{t} = \{\gamma(t;\vec{x})\mid\vec{x}\in\mathcal{C}_{0}\}.
+%% \end{equation}
+%% The ``rigidity condition'' is: for any $\vec{x}_{1},\vec{x}_{2}\in\mathcal{C}_{0}$, we have
+%% $\|\gamma(t;\vec{x}_{1})-\gamma(t;\vec{x}_{2})\|$ be a constant (``rigid'') with
+%% respect to time.
+
+%% For rigid bodies, we need to model rotational mechanics of the rigid
+%% body in addition to the translational mechanics of the rigid body. Euler
+%% studied this problem quite extensively. If rotational contributions to a
+%% rigid body is negligible, then we may model it as a point-particle
+%% located at its center of mass. We can also weaken rigid bodies to allow
+%% deformation, which is studied in the field of continuum mechanics.
+
+\N{Equations of Motion}
+Classical mechanics (and, more generally, physics) describes the motion
+of bodies by means of the so-called \define{Equations of Motion} which
+relates the acceleration in terms of velocities and positions. These are
+second-order ordinary differential equations.
+
+In Newtonian mechanics, the ``big insight'' is the idea that
+\emph{forces} determine the ``right-hand side'' to these differential
+equations. Undergraduates spend a lot of time setting up and then
+solving these differential equations. But the difference in formalisms
+in classical mechanics (Newtonian, Lagrangian, Hamiltonian, etc.) lies
+in these two steps:
+\begin{enumerate}[label=(\alph*)]
+\item Setting up the equations of motion
+\item Solving the equations of motion
+\end{enumerate}
+
+\M
+The real skill in physics is not in solving these differential
+equations, but in using physical principles [conservation laws or
+  symmetries or whatever] to extract relevant and
+useful information from them.
+The different formalisms in classical mechanics allows us to look at a
+physical system in different lighting.
+
+\begin{remark}[``ISEE'']
+If you are learning physics, I would highly encourage you to read Young
+and Freedman's \emph{University Physics}. Any edition is fine (unless
+you are taking a course at college or university which requires a
+specified edition for its homework). The real usefulness lies in its
+format for examples, which state a problem, the solves it in a template
+consisting of the following steps:
+\begin{description}
+\item[Identify] the relevant concepts:
+  \begin{itemize}
+  \item Identify the physical conditions stated in the problem to help
+    decide which physical concepts which are relevant
+  \item Identify the target variable, the physical quantity (or quantities) you are trying to find.
+  \item Identify the known quantities (stated or implied in the
+    problem). (Sometimes this is done in the ``Setup'' step.)
+  \end{itemize}
+\item[Setup] the problem
+  \begin{itemize}
+  \item Given the concepts, known quantities, and target variables,
+    which we have obtained from the \textsc{identify} step, now we
+    choose the equations we'll use to solve the problem (and decide how
+    we'll use them).
+  \item Here you also choose coordinate systems, which is important and
+    often overlooked.
+  \item Draw sketches (if relevant) and free body diagrams (if relevant).
+  \end{itemize}
+\item[Execute] the solution --- that is, ``do the math'', solve the
+  equations you have obtained from the \textsc{setup} step. Try to solve
+  these equations \emph{algebraically} (``symbolically''), defer
+  plugging in values as late as possible. This will help us in the next step
+\item[Evaluate] your answer.
+  \begin{itemize}
+  \item We can try taking limits of the symbolic solution to recover
+    previous solutions (e.g., taking the ``friction goes to zero'' limit
+    should recover the frictionless solution) or special cases where we
+    might divide by zero (e.g., if the answer looks like
+    $f(x)/\cos(\theta)$, the $\theta=(n+1/2)\pi$ solutions lead to a
+    divide-by-zero singularity resulting in an infinity)
+  \item Check the order-of-magnitude of the solution, to see if it makes sense.
+  \end{itemize}
+\end{description}
+This encourages the reader to keep a \textit{r\'{e}pertoire} of worked
+problems, and nurtures a habit of ``successive refinement'' to add
+layer-upon-layer of complexity and realism to a problem.
+\end{remark}
+
+\N{Observers and Reference Frames}
+Before rushing along, we should discuss one subtlety to classical
+mechanics, namely the idea of observers and reference frames. We can
+model an observer as a physical body [i.e., a point-particle] equipped
+with ``a ruler and a clock''. What does this even mean? It means we have
+a set of basis spatial vectors for $\RR^{3}$ [``ruler''] and a basis for
+time $\RR$ [``a clock'']. Together these are bundled together and
+sometimes called a \emph{reference frame}.
+
+The trajectories of physical bodies are expressed in coordinates
+relative to an observer's reference frame.
