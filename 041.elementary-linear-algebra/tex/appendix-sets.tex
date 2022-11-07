@@ -183,6 +183,11 @@ We can generalize this to as many factors as we want: the set of ordered triples
 $A\times B\times C$, quadrouples $A\times B\times C\times D$, and so
 on. This is a bit of an abuse of notation, but it's ok.
 
+\N{Iterated Products}
+It's not uncommon to write $A^{n}$ where $n\in\NN$ as a synonym for
+$A\times A\times\cdots\times A$ (with $n$ factors). For example, we
+write $\RR^{n}$ all the time.
+
 \N{Notation}
 If $f\colon A\times B\to C$, instead of writing $f((a,b))$, we will
 write $f(a,b)$. This is convention.
@@ -200,6 +205,18 @@ So for any $a\in A$, we have $(g\circ f)(a) = g\left(f(a)\right)$.
 
 This is associative: for any $f\colon A\to B$, $g\colon B\to C$,
 $h\colon C\to D$, we have $(h\circ g)\circ f = h\circ(g\circ f)$.
+
+\N{Cardinality: Size of a set}
+We indicate the number of elements in a finite set $A$ by writing 
+$|A|$. If $A$ has infinitely many elements, we can also write $|A|$, but
+now $|A|=\infty$.
+
+There are really two infinities we care about in mathematics: countably
+infinite (when a set is bijective with $\NN$, i.e., we can form a
+sequence enumerating all elements of the set), and uncountably infinite
+(when it is too large to be enumerated). Though surprising, it is true,
+that $\ZZ$ and $\QQ$ are countably infinite in size, though $\RR$ and
+$\CC$ are uncountably infinite.
 
 \N{Set Builder Notation}
 If we want to form a subset of $A$ satisfying elements $a\in A$ some
@@ -236,6 +253,30 @@ We read this as
 This notation is fairly standard. Some authors use colons instead of
 vertical bars to indicate ``such that''; other authors use \emph{both}
 interchangeably.
+
+When there is no constraint on $a$, we omit the vertical bar. For
+example, if we wanted to write the set of functions from $A$ to $B$, we
+could write $\{f\colon A\to B\}$.
+
+\begin{remark}[Free variables implicitly universally quantified]
+When there are free variables, like $a$ in $\{f(a)\mid a\in A, P[a]\}$,
+we implicitly quantify over them and think ``This is the set consisting
+of $f(a)$ for every $a$ such that $a\in A$ and $P[a]$ holds''. 
+\end{remark}
+
+\N{Notation: Set of Functions}
+There are two notations to denote the set of functions from $A$ to $B$,
+$\{f\colon A\to B\}$.
+\begin{enumerate}
+\item $\Hom(A,B)$ which is borrowed from category theory, and
+\item $B^{A}$ exponential notation, which is confusing.
+\end{enumerate}
+Sometimes, to emphasize we are thinking of $A$ and $B$ as sets, we write
+$\Set(A,B)$ or $\Hom_{\Set}(A,B)$ --- as opposed to thinking of them as
+vector spaces, and looking at the set of linear transformations between
+them, when we would write $\Vect(A,B)$ or $\Hom_{\Vect}(A,B)$ for the
+set of all linear transformations, emphasizing our intention that they
+be viewed as vector spaces.
 
 \N{Concluding Remarks}
 There are alternative foundations to mathematics, but in practice it
