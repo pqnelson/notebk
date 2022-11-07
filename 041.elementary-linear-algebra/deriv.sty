@@ -44,7 +44,7 @@
 \def\deriv@indent{\hskip\mathindent}
 
 \newcommand\defaultrelation{=}
-
+\newcommand\setdefaultrelation[1]{\gdef\defaultrelation{#1}}
 % We should probably use the "displayskip" amounts between each
 % expression, when stepping through a derivation, but I think that's too
 % much. Instead, I am refactoring out the breaks into their own macros,

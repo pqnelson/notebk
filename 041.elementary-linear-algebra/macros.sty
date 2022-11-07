@@ -1,3 +1,4 @@
+\usepackage{epigraph}
 \usepackage{booktabs}
 \usepackage[numbib]{tocbibind}
 \usepackage{mathtools}
@@ -125,4 +126,7 @@
 }{}
 
 
+\newenvironment{myparastyle}{\setlength{\parindent}{1em}}{}
+\renewcommand{\textflush}{myparastyle}
+\setlength{\epigraphwidth}{0.5\textwidth}
 \endinput

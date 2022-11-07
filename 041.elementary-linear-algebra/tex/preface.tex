@@ -11,7 +11,32 @@ We try to keep discussion informal and conversational, we will delimit
 examples and definitions and theorems and whatnot. Towards this end, we
 will use ``paragraph numbers'' with some kind of label summarizing the
 paragraph chunk or mathematical register [``Theorem'', ``Definition'',
-``Example'', etc.].
+``Example'', etc.]. Propositions are statements which are either true or
+false, and usually have a proof following their statement. Proofs end
+with the symbol ``\qedsymbol'' called the Halmos tombstone, we read them
+as ``QED'' [Latin \textit{quod erat demonstrandum}, ``that which was to
+be proven'']. These are all variations on a proposition: 
+\begin{description}
+\item[Lemma] refers to a ``helper proposition'' used to prove a tricky
+step in a later proposition, modern programmers might call lemmas
+``private propositions'';
+\item[Theorem] refers to an important proposition;
+\item[Corollary] refers to a proposition which is an immediate
+consequence of a previous proposition;
+\item[Example] is a proposition asserting an object is an instance of a
+gadget, or satisfies some property.
+\end{description}
+\medbreak\noindent%
+On the other hand, there are some registers which are not propositions:
+\medbreak
+\begin{description}
+\item[Definition] introduces a new property, a new gadget, or a new
+object [or function];
+\item[Remark] clarifies or comments a certain aspect of a proposition or definition;
+\item[Problem] statements which drive the conversation by explicitly
+providing motivation;
+\item[Puzzle] statements which motivate future sections.
+\end{description}
 
 Examples and exercises are randomly generated using Lisp scripts, or
 from various cited sources. The reader is encouraged to work their way

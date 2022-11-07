@@ -564,9 +564,18 @@ p(\lambda) = (\lambda-\lambda_{j})^{k_{j}}\prod^{n-k_{j}}_{\substack{i\neq j\\\l
 \begin{definition}
 Let $\mat{A}$ be an $n\times n$ matrix with eigenvalue $\lambda_{j}$.
 We define the \define{Eigenspace} of $\mat{A}$ for eigenvalue
-$\lambda_{j}$ to be the kernel of $\lambda_{j}\mat{I} - \mat{A}$ (or,
+$\lambda_{j}$ to be the \hyperref[defn:linear-transformations:kernel]{kernel} of $\lambda_{j}\mat{I} - \mat{A}$ (or,
 equivalently, the span of all vectors whose eigenvalue is $\lambda_{j}$).
 \end{definition}
+
+\begin{remark}[Checking the definition]
+We see this is a ``good definition'', since a vector $\vec{v}$ is an
+eigenvector (or linear combination of eigenvectors) with eigenvalue $\lambda$,
+then $\mat{A}\vec{v}=\lambda\mat{I}\vec{v}$ or equivalently
+$(\mat{A}-\lambda\mat{I})\vec{v}=\vec{0}$. Hence $\vec{v}\in\ker(\mat{A}-\lambda\mat{I})$.
+This matches our intuition of an ``eigenspace'', we should prove that it
+is actually a subspace (hence actually merits the suffix ``-space'').
+\end{remark}
 
 \begin{lemma}
 If $\lambda_{j}$ is an eigenvalue of $\mat{A}$ with multiplicity $k_{j}$,

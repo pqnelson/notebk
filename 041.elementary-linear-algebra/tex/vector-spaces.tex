@@ -1,9 +1,22 @@
 \section{Vector Spaces over \texorpdfstring{$\RR$}{R}}
 
+
+\epigraph{‘Vector space’? Unreal, but not compellingly so\dots}{Thomas Pynchon, \textit{Against the Day} (2006)}
+
 \M
-We have seen how $n$-tuples of real numbers form a vector space over the
-real numbers. Now we will create an abstraction that captures the
-crucial aspects of that family of examples.
+We have seen how real $2$-dimensional vector spaces were a bunch of
+arrows sharing the same base-point, with their own form of addition (via
+the parallelogram law) and scalar multiplication. We also saw how to
+encode these arrows as $n$-tuples of real numbers called coordinates
+relative to some axes; this will be generalized in
+Section~\ref{section:basis}.
+
+Now we will create an abstraction that captures the
+crucial aspects of that family of examples, the ``family of arrows
+sharing a base-point with their own addition operation and scalar
+multiplication''-notion. In math, we do this by defining new
+``gadgets'', equipping them with ``structure'' [functions of some sort],
+such that a bunch of ``properties'' [equations] hold. 
 
 \begin{definition}
 A \define{Real Vector Space} consists of a set $V$ equipped with two
@@ -66,13 +79,19 @@ matrices, and $\odot$ being multiplying each component by a scalar.
 It is not enough to \emph{assert} this forms a vector space: we must
 \emph{prove} it satisfies \emph{every condition} in the definition.
 \begin{enumerate}[label=(\arabic*)]
-\item Closure of $\oplus$: Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
+\item Closure of $\oplus$: for any $\mat{A},\mat{B}\in\Mat(\RR;m,n)$, we
+  have $(\mat{A}\oplus\mat{B})\in\Mat(\RR;m,n)$.
+
+  \textsc{Proof:} Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
   $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
   We see $\mat{A}\oplus\mat{B}=(a_{i,j}+b_{i,j})$ which is an $m\times n$
   real matrix. Thus $\mat{A}\oplus\mat{B}\in\Mat(\RR;m,n)$, and since
   this was for \emph{arbitrary} $\mat{A}$ and $\mat{B}$, we have
   established closure.
-\item Commutativity of $\oplus$: Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
+\item Commutativity of $\oplus$: for any $\mat{A},\mat{B}\in\Mat(\RR;m,n)$,
+  we have $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$.
+  
+  \textsc{Proof:} Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$ and
   $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
   We want to prove $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$.
   But we see $(\mat{A}\oplus\mat{B})_{i,j} = a_{i,j}+b_{i,j} = b_{i,j}+a_{i,j}$
@@ -83,7 +102,10 @@ It is not enough to \emph{assert} this forms a vector space: we must
   $\mat{A}\oplus\mat{B}=\mat{B}\oplus\mat{A}$.
   And since this is true for \emph{arbitrary} $\mat{A}$ and
   $\mat{B}$, then it follows that $\oplus$ is commutative.
-\item Associativity of $\oplus$:
+\item Associativity of $\oplus$: for any
+  $\mat{A},\mat{B},\mat{C}\in\Mat(\RR;m,n)$, we have $\mat{A}\oplus(\mat{B}\oplus\mat{C})=(\mat{A}\oplus\mat{B})\oplus\mat{C}$.
+
+  \textsc{Proof:} 
 Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   $\mat{B}=(b_{i,j})\in\Mat(\RR;m,n)$, and
   $\mat{C}=(c_{i,j})\in\Mat(\RR;m,n)$ be elements of $\Mat(\RR;m,n)$.
@@ -96,7 +118,9 @@ Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   $\mat{C}$ in $V$, then the condition ``$\oplus$ is assocative'' is satisfied.
 \item Unit of $\oplus$: there exists an element $\mat{0}\in\Mat(\RR;m,n)$ such that
   for every $\mat{A}\in\Mat(\RR;m,n)$,
-  $\mat{0}\oplus\mat{A}=\mat{A}\oplus\mat{0}=\mat{A}$. It suffices to
+  $\mat{0}\oplus\mat{A}=\mat{A}\oplus\mat{0}=\mat{A}$. 
+
+  \textsc{Proof:} It suffices to
   prove $\mat{0}\oplus\mat{A}=\mat{A}$, because commutativity guarantees $\mat{A}\oplus\mat{0}=\mat{0}\oplus\mat{A}$.
   We see $(\mat{O}\oplus\mat{A})_{i,j} = 0 + (\mat{A})_{i,j} = (\mat{A})_{i,j}$.
   Since this is true for every component $i$ and $j$, we conclude
@@ -104,7 +128,9 @@ Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   $\mat{A}\in\Mat(\RR;m,n)$, then it follows that the zero matrix
   $\mat{0}$ is the ``vector'' which satisfies the desired condition.
 \item Existence of negation: for every $\mat{A}\in\Mat(\RR;m,n)$,
-  there exists a $-\mat{A}\in\Mat(\RR;m,n)$ such that
+  there exists a $-\mat{A}\in\Mat(\RR;m,n)$ such that $\mat{A}\oplus-\mat{A}=\mat{0}$.
+
+  \textsc{Proof:} We multiply out the components
   $(-\mat{A})_{i,j} = -(\mat{A})_{i,j}$ hence
   $(\mat{A}\oplus-\mat{A})_{i,j} = (\mat{A})_{i,j}+(-(\mat{A})_{i,j}) = 0$
   for each component $i$ and $j$. Thus we conclude
@@ -114,6 +140,8 @@ Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   the condition is satisfied.
 \item Closure of $\odot$: for any real number $c\in\RR$ and element
   $\mat{A}\in\Mat(\RR;m,n)$, we have $c\odot\mat{A}\in\Mat(\RR;m,n)$.
+
+  \textsc{Proof:} 
   Multiplying the components of a $m\times n$ matrix by a real number
   produces a new matrix with components $(c\odot\mat{A})_{i,j}=c(\mat{A})_{i,j}$
   which is what we wanted to prove.
@@ -121,6 +149,8 @@ Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   for any $c\in\RR$ and
   $\mat{A}$, $\mat{B}\in\Mat(\RR;m,n)$, we have
   $c\odot(\mat{A}\oplus\mat{B}) = (c\odot\mat{A})\oplus(c\odot\mat{B})$.
+
+  \textsc{Proof:} 
   We see the components of the left-hand side are
   $(c\odot(\mat{A}\oplus\mat{B}))_{i,j} = c((\mat{A})_{i,j} + (\mat{B})_{i,j}) = c(\mat{A})_{i,j} + c(\mat{B})_{i,j}$
   by distributivity of multiplying real numbers over adding real
@@ -135,6 +165,7 @@ Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
   for any $c$, $d\in\RR$ and $\mat{A}\in\Mat(\RR;m,n)$, we have
   $(c+d)\odot\mat{A} = (c\odot\mat{A})\oplus(d\odot\mat{A})$.
 
+  \textsc{Proof:} 
   We see every component of the left-hand side satisfies
   $((c+d)\odot\mat{A})_{i,j} = (c+d)(\mat{A})_{i,j} = c(\mat{A})_{i,j} + d(\mat{A})_{i,j}$.
   But this is precisely the component
@@ -147,6 +178,8 @@ Let $\mat{A}=(a_{i,j})\in\Mat(\RR;m,n)$,
 \item Unit of $\odot$: for any $\mat{A}\in\Mat(\RR;m,n)$, we have
   $1\odot\mat{A}=\mat{A}$.
 
+
+  \textsc{Proof:} 
   We find the components of the left-hand side are
   $(1\odot\mat{A})_{i,j} = 1(\mat{A})_{i,j} = (\mat{A})_{i,j}$ equal to
   the corresponding components of the right-hand side, for every

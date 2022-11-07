@@ -1,0 +1,263 @@
+\section{Set Theory in a Nutshell}\label{section:appendix-sets}
+
+\M
+Modern mathematics is based on [Zermelo--Frankel] set theory. We will
+review the notation and properties here without proof. We also present
+this as a ``naive set theory'' using words instead of dry logic notation.
+The interested reader is encouraged to read Halmos' \textit{Naive Set Theory}
+for a more in-depth treatment.
+
+\N{``Definition''}
+A set is a ``well-defined'' unordered
+collection of ``stuff'' (possibly other sets, possibly numbers, or
+matrices, or whatever). We define a set in terms of its members, and we
+denote ``$x$ is a member of a set $A$'' by writing ``$x\in A$'' (or
+rarely, ``$A\ni x$'' for ``$A$ contains element $x$'').
+
+If we have an element $x$ which does not belong to $A$, we write this as
+$x\notin A$.
+
+Note: ``$\in$'' (and ``$\notin$'') take an object to its left, a set to
+its right, and produces a proposition (or ``formula'').
+
+\N{``Well-Definedness''}
+Although we didn't specify what exactly a ``well-defined unordered collection''
+means, we can loosely describe it by the law that there are no circular
+chains of elements: so things like
+$A_{1}\in A_{2}\in\dots\in A_{1}$ are illegal. It is grammatically fine,
+but so is the sentence ``Colorless green ideas sleep furiously''.
+
+A consequence to this is we cannot form the \emph{set} of all sets (why
+would anyone want to?). Instead, we construct a ``bigger'' species of
+collections known as ``classes'', whose members are sets. This leads us
+to things like NBG axioms (or Morse--Kelly axioms) for set theory. In
+every sense possible, it's beyond the scope of any concern involving sets,
+especially our own.
+
+\N{What's allowed as an element}
+Any \emph{object} is allowed as an element: sets, functions, numbers,
+matrices, vectors, spaces, points, etc. We can combine any of these
+things together into a set --- there is no ``type restriction'' saying
+we cannot combine a set of numbers with a set of matrices.
+
+However, propositions, predicates, truth-hood, falsehood, etc., are not allowed.
+
+If we were studying a language, its words could be elements of a
+set. The word ``truth'' within the language may be an element of a
+set. But this is different than \emph{truth}. This is the situation with
+a finger pointing at the moon, and the actual moon itself.
+
+\begin{remark}
+It may be circular to say, ``Sets are collections of objects'' and
+``Objects are whatever we can permit as elements of sets''\dots and
+you'd be right. The general heuristic is, a proposition is something
+which is true or false, a predicate is something which takes an object
+[or several objects] and produces a proposition, and an object is
+everything else.
+\end{remark}
+
+\begin{remark}[Sets are objects]
+Sets are objects, of course. When discussing the syntax (``grammar'') of
+the notation, we may specifically restrict inputs to be sets of some kind.
+We did this by stating ``$\in$'' expects a set to its right (as opposed
+to an arbitrary object is allowed to its left).
+\end{remark}
+
+\N{Notation} We distinguish predicates from functions by writing
+predicates with square brackets $P[x]$ whereas functions use parentheses
+$f(x)$. 
+
+\N{Subsets}
+We can encode the idea of one set being entirely contained in another as
+follows: if every $a\in A$ satisfies $a\in B$, then $A$ is called a
+\define{Subset} of $B$ and we write $A\subset B$. If further there
+exists at least one $b\in B$ such that $b\notin A$, then we call $A$ a
+\define{Proper Subset} of $B$ and indicate this by $A\propersubset B$.
+Otherwise we sometimes call $B$ an \emph{improper subset} of $A$. The
+reader should be careful, not all authors distinguish proper subsets
+from improper subsets.
+
+Again, the symbol ``$\subset$'' takes one set to its left, a set to its
+right, and produces a proposition.
+
+\begin{theorem}
+Every set is a subset of itself: For every set $A$, $A\subset A$.
+\end{theorem}
+
+\begin{theorem}
+If $A\subset B$ and $B\subset C$, then $A\subset C$.
+\end{theorem}
+
+For example: ``Every cat is a mammal, and every mammal is an animal, it
+follows every cat is an animal''.
+
+\N{Set Equality}
+We call two sets $A$ and $B$ \define{Equal} if every element $a\in A$
+also belongs to $B$, and if every element $b\in B$ also belongs to $A$.
+In this case, we write $A=B$.
+
+On the other hand, if there exists an $a\in A$ such that $a\notin B$,
+or if there exists a $b\in B$ such that $b\notin A$, then we write
+$A\neq B$ to indicate $A$ is not equal to $B$.
+
+\begin{theorem}
+Set equality is an equivalence relation, i.e., satisfies all of the
+following:
+\begin{enumerate}
+\item Reflexivity: for any set $A$, $A=A$
+\item Symmetry: for any set $A$ and $B$, if $A=B$, then $B=A$
+\item Transitivity: for any sets $A$, $B$, $C$, if $A=B$ and $B=C$, then $A=C$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+Let $A$ and $B$ be sets.
+Then $A=B$ if and only if $A\subset B$ and $B\subset A$.
+\end{theorem}
+
+\M
+For a set consisting of finitely many elements, we can write the set
+explicitly as a comma separated list of its elements sandwiched between
+squiggle braces:
+\begin{equation}
+A = \{x_{1}, x_{2}, \dots, x_{n}\}.
+\end{equation}
+Usually this is tedious, so we try to write a description of sets in
+other ways.
+
+\N{Empty Set}
+The set with zero elements is called the empty set, and denoted $\emptyset=\{\}$.
+The empty set is always a subset of everything: for any set $A$, we have
+$\emptyset\subset A$.
+
+\N{Famous Sets}
+We have the following notation for familiar sets:
+\begin{enumerate}
+\item $\NN=\{1,2,3,\dots\}$ for the natural numbers (i.e., positive integers)
+\item $\ZZ=\{\dots,-2,-1,0,1,2,\dots\}$ for the integers
+\item $\QQ$ for the rational numbers
+\item $\RR$ for the real numbers
+\item $\CC$ for the complex numbers
+\end{enumerate}
+We typically assume $\NN\subset\ZZ$, $\ZZ\subset\QQ$, $\QQ\subset\RR$,
+$\RR\subset\CC$.
+
+\N{Union (merging sets)}
+If $A$ and $B$ are sets, then we can form a new set $A\cup B$ whose
+elements are precisely those that belong either to $A$ or to $B$ (or both).
+So every $a\in A$ also belongs to $a\in A\cup B$,
+and every $b\in B$ also belongs to $b\in A\cup B$.
+
+\begin{example}
+We can write $\NN_{0}=\{0\}\cup\NN$ for the non-negative integers. We
+see $\NN\subset\NN_{0}$ is a proper subset.
+\end{example}
+
+\N{Intersection}
+If $A$ and $B$ are sets, then we can form the collection $A\cap B$ of elements
+belonging to both $A$ and $B$: $x\in A\cap B$ if and only if $x\in A$
+and $x\in B$.
+
+When $A\cap B=\emptyset$, there are no elements that belong to
+\emph{both} $A$ and $B$, then we call $A$ and $B$ \define{Disjoint}.
+
+\N{Functions}
+If $A$ and $B$ are sets, then we can define a \define{Function}
+$f\colon A\to B$ to be such that for each $a\in A$ there is exactly one
+$b\in B$ such that $b=f(a)$.
+
+\N{Ordered Pair}
+We can define an ordered pair $(a,b)$ to be such that $(a,b)=(x,y)$ if
+and only if $a=x$ and $b=y$. We can generalize this idea from a pair to
+a tuple of $n$ guys $(a_{1}, a_{2}, \dots, a_{n})$ defined such that
+$(a_{1},a_{2},\dots,a_{n})=(b_{1},b_{2},\dots,b_{n})$ if and only if
+$a_{1}=b_{1}$ and $a_{2}=b_{2}$ and \dots and $a_{n}=b_{n}$.
+
+\N{Cartesian Product}
+If we have sets $A$ and $B$, we can define the collection of ordered
+pairs $(a,b)$ for each $a\in A$ and for each $b\in B$. This is precisely
+the Cartesian product $A\times B$. We have $(a,b)\in A\times B$ for each
+$a\in A$ and $b\in B$.
+
+We can generalize this to as many factors as we want: the set of ordered triples
+$A\times B\times C$, quadrouples $A\times B\times C\times D$, and so
+on. This is a bit of an abuse of notation, but it's ok.
+
+\N{Notation}
+If $f\colon A\times B\to C$, instead of writing $f((a,b))$, we will
+write $f(a,b)$. This is convention.
+
+\N{Infix Notation}
+Sometimes we introduce a function $f\colon A\times B\to C$ with the
+understanding it is infixed, i.e., we will use it as $a~f~b$ instead of
+$f(a,b)$. This happens a lot with binary operators. I mean, honestly,
+who thinks $+(a,b)$ makes any sense?
+
+\N{Composing Functions} If $f\colon A\to B$ and $g\colon B\to C$ are
+functions, then we may ``feed'' the ``output'' of $f$ into $g$ and
+produce a new function denoted $g\circ f$ (and we read it from right to left).
+So for any $a\in A$, we have $(g\circ f)(a) = g\left(f(a)\right)$.
+
+This is associative: for any $f\colon A\to B$, $g\colon B\to C$,
+$h\colon C\to D$, we have $(h\circ g)\circ f = h\circ(g\circ f)$.
+
+\N{Set Builder Notation}
+If we want to form a subset of $A$ satisfying elements $a\in A$ some
+property or formula $P[a]$, then we write this using the notation:
+\begin{equation}
+\{a\in A\mid P[a]\}
+\end{equation}
+and read this as:
+\begin{itemize}
+\item[``$\{$''] the set of
+\item[``$a\in A$''] the elements $a\in A$
+\item[``$\mid$''] such that
+\item[``{$P[a]$}''] $a$ satisfies the property $P$, i.e., $P[a]$ is true
+\item[``$\}$''] [breath].
+\end{itemize}
+If we have some function $f\colon A\to B$, we can write
+\begin{equation}
+\{f(a)\mid a\in A, P[a]\}
+\end{equation}
+or if there's ambiguity
+\begin{equation}
+\{f(a)\in B\mid a\in A, P[a]\}
+\end{equation}
+We read this as
+\begin{itemize}
+\item[``$\{$''] the set of
+\item[``$f(a)$''] the result of $f$ applied to $a$
+\item[``$\mid$''] such that
+\item[``$a\in A$''] the set is generated by every $a\in A$
+\item[``,''] and
+\item[``{$P[a]$}''] $a$ satisfies the property $P$, i.e., $P[a]$ is true
+\item[``$\}$''] [breath].
+\end{itemize}
+This notation is fairly standard. Some authors use colons instead of
+vertical bars to indicate ``such that''; other authors use \emph{both}
+interchangeably.
+
+\N{Concluding Remarks}
+There are alternative foundations to mathematics, but in practice it
+doesn't matter much. There are various different axiomatizations to set
+theory, most of whom concern themselves to incorporating classes (and
+even \emph{bigger} collections) into the framework. It seems that set
+theory is a ``kludge'' designed to work around the shortcomings of
+first-order logic.\footnote{For example, quantifiers in first-order
+logic only quantify over constants, not functions. But if we encode a
+function as a set of ordered pairs $(x,f(x))$, then a ``function of sets'' is 
+a constant and may be quantified over.}
+
+Type theory is gaining attention, but it is quirky enough to avoid
+discussing it much. It involves a very clever way to encode a
+proposition as a type, the proof as a term. The disadvantage with type
+theory lies with discussing ``heterogeneous'' collections, among other
+constraints.
+
+Higher-order logic is kind of a ``half way'' between type theory and set
+theory. There are two types, one for propositions, the second for
+``objects''.
+
+The honest truth is that mathematicians work with a linear combination
+of these three foundations without realizing it, or caring. In these
+notes, we continue this time honored tradition.

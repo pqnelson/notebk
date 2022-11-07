@@ -356,6 +356,192 @@ What this means is that, when viewed as vector spaces, $V$ and $W$ are
 ``the same''. To every element $\vec{v}\in V$ there is a unique
 $\vec{w}\in W$ such that $L(\vec{v})=\vec{w}$.
 
+\begin{definition}
+Let $U$, $V$, $W$ be real vector spaces, let $L\colon U\to V$ and
+$M\colon V\to W$ be linear transformations. We define the
+\define{Composition} of $L$ followed by $M$ as a linear transformation
+denoted $M\circ L\colon U\to W$ (written from right to left) such that
+for any $\vec{u}\in U$, $(M\circ L)(\vec{u}) = M\left(L(\vec{u})\right)$.
+\end{definition}
+
+\N{Properties of Composition}
+These are properties of composition which are true:
+\begin{enumerate}
+\item Associativity: for any $f\colon W\to X$, $g\colon X\to Y$, and
+  $h\colon Y\to Z$, we have $(h\circ g)\circ f = h\circ(g\circ f)$.
+\item Right Identity law: if $f\colon X\to Y$ is any function, and $\id_{X}$ is
+  the identity function on $X$ (so every $x\in X$ satisfies $\id_{X}(x)=x$),
+  then $f\circ\id_{X}=f$.
+\item Left Identity law: if $f\colon X\to Y$ is any function, and $\id_{Y}$ is
+  the identity function on $Y$ (so every $y\in Y$ satisfies $\id_{X}(y)=y$),
+  then $\id_{Y}\circ f=f$.
+\end{enumerate}
+This is true for all functions, not just linear transformations.
+
+\begin{remark}
+For the collection of linear operators acting on a vector space $V$, we
+see we can think of composition as a sort of ``multiplication''
+operator (which is associative and has a ``number one''-like quantity,
+the identity map $\id_{V}$). Further, we have the sum of linear
+operators $L_{1},L_{2}\colon V\to V$ defined as
+$(L_{1}+L_{2})(\vec{v})=L_{1}(\vec{v})+L_{2}(\vec{v})$ for all
+$\vec{v}\in V$. We may define scalar multiplication similarly, for any
+$c\in\RR$, $(cL_{1})(\vec{v})=c\left(L_{1}(\vec{v})\right)$. This gives
+us a vector space structure on the collection of linear operators on
+$V$, \emph{and} an associative multiplication operator; together these
+form a gadget called a \emph{Associative Algebra}.
+
+Oftentimes we forget all about the vector space structure, and use the
+composition of operators to form a \emph{Monoid}. If we encode the state
+of a system as a vector in $V$, then linear operators can be used to
+describe how the state changes. This is what happens in quantum mechanics.
+We can use it for any dynamical system, where the evolution of state by
+an infinitesimal amount of time is described by a linear operator. The
+properties of the linear operator reflect physical properties of the
+dynamical system.
+\end{remark}
+
+\begin{definition}
+  Let $V$, $W$ be real vector spaces. Let $T\colon V\to W$.
+  \begin{enumerate}
+  \item We define the \define{Right Inverse} of $T$ to be the linear
+transformation $R\colon W\to V$ such that for each $\vec{w}\in W$,
+$(T\circ R)(\vec{w})=\vec{w}$.
+\item We define the \define{Left Inverse} of $T$ to be the linear
+  transfromation $L\colon W\to V$ such that for each $\vec{v}\in V$,
+$(L\circ T)(\vec{v})=\vec{v}$.
+\item We define the \define{Two-Sided Inverse} (or more frequently, just
+  ``\emph{Inverse\/}'') of $T$ to be the linear transformation $N\colon W\to V$
+  such that $N$ is both a left-inverse and right-inverse of $L$.
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}[Uniqueness of Inverse]
+If $L\colon V\to W$ is a linear transformation with a two-sided inverse
+$M\colon V\to W$, then $M$ is unique.
+\end{proposition}
+
+\begin{proof}
+Suppose $M_{1},M_{2}\colon V\to W$ are a pair of two-sided inverses for $L$.
+Let $\id_{V}\colon V\to V$ be the identity mapping on $V$,
+$\id_{W}\colon W\to W$ be the identity mapping on $W$. Then
+\begin{calculation}\setdefaultrelation{\equiv}
+  \id_{W} = \id_{W}
+  \step{since $M_{1}$, $M_{2}$ are right-inverses of $L$}
+  (L\circ M_{1}) = (L\circ M_{2})
+  \step{compose on left by $M_{1}$}
+  M_{1}\circ (L\circ M_{1}) = M_{1}\circ (L\circ M_{2})
+  \step{associativity of composing functions}
+  (M_{1}\circ L)\circ M_{1} = (M_{1}\circ L)\circ M_{2}
+  \step{since $M_{1}$ is a left-inverse of $L$}
+  \id_{V}\circ M_{1} = \id_{V}\circ M_{2}
+  \step{defining property of identity function}
+  M_{1} = M_{2}
+\end{calculation}
+Hence any two two-sided inverses of $L$ must be equal to each other.
+\end{proof}
+
+\N{Notation}
+Since the two-sided inverse is unique, we denote it by $T^{-1}$ as we do
+for numbers.
+
+\begin{proposition}[Right inverses exist for surjective maps]
+Let $V$ and $W$ be real vector spaces, $T\colon V\to W$ be a
+linear transformation. Then
+$T$ is surjective if and only if
+there exists a right-inverse $R\colon W\to V$ for $T$ (that is, $T\circ R=\id_{W}$).
+\end{proposition}
+
+\begin{proof}
+  $(\implies)$ Assume $T$ is surjective. We want to find a $R\colon W\to V$
+  such that for each $\vec{w}\in W$, $T\left(R(\vec{w})\right)=\vec{w}$.
+  We know for each $\vec{w}\in W$ there is at least one $\vec{v}$ such
+  that $T(\vec{v})=\vec{w}$, by definition of surjectivity. We could
+  take a basis $B_{W}=\{\vec{f}_{1},\dots,\vec{f}_{n}\}$ for $W$, then
+  for each basis element $\vec{f}_{j}\in B_{W}$ take some corresponding
+  $\vec{v}_{j}\in V$ such that $T(\vec{v}_{j})=\vec{f}_{j}$. We
+  construct $R$ by $R(\vec{f}_{j})=\vec{v}_{j}$ and demanding linearity
+  (which is possible because $T$ is lienar). Then
+\begin{calculation}
+  (T\circ R)(\vec{w})
+  \step{expanding out using our basis $B_{W}$}
+  (T\circ R)\left(\sum^{n}_{j=1}w_{j}\vec{f}_{j}\right)
+  \step{unfolding composition of maps}
+  T\left(R\left(\sum^{n}_{j=1}w_{j}\vec{f}_{j}\right)\right)
+  \step{by $R$ being linear}
+  T\left(\sum^{n}_{j=1}w_{j}R\left(\vec{f}_{j}\right)\right)
+  \step{by construction of $R$ defined by $R(\vec{f}_{j})=\vec{v}_{j}$}
+  T\left(\sum^{n}_{j=1}w_{j}\vec{v}_{j}\right)
+  \step{by $T$ being linear}
+  \sum^{n}_{j=1}w_{j}T\left(\vec{v}_{j}\right)
+  \step{by construction of $\vec{v}_{j}$ such that $T(\vec{v}_{j})=\vec{f}_{j}$}
+  \sum^{n}_{j=1}w_{j}\vec{f}_{j}
+  \step{folding back $\vec{w}$ from its expansion relative to $B_{W}$}
+  \vec{w}
+\end{calculation}
+Hence $R$ is a right-inverse, as desired.
+
+  $(\impliedby)$ Assume $R\colon W\to V$ is a right-inverse for $T$,
+  i.e.,
+  $T\circ R=\id_{W}$.
+  Then for each $\vec{w}\in W$, $T\left(R(\vec{w})\right)=\vec{w}$.
+  But since $R(\vec{w})=\vec{v}$ for \emph{some} $\vec{v}\in V$, we see
+  $T(\vec{v})=\vec{w}$. Since $\vec{w}$ was arbitrary, this means every
+  $\vec{w}$ has at least one $\vec{v}\in V$ for which $T(\vec{v})=\vec{w}$
+  (namely $\vec{v}=R(\vec{w})$). Hence $T$ is surjective, by definition.
+\end{proof}
+
+\begin{proposition}[Left inverses exist for injective maps]
+Let $V$, $W$ be real vector spaces, $T\colon V\to W$ be a
+linear transformation. Then $T$ is injective if and only if there exists a left inverse $L\colon W\to V$
+for $T$, i.e., $L\circ T=\id_{V}$.
+\end{proposition}
+
+\begin{proof}
+  $(\implies)$
+Suppose $T$ is injective. Then for each $\vec{v}_{1},\vec{v}_{2}\in V$
+such that $\vec{v}_{1}\neq\vec{v}_{2}$ we have $T(\vec{v}_{1})\neq T(\vec{v}_{2})$.
+If we set $L(T(\vec{v}_{1}))=\vec{v}_{1}$ and for any $\vec{w}\notin T(V)$
+is mapped to the zero vector $L(\vec{w})=\vec{0}_{V}$ (really this can
+be any arbitrary vector, provided linearity is preserved), then $L$ is a
+left-inverse function. 
+
+$(\impliedby)$ Suppose there exists a left-inverse $L$ for $T$.
+Then for any $\vec{v}_{1},\vec{v}_{2}\in V$ we see if
+\begin{equation}
+T(\vec{v}_{1})=T(\vec{v}_{2}),
+\end{equation}
+then we can apply $L$ to both sides
+$L\left(T(\vec{v}_{1})\right)=L\left(T(\vec{v}_{2})\right)$ but by
+definition of $L$ being a left inverse, this means
+\begin{equation}
+\vec{v}_{1}=\vec{v}_{2}.
+\end{equation}
+Hence $T$ is injective.
+\end{proof}
+
+\begin{example}
+Let $V$ be a $n$-dimensional real vector space (for some $n\in\NN$).
+Then there is a bijection $L\colon V\to\RR^{n}$.
+
+\begin{proof}
+Take $B=\{\vec{b}_{1},\dots,\vec{b}_{n}\}$ to be a basis for $V$.
+We then define $L$ to map these basis vectors in $V$ to the
+\hyperref[ex:basis:canonical-basis]{canonical basis} in $\RR^{n}$,
+$L(\vec{b}_{j})=\vec{e}_{j}$. By linearity, we have linear combinations
+mapped to linear combinations
+\begin{equation}
+L\left(\sum_{j=1}^{n}v_{j}\vec{b}_{j}\right)=\sum^{n}_{j=1}v_{j}L(\vec{b}_{j})=\sum^{n}_{j=1}v_{j}\vec{e}_{j}.
+\end{equation}
+We see this is a bijection because it's determined entirely by how it
+acts on the basis vectors $B$, and each $\vec{b}_{j}\in B$ is mapped to
+a distinct $\vec{e}_{j}$ [injectivity]. Every canonical basis vector
+$\vec{e}_{j}$ is ``hit'' by exactly one $\vec{b}_{j}\in B$ [surjectivity].
+We can define the inverse mapping $L^{-1}(\vec{e}_{j})=\vec{b}_{j}$ and
+demand linearity.
+\end{proof}
+\end{example}
+
 \N{General Picture}
 We can combine these insights to get some sense of what these terms
 mean. For example, a surjective linear map is one whose codomain is
@@ -364,7 +550,7 @@ whose image is isomorphic with the domain.
 
 \subsection{Kernels and Images}
 
-\begin{definition}
+\begin{definition}\label{defn:linear-transformations:kernel}
 Let $L\colon V\to W$ be a linear transformation. We define the
 \define{Kernel} of $L$ to be the collection of vectors mapped to the
 zero vector of $W$: $\ker(L)=\{\vec{v}\in V\mid L(\vec{v})=\vec{0}_{W}\}$.
@@ -480,3 +666,29 @@ result
 \begin{equation}
 \boxed{\dim(L(V)) + \dim(\ker(L)) = \dim(V).}
 \end{equation}
+
+\begin{definition}
+  If $L\colon V\to W$ is a linear transformation, we call
+  $\dim(\ker(L))$ its \define{Nullity} and $\dim(L(V))$ is
+  \define{(Column) Rank}.
+\end{definition}
+
+\N{Importance of Linear Transformations}
+Just as a concluding remark, I'd like to emphasize the importance of
+linear transformations. So far, we have spent nearly 20 pages talking
+about vector spaces before even thinking about linear
+transformations. But this is for pedagogical reasons, to help the reader
+get acquainted with the objects of linear algebra.
+
+Secretly, all information concerning a vector space may be obtained from
+linear transformations to, or from, the vector space.
+
+This sounds preposterous and conspiratorial. But every possible subspace
+is a kernel of some linear transformation (and the image of another).
+Further, if we realize that a
+linear transformation, when expressed relative to a basis, is a matrix,
+then we see a lot of the machinery we constructed for matrices plays an
+important role. There is one extraordinarily powerful \emph{coup} we can
+introduced for matrices [eigenstuff], which --- when applied to linear
+transformations --- demonstrates the power of these linear
+transformations.

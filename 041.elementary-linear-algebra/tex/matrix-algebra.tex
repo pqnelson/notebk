@@ -969,7 +969,7 @@ logically equivalent to each other, we write $(A=B)\equiv(A'=B')$ for
 ``$(A=B)$ is logically equivalent to $(A'=B')$, in the sense that one
 implies the other \emph{and} vice-versa''.}
 \begin{subequations}
-\begin{calculation}\gdef\defaultrelation{\equiv}
+\begin{calculation}\setdefaultrelation{\equiv}
   \mat{A}\vec{x} = \vec{b}
 \step{multiply both sides by $\mat{A}^{-1}$}
   \mat{A}^{-1}(\mat{A}\vec{x}) = \mat{A}^{-1}\vec{b}
@@ -996,7 +996,7 @@ Then $(\mat{A}\mat{B})^{-1} = \mat{B}^{-1}\mat{A}^{-1}$.
 \begin{proof}
   We compute directly
 \begin{subequations}
-\begin{calculation}\gdef\defaultrelation{\equiv}
+\begin{calculation}\setdefaultrelation{\equiv}
   (\mat{A}\mat{B})^{-1}\mat{A}\mat{B} = \mat{I}
 \step{multiply on right by $\mat{B}^{-1}$}
   (\mat{A}\mat{B})^{-1}\mat{A}\mat{B}\mat{B}^{-1} = \mat{I}\mat{B}^{-1}
@@ -1039,7 +1039,7 @@ the right-hand side becomes
 \end{equation}
 Setting these equal yields
 \begin{subequations}
-\begin{calculation}\gdef\defaultrelation{\equiv}
+\begin{calculation}\setdefaultrelation{\equiv}
   \transpose{(\mat{A}^{-1})}\transpose{\mat{A}} = \mat{I}
 \step{multiply both sides on the right by $(\transpose{\mat{A}})^{-1}$}
   \transpose{(\mat{A}^{-1})}\transpose{\mat{A}}(\transpose{\mat{A}})^{-1} = \mat{I}(\transpose{\mat{A}})^{-1}

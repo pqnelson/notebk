@@ -1,4 +1,4 @@
-\section{Linear Dependence and Bases}
+\section{Linear Dependence and Bases}\label{section:basis}
 
 \M
 We want to address the question of whether this is a ``best'' spanning
@@ -143,6 +143,16 @@ that
 Then we call $B$ a \define{Basis} of $V$.
 \end{definition}
 
+\begin{remark}[Need to prove existence of basis]
+We have just defined a word, ``basis'', but we have no guarantee that a
+basis will exist. This must be proven. The proof is not enlightening,
+and requires the axiom of choice (pick some nonzero vector, now pick
+another which is linearly independent of the first, keep picking
+linearly independent vectors --- how? By the axiom of choice, it's
+always possible \emph{somehow}; then show an arbitrary vector may be
+written as a linear combination of our collection of chosen vectors).
+\end{remark}
+
 \begin{example}
   In $\RR^{2}$, the vectors
   \begin{equation}
@@ -222,7 +232,7 @@ c=1,\quad\mbox{and}\quad c=-1.
   Hence there is no $A\subset\{\vec{z},\bar{\vec{z}}\}$ such that $\Span(A)=\RR^{2}$.
 \end{proof}
 
-\begin{example}
+\begin{example}\label{ex:basis:canonical-basis}
 Let $\vec{e}_{j}\in\RR^{n}$ have $1$ in its $j^{\text{th}}$ component
 and $0$ in all other components. Then the set
 $\{\vec{e}_{1},\dots,\vec{e}_{n}\}$ forms a basis of $\RR^{n}$ and is
@@ -414,6 +424,11 @@ relative to the $\vec{f}_{j}$:
 \end{equation}
 The equality is in quotation marks because it's not an equality but an \emph{isomorphism},
 a slightly weaker notion of ``the same''.
+We can prove (once we formalize the notion of an isomorphism) that any
+finite-dimensional real vector space $V$ is isomorphic to $\RR^{n}$ the
+collection of column $n$-vectors with real entries; this is done by
+identifying a vector with its coordinates relative to some basis. 
+But this \emph{does not} mean $V$ is equal to $\RR^{n}$.
 \end{remark}
 
 \begin{problem}

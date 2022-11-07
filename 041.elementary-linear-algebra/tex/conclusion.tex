@@ -1,0 +1,65 @@
+\section{Conclusion: The End?}
+
+\epigraph{\itshape If stories have ends, then this story ends here.
+
+I think, though it is not my field of specialisation, that some stories
+end, but others carry on. They are eternal. They secretly carry on after
+the story appears to be finished, continuing in silence. These stories
+do not talk. They are never heard. I think my story may be like
+that.}{Dan Abnett, \textit{Saturnine} (2020)}
+
+\M
+We've come quite a ways from ``solving a system of linear equations'',
+wading through not just one, but two new abstractions: matrix algebras
+and vector spaces. The destination for elementary linear algebra is
+always the spectral theorem for real matrices --- a symmetric square
+real matrix is diagonalizable.
+
+The next topics of discussion would be, well, what do we do with a real
+square matrix which is not symmetric? Can we get it into a
+``diagonal-ish'' form?
+
+\N{Other Number Fields}
+The other direction for discussion is, we have been working with
+\emph{real} matrices, \emph{real} vector spaces, everything using the
+\emph{real} numbers. What if we used the complex numbers instead? We
+need to abstract away the notion of the dot product and use something
+similar, called the \emph{inner product}. The spectral theorem holds for
+complex matrices, but with some slight changes.
+
+If I ever get around to it, this is the subject of my notes on
+\emph{intermediate linear algebra}: now, \emph{right now}, having
+finished reading the previous sections, you know how to multiply the
+hell out of matrices. We can use this knowledge as a ``toy model'' to
+demonstrate how mathematicians present knowledge and figure out what
+theorems to prove.
+
+\N{Numerical Linear Algebra}
+There is also a lot of nuance behind the calculations we do on the
+computer, especially with linear algebra. This opens up an exciting new
+field to us: numerical linear algebra. Furthermore, this may be studied
+as a gateway to functional analysis. It is beautiful, and there are many
+lovely good books on the subject.
+
+\N{Functional Analysis}
+If the reader knows real analysis,\footnote{For readers who do not know
+real analysis but want to learn it, I recommend starting with Stephen
+Abott's \textit{Understanding Analysis} as your first book.} then the reader will be aware that
+many definitions could be applied to square matrices. Conversely, if we
+view indices as function arguments, so $v\colon\{1,2,3\}\to\RR$ sends
+$j\in\{1,2,3\}$ to a real number denoted $v_{j}$ --- well, what is
+stopping us from changing the domain to, say, an open interval? Or all
+of $\RR$? Or $\RR^{n}$? From this perspective, we can look at a
+real-valued function $f(\vec{x})$ as a vector and $\vec{x}$ as a dummy
+variable. What does the dot product look like in this case? Matrix
+multiplication? Presumably, ``sums are replaced by integrals'', but are
+there bases?
+
+Since it's usually hard to reason about infinities, we could view
+numerical linear algebra as ``finite functional analysis''. The two
+complement each other like peanut butter and jelly.
+
+\N{Goodbye}
+Wow, look how far we've come! You could see your house from here. And
+you didn't even complain once. Or maybe you did, I can't say, I wasn't
+really listening.
