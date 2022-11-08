@@ -55,7 +55,11 @@ This is an eigenvalue problem! We divide both sides by $(1+r)$ to find
 \mat{A}\mat{B}^{-1}\vec{q}=\frac{1}{1+r}\vec{q},
 \end{equation}
 where $\lambda=1/(1+r)$ is the eigenvalue and $\vec{q}$ is the
-eigenvector.
+eigenvector. We are looking for real $\lambda$ such that
+$0<\lambda\leq1$ --- when $\lambda=1$, there is no profit $r=0$;
+similarly, it is rare to find $r>1$ (i.e., $\lambda<1/2$). The real
+constraint is that every entry of $\vec{q}$ must be positive (otherwise
+some commodities have negative value, which makes no sense).
 
 \begin{example}[{Sraffa~\cite[see \S5]{sraffa}}]
   Consider the economy given by the equations of production
