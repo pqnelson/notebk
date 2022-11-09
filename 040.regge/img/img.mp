@@ -103,4 +103,98 @@ beginfig(2);
   draw p4 dashed evenly;
   draw p5 dashed evenly;
 endfig;
+
+outputtemplate := "ch2sec3.%c"; show outputtemplate;
+
+beginfig(0)
+  path axes[], branch[];
+  numeric x_min, x_max, y_min, y_max, delta;
+  u := 1.5pc;
+  delta = 6u;
+  x_min = -2u; y_min = -0.5delta;
+  x_max =  delta; y_max =  0.5delta;
+  axes0 = (x_min, 0)--(x_max,0);
+  axes1 = (0, y_min)--(0, y_max);
+  numeric i;
+  for i=0 upto 1:
+    drawdblarrow axes[i];
+  endfor;
+  label.lft(btex $\ell$ etex, (-u, y_max-.5u));
+  drawarrow (0,u)--(0.5x_max,u);
+  draw (0.5x_max,u)--(x_max,u);
+  drawarrow (x_max,-u)--(0.5x_max,-u);
+  draw (0,-u)--(0.5x_max,-u);
+  draw halfcircle rotated 90 scaled 2u;
+  label.top(btex $L$ etex, (u,u));
+  for i=0 upto 5:
+    label(btex $\bullet$ etex, (i*u,0));
+    label.ulft(decimal(i), (i*u,0));
+  endfor;
+  u := 1pc;
+endfig;
+
+beginfig(1)
+  path axes[], branch[];
+  numeric x_min, x_max, y_min, y_max, delta;
+  u := 1.5pc;
+  delta = 6u;
+  x_min = -2u; x_max =  delta;
+  y_min = -delta; y_max =  delta;
+  axes0 = (x_min, 0)--(x_max,0);
+  axes1 = (0, y_min)--(0, y_max);
+  numeric i;
+  label.lft(btex $\ell$ etex, (-u, y_max-.5u));
+  pair singularity[];
+  singularity0 = (u,-3u);
+  singularity1 = (u,3u);
+  for i=0 upto 1:
+    drawdblarrow axes[i];
+    label(btex $\times$ etex, singularity[i]);
+  endfor;
+  path deformed_L;
+  deformed_L = (0.5u,y_min){up}..(singularity0 + (u,0))..(-u,0)..(singularity1 + (u,0)){up}..(0.5u,y_max);
+  draw deformed_L;
+  numeric l; l = length(deformed_L);
+  drawarrow (subpath (0,0.25*l) of deformed_L);
+  drawarrow (subpath (0.5l,0.75l) of deformed_L);
+  % contour
+  draw (0,u)--(0.5x_max,u) dashed evenly;
+  draw (0.5x_max,u)--(x_max,u) dashed evenly;
+  draw (x_max,-u)--(0.5x_max,-u) dashed evenly;
+  draw (0,-u)--(0.5x_max,-u) dashed evenly;
+  draw halfcircle rotated 90 scaled 2u dashed evenly;
+  % label.top(btex $L$ etex, (u,u));
+  for i=0 upto 5:
+    label(btex $\bullet$ etex, (i*u,0));
+%    label.ulft(decimal(i), (i*u,0));
+  endfor;
+  u := 1pc;
+endfig;
+  
+
+
+outputtemplate := "ch2sec5.%c"; show outputtemplate;
+beginfig(0)
+  path axes[], branch[];
+  pair singularity[];
+  numeric x_min, x_max, y_min, y_max, delta;
+  delta = 6u;
+  x_min = -delta; y_min = -0.5delta;
+  x_max =  delta; y_max =  0.5delta;
+  axes0 = (x_min, 0)--(x_max,0);
+  axes1 = (0, y_min)--(0, y_max);
+
+  branch0 = (delta-2u,0)--(x_max,0);
+  branch1 = (-(delta-2u),0)--(x_min,0);
+  singularity0 = (delta-4u,0);
+  singularity1 = (-(delta-4u),0);
+  numeric i;
+  for i=0 upto 1:
+    drawdblarrow axes[i];
+    drawarrow branch[i] withpen pencircle scaled 1 withcolor red;
+%    label(btex $\times$ etex, singularity[i]);
+    label(btex $\bullet$ etex, singularity[i]);
+  endfor;
+  drawarrow (fullcircle rotated 60) xscaled 2(delta-3u) yscaled 2u dashed evenly;
+endfig;
 end;

@@ -6,6 +6,45 @@ References will be given for further perusal.
 
 \section{High Energy Physics}
 
+\begin{theorem}[Optical theorem]
+  For $1+2\to1+2$ scattering, when $m_{3}=m_{1}$ and $m_{4}=m_{2}$,
+  the forward scattering direction
+  $\theta_{s}=0$ has elastic scattering amplitude $\amplitude(s,t)$
+  related to the total cross section by
+  \begin{equation}
+\sigma_{\text{tot}} = \frac{1}{2|\vec{p}_{1}|\sqrt{s}}\Im\amplitude(s,t=0).
+  \end{equation}
+  Here $\vec{p}_{1}$ is the magnitude of the initial center-of-mass
+  3-momentum.
+\end{theorem}
+
+Following the argument and presentation of Donnachie \textit{et al.}~\cite{Donnachie:2002en},
+section 1.3.
+
+\begin{proof}[Proof sketch]
+  This follows from unitarity
+  \begin{equation}
+    \delta_{ji} = \langle j\vert SS^{\dagger}\vert i\rangle
+    = \sum_{f}\langle j\vert S\vert f\rangle\langle f\vert S^{\dagger}\vert i\rangle
+  \end{equation}
+  Using the definition of the $T$-matrix, this is
+  \begin{equation}
+\langle j\vert T\vert i\rangle - \langle j\vert T^{\dagger}\vert i\rangle
+= (2\pi)^{4}\I\sum_{f}\delta^{4}(P^{f}-P^{i})\langle j\vert T\vert f\rangle\langle f\vert T^{\dagger}\vert i\rangle.
+  \end{equation}
+  Setting $j=i$ gives us
+  \begin{equation}
+2\Im\langle i\vert T\vert i\rangle
+=\sum_{f}(2\pi)^{4}\delta^{4}(P^{f}-P^{i})|\langle f\vert T\vert i\rangle|^{2}.
+  \end{equation}
+  We see the right-hand side is the total cross sectional area for
+  $2\to2$ scattering,
+  \begin{equation}
+\sigma_{\text{tot}} = \frac{1}{2|\vec{p}_{1}|\sqrt{s}}\Im\langle i\vert T\vert i\rangle.
+  \end{equation}
+  We see this is precisely the desired result.
+\end{proof}
+
 \subsection{Propagators}
 
 \N{Spin-0 Propagator}

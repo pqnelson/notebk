@@ -1,15 +1,362 @@
 \chapter{Physics of the \texorpdfstring{$t$}{t}-Channel and Complex Angular Momenta}
 
+\M We have discussed analytic properties of the invariant amplitude
+$\amplitude(s,t,u)$ describing the scattering of neutral spinless
+particles (i.e., $\pi^{0}$ mesons).
+
+We stressed how it is convenient to depict the kinematics of the
+reactions and locations of singularities for $\amplitude(s,t)$ on the
+Mandelstam plane. We also saw crossing symmetry lets the same amplitude
+$\amplitude(s,t,u)$ describe the three processes:
+\begin{equation}
+\left.\begin{array}{ccc}
+a + b\to c+d          \quad& s>4\mu^{2},~ t,u<0 & \mbox{$s$-channel}\\
+a+\bar{c}\to\bar{b}+d & t>4\mu^{2},~ s,u<0 & \mbox{$t$-channel}\\
+a+\bar{d}\to\bar{b}+c & u>4\mu^{2},~ t,s<0 & \mbox{$u$-channel}\\
+\end{array}\right\}
+\end{equation}
+We also saw the invariant amplitude has singularities at the thresholds
+of the corresponding reactions $s=4\mu^{2},16\mu^{2},\dots$;
+ $t=4\mu^{2},16\mu^{2},\dots$;  $u=4\mu^{2},16\mu^{2},\dots$.
+
+\M
+In the physical region of the $s$-channel, the singularities of the
+amplitude $\amplitude(s,t)$ in $s$ are related to the possibility of the
+transition of the initial state in the process of scattering into the
+intermediate states with two, four, etc., particles. Its imaginary part
+(which Gribov denotes by $\amplitude_{1}(s,t)$) is determined by the
+unitarity condition in the $s$-channel, which is equivalent to the
+physical requirement that the sum of probabilities for transitions into
+all possible states $n$ should be equal to unity
+\begin{equation}
+\Im_{s}\amplitude := \amplitude_{1} = \frac{1}{2}\sum_{n}\amplitude_{n}\amplitude_{n}^{*}.
+\end{equation}
+Gribov tells us this can be represented graphically using Feynman diagrams:
+\begin{equation}
+  2\I\Im_{s}\left(
+  \eqgraph{0pc}{0pc}{\fmfframe(12,12)(12,12){\begin{fmfgraph*}(60,48)%(48,48)
+    \fmfpen{0.5bp}
+    \fmfleft{i1,i2}
+    \fmfright{o1,o2}
+    \fmf{plain}{i1,v}
+    \fmf{plain}{i2,v}
+    \fmf{plain}{v,o1}
+    \fmf{plain}{v,o2}
+    \fmfv{l.a=180,label=$p_{1}$}{i1}
+    \fmfv{l.a=180,label=$p_{2}$}{i2}
+    \fmfv{l.a=0,label=$p_{3}$}{o1}
+    \fmfv{l.a=0,label=$p_{4}$}{o2}
+    \fmfblob{0.25w}{v}
+  \end{fmfgraph*}}}
+\right)
+  \quad=
+  \eqgraph{0pc}{0pc}{
+  \begin{fmfgraph*}(120,48)
+    \fmfpen{0.5bp}
+    \fmfcmd{%
+      vardef cross_bar (expr p, len, ang) =
+        ((-len/2,0)--(len/2,0))
+          rotated (ang + angle direction length(p)/2 of p)
+          shifted point length(p)/2 of p
+      enddef;
+      style_def crossed expr p =
+        cdraw p; label(btex $\times$ etex, point length(p)/2 of p);
+%        ccutdraw cross_bar (p, 6pt, 45);
+%        ccutdraw cross_bar (p, 6pt, -45)
+      enddef;}
+    \fmfleft{i1,i2}
+    \fmfright{o1,o2}
+    \fmf{plain}{i1,v1}\fmf{plain}{v2,o1}
+    \fmf{plain}{i2,v1}\fmf{plain}{v2,o2}
+    \fmf{crossed,left=0.25}{v1,v2}
+    \fmfblob{0.1w}{v1}
+    \fmfblob{0.1w}{v2}
+%%     \fmfv{l.a=45,label=$A(s+{\rm i}\varepsilon)$}{i2}
+%%     \fmfv{l.a=135,label=$A(s-{\rm i}\varepsilon)$}{o2}
+    \fmfv{l.a=90,label=$A(s+{\rm i}\varepsilon)$}{i2}
+    \fmfv{l.a=90,label=$A(s-{\rm i}\varepsilon)$}{o2}
+    \fmffreeze
+    \fmf{crossed,left}{v1,v2}
+    \fmf{crossed,left=0.75}{v1,v2}
+    \fmf{crossed,right=0.25}{v1,v2}
+    \fmf{crossed,right}{v1,v2}
+    \fmf{crossed,right=0.75}{v1,v2}
+  \end{fmfgraph*}}
+\end{equation}
+
+\N{Imaginary part from cutting virtual lines}
+To find the discontinuity (imaginary part) of the scattering amplitude
+correspnding to a given Feynman diagram, it suffices to cut the diagram
+in all possible ways into two connected parts, having incoming and
+outgoing particles on opposite sides of the cut. The cut must be
+identified as real particles in the intermediate state, and we can
+associate with each of them the factor $2\pi\theta(\pi_{i,0})\delta(\pi_{i}^{2}-m^{2})$.
+These lines are marked by crosses $\times$.
+
+Further, we have to replace $\I\varepsilon$ by $-\I\varepsilon$ in all
+propagators of the block lying to the right of the cut, which
+corresponds to the conjugate amplitude $\amplitude^{*}(s+\I\varepsilon)=\amplitude(s-\I\varepsilon)$.
+
+Apart from these modifications, the Feynman rules remain unchanged.
+
 \section{Analytical Continuation of the \texorpdfstring{$t$}{t}-Channel Unitarity Condition}
+
+\subsection{The Mandelstam Representation}
+
+\subsection{Inconsistency of the ``Black Disk'' Model of Diffraction}
+
 \section{Complex Angular Momenta}
+
+
 \section{Partial Wave Expansion and Sommerfeld--Watson Representation}
+
+\M We can consider the partial-wave expansion for the amplitude
+$\amplitude(s,t)$ in the physical region of the $t$-channel, where
+$t>4\mu^{2}$ and $s<0$:
+\begin{subequations}
+  \begin{align}
+    \amplitude(s,t) &= \sum^{\infty}_{n=0}(2n+1)f_{n}(t)P_{n}(z_{t})\\
+    \intertext{where}
+    z_{t} &= 1 + \frac{2s}{t-4\mu^{2}}.
+  \end{align}
+\end{subequations}
+The series is convergent up to the first $s$ plane singularity of
+$\amplitude(s,t)$, that is, for $s<4\mu^{2}$. Note: we use $n$
+instead of $\ell$ to emphasize the partial waves in this sum are defined
+only for integer values of angular momentum.
+
+\M It is natural to expect the partial-wave amplitudes are large up to
+$n=kr_{0}$ where $r_{0}$ is the interaction radius.
+
+\N{Question: asymptotic behaviour?}
+What is the asymptotic behaviour for this series at large $z$? We know
+the series diverges.
+
+Perhaps there is an appropriate analytical continuation for which the
+partial-wave amplitudes with $n\sim kr_{0}$ are dominant at $n\leq n_{0}=kr_{0}$.
+At large $s$ this would behave like $\amplitude(s,t)\sim z^{n_{0}}$.
+This implies the asymptotics of $\amplitude(s,t)$ are related to the
+effective orbital angular momentum that is possible at a given $t$.
+
+(Sommerfeld, Fock, and Schwinger developed the mathematical machinery we
+seek. They were interested in radio waves bouncing around the Earth's
+atmosphere. Regge applied it to quantum mechanics.)
+
+\N{Sommerfeld--Watson Transformed Amplitude}
+Suppose we can find an analytic function $f_{\ell}(t)$ that does not
+increase exponentially in any direction in the right-half of the complex
+$\ell$ plane, and whose values coincide with the partial wave amplitudes
+at all integer $\ell$:
+\begin{equation}
+\left.f_{\ell}\right|_{\ell=n}=f_{n}.
+\end{equation}
+Then we can write the partial-wave expansion as a contour integral:
+\begin{equation}\label{eq:t-channel:sommerfeld-watson:deformed-integral}
+\boxed{\amplitude = \frac{\I}{2}\int_{L}f_{\ell}P_{\ell}(-z)(2\ell+1)\frac{\D\ell}{\sin(\pi\ell)},}
+\end{equation}
+where the contour $L$ is drawn below:
+\begin{center}
+  \includegraphics{img/ch2sec3.0}
+\end{center}
+
+\M
+We recall the large $\ell$ asymptotics of the Legendre function
+\begin{subequations}
+\begin{equation}\label{eq:t-channel:sommerfeld-watson:asymptotics-of-legendre1}
+P_{\ell}(z)\sim\exp(\I\ell\theta) + \exp(-\I\ell\theta)
+\end{equation}
+as $\ell\to\infty$ (where $z=\cos(\theta)$), and therefore
+\begin{equation}\label{eq:t-channel:sommerfeld-watson:asymptotics-of-legendre2}
+P_{\ell}(-z)\sim\exp(\I\ell(\pi-\theta)) + \exp(-\I\ell(\pi-\theta)).
+\end{equation}
+\end{subequations}
+These tell us that $P_{\ell}(-z)/\sin(\pi\ell)$ falls exponentially as
+$\Im(\ell)\to\infty$ in the physical region $0<\theta<\pi$.
+
+Therefore we now deform the contour $L$ in the $\ell$-plane, avoiding
+any possible singularities of $f_{\ell}(t)$ (specifically passing them
+``on the right''), as doodled below:
+\begin{center}
+  \includegraphics{img/ch2sec3.1}
+\end{center}
+After the contour has been deformed, the function defined by Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+is defined over the entire complex $z$-plane.
+
+\N[1]{Check the region \texorpdfstring{$z<-1$}{z < -1}}
+Let us check that Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+is defined in the region $z<-1$. We know from Eq~\eqref{eq:t-channel:sommerfeld-watson:asymptotics-of-legendre1} $P_{\ell}(z)\sim\cosh(l\chi)$
+where $\chi$ is a positive number related to $z$ in a simple way.
+
+Then as $\ell$ moves away from the imaginary axis, $P_{\ell}(-z)$
+oscillates. This means the integral in Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+converges and defines an analytic function $\amplitude(t,z)$ free of
+singularities in the left-half of the $z$-plane.
+
+\N{Check the region \texorpdfstring{$z>1$}{z > 1}}
+In the region $z > 1$, we know from Eq~\eqref{eq:t-channel:sommerfeld-watson:asymptotics-of-legendre2}
+that as $\Im(\ell)\to\infty$ we have $P_{\ell}(-z)\sim\exp(-\I\ell\pi)\exp(\ell\chi)$.
+Then $\exp(-\I\ell\pi)$ grows as $\Im(\ell)\to\infty$ and this is
+``cancelled'' by $\sin(\pi\ell)$ under this limit. Therefore,
+convergence of the integral depends entirely on the behaviour of
+$f_{\ell}$ as $\Im(\ell)\to\infty$. 
+
+Generally speaking, the amplitude $\amplitude(t,z)$ may have
+singularities on the right-half of the $z$-plane, which may only occur
+at real positive $z>1$. Since there are no singularities at complex
+values of $z$, taking $\Im(z)\neq0$ guarantees a convergent integral.
+
+\N[-1]{Asymptotics}
+Now we have established the amplitude in Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+is defined for all $z$, its asymptotics can be computed. We use the
+asymptotic behaviour of Legendre functions:
+\begin{equation}
+P_{\ell}(-z)\sim z^{\ell}\exp(-\I\ell\pi)\quad\mbox{as}\quad z\to\infty.
+\end{equation}
+Gribov asserts the asymptotics of Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+is then governed by the rightmost singularity of the partial-wave
+amplitude in the $\ell$-plane. If the rightmost singularity of
+$f_{\ell}(t)$ is a simple pole at $\ell=\alpha(t)$, then
+\begin{equation}
+\amplitude(s,t)\to\pi\frac{2\alpha+1}{\sin(\pi\alpha)}P_{\alpha}(-z)\Res(f_{\alpha}(t))+\int_{\Re(\ell)<\Re(\alpha(t))}\mbox{(stuff)}\,\D\ell
+\end{equation}
+where $\Res(f_{\alpha}(t))$ is the residue of the partial-wave amplitude
+at this pole, and the integral in the right-hand side is called the ``background
+integral'' (we can see it is asymptotically subdominant with respect to
+the first term).
+
+Thus the $\ell$-plane singularities for $f_{\ell}(t)$ define the
+asymptotics of the amplitude $\amplitude(s,t)$. That is to say, the
+asymptotics is defined by some $\ell_{\text{eff}}$, which matches the
+intuitive picture of Mandelstam.
+
+\N{References}
+See also chapter 2 section 2 and appendix A of Donnachie \textit{et al}.~\cite{Donnachie:2002en}
+for another derivation of the Sommerfeld--Watson transform of the amplitudes.
+White~\cite{White:2000zs} provides a historic review of $S$-matrix
+theory, and in the process reviews Sommerfeld--Watson transform quite
+well. Iurato~\cite{Iurato:2015} reviews this calculation with an eye
+towards the dual resonance model. Section 3.1 of Caron-Huot and Sandor~\cite{Caron-Huot:2020nem}
+reviews the Sommerfeld--Watson transform very graphically in $S$-matrix theory.
+
 \section{Continuation of the Partial Wave Amplitudes to Complex \texorpdfstring{$\ell$}{l}}
+
+\M Gribov studies the issue of analytically continuing the partial-wave
+amplitudes $f_{n}(t)$ into the complex $\ell$-plane. This amounts to
+interpreting Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+physically in nonrelativistic and relativistic settings, separately.
+
+\subsection{Nonrelativistic Quantum Mechanics}
+
+\M
+The ``problem'' of analytic continuation is pretty easy in
+nonrelativistic quantum mechanics since, for the analytical continuation
+of the radial wave function $\Psi_{\ell}(r)$, it suffices to consider
+the Schr\"{o}dinger equation for the quantity $\ell(\ell+1)$ to be
+complex-valued and look for the solution which, at small $r$, satisfies
+the condition
+\begin{equation}
+\Psi_{\ell}(r)\to cr^{\ell}\quad\mbox{as }r\to 0.
+\end{equation}
+
+\M
+The partial-wave amplitudes
+\begin{equation}
+f_{\ell}(E) = \frac{1}{k}\sin(\delta_{\ell}(E))\exp(\I\delta_{\ell}(E))
+\end{equation}
+may be found by studying the asymptotics of $\Psi_{\ell}(r)$ at large
+$r$
+\begin{equation}
+\Psi_{\ell}(r)\sim\frac{1}{r}\sin\left(kr - \frac{\ell\pi}{2}+\delta_{\ell}(E)\right)\quad\mbox{as}~r\to\infty,
+\end{equation}
+where $\delta_{\ell}(E)$ is the scattering phase shift.
+
+The partial-wave amplitudes $f_{\ell}(E)$ defined in this way will
+decrease at large $\ell$. From the physical picture, it is clear the
+scattering at large impact parameters should be small, as long as we
+restrict ourselves to potentials with finite interaction radius.
+
+Therefore, for $f_{\ell}$ analytically continued in this way, the
+representation in Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+will be valid.
+
+\subsection{Relativistic Quantum Mechanics}
+
+\N{Remark}
+Generally speaking, there exists no method of constructing an analytic
+function $f_{\ell}$ that coincides with an arbitrary set of numbers
+$f_{n}$ at integer values $\ell=n$. In mathematics, this problem is
+solved using an infinite series which is not convergent for all sets of
+$f_{n}$.
+
+\N{Uniqueness: Carlson's Theorem}
+We can consider the uniqueness question for constructing an analytic
+function $f_{\ell}$ out of its values $f_{n}$ at integer points. There
+is an obscure result called Carlson's theorem\footnote{It seems this
+part of Regge theory is responsible for keeping Carlson's theorem alive,
+I haven't heard of it outside the Regge theory literature.} which states
+if we have found a function which is analytic at $\Re(\ell)>\ell_{0}$
+and which grows in any direction in the right half-plane slower than
+$\exp(\pm\I\ell\pi)$, then this function is unique.
+
+If we have two such functions $f_{1}(\ell)$ and $f_{2}(\ell)$, then the
+function
+\begin{equation}
+\phi(\ell) :=\frac{f_{1}(\ell)-f_{2}(\ell)}{\sin(\pi\ell)}
+\end{equation}
+would be analytic and exponentially falling along any ray in the
+right-half plane. ``It is next to obvious that such a function is
+identically equal to zero.''
+
+\M
+In the relativistic theory, a function $f_{\ell}(E)$ which satisfies all
+the above mentioned properties cannot exist. Otherwise $\amplitude(s,t)$
+defined by Eq~\eqref{eq:t-channel:sommerfeld-watson:deformed-integral}
+would have no singularities for $z<-1$, and this contradicts the fact
+that $\amplitude(s,t)$ does have a singularity at
+\begin{equation}
+u = -2p^{2}(1+z) > 4\mu^{2}.
+\end{equation}
+
 \section{Gribov--Froissart Projection}
+
+\M
+We start by writing down the formula for the partial-wave amplitudes
+\begin{equation}\label{eq:t-channel:gribov-froissart:defn-partial-wave-amplitude}
+f_{n}(t) = \frac{1}{2}\int^{1}_{-1}P_{n}(z)\amplitude(t,z)\,\D z.
+\end{equation}
+
+\M
+We rewrite the partial-wave amplitudes by using the Legendre function of
+the second kind
+\begin{equation}
+Q_{n}(z) = \frac{1}{2}\int^{1}_{-1}\frac{P_{n}(z')\,\D z'}{z-z'}.
+\end{equation}
+At large $z$, this function decreases like
+\begin{equation}
+Q_{n}(z)\sim\frac{c}{z^{n+1}}\quad\mbox{as }|z|\to\infty,
+\end{equation}
+where for $-1<z<1$ it is complex valued and satisfies
+\begin{equation}
+Q_{n}(z+\I\varepsilon)-Q_{n}(z-\I\varepsilon)=-\I\pi P_{n}(z).
+\end{equation}
+Using this we rewrite the partial-wave amplitude Eq~\eqref{eq:t-channel:gribov-froissart:defn-partial-wave-amplitude}
+as
+\begin{equation}
+f_{n}(t) = \frac{1}{2\pi\I}\oint_{\gamma} Q_{n}(z)\amplitude(t,z)\,\D z.
+\end{equation}
+The contour is doodled below:
+\begin{center}
+  \includegraphics{img/ch2sec5.0}
+\end{center}
 
 \M
 The thresholds are at $s=4\mu^{2}$ and $u=4\mu^{2}$, so that
 \begin{equation}
 z_{1} = z_{2} = 1 + \frac{4\mu^{2}}{2k_{t}^{2}} > 1.
+\end{equation}
+Note, Gribov Eq (2.5a) states:
+\begin{equation}
+k_{t} := \frac{\sqrt{t - 4\mu^{2}}}{2},\quad s = -2k_{t}^{2}(1 - z_{t}).
 \end{equation}
 The discontinuities across these cuts are, respectively, $2\I\amplitude_{1}(z,t)=D_{t}(s,t(s,z_{t}))$
 and $2\I\amplitude_{2}(z,t) = D_{u}(s,t(s,z_{t}))$.

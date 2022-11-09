@@ -29,6 +29,7 @@
 \def\Im{\operatorname{Im}}
 \def\bigOh{\mathcal{O}}
 \newcommand\propagator{\Delta}
+\DeclareMathOperator{\Res}{Res}
 
 % Feynman diagram stuff
 % Momentum Arrow https://wiki.physik.uzh.ch/cms/latex:feynman
@@ -38,3 +39,12 @@
     label.#3(btex #4 etex, point 0.5 of p shifted 6 #2);
     enddef;}
     \fmf{marrow#1,tension=0}{#5}}
+
+
+% https://tex.stackexchange.com/a/598835/14751
+\newcommand{\eqgraph}[3]{%
+  % #1 = adjustment above, #2 = adjustment below, #3 = graph
+  \begin{gathered}
+  \raisebox{0pt}[\dimexpr\height+#1][\dimexpr\depth+#2]{\ignorespaces#3\unskip}%
+  \end{gathered}
+}
