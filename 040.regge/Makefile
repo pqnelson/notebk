@@ -3,6 +3,7 @@ FILE=regge
 
 all: images
 	$(TEX) $(FILE)
+	cd img && mpost feyngraph.mp
 	$(TEX) $(FILE)
 
 images:

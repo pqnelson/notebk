@@ -1,4 +1,7 @@
-\usepackage{fullpage}
+% \usepackage{fullpage}
+\usepackage{feynmp}
+\RequirePackage[letterpaper,inner=6pc,outer=6pc,%textwidth=30pc,
+  textheight=50.5pc,top=6pc]{geometry}
 \usepackage{longtable}
 \usepackage[nottoc]{tocbibind}
 \usepackage[final]{graphicx}
@@ -11,6 +14,7 @@
 \usepackage{iso2145}
 \usepackage{ifpdf}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{titlesec}
 \usepackage[colorlinks=true,
   linkcolor=BrickRed,
   citecolor=BrickRed,
@@ -22,7 +26,23 @@
 ]{hyperref}
 \usepackage{doi}
 
-\usepackage{titlesec}
+\titleformat*{\section}{\resetParagraphChunks\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\@ifundefined{theHchunk}{
+  \newcommand\theHchunk{\paragraphprefix\secprefix\arabic{chunk}.}
+}{
+  \renewcommand\theHchunk{\paragraphprefix\secprefix\arabic{chunk}.}%{\thechunk}
+}
+%% \@ifundefined{chapter}{%
+%%   \renewcommand{\theHchunk}{\theHsection.\number\value{chunk}}
+%% }{%
+%%   \renewcommand{\theHchunk}{\theHchapter.\theHsection.\number\value{chunk}}
+%% }
+
+% titlesec doesn't adequately work with chapter formatting, so I'm doing
+% it BY HAND.
 % Knuth's chapter style:
 %
 %     titlefont = cmssbx10 scaled\magstep2 = \Large\bfseries\sffamily
@@ -33,13 +53,42 @@
 %
 % There is probably a smarter way to imitated the style using titlesec,
 % but I just want something that works.
-\titleformat{\chapter}[display]
-  {\Large\bfseries\sffamily}{{\normalfont\large\sffamily\selectfont Chapter \thechapter}}{4pc}
-  {\hfill}[\resetParagraphChunks\vskip 1pc plus 1 pc minus 1 pc]
+\ifdefined\chapter
+\font\chapterfont=cmssbx10 scaled\magstep3
+\font\twelvess=cmss12
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 4pc
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \resetParagraphChunks\vskip 2pc
+}}
+% starred chapter heading
+\def\@makeschapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \resetParagraphChunks\vskip 2pc
+  }}
 
-\titleformat*{\section}{\resetParagraphChunks\Large\bfseries\sffamily}
-\titleformat*{\subsection}{\large\bfseries\sffamily}
-\titleformat*{\subsubsection}{\bfseries\sffamily}
+% page numbering should never reset
+\def\pagenumbering#1{%
+  \gdef\thepage{\csname @#1\endcsname
+   \c@page}}
+
+\fi
+
 
 \newskip\interchunkskip \interchunkskip=\medskipamount%
 % cwebmac.tex has \interchunkskip=12pt minus 3pt
@@ -54,7 +103,7 @@
   {\bfseries} % HEADFONT
   {.}         % HEADPUNCT
   {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+  {\thmnumber{#2\@addpunct{.}\chunkspace}\thmname{#1}\thmnote{\chunkspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
 \newtheoremstyle{defnstyle}
   {\thmskip}   % ABOVESPACE
   {\thmskip}   % BELOWSPACE
@@ -63,7 +112,7 @@
   {\bfseries} % HEADFONT
   {.}         % HEADPUNCT
   {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+  {\thmnumber{#2\@addpunct{.}\chunkspace}\thmname{#1}\thmnote{\chunkspace\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
 \newtheoremstyle{rmkstyle}
   {\thmskip}   % ABOVESPACE
   {\thmskip}   % BELOWSPACE
@@ -72,7 +121,7 @@
   {\itshape} % HEADFONT
   {.}         % HEADPUNCT
   {0.5em plus 1pt minus 1pt} % HEADSPACE
-  {\thmnumber{#2\@addpunct{.}\enspace}\thmname{#1}\thmnote{\enspace\textrm{\normalfont(#3)}}}
+  {\thmnumber{#2\@addpunct{.}\chunkspace}\thmname{#1}\thmnote{\chunkspace\textrm{\normalfont(#3)}}}
 
 \theoremstyle{thmstyle}
 \newtheorem{theorem}[chunk]{Theorem}

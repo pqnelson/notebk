@@ -339,12 +339,46 @@ determined by the potential.
 V(r)=-g^{2}\frac{\exp(- mr)}{r}.
 \end{equation}
 This corresponds to a pole of the scattering amplitude in the plane of
-the squared momentum transfer,
+the squared momentum transfer, in the Born approximation,
 \begin{equation}
-\amplitude(k^{2})=-g^{2}\frac{4\pi}{k^{2}-m^{2}}.
+\amplitude(k^{2})\propto\frac{1}{k^{2}-m^{2}}.
 \end{equation}
 (Gribov has $\amplitude\propto 1/(k^{2}+m^{2})$ which I believe to be an error.)
 The singularity occurs at the mass of the actual particle.
+
+\M Gribov argues if we examine the Feynman diagram:
+\begin{center} % width, height; 12 = 1 line
+  \fmfframe(10,40)(10,0){
+  \begin{fmfgraph*}(120,60)%84)%60)
+    \fmfcmd{arrow_len := 2ahlength;% arrow_ang := ahangle;
+    arrow_len := 7pt;}
+    \fmfpen{0.5bp}
+    \fmfbottom{i1,d1,o1}
+    \fmfleft{i3}\fmfright{o3}
+    \fmftop{i2,d2,o2}
+    \fmf{fermion,label=$p_{2}$,label.side=right}{i1,v1}
+    \fmf{fermion}{v1,v2}
+    \fmf{fermion,label=$p_{4}$,label.side=right}{v2,o1}
+    \fmf{fermion,label=$p_{1}$,label.side=left}{i2,v3}
+    \fmf{fermion}{v3,v4}
+    \fmf{fermion,label=$p_{3}$,label.side=left}{v4,o2}
+    \fmf{photon,tension=0}{v1,v3}
+    \fmf{photon,tension=0}{v2,v4}
+    % I am 100% certain there is a sensible way to place these arrows
+    % indicating which channel we're working in...I just do not know it.
+    \fmffreeze
+    \fmfipair{schan[]} % coordinates for endpoints of s-channel's arrow
+    \fmfiequ{schan1}{(0,0.5h) + (-12*3,0)}
+    \fmfiequ{schan2}{schan1 + (12*2,0)}
+    \fmfcmd{drawarrow schan1--schan2; label.lft(btex $s$ etex, schan1);}
+    \fmfipair{tchan[]} % coordinates for endpoints of t-channel's arrow
+    \fmfiequ{tchan1}{(0.5w,h) + (0,12*3)}
+    \fmfiequ{tchan2}{tchan1 + (0,-2*12)}
+    \fmfcmd{drawarrow tchan1--tchan2; label.lft(btex $t$ etex, 0.25[tchan1,tchan2]);}
+  \end{fmfgraph*}}
+\end{center}
+This describes the ``next-to-Born'' approximation. ``It is easy to see
+the radius of this potential is $r=1/2\mu$''.
 
 \N{In Relativistic Theory} The role of the potential is played by energy
 singularities in the $t$-channel, thresholds at $t=4\mu^{2}$,
@@ -363,7 +397,7 @@ From the conservation of angular momentum, the unitarity condition for
 scattering amplitudes with given angular momentum $\ell$ becomes
 diagonal. Thus it's convenient to expand the $s$-channel amplitude into
 partial waves
-\begin{equation}
+\begin{equation}\label{eq:introduction:partial-wave-expansion}
 \amplitude(s,t) = \sum^{\infty}_{\ell=0}f_{\ell}(s)(2\ell+1)P_{\ell}(z),
 \end{equation}
 where $P_{\ell}(z)$ are Legendre polynomials, and $z$ is defined by the
@@ -529,119 +563,48 @@ converge, we require $f_{\ell}$ falls with $\ell$ like
 $(2k_{s}^{2}/4\mu^{2})^{\ell}$, but not faster since at $t=4\mu^{2}$ the
 series \emph{must} be divergent.
 
-\subsection{Singularities of $\Im(A)$ on the Mandelstam Plane}
+\smallbreak
+\subsection{Singularities of \texorpdfstring{$\Im(\amplitude)$}{Im(A)} on the Mandelstam Plane}
 
-
-\section{Froissart's Theorem}
-
-\begin{lemma}[Asymptotics of Legendre Polynomials]
-We have as $\ell\to\infty$,
-\begin{subequations}
-  \begin{align}
-  P_\ell (\cos \theta) &= \sqrt{\frac{\theta}{\sin \theta}} \, J_0((\ell+1/2)\theta) + \mathcal{O}\left(\ell^{-1}\right) \\
-&= \frac{2}{\sqrt{2\pi \ell\sin\theta}}\cos\left(\left(\ell + \tfrac12\right)\theta - \frac{\pi}{4}\right) + \mathcal{O}\left(\ell^{-3/2}\right), \quad \theta \in (0,\pi),
-\end{align}
-\end{subequations}
-where $J_{0}$ is the Bessel function of the first-kind.
-\end{lemma}
-
-For a proof, see:
-G\'abor Szeg\~o~\cite{szego},
-\emph{Orthogonal polynomials}, (4th ed.) AMS Publishers, pp.194
-\emph{et seq.} (see especially, Theorem 8.21.2).
-
-\begin{theorem}[Froissart]
-  Asymptotically as $s\to\infty$, we have
-  \begin{equation}
-\left.\Im\amplitude(s,t)\right|_{t=0}\leq(\mbox{const})\cdot s[\ln(s/s_{0})]^{2}.
-  \end{equation}
-\end{theorem}
-
-This is due to the analyticity and unitarity properties. The proof is a
-multi-step procedure, but each step is fairly straightforward.
-
-\N[1]{Proof Step 1: estimate $f_{\ell}$ at large $s$}
-We will show, as $\ell,s\to\infty$,
+\N[-1]{Location of Singularities in $t$} Gribov repeats ``the same arguments'' for the imaginary part of
+the $s$-channel amplitude $\Im(\amplitude)$, asserting we would get
 \begin{equation}
-f_{\ell}(s)\simeq c(s,\ell)\exp\left(\frac{-\ell}{k_{s}}\sqrt{4\mu^{2}}\right).
+\Im(f_{\ell}(s))\propto k_{s}^{2\ell}\quad\mbox{as } k_{s}\to0.
 \end{equation}
-where $c(s,\ell)$ is slowly [non-exponentially] varying with $\ell$.
-
-\N{Step 2.}
-Assume for $t$ arbitrarily close to $4\mu^{2}$, the amplitude grows with
-$s$ not faster than some power.
-
-Then the same is valid for $\Im c(s,\ell)$.
-
-Arguably, $\Im f_{\ell}$ is positive due to the unitarity condition, and
-so is $P_{\ell}(1 + t/2k_{s}^{2})$ for $t\geq 0$.
-
-Therefore each partial wave we have an estimate,
-\begin{subequations}
-  \begin{align}
-    \left(\frac{s}{s_{0}}\right)^{N}
-    &>\Im\amplitude(s,t) = \sum^{\infty}_{\ell=0}\Im(f_{\ell}(s))(2\ell+1)P_{\ell}\left(1+\frac{t}{2k_{s}^{2}}\right)\\
-    &>\Im c(s,\ell)\left(2\pi\ell\frac{\sqrt{t}}{k_{s}}\right)^{-1/2}\exp\left[\frac{\ell}{k_{s}}(\sqrt{t}-\sqrt{4\mu^{2}})\right].
-  \end{align}
-\end{subequations}
-Since this holds for arbitrary positive $t<4\mu^{2}$, we conclude
+But we saw an expression for $\Im(f_{\ell}(s)$ in Eq~\eqref{eq:ch1:unitarity:partial-wave},
+which implies
 \begin{equation}
-\Im c(s,\ell) < (s/s_{0})^{N},
+\Im(f_{\ell})\propto k_{s}^{4\ell+1}.
 \end{equation}
-and, modulo an ``irrelevant pre-exponential factor'', that
-\begin{equation}
-\Im(f_{\ell}(s))\leq\left(\frac{s}{s_{0}}\right)^{N}\exp(-2\mu\ell/k).
-\end{equation}
+Both of these cannot be true simultaneously.
 
-\N{Step 3: Estimate Imaginary Part of Forward Scattering Amplitude}
-We now can estimate
-\begin{equation}
-\Im\amplitude(s,t=0)\leq8\pi\sum^{L}_{\ell=0}(2\ell+1) + \sum^{\infty}_{\ell=L+1}\Im(f_{\ell}(s))(2\ell+1),
-\end{equation}
-where when $\ell<L$ in which the partial waves are large,
-$\Im(f_{\ell})\simeq|f_{\ell}|=\bigOh(1)$, and we can estimate the first
-term as
-\begin{equation}
-\sum^{L}_{\ell=0}(2\ell+1)\simeq L^{2}.
-\end{equation}
+\M[1]
+If we plugged this into Eq~\eqref{eq:introduction:partial-wave-expansion}
+for the partial-wave expansion of the amplitude, then we see the series
+for $\Im_{s}(\amplitude(s,t))$ remains convergent at $t=\mu^{2}$.
 
-\N[1]{Determining $L$}
-We can determine $L$ as the bound above which partial wave amplitudes
-become small
-\begin{equation}
-\Im(f_{\ell>L})\ll 1,
-\end{equation}
-and fall exponentially with $\ell$. According to
-$\Im(c(s,\ell))<(s/s_{0})^{N}$ from step 2, this means
-\begin{equation}
-(s/s_{0})^{N}\exp(-2\mu L/k_{s})\simeq1\implies \boxed{L\simeq\frac{k_{s}}{2\mu}\ln(s/s_{0}).}
-\end{equation}
+\N[1]{Imaginary part of $s$-channel Amplitude}
+Gribov is playing fast-and-loose with notation here. What he's really
+doing is clearly explained in Donnachie~\textit{et al.}~\cite{Donnachie:2002en}
+section 1.4; namely, we recall in perturbation theory how masses are
+assigned a small negative imaginary part $m^{2}\to m^{2}-\I\varepsilon$
+which is made to go to zero at the end of the calculation.
+This $\I\varepsilon$ prescription pushes the branch at $s=4\mu^{2}$
+downads in the complex $s$-plane (and likewise at the points
+corresponding to higher thresholds, $s=16\mu^{2}$, etc.). So the
+$\varepsilon\to0$ limit has branch points move back to the real axis
+from below.
 
-\N[-1]{Step 4: Estimate Infinite Sum in Tail}
-We can now estimate the infinite sum using $f_{L+n}\sim f_{K}\exp(-2\mu n/k_{s})$,
-and this turns out to be subdominant:
+We could re-phrase this as: the physical $s$-channel amplitude is reached
+by analytically continuing the amplitude to the real axis from the upper
+half of the complex plane. This is equivalent to saying the physical
+amplitude is
 \begin{equation}
-\sum^{\infty}_{n=0}2(L+n)\exp\left(\frac{-2\mu}{k_{s}}n\right)\simeq\frac{k_{s}}{\mu}L
-+\frac{k_{s}^{2}}{2\mu^{2}},
+\lim_{\varepsilon}\amplitude(s+\I\varepsilon,t).
 \end{equation}
-and as $s\to\infty$ we find
-\begin{equation}
-\lim_{s\to\infty}\frac{k_{s}}{\mu}L
-+\frac{k_{s}^{2}}{2\mu^{2}}\ll L^{2}.
-\end{equation}
-That is to say, the infinite sum is dominated by the finite sum's
-contribution, which is approximately $L^{2}$.
-
-\N{Step 5: Combine Results}
-We have then step 4 simplifies the sum from step 3, giving us that
-$\Im\amplitude(s,t=0)\sim L^{2}$ (plus lower order terms)
-and step 3 also gave us an estimate $L^{2}\propto s[\ln(s/s_{0})]^{2}$
-(since $L^{2}\simeq (k_{s}/2\mu)^{2}[\ln(s/s_{0})]^{2}$ and
-$k_{s}^{2}\simeq s$)
-which then together implies Froissart's theorem.\qquad\qedsymbol
-
-
-\section{The Pomeranchuk theorem}
+If we analytically continue it to real values of $s$ between the bound
+state located at $s_{B}$ and the first threshold located at $4\mu^{2}$,
+there is no cut and the amplitude is real there.
 
 \begin{lemma}[{Schwarz Reflection Principle~\cite[Theorem 6.1.4]{marsden1998}}]
 Let $\mathcal{U}$ be a region in the upper half plane whose boundary
@@ -658,18 +621,105 @@ and is the unique analytic continuation of $f$ to
 $\mathcal{U}\cup(a,b)\cup\mathcal{U}^{*}$.
 \end{lemma}
 
-\N{Imaginary Part of $s$-Channel Amplitude}
-Gribov writes $\Im_{s}\amplitude(s,t)$ for the imaginary part of the
-$s$-channel amplitude, which is frustratingly vague. What he means is
-the following: recall the Schwarz reflection principle in complex
-analysis (see the preceding lemma for a formal statement), where if
-$f\colon U\subset\CC\to\CC$ is defined on a
-neighborhood $U\cap\RR\neq\emptyset$, then we can extend it by
-$f(z^{*})=(f(z))^{*}$.
-We do the same, finding
-\begin{equation}\label{eq:defn:discontinuity-in-s-channel}
-2\I\Im_{s}(\amplitude(s+\I\varepsilon,t)) = \amplitude(s+\I\varepsilon,t)-\amplitude(s-\I\varepsilon,t),
+\M
+The Schwarz reflection principle tells us that an analytic function
+$f(s)$ which is real for some range of real values of $s$ satisfies
+\begin{equation}
+f(s^{*}) = [f(s)]^{*}.
 \end{equation}
-taking the $\varepsilon\to0$ limit on both sides.
-Other authors call the right-hand side of Eq~\eqref{eq:defn:discontinuity-in-s-channel} the discontinuity in the $s$-channel and denote
-it $D_{s}(s,t,u)$.
+So if we make a further continuation via the lower half of the complex
+plane back to the value of $s$ greater than $4\mu^{2}$, we obtain the
+complex conjugate of the physical amplitude
+\begin{equation}
+\amplitude(s-\I\varepsilon,t) = [\amplitude(s+\I\varepsilon,t)]^{*}
+\end{equation}
+Therefore, for $s>4\mu^{2}$ and $-s<t,u\leq0$,
+\begin{equation}\label{eq:introduction:intro-of-discontinuity-in-s}
+  2\I\Im(\amplitude(s+\I\varepsilon,t))
+  =\amplitude(s+\I\varepsilon,t) - \amplitude(s-\I\varepsilon,t),
+\end{equation}
+where it is implicit in this equation we take the $\varepsilon\to0$
+limit.
+
+The right-hand side of Eq~\eqref{eq:introduction:intro-of-discontinuity-in-s}
+is called the \define{$s$-Channel Discontinuity} and denoted $D_{s}(s,t,u)$.
+Gribov confusingly calls it $\Im_{s}(\amplitude(s,t))$.
+
+\M
+There are similar quantities, $t$-channel discontinuity and $u$-channel
+discontinuity, defined as
+\begin{subequations}
+  \begin{equation}
+D_{t}(s,t,u) = \amplitude(s,t+\I\varepsilon) - \amplitude(s,t-\I\varepsilon)=2\I\Im(\amplitude(s,t+\I\varepsilon))
+  \end{equation}
+  provided $t>4\mu^{2}$ and $u,s\leq0$; and
+  \begin{equation}
+D_{u}(s,t,u) = \amplitude(s,u+\I\varepsilon) - \amplitude(s,u-\I\varepsilon)=2\I(\amplitude(s,u+\I\varepsilon))
+  \end{equation}
+  provided $u>4\mu^{2}$ and $t,s\leq0$. In both of these definitions,
+  the $\varepsilon\to0$ limit is understood.
+\end{subequations}
+Gribov uses the notation $\Im_{t}\amplitude$ for $D_{t}(s,t,u)$, and
+$\Im_{u}\amplitude$ for $D_{u}(s,t,u)$.
+
+\M[-1]
+We conclude that singularities in $t$ of the \emph{imaginary part} of
+the amplitude are located \emph{above} $t=4\mu^{2}$, and their position
+depends on $s$.
+
+\N{Karplus Curves}
+We can use the unitarity condition to find the exact form of the line of
+singularities $\Im_{s}(\amplitude(s,t))$ on the Mandelstam plane. This
+is the Karplus (or Landau) curve.
+
+\N{Example} We can sketch its derivation in the region
+$4\mu^{2}\leq s\leq 16\mu^{2}$ and $t>4\mu^{2}$ where the two-particle
+unitarity condition is valid ($\Delta=0$).
+
+For $t>0$ we have $z>1$ and the Legendre polynomials increase
+exponentially with $\ell$:
+\begin{equation}
+P_{\ell}(\cosh\alpha)\sim\frac{\E^{(\ell + 1/2)\alpha}}{\sqrt{2\pi\ell\sinh\alpha}},
+\end{equation}
+where
+\begin{equation}\label{eq:introduction:cosh-alpha-is-z}
+\cosh(\alpha):=z=1 + \frac{t}{2k_{s}^{2}}>1.
+\end{equation}
+Now, to ensure convergence of the partial-wave expansion for
+$t<4\mu^{2}$, we need the partial waves to fall like
+\begin{equation}\label{eq:introduction:asymptotic-t-behaviour-karplus-curve-example}
+f_{\ell}\sim\E^{-\ell\alpha_{0}},\quad\mbox{where}\quad\cosh\alpha_{0}=1+\frac{4\mu^{2}}{2k_{s}^{2}}.
+\end{equation}
+Due to the unitarity condition, the imaginary part falls even faster ---
+like $\Im(f_{\ell})\sim\exp(-2\ell\alpha_{0})$.
+
+\M[1]
+Note that Eq~\eqref{eq:introduction:cosh-alpha-is-z} and
+$\cosh^{2}\alpha-\sinh^{2}\alpha=1$ implies
+\begin{equation}
+\sinh^{2}\alpha = z^{2} - 1 = \frac{t}{k_{s}^{2}} + \frac{t^{2}}{4k_{s}^{4}}.
+\end{equation}
+When $k_{s}\gg\sqrt{t}$, we see
+\begin{equation}
+\cosh\alpha\approx 1 + \frac{\alpha^{2}}{2!}
+\end{equation}
+hence $\cosh^{2}\alpha\approx 1 + \alpha^{2}$, and then,
+\begin{equation}
+\sinh\alpha \approx \alpha.
+\end{equation}
+
+\M[-1]{} [More steps follow]
+
+\M The Karplus curve $C_{1}(s,t)$ has finite asymptotes (in Gribov's
+example, the lines $s=4\mu^{2}$ when $t\to\infty$, and $t=4\mu^{2}$ when $s\to\infty$)
+is obvious, otherwise the partial wave amplitudes would decrease with
+increasing $\ell$ faster than any exponential, which contradicts the
+standard behaviour $f_{\ell}\sim\exp(-\alpha\ell)$ for $\ell\to\infty$.
+
+\N{Remark}
+In reality, the Karplus curves for $\pi\pi$ scattering are not symmetric
+with respect to $s$ and $t$, which is a consequence of pions being
+pseudoscalars. 
+
+\input{tex/froissart-theorem}
+\input{tex/pomeranchuk-theorem}

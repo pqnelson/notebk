@@ -1,0 +1,204 @@
+
+
+\section{Froissart's Theorem}
+
+\begin{lemma}[Asymptotics of Legendre Polynomials]
+We have as $\ell\to\infty$,
+\begin{subequations}
+  \begin{align}
+  P_\ell (\cos \theta) &= \sqrt{\frac{\theta}{\sin \theta}} \, J_0((\ell+1/2)\theta) + \mathcal{O}\left(\ell^{-1}\right) \\
+&= \frac{2}{\sqrt{2\pi \ell\sin\theta}}\cos\left(\left(\ell + \tfrac12\right)\theta - \frac{\pi}{4}\right) + \mathcal{O}\left(\ell^{-3/2}\right), \quad \theta \in (0,\pi),
+\end{align}
+\end{subequations}
+where $J_{0}$ is the Bessel function of the first-kind.
+\end{lemma}
+
+For a proof, see:
+G\'abor Szeg\~o~\cite{szego},
+\emph{Orthogonal polynomials}, (4th ed.) AMS Publishers, pp.194
+\emph{et seq.} (see especially, Theorem 8.21.2).
+
+\begin{theorem}[Froissart]
+  Asymptotically as $s\to\infty$, we have
+  \begin{equation}
+\left.\Im\amplitude(s,t)\right|_{t=0}\leq(\mbox{const})\cdot s[\ln(s/s_{0})]^{2}.
+  \end{equation}
+\end{theorem}
+
+This is due to the analyticity and unitarity properties. The proof is a
+multi-step procedure, but each step is fairly straightforward.
+
+\N[1]{Proof Step 1: estimate $f_{\ell}$ at large $s$}
+We estimage $f_{\ell}$ at large $s$ using the fact that the singularity
+of $\Im_{s}(\amplitude(s,t))=D_{s}(s,t,u)$ closest to the physical
+region of the $s$-channel is located at $t=4\mu^{2}$.
+
+Now, at large $\ell$, the partial wave amplitude falls exponentially.
+Gribov argues this follows from $k_{s}^{2}\propto s\gg t$, Eq~\eqref{eq:introduction:asymptotic-t-behaviour-karplus-curve-example}
+gives us $\alpha\simeq\sqrt{t}/k_{s}$, which gives us 
+\begin{equation}\label{eq:intro:froissart-thm:step-1}
+f_{\ell}(s)\simeq c(s,\ell)\exp\left(\frac{-\ell}{k_{s}}\sqrt{4\mu^{2}}\right).
+\end{equation}
+where $c(s,\ell)$ is slowly [non-exponentially] varying with $\ell$.
+
+\M[1]
+Just to clarify, this is because $\cosh(\alpha) \approx 1 + \alpha^{2}/2! + \alpha^{4}/4! + \dots$,
+and we would have small $\alpha$ giving us
+\begin{equation}
+1 + \frac{\alpha^{2}}{2} = 1 + \frac{4\mu^{2}}{2k_{s}^{2}},
+\end{equation}
+which gives the relation
+\begin{equation}
+\alpha^{2} = \frac{4\mu^{2}}{k_{s}^{2}}\implies\alpha=\pm\frac{\sqrt{4\mu^{2}}}{k_{s}}.
+\end{equation}
+Since $k_{s}\gg\sqrt{t}$, the corrections to this approximation are
+negligible, of order $(\sqrt{t}/k_{s})^{3}$.
+
+\M
+Also note that
+\begin{equation}
+z_{s} = 1 + \frac{4\mu^{2}}{2k_{s}^{2}} \approx 1 + \frac{t}{2k_{s}^{2}}.
+\end{equation}
+
+\N[-1]{Step 2.}
+Assume for $t$ arbitrarily close to $4\mu^{2}$, the amplitude grows with
+$s$ not faster than some power.
+
+Then the same is valid for $\Im c(s,\ell)$.
+
+Arguably, $\Im f_{\ell}$ is positive due to the unitarity condition, and
+so is $P_{\ell}(1 + t/2k_{s}^{2})$ for $t\geq 0$.
+
+Therefore each partial wave we have an estimate,
+\begin{subequations}
+  \begin{align}
+    \left(\frac{s}{s_{0}}\right)^{N}
+    &>\Im\amplitude(s,t) =
+    \sum^{\infty}_{\ell=0}\Im(f_{\ell}(s))(2\ell+1)P_{\ell}\left(1+\frac{t}{2k_{s}^{2}}\right)\\
+    \intertext{then using Eq~\eqref{eq:intro:froissart-thm:step-1},
+      observing $\sinh\alpha\approx\alpha$, using
+      the asymptotic approximation
+      $P_{\ell}(\cosh\alpha)\sim\sqrt{\alpha/\sinh\alpha}I_{0}((\ell + 1/2)\alpha)$,
+      and Hankel's asymptotic approximation of the Bessel function ${I_{0}(z)\sim\E^{z}/\sqrt{2\pi z}}$,
+      we rewrite the right-hand side as holding for each term (since
+      each term is a product of positive factors):}
+    \left(\frac{s}{s_{0}}\right)^{N}
+    &>\Im c(s,\ell)\left(2\pi\ell\frac{\sqrt{t}}{k_{s}}\right)^{-1/2}\exp\left[\frac{\ell}{k_{s}}(\sqrt{t}-\sqrt{4\mu^{2}})\right].
+  \end{align}
+\end{subequations}
+Since this holds for arbitrary positive $t<4\mu^{2}$, we conclude
+\begin{equation}
+\Im c(s,\ell) < (s/s_{0})^{N},
+\end{equation}
+and, modulo an ``irrelevant pre-exponential factor'', that
+\begin{equation}\label{eq:froissart-thm:imaginary-part-of-partial-wave}
+\Im(f_{\ell}(s))\leq\left(\frac{s}{s_{0}}\right)^{N}\exp(-2\mu\ell/k).
+\end{equation}
+
+\N{Step 3: Estimate Imaginary Part of Forward Scattering Amplitude}
+We now can estimate
+\begin{equation}
+\Im\amplitude(s,t=0)\leq8\pi\sum^{L}_{\ell=0}(2\ell+1) + \sum^{\infty}_{\ell=L+1}\Im(f_{\ell}(s))(2\ell+1),
+\end{equation}
+where when $\ell<L$ in which the partial waves are large,
+$\Im(f_{\ell})\simeq|f_{\ell}|=\bigOh(1)$, and we can estimate the first
+term as
+\begin{equation}
+\sum^{L}_{\ell=0}(2\ell+1)\simeq L^{2}.
+\end{equation}
+
+\N[1]{Determining $L$}
+We can determine $L$ as the bound above which partial wave amplitudes
+become small
+\begin{equation}
+\Im(f_{\ell>L})\ll 1,
+\end{equation}
+and fall exponentially with $\ell$. According to
+$\Im(c(s,\ell))<(s/s_{0})^{N}$ from step 2, this means
+\begin{equation}
+(s/s_{0})^{N}\exp(-2\mu L/k_{s})\simeq1\implies \boxed{L\simeq\frac{k_{s}}{2\mu}\ln(s/s_{0}).}
+\end{equation}
+
+\N[-1]{Step 4: Estimate Infinite Sum in Tail}
+We can now estimate the infinite sum using $f_{L+n}\sim f_{K}\exp(-2\mu n/k_{s})$,
+and this turns out to be subdominant:
+\begin{equation}
+\sum^{\infty}_{n=0}2(L+n)\exp\left(\frac{-2\mu}{k_{s}}n\right)\simeq\frac{k_{s}}{\mu}L
++\frac{k_{s}^{2}}{2\mu^{2}},
+\end{equation}
+and as $s\to\infty$ we find
+\begin{equation}
+\lim_{s\to\infty}\frac{k_{s}}{\mu}L
++\frac{k_{s}^{2}}{2\mu^{2}}\ll L^{2}.
+\end{equation}
+That is to say, the infinite sum is dominated by the finite sum's
+contribution, which is approximately $L^{2}$.
+
+\N{Step 5: Combine Results}
+We have then step 4 simplifies the sum from step 3, giving us that
+$\Im\amplitude(s,t=0)\sim L^{2}$ (plus lower order terms)
+and step 3 also gave us an estimate $L^{2}\propto s[\ln(s/s_{0})]^{2}$
+(since $L^{2}\simeq (k_{s}/2\mu)^{2}[\ln(s/s_{0})]^{2}$ and
+$k_{s}^{2}\simeq s$)
+which then together implies Froissart's theorem.\qquad\qedsymbol
+
+\adjustSection{-1}
+
+\begin{corollary}
+Analogous consideration, together with the unitarity condition, leads to
+the similar inequality for the real part of the forward scattering
+amplitude
+\begin{equation}
+|\Re(\amplitude(s,t=0))|<\mbox{\normalfont(const.)}s[\ln(s/s_{0})]^{2}.
+\end{equation}
+\end{corollary}
+
+\begin{corollary}
+Since, according to the optical theorem, $\Im\amplitude(s,t=0)=s\sigma_{\text{tot}}(s)$,
+Froissart's theorem implies the total cross section cann grow with the
+center-of-mass energy $\sqrt{s}$ faster than the squared logarithm of
+$s$,
+\begin{equation}
+\sigma_{\text{tot}}(s)\leq\sigma_{0}[\ln(s/s_{0})]^{2},
+\end{equation}
+and the interaction radius cannot grow faster than the logarithm of $s$.
+\end{corollary}
+
+\begin{corollary}
+Let $\rho$ be the impact parameter, $k_{s}\rho = \ell+1/2$.
+Then using
+$t\simeq-(k_{s}\theta)^{2}$ we have
+\begin{equation}
+\amplitude(s,t)\simeq k_{s}^{2}\int f(\rho,s)J_{0}(\rho\sqrt{-t})2\rho\,\D\rho.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+This is because the cross section cannot decrease with increasing
+energy, which requires the amplitude $\amplitude(s,t=0)$ must grow.
+Consequently, the number of partial waves contributing to the
+partial-wave expansion sum must be large. This allows us to replace the
+sum by an integral over $\ell$, using the approximation
+\begin{equation}
+P_{\ell}(\cos(\theta))\simeq J_{0}\left[(2\ell+1)\frac{\theta}{2}\right],\quad\ell\gg1,\quad\mbox{and}\quad\theta\ll1.
+\end{equation}
+We obtain
+\begin{equation}
+\amplitude(s,t)\simeq\int f_{\ell}(s)J_{0}\left[(2\ell+1)\frac{\theta}{2}\right](2\ell+1)\,\D\ell.
+\end{equation}
+When we replace $\ell$ by the impact parameter, and using $t\simeq-(k_{s}\theta)^{2}$,
+we obtain the desired result.
+\end{proof}
+
+\M[1]
+If the values of $\rho$ giving the dominant contribution to this
+integral do not depend on $s$ (which is the case for the usual picture
+of diffractive scattering off a finite-sized object, Gribov tells us),
+then it is natural to expect the amplitude takes the factorized form
+\begin{equation}
+\amplitude(s,t)\simeq a(s)F(t).
+\end{equation}
+If we further assume the partial wave amplitudes dominant in
+Eq~\eqref{eq:froissart-thm:imaginary-part-of-partial-wave}
+approach constant values as $s\to\infty$, then $A(s,t)\sim sF(t)$ and
+the total cross section tends to a constant.
