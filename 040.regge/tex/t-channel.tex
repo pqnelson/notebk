@@ -44,11 +44,59 @@ f^{+}_{\ell}|_{\ell=n=2k}=f_{n},\quad\mbox{and}\quad
 f^{-}_{\ell}|_{\ell=n=2k+1}=f_{n}.
 \end{equation}
 Then we have the expansion become
-\begin{equation}
+\begin{equation}\label{eq:t-channel:froissart-gribov-transformed}
 f^{\pm}_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
 \pm \frac{1}{\I2\pi}\int^{\infty}_{z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,-z_{t}'))\,\D z_{t}'.
 \end{equation}
 \end{theorem}
+
+\begin{corollary}
+We can represent the scattering amplitudes in odd and even parts in $z$,
+$\amplitude = \amplitude^{+} + \amplitude^{-}$ where
+\begin{subequations}\label{eq:expansion-of-even-and-odd-parts-of-amplitude}
+\begin{equation}
+\amplitude^{+} = \sum_{n=2r}P_{n}(z)(2n+1)f_{n}^{+}
+\end{equation}
+and
+\begin{equation}
+\amplitude^{-} = \sum_{n=2r+1}P_{n}(z)(2n+1)f_{n}^{-}.
+\end{equation}
+\end{subequations}
+\end{corollary}
+
+\M
+Note Theorem~\ref{thm:froissart-bound}, the Froissart bound combined
+with the optical theorem to tell us
+\begin{subequations}\label{eq:froissart-plus-optical-forces-upper-bound}
+\begin{equation}
+D_{u}(u,t) < \mbox{(const.)}s[\ln(s)]^{2}
+\end{equation}
+and
+\begin{equation}
+D_{s}(s,t) < \mbox{(const.)}s[\ln(s)]^{2}
+\end{equation}
+\end{subequations}
+This means to obtain Eq~\eqref{eq:t-channel:froissart-gribov-transformed},
+we must have $|D_{s}(z,t)|<z^{\ell_{0}}$ as $z\to\infty$ to ensure
+convergence, and so this works only for $n>n_{0}\geq\ell_{0}$. 
+But Eq~\eqref{eq:froissart-plus-optical-forces-upper-bound} tells us
+that $n_{0}<2$.
+
+This forces us to add a few extra terms from the series in Eq~\eqref{eq:expansion-of-even-and-odd-parts-of-amplitude} to the 
+Eq~\eqref{eq:t-channel:froissart-gribov-transformed},
+permitting us to deform the contour of integration to neglect the
+integral over the great circle of infinite radius in the $z$ plane,
+giving us:
+\begin{subequations}\label{eq:expansion-of-even-and-odd-parts-of-amplitude2}
+\begin{equation}
+\amplitude^{+} = \sum^{n_{0}}_{n=2r}P_{n}(z)(2n+1)f_{n}^{+} + \frac{\I}{4}\int^{\ell_{0}+\I\infty}_{\ell_{0}-\I\infty}\frac{(2\ell+1)}{\sin(\pi\ell)}f^{+}_{\ell}[P_{\ell}(-z)+P_{\ell}(z)]\,\D\ell
+\end{equation}
+and
+\begin{equation}
+\amplitude^{-} = \sum^{n_{0}}_{n=2r+1}P_{n}(z)(2n+1)f_{n}^{-} + \frac{\I}{4}\int^{\ell_{0}+\I\infty}_{\ell_{0}-\I\infty}\frac{(2\ell+1)}{\sin(\pi\ell)}f^{-}_{\ell}[P_{\ell}(-z)-P_{\ell}(z)]\,\D\ell.
+\end{equation}
+\end{subequations}
+These sums contribute at most one term.
 
 \N{References}
 I have found \S2.3 of \arXiv{2006.08221} useful, and section 1.6 [for
@@ -56,3 +104,5 @@ the $s$-channel version] as well
 as appendix A [for the $t$-channel version] in Donnachie \textit{et al.}~\cite{Donnachie:2002en}
 useful supplements. The history surrounding the development of this may
 be found in Dokshitzer (\arXiv{hep-ph/0510200}).
+Collins~\cite{Collins:1977jy} has been very useful for double checking
+calculations. 
