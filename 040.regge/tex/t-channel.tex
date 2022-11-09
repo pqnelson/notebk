@@ -1,0 +1,58 @@
+\chapter{Physics of the \texorpdfstring{$t$}{t}-Channel and Complex Angular Momenta}
+
+\section{Analytical Continuation of the \texorpdfstring{$t$}{t}-Channel Unitarity Condition}
+\section{Complex Angular Momenta}
+\section{Partial Wave Expansion and Sommerfeld--Watson Representation}
+\section{Continuation of the Partial Wave Amplitudes to Complex \texorpdfstring{$\ell$}{l}}
+\section{Gribov--Froissart Projection}
+
+\M
+The thresholds are at $s=4\mu^{2}$ and $u=4\mu^{2}$, so that
+\begin{equation}
+z_{1} = z_{2} = 1 + \frac{4\mu^{2}}{2k_{t}^{2}} > 1.
+\end{equation}
+The discontinuities across these cuts are, respectively, $2\I\amplitude_{1}(z,t)=D_{t}(s,t(s,z_{t}))$
+and $2\I\amplitude_{2}(z,t) = =D_{u}(s,t(s,z_{t}))$.
+
+\M
+In the $t$-channel partial-wave expansion,
+we can rewrite the partial-wave amplitudes for large enough $n$ as
+\begin{equation}
+f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
++ \frac{1}{\I2\pi}\int^{-\infty}_{-z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,z_{t}'))\,\D z_{t}'.
+\end{equation}
+
+\M
+Using the relation
+\begin{equation}
+Q_{n}(-z)=(-1)^{n}Q_{n}(z),
+\end{equation}
+we get
+\begin{equation}
+f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
++ \frac{(-1)^{n}}{\I2\pi}\int^{\infty}_{z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,-z_{t}'))\,\D z_{t}'.
+\end{equation}
+The factor of $(-1)^{n}$ causes problems when we want to study the
+asymptotic behaviour of $f_{n}$, or if we want to analytically continue
+this to complex angular momenta.
+
+\begin{theorem}
+We introduce two analytic functions $f^{+}_{\ell}$ and
+$f^{-}_{\ell}$ such that
+\begin{equation}
+f^{+}_{\ell}|_{\ell=n=2k}=f_{n},\quad\mbox{and}\quad
+f^{-}_{\ell}|_{\ell=n=2k+1}=f_{n}.
+\end{equation}
+Then we have the expansion become
+\begin{equation}
+f^{\pm}_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
+\pm \frac{1}{\I2\pi}\int^{\infty}_{z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,-z_{t}'))\,\D z_{t}'.
+\end{equation}
+\end{theorem}
+
+\N{References}
+I have found \S2.3 of \arXiv{2006.08221} useful, and section 1.6 [for
+the $s$-channel version] as well
+as appendix A [for the $t$-channel version] in Donnachie \textit{et al.}~\cite{Donnachie:2002en}
+useful supplements. The history surrounding the development of this may
+be found in Dokshitzer (\arXiv{hep-ph/0510200}).
