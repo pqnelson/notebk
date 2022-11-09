@@ -18,8 +18,7 @@ vardef startpoint(expr p) = point 0 of p enddef;
 
 
 
-outputtemplate := "2009-04-01.%c";
-show outputtemplate;
+outputtemplate := "2009-04-01.%c"; show outputtemplate;
 beginfig(0);
   numeric x,dx;
   path pts_f;
@@ -33,7 +32,7 @@ beginfig(0);
   draw (3u,0)--(3u,4u) dashed evenly;
 endfig;
 
-beginfig(1);
+beginfig(1); % Heisenberg microscope
   numeric x,dx,amplitude,r,lense_diameter;
   numeric angle;
   path incoming_wave, left_microscope, right_microscope, wave, lense, vertical, angle_circle;
@@ -75,7 +74,7 @@ beginfig(1);
 endfig;
 
 outputtemplate := "2009-04-03.%c"; show outputtemplate;
-beginfig(0);
+beginfig(0); % Wave functional on flat spacetime
   numeric y,dy,y_mid,x_max;
   path pts_f;
   dy = 6;
@@ -87,7 +86,7 @@ beginfig(0);
   label.top(btex $|\psi_{1}(t)\rangle$ etex, (0.5x_max,2y_mid));
 endfig;
 
-beginfig(1);
+beginfig(1); % Wave functional on flat spacetime with strange foliation
   numeric y,x_max,dy,t,dt,dx,x,y_mid;
   path pts_f;
   y_mid = 3u;
@@ -114,7 +113,7 @@ endfig;
 
 outputtemplate := "2009-04-08.%c";
 show outputtemplate;
-beginfig(0)
+beginfig(0) % Intuition of constraint surface as gauge orbits + sections
   path orbit, section, edges[];
   path surface, tmp;
   orbit = ((0,0)..(2u,u)..(4u,0)..(6u,u)) rotated -45;
@@ -128,9 +127,12 @@ beginfig(0)
   darkred = (1/2)[black,red];
   darkgreen = (2/5)[green,black];
   z1 = (9u,-6u);
+  tmp = orbit;
+  numeric dt; dt = 0.075;
   for i=2 upto 8:
-    draw orbit shifted (i*unitvector(z0)*u) withcolor darkred;
-    drawarrow ((z1--endpoint(orbit shifted (i*unitvector(z0)*u))) cutbefore (fullcircle scaled 4u shifted z1)) withcolor darkred;
+    tmp := orbit shifted (i*unitvector(z0)*u);
+    draw tmp withcolor darkred;
+    drawarrow ((z1--(point (1-dt)*length(tmp) of tmp)) cutbefore (fullcircle scaled 4u shifted z1)) withcolor darkred;
   endfor;
   l = length(edges0);
   for i=1 upto 3:
@@ -148,9 +150,62 @@ beginfig(0)
   label.lft(btex ``Sections'' etex, (-u,-5u)) withcolor (3/5)[green,black];
 endfig;
 
+
+outputtemplate := "2009-04-10.%c";
+show outputtemplate;
+
+beginfig(0); % ADM Decomposition
+  vardef surface(expr NULL) =
+    (0,0){up}..(4*u,4*u){right}--(20*u,4*u){left}..(16*u,0){down}--(0,0)
+  enddef;
+
+  path p[];
+  p[0] = surface(0);
+  p[1] = surface(0) shifted(0,-5*u);
+  draw p[0];
+  draw p[1];
+  label.lft(btex $\Sigma_{t}$ etex, (0,-3*u));
+  label.lft(btex $\Sigma_{t+{\rm d}t}$ etex, (0,2*u));
+  z[0] = (10*u,-3.75*u);
+  z[1] = (10*u,1.25*u);
+  z[2] = (12*u,3.25*u);
+  
+  % draw and label the dots
+  drawdot(z[0]) withpen pencircle scaled 3pt;
+  drawdot(z[1]) withpen pencircle scaled 3pt;
+  drawdot(z[2]) withpen pencircle scaled 3pt;
+  label.rt(btex $x^{i}+\,{\rm d}x^{i}$ etex, z[2]);
+  label.lft(btex $x^{i}+N^{i}\,{\rm d}t$ etex, z[1]);
+  label.llft(btex $x^{i}$ etex, z[0]);
+  
+  % draw the path from x^i to x^i-Ndt
+  (t[0],whatever) = p[0] intersectiontimes ((10*u,-infinity)--(10*u,3*u));
+  z[3] = point t[0] of p[0];
+  p[2] = z[0]--z[3];
+  draw p[2];
+  draw z[3]--z[1] dashed evenly;
+
+  % draw the path from x^i-Ndt to x^i +dx^i
+  draw z[1]{up}..z[2]{right};
+  
+  % draw the path from x^i to x^i+dx^i
+  (t[1],whatever) = p[0] intersectiontimes (z[0]--z[2]);
+  z[4] = point t[1] of p[0];
+  p[3] = z[0]--z[4];
+  draw p[3];
+  draw z[4]--z[2] dashed evenly;
+
+  % label the paths
+  z[5] = (1/3)[z[0],z[1]];
+  label.lft(btex $N\,{\rm d}t$ etex, z[5]);
+  z[6] = 0.45[z[0],z[2]];
+  label.rt(btex ${\rm d}s$ etex, z[6]);
+  
+endfig;
+
 outputtemplate := "2009-04-24.%c";
 show outputtemplate;
-beginfig(0)
+beginfig(0) % Mixmaster dynamics
   numeric r; r := 4u;
   draw fullcircle scaled r;
   draw halfcircle xscaled r yscaled 0.25r dashed evenly;
@@ -163,7 +218,7 @@ beginfig(0)
   drawarrow (0.75r,0)--(1.25r,0);
 endfig;
 
-beginfig(1)
+beginfig(1) % Strong coupling limit
   numeric r; r := 3u;
   z[0] = (2.5r,0);
   z[1] = (5r,0);

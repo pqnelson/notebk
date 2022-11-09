@@ -26,16 +26,17 @@
 \usepackage{wrapfig} % used for wrapping figures!
 \usepackage{amsthm}
 \usepackage{fancyhdr}
-\usepackage[final,colorlinks=true,
-            hyperindex=true,
-            citecolor=black,
-            filecolor=black,
-            menucolor=black,
-            linkcolor=black,
-            urlcolor=black,
-            bookmarksopen=true,
-            pdftitle={Quantum Gravity},
-            pdfauthor={Alex Nelson}]{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+  bookmarksopen=true,
+  pdfusetitle,
+  \ifpdf\else dvipdfmx\fi
+]{hyperref}
 \usepackage[all]{hypcap}
 \usepackage{notation}
 % \usepackage{danger}

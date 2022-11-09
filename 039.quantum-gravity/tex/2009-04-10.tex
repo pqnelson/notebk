@@ -13,8 +13,117 @@ variables, but first-order formalism treats positions $x$ and momenta $p$
 as independent variables. Also, Professor Waldron refers to the ADM
 action's terms as:
 \begin{equation}
-\action_{ADM} = \int(\underbrace{\pi^{ij}\dot{q}_{ij}}_{\text{symplectic term}}
-- \underbrace{N^{i}\mathcal{H}_{i} - N\mathcal{H}}_{\text{constraints}})\,\D^{4}x.
+\action_{ADM} = \int(\underbrace{\pi^{ij}\dot{q}_{ij}}_{\substack{\text{symplectic}\\\text{term}}}
+- \underbrace{N_{i}\mathcal{H}^{i} - N\mathcal{H}}_{\text{constraints}})\,\D^{4}x.
 \end{equation}
 Also notation: $D_{i}$ determined using the spatial metric $q_{ij}$
 such that $D_{i}q_{jk}=0$.
+
+\textbf{Caveat: these are notes I've written, not based on Dr Carlip's lectures,
+but from what I've learned over the years.}
+
+We start by choosing some coordinate $t$ and foliate spacetime with
+spacelike hypersurfaces $\Sigma_{t}$ indexed by $t$. We have the unit normal
+$n^{\mu}$ on each hypersurface $\Sigma_{t}$, as well as the induced
+3-metric $q_{ij}$. For spacelike hypersurfaces
+\begin{equation}
+n^{\mu}n_{\mu}=+1.
+\end{equation}
+We then have a projection of tensors onto their spatial components
+\begin{equation}
+{h^{\mu}}_{\nu} = {\delta^{\mu}}_{\nu} - n^{\mu}n_{\nu}.
+\end{equation}
+We define the extrinsic curvature as the spatial projection of the
+covariant derivative for the unit normal,
+\begin{equation}
+K_{\mu\nu} = {h_{\mu}}^{\rho}\nabla_{\rho}n_{\nu}.
+\end{equation}
+It's not hard to see $n^{\mu}K_{\mu\nu}=0$ and $n^{\nu}K_{\mu\nu}=0$
+(since it's a spatial tensor).
+
+Now, we have the ADM decomposition of the metric. We begin with the line
+element, using the Lorentzian analog of the Pythagorean theorem.
+Intuitively, we should imagine something like the picture:
+\begin{center}
+\includegraphics{img/2009-04-10.0}
+\end{center}
+We start off with a point on a hypersurface $\Sigma_{t}$. If we
+translate along the time dimension from $t\to t+\D t$, then we end up at
+$x^{i}+N\,\D t$ --- this is because the coordinates are arbitrary, but
+$N\,\D t$ should be the ``infinitesimal proper time'' not the
+``infinitesimal coordinate time''. Similarly, we could have some
+rotational effect, which we would account for by adding a translation on
+$\Sigma_{t+\D t}$ by $-N^{i}\,\D t$. This gives us the line element
+\begin{equation}
+\D s^{2} = N^{2}\,\D t^{2} - q_{ij}(\D x^{i} + N^{i}\,\D t)(\D x^{j} + N^{j}\,\D t).
+\end{equation}
+Here $N$ is called the ``Lapse function'', the $N^{i}$ are called the
+``Shift vector''.
+
+It's not too hard (I think it's an exercise
+in \hyperref[section:hw2]{homework 2}) to show that
+\begin{equation}
+K_{ij} = \frac{1}{2N}(\partial_{t}q_{ij} - D_{i}N_{j}-D_{j}N_{i})
+\end{equation}
+where $D_{j}$ is the spatial covariant derivative (compatible with
+$q_{ij}$, i.e., $D_{i}q_{jk}=0$). We also find the inverse 4-metric
+decomposes like
+\begin{equation}
+g^{ab} = \begin{pmatrix}\frac{1}{N^{2}} & -\frac{N^{i}}{N^{2}}\\-\frac{N^{j}}{N^{2}} & -q^{ij} + \frac{N^{i}N^{j}}{N^{2}} \end{pmatrix},
+\end{equation}
+where $N^{i}=q^{ij}N_{j}$, and $q^{ij}$ is the inverse of $q_{ij}$
+(i.e., $q^{ij}q_{jk}=\delta^{i}_{k}$).
+
+We rewrite the Lagrangian using the Gauss--Codazzi equations
+\begin{equation}
+{}^{(4)}R = {}^{(3)}R + K_{ij}K^{ij} - K^{2} - 2\nabla_{\mu}(n^{\mu}\nabla_{\nu}n^{\nu}-n^{\nu}
+\nabla_{\mu}n^{\mu}).
+\end{equation}
+Then the action
+\begin{subequations}
+\begin{align}
+\action_{EH} &= \frac{1}{16\pi G}\int {}^{(4)}R\,\sqrt{-g}\,\D^{4}x\\
+&= \frac{1}{16\pi G}\iint [{}^{(3)}R + K_{ij}K^{ij} - K^{2}](N\sqrt{q})\,\D^{3}x\,\D t
++ \mbox{(boundary terms)}.
+\end{align}
+\end{subequations}
+We find the conjugate momenta to the 3-metric $q_{ij}$ are
+\begin{equation}
+\pi^{ij} = \frac{\partial L}{\partial(\partial_{t}q_{ij})}
+= \frac{1}{16\pi G}(K^{ij} - q^{ij}K).
+\end{equation}
+Using this, we can write the canonical action
+\begin{equation}
+\action = \frac{1}{16\pi G}\iint(\pi^{ij}\partial_{t}q_{ij} - \mathcal{H}_{\text{can}})\,\D^{3}x\,\D t,
+\end{equation}
+where $\mathcal{H}_{\text{can}} = \pi^{ij}\partial_{t}q_{ij} - \mathcal{L}$.
+
+We should expect there to be constraints, since the components of the
+metric $N$ and $N_{i}$ do not enter the action with any time derivatives.
+In fact, it turns out we have
+\begin{subequations}
+\begin{align}
+\mathcal{H} &= \frac{16\pi G}{\sqrt{q}}(\pi_{ij}\pi^{ij} - \frac{1}{2}\pi^{2})
+-\frac{1}{16\pi G}\sqrt{q}\,{}^{(3)}\!R\\
+\intertext{and}
+\mathcal{H}^{i} &= -2D_{j}\pi^{ij}
+\end{align}
+\end{subequations}
+are the two constraints, called the Diffeomorphism constraint (or
+Hamiltonian constraint) and the Momentum constraints, respectively.
+
+The Poisson brackets would be defined on a spatial hypersurface (so
+$t=\mbox{constant}$) as
+\begin{equation}
+\{q_{ij}(\vec{x}), \pi^{k\ell}(\vec{x}')\}
+= \frac{1}{2}(\delta^{k}_{i}\delta^{\ell}_{j} + 
+\delta^{k}_{j}\delta^{\ell}_{i})\widetilde{\delta}^{(3)}(\vec{x}-\vec{x}'),
+\end{equation}
+where we use the densitized delta $\delta^{(3)}(\vec{x})\sqrt{q}=\widetilde{\delta}^{(3)}(\vec{x})$
+since it satisfies:
+\begin{equation}
+\int\widetilde{\delta}^{(3)}(\vec{x})\,\D^{3}x=1.
+\end{equation}
+A number of exercises concerning the Poisson bracket may be found
+in \hyperref[section:hw3]{Homework 3}. In particular, the Poisson
+bracket of the constraints generate diffeomorphisms (morally speaking).

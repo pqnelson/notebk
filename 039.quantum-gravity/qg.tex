@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{macros}
-
+\counterwithout{section}{part}
 \title{Quantum Gravity}
 \author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}
 \date{October 12, 2022}
@@ -21,16 +21,19 @@ referring to the wave functional as a wave function.
 % Barvinsky and Kiefer (1998
 \input{tex/2009-04-01}
 \input{tex/2009-04-03}
-\input{tex/2009-04-08}
+\input{tex/2009-04-08}\vfill\eject
+\part{Canonical Quantum Gravity}
 \input{tex/2009-04-10}
 % Carlip was out of town the following week, so the next lecture is:
 \input{tex/2009-04-22}
 \input{tex/2009-04-24}
+\part{Loop Quantum Gravity}
 \input{tex/2009-04-29}
 \input{tex/2009-05-01}
 \input{tex/2009-05-06}
 \input{tex/2009-05-08}
-\input{tex/2009-05-13}
+\input{tex/2009-05-13}\vfill\eject
+\part{String Theory}
 \input{tex/2009-05-15}
 \input{tex/2009-05-20}
 \input{tex/2009-05-22}
@@ -39,8 +42,11 @@ referring to the wave functional as a wave function.
 \input{tex/2009-06-03}
 
 % \includegraphics{img.0}
-\appendix\let\oldvec\vec
-\let\vec\mathbf\setlength{\parskip}{1ex}
+\appendix\vfill\eject
+\part{Appendices}
+\let\oldvec\vec
+\let\vec\mathbf
+\setlength{\parskip}{1ex}
 \include{tex/hw1}
 \include{tex/hw2}
 \include{tex/hw3}
