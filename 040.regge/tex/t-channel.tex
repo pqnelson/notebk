@@ -14,6 +14,20 @@ z_{1} = z_{2} = 1 + \frac{4\mu^{2}}{2k_{t}^{2}} > 1.
 The discontinuities across these cuts are, respectively, $2\I\amplitude_{1}(z,t)=D_{t}(s,t(s,z_{t}))$
 and $2\I\amplitude_{2}(z,t) = D_{u}(s,t(s,z_{t}))$.
 
+We will be working with the cosine of scattering angle,
+\begin{equation}
+z_{t} = \cos(\theta_{t}) = 1 + \frac{2s}{t - 4\mu^{2}} = \frac{u-s}{u+s}.
+\end{equation}
+Observe
+\begin{equation}
+2s = (t - 4\mu^{2})(z_{t}-1)\implies s\propto z_{t}-1,
+\end{equation}
+so
+\begin{equation}
+s\ln(s) \propto (z_{t}-1)\ln(z_{t}-1).
+\end{equation}
+For large $z_{t}\gg1$, $s[\ln(s)]^{2}\sim z_{t}[\ln(z_{t})]^{2}$.
+
 \M
 In the $t$-channel partial-wave expansion,
 we can rewrite the partial-wave amplitudes for large enough $n$ as
@@ -21,10 +35,13 @@ we can rewrite the partial-wave amplitudes for large enough $n$ as
 f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
 + \frac{1}{\I2\pi}\int^{-\infty}_{-z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,z_{t}'))\,\D z_{t}'.
 \end{equation}
-\textbf{NOTE:} I think I may be muddled here, I think I should be
-working with $D_{s}$ and $D_{u}$, which means I would be integrating
-over $z_{s}'$, wouldn't I? See Chapter 2 of
-Collins~\cite{Collins:1977jy}, especially Eq~(2.3.4).
+%% \textbf{NOTE:} I think I may be muddled here, I think I should be
+%% working with $D_{s}$ and $D_{u}$, which means I would be integrating
+%% over $z_{s}'$, wouldn't I? See Chapter 2 of
+%% Collins~\cite{Collins:1977jy}, especially Eq~(2.3.4).
+
+%% \textsc{Answer:} No, this is in the $t$-channel, Collins works in the
+%% $s$-channel. 
 
 \M
 Using the relation
@@ -77,11 +94,11 @@ D_{u}(u,t) < \mbox{(const.)}s[\ln(s)]^{2}
 \end{equation}
 and
 \begin{equation}
-D_{s}(s,t) < \mbox{(const.)}s[\ln(s)]^{2}
+D_{t}(s,t) < \mbox{(const.)}s[\ln(s)]^{2}
 \end{equation}
 \end{subequations}
-This means to obtain Eq~\eqref{eq:t-channel:froissart-gribov-transformed},
-we must have $|D_{s}(z,t)|<z^{\ell_{0}}$ as $z\to\infty$ to ensure
+Since $z_{t}\propto s$, this means to obtain Eq~\eqref{eq:t-channel:froissart-gribov-transformed},
+we must have $|D_{s}(z_{t},t)|<z^{\ell_{0}}$ as $z\to\infty$ to ensure
 convergence, and so this works only for $n>n_{0}\geq\ell_{0}$. 
 But Eq~\eqref{eq:froissart-plus-optical-forces-upper-bound} tells us
 that $n_{0}<2$.
