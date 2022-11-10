@@ -99,7 +99,174 @@ corresponds to the conjugate amplitude $\amplitude^{*}(s+\I\varepsilon)=\amplitu
 
 Apart from these modifications, the Feynman rules remain unchanged.
 
+\vfill
+
 \section{Analytical Continuation of the \texorpdfstring{$t$}{t}-Channel Unitarity Condition}
+
+\M Gribov begins by studying singularities with respect to momentum
+transfer. The first singularity is located at $t=4\mu^{2}$. This
+describes the exchange of two particles in the $t$-channel.
+
+Then the argument is a bit vague. Gribov argues, from the point-of-view
+of the $s$-channel, unitarity restricts probabilities for the exchange
+of two particles in the cross-channel. This is clear, it's what
+unitarity \emph{means}.
+
+But then Gribov wants to analytically continue the unitarity condition
+from the physical region of the $t$-channel ($t>4\mu^{2}$ and $s<0$) to
+the region of large positive $s$. I do not know why.
+
+\M For $4\mu^{2}<t<16\mu^{2}$, Gribov focuses on the two-particle
+unitarity condition described by the Feynman diagram:
+\begin{center} % width, height; 12 = 1 line
+  \fmfframe(10,18)(10,0){
+  \begin{fmfgraph*}(72,84)%60)
+    \fmfcmd{%
+      vardef cross_bar (expr p, len, ang) =
+        ((-len/2,0)--(len/2,0))
+          rotated (ang + angle direction length(p)/2 of p)
+          shifted point length(p)/2 of p
+      enddef;
+      style_def crossed expr p =
+        cdraw p; label(btex $\times$ etex, point (0.4*length(p)) of p);
+        cfill (arrow (subpath (0, 0.75*length(p)) of (reverse p)));
+%        ccutdraw cross_bar (p, 6pt, 45);
+%        ccutdraw cross_bar (p, 6pt, -45)
+      enddef;}
+    \fmfcmd{arrow_len := 2ahlength;% arrow_ang := ahangle;
+    arrow_len := 7pt;}
+    \fmfpen{0.5bp}
+    \fmfleft{i2,i1}
+    \fmfright{o2,o1}
+    \fmf{fermion,tension=2}{i2,v2,o2}
+    \fmf{fermion,tension=2}{i1,v1,o1}
+    \fmfv{l.ang=180,label=$p_{1}$}{i1}
+    \fmfv{l.ang=180,label=$p_{2}$}{i2}
+    \fmfv{l.ang=0,label=$p_{3}$}{o1}
+    \fmfv{l.ang=0,label=$p_{4}$}{o2}
+    \fmf{phantom,label=$k_{2}$,l.s=left,l.d=8}{v1,v2}
+    \fmf{phantom,label=$k_{1}$,l.s=right,l.d=8}{v1,v2}
+    \fmffreeze
+    \fmfi{crossed}{vpath (__v2,__v1) shifted (4,0)}
+    \fmfi{crossed}{vpath (__v2,__v1) shifted (-4,0)}
+    \fmfblob{0.2w}{v1}
+    \fmfblob{0.2w}{v2}
+    % I am 100% certain there is a sensible way to place these arrows
+    % indicating which channel we're working in...I just do not know it.
+    \fmfipair{schan[]} % coordinates for endpoints of s-channel's arrow
+    \fmfiequ{schan1}{(0,0.5h) + (-12*2,0)}
+    \fmfiequ{schan2}{schan1 + (12*2,0)}
+    \fmfcmd{drawarrow schan1--schan2; label.lft(btex $s$ etex, schan1);}
+    \fmfipair{tchan[]} % coordinates for endpoints of t-channel's arrow
+    \fmfiequ{tchan1}{(0.5w,h) + (0,12*2)}
+    \fmfiequ{tchan2}{tchan1 + (0,-2*12)}
+    \fmfcmd{drawarrow tchan1--tchan2; label.lft(btex $t$ etex, 0.25[tchan1,tchan2]);}
+  \end{fmfgraph*}}
+\end{center}
+\begin{exercise}
+Compute the amplitude for this Feynman diagram.
+\end{exercise}
+
+Gribov works out the discontinuity in the $t$-channel as
+\begin{subequations}\label{eq:t-channel:basis-of-cutkowski-rules}
+\begin{align}
+\amplitude_{3} &:= \Im_{t}\left(\amplitude(s,t)\right)\\
+&=\frac{1}{2}\int\amplitude(p_{2},p_{4},k_{1},k_{2})\amplitude^{*}(k_{1},k_{2},p_{1},p_{3})
+\begin{pmatrix}\mbox{conservation}\\
+  \mbox{factors}
+\end{pmatrix}
+\frac{\D^{4}k_{1}}{(2\pi)^{3}}\frac{\D^{4}k_{2}}{(2\pi)^{3}},\label{eq:t-channel:t-channel-discontinuity-for-exchange-of-two-particles}
+\end{align}
+\end{subequations}
+where we sweep factors asserting positivity of the time-components of
+$k_{i}$ and conservation of momenta into:
+\begin{equation}
+\begin{pmatrix}\mbox{conservation}\\
+  \mbox{factors}
+\end{pmatrix}
+=\theta\left((k_{1})_{0}\right)\theta\left((k_{2})_{0}\right)
+\delta(k_{1}^{2}-m^{2})\delta(k_{2}^{2}-m^{2})(2\pi)^{4}\delta(k_{1}+k_{2}-p_{2}-p_{4})
+\end{equation}
+Gribov says the imaginary part of $\amplitude_{3}$ is nonzero for
+$t>4\mu^{2}$, though I do not immediately see it. (Gribov explains
+$\amplitude_{3}$ cannot be analytic in this region \emph{because} the
+imaginary part is nonzero.)
+
+But for fixed $t>4\mu^{2}$, we can view $\amplitude_{3}$ as an analytic
+function in $s$. We want to analytically continue $\amplitude_{3}$ Eq~\eqref{eq:t-channel:t-channel-discontinuity-for-exchange-of-two-particles} to
+the region of large positive $s$.
+
+\begin{remark}
+Eq~\eqref{eq:t-channel:basis-of-cutkowski-rules}
+was generalized by Cutkoski~\cite{Cutkosky:1960sp,Cutkosky:1961} in the
+early 1960s, giving us ``Cutkoski rules''.
+See also Eq~(1.5.11) in Collins~\cite{Collins:1977jy}.
+\end{remark}
+
+\M
+At large $s$ the \emph{relative distance} between $t<0$ and $t>4\mu^{2}$
+is small, in the sense that $4\mu^{2}/s\ll1$. We may hope Eq~\eqref{eq:t-channel:t-channel-discontinuity-for-exchange-of-two-particles}
+analytically continued from $t>4\mu^{2}$ to $t<0$ will experience some
+kind of restriction.
+
+\N{Analytical Continuation of Unitarity Condition to \texorpdfstring{$s>0$}{s>0}}
+This is an important step, which was done by Mandelstam. Gribov sketches
+the basic steps.
+
+\M[1]
+In the center-of-mass frame for the $t$-channel, we have
+\begin{equation}
+\amplitude_{3}(z,t) = \frac{k_{t}}{\omega_{t}}\int\amplitude(z_{1},t)\amplitude^{*}(z_{2},t)\frac{\D\Omega}{64\pi^{2}},
+\end{equation}
+where the center-of-mass momenta and energy are, respectively,
+\begin{equation}
+k_{t}=\frac{\sqrt{t-4\mu^{2}}}{2},\quad\omega_{t}=\frac{\sqrt{t}}{2}.
+\end{equation}
+
+\M We have written our discontinuity equation in terms of the [cosine of
+  the] scattering angle $z$ rather than the momentum transfer $s$ using,
+\begin{equation}
+s = -2k_{t}^{2}(1-z).
+\end{equation}
+We have $s_{1}$ be the squared 4-momentum transfer for the initial
+states, $s_{2}$ the squared 4-momentum transfer for the final states,
+$z_{1}$ and $z_{2}$ are the associated cosine of the scattering angles:
+\begin{equation}
+  s_{1} = -2k_{t}^{2}(1-z_{1}),\quad
+  s_{2} = -2k_{t}^{2}(1-z_{2}).
+\end{equation}
+
+\M
+We replace integration over the azimuthal angle $\phi$ in $\D\Omega=\D z_{1}\,\D\phi$ by 
+integrating over $z_{2}$ using the trigonometric relation [the spherical
+law of cosines]:
+\begin{equation}
+z_{2} = zz_{1} + \sqrt{(1 - z_{1}^{2})(1 - z^{2})}\cos(\phi).
+\end{equation}
+We can compute the Jacobian of the transformation (which Gribov tells us
+is $|\sin\phi|$(?)), we get
+\begin{equation}
+\int\D\Omega = \frac{2\,\D z_{1}\,\D z_{2}}{\sqrt{-K(z,z_{1},z_{2})}}
+\end{equation}
+where
+\begin{equation}
+K := (z - z_{1}z_{2})^{2} - (1 - z_{1}^{2})(1 - z_{2}^{2}).
+\end{equation}
+
+\M Combining everything together, we find
+\begin{equation}\label{eq:t-channel:discontinuity-in-terms-of-z}
+\amplitude_{3}(z,t) = \frac{k_{t}}{32\pi^{2}\omega_{t}}\iint
+\amplitude(z_{1},t)\amplitude^{*}(z_{2},t)\frac{\D z_{1}\,\D z_{2}}{\sqrt{-K(z,z_{1},z_{2})}}
+\end{equation}
+with the domain of integration determined by the condition
+$K(z,z_{1},z_{2})<0$.
+
+\M[-1] Now that the $z$-dependence has been explicitly extracted out, we can
+see that $\amplitude_{3}(z)$ is an analytic function of $z$ that can be
+analytically continued to $s>0$ (equivalently, to $z>1$).
+We just deform the contour of integration in Eq~\eqref{eq:t-channel:discontinuity-in-terms-of-z}
+but we must take care to avoid singularities. They will occur at some
+$z=z_{0}(t)>1$, and then contour deformation is not longer possible.
 
 \subsection{The Mandelstam Representation}
 
@@ -358,7 +525,7 @@ Note, Gribov Eq (2.5a) states:
 \begin{equation}
 k_{t} := \frac{\sqrt{t - 4\mu^{2}}}{2},\quad s = -2k_{t}^{2}(1 - z_{t}).
 \end{equation}
-The discontinuities across these cuts are, respectively, $2\I\amplitude_{1}(z,t)=D_{t}(s,t(s,z_{t}))$
+The discontinuities across these cuts are, respectively, $2\I\amplitude_{1}(z,t)=D_{s}(s,t(s,z_{t}))$
 and $2\I\amplitude_{2}(z,t) = D_{u}(s,t(s,z_{t}))$.
 
 We will be working with the cosine of scattering angle,
@@ -375,11 +542,21 @@ s\ln(s) \propto (z_{t}-1)\ln(z_{t}-1).
 \end{equation}
 For large $z_{t}\gg1$, $s[\ln(s)]^{2}\sim z_{t}[\ln(z_{t})]^{2}$.
 
-\M
+\N[1]{Remark} Further, any $x\in\RR$ positive satisfies $x[\ln(x)]^{2}<x^{2}$
+when
+\begin{equation}
+x > \exp\left(-2W_{0}(1/2)\right)\approx 0.494866.
+\end{equation}
+A quick numerical experiment confirms for $x=1/2$ that
+\begin{equation}
+\frac{1}{2}[\ln(1/2)]^{2}\approx0.240227 < \left(\frac{1}{2}\right)^{2}.
+\end{equation}
+
+\M[-1]
 In the $t$-channel partial-wave expansion,
 we can rewrite the partial-wave amplitudes for large enough $n$ as
 \begin{equation}
-f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
+f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{s}(s,t(s,z_{t}'))\,\D z_{t}'
 + \frac{1}{\I2\pi}\int^{-\infty}_{-z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,z_{t}'))\,\D z_{t}'.
 \end{equation}
 %% \textbf{NOTE:} I think I may be muddled here, I think I should be
@@ -397,7 +574,7 @@ Q_{n}(-z)=(-1)^{n}Q_{n}(z),
 \end{equation}
 we get
 \begin{equation}
-f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
+f_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{s}(s,t(s,z_{t}'))\,\D z_{t}'
 + \frac{(-1)^{n}}{\I2\pi}\int^{\infty}_{z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,-z_{t}'))\,\D z_{t}'.
 \end{equation}
 The factor of $(-1)^{n}$ causes problems when we want to study the
@@ -413,7 +590,7 @@ f^{-}_{\ell}|_{\ell=n=2k+1}=f_{n}.
 \end{equation}
 Then we have the expansion become
 \begin{equation}\label{eq:t-channel:froissart-gribov-transformed}
-f^{\pm}_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{t}(s,t(s,z_{t}'))\,\D z_{t}'
+f^{\pm}_{n} = \frac{1}{\I2\pi}\int^{\infty}_{z_{1}}Q_{n}(z_{t}')D_{s}(s,t(s,z_{t}'))\,\D z_{t}'
 \pm \frac{1}{\I2\pi}\int^{\infty}_{z_{2}}Q_{n}(z_{t}')D_{u}(s,u(s,-z_{t}'))\,\D z_{t}'.
 \end{equation}
 \end{theorem}
@@ -437,19 +614,26 @@ Note Theorem~\ref{thm:froissart-bound}, the Froissart bound combined
 with the optical theorem to tell us
 \begin{subequations}\label{eq:froissart-plus-optical-forces-upper-bound}
 \begin{equation}
-D_{u}(u,t) < \mbox{(const.)}s[\ln(s)]^{2}
+D_{s}(s,t) < \mbox{(const.)}s[\ln(s)]^{2}
 \end{equation}
 and
 \begin{equation}
-D_{t}(s,t) < \mbox{(const.)}s[\ln(s)]^{2}
+D_{u}(u,t) < \mbox{(const.)}s[\ln(s)]^{2}
 \end{equation}
 \end{subequations}
 Since $z_{t}\propto s$, this means to obtain Eq~\eqref{eq:t-channel:froissart-gribov-transformed},
 we must have $|D_{s}(z_{t},t)|<z^{\ell_{0}}$ as $z\to\infty$ to ensure
 convergence, and so this works only for $n>n_{0}\geq\ell_{0}$. 
 But Eq~\eqref{eq:froissart-plus-optical-forces-upper-bound} tells us
-that $n_{0}<2$.
+that:
+\begin{equation}
+\boxed{n_{0}<2.}
+\end{equation}
+This is an extroardinarily important point, it is a crucial premise in
+what I call ``Gribov's other theorem'' (there are no massless elementary
+particles of spin $J>1$).
 
+\M
 This forces us to add a few extra terms from the series in Eq~\eqref{eq:expansion-of-even-and-odd-parts-of-amplitude} to the 
 Eq~\eqref{eq:t-channel:froissart-gribov-transformed},
 permitting us to deform the contour of integration to neglect the
@@ -465,6 +649,23 @@ and
 \end{equation}
 \end{subequations}
 These sums contribute at most one term.
+
+\M We find the expression for the absorptive part of the $s$-channel
+amplitude using
+\begin{subequations}
+\begin{align}
+P_{\ell}(-(z+\I\varepsilon))-P_{\ell}(z+\I\varepsilon)
+&= \left[\E^{-\I\pi\ell}-\E^{\I\pi\ell}\right]P_{\ell}(z)\\
+&=-2\I\sin(\pi\ell)P_{\ell}(z).
+\end{align}
+\end{subequations}
+We then have
+\begin{subequations}
+\begin{align}
+\amplitude^{\pm}_{1}(s,t) &= \frac{1}{4\I}\int(2\ell+1)f^{\pm}_{\ell}(t)P_{\ell}(z_{s})\,\D\ell\\
+z_{s} &= 1 + \frac{2s}{t-4\mu^{2}}
+\end{align}
+\end{subequations}
 
 \N{References}
 I have found \S2.3 of \arXiv{2006.08221} useful, and section 1.6 [for

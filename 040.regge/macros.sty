@@ -54,8 +54,9 @@
 % There is probably a smarter way to imitated the style using titlesec,
 % but I just want something that works.
 \ifdefined\chapter
-\font\chapterfont=cmssbx10 scaled\magstep3
-\font\twelvess=cmss12
+%\font\chapterfont=cmssbx10 scaled\magstep3
+\def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
+\def\twelvess{\sffamily\large} % = cmss12
 \renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{plain}%
                     \global\@topnum\z@
@@ -88,6 +89,19 @@
    \c@page}}
 
 \fi
+
+\@ifclassloaded{report}{
+  \usepackage{etoolbox}
+  % Patch `titlepage` not to reset the page number
+  \patchcmd{\titlepage}{\setcounter{page}\@ne}{}{}{}
+  \patchcmd{\endtitlepage}{\setcounter{page}\@ne}{}{}{}
+  
+  % Patch `abstract` so that it shows the page number
+  \patchcmd{\abstract}{\titlepage}{\titlepage\thispagestyle{plain}}{}{}
+}{}
+
+
+
 
 
 \newskip\interchunkskip \interchunkskip=\medskipamount%
@@ -141,7 +155,24 @@
 \newtheorem{question}[chunk]{Question}
 
 \theoremstyle{definition}
+
+
+%% \newcommand{\openbox}{\leavevmode
+%%   \hbox to.77778em{%
+%%   \hfil\vrule
+%%   \vbox to.675em{\hrule width.6em\vfil\hrule}%
+%%   \vrule\hfil}}
+
+%% \newtheorem{xca}{\llap{\mantriangleright\kern.15em}Exercise}
+%% \newcommand\exercisesymbol{$||||$}%{$/\!/\!/\!/$}%{$\parallel\!\parallel$}
+%% \newenvironment{exercise}
+%%   {\renewcommand{\qedsymbol}{\exercisesymbol}%$\heartsuit$}%
+%%    \pushQED{\qed}\begin{xca}}
+%%   {\popQED\end{xca}}
+
+\theoremstyle{plain}
 \newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+
 
 \theoremstyle{rmkstyle}
 \newtheorem{remark}{Remark}[chunk]

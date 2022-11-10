@@ -17,7 +17,7 @@
 % section number (followed by a period or slash or whatever).
 \newcommand\paragraphprefix{}
 \def\secprefix{}
-\renewcommand\thechunk{\paragraphprefix\secprefix\arabic{chunk}.}
+\renewcommand\thechunk{\paragraphprefix\secprefix\arabic{chunk}}
 
 % \pushSection simply appends "\arabic{chunk}." to \secprefix's current value
 \def\iso@pushSection{
@@ -92,9 +92,9 @@
 %% \M is used for unlabeled paragraphs
 \newcommand\M[1][0]{\adjustSection{#1}\chunkbreak%
   \stepSec\noindent\ignorespaces%
-  \textbf{\thechunk\ignorespaces}\chunkspace\ignorespaces}
+  \textbf{\thechunk\@addpunct{.}\ignorespaces}\chunkspace\ignorespaces}
 
 %% \N is used for labeled paragraphs
 \newcommand\N[2][0]{\adjustSection{#1}\chunkbreak%
   \stepSec\noindent\ignorespaces%
-  \textbf{\thechunk\ignorespaces\chunkspace#2\@addpunct{.}\ignorespaces}\chunkspace\ignorespaces}
+  \textbf{\thechunk\@addpunct{.}\ignorespaces\chunkspace#2\@addpunct{.}\ignorespaces}\chunkspace\ignorespaces}
