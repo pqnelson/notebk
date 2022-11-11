@@ -71,20 +71,27 @@ so is $P_{\ell}(1 + t/2k_{s}^{2})$ for $t\geq 0$.
 
 Therefore each partial wave we have an estimate,
 \begin{subequations}
-  \begin{align}
-    \left(\frac{s}{s_{0}}\right)^{N}
-    &>\Im\amplitude(s,t) =
-    \sum^{\infty}_{\ell=0}\Im(f_{\ell}(s))(2\ell+1)P_{\ell}\left(1+\frac{t}{2k_{s}^{2}}\right)\\
-    \intertext{then using Eq~\eqref{eq:intro:froissart-thm:step-1},
-      observing $\sinh\alpha\approx\alpha$, using
-      the asymptotic approximation
-      $P_{\ell}(\cosh\alpha)\sim\sqrt{\alpha/\sinh\alpha}I_{0}((\ell + 1/2)\alpha)$,
-      and Hankel's asymptotic approximation of the Bessel function ${I_{0}(z)\sim\E^{z}/\sqrt{2\pi z}}$,
-      we rewrite the right-hand side as holding for each term (since
-      each term is a product of positive factors):}
-    \left(\frac{s}{s_{0}}\right)^{N}
-    &>\Im c(s,\ell)\left(2\pi\ell\frac{\sqrt{t}}{k_{s}}\right)^{-1/2}\exp\left[\frac{\ell}{k_{s}}(\sqrt{t}-\sqrt{4\mu^{2}})\right].
-  \end{align}
+  \begin{equation}
+\left(\frac{s}{s_{0}}\right)^{N}
+    >\Im\amplitude(s,t) =
+    \sum^{\infty}_{\ell=0}\Im(f_{\ell}(s))(2\ell+1)P_{\ell}\left(1+\frac{t}{2k_{s}^{2}}\right)
+  \end{equation}
+then using Eq~\eqref{eq:intro:froissart-thm:step-1},
+observing $\sinh\alpha\approx\alpha$, using
+the asymptotic approximation
+\begin{equation*}
+P_{\ell}(\cosh\alpha)\sim\sqrt{\frac{\alpha}{\sinh\alpha}}\,I_{0}\!\left(\left(\ell + \frac{1}{2}\right)\alpha\right),
+\end{equation*}
+and Hankel's asymptotic approximation of the Bessel function
+\begin{equation*}
+{I_{0}(z)\sim\frac{\E^{z}}{\sqrt{2\pi z}}},
+\end{equation*}
+we rewrite the right-hand side as holding for each term (since
+each term is a product of positive factors):
+\begin{equation}
+\left(\frac{s}{s_{0}}\right)^{N}
+    >\Im c(s,\ell)\left(2\pi\ell\frac{\sqrt{t}}{k_{s}}\right)^{-1/2}\exp\left[\frac{\ell}{k_{s}}(\sqrt{t}-\sqrt{4\mu^{2}})\right].
+\end{equation}
 \end{subequations}
 Since this holds for arbitrary positive $t<4\mu^{2}$, we conclude
 \begin{equation}

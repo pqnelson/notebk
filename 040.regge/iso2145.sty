@@ -1,4 +1,4 @@
-\newcounter{chunk}[section]
+\newcounter{chunk}%[section]
 \@ifundefined{@addpunct}{
   \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
   }{}
@@ -11,7 +11,7 @@
 \newcount\sectionDepth \sectionDepth=0
 
 % \secprefix will be redefined to append the current section number
-% followed by a period
+% followed by a period. DO NOT MODIFY THE SECPREFIX.
 % 
 % The `paragraphprefix` is for users who want to prepend, say, the
 % section number (followed by a period or slash or whatever).
@@ -29,6 +29,7 @@
 \def\resetParagraphChunks{
   \gdef\secprefix{}
   \global\sectionDepth=0
+  \iso@setSection{0}
 }
 
 % update \secprefix from "a.b.(...).c.d" to "a.b.(...).c"
@@ -86,15 +87,24 @@
 }
 \def\adjustSection#1{\ifnum#1<0\iso@up{#1}\else{\ifnum#1>0\iso@down{#1}\fi}\fi}
 
+\newskip\interchunkskip \interchunkskip=\medskipamount%
+% cwebmac.tex has \interchunkskip=12pt minus 3pt
+% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
 
-\newcommand\chunkbreak{\medbreak}
+\newcount\@chunkpenalty
+\@chunkpenalty=-100
+\newcommand\chunkbreak{\par\ifdim\lastskip<\interchunkskip
+  \removelastskip\penalty\@chunkpenalty\vspace\interchunkskip\fi}
+
 \newcommand\chunkspace{\enspace}
 %% \M is used for unlabeled paragraphs
+%% #1 is the number of levels you want to go up (or down) for this chunk.
 \newcommand\M[1][0]{\adjustSection{#1}\chunkbreak%
   \stepSec\noindent\ignorespaces%
   \textbf{\thechunk\@addpunct{.}\ignorespaces}\chunkspace\ignorespaces}
 
 %% \N is used for labeled paragraphs
+%% #1 is the number of levels you want to go up (or down) for this chunk.
 \newcommand\N[2][0]{\adjustSection{#1}\chunkbreak%
   \stepSec\noindent\ignorespaces%
   \textbf{\thechunk\@addpunct{.}\ignorespaces\chunkspace#2\@addpunct{.}\ignorespaces}\chunkspace\ignorespaces}

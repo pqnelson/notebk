@@ -22,6 +22,7 @@ The $u$-channel is the $t$-channel with the roles of particles 3 and 4
 swapped.
 \section{Basic Principles}
 
+\subsection{Invariant scattering amplitude and cross section}
 \M
 The cross-section of any process $2\to n$ (where 2 particles scatter,
 and produces a final state consisting of $n$ particles) is related to
@@ -51,11 +52,12 @@ million different derivations of it.
 phase ``invariant amplitude'' used, in Gribov \S1.1.1; perhaps I just
 haven't been paying attention.
 
-\N[-1]{Analyticity and Causality}
+\subsection{Analyticity and Causality}
+\N{Assumption}
 We assume the scattering amplitude $\amplitude$ is an analytic function
 of its arguments.
 
-\M[1]
+\M
 Gribov asserts this is ``a manifestation of the causality principle''.
 Without analyticity, Gribov asserts scattered waves could appear at
 their source before being emitted. I do not see how, not at present.
@@ -75,16 +77,19 @@ Gribov concedes, ``One needs it in order to write the dispersion representation
 for the amplitudes (to be able to close the integration contour over an
 infinitely large circle).''
 
-\N[-1]{Singularities}
+\subsection{Singularities}
+\N[-1]{Assumption}
 We assume all singularities of the amplitude on the physical sheet have
 the meaning of reaction thresholds (in the sense that, they are
 determined by the physical masses of the intermediate state particles).
 
-\N[1]{Landau Singularities}\index{Landau Singularity}
+\N{Landau Singularities}\index{Landau Singularity}
 In terms of Feynman diagrams, these are the Landau singularities. This
 appears to be how Landau~\cite{Landau:1959fi} originally envisioned them.
 
-\N[-1]{Crossing Symmetry}
+\subsection{Crossing Symmetry}
+
+\M
 Gribov takes a diversion to explain crossing symmetries of amplitudes.
 The basic idea being, since the amplitude is a function of kinematical
 invariants, we can change the sign of $p_{i0}$ (the time component of
@@ -94,7 +99,8 @@ example, the same analytic function describes the reaction:
 \begin{equation}
 a(p_{1}) + b(p_{2})\to c(p_{3}) + d(p_{4})
 \end{equation}
-for $p_{10}>0$, $p_{20}>0$, $p_{30}>0$, and $p_{40}>0$; as well as,
+for $p_{10}>0$ --- that is, $(p_{(1)})_{0}>0$ the timelike component for
+the 4-momentum of particle 1 ---, $p_{20}>0$, $p_{30}>0$, and $p_{40}>0$; as well as,
 \begin{equation}
 a(p_{1}) + \bar{c}(-p_{3})\to\bar{b}(-p_{2})  + d(p_{4})
 \end{equation}
@@ -106,7 +112,7 @@ a(p_{1}) + \bar{d}(-p_{4}) \to\bar{b}(-p_{2}) + c(p_{3})
 \end{subequations}
 for $p_{10}>0$ and $p_{30}>0$, but $p_{20}<0$ and $p_{40}<0$.
 
-\M[1]
+\M
 What's going on here is a little subtle. Basically, we're considering
 the physical $s$-channel region ($s>0$, $t<0$, $u<0$) for the process
 $a+b\to c+d$. The amplitude is then $\amplitude_{a+b\to c+d}(s,t,u)$.
@@ -125,6 +131,11 @@ describing the $a+\bar{d}\to\bar{b}+c$ process, giving us the relation
 Donnachie \textit{et al}.~\cite{Donnachie:2002en} is our source for this
 clarification.
 
+\N{Consequences}
+Gribov asserts we can draw a number of corollaries from crossing symmetry.
+But the literature I have found suggests the opposite is true --- e.g.,
+from CPT invariance we can infer crossing symmetry.
+
 \N[1]{CPT Theorem}
 The crossing symmetry implies the $CPT$-theorem: invariance of the
 amplitude $\amplitude$ with respect to the combination of charge
@@ -137,12 +148,14 @@ We can derive the crossing symmetry from three assumptions stated as Eq~\eqref{e
 We can use Eq~\eqref{eq:introduction:crossing-symmetry:assumptions}
 to derive the spin-statistics relation theorem.
 
-\N[-1]{Unitarity Condition for the Scattering Matrix}. The physical
+\subsection{Unitarity Condition for the Scattering Matrix}
+
+\N{Probabilities sum to unity} The physical
 meaning of unitarity is quite simple: the sum of probabilities of all
 processes which are possible (at a given energy) is equal to 1,
 $SS^{\dagger}=1$.
 
-\N[1]{Amplitude}
+\N{Amplitude}
 The amplitude $\amplitude$ may be related to the $S$-matrix by writing
 \begin{equation}
 S = 1 + \I A.
@@ -560,7 +573,7 @@ other quantum mechanics texts.
 $r_{0}$, the partial waves behave like $(kr_{0})^{\ell}$ for $k\to 0$.
 Similar results hold in $S$-matrix theory.
 
-\M[1] The singularity in $t$ of the amplitude $\amplitude(s,t)$---the
+\M The singularity in $t$ of the amplitude $\amplitude(s,t)$---the
 closest to the physical region in the $s$-channel---is located at
 $t=4\mu^{2}$. Therefore, the partial wave expansion should be convergent
 for $z$ up to $z_{0}=1 + (4\mu^{2}/2k_{s}^{2})$.
@@ -575,7 +588,7 @@ series \emph{must} be divergent.
 \smallbreak
 \subsection{Singularities of \texorpdfstring{$\Im(\amplitude)$}{Im(A)} on the Mandelstam Plane}
 
-\N[-1]{Location of Singularities in $t$} Gribov repeats ``the same arguments'' for the imaginary part of
+\N{Location of Singularities in $t$} Gribov repeats ``the same arguments'' for the imaginary part of
 the $s$-channel amplitude $\Im(\amplitude)$, asserting we would get
 \begin{equation}
 \Im(f_{\ell}(s))\propto k_{s}^{2\ell}\quad\mbox{as } k_{s}\to0.
@@ -587,7 +600,7 @@ which implies
 \end{equation}
 Both of these cannot be true simultaneously.
 
-\M[1]
+\M
 If we plugged this into Eq~\eqref{eq:introduction:partial-wave-expansion}
 for the partial-wave expansion of the amplitude, then we see the series
 for $\Im_{s}(\amplitude(s,t))$ remains convergent at $t=\mu^{2}$.

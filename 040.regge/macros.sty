@@ -25,21 +25,43 @@
   \ifpdf\else dvipdfmx\fi
 ]{hyperref}
 \usepackage{doi}
+\def\negsuperthinspace{\kern-.0625em }
+\def\superthinspace{\kern .0625em } % = half of a thinspace
 
-\titleformat*{\section}{\resetParagraphChunks\Large\bfseries\sffamily}
-\titleformat*{\subsection}{\large\bfseries\sffamily}
+\newcommand{\textudot@}[1]{%
+  \begingroup
+  \sbox\z@{#1{:}}%
+  \sbox\tw@{#1{.}}%
+%  \raisebox{\dimexpr\ht\z@}{#1.}% flushed to the top, it seems
+  \raisebox{\dimexpr\ht\z@-\ht\tw@}{#1.}% roughly top of colon
+  \endgroup
+}
+\newcommand\textudot{\textudot@\relax}
+\newif\if@in@appendix\@in@appendixfalse
+\let\oldappendix\appendix
+\def\appendix{\@in@appendixtrue\oldappendix}
+% I have had a run of bad luck with hyperref getting into infinite loops
+% around this character, so I am going to avoid that issue.
+\DeclareRobustCommand{\chunk@separator}{.} % \texorpdfstring{\textudot}{.}}
+\DeclareRobustCommand{\chunk@divider}{\negsuperthinspace/\negsuperthinspace}
+
+\DeclareRobustCommand\chunks@start@subsection{\resetParagraphChunks%
+  \gdef\theHchunk{\thesubsection.\secprefix\arabic{chunk}.}%
+  \gdef\paragraphprefix{\thechapter\chunk@separator\arabic{section}\chunk@separator\arabic{subsection}\chunk@divider}}
+\DeclareRobustCommand\chunk@start@section{\resetParagraphChunks%
+  \gdef\theHchunk{\thesection\secprefix\arabic{chunk}.}%
+  \gdef\paragraphprefix{\thechapter\chunk@separator\arabic{section}\chunk@divider}}
+
+\titleformat*{\section}{\protect\chunk@start@section\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\protect\chunks@start@subsection\large\bfseries\sffamily}
 \titleformat*{\subsubsection}{\bfseries\sffamily}
 
+\renewcommand\paragraphprefix{\thechapter\chunk@separator\arabic{section}\chunk@divider}
 \@ifundefined{theHchunk}{
   \newcommand\theHchunk{\paragraphprefix\secprefix\arabic{chunk}.}
 }{
   \renewcommand\theHchunk{\paragraphprefix\secprefix\arabic{chunk}.}%{\thechunk}
 }
-%% \@ifundefined{chapter}{%
-%%   \renewcommand{\theHchunk}{\theHsection.\number\value{chunk}}
-%% }{%
-%%   \renewcommand{\theHchunk}{\theHchapter.\theHsection.\number\value{chunk}}
-%% }
 
 % titlesec doesn't adequately work with chapter formatting, so I'm doing
 % it BY HAND.
@@ -54,6 +76,12 @@
 % There is probably a smarter way to imitated the style using titlesec,
 % but I just want something that works.
 \ifdefined\chapter
+\DeclareRobustCommand\chunk@start@chapter{\resetParagraphChunks%
+  \gdef\theHchunk{\thechapter.\secprefix\arabic{chunk}.}%
+  \gdef\paragraphprefix{\thechapter\chunk@separator\arabic{section}\chunk@divider}}
+\DeclareRobustCommand\chunk@start@chapter@nonumber{\resetParagraphChunks%
+  \gdef\theHchunk{\thechapter.\secprefix\arabic{chunk}.}%
+  \gdef\paragraphprefix{\thechapter\chunk@divider}}
 %\font\chapterfont=cmssbx10 scaled\magstep3
 \def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
 \def\twelvess{\sffamily\large} % = cmss12
@@ -73,14 +101,15 @@
     \fi
     \interlinepenalty\@M
     \chapterfont\hfill #1\par\nobreak
-    \resetParagraphChunks\vskip 2pc
+    \vskip 2pc
+    \protect\chunk@start@chapter%
 }}
 % starred chapter heading
 \def\@makeschapterhead#1{%
   {\parindent \z@ \raggedright \normalfont
     \interlinepenalty\@M
     \chapterfont\hfill #1\par\nobreak
-    \resetParagraphChunks\vskip 2pc
+    \vskip 2pc\protect\chunk@start@chapter@nonumber
   }}
 
 % page numbering should never reset
@@ -163,15 +192,15 @@
 %%   \vbox to.675em{\hrule width.6em\vfil\hrule}%
 %%   \vrule\hfil}}
 
-%% \newtheorem{xca}{\llap{\mantriangleright\kern.15em}Exercise}
-%% \newcommand\exercisesymbol{$||||$}%{$/\!/\!/\!/$}%{$\parallel\!\parallel$}
-%% \newenvironment{exercise}
-%%   {\renewcommand{\qedsymbol}{\exercisesymbol}%$\heartsuit$}%
-%%    \pushQED{\qed}\begin{xca}}
-%%   {\popQED\end{xca}}
+\newtheorem{xca}{\llap{\mantriangleright\kern.15em}Exercise}
+\newcommand\exercisesymbol{$\parallel\mskip-2mu\parallel$}%{$/\!/\!/\!/$}%{$\parallel\!\parallel$}
+\newenvironment{exercise}
+  {\renewcommand{\qedsymbol}{\exercisesymbol}%$\heartsuit$}%
+   \pushQED{\qed}\begin{xca}}
+  {\popQED\end{xca}}
 
-\theoremstyle{plain}
-\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+%\theoremstyle{plain}
+%\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
 
 
 \theoremstyle{rmkstyle}
