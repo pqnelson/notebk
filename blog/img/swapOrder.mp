@@ -13,15 +13,15 @@ beginfig(0)
   p[3] = buildcycle(p1,p2);
   fill p3 withcolor 0.8white;
 
-  
+
   drawdblarrow (-u,0)--(sc*u+u,0);
   drawdblarrow (0,-u)--(0,sc*u+u);
 
   draw p1;
   draw p2;
 
-  label.rt(btex $\scriptstyle 1=\,x+y$ etex, point 0.5length(p1) of p1);
-  label.lft(btex $\scriptstyle 1=x^{2}+y^{2}$ etex, (point 0.25length(p2) of p2)+(-3,0));
+  label.rt(btex $\scriptstyle 1=\,x^{2}+y^{2}$ etex, point 0.5length(p1) of p1);
+  label.lft(btex $\scriptstyle 1=x+y$ etex, (point 0.25length(p2) of p2)+(-3,0));
 
   label.lft(btex $y$ etex, (0,sc*u+.5u));
   label.bot(btex $x$ etex, (sc*u+.5u,0));
@@ -40,15 +40,15 @@ beginfig(1)
   p[3] = buildcycle(p1,p2);
   fill p3 withcolor 0.8white;
 
-  
+
   drawdblarrow (-u,0)--(sc*u+u,0);
   drawdblarrow (0,-u)--(0,sc*u+u);
 
   draw p1;
   draw p2;
 
-  label.top(btex $\scriptstyle 1=\,x+y$ etex, (point 0.75length(p1) of p1)+(0,2));
-  label.lft(btex $\scriptstyle 1=x^{2}+y^{2}$ etex, (point 0.25length(p2) of p2)+(-3,0));
+  label.top(btex $\scriptstyle 1=\,x^{2}+y^{2}$ etex, (point 0.75length(p1) of p1)+(0,2));
+  label.lft(btex $\scriptstyle 1=x+y$ etex, (point 0.25length(p2) of p2)+(-3,0));
 
   label.lft(btex $y$ etex, (0,sc*u+.5u));
   label.bot(btex $x$ etex, (sc*u+.5u,0));
@@ -113,7 +113,7 @@ beginfig(3)
   label(btex $\bullet$ etex, z1);
 
 %  label.rt(btex Enters at $y=
-  
+
   label.lft(btex $1$ etex, (0,Y));
   label.bot(btex $3$ etex, (X,0));
 

@@ -1,0 +1,51 @@
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{enumitem}
+\setlist{topsep=0pt,noitemsep,label=(\arabic*)}
+% amsppt layout
+\RequirePackage[letterpaper,inner=6pc,textwidth=30pc,
+  textheight=50.5pc,top=6pc]{geometry}
+\usepackage{tocbibind}
+\usepackage{manfnt}
+\usepackage[final]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tocloft}
+
+\setlength\cftparskip{-2pt}
+\renewcommand\cftsecafterpnum{\\ \vspace{-10pt}}
+\setlength\cftbeforesecskip{2pt}
+\usepackage{titlesec}
+
+\usepackage[pdfusetitle]{hyperref}
+
+\hypersetup{colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+%  \ifpdf\else dvipdfmx\fi
+}
+\pdfinfo{ /CreationDate (20120617143915)}
+
+\usepackage{chunk}
+
+\numberwithin{equation}{section}
+
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\def\more{}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}[section]
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk]{Definition}
+\newtheorem{example}[chunk]{Example}
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk]
+
+\newif\ifblog\blogfalse
+\newif\iftex\textrue
