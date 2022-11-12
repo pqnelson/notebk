@@ -1,17 +1,17 @@
 %%
 %% derivatives.tex
-%% 
+%%
 %% Made by alex
 %% Login   <alex@tomato>
-%% 
+%%
 %% Started on  Thu Nov  3 14:31:59 2011 alex
 %% Last update Wed May 30 10:17:56 2012 Alex Nelson
 %%
 
-\subsection{Derivative}
+\section{Derivative}
 \M
 We still have these bonus parts when considering the slope. That
-is, for some nonzero $\Delta x$ and arbitrary $f(x)$, we have 
+is, for some nonzero $\Delta x$ and arbitrary $f(x)$, we have
 \begin{equation}
 f(x+\Delta x)-f(x)=h(x)\Delta x+\bigO\left((\Delta x)^{2}\right)
 \end{equation}
@@ -38,7 +38,7 @@ But we want to describe the \emph{instantaneous} rate of
 change. Although this sounds scary, it really means we don't want
 to work with some extra parameter $\Delta x$. We want to consider
 the rate of change and describe it in such a way that it doesn't
-depend on $\Delta x$. 
+depend on $\Delta x$.
 
 So what do we do? Well, the first answer is to set $\Delta x$ to
 be 0. This is tempting, but wrong, because we end up with
@@ -152,7 +152,7 @@ define a new function
 \begin{equation}\label{eq:whereWeDefinedH}
 h(x)=f(x)g(x),
 \end{equation}
-then what's 
+then what's
 \begin{equation}
 \Delta h(x)=?
 \end{equation}
@@ -234,7 +234,7 @@ The claim is that
 \end{equation}
 Is this surprising? No, but the surprising part is that it is a
 \emph{consequence} of the product rule. How to prove this? Well,
-we need to do it by induction on $n$. 
+we need to do it by induction on $n$.
 
 \textbf{Base Case} ($n=2$) we see that
 \begin{equation}

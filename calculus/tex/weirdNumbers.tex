@@ -1,14 +1,14 @@
 %%
 %% weirdNumbers.tex
-%% 
+%%
 %% Made by alex
 %% Login   <alex@tomato>
-%% 
+%%
 %% Started on  Thu Nov  3 14:44:05 2011 alex
 %% Last update Wed May 30 10:17:08 2012 Alex Nelson
 %%
 
-\subsection{Weird Numbers}
+\section{Weird Numbers}
 %\subsection{Slope}
 
 \N{Slope}
@@ -30,7 +30,7 @@ What is this? Well, we plug in the definition of $g$ to find
 \begin{equation}
 \Delta g(x)=(m(x+\Delta x)+b)-(mx+b)
 \end{equation}
-which reduces to 
+which reduces to
 \begin{equation}
 \Delta g(x)=m\Delta x.
 \end{equation}
@@ -63,7 +63,7 @@ linear in $\Delta x$.
 
 \begin{problem}
 What is $\Delta x\bigO(\Delta x)$? What is $(\Delta
-x)^{-1}\bigO\left((\Delta x)^{2}\right)$? 
+x)^{-1}\bigO\left((\Delta x)^{2}\right)$?
 \end{problem}
 
 We see that we are abusing notation and writing
@@ -107,7 +107,7 @@ We divide both sides by $\Delta x$
 \frac{\Delta f(x)}{\Delta x}=nx^{n-1}+\bigO(\Delta x).
 \end{equation}
 But we have a problem that we didn't have before: the slope
-depends on $\Delta x$ and $x$. 
+depends on $\Delta x$ and $x$.
 
 Historically, people noted that we were working with a term
 $\bigO((\Delta x)^{2})$. If we could make that term equal to 0,
@@ -116,7 +116,7 @@ we formally invent a number $\varepsilon$ and use it instead of a
 finite nonzero number $\Delta x$.
 
 %\subsection{$\varepsilon$ and $\sqrt{-1}$}
-\N{$\varepsilon$ and $\sqrt{-1}$} 
+\N{$\varepsilon$ and $\sqrt{-1}$}
 We know that we have a ``number'' $\I$ satisfying
 \begin{equation}
 \I^{2}=-1.\label{eq:definingPropertyForI}
@@ -131,7 +131,7 @@ p(x,y)=x+\I\cdot y.
 Of course, we can formally multiply these polynomials together,
 and we end up with the number system (``ring'') of complex numbers
 $\CC$ (we would have to prove that $1/\I$ exists to make it a
-field). 
+field).
 \begin{problem}
 Why do we not have higher order terms in $\I$? That is, a general
 polynomial $x+\I\cdot y+\I^{2}\cdot z + \dots$?
@@ -176,7 +176,7 @@ problems. For example: what is $\varepsilon^{-1}$?
 %\subsection{Division by Zero?}
 \N{Division by Zero?}
 The problem is: what is $\varepsilon^{-1}$? The answer is: we
-don't know. 
+don't know.
 
 However, why would $\varepsilon$ ever be useful? We can consider
 \begin{equation}
@@ -225,7 +225,7 @@ cannot get rid of the factor $\varepsilon$.
 The take home moral is that $\bigO(\dots)$ enables us to
 \emph{rigorously} consider infinitesimals. How? Well, the most
 significant terms are written out explicitly, and the rest are
-swept under the rug with $\bigO(\dots)$. For our example of 
+swept under the rug with $\bigO(\dots)$. For our example of
 \begin{equation}
 f(x)=x^{n}
 \end{equation}
