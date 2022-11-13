@@ -16,6 +16,29 @@
 \def\defaultStringStyle{\color{ghstring}}
 \def\defaultBooleanStyle{\color{ghBlue}}
 
+
+% Ugly hack to make quotes, keywords, etc., highlighted properly
+% https://tex.stackexchange.com/a/448823
+\def\makeGhBlue#1{\textcolor{ghBlue}{#1}}
+
+\usepackage{expl3}
+
+\def\lisp@normalstyle{\color{ghDefaultColor}\small\ttfamily}
+
+\def\noprint#1{}
+
+\ExplSyntaxOn
+\newcommand\lispprefixes
+{
+  \tl_set:No \l_demo_tl {\the\use:c{lst@token}}
+  \regex_replace_all:nnN { ([\c{lst@um'}\c{lst@um\#}\:]+[^\s\h]+) } { \c{makeGhBlue}\cB{ \1 \cE} } \l_demo_tl
+ % \regex_replace_all:nnN { ([\c{lst@um'}\c{lst@um\#}\:]+[\-\.a-zA-Z0-9?!]+) } { \c{makeGhBlue}\cB{ \1 \cE} } \l_demo_tl
+  \tl_use:N \l_demo_tl
+  \noprint
+}
+\ExplSyntaxOff
+
+
 \lstdefinelanguage{lisp}
 {morekeywords={and,
     case,ccase,ctypecase,
@@ -32,31 +55,41 @@
    morekeywords=[2]{append,car,cdr,cond,cons,eval,format,lambda,list,listp,load,memberp,nil,null,progn,quote,setf,setq,t},
    morekeywords=[3]{function,functionp,next-method-p,slot-boundp,slot-value},
    morecomment=[l];,%
-   alsoletter={.\#-},
+   alsoletter={-\-.':\#?!},
+   basicstyle=\lisp@normalstyle,%\footnotesize\ttfamily,
+   keywordstyle=\defaultKWStyle,
+   keywordstyle=[2]\color{ghConstant},
+   commentstyle=\defaultCommentStyle,
+   stringstyle=\defaultStringStyle,
+   identifierstyle=\lispprefixes,
    morestring=[b]"%
 }
 
+% -3pt seems to give a comfortable margin between the frame and the code
+\mdfdefinestyle{codestyle}{%
+  innertopmargin=-3pt,
+  innerbottommargin=-3pt}
+
+% For, you know, *actual* code.
 \lstnewenvironment{code}
-  {%
-   \mdframed[roundcorner=5pt]%
-   \lstset{language=lisp,
-     basicstyle=\color{ghDefaultColor}\small\ttfamily,%\footnotesize\ttfamily,
-     keywordstyle=\defaultKWStyle,
-     keywordstyle=[2]\color{ghConstant},
-     commentstyle=\defaultCommentStyle,
-     stringstyle=\defaultStringStyle,
-     moredelim=[s][\color{ghConstant}]{:}{\ },
-     moredelim=[s][\color{ghConstant}]{\#}{\ },
-     % It seems github highlights everything like "#..." the same way
-     %% moredelim=[s][\color{ghConstant}]{\#:}{\ },
-     %% moredelim=[s][\color{ghConstant}]{\#'}{\ },
-    % identifierstyle=\color{ghViolet},
-     numbers=left,
-     numberstyle=\tiny,
-     stepnumber=2,
-     showstringspaces=false,
-     xleftmargin=-5pt,
-     upquote=true
-   }%
-  }
-  {\endmdframed}
+{\mdframed[style=codestyle]%
+ \lstset{language=lisp,
+   numbers=left,
+   numberstyle=\tiny,
+   stepnumber=2,
+   showstringspaces=false,
+   xleftmargin=-5pt,
+   upquote=true}}
+{\endmdframed}
+
+% For snippets showing how to use the code
+\lstnewenvironment{lisp-example}
+{\lstset{language=lisp,
+   numbers=left,
+   numberstyle=\tiny,
+   stepnumber=2,
+   showstringspaces=false,
+   xleftmargin=-5pt,
+   upquote=true}%
+ \mdframed[style=codestyle]\ignorespaces}
+{\endmdframed\ignorespaces}

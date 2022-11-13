@@ -1,4 +1,4 @@
-\documentclass[en-US]{report}
+\documentclass[en-US,oneside]{book}%{report}
 \usepackage{deriv}
 \usepackage[useregional=text]{datetime2}
 \DTMlangsetup[en-US]{mapzone=true}
@@ -13,13 +13,16 @@
 \author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}}
 \date{November 12, 2022}
 \begin{document}
+\frontmatter
 \maketitle
 
 \tableofcontents
+\mainmatter
+\include{tex/introduction}
+\include{tex/elementary-algebra}
+\include{tex/trigonometry}
+\include{tex/lisp}
 
-\input{tex/elementary-algebra}
-\input{tex/trigonometry}
-\input{tex/lisp}
-\input{tex/bib}
-%\DTMenUSpacificzonemaps
+\backmatter
+\include{tex/bib}
 \end{document}

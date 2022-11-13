@@ -1,0 +1,60 @@
+\chapter{Introduction}
+
+\M
+Computer algebra systems, like Wolfram Mathematica, Maple, etc., tend to
+do symbolic computation well. Their basic structure could be described
+as using rewrite rules to manipulate expressions, according to the rules
+of elementary algebra and calculus. The problem is, as Cauchy decried,
+the results may not always make sense.
+
+This has been a staple of computer science and mathematical literature
+for decades now, chronicling bugs encountered in the various computer
+algebra systems. Excellent work has been done by Fredrik Johansson~\cite{johansson2020:fungrim} and
+friends in creating the opensource ``Mathematical Functions
+Grimoire''\footnote{See \url{https://fungrim.org/}} in an attempt to
+standardize rules and expected results. It is not a test suite, but it
+can be used as the basis for one.
+
+\N{Question: Automate Euler?}
+This motivates the question we examine in this note: can we ``encode''
+rules to simulate Eulerian reasoning? Can we create an ``automated Euler''?
+
+\M
+We are not particularly concerned about ``accuracy'', per se, in the
+sense that if ``AE'' [automated Euler] generates a formal solution to a
+symbolic problem, then we will be happy.
+
+\N{Are the rules correct?}
+This begs the next question, are the rules we encode ``correct''? It is
+entirely plausible there was an error in transcription, for example. Can
+we have some way to verify the correctness of our system (in some
+suitable sense)?
+
+I think we can create an ``ersatz theorem prover'' to prove a rule
+follows from previous ones. We can use these proofs like unit tests, in
+the sense that they are run ``on demand'' as opposed to everytime in
+production.
+
+\M
+Since we have some ``vague ideas'' about what we're doing, it seems wise
+to use a Lisp for our programming language. Lisp is one of the few (if not, the
+only) programming language where the metalanguage is also the object
+language (``homoiconic'' in a strong sense, not a buzzword sense).
+Mathematics, sadly, also muddles its object language and metalanguage,
+as Nick de Bruijn~\cite{de-bruijn:aut001} realized back in 1968:
+\begin{quote}
+As to the question what part of mathematics can be written in \textsc{Automath},
+it should first be remarked that we do not possess a workable definition
+of the word ``mathematics''. Quite often a mathematician jumps from his
+mathematical language into a kind of metalanguage, obtains results
+there, and uses these results in his original context. It seems to be
+very hard to create a single language in which such things can be done
+without any restriction. Of course it is possible to have a language in
+which discussions about the language itself can be expressed, but that
+is not the difficulty. The problem is to extend a given text $T_{1}$, by
+means of a metalingual discussion $T_{2}$ ($T_{2}$ talks about $T_{1}$) and to put $T_{2}$
+in the context of $T_{1}$, instead of creating a new context where both $T_{1}$
+and $T_{2}$ can take place. For, if $T_{1}$ is placed in a new context, it is not
+the same text any more; anyway, it is not available at the places where
+the old $T_{1}$ was available.
+\end{quote}

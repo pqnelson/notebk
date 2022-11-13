@@ -4,49 +4,321 @@
 We will use Lisp as our programming language, because it is
 \emph{Eulerian} in nature.
 
-\begin{code}
-(defun meaning (life)
-  "Return the computed meaning of LIFE"
-  (let ((meh "abc"))
-    ;; Invoke krakaboom
-    (loop :for x :across meh
-       :collect x)))
+\N{Arithmetic Operators}
+Neither Common Lisp nor Scheme provide a specification for how
+associativity works with their arithmetic operators. We will stipulate
+left-associativity:
 
-(defun partition (n coll)
-  (declare (type integer n)
-           (type (or cons nil) coll))
-  (let ((results nil))
-    (labels ((partition-inner (k lst)
-               (if (and (plusp k)
-                        (not (endp lst)))
-                   (progn
-                     (push (car lst) results)
-                     (partition-inner (1- k) (cdr lst)))
-                   (list (nreverse results) lst))
-               ))
-      (partition-inner n coll))))
+\begin{lisp-example}
+(+ x y z...) := (+ (+ x y) z...)
+(- x y z...) := (- (- x y) z...)
+(* x y z...) := (* (* x y) z...)
+(/ x y z...) := (/ (/ x y) z...)
+\end{lisp-example}
 
-(defun partition-by (pred? coll)
-  (labels ((partition-inner (lst results)
-             (if (funcall pred? (car lst))
-                 (return-from partition-by (list (nreverse results) lst))
-                 (if (endp lst)
-                     (list results nil)
-                     (partition-inner (cdr lst) (cons (car lst) results))))));;;
-    (partition-inner coll nil)
-    ;; results
-    ))
+\begin{remark}
+This only makes a difference when the operations are nonassociative,
+e.g., with floating-point arithmetic. But who knows, someone may want to
+extend this code to work for Octonions (or Lie algebras, or whatever).
+\end{remark}
 
-(defun expand-hypothesis (th)
-  "Transform `|- (and p q) => r' into `|- p => (q => r)'."
-  (declare (type thm-implies th))
-  (let* ((p-and-q (implies-premise (thm-statement th)))
-         (p (car (l-and-conjuncts p-and-q)))
-         (q (cadr (l-and-conjuncts p-and-q))))
-    (assert (endp (cddr (l-and-conjuncts p-and-q))))
-    (modus-ponens (reduce #'implies-add-assume
-                          (l-and-conjuncts p-and-q)
-                          :initial-value th
-                          :from-end t)
-                  (and-pair p q))))
-\end{code}
+\begin{remark}
+Clojure \emph{does} define its arithmetic operators in the
+\verb#core.clj# library, which has no formal definition (which is just
+as bad).
+\end{remark}
+
+\N{Notation}
+We encode $x^{-1}$ as \lstinline[language=lisp]{(/ x)} since it is the
+multiplicative inverse of $x$. Confusingly, $x^{m}$ is encoded as
+\lstinline[language=lisp]{(expt x m)}, but the source of confusion stems
+from the abuse of notation for $x^{-1}$ coincides with $x^{m}$ when $m=-1$.
+
+\section{Pattern Matching}
+
+\M
+Much of the heavy lifting will be done for us via ``pattern matching''.
+A pattern is just an S-expression with some ``unknowns'' which we match
+against a given S-expression. The result will be some dictionary binding
+these ``pattern variables'' to data from our input expression.
+
+There are two types of variables appearing in a pattern:
+\begin{enumerate}
+\item Segment Variables \lstinline[language=lisp]{(?? segment)}, which
+  match against a an arbitrary number [zero or more] of elements; and
+\item Pattern Variables \lstinline[language=lisp]{(? pattern)}, which match against a single elements.
+\end{enumerate}
+There is an optional predicate which help us refine matches further, for
+example
+\lstinline[language=lisp]{(? pattern number?)}. In a segment variable,
+this predicate applies to a single argument: the list of elements
+matching the segment variable.
+
+\N{Dictionary of Bindings}
+When we match a pattern against an expression, we will construct a
+key-value dictionary whose keys are the pattern variables and pattern
+segments, and whose values are whatever they match against from the
+input expression. This is the intended goal for our
+\lstinline[language=lisp]{match} function, if it succeeds. If the
+pattern is not-applicable to the input expression, then it produces a
+\lstinline[language=lisp]{:fail}.
+
+\N{Substitution}
+Given some dictionary of bindings, and an expression involving pattern
+variables and pattern segments found in the dictionary, we generally
+want to replace the pattern variables (and segments) with their
+associated values. In other words, we want to ``substitute'' their bound
+values using this dictionary.
+This will be done using the
+\lstinline[language=lisp]{substitute-in} function.
+
+\subsection{Term Rewriting}
+\N{Term rewriting}
+Term rewriting amounts to checking an element against given a list of ``rules'',
+finding the first applicable rule, then produces a new element using the
+data produced from the \lstinline[language=lisp]{match} function.
+
+A rule, for us, consists of two or three elements:
+\begin{enumerate}
+\item A ``pattern'' to match against,
+\item Some optional ``guard'' or extra conditions encoded as a predicate
+  (with the convention \lstinline[language=lisp]{nil} being ``no guard''
+  and not ``constantly false''), and
+\item A ``skeleton'' which tells a rewrite-system what to do with the matches.
+\end{enumerate}
+We say a rule is ``applicable'' if \lstinline[language=lisp]{match}
+applied to the pattern against the given input does not
+\lstinline[language=lisp]{:fail}.
+
+\N{Evaluation in the skeleton}
+If we want to evaluate an expression in the skeleton involving pattern
+or segment variables, then we have a special \lstinline[language=lisp]{:eval}
+keyword. It substitutes in the values bound to the variables, then
+evaluates the expression, and substitutes the result into the skeleton.
+
+\N{Example}
+We can consider four rules for what we have asserted for the arithmetic operators.
+
+\begin{lisp-example}
+  ;; addition
+  ((+ (? x number?) (? y number?) (?? z)) ;; pattern
+   nil                                    ;; explicitly no guard
+   (+ (:eval (+ (? x) (? y))) (?? z)))    ;; skeleton
+  ;; subtraction, with no guard
+  ((- (? x number?) (? y number?) (?? z)) ;; pattern
+   (- (:eval (- (? x) (? y))) (?? z)))    ;; skeleton
+  ;; multiplication, with no guard
+  ((* (? x number?) (? y number?) (?? z)) ;; pattern
+   (* (:eval (* (? x) (? y))) (?? z)))    ;; skeleton
+  ;; division, with no guard
+  ((/ (? x number?) (? y number?) (?? z)) ;; pattern
+   (/ (:eval (/ (? x) (? y))) (?? z)))    ;; skeleton
+\end{lisp-example}
+
+\begin{remark}
+We could have implemented these rules using segment variables and reduce
+it explicitly, which will reduce the amount of time spent recursively
+calling the term rewriting function. The new rules would look something like:
+\begin{lisp-example}
+  ;; addition
+  ((+ (?? x number?) (?? y))              ;; pattern
+   (+ (:eval (reduce + (?? x))) (?? y)))  ;; skeleton
+  ;; subtraction
+  ((- (?? x number?) (?? y))              ;; pattern
+   (- (:eval (reduce - (?? x))) (?? y)))  ;; skeleton
+  ;; multiplication
+  ((* (?? x number?) (?? y))              ;; pattern
+   (* (:eval (reduce * (?? x))) (?? y)))  ;; skeleton
+  ;; division
+  ((/ (?? x number?) (?? y))              ;; pattern
+   (/ (:eval (reduce / (?? x))) (?? y)))  ;; skeleton
+\end{lisp-example}
+We could go farther and insist the segment variable is not null as the
+guard condition, something like:
+\begin{lisp-example}
+(lambda (dict) (not (null (var-value (?? x) dict))))
+\end{lisp-example}
+\end{remark}
+
+\begin{remark}
+We could have added some optimized rules, like ``multiplication by zero
+vanishes''; i.e., if we have any input
+resembling \lstinline[language=lisp]{(* (?? x) (? y zero?) (?? z))},
+then we can replace it by $0$.
+\end{remark}
+
+\subsection{Constructing a Dictionary of Bindings}
+
+\N{Match signature}
+The \lstinline[language=lisp]{match} function will take a pattern and an
+expression, then produce either a dictionary of bindings (keys are the
+pattern and segment variables, the values are the matching elements) or
+a \lstinline[language=lisp]{:fail} keyword. In the latter case, we say
+the input \emph{failed to match} the pattern; in all other cases, we say
+the input \emph{matches} (or \emph{fits}) the pattern.
+
+\N{Algorithm sketch}
+Given a \lstinline[language=lisp]{pattern} and an
+\lstinline[language=lisp]{input}, and an optional
+\lstinline[language=lisp]{dict} of bindings [default value for the
+  dictionary will be an empty dictionary], we will update the
+dictionary, then recursively call the
+\lstinline[language=lisp]{match} function with
+the rest of the \lstinline[language=lisp]{pattern} and the rest of the
+\lstinline[language=lisp]{input} (and the updated dictionary); or else
+we \lstinline[language=lisp]{:fail} to make a match and return that.
+
+\N*{Step 0} If \lstinline[language=lisp]{dict} is
+\lstinline[language=lisp]{:fail}, then we bail out here.
+
+\N*{Step 1} If
+\lstinline[language=lisp]{pattern} is the same as
+\lstinline[language=lisp]{input}, then we return the dictionary of
+bindings (we're done matching pattern variables).
+
+\N*{Step 2} When the
+\lstinline[language=lisp]{pattern} is a ``pattern element'',
+we delegate the attempt to match to a subroutine. Basically check if the
+pattern element is already in the dictionary; if so, then check it is
+bound to the same value as the first element in the
+\lstinline[language=lisp]{input} data --- we \lstinline[language=lisp]{:fail}
+if there is disagreement (we are trying to match one variable against
+two distinct values).
+
+If the pattern element \emph{is not} in the dictionary of bindings, then
+add the binding, and recursively call \lstinline[language=lisp]{match}
+using the rest of the \lstinline[language=lisp]{pattern},
+the rest of the \lstinline[language=lisp]{input}, and the updated
+dictionary bindings. (It's impossible to fail in this branch.)
+
+\N*{Step 3} When we're trying to match a pattern segment, well, it's a
+mess, and I'm going to carve out that particular case to its own
+algorithm. Otherwise go to step 4.
+
+\N*{Step 4}
+We should expect the
+\lstinline[language=lisp]{input} to be a list whose first element is a list.
+If that's not the case, then the pattern has failed (i.e.,
+\lstinline[language=lisp]{match} returns \lstinline[language=lisp]{:fail}).
+Otherwise go to the final step.
+
+\N*{Step 5} We have the head of the \lstinline[language=lisp]{input} be
+a list, so we call \lstinline[language=lisp]{match} using the top of the
+pattern and the top of the \lstinline[language=lisp]{input}. We check
+the updated bindings to see if we have \lstinline[language=lisp]{:fail}
+(in which case, we propagate this as the return value). Otherwise, we
+recursively call \lstinline[language=lisp]{match}
+with the rest of the \lstinline[language=lisp]{input} and the
+rest of the \lstinline[language=lisp]{pattern} using the updated
+dictionary bindings.\quad\qedsymbol
+
+\N{Matching pattern segments}
+Given the \lstinline[language=lisp]{pattern},
+the \lstinline[language=lisp]{input}, and the current
+\lstinline[language=lisp]{dict} bindings dictionary, we will either
+\lstinline[language=lisp]{:fail} to make a match or recursely call the
+\lstinline[language=lisp]{match} function with updated input, pattern,
+and dictionary bindings.
+
+\N*{Step 0: is the pattern segment bound already or not?}
+We check if the pattern segment is already in the dictionary. If it is,
+then go to step 1; otherwise, we go to step 2.
+
+\N*{Step 1: check the binding fits the current situation}
+If the pattern segment \emph{is already bound} (i.e., the dictionary has
+a value associated to it), then we check the segment against the data.
+If the sublist of \lstinline[language=lisp]{input} agrees with what is
+already bound --- so input looks like \lstinline[language=lisp]{(x1 x2 ... xn y...)}
+and suppose the pattern segment is bound to \lstinline[language=lisp]{(x1 x2 ... xn)}, then we
+do not update the dictionary (we reuse it),
+but we skip the \lstinline[language=lisp]{input} ahead to where the
+pattern segment ends --- so we use \lstinline[language=lisp]{(y...)} as
+the new input --- and we use the rest of the
+\lstinline[language=lisp]{pattern} in a recursive call to
+\lstinline[language=lisp]{match}. (The ``match pattern segments''
+algorithm ends here.)
+
+\N*{Step 2: depth-first search for longest fit}
+The pattern segment \emph{is not} in the dictionary. We perform a
+depth-first search to try to match the \lstinline[language=lisp]{input}
+against the \lstinline[language=lisp]{pattern} for as long as possible.
+The longest matching segment is used, and since this is depth-first
+search we will have recursively called \lstinline[language=lisp]{match}
+to produce a dictionary binding for the rest of the pattern, too.
+Or we have utterly failed and there is no possible match for the pattern
+segment, in which case we propagate the \lstinline[language=lisp]{:fail}.\quad\qedsymbol
+
+\N{On Equality}
+There has been a lot of ``if this element matches the value bound'',
+which is left vague. What we mean is that the two elements are equal.
+Lisp has many different possible interpretations for ``equal'':
+\begin{enumerate}
+\item equal as pointers,
+\item equal as numbers,
+\item equal as values,
+\item recursively equality on lists and data structures.
+\end{enumerate}
+We could leave the test for equality as an optional parameter, or we
+could follow something like Baker~\cite{baker1993equal} and invent an
+\lstinline[language=lisp]{egal} generic function.
+
+\subsection{Substitution}
+
+\M
+Now that we have constructed a dictionary of bindings from
+\lstinline[language=lisp]{match}-ing some input against a
+pattern, what do we do with it? We can construct a function to take an
+expression called the \emph{skeleton} (involving the pattern variables
+and pattern segments) and our dictionary, then replace all instances of
+pattern variables (and pattern segments) with the values associated to
+them in the dictionary.
+
+\N{Algorithm for ``substitute-in''.}
+Given a skeleton and a dictionary of bindings, we will expand
+(``hydrate'') the skeleton by replacing instances of pattern variables
+(and pattern segments) with their values according to the dictionary.
+
+\N*{Step 0} If the skeleton is \lstinline[language=lisp]{nil},
+then we return \lstinline[language=lisp]{nil}.
+
+\N*{Step 1} If the skeleton is a pattern variable
+\lstinline[language=lisp]{(? x)}, then we lookup the value in our
+dictionary and retun that.
+
+\N*{Step 2}
+If the skeleton is a list, then we have several subcases:
+\begin{enumerate}
+\item If the skeleton starts with a pattern segment
+  [so the skeleton looks like \lstinline[language=lisp]{((?? x) e)}],
+  then we lookup the value associated
+  to the pattern segment \emph{and append} to it the result of
+  substituting into the subskeleton \lstinline[language=lisp]{e} the
+  values bound in the dictionary.
+\item If the skeleton is \lstinline[language=lisp]{(:EVAL (stuff))},
+  then we first recursively call substitute using \lstinline[language=lisp]{stuff}
+  as the skeleton, and then we evaluate it;
+  something like \lstinline[language=lisp]{(eval (substitute-in stuff dict))}.
+\item If the skeleton is \lstinline[language=lisp]{((:SPLICE (stuff)) e)},
+  then we hydrate ``stuff'' --- that is, we recursively call
+  \lstinline[language=lisp]{(substitute-in stuff dict)} --- and append
+  to it the result of hydrating the rest of the skeleton.
+\item In the very lsat case, the skeleton is a list and we need to
+  process each element in the list. So we recursively call substitute-in
+  on the head and tail of the list;
+  that is, if the skeleton looks like \lstinline[language=lisp]{(h . tl)}
+  then we return
+  \lstinline[language=lisp]{(cons (substitute-in h dict) (substitute-in tl dict))}.
+\end{enumerate}
+
+\N*{Step 3}
+We have a skeleton which is neither a pattern element, nor a list. What
+could it be? Well, a literal value. In this case, we want to ``fall
+through'' and just return the skeleton.\quad\qedsymbol
+
+\begin{remark}[Class instances, objects]
+There is the problem for Common Lisp (and Clojure) when a skeleton
+involves objects --- instances of classes. Common Lisp can use its
+sophisticated object system to modify the substitution algorithm to
+treat instances using constructors. Clojure, well, I do not know how to
+handle that situation.
+\end{remark}
