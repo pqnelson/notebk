@@ -1,0 +1,128 @@
+\ProvidesPackage{deriv}[2022/10/26 Structured Derivations]
+\newif\if@first@exp\@first@expfalse
+\newif\if@fleqn\@fleqnfalse
+\newif\if@leqno\@leqnofalse
+\newif\if@using@equation@numbers\@using@equation@numbersfalse
+% Amazingly enough, document options can be processed here. I learned
+% this from AMSmath.sty
+\DeclareOption{fleqn}{\@fleqntrue}
+% Make the equation numbers on the left.
+\DeclareOption{leqno}{\@leqnotrue}
+% Force the equation numbers on the right ONLY for the structured derivations.
+\DeclareOption{reqno}{\@leqnofalse} 
+% If you want to number the steps (after the initial expression) using
+% the equation counter, then pass in the "[equation]" option.
+\DeclareOption{equation}{\@using@equation@numberstrue}
+\ProcessOptions
+% Safely make a newskip, unless it already exists.
+% Initializes the newskip (if it doesn't exist) to the second argument.
+%
+% See: https://tex.stackexchange.com/a/184992
+\def\nnewlength#1#2{%
+  \edef\reserved@a{\expandafter\@gobble\string#1} %
+  \@ifundefined\reserved@a{%
+    \edef\reserved@b{\expandafter\@carcube\reserved@a xxx\@nil} %
+    \ifx\reserved@b\@qend %
+      \typeout{  -- Not definable (1, \reserved@a): \string#1} %\@notdefinable %
+    \else %
+      \ifx\reserved@a\@qrelax %
+        \typeout{  -- Not definable (2, \reserved@a): \string#1} %\@notdefinable %
+      \else %
+        \typeout{  -- Making newskip: \string#1}
+        \newskip#1%
+        \global\setlength{#1}{#2}
+      \fi %
+    \fi %
+  }%
+  {\typeout{  -- Not definable (E, \reserved@a): #1}} %\@notdefinable%
+}
+
+% The indentation for each expression in the structured derivation is
+% given by "\leftmargini", which is what happens in a one-column article
+% environment when working with the "fleqn" option.
+\nnewlength{\mathindent}{\if@fleqn1.5\leftmargini\else\leftmargini\fi}
+\def\deriv@indent{\hskip\mathindent}
+
+\newcommand\defaultrelation{=}
+\newcommand\setdefaultrelation[1]{\gdef\defaultrelation{#1}}
+% We should probably use the "displayskip" amounts between each
+% expression, when stepping through a derivation, but I think that's too
+% much. Instead, I am refactoring out the breaks into their own macros,
+% so if someone else were to use this in the future, they could follow
+% their heart.
+\newcommand\abovestepbreak{\smallbreak}
+\newcommand\belowstepbreak{\smallbreak}
+
+
+% If you want to make the expressions numbered like equations, then you
+% should redefine these like:
+%% \renewcommand\next@step{\refstepcounter{equation}}
+%% \renewcommand\step@number{(\theequation)}
+\if@using@equation@numbers
+  \newcommand\next@step{\refstepcounter{equation}}
+  \newcommand\step@number{(\theequation)}
+\else
+  \newcommand\next@step{}
+  \newcommand\step@number{}
+\fi
+  
+% When giving a hint why expression A is equal to expression B, we
+% invoke "\step{hint why $A=B$}". If the binary relation is not the
+% default one [equality], we insert it as an optional argument, like
+% "\step[\sim]{Swap rows 1 and 3}".
+%
+% This is way more complicated than it should be, but it is fine
+% enough. Also note: if you want the NEXT STEP to be un-numbered, you
+% can use a star:
+%
+% \begin{calculation}
+%   A % this is never numbered
+% \step{reason}
+%   B % this IS numbered
+% \step*{reason 2}
+%   C % this is UN-numbered
+% \end{calculation}
+%
+% The basic idea of a step is captured by the following prototype code:
+%
+%% \newcommand\step[2][\defaultrelation]{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\hfill\step@number}\fi}\fi\abovestepbreak
+%%   \noindent$#1$\quad(#2)
+%%   \belowstepbreak\noindent\next@step\if@leqno\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
+
+\def\step@numbered@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
+  \noindent$#1$\quad(#2)
+  \belowstepbreak\noindent\if@leqno\next@step\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
+
+\def\step@numbered@nobracket#1{\step@numbered@bracket[\defaultrelation]{#1}}
+
+\def\step@numbered{\@ifnextchar[\step@numbered@bracket\step@numbered@nobracket}
+
+\def\step@no@number@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
+  \global\@first@exptrue\noindent$#1$\quad(#2)
+\belowstepbreak\noindent\nonumber\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}
+
+\def\step@no@number@unbracket#1{\step@no@number@bracket[\defaultrelation]{#1}}
+
+\def\step@no@number{\@ifnextchar[\step@no@number@bracket\step@no@number@unbracket}
+  
+\def\step{\@ifstar
+  \step@no@number%
+  \step@numbered
+}
+
+% The break before the calculation begins imitates the "\medbreak"
+% macro, with the vertical spacing given by "\abovedisplayskip";
+% similarly, the amount of vertical spacing *after* the calculation
+% environment ends is given by "\belowdisplayskip".
+\newcommand\abovecalculationbreak{\par\ifdim\lastskip<\abovedisplayskip\removelastskip\penalty\predisplaypenalty\vspace\abovedisplayskip\fi}
+\newcommand\bewlowcalculationbreak{\par\ifdim\lastskip<\belowdisplayskip\removelastskip\penalty\postdisplaypenalty\vspace\belowdisplayskip\fi}
+
+% The "calculation" environment is where we do structured derivations in
+% the spirit of Dijkstra.
+\newenvironment{calculation}{\xdef\old@defaultrelation{\defaultrelation}\@first@exptrue%
+  \gdef\nonumber{\global\@first@exptrue}\nonumber%
+  \abovecalculationbreak\noindent\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}%
+  {\)\if@leqno\else\if@first@exp\else\hfill\next@step\step@number\fi\fi\bewlowcalculationbreak\noindent\gdef\nonumber{\global\@eqnswfalse}\xdef\defaultrelation{\old@defaultrelation}\@ignoretrue}
+
+
+\endinput

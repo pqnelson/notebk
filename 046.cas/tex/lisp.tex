@@ -1,0 +1,52 @@
+\chapter{Lisp}
+
+\M
+We will use Lisp as our programming language, because it is
+\emph{Eulerian} in nature.
+
+\begin{code}
+(defun meaning (life)
+  "Return the computed meaning of LIFE"
+  (let ((meh "abc"))
+    ;; Invoke krakaboom
+    (loop :for x :across meh
+       :collect x)))
+
+(defun partition (n coll)
+  (declare (type integer n)
+           (type (or cons nil) coll))
+  (let ((results nil))
+    (labels ((partition-inner (k lst)
+               (if (and (plusp k)
+                        (not (endp lst)))
+                   (progn
+                     (push (car lst) results)
+                     (partition-inner (1- k) (cdr lst)))
+                   (list (nreverse results) lst))
+               ))
+      (partition-inner n coll))))
+
+(defun partition-by (pred? coll)
+  (labels ((partition-inner (lst results)
+             (if (funcall pred? (car lst))
+                 (return-from partition-by (list (nreverse results) lst))
+                 (if (endp lst)
+                     (list results nil)
+                     (partition-inner (cdr lst) (cons (car lst) results))))));;;
+    (partition-inner coll nil)
+    ;; results
+    ))
+
+(defun expand-hypothesis (th)
+  "Transform `|- (and p q) => r' into `|- p => (q => r)'."
+  (declare (type thm-implies th))
+  (let* ((p-and-q (implies-premise (thm-statement th)))
+         (p (car (l-and-conjuncts p-and-q)))
+         (q (cadr (l-and-conjuncts p-and-q))))
+    (assert (endp (cddr (l-and-conjuncts p-and-q))))
+    (modus-ponens (reduce #'implies-add-assume
+                          (l-and-conjuncts p-and-q)
+                          :initial-value th
+                          :from-end t)
+                  (and-pair p q))))
+\end{code}

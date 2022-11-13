@@ -1,0 +1,113 @@
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{enumitem}
+\setlist{topsep=0pt,noitemsep,label=(\arabic*)}
+% amsppt layout
+\RequirePackage[letterpaper,inner=6pc,outer=6pc,%textwidth=30pc,
+  textheight=50.5pc,top=6pc]{geometry}
+\usepackage{tocbibind}
+\usepackage{manfnt}
+\usepackage[final]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tocloft}
+%\setlength\cftparskip{-2pt}
+%\renewcommand\cftsecafterpnum{\\ \vspace{-10pt}}
+\setlength\cftbeforesecskip{2pt}
+\setlength\cftbeforechapskip{2pt}
+%\setlength\cftbeforesubsecskip{2pt}
+%\setlength\cftaftersecskip{2pt}
+\usepackage{titlesec}
+\RequirePackage{lisp}
+\usepackage[pdfusetitle]{hyperref}
+
+\hypersetup{colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed
+%  \ifpdf\else dvipdfmx\fi
+}
+\usepackage{doi}
+\usepackage{chunk}
+
+\numberwithin{equation}{section}
+
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+% titlesec doesn't adequately work with chapter formatting, so I'm doing
+% it BY HAND.
+% Knuth's chapter style:
+%
+%     titlefont = cmssbx10 scaled\magstep2 = \Large\bfseries\sffamily
+%     \leftline{\twelvess Chapter \thechapter}
+%     \vskip 4pc
+%     \rightline{\titlefont #2}
+%     \vskip 2pc plus 1pc minus 1pc
+%
+% There is probably a smarter way to imitated the style using titlesec,
+% but I just want something that works.
+\@ifundefined{chapter}{}{
+%\font\chapterfont=cmssbx10 scaled\magstep3
+\def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
+\def\twelvess{\sffamily\large} % = cmss12
+\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\def\@makechapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \twelvess \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 4pc
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 2pc
+}}
+% starred chapter heading
+\def\@makeschapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \chapterfont\hfill #1\par\nobreak
+    \vskip 2pc
+  }}
+
+% page numbering should never reset
+\def\pagenumbering#1{%
+  \gdef\thepage{\csname @#1\endcsname
+   \c@page}}
+}
+
+
+\@ifclassloaded{report}{
+  \usepackage{etoolbox}
+  % Patch `titlepage` not to reset the page number
+  \patchcmd{\titlepage}{\setcounter{page}\@ne}{}{}{}
+  \patchcmd{\endtitlepage}{\setcounter{page}\@ne}{}{}{}
+
+  % Patch `abstract` so that it shows the page number
+  \patchcmd{\abstract}{\titlepage}{\titlepage\thispagestyle{plain}}{}{}
+}{}
+
+\newcommand\define[1]{\textbf{``#1''}}
+
+\theoremstyle{thmstyle}
+\newtheorem{axiom}[chunk]{Axiom}
+\newtheorem{theorem}[chunk]{Theorem}
+\newtheorem{proposition}[chunk]{Proposition}
+\newtheorem{lemma}[chunk]{Lemma}
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk]{Definition}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk]
+
+\newcommand\arXiv[1]{\texttt{\href{https://arxiv.org/abs/#1}{arXiv:#1}}}

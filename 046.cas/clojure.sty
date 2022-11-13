@@ -1,0 +1,84 @@
+% This is a modified version of Alex Ott's clojure style, imitating the
+% choices made by Github syntax highlighting.
+%
+% keywords[1] are red
+% keywords[3] are purple
+% keywords[2] are blue
+
+\definecolor{ghComment}{HTML}{6e7781}
+\definecolor{ghBlue}{HTML}{0550ae}
+\definecolor{ghConstant}{HTML}{0550ae}
+\definecolor{ghRed}{HTML}{cf222e}
+\definecolor{ghstring}{HTML}{0a3069}
+\definecolor{ghViolet}{HTML}{8250df}
+\definecolor{ghDefaultColor}{HTML}{24292f}
+\lstdefinelanguage{clojure}%
+{alsoletter={.\#-/?!},
+ moredelim=[s][\color{ghViolet}]{.}{\ }, % interoperability
+ moredelim=[s][\color{ghBlue}]{:}{\ }, % keywords
+ morekeywords={},
+ morekeywords=[1]{binding,
+    case,catch,compile,cond,
+    declare,def,definline,defmacro,defmulti,defn,defn-,defonce,defprotocol,defspec,defstruct,deftest,deftype,do,
+    finally,fn,if,if-let,if-some,import,let,load,loop,ns,
+    recur,require,throw,when,when-let,when-not,when-some},
+  morekeywords=[2]{nil,true,false},
+  morekeywords=[3]{*,*1,*2,*3,*agent*,*allow-unresolved-vars*,*assert*,*clojure-version*,*command-line-args*,%
+*compile-files*,*compile-path*,*e,*err*,*file*,*flush-on-newline*,*in*,*macro-meta*,%
+*math-context*,*ns*,*out*,*print-dup*,*print-length*,*print-level*,*print-meta*,*print-readably*,%
+*read-eval*,*source-path*,*use-context-classloader*,*warn-on-reflection*,+,-,->,->>,..,/,:else,%
+<,<=,=,==,>,>=,@,accessor,aclone,add-classpath,add-watch,agent,agent-errors,aget,alength,alias,%
+all-ns,alter,alter-meta!,alter-var-root,amap,ancestors,and,apply,areduce,array-map,aset,%
+aset-boolean,aset-byte,aset-char,aset-double,aset-float,aset-int,aset-long,aset-short,assert,%
+assoc!,assoc-in,associative?,atom,await,await-for,await1,bases,bean,bigdec,bigint,binding,%
+bit-and,bit-and-not,bit-clear,bit-flip,bit-not,bit-or,bit-set,bit-shift-left,bit-shift-right,%
+bit-test,bit-xor,boolean,boolean-array,booleans,bound-fn,bound-fn*,butlast,byte,byte-array,%
+bytes,cast,char,char-array,char-escape-string,char-name-string,char?,chars,chunk,chunk-append,%
+chunk-buffer,chunk-next,class,class?,%
+clear-agent-errors,clojure-version,coll?,comment,commute,comp,comparator,compare,compare-and-set!,%
+complement,concat,condp,conj,conj!,cons,constantly,construct-proxy,contains?,%
+counted?,create-ns,create-struct,cycle,dec,decimal?,%
+delay,delay?,deliver,deref,derive,%
+descendants,destructure,disj,disj!,dissoc,dissoc!,distinct,distinct?,do-template,doall,doc,%
+dorun,doseq,dosync,dotimes,doto,double,double-array,doubles,drop,drop-last,drop-while,empty,empty?,%
+ensure,ensure-reduced,enumeration-seq,eval,even?,every?,false?,ffirst,file-seq,filter,find,find-doc,%
+find-ns,find-var,float,float-array,float?,floats,flush,fn?,fnext,for,force,format,future,%
+future-call,future-cancel,future-cancelled?,future-done?,future?,gen-class,gen-interface,gensym,%
+get,get-in,get-method,get-proxy-class,get-thread-bindings,get-validator,hash,hash-map,hash-set,%
+identical?,identity,ifn?,in-ns,inc,init-proxy,int,int?,int-array,%
+integer?,interleave,intern,interpose,into,into-array,ints,io!,is,isa?,iterate,iterator-seq,juxt,%
+keep,keep-indexed,key,keys,keyword,last,lazy-cat,lazy-seq,letfn,line-seq,list*,list?,load-file,%
+load-reader,load-string,loaded-libs,locking,long,long-array,longs,macroexpand,macroexpand-1,%
+make-array,make-hierarchy,map,mapcat,max,max-key,memfn,memoize,merge,merge-with,%
+method-sig,methods,min,min-key,mod,monitor-enter,monitor-exit,name,namespace,new,newline,%
+nfirst,not-any?,not-empty,not-every?,not=,ns,ns-aliases,ns-imports,%
+ns-interns,ns-map,ns-name,ns-publics,ns-refers,ns-resolve,ns-unalias,ns-unmap,nth,nthnext,num,%
+number?,odd?,or,parents,partial,partition,pcalls,peek,persistent!,pmap,pop,pop!,%
+pop-thread-bindings,pos?,pr,pr-str,prefer-method,prefers,primitives-classnames,print,print-ctor,print-doc,print-dup,%
+print-method,print-namespace-doc,print-simple,print-special-doc,print-str,printf,println,println-str,%
+prn,prn-str,promise,proxy,proxy-call-with-super,proxy-mappings,proxy-name,proxy-super,%
+push-thread-bindings,pvalues,quot,rand,rand-int,range,ratio?,rational?,rationalize,re-find,%
+re-groups,re-matcher,re-matches,re-pattern,re-seq,read,read-line,read-string,reduce,reduced?,reduced,ref,%
+ref-history-count,ref-max-history,ref-min-history,ref-set,refer,refer-clojure,reify,%
+release-pending-sends,rem,remove,remove-method,remove-ns,remove-watch,repeat,repeatedly,%
+replace,replicate,reset!,reset-meta!,resolve,rest,restart-agent,resultset-seq,reverse,reversible?,%
+rseq,rsubseq,select-keys,send,send-off,seq,seque,sequence,sequential?,set,set!,%
+set-validator!,set?,short,short-array,shorts,shutdown-agents,slurp,some,sort,sort-by,sorted-map,%
+sorted-map-by,sorted-set,sorted-set-by,sorted?,special-form-anchor,special-symbol?,split-at,%
+split-with,str,stream?,struct,struct-map,subs,subseq,subvec,supers,swap!,symbol,%
+sync,syntax-symbol-anchor,take,take-last,take-nth,take-while,test,testing,the-ns,time,to-array,%
+to-array-2d,trampoline,transient,tree-seq,true?,try,type,unchecked-add,unchecked-dec,%
+unchecked-divide,unchecked-inc,unchecked-multiply,unchecked-negate,unchecked-remainder,%
+unchecked-subtract,underive,unquote,unquote-splicing,update-in,update-proxy,use,val,vals,%
+var,var-get,var-set,var?,vary-meta,vec,vector,vector?,volatile!,volatile?,vreset!,vswap!,when-first,%
+while,with-bindings,with-bindings*,with-in-str,with-loading-context,with-local-vars,with-meta,%
+with-open,with-out-str,with-precision,xml-seq,zero?,zipmap
+},%
+   sensitive,% ???
+   alsodigit=-,%
+   keywordstyle=[1]\color{ghRed},
+   keywordstyle=[2]\color{ghBlue},
+   keywordstyle=[3]\color{ghViolet},
+   morecomment=[l];,%
+   morestring=[b]"%
+  }[keywords,comments,strings]%

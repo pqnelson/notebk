@@ -1,0 +1,25 @@
+\documentclass[en-US]{report}
+\usepackage{deriv}
+\usepackage[useregional=text]{datetime2}
+\DTMlangsetup[en-US]{mapzone=true}
+\usepackage{macros}
+\usepackage{notation}
+\pdfinfo{
+%/Title (Experiments in Symbolic Computation)
+/CreationDate (D:20221112185500)
+}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\title{Experiments in Symbolic Computation}
+\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}}
+\date{November 12, 2022}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\input{tex/elementary-algebra}
+\input{tex/trigonometry}
+\input{tex/lisp}
+\input{tex/bib}
+%\DTMenUSpacificzonemaps
+\end{document}

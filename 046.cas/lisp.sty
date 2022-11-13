@@ -1,0 +1,62 @@
+\RequirePackage{listings}
+\RequirePackage{mdframed}
+
+
+%% I decided to copy github's syntax highlighting style for common lisp,
+%% because it looked appealing
+\definecolor{ghComment}{HTML}{6e7781}
+\definecolor{ghBlue}{HTML}{0550ae}
+\definecolor{ghkeyword}{HTML}{cf222e}
+\definecolor{ghstring}{HTML}{0a3069}
+\definecolor{ghViolet}{HTML}{8250df}
+\definecolor{ghConstant}{HTML}{0550ae}
+\definecolor{ghDefaultColor}{HTML}{24292f}
+\def\defaultCommentStyle{\color{ghComment}}
+\def\defaultKWStyle{\color{ghkeyword}}
+\def\defaultStringStyle{\color{ghstring}}
+\def\defaultBooleanStyle{\color{ghBlue}}
+
+\lstdefinelanguage{lisp}
+{morekeywords={and,
+    case,ccase,ctypecase,
+    defclass,defconstant,defgeneric,defmacro,defmethod,defparameter,defstruct,defun,defvar,do,dolist,dotimes,
+    ecase,eq,etypecase,
+    flet,
+    if,
+    labels,let,loop,
+    not,
+    or,
+    typecase,
+    unless,
+    when},
+   morekeywords=[2]{append,car,cdr,cond,cons,eval,format,lambda,list,listp,load,memberp,nil,null,progn,quote,setf,setq,t},
+   morekeywords=[3]{function,functionp,next-method-p,slot-boundp,slot-value},
+   morecomment=[l];,%
+   alsoletter={.\#-},
+   morestring=[b]"%
+}
+
+\lstnewenvironment{code}
+  {%
+   \mdframed[roundcorner=5pt]%
+   \lstset{language=lisp,
+     basicstyle=\color{ghDefaultColor}\small\ttfamily,%\footnotesize\ttfamily,
+     keywordstyle=\defaultKWStyle,
+     keywordstyle=[2]\color{ghConstant},
+     commentstyle=\defaultCommentStyle,
+     stringstyle=\defaultStringStyle,
+     moredelim=[s][\color{ghConstant}]{:}{\ },
+     moredelim=[s][\color{ghConstant}]{\#}{\ },
+     % It seems github highlights everything like "#..." the same way
+     %% moredelim=[s][\color{ghConstant}]{\#:}{\ },
+     %% moredelim=[s][\color{ghConstant}]{\#'}{\ },
+    % identifierstyle=\color{ghViolet},
+     numbers=left,
+     numberstyle=\tiny,
+     stepnumber=2,
+     showstringspaces=false,
+     xleftmargin=-5pt,
+     upquote=true
+   }%
+  }
+  {\endmdframed}
