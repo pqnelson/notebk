@@ -1,9 +1,9 @@
 %%
 %% ellipticIntegral.tex
-%% 
+%%
 %% Made by alex
 %% Login   <alex@tomato>
-%% 
+%%
 %% Started on  Mon May 21 17:08:22 2012 alex
 %% Last update Wed May 30 13:26:26 2012 Alex Nelson
 %%
@@ -12,16 +12,16 @@
 \M
 As a warm up, lets try to consider the properties of a function
 \begin{equation}
-s(x)=\int^{x}_{0}\frac{\D u}{1-u^{2}}
+s(x)=\int^{x}_{0}\frac{\D u}{\sqrt{1-u^{2}}}
 \end{equation}
 We should recall this is the arc-sine function. How do we study
-its properties? Well, through its inverse function $\sin(u)$. 
+its properties? Well, through its inverse function $\sin(u)$.
 
 \M
 Consider the following function
 \begin{equation}
 F(\varphi) =
-\int^{\varphi}_{0}\frac{\D u}{(1-u^{2})(1-k^{2}u^{2})}
+\int^{\varphi}_{0}\frac{\D u}{\sqrt{(1-u^{2})(1-k^{2}u^{2})}}
 \end{equation}
 We should observe immediately that
 \begin{equation}
@@ -29,3 +29,28 @@ F(0)=0.
 \end{equation}
 But observe this is just a \emph{deformation} of the warm-up!
 
+\M
+Note that the Binomial series can be extended to non-integer exponents.
+We would have
+\begin{equation}
+(1 + x)^{-1/2} = 1 - \frac{1}{2}x + \frac{3}{8}x^{2} - \frac{5}{16}x^{3} +\dots
+= \sum^{\infty}_{n=0}\frac{(-1)^{n}(2n)!}{4^{n}(n!)^{2}}x^{n}.
+\end{equation}
+If we plug in $x=-k^{2}u^{2}$, we obtain
+\begin{equation}
+\frac{1}{\sqrt{1 - k^{2}u^{2}}} = \sum^{\infty}_{n=0}\frac{(2n)!}{4^{n}(n!)^{2}}k^{2n}u^{2n}.
+\end{equation}
+For ``small $\varphi$'' and ``small $ku$'', we would have
+\begin{equation}
+F(\varphi) = \int^{\varphi}_{0}\frac{1}{\sqrt{1-u^{2}}}\left(\sum^{\infty}_{n=0}\frac{(2n)!}{4^{n}(n!)^{2}}k^{2n}u^{2n}\right)\,\D u.
+\end{equation}
+Now we just have to evaluate integrals of the form
+\begin{equation}
+I_{n}(\varphi) = \int^{\varphi}_{0}\frac{u^{2n}}{\sqrt{1 - u^{2}}}\,\D u,
+\end{equation}
+reducing our problem to evaluating the sum,
+\begin{equation}
+F(\varphi) = \sum^{\infty}_{n=0}\frac{(2n)!}{4^{n}(n!)^{2}}k^{2n}I_{n}(\varphi).
+\end{equation}
+This approach boils down to writing $F(\varphi)$ in terms of Gauss's
+hypergeometric functions.
