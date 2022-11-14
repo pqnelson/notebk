@@ -1,0 +1,169 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{macros}[2022/11/14 Collected style in one location]
+\usepackage{mathtools}
+\usepackage[en-US,useregional=text]{datetime2}
+\DTMlangsetup[en-US]{mapzone=true}
+\usepackage[nottoc]{tocbibind}
+\usepackage[inner=6pc,
+  top=6pc,
+  textwidth=34.5pc, % 51 - 6 - 10.5 = 34.5
+  marginparwidth=9pc,
+  marginparsep=1.5pc,
+  bottom=5pc]{geometry}
+\usepackage{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{enumitem}
+\usepackage{manfnt}
+\usepackage{ifpdf}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[section,theorem]{chunk}
+\usepackage{marginnote}
+\usepackage{titlesec}
+\usepackage[colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed,
+  pdfusetitle,
+  \ifpdf\else dvipdfmx\fi
+]{hyperref}
+
+%% Customizing list spacing
+% This is what amsart's parameters use; lines 253 and 960
+\setlist{topsep=\smallskipamount,
+         itemsep=\z@skip,
+         partopsep=\z@skip,
+         parsep=\z@skip,
+         leftmargin=\leftmargini}
+\setlist[enumerate]{label=(\arabic*)}
+
+%% marginalia
+\renewcommand*{\marginfont}{\footnotesize\itshape}
+
+%% Section title formatting
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+
+% titlesec doesn't adequately work with chapter formatting, so I'm doing
+% it BY HAND.
+% Knuth's chapter style:
+%
+%     titlefont = cmssbx10 scaled\magstep2 = \Large\bfseries\sffamily
+%     \leftline{\twelvess Chapter \thechapter}
+%     \vskip 4pc
+%     \rightline{\titlefont #2}
+%     \vskip 2pc plus 1pc minus 1pc
+%
+% There is probably a smarter way to imitated the style using titlesec,
+% but I just want something that works.
+\@ifundefined{chapter}{}{
+  \def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
+  \def\twelvess{\sffamily\large} % = cmss12
+  \renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                      \thispagestyle{plain}%
+                      \global\@topnum\z@
+                      \@afterindentfalse
+                      \secdef\@chapter\@schapter}
+  \def\@makechapterhead#1{%
+    {\parindent \z@ \raggedright \normalfont
+      \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+          \twelvess \@chapapp\space \thechapter
+          \par\nobreak
+          \vskip 4pc
+        \fi
+      \fi
+      \interlinepenalty\@M
+      \chapterfont\hfill #1\par\nobreak
+      \vskip 2pc
+  }}
+  % starred chapter heading
+  \def\@makeschapterhead#1{%
+    {\parindent \z@ \raggedright \normalfont
+      \interlinepenalty\@M
+      \chapterfont\hfill #1\par\nobreak
+      \vskip 2pc
+    }}
+
+  % page numbering should never reset
+  \def\pagenumbering#1{%
+    \gdef\thepage{\csname @#1\endcsname
+     \c@page}}
+}
+
+
+\@ifclassloaded{report}{
+  \usepackage{etoolbox}
+  % Patch `titlepage` not to reset the page number
+  \patchcmd{\titlepage}{\setcounter{page}\@ne}{}{}{}
+  \patchcmd{\endtitlepage}{\setcounter{page}\@ne}{}{}{}
+
+  % Patch `abstract` so that it shows the page number
+  \patchcmd{\abstract}{\titlepage}{\titlepage\thispagestyle{plain}}{}{}
+}{}
+
+
+%% Theorems
+\theoremstyle{thmstyle}
+\newtheorem{theorem}[chunk]{Theorem}
+\newtheorem{proposition}[chunk]{Proposition}
+\newtheorem{corollary}[chunk]{Corollary}
+\newtheorem{lemma}[chunk]{Lemma}
+\newtheorem{conjecture}[chunk]{Conjecture}
+
+\theoremstyle{plain}
+\newtheorem{puzzle}{Puzzle}
+
+\theoremstyle{defnstyle}
+\newtheorem{definition}[chunk]{Definition}
+\newtheorem{example}[chunk]{Example}
+\newtheorem{problem}[chunk]{Problem}
+\newtheorem{question}[chunk]{Question}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{\llap{\mantriangleright\kern.15em}Exercise}
+
+\theoremstyle{rmkstyle}
+\newtheorem{remark}{Remark}[chunk]
+\newtheorem{claim}[chunk]{Claim}
+
+%% This breaks the optional argument passed to the remark :(
+%% \usepackage{etoolbox}
+%% \appto\remark{\leftskip3pc}
+
+% For definitions, we \define{stuff}
+\newcommand\define[1]{{\upshape\bfseries``#1''}}
+
+% arXiv links
+\def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
+\def\@arXivWith[#1]#2{\texttt{\href{http://arxiv.org/abs/#2}{arXiv:#2} [#1]}}
+\def\@arXivWithout#1{\texttt{\href{http://arxiv.org/abs/#1}{arXiv:#1}}}
+
+% paragraph indent
+\newlength\ogparindent
+\setlength{\ogparindent}{\parindent}
+\setlength{\parindent}{12pt} % amsart.cls line 251
+
+% Equations should be numbered within each section (probably)
+\numberwithin{equation}{section}
+
+% Slicker colors
+\definecolor{DarkGreen}{rgb}{0,0.25,0}%{0,0.3545,0}%{0,.392,0}
+\definecolor{DarkRed}{rgb}{.3545,0,0}
+
+% Since I'm always me
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}}
+
+% Bibliography-related semantic macros
+\newcommand\journal\textit
+\newcommand\volume\textbf
+
+
+
+
+\endinput

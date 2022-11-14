@@ -1,0 +1,207 @@
+\section{Introduction}
+\subsection{Manifold}
+\subsubsection{Charts}
+
+\begin{definition}
+Let $M$ be a set. An \define{$n$-Dimensional Chart} on $M$
+is a pair $(U,\varphi)$ consisting of
+\begin{enumerate}
+\item the \emph{Patch}: an open subset $U$ of $\RR^{n}$, and
+\item the \emph{Parametrization}: an injective function $\varphi\colon U\to M$
+  (in particular, $\varphi\colon U\to \varphi(U)$ is a bijection).
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+We call the inverse function of $\varphi$ --- that is, $\varphi^{-1}$
+which maps a subset of $M$ to $\RR^{n}$ --- the \define{Local Coordinates}
+of the chart $(U,\varphi)$.
+\end{remark}
+
+\begin{remark}
+The important aspect of the mapping $\varphi$ is that it's a bijection
+$\varphi\colon U\to\varphi(U)$. Some authors\footnote{Followers of the
+$V\subset M\to\RR^{n}$ convention include Bourbaki (see, e.g., \textit{Lie Groups} III \S1.1 Lemma 1),
+Warner's \textit{Foundations of Differential Geometry and Lie Groups} 
+(Definition 1.3), Christopher Isham's
+\textit{Modern Differential Geometry for Physicists} (Def.~2.1 in \S2.2),
+Spivak's \textit{Comprehensive Introduction to Differential Geometry} (vol. I).
+
+The adherents to the $U\subset\RR^{n}\to M$ convention are no less
+impressive: Milnor, do Carmo's \textit{Riemannian Geometry}, Arthur Besse's
+\textit{Einstein Manifolds} (\S1.41), among others.}
+reverse the direction of the mapping, using ``$U\subset M$ and
+$\varphi\colon U\to\RR^{n}$ is injective'' as the definition for a
+chart. It really doesn't matter since, in that case, the important
+aspect is that $\varphi\colon U\to\varphi(U)$ is a bijection.
+\end{remark}
+
+\begin{remark}
+We may get arbitrarily abstract and general with the definition of a
+chart. For example, we could replace $\RR^{n}$ with any
+finite-dimensional affine space
+$\mathbb{A}^{n}$. Daniel Freed~\cite{freed2022:notes} does this, for example.
+Recall, a real affine space $\mathbb{A}^{n}$ is just the $n$-dimensional
+real vector space with the origin forgotten --- in particular, we cannot
+add elements of an affine space together, \emph{but} we can subtract
+them to obtain a vector $a,b\in\mathbb{A}^{n}$, $a-b=\vec{s}\in\RR^{n}$.
+We can also add a vector to a point in an affine space to translate
+points $b+\vec{s}=a$. Now replace $\RR^{n}$ with a generic vector space,
+and the same recipe works to obtain an affine space.
+\end{remark}
+
+\begin{remark}[Smooth? Continuous?]
+It may be natural to ask if $\varphi$ is smooth or continuous, or if
+we require $\varphi^{-1}$ to be smooth or continuous? But we do not have
+a notion of ``smooth functions on $M$'' yet: $M$ is just ``some set''.
+\end{remark}
+
+\begin{definition}
+We call two $n$-dimensional charts on $M$, $(U,\varphi)$ and $(V,\psi)$,
+\define{Compatible} if the following four conditions all hold:
+\begin{enumerate}
+\item the set $\varphi^{-1}\left(\psi(V)\right)\subset U$ is open (in
+  $U$, hence in $\RR^{n}$);
+\item the set $\psi^{-1}\left(\varphi(U)\right)\subset V$ is open (in $V$,
+  hence in $\RR^{n}$);
+\item\label{property:chart-compatible:transition-fun1} the map $\varphi^{-1}\left(\psi(V)\right)\to\psi^{-1}\left(\varphi(U)\right)$,
+$u\mapsto(\psi^{-1}\circ\varphi)(u)$, is smooth\footnote{We will follow
+mathematical tradition, and use ``smooth'' to mean $C^{\infty}$ and, in
+particular, continuous. But you could have $C^{k}$ for some
+$k\in\NN_{0}$, or analytic $C^{\omega}$, or whatever. These result in
+$C^{k}$-atlases and $C^{k}$-manifolds, or analytic atlases and analytic
+manifolds. For $C^{0}$ continuous functions, we get topological charts
+and topological manifolds.}; and
+\item\label{property:chart-compatible:transition-fun2} the map $\psi^{-1}\left(\varphi(U)\right)\to\varphi^{-1}\left(\psi(V)\right)$,
+$v\mapsto(\varphi^{-1}\circ\psi)(v)$ is smooth.
+\end{enumerate}
+In particular, $(U,\varphi)$ and $(V,\psi)$ are compatible if $\varphi(U)\cap\psi(V)=\emptyset$.
+\end{definition}
+
+\begin{remark}[Compatibility on Patches]
+The intuition is that we have the first two conditions be topological
+constraints on the possible choices of charts --- if the image of a
+couple of charts intersect, they should have an open preimage.
+This will be useful later, when we have a ``large enough'' family of
+compatible charts whose images cover $M$, then we can induce a topology
+on $M$ thanks to the first two criteria in our definition of
+``compatible charts''.
+\end{remark}
+
+\begin{remark}[Compatibility and Transition Functions]
+The latter two conditions concern transition functions
+\begin{equation*}
+(\psi^{-1}\circ\varphi)\colon\varphi^{-1}\left(\psi(V)\right)\to\psi^{-1}\left(\varphi(U)\right)
+\end{equation*}
+and
+\begin{equation*}
+(\varphi^{-1}\circ\psi)\colon\psi^{-1}\left(\varphi(U)\right)\to\varphi^{-1}\left(\psi(V)\right).
+\end{equation*}
+These describe change of coordinates on the overlap of two charts.
+We require any change of coordinates to be continuous.
+\end{remark}
+
+\begin{remark}
+The four conditions (of chart compatibility) form an equivalence relation
+among charts.
+\end{remark}
+
+\subsubsection{Atlases}
+
+\begin{definition}
+Let $M$ be a set. We define an ($n$-dimensional) \define{Atlas} on $M$
+to consist of a set of $n$-dimensional charts
+$\mathcal{A}=\{\,(U_{\alpha},\varphi_{\alpha})\mid\alpha\in A\,\}$
+such that
+\begin{enumerate}
+\item the images of the charts cover $M$: $\displaystyle\bigcup_{\alpha\in{A}}\varphi_{\alpha}(U_{\alpha})=M$
+\item for any $\alpha,\beta\in A$, the charts
+  $(U_{\alpha},\varphi_{\alpha})$ and $(U_{\beta},\varphi_{\beta})$
+  [both in $\mathcal{A}$] are compatible.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Etymology]
+The terminology ``atlas'' is borrowed from cartography. Back in the dark
+ages, before Google Maps [i.e., before February 8, 2005], primitive humans collected paper maps and
+bound them in book-form. These books were called ``atlases'', the pages
+were called ``charts''.
+\end{remark}
+
+\begin{remark}[Set versus Proper Class]\label{rmk:atlas:is-a-set}
+The curious reader may wonder if an atlas is really an honest set, or if
+it's a proper class. A chart is an element of the collection of all
+possible (subset $U$ of $\RR^{n}$, function $U\to M$) pairs, i.e., an
+element of the collection:
+\begin{equation}
+\begin{split}
+C(M) &= \{\,(U,\varphi)\mid U\in\powerset(\RR^{n}),\varphi\colon U\to M\,\}\\
+&=\bigcup_{U\in\powerset(\RR^{n})}\{U\}\times\hom(U,M).
+\end{split}
+\end{equation}
+But this is clearly a set, not a proper class: $\{U\}\times\hom(U,M)$ is the
+product of sets (which is a set), and we take the union of an indexed
+family of sets (which is, again, a set). The ZF axioms assure us this is
+a set.
+
+An atlas is a subcollection of $C(M)$, or equivalently an element of
+$\powerset(C(M))$. By the axioms of ZF
+set theory, this is a set, not a proper class. We may rest assured, an
+atlas \emph{is} a set, \emph{not a proper class}.
+\end{remark}
+
+\begin{definition}\label{defn:atlas:equivalence}
+We call two ($n$-dimensional) atlases $\mathcal{A}$ and $\mathcal{B}$
+for $M$ \define{Equivalent} if their union $\mathcal{A}\cup\mathcal{B}$
+is another atlas [or, equivalently, if every chart in $\mathcal{A}$ is
+compatible with every chart in $\mathcal{B}$ and vice-versa].
+\end{definition}
+
+\begin{remark}
+Although the relation of ``equivalent atlases'' is obviously symmetric
+and reflexive, it is not yet established that it is a transitive relation.
+We cannot say \emph{at present} that it forms an equivalence relation.
+This motivates the first thing we'll do.
+\end{remark}
+
+\begin{remark}[Equivalence class of atlases is set, not proper class]
+From Remark~\ref{rmk:atlas:is-a-set}, we know that the collection of all
+possible atlases forms a set, a subset of $\powerset(C(M))$.
+If we have an atlas $\mathcal{A}$ on $M$, the collection of atlases
+equivalent to $\mathcal{A}$ is a subcollection of a set, which is a set,
+\emph{not a proper class}.
+\end{remark}
+
+\begin{lemma}
+Let $\mathcal{A}$ be an $n$-dimensional atlas for $M$, let $(U,\varphi)$ and $(V,\psi)$ 
+be $n$-dimensional charts for $M$ (but they do not belong to $\mathcal{A}$).
+If $(U,\varphi)$ and $(V,\psi)$ are compatible with every chart in $\mathcal{A}$,
+then they are compatible with each other.
+\end{lemma}
+
+We only really need to prove properties
+\ref{property:chart-compatible:transition-fun1} and
+\ref{property:chart-compatible:transition-fun2} from the definition of
+compatible charts, since open-ness should be obvious.
+
+\begin{corollary}
+Let $\mathcal{A}$, $\mathcal{B}$, $\mathcal{C}$ be $n$-dimensional
+atlases on $M$. If $\mathcal{A}$ is equivalent to $\mathcal{B}$, and if
+$\mathcal{B}$ is equivalent to $\mathcal{C}$, then $\mathcal{A}$ is
+equivalent to $\mathcal{C}$.
+\end{corollary}
+
+\begin{proof}
+Let $(U_{\alpha},\varphi_{\alpha})\in\mathcal{A}$ be an arbitrary chart,
+let $(V_{\gamma},\psi_{\gamma})\in\mathcal{C}$ be an arbitrary chart. 
+Since $\mathcal{A}$ is equivalent to $\mathcal{B}$, we know
+$(U_{\alpha},\varphi_{\alpha})$ is compatible with every chart in $\mathcal{B}$.
+Since $\mathcal{B}$ is equivalent to $\mathcal{C}$, we know
+$(V_{\gamma},\psi_{\gamma})$ is compatible with every chart in $\mathcal{B}$.
+By the previous lemma, we conclude that any arbitrary
+$(U_{\alpha},\varphi_{\alpha})\in\mathcal{A}$ is compatible to any arbitrary
+chart $(V_{\gamma},\psi_{\gamma})\in\mathcal{C}$. But by Definition~\ref{defn:atlas:equivalence} for
+equivalent atlases, this implies $\mathcal{A}$ is equivalent to $\mathcal{C}$.
+\end{proof}
+
+
