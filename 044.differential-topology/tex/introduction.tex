@@ -12,7 +12,13 @@ is a pair $(U,\varphi)$ consisting of
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
+\begin{figure}[H]
+  \centering
+  \includegraphics{img/img.0}
+  \caption{Chart on $M$}
+\end{figure}
+
+\begin{remark}\label{rmk:chart:local-coordinates}
 We call the inverse function of $\varphi$ --- that is, $\varphi^{-1}$
 which maps a subset of $M$ to $\RR^{n}$ --- the \define{Local Coordinates}
 of the chart $(U,\varphi)$.
@@ -56,9 +62,10 @@ we require $\varphi^{-1}$ to be smooth or continuous? But we do not have
 a notion of ``smooth functions on $M$'' yet: $M$ is just ``some set''.
 \end{remark}
 
-\begin{definition}
+\begin{definition}\label{defn:chart:compatible}
 We call two $n$-dimensional charts on $M$, $(U,\varphi)$ and $(V,\psi)$,
-\define{Compatible} if the following four conditions all hold:
+\define{Compatible} if the following four conditions all hold (confer
+with Figure~\ref{fig:chart:compatibility}):
 \begin{enumerate}
 \item the set $\varphi^{-1}\left(\psi(V)\right)\subset U$ is open (in
   $U$, hence in $\RR^{n}$);
@@ -77,6 +84,12 @@ $v\mapsto(\varphi^{-1}\circ\psi)(v)$ is smooth.
 \end{enumerate}
 In particular, $(U,\varphi)$ and $(V,\psi)$ are compatible if $\varphi(U)\cap\psi(V)=\emptyset$.
 \end{definition}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{img/img.1}
+  \caption{Compatible charts on $M$, with one particular transition function drawn.}\label{fig:chart:compatibility}
+\end{figure}
 
 \begin{remark}[Compatibility on Patches]
 The intuition is that we have the first two conditions be topological
@@ -111,13 +124,13 @@ among charts.
 \begin{definition}
 Let $M$ be a set. We define an ($n$-dimensional) \define{Atlas} on $M$
 to consist of a set of $n$-dimensional charts
-$\mathcal{A}=\{\,(U_{\alpha},\varphi_{\alpha})\mid\alpha\in A\,\}$
+$\atlas{A}=\{\,(U_{\alpha},\varphi_{\alpha})\mid\alpha\in A\,\}$
 such that
 \begin{enumerate}
 \item the images of the charts cover $M$: $\displaystyle\bigcup_{\alpha\in{A}}\varphi_{\alpha}(U_{\alpha})=M$
 \item for any $\alpha,\beta\in A$, the charts
   $(U_{\alpha},\varphi_{\alpha})$ and $(U_{\beta},\varphi_{\beta})$
-  [both in $\mathcal{A}$] are compatible.
+  [both in $\atlas{A}$] are compatible.
 \end{enumerate}
 \end{definition}
 
@@ -150,11 +163,17 @@ set theory, this is a set, not a proper class. We may rest assured, an
 atlas \emph{is} a set, \emph{not a proper class}.
 \end{remark}
 
+\begin{definition}
+Let $\atlas{A}$, $\atlas{B}$ be two $n$-dimensional atlases of $M$.
+We call $\atlas{A}$ a \define{Subatlas} of $\atlas{B}$ if $\atlas{A}\subset\atlas{B}$.
+If further $\atlas{A}\neq\atlas{B}$, we call it a \emph{proper subatlas}.
+\end{definition}
+
 \begin{definition}\label{defn:atlas:equivalence}
-We call two ($n$-dimensional) atlases $\mathcal{A}$ and $\mathcal{B}$
-for $M$ \define{Equivalent} if their union $\mathcal{A}\cup\mathcal{B}$
-is another atlas [or, equivalently, if every chart in $\mathcal{A}$ is
-compatible with every chart in $\mathcal{B}$ and vice-versa].
+We call two ($n$-dimensional) atlases $\atlas{A}$ and $\atlas{B}$
+for $M$ \define{Equivalent} if their union $\atlas{A}\cup\atlas{B}$
+is another atlas [or, equivalently, if every chart in $\atlas{A}$ is
+compatible with every chart in $\atlas{B}$ and vice-versa].
 \end{definition}
 
 \begin{remark}
@@ -164,18 +183,18 @@ We cannot say \emph{at present} that it forms an equivalence relation.
 This motivates the first thing we'll do.
 \end{remark}
 
-\begin{remark}[Equivalence class of atlases is set, not proper class]
+\begin{remark}[Equivalence class of atlases is set, not proper class]\label{rmk:atlas:equivalence-class-is-proper-set}
 From Remark~\ref{rmk:atlas:is-a-set}, we know that the collection of all
 possible atlases forms a set, a subset of $\powerset(C(M))$.
-If we have an atlas $\mathcal{A}$ on $M$, the collection of atlases
-equivalent to $\mathcal{A}$ is a subcollection of a set, which is a set,
+If we have an atlas $\atlas{A}$ on $M$, the collection of atlases
+equivalent to $\atlas{A}$ is a subcollection of a set, which is a set,
 \emph{not a proper class}.
 \end{remark}
 
 \begin{lemma}
-Let $\mathcal{A}$ be an $n$-dimensional atlas for $M$, let $(U,\varphi)$ and $(V,\psi)$ 
-be $n$-dimensional charts for $M$ (but they do not belong to $\mathcal{A}$).
-If $(U,\varphi)$ and $(V,\psi)$ are compatible with every chart in $\mathcal{A}$,
+Let $\atlas{A}$ be an $n$-dimensional atlas for $M$, let $(U,\varphi)$ and $(V,\psi)$ 
+be $n$-dimensional charts for $M$ (but they do not belong to $\atlas{A}$).
+If $(U,\varphi)$ and $(V,\psi)$ are compatible with every chart in $\atlas{A}$,
 then they are compatible with each other.
 \end{lemma}
 
@@ -184,24 +203,242 @@ We only really need to prove properties
 \ref{property:chart-compatible:transition-fun2} from the definition of
 compatible charts, since open-ness should be obvious.
 
+\begin{proof}
+It suffices to prove $\varphi^{-1}\circ\psi$ is smooth (the proof for
+$\psi\circ\varphi^{-1}$ being smooth is the same).
+Let $u\in\varphi^{-1}(\psi(V))\subset U$ be arbitrary,
+let $x=\varphi(u)\in M$.
+Now, consider \emph{any arbitrary} chart $(W,\chi)\in\atlas{A}$ such that $x\in\chi(W)$.
+Set $x=\chi(w)$ for $w\in W$. Make note that $\chi^{-1}(x)=w$. We see
+\begin{equation}
+\psi^{-1}(\varphi(u)) = \psi^{-1}(x) = \psi^{-1}(\chi(w))=\psi^{-1}(\chi(\chi^{-1}(\varphi(u))))
+\end{equation}
+which implies $\psi^{-1}\circ\varphi$ is smooth at a neighborhood of $u$,
+since it is a composition of (suitable restrictions of) smooth maps
+$\psi^{-1}\circ\chi$ and $\chi^{-1}\circ\varphi$.
+
+Since we have established the claim is ``locally true'' for any
+arbitrary $x\in\varphi(U)\cap\psi(V)$ and every chart $(W,\chi)$ whose
+image contains $x$, then it's true that $\varphi^{-1}\circ\psi$ is
+smooth on $(\psi^{-1}\circ\varphi)(U)$.
+\end{proof}
+
 \begin{corollary}
-Let $\mathcal{A}$, $\mathcal{B}$, $\mathcal{C}$ be $n$-dimensional
-atlases on $M$. If $\mathcal{A}$ is equivalent to $\mathcal{B}$, and if
-$\mathcal{B}$ is equivalent to $\mathcal{C}$, then $\mathcal{A}$ is
-equivalent to $\mathcal{C}$.
+Let $\atlas{A}$, $\atlas{B}$, $\atlas{C}$ be $n$-dimensional
+atlases on $M$. If $\atlas{A}$ is equivalent to $\atlas{B}$, and if
+$\atlas{B}$ is equivalent to $\atlas{C}$, then $\atlas{A}$ is
+equivalent to $\atlas{C}$.
 \end{corollary}
 
 \begin{proof}
-Let $(U_{\alpha},\varphi_{\alpha})\in\mathcal{A}$ be an arbitrary chart,
-let $(V_{\gamma},\psi_{\gamma})\in\mathcal{C}$ be an arbitrary chart. 
-Since $\mathcal{A}$ is equivalent to $\mathcal{B}$, we know
-$(U_{\alpha},\varphi_{\alpha})$ is compatible with every chart in $\mathcal{B}$.
-Since $\mathcal{B}$ is equivalent to $\mathcal{C}$, we know
-$(V_{\gamma},\psi_{\gamma})$ is compatible with every chart in $\mathcal{B}$.
+Let $(U_{\alpha},\varphi_{\alpha})\in\atlas{A}$ be an arbitrary chart,
+let $(V_{\gamma},\psi_{\gamma})\in\atlas{C}$ be an arbitrary chart. 
+Since $\atlas{A}$ is equivalent to $\atlas{B}$, we know
+$(U_{\alpha},\varphi_{\alpha})$ is compatible with every chart in $\atlas{B}$.
+Since $\atlas{B}$ is equivalent to $\atlas{C}$, we know
+$(V_{\gamma},\psi_{\gamma})$ is compatible with every chart in $\atlas{B}$.
 By the previous lemma, we conclude that any arbitrary
-$(U_{\alpha},\varphi_{\alpha})\in\mathcal{A}$ is compatible to any arbitrary
-chart $(V_{\gamma},\psi_{\gamma})\in\mathcal{C}$. But by Definition~\ref{defn:atlas:equivalence} for
-equivalent atlases, this implies $\mathcal{A}$ is equivalent to $\mathcal{C}$.
+$(U_{\alpha},\varphi_{\alpha})\in\atlas{A}$ is compatible to any arbitrary
+chart $(V_{\gamma},\psi_{\gamma})\in\atlas{C}$. But by Definition~\ref{defn:atlas:equivalence} for
+equivalent atlases, this implies $\atlas{A}$ is equivalent to $\atlas{C}$.
 \end{proof}
 
+\subsubsection{Topology}
 
+\begin{definition}
+Let $M$ be a set with an $n$-dimensional atlas $\atlas{A}$. A subset
+$B\subset M$
+is called \define{Open (with respect to $\atlas{A}$)} if for any chart
+$(U,\varphi)\in\atlas{A}$, the set $\varphi^{-1}(B)\subset U\subset\RR^{n}$
+is open in $U$ (hence open in $\RR^{n}$).
+In particular, the sets $\varphi(U)$ are open subsets of $M$.
+\end{definition}
+
+\begin{remark}
+Since morphisms of topological spaces (a.k.a., ``continuous maps'')
+require the preimage of open sets be open, and we began ``from scratch''
+working with an arbitrary set $M$, the reader can see why charts are
+defined the way they are $\varphi\colon U\subset\RR^{n}\to M$. If we
+demand $\varphi$ be continuous, then we work \emph{with} the notions of
+topology. 
+\end{remark}
+
+\begin{remark}
+It is easy to see that sets open with respect to a particular atlas
+$\atlas{A}$ form a topology on $M$.
+\end{remark}
+
+\begin{proposition}
+If two atlases $\atlas{A}$ and $\atlas{B}$ are equivalent, then a set
+$B\subset M$ is open with respect to $\atlas{A}$ if and only if it is
+open with respect to $\atlas{B}$.
+\end{proposition}
+
+\begin{proof}
+  For any $B\subset M$, we have
+  \begin{equation}
+B = \bigcup_{(V,\psi)\in\atlas{B}}(B\cap\psi(V))
+  = \bigcup_{(V,\psi)\in\atlas{B}}\psi\bigl(\psi^{-1}(B)\bigr).
+  \end{equation}
+If $B$ is open with respect to $\atlas{B}$, then all the sets
+$\psi^{-1}(B)$ are open.
+
+Let $(U,\varphi)$ be a chart of $\atlas{A}$. Then
+\begin{subequations}
+\begin{align}
+\varphi^{-1}(B) 
+&=\varphi^{-1}\left(\bigcup_{(V,\psi)\in\atlas{B}}\psi\bigl(\psi^{-1}(B)\bigr)\right)\\
+&= \bigcup_{(V,\psi)\in\atlas{B}}\varphi^{-1}\left(\psi\bigl(\psi^{-1}(B)\bigr)\right)\\
+&= \bigcup_{(V,\psi)\in\atlas{B}} (\psi^{-1}\circ\varphi)^{-1}\bigl(\psi^{-1}(B)\bigr).
+\end{align}
+\end{subequations}
+Since $\psi^{-1}\circ\varphi$ is smooth (hence continuous), the last
+line shows $B$ is a union of open sets; hence it is open with respect to
+$\atlas{A}$. Since this is true for arbitrary charts $(U,\varphi)\in\atlas{A}$,
+it follows the set $B$ is open with respect to $\atlas{A}$.
+\end{proof}
+
+\begin{remark}
+This proposition shows that an equivalence class of atlases on $M$ makes
+$M$ a topological space. This permits us to speak of topological
+properties of $M$ like compactness, connectedness, and so forth.
+\end{remark}
+
+\subsubsection{Manifolds}
+
+\begin{definition}[Equivalence class version]
+A class $\mathfrak{D}$ of equivalent $n$-dimensional atlases on $M$ is
+called a \define{Differential Structure} on $M$ if the following
+conditions hold:
+\begin{enumerate}
+\item Paracompactness: the class $\mathfrak{D}$ contains an at-most countable atlas;
+\item Hausdorff: for any distinct points $p,q\in M$, there exists
+  disjoint open $U,V\subset M$ such that $p\in U$ and $q\in V$.
+\end{enumerate}
+The charts of atlases from $\mathfrak{D}$ are simply called ``charts of $\mathfrak{D}$''.
+\end{definition}
+
+\begin{remark}
+It is rather unwieldy to work with equivalence classes, and what we are
+effectively doing is working with the union of all atlases in the
+equivalence class (which, by Definition~\ref{defn:atlas:equivalence}
+of atlas equivalence, produces an atlas --- a \emph{maximal} atlas).
+\end{remark}
+
+\begin{definition}[Atlas version]
+An $n$-dimensional atlas $\atlas{D}$ of $M$ is called a \define{Differential Structure}
+on $M$ if the following three conditions all hold:
+\begin{enumerate}
+\item Maximal: for any atlas $\atlas{A}$ compatible with $\atlas{D}$, we
+  have $\atlas{A}\subset\atlas{D}$;
+\item Paracompact: there is an at most countable subatlas of $\atlas{D}$;
+\item Hausdorff: for any distinct points $p,q\in M$, there exists
+  disjoint open $U,V\subset M$ such that $p\in U$ and $q\in V$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+We leave it as an exercise for the reader to prove these two definitions
+are logically equivalent. We know from Remark~\ref{rmk:atlas:equivalence-class-is-proper-set}
+the equivalence class of atlases is a set (not a proper class).
+\end{remark}
+
+\begin{definition}
+A \define{(Smooth) $n$-Dimensional Manifold} consists of
+  a set $M$ equipped with an $n$-dimensional differential structure $\atlas{D}$.
+\end{definition}
+
+\begin{remark}
+We could define a $C^{k}$ differentiable structure and $C^{k}$
+$n$-dimensional manifold analogously. This works for analytic
+(``$k=\omega$'') manifolds, too. For differential geometry, I believe
+$k\geq2$ suffices.
+\end{remark}
+
+\subsubsection{Orientations}
+
+\N{Local Coordinates}
+We mentioned briefly in Remark~\ref{rmk:chart:local-coordinates}
+that from a patch $(U,\varphi)$ we can construct local coordinates using
+$\varphi^{-1}\colon\varphi(U)\to\RR^{n}$.
+The $n$ components of $\varphi^{-1}$ are usually written as
+$\{x_{1},\dots,x_{n}\}$.
+
+If we have two overlapping charts $(U,\varphi)$ and $(V,\psi)$ from the
+differential structure on $M$, with local coordinates $\{x_{1},\dots,x_{n}\}$
+and $\{y_{1},\dots,y_{n}\}$ (respectively). Then
+condition~\ref{property:chart-compatible:transition-fun1} in
+Definition~\ref{defn:chart:compatible} amounts to stating
+the $x_{j}$ are smooth functions of the $y_{i}$, and
+condition~\ref{property:chart-compatible:transition-fun2} states
+the $y_{i}$ are smooth functions of the $x_{j}$.
+Moreover, the Jacobian matrices $[\partial x_{j}/\partial y_{i}]$
+and $[\partial y_{i}/\partial x_{j}]$ are inverses of each other and, in
+particular, invertible.
+
+\begin{definition}
+Let $M$ be a smooth manifold of dimension $n>0$,
+let $(U,\varphi)$, $(V,\psi)$ be two charts on $M$,
+and let $p\in\varphi(U)\cap\psi(V)$.
+We say \define{the orientations of the charts agree at $p$} if
+the determinant of the Jacobian matrix for the transformation
+$(\varphi^{-1}\circ\psi)(V)\to(\psi^{-1}\circ\varphi)(U)$,
+sending $x\mapsto\psi^{-1}(\varphi(x))$, at $\varphi^{-1}(p)$ is positive.
+If the determinant is negative, then we say 
+\define{the Orientations Disagree}.
+\end{definition}
+
+\begin{definition}
+The charts in the differential structure for smooth manifold $M$ of
+dimension $n>0$ split into two classes, for each $p\in M$, since the
+determinant of the Jacobian transformation is either positive or negative.
+Within each class, the orientations agree at $p$, but any chart from one
+class and any chart from the second class will disagree with the orientation 
+at $p$. These equivalence classes are called the \define{Orientations at $p$}.
+\end{definition}
+
+\begin{definition}
+We call an atlas \define{Oriented} if the orientations of any two charts
+$(U,\varphi)$ and $(V,\psi)$ agree at every point in $\varphi(U)\cap\psi(V)$.
+\end{definition}
+
+\begin{definition}
+We say two oriented atlases \define{Determine the Same Orientation} if their
+union is also an oriented atlas.
+\end{definition}
+
+\begin{definition}
+An \define{Orientation} of a manifold is a class of atlases that
+determine the same orientation. In other words, it is a \emph{maximal oriented atlas},
+i.e., an oriented atlas such that it contains every chart whose
+orientation agrees with that of any of its charts.
+\end{definition}
+
+\begin{remark}
+There is another, more general, way to define an orientation for a
+manifold. It involves sections of a fiber bundle. But since this is a
+\emph{generalization} of what we have described, we will discuss it
+later.
+\end{remark}
+
+\begin{definition}
+For any orientation $\atlas{A}$ of an oriented manifold, there is the \define{Opposite}
+orientation obtained by taking each chart $(U,\varphi)\in\atlas{A}$,
+then forming $(\rho(U),\varphi\circ\rho)$ where $\rho$ is the reflection
+$(x_{1}, x_{2},\dots, x_{n})\mapsto(-x_{1},x_{2},\dots,x_{n})$. 
+\end{definition}
+
+\begin{proposition}
+A connected orientable manifold has precisely two different
+orientations, and they are opposite to each other. A disconnected
+manifold is orientable if and only if all its components are orientable;
+a choice of orientation of a disconnected manifold is the same as
+(independent) simultaneous choices of orientations for each of its components.
+\end{proposition}
+
+\subsection{Examples}
+
+\begin{example}[Euclidean spaces]
+We see that $\RR^{n}$ is an $n$-dimensional manifold. The differential
+structure is determined by the one-chart atlas $\{(\RR^{n},\id)\}$.
+\end{example}

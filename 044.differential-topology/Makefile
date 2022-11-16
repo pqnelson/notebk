@@ -1,9 +1,9 @@
 TEX=pdflatex
 FILE=dt
 
-all:
+all: images
 	$(TEX) $(FILE)
 	$(TEX) $(FILE)
 
 images:
-	cd img && mpost img.mp
+	cd img && mpost -tex=latex -numbersystem=double img.mp
