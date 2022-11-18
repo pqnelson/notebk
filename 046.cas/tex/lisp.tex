@@ -157,7 +157,7 @@ a \lstinline[language=lisp]{:fail} keyword. In the latter case, we say
 the input \emph{failed to match} the pattern; in all other cases, we say
 the input \emph{matches} (or \emph{fits}) the pattern.
 
-\N{Algorithm sketch}
+\begin{algorithm}{Match an S-Expression Against a Pattern}
 Given a \lstinline[language=lisp]{pattern} and an
 \lstinline[language=lisp]{input}, and an optional
 \lstinline[language=lisp]{dict} of bindings [default value for the
@@ -166,43 +166,48 @@ dictionary, then recursively call the
 \lstinline[language=lisp]{match} function with
 the rest of the \lstinline[language=lisp]{pattern} and the rest of the
 \lstinline[language=lisp]{input} (and the updated dictionary); or else
-we \lstinline[language=lisp]{:fail} to make a match and return that.
+we \lstinline[language=lisp]{:fail} to make a match and return that.\setcounter{algorithmstep}{-1}
 
-\N*{Step 0} If \lstinline[language=lisp]{dict} is
+\step [Failure ends now.] If \lstinline[language=lisp]{dict} is
 \lstinline[language=lisp]{:fail}, then we bail out here.
 
-\N*{Step 1} If
+\step [Pattern equals input?] If
 \lstinline[language=lisp]{pattern} is the same as
 \lstinline[language=lisp]{input}, then we return the dictionary of
 bindings (we're done matching pattern variables).
 
-\N*{Step 2} When the
-\lstinline[language=lisp]{pattern} is a ``pattern element'',
-we delegate the attempt to match to a subroutine. Basically check if the
-pattern element is already in the dictionary; if so, then check it is
-bound to the same value as the first element in the
-\lstinline[language=lisp]{input} data --- we \lstinline[language=lisp]{:fail}
-if there is disagreement (we are trying to match one variable against
-two distinct values).
+\step [Pattern element or segment?] If the \lstinline[language=lisp]{pattern} is a ``pattern
+element'', we go to the next step. Otherwise we go to step~\ref{algorithm:step:lisp:matching:trying-to-match-pattern-segment}.
 
+\step [Is the pattern element already in the dictionary?]
+Check if the pattern element is already in the dictionary; if so, then
+check it is bound to the same value as the first element in the
+\lstinline[language=lisp]{input} data --- we
+\lstinline[language=lisp]{:fail} if there is disagreement (we are trying
+to match one variable against two distinct values). Otherwise, go to the
+next step.
+
+\step [Matching a pattern element not in the dictionary.]
 If the pattern element \emph{is not} in the dictionary of bindings, then
 add the binding, and recursively call \lstinline[language=lisp]{match}
 using the rest of the \lstinline[language=lisp]{pattern},
 the rest of the \lstinline[language=lisp]{input}, and the updated
 dictionary bindings. (It's impossible to fail in this branch.)
 
-\N*{Step 3} When we're trying to match a pattern segment, well, it's a
-mess, and I'm going to carve out that particular case to its own
-algorithm. Otherwise go to step 4.
+\step [Pattern segments.]\label{algorithm:step:lisp:matching:trying-to-match-pattern-segment}
+When we're trying to match a pattern segment, well, it's a mess, and I'm
+going to carve out that particular case to its own algorithm. Otherwise
+go to the next step.
 
-\N*{Step 4}
+\step [Input must start with a list.]
 We should expect the
 \lstinline[language=lisp]{input} to be a list whose first element is a list.
 If that's not the case, then the pattern has failed (i.e.,
 \lstinline[language=lisp]{match} returns \lstinline[language=lisp]{:fail}).
 Otherwise go to the final step.
 
-\N*{Step 5} We have the head of the \lstinline[language=lisp]{input} be
+\step [Recurse against the input's head and tail.]
+We have the head of the \lstinline[language=lisp]{input} be
 a list, so we call \lstinline[language=lisp]{match} using the top of the
 pattern and the top of the \lstinline[language=lisp]{input}. We check
 the updated bindings to see if we have \lstinline[language=lisp]{:fail}
@@ -211,8 +216,9 @@ recursively call \lstinline[language=lisp]{match}
 with the rest of the \lstinline[language=lisp]{input} and the
 rest of the \lstinline[language=lisp]{pattern} using the updated
 dictionary bindings.\quad\qedsymbol
+\end{algorithm}
 
-\N{Matching pattern segments}
+\begin{algorithm}{Matching pattern segments}
 Given the \lstinline[language=lisp]{pattern},
 the \lstinline[language=lisp]{input}, and the current
 \lstinline[language=lisp]{dict} bindings dictionary, we will either
@@ -220,11 +226,11 @@ the \lstinline[language=lisp]{input}, and the current
 \lstinline[language=lisp]{match} function with updated input, pattern,
 and dictionary bindings.
 
-\N*{Step 0: is the pattern segment bound already or not?}
+\step [Is pattern segment already bound or not?]
 We check if the pattern segment is already in the dictionary. If it is,
-then go to step 1; otherwise, we go to step 2.
+then go to step~\ref{step:algorithm:segment-match:check-binding-fits-current-situation}; otherwise, we go to step~\ref{step:algorithm:segment-match:depth-first-search}.
 
-\N*{Step 1: check the binding fits the current situation}
+\step [Check the binding fits current situation]\label{step:algorithm:segment-match:check-binding-fits-current-situation}
 If the pattern segment \emph{is already bound} (i.e., the dictionary has
 a value associated to it), then we check the segment against the data.
 If the sublist of \lstinline[language=lisp]{input} agrees with what is
@@ -238,7 +244,7 @@ the new input --- and we use the rest of the
 \lstinline[language=lisp]{match}. (The ``match pattern segments''
 algorithm ends here.)
 
-\N*{Step 2: depth-first search for longest fit}
+\step [Depth-first search for longest fit]\label{step:algorithm:segment-match:depth-first-search}
 The pattern segment \emph{is not} in the dictionary. We perform a
 depth-first search to try to match the \lstinline[language=lisp]{input}
 against the \lstinline[language=lisp]{pattern} for as long as possible.
@@ -247,6 +253,7 @@ search we will have recursively called \lstinline[language=lisp]{match}
 to produce a dictionary binding for the rest of the pattern, too.
 Or we have utterly failed and there is no possible match for the pattern
 segment, in which case we propagate the \lstinline[language=lisp]{:fail}.\quad\qedsymbol
+\end{algorithm}
 
 \N{On Equality}
 There has been a lot of ``if this element matches the value bound'',
@@ -273,47 +280,55 @@ and pattern segments) and our dictionary, then replace all instances of
 pattern variables (and pattern segments) with the values associated to
 them in the dictionary.
 
-\N{Algorithm for ``substitute-in''.}
+\begin{algorithm}{Substitution in a rule skeleton}%
 Given a skeleton and a dictionary of bindings, we will expand
 (``hydrate'') the skeleton by replacing instances of pattern variables
-(and pattern segments) with their values according to the dictionary.
+(and pattern segments) with their values according to the dictionary.\setcounter{algorithmstep}{-1}
 
-\N*{Step 0} If the skeleton is \lstinline[language=lisp]{nil},
+\step [Nil skeletons.] If the skeleton is \lstinline[language=lisp]{nil},
 then we return \lstinline[language=lisp]{nil}.
 
-\N*{Step 1} If the skeleton is a pattern variable
+\step [Pattern variable skeletons.] If the skeleton is a pattern variable
 \lstinline[language=lisp]{(? x)}, then we lookup the value in our
 dictionary and retun that.
 
-\N*{Step 2}
-If the skeleton is a list, then we have several subcases:
-\begin{enumerate}
-\item If the skeleton starts with a pattern segment
-  [so the skeleton looks like \lstinline[language=lisp]{((?? x) e)}],
-  then we lookup the value associated
-  to the pattern segment \emph{and append} to it the result of
-  substituting into the subskeleton \lstinline[language=lisp]{e} the
-  values bound in the dictionary.
-\item If the skeleton is \lstinline[language=lisp]{(:EVAL (stuff))},
-  then we first recursively call substitute using \lstinline[language=lisp]{stuff}
-  as the skeleton, and then we evaluate it;
-  something like \lstinline[language=lisp]{(eval (substitute-in stuff dict))}.
-\item If the skeleton is \lstinline[language=lisp]{((:SPLICE (stuff)) e)},
-  then we hydrate ``stuff'' --- that is, we recursively call
-  \lstinline[language=lisp]{(substitute-in stuff dict)} --- and append
-  to it the result of hydrating the rest of the skeleton.
-\item In the very lsat case, the skeleton is a list and we need to
-  process each element in the list. So we recursively call substitute-in
-  on the head and tail of the list;
-  that is, if the skeleton looks like \lstinline[language=lisp]{(h . tl)}
-  then we return
-  \lstinline[language=lisp]{(cons (substitute-in h dict) (substitute-in tl dict))}.
-\end{enumerate}
+\step [List skeletons.]
+If the skeleton is a list, then we have several subcases which we
+consider starting in the next step. Otherwise, we go to step~\ref{step:algorithm:substitute-in:finished-with-list-subcases}.
 
-\N*{Step 3}
+\step [Subcase: leads with pattern segment?] If the skeleton starts with
+a pattern segment [so the skeleton looks like
+\lstinline[language=lisp]{((?? x) e)}], then we lookup the value
+associated to the pattern segment \emph{and append} to it the result of
+substituting into the subskeleton \lstinline[language=lisp]{e} the
+values bound in the dictionary.
+
+\step [Subcase: evaluating expressions.] If the skeleton is
+\lstinline[language=lisp]{(:EVAL (stuff))}, then we first recursively
+call substitute using \lstinline[language=lisp]{stuff} as the skeleton,
+and then we evaluate it; something like
+\lstinline[language=lisp]{(eval (substitute-in stuff dict))}.
+
+\step [Subcase: splice sublists.] If the skeleton is
+\lstinline[language=lisp]{((:SPLICE (stuff)) e)}, then we hydrate
+``stuff'' --- that is, we recursively call
+\lstinline[language=lisp]{(substitute-in stuff dict)} --- and append to
+it the result of hydrating the rest of the skeleton.
+
+\step [Subcase: skeleton \emph{is} a list.] In the very last case, the
+skeleton is a list and we need to process each element in the list. So
+we recursively call substitute-in on the head and tail of the list; that
+is, if the skeleton looks like \lstinline[language=lisp]{(h . tl)} then
+we return
+\lstinline[language=lisp]{(cons (substitute-in h dict) (substitute-in tl dict))}.
+
+\step [Skeleton must be literal value]\label{step:algorithm:substitute-in:finished-with-list-subcases}
 We have a skeleton which is neither a pattern element, nor a list. What
-could it be? Well, a literal value. In this case, we want to ``fall
+could it be? Well, we \emph{hope} it's a literal value (it could be
+something like a CLOS constructor, or whatever). In this case, we want to ``fall
 through'' and just return the skeleton.\quad\qedsymbol
+\end{algorithm}
+
 
 \begin{remark}[Class instances, objects]
 There is the problem for Common Lisp (and Clojure) when a skeleton
