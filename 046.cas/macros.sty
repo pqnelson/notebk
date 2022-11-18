@@ -1,7 +1,6 @@
 \usepackage{alphalph} % for algorithm numbering
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{enumitem}
-\setlist{topsep=0pt,noitemsep,label=(\arabic*)}
 % amsppt layout
 \RequirePackage[letterpaper,inner=6pc,outer=6pc,%textwidth=30pc,
   textheight=54pc,top=6pc]{geometry}
@@ -31,6 +30,16 @@
 }
 \usepackage{doi}
 \usepackage{chunk}
+
+
+%% Customizing list spacing
+% This is what amsart's parameters use; lines 253 and 960
+\setlist{topsep=\smallskipamount,
+         itemsep=\z@skip,
+         partopsep=\z@skip,
+         parsep=\z@skip,
+         leftmargin=\leftmargini}
+\setlist[enumerate]{label=(\arabic*)}
 
 \numberwithin{equation}{section}
 
@@ -85,6 +94,23 @@
   \gdef\thepage{\csname @#1\endcsname
    \c@page}}
 }
+% Patch the book to count pages correctly
+\@ifclassloaded{book}{
+  \if@compatibility\else
+  \renewenvironment{titlepage}
+    {%
+      \cleardoublepage
+      \if@twocolumn
+        \@restonecoltrue\onecolumn
+      \else
+        \@restonecolfalse\newpage
+      \fi
+      \thispagestyle{empty}%
+      \setcounter{page}\@ne
+    }%
+    {\if@restonecol\twocolumn \else \newpage \fi}
+  \fi
+}{}
 
 
 \@ifclassloaded{report}{
