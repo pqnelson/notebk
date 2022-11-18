@@ -2,6 +2,39 @@
 \RequirePackage{mdframed}
 
 
+\usepackage[T1]{fontenc}
+\usepackage{fix-cm}
+\usepackage{sourcecodepro}
+
+
+% Egreg saves my bacon again https://tex.stackexchange.com/a/142409/14751
+\newlength{\eightytt}
+\newcommand{\testthewidth}{%
+  \fontsize{\dimen0}{0}\selectfont
+  \sbox0{x\global\dimen1=0.6em}% ASSUME: columns=fixed
+  \ifdim 84\dimen1>\textwidth % 84, not 80, for extra padding/precaution
+    \advance\dimen0 by -.1pt
+    \expandafter\testthewidth
+  \else
+    \global\eightytt\dimen0
+  \fi
+}
+
+\AtBeginDocument{%
+  \dimen0=\csname f@size\endcsname pt
+  \begingroup
+  \ttfamily
+  \testthewidth
+  \endgroup
+  \gdef\lisp@normalstyle{\edef\ttdefault{SourceCodePro-T\sourcecodepro@figurestyle}\color{ghDefaultColor}\fontsize{\eightytt}{1.2\eightytt}\ttfamily}
+  \lstset{
+    columns=fixed,
+    basicstyle=\lisp@normalstyle
+  }%
+  \renewcommand{\ttdefault}{cmtt}%
+}
+
+
 %% I decided to copy github's syntax highlighting style for common lisp,
 %% because it looked appealing
 \definecolor{ghComment}{HTML}{6e7781}

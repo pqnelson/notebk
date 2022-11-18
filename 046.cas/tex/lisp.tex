@@ -100,19 +100,21 @@ evaluates the expression, and substitutes the result into the skeleton.
 We can consider four rules for what we have asserted for the arithmetic operators.
 
 \begin{lisp-example}
-  ;; addition
-  ((+ (? x number?) (? y number?) (?? z)) ;; pattern
-   nil                                    ;; explicitly no guard
-   (+ (:eval (+ (? x) (? y))) (?? z)))    ;; skeleton
-  ;; subtraction, with no guard
-  ((- (? x number?) (? y number?) (?? z)) ;; pattern
-   (- (:eval (- (? x) (? y))) (?? z)))    ;; skeleton
-  ;; multiplication, with no guard
-  ((* (? x number?) (? y number?) (?? z)) ;; pattern
-   (* (:eval (* (? x) (? y))) (?? z)))    ;; skeleton
-  ;; division, with no guard
-  ((/ (? x number?) (? y number?) (?? z)) ;; pattern
-   (/ (:eval (/ (? x) (? y))) (?? z)))    ;; skeleton
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+         0         1         2         3         4         5         6         7
+;; addition
+((+ (? x number?) (? y number?) (?? z)) ;; pattern
+ nil                                    ;; explicitly no guard
+ (+ (:eval (+ (? x) (? y))) (?? z)))    ;; skeleton
+;; subtraction, with no guard
+((- (? x number?) (? y number?) (?? z)) ;; pattern
+ (- (:eval (- (? x) (? y))) (?? z)))    ;; skeleton
+;; multiplication, with no guard
+((* (? x number?) (? y number?) (?? z)) ;; pattern
+ (* (:eval (* (? x) (? y))) (?? z)))    ;; skeleton
+;; division, with no guard
+((/ (? x number?) (? y number?) (?? z)) ;; pattern
+ (/ (:eval (/ (? x) (? y))) (?? z)))    ;; skeleton
 \end{lisp-example}
 
 \begin{remark}
@@ -120,18 +122,18 @@ We could have implemented these rules using segment variables and reduce
 it explicitly, which will reduce the amount of time spent recursively
 calling the term rewriting function. The new rules would look something like:
 \begin{lisp-example}
-  ;; addition
-  ((+ (?? x number?) (?? y))              ;; pattern
-   (+ (:eval (reduce + (?? x))) (?? y)))  ;; skeleton
-  ;; subtraction
-  ((- (?? x number?) (?? y))              ;; pattern
-   (- (:eval (reduce - (?? x))) (?? y)))  ;; skeleton
-  ;; multiplication
-  ((* (?? x number?) (?? y))              ;; pattern
-   (* (:eval (reduce * (?? x))) (?? y)))  ;; skeleton
-  ;; division
-  ((/ (?? x number?) (?? y))              ;; pattern
-   (/ (:eval (reduce / (?? x))) (?? y)))  ;; skeleton
+;; addition
+((+ (?? x number?) (?? y))              ;; pattern
+ (+ (:eval (reduce + (?? x))) (?? y)))  ;; skeleton
+;; subtraction
+((- (?? x number?) (?? y))              ;; pattern
+ (- (:eval (reduce - (?? x))) (?? y)))  ;; skeleton
+;; multiplication
+((* (?? x number?) (?? y))              ;; pattern
+ (* (:eval (reduce * (?? x))) (?? y)))  ;; skeleton
+;; division
+((/ (?? x number?) (?? y))              ;; pattern
+ (/ (:eval (reduce / (?? x))) (?? y)))  ;; skeleton
 \end{lisp-example}
 We could go farther and insist the segment variable is not null as the
 guard condition, something like:
