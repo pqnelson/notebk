@@ -1,16 +1,20 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{macros}[2022/11/14 Collected style in one location]
+\newif\if@book
+\@ifclassloaded{book}{\@booktrue}{}
+\usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{mathtools}
 \usepackage[en-US,useregional=text]{datetime2}
 \DTMlangsetup[en-US]{mapzone=true}
-\usepackage[nottoc]{tocbibind}
+\usepackage[\if@book\else nottoc\fi]{tocbibind}
 \usepackage[inner=6pc,
   top=6pc,
-  textwidth=34.5pc, % 51 - 6 - 10.5 = 34.5
   marginparwidth=9pc,
   marginparsep=1.5pc,
-  bottom=5pc]{geometry}
+  textwidth=34.5pc, % 51 - 6 - 10.5 = 34.5
+  textheight=54pc, %11*6 - 6 - 6 = 9*6 = 54pc
+]{geometry}
 \usepackage{graphicx}
 \DeclareGraphicsRule{*}{mps}{*}{}
 \usepackage{amsmath,amsthm,amssymb}
@@ -96,6 +100,23 @@
      \c@page}}
 }
 
+% Patch the book to count pages correctly
+\@ifclassloaded{book}{
+  \if@compatibility\else
+  \renewenvironment{titlepage}
+    {%
+      \cleardoublepage
+      \if@twocolumn
+        \@restonecoltrue\onecolumn
+      \else
+        \@restonecolfalse\newpage
+      \fi
+      \thispagestyle{empty}%
+      \setcounter{page}\@ne
+    }%
+    {\if@restonecol\twocolumn \else \newpage \fi}
+  \fi
+}{}
 
 \@ifclassloaded{report}{
   \usepackage{etoolbox}
@@ -165,6 +186,24 @@
 \newcommand\volume\textbf
 
 
+
+% Fancy Header Business
+
+
+\pagestyle{fancy}
+\if@twoside
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyheadoffset[OR,EL]{4.5pc}
+\else
+\fancyhead[L]{\nouppercase{\ifodd\value{page}{\leftmark}\else{\rightmark}\fi}}
+%\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[R]{\thepage}
+\fancyheadoffset[R]{4.5pc}
+\fi
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\headsep=6pt
 
 
 \endinput
