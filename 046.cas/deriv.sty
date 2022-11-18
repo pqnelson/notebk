@@ -9,7 +9,7 @@
 % Make the equation numbers on the left.
 \DeclareOption{leqno}{\@leqnotrue}
 % Force the equation numbers on the right ONLY for the structured derivations.
-\DeclareOption{reqno}{\@leqnofalse} 
+\DeclareOption{reqno}{\@leqnofalse}
 % If you want to number the steps (after the initial expression) using
 % the equation counter, then pass in the "[equation]" option.
 \DeclareOption{equation}{\@using@equation@numberstrue}
@@ -65,7 +65,7 @@
   \newcommand\next@step{}
   \newcommand\step@number{}
 \fi
-  
+
 % When giving a hint why expression A is equal to expression B, we
 % invoke "\step{hint why $A=B$}". If the binary relation is not the
 % default one [equality], we insert it as an optional argument, like
@@ -104,7 +104,7 @@
 \def\step@no@number@unbracket#1{\step@no@number@bracket[\defaultrelation]{#1}}
 
 \def\step@no@number{\@ifnextchar[\step@no@number@bracket\step@no@number@unbracket}
-  
+
 \def\step{\@ifstar
   \step@no@number%
   \step@numbered
@@ -117,6 +117,8 @@
 \newcommand\abovecalculationbreak{\par\ifdim\lastskip<\abovedisplayskip\removelastskip\penalty\predisplaypenalty\vspace\abovedisplayskip\fi}
 \newcommand\bewlowcalculationbreak{\par\ifdim\lastskip<\belowdisplayskip\removelastskip\penalty\postdisplaypenalty\vspace\belowdisplayskip\fi}
 
+
+\newcommand\calculation@qed{\quad\hbox{\qedsymbol}}
 % The "calculation" environment is where we do structured derivations in
 % the spirit of Dijkstra.
 \newenvironment{calculation}{\xdef\old@defaultrelation{\defaultrelation}\@first@exptrue%
