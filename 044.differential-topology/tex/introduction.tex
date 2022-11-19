@@ -28,7 +28,7 @@ of the chart $(U,\varphi)$.
 The important aspect of the mapping $\varphi$ is that it's a bijection
 $\varphi\colon U\to\varphi(U)$. Some authors\footnote{Followers of the
 $V\subset M\to\RR^{n}$ convention include Bourbaki (see, e.g., \textit{Lie Groups} III \S1.1 Lemma 1),
-Warner's \textit{Foundations of Differential Geometry and Lie Groups} 
+Warner's \textit{Foundations of Differential Geometry and Lie Groups}
 (Definition 1.3), Christopher Isham's
 \textit{Modern Differential Geometry for Physicists} (Def.~2.1 in \S2.2),
 Spivak's \textit{Comprehensive Introduction to Differential Geometry} (vol. I).
@@ -192,7 +192,7 @@ equivalent to $\atlas{A}$ is a subcollection of a set, which is a set,
 \end{remark}
 
 \begin{lemma}
-Let $\atlas{A}$ be an $n$-dimensional atlas for $M$, let $(U,\varphi)$ and $(V,\psi)$ 
+Let $\atlas{A}$ be an $n$-dimensional atlas for $M$, let $(U,\varphi)$ and $(V,\psi)$
 be $n$-dimensional charts for $M$ (but they do not belong to $\atlas{A}$).
 If $(U,\varphi)$ and $(V,\psi)$ are compatible with every chart in $\atlas{A}$,
 then they are compatible with each other.
@@ -232,7 +232,7 @@ equivalent to $\atlas{C}$.
 
 \begin{proof}
 Let $(U_{\alpha},\varphi_{\alpha})\in\atlas{A}$ be an arbitrary chart,
-let $(V_{\gamma},\psi_{\gamma})\in\atlas{C}$ be an arbitrary chart. 
+let $(V_{\gamma},\psi_{\gamma})\in\atlas{C}$ be an arbitrary chart.
 Since $\atlas{A}$ is equivalent to $\atlas{B}$, we know
 $(U_{\alpha},\varphi_{\alpha})$ is compatible with every chart in $\atlas{B}$.
 Since $\atlas{B}$ is equivalent to $\atlas{C}$, we know
@@ -260,7 +260,7 @@ require the preimage of open sets be open, and we began ``from scratch''
 working with an arbitrary set $M$, the reader can see why charts are
 defined the way they are $\varphi\colon U\subset\RR^{n}\to M$. If we
 demand $\varphi$ be continuous, then we work \emph{with} the notions of
-topology. 
+topology.
 \end{remark}
 
 \begin{remark}
@@ -286,7 +286,7 @@ $\psi^{-1}(B)$ are open.
 Let $(U,\varphi)$ be a chart of $\atlas{A}$. Then
 \begin{subequations}
 \begin{align}
-\varphi^{-1}(B) 
+\varphi^{-1}(B)
 &=\varphi^{-1}\left(\bigcup_{(V,\psi)\in\atlas{B}}\psi\bigl(\psi^{-1}(B)\bigr)\right)\\
 &= \bigcup_{(V,\psi)\in\atlas{B}}\varphi^{-1}\left(\psi\bigl(\psi^{-1}(B)\bigr)\right)\\
 &= \bigcup_{(V,\psi)\in\atlas{B}} (\psi^{-1}\circ\varphi)^{-1}\bigl(\psi^{-1}(B)\bigr).
@@ -343,6 +343,39 @@ are logically equivalent. We know from Remark~\ref{rmk:atlas:equivalence-class-i
 the equivalence class of atlases is a set (not a proper class).
 \end{remark}
 
+\begin{theorem}[Every atlas is contained in a maximal atlas]\label{thm:atlas:contained-in-unique-maximal-atlas}
+If $\atlas{A}$ is an atlas for $M$,
+then there is a unique maximal atlas containing $\atlas{A}$.
+\end{theorem}
+
+We will prove the claim without resorting to Zorn's lemma.
+
+\begin{proof}
+We know $\atlas{A}$ is contained in an equivalence class of equivalent
+atlases $\mathfrak{A}$. Their union forms an atlas
+\begin{equation}
+\overline{\atlas{A}}=\bigcup_{\atlas{B}\in\mathfrak{A}}\atlas{B}.
+\end{equation}
+The union of compatible atlases form an atlas, by Definition~\ref{defn:atlas:equivalence}.
+Hence $\overline{\atlas{A}}$ is an atlas, and $\atlas{A}\subset\overline{\atlas{A}}$.
+We should prove $\overline{\atlas{A}}$ is maximal, but it should be obvious.
+
+We just need to prove $\overline{\atlas{A}}$ is the \emph{unique} maximal atlas
+containing $\atlas{A}$. Let $\atlas{A}'$ be any arbitrary atlas
+equivalent to $\atlas{A}$ such that
+\begin{equation}
+\atlas{A}\properSubset\atlas{A}'.
+\end{equation}
+Then $\atlas{A}'$ is compatible with $\atlas{A}$ by
+Definition~\ref{defn:atlas:equivalence}. Hence
+$\atlas{A}'\in\mathfrak{A}$. Then
+\begin{equation}
+\atlas{A}'\properSubset\mathfrak{A}.
+\end{equation}
+Since $\atlas{A}'$ is arbitrary, this exhausts all possibilities for a
+second, distinct maximal atlas $\atlas{A}'$.
+\end{proof}
+
 \begin{definition}
 A \define{(Smooth) $n$-Dimensional Manifold} consists of
   a set $M$ equipped with an $n$-dimensional differential structure $\atlas{D}$.
@@ -353,6 +386,28 @@ We could define a $C^{k}$ differentiable structure and $C^{k}$
 $n$-dimensional manifold analogously. This works for analytic
 (``$k=\omega$'') manifolds, too. For differential geometry, I believe
 $k\geq2$ suffices.
+\end{remark}
+
+\begin{remark}[Non-uniqueness of differential structure]
+If we may equip \emph{one} differential structure to a set $M$,
+then it is natural to wonder if it is the \emph{only} differential
+structure for $M$. The answer is negative.
+
+John Milnor~\cite{milnor1956manifolds} found 7
+differential structures for the sphere $S^{7}\subset\RR^{8}$ which are
+not diffeomorphic to each other, but all of them are \emph{homeomorphic}
+(but \emph{not} diffeomorphic) to the standard differential structure on
+$S^{7}$.
+
+In 1982, it turns out $\RR^{4}$ has uncountably many differential
+structures. The first ones were published by
+S.~Donaldson~\cite{donaldson1983self}, then M.~Friedman and colleagues extended
+these results and produced many differential structures on $\RR^{4}$.
+There are many techniques for constructing these exotic differential
+structures, like Casson handles.
+
+We call these ``unorthodox'' differential structures
+\define{Exotic Differential Structures}.
 \end{remark}
 
 \subsection{Orientations}
@@ -384,7 +439,7 @@ We say \define{the orientations of the charts agree at $p$} if
 the determinant of the Jacobian matrix for the transformation
 $(\varphi^{-1}\circ\psi)(V)\to(\psi^{-1}\circ\varphi)(U)$,
 sending $x\mapsto\psi^{-1}(\varphi(x))$, at $\varphi^{-1}(p)$ is positive.
-If the determinant is negative, then we say 
+If the determinant is negative, then we say
 \define{the Orientations Disagree}.
 \end{definition}
 
@@ -393,7 +448,7 @@ The charts in the differential structure for smooth manifold $M$ of
 dimension $n>0$ split into two classes, for each $p\in M$, since the
 determinant of the Jacobian transformation is either positive or negative.
 Within each class, the orientations agree at $p$, but any chart from one
-class and any chart from the second class will disagree with the orientation 
+class and any chart from the second class will disagree with the orientation
 at $p$. These equivalence classes are called the \define{Orientations at $p$}.
 \end{definition}
 
@@ -425,7 +480,7 @@ later.
 For any orientation $\atlas{A}$ of an oriented manifold, there is the \define{Opposite}
 orientation obtained by taking each chart $(U,\varphi)\in\atlas{A}$,
 then forming $(\rho(U),\varphi\circ\rho)$ where $\rho$ is the reflection
-$(x_{1}, x_{2},\dots, x_{n})\mapsto(-x_{1},x_{2},\dots,x_{n})$. 
+$(x_{1}, x_{2},\dots, x_{n})\mapsto(-x_{1},x_{2},\dots,x_{n})$.
 \end{definition}
 
 \begin{proposition}
@@ -438,7 +493,90 @@ a choice of orientation of a disconnected manifold is the same as
 
 \section{Examples}
 
+\N{How to Construct Manifolds}
+Thanks to Theorem~\ref{thm:atlas:contained-in-unique-maximal-atlas},
+we just need to construct \emph{one} finite atlas equivalent to the
+differential structure for our manifold. We just need to check the
+Hausdorff condition is satisfied (paracompactness follows from the atlas
+being finite). In practice, ``the differential
+structure'' is unobtainable, we cannot ``write it down''. Instead, we
+just say it is generated by all atlases equivalent to the finite atlas
+we have constructed.
+
 \begin{example}[Euclidean spaces]
 We see that $\RR^{n}$ is an $n$-dimensional manifold. The differential
 structure is \emph{determined} by the one-chart atlas $\{(\RR^{n},\id)\}$.
 \end{example}
+
+\begin{example}[$n$-Dimensional Sphere $S^{n}$]
+The $n$-dimensional sphere $S^{n}=\{\,(x_{1},\dots,x_{n+1})\in\RR^{n+1}|{x_{1}}^{2}+\cdots+{x_{n+1}}^{2}=1\,\}$
+is an $n$-dimensional smooth manifold.
+\end{example}
+
+\begin{proof}
+  Let $\varphi_{\pm}\colon\RR^{n}\to S^{n}$ be defined by
+  \begin{equation}
+\varphi_{\pm}(x_{1},\dots,x_{n+1}) = \left(\frac{2x_{1}}{1+r^{2}},
+\dots, \frac{2x_{n}}{1+r^{2}}, \pm\left(\frac{1-r^{2}}{1+r^{2}}\right)\right),
+  \end{equation}
+  where $r^{2} = {x_{1}}^{2}+\cdots+{x_{n+1}}^{2}$. The map
+  $\varphi_{\pm}^{-1}\colon S^{n}\setminus\{0\}\to\RR^{n}$ are called
+  \define{Stereographic Projections}.
+  Then we claim $(\varphi_{+},\RR^{n})$ and $(\varphi_{-},\RR^{n})$ are
+  $n$-dimensional charts which together form an atlas.
+
+\smallbreak
+  \textsc{Claim 1:} These are two $n$-dimensional charts.
+
+\noindent\textit{Proof of claim 1}.
+  We see these $\varphi_{\pm}$ are injective and that, if
+  $(y_{1},\dots,y_{n},y_{n+1})\in S^{n}$, then
+  \begin{equation}
+\varphi_{\pm}^{-1}(y_{1},\dots,y_{n},y_{n+1}) = \left(\frac{y_{1}}{1 \mp y_{n+1}},\dots,\frac{y_{n}}{1 \mp y_{n+1}}\right).
+  \end{equation}
+  This is the left-inverse to $\varphi_{\pm}$, which implies
+  $\varphi_{\pm}$ is injective.
+
+\smallbreak
+  \textsc{Claim 2:} The charts are compatible with each other.
+
+\noindent\textit{Proof of claim 2}.
+There are four criterion for proving charts are compatible, according to Definition~\ref{defn:chart:compatible}.
+We need to prove:
+\begin{enumerate}
+\item $\varphi_{+}^{-1}\bigl(\varphi_{-}(\RR^{n})\bigr)\subset\RR^{n}$
+  is open; this is obvious since $\varphi_{+}^{-1}\bigl(\varphi_{-}(\RR^{n})\bigr)=\RR^{n}\setminus\{(0,\dots,0,0)\}$;
+\item $\varphi_{-}^{-1}\bigl(\varphi_{+}(\RR^{n})\bigr)\subset\RR^{n}$
+  is open, for the same reason as the previous point;
+\item the map $\varphi_{+}^{-1}\circ\varphi_{-}\colon\RR^{n}\setminus\{(0,\dots,0,0)\}\to\RR^{n}\setminus\{(0,\dots,0,0)\}$
+  is smooth, which we can compute explicitly as acting on a point
+  \begin{equation}
+(x_{1},\dots,x_{n})\mapsto\left(\frac{x_{1}}{r^{2}},\dots,\frac{x_{n}}{r^{2}}\right).
+  \end{equation}
+  This is obviously smooth where defined; and
+\item the map $\varphi_{-}^{-1}\circ\varphi_{+}\colon\RR^{n}\setminus\{(0,\dots,0,0)\}\to\RR^{n}\setminus\{(0,\dots,0,0)\}$
+is smooth, for exactly the same reason as the previous point.
+\end{enumerate}
+Hence the two charts are compatible with each other.
+
+\smallbreak
+  \textsc{Claim 3:} The charts cover $S^{n}$, hence form an atlas.
+
+\noindent\textit{Proof of claim 3}.  We can see that $\varphi_{\pm}(\RR^{n})=S^{n}\setminus\{(0,\dots,0,\pm1)\}$.
+  Hence together their union,
+  \begin{equation}
+\varphi_{+}(\RR^{n})\cup\varphi_{-}(\RR^{n}) = S^{n},
+  \end{equation}
+cover $S^{n}$.
+\end{proof}
+
+\begin{remark}
+We \emph{should} prove the Hausdorff axiom is satisfied, but since this
+is the same topology as the usual sphere $S^{n}$, we know it is Hausdorff.
+\end{remark}
+
+\subsection{Non-Examples}
+
+\subsection{Constructions}
+
+\section{Maps and Functions}

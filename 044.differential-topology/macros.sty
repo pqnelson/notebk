@@ -13,7 +13,7 @@
   marginparwidth=9pc,
   marginparsep=1.5pc,
   textwidth=34.5pc, % 51 - 6 - 10.5 = 34.5
-  textheight=54pc, %11*6 - 6 - 6 = 9*6 = 54pc
+  textheight=56pc, %11*6 - 6 - 6 = 9*6 = 54pc
 ]{geometry}
 \usepackage{graphicx}
 \DeclareGraphicsRule{*}{mps}{*}{}
@@ -34,6 +34,8 @@
   pdfusetitle,
   \ifpdf\else dvipdfmx\fi
 ]{hyperref}
+\usepackage{doi}
+
 
 %% Customizing list spacing
 % This is what amsart's parameters use; lines 253 and 960
