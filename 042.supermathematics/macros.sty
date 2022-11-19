@@ -8,7 +8,12 @@
 % inner + textwidth + marginparwidth + marginparsep = 8.5 inches = 51pc
 % Then marginparwidth + marginparsep = 11pc
 %\usepackage[textwidth=30pc,textheight=50.5pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
-\usepackage[textwidth=30pc,bottom=6pc,top=6pc,inner=6pc,marginparsep=1pc]{geometry}
+\usepackage[textheight=54pc,
+  top=6pc,
+  inner=6pc,
+  marginparwidth=9pc,
+  textwidth=35pc, % 51 - 6 - 10 = 35
+  marginparsep=1pc]{geometry}
 %\usepackage{longtable}
 \usepackage{framed}
 \usepackage[final]{graphicx}
@@ -42,6 +47,9 @@
   \titleformat*{\section}{\Large\bfseries\sffamily}
   \titleformat*{\subsection}{\large\bfseries\sffamily}
   \titleformat*{\subsubsection}{\bfseries\sffamily}
+  \def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.5\baselineskip}%
+  {\normalfont\large\bfseries\sffamily\centering}}
 }
 
 \newskip\interchunkskip \interchunkskip=\medskipamount%
@@ -230,3 +238,7 @@ No-vem-ber Rie-mann-ian Schwarz-schild Sep-tem-ber}
 \else
 \excludecomment{answer}
 \fi
+
+\providecommand\bysame{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+
+\endinput

@@ -1,6 +1,7 @@
 %\documentclass{article}
 \documentclass[oneside]{amsart}
-\usepackage[12hr,us]{datetime}
+\usepackage[en-US,useregional=text]{datetime2}
+\DTMlangsetup[en-US]{mapzone=true}
 \usepackage{macros}
 \usepackage{notation}
 
@@ -10,8 +11,8 @@
 \@ifclassloaded{amsart}{
   \author{Alex Nelson}
   \email{pqnelson@gmail.com}
-  \thanks{This is a page from \homeurl{}\hfil\break\indent\ignorespaces Compiled:\enspace\today\ at \currenttime\ (PST)}
-  }{\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \currenttime\ (PST)}}}
+  \thanks{This is a page from \homeurl{}\hfil\break\indent\ignorespaces Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}
+  }{\author{Alex Nelson\thanks{This is a page from \homeurl{}\hfil\break\indent\;\, Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}}}
 \makeatother
 \title{Roadtrip to Supermathematics}
 \date{October 28, 2022}
