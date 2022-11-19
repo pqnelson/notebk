@@ -8,12 +8,17 @@
 \usepackage[en-US,useregional=text]{datetime2}
 \DTMlangsetup[en-US]{mapzone=true}
 \usepackage[\if@book\else nottoc\fi]{tocbibind}
-\usepackage[inner=6pc,
+\usepackage[paper=letterpaper,
+  includefoot, nofoot,% no space for footer
+  inner=6pc,
+  bottom=5pc, % bottom=6pc, % it should be 6pc, but that's a bit too much
   top=6pc,
+  headsep=1pc,
   marginparwidth=9pc,
   marginparsep=1.5pc,
+ % textheight=54pc, % 11*6 - 6 - 6 = 9*6 = 54pc
+%  showframe
   textwidth=34.5pc, % 51 - 6 - 10.5 = 34.5
-  textheight=56pc, %11*6 - 6 - 6 = 9*6 = 54pc
 ]{geometry}
 \usepackage{graphicx}
 \DeclareGraphicsRule{*}{mps}{*}{}
@@ -196,16 +201,21 @@
 \if@twoside
 \fancyhead[LE,RO]{\thepage}
 \fancyhead[LO,RE]{\nouppercase{\leftmark}}
-\fancyheadoffset[OR,EL]{4.5pc}
+\fancyheadoffset[OR,EL]{4.5pc} % horizontal offset
 \else
 \fancyhead[L]{\nouppercase{\ifodd\value{page}{\leftmark}\else{\rightmark}\fi}}
 %\fancyhead[LO]{\nouppercase{\rightmark}}
 \fancyhead[R]{\thepage}
-\fancyheadoffset[R]{4.5pc}
+\fancyheadoffset[R]{4.5pc} % horizontal offset
 \fi
 \cfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
-\headsep=6pt
+%\headsep=6pt
 
+
+\typeout{headsep = \the\headsep}
+\typeout{headheight = \the\headheight}
+\typeout{headsep = \the\headsep}
+\typeout{headheight = \the\headheight}
 
 \endinput
