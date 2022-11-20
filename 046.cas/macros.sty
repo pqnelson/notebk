@@ -1,22 +1,27 @@
 \usepackage{alphalph} % for algorithm numbering
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage{enumitem}
+
 % amsppt layout
-\RequirePackage[letterpaper,inner=6pc,outer=6pc,%textwidth=30pc,
-  textheight=54pc,top=6pc]{geometry}
-\usepackage{tocbibind}
+\RequirePackage[letterpaper,
+  includeheadfoot, nofoot,% no space for footer
+  % showframe,
+  margin=6pc,
+  top=3.5pc]{geometry} % the header takes 2.5pc vertical space
+\@ifclassloaded{amsbook}{}{
+  \usepackage{tocbibind}}
+\usepackage{enumitem}
 \usepackage{manfnt}
 \usepackage[final]{graphicx}
 \DeclareGraphicsRule{*}{mps}{*}{}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{tocloft}
-%\setlength\cftparskip{-2pt}
-%\renewcommand\cftsecafterpnum{\\ \vspace{-10pt}}
-\setlength\cftbeforesecskip{2pt}
-\setlength\cftbeforechapskip{2pt}
-%\setlength\cftbeforesubsecskip{2pt}
-%\setlength\cftaftersecskip{2pt}
-\usepackage{titlesec}
+
+\@ifclassloaded{amsbook}{}{
+  \usepackage{tocloft}
+  \setlength\cftbeforesecskip{2pt}
+  \setlength\cftbeforechapskip{2pt}
+  \usepackage{titlesec}
+}
+
 \RequirePackage{lisp}
 \usepackage[pdfusetitle]{hyperref}
 
@@ -32,20 +37,24 @@
 \usepackage{chunk}
 
 
-%% Customizing list spacing
-% This is what amsart's parameters use; lines 253 and 960
-\setlist{topsep=\smallskipamount,
-         itemsep=\z@skip,
-         partopsep=\z@skip,
-         parsep=\z@skip,
-         leftmargin=\leftmargini}
-\setlist[enumerate]{label=(\arabic*)}
-
 \numberwithin{equation}{section}
 
-\titleformat*{\section}{\Large\bfseries\sffamily}
-\titleformat*{\subsection}{\large\bfseries\sffamily}
-\titleformat*{\subsubsection}{\bfseries\sffamily}
+
+\@ifclassloaded{amsbook}{}{
+  %% Customizing list spacing
+  % This is what amsart's parameters use; lines 253 and 960
+  \setlist{topsep=\smallskipamount,
+           itemsep=\z@skip,
+           partopsep=\z@skip,
+           parsep=\z@skip,
+           leftmargin=\leftmargini}
+  \setlist[enumerate]{label=(\arabic*)}
+
+  %% Section styling
+  \titleformat*{\section}{\Large\bfseries\sffamily}
+  \titleformat*{\subsection}{\large\bfseries\sffamily}
+  \titleformat*{\subsubsection}{\bfseries\sffamily}
+}
 
 % titlesec doesn't adequately work with chapter formatting, so I'm doing
 % it BY HAND.
@@ -59,40 +68,43 @@
 %
 % There is probably a smarter way to imitated the style using titlesec,
 % but I just want something that works.
-\@ifundefined{chapter}{}{
-%\font\chapterfont=cmssbx10 scaled\magstep3
-\def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
-\def\twelvess{\sffamily\large} % = cmss12
-\renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{plain}%
-                    \global\@topnum\z@
-                    \@afterindentfalse
-                    \secdef\@chapter\@schapter}
-\def\@makechapterhead#1{%
-  {\parindent \z@ \raggedright \normalfont
-    \ifnum \c@secnumdepth >\m@ne
-      \if@mainmatter
-        \twelvess \@chapapp\space \thechapter
-        \par\nobreak
-        \vskip 4pc
-      \fi
-    \fi
-    \interlinepenalty\@M
-    \chapterfont\hfill #1\par\nobreak
-    \vskip 2pc
-}}
-% starred chapter heading
-\def\@makeschapterhead#1{%
-  {\parindent \z@ \raggedright \normalfont
-    \interlinepenalty\@M
-    \chapterfont\hfill #1\par\nobreak
-    \vskip 2pc
-  }}
 
-% page numbering should never reset
-\def\pagenumbering#1{%
-  \gdef\thepage{\csname @#1\endcsname
-   \c@page}}
+\@ifclassloaded{amsbook}{}{
+  \@ifundefined{chapter}{}{
+  %\font\chapterfont=cmssbx10 scaled\magstep3
+  \def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
+  \def\twelvess{\sffamily\large} % = cmss12
+  \renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+                        \thispagestyle{plain}%
+                        \global\@topnum\z@
+                        \@afterindentfalse
+                        \secdef\@chapter\@schapter}
+  \def\@makechapterhead#1{%
+    {\parindent \z@ \raggedright \normalfont
+      \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+          \twelvess \@chapapp\space \thechapter
+          \par\nobreak
+          \vskip 4pc
+        \fi
+      \fi
+      \interlinepenalty\@M
+      \chapterfont\hfill #1\par\nobreak
+      \vskip 2pc
+  }}
+  % starred chapter heading
+  \def\@makeschapterhead#1{%
+    {\parindent \z@ \raggedright \normalfont
+      \interlinepenalty\@M
+      \chapterfont\hfill #1\par\nobreak
+      \vskip 2pc
+    }}
+
+  % page numbering should never reset
+  \def\pagenumbering#1{%
+    \gdef\thepage{\csname @#1\endcsname
+     \c@page}}
+  }
 }
 % Patch the book to count pages correctly
 \@ifclassloaded{book}{
