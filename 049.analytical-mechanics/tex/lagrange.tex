@@ -468,3 +468,62 @@ provided a basis for generalization. We still end up with second-order
 differential equations, which is a nightmare to solve. Sometimes that's
 okay, but it motivates Hamiltonian mechanics which works with a system
 of first-order differential equations.
+
+\subsection{Historical Appendix}
+
+\M
+Historically, Euler and friends considered the problem which may appear
+familiar to programmers: suppose we chop up time into discrete steps
+$t_{k} = t_{0} + k\Delta t$. Suppose we know the starting point
+and ending point for a particle --- for simplicity, we work in
+one-dimension. We know $y(t_{0}) = y_{0}$ and $y(t_{N}) = y_{\text{end}}$.
+Let us stipulate the particle can move only along straight lines
+connecting $t_{k}$ and $t_{k+1}$ for $k=0,\dots,N-1$. Suppose we have
+the particle be subject to various forces. What is the path connecting
+the endpoints which minimizes the amount of energy required?
+
+This should appear familiar to students who know Dijkstra's algorithm
+(or $A^{*}$ algorithm).
+
+We could guess some piecewise-linear path, like the one doodled below:
+
+\begin{center}
+  \includegraphics{img/img.2}
+\end{center}
+
+Then we are trying to find the extrema of the scalar function
+\begin{equation}
+S = \sum^{N}_{k=0}L\left(y_{k}, \frac{y_{k+1}-y_{k}}{\Delta t}\right)\,\Delta t.
+\end{equation}
+We \emph{know} how to do this: simplify take the derivative with respect
+to $y_{j}$, then set it to zero, and solve. If we have $v_{k} = (y_{k+1}-y_{k})/\Delta t$
+and pretend this is independent of $y_{k}$ (and $y_{k+1}$),
+then we have:
+\begin{multline}
+\sum_{j}\frac{\partial S}{\partial y_{j}}\delta y_{j}
+= \sum_{j}\left.\frac{\partial L(y_{j},v_{j})}{\partial y_{j}}\right|_{v_{j}=\Delta y_{j}/\Delta t}\delta y_{j}\\
++ \left.\frac{\partial L(y_{j},v_{j})}{\partial v_{j}}\frac{\partial v_{j}}{\partial y_{j}}\right|_{v_{j}=\Delta y_{j}/\Delta t}\delta y_{j}
++ \left.\frac{\partial L(y_{j-1},v_{j-1})}{\partial v_{j-1}}\frac{\partial v_{j-1}}{\partial y_{j}}\right|_{v_{j-1}=\Delta y_{j-1}/\Delta t}\delta y_{j},
+\end{multline}
+or simplifying somewhat
+\begin{multline}
+\sum_{j}\frac{\partial S}{\partial y_{j}}\delta y_{j}
+= \sum_{j}\left.\frac{\partial L(y_{j},v_{j})}{\partial y_{j}}\right|_{v_{j}=\Delta y_{j}/\Delta t}\delta y_{j}\\
++ \left.\frac{\partial L(y_{j},v_{j})}{\partial v_{j}}\frac{-1}{\Delta t}\right|_{v_{j}=\Delta y_{j}/\Delta t}\delta y_{j}
++ \left.\frac{\partial L(y_{j-1},v_{j-1})}{\partial v_{j-1}}\frac{1}{\Delta t}\right|_{v_{j-1}=\Delta y_{j-1}/\Delta t}\delta y_{j}.
+\end{multline}
+The keen-eyed observer realizes taking the $\Delta t\to 0$ limit gives
+\begin{subequations}
+\begin{equation}
+\frac{\partial S}{\partial y_{j}}\delta y_{j}\to\delta S
+\end{equation}
+\begin{equation}
+\sum_{j}\left.\frac{\partial L(y_{j},v_{j})}{\partial y_{j}}\right|_{v_{j}=\Delta y_{j}/\Delta t}\delta y_{j}\to\int\frac{\partial L(y,\dot{y})}{\partial y}\delta y\,\D t
+\end{equation}
+\begin{equation}
+\sum_{j}\left.\frac{\partial L(y_{j},v_{j})}{\partial v_{j}}\frac{-1}{\Delta t}\right|_{v_{j}=\Delta y_{j}/\Delta t}\delta y_{j}
++ \left.\frac{\partial L(y_{j-1},v_{j-1})}{\partial v_{j-1}}\frac{1}{\Delta t}\right|_{v_{j-1}=\Delta y_{j-1}/\Delta t}\delta y_{j}\to\int-\frac{\D}{\D t}\frac{\partial L(y,\dot{y})}{\partial\dot{y}}\delta y\,\D t.
+\end{equation}
+\end{subequations}
+Combining everything together recovers the Euler--Lagrange equations.
+

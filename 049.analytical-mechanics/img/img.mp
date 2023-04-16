@@ -80,4 +80,45 @@ beginfig(1)
   label.urt(btex $(x+a, 0)$ etex, z0 + (0.5u, u));
 endfig;
 
+beginfig(2)
+  path axes[];
+  numeric start, stop, dt, i;
+  color gray;
+  gray = 0.66white;
+  start = u; stop = 8u; dt = 6;
+  axes0 = (-u,0) -- (10u,0);
+  axes1 = (0,-u) -- (0, 5u);
+  
+  for i=start step dt until stop:
+    draw (i, 0)--(i,5u) withcolor gray;
+  endfor;
+  drawdblarrow axes0;
+  drawdblarrow axes1;
+  z0 = (start, 3u);
+  z1 = (start + dt, 4u);
+  z2 = (start + 2dt, 2.75u);
+  z3 = (start + 3dt, 1u);
+  z4 = (start + 4dt, 1.25u);
+  z5 = (start + 5dt, 1u);
+  z6 = (start + 6dt, 2.5u);
+  z7 = (start + 7dt, 2u);
+  z8 = (start + 8dt, 3.67u);
+  z9 = (start + 9dt, 3u);
+  z10 = (start + 10dt, 2.3u);
+  z11 = (start + 11dt, 2.5u);
+  z12 = (start + 12dt, 2u);
+  z13 = (start + 13dt, 2.2u);
+  label.bot(btex $t_{0}$ etex, (start,0));
+  label.lrt(btex $t_{k}$ etex, (start + 3u - 2, 0));
+  label.top(btex $y_{k}$ etex, z6);
+  for i=0 upto 12:
+    draw z[i]--z[i+1];
+    label(btex $\bullet$ etex, z[i]);
+  endfor;
+  label(btex $\bullet$ etex, z13);
+  label.bot(btex $t_{N}$ etex, (stop,0));
+  label.lft(btex $q$ etex, (0, 5u));
+  label.bot(btex $t$ etex, (10u,0));
+endfig;
+
 end;
