@@ -11,11 +11,16 @@ independent of $\dot{q}^{\mu}$, so in particular
 \frac{\partial q^{\mu}}{\partial\dot{q}^{\nu}}=0,\quad\mbox{and}\quad
 \frac{\partial\dot{q}^{\nu}}{\partial q^{\mu}}=0
 \end{equation}
-for every $\mu,\nu=1,\dots,3N$.
+for every $\mu,\nu=1,\dots,3N$. However,
+\begin{equation}
+\frac{\partial\dot{q}^{\mu}}{\partial\dot{q}^{\nu}}=
+\frac{\partial q^{\mu}}{\partial q^{\nu}}={\delta^{\mu}}_{\nu}
+\end{equation}
+where ${\delta^{\mu}}_{\nu}$ is 1 when $\mu=\nu$ and 0 otherwise.
 
 \N{Deriving the equations of motion}
 We can consider the first variation of the action, which we write as
-\begin{equation}
+\begin{equation}\label{eq:lagrange:first-variation-of-action}
   S[q^{\mu} + \delta q^{\mu}, \dot{q}^{\mu} + \delta\dot{q}^{\mu}]
   =
   S[q^{\mu}, \dot{q}^{\mu}] + \int\sum_{\nu}\frac{\delta L(q^{\mu},
@@ -25,6 +30,16 @@ We can consider the first variation of the action, which we write as
 We just use more formal notation than writing ``(something)'' in our
 first variation of the action.
 
+\begin{ddanger}
+There is sleight-of-hand here, since the chain-rule would suggest we
+would have a term $\int (\delta L/\delta\dot{q}^{\nu})\delta\dot{q}^{\nu}\,\D t$
+in the right-hand side of Eq~\eqref{eq:lagrange:first-variation-of-action}.
+We side-step this by insisting $\delta\dot{q}^{\mu}=\D(\delta q^{\mu})/\D t$.
+Physicists are fast-and-loose with their mathematics, sometimes. This is
+one of those times.
+\end{ddanger}
+
+\M
 Now, we find by plugging in the deformed paths into the action integral,
 \begin{equation}
   S[q^{\mu} + \delta q^{\mu}, \dot{q}^{\mu} + \delta\dot{q}^{\mu}]
@@ -58,11 +73,13 @@ Remember our strategy is to rearrange terms so the integrand looks like
 \end{equation}
 We use integration by parts on the time derivative of the variation to get
 \begin{equation}
-\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
-+\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t
-=\left.\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right|_{\text{bdry}}
+  \begin{split}
+\int &\left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t\\
+&=\left.\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right|_{\text{bdry}}
 +\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
 -\delta q^{\nu}\frac{\D}{\D t}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t.
+  \end{split}
 \end{equation}
 The boundary contribution vanishes, so we are left with
 \begin{equation}
@@ -88,6 +105,16 @@ This requires, for arbitrary variation $\delta q^{\nu}$, that
 \end{equation}
 for each $\nu=1,\dots,3N$. This is precisely the \define{Euler--Lagrange Equations},
 and they are the equations of motion for Lagrangian mechanics.
+
+\N{Principle: Generalizations Generalize}
+In any field of study, whenver we introduce a generalization of an
+existing concept, we should check that the ``existing concept'' can be
+recovered by the generalization. For us, we have introduced this new way
+to obtain the equations of motion (the Euler--Lagrange equations). We
+should therefore check that we can recover Newton's equations of motion.
+If we cannot, then something has gone horribly, horribly wrong.
+
+\subsection{Recovering Newton}
 
 \M
 Observe the only place where acceleration can enter the Euler--Lagrange
@@ -209,6 +236,57 @@ like for:
 Are they the same equations of motion for Jacobi's Lagrangian as the
 usual Lagrangian?
 
+\subsection{Examples}
+
+\N{How to solve mechanics problems}
+Solving mechanics problems is a ``one-two punch'': set up the equations
+of motion, then solve them. More explicitly,
+\begin{enumerate}
+\item Choose a coordinate system, i.e., a set of generalized coordinates
+  $q^{1}$, \dots, $q^{n}$
+\item Find the kinetic energy $K(q^{\mu},\dot{q}^{\mu})$ and potential
+  energy $U(q^{\mu})$, then write the Lagrangian down as $L=K-U$.
+\item Find the generalized momenta $p_{\nu} = \partial L/\partial\dot{q}^{\nu}$
+  and generalized forces $F_{\nu} = \partial L/\partial q^{\nu}$.
+\item Evaluate the time derivatives $\dot{p}_{\nu}$ and write down the
+  equations of motion $\dot{p}_{\nu}=F_{\nu}$.
+\end{enumerate}
+It may be helpful to find conserved quantities.
+
+\subsubsection{One-Dimensional Motion}
+
+\N{Conservative Forces}
+Consider one-dimensional mechanical system with potential energy
+$U(x)$. Our Lagrangian is then
+\begin{equation}
+L = K - U = \frac{1}{2}m\dot{x}^{2} - U(x).
+\end{equation}
+We find its generalized momentum
+\begin{equation}
+p = \frac{\partial L}{\partial\dot{x}} = m\dot{x}.
+\end{equation}
+The equations of motion, from the Euler--Lagrange equations, is then:
+\begin{equation}
+\frac{\D}{\D t}\frac{\partial L}{\partial\dot{x}} - \frac{\partial L}{\partial x} = m\ddot{x} + U'(x) = 0.
+\end{equation}
+This is a second-order differential equation, which is generally hard to solve.
+A lot of physics boils down to trying to avoid differential equations,
+leveraging conserved quantities to extract information.
+
+\N{Finding Conserved Quantities}
+Now, we can multiply through by $\dot{x}$ to get:
+\begin{equation}
+0 = \dot{x}\left(m\ddot{x} + U'(x)\right) = \frac{\D}{\D t}\left(\frac{1}{2}m\dot{x}^{2}+U(x)\right)
+= \frac{\D E}{\D t},
+\end{equation}
+where $E=K+U$ is the total energy of the system. Hence the total energy
+is a constant with respect to time, i.e., it is a conserved
+quantity. We can convert this to a first-order differential equation,
+which may or may not be solvable, but it is more amenable to numerical
+methods (i.e., the computer can brute force its way to an approximate solution).
+
+\subsubsection{Two-Dimensional Motion}
+
 \N{Kinetic Energies in Different Coordinate Systems}
 How can we find the kinetic energy in different coordinate systems? For
 example, in 2-dimensions, should we expect kinetic energy for polar
@@ -230,7 +308,7 @@ Then
 \begin{subequations}
 \begin{align}
 \dot{x}^{2}+\dot{y}^{2} &= \left(\dot{r}\cos\theta -r\dot\theta\sin\theta\right)^{2}
-\left(\dot{r}\sin\theta +r\dot\theta\cos\theta\right)^2\\
++ \left(\dot{r}\sin\theta +r\dot\theta\cos\theta\right)^2\\
 &= \left(\dot{r}^{2}\cos^{2}\theta
 -2r\dot{r}\dot\theta\cos\theta\sin\theta
 +r^{2}\dot\theta^{2}\sin^{2}\theta\right)
@@ -247,6 +325,7 @@ coordinate systems: find the velocities in the old coordinate system
 expressed using the velocities in the new coordinate system, then plug
 them into the expression for the kinetic energy.
 
+
 \N{Exercise}
 The free particle in 2-dimensions polar coordinates has its Lagrangian
 be
@@ -259,3 +338,133 @@ This gives us the generalized force
 \end{equation}
 But by definition, a free body experiences no force. What's going on?
 [Hint: think about pseudoforces like the coriolis effect and centrifugal forces.]
+
+\subsubsection{Spring-loaded pendulum}
+\N{Problem Statement}
+Consider a pendulum attached to a spring:
+\begin{center}
+  \includegraphics{img/img.1}
+\end{center}
+The bob of the pendulum has coordinate $(x_{1}, y_{1})$, and we suppose
+the coordinates of the mass attached to the spring lies along the $y=0$
+axis with its position being $(x + a, 0)$ where $a$ is the equilibrium
+position of the mass. \emph{Assume there is no gravitational force
+acting on the spring's block}. The
+length of the pendulum's massless rod is $\ell$, and forms an angle
+$\theta$ with the vertical. We can find the coordinates for the bob
+explicitly as
+\begin{subequations}
+  \begin{align}
+    x_{1} &= (a + x) + \ell\sin(\theta),\\
+    \intertext{and}
+    y_{1} &= - \ell\cos(\theta).
+  \end{align}
+\end{subequations}
+Now we need to find the kinetic and potential energies (so we can
+construct the Lagrangian).
+
+\M
+We can find the kinetic energy for the bob and block separately, then
+add them together. The bob
+\begin{subequations}
+  \begin{align}
+K_{\text{bob}} &= \frac{1}{2}m(\dot{x}_{1}^{2} + \dot{y}_{1}^{2})\\
+&= \frac{1}{2}m([\dot{x} + \ell\dot\theta\cos(\theta)]^{2} + [\ell\dot\theta\sin(\theta)]^{2})\\
+&= \frac{1}{2}m(\dot{x}^{2} + 2\ell\dot{x}\dot{\theta}\cos(\theta) + \ell^{2}\dot\theta^{2}\cos^{2}(\theta) + \ell^{2}\dot\theta^{2}\sin^{2}(\theta))\\
+&= \frac{1}{2}m(\dot{x}^{2} + 2\ell\dot{x}\dot{\theta}\cos(\theta) + \ell^{2}\dot\theta^{2}).
+  \end{align}
+\end{subequations}
+The block has kinetic energy:
+\begin{equation}
+K_{\text{block}} = \frac{1}{2}M\dot{x}^{2}.
+\end{equation}
+Together, we have the total kinetic energy for the system:
+\begin{equation}
+K = K_{\text{bob}} + K_{\text{block}} = \frac{1}{2}(M + m)\dot{x}^{2} + \frac{1}{2}m(2\ell\dot{x}\dot{\theta}\cos(\theta) + \ell^{2}\dot\theta^{2}).
+\end{equation}
+The potential energy is far simpler, it's the potential for the spring
+$kx^{2}$ plus the gravitational force acting on the pendulum's bob
+$gy_{1}$, hence
+\begin{equation}
+U = \frac{1}{2}kx^{2} - mg\ell\cos(\theta).
+\end{equation}
+Thus we obtain the Lagrangian,
+\begin{equation}
+L = \frac{1}{2}(M + m)\dot{x}^{2} + \frac{1}{2}m(2\ell\dot{x}\dot{\theta}\cos(\theta) + \ell^{2}\dot\theta^{2})
+- \frac{1}{2}kx^{2} + mg\ell\cos(\theta).
+\end{equation}
+Observe there are two degrees of freedom, i.e., there are two
+coordinates $x$ and $\theta$ from which we can determine the state of
+the system. Therefore, we expect two equations of motion (one for $x$,
+another for $\theta$).
+
+\N{Setting up the Equations of Motion}
+Now, the rest of the solution is just ``marching through the
+calculations systematically''. We find the momenta:
+\begin{subequations}
+\begin{align}
+p_{x} &= \frac{\partial L}{\partial\dot{x}} = (M + m)\dot{x} + m\ell\dot{\theta}\cos(\theta)\\
+p_{\theta} &= \frac{\partial L}{\partial\dot{\theta}}
+= m\ell\dot{x}\cos(\theta) + m\ell^{2}\dot\theta.
+\end{align}
+\end{subequations}
+The generalized forces,
+\begin{subequations}
+\begin{align}
+F_{x} &= \frac{\partial L}{\partial x} = -kx\\
+F_{\theta} &= \frac{\partial L}{\partial \theta} = -m\ell\dot{x}\dot{\theta}\sin(\theta)
+  -mg\ell\sin(\theta).
+\end{align}
+\end{subequations}
+The equations of motion are therefore:
+\begin{subequations}
+\begin{align}
+  (M + m)\ddot{x} + m\ell\ddot{\theta}\cos(\theta)
+  - m\ell\dot{\theta}^{2}\sin(\theta) &= -kx\\
+  m\ell\ddot{x}\cos(\theta)
+  - m\ell\dot{x}\dot{\theta}\sin(\theta)
+  + m\ell^{2}\ddot\theta &= -m\ell\dot{x}\dot{\theta}\sin(\theta)
+  -mg\ell\sin(\theta).
+\end{align}
+\end{subequations}
+Observe the second equation of motion simplifies to:
+\begin{equation}
+  m\ell\ddot{x}\cos(\theta) + m\ell^{2}\ddot\theta =  -mg\ell\sin(\theta).
+\end{equation}
+
+\N{Evaluate}
+Does this make sense? Well, we recover the familiar pendulum by taking
+$x=0$ and $k=0$, and the $\theta$ equation of motion survives as
+\begin{equation}
+m\ell^{2}\ddot\theta =  -mg\ell\sin(\theta).
+\end{equation}
+This is the familiar pendulum's equation of motion, so we're on the
+right track.
+
+\subsection{Properties}
+
+\N{Non-Uniqueness of Lagrangian}
+The equations of motion are obtained by demanding the variation of the
+action be stationary
+\begin{equation}
+\delta S = 0.
+\end{equation}
+But if we shift the action by a constant, then we obtain the same
+equations of motion. Equivalently, if we add a total time derivative to
+the Lagrangian, then we add a constant term to the action. Therefore,
+two Lagrangians $L_{1}$ and $L_{2}$ are equivalent if they differ by a
+total time derivative. But this means Lagrangians are not unique: we
+have many possible distinct Lagrangians describing the same system.
+
+\N{Coordinate Independence}
+The action is independent of choice of coordinates, and thus the
+Euler--Lagrange equations do not depend on choice of coordinates.
+Amazingly enough, pseudoforces (like the Coriolis effect) are taken into
+account quite easily in Lagrangian mechanics.
+
+\N{Problem: Conservation of Misery}
+One problem is that we have not simplified Newtonian mechanics, but
+provided a basis for generalization. We still end up with second-order
+differential equations, which is a nightmare to solve. Sometimes that's
+okay, but it motivates Hamiltonian mechanics which works with a system
+of first-order differential equations.

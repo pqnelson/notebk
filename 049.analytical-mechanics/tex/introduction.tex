@@ -1,4 +1,4 @@
-\section{Introduction}
+\section{Introduction to Variational Calculus}
 
 \N{Review: Arclength of a curve}
 Recall Pythagoras's theorem: if we have a right triangle with sides
@@ -222,8 +222,10 @@ functional is usually written as $S$ and called the \define{Action}:
 S[q^{\mu},\dot{q}^{\mu}] =
 \int^{t_{1}}_{t_{0}}L(q^{\mu},\dot{q}^{\mu})\,\D t.
 \end{equation}
-Here we use the usual abbreviation $S[q^{\mu},\dot{q}^{\mu}] = S[q^{1},\dots,q^{3N},\dot{q}^{1},\dots,\dot{q}^{3N}]$
-and similarly $L(q^{\mu},\dot{q}^{\mu}) = L(q^{1},\dots,q^{3N},\dot{q}^{1},\dots,\dot{q}^{3N})$.
+Here we use the usual abbreviation
+$$S[q^{\mu},\dot{q}^{\mu}] = S[q^{1},\dots,q^{3N},\dot{q}^{1},\dots,\dot{q}^{3N}]$$
+and similarly
+$$L(q^{\mu},\dot{q}^{\mu}) = L(q^{1},\dots,q^{3N},\dot{q}^{1},\dots,\dot{q}^{3N}).$$
 The function $L$ is called the \define{Lagrangian}. The equations of
 motion are obtained from the \define{Principle of Stationary Action}
 \begin{equation}
@@ -250,3 +252,53 @@ restrictions like the Lagrangian can only depend on the magnitude of
 relative distances between different bodies. This is worked out in
 Arnold's \textit{Mathematical Methods of Classical Mechanics} as well as
 in Landau and Lifschitz's \textit{Mechanics}.
+
+\subsection{Fast and Loose Rules}
+
+\M
+The notation varies for variational calculus, historically people have
+used a $\delta$ operator (in analogy to the differential $\D$
+operator). The first variation of a functional $I[y]$ when varying $y$ is then
+$\delta I[y, \delta y]$ or using the ``chain rule''
+\begin{equation}
+\delta I[y, \delta y] = \int\frac{\delta I}{\delta y}\delta y\,\D t.
+\end{equation}
+This notation has been eschewed recently (probably since the 1990s)
+because the notation overlaps with completely different meanings in
+quantum field theory, which is bad. Some authors realize the mathematics
+of quantum field theory should be preferred, but it confuses a lot of
+people coming to the field.
+
+\N{Chain Rule}
+Suppose we have a functional of $n$ functions $y_{1}(t)$, \dots,
+$y_{n}(t)$,
+\begin{equation}
+F[y_{1},\dots,y_{n}] = \int^{t_{1}}_{t_{0}}f(y_{1},\dots,y_{n})\,\D t.
+\end{equation}
+Then
+\begin{equation}
+\delta F = \int^{t_{1}}_{t_{0}}
+\left(\frac{\partial f(y_{1},\dots,y_{n})}{\partial y_{1}}\delta y_{1}+\cdots+
+ \frac{\partial f(y_{1},\dots,y_{n})}{\partial y_{n}}\delta y_{n}\right)\D t.
+\end{equation}
+
+\begin{proof}[Proof sketch]
+Let us illustrate this for $n=2$ (the general $n$ case reasoning is
+similar).
+\begin{equation}
+F[y_{1} + \delta y_{1}, y_{2} + \delta y_{2}] =  \int^{t_{1}}_{t_{0}}f(y_{1} + \delta y_{1}, y_{2} + \delta y_{2})\,\D t.
+\end{equation}
+We then Taylor expand to first order in $\delta y_{j}$, obtaining:
+\begin{equation}
+  F[y_{1} + \delta y_{1}, y_{2} + \delta y_{2}] =
+  \int^{t_{1}}_{t_{0}} f(y_{1}, y_{2})\,\D t
+  + \underbrace{\int^{t_{1}}_{t_{0}}\frac{\partial f(y_{1},y_{2})}{\partial y_{1}}\delta y_{1}\,\D t
+  + \int^{t_{1}}_{t_{0}}\frac{\partial f(y_{1},y_{2})}{\partial y_{2}}\delta y_{2}\,\D t}_{=\delta F}.
+\end{equation}
+Linearity of the integral allows us to gather the terms together,
+yielding the desired result.
+\end{proof}
+
+\N{Corollaries}
+Almost all the familiar rules of calculus follows from this theorem,
+things like the product rule, power rule, etc.

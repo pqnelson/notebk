@@ -47,4 +47,37 @@ beginfig(0)
   label.top(btex $\mathrm{d}x$ etex, midpoint(legs0));
   label.rt(btex $\mathrm{d}y$ etex, midpoint(legs1));
 endfig;
+
+beginfig(1)
+  path wall, spring, rod, springMass, vert, angCirc;
+  wall = (0, u)--(0, -5u);
+  numeric i;
+  z0 = (4u,-0.5u);
+  spring = (0, 0)
+    for i=1 upto 1+((xpart z0)/3):
+    --(i*3, 3*cosd(180*i))
+  endfor;
+  draw wall withpen pencircle scaled 3;
+  draw spring;
+  label.top(btex $k$ etex, midpoint(spring) + (0, 0));
+
+  springMass = unitsquare scaled u shifted z0;
+  draw springMass;
+  z1 = ((z0 + (0.5u,0)) -- (z0 + (0.5u,-3u))) intersectionpoint springMass;
+  rod = z1 -- (z1 + (2u, -3u));
+  draw rod;
+  label(btex $\bullet$ etex, endpoint(rod));
+  vert = z1 -- (z1 + (0, -3u));
+  draw vert dashed evenly;
+  angCirc = (((halfcircle scaled 2u) rotated 180) shifted z1) cutbefore vert cutafter rod;
+  draw angCirc;
+  label.lrt(btex $\theta$ etex, point 0 of angCirc);
+  label.rt(btex $\ell$ etex, midpoint(rod));
+  label.rt(btex $m$ etex, endpoint(rod));
+  label.lrt(btex $(x_{1},y_{1})$ etex, (0,-2) + endpoint(rod));
+  label(btex $M$ etex, z0 + (0.5u,0.5u));
+  label.lft(btex $y=0$ etex, (0,0));
+  label.urt(btex $(x+a, 0)$ etex, z0 + (0.5u, u));
+endfig;
+
 end;
