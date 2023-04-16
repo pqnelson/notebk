@@ -1,0 +1,252 @@
+\section{Introduction}
+
+\N{Review: Arclength of a curve}
+Recall Pythagoras's theorem: if we have a right triangle with sides
+$\Delta x$ and $\Delta y$, then its hypoteneuse has length $\Delta s$ satisfying:
+\begin{equation}
+(\Delta s)^{2} = (\Delta x)^{2} + (\Delta y)^{2}.
+\end{equation}
+We will need this in a moment.
+
+Now, recall a curve on the [real] plane may be described using a
+``suitably smooth'' function
+\begin{equation}
+\gamma\colon [a,b]\to\RR^{2}
+\end{equation}
+where $a < b$ are real numbers and $[a,b] = \{x\in\RR\mid a\leq x\leq b\}$
+is the closed interval of real numbers between $a$ and $b$. For our
+purposes, ``suitably smooth'' means ``has at least one derivative which
+is continuous''.\footnote{We could weaken this by allowing countably many
+jump discontinuities. But we will not need this.}
+We can look at any point of the curve with our ``infinitesimal
+microscope'', as doodled below:
+\begin{center}
+  \includegraphics{img/img.0}
+\end{center}
+We invoke Pythagoras's theorem to write
+\begin{equation}
+(\D s)^{2} =  (\D x)^{2} + (\D y)^{2}.
+\end{equation}
+How do we actually compute this quantity? And how do we use it?
+
+We intend to use $\D s$ to compute the arclength:
+\begin{equation}
+s = \int^{\gamma(b)}_{\gamma(a)}\D s.
+\end{equation}
+Now, as far as how we compute it, that's a bit trickier. The intuition
+is to invoke Taylor's theorem to first order for the curve:
+\begin{equation}
+\gamma(t+\D t) = \gamma(t) + \frac{\D \gamma}{\D t}\D t,
+\end{equation}
+then we argue the quantity 
+\begin{equation}
+\vec{v}(t)\,\D t := \frac{\D \gamma}{\D t}\D t
+\end{equation}
+is precisely the vector $\D\vec{s}$ with the base point $\gamma(t)$,
+which is the hypoteneuse in the infinitesimal microscope pointing to the
+next point along the curve. We then find the scalar quantity
+\begin{equation}
+(\D s)^{2} = (\vec{v}(t)\,\D t)\cdot(\vec{v}(t)\,\D t)
+\end{equation}
+which we will integrate from the initial ``time'' to the final
+``time''. Taking the square root and factoring out the quantities $\D t$,
+we obtain
+\begin{equation}
+\D s = (\sqrt{\vec{v}(t)\cdot\vec{v}(t)})\,\D t.
+\end{equation}
+We can plug this change-of-variables back into our integral, and obtain
+the desired result for the arclength of the curve:
+\begin{equation}
+s = \int^{b}_{a}(\sqrt{\vec{v}(t)\cdot\vec{v}(t)})\,\D t,
+\end{equation}
+where
+\begin{equation}
+\vec{v}(t) = \frac{\D\gamma(t)}{\D t}
+\end{equation}
+is the ``velocity'' vector for the curve at time $t$.
+
+\N{Puzzle}
+Given two points $(x_{0},y_{0})\in\RR^{2}$ and
+$(x_{1},y_{1})\in\RR^{2}$, what is the shortest curve connecting them?
+
+\N{Strategizing a Solution}
+This sounds a lot like ``Find the minima of a function''. We know how to
+find the minima (and maxima) of a function: they are the critical
+points, i.e., the points where the derivative vanishes. Intuition
+suggests a similar approach should work for us with our puzzle.
+
+Our ``function'' is then an integral
+\begin{equation}\label{eq:introduction:arclength-functional}
+I[\gamma] = \int^{b}_{a}\sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}\,\D t,
+\end{equation}
+which ``eats in'' some curve $\gamma$ and produces a positive
+number. The only problem is: what are we differentiating with respect
+to?
+
+We can avoid answering this question by cheating. Assume we already have
+a solution $\gamma_{\text{cr}}$ which is the shortest path (we will
+derive an equation describing it at the end of our cheating). Now we
+consider a formal infinitesimal $\varepsilon\neq0$ but
+$\varepsilon^{2}=0$ and any arbitrary deformation $\eta(t)$ to the
+solution. For $\eta$ to be a deformation, we require the endpoints of
+$\gamma+\varepsilon\eta$ be fixed at the endpoints --- this means
+$\eta(a)=0$ and $\eta(b)=0$. Then we Taylor expand, which will give us:
+\begin{equation}
+I[\gamma_{\text{cr}}+\varepsilon\eta] =
+I[\gamma_{\text{cr}}] + \varepsilon\int(\mbox{something})\eta(t)\,\D t.
+\end{equation}
+This is analogous to
+\begin{equation}
+f(x_{\text{cr}} + h) = f(x_{\text{cr}}) + hf'(x_{\text{cr}}).
+\end{equation}
+Now, the analogous condition to ``the first derivative vanishes at the
+critical points'' would be for the first-order correction to vanish,
+i.e.,
+\begin{equation}
+\varepsilon\int(\mbox{something})\eta(t)\,\D t = 0.
+\end{equation}
+Since $\eta$ is completely arbitrary, this works if the ``something'' in
+the integrand is identically zero --- which is precisely the equation we
+will use to find $\gamma_{\text{cr}}$.
+
+\N{Executing the strategy}
+Now, we return to Eq~\eqref{eq:introduction:arclength-functional} and
+plug in the deformed path
+\begin{equation}
+  I[\gamma + \varepsilon\eta]
+  = \int^{b}_{a}\sqrt{\frac{\D[\gamma(t)+ \varepsilon\eta(t)]}{\D t}\cdot\frac{\D[\gamma(t)+ \varepsilon\eta(t)]}{\D t}}\,\D t.
+\end{equation}
+We can massage the integrand, Taylor expanding it:
+\begin{subequations}
+  \begin{align}
+\sqrt{\frac{\D[\gamma(t)+ \varepsilon\eta(t)]}{\D t}\cdot\frac{\D[\gamma(t)+ \varepsilon\eta(t)]}{\D t}}
+&= \sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t} + 2\varepsilon \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}\\
+&= \sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}\sqrt{1 + 2\varepsilon \frac{\frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}}\\
+&= \sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D
+    t}}\left[1 + \varepsilon \frac{\frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}\right]
++\mathcal{O}(\varepsilon^{2})\\
+&= \sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}} + \varepsilon \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t} +\mathcal{O}(\varepsilon^{2}).
+  \end{align}
+\end{subequations}
+We discard terms quadratic in $\varepsilon$, and we find
+\begin{subequations}
+  \begin{align}
+I[\gamma + \varepsilon\eta] &= \int^{b}_{a} \left[\sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}} + \varepsilon \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}\right]\,
+\D t\\
+&= \int^{b}_{a} \sqrt{\frac{\D\gamma(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}}\D t +
+\varepsilon \int^{b}_{a} \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}\D t\\
+&= I[\gamma] + \varepsilon \int^{b}_{a} \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}\D t.
+  \end{align}
+\end{subequations}
+Well, we haven't quite worked things out to make the integrand look like
+``$(\mbox{something})\eta(t)$'', but we are close! We can use
+integration by parts:
+\begin{equation}
+  \int^{b}_{a} \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}\D t
+  = \left.\eta(t)\cdot\frac{\D\gamma(t)}{\D t}\right|^{t=b}_{t=a}
+  -\int^{b}_{a} \eta(t)\cdot\frac{\D^{2}\gamma(t)}{\D t^{2}}\D t.
+\end{equation}
+Since $\eta$ is a deformation, we have $\eta(b)=0$ and $\eta(a)=0$. This
+kills the boundary term, giving us:
+\begin{equation}
+  \int^{b}_{a} \frac{\D\eta(t)}{\D t}\cdot\frac{\D\gamma(t)}{\D t}\D t
+  = 0 - \int^{b}_{a} \eta(t)\cdot\frac{\D^{2}\gamma(t)}{\D t^{2}}\D t.
+\end{equation}
+We have our condition to find the ``critical paths'' of the functional,
+namely all paths $\gamma\colon[a,b]\to\RR^{2}$ with boundary conditions
+$\gamma(a)$ and $\gamma(b)$ given, and
+\begin{equation}
+\frac{\D^{2}\gamma(t)}{\D t^{2}} = \vec{0}.
+\end{equation}
+This is precisely a curve with constant velocity
+\begin{equation}
+\vec{v} = \frac{\gamma(b) - \gamma(a)}{b - a},
+\end{equation}
+and the general solution looks like:
+\begin{equation}
+\gamma(t) = \gamma(a) + (t - a)\vec{v}.
+\end{equation}
+Thus the critical path connecting two points is a straight line. Is it
+the shortest or longest path?
+
+It's not hard to find a longer path: simply take any point $\vec{x}$ not on the
+curve, then construct a curve by taking two lines from $\gamma(a)$ to
+$\vec{x}$, then from $\vec{x}$ to $\gamma(b)$. We recall from basic
+geometry this is longer than $\gamma$. This suggests (but does not
+prove) $\gamma$ is the shortest path connecting the endpoints.
+
+\N{Review: Re-Phrasing What We Just Did}
+We started with some ``functional'' [a monster which eats functions and
+  produces numbers]
+$I[\gamma]$. We pretended we had a critical path $\gamma_{\text{cr}}$
+which was such that, for any other path $\eta$ satisfying
+$\eta(a)=\eta(b)=0$, we have
+\begin{equation}
+I[\gamma_{\text{cr}} + \varepsilon\eta] = I[\gamma_{\text{cr}}] + \mathcal{O}(\varepsilon^{2}).
+\end{equation}
+This is equivalent to saying
+\begin{equation}
+\left.\frac{\D}{\D\varepsilon}I[\gamma_{\text{cr}} + \varepsilon\eta]\right|_{\varepsilon=0}=0.
+\end{equation}
+Frequently, in the literature, people write
+$\delta\gamma=\varepsilon\eta$ for the ``variation'' of the trajectory
+$\gamma$ and the ``first variation'' of $I$ is:
+\begin{equation}
+\delta I[\gamma,\eta] = 
+\left.\frac{\D}{\D\varepsilon}I[\gamma + \varepsilon\eta]\right|_{\varepsilon=0}.
+\end{equation}
+We are looking for $\gamma$ such that $\delta I[\gamma,\eta]=0$ for any
+arbitrary $\eta$.
+
+Now, we had expressed the functional as an integral
+\begin{equation}
+I[\gamma] = \int^{b}_{a}L(\gamma)\,\D t.
+\end{equation}
+We then worked to express $\delta I[\gamma,\eta]=0$ as a differential
+equation involving derivatives of $L(\gamma)$.
+
+\N{Applications to Physics}
+We can apply this general idea to physics to find the trajectories of
+point-particles using the variations of some functional. The
+trajectories physical bodies ``take'' then are the extrema of this
+functional.
+
+One critical difference is that the functional will treat velocities and
+positions as ``independent'' of each other. Traditionally positions are
+denoted $q^{\mu}$ and confusingly velocities are $\dot{q}^{\mu}$, where
+$\mu=1,2,\dots,3N$ for $N$ point-particles in three-dimensional
+space. (In $D$-dimensional space, $\mu$ would range up to $ND$.) We
+treat these as functions of time. The
+functional is usually written as $S$ and called the \define{Action}:
+\begin{equation}
+S[q^{\mu},\dot{q}^{\mu}] =
+\int^{t_{1}}_{t_{0}}L(q^{\mu},\dot{q}^{\mu})\,\D t.
+\end{equation}
+Here we use the usual abbreviation $S[q^{\mu},\dot{q}^{\mu}] = S[q^{1},\dots,q^{3N},\dot{q}^{1},\dots,\dot{q}^{3N}]$
+and similarly $L(q^{\mu},\dot{q}^{\mu}) = L(q^{1},\dots,q^{3N},\dot{q}^{1},\dots,\dot{q}^{3N})$.
+The function $L$ is called the \define{Lagrangian}. The equations of
+motion are obtained from the \define{Principle of Stationary Action}
+\begin{equation}
+\delta S = 0.
+\end{equation}
+Its solutions are the physically realized trajectories of the point-particles.
+
+We can derive this from Newtonian mechanics, or we can apply various
+heuristics and recover Newtonian mechanics from this ``principle of
+stationary action''.
+
+\M
+Dually, we could take $\delta S=0$ as the starting point for physics and
+derive everything from it. For example, insisting physics is independent
+of choice of inertial reference frame forces our hand, we realize the
+``free point-particle'' Lagrangian is precisely:
+\begin{equation}
+L(q^{\mu},\dot{q}^{\mu}) = \sum_{\mu}\frac{1}{2}m\dot{q}^{\mu}\dot{q}^{\mu}.
+\end{equation}
+That is, the free point-particle's Lagrangian is the kinetic energy of
+the point-particle. If we demand other basic symmetries hold (like
+``There are no preferred directions''), then we get additional
+restrictions like the Lagrangian can only depend on the magnitude of
+relative distances between different bodies. This is worked out in
+Arnold's \textit{Mathematical Methods of Classical Mechanics} as well as
+in Landau and Lifschitz's \textit{Mechanics}.

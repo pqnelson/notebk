@@ -1,0 +1,261 @@
+\section{Lagrangian Mechanics}
+
+\M
+Lagrangian mechanics refers to working with the Lagrangian as a function
+of ``generalized positions'' $q^{\mu}$ and ``generalized velocities'' $\dot{q}^{\mu}$.
+We want to first derive the equations of motion for Lagrangian
+mechanics, then try to recover Newtonian mechanics. Again, before
+continuing, we stress that $q^{\mu}$ are functions completely
+independent of $\dot{q}^{\mu}$, so in particular
+\begin{equation}
+\frac{\partial q^{\mu}}{\partial\dot{q}^{\nu}}=0,\quad\mbox{and}\quad
+\frac{\partial\dot{q}^{\nu}}{\partial q^{\mu}}=0
+\end{equation}
+for every $\mu,\nu=1,\dots,3N$.
+
+\N{Deriving the equations of motion}
+We can consider the first variation of the action, which we write as
+\begin{equation}
+  S[q^{\mu} + \delta q^{\mu}, \dot{q}^{\mu} + \delta\dot{q}^{\mu}]
+  =
+  S[q^{\mu}, \dot{q}^{\mu}] + \int\sum_{\nu}\frac{\delta L(q^{\mu},
+    \dot{q}^{\mu})}{\delta q^{\nu}}\delta q^{\nu}\,\D t +
+  \mathcal{O}((\delta q)^{2},(\delta\dot{q})^{2}).
+\end{equation}
+We just use more formal notation than writing ``(something)'' in our
+first variation of the action.
+
+Now, we find by plugging in the deformed paths into the action integral,
+\begin{equation}
+  S[q^{\mu} + \delta q^{\mu}, \dot{q}^{\mu} + \delta\dot{q}^{\mu}]
+  = \int L(q^{\mu} + \delta q^{\mu}, \dot{q}^{\mu} + \delta\dot{q}^{\mu})\,\D t.
+\end{equation}
+Taylor expanding to first order in the variations
+\begin{equation}
+\int L(q^{\mu} + \delta q^{\mu}, \dot{q}^{\mu} +
+\delta\dot{q}^{\mu})\,\D t
+= \int L(q^{\mu}, \dot{q}^{\mu})\,\D t
++ \int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\delta \dot{q}^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t.
+\end{equation}
+Now we ``parametrize'' the variations of velocities as
+\begin{equation}
+\dot{q}^{\nu} = \frac{\D}{\D t}\delta q^{\nu},
+\end{equation}
+then rewrite the first-term in the Taylor expanded variation as
+\begin{equation}
+\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\delta \dot{q}^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t
+= \int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t.
+\end{equation}
+Remember our strategy is to rearrange terms so the integrand looks like
+\begin{equation}
+\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t
+= \int\sum_{\nu}\frac{\delta L(q^{\mu},
+    \dot{q}^{\mu})}{\delta q^{\nu}}\delta q^{\nu}\,\D t.
+\end{equation}
+We use integration by parts on the time derivative of the variation to get
+\begin{equation}
+\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t
+=\left.\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right|_{\text{bdry}}
++\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
+-\delta q^{\nu}\frac{\D}{\D t}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t.
+\end{equation}
+The boundary contribution vanishes, so we are left with
+\begin{equation}
+\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t
+=\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
+-\delta q^{\nu}\frac{\D}{\D t}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t.
+\end{equation}
+We can now use distributivity to write this as
+\begin{equation}
+\int \left(\sum_{\nu} \delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
++\frac{\D}{\D t}\delta q^{\nu}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}\right)\D t
+=\sum_{\nu} \int \underbrace{\left(\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
+-\frac{\D}{\D t}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial
+  \dot{q}^{\nu}}\right)}_{=\delta L/\delta q^{\nu}}\delta q^{\nu}\,\D t.
+\end{equation}
+The first variation of the action vanishes if $\delta L/\delta q^{\nu}=0$ for each $\nu$.
+This requires, for arbitrary variation $\delta q^{\nu}$, that
+\begin{equation}
+\boxed{\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial q^{\nu}}
+-\frac{\D}{\D t}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}
+= 0}
+\end{equation}
+for each $\nu=1,\dots,3N$. This is precisely the \define{Euler--Lagrange Equations},
+and they are the equations of motion for Lagrangian mechanics.
+
+\M
+Observe the only place where acceleration can enter the Euler--Lagrange
+equation is from the total time derivative. If we want to recover
+Newton's second Law, we need
+\begin{equation}
+\frac{\D}{\D t}\frac{\partial L(q^{\mu}, \dot{q}^{\mu})}{\partial \dot{q}^{\nu}}
+=m_{\nu}\ddot{q}^{\nu} + (\mbox{other stuff}),
+\end{equation}
+where $m_{\nu}$ is the mass for the body with acceleration component $\ddot{q}^{\nu}$.
+Hence we see, for Newtonian systems described by Lagrangian mechanics,
+we need
+\begin{equation}
+L(q^{\mu}, \dot{q}^{\mu}) =
+\sum_{\nu}\frac{1}{2}m_{\nu}\dot{q}^{\nu}\dot{q}^{\nu} + (\mbox{other stuff}).
+\end{equation}
+
+\N{Free bodies}
+For us to describe free bodies experiencing no forces, we need to
+recover the equations of motion
+\begin{equation}
+\ddot{q}^{\nu} = 0.
+\end{equation}
+This is precisely described by
+\begin{equation}
+L_{\text{free}}(q^{\mu}, \dot{q}^{\mu}) = \sum_{\nu}\frac{1}{2}m_{\nu}\dot{q}^{\nu}\dot{q}^{\nu}.
+\end{equation}
+
+\N{Forces}
+We now want to recover forces in Lagrangian mechanics. If we recall that
+the potential energy $U(q)$ describes a force $\vec{F}$ by taking the
+gradient of the negative potential energy $\vec{F}=-\nabla U$, then this
+suggests we should consider the Lagrangian of the form:
+\begin{equation}
+L(q^{\mu}, \dot{q}^{\mu}) =
+\left(\sum_{\nu}\frac{1}{2}m_{\nu}\dot{q}^{\nu}\dot{q}^{\nu}\right) \pm U(q^{\mu}).
+\end{equation}
+We just need to determine the sign of the potential energy contribution.
+
+(\textbf{Exercise:} stop! Are we making sense? Check the dimensions of
+the terms we are adding together, they should be the same. What does
+that make the dimensions of the action?)
+
+We find, swapping dummy variables we sum over, that the equations of
+motion are:
+\begin{equation}
+\begin{split}
+0 = &\frac{\partial}{\partial q^{\nu}}\left[\left(\sum_{\mu}\frac{1}{2}m_{\mu}\dot{q}^{\mu}\dot{q}^{\mu}\right) \pm U(q^{\mu})\right]
+-\frac{\D}{\D t}\frac{\partial }{\partial \dot{q}^{\nu}}\left[\left(\sum_{\mu}\frac{1}{2}m_{\mu}\dot{q}^{\mu}\dot{q}^{\mu}\right) \pm U(q^{\mu})\right]\\
+&= 
+\frac{\partial}{\partial q^{\nu}}\left[\pm U(q^{\mu})\right]
+-\frac{\D}{\D t}\frac{\partial }{\partial \dot{q}^{\nu}}\left(\sum_{\mu}\frac{1}{2}m_{\mu}\dot{q}^{\mu}\dot{q}^{\nu}\right).
+\end{split}
+\end{equation}
+Hence
+\begin{equation}
+\mp\frac{\partial U(q^{\mu})}{\partial q^{\nu}} = m_{\nu}\ddot{q}^{\nu}.
+\end{equation}
+We can recover the familiar ``negative gradient of potential energy is
+force'' physical principle by taking the Lagrangian for a generic
+Newtonian system as:
+\begin{equation}
+\boxed{L(q^{\mu}, \dot{q}^{\mu}) =
+\left(\sum_{\nu}\frac{1}{2}m_{\nu}\dot{q}^{\nu}\dot{q}^{\nu}\right) - U(q^{\mu}).}
+\end{equation}
+More generally, this suggests we should take the Lagrangian to be of the form:
+\begin{equation}
+L = \begin{pmatrix}\mbox{kinetic}\\\mbox{energy}\end{pmatrix}
+-\begin{pmatrix}\mbox{potential}\\\mbox{energy}\end{pmatrix}.
+\end{equation}
+This recovers Newtonian mechanics correctly, and if we wish to
+generalize to other settings (like relativistic mechanics or field theory) then we just
+need to find the analogous quantities for kinetic and potential
+energies.
+
+\N{Observation 1: Arclength as Lagrangian problem}
+We see that our motivating problem with arclength worked with a
+different ``Lagrangian'', namely
+\begin{equation}
+L(q^{\mu},\dot{q}^{\mu}) = \sqrt{\sum_{\nu}\dot{q}^{\nu}\dot{q}^{\nu}}.
+\end{equation}
+Determine the equations of motion for this Lagrangian, and confirm we
+recover the $\ddot\gamma=0$ condition.
+
+\N{Observation 2: Generalized Momentum}
+We see that Newton's second Law, in full generality, is
+\begin{equation}
+\frac{\D\vec{p}}{\D t} =\vec{F}
+\end{equation}
+where $\vec{p}$ is the momentum for the body. This suggests that there
+is an analogous quantity for momentum in the Lagrangian setting, aptly
+called the \define{Generalized Momentum}
+\begin{equation}
+p_{\nu}(q^{\mu},\dot{q}^{\mu}) := \frac{\partial L(q^{\mu},\dot{q}^{\mu})}{\partial\dot{q}^{\nu}}.
+\end{equation}
+Then the Euler--Lagrange equations is
+\begin{equation}
+\frac{\D p_{\nu}(q^{\mu},\dot{q}^{\mu})}{\D t} = \frac{\partial L(q^{\mu},\dot{q}^{\mu})}{\partial q^{\nu}}.
+\end{equation}
+Some people use the term \define{Generalized Force} to refer to the
+quantity
+\begin{equation}
+F_{\nu} := \frac{\partial L(q^{\mu},\dot{q}^{\mu})}{\partial q^{\nu}}.
+\end{equation}
+
+\N{Exercise}
+Jacobi considered a slightly different Lagrangian, one of the form:
+\begin{equation}
+L_{\text{Jacobi}} = \sqrt{\begin{pmatrix}\mbox{kinetic}\\\mbox{energy}\end{pmatrix}\begin{pmatrix}\mbox{potential}\\\mbox{energy}\end{pmatrix}}.
+\end{equation}
+This makes sense when we have nonzero potential energy. For a
+1-dimensional point-particle, what does the equations of motion look
+like for:
+\begin{enumerate}
+\item Spring potential: $U(q)=kq^{2}$
+\item Gravitational potential: $U(q) = U_{0}/q$
+\item Constant potential: $U(q)=U_{0}\neq0$.
+\end{enumerate}
+Are they the same equations of motion for Jacobi's Lagrangian as the
+usual Lagrangian?
+
+\N{Kinetic Energies in Different Coordinate Systems}
+How can we find the kinetic energy in different coordinate systems? For
+example, in 2-dimensions, should we expect kinetic energy for polar
+coordinates to be
+\begin{equation}
+K = \frac{\dot{r}^{2}}{2m} + \frac{\dot{\theta}^{2}}{2m}?
+\end{equation}
+The problem is that $\theta$ is dimensionless, and so this cannot
+possibly function by dimensional analysis. What we should do is write
+\begin{equation}
+x = r\cos(\theta),\quad\mbox{and}\quad y=r\sin(\theta).
+\end{equation}
+Taking the time derivative
+\begin{equation}
+  \dot{x} = \dot{r}\cos\theta -r\dot\theta\sin\theta,\quad\mbox{and}\quad
+  \dot{y} = \dot{r}\sin\theta +r\dot\theta\cos\theta.
+\end{equation}
+Then
+\begin{subequations}
+\begin{align}
+\dot{x}^{2}+\dot{y}^{2} &= \left(\dot{r}\cos\theta -r\dot\theta\sin\theta\right)^{2}
+\left(\dot{r}\sin\theta +r\dot\theta\cos\theta\right)^2\\
+&= \left(\dot{r}^{2}\cos^{2}\theta
+-2r\dot{r}\dot\theta\cos\theta\sin\theta
++r^{2}\dot\theta^{2}\sin^{2}\theta\right)
++ \left(\dot{r}^2\sin^2\theta + 2\dot{r}r\dot\theta\cos\theta\sin\theta +r^2\dot\theta^2\cos^2\theta\right)\\
+%% &=\dot{r}^{2}\cos^{2}\theta
+%% +r^{2}\dot\theta^{2}\sin^{2}\theta
+%% \left(\dot{r}^2\sin^2\theta +r^2\dot\theta^2\cos^2\theta\right)\\
+&=\dot{r}^{2}(\cos^{2}\theta + \sin^2\theta) + r^2\dot\theta^2(\sin^2\theta + \cos^2\theta)\\
+&=\dot{r}^{2} + r^2\dot\theta^2.
+\end{align}
+\end{subequations}
+This is generically how we determine kinetic energies in different
+coordinate systems: find the velocities in the old coordinate system
+expressed using the velocities in the new coordinate system, then plug
+them into the expression for the kinetic energy.
+
+\N{Exercise}
+The free particle in 2-dimensions polar coordinates has its Lagrangian
+be
+\begin{equation}
+L = \frac{m}{2}\dot{r}^{2} + \frac{m}{2}r^2\dot\theta^2.
+\end{equation}
+This gives us the generalized force
+\begin{equation}
+\frac{\partial L}{\partial r} = mr\dot\theta^{2}.
+\end{equation}
+But by definition, a free body experiences no force. What's going on?
+[Hint: think about pseudoforces like the coriolis effect and centrifugal forces.]
