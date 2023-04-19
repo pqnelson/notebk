@@ -1,0 +1,374 @@
+\chapter{Integrals}
+
+\M
+Really, we should use a table of integrals, it's orders of magnitude
+faster than trying to reason about integration. I am curious about how
+much we can deduce from just the fundamental theorem of calculus alone.
+Arguably, this is just playing around with a differential ring, since
+we're doing formal calculations.
+
+\section{Indefinite Integrals}
+
+\N{Definition (Antiderivatives)}
+Indefinite integrals (``antiderivatives'') are defined by the
+``indefinite Leibniz theorem''
+\begin{equation}
+\frac{\D}{\D x}\int f(x)\,\D x = f(x).
+\end{equation}
+This is unique up to some constant of integration $C$, which we may omit
+for simplicity.
+
+\begin{theorem}[Fundamental Theorem of Calculus]\label{integrals:thm:ftc}
+  Let $f$ be a differentiable function in a single variable. Then
+  \[ \int f'(x)\,\D x = f(x) + C\]
+  where $C$ is a constant of integration (which we will henceforth omit).
+\end{theorem}
+
+\begin{proof}
+We begin by writing $F(x)=\int f(x)\,\D x$.
+Then we find
+\begin{equation}\label{eq:integrals:indefinite:ftc:proof-step}
+F'(x) = f(x)
+\end{equation}
+by definition of the antiderivative (``indefinite Leibniz rule'').
+So
+\begin{calculation}
+\int F'(x)\,\D x
+%%   \step{rewriting the parenthetic integrand}
+%% \int\left(\frac{\D}{\D x}\int f(x)\,\D x\right)\D x
+  \step{using Eq~\eqref{eq:integrals:indefinite:ftc:proof-step}}
+\int f(x)\,\D x
+  \step{folding in the definition of $F(x)$}
+F(x).
+\end{calculation}
+Hence the result.
+\end{proof}
+
+\begin{remark}
+Our goal is, given $f(x)$, to find a function $F(x)$ such that its
+derivative satisfies $F'(x)=f(x)$. We will build up a library of results
+and use a few basic tricks.
+\end{remark}
+
+\begin{corollary}\label{integrals:u-substitution}
+Let $\varphi$ be a differentiable function. Then
+\[ \int f\bigl(\varphi(x)\bigr)\varphi'(x)\,\D x = \left.\int f(u)\,\D u\right|_{u=g(x)}.\]
+\end{corollary}
+
+\begin{proof}
+Let $F(x) = \int f(x)\,\D x$.
+Then
+\begin{calculation}
+(F\circ g)'(x)
+  \step{chain rule of differentiation}
+F'\bigl(g(x)\bigr)g'(x)
+  \step{Leibniz property of antiderivatives}
+f\bigl(g(x)\bigr)g'(x)
+\end{calculation}
+Hence, using Theorem~\ref{integrals:thm:ftc},
+\[ \int f\bigl(g(x)\bigr)g'(x)\,\D x = \left.\int f(u)\,\D u\right|_{u=g(x)}.\qedhere\]
+\end{proof}
+
+\N{Power rule}\label{integrals:chunk:power-rule} $\displaystyle{\int x^{n}\,\D x = \frac{x^{n+1}}{n+1}}$
+for $n\neq-1$.
+
+This follows from the power rule for derivatives and
+Theorem~\ref{integrals:thm:ftc}.
+
+\N{Logarithm} $\displaystyle{\int x^{-1}\,\D x = \ln(x)}$.
+
+This follows from the derivative of logarithm and
+Theorem~\ref{integrals:thm:ftc}.
+
+\begin{corollary}\label{cor:integrals:log-trick}
+Let $f$ be a differentiable function. Then
+\[ \int\frac{f'(x)}{f(x)}\D x = \ln\bigl(f(x)\bigr).\]
+In particularly, if we can find a differentiable function $g(x)$ such
+that
+\[ \frac{g'(x)}{g(x)} = f(x),\]
+then we have
+\begin{equation}
+\int\frac{g'(x)}{g(x)}\D x = \ln\bigl(f(x)\bigr).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+From the chain rule applied to $\ln\bigl(f(x)\bigr)$, then integrating
+yields the result by Theorem~\ref{integrals:thm:ftc}.
+\end{proof}
+
+\N{Exponentials} $\displaystyle{\int \E^{x}\,\D x = \E^{x}}$
+and for $a>0$ we have $\displaystyle{\int a^{x}\,\D x = \frac{a^{x}}{\ln(a)}}$.
+
+\begin{proof}
+  We recall
+  \begin{equation}
+\frac{\D}{\D x}\E^{x} = \E^{x}
+  \end{equation}
+  which proves the first claim by Theorem~\ref{integrals:thm:ftc}. The
+  second claim follows from Theorem~\ref{integrals:thm:ftc} applied to
+  the fact that
+  \begin{equation}
+\frac{\D}{\D x}a^{x} = a^{x}\ln(a),
+  \end{equation}
+  after dividing both sides by $\ln(a)$.
+\end{proof}
+
+\N{Sine and Cosine} $\displaystyle{\int \cos(x)\,\D x = \sin(x)}$
+and $\displaystyle{\int \sin(x)\,\D x = -\cos(x)}$.
+
+\begin{proof}
+This follows from the derivative of sine (or cosine) and Theorem~\ref{integrals:thm:ftc}.
+\end{proof}
+
+\M $\displaystyle{\int \frac{\D x}{\sin^{2}(x)} = -\cot(x)}$
+
+\M $\displaystyle{\int \frac{\D x}{\cos^{2}(x)} = -\tan(x)}$
+
+\M $\displaystyle{\int \frac{\sin(x)}{\cos^{2}(x)}\D x = \sec(x)}$
+
+\begin{proof}
+Using $u$-substitution (\S\ref{integrals:u-substitution}),
+let $u=\cos(x)$, then $\D u=-\sin(x)\,\D x$ and we have
+\begin{equation}
+\int \frac{\sin(x)}{\cos^{2}(x)}\D x=\int\frac{-\D u}{u^{2}}.
+\end{equation}
+Then the power rule (\S\ref{integrals:chunk:power-rule}) yields the result.
+\end{proof}
+
+\M $\displaystyle{\int \frac{\cos(x)}{\sin^{2}(x)}\D x = -\csc(x)}$
+
+\begin{proof}
+Using $u$-substitution (\S\ref{integrals:u-substitution}),
+let $u=\sin(x)$, then $\D u=\cos(x)\,\D x$ and we have
+\begin{equation}
+\int \frac{\cos(x)}{\sin^{2}(x)}\D x=\int\frac{\D u}{u^{2}}.
+\end{equation}
+Then the power rule (\S\ref{integrals:chunk:power-rule}) yields the result.
+\end{proof}
+
+\M $\displaystyle{\int \tan(x)\,\D x = -\ln\bigl(\cos(x)\bigr)}$.
+
+\begin{proof}
+We will be using the logarithm trick (\S\ref{cor:integrals:log-trick}).
+This is because we know
+\begin{equation}
+\frac{1}{\cos(x)}\frac{\D}{\D x}\cos(x) = -\tan(x),
+\end{equation}
+and
+\begin{equation}
+\frac{1}{\cos(x)}\frac{\D}{\D x}\cos(x) = \frac{\D}{\D x}\ln\bigl(\cos(x)\bigr).
+\end{equation}
+The result follows immediately.
+\end{proof}
+
+\M $\displaystyle{\int \cot(x)\,\D x = \ln\bigl(\sin(x)\bigr)}$.
+
+\begin{proof}
+We will be using the logarithm trick (\S\ref{cor:integrals:log-trick}).
+This is because we know
+\begin{equation}
+\frac{1}{\sin(x)}\frac{\D}{\D x}\sin(x) = \cot(x),
+\end{equation}
+and
+\begin{equation}
+\frac{1}{\sin(x)}\frac{\D}{\D x}\sin(x) = \frac{\D}{\D x}\ln\bigl(\sin(x)\bigr).
+\end{equation}
+The result follows immediately.
+\end{proof}
+
+\M $\displaystyle{\int \frac{\D x}{\sin(x)} = \ln\bigl(\tan(x/2)\bigr)}$.
+
+\begin{proof}
+We will use the angle-addition formula for sine (\S\ref{prop:double-angle-for-sine})
+and the logarithm trick (\S\ref{cor:integrals:log-trick}).
+Why? Because
+\begin{calculation}
+  \frac{1}{\tan(x/2)}\frac{\D}{\D x}\tan(x/2)
+  \step{derivative of tangent}
+  \frac{1}{\tan(x/2)}\frac{\sec^{2}(x/2)}{2}
+  \step{unfolding definitions back to sine, cosine}
+  \frac{\cos(x/2)}{\sin(x/2)}\frac{1}{2\cos^{2}(x/2)}
+  \step{algebra}
+  \frac{1}{2\cos(x/2)\sin(x/2)}
+  \step{angle-addition formula for sine (\S\ref{prop:double-angle-for-sine})}
+  \frac{1}{\sin(x)}.
+\end{calculation}
+The result follows from the logarithm trick.
+\end{proof}
+
+\M $\displaystyle{\int \frac{\D x}{\cos(x)} = \ln\bigl(\sec(x)+\tan(x)\bigr)}$.
+
+\begin{proof}
+We will use the logarithm trick (\S\ref{cor:integrals:log-trick}).
+Observe that
+\begin{calculation}
+  \frac{\D}{\D x}\bigl(\sec(x)+\tan(x)\bigr)
+\step{unfolding secant}
+  \frac{\D}{\D x}\left(\frac{1}{\cos(x)}+\tan(x)\right)
+\step{linearity of derivative}
+  \frac{\D}{\D x}\frac{1}{\cos(x)} + \frac{\D}{\D x}\tan(x)
+\step{derivative of tangent is secant-squared}
+  \frac{\D}{\D x}\frac{1}{\cos(x)} + \sec^{2}(x)
+\step{chain rule plus power rule}
+  \frac{-1}{\cos^{2}(x)}\frac{\D\cos(x)}{\D x} + \sec^{2}(x)
+\step{derivative of cosine}
+  \frac{-\sin(x)}{\cos^{2}(x)} + \sec^{2}(x)
+\step{folding in the definition of tangent, unfolding one factor of secant}
+  \frac{\tan(x)}{\cos(x)} + \frac{\sec(x)}{\cos(x)}
+\step{algebra}
+  \frac{\tan(x) + \sec(x)}{\cos(x)}.
+\end{calculation}
+Now, we see that (by dividing both sides by $\tan(x)+\sec(x)$):
+\begin{equation}
+  \frac{1}{\tan(x) + \sec(x)}\frac{\D}{\D x}\bigl(\sec(x)+\tan(x)\bigr)
+= \frac{1}{\cos(x)}.
+\end{equation}
+The result follows from the logarithm trick (\S\ref{cor:integrals:log-trick}).
+\end{proof}
+
+\M\label{integrals:indefinite:arctanh} $\displaystyle{\int\frac{\D x}{1 + x^{2}} = \arctan(x)}$.
+
+\begin{proof}
+Let $x=\tan(t)$. Then $\D x = \sec^{2}(t)\,\D t = (1 + x^{2})\,\D t$.
+Then
+\begin{calculation}
+  \int\frac{\D x}{1 + x^{2}}
+\step{using $x=\tan(t)$}
+  \int\D t
+\step{power rule with $n=0$}
+  t
+\step{since $t=\arctan(x)$}
+  \arctan(x).
+\end{calculation}
+Hence the result.
+\end{proof}
+
+\M\label{integrals:one-over-linear-combo-of-x} $\displaystyle{\int\frac{\D x}{a - bx}\,\D x = \frac{-1}{b}\ln(a - bx)}$ for $b\neq0$.
+
+\M $\displaystyle{\int\frac{\D x}{1 - x^{2}} = \arctanh(x) = \frac{1}{2}\ln\left(\frac{1+x}{1-x}\right)}$.
+
+\begin{proof}
+  We see
+\begin{equation}\label{eq:integrals:indefinite:arctanh:intermediate-step}
+\frac{1}{1 - x} + \frac{1}{1 + x}
+= \frac{(1 + x) + (1 - x)}{1 - x^{2}}
+= \frac{2}{1 - x^{2}}.
+\end{equation}
+We see use (\S\ref{integrals:one-over-linear-combo-of-x}) 
+\begin{calculation}
+  \int\frac{\D x}{1 - x^{2}}
+\step{using Eq~\eqref{eq:integrals:indefinite:arctanh:intermediate-step}}
+  \int\frac{1}{2}\left(\frac{1}{1 - x} + \frac{1}{1 + x}\right)\D x
+\step{using linearity of integral}
+  \frac{1}{2}\int\frac{\D x}{1 - x} + \frac{1}{2}\int\frac{\D x}{1+x}
+\step{using result (\S\ref{integrals:one-over-linear-combo-of-x})}
+  \frac{-1}{2}\ln(1 - x) + \frac{1}{2}\ln(1 + x)
+\step{law of logarithms}
+  \frac{1}{2}\ln\left(\frac{1+x}{1 - x}\right).
+\end{calculation}
+Hence one half of the result. The other half of the result follows from
+the substitution $x=\I u$, the integral for $1/(1+u^{2})=\arctan(u)$
+[i.e., result (\S\ref{integrals:indefinite:arctanh})],
+and $\arctanh(x)=-\I\arctan(\I x)$.
+\end{proof}
+
+\M $\displaystyle{\int\frac{\D x}{\sqrt{1 - x^{2}}} = \arcsin(x)}$.
+
+\begin{proof}
+This follows from the fundamental theorem of calculus and
+\begin{equation}
+\frac{\D}{\D x}\arcsin(x) = \frac{1}{\sqrt{1 - x^{2}}}.
+\end{equation}
+(This latter follows from the inverse function theorem.)
+\end{proof}
+
+\M $\displaystyle{\int\frac{\D x}{\sqrt{x^{2} - 1}} = \ln\bigl(x + \sqrt{x^{2}-1}\bigr)=\arccosh(x)}$.
+
+\begin{proof}
+We see
+\begin{calculation}
+  \frac{\D}{\D x}(x + \sqrt{x^{2} - 1})
+\step{differentiation}
+  1 + \frac{x}{\sqrt{x^{2} - 1}}
+\step{algebra}
+  \frac{\sqrt{x^{2} - 1} + x}{\sqrt{x^{2} - 1}}.
+\end{calculation}
+Therefore
+\begin{equation}
+\frac{1}{x + \sqrt{x^{2} - 1}}\frac{\D}{\D x}(x + \sqrt{x^{2} - 1})
+= \frac{1}{\sqrt{x^{2} - 1}}.
+\end{equation}
+The result follows from the logarithm trick (\S\ref{cor:integrals:log-trick}).
+\end{proof}
+
+\M $\displaystyle{\int\frac{\D x}{\sqrt{x^{2} + 1}} = \ln\bigl(x + \sqrt{x^{2}+1}\bigr)=\arcsinh(x)}$.
+
+The proof is similar to the previous result.
+
+\M $\displaystyle{\int\sinh(x)\,\D x = \cosh(x)}$.
+
+This follows from the derivative of $\cosh(x)$ and Theorem~\ref{integrals:thm:ftc}.
+
+\M $\displaystyle{\int\cosh(x)\,\D x = \sinh(x)}$.
+
+This follows from the derivative of $\sinh(x)$ and Theorem~\ref{integrals:thm:ftc}.
+
+\M $\displaystyle{\int\frac{\D x}{\sinh^{2}(x)} = -\coth(x)}$.
+
+This follows from the derivative of $\coth(x)$ and Theorem~\ref{integrals:thm:ftc}.
+
+\M $\displaystyle{\int\frac{\D x}{\cosh^{2}(x)} = \tanh(x)}$.
+
+This follows from the derivative of $\coth(x)$ and Theorem~\ref{integrals:thm:ftc}.
+
+\M $\displaystyle{\int\tanh(x)\,\D x = \ln\bigl(\cosh(x)\bigr)}$.
+
+\begin{proof}
+  We recall
+  \begin{equation}
+\frac{\D\cosh(x)}{\D x}=\sinh(x),
+  \end{equation}
+  so
+  \begin{equation}
+\frac{1}{\cosh(x)}\frac{\D\cosh(x)}{\D x}=\tanh(x).
+  \end{equation}
+The result follows from the logarithm trick (\S\ref{cor:integrals:log-trick}).
+\end{proof}
+
+\M $\displaystyle{\int\coth(x)\,\D x = \ln\bigl(\sinh(x)\bigr)}$.
+\begin{proof}
+  We recall
+  \begin{equation}
+\frac{\D\sinh(x)}{\D x}=\cosh(x),
+  \end{equation}
+  so
+  \begin{equation}
+\frac{1}{\sinh(x)}\frac{\D\sinh(x)}{\D x}=\coth(x).
+  \end{equation}
+The result follows from the logarithm trick (\S\ref{cor:integrals:log-trick}).
+\end{proof}
+
+\M $\displaystyle{\int\frac{\D x}{\sinh(x)} = \ln\bigl(\tanh(x/2)\bigr)}$.
+
+\begin{proof}
+  We recall
+\begin{equation}
+\frac{\D}{\D x}\tanh(x/2) = \frac{1}{2}\frac{1}{\cosh^{2}(x)}.
+\end{equation}
+  Then
+\begin{calculation}
+  \frac{1}{\tanh(x/2)}\frac{\D}{\D x}\tanh(x/2)
+\step{differentiation}
+  \frac{1}{2}\frac{1}{\tanh(x/2)}\frac{1}{\cosh^{2}(x)}
+\step{unfolding tanh}
+  \frac{1}{2}\frac{\cosh(x/2)}{\sinh(x/2)}\frac{1}{\cosh^{2}(x)}
+\step{simplification}
+  \frac{1}{2\sinh(x/2)\cosh(x/2)}
+\step{angle-addition formula for hyperbolic sine}
+  \frac{1}{\sinh(x)}.
+\end{calculation}
+The result follows from the logarithm trick (\S\ref{cor:integrals:log-trick}).
+\end{proof}
+
+% \M $\displaystyle{\int\,\D x = }$.

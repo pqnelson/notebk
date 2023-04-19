@@ -223,19 +223,30 @@ For all $x\in[0,\pi/2]$, we have $0\leq C(x)\leq 1$.
 \end{proof}
 
 \begin{proposition}\label{prop:sine-of-sum}
-$S(x + y) = S(x)C(y) + C(x)S(y)$.
+$\sin(x + y) = \sin(x)\cos(y) + \cos(x)\sin(y)$.
 \end{proposition}
 \begin{proof}
-We have $S(x + y) = C((\pi/2 - x) - y) = C(\pi/2 - x)C(y) + S(\pi/2 - x)S(y)$.
-Using earlier results proves the claim.
+We have
+\begin{calculation}
+\sin(x + y)
+  \step{since $\sin(u) = \cos((\pi/2) - u)$ using Proposition~\ref{prop:cos-pi-over-2-and-sine}}
+\cos((\pi/2)-(x + y))
+  \step{algebra}
+\cos\left(\bigl((\pi/2)-x\bigr) - y\right)
+  \step{angle-addition for cosine}
+\cos\left(\frac{\pi}{2} - x\right)\cos(y) + \sin\left(\frac{\pi}{2} - x\right)\sin(y)
+  \step{using Propositions~\ref{prop:cos-pi-over-2-and-sine} and \ref{prop:sin-pi-over-2-and-cosine}}
+\sin(x)\cos(y) + \cos(x)\sin(y).
+\end{calculation}
+Hence the result.
 \end{proof}
 
 \begin{proposition}\label{prop:double-angle-for-sine}
-$S(2x) = 2S(x)C(x)$.
+$\sin(2x) = 2\sin(x)\cos(x)$.
 \end{proposition}
 
 \begin{proof}
-  This follows immediately from the previous result, by choosing $x=y$.
+  This follows immediately from the previous result, Proposition~\ref{prop:sine-of-sum}, by choosing $x=y$.
 \end{proof}
 
 \begin{proposition}
