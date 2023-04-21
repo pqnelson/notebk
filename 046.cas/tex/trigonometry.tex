@@ -37,7 +37,7 @@ the following results.
 
 \section{Results}
 
-\begin{axiom}[Angle subtraction for cosine]\label{axiom:trigonometry:cos-addition-law}
+\begin{axiom}[Angle subtraction for cosine]\label{axiom:trigonometry:cos-subtraction-law}
 For any $x,y\in\RR$,  $\cos(x-y) = \cos(x)\cos(y) + \sin(x)\sin(y)$.
 \end{axiom}
 
@@ -68,7 +68,7 @@ the inverse function of $\cos(x)$.
     \cos(0)
     \step{since $\pi/2 - \pi/2 = 0$}
     \cos\left(\frac{\pi}{2}-\frac{\pi}{2}\right)
-    \step{by Axiom~\ref{axiom:trigonometry:cos-addition-law}}
+    \step{by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}}
     \cos^{2}(\pi/2) + \sin^{2}(\pi/2)
     \step{by Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1} and $1^{2}=1$}
     \cos^{2}(\pi/2) + 1
@@ -86,7 +86,7 @@ $\cos(0)\leq1$.
     \cos(0)
     \step{since $0-0=0$}
     \cos(0-0)
-    \step{by Axiom~\ref{axiom:trigonometry:cos-addition-law}}
+    \step{by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}}
     \cos^{2}(0) + \sin^{2}(0)
   \end{calculation}
   We claim $\cos^{2}(0) + \sin^{2}(0)\geq\cos^{2}(0)$, hence by Lemma~\ref{lemma:trigonometry:a+b=c-and-b-geq-0-implies-a-geq-c},
@@ -118,11 +118,11 @@ For any $a,b,c,d\in\RR$, if $a+b=d$ and $a=c$, then $c+b=d$.
 For any $x\in\RR$, $\cos(-x) = \cos(x)$.
 \end{proposition}
 \begin{proof}
-Using $-x=0-x$ and Axiom~\ref{axiom:trigonometry:cos-addition-law},
+Using $-x=0-x$ and Axiom~\ref{axiom:trigonometry:cos-subtraction-law},
 \begin{equation}
 \cos(-x) = \cos(0 - x) = \cos(0)\cos(x) + \sin(0)\sin(x).
 \end{equation}
-But we also know that, from $x=x-0$ and Axiom~\ref{axiom:trigonometry:cos-addition-law},
+But we also know that, from $x=x-0$ and Axiom~\ref{axiom:trigonometry:cos-subtraction-law},
 \begin{equation}
 \cos(x) = \cos(x - 0) = \cos(x)\cos(0) + \sin(x)\sin(0).
 \end{equation}
@@ -132,13 +132,13 @@ are identical.
   \cos(-x)
   \step{since $-x=0-x$}
   \cos(0-x)
-  \step{subtraction law for cosine [Axiom~\ref{axiom:trigonometry:cos-addition-law}]}
+  \step{subtraction law for cosine [Axiom~\ref{axiom:trigonometry:cos-subtraction-law}]}
   \cos(0)\cos(x) + \sin(0)\sin(x)
   \step{since $\sin(0)\sin(x)=\sin(x)\sin(0)$ by commutativity, and Lemma~\ref{lemma:equality:substitute-summand-for-equal-term}}
   \cos(0)\cos(x) + \sin(x)\sin(0)
   \step{since $\cos(0)\cos(x)=\cos(x)\cos(0)$ by commutativity, and Lemma~\ref{lemma:equality:substitute-left-summand-for-equal-term}}
   \cos(x)\cos(0) + \sin(x)\sin(0)
-  \step{subtraction law for cosine [Axiom~\ref{axiom:trigonometry:cos-addition-law}]}
+  \step{subtraction law for cosine [Axiom~\ref{axiom:trigonometry:cos-subtraction-law}]}
   \cos(x-0)
   \step{since $x-0=x$}
   \cos(x)\qedhere
@@ -155,7 +155,7 @@ $\cos^{2}(x) + \sin^{2}(x) = 1$.
     \cos(0)
     \step{since $0=x-x$}
     \cos(x-x)
-    \step{subtraction law for cosine [Axiom~\ref{axiom:trigonometry:cos-addition-law}]}
+    \step{subtraction law for cosine [Axiom~\ref{axiom:trigonometry:cos-subtraction-law}]}
      \cos^{2}(x) + \sin^{2}(x).\qedhere
   \end{calculation}
 \end{proof}
@@ -165,54 +165,89 @@ For any $x\in[0,\pi/2]$ we have $0\leq \sin(x)\leq 1$.
 \end{proposition}
 
 \begin{proof}
-Let $x\in[0,\pi/2]$ be arbitrary. We know $S(x)\geq0$, we just need to
-prove $S(x)\leq1$. We know this, because $S(x)^{2} = 1- C(x)^{2}$, and
-$C(x)^{2}\geq 0$ implies $1-C(x)^{2}\leq 1$. Hence we have $S(x)^{2}\leq 1$
-and $0\leq S(x)$ give the result.
+  Let $x\in[0,\pi/2]$ be arbitrary.
+
+  We know $\sin(x)\geq0$ by Axiom~\ref{axiom:trigonometry:sine-is-positive-between-0-and-pi-over-2}, we just need to
+  prove $\sin(x)\leq1$. We will prove $\sin^{2}(x)\leq 1$ (which, since
+  $\sin(x)\geq0$, implies the result).
+
+  Observe $\sin(x)^{2} = 1 - \cos(x)^{2}$, and $\cos(x)^{2}\geq 0$
+  implies $1-\cos(x)^{2}\leq 1$.
+  Hence we have $\sin(x)^{2}\leq 1$ and $0\leq \sin(x)$ give the result.
 \end{proof}
 
-\begin{proposition}\label{prop:sine-of-zero}
-  (a) $S(0) = 0$
+\begin{proposition}\label{prop:sine-of-zero}\label{prop:cos-of-half-pi-is-zero}
+  (a) $\sin(0) = 0$
 
-  (b) $C(\pi/2) = 0$.
+  (b) $\cos(\pi/2) = 0$.
 \end{proposition}
 \begin{proof}
-(b) We find $C(\pi/2 - \pi/2) = C(\pi/2)^{2} + S(\pi/2)^{2}$. We know
-$C(0) = 1$ and $S(\pi/2) = 1$, which gives us $1 = C(\pi/2)^{2} + 1$,
-hence $C(\pi/2)^{2} = 0$ and $C(\pi/2) = 0$.
+(b) We start with $\cos(\pi/2 - \pi/2) = \cos(\pi/2)^{2} + \sin(\pi/2)^{2}$
+by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}. Then:
+\begin{calculation}
+  \cos(\pi/2 - \pi/2) = \cos(\pi/2)^{2} + \sin(\pi/2)^{2}
+\step[\equiv]{since $\cos(0)=1$ by Proposition~\ref{prop:trigonometry:cos-of-zero-is-one}}
+  1 = \cos(\pi/2)^{2} + \sin(\pi/2)^{2}
+\step[\equiv]{since $\sin(\pi/2)=1$ by Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1}}
+  1 = \cos(\pi/2)^{2} + 1
+\step[\equiv]{subtract $1$ from both sides}
+  0 = \cos(\pi/2)^{2}
+\step[\equiv]{since $x^{2}=0$ iff $x=0$}
+  0 = \cos(\pi/2)  
+\end{calculation}
 
-(a)
-Consider $C(\pi/2 - 0) = C(\pi/2)C(0) + S(\pi/2)S(0)$. We know $C(0)=1$,
-and $S(\pi/2) = 1$, so we obtain $C(\pi/2 - 0) = C(\pi/2) + S(0)$.
-Subtracting $C(\pi/2)$ from both sides gives $S(0)=0$.
+(a) We start with $C(\pi/2 - 0) = C(\pi/2)C(0) + S(\pi/2)S(0)$
+by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}. Then:
+\begin{calculation}
+  \cos(\pi/2 - 0) = \cos(\pi/2)\cos(0) + \sin(\pi/2)\sin(0)
+\step[\equiv]{since $\cos(0)=1$ by Proposition~\ref{prop:trigonometry:cos-of-zero-is-one}}
+  \cos(\pi/2 - 0) = \cos(\pi/2) + \sin(\pi/2)\sin(0)
+\step[\equiv]{since $\sin(\pi/2)=1$ by Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1}}
+  \cos(\pi/2 - 0) = \cos(\pi/2) + \sin(0)
+\step[\equiv]{since $\pi/2 - 0=\pi/2$}
+  \cos(\pi/2) = \cos(\pi/2) + \sin(0)
+\step[\equiv]{subtract $\cos(\pi/2)$ from both sides}
+  0 = \sin(0).\qedhere
+\end{calculation}
 \end{proof}
 
 \begin{proposition}\label{prop:cos-pi-over-2-and-sine}
-$C(\pi/2 - x) = S(x)$.
+$\cos(\pi/2 - x) = \sin(x)$ for any $x$.
 \end{proposition}
 \begin{proof}
-We have $C(\pi/2 - x) = C(\pi/2)C(x) + S(\pi/2) S(x)$
-then using $S(\pi/2)=1$ and $C(\pi/2) = 0$ gives us
-$C(\pi/2 - x) = 0 + S(x)$.
+Let $x$ be arbitrary.
+We have $\cos(\pi/2 - x) = \cos(\pi/2)\cos(x) + \sin(\pi/2)\sin(x)$
+by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}. Then:
+\begin{calculation}
+  \cos(\pi/2 - x) = \cos(\pi/2)\cos(x) + \sin(\pi/2)\sin(x)
+\step[\equiv]{by Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1}}
+  \cos(\pi/2 - x) = \cos(\pi/2)\cos(x) + 1\sin(x)
+\step[\equiv]{since $\cos(\pi/2)=0$ from Proposition~\ref{prop:cos-of-half-pi-is-zero}}
+  \cos(\pi/2 - x) = 0\cos(x) + 1\sin(x)
+\step[\equiv]{basic algebra}
+  \cos(\pi/2 - x) = \sin(x).\qedhere
+\end{calculation}
 \end{proof}
 
 \begin{proposition}\label{prop:sin-pi-over-2-and-cosine}
-$S(\pi/2 - x) = C(x)$.
+$\sin(\pi/2 - x) = \cos(x)$ for any $x$.
 \end{proposition}
 \begin{proof}
-Set $y = \pi/2 - x$, then $C(\pi/2 - y) = S(y)$ and $C(\pi/2 - y) = C(x)$,
+Set $y = \pi/2 - x$, then $\cos(\pi/2 - y) = \sin(y)$ by
+Proposition~\ref{prop:cos-pi-over-2-and-sine}, and basic algebra
+confirms $x = \pi/2 - y$ which means $\cos(\pi/2 - y) = \cos(x)$,
 which gives the result.
 \end{proof}
 
 \begin{proposition}\label{prop:sine-pi-over-four-equals-cosine-pi-over-four}
-$S(\pi/4) = C(\pi/4)$.
+$\sin(\pi/4) = \cos(\pi/4)$.
 \end{proposition}
 \begin{proof}
-  Since $C(\pi/2 - x) = S(x)$ by Proposition~\ref{prop:cos-pi-over-2-and-sine}, choose $x=\pi/4$ and we obtain the result.
+Since for any $x$ we have $\cos(\pi/2 - x) = \sin(x)$ by Proposition~\ref{prop:cos-pi-over-2-and-sine}, choose $x=\pi/4$ and we obtain the result.
 \end{proof}
 
 \begin{proposition}\label{prop:cosine-is-positive-on-0-to-pi-over-2}
-For all $x\in[0,\pi/2]$, we have $0\leq C(x)\leq 1$.
+For all $x\in[0,\pi/2]$, we have $0\leq \cos(x)\leq 1$.
 \end{proposition}
 \begin{proof}
   Let $x\in[0,\pi/2]$ be arbitrary, set $y=\pi/2-x$. Then $y\in[0,\pi/2]$.
@@ -236,9 +271,8 @@ We have
   \step{angle-addition for cosine}
 \cos\left(\frac{\pi}{2} - x\right)\cos(y) + \sin\left(\frac{\pi}{2} - x\right)\sin(y)
   \step{using Propositions~\ref{prop:cos-pi-over-2-and-sine} and \ref{prop:sin-pi-over-2-and-cosine}}
-\sin(x)\cos(y) + \cos(x)\sin(y).
+\sin(x)\cos(y) + \cos(x)\sin(y).\qedhere
 \end{calculation}
-Hence the result.
 \end{proof}
 
 \begin{proposition}\label{prop:double-angle-for-sine}
@@ -250,176 +284,212 @@ $\sin(2x) = 2\sin(x)\cos(x)$.
 \end{proof}
 
 \begin{proposition}
-$S(\pi) = 0$.
+$\sin(\pi) = 0$.
 \end{proposition}
 
 \begin{proof}
-  Since $C(\pi/2)=0$, we find $S(\pi)=2S(\pi/2)C(\pi/2)=0$.
+We find by direct calculation,
+\begin{calculation}
+  \sin(\pi)
+\step{double-angle law for sine from Proposition~\ref{prop:double-angle-for-sine}}
+  2\sin(\pi/2)\cos(\pi/2)
+\step{since $\cos(\pi/2)=0$ by Proposition~\ref{prop:cos-of-half-pi-is-zero}}
+  0.\qedhere
+\end{calculation}
 \end{proof}
 
 \begin{proposition}
-$2(C(\pi/4))^{2} = 2(S(\pi/4))^{2} = 1$.
+$2\bigl(\cos(\pi/4)\bigr)^{2} = 2\bigl(\sin(\pi/4)\bigr)^{2} = 1$.
 \end{proposition}
 \begin{proof}
 We know from Proposition~\ref{prop:sine-pi-over-four-equals-cosine-pi-over-four}
-that $C(\pi/4)=S(\pi/4)$. We know from our second axiom that $S(\pi/2)=1$.
+that $\cos(\pi/4)=\sin(\pi/4)$. We know from Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1} that $\sin(\pi/2)=1$.
 When we combine this knowledge with the double-angle identity for Sine
 (a.k.a., Proposition~\ref{prop:double-angle-for-sine}) we find
-\begin{equation}
-1 = S(\pi/2) = 2S(\pi/4)C(\pi/4) = 2S(\pi/4)^{2} = 2C(\pi/4)^{2}.
-\end{equation}
-Hence we prove the result.
+\begin{calculation}
+  1
+\step{Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1}}
+  \sin(\pi/2)
+\step{since $\pi/2=2(\pi/4)$ and double-angle identity for sine Proposition~\ref{prop:double-angle-for-sine}}
+  2\sin(\pi/4)\cos(\pi/4)
+\step{by Proposition~\ref{prop:sine-pi-over-four-equals-cosine-pi-over-four}}
+  2\sin^{2}(\pi/4).\qedhere
+\end{calculation}
 \end{proof}
 
-\begin{proposition}\label{prop:sine-of-pi-over-four}
-$C(\pi/4) = S(\pi/4) = \sqrt{2}/2$.
+\begin{proposition}\label{prop:sine-of-pi-over-four}\label{prop:cosine-of-pi-over-four}
+$\cos(\pi/4) = \sin(\pi/4) = \sqrt{2}/2$.
 \end{proposition}
 
 \begin{proof}
-Since $\pi/4\in[0,\pi/2)$, we know $S(\pi/4)\geq 0$. Combined with the
-  previous proposition, we have $S(\pi/4) = \sqrt{2}/2$.
+Since $\pi/4\in[0,\pi/2)$, we know $\sin(\pi/4)\geq 0$ by Axiom~\ref{axiom:trigonometry:sine-is-positive-between-0-and-pi-over-2}. Combined with the
+  previous proposition, we have $\sin(\pi/4) = \sqrt{2}/2$.
 
 Similarly, on that interval, we know from Proposition~\ref{prop:cosine-is-positive-on-0-to-pi-over-2}
-that $C(\pi/4)$ is positive. Combined with the previous result, we have
+that $\cos(\pi/4)$ is positive. Combined with the previous result, we have
 proven the claim.
 \end{proof}
 
-\begin{proposition}
-$S(-\pi/4) = -S(\pi/4) = -\sqrt{2}/2$.
+\begin{proposition}\label{prop:sine-of-minus-pi-over-four}
+$\sin(-\pi/4) = -\sin(\pi/4) = -\sqrt{2}/2$.
 \end{proposition}
 \begin{proof}
-  Consider $S(0) = S(\pi/4 + (-\pi/4)) = S(\pi/4)C(-\pi/4) + S(-\pi/4)C(\pi/4)$
-  by Proposition~\ref{prop:sine-of-sum}.
-  We know $C(-x)=C(x)$ by Proposition~\ref{prop:cosine-is-even}, so we
-  know
-  \begin{equation}
-S(0) = S(\pi/4)C(\pi/4) + S(-\pi/4)C(\pi/4) = (S(\pi/4) + S(-\pi/4))C(\pi/4).
-  \end{equation}
-  From Proposition~\ref{prop:sine-of-zero} we know $S(0)=0$, and we know
-  $C(\pi/4)\neq 0$. Hence we conclude
-  \begin{equation}
-S(\pi/4) + S(-\pi/4) = 0,
-  \end{equation}
-  which implies the desired result.
+By direct calculation:
+\begin{calculation}
+0
+\step{since $\sin(0)=0$ from Proposition~\ref{prop:sine-of-zero}}
+\sin(0)
+\step{since $0 = (\pi/4) + (-\pi/4)$}
+\sin\bigl((\pi/4) + (-\pi/4)\bigr)
+\step{angle-addition for sine Proposition~\ref{prop:sine-of-sum}}
+\sin(\pi/4)\cos(-\pi/4) + \sin(-\pi/4)\cos(\pi/4)
+\step{since $\cos(-x)=\cos(x)$ by Proposition~\ref{prop:cosine-is-even}}
+\sin(\pi/4)\cos(\pi/4) + \sin(-\pi/4)\cos(\pi/4)
+\step{distributivity}
+\bigl(\sin(\pi/4) + \sin(-\pi/4)\bigr)\cos(\pi/4).
+\end{calculation}
+Since $\cos(\pi/4)\neq0$ by Proposition~\ref{prop:cosine-of-pi-over-four}, we must have $\sin(\pi/4) + \sin(-\pi/4)=0$
+which implies the result.
 \end{proof}
 
-\begin{proposition}
-$-S(\pi/2)=-1$ and $S(-\pi/2)=-1$.
+\begin{proposition}\label{prop:sine-half-pi-is-minus-one}
+$-\sin(\pi/2)=-1$ and $\sin(-\pi/2)=-1$.
 \end{proposition}
 \begin{proof}
 (a) We use the double-angle identity for
 sine (a.k.a., Proposition~\ref{prop:double-angle-for-sine})
 \begin{equation}
-S(\pi/2) = 2S(\pi/4)C(\pi/4).
+\sin(\pi/2) = 2\sin(\pi/4)\cos(\pi/4).
 \end{equation}
 Then we use Proposition~\ref{prop:sine-of-pi-over-four} to rewrite the
 right-hand side as
 \begin{equation}
-S(\pi/2) = 2(\sqrt{2}/2)^{2} = 2(2/4) = 1.
+\sin(\pi/2) = 2(\sqrt{2}/2)^{2} = 2(2/4) = 1.
 \end{equation}
-Thus we have the result $-S(\pi/2)=-1$.
+Thus we have the result $-\sin(\pi/2)=-1$.
 
 (b) We likewise use the double-angle identity for sine
-\begin{subequations}
-  \begin{align}
-    S(-\pi/2) &= S(2(-\pi/4)) \\
-    &= 2S(-\pi/4)C(-\pi/4)
-  \end{align}
-  but using Proposition~\ref{prop:cosine-is-even} we have
-  $C(-\pi/4)=C(\pi/4)$ and combined with the previous result:
-  \begin{align}
-    S(-\pi/2) &= 2(-S(\pi/4))C(\pi/4)\\
-    &= -(2S(\pi/4)C(\pi/4)).
-  \end{align}
-  Now we see the right-hand side is just $-1\cdot S(\pi/2)$.
-\end{subequations}
+\begin{calculation}
+\sin(-\pi/2)
+\step{basic algebra}
+\sin\bigl(2(-\pi/4)\bigr)
+\step{double-angle law for sine from Proposition~\ref{prop:double-angle-for-sine}}
+2\sin(-\pi/4)\cos(-\pi/4)
+\step{cosine is even by Proposition~\ref{prop:cosine-is-even}}
+2\sin(-\pi/4)\cos(\pi/4)
+\step{$\cos(\pi/4)=\sqrt{2}/2$ from Proposition~\ref{prop:cosine-of-pi-over-four}}
+\sqrt{2}\sin(-\pi/4)
+\step{since $\sin(-\pi/4)=-\sqrt{2}/2$ by Proposition~\ref{prop:sine-of-minus-pi-over-four}}
+\sqrt{2}(-\sqrt{2}/2)
+\step{algebra}
+-1.\qedhere
+\end{calculation}
 \end{proof}
 
-\begin{proposition}
-$C(\pi)=-1$.
+\begin{proposition}\label{prop:cos-pi-is-minus-one}
+$\cos(\pi)=-1$.
 \end{proposition}
 \begin{proof}
-  We have
-  \begin{subequations}
-    \begin{align}
-    C(\pi) &= C(\pi/2 - (-\pi/2))\\
-    &= C(\pi/2)C(-\pi/2) + S(\pi/2)S(-\pi/2).
-    \end{align}
-    Now the previous result tells us $S(\pi/2)=1$ and $S(-\pi/2)=-1$, we
-    have established in Proposition~\ref{prop:sine-of-zero} that
-    $C(\pi/2)=0$, and from Proposition~\ref{prop:cosine-is-even} that
-    $C(-\pi/2)=C(\pi/2)$ hence $C(-\pi/2)=0$. Combined this tells us
-    \begin{equation}
-C(\pi) = 0 + (+1)\cdot(-1) = -1,
-    \end{equation}
-  \end{subequations}
-  as desired.
+  By direct calculation
+\begin{calculation}
+\cos(\pi)
+\step{since $\pi = (\pi/2) - (-\pi/2)$}
+\cos\bigl(\pi/2 - (-\pi/2)\bigr)
+\step{using Axiom~\ref{axiom:trigonometry:cos-subtraction-law}}
+\cos(\pi/2)\cos(-\pi/2) + \sin(\pi/2)\sin(-\pi/2)
+\step{$\sin(\pi/2)=1$ and $\sin(-\pi/2)=-1$ by Proposition~\ref{prop:sine-half-pi-is-minus-one}}
+\cos(\pi/2)\cos(-\pi/2) - 1
+\step{since cosine is even by Proposition~\ref{prop:cosine-is-even}}
+\cos^{2}(\pi/2) - 1
+\step{since $\cos(\pi/2)=0$ from Proposition~\ref{prop:cos-of-half-pi-is-zero}}
+0 - 1
+\step{algebra}
+-1.\qedhere
+\end{calculation}
 \end{proof}
 
 \begin{proposition}\label{prop:sine-is-odd-function}
-$S(-x) = -S(x)$.
+$\sin(-x) = -\sin(x)$ for any $x$.
 \end{proposition}
 \begin{proof}
-  We have:
-  \begin{subequations}
-    \begin{align}
-      C(\pi - (\pi/2 - x))
-      &= C(\pi)C(\pi/2 - x) + S(\pi)S(\pi/2 - x)\\
-      &= -1\cdot(C\pi/2 - x) + 0\cdot S(\pi/2 - x)\\
-      &= -1\cdot S(x).
-    \end{align}
-  \end{subequations}
-  We also have
-  \begin{subequations}
-    \begin{align}
-      C(\pi - (\pi/2 - x))
-      &= C(\pi/2 + x)\\
-      &= C(\pi/2 - (-x))\\
-      &= S(-x).
-    \end{align}
-  \end{subequations}
-  Setting equals to equals yields the result.
+By direct calculation:
+  \begin{calculation}
+  \sin(-x)
+\step{since $\cos(\pi/2 - u)=\sin(u)$ from Proposition~\ref{prop:cos-pi-over-2-and-sine}}
+  \cos\bigl((\pi/2) - (-x)\bigr)
+\step{algebra}
+  \cos\bigl((\pi/2) + x\bigr)
+\step{algebra}
+  \cos\bigl(\pi - ((\pi/2) - x)\bigr)
+\step{by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}}
+  \cos(\pi)\cos\bigl((\pi/2) - x\bigr) + \sin(\pi)\sin\bigl((\pi/2) - x\bigr) 
+\step{since $\cos(\pi)=-1$ by Proposition~\ref{prop:cos-pi-is-minus-one}}
+  -\cos\bigl((\pi/2) - x\bigr) + \sin(\pi)\sin\bigl((\pi/2) - x\bigr) 
+\step{since $\sin(\pi)=0$ from Proposition~\ref{prop:sine-of-zero}}
+-\cos\bigl((\pi/2) - x\bigr) + 0
+\step{since $\cos(\pi/2 - x) = \sin(x)$ from Proposition~\ref{prop:cos-pi-over-2-and-sine}}
+-\sin(x).\qedhere
+\end{calculation}
 \end{proof}
-%% \begin{proof}
-%% We have $S(-x) = C(\pi/2 - (-x)) = C(-\pi/2 - x)$.
-%% \end{proof}
 
-\begin{proposition}
-$C(x+y) = C(x)C(y) - S(x)S(y)$.
+\begin{proposition}\label{prop:trigonometry:cos-addition-law}
+$cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y)$ for any $x$, $y$.
 \end{proposition}
 \begin{proof}
-Consider $C(x-z)=C(x)C(z)-S(x)S(z)$, set $z=-y$, then using the previous
-result we find $C(x-z)=C(x+y)=C(x)C(y)+S(x)S(y)$ as desired.
+Let $x$, $y$ be arbitrary.
+\begin{calculation}
+  \cos(x + y)
+\step{since $y = -(-y)$}
+\cos(x - (-y))
+\step{by Axiom~\ref{axiom:trigonometry:cos-subtraction-law}}
+\cos(x)\cos(-y)+\sin(x)\sin(-y)
+\step{by previous result, Proposition~\ref{prop:sine-is-odd-function}}
+\cos(x)\cos(-y)-\sin(x)\sin(y)
+\step{since $\cos(-x)=\cos(x)$ from Proposition~\ref{prop:cosine-is-even}}
+\cos(x)\cos(y)-\sin(x)\sin(y).\qedhere
+\end{calculation}
 \end{proof}
 
-\begin{proposition}
-$C(2x) = C(x)^{2} - S(x)^{2} = 2C(x)^{2} - 1$.
-\end{proposition}
-
-\begin{proof}
-  We see $C(2x)=C(x+x)$, then using the previous proposition we find
-  \begin{equation}
-C(2x) = C(x)^{2} - S(x)^{2}.
-  \end{equation}
-  We recall Proposition~\ref{prop:cos-sq-plus-sine-sq-equal-one}
-  establishing $C(x)^{2} + S(x)^{2} = 1$, which implies
-  $S(x)^{2} = 1 - C(x)^{2}$. We can rewrite our result as
-  \begin{equation*}
-C(2x) = C(x)^{2} - (1 - C(x)^{2}) = 2C(x)^{2} - 1.\qedhere
-  \end{equation*}
-\end{proof}
-
-\begin{proposition}
-$(C(x) + 1)/2 = (C(x/2))^{2}$.
+\begin{proposition}\label{prop:trigonometry:cosine-double-angle-law}
+$\cos(2x) = \cos^{2}(x) - \sin^{2}(x) = 2\cos^{2}(x) - 1$ for any $x$.
 \end{proposition}
 
 \begin{proof}
-  We have $C(2y) = 2C(y)^{2} - 1$ from the previous result, so
-  $C(2y) + 1 = 2C(y)^{2}$. Now we substitute $y=x/2$ and obtain the result.
+Let $x$ be arbitrary.
+  First recall Proposition~\ref{prop:cos-sq-plus-sine-sq-equal-one},
+$\cos^{2}(x)+\sin^{2}(x)=1$ implies
+$\sin^{2}(x)=1-\cos^{2}(x)$. Therefore we find
+\begin{equation}
+\cos^{2}(x) - \sin^{2}(x) = 2\cos^{2}(x) - 1.
+\end{equation}
+Now, by direct calculation
+\begin{calculation}
+\cos(2x)
+\step{algebra}
+\cos(x + x)
+\step{cosine addition law from Proposition~\ref{prop:trigonometry:cos-addition-law}}
+\cos^{2}(x) - \sin^{2}(x).\qedhere
+\end{calculation}
 \end{proof}
 
 \begin{proposition}
-$S(x-y) = S(x)C(y) - C(x)S(y)$.
+$(\cos(x) + 1)/2 = (\cos(x/2))^{2}$.
+\end{proposition}
+
+\begin{proof}
+  By direct calculation
+\begin{calculation}
+  \cos(x)
+  \step{since $x = 2(x/2)$}
+  \cos\bigl(2(x/2)\bigr)
+  \step{double-angle law from Proposition~\ref{prop:trigonometry:cosine-double-angle-law}}
+  2\cos^{2}(x/2) - 1.
+\end{calculation}
+Hence the result follows by adding $1$ to both sides.
+\end{proof}
+
+\begin{proposition}
+$\sin(x-y) = \sin(x)\cos(y) - \cos(x)\sin(y)$ for any $x$, $y$.
 \end{proposition}
 
 \begin{proof}
@@ -427,30 +497,30 @@ This follows from Propositions~\ref{prop:sine-of-sum} and \ref{prop:sine-is-odd-
 \end{proof}
 
 The remaining results follow from the angle-addition identities and the
-knowledge that $S(\pi/2)=1$, $C(\pi/2)=0$, $S(-x)=-S(x)$, $C(-x)=C(x)$.
+knowledge that $\sin(\pi/2)=1$, $\cos(\pi/2)=0$, $\sin(-x)=-\sin(x)$, $\cos(-x)=\cos(x)$.
 
 \begin{proposition}
-$S(\pi/2 + x) = C(x)$.
+$\sin(\pi/2 + x) = \cos(x)$.
 \end{proposition}
 
 \begin{proposition}
-$C(\pi/2 + x) = -S(x)$.
+$\cos(\pi/2 + x) = -\sin(x)$.
 \end{proposition}
 
 The remaining results follow from angle-addition identities.
 
 \begin{proposition}
-$S(\pi + x) = - S(x)$.
+$\sin(\pi + x) = -\sin(x)$.
 \end{proposition}
 
 \begin{proposition}
-$C(\pi + x) = -C(x)$.
+$\cos(\pi + x) = -\cos(x)$.
 \end{proposition}
 
 \begin{proposition}
-$S(2\pi + x) = S(x)$.
+$\sin(2\pi + x) = \sin(x)$.
 \end{proposition}
 
 \begin{proposition}
-$C(2\pi + x) = C(x)$.
+$\cos(2\pi + x) = \cos(x)$.
 \end{proposition}

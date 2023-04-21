@@ -34,8 +34,6 @@ by definition of the antiderivative (``indefinite Leibniz rule'').
 So
 \begin{calculation}
 \int F'(x)\,\D x
-%%   \step{rewriting the parenthetic integrand}
-%% \int\left(\frac{\D}{\D x}\int f(x)\,\D x\right)\D x
   \step{using Eq~\eqref{eq:integrals:indefinite:ftc:proof-step}}
 \int f(x)\,\D x
   \step{folding in the definition of $F(x)$}
@@ -75,7 +73,7 @@ for $n\neq-1$.
 This follows from the power rule for derivatives and
 Theorem~\ref{integrals:thm:ftc}.
 
-\N{Logarithm} $\displaystyle{\int x^{-1}\,\D x = \ln(x)}$.
+\N{Logarithm}\label{prop:integral:logarithm} $\displaystyle{\int x^{-1}\,\D x = \ln(x)}$.
 
 This follows from the derivative of logarithm and
 Theorem~\ref{integrals:thm:ftc}.
@@ -123,7 +121,17 @@ This follows from the derivative of sine (or cosine) and Theorem~\ref{integrals:
 
 \M $\displaystyle{\int \frac{\D x}{\sin^{2}(x)} = -\cot(x)}$
 
-\M $\displaystyle{\int \frac{\D x}{\cos^{2}(x)} = -\tan(x)}$
+\begin{proof}
+This follows from the derivative of cotangent being negative cosecant
+squared and the fundamental theorem of calculus.
+\end{proof}
+
+\M $\displaystyle{\int \frac{\D x}{\cos^{2}(x)} = \tan(x)}$
+
+\begin{proof}
+This follows from the derivative of tangent being secant squared and the fundamental theorem
+of calculus.
+\end{proof}
 
 \M $\displaystyle{\int \frac{\sin(x)}{\cos^{2}(x)}\D x = \sec(x)}$
 
@@ -245,6 +253,19 @@ Hence the result.
 \end{proof}
 
 \M\label{integrals:one-over-linear-combo-of-x} $\displaystyle{\int\frac{\D x}{a - bx}\,\D x = \frac{-1}{b}\ln(a - bx)}$ for $b\neq0$.
+
+\begin{proof}
+By direct calculation,
+\begin{calculation}
+  \int\frac{\D x}{a - bx}\,\D x
+\step{$u= a - bx$, so $\D u = -b\D x$, and by $u$-substitution}
+  \frac{-1}{b}\int\frac{\D u}{u}
+\step{using Proposition~\ref{prop:integral:logarithm}}
+  \frac{-1}{b}\ln(u)
+\step{unfolding $u = a - bx$}
+  \frac{-1}{b}\ln(a - bx).\qedhere
+\end{calculation}
+\end{proof}
 
 \M $\displaystyle{\int\frac{\D x}{1 - x^{2}} = \arctanh(x) = \frac{1}{2}\ln\left(\frac{1+x}{1-x}\right)}$.
 

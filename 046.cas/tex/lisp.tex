@@ -45,8 +45,8 @@ these ``pattern variables'' to data from our input expression.
 There are two types of variables appearing in a pattern:
 \begin{enumerate}
 \item Segment Variables \lstinline[language=lisp]{(?? segment)}, which
-  match against a an arbitrary number [zero or more] of elements; and
-\item Pattern Variables \lstinline[language=lisp]{(? pattern)}, which match against a single elements.
+  match against an arbitrary number [zero or more] of elements; and
+\item Pattern Variables \lstinline[language=lisp]{(? pattern)}, which match against a single element.
 \end{enumerate}
 There is an optional predicate which help us refine matches further, for
 example
@@ -159,7 +159,7 @@ a \lstinline[language=lisp]{:fail} keyword. In the latter case, we say
 the input \emph{failed to match} the pattern; in all other cases, we say
 the input \emph{matches} (or \emph{fits}) the pattern.
 
-\begin{algorithm}{Match an S-Expression Against a Pattern}
+\begin{algorithm}{Match an S-Expression Against a Pattern}\label{algorithm:pattern-match-sexpr}
 Given a \lstinline[language=lisp]{pattern} and an
 \lstinline[language=lisp]{input}, and an optional
 \lstinline[language=lisp]{dict} of bindings [default value for the
@@ -198,8 +198,9 @@ dictionary bindings. (It's impossible to fail in this branch.)
 
 \step [Pattern segments.]\label{algorithm:step:lisp:matching:trying-to-match-pattern-segment}
 When we're trying to match a pattern segment, well, it's a mess, and I'm
-going to carve out that particular case to its own algorithm. Otherwise
-go to the next step.
+going to carve out that particular case to its own algorithm;
+go to Algorithm~\ref{algorithm:match-pattern-segments}, return its
+results, and terminate this algorithm. Otherwise go to the next step.
 
 \step [Input must start with a list.]
 We should expect the
@@ -220,7 +221,7 @@ rest of the \lstinline[language=lisp]{pattern} using the updated
 dictionary bindings.\quad\qedsymbol
 \end{algorithm}
 
-\begin{algorithm}{Matching pattern segments}
+\begin{algorithm}{Matching pattern segments}\label{algorithm:match-pattern-segments}
 Given the \lstinline[language=lisp]{pattern},
 the \lstinline[language=lisp]{input}, and the current
 \lstinline[language=lisp]{dict} bindings dictionary, we will either
@@ -244,7 +245,7 @@ pattern segment ends --- so we use \lstinline[language=lisp]{(y...)} as
 the new input --- and we use the rest of the
 \lstinline[language=lisp]{pattern} in a recursive call to
 \lstinline[language=lisp]{match}. (The ``match pattern segments''
-algorithm ends here.)
+algorithm ends here, and we return to Algorithm~\ref{algorithm:pattern-match-sexpr}.)
 
 \step [Depth-first search for longest fit]\label{step:algorithm:segment-match:depth-first-search}
 The pattern segment \emph{is not} in the dictionary. We perform a
@@ -252,8 +253,12 @@ depth-first search to try to match the \lstinline[language=lisp]{input}
 against the \lstinline[language=lisp]{pattern} for as long as possible.
 The longest matching segment is used, and since this is depth-first
 search we will have recursively called \lstinline[language=lisp]{match}
-to produce a dictionary binding for the rest of the pattern, too.
-Or we have utterly failed and there is no possible match for the pattern
+(from Algorithm~\ref{algorithm:pattern-match-sexpr})
+to produce a dictionary binding for the rest of the pattern, too. This
+will be returned and the algorithm terminates. Otherwise, we go to next step.
+
+\step [Failure]
+We have utterly failed and there is no possible match for the pattern
 segment, in which case we propagate the \lstinline[language=lisp]{:fail}.\quad\qedsymbol
 \end{algorithm}
 
@@ -288,11 +293,13 @@ Given a skeleton and a dictionary of bindings, we will expand
 (and pattern segments) with their values according to the dictionary.\setcounter{algorithmstep}{-1}
 
 \step [Nil skeletons.] If the skeleton is \lstinline[language=lisp]{nil},
-then we return \lstinline[language=lisp]{nil}.
+then we return \lstinline[language=lisp]{nil} (and terminate the
+algorithm). Otherwise go to the next step.
 
 \step [Pattern variable skeletons.] If the skeleton is a pattern variable
 \lstinline[language=lisp]{(? x)}, then we lookup the value in our
-dictionary and retun that.
+dictionary and return that value (and terminate the
+algorithm). Otherwise go to the next step.
 
 \step [List skeletons.]
 If the skeleton is a list, then we have several subcases which we
