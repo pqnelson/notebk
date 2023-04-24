@@ -38,7 +38,52 @@ could easily do so using Machin's formula
 \begin{equation}
 \frac{\pi}{4} = 4\arctan(1/5) - \arctan(1/239),
 \end{equation}
-or some other version.
+or some other version. Euler popularized this approach with the series
+expansion for arctangent applied to the Machin-like formula,
+\begin{equation}
+\frac{\pi}{4} = 5\arctan(1/7) + 2 \arctan(3/77).
+\end{equation}
+Euler discovered a series expression, which converges faster than the
+Taylor series expansion,
+\begin{equation}
+\arctan(z) = \frac{z}{1 + z^{2}}\sum^{\infty}_{n=0}\prod^{n}_{k=1}\frac{2kz^{2}}{(2k + 1)(1 + z^{2})}
+= \sum^{\infty}_{n = 0}\frac{2^{2n}(n!)^{2}}{(2n + 1)!}\frac{z^{2n + 1}}{(1 + z^{2})^{n+1}}.
+\end{equation}
+
+\N{Euler's Formula for Arctangent}
+Following Chien-Lih~\cite{chien-lih2005:elementary}, we compute
+\begin{equation}
+\int^{1}_{0}\frac{x}{1 + x^{2}t^{2}}\D t = \left.\arctan(xt)\right|^{t=1}_{t=0}
+=\arctan(x).
+\end{equation}
+Substitute $t=\cos(u)$,
+\begin{subequations}
+\begin{align}
+\arctan(x) &= \int^{1}_{0}\frac{x}{1 + x^{2}t^{2}}\D t\\
+&= \int^{\pi/2}_{0}\frac{x\sin(u)}{1 + x^{2}\cos^{2}(u)}\D u\\
+&=\int^{\pi/2}_{0}\frac{x\sin(u)}{1 + x^{2}}\frac{1}{\left(1 - \frac{x^{2}\sin^{2}(u)}{1 + x^{2}}\right)}\D u.
+\end{align}
+\end{subequations}
+We then Taylor expand the second factor using the geometric series
+\begin{equation}
+\frac{1}{1 - z} = 1 + z + z^{2} + \dots
+\end{equation}
+to obtain
+\begin{equation}
+\arctan(x) = \int^{\pi/2}_{0}\left[\sum^{\infty}_{n=0}\frac{x^{2n+1}}{(1 + x^{2})^{n + 1}}
+\sin^{2n+1}(u)\right]\D u.
+\end{equation}
+Using Lebesgue's monotone convergence theorem for infinite series, we
+can swap the sum and integral, obtaining
+\begin{equation}
+\arctan(x) =\sum^{\infty}_{n=0}
+ \left[\int^{\pi/2}_{0}\sin^{2n+1}(u)\D u\right]\frac{x^{2n+1}}{(1 + x^{2})^{n + 1}}
+= \sum^{\infty}_{n = 0}\frac{2^{2n}(n!)^{2}}{(2n + 1)!}\frac{x^{2n+1}}{(1 + x^{2})^{n + 1}},
+\end{equation}
+where we use the fact that
+\begin{equation}
+\int^{\pi/2}_{0}\sin^{2n+1}(u)\D u = \frac{2^{2n}(n!)^{2}}{(2n + 1)!}.
+\end{equation}
 
 \section{Results}
 
