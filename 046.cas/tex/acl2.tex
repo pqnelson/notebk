@@ -1,0 +1,28 @@
+\chapter{Theorems and Lisp}
+
+\M
+It turns out that rewriting S-expressions suffices as the basis for a
+theorem prover, which is precisely how ACL2 works. Carl Eastlund and
+Daniel Friedman's \textit{The Little Prover} discuss a ``toy model'' of
+such a prover for the Scheme dialect. The terminology is a little
+strange at first, but the idea is to apply theorems to rewrite
+subexpressions (called the \define{Focus}) until the result is
+\lstinline[language=lisp]{t}. 
+
+\M The precise description of the logic of ACL2 may be found in Kaufmann
+and Moore's ``A Precise Description of the ACL2 Logic''.\footnote{Found online at \url{http://www.cs.utexas.edu/users/moore/publications/km97.pdf}}
+There are 11 axioms which specify the Lisp primitives, which behave as
+we would expect --- things like which branch of an ``if'' expression to
+take depending on the result of evaluating the test expression.
+
+\begin{enumerate}
+\item \lstinline[language=lisp]{(not (equal t nil))}
+\item \lstinline[language=lisp]{(equal (if t x y) x)}
+\item \lstinline[language=lisp]{(equal (if nil x y) y)}
+\item \lstinline[language=lisp]{(equal (consp (cons x y)) t)}
+\item \lstinline[language=lisp]{(equal (consp nil) nil)}
+\item \lstinline[language=lisp]{(equal (car (cons x y)) x)}
+\item \lstinline[language=lisp]{(equal (cdr (cons x y)) y)}
+\item \lstinline[language=lisp]{(implies (equal (consp x) t) (equal (cons (car x) (cdr x)) x))}
+  %\item \lstinline[language=lisp]{}
+\end{enumerate}

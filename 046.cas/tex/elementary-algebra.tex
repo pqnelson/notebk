@@ -726,6 +726,259 @@ If $x > 0$, then $x\geq 0$, and the result follows from Axiom~\ref{axiom:element
 
 % \label{axiom:elementary-algebra:}
 
+\section{Binomial Theorem}
+
+\begin{definition}
+Let $n\in\NN_{0}$. We define the \define{Factorial} of $n$ to be
+inductively defined by,
+\begin{equation}
+  n! = \begin{cases}1 & \mbox{if }n=0\\
+    n\cdot((n-1)!) & \mbox{otherwise}
+  \end{cases}
+\end{equation}
+\end{definition}
+
+\begin{definition}
+Let $m$, $n\in\NN_{0}$. We define the \define{Binomial Coefficient} for
+$0\leq m\leq n$ as:
+\begin{subequations}
+\begin{equation}
+\binom{n}{m} = \frac{n!}{m!(n-m)!}.
+\end{equation}
+If $m > n$, then we define
+\begin{equation}
+\binom{n}{m} = 0.
+\end{equation}
+\end{subequations}
+\end{definition}
+
+\begin{remark}
+We can weaken this definition a little, allowing us to define for any
+$x\in\RR$ and $k\in\NN_{0}$ the \define{Generalized Binomial Coefficient}
+\begin{equation}
+\binom{x}{k} = \frac{x(x-1)(x-2)(\cdots)(x-(k-1))}{k!}.
+\end{equation}
+\end{remark}
+
+\begin{proposition}\label{prop:elementary-algebra:binomial-coef:complement-bottom}
+  For $k$, $n\in\NN_{0}$, we have
+  \begin{equation}
+\binom{n}{k} = \binom{n}{n-k}.
+  \end{equation}
+\end{proposition}
+
+\begin{theorem}[Pascal's identity]\label{thm:elementary-algebra:pascal-identity}
+  For any $k$, $n\in\NN$, we have
+  \begin{equation}
+\binom{n - 1}{k} + \binom{n - 1}{k-1} = \binom{n}{k}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+By direct calculation, we have:
+\begin{calculation}
+\binom{n-1}{k} + \binom{n-1}{k-1}
+\step{unfold definition of binomial coefficient}
+\frac{(n-1)!}{k!(n - 1 - k)!} + \frac{(n - 1)!}{(k - 1)! (n - k)!}
+\step{distributivity}
+(n - 1)!\left[\frac{1}{k!(n - 1 - k)!} + \frac{1}{(k - 1)! (n - k)!}\right]
+\step{multiply by $1=(n-k)/(n-k)$ and $1=k/k$}
+(n - 1)!\left[\frac{1}{k!(n - 1 - k)!}\frac{n-k}{n-k} + \frac{1}{(k - 1)! (n - k)!}\frac{k}{k}\right]
+\step{folding in the definition of factorial}
+(n - 1)!\left[\frac{n - k}{k!(n - k)!} + \frac{k}{k! (n - k)!}\right]
+\step{algebra}
+(n - 1)!\left[\frac{n}{k!(n - k)!}\right]
+\step{folding in the definition of factorial}
+\frac{n!}{k!(n - k)!}
+\step{folding in definition of binomial coefficient}
+\binom{n}{k}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{lemma}\label{lemma:elementary-algebra:binomial-theorem-helper}
+For any $n\in\NN_{0}$, $y\in\RR$, we have
+\begin{equation}
+(1 + y)^{n} = \sum^{n}_{k=0}\binom{n}{k}y^{n-k}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+By induction on $n\in\NN_{0}$.
+
+Base case ($n = 0$): we see $(1 + y)^{0} = 1$ and $\sum^{0}_{k=0}\binom{0}{0}y^{0}=1$,
+which proves the claim.
+
+Inductive hypothesis, we assume
+\begin{equation}%\label{eq:lemma:elementary:binomial-theorem-helper:inductive-hypothesis}
+(1 + y)^{n} = \sum^{n}_{k=0}\binom{n}{k}y^{n-k}.
+\end{equation}
+We observe, reindexing this sum to work with ascending powers of $y$,
+then applying the fact, from Proposition~\ref{prop:elementary-algebra:binomial-coef:complement-bottom},
+that
+\[\binom{n}{k} = \binom{n}{n-k},\]
+we find
+\begin{equation}\label{eq:lemma:elementary:binomial-theorem-helper:inductive-hypothesis}
+(1 + y)^{n} = \sum^{n}_{k=0}\binom{n}{k}y^{k}.
+\end{equation}
+Now we want to prove the rule holds for $n+1$. We see
+\begin{calculation}
+(1 + y)^{n+1}
+\step{algebra}
+(1 + y)^{n}(1 + y)
+\step{distributivity}
+(1 + y)^{n} + y(1 + y^{n})
+\step{using inductive hypothesis Eq~\eqref{eq:lemma:elementary:binomial-theorem-helper:inductive-hypothesis}}
+\left(\sum^{n}_{k=0}\binom{n}{k}y^{k}\right) + y\left(\sum^{n}_{k=0}\binom{n}{k}y^{k}\right)
+\step{distributivity in second term}
+\left(\sum^{n}_{k=0}\binom{n}{k}y^{k}\right) + \left(\sum^{n}_{k=0}\binom{n}{k}y^{k+1}\right)
+\step{breaking out the leading term in first sum}
+\left(1 + \sum^{n}_{k=1}\binom{n}{k}y^{k}\right) + \left(\sum^{n}_{k=0}\binom{n}{k}y^{k+1}\right)
+\step{breaking out the last term in the second sum}
+\left(1 + \sum^{n}_{k=1}\binom{n}{k}y^{k}\right) + \left(y^{n+1} + \sum^{n-1}_{k=0}\binom{n}{k}y^{k+1}\right)
+\step{reindexing second term}
+\left(1 + \sum^{n}_{k=1}\binom{n}{k}y^{k}\right) + \left(y^{n+1} + \sum^{n}_{k=1}\binom{n}{k-1}y^{k}\right)
+\step{associativity of addition, combine sums}
+1 + \left(\sum^{n}_{k=1}\left[\binom{n}{k}+\binom{n}{k-1}\right]y^{k}\right)
++ y^{n + 1}
+\step{using Pascal's identity from Theorem~\ref{thm:elementary-algebra:pascal-identity}}
+1 + \left(\sum^{n}_{k=1}\binom{n+1}{k}y^{k}\right)
++ y^{n + 1}
+\step{absorbing the first and last terms into the sum}
+\sum^{n+1}_{k=0}\binom{n+1}{k}y^{k}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{theorem}[Binomial]
+For any $n\in\NN_{0}$, $x$, $y\in\RR$, we have
+\begin{equation}
+(x + y)^{n} = \sum^{n}_{k=0}\binom{n}{k}x^{k}y^{n-k}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The proof is per cases on whether $x=0$ or $x\neq0$.
+
+\textbf{Case 1:} If $x=0$, then the proof is trivial. Then the right-hand side of the
+claim has its sum keep only its first term, giving us
+\begin{equation}
+(0 + y)^{n} = \binom{n}{0}y^{n}.
+\end{equation}
+This is trivially true.
+
+\textbf{Case 2:} We assume $x\neq0$. Then
+\begin{calculation}
+  (x + y)^{n}
+\step{factor out $x$}
+  x^{n}\left(1 + \frac{y}{x}\right)^{n}
+\step{using Lemma~\ref{lemma:elementary-algebra:binomial-theorem-helper}}
+x^{n}\sum^{n}_{k=0}\binom{n}{k}\left(\frac{y}{x}\right)^{n-k}
+\step{algebra}
+x^{n}\sum^{n}_{k=0}\binom{n}{k}x^{-(n-k)}y^{n-k}
+\step{distributivity}
+\sum^{n}_{k=0}\binom{n}{k}x^{n}x^{-(n-k)}y^{n-k}
+\step{algebra}
+\sum^{n}_{k=0}\binom{n}{k}x^{k}y^{n-k}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{remark}
+The Binomial series generalizes the binomial theorem, by replacing $n$
+with $\alpha\in\RR$, then using the series
+\begin{equation}
+(1 + x)^{\alpha} = \sum^{\infty}_{k = 0}\binom{\alpha}{k}x^{k}
+= 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^{2} + \frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^{3}+\cdots.
+\end{equation}
+This uses the generalized binomial coefficients, and reduces to the
+familiar Binomial expansion for $\alpha\in\NN_{0}$. We can observe that
+this is just the Taylor series expansion in $x$ about $0$.
+\end{remark}
+
+\section{Concluding Remarks}
+
+\M
+These are just random thoughts I should organize better. It's not a
+``conclusion'' \textit{per se}, just ``here's stuff I wrote that doesn't
+fit in with the existing sections''.
+
+\N{Existence of Squareroots}
+We define, e.g., $x^{1/n}$ to be ``the $y\in\RR$'' such that $y^{n}=x$.
+Why should we believe such a $y$ even exists? More precisely, why should
+\emph{the computer} believe it? I guess we could have a definitional
+axiom of the form ``$\forall n\forall x, n\in\ZZ\land x\in\RR\land x\geq0\implies\exists y,y^{n}=x$''.
+Or in pidgin Lisp,
+
+\begin{lisp-example}
+(defaxiom nth-root ((n int) (x real))
+  (implies (not (neg? x))
+           (= (expt (expt x (/ n)) n) x)))
+\end{lisp-example}
+
+Euler seemed to adopt the perspective that we could, for any $x\geq1$,
+find an integer $M$ such that $M^{k}\leq x < (M+1)^{k}$. We then form
+two sequences $a_{n}$, $b_{n}$ which are inductively defined by the same
+recurrence relation
+\begin{equation}
+x_{n+1} = \frac{1}{n}\left[(n-1)x_{n} + \frac{x}{x_{n}^{k-1}}\right],
+\end{equation}
+which is Newton's method for the $k^{\text{th}}$ root of $x$, starting
+with initial values $a_{1}=M$ and $b_{1}=M+1$. Then for every $n\in\NN$,
+we have $a_{n}<a_{n+1}\leq x^{1/k}\leq b_{n+1}<b_{n}$. We can therefore
+approximate $x^{1/k}$ as a rational number to arbitrary $\varepsilon>0$.
+(For $0<x<1$, we pick $M$ such that $(M+1)^{-k}\leq x < M^{-k}$,
+and use initial values $a_{1} = 1/(M + 1)$, $b_{1} = 1/M$.)
+
+Since Newton's method converges quadratically for suitable initial
+choices, it helps to consider $\alpha = \lfloor x\rfloor$, then the
+number of bits being $\beta$, guess $a_{1}=2^{\lfloor \beta/k\rfloor}$
+and analogously for $b_{1}$ using ceiling functions instead. This has
+the advantage of using Common Lisp's \lstinline[language=lisp]{integer-length}
+to compute the number of bits necessary to represent an integer in
+twos-complement representation.
+
+\begin{lisp-example}
+(defun newton-nth-root-step (guess x n)
+  (/ (+ (* (- n 1) guess)
+        (/ x (expt guess (- n 1))))
+     n))
+
+(defun newton-nth-root-iter (a b x n tolerance)
+  (if (<= (- b a) tolerance)
+    (/ (+ a b) 2)
+    (newton-nth-root-iter (newton-nth-root-step a x n)
+                          (newton-nth-root-step b x n)
+                          x
+                          n
+                          tolerance)))
+
+;; Assumes x > 1.
+(defun newton-nth-root (x n tolerance)
+  (let ((initial-a (expt 2 (floor (/ (integer-length (floor x)) k))))
+        (initial-b (expt 2 (ceiling (/ (integer-length (ceiling x)) k)))))
+    (newton-nth-root-iter initial-a initial-b x n tolerance)))
+
+;; Assumes x >= 0, n > 0.
+(defun nth-root-for-positive (x n tolerance)
+  (if (or (zero? x) (= 1 x))
+    x
+    (if (< 0 x 1)
+       (/ (newton-nth-root (/ x) n tolerance))
+       (newton-nth-root x n tolerance))))
+
+;; The :branch argument is if we want to consider a different
+;; branch than the principal branch (default value). Since `x`
+;; is the same as `(* x (exp (* 2 pi #c(0 1) k)))`, taking the nth
+;; root returns n possible values differing by a factor of
+;;`(exp (* 2 pi #c(0 1) (/ branch n)))` where `branch` is the optional value. 
+(defun nth-root-for-real ((x real) n tolerance &keyword (branch 0))
+  (* (if (zero? branch)
+       1
+       (expt (root-of-unity n) branch))  ; = (exp (* 2 pi #c(0 1) (/ branch n)))
+     (nth-root-for-positive (abs x) n tolerance)
+     (if (neg? x)
+       #c((cos (/ pi n)) (sin (/ pi n))) ; = (expt -1 (/ n))
+       1)))
+\end{lisp-example}
+
+
 \N{On Completeness}
 Typically there is discussion about the least-upper bound property
 (``Dedekind completeness''). This is equivalent to assuming the
@@ -733,4 +986,6 @@ Archimedean property (for every positive $x\in\RR$, there exists an
 $n\in\NN$ such that $1 < nx$), and that every Cauchy sequence of real numbers
 converges to a real number (i.e., the reals are ``topologically complete'').
 
-
+\N{Sums}
+I need to insert results concerning sums before discussing the Binomial
+theorem, things like reindexing results, etc.

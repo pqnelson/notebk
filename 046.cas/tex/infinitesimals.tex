@@ -1,0 +1,73 @@
+\chapter{Infinitesimals}
+
+\M
+It may be easier to use infinitesimals instead of limits to define
+differentiation. This could be done using dual real numbers,
+$\RR[\varepsilon]/(\varepsilon^{2})$; i.e., adjoining a ``number''
+$\varepsilon\neq0$ such that $\varepsilon^{2}=0$. When we implement it
+on a computer, we get something called ``automatic differentiation''.
+Then we define the derivative $f'(x)$ of $f(x)$ as satisfying:
+\begin{equation}
+f(x + \varepsilon) = f(x) + \varepsilon\cdot f'(x).
+\end{equation}
+If we were being more faithful to the historic perspective, we would
+allow for an arbitrary number of these infinitesimals, and redefine
+equality so it obeys the ``epsilon principle'': if for each finite
+$\varepsilon>0$ we have $|x - y|<\varepsilon$, then $x=y$. This leads us
+to the hyperreal number system\index{Hyperreal Number}\index{$\mathbb{R}*$}
+usually denoted $\RR*$. Keisler's \textit{Elementary Calculus: An Infinitesimal Approach}
+discusses calculus using nonstandard reals.\footnote{\url{https://people.math.wisc.edu/~hkeisler/calc.html}}
+
+\section{History}
+
+\M
+The history of infinitesimals (and infinities) is not as simple as
+``There exists a `number' [wink wink] $\varepsilon\neq0$ such that
+$\varepsilon^{2}=0$.''
+Bair \textit{et al.}~\cite{Bair2016:interpreting} review the history of
+infinitesimals and the different modern interpretations.
+
+\N{Leibniz and Euclid}
+Historically, Leibniz is credited with inventing infinitesimals, but
+Leibniz cites Mercator as their inventor. Leibniz was critical of the
+perspective that infinitesimals are nilpotent elements in his
+\textit{Cum Prodiisset} (1701). Instead, Leibniz appears to have
+conceived infinitesimals as a violation of the Archimedean property, as
+Leibniz wrote in a 14/24 June 1695 letter to l'Hospital:
+\begin{quote}
+I use the term \emph{incomparable magnitudes} to refer to [magnitudes]
+of which one multiplied by any finite number whatsoever, will be
+unable to exceed the other, in the same way [adopted by] Euclid
+in the fifth definition of the fifth book [of \textit{The Elements}]
+\end{quote}
+Modern editions of Euclid have this particular definition be numbered
+differently. The modern reader should refer instead to Euclid's \textit{Elements} Book V, definition 4
+which states:\footnote{Translation by David E. Joyce, from \url{http://aleph0.clarku.edu/~djoyce/elements/bookV/defV4.html}}
+\begin{quote}
+Magnitudes are said to have a ratio to one another which can, when multiplied, exceed one another.
+\end{quote}
+This is usually interpreted as stating the Archimedean property. But
+Leibniz interpreted infinitesimals in light of this particular
+definitions: we call the magnitude $x$ \define{Infinitesimal with respect to} $y$ (and
+$y$ is \define{Infinite with respect to} $x$) if $x < y$ and
+there is no integer $n\in\ZZ$ such that $nx > y$.
+
+This, at least, is my reading of Katz and
+Sherry~\cite{katz2012:leibniz}. See also \arXiv{2111.00922}
+for the competing perspectives of Leibniz's theory of infinitesimals.
+
+\M
+Euler seems to treat them as useful fictions, but never uses the
+phrase. But Euler also had a strange notion of numbers. For example,
+$\sqrt{12}$ is irrational but it's a ``determinate quantity'' because we
+can form sequences $a_{n}$ and $b_{n}$ such that for each $n\in\NN$ we have
+\begin{enumerate}
+\item $a_{n}^{2}<12$ and $12 < b_{n}^{2}$, and
+\item $a_{n} < a_{n + 1} < b_{n+1} < b_{n}$.
+\end{enumerate}
+We know $3^{2}=9<12$ and $4^{2}=16 > 12$, which gives $a_{1}=3$ and $b_{1}=4$.
+Then Newton's method applied to these values give us two convergent
+sequences which converge to $\sqrt{12}$ and we interpret them as
+effective methods of calculating the quantity.
+Euler discusses this in \textit{Elements of Algebra} part I, chapter XII
+(``Of square roots and of Irrational Numbers resulting from them'').

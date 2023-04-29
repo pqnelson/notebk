@@ -1,0 +1,566 @@
+\section{Hamiltonian Mechanics}
+
+\N{Big Idea}
+The big idea of Hamiltonian mechanics is to do a change of coordinates
+from the Lagrangian ``generalized'' positions and velocities
+$(q^{\mu},\dot{q}^{\mu})$ to positions and momenta $(q^{\mu}, p_{\mu})$.
+If $\mu=1,2,\dots,N$, then the Lagrangian equations of motion would
+consist of $N$ second-order differential equations. The Hamiltonian
+approach will transform this into $2N$ first-order differential
+equations
+\begin{subequations}
+\begin{align}
+\frac{\D}{\D t}p_{\nu} &= f_{\nu}(q^{\mu},p_{\mu})\\
+\intertext{and}
+\frac{\D}{\D t}q^{\nu} &= v^{\nu}(q^{\mu},p_{\mu}).
+\end{align}
+\end{subequations}
+The beautiful thing about Hamiltonian mechanics is that we can determine
+the right-hand side of these equations \emph{algebraically} using a
+fancy gadget called ``the Poisson bracket''.
+
+\subsection{Basic Algorithm}
+
+\N{Step 0: Write Down the Lagrangian}
+The first step in Hamiltonian mechanics is to write down the
+Lagrangian. This might sound weird, but it's the best way to approach
+Hamiltonian mechanics. Once you've had some practice, this step becomes
+``subconscious'' and you don't realize you're doing it. We will assume
+you have obtained $L(q^{\mu}, \dot{q}^{\mu})$.
+
+\N{Step 1: Find the Momentum}
+Recall (\S\ref{chunk:lagrange:generalized-momentum}) we introduced the
+idea of the generalized momentum. In Hamiltonian mechanics, we call it
+the \define{Canonical Momentum} (or ``conjugate momentum''). The
+conjugate momentum is then
+\begin{equation}
+p_{\nu}(q^{\mu},\dot{q}^{\mu}) := \frac{\partial L(q^{\mu},\dot{q}^{\mu})}{\partial\dot{q}^{\nu}}.
+\end{equation}
+Usually in Newtonian mechanics, $p_{\nu}\sim m_{\nu} f(q)\dot{q}^{\nu}$ where
+$m_{\nu}$ is the mass of the body and $f(q)$ is some function of the
+positions (possible just $f(q)=1$).
+
+\N{Step 2: Change Coordinates}
+Now we want to invert the relationship between momentum and
+velocities. That is, we want to write down some expression relating
+generalized velocities in terms of positions and momenta,
+\begin{equation}
+\dot{q}^{\nu} = \dot{q}^{\nu}(q^{\mu}, p_{\mu}).
+\end{equation}
+In Newtonian mechanics, this is usually easy, since
+\begin{equation}
+p_{\nu} = m_{\nu} f(q)\dot{q}^{\nu},
+\end{equation}
+which means
+\begin{equation}
+\dot{q}^{\nu} = \frac{1}{f(q)}\frac{p_{\nu}}{m_{\nu}},
+\end{equation}
+as we'd expect.
+
+\begin{ddanger}
+There are some caveats. For example, if we were measuring the position
+of a body relative to some moving base, then the kinetic term in the
+Lagrangian would look like:
+\begin{equation}
+L = \frac{m}{2}(\dot{q}_{\text{body}}-\dot{q}_{\text{base}})^{2} - U(q).
+\end{equation}
+We see that the momentum conjugate to $\dot{q}_{\text{body}}$ is just
+$-1$ times the momentum conjugate to $\dot{q}_{\text{base}}$. So what?
+Well, when we do change of coordinates, we need the Jacobian to be
+invertible --- this is the technical condition for saying our new
+coordinates is ``just as good'' as our old coordinates (in the sense
+that we're able to label \emph{all} the same points using either
+coordinate system). But if the momentum variables are not independent,
+then the Jacobian matrix for the $\dot{q}^{\mu}\to p_{\mu}$ change of
+coordinates is not invertible.
+
+This might sound like a pathological case, and for the most part you're
+right in this intuition: there are some redundancies in our description
+of the physical system. This is precisely what ``gauge theory'' studies.
+[That's ``gauge'' as in ``measure'' or ``appraise'', not as in ``gouge''
+  or swindle.]
+The ``redundancies'' are a sort of symmetry (a ``gauge symmetry''). This
+is an extremely beautiful subject I wish I could pursue in greater
+detail, but it is a huge tangent.
+\end{ddanger}
+
+\N{Step 3: Construct the Hamiltonian}
+Most texts use the big, scary phrase ``Legendre transform the Lagrangian''.
+Instead, consider writing down the total energy. We know that the
+kinetic energy would be
+\begin{equation}
+K = \sum_{\mu}\frac{1}{2}p_{\mu}\dot{q}^{\mu},
+\end{equation}
+so we could be clever and obtain the total energy using the Lagrangian,
+\begin{equation}
+E = 2K - L.
+\end{equation}
+This is precisely how we construct the Hamiltonian,
+\begin{equation}
+\boxed{H(q^{\mu}, p_{\mu}) := \left(\sum_{\nu}p_{\nu}\dot{q}^{\nu}(q,p)\right) - L\bigl(q^{\mu}, \dot{q}^{\mu}(q,p)\bigr).}
+\end{equation}
+We do this for \emph{every} Lagrangian thrown at us, even ones as weird
+as Jacobi's $L=\sqrt{KU}$.
+
+\N{Step 4: Write the Action Integral}
+We now can observe that the Lagrangian is related to the Hamiltonian by,
+\begin{equation}
+L\bigl(q^{\mu}, \dot{q}^{\mu}(q,p)\bigr) = \left(\sum_{\nu}p_{\nu}\dot{q}^{\nu}(q,p)\right) - 
+H(q^{\mu}, p_{\mu}).
+\end{equation}
+Just substitute this into the action integral, and we get the action
+``in Hamiltonian form'':
+\begin{equation}\label{eq:hamiltonian:action-integral}
+S[q^{\mu}, p_{\mu}] = \int \left[\left(\sum_{\nu}p_{\nu}\dot{q}^{\nu}(q,p)\right) - 
+H(q^{\mu}, p_{\mu})\right]\D t
+\end{equation}
+We obtain the equations of motion by considering arbitrary variations of
+the action with respect to the position $\delta q^{\mu}$ and momenta
+$\delta p_{\mu}$ which vanish at the endpoints. That's it, that's how we
+obtain the Hamiltonian equations of motion, which resemble the
+Euler--Lagrange equations of motion. I'll work this out in detail in the
+next section (which you could skip), but that's what we're looking for
+with any system of analytical mechanics: equations of motion.
+
+\N{Hamilton's Equations}
+The equations of motion for Hamiltonian mechanics are
+\begin{equation}
+\frac{\D q^{\mu}}{\D t} = \frac{\partial H}{\partial p_{\mu}}
+\end{equation}
+and
+\begin{equation}
+\frac{\D p_{\mu}}{\D t} = -\frac{\partial H}{\partial q^{\mu}}.
+\end{equation}
+
+\M
+As a consistency check, we can look at the ``stock example'' of a
+1-dimensional Newtonian system described by the Lagrangian
+\begin{equation}
+L = \frac{1}{2}m\dot{q}^{2} - U(q).
+\end{equation}
+We see the momentum variable would be,
+\begin{equation}
+p = m\dot{q},
+\end{equation}
+then the Hamiltonian would be,
+\begin{equation}
+H = \frac{1}{2m}p^{2} + U(q).
+\end{equation}
+The equations of motion are then
+\begin{subequations}
+\begin{align}
+\frac{\D q}{\D t} &= \frac{\partial H}{\partial p}\\
+&= \frac{1}{m}p
+\end{align}
+\end{subequations}
+and
+\begin{subequations}
+\begin{align}
+\frac{\D p}{\D t} &= -\frac{\partial H}{\partial q}\\
+&= -\frac{\D U(q)}{\D q}.
+\end{align}
+\end{subequations}
+These match our intuition that the time derivative of position is
+precisely velocity (i.e., directly proportional to momentum) and the
+time derivative of momentum is force. This is good news: Hamiltonian
+mechanics reproduces the equations of motion we know and love (in
+1-dimension, at least).
+
+\subsection{Derivation of Equations of Motion}
+
+\M
+The basic idea is to insert into the action $q^{\mu} + \delta q^{\mu}$
+and $p_{\mu} + \delta p_{\mu}$, then collect terms about the variations.
+As usual, we ignore boundary terms, then insist the coefficient of
+$\delta q^{\mu}$ and $\delta p_{\mu}$ must vanish.
+
+This is messy if we start with the action integral in Eq~\eqref{eq:hamiltonian:action-integral},
+let us try. We have
+\begin{equation}
+\delta S = \int^{t_{2}}_{t_{1}}\left(\sum_{\rho}\dot{q}^{\rho}\,\delta
+p_{\rho}
++p_{\rho}\,\delta\dot{q}^{\rho}
+-\frac{\partial H}{\partial q^{\rho}}\delta q^{\rho}
+-\frac{\partial H}{\partial p_{\rho}}\delta p_{\rho}
+\right)\D t
+\end{equation}
+We cheat and write
+\begin{equation}
+\delta\dot{q}^{\rho} = \frac{\D}{\D t}\delta q^{\rho},
+\end{equation}
+then integrate-by-parts on that term (throwing away boundary terms) to
+obtain
+\begin{equation}
+\delta S = \int^{t_{2}}_{t_{1}}\left(\sum_{\rho}\dot{q}^{\rho}\,\delta
+p_{\rho}
+-\frac{\D p_{\rho}}{\D t}\,\delta q^{\rho}
+-\frac{\partial H}{\partial q^{\rho}}\delta q^{\rho}
+-\frac{\partial H}{\partial p_{\rho}}\delta p_{\rho}
+\right)\D t.
+\end{equation}
+Now we gather terms
+\begin{equation}
+  \delta S = \sum_{\rho}\int^{t_{2}}_{t_{1}}\left[\left(\dot{q}^{\rho}
+-\frac{\partial H}{\partial p_{\rho}}\right)\delta
+p_{\rho}
++\left(-\frac{\D p_{\rho}}{\D t}-\frac{\partial H}{\partial q^{\rho}}\right)\delta q^{\rho}
+\right]\D t.
+\end{equation}
+Each coefficient must separately vanish for each $\delta p_{\rho}$,
+and similarly each coefficient of $\delta q^{\rho}$ must separately
+vanish.
+This gives us, from varying $\delta q$,
+\begin{equation}
+-\frac{\D p_{\rho}}{\D t}-\frac{\partial H}{\partial q^{\rho}} = 0,
+\end{equation}
+and from varying momentum $\delta p$,
+\begin{equation}
+\frac{\D q^{\rho}}{\D t} - \frac{\partial H}{\partial p_{\rho}} = 0.
+\end{equation}
+These are Hamilton's equations of motion. Huzzah.
+
+\subsection{Applications and Things to Ponder}
+
+\M
+The big application where Hamiltonian mechanics is useful occurs when
+the total energy is conserved for a system. Then $H$ is ``just'' a
+constant.
+
+\N{Differential Geometry}
+Another thing worth pondering is, well, what are we doing
+\emph{geometrically}? Mechanics concerns itself with the trajectory of
+bodies, which are mathematically described by curves. It turns out there
+is a beautiful relationship between the tangent bundle $\mathrm{T}\RR^{3N}$
+and the space of positions and velocities, namely they are identical.
+If we have a different ``configuration space'' of possible positions,
+call it $\mathcal{C}$, then the Lagrangian description uses
+$\mathrm{T}\mathcal{C}$. 
+
+The space of positions and momenta have a surprisingly dual geometric
+description, they are described as the cotangent bundle
+$\mathrm{T}^{*}\RR^{3N}$, or more generally for a configuration space
+$\mathcal{C}$ we would use $\mathrm{T}^{*}\mathcal{C}$ the cotangent bundle.
+
+\N{Source for Numerical Methods}
+The last application worth mentioning, just in passing, is that the
+Hamiltonian formalism can serve as the basis for coming up with
+numerical methods to solve the equations of motion. These are so-called
+``Symplectic Integrators''. One minor problem some symplectic
+integrators face is, when run over a very long period of time, the
+conservation of energy is violated slightly. This can be
+detrimental. Energy drift resembles a parametrized resonance. I'm not
+well versed enough to say whether we could do something clever and add
+some ``fictitious'' physical phenomena which cancels out the energy
+drift contribution, or if we are helpless to watch in horror.
+
+\subsection{Symmetries and Poisson Brackets}
+
+\N{Poisson Brackets}
+We can write \emph{any} physical quantity as a function of the phase
+space variables [position and momenta] and time, $f(q^{\mu}, p_{\mu}, t)$.
+Its change over time is given by the chain rule,
+\begin{equation}
+\frac{\D f}{\D t} = \frac{\partial f}{\partial t} +
+\sum_{\rho}\frac{\partial f}{\partial q^{\rho}}\dot{q}^{\rho} +  
+\frac{\partial f}{\partial p_{\rho}}\dot{p}_{\rho}.
+\end{equation}
+We can use Hamilton's equations to write the time derivatives of
+positions and momentas in terms of partial derivatives of the Hamiltonian,
+\begin{equation}
+\frac{\D f}{\D t} = \frac{\partial f}{\partial t} +
+\sum_{\rho}\frac{\partial f}{\partial q^{\rho}}\frac{\partial H}{\partial p_{\rho}} -
+\frac{\partial f}{\partial p_{\rho}}\frac{\partial H}{\partial q^{\rho}}.
+\end{equation}
+But this summation contribution is useful, and we abstract it away using
+a new gadget called the \define{Poisson Bracket}, writing:
+\begin{equation}
+\frac{\D f}{\D t} = \frac{\partial f}{\partial t} + \{f, H\},
+\end{equation}
+where
+\begin{equation}
+\{f, H\} = \sum_{\rho}\frac{\partial f}{\partial q^{\rho}}\frac{\partial H}{\partial p_{\rho}}
+- \frac{\partial H}{\partial q^{\rho}}\frac{\partial f}{\partial p_{\rho}}
+\end{equation}
+is the Poisson bracket. We see we can recover Hamilton's equations if we
+insert $f=p_{\rho}$ or $f=q^{\rho}$.
+
+Our intuition of the Poisson bracket should be that, when we fix the
+second slot to be $H$, it acts like a time derivative operator (when a
+function does not explicitly depend on time),
+\begin{equation}
+\{-,H\}\approx\frac{\D}{\D t}.
+\end{equation}
+There are a bunch of neat properties the Poisson bracket satisfies,
+which I'll turn into exercises.
+
+\begin{exercise}
+Prove, for any function $h(q^{\mu}, p_{\mu})$, that $\{-,h\}$ is a
+derivation. That is, $\{f + g, h\} = \{f, h\} + \{g, h\}$ and $\{fg,h\} = \{f,h\}g + f\{g,h\}$.
+\end{exercise}
+
+\begin{exercise}
+Prove the Poisson bracket is anticommutative, that is, $\{f,g\}=-\{g,f\}$.
+In particular, this implies $\{f,f\}=0.$
+\end{exercise}
+
+\N{Constants of Motion}
+It's important to note we can find constants of motion $k(q^{\mu},p_{\mu})$
+using the Poisson bracket: they commute with the Hamiltonian! That is,
+\begin{equation}
+\{k, H\} = 0.
+\end{equation}
+These are first-order differential equations, but knowing the constants
+of motion can greatly simplify solving the equations of motion.
+
+\N{Definition}
+When the positions and momenta satisfy
+\begin{align}
+  \{q^{\mu},q^{\nu}\} &= 0\\
+  \{p_{\mu},p_{\nu}\} &= 0\\
+  \{q^{\mu},p_{\nu}\} &= {\delta^{\mu}}_{\nu}
+\end{align}
+where ${\delta^{\mu}}_{\nu} = 1$ if $\mu=\nu$ and $0$ otherwise, then we
+call these particular coordinates \define{Canonical}.
+
+\N{Symmetries}
+We can encode symmetries using the Poisson bracket. This is what Sophus
+Lie studied, which led him to invent Lie groups and Lie
+algebras. The basic idea is, just as $\{-,H\}$ acts like a time
+derivative operator, then $\{-,H\,\D t\}$ acts like the first term in a
+Taylor expansion. We replace $H\,\D t$ with a ``generator'' of a
+symmetry, something like $\varepsilon(t)\,C(q^{\mu},p_{\mu})$ where
+$\varepsilon(t)$ is an ``infinitesimal'' parametrized smoothly by time. This
+would describe an ``infinitesimal symmetry'' of the system if it leaves
+the equations of motion invariant. When would this happen? Well, if we
+apply it to the Lagrangian, then we should get a total time derivative
+(since they contribute nothing to the action):
+\begin{equation}
+\{\sum_{\rho}p_{\rho}\dot{q}^{\rho} - H, \varepsilon(t)\,C(q^{\mu},p_{\mu})\}
+ = \frac{\D f}{\D t}
+\end{equation}
+for some function $f$. Then variations generated by
+\begin{equation}
+\delta q^{\rho} = \{q^{\rho}, \varepsilon(t)\,C(q^{\mu},p_{\mu})\}
+\end{equation}
+and
+\begin{equation}
+\delta p_{\rho} = \{p_{\rho}, \varepsilon(t)\,C(q^{\mu},p_{\mu})\}
+\end{equation}
+contribute nothing --- these imposters describe pure symmetries.
+
+\N{Canonical Transformations}
+One way to find the generators for symmetries is to consider change of
+coordinates
+\begin{equation}
+Q^{\rho}=Q^{\rho}(q^{\mu},p_{\mu}),\quad\mbox{and}\quad
+P_{\rho}=P_{\rho}(q^{\mu},p_{\mu}),
+\end{equation}
+such that they preserve the Poisson bracket. This is precisely the
+demand that $Q^{\rho}$ and $P_{\rho}$ are canonical coordinates
+themselves. That is, if we adopt the notation writing the coordinates
+for the Poisson bracket as a suffixed indexed,
+\begin{equation}
+\{f, g\}_{qp} := \sum_{\rho}\frac{\partial f}{\partial q^{\rho}}\frac{\partial g}{\partial p_{\rho}}
+- \frac{\partial g}{\partial q^{\rho}}\frac{\partial f}{\partial p_{\rho}},
+\end{equation}
+then
+\begin{equation}
+\{Q^{\rho}, Q^{\sigma}\}_{qp} = \{P_{\rho}, P_{\sigma}\}_{qp} = 0
+\end{equation}
+and
+\begin{equation}
+\{Q^{\rho}, P_{\sigma}\}_{qp} = {\delta^{\rho}}_{\sigma}.
+\end{equation}
+
+\begin{exercise}
+Find the equations of motion for $Q^{\rho}$, $P_{\rho}$ ``as if'' they
+were generic functions of $q^{\mu}$, $p_{\mu}$. You should find for
+$Q^{\rho}$ that
+\begin{equation}
+\dot{Q}^{\rho} = \sum_{\sigma}\{Q^{\rho}, Q^{\sigma}\}\frac{\partial H}{\partial Q^{\sigma}}
++\{Q^{\rho}, P_{\sigma}\}\frac{\partial H}{\partial P_{\sigma}}.
+\end{equation}
+Observe if $Q^{\rho}$, $P_{\rho}$ were canonical coordinates, then $\{Q^{\rho},Q^{\sigma}\}=0$
+and we recover Hamilton's equations.
+\end{exercise}
+
+\begin{exercise}
+If we invert the change of coordinates, writing
+$q^{\mu}=q^{\mu}(Q^{\rho}, P_{\rho})$ and $p_{\mu}=p_{\mu}(Q^{\rho}, P_{\rho})$
+as functions, and
+\begin{equation}
+\{f, g\}_{QP} = \sum_{\rho}\frac{\partial f}{\partial Q^{\rho}}\frac{\partial g}{\partial P_{\rho}}
+- \frac{\partial g}{\partial Q^{\rho}}\frac{\partial f}{\partial P_{\rho}},
+\end{equation}
+then is it true that $\{q^{\mu},q^{\nu}\}_{QP}=\{p_{\mu},p_{\nu}\}_{QP}=0$
+and $\{q^{\mu},p_{\nu}\}_{QP}={\delta^{\mu}}_{\nu}$?
+\end{exercise}
+
+\M
+This gives us some sense of a ``symmetry'' of a Hamiltonian system as a
+change of coordinates which leaves the system ``invariant''. A natural
+line of questioning when we are handed a Hamiltonian system is to ask
+ourselves, ``What are the symmetries of this thing?''
+
+We have discovered, thanks to the heroic efforts of Paul Dirac and Peter
+Bergmann, analyzing the symmetries of a Hamiltonian system is described
+by constraints on the phase space. This is precisely what gauge theory
+studies. The \emph{really} exciting symmetries occur when the change of
+coordinates from Lagrangian velocities to Hamiltonian momenta is
+degenerate --- this is when there are redundancies in our Lagrangian
+description of the system, which requires careful analysis. Sadly, the
+only textbook on this subject is contained in the first 5 chapters (or so) of
+Henneaux and Teitelboim's \textit{Quantization of Gauge Systems}.
+
+\begin{exercise}
+  For the Lagrangian given by
+  \begin{equation}
+L(q^{\mu}, \dot{q}^{\mu}) = \sqrt{\sum_{\rho}\dot{q}^{\rho}\dot{q}^{\rho}},
+  \end{equation}
+  find the canonically conjugate momenta, then find the Hamiltonian.
+  This Lagrangian enjoys reparametrization invariance, i.e., we can
+  ``change variables'' for time rather freely. The associated constraint
+  for such systems should be that $H$ ``vanishes'', which should be
+  interpreted as describing a surface given by the zeros of $H(q,p)$.
+\end{exercise}
+
+\begin{exercise}
+For the Jacobi Lagrangian, $L =\sqrt{KU}$, what is the canonical
+momentum? What is the Hamiltonian? Are there any interesting symmetries
+when we have the simple harmonic oscillator $U(q)=kq^{2}$? What about
+for gravity $U(q)=g/q$?
+\end{exercise}
+
+\N{``Canonical'' Mechanics}
+Jacobi referred to Hamiltonian mechanics as ``canonical'', introducing
+the term in ``Note sur l'int\'egration des \'equations diff\'erentielles de la Dynamique''
+(1835):
+\begin{quote}
+Given any system of elements between which and
+time we have, in the perturbed motion, a system of differential equations
+of canonical form, find all the other
+systems of elements which enjoy the same property.\footnote{Translated
+from the French: ``\textit{\'Etant donn\'e un syst\`eme quelconque d'\'el\'emente entre lesquels et
+le temps on a, dans le mouvement troubl\'e, un syst\`em d'\'equations
+diff\'erentielles de la form canonique, trouver tous les autres
+syst\`emes d'\'el\'ements qui jouissent de la m\^eme propri\'et\'e.}''}
+\end{quote}
+And in Jacobi's ``Note sur l’int\'egration des \'equations g\'en\'erales de la dynamique'' (1837):
+
+\begin{quote}
+  We find by means of this theorem, by calculation itself,
+elements whose differential values, in the disturbed movement,
+take the simple form that they have in the theorem, a form that I
+is referred to in my text as \emph{canonical}.\footnote{Translation from
+the French original, ``\textit{On trouve au moyen de ce th\'eor\`eme, par le
+calcul m\^eme, des \'el\'ements dont les valeur differentialles, dans le
+mouvement troubl\'e, prennent la form simple qu'elles ont dans le
+th\'eor\`eme, forme que je d\'esigne dans mon m\'emoire sous le nom de
+\emph{canonique}.}''}
+\end{quote}
+
+It is rather magical that \emph{all} physical systems in Hamiltonian
+mechanics can have canonical coordinates. Jacobi believed that this made
+Hamiltonian mechanics \emph{canonical} or ``obviously preferred'' [in
+some sense].
+
+Craig Fraser and Michiyo Nakane have written a bit about the history of
+canonical transformations in Hamiltonian mechanics, which may be
+interesting to peruse.\footnote{See
+\url{https://notes.math.ca/en/article/a-collaborative-research-project-in-the-history-of-mathematics-the-history-of-canonical-transformations-in-hamilton-jacobi-theory/}}
+
+\subsection{Dirac's Homogeneous Lagrangian Theorem}
+
+\M This is a series of exercises. They're based on
+Paul Dirac's article ``Homogeneous variables in classical dynamics''
+\textit{Mathematical Proceedings of the Cambridge Philosophical Society}
+\textbf{29} no.3 (1933) pp.389--400 {\tt\doi{10.1017/S0305004100016431}}.
+
+\N{Physical Setting}
+Suppose we want to make time a coordinate. We do this by distinguishing
+two different notions of time:
+\begin{enumerate}
+\item a formal parameter ``label time'' $\tau$
+  (which intuitively is analogous to proper time), and
+\item ``coordinate time'' $t$ (Newton's absolute time) now elevated to
+  be a position variable.
+\end{enumerate}
+Working with one spatial dimension, so we don't have to worry about
+indices. Our initial action is,
+\begin{equation}
+S[q, \D q/\D t] = \int L\left(q,\frac{\D q}{\D t}\right)\,\D t.
+\end{equation}
+Now, we want to parametrize ``coordinate time'' by some label, and
+update the action to reflect this.
+We parametrize position $q$ using $\tau$, and time $t$ is parametrized
+by $\tau$, so the action now becomes
+\begin{equation}
+S[q(\tau), \frac{\D q(\tau)}{\D \tau}, t(\tau)] = \int L\left(q(\tau), \frac{\D q(\tau)/\D \tau}{\D t(\tau)/\D \tau}\right) \underbrace{\frac{\D t(\tau)}{\D \tau}\,\D \tau}_{=\,\D t}.
+\end{equation}
+Here we used the chain rule to write
+\begin{equation}
+\frac{\D q}{\D t} \mbox{``=''} 
+\frac{\D q}{\D \tau}
+\frac{\D \tau}{\D t(\tau)}
+=\frac{\D q}{\D \tau}
+\frac{1}{\D t(\tau)/\D \tau}
+\end{equation}
+If we denote differentiation with respect to $\tau$ by dots, and define
+\begin{equation}
+\widetilde{L}(q,\dot{q},\dot{t}) := \dot{t} L\left(q, \frac{\dot{q}}{\dot{t}}\right),
+\end{equation}
+we can now take as exercises proving the following claims.
+
+\begin{exercise}
+The action is invariant under the symmetry for the Lagrangian, using any
+function of label time $f(\tau)$,
+\begin{equation}\label{eq:hamiltonian:dirac-xca:homogeneous-condition}
+\widetilde{L}(q,f(\tau)\dot{q},f(\tau)\dot{t})
+=f(\tau)\widetilde{L}(q,\dot{q},\dot{t}).
+\end{equation}
+\end{exercise}
+
+\begin{exercise}
+It's also not hard to prove the momentum from the original Lagrangian $L[q(t),q'(t)]$ (where prime indicates differentiation with respect to $t$) 
+\begin{equation}
+p = \frac{\partial L}{\partial q'(t)}
+\end{equation}
+when compared to $\widetilde{p}(\tau)$ the momentum with respect to $q$ in $\widetilde{L}$
+\begin{equation}
+\widetilde{p} = \frac{\partial \widetilde{L}}{\partial \dot{q}(\tau)}
+\end{equation}
+are the same, i.e., satisfy
+\begin{equation}
+p = \dot{t}\frac{\partial L}{\partial (\dot{q}/\dot{t})}\frac{1}{\dot{t}} = \widetilde{p}.
+\end{equation}
+\end{exercise}
+
+\begin{exercise}
+Prove the conjugate momentum for $\dot{t}(\tau)$ in $\widetilde{L}$ is
+the negative Hamiltonian
+\begin{subequations}\label{eq:hamiltonian:dirac-xca:conjugate-momentum-is-negative-hamiltonian}
+\begin{align}
+p_{t} &= \frac{\partial\widetilde{L}}{\partial\dot{t}} \\
+&= L\left(q,\frac{\D q}{\D t}\right) - \frac{\D }{\D t}\frac{\partial L(q,\D q/\D t)}{\partial(\D q/\D t))}\\
+&= -H(q,\D q/\D t)
+\end{align}
+\end{subequations}
+\end{exercise}
+
+\begin{exercise}
+Verify the Hamiltonian associated with $\widetilde{L}$ may be written, using the Legendre transform, as
+\begin{equation}
+\widetilde{H} = p_{t}\dot{t} + \widetilde{p}\dot{q} - \widetilde{L}.
+\end{equation}
+Prove
+\begin{equation}\label{eq:hamiltonian:dirac-xca:new-hamiltonian}
+\widetilde{H} = \dot{t}(H + p_{t}).
+\end{equation}
+And now we should begin to worry. Why? See, in Equation~\eqref{eq:hamiltonian:dirac-xca:conjugate-momentum-is-negative-hamiltonian} we proved $p_{t}=-H$, and in Equation~\eqref{eq:hamiltonian:dirac-xca:new-hamiltonian} we proved the Hamiltonian associated with $\widetilde{L}$ is directly proportional to $p_{t}+H$. But Equation~\eqref{eq:hamiltonian:dirac-xca:conjugate-momentum-is-negative-hamiltonian} implies $p_{t}+H=0$, which means we expect $\widetilde{H}=0$. That's odd.
+
+This is because $\widetilde{H}=0$ is a \textbf{constraint} (in the sense that, not every initial value of $t(\tau_{0})$ and $q(\tau_{0})$ and $\dot{q}(\tau_{0})$ satisfy this --- we are constrained in our choice of initial data by this constraint). And, looking at Equation~\eqref{eq:hamiltonian:dirac-xca:new-hamiltonian}, we see that $\dot{t}$ acts like the Lagrange multiplier enforcing this constraint.
+\end{exercise}
+
+\begin{exercise}
+Prove every Lagrangian which is Homogeneous in velocities --- i.e., satisfies Eq~\eqref{eq:hamiltonian:dirac-xca:homogeneous-condition} --- will have a Hamiltonian constraint $H=0$.
+\end{exercise}

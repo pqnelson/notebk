@@ -574,3 +574,157 @@ $\sin(2\pi + x) = \sin(x)$.
 \begin{proposition}
 $\cos(2\pi + x) = \cos(x)$.
 \end{proposition}
+
+\section{Approximations}
+
+\M
+When doing calculus, we want to approximate $\sin(\varepsilon)$ and
+$\cos(\varepsilon)$ for $0<\varepsilon\ll1$. We hypothesize
+\begin{equation}
+\sin(\varepsilon) \approx \sin(0) + a_{1} \varepsilon + a_{2}\varepsilon^{2}
+\end{equation}
+and
+\begin{equation}
+\cos(\varepsilon) \approx \cos(0) + b_{1}\varepsilon + b_{2}\varepsilon^{2}
+\end{equation}
+where we just have to determine coefficients $a_{1}$, $a_{2}$, $b_{1}$,
+$b_{2}$.
+Since $\sin(-\varepsilon)=-\sin(\varepsilon)$, we expect $a_{2}=0$.
+
+We have
+\begin{equation}
+\sin^{2}(\varepsilon)\approx \varepsilon^{2}a_{1}^{2}
+\end{equation}
+and
+\begin{equation}
+\cos^{2}(\varepsilon) \approx 1 + 2b_{1}\varepsilon + (b_{1}^{2} + 2 b_{2})\varepsilon^{2}.
+\end{equation}
+For
+\begin{equation}
+\cos^{2}(\varepsilon) + \sin^{2}(\varepsilon) = 1,
+\end{equation}
+we need
+\begin{subequations}
+\begin{align}
+2b_{1} &= 0\\
+a_{1}^{2} + b_{1}^{2} + 2b_{2} &= 0
+\end{align}
+\end{subequations}
+For us to also have the angle-addition law for cosine, we have
+\begin{equation}
+\begin{split}
+\cos(\varepsilon+\varepsilon)&=\cos^{2}(\varepsilon) - \sin^{2}(\varepsilon)\\
+&\approx 1 + (2b_{2}-a_{1}^{2})\varepsilon^{2}\\
+&=1 + b_{2}(2\varepsilon)^{2}.
+\end{split}
+\end{equation}
+Hence we have another equation determining the coefficients
+\begin{equation}
+2b_{2} - a_{1}^{2} = 4b_{2}\implies b_{2} = \frac{-a_{1}^{2}}{2}.
+\end{equation}
+So we have
+\begin{equation}
+\cos(\varepsilon)\approx 1 - \frac{a_{1}^{2}}{2}\varepsilon^{2}.
+\end{equation}
+
+\N{Cubic Approximation}
+If we extend our approximation to
+\begin{subequations}
+\begin{align}
+\sin(\varepsilon) &\approx a_{1}\varepsilon + a_{3}\varepsilon^{3}\\
+\cos(\varepsilon) &\approx 1 - \frac{a_{1}^{2}}{2}\varepsilon^{2} + b_{3}\varepsilon^{3},
+\end{align}
+\end{subequations}
+then
+\begin{equation}
+\cos^{2}(\varepsilon) - \sin^{2}(\varepsilon)\approx 1 - 2a_{1}^{2}\varepsilon
++ 2b_{3}\varepsilon^{3}.
+\end{equation}
+Comparing coefficients to
+\begin{equation}
+\cos(2\varepsilon)\approx 1 - 2a_{1}^{2}\varepsilon^{2} + 8b_{3}\varepsilon^{3}
+\end{equation}
+gives us
+\begin{equation}
+2b_{3} = 8b_{3}\implies b_{3}=0.
+\end{equation}
+Angle-addition for sine gives us
+\begin{equation}
+2\cos(\varepsilon)\sin(\varepsilon)\approx 2a_{1}\varepsilon +
+(-a_{1}^{3} + 2a_{3})\varepsilon^{3},
+\end{equation}
+comparing coefficients to
+\begin{equation}
+\sin(2\varepsilon)\approx 2a_{1}\varepsilon + 8a_{3}\varepsilon^{3}
+\end{equation}
+gives us
+\begin{equation}
+-a_{1}^{3} + 2a_{3} = 8a_{3}\implies a_{3} = \frac{-a_{1}^{3}}{6}.
+\end{equation}
+If we continue in this manner, we would recover the Taylor expansion for
+sine and cosine, but with $a_{1}$ left to be determined.
+
+\N{Infinitesimal}
+Now, we recall
+\begin{equation}
+(\cos(x) + \I\sin(x))^{n} = \cos(nx) + \I\sin(nx),
+\end{equation}
+then for infinitesimals we have
+\begin{equation}
+(\cos(\varepsilon) + \I\sin(\varepsilon))^{n}\approx\cos(n\varepsilon)
++\I\sin(n\varepsilon).
+\end{equation}
+Taking $x=n\varepsilon$ and our linear approximations above, we find
+\begin{equation}
+(\cos(\varepsilon) + \I\sin(\varepsilon))^{n} = (\cos(x/n) + \I\sin(x/n))^{n}
+\approx \left(1 + \frac{\I a_{1} x}{n}\right)^{n}.
+\end{equation}
+Taking $n\to\infty$ gives us the first step towards Euler's identity
+\begin{equation}
+\cos(x) + \I\sin(x) = \exp(\I a_{1}x).
+\end{equation}
+
+\N{TODO: Find Inequality}
+For $0 < x < \pi/2$, I need to prove
+\begin{equation}
+x\geq \sin(x)\geq x\cos(x).
+\end{equation}
+We know $\sin^{2}(x) < \cos^{2}(x)$ on this domain, so $\sin(x) < \cos(x)$.
+The difficulty is to show $\sin^{2}(x) < x^{2}\cos^{2}(x)$.
+$\sin^{2}(x) < x^{2}(1 - \sin^{2}(x))$
+$(1 + x^{2})\sin^{2}(x) < x^{2}$.
+
+On $0 < x < \pi/2$, we have $\sin(x) < x$ and $\cos(x) > 1 - x$.
+But can we prove it? We can prove if for any constant $k$ such that
+$\cos(x)\leq 1 - k$, then $\cos(x/2)\leq 1 - (k/2)$ since
+$\cos(x/2)\leq\cos^{2}(x/2) = (1 + \cos(x))/2 \leq (2 + k)/2$.
+Similarly, if $\cos(x)\leq 1 - k$, then $\sin(x/2)\geq k/2$ since
+$\sin(x/2)\geq\sin^{2}(x/2) = (1 - \cos(x))/2\geq (1 - 1 + k)/2 = k/2$.
+
+We see $\sin(\pi/4 - y) = 2^{-1/2}(\cos(y) - \sin(y))$ and
+$\cos(\pi/4 - y) = 2^{-1/2}(\cos(y) + \sin(y))$ for any $0<y<\pi/4$.
+Since sine is increasing on the interval $[0,\pi/2]$, it follows that
+cosine is decreasing on the same interval (since
+$\sin(\pi + x) = \cos(x + \pi/2) = -\sin(x)$) and therefore
+\begin{equation}
+\cos(x)\geq\cos(\pi/4) = \sin(\pi/4)\geq\sin(x)
+\end{equation}
+for all $0\leq x\leq\pi/4$.
+
+We also know
+\begin{subequations}
+\begin{align}
+\sin((\pi/4) - \varepsilon) &= 2^{-1/2}(\cos(\varepsilon) - \sin(\varepsilon))\\
+\intertext{and}
+\cos((\pi/4) - \varepsilon) &= 2^{-1/2}(\cos(\varepsilon) + \sin(\varepsilon))
+\end{align}
+\end{subequations}
+for any $0 < \varepsilon < \pi/4$.
+%% From
+%% \begin{equation}
+%% \sin(2\varepsilon)=2\sin(\epsilon)\cos(\epsilon)
+%% \end{equation}
+%% we obtain
+%% \begin{equation}
+%% 2a_{1}\varepsilon + 4a_{2}\varepsilon^{2}\approx 2a_{1}\varepsilon + (a_{2}+a_{1}b_{1})\varepsilon^{2}.
+%% \end{equation}
