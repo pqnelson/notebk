@@ -682,6 +682,16 @@ square root gives the result.
 Numerically, $\sin(\pi/16)\approx0.1950903$.
 \end{remark}
 
+\M
+More generally, for $n\in\NN$, $n>1$, we have
+\begin{subequations}
+\begin{align}
+\cos(\pi/2^{n+1}) &= \frac{\sqrt{2 + 2\cos(\pi/2^{n})}}{2}\\
+\intertext{and}
+\sin(\pi/2^{n+1}) &= \frac{\sqrt{2 - 2\cos(\pi/2^{n})}}{2}.
+\end{align}
+\end{subequations}
+
 \section{Inequalities}
 
 \begin{proposition}
@@ -771,6 +781,114 @@ Lagrange form of the remainder term.
 Let $0\leq x\leq\pi/16$.
 If $\cos(x)\leq 1 - \frac{1}{2}x^{2} - \frac{1}{200}$, then $\cos(x)\leq 1/\sqrt{1 + x^{2}}$.
 \end{proposition}
+
+\begin{lemma}
+Let $x\in\RR$, $n\in\NN$ be such that $n\geq2$ and $0<x<nx\leq1$.
+Let $f(x) = \sin(x)/x$.
+Then for $k\in\NN$, $1\leq k < n$, we have $f(kx) < f((k+1)x)$.
+\end{lemma}
+
+\begin{proof}
+Induction on $k$.
+
+Base case ($k=1$). We find by direct calculation
+\begin{calculation}
+f(2x)
+\step{unfold $f(x)=\sin(x)/x$}
+\frac{\sin(2x)}{2x}
+\step{angle-addition for sine}
+\frac{2\sin(x)\cos(x)}{2x}
+\step{folding $f(x)=\sin(x)/x$}
+f(x)\cos(x)
+\step[<]{since $\cos(x)<1$ on $0<x<1$}
+f(x).
+\end{calculation}
+
+Inductive hypothesis: assume
+\begin{equation}
+f(kx) < f((k-1)x).
+\end{equation}
+We will note the angle-subtraction law for sine gives us
+\begin{equation}
+\sin(kx - x) = \sin(kx)\cos(x) - \sin(x)\cos(kx).
+\end{equation}
+
+\textsc{Claim 1:} $(k-1)\sin(kx) < k\sin(kx)\cos(x) - k\sin(x)\cos(kx).$
+Now by direct calculation, we obtain the inequality from multiplying
+both sides of the inductive hypothesis by $k(k-1)x$,
+\begin{calculation}
+k(k-1)xf(kx) < k(k-1)xf((k-1)x)
+\step[\equiv]{unfolding $f(x)$}
+(k-1)\sin(kx) < k\sin((k-1)x)
+\step[\equiv]{from angle-subtraction law for sine}
+(k-1)\sin(kx) < k\sin(kx)\cos(x) - k\sin(x)\cos(kx).
+\end{calculation}
+This proves the claim.
+
+Now we see
+\begin{calculation}
+k\sin(kx)\cos(x) - \sin(kx)
+\step[\leq]{since $0<\cos(x)<1$ here}
+k\sin(kx) - \sin(kx)
+\step[<]{using claim 1}
+k\sin(kx)\cos(x) - k\sin(x)\cos(kx)
+\step[\leq]{since $0\leq\cos(x)\leq1$}
+k\sin(kx) - k\cos(kx)\sin(x).
+\end{calculation}
+Hence
+\begin{calculation}
+k\sin((k+1)x)
+\step{angle-addition for sine}
+k\sin(kx)\cos(x) + k\cos(kx)\sin(x)
+\step[<]{from the previous set of calculations}
+k\sin(kx) + \sin(kx).
+\end{calculation}
+Hence the result by dividing both sides by $k(k+1)x$.
+\end{proof}
+
+\begin{definition}
+We define the \define{(Unnormalized) Sinc Function} as
+\begin{equation}
+\sinc(x) := \frac{\sin(x)}{x}.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+For any $n\in\NN$, we will write $\sinc^{n}(x)$ as shorthand for $(\sinc(x))^{n}$.
+\end{remark}
+
+\begin{proposition}
+Let $x\in\RR$.
+Then
+\begin{equation}
+\sinc^{2}(x/2) = \frac{2}{1 + \cos(x)}\sinc^{2}(x).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+We see that
+%% \begin{equation}
+%% \sin^{2}(x/2) = \frac{1 - \cos(x)}{2}.
+%% \end{equation}
+%% We also see that
+%% \begin{equation}
+%% \sinc^{2}(x) = \frac{1 - \cos^{2}(x)}{x^{2}} = \frac{(1 - \cos(x))(1 + \cos(x))}{x^{2}}.
+%% \end{equation}
+%% Then we have
+\begin{calculation}
+  \sinc^{2}(x/2)
+  \step{unfolding definition of sinc}
+  \frac{\sin^{2}(x/2)}{(x/2)^{2}}
+  \step{using the half-angle identity for $\sin^{2}(x/2)$}
+  \frac{1 - \cos(x)}{2}\frac{1}{(x/2)^{2}}
+  \step{multiply by $1$}
+  \frac{1+\cos(x)}{1+\cos(x)}\frac{1 - \cos(x)}{2}\frac{1}{(x/2)^{2}}
+  \step{algebra}
+  \frac{1}{1 + \cos(x)}\frac{1}{2}\frac{1 - \cos^{2}(x)}{x^{2}/4}
+  \step{rewriting}
+  \frac{2}{1 + \cos(x)}\sinc^{2}(x).\qedhere
+\end{calculation}
+\end{proof}
 
 \section{Approximations}
 
