@@ -17,6 +17,14 @@ left-associativity:
 \end{lisp-example}
 
 \begin{remark}
+ACL2 defines\footnote{\url{https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/index-seo.php/COMMON-LISP_____B2}}
+these operators differently, namely as right-associative operators,
+e.g., addition is equivalent to \lstinline[language=lisp]{(+ x (+ y z...))}
+and so on. Furthermore, it uses \lstinline[language=lisp]{binary-+} as the
+``primitive'' for adding two numbers.
+\end{remark}
+
+\begin{remark}
 This only makes a difference when the operations are nonassociative,
 e.g., with floating-point arithmetic. But who knows, someone may want to
 extend this code to work for Octonions (or Lie algebras, or whatever).
@@ -103,18 +111,18 @@ We can consider four rules for what we have asserted for the arithmetic operator
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
          0         1         2         3         4         5         6         7
 ;; addition
-((+ (? x number?) (? y number?) (?? z)) ;; pattern
- nil                                    ;; explicitly no guard
- (+ (:eval (+ (? x) (? y))) (?? z)))    ;; skeleton
+((+ (? x number?) (? y number?) (?? z)) ; pattern
+ nil                                    ; explicitly no guard
+ (+ (:eval (+ (? x) (? y))) (?? z)))    ; skeleton
 ;; subtraction, with no guard
-((- (? x number?) (? y number?) (?? z)) ;; pattern
- (- (:eval (- (? x) (? y))) (?? z)))    ;; skeleton
+((- (? x number?) (? y number?) (?? z)) ; pattern
+ (- (:eval (- (? x) (? y))) (?? z)))    ; skeleton
 ;; multiplication, with no guard
-((* (? x number?) (? y number?) (?? z)) ;; pattern
- (* (:eval (* (? x) (? y))) (?? z)))    ;; skeleton
+((* (? x number?) (? y number?) (?? z)) ; pattern
+ (* (:eval (* (? x) (? y))) (?? z)))    ; skeleton
 ;; division, with no guard
-((/ (? x number?) (? y number?) (?? z)) ;; pattern
- (/ (:eval (/ (? x) (? y))) (?? z)))    ;; skeleton
+((/ (? x number?) (? y number?) (?? z)) ; pattern
+ (/ (:eval (/ (? x) (? y))) (?? z)))    ; skeleton
 \end{lisp-example}
 
 \begin{remark}
@@ -123,17 +131,17 @@ it explicitly, which will reduce the amount of time spent recursively
 calling the term rewriting function. The new rules would look something like:
 \begin{lisp-example}
 ;; addition
-((+ (?? x number?) (?? y))              ;; pattern
- (+ (:eval (reduce + (?? x))) (?? y)))  ;; skeleton
+((+ (?? x number?) (?? y))              ; pattern
+ (+ (:eval (reduce + (?? x))) (?? y)))  ; skeleton
 ;; subtraction
-((- (?? x number?) (?? y))              ;; pattern
- (- (:eval (reduce - (?? x))) (?? y)))  ;; skeleton
+((- (?? x number?) (?? y))              ; pattern
+ (- (:eval (reduce - (?? x))) (?? y)))  ; skeleton
 ;; multiplication
-((* (?? x number?) (?? y))              ;; pattern
- (* (:eval (reduce * (?? x))) (?? y)))  ;; skeleton
+((* (?? x number?) (?? y))              ; pattern
+ (* (:eval (reduce * (?? x))) (?? y)))  ; skeleton
 ;; division
-((/ (?? x number?) (?? y))              ;; pattern
- (/ (:eval (reduce / (?? x))) (?? y)))  ;; skeleton
+((/ (?? x number?) (?? y))              ; pattern
+ (/ (:eval (reduce / (?? x))) (?? y)))  ; skeleton
 \end{lisp-example}
 We could go farther and insist the segment variable is not null as the
 guard condition, something like:

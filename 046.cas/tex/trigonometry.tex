@@ -522,8 +522,8 @@ Now, by direct calculation
 \end{calculation}
 \end{proof}
 
-\begin{proposition}
-$(\cos(x) + 1)/2 = (\cos(x/2))^{2}$.
+\begin{proposition}[Half-angle formula for cosine]\label{prop:trigonometry:half-angle-formula-for-cosine}
+For any $x\in\RR$, $\cos^{2}(x/2) = (1 + \cos(x))/2$.
 \end{proposition}
 
 \begin{proof}
@@ -538,6 +538,22 @@ $(\cos(x) + 1)/2 = (\cos(x/2))^{2}$.
 Hence the result follows by adding $1$ to both sides.
 \end{proof}
 
+\begin{proposition}[Half-angle formula for sine]\label{prop:trigonometry:half-angle-formula-for-sine}
+For any $x\in\RR$, $\sin^{2}(x/2) = (1 - \cos(x))/2$.
+\end{proposition}
+
+\begin{proof}
+We use Proposition~\ref{prop:cos-sq-plus-sine-sq-equal-one},
+\begin{equation}
+\sin^{2}(x/2) + \cos^{2}(x/2) = 1,
+\end{equation}
+then rewrite $\cos^{2}(x/2)$ using the half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}
+\begin{equation}
+\sin^{2}(x/2) + \frac{1 + \cos(x)}{2} = 1.
+\end{equation}
+Rearranging terms gives the result.
+\end{proof}
+
 \begin{proposition}
 $\sin(x-y) = \sin(x)\cos(y) - \cos(x)\sin(y)$ for any $x$, $y$.
 \end{proposition}
@@ -545,6 +561,8 @@ $\sin(x-y) = \sin(x)\cos(y) - \cos(x)\sin(y)$ for any $x$, $y$.
 \begin{proof}
 This follows from Propositions~\ref{prop:sine-of-sum} and \ref{prop:sine-is-odd-function}.
 \end{proof}
+
+\section{Periodicity}
 
 The remaining results follow from the angle-addition identities and the
 knowledge that $\sin(\pi/2)=1$, $\cos(\pi/2)=0$, $\sin(-x)=-\sin(x)$, $\cos(-x)=\cos(x)$.
@@ -573,6 +591,185 @@ $\sin(2\pi + x) = \sin(x)$.
 
 \begin{proposition}
 $\cos(2\pi + x) = \cos(x)$.
+\end{proposition}
+
+\section{Exact Values}
+
+We have show in Proposition~\ref{prop:sine-half-pi-is-minus-one} $\sin(-\pi/2)=-1$,
+and in Proposition~\ref{prop:sine-of-pi-over-four} $\sin(\pi/4)=\cos(\pi/4)=\sqrt{2}/2$.
+
+\begin{proposition}
+$\displaystyle{\sin(\pi/8) = \frac{1}{2}\sqrt{2 - \sqrt{2}}}$
+\end{proposition}
+
+\begin{proof}
+Using half-angle formula for sine,
+\begin{calculation}
+  \sin^{2}(\pi/8)
+\step{half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-sine}}
+  \frac{1 - \cos(\pi/4)}{2}
+\step{since $\cos(\pi/4)=\sqrt{2}/2$ from Proposition~\ref{prop:cosine-of-pi-over-four}}
+  \frac{1 - \frac{1}{2}\sqrt{2}}{2}
+\step{algebra}
+  \frac{2 - \sqrt{2}}{4}.
+\end{calculation}
+We know $0\leq\pi/8\leq\pi/2$, so $\sin(\pi/8)\geq 0$ and then the
+square root gives the result.
+\end{proof}
+
+\begin{proposition}\label{prop:cosine-of-pi-over-eight}
+$\displaystyle{\cos(\pi/8) = \frac{1}{2}\sqrt{2 + \sqrt{2}}}$
+\end{proposition}
+
+\begin{proof}
+Using half-angle formula for cosine,
+\begin{calculation}
+  \cos^{2}(\pi/8)
+\step{half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}}
+  \frac{1 + \cos(\pi/4)}{2}
+\step{since $\cos(\pi/4)=\sqrt{2}/2$ from Proposition~\ref{prop:cosine-of-pi-over-four}}
+  \frac{1 + \frac{1}{2}\sqrt{2}}{2}
+\step{algebra}
+  \frac{2 + \sqrt{2}}{4}.
+\end{calculation}
+We know $0\leq\pi/8\leq\pi/2$, so $\cos(\pi/8)\geq 0$ and then the
+square root gives the result.
+\end{proof}
+
+\begin{proposition}
+$\displaystyle{\cos(\pi/16) = \frac{1}{2}\sqrt{2 + \sqrt{2 + \sqrt{2}}}}$.
+\end{proposition}
+
+\begin{proof}
+Using half-angle formula for cosine,
+\begin{calculation}
+  \cos^{2}(\pi/16)
+\step{half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}}
+  \frac{1 + \cos(\pi/8)}{2}
+\step{since $\cos(\pi/8)=\sqrt{2 + \sqrt{2}}/2$ from Proposition~\ref{prop:cosine-of-pi-over-eight}}
+  \frac{1 + \frac{1}{2}\sqrt{2 + \sqrt{2}}}{2}
+\step{algebra}
+  \frac{2 + \sqrt{2 + \sqrt{2}}}{4}.
+\end{calculation}
+We know $0\leq\pi/16\leq\pi/2$, so $\cos(\pi/16)\geq 0$ and then the
+square root gives the result.
+\end{proof}
+
+\begin{remark}
+Numerically, $\cos(\pi/16)\approx0.980785$.
+\end{remark}
+
+\begin{proposition}
+$\displaystyle{\sin(\pi/16) = \frac{1}{2}\sqrt{2 - \sqrt{2 + \sqrt{2}}}}$.
+\end{proposition}
+
+\begin{proof}
+Using half-angle formula for cosine,
+\begin{calculation}
+  \sin^{2}(\pi/16)
+\step{half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-sine}}
+  \frac{1 - \cos(\pi/8)}{2}
+\step{since $\cos(\pi/8)=\sqrt{2 + \sqrt{2}}/2$ from Proposition~\ref{prop:cosine-of-pi-over-eight}}
+  \frac{1 - \frac{1}{2}\sqrt{2 + \sqrt{2}}}{2}
+\step{algebra}
+  \frac{2 - \sqrt{2 + \sqrt{2}}}{4}.
+\end{calculation}
+We know $0\leq\pi/16\leq\pi/2$, so $\cos(\pi/16)\geq 0$ and then the
+square root gives the result.
+\end{proof}
+
+\begin{remark}
+Numerically, $\sin(\pi/16)\approx0.1950903$.
+\end{remark}
+
+\section{Inequalities}
+
+\begin{proposition}
+Let $k$ be a constant. If $\cos(x)\leq 1 - k$, then $\cos(x/2)\leq 1 - k/2$.
+\end{proposition}
+
+\begin{proof}
+Since $0\leq \cos(x/2)\leq 1$, we have $\cos(x/2)\geq\cos^{2}(x/2)$ and
+\begin{calculation}
+\cos^{2}(x/2)
+\step{half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}}
+\frac{1  +\cos(x)}{2}
+\step[\leq]{hypothesis}
+\frac{1 + 1 - k}{2},
+\end{calculation}
+hence the result.
+\end{proof}
+
+\begin{proposition}
+For $0\leq x\leq \pi/4$, we have $\cos(x)\geq\sin(x)$.
+\end{proposition}
+
+\begin{proof}
+This is because cosine is decreasing on this interval and $1\geq\cos(x)\geq\sqrt{2}/2$
+and since is increasing on this interval and $\sqrt{2}/2\geq\sin(x)\geq0$.
+\end{proof}
+
+\begin{proposition}
+Let $0\leq x\leq\pi/2$.
+Then $\sin(x)\geq x\cos(x)$ if and only if $\sin(x)\geq x/\sqrt{1 + x^{2}}$.
+\end{proposition}
+
+\begin{proof}
+Observe on this domain $\sin(x)\geq0$ and $\cos(x)\geq0$.
+\begin{calculation}
+\sin(x)\geq x\cos(x)
+\step[\equiv]{square both sides}
+\sin^{2}(x)\geq x^{2}\cos^{2}(x)
+\step[\equiv]{using $\sin^{2}(x)+\cos^{2}(x)=1$}
+\sin^{2}(x)\geq x^{2}(1 - \sin^{2}(x))
+\step[\equiv]{adding $x^{2}\sin^{2}(x)$ to both sides}
+(1 + x^{2})\sin^{2}(x)\geq x^{2}
+\step[\equiv]{dividing $1 + x^{2}$ to both sides}
+\sin^{2}(x)\geq\frac{x^{2}}{1 + x^{2}}
+\step[\equiv]{take square root of both sides}
+\sin(x)\geq\frac{x}{\sqrt{1 + x^{2}}}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{proposition}
+Let $0\leq x\leq\pi/2$.
+Then $\cos(x)\leq 1/\sqrt{1 + x^{2}}$ if and only if $\sin(x)\geq x/\sqrt{1 + x^{2}}$.
+\end{proposition}
+
+\begin{proof}
+We see by direct calculation
+\begin{calculation}
+\sin(x)\geq x/\sqrt{1 + x^{2}}
+\step[\equiv]{square both sides}
+\sin^{2}(x)\geq\frac{x^{2}}{1 + x^{2}}
+\step[\equiv]{since $\sin^{2}(x) = 1 - \cos^{2}(x)$}
+1 - \cos^{2}(x)\geq\frac{x^{2}}{1 + x^{2}}
+\step[\equiv]{add $\cos^{2}(x)$ to both sides}
+1\geq\frac{x^{2}}{1 + x^{2}} + \cos^{2}(x)
+\step[\equiv]{subtract $x^{2}/(1 + x^{2})$ from both sides}
+1 - \frac{x^{2}}{1 + x^{2}}\geq\cos^{2}(x)
+\step[\equiv]{algebra}
+\frac{1}{1 + x^{2}}\geq\cos^{2}(x)
+\step[\equiv]{take square root of both sides}
+\frac{1}{\sqrt{1 + x^{2}}}\geq\cos(x).\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{proposition}
+  Let $0\leq x\leq\pi/16$. Then
+  \begin{equation}
+1 - \frac{1}{2}x^{2} - \frac{1}{200} \leq\frac{1}{\sqrt{1 + x^{2}}}\leq1 - \frac{1}{2}x^{2} + \frac{1}{200}.
+  \end{equation}
+\end{proposition}
+
+\begin{remark}
+This requires the Binomial series expansion and an upper bound on the
+Lagrange form of the remainder term.
+\end{remark}
+
+\begin{proposition}
+Let $0\leq x\leq\pi/16$.
+If $\cos(x)\leq 1 - \frac{1}{2}x^{2} - \frac{1}{200}$, then $\cos(x)\leq 1/\sqrt{1 + x^{2}}$.
 \end{proposition}
 
 \section{Approximations}

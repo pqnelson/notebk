@@ -26,3 +26,28 @@ take depending on the result of evaluating the test expression.
 \item \lstinline[language=lisp]{(implies (equal (consp x) t) (equal (cons (car x) (cdr x)) x))}
   %\item \lstinline[language=lisp]{}
 \end{enumerate}
+
+\M We can implement a ``poor man's quasiquote'' which can be used to
+define a proposition to produce a formula parametrized by variables.
+
+\begin{lisp-example}
+(defun poor-man-quasiquote (e arglist &optional (cdr? nil))
+  (cond
+    ((and (symbolp e)
+          (find e arglist)) e)
+    ((consp e) (let ((result (cons (poor-man-quasiquote (car e) arglist)
+                                   (if (endp (cdr e))
+                                       nil
+                                       (poor-man-quasiquote (cdr e) arglist 't)))))
+                 (if cdr?
+                     result
+                     (cons 'list result))))
+    (t (list 'quote e))))
+
+;; (poor-man-quasiquote '(= x x) '(x))
+;; (poor-man-quasiquote '(implies (and (= x y) (= y z)) (= x z)) '(x y z))
+
+(defmacro defproposition (name arglist e)
+  (let ((body (poor-man-quasiquote e arglist)))
+    `(defun ,name ,arglist ,body)))
+\end{lisp-example}
