@@ -543,15 +543,16 @@ For any $x\in\RR$, $\sin^{2}(x/2) = (1 - \cos(x))/2$.
 \end{proposition}
 
 \begin{proof}
-We use Proposition~\ref{prop:cos-sq-plus-sine-sq-equal-one},
-\begin{equation}
-\sin^{2}(x/2) + \cos^{2}(x/2) = 1,
-\end{equation}
-then rewrite $\cos^{2}(x/2)$ using the half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}
-\begin{equation}
-\sin^{2}(x/2) + \frac{1 + \cos(x)}{2} = 1.
-\end{equation}
-Rearranging terms gives the result.
+By direct calculation
+\begin{calculation}
+\sin^{2}(x/2)
+\step{since $\sin^{2}(x/2) + \cos^{2}(x/2) = 1$}
+1 - \cos^{2}(x/2)
+\step{using Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}}
+1 - \frac{1 + \cos(x)}{2}
+\step{algebra}
+\frac{1 - \cos(x)}{2}.\qedhere
+\end{calculation}
 \end{proof}
 
 \begin{proposition}
@@ -597,6 +598,19 @@ $\cos(2\pi + x) = \cos(x)$.
 
 We have show in Proposition~\ref{prop:sine-half-pi-is-minus-one} $\sin(-\pi/2)=-1$,
 and in Proposition~\ref{prop:sine-of-pi-over-four} $\sin(\pi/4)=\cos(\pi/4)=\sqrt{2}/2$.
+
+\subsection{Exact Values}
+
+We have seen some exact values already, Axiom~\ref{axiom:trigonometry:sine-pi-over-2-equals-1}
+states $\sin(\pi/2)=1$, Proposition~\ref{prop:cos-pi-is-minus-one}
+tells us $\cos(\pi)=-1$, Prop~\ref{prop:sine-of-pi-over-four}
+says $\sin(\pi/4)=\sqrt{2}/2$ and $\cos(\pi/4)=\sqrt{2}/2$. We know from Proposition~\ref{prop:trigonometry:cos-of-zero-is-one}
+that $\cos(0)=1$.
+
+We also know from Proposition~\ref{prop:sine-of-zero} that $\sin(0)=0$
+and $\cos(\pi/2)=0$. We can combine these results with Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine} to infer
+$\cos(\pi/2^{n}) = \sqrt{2 + \sqrt{2 + \sqrt{2 + \dots}}}/2$ with $n-1$
+nested square roots.
 
 \begin{proposition}
 $\displaystyle{\sin(\pi/8) = \frac{1}{2}\sqrt{2 - \sqrt{2}}}$
@@ -692,6 +706,39 @@ More generally, for $n\in\NN$, $n>1$, we have
 \end{align}
 \end{subequations}
 
+\begin{proposition}
+Let $n\in\NN_{0}$. Then $\displaystyle{\cos(\pi/2^{2+(n+1)}) = \sqrt{2 + 2\cos(\pi/2^{2+n})}/2}$
+where the $n=0$ case is $\cos(\pi/4)=\sqrt{2}/2$.
+\end{proposition}
+
+\begin{proof}
+Induction on $n$. The base case is $n=0$, which is precisely $\cos(\pi/4)=\sqrt{2}/2$.
+We have proven this in  Prop~\ref{prop:cosine-of-pi-over-four}.
+
+Inductive hypothesis: assume this is true for arbitrary $n$.
+
+Now using Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}
+we have
+\begin{calculation}
+  \cos^{2}(\pi/2^{2+(n+1)})
+\step{algebra}
+  \cos^{2}\bigl((\pi/2^{2+n})/2\bigr)
+\step{using Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}}
+  \frac{1 + \cos(\pi/2^{2+n})}{2}
+\step{multiply top and bottom by $2$}
+  \frac{2 + 2\cos(\pi/2^{2 + n})}{4}.
+\end{calculation}
+Taking the square root gives the result.
+\end{proof}
+
+
+\begin{proposition}
+Let $n\in\NN_{0}$. Then $\displaystyle{\sin(\pi/2^{2+(n+1)}) = \sqrt{2 - 2\cos(\pi/2^{2+n})}/2}$.
+\end{proposition}
+\begin{proof}
+Using the previous proposition and $\cos^{2}(x)+\sin^{2}(x)=1$ gives the result.
+\end{proof}
+
 \section{Inequalities}
 
 \begin{proposition}
@@ -701,10 +748,12 @@ Let $k$ be a constant. If $\cos(x)\leq 1 - k$, then $\cos(x/2)\leq 1 - k/2$.
 \begin{proof}
 Since $0\leq \cos(x/2)\leq 1$, we have $\cos(x/2)\geq\cos^{2}(x/2)$ and
 \begin{calculation}
+\cos(x/2)
+\step[\leq]{since $-1\leq\cos(x/2)\leq 1$}
 \cos^{2}(x/2)
 \step{half-angle formula from Proposition~\ref{prop:trigonometry:half-angle-formula-for-cosine}}
-\frac{1  +\cos(x)}{2}
-\step[\leq]{hypothesis}
+\frac{1 + \cos(x)}{2}
+\step[\leq]{by hypothesis}
 \frac{1 + 1 - k}{2},
 \end{calculation}
 hence the result.
@@ -782,6 +831,42 @@ Let $0\leq x\leq\pi/16$.
 If $\cos(x)\leq 1 - \frac{1}{2}x^{2} - \frac{1}{200}$, then $\cos(x)\leq 1/\sqrt{1 + x^{2}}$.
 \end{proposition}
 
+
+\begin{proposition}
+Let $k$, $x\in\RR$. Assume $0<k<2$. Then $\sin(x/2)\leq k/2$ if and only if $\cos(x)\leq 1 - k$.
+\end{proposition}
+
+\begin{proof}
+\textsc{Claim 1:} Assume $\sin(x/2)\leq k/2$, we will prove 
+$\cos(x)\leq 1 - k$.
+We see
+\begin{equation}
+\cos^{2}(x/2) = 1 - \sin^{2}(x/2)\leq 1 - k/2.
+\end{equation}
+Then using cosine double-angle formula
+\begin{calculation}
+  \cos(x)
+\step{using cosine double-angle formula}
+2\cos^{2}(x/2) - 1
+\step[\leq]{since $\cos^{2}(x/2)\leq 1 - k/2$}
+2(1 - k/2) - 1 = 1 - k.
+\end{calculation}
+Hence the result.
+
+\textsc{Claim 2:} Assume $\cos(x)\leq 1 - k$. Then 
+\begin{calculation}
+\sin(x/2)
+\step[\leq]{since $-1\leq\sin(x/2)\leq 1$}
+\sin^{2}(x/2)
+\step{using Proposition~\ref{prop:trigonometry:half-angle-formula-for-sine}}
+\frac{1 - \cos(x)}{2}
+\step[<]{by hypothesis}
+\frac{1 - (1 + k)}{2}
+\step{algebra}
+1 - \frac{k}{2}.\qedhere
+\end{calculation}
+\end{proof}
+
 \begin{lemma}
 Let $x\in\RR$, $n\in\NN$ be such that $n\geq2$ and $0<x<nx\leq1$.
 Let $f(x) = \sin(x)/x$.
@@ -841,7 +926,7 @@ k\sin((k+1)x)
 \step{angle-addition for sine}
 k\sin(kx)\cos(x) + k\cos(kx)\sin(x)
 \step[<]{from the previous set of calculations}
-k\sin(kx) + \sin(kx).
+k\sin(kx) + \sin(k x).
 \end{calculation}
 Hence the result by dividing both sides by $k(k+1)x$.
 \end{proof}
@@ -855,6 +940,79 @@ We define the \define{(Unnormalized) Sinc Function} as
 
 \begin{remark}
 For any $n\in\NN$, we will write $\sinc^{n}(x)$ as shorthand for $(\sinc(x))^{n}$.
+\end{remark}
+
+\begin{lemma}
+Let $x\in\RR$. If $x<1$, then $\sqrt{1 - x} \leq 1 - x/2$.
+\end{lemma}
+
+\begin{proof}
+We square both sides of the claim to see $1 - x \leq 1 - x + x^{2}/4$,
+which is vacuously true since $x^{2}/4\geq0$.
+Taking the square root of both sides of this inequality yields the result.
+\end{proof}
+
+\begin{proposition}
+Let $k$, $x\in\RR$. If $\sin(x)\leq k$, then $\cos(x)\leq 1 - k^{2}/2$.
+\end{proposition}
+
+\begin{proof}
+From $\cos^{2}(x) + \sin^{2}(x)=1$ we see $\cos(x)=\sqrt{1 - \sin^{2}(x)}$.
+\begin{calculation}
+\cos(x)
+\step{since $\cos^{2}(x) = 1-\sin^{2}(x)$}
+\sqrt{1 - \sin^{2}(x)}
+\step[\leq]{upper bound of squareroot}
+1 - \frac{1}{2}\sin^{2}(x)
+\step[\leq]{by hypothesis}
+1 - \frac{1}{2}k^{2}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{proposition}
+Let $k$, $x\in\RR$. Assume $0<k<1$. If $\sin(x)\leq k$, then $\sin(x/2)\leq k/2$.
+\end{proposition}
+\begin{proof}
+We have $\sin(x) \leq k$ imply $\cos(x) \leq 1 - k^{2}/2$ from previous
+results. Then
+\begin{calculation}
+  \sin^{2}(x/2)
+\step{half-angle law}
+\frac{1 - \cos(x)}{2}
+\step[\leq]{using previous result}
+\frac{1 - (1 - k^{2}/2)}{2} = \frac{k^{2}}{4}.
+\end{calculation}
+Taking the square root of both sides gives the result.
+\end{proof}
+
+
+\begin{proposition}
+Let $x\in\RR$, $n\in\NN$ be such that $n\geq2$ and $0<x<nx\leq1$.
+Then for each $k=1,\dots,n$ we have $\sin(kx) < kx$.
+\end{proposition}
+
+\begin{proof}
+  Base case ($k=1$): $\sin(x) < x$. 
+
+  Inductive hypothesis: assume $\sin(kx) < kx$.
+
+Then
+\begin{calculation}
+\sin\bigl((k+1)x\bigr)
+\step{angle-addition law}
+\sin(kx)\cos(x) + \cos(kx)\sin(x)
+\step[\leq]{since $\cos(x)\leq1$}
+\sin(kx) + \sin(x)
+\step[<]{base case}
+\sin(kx) + x
+\step[<]{inductive hypothesis}
+kx + x = (k+1)x.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{remark}
+This previous proposition implies $\sin(q)<q$ for $q\in\QQ$ such that
+$0<q<1/2$.
 \end{remark}
 
 \begin{proposition}
@@ -889,6 +1047,12 @@ We see that
   \frac{2}{1 + \cos(x)}\sinc^{2}(x).\qedhere
 \end{calculation}
 \end{proof}
+
+\begin{remark}
+Usually, the argument is given that $a_{n}=\sinc^{2}(\pi/2^{n})$ is an
+increasing, bounded sequence (hence has a limit). Then handwavy
+explanations give $a_{n}\to1$.
+\end{remark}
 
 \section{Approximations}
 

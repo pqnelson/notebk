@@ -10,27 +10,65 @@ subexpressions (called the \define{Focus}) until the result is
 \lstinline[language=lisp]{t}. 
 
 \M The precise description of the logic of ACL2 may be found in Kaufmann
-and Moore's ``A Precise Description of the ACL2 Logic''.\footnote{Found online at \url{http://www.cs.utexas.edu/users/moore/publications/km97.pdf}}
+and Moore's ``A Precise Description of the ACL2 Logic''.\footnote{Found online at \url{http://www.cs.utexas.edu/users/moore/publications/km97a.pdf}}
 There are 11 axioms which specify the Lisp primitives, which behave as
 we would expect --- things like which branch of an ``if'' expression to
 take depending on the result of evaluating the test expression.
 
+The 11 axioms for ACL2 are (the first 5 axioms specify equality, the
+last 6 specify the primitives of ACL2):
 \begin{enumerate}
 \item \lstinline[language=lisp]{(not (equal t nil))}
-\item \lstinline[language=lisp]{(equal (if t x y) x)}
-\item \lstinline[language=lisp]{(equal (if nil x y) y)}
+\item \lstinline[language=lisp]{(implies (equal (not x) nil) (equal (if x y z) y))}
+\item \lstinline[language=lisp]{(implies (equal x nil) (equal (if x y z) z))}
+\item \lstinline[language=lisp]{(iff (equal x y) (or nil (equal (equal x y) t)))}
+\item \lstinline[language=lisp]{(iff (= x y) (equal (equal x y) t))}
+\item \lstinline[language=lisp]{(iff (consp x) (or nil (equal (consp x) t)))}
 \item \lstinline[language=lisp]{(equal (consp (cons x y)) t)}
 \item \lstinline[language=lisp]{(equal (consp nil) nil)}
 \item \lstinline[language=lisp]{(equal (car (cons x y)) x)}
 \item \lstinline[language=lisp]{(equal (cdr (cons x y)) y)}
 \item \lstinline[language=lisp]{(implies (equal (consp x) t) (equal (cons (car x) (cdr x)) x))}
-  %\item \lstinline[language=lisp]{}
 \end{enumerate}
+
+%% \begin{enumerate}
+%% \item \lstinline[language=lisp]{(not (equal t nil))}
+%% \item \lstinline[language=lisp]{(equal (if t x y) x)}
+%% \item \lstinline[language=lisp]{(equal (if nil x y) y)}
+%% \item \lstinline[language=lisp]{(equal (consp (cons x y)) t)}
+%% \item \lstinline[language=lisp]{(equal (consp nil) nil)}
+%% \item \lstinline[language=lisp]{(equal (car (cons x y)) x)}
+%% \item \lstinline[language=lisp]{(equal (cdr (cons x y)) y)}
+%% \item \lstinline[language=lisp]{(implies (equal (consp x) t) (equal (cons (car x) (cdr x)) x))}
+%%   %\item \lstinline[language=lisp]{}
+%% \end{enumerate}
+
+\N{Rewrite rules as theorems}
+The generic rewrite rule may be written as a theorem whose statement is
+of the form:
+\begin{lisp-example}[caption={Template of theorem statement}]
+(implies (and hypothesis-1 ... hypothesis-n)
+         (equal lhs rhs))
+\end{lisp-example}
+When the hypotheses are applicable, we rewrite the focus using the rule 
+\lstinline[language=lisp]{(equal lhs rhs)}.
+This tries to match the focus with the left-hand side. If we can unify
+the expressions, then we rewrite using the substituted ``\lstinline[language=lisp]{rhs}''
+expression.
+
+Specifically, when --- after substituting variables --- each hypothesis
+evaluates to \lstinline[language=lisp]{'t}, we can apply the rewrite rule.
+Care must be taken to handle situations when the focus is within an
+if-expression which imposes conditions which affect hypotheses for a
+theorem. The hypothesis satisfaction is done via backchaining.\footnote{For more about rewriting in ACL2, see \url{https://www.ccs.neu.edu/home/harshrc/courses/cs2800-fall2010/f10-lec26.pdf}}
+Backchaining is done by looking at the hypothesis, then finds a theorem
+of the form ``$p$ implies $\langle$hypothesis$\rangle$'' and then tries
+to prove $p$ instead of the hypothesis.
 
 \M We can implement a ``poor man's quasiquote'' which can be used to
 define a proposition to produce a formula parametrized by variables.
 
-\begin{lisp-example}
+\begin{code}[name=axioms, caption={Defining a proposition}]
 (defun poor-man-quasiquote (e arglist &optional (cdr? nil))
   (cond
     ((and (symbolp e)
@@ -44,10 +82,71 @@ define a proposition to produce a formula parametrized by variables.
                      (cons 'list result))))
     (t (list 'quote e))))
 
-;; (poor-man-quasiquote '(= x x) '(x))
-;; (poor-man-quasiquote '(implies (and (= x y) (= y z)) (= x z)) '(x y z))
-
 (defmacro defproposition (name arglist e)
   (let ((body (poor-man-quasiquote e arglist)))
     `(defun ,name ,arglist ,body)))
-\end{lisp-example}
+\end{code}
+
+\N{Axioms and Theorems}
+We can then introduce axioms as ``just propositions'', and theorems
+provided their proofs are valid. We just relegate the heavy lifting to a 
+``\lstinline[language=lisp]{proves-claim?}'' function, which could be a
+generic. We could abstract away the formulas proven to a class, with an
+subclass for ``\lstinline[language=lisp]{implies}'', another subclass for
+``\lstinline[language=lisp]{equals}'', and so on.
+
+\begin{code}[name=axioms]
+(defmacro defaxiom (name arglist body)
+  (defproposition name arglist body))
+
+(defmacro defthm (name arglist statement proof)
+  (if (proves-claim? statement proof)
+    (defproposition name arglist statement)
+    (error "Invalid proof for theorem '" name "'")))
+\end{code}
+
+\N{Convention for Predicates}
+I will distinguish predicates ``in the metalanguage'' (i.e., in Common
+Lisp) from predicates ``in the object language'' (i.e., in the axioms)
+by using the ``-p'' suffix for Common Lisp predicates and ``?'' suffix
+for object language predicates.
+
+\N{Equality}
+We will use double equals for our equality. Although we can treat
+equality as ``just another equivalence relation'', we need to also
+explicitly include the Leibniz law of indiscernibles,
+\begin{equation}
+\forall P\forall x\forall y, (x=y)\land P[x]\implies P[y].
+\end{equation}
+We also need another analogous axiom schema for functions instead of
+predicates.
+\begin{equation}
+\forall F\forall x\forall y, (x=y)\implies F(x) = F(y).
+\end{equation}
+
+\begin{code}[name=axioms]
+(defaxiom ==/reflexive (x)
+  (equal (== x x) 't))
+
+(defaxiom ==/commutative (x y)
+  (equal (== x y) (== y x)))
+\end{code}
+
+  
+\N{TODO: Readable Proofs, Theorem Names}
+I want to have proofs be explicit, or as explicit as possible. This
+requires specifying the focus and telling Lisp to rewrite it using a
+specific theorem (or axiom). Presumably this will be a macro that will
+check the validity of a proof (if a theorem), then either raise an
+exception (for invalid proofs) or define a function which will produce a
+statement with the specified substitutions.
+\begin{enumerate}
+\item Think of a naming convention for theorems; should I use packages
+  for namespacing (e.g., ``\lstinline[language=lisp]{add:associative}'')
+  or should I use slashes (e.g., ``\lstinline[language=lisp]{thm:add/associative}'')?
+\item How to make proofs readable? 
+\item Presumably \lstinline[language=lisp]{(defthm thm-name (formals) statement proof...)}
+  encodes a $\forall$-statement where we universally quantify over the
+  formal arguments; how would we handle existential quantified statements?
+\end{enumerate}
+

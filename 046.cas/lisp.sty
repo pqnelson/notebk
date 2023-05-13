@@ -103,21 +103,29 @@
   innertopmargin=-3pt,
   innerbottommargin=-3pt}
 
+% https://tex.stackexchange.com/questions/95036/continue-line-numbers-in-listings-package
 % For, you know, *actual* code.
-\lstnewenvironment{code}
+\lstnewenvironment{code}[1][]
 {\mdframed[style=codestyle]%
- \lstset{language=lisp,
+ \lstset{%
+   #1,
+   language=lisp,
    numbers=left,
    numberstyle=\tiny,
    stepnumber=2,
    showstringspaces=false,
    xleftmargin=-5pt,
-   upquote=true}}
-{\endmdframed}
+   upquote=true}%
+ \csname\@lst @SetFirstNumber\endcsname%
+}
+{\csname \@lst @SaveFirstNumber\endcsname%
+\endmdframed}
 
 % For snippets showing how to use the code
-\lstnewenvironment{lisp-example}
-{\lstset{language=lisp,
+\lstnewenvironment{lisp-example}[1][]
+{\def\lstlistingname{Example}\lstset{%
+   #1,
+   language=lisp,
    numbers=left,
    numberstyle=\tiny,
    stepnumber=2,

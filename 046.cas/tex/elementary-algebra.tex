@@ -892,6 +892,86 @@ familiar Binomial expansion for $\alpha\in\NN_{0}$. We can observe that
 this is just the Taylor series expansion in $x$ about $0$.
 \end{remark}
 
+\section{Series and Sums}
+
+\M
+This is a sticky issue, because summation methods can assign numbers and
+closed-form expressions to divergent series. Hardy, in his book
+\textit{Divergent Series}, talks about a
+``Pickwickian summation scheme''; the desired qualities for any
+summation scheme are twofold:
+\begin{enumerate}
+\item linear $c\sum_{n}a_{n}=\sum_{n}(ca_{n})$ and $(\sum_{n}a_{n})+(\sum_{n}b_{n})=\sum_{n}(a_{n}+b_{n})$
+\item we can pull out the first term: $\sum_{n=1}a_{n} = a_{1} + \sum_{n=2}a_{n}$.
+\end{enumerate}
+More explicitly, if $P(-)$ is the Pickwickian summation scheme,
+\begin{enumerate}
+\item If $P(\sum a_{n})=s$, then $P(\sum c\cdot a_{n})=c\cdot s$;
+\item If $P(\sum a_{n})=s$ and $P(\sum b_{n})=t$, then $P(\sum a_{n} + b_{n})=s+t$;
+\item If $P(\sum_{n=1} a_{n})=s$, then $P(\sum_{n=2} a_{n})=s-a_{1}$.
+\end{enumerate}
+
+\M
+Ferraro argues that Euler used two methods for determining sums: the
+binomial theorem, and something Ferraro calls ``the method of
+indeterminate coefficients''. What Ferraro means by this is: consider a
+power series expansion for the fraction
+\begin{equation}
+f(x) = \frac{c}{b + x}.
+\end{equation}
+We assume there exists a series $\sum_{n=0}a_{n}x^{n}$ such that
+\begin{subequations}
+\begin{align}
+c &= (b + x)\sum^{\infty}_{n=0}a_{n}x^{n}\\
+&= (b + x)(a_{0} + a_{1}x + a_{2}x^{2} + \cdots)\\
+&= ba_{0} + ba_{1}x + ba_{2}x^{2} + \cdots\nonumber\\
+&\phantom{= ba_{0}} + a_{0}x + a_{1}x^{2} + \cdots\\
+&= ba_{0} + (ba_{1} + a_{0})x + (ba_{2} + a_{1})x^{2} + \cdots.
+\end{align}
+\end{subequations}
+Then we match coefficients to find
+\begin{subequations}
+\begin{align}
+c &= ba_{0}\\
+0 &= ba_{1} + a_{0}\\
+0 &= ba_{2} + a_{1}
+\end{align}
+\end{subequations}
+and so on. This determines the unknown coefficients $a_{0}=c/b$, and
+$a_{n+1}=-a_{n}/b$ for each $n\in\NN_{0}$.
+
+% http://fredrickey.info/hm/Euler-Introductio.pdf
+
+\begin{theorem}[Geometric series]
+Let $a\in\RR$, $N\in\NN$. Then
+\begin{equation}
+\sum^{N}_{n=0}a^{n} = \frac{1 - a^{N+1}}{1 - a}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+  We see
+  \begin{equation}
+(1 - a)(1 + a + a^{2} + \dots + a^{N}) = 1 - a^{N+1}.
+  \end{equation}
+  Dividing both sides by $1-a$ then produces the result.
+For $N>1$, we have explicitly:
+\begin{calculation}
+(1 - a)(1 + a + a^{2} + \dots + a^{N-1} + a^{N})
+\step{associativity of addition}
+(1 - a)(1 + (a + a^{2} + \dots + a^{N-1}) + a^{N})
+\step{distributivity}
+1\cdot(1 + (a + a^{2} + \dots + a^{N-1}) + a^{N}) - a(1 + (a + a^{2} + \dots + a^{N-1}) + a^{N})
+\step{distributivity}
+(1 + (a + a^{2} + \dots + a^{N-1}) + a^{N}) -a - (a^{2} + \cdots + a^{N}) - a^{N+1}
+\step{associativity, distributivity}
+1 + (a + a^{2} + \dots + a^{N-1} + a^{N}) - (a + a^{2} + \cdots + a^{N}) - a^{N+1}
+\step{definition of subtraction}
+1 + 0 - a^{N+1}.
+\end{calculation}
+Dividing both sides by $1-a$ yields the results.
+\end{proof}
+
 \section{Concluding Remarks}
 
 \M
@@ -912,7 +992,9 @@ Or in pidgin Lisp,
            (= (expt (expt x (/ n)) n) x)))
 \end{lisp-example}
 
-Euler seemed to adopt the perspective that we could, for any $x\geq1$,
+Euler's \textit{Elements of Algebra} (part I, chapter XII, ``Of square
+roots and of Irrational Numbers resulting from them'') seemed to adopt
+the perspective that we could, for any $x\geq1$, 
 find an integer $M$ such that $M^{k}\leq x < (M+1)^{k}$. We then form
 two sequences $a_{n}$, $b_{n}$ which are inductively defined by the same
 recurrence relation
@@ -978,6 +1060,32 @@ twos-complement representation.
        1)))
 \end{lisp-example}
 
+\begin{remark}
+  Euler calls them ``determinate quantities''. Well, here's the passage
+  from Chapter XII, Part I, of his \textit{Elements of Algebra}:
+
+  \begin{quotation}
+    128. There is, therefore, a sort of numbers, which
+cannot be assigned by fractions, but which are nevertheless determinate quantities; as, for instance, the square
+root of 12: and we call this new species of numbers,
+\emph{irrational numbers}. They occur whenever we endeavour
+to find the square root of a number which is not a square;
+thus, 2 not being a perfect square, the square root of 2,
+or the number which multiplied by itself would produce 2,
+is an irrational quantity. These numbers are also called
+\emph{surd quantities}, or \emph{incommensurable}.
+
+129. These irrational quantities, though they cannot be
+expressed by fractions, are nevertheless magnitudes of which
+we may form an accurate idea; since, however concealed
+the square root of 12, for example, may appear, we are not
+ignorant that it must be a number, which, when multiplied
+by itself, would exactly produce 12; and this property is
+sufficient to give us an idea of the number, because it is in
+our power to approximate towards its value continually.
+  \end{quotation}
+  Emphasis is Euler's.
+\end{remark}
 
 \N{On Completeness}
 Typically there is discussion about the least-upper bound property
@@ -989,3 +1097,28 @@ converges to a real number (i.e., the reals are ``topologically complete'').
 \N{Sums}
 I need to insert results concerning sums before discussing the Binomial
 theorem, things like reindexing results, etc.
+
+\N{Bootstrapping Principle}
+Let $P[x]$ be a predicate of real numbers $x\in\RR$.
+Let $a\in\RR$.
+If
+\begin{enumerate}
+\item $P[a]$ is true; and
+\item if there exists a sequence $(x_{n})$ approaching $x$ from below, such
+  that $\forall n,P[x_{n}]$, then $P[x]$ is true; and
+\item if $P[x_{0}]$ is true, then there exists some $x_{1} > x_{0}$
+  such that $P[x_{1}]$ is true; and
+\item if $P[x_{0}]$ is true, then $P[x_{1}]$ is true for all $a<x_{1}<x_{0}$;
+\end{enumerate}
+then $P[x]$ is true for all $x\in[a,\infty)$.
+
+\bigbreak
+See also \arXiv{1208.0973}.
+
+Let $a\in\RR$.
+\begin{enumerate}
+\item $P[a]$
+\item There is a $\Delta>0$ such that $\forall x\in\RR$, $P[x]$ implies
+  $\forall t\in(x-\Delta,x+\Delta)\cap[a,\infty)$, $P[t]$.
+\end{enumerate}
+Then $\forall x\in[a,\infty),P[x]$.
