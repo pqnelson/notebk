@@ -150,3 +150,96 @@ statement with the specified substitutions.
   formal arguments; how would we handle existential quantified statements?
 \end{enumerate}
 
+\M
+Definitional theorems should be axioms, I suspect. For example,
+\begin{lisp-example}
+(defun + (&rest numbers)
+  (reduce #'binary-+ numbers :initial-value 0))
+\end{lisp-example}
+This will produce the ``definitional theorem''
+\begin{lisp-example}
+(defaxiom defun-+ (xs)
+  (equal (+ . xs) (reduce #'binary-+ xs :initial-value 0)))
+\end{lisp-example}
+More generally if we have defined a new function
+``\lstinline[language=lisp]{fun}'' with formal arguments $\vec{x}$ and a
+body $b(\vec{x})$, the
+associated definitional theorem is an axiom of the form
+``\lstinline[language=lisp]{(equal (fun} $\vec{x}\,$\lstinline[language=lisp]{)}
+$b(\vec{x}\,)$\lstinline[language=lisp]{)}''.
+We would also have the definitional axioms:
+\begin{lisp-example}
+(defaxiom defun-* (xs)
+  (equal (* . xs) (reduce #'binary-* xs :initial-value 1)))
+
+(defaxiom defun-- (x xs)
+  (equal (- x . xs) (reduce #'binary-- xs :initial-value x)))
+
+(defaxiom defun-negate (x)
+  (equal (- x) (binary-- 0 x)))
+
+(defaxiom defun-/ (x xs)
+  (equal (/ x . xs) (reduce #'binary-/ xs :initial-value x)))
+
+(defaxiom defun-invert (x)
+  (equal (- x) (binary-/ 1 x)))
+\end{lisp-example}
+
+\begin{remark}
+  Therefore, it makes sense to use the template of the form
+  \begin{center}
+    $\langle$\emph{definitional theorem name}$\rangle$ ::=
+\texttt{axiom:}$\langle$\emph{package}$\rangle$\texttt{/}\texttt{defun-}$\langle$\emph{function name}$\rangle$
+  \end{center}
+for naming definitional theorems. This suggests using a separate package
+for the axioms, and probably it would be wise to have another package
+for theorems. But it also makes sense to have a helper function so I
+could do something like use \lstinline[language=lisp]{(def-of '+ args...)}
+as a justification for a proof step.
+\end{remark}
+
+\begin{remark}
+The name ``definitional theorem'' is lifted from Mizar, shamelessly.
+\end{remark}
+
+\N{Reduce}
+We can provide some axiomatic specification for
+\lstinline[language=lisp]{reduce}.
+\begin{lisp-example}
+(defaxiom defun-reduce (f init-val xs)
+  (if (null xs)
+    init-val
+    (equal (reduce f xs :initial-value init-val)
+           (reduce f (cdr xs) :initial-value (f init-val (car xs))))))
+
+(defaxiom right-reduce (f init-val xs)
+  (if (null xs)
+    init-val
+    (equal (reduce f xs :initial-value init-val
+                        :from-end t)
+           (reduce f (butlast xs) :initial-value (f (last xs) init-val)
+                                  :from-end t))))
+\end{lisp-example}
+I do not know if this suffices to prove:
+\begin{lisp-example}
+(defthm reduce-associative-fun (f head tail)
+  (implies (and (associative? f)
+                (list? tail))
+           (equal (reduce f (cons head tail))
+                  (reduce f (cons head tail)
+                            :from-end t))))
+\end{lisp-example}
+This does beg the question: \emph{how would we define associativity?}
+Na\"{\i}vely, we would hope something like:
+\begin{lisp-example}
+(defun associative? (f)
+  (forall (x y z)
+          (equal (f (f x y) z)
+                 (f x (f y z)))))
+\end{lisp-example}
+But we do not have a clear notion of quantifiers in our attempt to
+emulate ACL2.
+
+\begin{remark}
+We need to also have the reducing function be commutative, as well as associative.
+\end{remark}
