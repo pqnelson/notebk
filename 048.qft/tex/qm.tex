@@ -1,0 +1,101 @@
+\chapter{Quantum Mechanics}
+
+\section{Basic Rules}
+
+\M We will review the basic rules for describing a quantum system using
+a wave function. We will revise the rules later, for greater generality,
+but we begin with relevant versions for physical systems.
+
+\N{Position--Momentum Commutator Relation}
+We have
+\begin{equation}\label{eq:position-momentum-uncertainty-commutator}
+[\widehat{x},\widehat{p}] = \I\hbar.
+\end{equation}
+
+
+\subsection{Wave Functions}
+
+\M Following Isham~\cite{Isham:1995lq}, we summarize the rules for
+interpreting wave functions.
+
+\N{First rule}
+The quantum state of a point particle moving in one-dimension is
+represented by a complex-valued wave function $\psi(x)$ which is
+normalized to one:
+\begin{equation}
+\int^{\infty}_{-\infty}|\psi(x)|^{2}\,\D x = 1.
+\end{equation}
+We will say that ``$\psi$ is normalized to unity'' when this condition holds.
+
+\N{Superposition principle}
+We can superimpose any two wave functions $\psi_{1}(x)$ and
+$\psi_{2}(x)$ with arbitrary complex coordinates $\alpha_{1}$, $\alpha_{2}$.
+That is to say, we get a new wave function
+$\alpha_{1}\psi_{1}(x) + \alpha_{2}\psi_{2}(x)$, provided that
+$\alpha_{1}$ and $\alpha_{2}$ are chosen to make the new wave function
+normalized to unity.
+
+\N{Second rule}
+Any physical quantity which we can measure (i.e., any observable) is
+represented by a linear differential operator that acts on wave functions
+and is self-adjoint.
+
+\begin{remark}[Eigenvalues of self-adjoint operators]
+``Self-adjoint'' operators have real eigenvalues. We measure
+eigenvalues. If we are measuring a complex-valued quantity, then we
+need an anti-self-adjoint operator.
+\end{remark}
+
+\begin{remark}[Completeness of eigenfunctions for self-adjoint operators]
+The eigenfunctions for a self-adjoint operator are ``complete'' in the
+sense that they form a basis. Further, normalized eigenfunctions satisfy
+the orthogonality condition
+\begin{equation}
+\int^{\infty}_{-\infty}f_{m}^{*}(x)f_{n}(x)\,\D x = \delta_{m,n}
+\end{equation}
+where $\delta_{m,n}=1$ if $m=n$ and $\delta_{m,n}=0$ otherwise.
+\end{remark}
+
+\N{Third rule}
+The only possible result of measuring an observable $A$ is one of the
+eigenvalues of the self-adjoint operator $\widehat{A}$ which represents
+it.
+
+\M
+For nondegenerate operators (i.e., any two eigenfunctions of
+$\widehat{A}$ with the same eigenvalue are proportional to each other)
+and with a discrete set of eigenvalues $a_{1}$, $a_{2}$, \dots
+corresponding to eigenfunctions $f_{1}$, $f_{2}$, \dots; if the state is
+$\psi(x)$, then the probability that a measurement of $A$ will yield a
+particular eigenvalue $a_{n}$ is
+\begin{equation}
+\Pr(A = a_{n}; \psi) = |\psi_{n}|^{2},
+\end{equation}
+assuming the wave function is written as a linear combination of the
+eigenfunctions,
+\begin{equation}
+\psi(x) = \sum_{n}\psi_{n}f_{n}(x)
+\end{equation}
+and the $\psi_{n}\in\CC$ are constants. We also assume $\psi(x)$ is
+normalized to unity.
+
+\begin{remark}
+As a consequence of this, a wave function being normalized to unity is
+the same as the ``sum of all probabilities equal 1''.
+\end{remark}
+
+\N{Fourth Rule}
+The state function evolved in time according to the time-dependent
+Schr\"{o}dinger equation
+\begin{equation}
+\I\hbar\frac{\partial\psi(x,t)}{\partial t} = \widehat{H}\psi(x,t),
+\end{equation}
+where the Hamiltonian operator $\widehat{H}$ is obtained from the
+classical enerygy expression
+\begin{equation}
+H = \frac{p^{2}}{2m} + V(x),
+\end{equation}
+replacing the momentum $p$ and position $x$ by their corresponding
+operators $\widehat{p}$, $\widehat{x}$.
+
+\input{tex/harmonic-oscillator}

@@ -1,0 +1,193 @@
+\chapter{Outline of Quantum Field Theory}
+
+\M
+The big idea is that we want to describe scattering using quantum
+calculations, involving different types of particles and different types
+of interactions [fields], using different ``mathematical toolkits'' and
+pictures [sum over histories, functional Schr\"{o}dinger, etc.].
+Consequently any thorough textbook would walk through 9 calculations:
+for each of the three toolkits [Heisenberg/interaction, path integral,
+functional Schr\"{o}dinger], we compute the propagator and scattering
+of the three particles [scalar, ``spinor'' (spin-$1/2$), and vector/gauge].
+
+
+\section{Scattering}
+
+\N{Scattering}
+The basic idea is we have $2\to2$ scattering\footnote{Decay may be
+interpreted as $1\to n$, and other situations may be described
+analogously.}  (i.e., we collide two particles towards each other, and
+then two particles emerge from the ``collision'') and we try to measure
+something in the laboratory. Usually this is the scattering angle
+$\theta$, which is related to the cross-sectional area $\sigma$ by some
+equation of the form
+\begin{equation}
+\frac{\D\sigma}{\D\cos\theta}\sim f(\cos\theta).
+\end{equation}
+Quantum theory permits us to write an equation relating $\D\sigma$ to
+entries of the $S$-matrix. The problem for the theorist is to compute
+these $S$-matrix components.
+
+\M
+The LSZ formula relates $S$-matrix theory to quantum field theory.
+Specifically, the components of the $S$-matrix
+\begin{equation}
+S_{f,i} = \langle f|S|i\rangle
+\end{equation}
+may be related to the asymptotic free field via the LSZ formula.
+
+\N{Adiabatic ``Theorem''}
+The vacuum state used in the LSZ formula is $|\Omega\rangle$, the vacuum
+state for the interacting theory --- compared to the $|0\rangle$ vacuum
+state for the free theory. 
+
+The assumption is that $|\Omega\rangle$ is a perturbation of
+$|0\rangle$, so they can be related. This is carried out in Peskin and
+Schroeder (chapter 4, section 2; see esp.\ Eq~(4.27)).
+
+\N{Feynman Diagrams}
+We expand the LSZ formula perturbatively, and organize the terms using
+Feynman diagrams describing different interactions.
+
+\section{Particles and Fields}
+
+\N{Deriving the Scalar Field}
+We derive the scalar field by considering point masses (of identical
+mass $m$) connected by an array of identical springs in each
+dimension. When we take the ``spacing goes to zero'' limit, we obtain a
+continuum expression which corresponds to the Lagrangian density for the
+scalar field. This is the intuition for what a field looks like. When we
+``quantize'' the field, we use the quantum harmonic oscillator, and
+obtain the Klein--Gordon [free scalar] field.
+
+This is cute, but usually particles in quantum field theory can be
+neatly derived from studying irreducible representations of the Poincar\'{e} Group.
+
+\N{Lorentz Group and Algebra}\marginpar{In $-+++$ signature}
+Consider proper orthochronous Lorentz transformations
+$\Lambda\in\ISO(1,3)\subset\O(1,3)$ such that $\det(\Lambda)=+1$ and
+${\Lambda^{0}}_{0}=+1$. Then we can write any element of this group as
+\begin{equation}
+{\Lambda^{\mu}}_{\nu} = [\exp\left(\frac{-\I}{2}\omega_{\kappa\lambda}M^{\kappa\lambda}\right)]{{}^{\mu}}_{\nu}
+\end{equation}
+where $\omega_{\kappa\lambda}=-\omega_{\lambda\kappa}$ are ``rotation
+angles'' (real constants parametrizing the symmetry) and
+$M^{\kappa\lambda}$ is an indexed family of matrices (i.e., fix a value
+of $\kappa$ and $\lambda$, and you get a $4\times4$ matrix). These $M^{\kappa\lambda}$ are
+generators of the Lie algebra for the Lorentz group. Explicitly
+\begin{equation}
+(M^{\kappa\lambda})_{\mu\nu} = \I(\delta^{\kappa}_{\mu}\delta^{\lambda}_{\nu}-\delta^{\kappa}_{\nu}\delta^{\lambda}_{\mu})
+\end{equation}
+Now the trick is that we can write the generators of the Lorentz Lie
+algebra using
+\begin{subequations}
+\begin{align}
+L^{i} &= \frac{1}{2}\epsilon^{ijk}M_{jk}\\
+\intertext{for spatial rotations, and}
+K^{i} &= M^{0i}\\
+\intertext{for Lorentz boosts. We define}
+\vec{J}_{\pm} &= \frac{1}{2}(\vec{L}\pm\I\vec{K}).
+\end{align}
+\end{subequations}
+The reader may verify the commutation relations become
+\begin{equation}
+[J^{i}_{\pm}, J^{j}_{\pm}] = \I\epsilon^{ijk}J^{k}_{\pm}.
+\end{equation}
+But now look, this is precisely two copies of $\su(2)$ (more precisely,
+it is $\sl(2,\CC)$).
+
+The punchline, however, is: \textit{Each irreducible representation of $\so(1,3)$
+is characterized by a pair of half-integers $(j_{+}, j_{-})$.} We can
+interpret these irreducible representations as particles, summarized by
+the handy-dandy table:
+
+\begin{center}
+\begin{tabular}{c|c|c}
+  $(j_{+}, j_{-})$ & Name of Field & Dimension of Rep \\\hline
+  $(0, 0)$ &	Scalar  &	1\\
+$(1/2, 0)$ & 	Left-handed Weyl Spinor &	2\\
+$(0, 1/2)$ &	Right-handed Weyl Spinor &	2\\
+$(1, 0)$ &	(Imaginary) Self-dual 2-form &	3\\
+$(0, 1)$ &	(Imaginary) Anti-self-dual 2-form &	3\\
+$(1/2, 1/2)$ &	Vector (gauge field) &	4\\
+$(1/2, 1)$ & 	Left-Handed Rarita-Schwinger field &	6\\
+$(1, 1/2)$ &	Right-Handed Rarita-Schwinger field &	6\\
+$(1, 1)$ &	Graviton (spin-2 field) &	9
+\end{tabular}
+\end{center}
+
+\M
+We study the scalar, the Dirac spinor $(1/2, 0)\oplus(0, 1/2)$, and
+Vector fields specifically, since these are the necessary ingredients
+for the Standard Model (and they are renormalizable fields).
+
+\subsection{Yang--Mills Theory}
+
+\N{Global and Local Symmetries}
+Textbooks usually begin by studying ``global symmetries'', which do not
+depend on spacetime coordinates. For example, if we have $N$ real scalar
+fields, then we may put them into a column vector, and rotate by some
+orthogonal $N\times N$ matrix. This works because the kinetic and
+potential terms of the Lagrangian involve the norm squared of these
+$N$-vectors, which are invariant under such rotations.
+
+Physicists then ``gauge'' these symmetries and make them ``local''. But
+then the kinetic terms will end up with derivatives of the rotation
+matrix. These are then ``gauged away'' by changing the differential
+operator.
+
+\N{Yang--Mills Theory}
+Another way to approach this is to start with electromagnetism, which
+involves the electromagnetic 4-potential $A_{\mu}$. Then we consider
+some Lie algebra $\mathfrak{g}$ and work with Lie algebra-valued
+4-potentials $A_{\mu}^{I}T_{I}$ where $T_{I}$ are the generators of the
+Lie algebra. We compute the field tensor:
+\begin{equation}
+F_{\mu\nu}^{I} = \partial_{\mu}A^{I}_{\nu} - \partial_{\nu}A^{I}_{\mu}
++g{f^{I}}_{JK}A^{J}_{\mu}A^{K}_{\nu}
+\end{equation}
+where we use the Lie bracket to determine the structure constants
+${f^{I}}_{JK}$ by:
+\begin{equation}
+[T_{J}, T_{K}] = \I {f^{I}}_{JK}T_{I}.
+\end{equation}
+We usually work with $\su(n)$ as our Lie algebra, since $\su(3)$
+describes the strong force, and $\su(2)\times\mathfrak{u}(1)$ describes
+the electroweak forces.
+
+\textsc{Cautionary Note}: a lot of books get confused over indices of
+the Lie algebra, and use a bizarre Euclidean summation convention for
+Lie algebra indices (but Einstein summation convention for spacetime
+indices). Weinberg carefully works through the correct summation
+conventions in his book \textit{The Quantum Theory of Fields}
+(volume II, \S15.1; see also volume I, \S2.2).
+
+\N{Problems with Massive Yang--Mills}
+If we try to add a nonzero mass to a non-Abelian Yang--Mills theory,
+then we sacrifice either renormalizability or unitarity; Delbourgo and
+friends argued this first~\cite{Delbourgo:1987np}.
+Ellwanger and Wschebor~\cite{Ellwanger:2002sj} constructed a small
+counter-example in $\su(2)$ by modifying BRST variations, working in a
+particular gauge.
+
+If we give up unitarity, we basically give up probabilities adding up to
+$100\%$. On the other hand, nonrenormalizable fields have ``runaway
+self-interactions'' which lead to infinities.
+
+It's also worth mentioning that the mass term is not gauge-invariant,
+which causes its own special Hell.
+
+\N{Confinement} For quarks in the strong force, they experience a
+phenomenon called ``confinement'' which we define as stating \emph{there
+is a force between quarks which do not decrease with distance.} See
+Esprieu~\cite{Espriu:1994br}, especially \S7. As a consequence, we will
+not be able to find an isolated quark.
+
+\N{BRST Symmetry}
+When quantizing the Standard Model (really, Yang--Mills theory) we run
+into problems. The trick is to extend the phase space, embedding it as
+the even part of a supermanifold, then we replace the gauge symmetry
+with a rigid fermionic symmetry. This is the heart of BRST quantization
+and handles technical difficulties when quantizing non-abelian Yang--Mills.
+This is how Henneaux and Teitelboim~\cite[\S18.1]{Henneaux:1992ig}
+describe the BRST procedure.

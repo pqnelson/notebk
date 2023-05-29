@@ -1,0 +1,34 @@
+\chapter{Mathematical Results}
+
+\begin{theorem}[Gaussian Integral]
+$\displaystyle\int^{\infty}_{-\infty}\E^{-x^{2}}\,\D x = \sqrt{\pi}$.
+\end{theorem}
+
+\begin{proof}
+  Let
+  \begin{equation}
+I = \int^{\infty}_{-\infty}\E^{-x^{2}}\,\D x.
+  \end{equation}
+  Then
+\begin{calculation}
+  I^{2}
+  \step{unfold}
+\int^{\infty}_{-\infty} \int^{\infty}_{-\infty}\E^{-x^{2}-y^{2}}\,\D x\,\D y
+\step{change to polar coordinates}
+\int^{\infty}_{0}\int^{2\pi}_{0}\E^{-r^{2}}r\,\D\theta\,\D r
+\step{since integrand is constant with respect to $\theta$}
+2\pi\int^{\infty}_{0}\E^{-r^{2}}r\,\D r
+\step{change coordinates with $u=r^{2}$, $\D u = 2r\,\D r$}
+\pi\int^{r=\infty}_{r=0}\E^{-u}\,\D u
+\step{simple integration}
+\left.-\pi\E^{-r^{2}}\right|^{r=\infty}_{r=0}
+\step{substitution}
+-\pi\E^{-\infty}+\pi\E^{-0} = \pi.
+\end{calculation}
+Therefore $I=\pm\sqrt{\pi}$. Since the integrand is always positive, we
+conclude $I=\sqrt{\pi}$ as desired.
+\end{proof}
+
+\begin{corollary}\label{cor:math:general-gaussian-integral-in-one-dim}
+Let $a,b\in\CC$. Then $\displaystyle\int^{\infty}_{-\infty}\E^{-a(x-b)^{2}}\,\D x = \sqrt{\frac{\pi}{a}}$
+\end{corollary}

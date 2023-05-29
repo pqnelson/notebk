@@ -1,0 +1,186 @@
+\section{Quantum Harmonic Oscillator}
+
+\N{Problem} Given the simple Harmonic oscillator's Hamiltonian
+\begin{equation}\label{eq:quantum-harmonic-oscillator:defn:hamiltonian}
+\widehat{H} = \frac{1}{2m}\left(\widehat{p}^{2} + (m\omega \widehat{x})^{2}\right),
+\end{equation}
+determine the eigenstates for the Schrodinger equation.
+
+\M The trick is to use the identity
+\begin{equation}
+a^{2} + b^{2} = (a + \I b)(a -\I b)
+\end{equation}
+to introduce the operators:
+\begin{equation}\label{eq:quantum-harmonic-oscillator:defn:ladder-operators}
+a_{\pm} := \frac{1}{\sqrt{2\hbar m\omega}}\left(m\omega \widehat{x} \mp\I\widehat{p}\right).
+\end{equation}
+We will use this to rewrite the Hamiltonian operator.
+
+\begin{lemma}\label{lemma:quantum-harmonic-oscillator:ladder-operator-hamiltonian-relation}
+We find $a_{+}a_{-} = (\widehat{H}/\hbar\omega) - 1/2$.
+\end{lemma}
+\begin{proof}[Proof (lengthy calculation)]
+  By direct computation
+  \begin{calculation}
+    a_{+}a_{-}
+\step{by Eq~\eqref{eq:quantum-harmonic-oscillator:defn:ladder-operators}}
+    \frac{1}{2\hbar m\omega}\left(m\omega \widehat{x}-\I\widehat{p}\right)\left(m\omega \widehat{x}+\I\widehat{p}\right)
+\step{distributivity}
+    \frac{1}{2\hbar m\omega}\left((m\omega \widehat{x})^{2}-\I\widehat{p}m\omega \widehat{x}+m\omega \widehat{x}\I\widehat{p}-\I^{2}\widehat{p}^{2}\right)
+\step{linearity of operators}
+    \frac{1}{2\hbar m\omega}\left((m\omega \widehat{x})^{2}-\I m\omega \widehat{p}\widehat{x}+\I m\omega \widehat{x}\widehat{p}+\widehat{p}^{2}\right)
+\step{explicitly insert a commutator}
+    \frac{1}{2\hbar m\omega}\left((m\omega \widehat{x})^{2}+\I m\omega[\widehat{x},\widehat{p}]+\widehat{p}^{2}\right)
+\step{commutator relation Eq~\eqref{eq:position-momentum-uncertainty-commutator}}
+    \frac{1}{2\hbar m\omega}\left((m\omega \widehat{x})^{2}+\I m\omega (\I\hbar)+\widehat{p}^{2}\right)
+\step{associativity of addition}
+    \frac{1}{2\hbar m\omega}\left((m\omega \widehat{x})^{2}+\widehat{p}^{2}\right)
++\frac{\I m\omega (\I\hbar)}{2\hbar m\omega}
+\step{folding the definition of the Hamiltonian Eq~\eqref{eq:quantum-harmonic-oscillator:defn:hamiltonian}}
+    \frac{1}{\hbar\omega}\widehat{H} +\frac{\I m\omega (\I\hbar)}{2\hbar m\omega}
+\step{algebra}
+    \frac{1}{\hbar\omega}\widehat{H} -\frac{1}{2}\qedhere
+  \end{calculation}
+\end{proof}
+
+\begin{lemma}\label{lemma:quantum-harmonic-oscillator:ladder-operator-hamiltonian-relation2}
+We find $a_{-}a_{+} = (\widehat{H}/\hbar\omega) + 1/2$.
+\end{lemma}
+
+\begin{proof}
+Our calculation is exactly the same, except the sign of the commutator
+$[\widehat{x},\widehat{p}]$ changes in our consideration, which is the
+source of the $1/2$ contribution.
+\end{proof}
+
+\N{Commutator of Ladder Operators}
+We have $[a_{-},a_{+}]=1$.
+
+\begin{proof}
+  We have, by our previous two lemmas,
+  \begin{equation}
+a_{-}a_{+}-a_{+}a_{-} = \left(\frac{\widehat{H}}{\hbar\omega}+\frac{1}{2}\right)-\left(\frac{\widehat{H}}{\hbar\omega}-\frac{1}{2}\right).
+  \end{equation}
+Hence the result.
+\end{proof}
+
+\N{Ladder Operators Acting on Eigenstates}
+Suppose $\psi(x)$ is an eigenfunction for the Hamiltonian operator, with
+energy eigenvalue $E$. We claim $a_{+}\psi(x)$ is an eigenfunction with
+energy eigenvalue $E+\hbar\omega$.
+
+\begin{proof} By direct computation,
+\begin{calculation}
+  \widehat{H}(a_{+}\psi(x))
+\step{using $\widehat{H} = \hbar\omega(a_{+}a_{-}+1/2)$}
+  \hbar\omega\left(a_{+}a_{-}+\frac{1}{2}\right)(a_{+}\psi(x))
+\step{move $a_{+}$ inside the parentheses using right distributivity}
+  \hbar\omega\left(a_{+}a_{-}a_{+}+\frac{1}{2}a_{+}\right)(\psi(x))
+\step{associativity}
+  \hbar\omega\left(a_{+}(a_{-}a_{+})+\frac{1}{2}a_{+}\right)(\psi(x))
+\step{using Lemma~\ref{lemma:quantum-harmonic-oscillator:ladder-operator-hamiltonian-relation2}}
+  \hbar\omega\left(a_{+}\left(\frac{\widehat{H}}{\hbar\omega}+\frac{1}{2}\right)+\frac{1}{2}a_{+}\right)(\psi(x))
+\step{algebra}
+  (a_{+}\widehat{H}+a_{+}\hbar\omega)\psi(x)
+\step{pull out a factor of $a_{+}$ using left distributivity}
+  a_{+}(\widehat{H} + \hbar\omega)\psi(x)
+\step{since $\psi$ is an energy eigenstate}
+  a_{+}(E + \hbar\omega)\psi(x)
+\step{commutativity of numbers and operators}
+  (E + \hbar\omega)(a_{+}\psi(x))
+\end{calculation}
+Hence $a_{+}\psi(x)$ is an energy eigenstate with eigenvalue $E + \hbar\omega$.
+\end{proof}
+
+\M
+Similarly, for any energy eigenstate $\psi(x)$ with eigenvalue $E$, we
+have $a_{-}\psi(x)$ is another energy eigenstate with eigenvalue
+$E-\hbar\omega$.
+
+\begin{proof} By direct computation,
+\begin{calculation}
+  \widehat{H}(a_{-}\psi(x))
+\step{using $\widehat{H} = \hbar\omega(a_{-}a_{+}-1/2)$}
+  \hbar\omega\left(a_{-}a_{+}-\frac{1}{2}\right)(a_{-}\psi(x))
+\step{move $a_{-}$ inside using right distributivity}
+  \hbar\omega\left(a_{-}a_{+}a_{-}-\frac{1}{2}a_{-}\right)(\psi(x))
+\step{associativity}
+  \hbar\omega\left(a_{-}(a_{+}a_{-})-\frac{1}{2}a_{+}\right)(\psi(x))
+\step{using Lemma~\ref{lemma:quantum-harmonic-oscillator:ladder-operator-hamiltonian-relation}}
+  \hbar\omega\left(a_{-}\left(\frac{\widehat{H}}{\hbar\omega}-\frac{1}{2}\right)-\frac{1}{2}a_{-}\right)(\psi(x))
+\step{algebra}
+  (a_{-}\widehat{H}-a_{-}\hbar\omega)\psi(x)
+\step{pull out $a_{-}$ using left distributivity}
+  a_{-}(\widehat{H} - \hbar\omega)\psi(x)
+\step{since $\psi$ is an energy eigenstate}
+  a_{-}(E - \hbar\omega)\psi(x)
+\step{commutativity of numbers and operators}
+  (E - \hbar\omega)(a_{-}\psi(x))
+\end{calculation}
+Hence $a_{-}\psi(x)$ is an energy eigenstate with eigenvalue $E - \hbar\omega$.
+\end{proof}
+
+\N{Ground State}
+We can't keep decreasing the energy eigenstate forever, there must be
+some groundstate $\psi_{0}(x)$ such that
+\begin{equation}
+a_{-}\psi_{0}(x) =0.
+\end{equation}
+Solve this differential equation for $\psi_{0}(x)$.
+
+\begin{proof}[Solution]
+We recall the definition of the ladder operator $a_{-}$ from Eq~\eqref{eq:quantum-harmonic-oscillator:defn:ladder-operators}
+\begin{equation}
+\frac{1}{\sqrt{2\hbar m\omega}}\left(m\omega \widehat{x}+\I\widehat{p}\right)\psi_{0}(x)=0.
+\end{equation}
+Doing some algebra, this becomes
+\begin{equation}
+(m\omega\widehat{x} + \I\widehat{p})\psi_{0}(x) = 0,
+\end{equation}
+which in position-space becomes
+\begin{equation}
+\left(m\omega x + \I(-\I)\hbar\frac{\partial}{\partial x}\right)\psi_{0}(x)=0.
+\end{equation}
+This becomes
+\begin{equation}
+\psi'_{0}(x) = -\frac{m\omega}{\hbar}x\psi_{0}(x).
+\end{equation}
+Divide both sides by $\psi_{0}$, then integrating with respect to $x$
+gives
+\begin{equation}
+\int\frac{\D\psi_{0}}{\psi_{0}} = -\frac{m\omega}{\hbar}\int x\,\D x.
+\end{equation}
+Hence
+\begin{equation}
+\ln(\psi_{0}(x)) = -\frac{m\omega}{\hbar}\frac{x^{2}}{2} + c_{0},
+\end{equation}
+where $c_{0}$ is some integration constant.
+Then we find
+\begin{equation}
+\psi_{0}(x) = C\exp\left(-\frac{m\omega}{\hbar}\frac{x^{2}}{2}\right).
+\end{equation}
+We can determine $C$ by demanding $\psi_{0}(x)$ be normalizable. This
+gives us
+\begin{equation}
+C^{2}\int\exp\left(-\frac{m\omega}{\hbar}x^{2}\right)\,\D x = 1.
+\end{equation}
+This is a Gaussian integral (\S\ref{cor:math:general-gaussian-integral-in-one-dim}), which means
+\begin{equation}
+C^{2}\sqrt{\frac{\pi\hbar}{m\omega}}=1\implies C=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}.
+\end{equation}
+Thus
+\begin{equation}
+\boxed{\psi_{0}(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\exp\left(-\frac{m\omega}{\hbar}\frac{x^{2}}{2}\right).}
+\end{equation}
+Up to phase factor (i.e., a factor of $\E^{\I c_{1}}$ for any
+arbitrary constant $c_{1}\in\RR$).
+\end{proof}
+
+\N{Other Eigenstates}
+We can apply the ladder operator $a_{+}$ finitely many times to get
+other eigenstates $\psi_{n}(x)\sim(a_{+})^{n}\psi_{0}(x)$. More
+precisely,
+\begin{equation}
+\psi_{n}(x) = C_{n}(a_{+})^{n}\psi_{0}(x)
+\end{equation}
+where $C_{n}$ is some normalization constant.
