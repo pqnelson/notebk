@@ -152,7 +152,7 @@ ${f^{I}}_{JK}$ by:
 [T_{J}, T_{K}] = \I {f^{I}}_{JK}T_{I}.
 \end{equation}
 We usually work with $\su(n)$ as our Lie algebra, since $\su(3)$
-describes the strong force, and $\su(2)\times\mathfrak{u}(1)$ describes
+describes the strong force, and $\su(2)\oplus\mathfrak{u}(1)$ describes
 the electroweak forces.
 
 \textsc{Cautionary Note}: a lot of books get confused over indices of
@@ -161,6 +161,47 @@ Lie algebra indices (but Einstein summation convention for spacetime
 indices). Weinberg carefully works through the correct summation
 conventions in his book \textit{The Quantum Theory of Fields}
 (volume II, \S15.1; see also volume I, \S2.2).
+
+\N{Equations of Motion}
+Recall Maxwell's equations,
+\begin{subequations}
+\begin{align}
+\partial^{i}E_{i} &= \rho\\
+\partial^{i}B_{i} &= 0\\
+-\partial_{t}E^{i} &= j^{i} -\epsilon^{ijk}\partial_{j}B_{k}\\
+\partial_{t}B^{i} &= -\epsilon^{ijk}\partial_{j}E_{k}.
+\end{align}
+\end{subequations}
+Yang--Mills equations of motion resemble this:
+\begin{subequations}
+\begin{align}
+\partial^{i}E_{i} + [A^{i},E_{i}] &= \rho\\
+\partial^{i}B_{i} + [A^{i},B_{i}] &= 0\\
+-\partial_{t}E^{i} &= j^{i} -\epsilon^{ijk}(\partial_{j}B_{k} + [B_{j},E_{k}])\\
+\partial_{t}B^{i} &= -\epsilon^{ijk}(\partial_{j}E_{k} + [A_{j},E_{k}]).
+\end{align}
+\end{subequations}
+where we have the Yang--Mills ``electric'' and ``magnetic'' fields be
+defined by (in the temporal gauge $A_{0}=0$):
+\begin{equation}
+E_{i} = -\partial_{t}A_{i}^{I}T_{I},\quad\mbox{and}\quad
+B^{i} = \epsilon^{ijk}(\partial_{j}A_{k}^{I}T_{I} - \partial_{k}A_{j}^{I}T_{I}
++ [A_{j}^{J}T_{J}, A_{k}^{K}T_{K}]).
+\end{equation}
+
+\M
+Geometrically, what's happening is we're working with connections on the
+adjoint bundle over spacetime, and physicists call the connections
+``gauge fields'' (the associated curvature is the ``field strength tensor'').
+When $G$ is our gauge group, we have the principal $G$-bundle $P\to M$
+over spacetime $M$, and the associated adjoint bundle $\mathrm{Ad}(P)\to M$
+with its fibre being isomorphic to the vector space underlying
+$\mathfrak{g}=\mathrm{Lie}(G)$ the Lie algebra of $G$.
+
+There are as many gauge bosons as there are basis vectors for $\mathfrak{g}=\mathrm{Lie}(G)$.
+
+For more on the mathematics related to the geometry needed for
+Yang--Mills theory, see Hamilton~\cite{Hamilton:2017gbn}.
 
 \N{Problems with Massive Yang--Mills}
 If we try to add a nonzero mass to a non-Abelian Yang--Mills theory,
@@ -177,17 +218,67 @@ self-interactions'' which lead to infinities.
 It's also worth mentioning that the mass term is not gauge-invariant,
 which causes its own special Hell.
 
+\N{BRST Symmetry}
+When quantizing the Standard Model (really, Yang--Mills theory) we run
+into problems: intuitively, gauge orbits describe the same physical
+state, and we want to work with the quotient of the phase space modulo
+gauge symmetries. The Faddeev--Poppov method implements this at the
+quantum level, but this is generalized by using a BRST symmetry instead
+of the usual gauge symmetry. This trick extends the phase space, embedding it as
+the even part of a supermanifold, then we replace the gauge symmetry
+with a rigid fermionic symmetry. This is the heart of BRST construction
+and handles technical difficulties when quantizing non-abelian Yang--Mills.
+This is how Henneaux and Teitelboim~\cite[\S18.1]{Henneaux:1992ig}
+describe the BRST procedure.
+
+\section{Standard Model}
+
+\M
+Despite its name, the ``Standard Model'' is neither standard nor a
+model. We can decompose it along pseudo-historical lines as consisting
+of electroweak force (with gauge group $\SU(2)\times\U(1)$)
+and strong force (with gauge group $\SU(3)$). Then the Standard Model
+is just a $\SU(3)\times\SU(2)\times\U(1)$ Yang--Mills coupled
+to Dirac spinors and a Higgs boson.
+
+\subsection{Strong Force}
+
 \N{Confinement} For quarks in the strong force, they experience a
 phenomenon called ``confinement'' which we define as stating \emph{there
 is a force between quarks which do not decrease with distance.} See
 Esprieu~\cite{Espriu:1994br}, especially \S7. As a consequence, we will
 not be able to find an isolated quark.
 
-\N{BRST Symmetry}
-When quantizing the Standard Model (really, Yang--Mills theory) we run
-into problems. The trick is to extend the phase space, embedding it as
-the even part of a supermanifold, then we replace the gauge symmetry
-with a rigid fermionic symmetry. This is the heart of BRST quantization
-and handles technical difficulties when quantizing non-abelian Yang--Mills.
-This is how Henneaux and Teitelboim~\cite[\S18.1]{Henneaux:1992ig}
-describe the BRST procedure.
+\N{Strong $\mathtt{G}_{2}$ Force}
+The idea of using $\mathtt{G}_{2}$ as the gauge group for quarks and the
+strong force was first explored in 1962 by Behrends and
+friends~\cite{Behrends:1962zz}, then rediscovered [seemingly]
+independently and explored in great detail by Holland and
+friends~\cite{Holland:2003jy}. It turns out to be very useful as a
+``test suite'' for lattice field theory
+software~\cite{Ilgenfritz:2012wg,Maas:2012ts,Pepe:2006er,Wellegehausen:2011sc}.
+There is some nuance around the deconfinement phase transition in
+$\mathtt{G}_{2}$ strong force~\cite{Pepe:2005sz,Pepe:2006er}: when at
+high temperatures, quarks become ``deconfined'' (due to asymptotic
+freedom) leading to quark--gluon plasma.
+
+For a review of the phenomenology surrounding quark--gluon plasma, see
+Pasechnik and \v{S}umbera~\cite{Pasechnik:2016wkt} who note, ``The study
+of ultra-relativistic heavy-ion collisions appears so far to be our only
+way of studying the phase transitions in non-Abelian gauge theories
+(most likely taken place in the early universe) under laboratory
+conditions.''
+
+It appears that $\mathtt{G}_{2}$ cannot explain deconfinement phase
+transition, which we witness in laboratory experiments. Bruno and
+friends~\cite{Bruno:2014rxa} have argued that confinement can be
+reproduced with $\mathtt{G}_{2}$ Yang--Mills, pointing out there is no
+adequate definition for these notions, and qualitative behaviour can be
+captured. (Bruno and friends also thoroughly review the literature of
+numerical and analytical studies of $\mathtt{G}_{2}$ Yang--Mills theory.)
+
+\begin{remark}[$\mathtt{G}_{2}$ and Octonions]
+For more about $\mathtt{G}_{2}$ as the automorphism group for the Octonions $\mathtt{G}_{2}\iso\aut(\OO)$, see
+\S4.1 in Baez~\cite{Baez:2001dm}.
+\end{remark}
+
