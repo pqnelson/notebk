@@ -49,6 +49,95 @@ Schroeder (chapter 4, section 2; see esp.\ Eq~(4.27)).
 We expand the LSZ formula perturbatively, and organize the terms using
 Feynman diagrams describing different interactions.
 
+\N{References, Recommended Reading}
+Thus far, a lot has to be discussed and derived. Folland~\cite{Folland:2008zz}
+spends the bulk of his book discussing carefully ``what physicists mean''
+when they're setting equations for scattering, LSZ reduction, and so on.
+The tradeoff for this precision and care is, well, a lack of scope.
+
+Hatfield~\cite{Hatfield:1992rz} expedites the discussion to several
+chapters, showing the calculations which physicists typically abbreviate
+and sweep under the rug. If you wish to imagine what a physicist would
+say when administered truth syrum, Hatfield is your book.
+
+Ticciati~\cite{Ticciati:1999qp}, like Folland, takes greater care in
+discussion of the calculations involved. Unlike Folland, Ticciati
+discusses gauge symmetry in greater detail. The first five (or ten)
+chapters are dedicated to the framework used to setup Feynman diagrams
+and perturbative calculations. The next seven chapters are dedicated to
+the Standard Model and quantizing gauge systems. The last four chapters
+discuss renormalization.
+
+\section{Symmetries}
+
+\M
+Symmetries play an important role in quantum field theory. Arguably,
+quantum field theory amounts to studying representations of Lie groups
+and Lie algebras.
+
+Broadly speaking, physicists divide symmetries into two classes:
+spacetime symmetries and internal symmetries.
+
+\N{Spacetime Symmetries}
+We expect observable quantities to be relativistic, i.e., invariant
+under Lorentz boosts, rotations, spatial translations, and time
+translations [relabeling time, not ``time travel'']. That is to say,
+physics should be invariant under the Poincar\'e group.
+
+\M
+Physicsts define an ``elementary particle'' to be an irreducible
+representation of the Poincar\'e group. So there's some importance here.
+
+\N{Internal Symmetries}
+The other symmetries physicists consider: transform fields among
+themselves. These come in two flavours: global/rigid symmetries, and
+local/gauge symmetries. A rigid symmetry does not depend on spacetime,
+for example, if $\varphi(x)$ is a complex scalar field, then
+\begin{equation}
+\varphi(x)\to\E^{\I\alpha}\varphi(x),\quad\mbox{and}\quad
+\varphi^{*}(x)\to\E^{-\I\alpha}\varphi^{*}(x)
+\end{equation}
+for some fixed constant $\alpha\in\RR$. Since $\alpha$ is a constant,
+this is a rigid symmetry.
+
+\M
+When we have $\alpha$ be a real-valued function, then we have a gauge
+symmetry. This usually involved modifying the notion of a derivative to
+use a gauge covariant derivative, to kill off derivatives of $\alpha$
+which occur in the kinetic term when substituting the transformed fields
+back into the Lagrangian.
+
+These $\alpha$ are then generalized to coefficients to Lie algebra
+generators, particles are identified with weight vectors, quantum
+numbers are identified with weights, and so on. Slansky~\cite{Slansky:1981yr}
+is a fun read, as well as Baez and Huerta~\cite{Baez:2009dj}.
+
+\M
+Mathematicians curious about dabbling in quantum field theory are
+usually interested in the internal symmetries of fields. 
+
+\textsc{Caution:} Physicists are extraordinarily sloppy in their
+language and confuse ``Lie groups'' with ``Lie algebras''. Almost none
+of them know what they're talking about, so be careful.
+
+\N{``Emergent'' symmetries}
+At low energies, a quantum field is governed by the values of a
+relatively small number of ``relevant'' or ``marginal'' couplings. These
+correspond to relevant and marginal operators that (typically) involve
+only a small number of powers of the fields (or their derivatives). It's
+often the case these few relevant and marginal operators are invariant
+under a wider range of field transformations (rather than the generic,
+irrelevant operator would be). The effects of irrelevant operators are
+strongly suppressed at low energies, making it appear as though the
+theory has a larger symmetry group.\footnote{I learned this from David
+Skinner's lecture notes on advanced quantum field theory; see, e.g.,
+\url{http://www.damtp.cam.ac.uk/user/dbs26/AQFT/chap6.pdf}}
+
+This then connects a notion of ``emergent symmetry'' to the
+renormalization group flow and in particular ``low energy effective
+field theory''. I have not seen this discussed in many places, but it's
+worth noting.
+
 \section{Particles and Fields}
 
 \N{Deriving the Scalar Field}
@@ -203,6 +292,17 @@ There are as many gauge bosons as there are basis vectors for $\mathfrak{g}=\mat
 For more on the mathematics related to the geometry needed for
 Yang--Mills theory, see Hamilton~\cite{Hamilton:2017gbn}.
 
+\N{``Charge''}
+We can talk meaningfully about the analogous quantities to ``electric
+charge'' in Yang--Mills theory. When the gauge group $G$ is non-Abelian
+and $\mathrm{Lie}(G)$ is semisimple,
+the charge is quantized (i.e., not continuous).\footnote{Weinberg
+mentions this in passing in his book on quantum field theory.}
+
+Physicists call the ``charge'' different terms for different gauge
+groups. Within QCD, they are called ``color''; for the weak force, they
+are ``flavors''.
+
 \N{Problems with Massive Yang--Mills}
 If we try to add a nonzero mass to a non-Abelian Yang--Mills theory,
 then we sacrifice either renormalizability or unitarity; Delbourgo and
@@ -228,7 +328,7 @@ of the usual gauge symmetry. This trick extends the phase space, embedding it as
 the even part of a supermanifold, then we replace the gauge symmetry
 with a rigid fermionic symmetry. This is the heart of BRST construction
 and handles technical difficulties when quantizing non-abelian Yang--Mills.
-This is how Henneaux and Teitelboim~\cite[\S18.1]{Henneaux:1992ig}
+This is how Henneaux and Teitelboim~\cite[\S8.1]{Henneaux:1992ig}
 describe the BRST procedure.
 
 \section{Standard Model}
@@ -243,11 +343,44 @@ to Dirac spinors and a Higgs boson.
 
 \subsection{Strong Force}
 
+
+\M
+Perturbative QCD studies high energy interactions, because the coupling
+$\alpha_{s}$ is quite small (which allows for perturbative calculations).
+This is what would be found in, e.g., Peskin and Schroeder.
+
+Then there is low energy QCD, which is studied using nonperturbative
+methods (like lattice field theory).
+
+The difficulty is in connecting these two domains together.
+
 \N{Confinement} For quarks in the strong force, they experience a
 phenomenon called ``confinement'' which we define as stating \emph{there
 is a force between quarks which do not decrease with distance.} See
 Esprieu~\cite{Espriu:1994br}, especially \S7. As a consequence, we will
 not be able to find an isolated quark.
+
+\N{Open problem: analytical description of confinement}
+We lack an adequate analytical definition or criteria for ``confinement''.
+This is a major open problem. One of the earliest criteria was Wilson~\cite{Wilson:1974sk}
+and his so-called ``area law''\index{Area Law} for the Wilson loop along a
+rectangle with edges $R_{1}$ and $R_{2}$, we expect:
+\begin{equation}
+\ln\langle W(R_{1}, R_{2})\rangle\sim R_{1}R_{2}.
+\end{equation}
+When this is true, the field theory is believed to enjoy confinement.
+
+\begin{remark}[Folklore]
+We have some results, e.g., 't Hooft~\cite{tHooft:1977nqb} proved that
+mass gap plus unbroken center symmetry implies confinement.
+``Unbroken center symmetry'' is not a rigorously defined notion.
+Chatterjee~\cite{Chatterjee:2020nrl} attempted to make this rigorous.
+
+Consequently, it is viewed that if the gauge group has a trivial center,
+then confinement is impossible. I'm not so convinced by this, because 't
+Hooft gives \emph{one possible route} to confinement, but this is not a
+proof that it is \emph{the only possible route}.
+\end{remark}
 
 \N{Strong $\mathtt{G}_{2}$ Force}
 The idea of using $\mathtt{G}_{2}$ as the gauge group for quarks and the
@@ -282,3 +415,39 @@ For more about $\mathtt{G}_{2}$ as the automorphism group for the Octonions $\ma
 \S4.1 in Baez~\cite{Baez:2001dm}.
 \end{remark}
 
+\subsection{As an Effective Field Theory}
+
+\M
+We can treat the Standard Model as a low energy approximation to some
+``real'' field. This is handled using the toolkit of ``effective field
+theory''.
+For a review of this (particularly applied to the Standard Model), see
+Brivio and Trott~\cite{Brivio:2017vri}.
+
+\N{TODO List}
+Stuff I should write about:
+\begin{enumerate}
+\item Lattice QCD~\cite{Lepage:1998dt}
+\item Elitzur's theorem~\cite{Elitzur:1975im}
+\item The Fradkin--Shenker--Osterwalder--Seiler (FSOS) Theorem
+\item Fr\"{o}lich--Morchio--Strocchi mechanism
+\item Kinoshita--Lee--Nauenberg (KLN) theorem
+\item Factorization theorems (for hadron collider processes) \arXiv{hep-ph/0409313}
+\item Block--Nordsieck theorem in QED: Infrared (\textbf{soft}) divergences
+  cancel out after summation over all degenerate \textbf{final} states
+  compatible with experimental detection.
+\item Coleman--Norton theorem
+\item Multiplets are irreducible representations (or subrepresentations)
+  for a Lie algebra/group.
+\end{enumerate}
+
+% Zeidler, \textit{Quantum Field Theory III}, \S3.14.3 discusses highest
+% weight vectors and elementary particle physics.
+
+% https://www2.pd.infn.it/ecfa/6_p_loopv_d_comelli.PDF
+
+% Greiner's "Quantum Mechanics: Symmetries" appears to be quite good
+
+% https://arxiv.org/abs/2212.08470
+
+% Segal's notes on QFT http://web.archive.org/web/20000901075112/http://www.cgtp.duke.edu/ITP99/segal/
