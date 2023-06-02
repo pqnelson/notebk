@@ -1,0 +1,54 @@
+\documentclass{amsart}% article}
+
+\usepackage[en-US,useregional=text]{datetime2}
+\DTMlangsetup[en-US]{mapzone=true,zone=pacific}
+\usepackage{macros}
+
+\def\D{\mathrm{d}}
+
+\title{Physics Exercises}
+\def\homeurl{\url{https://pqnelson.github.io/notebk/}}
+\author{Alex Nelson}
+%\thanks{This is a page from \homeurl{}\hfil\break\indent\hspace{0.8em}Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}
+\thanks{This is a page from \homeurl{}\hfil\break\indent{}Compiled:\enspace\today\ at \DTMcurrenttime\ (\DTMcurrentzone)}
+\date{May 25, 2023} %9:11:13 am (PDT)
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+These are assorted exercises I've been thinking about. They should be
+solvable, and related to further exercises. For the most part, the
+inspiration for the exercises stem from particle physics, quantum
+gravity, and climate science.
+
+I've been thinking about Wheeler's geometrodynamics, which led to
+wondering if quantum field theory ``recycles'' familiar physics
+terminology (``mass'', ``spin'', etc.) in a way which is completely
+disconnected from their intuitive meanings. This also led to me the
+paper by Anderson and Brill~\cite{Anderson:1996pu} about geons, from
+which I am certain exercises may be extracted.
+
+Exercises are numbered sequentially. I may include remarks about an
+exercise, each remark is ``subnumbered'' --- for example they look like
+$\langle x\rangle.\langle r\rangle$ for remark number $r$ on exercise
+numbered $x$.
+
+\include{tex/classical-scattering}
+
+\section{General Relativity}
+
+\begin{exercise}
+Write an exercise about experimentally measuring the torsion of a
+connection on spacetime.
+\end{exercise}
+
+\subsection{Regge Calculus}
+
+\input{tex/disphenoid-preliminaries}
+
+\include{tex/bib}
+
+\end{document}

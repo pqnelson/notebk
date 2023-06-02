@@ -1,0 +1,26 @@
+\usepackage{microtype}
+\usepackage{amsmath,amsthm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[pdfusetitle]{hyperref}
+
+\hypersetup{colorlinks=true,
+  linkcolor=BrickRed,
+  citecolor=BrickRed,
+  filecolor=BrickRed,
+  urlcolor=BrickRed,
+  runcolor=BrickRed
+%  \ifpdf\else dvipdfmx\fi
+}
+\usepackage{doi}
+
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[exercise]
+
+
+\newcommand\arXiv[1]{\texttt{\href{https://arxiv.org/abs/#1}{arXiv:#1}}}
+\newcommand\journal\textit
+\newcommand\volume\textbf
