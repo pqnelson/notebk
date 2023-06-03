@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{notation}[2022/11/14 Semantic macros for notational choices]
+\RequirePackage{amsopn}
+
+\newcommand\huh{\hbox{\normalfont\bfseries???}}
+\renewcommand\hom{\operatorname{Hom}}
+
+
+%% Set Theory
+% Some favorite sets
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\HH{\mathbb{H}}
+\def\NN{\mathbb{N}}
+\def\OO{\mathbb{O}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+
+% projective spaces
+\def\RP{\RR\mathbb{P}}
+
+% Knuth, TeXbook, before exercise 18.21, argues that we should use the
+% following conventions for sets:
+% (1) if it's a list of elements {1,2,3}, then just write $\{1,2,3\}$
+% (2) set-builder notation should have a thinspace separating the braces
+%     from the formula: $\{\,f(x)\mid P[x]\,\}$.
+
+
+
+% Subset and Proper Subset symbols should be analogous to the \leq and "less than"
+\let\og@subset\subset
+\let\properSubset\subset
+\let\subset\subseteq
+% Ditto for superset and Proper Superset
+\let\og@supset\supset
+\let\properSupset\supset
+\let\supset\supseteq
+
+
+\DeclareMathOperator\aut{Aut}
+\DeclareMathOperator\id{id}
+\newcommand\powerset{\mathcal{P}}
+
+
+\let\into\hookrightarrow
+\let\onto\twoheadrightarrow
+\let\iso\cong
+
+%% group theory
+\def\dihedral#1{D_{#1}}
+\DeclareMathOperator\Mat{Mat}
+\def\properNormalSubgroup{\trianglelefteq}
+\def\normalSubgroup{\mathrel{\lhd}}
+%% Lie Groups
+\DeclareMathOperator\GL{GL}
+\DeclareMathOperator\SL{SL}
+\DeclareMathOperator\SU{SU}
+\DeclareMathOperator\SO{SO}
+\DeclareMathOperator\U{U}
+\def\ISO{\mathrm{ISO}}
+\def\O{\mathrm{O}}
+%% Lie Algebra
+\def\sl{\mathfrak{sl}}
+\def\su{\mathfrak{su}}
+\def\so{\mathfrak{so}}
+\DeclareMathOperator\Lie{Lie}
+
+% Clifford algebras
+\def\Cl{\mathrm{C}\ell}
+\def\CCl{\CC\ell}
+\DeclareMathOperator\Pin{Pin}
+\DeclareMathOperator\Spin{Spin}
+\DeclareMathOperator\spin{\mathfrak{spin}}
+
+%% Linear Algebra
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\UP}[2]{\makebox[0pt]{\smash{\raisebox{1.5em}{$\phantom{#2}#1$}}}#2}
+\newcommand{\LF}[1]{\makebox[0pt]{$#1$\hspace{4.5em}}}
+
+
+% bold symbols for vectors
+\let\old@vec\vec
+\let\vec\boldsymbol
+
+
+%% calculus
+%
+% Remember, Knuth argues in "TeXbook" before exercise 18.11 that we
+% should write $\D f = f'(x)\,\D x$ the differentials with a thinspace
+% before them.
+%
+\def\D{\mathrm{d}} % differentials
+\def\E{\mathrm{e}} % \approx 2.71828...
+\def\I{\mathrm{i}} % = \sqrt{-1}
+
+%% Differential Geometry related
+%
+% \T M is the tangent bundle for M
+% \T*M is the cotangent bundle for M
+% \T_{\vec{p}}M is the tangent space at $\vec{p}\in M$ of $M$
+% \T*_{\vec{p}}M is the cotangent space at $\vec{p}\in M$ of $M$
+% This may be a horrible idea...
+\newcommand\T{\@ifstar{\mathrm{T}^{*}}{\mathrm{T}}} % (co)Tangent space
+\DeclareMathOperator{\Vect}{Vect} % Vector fields on a manifold
+\newcommand\chart[1]{\mathbf{#1}}
+\newcommand\Gauss{G}
+\newcommand\atlas[1]{\mathcal{#1}}
+\DeclareMathOperator{\Grassmann}{Gr}
+
+% Exterior algebra
+\newcommand{\Exterior}{\mathchoice{{\textstyle\bigwedge}}%
+    {{\bigwedge}}%
+    {{\textstyle\wedge}}%
+    {{\scriptstyle\wedge}}}
+
+
+
+\endinput
+

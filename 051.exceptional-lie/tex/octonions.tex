@@ -1,0 +1,82 @@
+\chapter{Octonions}
+
+\section{Cayley--Dickson Construction}
+
+\N{Complex Numbers}
+We start with $\RR$. We adjoin to it a number $\I$, and define $\CC$ as
+consisting of pairs of real numbers $x$, $y\in\RR$ written as $x + \I y$.
+Multiplication works by
+\begin{equation}
+(a + \I b)(c + \I d) = (ac + \lambda d\bar{b}) + \I(\bar{a}d + cb) 
+\end{equation}
+where $\lambda\in\{-1,+1\}$ is a constant such that
+\begin{equation}
+\I^{2} = \lambda,
+\end{equation}
+and for real numbers $\bar{x}=x$. We have $\overline{x + \I y} = x - \I y$
+for complex numbers.
+
+\N{Quaternions}
+Now we have $\CC$, we can iterate this construction. We adjoint a new
+number $j$ and define $\HH$ as a pair of complex numbers $x$, $y\in\CC$
+written as $x + jy$. We define conjugation by
+\begin{equation}
+\overline{x + jy} = \overline{x} - jy,
+\end{equation}
+and multiplication by
+\begin{equation}
+(a + j b)(c + j d) = (ac + \lambda d\bar{b}) + j(\bar{a}d + cb) 
+\end{equation}
+where $\lambda\in\{-1,+1\}$ is a constant such that
+\begin{equation}
+j^{2} = \lambda.
+\end{equation}
+When $\lambda=+1$, these are the split quaternions; when $\lambda=-1$,
+these are the usual quaternions $\HH$.
+
+Really? Let us see:
+\begin{calculation}
+  (a + jb)(c + jd)
+\step{distributivity}
+a(c + jd) + jb(c + jd)
+\step{writing complex numbers out explicitly}
+(a_{1} + \I a_{2})(c_{1} + \I c_{2} + jd_{1} + kd_{2})
++ (jb_{1} + kb_{2})(c_{1} + \I c_{2} + jd_{1} + kd_{2})
+\step{distributivity}
+(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + (a_{1} + \I a_{2})j(d_{1} +\I d_{2})
++ j(b_{1} + \I b_{2})(c_{1} + \I c_{2}) + j(b_{1} + \I b_{2})j(d_{1} +\I d_{2})
+\step{since $\I j=-j\I$}
+(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + (a_{1} + \I a_{2})j(d_{1} +\I d_{2})
++ j(b_{1} + \I b_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})
+\step{collecting factors of $j$}
+[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
++ (a_{1} + \I a_{2})j(d_{1} +\I d_{2})
++ j(b_{1} + \I b_{2})(c_{1} + \I c_{2})
+\step{since $\I j=-j\I$}
+[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
++ j (a_{1} - \I a_{2})(d_{1} +\I d_{2})
++ j(b_{1} + \I b_{2})(c_{1} + \I c_{2})
+\step{collecting factors of $j$}
+[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
++ j [(a_{1} - \I a_{2})(d_{1} +\I d_{2}) + (b_{1} + \I b_{2})(c_{1} + \I c_{2})]
+\step{rewriting these guys with complex numbers}
+[ac + \lambda\bar{b}d] + j[\bar{a}d + bc].
+\end{calculation}
+
+\N{Octonions}
+We iterate our construction, using a pair of quaternions $a$, $b\in\HH$
+to write an octonion as a pair $(a, b)$. Then multiplication of
+octonions is defined as:
+\begin{equation}
+(a, b)(c,  d) =(ac - d\bar{b}, \bar{a}d+cb).
+\end{equation}
+We may define the conjugate of an octonion as
+\begin{equation}
+\overline{(a,b)} = (\overline{a}, -b).
+\end{equation}
+This is equivalent to writing
+\begin{equation}
+(a, b) = a + \ell b,
+\end{equation}
+where $\ell$ is the new ``number'' adjoined to the quaternions to obtain
+the octonions $\OO$.

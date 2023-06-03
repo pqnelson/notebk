@@ -1,0 +1,101 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chunk}[2022/11/14 Numbered paragraphs]
+\newif\if@include@theorems
+\newcounter{chunk}
+\DeclareOption{chapter}{\counterwithin{chunk}{chapter}}
+\DeclareOption{section}{\counterwithin{chunk}{section}}
+\DeclareOption{subsection}{\counterwithin{chunk}{subsection}}
+\DeclareOption{theorem}{\@include@theoremstrue}
+\ProcessOptions
+
+% cwebmac.tex has \interchunkskip=12pt minus 3pt
+% latex.ltx and plain.tex has \medskipamount=6pt plus 2pt minus 2pt
+\newskip\interchunkskip \interchunkskip=\medskipamount%
+\def\chunksep{\quad}
+
+\@ifundefined{@addpunct}{
+  \def\@addpunct#1{\ifnum\spacefactor>\@m \else#1\fi}
+  }{}
+
+\newcommand\chunkskip{\vskip\interchunkskip}
+
+\def\chunkbreak{\par\ifdim\lastskip<\interchunkskip
+  \removelastskip\penalty-100\chunkskip\fi}
+
+\newcommand\M{\chunkbreak\noindent%
+  \refstepcounter{chunk}%
+  \textbf{\thechunk\@addpunct{.}}\chunksep\ignorespaces}
+
+% deprecated macro:
+% \newcommand\N[1]{\M\textbf{#1\@addpunct{.}}\chunksep\ignorespaces}
+
+% superior implementation:
+% permits writing \N*{Un-numbered chunk} for a chunk
+% without a numeric label!
+\def\N{\@ifstar
+        \NStar%
+        \NNoStar%
+}
+\def\NStar#1{\chunkbreak\noindent\textbf{#1\@addpunct{.}\chunksep}\ignorespaces}
+\def\NNoStar#1{\M\textbf{#1\@addpunct{.}\chunksep}\ignorespaces}
+
+
+% If we want to write theorems which are formatted with similar spacing
+% as the chunks, we provide analogous styles as amsthm.
+\if@include@theorems
+\RequirePackage{amsthm}
+
+% In article documentclass, \topsep=8.0pt plus 2.0pt minus 4.0pt
+% \abovedisplayskip=12pt plus 3pt minus 9pt
+% \abovedisplayshortskip=0pt plus 3pt
+% \belowdisplayskip=12pt plus 3pt minus 9pt
+% \belowdisplayshortskip=7pt plus 3pt minus 4pt
+% \bigskipamount   = 12pt plus 4pt minus 4pt
+% \medskipamount   =  6pt plus 2pt minus 2pt
+% \smallskipamount =  3pt plus 1pt minus 1pt
+
+% In amsart,
+% \topsep=0pt
+% \abovedisplayskip=\belowdisplayskip=4.2pt plus 4.2pt
+% \abovedisplayshortskip=0 plus 4.2pt
+% \bigskipamount=8.4pt plus 8.4pt % = 0.7\baselineskip plus 0.7\baselineskip
+% \medskipamount=4.2pt plus 4.2pt % = 0.5\bigskipamount
+% \smallskipamount=2.1pt plus 2.1pt % = 0.5\medskipamount
+\newlength\thmskip \setlength{\thmskip}{\interchunkskip}
+\newlength\defnskip \setlength{\defnskip}{\interchunkskip}
+\newlength\rmkskip
+\setlength{\rmkskip}{4.2pt plus 2pt minus 2pt} %\smallskipamount}
+
+\newtheoremstyle{thmstyle}
+  {\thmskip}   % ABOVESPACE
+  {\thmskip}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\chunksep}\thmname{#1}\thmnote{\chunksep\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{defnstyle}
+  {\defnskip}   % ABOVESPACE
+  {\defnskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\chunksep}\thmname{#1}\thmnote{\chunksep\textrm{\normalfont(#3)}}}          % CUSTOM-HEAD-SPEC
+
+\newcommand\rmkheadfont{\itshape}
+\newtheoremstyle{rmkstyle}
+  {\rmkskip}   % ABOVESPACE
+  {\rmkskip}   % BELOWSPACE
+  {}          % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\rmkheadfont} % HEADFONT
+  {.}         % HEADPUNCT
+  {0.5em plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2\@addpunct{.}\chunksep}\thmname{#1}\thmnote{\chunksep\textrm{\normalfont(#3)}}}
+
+\fi
+
+\endinput

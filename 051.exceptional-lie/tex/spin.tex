@@ -1,0 +1,372 @@
+\chapter{Spin Groups and their Representations}
+
+\section{The $\spin$ Representation}
+
+\M
+We consider the Clifford algebra $\Cl(\RR^{n})$ which has $n$ generators
+$e_{1}$, \dots, $e_{n}$ which satisfy the usual relations
+\begin{equation}\label{eq:spin:clifford-anticommutator}
+\{e_{i}, e_{j}\} = e_{i}e_{j} + e_{j}e_{i} = -2\delta_{ij} = \eta_{ij}.
+\end{equation}
+If we wanted, we could replace the right-hand side by some nondegenerate
+$n\times n$ matrix $\eta_{ij}$, but we will not need it for our purposes.
+These generators $e_{i}$ generalize the Dirac gamma matrices. Then we
+can consider the Lie algebra $\spin(n)$ spanned by $e_{i}e_{j}$ for
+$i\neq j$.
+
+\begin{lemma}\label{lemma:spin:clifford-algebra:commutator-of-one-and-two}
+We have the commutator of generators for the Clifford algebra satisfy
+$$[e_{\alpha}, e_{\beta}e_{\gamma}]=e_{\gamma}\eta_{\beta\alpha}-e_{\beta}\eta_{\alpha\gamma}.$$
+\end{lemma}
+
+\begin{proof}
+By direct calculation,
+\begin{calculation}
+[e_{\alpha}, e_{\beta}e_{\gamma}]
+\step{definition of commutator}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}e_{\gamma}e_{\alpha}
+\step{associativity}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}(e_{\gamma}e_{\alpha})
+\step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}(\eta_{\alpha\gamma}-e_{\alpha}e_{\gamma})
+\step{distributivity}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+e_{\beta}e_{\alpha}e_{\gamma}
+\step{associativity}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+(e_{\beta}e_{\alpha})e_{\gamma}
+\step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+(\eta_{\beta\alpha}-e_{\alpha}e_{\beta})e_{\gamma}
+\step{distributivity}
+e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+\eta_{\beta\alpha}e_{\gamma}-e_{\alpha}e_{\beta}e_{\gamma}
+\step{subtraction}
+- e_{\beta}\eta_{\alpha\gamma}+\eta_{\beta\alpha}e_{\gamma}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{lemma}
+The commutator obeys the product rule $[A,BC]=[A,B]C+B[A,C]$
+and $[AB,C]=A[B,C] + [A,C]B$.
+\end{lemma}
+
+\begin{proposition}
+We have the commutator of generators for the Clifford algebra satisfy
+$$[e_{\alpha}e_{\beta}, e_{\gamma}e_{\delta}]=\bigl(\eta_{\beta\delta}\eta_{\gamma\alpha}-\eta_{\beta\gamma}\eta_{\alpha\delta}\bigr)
++\bigl(e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
+-e_{\beta}e_{\delta}\eta_{\gamma\alpha}
++e_{\beta}e_{\gamma}\eta_{\alpha\delta}\bigr).$$
+\end{proposition}
+
+\begin{proof}
+By direct calculation,
+\begin{calculation}
+[e_{\alpha}e_{\beta}, e_{\gamma}e_{\delta}]
+\step{using the product rule for commutator}
+e_{\alpha}[e_{\beta}, e_{\gamma}e_{\delta}] + [e_{\alpha}, e_{\gamma}e_{\delta}]e_{\beta}
+\step{using Lemma~\ref{lemma:spin:clifford-algebra:commutator-of-one-and-two}}
+e_{\alpha}[e_{\beta}, e_{\gamma}e_{\delta}]
++ \bigl(e_{\delta}\eta_{\gamma\alpha}-e_{\gamma}\eta_{\alpha\delta}\bigr)e_{\beta}
+\step{using Lemma~\ref{lemma:spin:clifford-algebra:commutator-of-one-and-two}}
+e_{\alpha}\bigl(e_{\delta}\eta_{\gamma\beta}-e_{\gamma}\eta_{\beta\delta}\bigr)
++ \bigl(e_{\delta}\eta_{\gamma\alpha}-e_{\gamma}\eta_{\alpha\delta}\bigr)e_{\beta}
+\step{distributivity}
+e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
++ e_{\delta}e_{\beta}\eta_{\gamma\alpha}-e_{\gamma}e_{\beta}\eta_{\alpha\delta}
+\step{associativity}
+e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
++ (e_{\delta}e_{\beta})\eta_{\gamma\alpha}-(e_{\gamma}e_{\beta})\eta_{\alpha\delta}
+\step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
+e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
++ (\eta_{\beta\delta}-e_{\beta}e_{\delta})\eta_{\gamma\alpha}-(e_{\gamma}e_{\beta})\eta_{\alpha\delta}
+\step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
+e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
++ (\eta_{\beta\delta}-e_{\beta}e_{\delta})\eta_{\gamma\alpha}
+-(\eta_{\beta\gamma}-e_{\beta}e_{\gamma})\eta_{\alpha\delta}
+\step{distributivity}
+e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
++ \eta_{\beta\delta}\eta_{\gamma\alpha}-e_{\beta}e_{\delta}\eta_{\gamma\alpha}
+-\eta_{\beta\gamma}\eta_{\alpha\delta}+e_{\beta}e_{\gamma}\eta_{\alpha\delta}
+\step{collecting terms}
+\bigl(\eta_{\beta\delta}\eta_{\gamma\alpha}-\eta_{\beta\gamma}\eta_{\alpha\delta}\bigr)
++\bigl(e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
+-e_{\beta}e_{\delta}\eta_{\gamma\alpha}
++e_{\beta}e_{\gamma}\eta_{\alpha\delta}\bigr).\qedhere
+\end{calculation}
+\end{proof}
+
+\M
+What we tend to do is consider
+\begin{equation}
+e_{\alpha\beta} = \frac{1}{2}(e_{\alpha}e_{\beta} - e_{\beta}e_{\alpha}).
+\end{equation}
+It is not hard to find
+\begin{equation}
+\begin{split}
+e_{\alpha\beta} &= \frac{1}{2}(e_{\alpha}e_{\beta} + e_{\alpha}e_{\beta} - \eta_{\alpha\beta})\\
+&= e_{\alpha}e_{\beta} - \frac{1}{2}\eta_{\alpha\beta}.
+\end{split}
+\end{equation}
+Why do this?
+
+Well, consider the representation of $\so(n)$ using 2-forms, writing
+\begin{equation}
+\rho(a) = a_{\mu\nu}\D x^{\mu}\wedge\D x^{\nu},
+\end{equation}
+using summation convention (repeated indices, with one downstairs
+[subscript] and another upstairs [superscript], are summed over). Then
+$a_{\mu\nu}$ is antisymmetric, which means it belongs to $\so(n)$. Thus
+$\rho\colon\so(n)\to\Exterior^{2}\CC^{n}$ is a faithful representation.
+
+But we're not done: identify $\D x^{\mu}\wedge\D x^{\nu}$ with
+$e_{\mu\nu}$, and we obtain the $\spin(n)$ representation for $\so(n)$.
+To be clear, we have a mapping
+\begin{equation}
+a_{\mu\nu}\D x^{\mu}\wedge\D x^{\nu}\mapsto\sum_{\mu,\nu}a_{\mu\nu}e_{\mu\nu}.
+\end{equation}
+This produces the spin representation
+\begin{equation}
+\rho(a) = \sum_{\mu,\nu}a_{\mu\nu}e_{\mu\nu}.
+\end{equation}
+It turns out to be quite useful.
+
+\section{Spin Group}
+
+\begin{definition}
+Let $V$ be a finite-dimensional vector space over $\RR$ or $\CC$.
+The \define{Pin Group} $\Pin(V)$ consists of elements of $\Cl(V)$
+with unit norm, multiplication induced from $\Cl(V)$.
+\end{definition}
+
+\M
+The inverse of $c\, e_{1}(\cdots)e_{k}\in\Pin(V)$ (for some nonzero $c\in\FF$)
+is $(-1)^{k}c^{-1}e_{k}(\cdots)e_{2}e_{1}$ when we have $e_{i}^{2}=-1$
+for each $i=1$, \dots, $n$.
+
+Why would we have a coefficient $c\neq\pm1$ at all? Well, if we
+consider, e.g.,
+\begin{equation}
+\begin{pmatrix}
+v_{1}\\ v_{2}
+\end{pmatrix} = \begin{pmatrix}\cos(\theta) & -\sin(\theta)\\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}
+\begin{pmatrix}
+e_{1}\\ e_{2}
+\end{pmatrix},
+\end{equation}
+then $v_{1}$ is length 1 and inverible. But it is the sum of two
+generators with nontrivial coefficients (for $\theta\notin\pi\QQ$, for
+example). This is an example of a random element which is a pinor
+(element of $\Pin(V)$).
+
+\begin{remark}
+Adams~\cite{adams1996:ex} gives an equivalent construction of the Pin
+group, but is rather confusing: he uses $\beta$ to reverse the order of
+multiplication, for example, instead of using the transpose of the
+representation. Adams's $\alpha$ simply maps $e_{i}\mapsto-e_{i}$ on the
+canonical generators for $\Cl(V)$. His
+$\gamma=\alpha\circ\beta=\beta\circ\alpha$ called \define{Conjugation}
+by DJH Garlin~\cite[pg.94]{Garling:2011zz}. Observe that $\alpha$ acts
+trivially on even guys, and only on odd guys will something nontrivial
+happen. 
+\end{remark}
+
+\begin{remark}
+Adams defines $\Pin(V)$ as those $x\in\Cl(V)$ such that:
+\begin{enumerate}
+\item $x(\gamma(x))=(\gamma(x))x=1$, i.e., its conjugate is its inverse; and
+\item the map $\pi_{x}\colon V\subset\Cl(V)\to\Cl(V)$ defined by $\pi_{x}(v)=xv(\beta(x))$
+is injective.
+\end{enumerate}
+Then he proves $\pi$ is a 2-to-1 morphism of $\Pin(V)\onto\O(V)$. The
+preimage of $\SO(V)$ is then defined as $\Spin(V)$.
+
+This coincides with what Garlin~\cite[ch.8]{Garling:2011zz} does, since
+$x^{-1}=\gamma(x)$ and so Garlin's approach [rewritten to use Adams's
+  notation] using $v\mapsto x v \alpha(x^{-1})$, and direct calculation
+shows
+\begin{calculation}
+  x v \alpha(x^{-1})
+\step{since $x^{-1} = \gamma(x)$ by Adams's first criterion}
+  x v ((\alpha\circ\gamma)(x))
+\step{since $\gamma=\alpha\circ\beta$}
+x v ((\alpha\circ\alpha\circ\beta)(x))
+\step{since $\alpha\circ\alpha=\id$}
+xv(\beta(x)).
+\end{calculation}
+But Garlin is slightly more general.
+\end{remark}
+
+\N{Lie Algebra of $\Pin(V)$}
+For $V\iso\FF^{n}$ (here $\FF$ being $\RR$ or $\CC$), $\Pin(V)$ has an
+associated Lie algebra spanned by $e_{i}e_{j}\in\Cl(V)$ for $i<j$, and
+whose Lie bracket is the commutator.
+
+\M We can then consider the subgroup of $\Pin(V)$ consisting of an even
+number of generators multiplied together. This is precisely the Spinor
+group $\Spin(V)$.
+
+Observe, this works out nicely, since the exponentiation of the Lie
+algebra for $\Pin(V)$ should give us the component connected to the
+identity, which is precisely $\Spin(V)$.
+
+\M
+Observe that, for $i < j$, we have:
+\begin{calculation}
+  (e_{i}e_{j})^{2}
+\step{unfold}
+  e_{i}e_{j}e_{i}e_{j}
+\step{since $i\neq j$ we have $e_{j}e_{i}=-e_{i}e_{j}=(-1)e_{i}e_{j}$}
+  e_{i}(-1)e_{i}e_{j}e_{j}
+\step{using $e_{j}^{2}=-1$ and $e_{i}(-1)e_{i}=+1$}
+  (+1)(-1) = -1.
+\end{calculation}
+Therefore for any $t\in\RR$, we have:
+\begin{equation}
+\E^{e_{i}e_{j}t} = \cos(t) + e_{i}e_{j}\sin(t),
+\end{equation}
+using Euler's formula. But when acting on $V$, we see that
+$x=\exp(e_{i}e_{j}t)$ is represented by the matrix
+\begin{equation}%\renewcommand{\arraystretch}{1.3}
+\begin{split}
+  \phantom{\pi_{x}} &\\
+  \pi_{x}&=\quad \left[\begin{array}{ccccccccccc}
+% 1 & 2    & 3 &  4       & 5 &  6     & 7 & 8         & 9 & 10 & 11
+1 &        &   & \UP{i}{} &   &        &   & \UP{j}{}  &   &        & \\
+  & \ddots &   &          &   &        &   &           &   &        & \\
+  &        & 1 &          &   &        &   &           &   &        & \\
+\LF{i}  &        &   & \cos(2t) &   &        &   & -\sin(2t) &   &        & \\
+  &        &   &          & 1 &        &   &           &   &        & \\
+  &        &   &          &   & \ddots &   &           &   &        & \\
+  &        &   &          &   &        & 1 &           &   &        & \\
+\LF{j}  &        &   & \sin(2t) &   &        &   & \cos(2t)  &   &        & \\
+  &        &   &          &   &        &   &           & 1 &        & \\
+  &        &   &          &   &        &   &           &   & \ddots & \\
+  &        &   &          &   &        &   &           &   &        & 1
+  \end{array}\right]
+\end{split}
+\end{equation}
+Believe me? Well, even I have my doubts, so let us see how it acts on a
+unit vector $e_{k}\in V$:
+\begin{calculation}
+(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))
+\step{distributivity}
+(e_{k}\cos(t) + e_{i}e_{j}e_{k}\sin(t))(\cos(t) - e_{i}e_{j}\sin(t))
+\step{distributivity}
+e_{k}\cos^{2}(t) + e_{i}e_{j}e_{k}\sin(t)\cos(t)
+-e_{k}e_{i}e_{j}\cos(t)\sin(t) - e_{i}e_{j}e_{k}e_{i}e_{j}\sin^{2}(t)
+\end{calculation}
+Now, if $e_{k}=e_{i}$ or if $e_{k}=e_{j}$, then we have
+\begin{calculation}
+(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))
+\step{continuing from last step}
+e_{k}\cos^{2}(t) + e_{i}e_{j}e_{k}2\sin(t)\cos(t) - e_{i}e_{j}e_{k}\sin^{2}(t)
+\step{using trig identities}
+e_{k}\cos(2t) + e_{i}e_{j}e_{k}\sin(2t)
+\step{collecting terms}
+\bigl(\cos(2t) + e_{i}e_{j}\sin(2t)\bigr)e_{k}.
+\end{calculation}
+Hence we find if $e_{k}=e_{i}$ or if $e_{k}=e_{j}$,
+\begin{subequations}
+\begin{equation}
+(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))
+= \bigl(\cos(2t) + e_{i}e_{j}\sin(2t)\bigr)e_{k}.
+\end{equation}
+If $e_{k}\neq e_{i}$ and $e_{k}\neq e_{j}$, then we find by a
+straightforward calculation (and using the $\cos^{2}(t)+\sin^{2}(t)=1$
+trig identity):
+\begin{equation}
+(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))=e_{k}.
+\end{equation}
+\end{subequations}
+Combining these two results, and rewriting it using a matrix, we obtain
+precisely the desired matrix.
+
+Coincidentally, this is why we have a 2-to-1 covering of $\SO(n)$
+\textbf{as groups}, because we have $\cos(2t)$ and $\sin(2t)$ as the
+entries of our matrix. But \textbf{as Lie algebras}, we have an
+isomorphism $\spin(n)\iso\so(n)$.
+
+\N{Maximal Torus of $\Spin(V)$}
+The maximal torus $T$ for $\Spin(V)$, $V\iso\RR^{m}$, are elements of
+the form
+\begin{equation}
+y = \prod^{n}_{r=1}[\cos(x_{r}/2) + e_{2r-1}e_{2r}\sin(x_{r}/2)]
+\end{equation}
+where $x_{r}\in\RR$ are parameters (``Euler angles''). These correspond
+to matrices
+\begin{equation}
+  \pi_{y} = 
+\begin{pmatrix}
+\cos(x_{1}) & -\sin(x_{1}) &            &              & & & & \\
+\sin(x_{1}) &  \cos(x_{1}) &            &              & & & & \\
+           &              & \cos(x_{2}) & -\sin(x_{2}) & & & & \\
+           &              & \sin(x_{2}) &  \cos(x_{2}) & & & & \\
+ & & & & \ddots &            &              & \\
+ & & & &        & \cos(x_{n}) & -\sin(x_{n}) & \\
+ & & & &        & \sin(x_{n}) &  \cos(x_{n}) &  \\
+ & & & &        &             &             & 1
+\end{pmatrix}
+\end{equation}
+If $m=2n$, we just delete the last row and column (i.e., the row and
+column with $1$ in the lower right corner).
+
+\begin{remark}
+Adams~\cite{adams1996:ex} concludes chapter 3 with a remark proving, for
+$\RR^{n}$ guys, every element of $\Spin(\RR^{n})$ is conjugate to an
+element in its torus. This seems intuitive, but I may be missing
+something. 
+\end{remark}
+
+\section{Representations}
+
+\M
+Since $\Spin(V)\subset\Cl_{0}(V)$ is a subset of even Clifford
+subalgebra, then any $\Cl_{0}(V)$-module is a representation of
+$\Spin(V)$.
+
+\begin{proposition}[{Adams~\cite[Prop.4.1]{adams1996:ex}}]
+The algebras $\Cl(V)$ and $\Cl_{0}(V)$ are semi-simple, and hence all
+their representations are completely reducible.
+\end{proposition}
+
+\begin{proposition}[{Adams~\cite[Prop.4.2]{adams1996:ex}}]
+\begin{enumerate}
+\item If $m=\dim(V)=2n+1$ is odd, then $\Cl_{0}(V)$ has one irreducible
+  representation $\Delta$ of degree $2^{n}$ affording a representation
+  $\Delta$ of $\Spin(2n+1)$ with weights $\frac{1}{2}(\pm x_{1}\pm x_{2}\pm\cdots\pm x_{n})$
+  with each sign being chosen independently, so there are $2^{n}$ of
+  these weights.
+\item If $m=\dim(V)=2n$ is even, then $\Cl_{0}(V)$ has two irreducible
+  representations $\Delta^{+}$, $\Delta^{-}$ of degree $2^{n-1}$
+  affording representations $\Delta^{+}$, $\Delta^{-}$ of $\Spin(2n)$
+  with weights $\frac{1}{2}(\pm x_{1}\pm x_{2}\pm\cdots\pm x_{n})$
+  with an even number of $-$ minus signs for $\Delta^{+}$ and an odd number of
+  $-$ minus signs for $\Delta^{-}$. There are $2^{n-1}$ weights.
+\item If $V$ is a complex vector space, then these constructions give
+  complex-analytic representations for $\Spin_{\CC}(m)$.
+\end{enumerate}
+\end{proposition}
+
+\M
+Adams then uses these representations to construct exceptional Lie
+groups. For example, he constructs [the compact real] $\mathtt{G}_{2}$
+as a subgroup of $\Spin(7)$ in Adams's Theorem~5.5.
+
+Its split form may be constructed analogously, but using 7-dimensional
+Minkowski space instead.
+Gogberashvili and Gurchumelia~\cite{Gogberashvili:2019ojg} construct
+this quite explicitly. Ekins and Cornwell~\cite{Ekins:1975yu} do the
+calculations for the associated Lie algebra.
+
+\M
+Also, Adams makes heavy usage of the $\Spin(16)$ subgroup of
+$\mathtt{E}_{8}$ when constructing other exceptional Lie groups.
+We have a sequence of mappings $G\to\Spin(16)\to\mathtt{E}_{8}$,
+then take the centralizer of the image of $G$ under these maps, and the
+identity component of that centralizer turns out to be a compact form of
+an exceptional Lie group (depending on the choice of $G$).
+This provides compact forms for $\mathtt{E}_{6}$, $\mathtt{E}_{7}$,
+$\mathtt{F}_{4}$.
+
+The only direct construction for $\mathtt{F}_{4}$
+that I can find is Figueroa-O'Farrill~\cite{Figueroa-OFarrill:2007jcv}
+using $S^{8}$ and Killing spinors.
