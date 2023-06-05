@@ -1,5 +1,72 @@
 \chapter{Spin Groups and their Representations}
 
+\section{Review of Clifford Algebras}
+
+\M
+Clifford algebras may be formed from a vector space $V$ over $\FF$. It's
+especially intuitive when $V$ is finite-dimensional. We just take some
+canonical basis $e_{1}$, \dots, $e_{n}$ for $V$, then we turn it into an
+algebra by defining multiplication on vectors by linearity and the
+following anticommutator relation:
+\begin{equation}
+e_{i}e_{j} + e_{j}e_{i} = -\delta_{i,j}.
+\end{equation}
+Observe that $e_{i}^{2}=-1$ and $e_{i}e_{j}=-e_{j}e_{i}$ when $i\neq j$.
+The resulting algebra is precisely the \define{Clifford Algebra} $\Cl(V)$.
+
+We can generalize this by altering the anticommutation relation to be
+\begin{equation}
+e_{i}e_{j} + e_{j}e_{i} = \eta_{i,j}
+\end{equation}
+for some matrix $\eta$. When $\eta_{i,j}=0$, we obtain the
+\define{Grassmann Algebra}. We can also have ``split'' Clifford algebras
+by having the signature of $\eta$ being indefinite.
+
+\begin{remark}
+Historically, people describe a Clifford algebra using a quadratic form
+(a generalized ``norm squared'' quantity). This is completely equivalent
+to what we have done. Namely, $\eta_{i,j}=-Q(e_{i})\delta_{i,j}$ where
+$Q$ is the quadratic form on $V$.
+\end{remark}
+
+\N{Even Part}
+The even part of the Clifford algebra is written as $\Cl^{0}(V)$ or
+$\Cl(V)_{0}$. It consists of guys that look like
+\[ a_{0}\cdot\mathbf{1} + a^{\mu\nu}e_{\mu}e_{\nu} + a^{\alpha\beta\mu\nu}e_{\alpha}e_{\beta}e_{\mu}e_{\nu}+\dots.\]
+Each term has an even number of Clifford generators appearing in it. The
+coefficients $a^{\mu\nu}$, $a^{\alpha\beta\mu\nu}$, etc., are completely
+antisymmetric in all its indices; equivalently, we could simply sum over
+$\alpha<\beta<\mu<\nu<\dots$. 
+
+\begin{definition}
+Let $A$ be an $\FF$-algebra (usually $\FF=\RR$, $\CC$, or $\HH$). An
+\define{$A$-Representation} of the Clifford algebra $\Cl(V)$ is an algebra morphism
+\[ \rho\colon\Cl(V)\to\hom_{A}(W, W) \]
+where $W$ is a $A$-algebra representation, $\hom_{A}(W, W)$ is the space
+of endomorphisms of $W$ commuting with the $A$-action.
+\end{definition}
+
+\N{Semisimple Algebras}
+We call an algebra $A$ \define{Semisimple} if all its modules are
+completely reducible (= direct sums of simple modules). This is one
+possible criterion. We can consider $A$ as a left $A$-module when $A$ is
+associative\footnote{If I recall correctly, we need associativity.}, and
+then this coincides with $A$ as a semisimple $A$-module. Then $A$ is
+semisimple if and only if the left regular representation for $A$ is
+completely reducible.
+
+In particular, $\Cl(V)$ is a semisimple algebra. Recall semisimple rings
+generalize the concept of a group algebra $\CC[G]$ for finite groups
+$G$. For a review of the structure theorem for Clifford algebras, see
+\arXiv{1610.02418}. In particular, all irreducible representations of a
+semisimple associative algebra may be found as subrepresentations of its
+regular representation.\footnote{See Theorem 3.2.13 in \url{https://studenttheses.uu.nl/bitstream/handle/20.500.12932/29895/thesis.pdf?sequence=2}}
+
+For more on this, see chapter 5 of Varadarajan~\cite{Varadarajan:2004yz}.
+Specifically, when $V$ is even-dimensional, $\Cl(V)$ is semisimple ---
+this is proven in Theorem~5.2.7, and the odd-dimensional case is proven
+in Theorem~5.2.10.
+
 \section{The $\spin$ Representation}
 
 \M
@@ -92,18 +159,29 @@ e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
 \end{calculation}
 \end{proof}
 
+\begin{remark}
+We can interpret this as $e_{i}e_{j}$ satisfy the same commutation
+relations as the generators $L_{ij}$ for the orthogonal Lie algebra.
+\end{remark}
+
 \M
 What we tend to do is consider
 \begin{equation}
 e_{\alpha\beta} = \frac{1}{2}(e_{\alpha}e_{\beta} - e_{\beta}e_{\alpha}).
 \end{equation}
-It is not hard to find
+Observe
 \begin{equation}
-\begin{split}
-e_{\alpha\beta} &= \frac{1}{2}(e_{\alpha}e_{\beta} + e_{\alpha}e_{\beta} - \eta_{\alpha\beta})\\
-&= e_{\alpha}e_{\beta} - \frac{1}{2}\eta_{\alpha\beta}.
-\end{split}
+e_{\alpha}e_{\beta} = \frac{1}{2}(e_{\alpha}e_{\beta} -
+e_{\beta}e_{\alpha}) + \frac{1}{2}(e_{\alpha}e_{\beta} + e_{\beta}e_{\alpha})
+= e_{\alpha\beta} - \eta_{\alpha\beta}\mathbf{1}.
 \end{equation}
+%% It is not hard to find
+%% \begin{equation}
+%% \begin{split}
+%% e_{\alpha\beta} &= \frac{1}{2}(e_{\alpha}e_{\beta} + e_{\alpha}e_{\beta} - \eta_{\alpha\beta})\\
+%% &= e_{\alpha}e_{\beta} - \frac{1}{2}\eta_{\alpha\beta}.
+%% \end{split}
+%% \end{equation}
 Why do this?
 
 Well, consider the representation of $\so(n)$ using 2-forms, writing
@@ -194,6 +272,79 @@ xv(\beta(x)).
 \end{calculation}
 But Garlin is slightly more general.
 \end{remark}
+
+\N{Adjoint Action of $\Pin(V)$ on $V$}
+We can construct a representation of $\Pin(V)$ using $V$ by means of
+\begin{equation}
+\begin{split}
+  \Ad\colon\Pin(V)&\to\aut(V)\\
+  x&\mapsto\Ad_{x}
+\end{split}
+\end{equation}
+where $\pi_{x}$ is defined as acting on $v\in V$ by using the inclusion
+$i\colon V\into\Cl(V)$ as
+\begin{equation}
+\Ad_{x}(v) = x\,i(v)\,x^{-1}.
+\end{equation}
+If we observe that $x^{-1}=-x/Q(x)$ using the quadratic form $Q(-)$ [for
+$x\in\Pin(V)$, we have $Q(x)=\pm1$],
+then
+\begin{calculation}
+\Ad_{x}(v)
+\step{using the definition of the adjoint representation}
+xvx^{-1}
+\step{since $x^{-1}=-x/Q(x)$}
+\frac{-1}{Q(x)}xvx
+\step{associativity}
+\frac{-1}{Q(x)}(xv)x
+\step{using anticommutator relations and induced bilinear form $B(-,-)$}
+\frac{-1}{Q(x)}(-vx - 2B(v,x)\mathbf{1})x
+\step{distributivity}
+\frac{-1}{Q(x)}(vQ(x) - 2B(v,x)x)
+\step{scalar distributivity}
+-v + 2\frac{B(v,x)}{Q(x)}x
+\end{calculation}
+The reader may confirm this is, in fact, the negation of the reflection
+of $v$ about $x$. We will write this as
+\begin{equation}
+\Ad_{x}(v) = -R_{x}(v)
+\end{equation}
+for $R_{x}$ be the linear operator encoding reflection about the
+hyperplane perpendicular to $x$.
+
+\N{Twisted Adjoint Representation}
+We can construct the Twisted Adjoint action $\widetilde{\Ad}_{x}(v)=(-x)vx^{-1}$,
+or more generally $\widetilde{\Ad}_{x}(v)=\alpha(x)\,v\,x^{-1}$ using
+Adams's notation. This coincides with $\pi_{x}(v)$. When $a=u_{1}\dots u_{k}\in\Pin(V)$,
+we have
+\begin{equation}
+\widetilde{\Ad}_{a}=R_{u_{1}}\circ(\cdots)\circ R_{u_{k}}.
+\end{equation}
+Reflections are orthogonal transformations, therefore $\widetilde{\Ad}$
+defines a group morphism
+\begin{equation}
+\widetilde{\Ad}\colon\Pin(V)\to\O(V).
+\end{equation}
+We also see that $\widetilde{\Ad}$ is surjective by the Cartan--Dieudonn\'e
+theorem.
+
+\begin{theorem}[Cartan--Dieudonn\'e]
+Every $g\in\O(V)$ is the product of a finite number of reflections
+$R_{u_{1}}\circ(\cdots)\circ R_{u_{k}}$ along non-null lines (i.e.,
+$Q(u_{i})\neq0$ for each $i=1,\dots,k$) and moreover $k\leq\dim(V)$.
+\end{theorem}
+
+\begin{theorem}
+  The following is an exact sequence:
+  \begin{equation}
+1\to\{\pm1\}\into\Pin(V)\xonto{\widetilde{\Ad}}\O(V)\to1.
+  \end{equation}
+\end{theorem}
+
+\N{Spin Group}
+When we restrict attention to $\Pin(V)\cap\Cl^{0}(V)$ elements with an
+even number of factors, then we obtain the spin group, denoted $\Spin(V)$.
+This is a double cover of $\SO(V)$, everything works out nicely.
 
 \N{Lie Algebra of $\Pin(V)$}
 For $V\iso\FF^{n}$ (here $\FF$ being $\RR$ or $\CC$), $\Pin(V)$ has an
@@ -319,23 +470,86 @@ something.
 \section{Representations}
 
 \M
-Since $\Spin(V)\subset\Cl_{0}(V)$ is a subset of even Clifford
-subalgebra, then any $\Cl_{0}(V)$-module is a representation of
+Since $\Spin(V)\subset\Cl^{0}(V)$ is a subset of even Clifford
+subalgebra, then any $\Cl^{0}(V)$-module is a representation of
 $\Spin(V)$.
 
 \begin{proposition}[{Adams~\cite[Prop.4.1]{adams1996:ex}}]
-The algebras $\Cl(V)$ and $\Cl_{0}(V)$ are semi-simple, and hence all
+The algebras $\Cl(V)$ and $\Cl^{0}(V)$ are semi-simple, and hence all
 their representations are completely reducible.
 \end{proposition}
 
+Adams proves the representations are completely reducible.
+
+\begin{proof}[Proof sketch]
+Adams begins by considering the standard basis $e_{1}$, \dots, $e_{m}$
+for $V\iso\FF^{m}$, then constructs the subgroup
+\begin{equation}
+E = \{\pm\prod^{m}_{j=1}e^{i_{j}}_{j} \mid i_{j}=0\mbox{ or }1\},
+\end{equation}
+considered as a subgroup of order $2^{m+1}$ of $\Cl(V)$, which should
+correspond to matrices $\diag(\pm1,\dots,\pm1)$ of $\O(m)$.
+
+Then in $\Cl^{0}(V)$ we have the subgroup $E_{0}$ of $2^{m}$ elements
+with $\sum_{j}i_{j}$ being even, specifically we have $E_{0}\subset E\subset\Pin(V)$.
+
+We construct an operator $\nu$ corresponding to $-1\in\Cl^{0}(V)$
+considered as an element of $E_{0}$ (or $E$ or $\Pin(V)$).
+
+Adams observes $\nu$ is the generator of the $\pi$ representation's kernel.
+
+Now, there are two claims made:
+\begin{enumerate}
+\item A module over $\Cl(V)$ gives a representation of $E$ where $\nu$
+  acts as $-1$.
+\item A representation of $E$ where $\nu$ acts as $-1$ gives a module
+  over $\FF[E]/(\nu+1)\iso\Cl(V)$ the quotient of the group algebra
+  $\FF[E]$ modulo $\nu+1\sim0$ (i.e., $\nu\sim-1$).
+\end{enumerate}
+In particular, these claims tell us the representation theory of
+$\Cl(V)$ may be deduced from the representations of the finite group $E$.
+This means all representations are completely reducible. A similar
+argument holds for $\Cl^{0}(V)$ using $E_{0}$ instead of $E$.
+\end{proof}
+
+\begin{remark}
+Adams will make heavy usage of these groups $E$, $E_{0}$, and the $\nu$ operator.
+\end{remark}
+
+\begin{remark}
+Crucially, the insight that $\FF[E]/(\nu+1)\iso\Cl(V)$ allows us to find
+representations for $E$, then induce a representation for $\Cl(V)$. This
+is used in several proofs. The mnemonic appears to be that ``$\nu$ is
+\emph{\textbf{n}egative one}.''
+\end{remark}
+
+\begin{lemma}
+The center of $E_{0}$ is $\{\pm1\}$ if $m=2n+1$ is odd dimensional, and
+$\{\pm1,\pm\prod^{m}_{j=1}e_{j}\}$ if $m=2n$ is even dimensional.
+\end{lemma}
+
+\begin{proof}
+Recall, the group center consists of $z\in Z(G)$ such that for all $g\in G$,
+conjugation $z^{g}=g^{-1}zg=z$. It suffices to check conjugation by
+every generator of the group $E_{0}$, which are precisely $e_{r}e_{s}$. Now if we conjugate
+$g=\prod^{m}_{j=1}e_{j}^{i_{j}}$ by $e_{r}e_{s}$ where $i_{r}=1$ and $i_{s}=0$,
+we change its sign. So if $g\in Z(E_{0})$, then $g=\pm1$ or $\pm e_{1}e_{2}\dots e_{m}$.
+The latter is in the center only for $m$ even.
+\end{proof}
+
+\N{Notation: ``Volume Element''}
+We write $\omega=\prod^{m}_{j=1}e_{j}\in\Cl(V)$ and refer to it as the
+``\emph{Volume Element}''. Adams does not use this notation (or
+terminology), but it caught on in the literature.
+
 \begin{proposition}[{Adams~\cite[Prop.4.2]{adams1996:ex}}]
 \begin{enumerate}
-\item If $m=\dim(V)=2n+1$ is odd, then $\Cl_{0}(V)$ has one irreducible
+\item If $m=\dim(V)=2n+1$ is odd, then $\Cl^{0}(V)$ has one irreducible
   representation $\Delta$ of degree $2^{n}$ affording a representation
   $\Delta$ of $\Spin(2n+1)$ with weights $\frac{1}{2}(\pm x_{1}\pm x_{2}\pm\cdots\pm x_{n})$
   with each sign being chosen independently, so there are $2^{n}$ of
   these weights.
-\item If $m=\dim(V)=2n$ is even, then $\Cl_{0}(V)$ has two irreducible
+\item If $m=\dim(V)=2n$ is even, then $\Cl^{0}(V)$ has two irreducible
   representations $\Delta^{+}$, $\Delta^{-}$ of degree $2^{n-1}$
   affording representations $\Delta^{+}$, $\Delta^{-}$ of $\Spin(2n)$
   with weights $\frac{1}{2}(\pm x_{1}\pm x_{2}\pm\cdots\pm x_{n})$
@@ -345,6 +559,179 @@ their representations are completely reducible.
   complex-analytic representations for $\Spin_{\CC}(m)$.
 \end{enumerate}
 \end{proposition}
+
+Physicists call $\Delta^{+}$ and $\Delta^{-}$ the \define{Half-Spin Representations},
+some (e.g., Deligne) call them the \define{Semi-Spin Representations}.
+
+\begin{remark}
+I haven't seen a good explanation of Adams's proof, but it appears to be
+fleshed out a bit more fully here: \url{https://www2.math.upenn.edu/~brweber/Courses/2013/Math651/Notes/L18_CliffSpin.pdf}
+\end{remark}
+
+\M
+The basic idea is that, when $m=2n+1$ is odd, then
+$\omega\notin\Cl^{0}(m)$. Therefore,
+\begin{equation}
+\Cl(m) = \Cl^{0}(m) \oplus \omega\,\Cl^{0}(m)\iso\Cl^{0}(m)\otimes_{\RR}\RR[\omega].
+\end{equation}
+We can induce a Pinor representation $P$ of $\Cl^{0}(m)$ from a Spinor
+representation $S$ of $\Cl^{0}(m)$ by tensoring it
+with $\RR[\omega]$:
+\begin{equation}
+P = \Cl(m)\otimes_{\Cl^{0}(m)} S.
+\end{equation}
+Observe
+\begin{equation}
+\RR[\omega]\iso\CC\quad\mbox{when}\quad m=1,5\pmod8
+\end{equation}
+since $\omega^{2}=-1$ in that case; and
+\begin{equation}
+\RR[\omega]\iso\RR\oplus\RR\quad\mbox{when}\quad m=3,7\pmod8
+\end{equation}
+since $\omega^{2}=1$ in those cases.
+
+\N{Notation}
+We write $\FF(n)$ for the algebra of $n\times n$ matrices with entries
+in the division algebra $\FF$ (usually $\RR$, $\CC$, $\HH$).
+
+We also write $\Cl_{p,q}$ for $\Cl(\RR^{p,q})$ using the indefinite norm
+of signature $(p,q)$ with quadratic form
+\begin{equation}
+Q(x) = (x_{1})^{2}+\cdots+(x_{p})^{2}-(x_{p+1})^{2}-(\cdots)-(x_{p+q})^{2}.
+\end{equation}
+We write $\Cl_{p}=\Cl_{p,0}$. This is all fairly standard notation.
+
+\begin{proposition}
+\begin{enumerate}
+\item $\RR(n)\otimes\RR(m)\iso\RR(nm)$ for all $n$, $m\in\NN$
+\item $\RR(n)\otimes_{\RR}\FF\iso\FF(n)$ for all $n\in\NN$
+\item $\CC\otimes_{\RR}\CC\iso\CC\oplus\CC$
+\item $\CC\otimes_{\RR}\HH\iso\CC(2)$
+\item $\HH\otimes_{\RR}\HH\iso\RR(4)$.
+\end{enumerate}
+\end{proposition}
+
+\N{Facts}
+We can compute:
+\begin{subequations}
+\begin{align}
+\Cl_{1,0} &= \CC\\
+\Cl_{0,1} &= \RR\oplus\RR\\
+\Cl_{2,0} &= \HH\\
+\Cl_{0,2} &= \RR(2)\\
+\Cl_{1,1} &= \RR(2).
+\end{align}
+\end{subequations}
+More helpfully, arranged as a table
+\begin{equation}
+\begin{array}{c|ccc}
+(\Cl_{0,n})   & \huh   & \huh & \huh\\
+  \RR(2)     & \huh   & \huh & \huh\\
+\RR\oplus\RR & \RR(2) & \huh & \huh\\\hline
+\RR          &  \CC   &  \HH & (\Cl_{m,0})
+\end{array}
+\end{equation}
+
+\begin{theorem}
+For all $n$, $r$, $s\geq0$, we have the following isomorphisms:
+\begin{enumerate}
+\item $\Cl_{n,0}\otimes\Cl_{0,2}\iso\Cl_{0,n+2}$
+\item $\Cl_{0,n}\otimes\Cl_{2,0}\iso\Cl_{n+2,0}$
+\item $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+The third condition, $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$,
+allows us to ``propagate'' a known entry ``diagonally'' across the table
+of Clifford algebras.
+\end{remark}
+
+\N{Bott Periodicity}
+We also have the following isomorphisms:
+\begin{enumerate}
+\item $\Cl_{n+8,0}\iso\Cl_{n,0}\otimes\Cl_{8,0}$
+\item $\Cl_{0,n+8}\iso\Cl_{0,n}\otimes\Cl_{0,8}$
+\item For complex Clifford Algebras: $\CCl_{n+2}\iso\CCl_{n}\otimes_{\CC}\CCl_{2}$.
+\end{enumerate}
+
+\M
+This gives us the following table for real $\Cl_{p,q}$:
+\begin{equation*}
+  \begin{footnotesize}\hskip-3em
+\begin{array}{c|ccccccccc}
+  8 & \RR(16)            & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16) & \HH(32) & \CC(64) & \RR(128) & \RR(128)\oplus\RR(128) & \RR(256)\\
+  7 & \CC(8)             & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32) & \RR(64) & \RR(64)\oplus\RR(64) & \RR(128) & \CC(128)\\
+  6 & \HH(4)             & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32) & \RR(32)\oplus\RR(32) & \RR(64) & \CC(64) & \HH(64)\\
+  5 & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16) & \RR(16)\oplus\RR(16) & \RR(32) & \CC(32) & \HH(32) & \HH(32)\oplus\HH(32)\\
+  4 & \HH(2)             & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16)  & \HH(32)\\
+  3 & \CC(2)             & \RR(4) & \RR(4)\oplus\RR(4) & \RR(8) & \CC(8) & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32)\\
+  2 & \RR(2)             & \RR(2)\oplus\RR(2) & \RR(4) & \CC(4) & \HH(4) & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32)\\
+  1 & \RR\oplus\RR       & \RR(2) & \CC(2) & \HH(2) & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16)  & \RR(16)\oplus\RR(16) \\
+  0 & \RR                & \CC    & \HH & \HH\oplus\HH & \HH(2) & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) \\\hline
+    & 0                  & 1  & 2 & 3 & 4 & 5 & 6 & 7 & 8
+\end{array}
+  \end{footnotesize}
+\end{equation*}
+
+\begin{theorem}
+  \begin{enumerate}
+  \item $\Cl_{n+1}^{0}\iso\Cl_{n}$ for each $n\in\NN_{0}$.
+  \item $\Cl_{s,t}^{0}\iso\Cl_{s-1,t}$ for $s, t\in\NN$.
+  \item $\Cl_{s,t}^{0}\iso\Cl_{t-1,s}$ for $s, t\in\NN$.
+  \end{enumerate}
+\end{theorem}
+
+In particular, we have the following table:
+
+\begin{center}
+\begin{tabular}{|c|c|c|} \hline
+  $s-t$ mod $8$ & $\Cl_{s,t}^{0}$ & $N$ \\\hline
+           1, 7 &       $\RR(N)$ & $2^{(s+t-1)/2}$\\
+           3, 5 &       $\HH(N)$ & $2^{(s+t-3)/2}$\\ \hline
+           2, 6 &       $\CC(N)$ & $2^{(s+t-2)/2}$\\
+              4 & $\HH(N)\oplus\HH(N)$ & $2^{(s+t-4)/2}$\\
+              0 & $\RR(N)\oplus\RR(N)$ & $2^{(s+t-2)/2}$\\ \hline
+\end{tabular}
+\end{center}
+
+\N{``Definition''}
+In even dimensions, there are two inequivalent irreducible
+representations for the $\Spin(2n)$ group. Physicists call them
+\define{Weyl Spinors}. The volume element $\omega$ plays the role of
+picking out the irreducible representations; more precisely
+$(1\pm\omega)$ projects onto the two irreducible representations.
+
+\M
+There are two inequivalent complex spinor representations when $s-t=2,6\pmod8$
+namely $S(s,t)$ and $\overline{S(s,t)}$ of complex dimension
+$2^{(s+t-2)/2}$. They are determined by the value of $e_{d+1}$: it is
+$i$ on $S(s,t)$ and $-i$ on $\overline{S(s,t)}$.
+
+\N{Majorana--Weyl Spinors}
+When $s-t=0\pmod8$, there are two inequivalent real spinor
+representations $S(s,t)_{\pm}$ of real dimension $2^{(s+t-2)/2}$ and
+distinguished by the value of $e_{d+1}$: being $\pm1$ on $S(s,t)_{\pm}$.
+These are known as the Majorana--Weyl Spinors.
+
+\N{Symplectic Majorana--Weyl Spinors}
+When $s-t=4\pmod8$, there are two inequivalent quaternionic spinor
+representations $S(s,t)_{\pm}$ of quaternionic dimension $2^{(s+t-4)/2}$
+and distinguished by the value of $e_{d+1}$ being $\pm1$ on
+$S(s,t)_{\pm}$.
+These are the \emph{symplectic Majorana--Weyl Spinors}.
+
+\N{References}
+See also \S3 of Li's ``Geometry of Supergravity''\footnote{\url{https://sili-math.github.io/Supersymmetry.pdf}}.
+
+\begin{example}
+\begin{enumerate}
+\item $\Spin(2)$ is a circle
+\item $\Spin(3)\iso\SU(2)$
+\item $\Spin(4)\iso\SU(2)\times\SU(2)$
+\item $\Spin(5)\iso\Sp(2)$
+\end{enumerate}
+\end{example}
 
 \M
 Adams then uses these representations to construct exceptional Lie

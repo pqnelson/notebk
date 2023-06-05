@@ -46,7 +46,23 @@
 \let\into\hookrightarrow
 \let\onto\twoheadrightarrow
 \let\iso\cong
+% https://tex.stackexchange.com/a/186905
+\providecommand*{\xhookrightfill@}{%
+  \arrowfill@{\lhook\joinrel\relbar}\relbar\rightarrow
+}
+\providecommand*{\xhookrightarrow}[2][]{%
+  \ext@arrow 0395\xhookrightfill@{#1}{#2}%
+}
 
+% https://tex.stackexchange.com/a/260563
+\newcommand{\rightarrowdbl}{\rightarrow\mathrel{\mkern-14mu}\rightarrow}
+
+\newcommand{\xrightarrowdbl}[2][]{%
+  \xrightarrow[#1]{#2}\mathrel{\mkern-14mu}\rightarrow
+}
+
+\let\xinto\xhookrightarrow
+\let\xonto\xrightarrowdbl
 %% group theory
 \def\dihedral#1{D_{#1}}
 \DeclareMathOperator\Mat{Mat}
@@ -55,6 +71,7 @@
 %% Lie Groups
 \DeclareMathOperator\GL{GL}
 \DeclareMathOperator\SL{SL}
+\DeclareMathOperator\Sp{Sp}
 \DeclareMathOperator\SU{SU}
 \DeclareMathOperator\SO{SO}
 \DeclareMathOperator\U{U}
@@ -65,6 +82,8 @@
 \def\su{\mathfrak{su}}
 \def\so{\mathfrak{so}}
 \DeclareMathOperator\Lie{Lie}
+\DeclareMathOperator\Ad{Ad}
+\DeclareMathOperator\ad{ad}
 
 % Clifford algebras
 \def\Cl{\mathrm{C}\ell}
@@ -75,6 +94,7 @@
 
 %% Linear Algebra
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
 
 \newcommand{\UP}[2]{\makebox[0pt]{\smash{\raisebox{1.5em}{$\phantom{#2}#1$}}}#2}
 \newcommand{\LF}[1]{\makebox[0pt]{$#1$\hspace{4.5em}}}
@@ -94,6 +114,8 @@
 \def\D{\mathrm{d}} % differentials
 \def\E{\mathrm{e}} % \approx 2.71828...
 \def\I{\mathrm{i}} % = \sqrt{-1}
+\newcommand\J{\mathrm{j}} % quaternion generator
+\newcommand\K{\mathrm{k}} % quaternion generator
 
 %% Differential Geometry related
 %

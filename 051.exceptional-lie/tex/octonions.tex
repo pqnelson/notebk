@@ -18,50 +18,82 @@ for complex numbers.
 
 \N{Quaternions}
 Now we have $\CC$, we can iterate this construction. We adjoint a new
-number $j$ and define $\HH$ as a pair of complex numbers $x$, $y\in\CC$
-written as $x + jy$. We define conjugation by
+number $\J $ and define $\HH$ as a pair of complex numbers $x$, $y\in\CC$
+written as $x + \J y$. We define conjugation by
 \begin{equation}
-\overline{x + jy} = \overline{x} - jy,
+\overline{x + \J y} = \overline{x} - \J y,
 \end{equation}
 and multiplication by
 \begin{equation}
-(a + j b)(c + j d) = (ac + \lambda d\bar{b}) + j(\bar{a}d + cb) 
+(a + \J b)(c + \J d) = (ac + \lambda d\bar{b}) + \J(\bar{a}d + cb) 
 \end{equation}
 where $\lambda\in\{-1,+1\}$ is a constant such that
 \begin{equation}
-j^{2} = \lambda.
+\J^{2} = \lambda.
 \end{equation}
 When $\lambda=+1$, these are the split quaternions; when $\lambda=-1$,
 these are the usual quaternions $\HH$.
 
 Really? Let us see:
 \begin{calculation}
-  (a + jb)(c + jd)
+  (a + \J b)(c + \J d)
 \step{distributivity}
-a(c + jd) + jb(c + jd)
+a(c + \J d) + \J b(c + \J d)
 \step{writing complex numbers out explicitly}
-(a_{1} + \I a_{2})(c_{1} + \I c_{2} + jd_{1} + kd_{2})
-+ (jb_{1} + kb_{2})(c_{1} + \I c_{2} + jd_{1} + kd_{2})
+(a_{1} + \I a_{2})(c_{1} + \I c_{2} + \J d_{1} + \K d_{2})
++ (\J b_{1} + \K b_{2})(c_{1} + \I c_{2} + \J d_{1} + \K d_{2})
 \step{distributivity}
 (a_{1} + \I a_{2})(c_{1} + \I c_{2}) + (a_{1} + \I a_{2})j(d_{1} +\I d_{2})
-+ j(b_{1} + \I b_{2})(c_{1} + \I c_{2}) + j(b_{1} + \I b_{2})j(d_{1} +\I d_{2})
-\step{since $\I j=-j\I$}
-(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + (a_{1} + \I a_{2})j(d_{1} +\I d_{2})
-+ j(b_{1} + \I b_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})
++ \J (b_{1} + \I b_{2})(c_{1} + \I c_{2}) + \J (b_{1} + \I b_{2})j(d_{1} +\I d_{2})
+\step{since $\I\J=-\J\I$}
+(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + (a_{1} + \I a_{2})\J(d_{1} +\I d_{2})
++ \J(b_{1} + \I b_{2})(c_{1} + \I c_{2}) + \J^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})
 \step{collecting factors of $j$}
-[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
-+ (a_{1} + \I a_{2})j(d_{1} +\I d_{2})
-+ j(b_{1} + \I b_{2})(c_{1} + \I c_{2})
-\step{since $\I j=-j\I$}
-[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
-+ j (a_{1} - \I a_{2})(d_{1} +\I d_{2})
-+ j(b_{1} + \I b_{2})(c_{1} + \I c_{2})
-\step{collecting factors of $j$}
-[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + j^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
-+ j [(a_{1} - \I a_{2})(d_{1} +\I d_{2}) + (b_{1} + \I b_{2})(c_{1} + \I c_{2})]
+[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + \J^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
++ (a_{1} + \I a_{2})\J(d_{1} +\I d_{2})
++ \J(b_{1} + \I b_{2})(c_{1} + \I c_{2})
+\step{since $\I\J=-\J\I$}
+[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + \J^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
++ \J(a_{1} - \I a_{2})(d_{1} +\I d_{2})
++ \J(b_{1} + \I b_{2})(c_{1} + \I c_{2})
+\step{collecting factors of $\J$}
+[(a_{1} + \I a_{2})(c_{1} + \I c_{2}) + \J^{2}(b_{1} - \I b_{2})(d_{1} +\I d_{2})]
++ \J[(a_{1} - \I a_{2})(d_{1} +\I d_{2}) + (b_{1} + \I b_{2})(c_{1} + \I c_{2})]
 \step{rewriting these guys with complex numbers}
-[ac + \lambda\bar{b}d] + j[\bar{a}d + bc].
+[ac + \lambda\bar{b}d] + \J[\bar{a}d + bc].
 \end{calculation}
+
+\N{Caution about Conventions}
+There are different (but equivalent) presentations of the
+Cayley--Dickson construction. For example, Wikipedia consistently uses
+the definition for multiplication
+\begin{equation}
+(a, b)(c, d) = (ac - \overline{d}b, da + b\overline{c}).
+\end{equation}
+This turns out to be equivalent to our presentation.
+
+If we suppose we have a number system $\FF$, then the Cayley--Dickson
+construction adjoins a number $\widehat{\i}$ to it satisfying
+$\widehat{\i}^{2}=-1$ and define a $*$ operation satisfying:
+\begin{subequations}
+\begin{align}
+a(\widehat{\i}b) &= \widehat{\i}(a^{*}b)\\
+(a\widehat{\i})b &= (a(b^{*}))\widehat{\i}\\
+(\widehat{\i}a)(b\widehat{\i}^{-1}) &= (ab)^{*},\\
+\intertext{for all $a$, $b\in\FF$. We also have}
+\widehat{\i}^{*} &= -\widehat{\i}.
+\end{align}
+\end{subequations}
+This suffices for constructing a new algebra $\FF'$ from $\FF$ and
+$\widehat{\i}$. If there is no ``natural'' $*$ operation on $\FF$ (e.g.,
+the real numbers don't appear to have one), then $*$ may be defined as
+doing nothing. For $\CC$, it's complex conjugation.
+
+Observe further that, if we do the math, we have:
+\begin{equation}
+a^{*} = (\widehat{\i}a)\widehat{\i}^{-1} = \widehat{\i}(a\widehat{\i}^{-1}),
+\end{equation}
+for all $a\in\FF$.
 
 \N{Octonions}
 We iterate our construction, using a pair of quaternions $a$, $b\in\HH$
