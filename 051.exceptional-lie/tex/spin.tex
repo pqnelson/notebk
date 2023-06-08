@@ -5,18 +5,18 @@
 \M
 Clifford algebras may be formed from a vector space $V$ over $\FF$. It's
 especially intuitive when $V$ is finite-dimensional. We just take some
-canonical basis $e_{1}$, \dots, $e_{n}$ for $V$, then we turn it into an
+canonical basis $\Gamma_{1}$, \dots, $\Gamma_{n}$ for $V$, then we turn it into an
 algebra by defining multiplication on vectors by linearity and the
 following anticommutator relation:
 \begin{equation}
-e_{i}e_{j} + e_{j}e_{i} = -\delta_{i,j}.
+\Gamma_{i}\Gamma_{j} + \Gamma_{j}\Gamma_{i} = -\delta_{i,j}.
 \end{equation}
-Observe that $e_{i}^{2}=-1$ and $e_{i}e_{j}=-e_{j}e_{i}$ when $i\neq j$.
+Observe that $\Gamma_{i}^{2}=-1$ and $\Gamma_{i}\Gamma_{j}=-\Gamma_{j}\Gamma_{i}$ when $i\neq j$.
 The resulting algebra is precisely the \define{Clifford Algebra} $\Cl(V)$.
 
 We can generalize this by altering the anticommutation relation to be
 \begin{equation}
-e_{i}e_{j} + e_{j}e_{i} = \eta_{i,j}
+\Gamma_{i}\Gamma_{j} + \Gamma_{j}\Gamma_{i} = \eta_{i,j}
 \end{equation}
 for some matrix $\eta$. When $\eta_{i,j}=0$, we obtain the
 \define{Grassmann Algebra}. We can also have ``split'' Clifford algebras
@@ -25,14 +25,14 @@ by having the signature of $\eta$ being indefinite.
 \begin{remark}
 Historically, people describe a Clifford algebra using a quadratic form
 (a generalized ``norm squared'' quantity). This is completely equivalent
-to what we have done. Namely, $\eta_{i,j}=-Q(e_{i})\delta_{i,j}$ where
+to what we have done. Namely, $\eta_{i,j}=-Q(\Gamma_{i})\delta_{i,j}$ where
 $Q$ is the quadratic form on $V$.
 \end{remark}
 
 \N{Even Part}
 The even part of the Clifford algebra is written as $\Cl^{0}(V)$ or
 $\Cl(V)_{0}$. It consists of guys that look like
-\[ a_{0}\cdot\mathbf{1} + a^{\mu\nu}e_{\mu}e_{\nu} + a^{\alpha\beta\mu\nu}e_{\alpha}e_{\beta}e_{\mu}e_{\nu}+\dots.\]
+\[ a_{0}\cdot\mathbf{1} + a^{\mu\nu}\Gamma_{\mu}\Gamma_{\nu} + a^{\alpha\beta\mu\nu}\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\mu}\Gamma_{\nu}+\dots.\]
 Each term has an even number of Clifford generators appearing in it. The
 coefficients $a^{\mu\nu}$, $a^{\alpha\beta\mu\nu}$, etc., are completely
 antisymmetric in all its indices; equivalently, we could simply sum over
@@ -67,45 +67,171 @@ Specifically, when $V$ is even-dimensional, $\Cl(V)$ is semisimple ---
 this is proven in Theorem~5.2.7, and the odd-dimensional case is proven
 in Theorem~5.2.10.
 
+\N{Notation: ``Volume Element''}
+We write $\omega=\prod^{m}_{j=1}\Gamma_{j}\in\Cl(V)$ and refer to it as the
+``\emph{Volume Element}''. Adams does not use this notation (or
+terminology), but it caught on in the mathematical literature.
+Physicists call it the \emph{Chiral Element}.
+
+\N{Notation}
+We write $\FF(n)$ for the algebra of $n\times n$ matrices with entries
+in the division algebra $\FF$ (usually $\RR$, $\CC$, $\HH$).
+
+We also write $\Cl_{p,q}$ for $\Cl(\RR^{p,q})$ using the indefinite norm
+of signature $(p,q)$ with quadratic form
+\begin{equation}
+Q(x) = (x_{1})^{2}+\cdots+(x_{p})^{2}-(x_{p+1})^{2}-(\cdots)-(x_{p+q})^{2}.
+\end{equation}
+We write $\Cl_{p}=\Cl_{p,0}$. This is all fairly standard notation.
+
+\begin{lemma}
+Let $\FF=\RR$, $\CC$, or $\HH$.
+Consider $\FF(n)$ as an $\RR$-algebra.
+Then $\FF(n)$ has a natural representation on $\FF^{n}$ and, up to
+equivalence, this is the only irreducible representation.
+\end{lemma}
+
+\begin{proof}
+Matrix algebras are simple. Simple algebras have a single representation
+up to isomorphism.
+\end{proof}
+
+\begin{proposition}
+\begin{enumerate}
+\item $\RR(n)\otimes\RR(m)\iso\RR(nm)$ for all $n$, $m\in\NN$
+\item $\RR(n)\otimes_{\RR}\FF\iso\FF(n)$ for all $n\in\NN$
+\item $\CC\otimes_{\RR}\CC\iso\CC\oplus\CC$
+\item $\CC\otimes_{\RR}\HH\iso\CC(2)$
+\item $\HH\otimes_{\RR}\HH\iso\RR(4)$.
+\end{enumerate}
+\end{proposition}
+
+\N{Facts}
+We can compute:
+\begin{subequations}
+\begin{align}
+\Cl_{1,0} &= \CC\\
+\Cl_{0,1} &= \RR\oplus\RR\\
+\Cl_{2,0} &= \HH\\
+\Cl_{0,2} &= \RR(2)\\
+\Cl_{1,1} &= \RR(2).
+\end{align}
+\end{subequations}
+More helpfully, arranged as a table
+\begin{equation}
+\begin{array}{c|ccc}
+(\Cl_{0,n})   & \huh   & \huh & \huh\\
+  \RR(2)     & \huh   & \huh & \huh\\
+\RR\oplus\RR & \RR(2) & \huh & \huh\\\hline
+\RR          &  \CC   &  \HH & (\Cl_{m,0})
+\end{array}
+\end{equation}
+
+\begin{theorem}
+For all $n$, $r$, $s\geq0$, we have the following isomorphisms:
+\begin{enumerate}
+\item $\Cl_{n,0}\otimes\Cl_{0,2}\iso\Cl_{0,n+2}$
+\item $\Cl_{0,n}\otimes\Cl_{2,0}\iso\Cl_{n+2,0}$
+\item $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+The third condition, $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$,
+allows us to ``propagate'' a known entry ``diagonally'' across the table
+of Clifford algebras.
+\end{remark}
+
+\N{Bott Periodicity}
+We also have the following isomorphisms:
+\begin{enumerate}
+\item $\Cl_{n+8,0}\iso\Cl_{n,0}\otimes\Cl_{8,0}$
+\item $\Cl_{0,n+8}\iso\Cl_{0,n}\otimes\Cl_{0,8}$
+\item For complex Clifford Algebras: $\CCl_{n+2}\iso\CCl_{n}\otimes_{\CC}\CCl_{2}$.
+\end{enumerate}
+
+\M
+This gives us the following table for real $\Cl_{p,q}$:
+\begin{equation*}
+  \begin{footnotesize}\hskip-3em
+\begin{array}{c|ccccccccc}
+  8 & \RR(16)            & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16) & \HH(32) & \CC(64) & \RR(128) & \RR(128)\oplus\RR(128) & \RR(256)\\
+  7 & \CC(8)             & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32) & \RR(64) & \RR(64)\oplus\RR(64) & \RR(128) & \CC(128)\\
+  6 & \HH(4)             & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32) & \RR(32)\oplus\RR(32) & \RR(64) & \CC(64) & \HH(64)\\
+  5 & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16) & \RR(16)\oplus\RR(16) & \RR(32) & \CC(32) & \HH(32) & \HH(32)\oplus\HH(32)\\
+  4 & \HH(2)             & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16)  & \HH(32)\\
+  3 & \CC(2)             & \RR(4) & \RR(4)\oplus\RR(4) & \RR(8) & \CC(8) & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32)\\
+  2 & \RR(2)             & \RR(2)\oplus\RR(2) & \RR(4) & \CC(4) & \HH(4) & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32)\\
+  1 & \RR\oplus\RR       & \RR(2) & \CC(2) & \HH(2) & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16)  & \RR(16)\oplus\RR(16) \\
+  0 & \RR                & \CC    & \HH & \HH\oplus\HH & \HH(2) & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) \\\hline
+    & 0                  & 1  & 2 & 3 & 4 & 5 & 6 & 7 & 8
+\end{array}
+  \end{footnotesize}
+\end{equation*}
+
+\begin{theorem}\label{thm:lie:spin:even-clifford-isomorphisms}
+  \begin{enumerate}
+  \item $\Cl_{n+1}^{0}\iso\Cl_{n}$ for each $n\in\NN_{0}$.
+  \item $\Cl_{s,t}^{0}\iso\Cl_{s-1,t}$ for $s, t\in\NN$.
+  \item $\Cl_{s,t}^{0}\iso\Cl_{t-1,s}$ for $s, t\in\NN$.
+  \end{enumerate}
+\end{theorem}
+
+In particular, we have the following table describing the even
+subalgebra as the following real associative algebras:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|} \hline
+  $s-t$ mod $8$ & $\Cl_{s,t}^{0}$ & $N$ \\\hline
+           1, 7 &       $\RR(N)$ & $2^{(s+t-1)/2}$\\
+           3, 5 &       $\HH(N)$ & $2^{(s+t-3)/2}$\\ \hline
+           2, 6 &       $\CC(N)$ & $2^{(s+t-2)/2}$\\
+              4 & $\HH(N)\oplus\HH(N)$ & $2^{(s+t-4)/2}$\\
+              0 & $\RR(N)\oplus\RR(N)$ & $2^{(s+t-2)/2}$\\ \hline
+\end{tabular}
+\caption{Even Clifford Subalgebras in $\RR^{s,t}$}
+\end{table}
+
 \section{The $\spin$ Representation}
 
 \M
 We consider the Clifford algebra $\Cl(\RR^{n})$ which has $n$ generators
-$e_{1}$, \dots, $e_{n}$ which satisfy the usual relations
+$\Gamma_{1}$, \dots, $\Gamma_{n}$ which satisfy the usual relations
 \begin{equation}\label{eq:spin:clifford-anticommutator}
-\{e_{i}, e_{j}\} = e_{i}e_{j} + e_{j}e_{i} = -2\delta_{ij} = \eta_{ij}.
+\{\Gamma_{i}, \Gamma_{j}\} = \Gamma_{i}\Gamma_{j} + \Gamma_{j}\Gamma_{i} = -2\delta_{ij} = \eta_{ij}.
 \end{equation}
 If we wanted, we could replace the right-hand side by some nondegenerate
 $n\times n$ matrix $\eta_{ij}$, but we will not need it for our purposes.
-These generators $e_{i}$ generalize the Dirac gamma matrices. Then we
-can consider the Lie algebra $\spin(n)$ spanned by $e_{i}e_{j}$ for
+These generators $\Gamma_{i}$ generalize the Dirac gamma matrices. Then we
+can consider the Lie algebra $\spin(n)$ spanned by $\Gamma_{i}\Gamma_{j}$ for
 $i\neq j$.
 
 \begin{lemma}\label{lemma:spin:clifford-algebra:commutator-of-one-and-two}
 We have the commutator of generators for the Clifford algebra satisfy
-$$[e_{\alpha}, e_{\beta}e_{\gamma}]=e_{\gamma}\eta_{\beta\alpha}-e_{\beta}\eta_{\alpha\gamma}.$$
+$$[\Gamma_{\alpha}, \Gamma_{\beta}\Gamma_{\gamma}]=\Gamma_{\gamma}\eta_{\beta\alpha}-\Gamma_{\beta}\eta_{\alpha\gamma}.$$
 \end{lemma}
 
 \begin{proof}
 By direct calculation,
 \begin{calculation}
-[e_{\alpha}, e_{\beta}e_{\gamma}]
+[\Gamma_{\alpha}, \Gamma_{\beta}\Gamma_{\gamma}]
 \step{definition of commutator}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}e_{\gamma}e_{\alpha}
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}\Gamma_{\gamma}\Gamma_{\alpha}
 \step{associativity}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}(e_{\gamma}e_{\alpha})
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}(\Gamma_{\gamma}\Gamma_{\alpha})
 \step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}(\eta_{\alpha\gamma}-e_{\alpha}e_{\gamma})
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}(\eta_{\alpha\gamma}-\Gamma_{\alpha}\Gamma_{\gamma})
 \step{distributivity}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+e_{\beta}e_{\alpha}e_{\gamma}
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}\eta_{\alpha\gamma}+\Gamma_{\beta}\Gamma_{\alpha}\Gamma_{\gamma}
 \step{associativity}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+(e_{\beta}e_{\alpha})e_{\gamma}
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}\eta_{\alpha\gamma}+(\Gamma_{\beta}\Gamma_{\alpha})\Gamma_{\gamma}
 \step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+(\eta_{\beta\alpha}-e_{\alpha}e_{\beta})e_{\gamma}
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}\eta_{\alpha\gamma}+(\eta_{\beta\alpha}-\Gamma_{\alpha}\Gamma_{\beta})\Gamma_{\gamma}
 \step{distributivity}
-e_{\alpha}e_{\beta}e_{\gamma} - e_{\beta}\eta_{\alpha\gamma}+\eta_{\beta\alpha}e_{\gamma}-e_{\alpha}e_{\beta}e_{\gamma}
+\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma} - \Gamma_{\beta}\eta_{\alpha\gamma}+\eta_{\beta\alpha}\Gamma_{\gamma}-\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\gamma}
 \step{subtraction}
-- e_{\beta}\eta_{\alpha\gamma}+\eta_{\beta\alpha}e_{\gamma}.\qedhere
+- \Gamma_{\beta}\eta_{\alpha\gamma}+\eta_{\beta\alpha}\Gamma_{\gamma}.\qedhere
 \end{calculation}
 \end{proof}
 
@@ -116,70 +242,70 @@ and $[AB,C]=A[B,C] + [A,C]B$.
 
 \begin{proposition}
 We have the commutator of generators for the Clifford algebra satisfy
-$$[e_{\alpha}e_{\beta}, e_{\gamma}e_{\delta}]=\bigl(\eta_{\beta\delta}\eta_{\gamma\alpha}-\eta_{\beta\gamma}\eta_{\alpha\delta}\bigr)
-+\bigl(e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
--e_{\beta}e_{\delta}\eta_{\gamma\alpha}
-+e_{\beta}e_{\gamma}\eta_{\alpha\delta}\bigr).$$
+$$[\Gamma_{\alpha}\Gamma_{\beta}, \Gamma_{\gamma}\Gamma_{\delta}]=\bigl(\eta_{\beta\delta}\eta_{\gamma\alpha}-\eta_{\beta\gamma}\eta_{\alpha\delta}\bigr)
++\bigl(\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
+-\Gamma_{\beta}\Gamma_{\delta}\eta_{\gamma\alpha}
++\Gamma_{\beta}\Gamma_{\gamma}\eta_{\alpha\delta}\bigr).$$
 \end{proposition}
 
 \begin{proof}
 By direct calculation,
 \begin{calculation}
-[e_{\alpha}e_{\beta}, e_{\gamma}e_{\delta}]
+[\Gamma_{\alpha}\Gamma_{\beta}, \Gamma_{\gamma}\Gamma_{\delta}]
 \step{using the product rule for commutator}
-e_{\alpha}[e_{\beta}, e_{\gamma}e_{\delta}] + [e_{\alpha}, e_{\gamma}e_{\delta}]e_{\beta}
+\Gamma_{\alpha}[\Gamma_{\beta}, \Gamma_{\gamma}\Gamma_{\delta}] + [\Gamma_{\alpha}, \Gamma_{\gamma}\Gamma_{\delta}]\Gamma_{\beta}
 \step{using Lemma~\ref{lemma:spin:clifford-algebra:commutator-of-one-and-two}}
-e_{\alpha}[e_{\beta}, e_{\gamma}e_{\delta}]
-+ \bigl(e_{\delta}\eta_{\gamma\alpha}-e_{\gamma}\eta_{\alpha\delta}\bigr)e_{\beta}
+\Gamma_{\alpha}[\Gamma_{\beta}, \Gamma_{\gamma}\Gamma_{\delta}]
++ \bigl(\Gamma_{\delta}\eta_{\gamma\alpha}-\Gamma_{\gamma}\eta_{\alpha\delta}\bigr)\Gamma_{\beta}
 \step{using Lemma~\ref{lemma:spin:clifford-algebra:commutator-of-one-and-two}}
-e_{\alpha}\bigl(e_{\delta}\eta_{\gamma\beta}-e_{\gamma}\eta_{\beta\delta}\bigr)
-+ \bigl(e_{\delta}\eta_{\gamma\alpha}-e_{\gamma}\eta_{\alpha\delta}\bigr)e_{\beta}
+\Gamma_{\alpha}\bigl(\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\gamma}\eta_{\beta\delta}\bigr)
++ \bigl(\Gamma_{\delta}\eta_{\gamma\alpha}-\Gamma_{\gamma}\eta_{\alpha\delta}\bigr)\Gamma_{\beta}
 \step{distributivity}
-e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
-+ e_{\delta}e_{\beta}\eta_{\gamma\alpha}-e_{\gamma}e_{\beta}\eta_{\alpha\delta}
+\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
++ \Gamma_{\delta}\Gamma_{\beta}\eta_{\gamma\alpha}-\Gamma_{\gamma}\Gamma_{\beta}\eta_{\alpha\delta}
 \step{associativity}
-e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
-+ (e_{\delta}e_{\beta})\eta_{\gamma\alpha}-(e_{\gamma}e_{\beta})\eta_{\alpha\delta}
+\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
++ (\Gamma_{\delta}\Gamma_{\beta})\eta_{\gamma\alpha}-(\Gamma_{\gamma}\Gamma_{\beta})\eta_{\alpha\delta}
 \step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
-e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
-+ (\eta_{\beta\delta}-e_{\beta}e_{\delta})\eta_{\gamma\alpha}-(e_{\gamma}e_{\beta})\eta_{\alpha\delta}
+\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
++ (\eta_{\beta\delta}-\Gamma_{\beta}\Gamma_{\delta})\eta_{\gamma\alpha}-(\Gamma_{\gamma}\Gamma_{\beta})\eta_{\alpha\delta}
 \step{using anticommutation relations from Eq~\eqref{eq:spin:clifford-anticommutator}}
-e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
-+ (\eta_{\beta\delta}-e_{\beta}e_{\delta})\eta_{\gamma\alpha}
--(\eta_{\beta\gamma}-e_{\beta}e_{\gamma})\eta_{\alpha\delta}
+\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
++ (\eta_{\beta\delta}-\Gamma_{\beta}\Gamma_{\delta})\eta_{\gamma\alpha}
+-(\eta_{\beta\gamma}-\Gamma_{\beta}\Gamma_{\gamma})\eta_{\alpha\delta}
 \step{distributivity}
-e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
-+ \eta_{\beta\delta}\eta_{\gamma\alpha}-e_{\beta}e_{\delta}\eta_{\gamma\alpha}
--\eta_{\beta\gamma}\eta_{\alpha\delta}+e_{\beta}e_{\gamma}\eta_{\alpha\delta}
+\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
++ \eta_{\beta\delta}\eta_{\gamma\alpha}-\Gamma_{\beta}\Gamma_{\delta}\eta_{\gamma\alpha}
+-\eta_{\beta\gamma}\eta_{\alpha\delta}+\Gamma_{\beta}\Gamma_{\gamma}\eta_{\alpha\delta}
 \step{collecting terms}
 \bigl(\eta_{\beta\delta}\eta_{\gamma\alpha}-\eta_{\beta\gamma}\eta_{\alpha\delta}\bigr)
-+\bigl(e_{\alpha}e_{\delta}\eta_{\gamma\beta}-e_{\alpha}e_{\gamma}\eta_{\beta\delta}
--e_{\beta}e_{\delta}\eta_{\gamma\alpha}
-+e_{\beta}e_{\gamma}\eta_{\alpha\delta}\bigr).\qedhere
++\bigl(\Gamma_{\alpha}\Gamma_{\delta}\eta_{\gamma\beta}-\Gamma_{\alpha}\Gamma_{\gamma}\eta_{\beta\delta}
+-\Gamma_{\beta}\Gamma_{\delta}\eta_{\gamma\alpha}
++\Gamma_{\beta}\Gamma_{\gamma}\eta_{\alpha\delta}\bigr).\qedhere
 \end{calculation}
 \end{proof}
 
 \begin{remark}
-We can interpret this as $e_{i}e_{j}$ satisfy the same commutation
+We can interpret this as $\Gamma_{i}\Gamma_{j}$ satisfy the same commutation
 relations as the generators $L_{ij}$ for the orthogonal Lie algebra.
 \end{remark}
 
 \M
 What we tend to do is consider
 \begin{equation}
-e_{\alpha\beta} = \frac{1}{2}(e_{\alpha}e_{\beta} - e_{\beta}e_{\alpha}).
+\Gamma_{\alpha\beta} = \frac{1}{2}(\Gamma_{\alpha}\Gamma_{\beta} - \Gamma_{\beta}\Gamma_{\alpha}).
 \end{equation}
 Observe
 \begin{equation}
-e_{\alpha}e_{\beta} = \frac{1}{2}(e_{\alpha}e_{\beta} -
-e_{\beta}e_{\alpha}) + \frac{1}{2}(e_{\alpha}e_{\beta} + e_{\beta}e_{\alpha})
-= e_{\alpha\beta} - \eta_{\alpha\beta}\mathbf{1}.
+\Gamma_{\alpha}\Gamma_{\beta} = \frac{1}{2}(\Gamma_{\alpha}\Gamma_{\beta} -
+\Gamma_{\beta}\Gamma_{\alpha}) + \frac{1}{2}(\Gamma_{\alpha}\Gamma_{\beta} + \Gamma_{\beta}\Gamma_{\alpha})
+= \Gamma_{\alpha\beta} - \eta_{\alpha\beta}\mathbf{1}.
 \end{equation}
 %% It is not hard to find
 %% \begin{equation}
 %% \begin{split}
-%% e_{\alpha\beta} &= \frac{1}{2}(e_{\alpha}e_{\beta} + e_{\alpha}e_{\beta} - \eta_{\alpha\beta})\\
-%% &= e_{\alpha}e_{\beta} - \frac{1}{2}\eta_{\alpha\beta}.
+%% \Gamma_{\alpha\beta} &= \frac{1}{2}(\Gamma_{\alpha}\Gamma_{\beta} + \Gamma_{\alpha}\Gamma_{\beta} - \eta_{\alpha\beta})\\
+%% &= \Gamma_{\alpha}\Gamma_{\beta} - \frac{1}{2}\eta_{\alpha\beta}.
 %% \end{split}
 %% \end{equation}
 Why do this?
@@ -194,14 +320,14 @@ $a_{\mu\nu}$ is antisymmetric, which means it belongs to $\so(n)$. Thus
 $\rho\colon\so(n)\to\Exterior^{2}\CC^{n}$ is a faithful representation.
 
 But we're not done: identify $\D x^{\mu}\wedge\D x^{\nu}$ with
-$e_{\mu\nu}$, and we obtain the $\spin(n)$ representation for $\so(n)$.
+$\Gamma_{\mu\nu}$, and we obtain the $\spin(n)$ representation for $\so(n)$.
 To be clear, we have a mapping
 \begin{equation}
-a_{\mu\nu}\D x^{\mu}\wedge\D x^{\nu}\mapsto\sum_{\mu,\nu}a_{\mu\nu}e_{\mu\nu}.
+a_{\mu\nu}\D x^{\mu}\wedge\D x^{\nu}\mapsto\sum_{\mu,\nu}a_{\mu\nu}\Gamma_{\mu\nu}.
 \end{equation}
 This produces the spin representation
 \begin{equation}
-\rho(a) = \sum_{\mu,\nu}a_{\mu\nu}e_{\mu\nu}.
+\rho(a) = \sum_{\mu,\nu}a_{\mu\nu}\Gamma_{\mu\nu}.
 \end{equation}
 It turns out to be quite useful.
 
@@ -214,8 +340,8 @@ with unit norm, multiplication induced from $\Cl(V)$.
 \end{definition}
 
 \M
-The inverse of $c\, e_{1}(\cdots)e_{k}\in\Pin(V)$ (for some nonzero $c\in\FF$)
-is $(-1)^{k}c^{-1}e_{k}(\cdots)e_{2}e_{1}$ when we have $e_{i}^{2}=-1$
+The inverse of $c\, \Gamma_{1}(\cdots)\Gamma_{k}\in\Pin(V)$ (for some nonzero $c\in\FF$)
+is $(-1)^{k}c^{-1}\Gamma_{k}(\cdots)\Gamma_{2}\Gamma_{1}$ when we have $\Gamma_{i}^{2}=-1$
 for each $i=1$, \dots, $n$.
 
 Why would we have a coefficient $c\neq\pm1$ at all? Well, if we
@@ -227,7 +353,7 @@ v_{1}\\ v_{2}
 \sin(\theta) & \cos(\theta)
 \end{pmatrix}
 \begin{pmatrix}
-e_{1}\\ e_{2}
+\Gamma_{1}\\ \Gamma_{2}
 \end{pmatrix},
 \end{equation}
 then $v_{1}$ is length 1 and inverible. But it is the sum of two
@@ -239,7 +365,7 @@ example). This is an example of a random element which is a pinor
 Adams~\cite{adams1996:ex} gives an equivalent construction of the Pin
 group, but is rather confusing: he uses $\beta$ to reverse the order of
 multiplication, for example, instead of using the transpose of the
-representation. Adams's $\alpha$ simply maps $e_{i}\mapsto-e_{i}$ on the
+representation. Adams's $\alpha$ simply maps $\Gamma_{i}\mapsto-\Gamma_{i}$ on the
 canonical generators for $\Cl(V)$. His
 $\gamma=\alpha\circ\beta=\beta\circ\alpha$ called \define{Conjugation}
 by DJH Garlin~\cite[pg.94]{Garling:2011zz}. Observe that $\alpha$ acts
@@ -348,7 +474,7 @@ This is a double cover of $\SO(V)$, everything works out nicely.
 
 \N{Lie Algebra of $\Pin(V)$}
 For $V\iso\FF^{n}$ (here $\FF$ being $\RR$ or $\CC$), $\Pin(V)$ has an
-associated Lie algebra spanned by $e_{i}e_{j}\in\Cl(V)$ for $i<j$, and
+associated Lie algebra spanned by $\Gamma_{i}\Gamma_{j}\in\Cl(V)$ for $i<j$, and
 whose Lie bracket is the commutator.
 
 \M We can then consider the subgroup of $\Pin(V)$ consisting of an even
@@ -362,20 +488,20 @@ identity, which is precisely $\Spin(V)$.
 \M
 Observe that, for $i < j$, we have:
 \begin{calculation}
-  (e_{i}e_{j})^{2}
+  (\Gamma_{i}\Gamma_{j})^{2}
 \step{unfold}
-  e_{i}e_{j}e_{i}e_{j}
-\step{since $i\neq j$ we have $e_{j}e_{i}=-e_{i}e_{j}=(-1)e_{i}e_{j}$}
-  e_{i}(-1)e_{i}e_{j}e_{j}
-\step{using $e_{j}^{2}=-1$ and $e_{i}(-1)e_{i}=+1$}
+  \Gamma_{i}\Gamma_{j}\Gamma_{i}\Gamma_{j}
+\step{since $i\neq j$ we have $\Gamma_{j}\Gamma_{i}=-\Gamma_{i}\Gamma_{j}=(-1)\Gamma_{i}\Gamma_{j}$}
+  \Gamma_{i}(-1)\Gamma_{i}\Gamma_{j}\Gamma_{j}
+\step{using $\Gamma_{j}^{2}=-1$ and $\Gamma_{i}(-1)\Gamma_{i}=+1$}
   (+1)(-1) = -1.
 \end{calculation}
 Therefore for any $t\in\RR$, we have:
 \begin{equation}
-\E^{e_{i}e_{j}t} = \cos(t) + e_{i}e_{j}\sin(t),
+\E^{\Gamma_{i}\Gamma_{j}t} = \cos(t) + \Gamma_{i}\Gamma_{j}\sin(t),
 \end{equation}
 using Euler's formula. But when acting on $V$, we see that
-$x=\exp(e_{i}e_{j}t)$ is represented by the matrix
+$x=\exp(\Gamma_{i}\Gamma_{j}t)$ is represented by the matrix
 \begin{equation}%\renewcommand{\arraystretch}{1.3}
 \begin{split}
   \phantom{\pi_{x}} &\\
@@ -396,36 +522,36 @@ $x=\exp(e_{i}e_{j}t)$ is represented by the matrix
 \end{split}
 \end{equation}
 Believe me? Well, even I have my doubts, so let us see how it acts on a
-unit vector $e_{k}\in V$:
+unit vector $\Gamma_{k}\in V$:
 \begin{calculation}
-(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))
+(\cos(t) + \Gamma_{i}\Gamma_{j}\sin(t))\Gamma_{k}(\cos(t) - \Gamma_{i}\Gamma_{j}\sin(t))
 \step{distributivity}
-(e_{k}\cos(t) + e_{i}e_{j}e_{k}\sin(t))(\cos(t) - e_{i}e_{j}\sin(t))
+(\Gamma_{k}\cos(t) + \Gamma_{i}\Gamma_{j}\Gamma_{k}\sin(t))(\cos(t) - \Gamma_{i}\Gamma_{j}\sin(t))
 \step{distributivity}
-e_{k}\cos^{2}(t) + e_{i}e_{j}e_{k}\sin(t)\cos(t)
--e_{k}e_{i}e_{j}\cos(t)\sin(t) - e_{i}e_{j}e_{k}e_{i}e_{j}\sin^{2}(t)
+\Gamma_{k}\cos^{2}(t) + \Gamma_{i}\Gamma_{j}\Gamma_{k}\sin(t)\cos(t)
+-\Gamma_{k}\Gamma_{i}\Gamma_{j}\cos(t)\sin(t) - \Gamma_{i}\Gamma_{j}\Gamma_{k}\Gamma_{i}\Gamma_{j}\sin^{2}(t)
 \end{calculation}
-Now, if $e_{k}=e_{i}$ or if $e_{k}=e_{j}$, then we have
+Now, if $\Gamma_{k}=\Gamma_{i}$ or if $\Gamma_{k}=\Gamma_{j}$, then we have
 \begin{calculation}
-(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))
+(\cos(t) + \Gamma_{i}\Gamma_{j}\sin(t))\Gamma_{k}(\cos(t) - \Gamma_{i}\Gamma_{j}\sin(t))
 \step{continuing from last step}
-e_{k}\cos^{2}(t) + e_{i}e_{j}e_{k}2\sin(t)\cos(t) - e_{i}e_{j}e_{k}\sin^{2}(t)
+\Gamma_{k}\cos^{2}(t) + \Gamma_{i}\Gamma_{j}\Gamma_{k}2\sin(t)\cos(t) - \Gamma_{i}\Gamma_{j}\Gamma_{k}\sin^{2}(t)
 \step{using trig identities}
-e_{k}\cos(2t) + e_{i}e_{j}e_{k}\sin(2t)
+\Gamma_{k}\cos(2t) + \Gamma_{i}\Gamma_{j}\Gamma_{k}\sin(2t)
 \step{collecting terms}
-\bigl(\cos(2t) + e_{i}e_{j}\sin(2t)\bigr)e_{k}.
+\bigl(\cos(2t) + \Gamma_{i}\Gamma_{j}\sin(2t)\bigr)\Gamma_{k}.
 \end{calculation}
-Hence we find if $e_{k}=e_{i}$ or if $e_{k}=e_{j}$,
+Hence we find if $\Gamma_{k}=\Gamma_{i}$ or if $\Gamma_{k}=\Gamma_{j}$,
 \begin{subequations}
 \begin{equation}
-(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))
-= \bigl(\cos(2t) + e_{i}e_{j}\sin(2t)\bigr)e_{k}.
+(\cos(t) + \Gamma_{i}\Gamma_{j}\sin(t))\Gamma_{k}(\cos(t) - \Gamma_{i}\Gamma_{j}\sin(t))
+= \bigl(\cos(2t) + \Gamma_{i}\Gamma_{j}\sin(2t)\bigr)\Gamma_{k}.
 \end{equation}
-If $e_{k}\neq e_{i}$ and $e_{k}\neq e_{j}$, then we find by a
+If $\Gamma_{k}\neq \Gamma_{i}$ and $\Gamma_{k}\neq \Gamma_{j}$, then we find by a
 straightforward calculation (and using the $\cos^{2}(t)+\sin^{2}(t)=1$
 trig identity):
 \begin{equation}
-(\cos(t) + e_{i}e_{j}\sin(t))e_{k}(\cos(t) - e_{i}e_{j}\sin(t))=e_{k}.
+(\cos(t) + \Gamma_{i}\Gamma_{j}\sin(t))\Gamma_{k}(\cos(t) - \Gamma_{i}\Gamma_{j}\sin(t))=\Gamma_{k}.
 \end{equation}
 \end{subequations}
 Combining these two results, and rewriting it using a matrix, we obtain
@@ -440,7 +566,7 @@ isomorphism $\spin(n)\iso\so(n)$.
 The maximal torus $T$ for $\Spin(V)$, $V\iso\RR^{m}$, are elements of
 the form
 \begin{equation}
-y = \prod^{n}_{r=1}[\cos(x_{r}/2) + e_{2r-1}e_{2r}\sin(x_{r}/2)]
+y = \prod^{n}_{r=1}[\cos(x_{r}/2) + \Gamma_{2r-1}\Gamma_{2r}\sin(x_{r}/2)]
 \end{equation}
 where $x_{r}\in\RR$ are parameters (``Euler angles''). These correspond
 to matrices
@@ -472,7 +598,8 @@ something.
 \M
 Since $\Spin(V)\subset\Cl^{0}(V)$ is a subset of even Clifford
 subalgebra, then any $\Cl^{0}(V)$-module is a representation of
-$\Spin(V)$.
+$\Spin(V)$. In fact, irreducible representations of $\Cl_{r,s}^{0}$ 
+induces irreducible representations for $\Spin_{r,s}$.
 
 \begin{proposition}[{Adams~\cite[Prop.4.1]{adams1996:ex}}]
 The algebras $\Cl(V)$ and $\Cl^{0}(V)$ are semi-simple, and hence all
@@ -482,7 +609,7 @@ their representations are completely reducible.
 Adams proves the representations are completely reducible.
 
 \begin{proof}[Proof sketch]
-Adams begins by considering the standard basis $e_{1}$, \dots, $e_{m}$
+Adams begins by considering the standard basis $\Gamma_{1}$, \dots, $\Gamma_{m}$
 for $V\iso\FF^{m}$, then constructs the subgroup
 \begin{equation}
 E = \{\pm\prod^{m}_{j=1}e^{i_{j}}_{j} \mid i_{j}=0\mbox{ or }1\},
@@ -523,7 +650,7 @@ is used in several proofs. The mnemonic appears to be that ``$\nu$ is
 \emph{\textbf{n}egative one}.''
 \end{remark}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:spin:center-of-e0}
 The center of $E_{0}$ is $\{\pm1\}$ if $m=2n+1$ is odd dimensional, and
 $\{\pm1,\pm\prod^{m}_{j=1}e_{j}\}$ if $m=2n$ is even dimensional.
 \end{lemma}
@@ -531,16 +658,52 @@ $\{\pm1,\pm\prod^{m}_{j=1}e_{j}\}$ if $m=2n$ is even dimensional.
 \begin{proof}
 Recall, the group center consists of $z\in Z(G)$ such that for all $g\in G$,
 conjugation $z^{g}=g^{-1}zg=z$. It suffices to check conjugation by
-every generator of the group $E_{0}$, which are precisely $e_{r}e_{s}$. Now if we conjugate
-$g=\prod^{m}_{j=1}e_{j}^{i_{j}}$ by $e_{r}e_{s}$ where $i_{r}=1$ and $i_{s}=0$,
-we change its sign. So if $g\in Z(E_{0})$, then $g=\pm1$ or $\pm e_{1}e_{2}\dots e_{m}$.
+every generator of the group $E_{0}$, which are precisely $\Gamma_{r}\Gamma_{s}$. Now if we conjugate
+$g=\prod^{m}_{j=1}\Gamma_{j}^{i_{j}}$ by $\Gamma_{r}\Gamma_{s}$ where $i_{r}=1$ and $i_{s}=0$,
+we change its sign. So if $g\in Z(E_{0})$, then $g=\pm1$ or $\pm \Gamma_{1}\Gamma_{2}\dots \Gamma_{m}$.
 The latter is in the center only for $m$ even.
 \end{proof}
 
-\N{Notation: ``Volume Element''}
-We write $\omega=\prod^{m}_{j=1}e_{j}\in\Cl(V)$ and refer to it as the
-``\emph{Volume Element}''. Adams does not use this notation (or
-terminology), but it caught on in the literature.
+\N{Fact}\label{fact:spin:complex-irrep-abelian-group-one-dim} Every $\CC$ irreducible representation for Abelian groups are
+one-dimensional.
+
+\N{Induced Representations}\label{chunk:spin:induced-rep}
+Just to review induced representations, let $G$ be a finite group, let
+$H\leq G$ be any subgroup, let $[G : H]=n$.
+Suppose we have a representation $\pi\colon H\to\aut(V)$.
+Suppose we have a complete set of coset representatives $g_{1}$, \dots,
+$g_{n}$ for $H$ in $G$.
+
+First, we should observe, for any $g\in G$ and any coset representative
+$g_{i}$, we have $gg_{i}\in G$ (by closure of
+multiplication). Therefore, $gg_{i}$ lives in a left coset of $H$, say
+$g_{j}H$. More explicitly, $gg_{i}=g_{j}h_{i}$ for some $h_{i}\in H$.
+This can be done for each coset representative, giving us a function of
+indices $j(i)$, and we write:
+\begin{equation}
+g\cdot g_{i} = g_{j(i)}h_{i}.
+\end{equation}
+So far, so good.
+
+Now we construct our representation space,
+\begin{equation}
+\widetilde{V} = \bigoplus^{n}_{i=1}g_{i}V.
+\end{equation}
+Then we define a $G$-action on $\widetilde{V}$ by using the insights
+from the previous paragraph:
+\begin{equation}
+g\cdot\sum^{n}_{i=1}g_{i}\vec{v}_{i}=\sum^{n}_{i=1}g_{j(i)}\bigl(\pi(h_{i})\vec{v}_{i}\bigr).
+\end{equation}
+The resulting representation for $G$ is denoted $\operatorname{Ind}_H^G\pi$
+or $\operatorname{Ind}_H^GV$ depending on author.
+
+We can generalize this construction, using the insight that --- as a
+representation space for $H$, $V$ is a $\FF[H]$-module --- the induced
+representation is precisely the tensor product
+\begin{equation}
+\operatorname{Ind}_H^GV = \FF[G]\otimes_{\FF[H]}V.
+\end{equation}
+No conditions of finiteness are necessary in this generalized version.
 
 \begin{proposition}[{Adams~\cite[Prop.4.2]{adams1996:ex}}]
 \begin{enumerate}
@@ -564,9 +727,128 @@ Physicists call $\Delta^{+}$ and $\Delta^{-}$ the \define{Half-Spin Representati
 some (e.g., Deligne) call them the \define{Semi-Spin Representations}.
 
 \begin{remark}
+It appears, thanks to Theorem~\ref{thm:lie:spin:even-clifford-isomorphisms},
+an irreducible representation for $\Cl_{s,t}^{0}$ could be obtained from
+$\Cl_{s-1,t}$. 
+\end{remark}
+
+\begin{remark}
 I haven't seen a good explanation of Adams's proof, but it appears to be
 fleshed out a bit more fully here: \url{https://www2.math.upenn.edu/~brweber/Courses/2013/Math651/Notes/L18_CliffSpin.pdf}
 \end{remark}
+
+\begin{remark}
+This proposition is used later when constructing a Lie algebra of type
+$\mathtt{E}_{8}$. 
+\end{remark}
+
+Adams's proof is rather convoluted, but amounts to constructing an
+induced representation for the finite group $E_{0}$, then observes it
+gives an irreducible representation for $\Spin(V)$.
+
+\begin{proof}[Proof sketch]
+By Schur's lemma, $\nu$ acts on any irreducible representation as either
+$1$ or $-1$. The representations in which it acts as $1$ are
+representations of $E_{0}/\langle\nu\rangle$ which is an Abelian group
+of order $2^{m-1}$. Therefore there are $2^{m-1}$ one-dimensional
+representations of $E_{0}$ in which $\nu$ acts as $1$.
+
+Since the kernel of $E_{0}\to E_{0}/\langle\nu\rangle$ has exactly two
+elements, the conjugacy classes in $E_{0}$ are either one element (if
+the element is central) or two elements $\pm g$.
+
+Recall: isomorphism classes of irreducible representations (over $\CC$)
+of a finite group are in one-to-one correspondence [i.e., bijective with]
+the conjugacy classes.
+
+We see that $E_{0}$ has one (resp., two) more irreducible class(es) of
+representation(s) than $E_{0}/\langle\nu\rangle$ if $m=2n+1$ (resp., $m=2n$).
+
+Let $F\subset E_{0}$ be the subgroup generated by $\Gamma_{1}\Gamma_{2}$,
+$e_{3}e_{4}$, \dots, $e_{2r-1}e_{2r}$, \dots, $e_{2n-1}e_{2n}$. This is
+an Abelian group of order $2^{n+1}$, so
+\begin{equation}
+[E_{0} : F] = \begin{cases}2^{n} &\mbox{if }m=2n+1\\
+2^{n-1} &\mbox{if }m=2n.
+\end{cases}
+\end{equation}
+Is this really Abelian? Yes, we can calculate (assuming $i\neq j\neq k\neq\ell$):
+\begin{calculation}
+  e_{i}e_{j}e_{k}e_{\ell}
+\step{anticommutator}
+  -e_{i}e_{k}e_{j}e_{\ell}
+\step{anticommutator}
+  e_{i}e_{k}e_{\ell}e_{j}
+\step{anticommutator}
+  -e_{k}e_{i}e_{\ell}e_{j}
+\step{anticommutator}
+  e_{k}e_{\ell}e_{i}e_{j}.
+\end{calculation}
+Now we will begin to construct the induced representations.
+
+We know (\S\ref{fact:spin:complex-irrep-abelian-group-one-dim})
+every complex irreducible representation for $F$ will be one-dimensional.
+Choose a complex one-dimensional representation $W$ of $F$ in which
+$\nu$ acts as $-1$, and $e_{2r-1}e_{2r}$ acts as $\I\varepsilon_{r}$,
+where $\varepsilon_{r}=\pm1$ and $\I=\sqrt{-1}$.
+
+Form the induced representation (\S\ref{chunk:spin:induced-rep})
+\begin{equation}
+\operatorname{Ind}^{E_{0}}_{F}W = \CC[E_{0}]\otimes_{\CC[F]}W,
+\end{equation}
+where $\CC[E_{0}]$ is the complex group algebra for $E_{0}$.
+
+Since $\deg(\operatorname{Ind}^{E_{0}}_{F}W)=[E_{0}:F]\deg(W)$ and
+$\deg(W)=1$, we find the induced representation for $E_{0}$ is degree
+$2^{n}$ for $m=2n+1$ and degree $2^{n-1}$ for $m=2n$. Observe, since
+$\nu$ acts as $-1$ on $W$, that in the induced representation $\nu$
+continues to act as $-1$.
+
+Adams argues without proof that the basis for the representation is
+given by
+\begin{subequations}
+\begin{align}
+\prod^{2n+1}_{\substack{i=1\\i~\text{odd}}}e_{i}^{j_{i}}\quad\mbox{with}\quad\sum^{2n+1}_{1}j_{i}~\mbox{even},\quad\mbox{if }
+m=2n+1,\\
+\intertext{and}
+\prod^{2n-1}_{\substack{i=1\\i~\text{odd}}}e_{i}^{j_{i}}\quad\mbox{with}\quad\sum^{2n-1}_{1}j_{i}~\mbox{even},\quad\mbox{if }
+m=2n.
+\end{align}
+\end{subequations}
+\textbf{I do not immediately see how to obtain this result.} (I also
+think that each $j_{i}\in\{0,1\}$ but Adams does not explicitly state this.)
+My intuition is that it is [somehow] due to $e_{2r-1}e_{2r}$ being
+represented as $\I\varepsilon_{r}$.
+
+Now, there are two happy endings depending on $m$. The story is
+basically the same: we will obtain an irreducible representation (or
+two) for $E_{0}$ and this induces an irreducible representation for
+$\Spin(V)$. And they live happily ever after.
+
+\textbf{Case 1: $m=2n+1$}. There are $2^{n}$ choices for $W$ (because we
+can choose the sign of $\varepsilon_{r}$), so $E_{0}/F$ permutes them
+transitively and, by conjugating with $e_{2r}e_{2r+1}$, we can change
+the sign of $\varepsilon_{r}$ without changing anything else. Each of
+these appears in $\CC[E_{0}]\otimes_{\CC[F]}W$. Therefore, we get a
+representation $\Delta$ of $E_{0}$ with characters $2^{n}$ at $1$,
+$-2^{n}$ at $-1$, and $0$ everywhere else. By orthogonality relations,
+$\Delta$ is an irreducible representation of $E_{0}$.
+
+\textbf{Case 2: $m=2n$}. There are $2^{n}$ choices for $W$  and under
+$E_{0}/F$ falls into two orbits: those with $\prod\varepsilon_{r}=+1$
+and those with $\prod\varepsilon_{r}=-1$. We define $\varepsilon:=\prod\varepsilon_{r}$.
+
+The character for these representations is $2^{n-1}$ at $1$, $-2^{n-1}$
+at $-1$, $\I^{n}\varepsilon$ at $\prod^{2n}e_{i}$, and $-\I^{n}\varepsilon$
+at $-\prod^{2n}e_{i}$, and $0$ everywhere else. These are irreducible
+representations by orthogonality relations. These are also inequivalent
+representations denoted $\Delta^{\pm}$, which concludes the proof.
+
+(Also, observe from Lemma~\ref{lemma:spin:center-of-e0} that
+$\prod^{2n}e_{i}$ lives in the center of $E_{0}$ and must commute with
+everything. This implies it is represented by a diagonal matrix, and I
+think $\Delta^{\pm}$ are the eigenspaces for it.)
+\end{proof}
 
 \M
 The basic idea is that, when $m=2n+1$ is odd, then
@@ -590,111 +872,6 @@ since $\omega^{2}=-1$ in that case; and
 \end{equation}
 since $\omega^{2}=1$ in those cases.
 
-\N{Notation}
-We write $\FF(n)$ for the algebra of $n\times n$ matrices with entries
-in the division algebra $\FF$ (usually $\RR$, $\CC$, $\HH$).
-
-We also write $\Cl_{p,q}$ for $\Cl(\RR^{p,q})$ using the indefinite norm
-of signature $(p,q)$ with quadratic form
-\begin{equation}
-Q(x) = (x_{1})^{2}+\cdots+(x_{p})^{2}-(x_{p+1})^{2}-(\cdots)-(x_{p+q})^{2}.
-\end{equation}
-We write $\Cl_{p}=\Cl_{p,0}$. This is all fairly standard notation.
-
-\begin{proposition}
-\begin{enumerate}
-\item $\RR(n)\otimes\RR(m)\iso\RR(nm)$ for all $n$, $m\in\NN$
-\item $\RR(n)\otimes_{\RR}\FF\iso\FF(n)$ for all $n\in\NN$
-\item $\CC\otimes_{\RR}\CC\iso\CC\oplus\CC$
-\item $\CC\otimes_{\RR}\HH\iso\CC(2)$
-\item $\HH\otimes_{\RR}\HH\iso\RR(4)$.
-\end{enumerate}
-\end{proposition}
-
-\N{Facts}
-We can compute:
-\begin{subequations}
-\begin{align}
-\Cl_{1,0} &= \CC\\
-\Cl_{0,1} &= \RR\oplus\RR\\
-\Cl_{2,0} &= \HH\\
-\Cl_{0,2} &= \RR(2)\\
-\Cl_{1,1} &= \RR(2).
-\end{align}
-\end{subequations}
-More helpfully, arranged as a table
-\begin{equation}
-\begin{array}{c|ccc}
-(\Cl_{0,n})   & \huh   & \huh & \huh\\
-  \RR(2)     & \huh   & \huh & \huh\\
-\RR\oplus\RR & \RR(2) & \huh & \huh\\\hline
-\RR          &  \CC   &  \HH & (\Cl_{m,0})
-\end{array}
-\end{equation}
-
-\begin{theorem}
-For all $n$, $r$, $s\geq0$, we have the following isomorphisms:
-\begin{enumerate}
-\item $\Cl_{n,0}\otimes\Cl_{0,2}\iso\Cl_{0,n+2}$
-\item $\Cl_{0,n}\otimes\Cl_{2,0}\iso\Cl_{n+2,0}$
-\item $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$.
-\end{enumerate}
-\end{theorem}
-
-\begin{remark}
-The third condition, $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$,
-allows us to ``propagate'' a known entry ``diagonally'' across the table
-of Clifford algebras.
-\end{remark}
-
-\N{Bott Periodicity}
-We also have the following isomorphisms:
-\begin{enumerate}
-\item $\Cl_{n+8,0}\iso\Cl_{n,0}\otimes\Cl_{8,0}$
-\item $\Cl_{0,n+8}\iso\Cl_{0,n}\otimes\Cl_{0,8}$
-\item For complex Clifford Algebras: $\CCl_{n+2}\iso\CCl_{n}\otimes_{\CC}\CCl_{2}$.
-\end{enumerate}
-
-\M
-This gives us the following table for real $\Cl_{p,q}$:
-\begin{equation*}
-  \begin{footnotesize}\hskip-3em
-\begin{array}{c|ccccccccc}
-  8 & \RR(16)            & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16) & \HH(32) & \CC(64) & \RR(128) & \RR(128)\oplus\RR(128) & \RR(256)\\
-  7 & \CC(8)             & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32) & \RR(64) & \RR(64)\oplus\RR(64) & \RR(128) & \CC(128)\\
-  6 & \HH(4)             & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32) & \RR(32)\oplus\RR(32) & \RR(64) & \CC(64) & \HH(64)\\
-  5 & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16) & \RR(16)\oplus\RR(16) & \RR(32) & \CC(32) & \HH(32) & \HH(32)\oplus\HH(32)\\
-  4 & \HH(2)             & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16)  & \HH(32)\\
-  3 & \CC(2)             & \RR(4) & \RR(4)\oplus\RR(4) & \RR(8) & \CC(8) & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32)\\
-  2 & \RR(2)             & \RR(2)\oplus\RR(2) & \RR(4) & \CC(4) & \HH(4) & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32)\\
-  1 & \RR\oplus\RR       & \RR(2) & \CC(2) & \HH(2) & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16)  & \RR(16)\oplus\RR(16) \\
-  0 & \RR                & \CC    & \HH & \HH\oplus\HH & \HH(2) & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) \\\hline
-    & 0                  & 1  & 2 & 3 & 4 & 5 & 6 & 7 & 8
-\end{array}
-  \end{footnotesize}
-\end{equation*}
-
-\begin{theorem}
-  \begin{enumerate}
-  \item $\Cl_{n+1}^{0}\iso\Cl_{n}$ for each $n\in\NN_{0}$.
-  \item $\Cl_{s,t}^{0}\iso\Cl_{s-1,t}$ for $s, t\in\NN$.
-  \item $\Cl_{s,t}^{0}\iso\Cl_{t-1,s}$ for $s, t\in\NN$.
-  \end{enumerate}
-\end{theorem}
-
-In particular, we have the following table:
-
-\begin{center}
-\begin{tabular}{|c|c|c|} \hline
-  $s-t$ mod $8$ & $\Cl_{s,t}^{0}$ & $N$ \\\hline
-           1, 7 &       $\RR(N)$ & $2^{(s+t-1)/2}$\\
-           3, 5 &       $\HH(N)$ & $2^{(s+t-3)/2}$\\ \hline
-           2, 6 &       $\CC(N)$ & $2^{(s+t-2)/2}$\\
-              4 & $\HH(N)\oplus\HH(N)$ & $2^{(s+t-4)/2}$\\
-              0 & $\RR(N)\oplus\RR(N)$ & $2^{(s+t-2)/2}$\\ \hline
-\end{tabular}
-\end{center}
-
 \N{``Definition''}
 In even dimensions, there are two inequivalent irreducible
 representations for the $\Spin(2n)$ group. Physicists call them
@@ -705,19 +882,19 @@ $(1\pm\omega)$ projects onto the two irreducible representations.
 \M
 There are two inequivalent complex spinor representations when $s-t=2,6\pmod8$
 namely $S(s,t)$ and $\overline{S(s,t)}$ of complex dimension
-$2^{(s+t-2)/2}$. They are determined by the value of $e_{d+1}$: it is
+$2^{(s+t-2)/2}$. They are determined by the value of $\Gamma_{d+1}$: it is
 $i$ on $S(s,t)$ and $-i$ on $\overline{S(s,t)}$.
 
 \N{Majorana--Weyl Spinors}
 When $s-t=0\pmod8$, there are two inequivalent real spinor
 representations $S(s,t)_{\pm}$ of real dimension $2^{(s+t-2)/2}$ and
-distinguished by the value of $e_{d+1}$: being $\pm1$ on $S(s,t)_{\pm}$.
+distinguished by the value of $\Gamma_{d+1}$: being $\pm1$ on $S(s,t)_{\pm}$.
 These are known as the Majorana--Weyl Spinors.
 
 \N{Symplectic Majorana--Weyl Spinors}
 When $s-t=4\pmod8$, there are two inequivalent quaternionic spinor
 representations $S(s,t)_{\pm}$ of quaternionic dimension $2^{(s+t-4)/2}$
-and distinguished by the value of $e_{d+1}$ being $\pm1$ on
+and distinguished by the value of $\Gamma_{d+1}$ being $\pm1$ on
 $S(s,t)_{\pm}$.
 These are the \emph{symplectic Majorana--Weyl Spinors}.
 
@@ -726,10 +903,11 @@ See also \S3 of Li's ``Geometry of Supergravity''\footnote{\url{https://sili-mat
 
 \begin{example}
 \begin{enumerate}
-\item $\Spin(2)$ is a circle
-\item $\Spin(3)\iso\SU(2)$
-\item $\Spin(4)\iso\SU(2)\times\SU(2)$
-\item $\Spin(5)\iso\Sp(2)$
+\item $\Spin(2)\iso\U(1)$ is a circle
+\item $\Spin(3)\iso\SU(2)\iso\Sp(1)$ using $S^{3}\subset\HH$
+\item $\Spin(4)\iso\SU(2)\times\SU(2)$ using two copies of $S^{3}\subset\HH$
+\item $\Spin(5)\iso\Sp(2)$ corresponds to unitary group of quaternionic
+  $2\times2$ matrices
 \end{enumerate}
 \end{example}
 
