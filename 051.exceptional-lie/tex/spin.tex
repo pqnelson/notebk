@@ -952,7 +952,7 @@ then $W\iso\{f|_{\{1\}}\mid f\in\hom_{F}(G,\CC)\}$ I think (since
 $W\iso\CC^{1}$ is a one-dimensional space).
 \end{remark}
 
-\begin{proposition}[{Adams~\cite[Prop.4.4]{adams1996:ex}}]
+\begin{proposition}[{Adams~\cite[Prop.4.4]{adams1996:ex}}]\label{prop:spin:spinor-rep-inclusion}
 Let $\Delta^{\pm}_{2n}$ be the irreps for $\Spin(2n)$, $\Delta_{2n+1}$
 the irrep for $\Spin(2n+1)$, and $\Delta^{\pm}_{2n+2}$ the irreps for
 $\Spin(2n+2)$. Then under the obvious inclusions
@@ -1167,18 +1167,7 @@ Thank goodness Qiaochu Yuan clarified this for me.\footnote{He was
 answering someone else's question, though, but I still appreciate it! \url{https://mathoverflow.net/a/440634}}
 \end{remark}
 
-\begin{theorem}[{Adams~\cite[Th.4.6(i)]{adams1996:ex}}]
-Let $V$ be the fundamental representation for $\SO(2n)$. As
-representations for $\Spin(2n)$, we have the following tensor products:
-\begin{enumerate}
-\item $\Sym^{2}(\Delta^{+}) \iso \Exterior^{n+}V + \Exterior^{n-4}V + \Exterior^{n-8}V+\dots$
-\item $\Exterior^{2}\Delta^{+} \iso \Exterior^{n-2}V + \Exterior^{n-6}V + \dots$
-\item $\Sym^{2}(\Delta^{-}) \iso \Exterior^{n-}V + \Exterior^{n-4}V + \Exterior^{n-8}V+\dots$
-\item $\Exterior^{2}\Delta^{-} \iso \Exterior^{n-2}V + \Exterior^{n-6}V + \dots$
-\item $\Delta^{+}\otimes\Delta^{-}\iso\Exterior^{n-1}V + \Exterior^{n-3}V + \Exterior^{n-5}V + \dots$.
-\end{enumerate}
-\end{theorem}
-
+\N{Notation}
 We write: $V+W$ for $V\oplus W$; and
 $\Sym^{2}(V)$ is the second symmetric power of $V$. We recall
 $V\otimes V\iso\Sym^{2}(V) + \Exterior^{2}V$.
@@ -1191,6 +1180,57 @@ representations for $\Spin(2n+1)$, we have the following tensor products:
 \item $\Sym^{2}(\Delta)\iso(\Exterior^{n-1}V + \Exterior^{n-2}V) + (\Exterior^{n-5}V + \Exterior^{n-6}V) + \dots + (\Exterior^{n-1-4k}V + \Exterior^{n-2-4k}V) +\dots$.
 \end{enumerate}
 \end{theorem}
+
+\begin{proof}[Proof sketch]
+  It follows from Schur's lemma that
+  \begin{equation}
+\Delta\otimes\Delta\iso\bigoplus^{n}_{j=0}\Exterior^{2j}V^{*}\iso\bigoplus^{n}_{j=0}\Exterior^{2j}V.
+  \end{equation}
+  For $2j>n$, we take the Hodge star to write this as:
+  \begin{equation}\label{eq:spin:delta-otimes-delta-equals-bigoplus}
+\Delta\otimes\Delta\iso\bigoplus^{n}_{j=0}\Exterior^{j}V.
+  \end{equation}
+  We then use the fact that
+  \begin{equation}
+\Delta\otimes\Delta\iso\Sym^{2}(\Delta)\oplus\Exterior^{2}\Delta.
+  \end{equation}
+  The result follows.
+\end{proof}
+
+\begin{remark}
+The use of the Hodge star is responsible for the shifted indices.
+\end{remark}
+
+\begin{remark}
+Adams uses the canonical injection of $V^{\otimes k}$ into $\Cl(V)$
+by
+\begin{equation}
+\vec{v}_{1}\otimes\dots\otimes\vec{v}_{k}\mapsto\sum_{\sigma\in S_{k}}\frac{\sgn(\sigma)}{k!}v_{\sigma(1)}\otimes\dots\otimes v_{\sigma(k)}.
+\end{equation}
+This leads to vector space isomorphisms $\oplus\Exterior^{2k}V\to\Cl^{0}(V)$.
+(We only need vector space isomorphisms, because these are isomorphisms
+of the representations spaces.)
+Adams uses this to obtain $\Delta\otimes\Delta\iso\Exterior^{0}V + \Exterior^{2}V + \Exterior^{4}V + \dots + \Exterior^{2n}V$.
+From there, he uses the Hodge star to obtain Eq~\eqref{eq:spin:delta-otimes-delta-equals-bigoplus}.
+The rest of the proof remains the same.
+\end{remark}
+
+\begin{theorem}[{Adams~\cite[Th.4.6(i)]{adams1996:ex}}]
+Let $V$ be the fundamental representation for $\SO(2n)$. As
+representations for $\Spin(2n)$, we have the following tensor products:
+\begin{enumerate}
+\item $\Sym^{2}(\Delta^{+}) \iso \Exterior^{n+}V + \Exterior^{n-4}V + \Exterior^{n-8}V+\dots$
+\item $\Exterior^{2}\Delta^{+} \iso \Exterior^{n-2}V + \Exterior^{n-6}V + \dots$
+\item $\Sym^{2}(\Delta^{-}) \iso \Exterior^{n-}V + \Exterior^{n-4}V + \Exterior^{n-8}V+\dots$
+\item $\Exterior^{2}\Delta^{-} \iso \Exterior^{n-2}V + \Exterior^{n-6}V + \dots$
+\item $\Delta^{+}\otimes\Delta^{-}\iso\Exterior^{n-1}V + \Exterior^{n-3}V + \Exterior^{n-5}V + \dots$.
+\end{enumerate}
+\end{theorem}
+
+The proof is similar to the previous one, taking advantage of
+Proposition~\ref{prop:spin:spinor-rep-inclusion}. Adams proves
+the $\Delta^{+}\otimes\Delta^{-}$ isomorphism, the other cases being
+``obvious''. 
 
 \section{Miscellaneous}
 
