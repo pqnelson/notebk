@@ -1,5 +1,12 @@
 \chapter{Spin Groups and their Representations}
 
+\begin{ddanger}
+I have goofed up my conventions here, mixing up the orthonormal basis
+$e_{i}$ for $V$ with the generators $\Gamma_{i}$ for $\Cl(V)$. When
+revisiting my notes, I should fix this when possible. The reader should
+understand this is what has happened, and your mileage may vary.
+\end{ddanger}
+
 \section{Review of Clifford Algebras}
 
 \M
@@ -705,6 +712,24 @@ representation is precisely the tensor product
 \end{equation}
 No conditions of finiteness are necessary in this generalized version.
 
+\M\label{chunk:spin:induced-rep-as-hom-set} Briefly, we can see that $\operatorname{Ind}_H^GV$ is isomorphic to
+the set
+\begin{equation}
+\hom_{H}(G,V) = \{f\colon G\to V\mid \forall h\in H,\forall g\in G,
+f(hg)=h\cdot f(g)\}.
+\end{equation}
+The $G$-action on this set is
+\begin{equation}
+g'\cdot f(g) = f(gg').
+\end{equation}
+This is a more useful characterization for Adams's next proposition.
+
+\N{Aside on Spin Representations}
+Note that an irreducible representation for $\Cl^{0}(V)$ restrict to an
+irreducible representation for $\Spin(V)$. It's for this reason that
+Adams constructs an irrep of $\Cl^{0}(V)$ in the next proposition's
+proof, and then sweeps the $\Spin(V)$ details under the rug.
+
 \begin{proposition}[{Adams~\cite[Prop.4.2]{adams1996:ex}}]
 \begin{enumerate}
 \item If $m=\dim(V)=2n+1$ is odd, then $\Cl^{0}(V)$ has one irreducible
@@ -722,6 +747,13 @@ No conditions of finiteness are necessary in this generalized version.
   complex-analytic representations for $\Spin_{\CC}(m)$.
 \end{enumerate}
 \end{proposition}
+
+\begin{danger}
+We will construct \emph{complex representations} for a \emph{real}
+Clifford algebra which restricts to \emph{complex representations} for a
+\emph{real} Spin group. This is extraordinarily confusing at first
+glance, unless one is forewarned about this scheme.
+\end{danger}
 
 Physicists call $\Delta^{+}$ and $\Delta^{-}$ the \define{Half-Spin Representations},
 some (e.g., Deligne) call them the \define{Semi-Spin Representations}.
@@ -815,10 +847,7 @@ m=2n+1,\\
 m=2n.
 \end{align}
 \end{subequations}
-\textbf{I do not immediately see how to obtain this result.} (I also
-think that each $j_{i}\in\{0,1\}$ but Adams does not explicitly state this.)
-My intuition is that it is [somehow] due to $e_{2r-1}e_{2r}$ being
-represented as $\I\varepsilon_{r}$.
+These are precisely the elements of $E_{0}$ which are not elements of $F$.
 
 Now, there are two happy endings depending on $m$. The story is
 basically the same: we will obtain an irreducible representation (or
@@ -829,8 +858,37 @@ $\Spin(V)$. And they live happily ever after.
 \textbf{Case 1: $m=2n+1$}. There are $2^{n}$ choices for $W$ (because we
 can choose the sign of $\varepsilon_{r}$), so $E_{0}/F$ permutes them
 transitively and, by conjugating with $e_{2r}e_{2r+1}$, we can change
-the sign of $\varepsilon_{r}$ without changing anything else. Each of
-these appears in $\CC[E_{0}]\otimes_{\CC[F]}W$. Therefore, we get a
+the sign of $\varepsilon_{r}$ without changing anything else. Really?
+Let us prove it:
+\begin{calculation}
+  (e_{2r}e_{2r+1})(e_{2r-1}e_{2r})(e_{2r}e_{2r+1})^{-1}
+\step{since $(e_{2r}e_{2r+1})^{-1} = e_{2r+1}e_{2r}$}
+  (e_{2r}e_{2r+1})(e_{2r-1}e_{2r})e_{2r+1}e_{2r}
+\step{associativity}
+  e_{2r}e_{2r+1}e_{2r-1}(e_{2r}e_{2r+1})e_{2r}
+\step{anticommutativity}
+  e_{2r}e_{2r+1}e_{2r-1}((-1)e_{2r+1}e_{2r})e_{2r}
+\step{associativity, moving $-1$ to the front}
+  (-1)e_{2r}e_{2r+1}e_{2r-1}e_{2r+1}(e_{2r}e_{2r})
+\step{since $e_{r}^{2}=-1$}
+  (-1)e_{2r}e_{2r+1}e_{2r-1}e_{2r+1}(-1)
+\step{move $-1$ to the front, associativity}
+  (-1)^{2}e_{2r}(e_{2r+1}e_{2r-1})e_{2r+1}
+\step{anticommutativity}
+  (-1)^{2}e_{2r}((-1)e_{2r-1}e_{2r+1})e_{2r+1}
+\step{move $-1$ to the front, associativity}
+  (-1)^{3}e_{2r}e_{2r-1}(e_{2r+1}e_{2r+1})
+\step{since $e_{2r+1}^{2}=-1$}
+  (-1)^{3}e_{2r}e_{2r-1}(-1)
+\step{move $-1$ to the front, anticommutativity}
+  (-1)^{4}(-e_{2r-1}e_{2r})
+\step{since $(-1)^{4}=1$}
+  -e_{2r-1}e_{2r}.
+\end{calculation}
+This is precisely what Adams claimed.
+
+Each of these possible choices for $\varepsilon_{r}=\pm1$ appears in
+$\CC[E_{0}]\otimes_{\CC[F]}W$. Therefore, we get a 
 representation $\Delta$ of $E_{0}$ with characters $2^{n}$ at $1$,
 $-2^{n}$ at $-1$, and $0$ everywhere else. By orthogonality relations,
 $\Delta$ is an irreducible representation of $E_{0}$.
@@ -839,6 +897,36 @@ $\Delta$ is an irreducible representation of $E_{0}$.
 \textbf{Case 2: $m=2n$}. There are $2^{n}$ choices for $W$  and under
 $E_{0}/F$ falls into two orbits: those with $\prod\varepsilon_{r}=+1$
 and those with $\prod\varepsilon_{r}=-1$. We define $\varepsilon:=\prod\varepsilon_{r}$.
+
+We can change the sign of an even number of $\varepsilon_{r}$: by
+conjugating by $e_{2r}e_{2s}$ for $r<s$, we change the sign for both
+$\varepsilon_{r}$ and $\varepsilon_{s}$. Really? Well, let us prove it:
+\begin{calculation}
+  e_{2r}e_{2s}(e_{2r-1}e_{2r})(e_{2r}e_{2s})^{-1}
+\step{since $(e_{2r}e_{2s})^{-1}=e_{2s}e_{2r}$}
+  e_{2r}e_{2s}(e_{2r-1}e_{2r})e_{2s}e_{2r}
+\step{associativity}
+  e_{2r}e_{2s}e_{2r-1}(e_{2r}e_{2s})e_{2r}
+\step{anticommutativity}
+  e_{2r}e_{2s}e_{2r-1}((-1)e_{2s}e_{2r})e_{2r}
+\step{associativity}
+  e_{2r}e_{2s}e_{2r-1}(-1)e_{2s}(e_{2r}e_{2r})
+\step{since $e_{2r}^{2}=-1$}
+  e_{2r}e_{2s}e_{2r-1}(-1)e_{2s}(-1)
+\step{move $-1$ to the front, associativity}
+  (-1)^{2}e_{2r}e_{2s}(e_{2r-1}e_{2s})
+\step{anticommutativity}
+  (-1)^{2}e_{2r}e_{2s}((-1)e_{2s}e_{2r-1})
+\step{move $-1$ to the front, associativity}
+  (-1)^{3}e_{2r}(e_{2s}e_{2s})e_{2r-1}
+\step{since $e_{2s}^{2}=-1$}
+  (-1)^{3}e_{2r}(-1)e_{2r-1}
+\step{move $-1$ to the front}
+  (-1)^{4}e_{2r}e_{2r-1}
+\step{anticommutativity}
+  (-1)^{5}e_{2r-1}e_{2r} = -e_{2r-1}e_{2r}.
+\end{calculation}
+Similar calculation works for $e_{2s-1}e_{2s}$.
 
 The character for these representations is $2^{n-1}$ at $1$, $-2^{n-1}$
 at $-1$, $\I^{n}\varepsilon$ at $\prod^{2n}e_{i}$, and $-\I^{n}\varepsilon$
@@ -850,6 +938,84 @@ representations denoted $\Delta^{\pm}$, which concludes the proof.
 $\prod^{2n}e_{i}$ lives in the center of $E_{0}$ and must commute with
 everything. This implies it is represented by a diagonal matrix, and I
 think $\Delta^{\pm}$ are the eigenspaces for it.)
+\end{proof}
+
+\begin{remark}[Note to self]
+If I were to revise these notes, it might be wise to turn the
+calculations ``Conjugate $\varepsilon_{r}$ by these quadratic terms''
+into exercises.
+\end{remark}
+
+\begin{remark}
+If we were to think of the induced representation as a hom-set (\S\ref{chunk:spin:induced-rep-as-hom-set}),
+then $W\iso\{f|_{\{1\}}\mid f\in\hom_{F}(G,\CC)\}$ I think (since
+$W\iso\CC^{1}$ is a one-dimensional space).
+\end{remark}
+
+\begin{proposition}[{Adams~\cite[Prop.4.4]{adams1996:ex}}]
+Let $\Delta^{\pm}_{2n}$ be the irreps for $\Spin(2n)$, $\Delta_{2n+1}$
+the irrep for $\Spin(2n+1)$, and $\Delta^{\pm}_{2n+2}$ the irreps for
+$\Spin(2n+2)$. Then under the obvious inclusions
+$\Spin(2n)\into\Spin(2n+1)\into\Spin(2n+2)$, we have the representations
+restrict as
+\[ \Delta^{+}_{2n}\oplus\Delta^{-}_{2n} \iso \Delta_{2n+1}|_{\Spin(2n)} \]
+and
+\[ \Delta_{2n+1} \iso \Delta^{\pm}_{2n+2}|_{\Spin(2n+1)}. \]
+\end{proposition}
+
+The more general situation --- relating (1) irreps of $\Spin(r)$, $\Spin(s)$
+in the product group $\Spin(r)\times\Spin(s)$ and (2) irreps of $\Spin(r+s)$
+--- are handled in the next proposition.
+
+\begin{proposition}[{Adams~\cite[Prop.4.5]{adams1996:ex}}]
+\begin{enumerate}
+\item Under the ``obvious'' inclusion group morphism
+  $\Spin(2r)\times\Spin(2s)\into\Spin(2r+2s)$, we have the retraction
+  [left inverse morphism] induce mappings of the representations when
+  restricted to the subgroups:
+  \[ \Delta_{2r}^{+}\otimes\Delta_{2s}^{+} + \Delta^{-}_{2r}\otimes\Delta^{-}_{2s}
+\gets \Delta_{2r+2s}^{+}|_{\Spin(2r)\times\Spin(2s)} \]
+  \[ \Delta_{2r}^{+}\otimes\Delta_{2s}^{-} + \Delta^{-}_{2r}\otimes\Delta^{+}_{2s}
+\gets \Delta_{2r+2s}^{-}|_{\Spin(2r)\times\Spin(2s)} \]
+\item Under $\Spin(2r)\times\Spin(2s + 1)\into\Spin(2r+2s + 1)$, we have
+  \[ \Delta_{2r}^{+}\otimes\Delta_{2s+1} + \Delta^{-}_{2r}\otimes\Delta_{2s+1}
+\gets \Delta_{2r+2s+1}|_{\Spin(2r)\times\Spin(2s+1)} \]
+\item Under $\Spin(2r+1)\times\Spin(2s+1)\into\Spin(2r+2s+2)$, we have
+  \[ \Delta_{2r+1}\otimes\Delta_{2s+1}
+\gets \Delta_{2r+2s+2}^{+}|_{\Spin(2r+1)\times\Spin(2s+1)} \]
+  \[ \Delta_{2r+1}\otimes\Delta_{2s+1}
+\gets \Delta_{2r+2s+2}^{-}|_{\Spin(2r+1)\times\Spin(2s+1)} \]
+\end{enumerate}
+\end{proposition}
+
+I'll just sketch the proof scheme which Adams uses.
+
+\begin{proof}[Proof scheme]
+The weights agree with the modules on the left and on the right, which
+implies the characters agree on the compact group $\Spin_{\RR}(p)\times\Spin_{\RR}(q)$, and establishes the modules are
+isomorphic. Let us work through the first claim's proof explicitly, so
+$p=2r$ and $q=2s$.
+
+For example, if we take a weight
+$\frac{1}{2}(\varepsilon_{1}x_{1}+\cdots+\varepsilon_{r+s}x_{r+s})$ with
+$\varepsilon_{1}\varepsilon_{2}\cdots\varepsilon_{r+s}=1$, then we get
+on the right
+$\frac{1}{2}(\varepsilon_{1}x_{1}+\cdots+\varepsilon_{r}x_{r}) + \frac{1}{2}(\varepsilon_{r+1}x_{r+1}+\cdots+\varepsilon_{r+s}x_{r+s})$
+with either $\varepsilon_{1}\cdots\varepsilon_{r}=1$ and 
+$\varepsilon_{r+1}\cdots\varepsilon_{r+s}=1$
+or $\varepsilon_{1}\cdots\varepsilon_{r}=-1$ and 
+$\varepsilon_{r+1}\cdots\varepsilon_{r+s}=-1$. This shows the characters
+agree on the product group $\Spin_{\RR}(2r)\times\Spin_{\RR}(2s)$.
+
+Then the characters agree on the finite groups $E_{0}(2r)\times E_{0}(2s)$.
+Then the modules are isomorphic as representations of these finite
+groups, hence isomorphic as modules over $\FF[E_{0}(2r)\times E_{0}(2s)]$.
+
+But they are isomorphic as modules over
+$\bigl(\FF[E_{0}(2r)]/(\nu+1)\bigr)\otimes\bigl(\FF[E_{0}(2s)]/(\nu+1)\bigr)\iso\Cl^{0}(2r)\otimes_{\FF}\Cl^{0}(2s)$.
+So the modules are isomorphic as representations of
+$\Spin_{\FF}(2r)\times\Spin_{\FF}(2s)$, where
+$\Spin_{\FF}(p)=\Spin(\FF^{p})$ for $\FF=\RR$ or $\FF=\CC$.
 \end{proof}
 
 \subsection{Fermionic Operator Algebra Versions of Half-Spin Representations}
@@ -894,8 +1060,6 @@ variables $\theta_{i}$, the destruction operators $a_{i}$ are the
 derivatives $\partial/\partial\theta_{i}$. Not only is this quite nifty,
 it's \emph{super} nifty.
 \end{remark}
-Spin(n) 111, 334, 427
-Soubir 27m 147
 
 \N{Clifford Generators}
 We can recover the generators for the Clifford algebra by
@@ -932,6 +1096,101 @@ S^{-} = \operatorname{Span}\{a^{\dagger}_{i}|0\rangle, a^{\dagger}_{i}a^{\dagger
 where $1\leq i<j<k<\dots\leq n$. These correspond to $\Delta^{+}$, $\Delta^{-}$
 (respectively).
 
+\M
+The fermionic operator algebra gives us irreducible representations for
+$\spin(2m)$. Exponentiation then gives us irreducible representations
+for the group $\Spin(2m)$. But we are required to exponentiate things.
+
+\subsection{Tensor Products of Spinor Representations}
+
+\M
+For $\SO(m)$ we can describe its fundamental representation
+$V\iso\FF^{m}$ as well as its exterior powers $\Exterior^{k}V$. There is
+something special that happens for the case when $m=2n$ and $k=n$,
+namely we get two irreducible subrepresentations:
+$\Exterior^{n}V\iso\Exterior^{n+}V\oplus\Exterior^{n-}V$.
+How does this work?
+
+Well, consider the situation for $V\iso\RR^{4}$ with canonical basis
+$e_{1}$, $e_{2}$, $e_{3}$, $e_{4}$. We have the Hodge star:
+\begin{subequations}
+\begin{align}
+\star(e_{1}\wedge e_{2}) &= e_{3}\wedge e_{4}\\
+\star(e_{1}\wedge e_{3}) &= -e_{2}\wedge e_{4}\\
+\star(e_{1}\wedge e_{4}) &= e_{2}\wedge e_{3}\\
+\star(e_{2}\wedge e_{3}) &= e_{1}\wedge e_{4}\\
+\star(e_{2}\wedge e_{4}) &= -e_{1}\wedge e_{3}\\
+\star(e_{3}\wedge e_{4}) &= e_{3}\wedge e_{4}.
+\end{align}
+\end{subequations}
+This is because $e_{i}\wedge e_{j}\wedge\star(e_{i}\wedge e_{j})=\omega$
+is precisely the volume form $\omega = e_{1}\wedge e_{2}\wedge e_{3}\wedge e_{4}$.
+
+Now, the Hodge star gives us two eigenspaces. The $+1$ eigenspace are
+spanned by $e_{1}\wedge e_{2} + e_{3}\wedge e_{4}$,
+$e_{1}\wedge e_{3} -e_{2}\wedge e_{4}$,
+and $e_{1}\wedge e_{4} + e_{2}\wedge e_{3}$.
+The reader can verify $\star$ applied to these 2-forms are precisely
+themselves. This span describes $\Exterior^{2+}\RR^{4}$.
+
+The $-1$ eigenspace for the Hodge star is spanned by
+$e_{1}\wedge e_{2} - e_{3}\wedge e_{4}$,
+$e_{1}\wedge e_{3} + e_{2}\wedge e_{4}$, and
+$e_{1}\wedge e_{4} - e_{2}\wedge e_{3}$. This span describes
+$\Exterior^{2-}\RR^{4}$. The reader can verify these two forms $v$
+satisfy $\star v = - v$.
+
+\begin{remark}
+The general scheme works for the more general setting of $n$-forms. We
+just take $\star (e_{i_{1}}\wedge\dots\wedge e_{i_{n}}) = s e_{j_{1}}\wedge\dots\wedge e_{j_{n}}$
+where $s=\pm1$, $i_{1}<\dots<i_{n}$ and $j_{1}<\dots<j_{n}$ and
+$\{i_{1},\dots,i_{n},j_{1},\dots,j_{n}\} = \{1,2,\dots,2n\}$.
+Then we determine the sign $s$ by computing
+\begin{equation}
+(e_{i_{1}}\wedge\dots\wedge e_{i_{n}})\wedge\star(e_{i_{1}}\wedge\dots\wedge e_{i_{n}})=\omega.
+\end{equation}
+Once we have done this for every possible basis $n$-form for
+$\Exterior^{n}\FF^{2n}$, we form the eigenspaces:
+\begin{subequations}
+\begin{align}
+\Exterior^{n+}\FF^{2n}=\span\{(e_{i_{1}}\wedge\dots\wedge e_{i_{n}}) + \star (e_{i_{1}}\wedge\dots\wedge e_{i_{n}})\}\\
+\intertext{and}
+\Exterior^{n-}\FF^{2n}=\span\{(e_{i_{1}}\wedge\dots\wedge e_{i_{n}}) - \star (e_{i_{1}}\wedge\dots\wedge e_{i_{n}})\}.
+\end{align}
+\end{subequations}
+For indefinite metrics, $\RR^{p,q}$, care must be taken for the signs
+--- namely, for $q$ odd, the spans describe the opposite eigenspaces.
+\end{remark}
+
+\begin{remark}
+Thank goodness Qiaochu Yuan clarified this for me.\footnote{He was
+answering someone else's question, though, but I still appreciate it! \url{https://mathoverflow.net/a/440634}}
+\end{remark}
+
+\begin{theorem}[{Adams~\cite[Th.4.6(i)]{adams1996:ex}}]
+Let $V$ be the fundamental representation for $\SO(2n)$. As
+representations for $\Spin(2n)$, we have the following tensor products:
+\begin{enumerate}
+\item $\Sym^{2}(\Delta^{+}) \iso \Exterior^{n+}V + \Exterior^{n-4}V + \Exterior^{n-8}V+\dots$
+\item $\Exterior^{2}\Delta^{+} \iso \Exterior^{n-2}V + \Exterior^{n-6}V + \dots$
+\item $\Sym^{2}(\Delta^{-}) \iso \Exterior^{n-}V + \Exterior^{n-4}V + \Exterior^{n-8}V+\dots$
+\item $\Exterior^{2}\Delta^{-} \iso \Exterior^{n-2}V + \Exterior^{n-6}V + \dots$
+\item $\Delta^{+}\otimes\Delta^{-}\iso\Exterior^{n-1}V + \Exterior^{n-3}V + \Exterior^{n-5}V + \dots$.
+\end{enumerate}
+\end{theorem}
+
+We write: $V+W$ for $V\oplus W$; and
+$\Sym^{2}(V)$ is the second symmetric power of $V$. We recall
+$V\otimes V\iso\Sym^{2}(V) + \Exterior^{2}V$.
+
+\begin{theorem}[{Adams~\cite[Th.4.6(ii)]{adams1996:ex}}]
+Let $V$ be the fundamental representation for $\SO(2n+1)$. As
+representations for $\Spin(2n+1)$, we have the following tensor products:
+\begin{enumerate}
+\item $\Exterior^{2}\Delta\iso\Exterior^{n}V + (\Exterior^{n-3}V + \Exterior^{n-4}V) +\dots+(\Exterior^{n-3-4k}V + \Exterior^{n-4-4k}V)+\dots$
+\item $\Sym^{2}(\Delta)\iso(\Exterior^{n-1}V + \Exterior^{n-2}V) + (\Exterior^{n-5}V + \Exterior^{n-6}V) + \dots + (\Exterior^{n-1-4k}V + \Exterior^{n-2-4k}V) +\dots$.
+\end{enumerate}
+\end{theorem}
 
 \section{Miscellaneous}
 
