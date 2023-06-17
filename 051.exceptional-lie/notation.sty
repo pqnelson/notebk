@@ -39,6 +39,7 @@
 
 
 \DeclareMathOperator\aut{Aut}
+\DeclareMathOperator\End{End}
 \DeclareMathOperator\id{id}
 \newcommand\powerset{\mathcal{P}}
 
@@ -142,6 +143,29 @@
 
 \let\og@Re\Re
 \def\Re{\operatorname{Re}}
+
+%% Super mathematics
+% Thank you, egreg! https://tex.stackexchange.com/a/618597/14751
+\newcommand{\makesuper}[2]{%
+  % #1 = \DeclareMathOperator or \newcommand or \DeclareRobustCommand
+  % #2 = macro name
+  \expandafter#1\csname super\string#2\endcsname
+}
+\DeclareRobustCommand{\super}[1]{%
+  \ifcsname super\string#1\endcsname
+    \csname super\string#1\expandafter\endcsname
+  \else
+    \expandafter\ERROR
+  \fi
+}
+
+\newcommand{\commutator}[2]{[#1,#2]}
+
+\makesuper\DeclareMathOperator{\det}{Ber}
+\makesuper\DeclareMathOperator{\tr}{str}
+\makesuper\newcommand{\commutator}[2]{[#1,#2\}}
+\makesuper\newcommand\otimes{\mathbin{\widehat{\otimes}}}
+
 
 \endinput
 
