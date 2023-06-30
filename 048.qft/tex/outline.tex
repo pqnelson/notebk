@@ -210,7 +210,130 @@ We study the scalar, the Dirac spinor $(1/2, 0)\oplus(0, 1/2)$, and
 Vector fields specifically, since these are the necessary ingredients
 for the Standard Model (and they are renormalizable fields).
 
-\subsection{Yang--Mills Theory}
+\section{Wightman Axioms}
+
+\M
+We can formalize [canonical] quantum field theory using about a half
+dozen axioms. That is to say, we can formalize \emph{one particular}
+picture of quantum field theory using a handful of axioms.
+These are the Wightman axioms, which is studied in great detail in
+Streater and Wightman's book~\cite{Streater:1989vi}.
+
+
+\begin{axiom}[Hilbert space structure]
+The states of the theory are rays in a Hilbert space $\mathcal{H}$ which
+possesses a continuous unitary representation $U(a,\alpha)$ of the
+Poincar\'e spinor group $\overline{\mathscr{P}^{\uparrow}_{+}}$.
+\end{axiom}
+
+\begin{axiom}[Spectral condition]
+The spectrum of the energy-momentum operator $P^{\mu}$ is confined to
+the closed forward lightcone $\overline{V}^{+}=\{p^{\mu}|p^{2}\geq0,p^{0}\geq0\}$
+where $U(a,1)=\exp(\I P^{\mu}a_{\mu})$.
+\end{axiom}
+
+\begin{remark}
+This means the energy is bounded from below. Morally, this means ``The
+theory is stable''.
+\end{remark}
+
+\begin{axiom}[Uniqueness of the vacuum]
+There exists a unit state vector $|0\rangle$ called the vacuum state
+which is a unique translationally-invariant state in $\mathcal{H}$.
+\end{axiom}
+
+Morally: ``The vacuum is unique and looks the same to all observers''.
+
+\begin{axiom}[Field operators]
+The theory consists of fields $\varphi^{(\kappa)}(x)$ (of type $\kappa$)
+which have components $\varphi^{(\kappa)}_{\ell}(x)$ that are
+operator-valued tempered distributions in $\mathcal{H}$, and the vacuum
+state $|0\rangle$ is a cyclic vector for the fields.
+\end{axiom}
+
+Morally: ``Quantum fields $\varphi$ are operator-valued distributions''.
+This means in particular:
+\begin{enumerate}
+\item Quantum fields cannot be evaluated at a single point (e.g., the
+  Diract delta function $\delta(x)$ at $x=0$);
+\item We need to ``average them out'' over some region of spacetime $\Sigma$.
+\end{enumerate}
+The physical justification for this is the Heisenberg uncertainty principle.
+
+\begin{axiom}[Relativistic Covariance]
+The fields $\varphi^{(\kappa)}_{\ell}(x)$ transform covariantly under
+the action of $\overline{\mathscr{P}^{\uparrow}_{+}}$:
+\begin{equation}
+U(a,\alpha)\varphi^{(\kappa)}_{\ell}(x)U(a,\alpha)^{-1} = S_{ij}^{(\kappa)}(\alpha^{-1})\varphi_{j}^{(\kappa)}(\Lambda(\alpha)x+a),
+\end{equation}
+where $S(\alpha)$ is a finite-dimensional matrix representation of the
+Lorentz spinor group $\overline{\mathscr{L}^{\uparrow}_{+}}$, and
+$\Lambda(\alpha)$ is the Lorentz transformation corresponding to
+$\alpha\in\overline{\mathscr{L}^{\uparrow}_{+}}$
+\end{axiom}
+
+\begin{axiom}[Microcausality]
+If the support of the test functions $f$ and $g$ of the fields
+$\varphi^{(\kappa)}_{\ell}$ and $\varphi^{(\kappa')}_{m}$ (respectively)
+are space-like separated, then its graded commutator:
+\begin{equation}
+[\varphi^{(\kappa)}_{\ell}(f), \varphi^{(\kappa')}_{m}(g)]_{\pm} = 0
+\end{equation}
+when applied to any state in $\mathcal{H}$ for any fields
+$\varphi^{(\kappa)}_{\ell}$ and $\varphi^{(\kappa')}_{m}$.
+\end{axiom}
+
+\N{Consequences}
+We have a number of consequence from these Wightman axioms. Roughly, the
+outline for results for scalar fields (and other simple fields) are as
+follows:
+\begin{enumerate}
+\item The correlation functions $\langle0|\varphi^{(\kappa_{1})}_{\ell_{1}}(x_{1}) \cdots\varphi^{(\kappa_{n})}_{\ell_{n}}(x_{n})|0\rangle$
+are distributions.
+\item A quantum field theory can be fully reconstructed from knowledge
+  of all of the correlation functions.
+\item We can connect Minkowski and Euclidean field theories (taking the
+  Wick rotation $t\mapsto\I\tau$)
+\item Spin-statistics theorem: bosonic fields have commutators,
+  fermionic fields have anticommutators.
+\item CPT is a symmetry of any theory, even though how the operators
+  ($C$, $P$, $T$) are implemented differently depending on the
+  conventions adopted.
+\end{enumerate}
+
+\M
+For theories of physical interest (that is, gauge theories) significant
+complications arise with the Wightman axioms. For QCD, these
+complications underpin the \emph{nonperturbative} structure of
+correlation functions.
+
+Specifically, we have a ``Local Gauss Law'' for Yang--Mills theory
+\begin{equation}
+\partial^{\nu}F^{I}_{\mu\nu} = J^{I}_{\mu}.
+\end{equation}
+We have two ways to impose this constraint, which faces the following
+trade-off:
+\begin{enumerate}
+\item Preserve positivity and lose locality (see: Coulomb gauge in QED); or
+\item Preserve locality and lose positivity (see: Landau gauge in QCD).
+\end{enumerate}
+The second option, to recover locality, we modify the constraint
+equation to be imposed for physical states:
+\begin{equation}
+\langle\mbox{phys}|\partial^{\nu}F^{I}_{\mu\nu} - J^{I}_{\mu}|\mbox{phys}\rangle=0,
+\end{equation}
+which either gives us:
+\begin{enumerate}
+\item The Gupta--Bleuler condition $\partial^{\mu}A_{\mu}^{(+)}|\mbox{phys}\rangle=0$,
+or
+\item BRST condition $Q_{B}|\mbox{phys}\rangle=0$.
+\end{enumerate}
+This necessarily introduces both \emph{zero-norm} and
+\emph{negative-norm states}. We need to modify the axioms, resulting in
+what some have called the ``Pseudo-Wightman approach''. For more about
+this, see Bogolubov and friends~\cite{Bogolyubov:1990kw}.
+
+\section{Yang--Mills Theory}
 
 \N{Global and Local Symmetries}
 Textbooks usually begin by studying ``global symmetries'', which do not
@@ -444,6 +567,8 @@ Stuff I should write about:
 \item Coleman--Norton theorem
 \item Multiplets are irreducible representations (or subrepresentations)
   for a Lie algebra/group.
+\item Technicolor (i.e., composite Higgs); for some reviews, see
+  \arXiv{hep-ph/9401324} and \arXiv{1104.1255}.
 \end{enumerate}
 
 % Zeidler, \textit{Quantum Field Theory III}, \S3.14.3 discusses highest
