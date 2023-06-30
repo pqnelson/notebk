@@ -1,0 +1,198 @@
+\chapter{$G_{2}$}
+
+\M
+Since $\mathtt{G}_{2}$ is the smallest exceptional Lie group, it's
+usually the first one studied. Whether this is fair or not, there are at
+least three ways to construct the group, which are secretly related to
+each other.
+
+\section{Constructing the Group}
+
+\subsection{As Stabilizer of Point}
+
+\begin{theorem}[{Adams~\cite[Th5.5]{adams1996:ex}}]\label{thm:g2:as-subgroup-of-spin-7}
+Consider the subgroup $G$ of $\Spin(7)$ which fixes a point $z\in S^{7}\subset\Delta$.
+Then $G$ is a compact, connected, simply-connected Lie group of rank 2,
+of dimension 14, is commonly called $\mathtt{G}_{2}$, and has the Dynkin
+diagram: 
+\begin{center}
+\includegraphics{img/img.0}
+\end{center}
+Moreover, $\mathtt{G}_{2}$ is
+transitive on pairs $(x,y)$ of orthogonal vectors in $S^{6}\subset\RR^{7}$.
+\end{theorem}
+
+Adams's proof is an unhappy one, for me (at least), because it doesn't
+give us $\mathtt{G}_{2}$ explicitly. Instead, Adams proves the subgroup
+of $\Spin(7)$ fixing $z$ has the desired properties and then proves
+uniqueness. 
+
+\subsection{Automorphism Group for Octonions}
+
+\M
+We can recall, in subsection~\ref{subsec:octonions:automorphisms},
+the notion of automorphisms for Octonions.
+
+\begin{definition}\label{defn:g2:as-aut-oo}
+The automorphism group for the Octonions is $\mathtt{G}_{2}$. These are
+precisely linear maps $A\colon\OO\to\OO$ such that
+\begin{enumerate}
+\item $A(1)=1$ and more generally $A(r)=r$ for all $r\in\RR$;
+\item $A(x\pm y)=A(x)\pm A(y)$ for all $x,y\in\OO$; and
+\item $A(xy)=A(x)A(y)$ for all $x,y\in\OO$.
+\end{enumerate}
+\end{definition}
+
+\N{Relation to previous definition}
+We can form the Octonions from any base triple $(e_{1}, e_{2}, e_{3})$
+of orthogonal imaginary unit Octonions which intuitively play the role
+of $\I$, $j$, $\ell$. Remember, $k$ is just an abbreviation for $\I j$.
+We can pick $e_{1}$ from the unit sphere $S^{6}\subset S^{7}\subset\OO$ of imaginary
+Octonions, then pick $e_{2}$ from the unit sphere $S^{5}\subset S^{6}\subset\OO$
+consisting of unit imaginary Octonions orthogonal to $e_{1}$.
+The remaining possible member of a base triple would belong to $S^{7}$
+which is orthogonal to $e_{1}$, $e_{2}$, and $e_{1}e_{2}$ --- which is
+precisely a sphere $S^{4}\subset S^{6}\subset\OO$.
+
+The automorphism group for the Octonions then acts transitively on the
+space of basic triples. Geometrically, this is precisely the description
+of $\mathtt{G}_{2}$ from our first definition. The ``fixed point'' of
+$S^{7}$ is precisely $1\in\OO$.
+
+This establishes the logical equivalence of
+the group defined in Theorem~\ref{thm:g2:as-subgroup-of-spin-7}
+and the group in Definition~\ref{defn:g2:as-aut-oo}.
+
+\subsection{Stabilizer of Three-Form}
+
+\N{Multiplication Table for Octonions}
+Let us first write down the multiplication table for the Octonions,
+writing $e_{0}=1$, $e_{1}=\I$, $e_{2}=j$, $e_{3}=k$, $e_{4}=\ell$,
+$e_{5}=\I\ell$, $e_{6}=j\ell$, $e_{7}=k\ell$ as the canonical basis for 
+$\RR^{8}$ used as generators for the Octonions, we have:
+\begin{equation}
+\begin{array}{c||c|c|c|c|c|c|c}
+      & e_{1}  & e_{2}  & e_{3} & e_{4} & e_{5} & e_{6} & e_{7}\\ \hline\hline
+e_{1} & -1     & e_{3}  & -e_{2} & e_{5} & -e_{4} & -e_{7} & e_{6}\\ \hline
+e_{2} & -e_{3} & -1     & e_{1} & e_{6}  & e_{7} & -e_{4} & -e_{5}\\ \hline
+e_{3} & e_{2} & -e_{1} & -1    & e_{7}  & -e_{6} & e_{5} & -e_{4}\\ \hline
+e_{4} & -e_{5}  & -e_{6} & -e_{7} & -1    & e_{1} & e_{2} & e_{3}\\ \hline
+e_{5} & e_{4} & -e_{7} & e_{6} & -e_{1} & -1   & -e_{3} & e_{2}\\ \hline
+e_{6} & e_{7}  & e_{4} & -e_{5}  & -e_{2} & e_{3} & -1 & -e_{1}\\ \hline
+e_{7} & -e_{6}  & e_{5}  & e_{4} & -e_{3}  & -e_{2} & e_{1} & -1
+\end{array}
+\end{equation}
+
+\N{Associated Calibrated 3-form}
+There is a 3-form $\varphi\in\Exterior^{3}(\Im\OO)^{*}$ defined by
+\begin{equation}
+\varphi(a, b, c) = \frac{1}{2}\langle a, [b,c]\rangle =\frac{1}{2}\langle[a,b],c\rangle
+\end{equation}
+for any $a$, $b$, $c\in\Im\OO$. Here $[a,b]=ab-ba$ is just the
+commutator, and $\langle-,-\rangle$ is the usual inner product on
+$\RR^{7}$. This is called the \define{Associated Calibrated 3-Form}.
+
+If we let $\omega^{i}$ be the dual basis, so
+$\omega^{i}[e_{j}]={\delta^{i}}_{j}$, and if we write
+$\omega^{ijk}=\omega^{i}\wedge\omega^{j}\wedge\omega^{k}$, then let us
+try to write $\varphi$ as a linear combination of these $\omega^{ijk}$.
+We find:
+\begin{subequations}
+\begin{align}
+  \varphi(e_{1},e_{2},e_{3})&=1\\
+  \varphi(e_{1},e_{4},e_{5})&=1\\
+  \varphi(e_{1},e_{6},e_{7})&=-1\\
+  \varphi(e_{2},e_{4},e_{6})&=1\\
+  \varphi(e_{2},e_{5},e_{7})&=1\\
+  \varphi(e_{3},e_{4},e_{7})&=1\\
+  \varphi(e_{3},e_{5},e_{6})&=-1
+\end{align}
+\end{subequations}
+This gives us
+\begin{equation}
+\varphi = \omega^{123} + \omega^{145} - \omega^{167} + \omega^{246} +
+\omega^{257} + \omega^{347} - \omega^{356}.
+\end{equation}
+
+\begin{ddanger}
+Be careful with the expression for $\varphi$ using local coordinates,
+since we could use a different basis and different multiplication table
+for the Octonions.
+\end{ddanger}
+
+\N{Representation on 3-Forms}
+We have $\GL(\RR^{7})$ act on $\Exterior^{3}(\RR^{7})^{*}$ with
+$g\in\GL(\RR^{7})$ by means of the pullback, so for any $a$, $b$,
+$c\in\RR^{7}$, and $\Omega\in\Exterior^{3}(\RR^{7})^{*}$, we have
+\begin{equation}
+g^{*}\Omega(a,b,c) = \Omega\bigl(g^{-1}(a), g^{-1}(b), g^{-1}(c)\bigr).
+\end{equation}
+This should be contrasted with the naive dual representation on the
+third exterior power of $V^{*}$, which would result in using
+$\transpose{(g^{-1})}$ instead of $g^{-1}$, yielding an incorrect
+expression for the group.
+
+\begin{definition}\label{defn:g2:isotropy-group-of-3-form}
+We can define the group $\mathtt{G}_{2}$ as the subgroup of $\GL(\RR^{7})$
+as the isotropy subgroup for the associated calibrated 3-form, i.e., as:
+\begin{equation}
+\mathtt{G}_{2} = \{g\in\GL(\RR^{7})\mid g^{*}\varphi=\varphi\}.
+\end{equation}
+Explicitly, this means, for any $a$, $b$, $c\in\RR^{7}$ and $g\in\GL(\RR^{7})$, that
+$\varphi\bigl(g^{-1}(a), g^{-1}(b), g^{-1}(c)\bigr)=\varphi(a, b, c)$ iff $g\in\mathtt{G}_{2}$.
+Of course, since $g\in\mathtt{G}_{2}$ iff $g^{-1}\in\mathtt{G}_{2}$, so
+we could easily demand the equivalent condition
+$\varphi(g(a),g(b),g(c))=\varphi(a,b,c)$ holds.
+\end{definition}
+
+\begin{remark}
+Engel~\cite{engel1900:talk} proved in 1900 that a generic complex
+3-form's isotropy subgroup is isomorphic to $\mathtt{G}_{2}$. We find in
+his notes for his June 11, 1900 talk to the Royal Saxonian Academy of
+Sciences: ``Zudem ist hiermit eine direkte Definition unsrer
+vierzehngliedrigen einfachen Gruppe gegeben, die an Eleganz nichts zu
+w\"{u}nschen \"{u}brig l\"{a}sst.'' [Roughly: 
+  ``In addition, this gives a direct definition of our fourteen-membered
+  simple group [i.e., $\mathtt{G}_{2}$], which leaves nothing to be
+  desired in terms of elegance.'']
+
+Of course, Engel's result is in a related-but-different setting.
+When we work with the complex 3-form
+\begin{equation}\label{eq:g2:engel-3-form}
+\Omega = \omega^{147} + \omega^{257} + \omega^{367} - 2\omega^{123}+2\omega^{456},
+\end{equation}
+which is what Engels used in his talk, we end up with a group isomorphic
+to the complex $\mathtt{G}_{2}$ group. When we work with this same
+3-form in the split $\RR^{4,3}$ space, we obtain the isotropy group is
+isomorphic to the split real form of $\mathtt{G}_{2}^{\text{split}}$. 
+\end{remark}
+
+\begin{remark}
+Up to a $\mathtt{G}_{2}$ symmetry (or possibly multiplication by a
+nonzero real number), there are only two distinct
+``generic'' 3-forms for $\Exterior^{3}(\RR^{7})^{*}$: Engel's 3-form in
+Eq~\eqref{eq:g2:engel-3-form}, and the associated calibrated
+3-form. Here, we call a $p$-form over $\RR^{n}$ is ``generic'' if its
+orbit under $\GL(n)$ is an open set. There are a variety of proofs for
+this claim, see section 4 of Draper~\cite{draper:2017g2} for references.
+
+If we work with these 3-forms over the complex numbers instead (i.e., as
+elements of $\Exterior^{3}(\CC^{7})^{*}$), then there is only one orbit
+for the generic 3-forms.
+\end{remark}
+
+\N{Relation to other definitions}
+If we take our definition for $\mathtt{G}_{2}$, we can relate it to the
+group $\aut(\OO)$ as follows: write any element $\alpha\in\OO$ as
+$\alpha=r+\vec{m}$ where $r\in\RR$ is the real part and $\vec{m}$ is the
+imaginary part. Then if $g\in\mathtt{G}_{2}$, it acts on $\OO$ by
+$\rho_{g}(1)=1$ and $\rho_{g}(\vec{m})=g\cdot\vec{m}$. This relates any
+element of $\mathtt{G}_{2}$ to an automorphism of the
+Octonions. Conversely, given any automorphism of the Octonions, we may
+obtain an element of $\mathtt{G}_{2}$ by examining its action on the
+imaginary part of an Octonion and pretending it's a vector in $\RR^{7}$.
+
+This establishes the logical equivalence of
+Definition~\ref{defn:g2:as-aut-oo} and
+Definition~\ref{defn:g2:isotropy-group-of-3-form}.
+

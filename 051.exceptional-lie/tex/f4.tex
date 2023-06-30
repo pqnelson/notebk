@@ -1,0 +1,66 @@
+\chapter{$F_{4}$}
+
+\N{Origin: Useless Curio}
+The $\mathtt{F}_{4}$ exceptional group is a bit more convoluted. The
+earliest discussion of it I could find is in Elie Cartan's doctoral
+thesis (part II, \S19) and later in his 1914 article ``\textit{Les groupes r\'eels simples, finis et continus}''\footnote{\url{http://www.numdam.org/item?id=ASENS_1914_3_31__263_0}},
+left in the penultimate section of the article, and a sad few paragraphs
+in his thesis, which dryly proves its
+simplicity as a Lie algebra. It is quite likely Killing discovered it
+first and published it in one of his articles in the 1890s, I could not
+acquire them to verify this suspicion. To the best of my knowledge, this
+is the first instance of its discussion: a curio which is an exception to an
+otherwise beautiful classification theorem, as a burden to be dealt
+with, rather than as the symmetry group for some object.
+
+\N{Connection with Octonions}
+It wasn't until 1949 that any insight into $\mathtt{F}_{4}$ could be
+gleaned: Jordan constructed the octionic plane, then the next year Borel~\cite{Borel:1950}
+proved its isometry group is precisely $\mathtt{F}_{4}$.
+Simultaneously, as Borel made this insight, Chevalley and
+Schafer~\cite{Chevalley:1950} constructed the Lie algebra
+$\mathfrak{f}_{4}$ using the exceptional Jordan algebra
+$\mathfrak{h}_{3}(\OO)$ and, moreover, that the Lie group
+$\mathtt{F}_{4}$ is isomorphic to the automorphism group
+$\mathtt{F}_{4}\iso\aut(\mathfrak{h}_{3}(\OO))$. Adams~\cite{adams1996:ex}
+constructs $\mathtt{F}_{4}$ in this manner, as well.
+
+\M
+There is one, last, construction of the $\mathtt{F}_{4}$ group I am
+aware of, which is a direct analogy to the construction of the
+$\mathtt{E}_{8}$ Lie group: start with the Lie algebra $\mathfrak{spin}(9)$
+Lie algebra and add to it its fundamental spin representation
+$\Delta_{9}$, then form a Lie algebra out of the underlying vector space
+$\mathfrak{spin}(9)\oplus\Delta_{9}$.
+
+This is secretly related to the construction as the automorphism group
+of the exceptional Jordan algebra, since
+$\Delta_{9}\iso\Delta^{+}_{8}\oplus\Delta^{-}_{8}\iso\OO^{2}$ and
+$\Spin(8)$ acts on it.
+
+We can also relate it to triality, by the vector space isomorphisms
+\begin{subequations}
+  \begin{align}
+    \mathfrak{f}_{4} &\iso\mathfrak{so}(9)\oplus\OO^{2}\\
+    &\iso\mathfrak{so}(8)\oplus\RR^{8}\oplus\Delta^{+}_{8}\oplus\Delta^{-}_{8}.
+  \end{align}
+\end{subequations}
+We interpret the $\RR^{8}$ as the vector representation for
+$\mathfrak{so}(8)$, and $\Delta^{\pm}_{8}$ as the spinor
+representations. We construct a bracket
+$[-,-]\colon\mathfrak{so}(8)\times\mathfrak{f}_{4}\to\mathfrak{f}_{4}$
+using the obvious actions, and it acts on the representating spaces via
+the triality map.
+
+I am being a bit terse here, but if I were honest, I should admit these
+constructions are all really ``the same under the hood''.
+
+\N{Killing Spinor Construction}
+Jos\'e Figueroa-O'Farrill~\cite{Figueroa-OFarrill:2007jcv} published a
+construction of the Lie algebra $\mathfrak{f}_{4}$ using a geometric
+construction routine from Supergravity called Killing spinors (analogous
+quantities to Killing vectors, but on spinor bundles). I do not understand
+the details yet, but I would like to learn more when time allows.
+Figueroa-O'Farrill assures us that this underpins the construction we
+find in Adams' gambit turning $\mathfrak{spin}(n)\oplus\Delta_{n}$ 
+into a Lie algebra.

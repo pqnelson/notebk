@@ -96,6 +96,10 @@
 %% Linear Algebra
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\diag}{diag}
+% Apparently, the ISO 80000-2:2013 suggests using $\mathsf{T}$ for
+% matrix transpose, so who am I to argue?
+\newcommand\transpose[1]{#1^{\mathsf{T}}}
+
 
 \newcommand{\UP}[2]{\makebox[0pt]{\smash{\raisebox{1.5em}{$\phantom{#2}#1$}}}#2}
 \newcommand{\LF}[1]{\makebox[0pt]{$#1$\hspace{4.5em}}}
@@ -140,9 +144,10 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\sgn}{sgn}
 
-
+\let\og@Im\Im
 \let\og@Re\Re
 \def\Re{\operatorname{Re}}
+\def\Im{\operatorname{Im}}
 
 %% Super mathematics
 % Thank you, egreg! https://tex.stackexchange.com/a/618597/14751
