@@ -1,0 +1,251 @@
+\chapter{Clifford Algebras}
+
+\N{TODO: fix notation}
+I should use $e_{\alpha}$ for an orthonormal basis, $\gamma_{\alpha}$
+for the generators of $\Cl(V)$, and $\Gamma_{\alpha}$ for matrices in
+the representation $\End(W)$ of $\Cl(p,q)$.
+
+\N{TODO: super tensor products}
+I believe the calculations below of the Clifford algebra irreducible
+representations are correct, but I should be using the super tensor
+product for the isomorphisms like
+$\Cl(n+2)\iso\Cl(n)\super\otimes\Cl(2)$, and so on.
+
+\section{Review of Clifford Algebras}
+
+\M
+Clifford algebras may be formed from a vector space $V$ over $\FF$. It's
+especially intuitive when $V$ is finite-dimensional. We just take some
+canonical basis $\Gamma_{1}$, \dots, $\Gamma_{n}$ for $V$, then we turn it into an
+algebra by defining multiplication on vectors by linearity and the
+following anticommutator relation:
+\begin{equation}
+\Gamma_{i}\Gamma_{j} + \Gamma_{j}\Gamma_{i} = -\delta_{i,j}.
+\end{equation}
+Observe that $\Gamma_{i}^{2}=-1$ and $\Gamma_{i}\Gamma_{j}=-\Gamma_{j}\Gamma_{i}$ when $i\neq j$.
+The resulting algebra is precisely the \define{Clifford Algebra} $\Cl(V)$.
+
+We can generalize this by altering the anticommutation relation to be
+\begin{equation}
+\Gamma_{i}\Gamma_{j} + \Gamma_{j}\Gamma_{i} = \eta_{i,j}
+\end{equation}
+for some matrix $\eta$. When $\eta_{i,j}=0$, we obtain the
+\define{Grassmann Algebra}. We can also have ``split'' Clifford algebras
+by having the signature of $\eta$ being indefinite.
+
+\begin{remark}
+Historically, people describe a Clifford algebra using a quadratic form
+(a generalized ``norm squared'' quantity). This is completely equivalent
+to what we have done. Namely, $\eta_{i,j}=-Q(\Gamma_{i})\delta_{i,j}$ where
+$Q$ is the quadratic form on $V$.
+\end{remark}
+
+\N{Even Part}
+The even part of the Clifford algebra is written as $\Cl^{0}(V)$ or
+$\Cl(V)_{0}$. It consists of guys that look like
+\[ a_{0}\cdot\mathbf{1} + a^{\mu\nu}\Gamma_{\mu}\Gamma_{\nu} + a^{\alpha\beta\mu\nu}\Gamma_{\alpha}\Gamma_{\beta}\Gamma_{\mu}\Gamma_{\nu}+\dots.\]
+Each term has an even number of Clifford generators appearing in it. The
+coefficients $a^{\mu\nu}$, $a^{\alpha\beta\mu\nu}$, etc., are completely
+antisymmetric in all its indices; equivalently, we could simply sum over
+$\alpha<\beta<\mu<\nu<\dots$. 
+
+\begin{definition}
+Let $A$ be an $\FF$-algebra (usually $\FF=\RR$, $\CC$, or $\HH$). An
+\define{$A$-Representation} of the Clifford algebra $\Cl(V)$ is an algebra morphism
+\[ \rho\colon\Cl(V)\to\hom_{A}(W, W) \]
+where $W$ is a $A$-algebra representation, $\hom_{A}(W, W)$ is the space
+of endomorphisms of $W$ commuting with the $A$-action.
+\end{definition}
+
+\N{Semisimple Algebras}
+We call an algebra $A$ \define{Semisimple} if all its modules are
+completely reducible (= direct sums of simple modules). This is one
+possible criterion. We can consider $A$ as a left $A$-module when $A$ is
+associative\footnote{If I recall correctly, we need associativity.}, and
+then this coincides with $A$ as a semisimple $A$-module. Then $A$ is
+semisimple if and only if the left regular representation for $A$ is
+completely reducible.
+
+In particular, $\Cl(V)$ is a semisimple algebra. Recall semisimple rings
+generalize the concept of a group algebra $\CC[G]$ for finite groups
+$G$. For a review of the structure theorem for Clifford algebras, see
+\arXiv{1610.02418}. In particular, all irreducible representations of a
+semisimple associative algebra may be found as subrepresentations of its
+regular representation.\footnote{See Theorem 3.2.13 in \url{https://studenttheses.uu.nl/bitstream/handle/20.500.12932/29895/thesis.pdf?sequence=2}}
+
+For more on this, see chapter 5 of Varadarajan~\cite{Varadarajan:2004yz}.
+Specifically, when $V$ is even-dimensional, $\Cl(V)$ is semisimple ---
+this is proven in Theorem~5.2.7, and the odd-dimensional case is proven
+in Theorem~5.2.10.
+
+\N{Notation: ``Volume Element''}
+We write $\omega=\prod^{m}_{j=1}\Gamma_{j}\in\Cl(V)$ and refer to it as the
+``\emph{Volume Element}''. Adams does not use this notation (or
+terminology), but it caught on in the mathematical literature.
+Physicists call it the \emph{Chiral Element}.
+
+\N{Notation}
+We write $\FF(n)$ for the algebra of $n\times n$ matrices with entries
+in the division algebra $\FF$ (usually $\RR$, $\CC$, $\HH$).
+
+We also write $\Cl_{p,q}$ for $\Cl(\RR^{p,q})$ using the indefinite norm
+of signature $(p,q)$ with quadratic form
+\begin{equation}
+Q(x) = (x_{1})^{2}+\cdots+(x_{p})^{2}-(x_{p+1})^{2}-(\cdots)-(x_{p+q})^{2}.
+\end{equation}
+We write $\Cl_{p}=\Cl_{p,0}$. This is all fairly standard notation.
+
+\begin{lemma}
+Let $\FF=\RR$, $\CC$, or $\HH$.
+Consider $\FF(n)$ as an $\RR$-algebra.
+Then $\FF(n)$ has a natural representation on $\FF^{n}$ and, up to
+equivalence, this is the only irreducible representation.
+\end{lemma}
+
+\begin{proof}
+Matrix algebras are simple. Simple algebras have a single representation
+up to isomorphism.
+\end{proof}
+
+\begin{proposition}
+\begin{enumerate}
+\item $\RR(n)\otimes\RR(m)\iso\RR(nm)$ for all $n$, $m\in\NN$
+\item $\RR(n)\otimes_{\RR}\FF\iso\FF(n)$ for all $n\in\NN$
+\item $\CC\otimes_{\RR}\CC\iso\CC\oplus\CC$
+\item $\CC\otimes_{\RR}\HH\iso\CC(2)$
+\item $\HH\otimes_{\RR}\HH\iso\RR(4)$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+  (1) Obvious.
+
+  (2) Also obvious, we just ``componentwise'' extend the scalars.
+
+  (3) Write $\CC\iso\RR[x]/(x^{2}+1)$, then by direct calculation
+\begin{calculation}
+\CC\otimes_{\RR}\CC
+\step[\iso]{since $\CC\iso\RR[x]/(x^{2}+1)$}
+\CC\otimes_{\RR}\RR[x]/(x^{2}+1)
+\step[\iso]{extension of scalars}
+\CC[x]/(x^{2}+1)
+\step[\iso]{Chinese remainder theorem}
+\bigl(\CC[x]/(x+\I)\bigr)\oplus \bigl(\CC[x]/(x-\I)\bigr)
+\step[\iso]{since $\CC[x]/(x\pm\I)\iso\CC$}
+\CC\oplus\CC.
+\end{calculation}
+
+(4) Recall that $\HH$ is generated by $\I$ and $j$, since
+  $k=ij$. Write
+  \begin{equation}
+\widehat{I} = \begin{bmatrix}\sqrt{-1} & 0\\
+0 & \sqrt{-1}
+\end{bmatrix},\quad\mbox{and}\quad
+\widehat{J} = \begin{bmatrix} 0 & -1\\
+1 & 0
+\end{bmatrix}.
+  \end{equation}
+  Then we can observe $\widehat{I}\widehat{J}=-\widehat{J}\widehat{I}$
+  squares to $-1$. Then
+\begin{equation}
+\begin{split}
+  \HH\otimes_{\RR}\CC&\to\CC(2)\\
+  \I\otimes1 &\mapsto\widehat{I}\\
+  j\otimes1 &\mapsto\widehat{J}.
+\end{split}
+\end{equation}
+This is a homomorphism and moreover an isomorphism.
+
+(5) We have
+\begin{equation}
+\HH\otimes_{\RR}\HH\iso\End(\HH),
+\end{equation}
+and since $\HH\iso\RR^{4}$ as a vector space, this implies the result.
+\end{proof}
+
+\N{Facts}
+We can compute:
+\begin{subequations}
+\begin{align}
+\Cl_{1,0} &= \CC\\
+\Cl_{0,1} &= \RR\oplus\RR\\
+\Cl_{2,0} &= \HH\\
+\Cl_{0,2} &= \RR(2)\\
+\Cl_{1,1} &= \RR(2).
+\end{align}
+\end{subequations}
+More helpfully, arranged as a table
+\begin{equation}
+\begin{array}{c|ccc}
+(\Cl_{0,n})   & \huh   & \huh & \huh\\
+  \RR(2)     & \huh   & \huh & \huh\\
+\RR\oplus\RR & \RR(2) & \huh & \huh\\\hline
+\RR          &  \CC   &  \HH & (\Cl_{m,0})
+\end{array}
+\end{equation}
+
+\begin{theorem}
+For all $n$, $r$, $s\geq0$, we have the following isomorphisms:
+\begin{enumerate}
+\item $\Cl_{n,0}\otimes\Cl_{0,2}\iso\Cl_{0,n+2}$
+\item $\Cl_{0,n}\otimes\Cl_{2,0}\iso\Cl_{n+2,0}$
+\item $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+The third condition, $\Cl_{r,s}\otimes\Cl_{1,1}\iso\Cl_{r+1,s+1}$,
+allows us to ``propagate'' a known entry ``diagonally'' across the table
+of Clifford algebras.
+\end{remark}
+
+\N{Bott Periodicity}
+We also have the following isomorphisms:
+\begin{enumerate}
+\item $\Cl_{n+8,0}\iso\Cl_{n,0}\otimes\Cl_{8,0}$
+\item $\Cl_{0,n+8}\iso\Cl_{0,n}\otimes\Cl_{0,8}$
+\item For complex Clifford Algebras: $\CCl_{n+2}\iso\CCl_{n}\otimes_{\CC}\CCl_{2}$.
+\end{enumerate}
+
+\M
+This gives us the following table for real $\Cl_{p,q}$:
+\begin{equation*}
+  \begin{footnotesize}\hskip-3em
+\begin{array}{c|ccccccccc}
+  8 & \RR(16)            & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16) & \HH(32) & \CC(64) & \RR(128) & \RR(128)\oplus\RR(128) & \RR(256)\\
+  7 & \CC(8)             & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32) & \RR(64) & \RR(64)\oplus\RR(64) & \RR(128) & \CC(128)\\
+  6 & \HH(4)             & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32) & \RR(32)\oplus\RR(32) & \RR(64) & \CC(64) & \HH(64)\\
+  5 & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16) & \RR(16)\oplus\RR(16) & \RR(32) & \CC(32) & \HH(32) & \HH(32)\oplus\HH(32)\\
+  4 & \HH(2)             & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) & \CC(16) & \HH(16) & \HH(16)\oplus\HH(16)  & \HH(32)\\
+  3 & \CC(2)             & \RR(4) & \RR(4)\oplus\RR(4) & \RR(8) & \CC(8) & \HH(8) & \HH(8)\oplus\HH(8) & \HH(16) & \CC(32)\\
+  2 & \RR(2)             & \RR(2)\oplus\RR(2) & \RR(4) & \CC(4) & \HH(4) & \HH(4)\oplus\HH(4) & \HH(8) & \CC(16) & \RR(32)\\
+  1 & \RR\oplus\RR       & \RR(2) & \CC(2) & \HH(2) & \HH(2)\oplus\HH(2) & \HH(4) & \CC(8) & \RR(16)  & \RR(16)\oplus\RR(16) \\
+  0 & \RR                & \CC    & \HH & \HH\oplus\HH & \HH(2) & \CC(4) & \RR(8) & \RR(8)\oplus\RR(8) & \RR(16) \\\hline
+    & 0                  & 1  & 2 & 3 & 4 & 5 & 6 & 7 & 8
+\end{array}
+  \end{footnotesize}
+\end{equation*}
+
+\begin{theorem}\label{thm:lie:spin:even-clifford-isomorphisms}
+  \begin{enumerate}
+  \item $\Cl_{n+1}^{0}\iso\Cl_{n}$ for each $n\in\NN_{0}$.
+  \item $\Cl_{s,t}^{0}\iso\Cl_{s-1,t}$ for $s, t\in\NN$.
+  \item $\Cl_{s,t}^{0}\iso\Cl_{t-1,s}$ for $s, t\in\NN$.
+  \end{enumerate}
+\end{theorem}
+
+In particular, we have the following table describing the even
+subalgebra as the following real associative algebras:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|} \hline
+  $s-t$ mod $8$ & $\Cl_{s,t}^{0}$ & $N$ \\\hline
+           1, 7 &       $\RR(N)$ & $2^{(s+t-1)/2}$\\
+           3, 5 &       $\HH(N)$ & $2^{(s+t-3)/2}$\\ \hline
+           2, 6 &       $\CC(N)$ & $2^{(s+t-2)/2}$\\
+              4 & $\HH(N)\oplus\HH(N)$ & $2^{(s+t-4)/2}$\\
+              0 & $\RR(N)\oplus\RR(N)$ & $2^{(s+t-2)/2}$\\ \hline
+\end{tabular}
+\caption{Even Clifford Subalgebras in $\RR^{s,t}$}
+\end{table}
+
