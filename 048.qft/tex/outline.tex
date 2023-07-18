@@ -138,6 +138,27 @@ renormalization group flow and in particular ``low energy effective
 field theory''. I have not seen this discussed in many places, but it's
 worth noting.
 
+\begin{theorem}[Wigner]
+Let $H$ be a Hilbert space describing our given quantum system.
+We can describe any state $\Psi\in H$ modulo multiplying by some nonzero
+complex number $\lambda\in\CC\setminus\{0\}$ --- that is, we identify
+$\Psi\sim\lambda\Psi$. So really we work with the projective Hilbert
+space $\PP H=H/\sim$.
+
+Any symmetry of our quantum system is represented by a symmetry
+transformation
+\begin{equation}
+T\colon\PP H\to\PP H,
+\end{equation}
+which corresponds to a unitary or anti-unitary transformation $U\colon H\to H$
+compatible with $T$.
+\end{theorem}
+
+\begin{remark}
+The only places I have seen this discussed in adequate detail is 
+Bargmann~\cite{Bargmann:1964zj} and Weinberg~\cite{Weinberg:1995mt}.
+\end{remark}
+
 \section{Particles and Fields}
 
 \N{Deriving the Scalar Field}
@@ -301,7 +322,7 @@ are distributions.
   conventions adopted.
 \end{enumerate}
 
-\M
+\M\label{chunk:outline:pseudo-wightman-axioms}
 For theories of physical interest (that is, gauge theories) significant
 complications arise with the Wightman axioms. For QCD, these
 complications underpin the \emph{nonperturbative} structure of
@@ -329,7 +350,9 @@ or
 \item BRST condition $Q_{B}|\mbox{phys}\rangle=0$.
 \end{enumerate}
 This necessarily introduces both \emph{zero-norm} and
-\emph{negative-norm states}. We need to modify the axioms, resulting in
+\emph{negative-norm states}, which as discussed in
+Section~\ref{sec:qm:basic-rules} corresponds to states with zero and
+negative probabilities. We need to modify the axioms, resulting in
 what some have called the ``Pseudo-Wightman approach''. For more about
 this, see Bogolubov and friends~\cite{Bogolyubov:1990kw}.
 
@@ -371,8 +394,10 @@ the electroweak forces.
 the Lie algebra, and use a bizarre Euclidean summation convention for
 Lie algebra indices (but Einstein summation convention for spacetime
 indices). Weinberg carefully works through the correct summation
-conventions in his book \textit{The Quantum Theory of Fields}
-(volume II, \S15.1; see also volume I, \S2.2).
+conventions in his book \textit{The Quantum Theory of Fields}~\cite[\S15.1]{Weinberg:1996kr}
+(see also~\cite[\S2.2]{Weinberg:1995mt} for discussion of symmetries and
+conventions).
+%(volume II, \S15.1; see also volume I, \S2.2).
 
 \N{Equations of Motion}
 Recall Maxwell's equations,
@@ -425,7 +450,7 @@ We can talk meaningfully about the analogous quantities to ``electric
 charge'' in Yang--Mills theory. When the gauge group $G$ is non-Abelian
 and $\mathrm{Lie}(G)$ is semisimple,
 the charge is quantized (i.e., not continuous).\footnote{Weinberg
-mentions this in passing in his book on quantum field theory.}
+mentions this in passing in his book on quantum field theory. See, e.g.,~\cite[esp.~\S3.3,\S23.3]{Weinberg:1995mt}.}
 
 Physicists call the ``charge'' different terms for different gauge
 groups. Within QCD, they are called ``color''; for the weak force, they
@@ -458,6 +483,9 @@ with a rigid fermionic symmetry. This is the heart of BRST construction
 and handles technical difficulties when quantizing non-abelian Yang--Mills.
 This is how Henneaux and Teitelboim~\cite[\S8.1]{Henneaux:1992ig}
 describe the BRST procedure.
+
+Further, BRST quantization handles the negative norm and zero norm
+states (\S\ref{chunk:outline:pseudo-wightman-axioms}).
 
 \section{Standard Model}
 
@@ -555,16 +583,19 @@ Brivio and Trott~\cite{Brivio:2017vri}.
 \N{TODO List}
 Stuff I should write about:
 \begin{enumerate}
+\item Wigner's theorem (\arXiv{1112.2133}) which states every symmetry
+  for a quantum system is either unitary or anti-unitary.
 \item Lattice QCD~\cite{Lepage:1998dt}
-\item Elitzur's theorem~\cite{Elitzur:1975im}
-\item The Fradkin--Shenker--Osterwalder--Seiler (FSOS) Theorem
+\item Elitzur's theorem~\cite{Elitzur:1975im} (``No such thing as spontaneous symmetry breaking of a local gauge symmetry.'')
+\item The Fradkin--Shenker--Osterwalder--Seiler (FSOS) Theorem (``There is no transition in coupling-constant space which isolates the Higgs phase from a confinement-like phase.'')
 \item Fr\"{o}lich--Morchio--Strocchi mechanism
-\item Kinoshita--Lee--Nauenberg (KLN) theorem
+\item Kinoshita--Lee--Nauenberg (KLN) theorem (``perturbatively the standard model as a whole is infrared (IR) finite; i.e., the infrared divergences coming from loop integrals are canceled by IR divergences coming from phase space integrals.'')
 \item Factorization theorems (for hadron collider processes) \arXiv{hep-ph/0409313}
 \item Block--Nordsieck theorem in QED: Infrared (\textbf{soft}) divergences
   cancel out after summation over all degenerate \textbf{final} states
-  compatible with experimental detection.
-\item Coleman--Norton theorem
+  compatible with experimental detection. Does not work in non-Abelian
+  gauge theories (see {\tt\doi{10.1016/0550-3213(81)90554-X}}).
+\item Coleman--Norton theorem (from {\tt\doi{10.1007/BF02750472}})
 \item Multiplets are irreducible representations (or subrepresentations)
   for a Lie algebra/group.
 \item Technicolor (i.e., composite Higgs); for some reviews, see
