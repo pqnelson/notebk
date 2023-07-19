@@ -156,7 +156,8 @@ compatible with $T$.
 
 \begin{remark}
 The only places I have seen this discussed in adequate detail is 
-Bargmann~\cite{Bargmann:1964zj} and Weinberg~\cite{Weinberg:1995mt}.
+Bargmann~\cite{Bargmann:1964zj}, Weinberg~\cite{Weinberg:1995mt},
+Freed~\cite{Freed:2011aa}.
 \end{remark}
 
 \section{Particles and Fields}
@@ -240,6 +241,15 @@ picture of quantum field theory using a handful of axioms.
 These are the Wightman axioms, which is studied in great detail in
 Streater and Wightman's book~\cite{Streater:1989vi}.
 
+\begin{remark}
+Peter Lowdon's slides ``A (brief) Introduction to Non-perturbative
+Quantum Field Theory'' (6th IDPASC/LIP PhD Students Workshop) summarizes
+the axioms as follows. Victor Kac's \textit{Vertex Algebras for Beginners}
+has similar axioms, with some supermathematical generalizations to allow
+easier discussion of fermions. \textbf{But I think} some signs may be
+messed up, because I'm using the opposite metric-signature convention
+than these authors.
+\end{remark}
 
 \begin{axiom}[Hilbert space structure]
 The states of the theory are rays in a Hilbert space $\mathcal{H}$ which
@@ -249,7 +259,8 @@ Poincar\'e spinor group $\overline{\mathscr{P}^{\uparrow}_{+}}$.
 
 \begin{axiom}[Spectral condition]
 The spectrum of the energy-momentum operator $P^{\mu}$ is confined to
-the closed forward lightcone $\overline{V}^{+}=\{p^{\mu}|p^{2}\geq0,p^{0}\geq0\}$
+the closed forward lightcone (\S\ref{defn:relativity:light-cone})
+$\overline{V}^{+}=\{p^{\mu}|p^{2}\leq0,p^{0}\geq0\}$
 where $U(a,1)=\exp(\I P^{\mu}a_{\mu})$.
 \end{axiom}
 
@@ -322,7 +333,7 @@ are distributions.
   conventions adopted.
 \end{enumerate}
 
-\M\label{chunk:outline:pseudo-wightman-axioms}
+\N{Gauss Law Constraint}\label{chunk:outline:pseudo-wightman-axioms}
 For theories of physical interest (that is, gauge theories) significant
 complications arise with the Wightman axioms. For QCD, these
 complications underpin the \emph{nonperturbative} structure of

@@ -1,0 +1,445 @@
+\chapter{Special Relativity}
+
+\M
+There's a heuristic taught to graduate students:
+\begin{equation}
+\begin{pmatrix}\mbox{Quantum}\\
+\mbox{Field}\\
+\mbox{Theory}
+\end{pmatrix}
+=
+\begin{pmatrix}\mbox{Special}\\
+\mbox{Relativity}
+\end{pmatrix}
++\begin{pmatrix}\mbox{Quantum}\\
+\mbox{Mechanics}
+\end{pmatrix}.
+\end{equation}
+This is partially true, but we should review special relativity (if only
+to specify our conventions).
+
+Historically, 
+\begin{equation}
+\begin{pmatrix}\mbox{Special}\\
+\mbox{Relativity}
+\end{pmatrix}
+=
+\begin{pmatrix}\mbox{Newtonian}\\
+\mbox{Mechanics}
+\end{pmatrix}
++
+(\mbox{Electromagnetism}).
+\end{equation}
+This is because electromagnetism determines that the speed of light is
+constant in a vacuum, and Newtonian mechanics assumes Galilean
+relativity. But what happens if an inertial observer is moving at the
+speed of light? Addition of velocities would suggest that bodies could
+move faster than light\footnote{Einstein's thought experiment: suppose
+you were riding on a bicycle going $0.999c$, and then you turn on your
+headlights. What speed will the photons emitted from your headlights
+travel?}, which violates results from electromagnetism.
+
+\section{Foundations}
+
+\begin{axiom}[Principle of Relativity]
+The laws of physics are identical in all inertial frames. That is to
+say, the outcome of any physical experiment is the same when performed
+with identical initial conditions relative to any inertial frame.
+\end{axiom}
+
+\begin{axiom}
+There exists an inertial reference frame in which light signals in
+vacuum always travel rectilinearly at constant speed $c$, in all
+directions, independently of the motion of the source.
+\end{axiom}
+
+\begin{remark}
+These are the axioms as formulated in Rinder~\cite[\S4]{Rindler:1991sr}.
+Traditionally, introductory texts to special relativity use some version
+of these axioms, then ``derive'' results in special relativity.
+
+A more intuitive approach uses $K$-calculus, as first formulated by
+Bondi, using spacetime diagrams.
+\end{remark}
+
+\section{Kinematics}
+
+\N{Four-Vectors} Special relativity differs from Newtonian physics by
+working with 4-vectors. The usual vectors we encountered in physics
+$\vec{x}$ are 3-vectors in physical space. Now we will use 4-component
+vectors of the form $(t, \vec{x})$ or more generally using indices
+$(x^{0}, x^{1}, x^{2}, x^{3})$. We can write this using basis vectors
+\begin{subequations}
+\begin{align}
+  A &= (A^{0}, A^{1}, A^{2}, A^{3})\\
+&= A^{0}\vec{e}_{0} + A^{1}\vec{e}_{1} + A^{2}\vec{e}_{2} + A^{3}\vec{e}_{3}\\
+&= A^{0}\vec{e}_{0} + A^{i}\vec{e}_{i}\\
+&= A^{\mu}\vec{e}_{\mu}
+\end{align}
+\end{subequations}
+where $\vec{e}_{\mu}$ are basis vectors, we implicitly sum over repeated
+indices, $i = 1,2,3$, and $\mu=0,1,2,3$.
+
+The zeroth component is the time component, the remaining components are
+the spatial components.
+
+\begin{remark}
+When the components of the four-vector are upstairs $A^{\mu}$,
+these are \define{Contravariant} vectors.
+\end{remark}
+
+\N{Covectors}
+We can also consider ``covectors'' or ``dual vectors'' (which eat in a
+4-vector and produce a [real] number). These have components with
+downstairs indices $B_{\mu}\vec{f}^{\mu}$ where $\vec{f}^{\mu}$ are the
+co-basis covectors.
+
+\M
+Normally we can transform the components of a four-vector
+$\vec{A}=A^{\mu}\vec{e}_{\mu}$ into the components of a covector by
+using the metric $g_{\mu\nu}$ in the usual way:
+\begin{equation}
+A_{\nu}\vec{f}^{\nu} = (g_{\mu\nu}A^{\mu})\vec{f}^{\nu}.
+\end{equation}
+We can do the same, but for special relativity the metric is denoted
+$\eta_{\mu\nu}$.\marginpar{\footnotesize Minkowski metric $\eta_{\mu\nu}$}
+We call this the \define{Minkowski metric} and in Cartesian coordinates
+has components
+\begin{equation}
+\eta_{\mu\nu} = \begin{pmatrix}-1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}.
+\end{equation}
+This is the so-called \define{East-Coast Convention} (particle
+physicists multiply this by $-1$ and that's the \emph{West-coast convention}).
+
+\N{Magnitude of Four-Vectors}
+When $a^{\mu}$ is any four-vector, its magnitude is the scalar quantity
+given by:
+\begin{equation}
+\|a^{\mu}\|^{2} := \eta_{\mu\nu}a^{\mu}a^{\nu}.
+\end{equation}
+
+\begin{definition}
+The \define{Four-Position} is the four-vector with components
+\begin{equation*}
+x^{\mu} = (ct, x^{1}, x^{2}, x^{3}).
+\end{equation*}
+In Cartesian coordinates, $x^{\mu} = (ct, x, y, z)$.
+\end{definition}
+
+\N{Events}
+Events in spacetime are described using 4-position vectors. This is an
+idealization that events have no ``duration''. We could handle events
+with some duration by having one 4-position for the ``start'' and
+another 4-position for the ``end''.
+
+\begin{definition}
+When we have two 4-position vectors $\vec{A}_{1}=(ct_{1},\vec{r}_{1})$
+and $\vec{A}_{2}=(ct_{2},\vec{r}_{2})$, we define the
+\define{Displacement Four-Vector} as the four-vector
+\begin{equation*}
+\Delta\vec{A} = (c\,\Delta t,\Delta\vec{r}) = \vec{A}_{2} - \vec{A}_{1}.
+\end{equation*}
+For an \define{Infinitesimal Displacement Four-Vector} (or
+\emph{Differential Four-Position}), we write
+$\D\vec{A}$.
+\end{definition}
+
+\M
+Suppose we have two events in spacetime separated by an infinitesimal
+displacement 4-vector $\D x^{\mu}$. Special relativity demands the
+infinitesimal interval,
+\begin{equation}
+(\D s)^{2} := \eta_{\mu\nu}\,\D x^{\mu}\,\D x^{\nu} = -c^{2}(\D t)^{2} + (\D x)^{2} + (\D y)^{2} + (\D z)^{2},
+\end{equation}
+must be the same for all inertial observers. Here we use summation
+conventions where, when we have an index downstairs and upstairs, we sum
+over it (so in our equation, we sum over $\mu$ and $\nu$).
+
+\begin{definition} Let $a^{\mu}$ be a 4-vector.
+  \begin{enumerate}
+  \item If $\eta_{\mu\nu}a^{\mu}a^{\nu} < 0$, then we call $a^{\mu}$ \define{Time-like}.
+  \item If $\eta_{\mu\nu}a^{\mu}a^{\nu} = 0$, then we call $a^{\mu}$ \define{Light-like}.
+  \item If $\eta_{\mu\nu}a^{\mu}a^{\nu} > 0$, then we call $a^{\mu}$ \define{Space-like}.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+To see the motivation for these definitions, consider the trajectory of
+a photon moving along the $x$-axis in Cartesian coordinates. It would be
+$\vec{\gamma}(t)=(ct,ct,0,0)$ and its displacement from the origin would
+be always zero for any $t\in\RR$. Therefore, the displacement would be
+light-like.
+
+For time-like vectors, consider the displacement 4-vector
+$\vec{\alpha}(t)=(ct,0,0,0)$ which stays at the spatial origin. We see
+its magnitude is $-c^{2}t^{2}<0$.
+
+For space-like vectors, consider the displacement 4-vector
+$\vec{\beta}(t)=(0,ct,0,0)$. Its magnitude is $c^{2}t^{2}>0$.
+\end{remark}
+
+\begin{definition}[Minkowski spacetime]
+We write $\RR^{3,1}$ for \define{Minkowski Spacetime}, i.e., $\RR^{4}$
+equipped with the Minkowski metric $\eta$.
+\end{definition}
+
+\begin{remark}
+If we were using $+---$ signature conventions, Minkowski space would be
+$\RR^{1,3}$. 
+\end{remark}
+
+\begin{definition}\label{defn:relativity:light-cone}
+Let $a^{\mu}$ be any event. We define the \define{Lightcone} for $a^{\mu}$
+to be the set of events light-like separated from $a^{\mu}$,
+\begin{equation}
+\mathscr{C} = \{\,b^{\mu}\in\RR^{3,1} \mid b^{\mu}~\mbox{is light-like separated from}~a^{\mu}\,\}.
+\end{equation}
+We can separate the light-cone in two: events in the future and events
+in the past, giving us the \define{Future Light Cone}
+\begin{equation}
+\mathscr{C}^{+} = \{\,b^{\mu}\in\mathscr{C} \mid b^{0} > a^{0}\,\},
+\end{equation}
+and the \define{Past Light Cone} consisting of events preceding $a^{\mu}$,
+\begin{equation}
+\mathscr{C}^{-} = \{\,b^{\mu}\in\mathscr{C} \mid b^{0} < a^{0}\,\}.
+\end{equation}
+We can take the \define{Closed Light Cone} to consist of all light-like
+separated events \emph{and} all time-like separated events, and denote
+it by
+\begin{equation}
+\overline{\mathscr{C}} = \{\,b^{\mu}\in\RR^{3,1} \mid \eta_{\mu\nu}(b^{\mu}-a^{\mu})(b^{\nu}-a^{\nu})\leq0\,\}.
+\end{equation}
+\end{definition}
+
+\M
+The only possible causal influences for an event $a^{\mu}$
+\emph{must lie within the past causal light cone} for the event, since
+nothing can travel faster than light. For this reason, we call any
+four-vector $b^{\mu}$ \define{Causal-like} if it is not space-like
+separated from $a^{\mu}$, i.e., if the displacement $b^{\mu} - a^{\mu}$
+four-vector is either time-like or light-like.
+
+\N{World lines}
+A curve $\gamma$ in spacetime is called a \define{World Line}
+if its tangent vector is future time-like at each point along the
+curve. More generally, we could weaken the condition, and allow tangent
+vectors to be causal-like.
+
+Particles move along world lines in special relativity.
+
+\M
+If we have a curve $\gamma$ in spacetime such that its tangent vector is
+space-like at each point along the curve, we call the curve
+\define{Space-like}.
+
+If we have a curve in spacetime such that its tangent vector is
+ligh-like at each point along the curve, we call the curve
+\define{Light-like}. 
+
+
+\N{Proper Time}
+The time between two events along a world line, according to the
+observer moving along the trajectory, is precisely the
+\define{Proper Time} and denoted $\tau$. For an infinitesimal
+displacement along the trajectory, the infinitesimal change in proper
+time is given by
+\begin{equation}
+c^{2}\,(\D\tau)^{2} = -(\D s)^{2}.
+\end{equation}
+The proper time interval along a trajectory is given by the integral
+\begin{equation}
+\Delta\tau = \int_{\gamma}\D\tau =
+\int_{\gamma}\frac{\sqrt{-\eta_{\mu\nu}\,\D x^{\mu}\,\D x^{\nu}}}{c}.
+\end{equation}
+
+\N{Parametrizing World Lines}
+We parametrize a world line by its proper time, and write it as
+$x^{\mu}(\tau)$. This gives us a smooth family of four-positions for a
+physical body.
+
+\begin{definition}
+Let $x^{\mu}(\tau)$ be a world line. We define its \define{Four-Velocity}
+as the four-vector
+\begin{equation*}
+U^{\mu}(\tau) = \frac{\D x^{\mu}(\tau)}{\D\tau}.
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+Whenever we are tempted to take the time derivative of a quantity, we
+really want to take the derivative with respect to \emph{proper time}.
+\end{remark}
+
+\N{Lorentz Factor}
+We have the familiar Newtonian 3-velocity given by
+\begin{equation}
+v^{i} = \frac{\D x^{i}}{\D t}.
+\end{equation}
+We can relate the coordinate time $x^{0}=ct$ with proper time $\tau$ by
+the \define{Lorentz Factor} (which is a function of the Newtonian 3-velocity),
+\begin{equation}
+  \begin{split}
+\gamma(\vec{v}) &= \frac{\D t}{\D\tau} = \left(1 - \frac{\eta_{ij}v^{i}v^{j}}{c^{2}}\right)^{-1/2}\\
+&=\frac{c}{\sqrt{-\eta_{\mu\nu}U^{\mu}U^{\nu}}}.
+  \end{split}
+\end{equation}
+This allows us to relate the familiar Newtonian 3-velocity
+to the four-velocity by
+\begin{equation}
+U^{\mu} = (c, \gamma(\vec{v})\vec{v}).
+\end{equation}
+
+\section{Dynamics}
+
+\M
+Often the dynamics of particles are omitted in discussions of special
+relativity, because things getting complicated conceptually.
+
+\begin{definition}
+Let $x^{\mu}(\tau)$ be the world line for a massive body.
+Then the \define{Rest Mass} (or \emph{invariant mass}) for the body is
+the mass $m_{0}$ as measured in its reference frame.
+\end{definition}
+
+\begin{remark}
+Some authors use a notion of \emph{relativistic mass}
+$m = \gamma(\vec{v})m_{0}$, which is mildly controversial. 
+\end{remark}
+
+\N{Four-Momentum}
+For a massive particle of rest mass $m_{0}$, its \define{Four-Momentum}
+$\vec{P}$ is defined as the product of the rest mass and its
+four-velocity, i.e.,
+\begin{equation}
+\vec{P} := m_{0}\vec{U}.
+\end{equation}
+We can write out its explicit components
+\begin{equation}
+\vec{P} = m_{0}\gamma(\vec{v})(c, \vec{v}) = (E/c, \vec{p}).
+\end{equation}
+Here the total energy of the moving particle is given by
+\begin{equation}
+E = \gamma(\vec{v})m_{0}c^{2},
+\end{equation}
+and the total (relativistic) 3-momentum is
+\begin{equation}
+\vec{p} = m_{0}\gamma(\vec{v})\vec{v}.
+\end{equation}
+
+\N{Energy--Momentum Relation}
+We have the energy--momentum relation (or \define{Mass--Shell Relation})
+be
+\begin{equation}
+E^{2} = c^{2}\vec{p}\cdot\vec{p} + \bigl(m_{0}c^{2}\bigr)^{2}.
+\end{equation}
+Equivalently, we have this relation describe the magnitude of the
+four-momentum as a constant:
+\begin{equation}
+\eta_{\mu\nu}p^{\mu}p^{\nu} = -m_{0}^{2}c^{2}.
+\end{equation}
+
+\begin{ddanger}
+In special relativity, we can meaningfully talk about the Center-of-Mass
+reference frame for a system of particles. This is especially useful for
+scattering problems. However, if we tried to carry this notion over to
+General Relativity, then we run into problems because it is a nonlocal
+concept. 
+\end{ddanger}
+
+\begin{exercise}
+From the mass-shell relation and $\vec{P} = (E/c, \vec{p})$, deduce
+$E = \gamma(\vec{v})m_{0}c^{2}$ and 
+$\vec{p}\cdot\vec{p}=\pm(\gamma(\vec{v})^{2}-1)m_{0}^{2}c^{2}$.
+Determine the correct sign in that second relation.
+\end{exercise}
+
+\begin{exercise}
+Suppose we have two massive particles with four-momenta $\vec{P}_{1}$
+and $\vec{P}_{2}$ and relative speed $v$. Determine
+$\vec{P}_{1}\cdot\vec{P}_{2}=\eta_{\mu\nu}P^{\mu}_{(1)}P^{\nu}_{(2)}$ in
+terms of their rest mass $m_{01}$ and $m_{02}$ and relative speed $v$.
+Hint: if $\vec{P}_{1}=\vec{P}_{2}$ and $v=0$, then you should recover
+the mass--shell relation.
+\end{exercise}
+
+\N{Four-Force}
+We can define the four-force as the four-vector
+\begin{equation}
+\vec{F} = \frac{\D\vec{P}}{\D\tau}.
+\end{equation}
+As an immediate consequence of the mass--shell relation, we find
+\begin{equation}
+\vec{F}\cdot\vec{P} = \eta_{\mu\nu}F^{\mu}P^{\nu} = 0.
+\end{equation}
+
+\N{Lagrangian for Point-Particle}
+We can write the Lagrangian for a massive point-particle with rest mass
+$m_{0}$ as
+\begin{equation}
+L = cm_{0}\sqrt{-\eta_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}} - V
+\end{equation}
+where $\dot{x}^{\mu} = \D x^{\mu}/\D\tau = U^{\mu}$, and $V$ is the potential
+energy term. The action is then 
+\begin{equation}
+I = \int L\,\D\tau.
+\end{equation}
+Varying the action with respect to $\delta x^{\mu}$ then gives us the
+equations of motion.
+
+For massless particles, care must be taken with the parametrization, as
+well as using its four-momentum to write
+\begin{equation}
+L = c\sqrt{-\eta_{\mu\nu}P^{\mu}P^{\nu}} - V.
+\end{equation}
+We can use the relation (which holds for both massive and massless particles):
+\begin{equation}
+\frac{\D x^{\mu}}{\D t} = \frac{P^{\mu}}{P^{0}}.
+\end{equation}
+
+\begin{danger}
+This is the correct Lagrangian to work with, especially if we want to
+quantize it. There is some subtlety with it, which we should confess
+openly: it is a constrained system. To see this, compute the Hamiltonian
+for a free massive relativistic particle. It will vanish. This is
+because time is a coordinate (proper time is a parameter), and its
+conjugate momentum is ``the Hamiltonian''. So we end up with a
+constraint. 
+\end{danger}
+
+\begin{ddanger}
+Some authors insist that canonical mechanics for special relativistic
+systems ``breaks Lorentz invariance'', which is not really true. If
+you've picked $\mu=0$ to be the time component for four-vectors, then
+you've also ``broken Lorentz invariance'' just as much as canonical
+mechanics has. We can describe a Lorentz boost as a canonical
+transformation (which preserves Lorentz invariance as much as anything
+else). This is just offered as a lazy and sloppy justification for using
+the path integral formalism, which makes no coherent sense.
+\end{ddanger}
+
+\N{References}
+For the uninitiated, Taylor and Wheeler~\cite{Taylor:1992sp} is a great
+introduction. Rindler~\cite{Rindler:1991sr} is a good review.
+
+\N{TODO: Lorentz Invariance}
+I should specifically spell out what Lorentz invariance means, since
+it's implicit but not done anywhere.
+
+\N{TODO: Group Theory}
+I should also mention the Lorentz and Poincar\'e groups, and how they
+capture the essence of Lorentz invariance\dots because they're going to
+be important in quantum field theory.
+
+\N{TODO: Scattering}
+It is probably good to discuss $2\to2$ scattering in special relativity,
+since that's the basis of a lot of particle physics experiments.
+
+\N{TODO: Electromagnetism}
+I should also take some time to discuss the basics of electromagnetism
+using a four-potential $A^{\mu}$ and the Maxwell field tensor
+$F^{\mu\nu}$. After all, this serves as the basis for Yang--Mills theory
+later on.
