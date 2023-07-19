@@ -30,5 +30,78 @@ conclude $I=\sqrt{\pi}$ as desired.
 \end{proof}
 
 \begin{corollary}\label{cor:math:general-gaussian-integral-in-one-dim}
-Let $a,b\in\CC$. Then $\displaystyle\int^{\infty}_{-\infty}\E^{-a(x-b)^{2}}\,\D x = \sqrt{\frac{\pi}{a}}$
+Let $a\in\RR$ and $b\in\CC$. Then $\displaystyle\int^{\infty}_{-\infty}\E^{-a(x-b)^{2}}\,\D x = \sqrt{\frac{\pi}{a}}$
 \end{corollary}
+
+\begin{remark}
+We can let $a\in\CC$ provided its real part is negative.
+\end{remark}
+
+\begin{corollary}
+Let $a\in\RR$, and $b$, $c\in\CC$. Then $\displaystyle\int^{\infty}_{-\infty}\E^{-ax^{2}+bx+c} \,\D x = \sqrt{\frac{\pi}{a}}\exp\left(\frac{b^{2}}{4a}+c\right)$.
+\end{corollary}
+
+\begin{corollary}
+Let $a\in\RR$, $n\in\NN$. Then
+\begin{equation*}
+\int^{\infty}_{-\infty}x^{2n}\E^{-ax^{2}/2}\,\D x = \sqrt{\frac{2\pi}{a}}\frac{(2n-1)!!}{a^{n}}.
+\end{equation*}
+The odd moments all vanish.
+\end{corollary}
+
+\begin{proof}
+  By induction on $n\in\NN$. We see the base case $n=1$ is obtained from:
+  \begin{calculation}
+    \int^{\infty}_{-\infty}x^{2}\E^{-ax^{2}/2}\,\D x
+\step{differentiating under the integral sign}
+    -2\frac{\D}{\D a}\int^{\infty}_{-\infty}\E^{-ax^{2}/2}\,\D x
+\step{using the Gaussian integral result}
+    -2\frac{\D}{\D a}\left(\frac{2\pi}{a}\right)^{1/2}
+\step{power rule for derivatives}
+    -2\frac{-1}{2}\frac{1}{a}\left(\frac{2\pi}{a}\right)^{1/2}
+\step{algebra}
+    \frac{1}{a}\left(\frac{2\pi}{a}\right)^{1/2}.
+  \end{calculation}
+  This establishes the result.
+
+  The inductive hypothesis is that, for arbitrary $n\in\NN$, 
+\begin{equation}
+\int^{\infty}_{-\infty}x^{2n}\E^{-ax^{2}/2}\,\D x = \sqrt{\frac{2\pi}{a}}\frac{(2n-1)!!}{a^{n}}.
+\end{equation}
+Now we prove the $n+1$ case
+\begin{calculation}
+\int^{\infty}_{-\infty}x^{2(n+1)}\E^{-ax^{2}/2}\,\D x
+\step{rewrite using $x^{2(n+1)}=x^{2n}x^{2}$}
+\int^{\infty}_{-\infty}x^{2}x^{2n}\E^{-ax^{2}/2}\,\D x
+\step{using differentiation under the integral sign}
+-2\frac{\D}{\D a}\int^{\infty}_{-\infty}x^{2n}\E^{-ax^{2}/2}\,\D x
+\step{using the inductive hypothesis}
+-2\frac{\D}{\D a}\left(\sqrt{\frac{2\pi}{a}}\frac{(2n-1)!!}{a^{n}}\right)
+\step{using the derivative of $a^{-(2n+1)/2}$}
+-2\frac{-(2n+1)}{2}\frac{1}{a}\left(\sqrt{\frac{2\pi}{a}}\frac{(2n-1)!!}{a^{n}}\right)
+\step{since $(2n+1)!! = (2n + 1)\cdot (2n-1)!!$}
+-2\frac{-1}{2}\frac{1}{a}\left(\sqrt{\frac{2\pi}{a}}\frac{(2n+1)!!}{a^{n}}\right)
+\step{simple algebra}
+\left(\sqrt{\frac{2\pi}{a}}\frac{(2n+1)!!}{a^{n+1}}\right).
+\end{calculation}
+Hence the result.
+\end{proof}
+
+\begin{theorem}
+Let $n\in\NN$, let $A$ be a symmetric positive-definite $n\times n$ matrix.
+Then
+\begin{equation*}
+\int_{\RR^{n}}\exp\left(\frac{-1}{2}\sum^{n}_{i,j=1}A_{i,j}x_{i}x_{j}\right)\D^{n}x
+=\sqrt{\frac{(2\pi)^{n}}{\det(A)}}.
+\end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Let $n\in\NN$, let $A$ be a symmetric positive-definite $n\times n$ matrix,
+let $\vec{b}$ be an $n$-vector (of constants).
+Then
+\begin{equation*}
+\int_{\RR^{n}}\exp\left(\frac{-1}{2}\sum^{n}_{i,j=1}A_{i,j}x_{i}x_{j}+\sum^{n}_{i}b_{i}x_{i}\right)\D^{n}x
+=\sqrt{\frac{(2\pi)^{n}}{\det(A)}}\exp\left(\frac{1}{2}\transpose{\vec{b}}A^{-1}\vec{b}\right).
+\end{equation*}
+\end{theorem}
