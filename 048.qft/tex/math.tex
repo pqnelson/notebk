@@ -1,5 +1,7 @@
 \chapter{Mathematical Results}
 
+\section{Integrals}
+
 \begin{theorem}[Gaussian Integral]
 $\displaystyle\int^{\infty}_{-\infty}\E^{-x^{2}}\,\D x = \sqrt{\pi}$.
 \end{theorem}
@@ -104,4 +106,16 @@ Then
 \int_{\RR^{n}}\exp\left(\frac{-1}{2}\sum^{n}_{i,j=1}A_{i,j}x_{i}x_{j}+\sum^{n}_{i}b_{i}x_{i}\right)\D^{n}x
 =\sqrt{\frac{(2\pi)^{n}}{\det(A)}}\exp\left(\frac{1}{2}\transpose{\vec{b}}A^{-1}\vec{b}\right).
 \end{equation*}
+\end{theorem}
+
+\section{Linear Algebra}
+
+\begin{theorem}
+Let $\mathcal{H}$ be a Hilbert space and $L\colon \mathcal{H}\to\mathcal{H}$
+be a self-adjoint operator. Then:
+\begin{enumerate}
+\item The eigenvalues of $L$ are all real;
+\item The eigenvectors of $L$ form a complete set;
+\item The normalized eigenvectors of $L$ are orthonormal.
+\end{enumerate}
 \end{theorem}

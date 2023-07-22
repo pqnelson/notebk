@@ -61,6 +61,14 @@ The only possible result of measuring an observable $A$ is one of the
 eigenvalues of the self-adjoint operator $\widehat{A}$ which represents
 it.
 
+\begin{remark}
+This rule implies the long-term average value of the results of repeated
+measurements of an observable $A$ is
+\begin{equation}
+\langle A\rangle_{\psi} = \langle\psi\mid A\mid\psi\rangle = \int^{\infty}_{-\infty}\psi^{*}(x)(\widehat{A}\psi)(x)\,\D x.
+\end{equation}
+\end{remark}
+
 \M
 For nondegenerate operators (i.e., any two eigenfunctions of
 $\widehat{A}$ with the same eigenvalue are proportional to each other)
@@ -98,4 +106,24 @@ H = \frac{p^{2}}{2m} + V(x),
 replacing the momentum $p$ and position $x$ by their corresponding
 operators $\widehat{p}$, $\widehat{x}$.
 
+\N{Incompleteness of Rules}
+As we have presented things, these rules are incomplete since they give
+no information on how to construct the operator which represents any
+specific observable for a given physical system. In practice, this is
+done by the ``substitution rule'' putting hats on things: for any
+classical observable $A(x, p)$ the analogous operator is
+$A(\widehat{x},\widehat{p})$. 
+
+\begin{danger}
+The astute reader will note we never defined ``observable'',
+``measurement'', ``physical system'', ``property'', ``state'',
+``causality'', or ``determinism''. We also didn't define ``physical quantity''.
+This ambiguity is seldom addressed directly, instead most texts shift
+the meaning of these words as needed. What is an ``object''? What is a
+``property''? Or a ``physical quantity''? Is the significance of these
+terms really so obvious? We're confronted by a deceptive question: ``What
+is a `thing'?''
+\end{danger}
+
+\input{tex/qm/experimental-background}
 \input{tex/harmonic-oscillator}

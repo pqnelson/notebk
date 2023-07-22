@@ -1,0 +1,358 @@
+\section{Experimental Background}
+
+\M Around the turn of the $20^{\text{th}}$ century, physics faced some
+puzzling experimental results which formed the motivation for deriving
+quantum mechanics. Let us review superficially what was known at the
+time, then in each subsection we shall consider an experiment, why it
+produced unexplainable results, and how physicists resolved things.
+
+\N{Status of Light}\label{chunk:qm:experimental-background:status-of-light}
+We should stress that at the time, physicists believed light propagated
+as a wave. Thomas Young first tested this in 1800 with his famous
+double-slit experiment, where light propagated through two slits and
+these two light sources appeared to ``interfer'' with each other. This
+has a description using geometric optics and waves, which undergraduates
+learn routinely --- see, e.g., Young and Freedman's
+\textit{University Physics}.
+
+\N{Atomic Theory}\label{chunk:qm:experimental-background:atomic-theory}
+Around the turn of the $20^{\text{th}}$ century, physicists began to
+recognize that matter can be described as consisting of
+atoms. Rutherford supervised Geiger and Marsden's 1909 experiment, then
+later in 1911 explained that the experiment implied an atom consists of
+a nucleus (which contains most of the mass and is positively charged)
+and electrons which orbit the nucleus, just as planets orbit a star. We
+stress that this interprets an electron as a particle.
+
+Millikan's oil drop experiment (conducted in 1908, reported in 1913)
+determined the electric charge for the elementary electric charge
+$e\approx1.602\times10^{-19}~\mathrm{C}$.  Each electron has a charge of
+$-e$, and the nucleus has a charge of $+ne$ where $n$ is the atomic
+number.
+
+\subsection{Black Body Radiation}
+
+\begin{definition}
+A \define{Black Body} is an idealized object which absorbs all electromagnetic
+radiation which hits it.
+\end{definition}
+
+\begin{remark}
+Just because a black body \emph{absorbs} all radiation which hits
+\emph{does not mean} a black body cannot emit any radiation. A black
+body \emph{can} and \emph{does} emit radiation.
+\end{remark}
+
+\begin{remark}
+It turns out that ``thermal radiation'' is precisely ``electromagnetic radiation'',
+so I may use the terms interchangeably. But at the end of the day,
+they're just photons.
+\end{remark}
+
+\N{Problem Statement}
+Suppose we make a hollow cube out of a black body. Then the problem we
+want to answer: describe the distribution of the frequencies of the
+[emitted] radiation inside the cube.
+
+\N{Classical Expectations}
+Inside the body, the radiation will constantly be absorbed and re-emitted,
+eventually reaching thermal equilibrium.
+At each frequency, the absorption and emission of radiation will be
+perfectly balanced.
+
+We can invoke the ``Equipartition Theorem'' (of classical statistical
+mechanics) which states the energy in any given mode of electromagnetic
+radiation should be exponentially distributed with an average value
+equal to $k_{B}T$ where $T$ is the temperature in Kelvin and $k_{B}$ is
+the Boltzmann constant.
+
+\N{Ultraviolet Catastrophe}
+The difficulty is that the average amount of energy is the same for
+every mode\footnote{Physicists use the term ``mode'' and ``frequency''
+interchangeably.}. So when we add up the energy for each mode (for which
+there are infinitely many), we get an infinite amount of energy for the
+radiation in our black body oven. This is referred to as the
+\define{Ultraviolet Catastrophe}, since the infinity comes from the
+ultraviolet [high-frequency] end of the spectrum.
+
+This contradicts our observation of a finite amount of energy inside a
+black body oven.
+
+\N{Planck's Solution}
+In 1900, Max Planck offered an alternative prediction for this problem. The
+key step is that Planck postulated energy in the electromagnetic field
+at a frequency $\omega$ is ``quantized'', meaning it comes in an integer
+multiple of a certain basic unit $\hbar\omega$ where $\hbar$ is a
+constant we now recognize as Planck's constant.\marginpar{{\footnotesize Planck's Constant $\hbar$}}
+
+Planck postulated the energy is then exponentially distributed over
+integer multiples of $\hbar\omega$. At low frequencies, this will
+coincide with classical statistical mechanics. But at high frequencies
+(where $\hbar\omega$ is comparable to $k_{B}T$), Planck's theory
+predicts a rapid fall-off of the average energy.
+
+\begin{exercise}
+Let $c>0$ be real. Prove $\displaystyle\sum^{\infty}_{n=0}n\E^{-cn}=\frac{\E^{c}}{(1-\E^{-c})^{2}}$.
+\end{exercise}
+
+\begin{exercise}
+In Planck's model, the energies for electromagnetic radiation in a
+frequency $\omega$ (in units of $[\mbox{time}]^{-1}$) is
+distributed randomly over all numbers $n\hbar\omega$ for $n=0,1,2,\dots$.
+We postulate the probability of finding energy $n\hbar\omega$ is
+\begin{equation}
+\Pr(E = n\hbar\omega) = \frac{1}{Z}\E^{\beta n\hbar\omega}
+\end{equation}
+where $\beta = 1/(k_{B}T)$ and $Z$ is a normalization constant. Then the
+expected value for energy is
+\begin{equation}
+\langle E\rangle = \sum^{\infty}_{n=0}(n\hbar\omega)\Pr(E=n\hbar\omega)= \frac{1}{Z}\sum^{\infty}_{n=0}(n\hbar\omega)\E^{-\beta n\hbar\omega}.
+\end{equation}
+Now you come in:
+\begin{enumerate}
+\item Find $Z$ by demanding $\sum_{n=0}^{\infty}\Pr(E = n\hbar\omega)=1$.
+\item Prove $\displaystyle\langle E\rangle = \frac{\hbar\omega}{\E^{\beta\hbar\omega}-1}$.
+\item Show $\langle E\rangle$ behaves like $1/\beta = k_{B}T$ for small $\omega$,
+but $\langle E\rangle$ decays exponentially as $\omega\to\infty$.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Photoelectric Effect}
+
+\N{Problem Statement}
+Suppose we have a metal surface. We can observe as electromagnetic
+radiation (``incident light'') hits the surface, electrons will be emitted from the surface.
+
+Einstein found as we increase the \emph{intensity} of the incident
+light, the \emph{number} of electrons increases but the \emph{energy} of
+each electron does not change. This is bizarre for a number of reasons.
+
+If electromagnetic radiation were waves, then low-frequency light at
+high intensity  should ``build up'' the energy necessary to produce
+electrons, but we do not observe this\dots which suggests
+electromagnetic radiation (``light'') is not a wave but consists of
+particles. More precisely, light comes in discrete energy packages which
+Einstein called \define{Photons}.
+
+\N{Einstein's Solution}
+In 1905, Einstein proposed that the electromagnetic radiation travels in
+discrete energy packets called photons. For a frequency $\omega$, the
+packet has energy $\hbar\omega$. (At the time, Einstein did not realize
+$\hbar$ was Planck's constant, and used some constant of proportionality.)
+
+The highest kinetic energy $K_{\text{max}}$ for the electron removed
+from their atomic bindings by the absorption of a photon with energy
+$\hbar\omega$ is then
+\begin{equation}
+K_{\text{max}} = \hbar\omega - W,
+\end{equation}
+where $W$ is the minimum energy required to remove an electron from the
+metal surface. The literature refers to $W$ as the ``work function'' of
+the surface. If we write the work function as:
+\begin{equation}
+W = \hbar\omega_{0},
+\end{equation}
+then the kinetic energy upper bound is
+\begin{equation}
+K_{\text{max}} = \hbar(\omega - \omega_{0}).
+\end{equation}
+Obviously emission can only occur when $K_{\text{max}}$ is positive,
+requiring $\omega>\omega_{0}$.
+
+\N{Quantum?}
+Observe this solution requires $\hbar$ (a quantum quantity) and
+classical physics fails to predict observed phenomena. More explicitly
+the wave description of light fails to predict what we observe,
+suggesting light consists of discrete packets (``particles'').
+
+\subsection{Double-Slit Experiment}
+
+\N{Problem statement}
+We have assumed (\S\ref{chunk:qm:experimental-background:status-of-light})
+light is a wave, since that appears to be supported by Young's
+Double-Slit experiment. But if Einstein is correct and light propagated
+in discrete packets, then how can we explain the double-slit phenomenon?
+
+\N{Solutions}
+J.J.~Thomson\footnote{J.J.~Thomson, ``On the ionization of Gases by
+Ultra- Violet Light and on the evidence as to the structure of light
+afforded by its Electrical Effect''. \journal{Prof.Cam.Phil.Soc.}
+\volume{14} (1907) 417--424.} sketched out an experimental test in 1907, 
+suggesting the results observed in the double-slit experiment could be
+explained by the photons somehow interacting with each other.
+Geoffrey Taylor\footnote{G.I.~Taylor, ``Interference Fringes with Feeble
+Light''. \journal{Prof.Cam.Phil.Soc.} \volume{15} (1909) 114--115.}
+first performed a low-intensity double-slit experiment
+in 1909 by reducing the level of incident light (to the point where the
+experiment took roughly 2000 hours to form an interference pattern ---
+or 83 days and 12 hours). Taylor observed interference occurring still
+at such low intensities of light.
+
+Taylor's experimental results are interpreted as interference remains
+even when photons are widely separated from each other (which is
+weird!), but the photons are not interferring \emph{with each other}.
+Instead, as Dirac writes in his book \textit{Principles of Quantum Mechanics},
+``Each photon interfers only with itself.''
+
+\subsection{Hydrogen Spectrum}
+
+\N{Experiment}
+If we pass electricity through a tube of hydrogen gas, then light will
+be emitted. We can pass that light through a prism and four visible
+``bands'' of light will form (red, cyan, blue, violet). This indicates
+light is not a continuous spectrum but consists of discrete
+frequencies. From the perspective of photons, this suggests only certain
+energy packets are emitted. But this is surprising from a classical
+perspective where light is a wave, and has no classical explanation.
+
+\N{(Phenomenological) Explanation}
+The Hydrogen atom consists of one proton and one electron. As we pass
+electricity through the Hydrogen gas, the orbital electron ``gets
+excited'' and moves farther away from the nucleus. Eventually the
+electron will return to lower states, emitting a photon in the
+process. This emitted photon takes on certain discrete
+frequencies. Johannes Rydberg concluded in 1888 based on empirical data
+that the energies of the emitted photon satisfy
+\begin{equation}
+E_{n} = -\frac{R}{n^{2}}
+\end{equation}
+where $n\in\NN$ and $R$ is the Rydberg constant
+\begin{equation}
+R = \frac{m_{e}Q^{4}}{2\hbar^{2}}.
+\end{equation}
+Here $m_{e}$ is the mass of the electron, $Q=-e$ is the charge of the
+electron.
+Note that we should use the reduced mass $\mu=m_{e}m_{p}/(m_{e}+m_{p})$
+where $m_{p}$ is the mass of the proton,
+but since $m_{p}\gg m_{e}$ ($m_{p}\sim 2\times10^{3}m_{e}$), we find
+$\mu\approx m_{e}$ (the error would be something like $10^{-3}m_{e}$).
+
+The frequencies for the emitted photon are then of the form
+\begin{equation}
+\omega = \frac{1}{\hbar}(E_{n} - E_{m})
+\end{equation}
+for some $n>m$, which agrees with observation.
+
+But this lacks theoretical basis, and is rather unsatisfactory.
+
+\N{Bohr Model}
+Niels Bohr was as unsatisfied as I feel, and sought a theoretical
+explanation for the Hydrogen spectrum. We can recall uniform circular
+motion in the plane is described by the trajectory
+\begin{equation}
+(x(t),y(t)) = (r\cos(\omega t), r\sin(\omega t)).
+\end{equation}
+Its acceleration is obtained by taking the second derivative with
+respect to time,
+\begin{equation}
+\vec{a}(t) = (-\omega^{2}r\cos(\omega t), -\omega^{2}r\sin(\omega t)).
+\end{equation}
+Observe the magnitude of the acceleration vector is $\omega^{2}r$. If
+the only force acting on the electron (considered as a point-particle in
+uniform circular motion) is Coulomb's law describing electromagnetism,
+\begin{equation}
+F = \frac{Q^{2}}{r^{2}}
+\end{equation}
+(up to some proportionality constant depending on our system of units),
+then Newton's second Law gives us the equation of motion for our electron:
+\begin{equation}
+m_{e}\omega^{2}r = \frac{Q^{2}}{r^{2}}.
+\end{equation}
+Now we find the frequency $\omega$ by simple algebra
+\begin{equation}\label{eq:qm:experimental-background:bohr-omega}
+\omega = \sqrt{\frac{Q^{2}}{m_{e}r^{3}}}.
+\end{equation}
+Happy?
+
+Well, we can do a few more things. We know the magnitude of velocity
+$|\vec{v}|=\omega r$, multiplying by mass gives us momentum
+$p=m_{e}\omega r$. When we plug in
+Eq~\eqref{eq:qm:experimental-background:bohr-omega},
+\begin{equation}\label{eq:qm:experimental-background:bohr:momenta}
+p = \sqrt{\frac{m_{e}Q^{2}}{r}}.
+\end{equation}
+We can find the angular momentum, since its magnitude $J=pr$, giving us
+\begin{equation}
+J = \sqrt{m_{e}rQ^{2}}.
+\end{equation}
+So far, we haven't introduced anything new.
+
+\N{Quantization Condition}
+Bohr now introduces a quantization condition, namely that angular
+momentum is an integer multiple of $\hbar$:
+\begin{equation}
+J = n\hbar = \sqrt{m_{e}rQ^{2}}.
+\end{equation}
+Solving for $r$ gives us
+\begin{equation}
+r_{n} = \frac{n^{2}\hbar^{2}}{m_{e}Q^{2}}.
+\end{equation}
+If we compute the energy for the electron with this radius, then we
+recover observed Hydrogen spectrum.
+
+\begin{remark}
+What Bohr actually did was a bit more complicated, but if we were more
+faithful to Bohr, we would make the big picture rather opaque.
+\end{remark}
+
+\begin{exercise}
+Recall kinetic energy is $K=\frac{1}{2}m_{e}\vec{v}\cdot\vec{v}$ and the
+potential energy for the electron would be $V = -Q^{2}/r$. Compute the
+total energy $E = K + V$ with $r_{n}$ and $v=\omega r_{n}$. [Hint: you
+  should recover $E_{n}=-R/n^{2}$.]
+\end{exercise}
+
+\N{De Broglie Condition}
+Louis de Brogle [pronounced ``Broy-Lee''] proposed in 1924 that we
+should interpret the Bohr quantization condition of the angular momentum
+as a condition on the wave. That is, we should expect
+\begin{equation}
+2\pi r = n\lambda_{B}
+\end{equation}
+where $\lambda_{B}$ is the de Brogle wavelength (in units of length), so
+the angular momentum 
+\begin{equation}
+J = rp = n\hbar
+\end{equation}
+is quantized when we have
+\begin{equation}
+\lambda_{B} = \frac{h}{p}.
+\end{equation}
+We write $p = h/\lambda_{B}$ (where $h=2\pi\hbar$) but it is more useful
+to introduce a quantity $k=\lambda_{B}/2\pi$ satisfying
+\begin{equation}
+p = \hbar k.
+\end{equation}
+For vector quantities,
+\begin{equation}
+\vec{p} = \hbar\vec{k}.
+\end{equation}
+We call $\vec{k}$ the \define{Angular Wave Vector} (but the terminology
+may vary depending on the reference) and it has units of
+$[\mbox{length}]^{-1}$. We can work backwards, starting with this
+condition, and derive Bohr's work. 
+
+Specifically we have
+\begin{calculation}
+2\pi r
+\step{de Broglie condition that an orbit is an integer number of periods}
+n \frac{2\pi}{k}
+\step{since $k=p/\hbar$}
+n \frac{2\pi}{p/\hbar}
+\step{using Eq~\eqref{eq:qm:experimental-background:bohr:momenta}}
+n 2\pi\hbar\sqrt{\frac{r}{m_{e}Q^{2}}}.
+\end{calculation}
+We can solve this for $r$
+\begin{equation}
+  \sqrt{r} = \frac{n\hbar}{\sqrt{m_{e}Q^{2}}}\implies
+r = \frac{n^{2}\hbar^{2}}{m_{e}Q^{2}}.
+\end{equation}
+This is precisely the result Bohr obtained.
+
+\begin{remark}
+Just to review, we have seen two \emph{different} theoretical
+derivations for the energy spectrum of the Hydrogen atom. They are
+equivalent, but de Broglie's relation $\vec{p}=\hbar\vec{k}$ turns out
+to be an important relation which will play a critical role in quantum
+theory. 
+\end{remark}
