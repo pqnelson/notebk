@@ -1,0 +1,150 @@
+\section{Quantum Free Particle}
+
+\N{Problem} Given the free particle Hamiltonian for one spatial dimension,
+\begin{equation}
+\widehat{H} = \frac{1}{2m}\widehat{p}^{2},
+\end{equation}
+where $m$ is the particle mass, determine the eigenstates for the
+Schrodinger equation.
+
+\M
+We effectively have from Schrodinger's equation
+\begin{equation}
+\I\hbar\frac{\partial}{\partial t}\psi(x,t) =\widehat{H}\psi(x,t)
+\end{equation}
+a second-order linear partial differential equation.
+
+\N{Separation of Variables}
+We can write
+\begin{equation}
+\psi(x,t) = \E^{Et/(\I\hbar)}\varphi(x)
+\end{equation}
+which makes the left-hand side of the Schrodinger equation become
+\begin{equation}
+\begin{split}
+\I\hbar\frac{\partial}{\partial t}\psi(x,t) &= \I\hbar\frac{E\E^{Et/(\I\hbar)}}{\I\hbar}\varphi(x)\\
+&= E \E^{Et/(\I\hbar)}\varphi(x).
+\end{split}
+\end{equation}
+The right-hand side becomes
+\begin{equation}
+\widehat{H}\psi(x,t) = \E^{Et/(\I\hbar)}\widehat{H}\varphi(x).
+\end{equation}
+Equating these two terms transforms Schrodinger's equation into
+\begin{equation}
+\widehat{H}\varphi(x) = E\varphi(x).
+\end{equation}
+
+\M
+In position-space, the momentum operator acts as
+\begin{equation}
+  \widehat{p}\varphi(x) = -\I\hbar\frac{\partial}{\partial x}\varphi(x).
+\end{equation}
+Thus the Hamiltonian operator acts as
+\begin{equation}
+\widehat{H}\varphi(x) = \frac{-\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}\varphi(x).
+\end{equation}
+The Schrodinger equation is then
+\begin{equation}
+\frac{\partial^{2}}{\partial x^{2}}\varphi(x) = \frac{-2Em}{\hbar^{2}}\varphi(x).
+\end{equation}
+Let us take
+\begin{equation}
+k^{2} = \frac{2Em}{\hbar^{2}}.
+\end{equation}
+Then the solution to Schrodinger's equation is,
+\begin{equation}
+\varphi(x) = c_{1}\E^{\I kx} + c_{2}\E^{-\I kx},
+\end{equation}
+where $c_{1}$, $c_{2}\in\CC$ are constants to be determined by initial conditions.
+
+\begin{exercise}\label{xca:qm:free-particle:dimension-of-k}
+What is the dimension of $k$? What is the dimension of $\hbar k^{2}/m$?
+\end{exercise}
+\begin{exercise}
+Write $E$ in terms of $k$.
+\end{exercise}
+
+\N{Interpreting Terms}
+The full solution is then
+\begin{equation}
+\psi(t,x) \stackrel{???}{=} c_{1}\E^{\I k(x + [\hbar k/2m]t)} + c_{2} \E^{-\I k(x - [\hbar k/2m]t)}.
+\end{equation}
+Recall that, for fixed speed $v$, the quantity $x + vt$ describes a
+particle moving in the $(-x)$-direction at constant speed
+$v$. Similarly, $x-vt$ describes a particle moving in the
+$(+x)$-direction at constant speed.
+
+We know that $\hbar^{2}k/2m$ is constant. But we never specified the
+sign of $k$ --- it could be positive or negative.
+
+If $k>0$, the $c_{1}$ term describes a ``left moving'' wave, and the
+$c_{2}$ term describes a ``right moving'' wave.
+If $k<0$, then the roles are reversed.
+
+In fact, we could take advantage of this ambiguity of sign and note when
+$k<0$ in the $c_{2}$ term we recover the $c_{1}$ term, allowing us to
+write
+\begin{equation}
+\psi_{k}(t,x) := c_{1}\E^{\I k(x + [\hbar k/2m]t)}.
+\end{equation}
+
+\N{Normalizability}
+We should check $\psi_{k}(t,x)$ is normalizable, so we can interpret it
+as a physical state:
+\begin{equation}
+\int^{\infty}_{-\infty}\psi_{k}(t,x)^{*}\psi_{k}(t,x)\,\D x =
+\int^{\infty}_{-\infty}|c_{1}|^{2}\,\D x = +\infty.
+\end{equation}
+Well, that's\dots problematic.
+The standard textbook argues we cannot interpret these stationary
+solutions to the free particle Schrodinger equation as ``physical states'',
+but they are useful mathematical results which we will use in
+calculations later on.
+
+\begin{definition}
+In $n$-spatial dimensions let $\vec{k}$ be a constant $n$-vector, and
+$\omega$ be a constant of dimensions $[\mbox{length}]^{-1}$, $[\mbox{time}]^{-1}$
+respectively. We define a \define{Wave Packet} to be the [dimensionless] function
+\begin{equation}
+\psi(\vec{x}, t) = C\exp\bigl(\I(\vec{k}\cdot\vec{x} - \omega t)\bigr).
+\end{equation}
+The constant coefficient $C$ is usually taken to be $(2\pi)^{-(n+1)/2}$
+or $1$.
+\end{definition}
+
+\begin{example}
+  The free quantum particle's wave function is a wave packet, with
+  $\omega = \hbar k^{2}/(2m)$.
+\end{example}
+
+\begin{exercise}\label{xca:qm:free-particle:de-broglie-relations}
+Let $\psi(\vec{x},t)$ be a wave packet with parameters $\vec{k}$,
+$\omega$. Prove the de Broglie relations: 
+\begin{enumerate}
+\item $\I\hbar\partial_{t}\psi(\vec{x},t) = \hbar\omega\psi(\vec{x},t)$,
+  that is, $E=\hbar\omega$.
+\item $\widehat{\vec{p}}\psi(\vec{x},t) = \hbar\vec{k}\psi(\vec{x},t)$,
+  that is, $\vec{p}=\hbar\vec{k}$.
+\end{enumerate}
+\end{exercise}
+
+\N{Fourier Transform}
+When we have a function in position-space $f(\vec{x},t)$, we can perform
+the Fourier transform into momentum-space (taking $\omega=0$) by
+integrating against the wave-packet
+\begin{equation}
+\widetilde{f}(\vec{k}, t) = \frac{1}{(2\pi)^{n/2}}\int f(\vec{x},t)\exp\bigl(\I(\vec{k}\cdot\vec{x})\bigr)\,\D^{n}x.
+\end{equation}
+We can inverse Fourier-transform by integrating against the
+wave-packet's complex conjugate,
+\begin{equation}
+f(\vec{x},t) = \frac{1}{(2\pi)^{n/2}}\int \widetilde{f}(\vec{k}, t)\exp\bigl(-\I(\vec{k}\cdot\vec{x})\bigr)\,\D^{n}k.
+\end{equation}
+This is why wave packets are useful mathematical gadgets, despite being
+``unphysical'' (in some super-strict sense of the term).
+
+\begin{exercise}
+From your solution to Exercise~\ref{xca:qm:free-particle:dimension-of-k},
+double check that $\vec{k}\cdot\vec{x}$ is dimensionless.
+\end{exercise}
