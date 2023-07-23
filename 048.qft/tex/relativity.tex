@@ -488,6 +488,15 @@ We parametrize a world line by its proper time, and write it as
 $x^{\mu}(\tau)$. This gives us a smooth family of four-positions for a
 physical body.
 
+Care must be taken when working with world lines for photons (or other
+bodies moving at the speed of light), since $\D s = 0$ and therefore
+$\D\tau=0$. We need to work with an affine parameter $\lambda$, but
+physicists usually just reason along the lines of
+\begin{equation}
+(\D s)^{2} = 0 = -c^{2}\,(\D t)^{2} + (\D\vec{r})^{2}\implies c^{2}(\D t)^{2}=(\D\vec{r})^{2}.
+\end{equation}
+This is ``morally right'' but mathematically wrong.
+
 \begin{definition}
 Let $x^{\mu}(\tau)$ be a world line. We define its \define{Four-Velocity}
 as the four-vector
@@ -519,6 +528,123 @@ to the four-velocity by
 \begin{equation}
 U^{\mu} = (c, \gamma(\vec{v})\vec{v}).
 \end{equation}
+
+\N{Four-Acceleration}
+We can define the four-acceleration analogous to how we defined the
+four-velocity as
+\begin{equation}
+A^{\mu} := \frac{\D U^{\mu}}{\D\tau}.
+\end{equation}
+
+\begin{definition}
+The \define{Instantaneous Rest Frame} is the frame in which the 3-speed vanishes $v=0$.
+\end{definition}
+
+\M
+In the instantaneous rest frame we have $v=0$ so $\gamma=1$. The
+four-velocity has components $V^{\mu}=(c,\vec{0})$ and the
+four-acceleration has components $A^{\mu}=(0,\vec{a})$. Then:
+\begin{enumerate}
+\item $\eta_{\mu\nu}A^{\mu}A^{\nu}=a^{2}$ where $a$ is the acceleration
+  measured in the instantaneous rest frame (that is, the acceleration
+  felt by the body);
+\item $\eta_{\mu\nu}U^{\mu}U^{\nu}=c^{2}$;
+\item $\eta_{\mu\nu}A^{\mu}U^{\nu}=0$ (which can be obtained by
+  differentiating the previous result with respect to $\tau$).
+\end{enumerate}
+
+\begin{exercise}
+Let $v$ be the Newtonian speed of an object, $v = |\D\vec{x}/\D t|$.
+Prove
+\begin{equation*}
+\frac{\D\gamma}{\D t} = \frac{\gamma^{3}v}{c^{2}}\frac{\D v}{\D t}.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Let $X^{\mu}$ be the position 4-vector, $t$ be coordinate time. Prove
+the 4-acceleration may be written as:
+\begin{equation*}
+A^{\mu} = \gamma\frac{\D}{\D t}\left(\gamma\frac{\D}{\D t}X^{\mu}\right)
+\end{equation*}
+\end{exercise}
+
+\N{Constant Acceleration}
+Consider a particle moving along the $x$-axis with constant acceleration
+$a$ as measured in its rest frame at each point.
+
+Let $U^{\mu}=(c\dot{t},\dot{x},0,0)$ where $\dot{x}=\D x/\D\tau$ and
+$\dot{t}=\D t/\D\tau$. Then $A^{\mu}=(c\ddot{t},\ddot{x},0,0)$. We have
+\begin{subequations}
+\begin{align}
+-c^{2} &= \eta_{\mu\nu}U^{\mu}U^{\nu} = -c^{2}\dot{t}^{\,2} + \dot{x}^{2}\\
+\intertext{and}
+a^{2} &= \eta_{\mu\nu}A^{\mu}A^{\nu} = -c^{2}\ddot{t}^{\,2} + \ddot{x}^{2}.
+\end{align}
+\end{subequations}
+Differentiating the first equation gives us $c^{2}\dot{t}\ddot{t}=\dot{x}\ddot{x}$,
+then square both sides
+$c^{4}\dot{t}^{\,2}\ddot{t}^{\,2}=\dot{x}^{2}\ddot{x}^{2}$, and then
+we can eliminate $\dot{x}^{2}=c^{2}\dot{t}^{2}-c^{2}$ and
+$\ddot{x}^{\,2}=a^{2}+c^{2}\ddot{t}^{\,2}$ to give us
+\begin{equation}
+c^{4}\dot{t}^{\,2}\ddot{t}^{\,2}=(c^{2}\dot{t}^{\,2}-c^{2})(a^{2}+c^{2}\ddot{t}^{\,2}).
+\end{equation}
+We subtract $c^{2}\ddot{t}^{\,2}(\dot{t}^{\,2}-1)$ from both sides to
+obtain
+\begin{equation}
+c^{2}\ddot{t}^{\,2} = a^{2}(\dot{t}^{\,2} - 1)\implies\ddot{t}=\frac{a}{c}\sqrt{\dot{t}^{\,2} - 1}.
+\end{equation}
+We can solve this differential equation with the initial condition
+$t(\tau=0)=0$ and $x(\tau=0)=0$, first integrating to find
+\begin{equation}
+\dot{t} = \cosh(a\tau/c),
+\end{equation}
+then integrating again to find
+\begin{equation}
+t = \frac{c}{a}\sinh(a\tau/c).
+\end{equation}
+Then from $\dot{x}^{2} = c^{2}(\dot{t}^{\,2}-1)$ we find $\dot{x} = c\sqrt{\cosh^{2}(a\tau/c)-1}=c\sinh(a\tau/c)$
+which can be integrated to give us
+\begin{equation}
+x = \frac{c^{2}}{a}\cosh(a\tau/c).
+\end{equation}
+
+\begin{remark}
+  Observe that the magnitude of the spatial components for the
+  4-velocity (the ``Newtonian speed'') is:
+  \begin{equation}
+v(\tau) = \frac{\D x}{\D t} = \frac{\dot{x}}{\dot{t}} = c\tanh(a\tau/c)\leq c.
+  \end{equation}
+\end{remark}
+
+\N{Example}
+How do we interpret this? Well, if a space ship leaves a planet at
+constant acceleration, and the planet is at rest in the $(x,t)$
+coordinates at $x=c^{2}/a$ at $t=0$, then afer some proper time $\tau$
+has elapsed the space ship will be located at $x=(c^{2}/a)\cosh(a\tau/c)$.
+The time elapsed relative to a clock on the planet will read $t=(c/a)\sinh(a\tau/c)$
+where $\tau$ is the time elapsed relative to a clock on the space ship.
+For $a\approx g$ and $\tau\approx 10~\mbox{years}$, then $(c/a)=1.03092~\mbox{year}\approx 1~\mbox{year}$
+and
+\begin{equation}
+t\approx\frac{1}{2}\exp(10)~\mbox{years}\approx 11,000~\mbox{years}.
+\end{equation}
+Observe that
+\begin{equation}
+x\approx\frac{1}{2}\exp(10)~\mbox{light years}\approx11,000~\mbox{light years}.
+\end{equation}
+Thus, although only 10 years elapsed on the space ship moving at 1~g,
+relative to clocks on the planet which launched the space ship it would
+appear to have been 11,000 years. In Newtonian mechanics, the space ship
+would be about $50$ light years away (since $a\approx c~\mbox{year}^{-1}$).
+
+\begin{remark}
+This may seem counter-intuitive (and it is), but we should emphasize it
+is difficult to have a space ship move at a constant 1~g acceleration.
+Indeed, \emph{constant acceleration} is the bit belonging to science
+fiction (at the moment).
+\end{remark}
 
 \begin{exercise}
 In Robert Rath's \textit{The Infinite and the Divine}, a super-advanced
