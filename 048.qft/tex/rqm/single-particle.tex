@@ -1,0 +1,305 @@
+\section{One Particle Systems}
+
+\M
+The first problem we will try to answer is: What is the relativistic
+version of the Schrodinger equation?
+
+\N{Four-Momentum Operator}
+The momentum four-vector (\S\ref{chunk:relativity:four-momentum}) is
+turned into an operator $\widehat{p}_{\mu}$. Recall
+(\S\ref{chunk:relativity:partial-derivatives}) 
+\begin{subequations}
+\begin{align}
+\partial_{\mu} &= \frac{\partial}{\partial x^{\mu}} = \left(\frac{+1}{c}\frac{\partial}{\partial
+t},\vec{\nabla}\right)\\
+\intertext{and}
+\partial^{\mu} &= \frac{\partial}{\partial x_{\mu}} = \left(\frac{-1}{c}\frac{\partial}{\partial
+t},\vec{\nabla}\right).
+\end{align}
+\end{subequations}
+We have $\widehat{H}=\I\hbar\partial_{t}$ and $\widehat{\vec{p}}=-\I\hbar\vec{\nabla}$.
+Then
+\begin{equation}
+\widehat{p}_{\mu}=-\I\hbar\partial_{\mu} = (-c^{-1}\widehat{H},\widehat{\vec{p}}),
+\end{equation}
+and
+\begin{equation}
+\widehat{p}^{\mu} = (c^{-1}\widehat{H},\widehat{\vec{p}}).
+\end{equation}
+
+\N{Equations of Motion}
+There are a variety of ways to derive the equations of motion. We can
+observe
+\begin{equation}
+c^{2}E^{2} = \vec{p}\cdot\vec{p} + m_{0}^{2}c^{2},
+\end{equation}
+then
+\begin{equation}
+cE = \sqrt{\vec{p}\cdot\vec{p} + m_{0}^{2}c^{2}}.
+\end{equation}
+If we tried ``putting on hats'' now (turning $E\mapsto\widehat{H}$ and
+$\vec{p}\mapsto\widehat{\vec{p}}$), then we end up with a nonlocal equation
+and we'd be forced to use pseudodifferential operators to handle the
+squareroot.
+
+Instead, we Taylor expand in powers of $\vec{p}\cdot\vec{p}$ to get
+\begin{equation}
+cE = m_{0}c^{2} + \frac{1}{2m}\vec{p}\cdot\vec{p}+\cdots.
+\end{equation}
+If we quantize this equation, then we end up with the Schrodinger
+equation. Therefore, the argument goes, the Schrodinger equation is the
+low velocity limit to:
+\begin{subequations}
+\begin{equation}
+(\widehat{p}^{\mu}\widehat{p}_{\mu}+m_{0}^{2}c^{2})\mid\psi\rangle=0.
+\end{equation}
+In position-space, this is the Klein--Gordon equation:\index{Klein--Gordon!Equation}\marginnote{Klein--Gordon equation}
+\begin{equation}
+\left(\hbar^{2}\frac{\partial^{2}}{\partial t^{2}}
+-\hbar^{2}c^{2}\nabla^{2}+m_{0}^{2}c^{4}\right)\psi(\vec{x},t)=0.
+\end{equation}
+\end{subequations}
+Thus we conclude this must be the equations of motion.
+
+\begin{remark}
+There is another argument using the Lagrangian for a relativistic
+point-particle (\S\ref{chunk:relativity:lagrangian-for-point-particle}),
+which is a constrained system. We then Dirac quantize it in Section~\ref{section:rqm:constrained-quantization-of-free-particle}.
+\end{remark}
+
+\N{Energy Eigenvalues}
+We can write the Klein--Gordon equation applied to momentum eigenstates
+(recalling $\vec{p}=\hbar\vec{k}$) as:
+\begin{equation}
+(c^{-2}\widehat{H}^{2}-\widehat{p}_{i}\widehat{p}^{i})\mid\vec{k}\rangle=m_{0}^{2}c^{2}\mid\vec{k}\rangle
+\end{equation}
+Since these are momentum eigenstates, we have:
+\begin{equation}
+\vec{p}_{i}\mid\vec{k}\rangle=\hbar k_{i}\mid\vec{k}\rangle,
+\end{equation}
+and then
+\begin{equation}
+  (c^{-2}\widehat{H}^{2}-\widehat{p}_{i}\widehat{p}^{i})\mid\vec{k}\rangle=
+  (c^{-2}\widehat{H}^{2}-\hbar^{2} k_{i}k^{i})\mid\vec{k}\rangle.
+\end{equation}
+Simple algebra rearranges this to
+\begin{equation}
+\widehat{H}^{2}\mid\vec{k}\rangle =(c^{2}\hbar^{2} k_{i}k^{i}+m_{0}^{2}c^{4})\mid\vec{k}\rangle.
+\end{equation}
+Thus we conclude the eigenvalues for the Hamiltonian are:
+\begin{subequations}
+\begin{equation}
+\boxed{\widehat{H}\mid\vec{k}\rangle =(c^{2}\hbar^{2} k_{i}k^{i}+m_{0}^{2}c^{4})^{1/2}\mid\vec{k}\rangle.}
+\end{equation}
+We will use the eigenvalues for the Hamiltonian operator frequently
+enough that it merits its own abbreviation as:\marginnote{Hamiltonian Eigenvalues $\omega(\vec{k})$}
+\begin{equation}
+\boxed{\omega(\vec{k}) := \bigl(c^{2} k_{i}k^{i}+\hbar^{-2}m_{0}^{2}c^{4}\bigr)^{1/2}.}
+\end{equation}
+\end{subequations}
+Observe then that $\hbar\omega(\vec{k})$ has units of energy, and
+$\omega(\vec{k})$ has units of frequency.
+
+\subsection{Quantum Lorentz Transformations}
+
+\M
+We have Lorentz transformations describe symmetries of our quantum
+system, and therefore by Wigner's theorem must be described by unitary
+operators. This is a unitary representation of the Poincar\'e group
+$U(\Lambda,a)$ where $a\in\RR^{3,1}$ is a space-time translation and
+$\Lambda\in\O(3,1)$ is a Lorentz transformation. This representation
+satisfies
+\begin{equation}
+U(\Lambda_{2},a_{2})U(\Lambda_{1},a_{1}) =
+U(\Lambda_{2}\Lambda_{1},\Lambda_{2}a_{1}+a_{2}).
+\end{equation}
+
+\N{Lorentz Transformations}
+If we have $|k\rangle$ be a Lorentz-invariant eigenfunction for the 4-momentum
+operator, then $U(\Lambda,0)$ acts on it by
+\begin{equation}
+U(\Lambda,0)\mid k\rangle = |\Lambda k\rangle.
+\end{equation}
+We will prove this in the next subsection.
+
+\N{Space-time translation operator}.
+Unitary time-evolution operator is given by
+\begin{equation}
+  |\psi(t)\rangle = \E^{-\I t\widehat{H}/\hbar}\mid\psi(0)\rangle.
+\end{equation}
+We also have unitary spatial-translation operators sending
+$\vec{x}\mapsto\vec{x}+\vec{a}$ given by
+$\exp(\I\vec{a}\cdot\widehat{\vec{p}}/\hbar)$. Then translation by a
+4-vector $a^{\mu}$ is given by the unitary operator
+\begin{equation}
+\boxed{U(0,a^{\mu}) = \exp(\I a_{\mu}\widehat{p}^{\mu}/\hbar).}
+\end{equation}
+
+\begin{exercise}
+Verify $a_{\mu}\widehat{p}^{\mu}=-a^{0}\widehat{H}+\vec{a}\cdot\widehat{\vec{p}}$.
+\end{exercise}
+
+\subsection{Lorentz Invariant Measure in Phase Space}
+
+\M
+The energy of a particle with 4-momentum $p^{\mu}=(E/c,\vec{p})$ has
+non-negative energy
+\begin{equation}
+p^{0}\geq0,
+\end{equation}
+as well as obeying the mass--shell condition (\S\ref{chunk:relativity:mass-shell-relation})
+\begin{equation}
+p^{\mu}p_{\mu}+m_{0}^{2}c^{2}=0.
+\end{equation}
+Therefore the possible 4-momentum vectors lie on a hyperbolic sheet in
+momentum-space, the so-called \define{Mass Hyperboloid}. We need an
+integration measure on this hyperboloid if we want to do Lorentz
+invariant computations.
+
+Let $\heavisideStep(t)$ be the Heaviside step function
+\begin{equation}
+\heavisideStep(t):=\begin{cases}0 & \mbox{if }t<0\\
+1 & \mbox{if }t\geq0.
+\end{cases}
+\end{equation}
+We define an integration measure $\D\lambda(k)$ on the positive
+hyperboloid as follows:
+\begin{equation}\label{eq:rqm:single-particle:lorentz-invariant-phase-space-measure}
+\D\lambda(k) := \delta(k^{2}+\hbar^{-2}m_{0}^{2}c^{2})\heavisideStep(k^{0})\,\D^{4}k.
+\end{equation}
+The Lebesgue measure $\D^{4}k$ is Lorentz invariant due to Lorentz
+transformations having unit determinant. Here
+$k^{2}+\hbar^{-2}m_{0}^{2}c^{2}$ is Lorentz 
+invariant, the $\delta$ function is Lorentz invariant, and
+$\heavisideStep(k^{0})$ is Lorentz invariant. Therefore $\D\lambda(k)$
+is Lorentz invariant.
+
+\begin{exercise}
+Prove $\heavisideStep(k^{0})$ is Lorentz invariant.
+\end{exercise}
+
+\M
+We observe
+\begin{subequations}
+\begin{align}
+\hbar^{2}k_{\mu}k^{\mu} + m_{0}^{2}c^{2}
+&=(-\hbar^{2}(k^{0})^{2}+\hbar^{2}\|\vec{k}\|^{2}) + m_{0}^{2}c^{2}\\
+&=-\hbar^{2}(k^{0})^{2} + (\hbar^{2}\|\vec{k}\|^{2} + m_{0}^{2}c^{2})\\
+&=-\hbar^{2}(k^{0})^{2} + \hbar^{2}\omega(\vec{k})^{2}\\
+&= -(\hbar^{2}(k^{0})^{2} - \hbar^{2}\omega(\vec{k})^{2})\\
+%&=-\hbar^{2}(k^{0})^{2} + c^{2}\omega(k)^{2} = -(\hbar^{2}(k^{0})^{2} - c^{2}\omega(k)^{2})\\
+&= - (\hbar k^{0} + \hbar\omega(\vec{k}))(\hbar k^{0} - \hbar\omega(\vec{k})).
+\end{align}
+\end{subequations}
+Therefore, dividing through by $\hbar^{2}$,
+\begin{equation}
+k^{\mu}k_{\mu} + \hbar^{-2}m_{0}^{2}c^{2} = -(k^{0} + \omega(\vec{k}))(k^{0} - \omega(\vec{k}))
+\end{equation}
+We have the Dirac delta function identity from Corollary~\ref{cor:math:dirac-delta-function-of-quadratic-polynomial}
+to write
+\begin{calculation}
+\delta(k_{\mu}k^{\mu} + \hbar^{-2}m_{0}^{2}c^{2})\heavisideStep(k^{0})
+\step{from previous calculations}
+\delta\bigl(- (k^{0} + \omega(\vec{k}))(k^{0} - \omega(\vec{k}))\bigr)\heavisideStep(k^{0})
+\step{since $\delta$-function is even}
+\delta\bigl((k^{0} + \omega(\vec{k}))(k^{0} - \omega(\vec{k}))\bigr)\heavisideStep(k^{0})
+\step{using Corollary~\ref{cor:math:dirac-delta-function-of-quadratic-polynomial}}
+\frac{1}{2\omega(k)}\left[\delta(k^{0}-\omega(\vec{k})) + \delta(k^{0}+\omega(\vec{k}))\right]\heavisideStep(k^{0})
+\step{since $\delta(k^{0}+\omega(\vec{k}))\heavisideStep(k^{0})=\heavisideStep(-\omega(\vec{k}))=0$}
+\frac{1}{2\omega(\vec{k})}\delta(k^{0}-\omega(\vec{k}))\heavisideStep(k^{0}).
+\end{calculation}
+Thus
+\begin{equation}\label{eq:rqm:single-particle:delta-identity-applied-to-dlips}
+\boxed{\delta(k_{\mu}k^{\mu} + \hbar^{-2}m_{0}^{2}c^{2})\heavisideStep(k^{0})
+=\frac{1}{2\omega(\vec{k})}\delta(k^{0}-\omega(\vec{k}))\heavisideStep(k^{0}).}
+\end{equation}
+
+\M
+We can integrate a test function $f(k)$ against $\D\lambda(k)$,
+\begin{calculation}
+\int f(k)\,\D\lambda(k)
+\step{using the definition of $\D\lambda(k)$ from Eq~\eqref{eq:rqm:single-particle:lorentz-invariant-phase-space-measure}}
+\int f(k)\delta(k^{2}+\hbar^{-2}m_{0}^{2}c^{2})\heavisideStep(k^{0})\,\D^{4}k
+\step{using Eq~\eqref{eq:rqm:single-particle:delta-identity-applied-to-dlips}}
+\int f(k^{0},\vec{k})\left(\frac{1}{2\omega(\vec{k})}\delta(k^{0}-\omega(\vec{k}))\heavisideStep(k^{0})\,\D^{3}\vec{k}\,\D k^{0}\right)
+\step{integrating over $k^{0}$ with a delta function}
+\int f(\omega(\vec{k}),\vec{k})\frac{1}{2\omega(k)}\,\D^{3}\vec{k}.
+\end{calculation}
+Therefore we conclude, once the dust has settled,
+\begin{subequations}
+\begin{equation}
+\boxed{\D\lambda(\vec{k}) = \frac{\D^{3}\vec{k}}{2\omega(\vec{k})}}
+\end{equation}
+and
+\begin{equation}
+\boxed{k^{0} = \omega(\vec{k}).}
+\end{equation}
+\end{subequations}
+
+\N{Normalized Momentum Eigenfunctions}
+We define Lorentz-normalized kets $|k\rangle$ by
+\begin{equation}
+|k\rangle = \bigl(2\omega(\vec{k})\bigr)^{1/2}(2\pi)^{3/2}\mid\vec{k}\rangle,
+\end{equation}
+with $k^{0}=\omega(\vec{k})$. Then the new normalization condition for
+momentum eigenvectors is:
+\begin{equation}
+\langle k\mid k'\rangle=2\omega(\vec{k})(2\pi)^{3}\delta^{(3)}(\vec{k}-\vec{k}').
+\end{equation}
+The resolution of the identity based on the Lorentz invariant measure is
+\begin{equation}
+\id = \int|k\rangle\langle k|\frac{\D^{3}\vec{k}}{(2\pi)^{3}2\omega(\vec{k})}.
+\end{equation}
+
+\begin{theorem}
+If we define the unitary representation of Lorentz transformations
+$U(\Lambda,0)$ acting on the 4-momentum eigenket $|k\rangle$ as
+\begin{equation}
+U(\Lambda,0)\mid k\rangle=|\Lambda k\rangle,
+\end{equation}
+then $U(\Lambda,0)$ really is a unitary representation of the Lorentz group.
+\end{theorem}
+
+\begin{proof}
+The multiplication property $U(\Lambda,0)U(\Lambda',0)=U(\Lambda\Lambda',0)$
+follows immediately
+\begin{calculation}
+U(\Lambda,0)U(\Lambda',0)\mid k\rangle
+\step{applying the inner most action}
+U(\Lambda,0)\mid \Lambda'k\rangle
+\step{applying the action}
+\mid \Lambda\Lambda'k\rangle
+\step{associativity}
+\mid (\Lambda\Lambda')k\rangle
+\step{from the group action}
+U(\Lambda\Lambda',0)\mid k\rangle.
+\end{calculation}
+This suffices to prove we have a representation, we just need to prove
+it is unitary.
+
+We can prove unitary by direct calculation,
+\begin{calculation}
+U(\Lambda,0)U(\Lambda,0)^{\dagger}
+\step{using the resolution of the identity}
+\int U(\Lambda,0)\mid k\rangle\langle k\mid U(\Lambda,0)^{\dagger}\frac{\D^{3}\vec{k}}{(2\pi)^{3}2\omega(\vec{k})}
+\step{by the group action}
+\int |\Lambda k\rangle\langle\Lambda k|\frac{\D^{3}\vec{k}}{(2\pi)^{3}2\omega(\vec{k})}
+\step{by Lorentz invariance of the measure}
+\int |\Lambda k\rangle\langle\Lambda k|\frac{\D^{3}(\Lambda \vec{k})}{(2\pi)^{3}2\omega(\Lambda \vec{k})}
+\step{resolution of the identity}
+\id.
+\end{calculation}
+Hence $U(-,0)$ gives us a unitary representation of the Lorentz group. 
+\end{proof}
+
+\begin{exercise}
+Now prove that $U(\Lambda,a)$ really is a unitary representation for the
+Poincar\'e group. There are two claims you need to prove: (1) it's a
+representation, and (2) it's outputs are all unitary operators.
+\end{exercise}
+
+
+
+\N{References}
+See \S2.5 of Weinberg~\cite{Weinberg:1995mt},
+Chapter 1 in Ticciati~\cite{Ticciati:1999qp}.

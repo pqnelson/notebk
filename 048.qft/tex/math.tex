@@ -119,3 +119,47 @@ be a self-adjoint operator. Then:
 \item The normalized eigenvectors of $L$ are orthonormal.
 \end{enumerate}
 \end{theorem}
+
+\section{Dirac Delta Function}
+
+\begin{theorem}
+For any non-zero scalar $\alpha\neq0$, we have
+\begin{equation}
+\delta(\alpha x) = \frac{\delta(x)}{|\alpha|}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By direct calculation,
+\begin{calculation}
+\int^{\infty}_{-\infty}\delta(\alpha x)\,\D x
+\step{change of variables, $u=\alpha x$, $\D u=\alpha\,\D x$}
+\int^{\infty}_{-\infty}\delta(u)\frac{\D u}{|\alpha|}
+\step{defining property of delta function}
+\frac{1}{|\alpha|}.\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{lemma}
+Let $g$ be continuously differentiable, assume $g'(x)$ is nowhere zero,
+and there is only one simple root to $g$ at $g(x_{0})=0$. Then
+\begin{equation}
+\delta(g(x)) = \frac{\delta(x-x_{0})}{|g'(x_{0})|}.
+\end{equation}
+\end{lemma}
+
+\begin{theorem}\label{thm:math:delta-function-of-polynomials}
+Let $g$ be continuously differentiable and $g'(x)$ is nowhere zero.
+Then
+\begin{equation}
+\delta(g(x)) = \sum_{\{x_{0}\mid g(x_{0})=0\}}\frac{1}{|g'(x_{0})|}\delta(x-x_{0}),
+\end{equation}
+where the sum extends to all distinct (non-repeated) simple roots.
+\end{theorem}
+
+\begin{corollary}\label{cor:math:dirac-delta-function-of-quadratic-polynomial}
+  Let $\alpha$ be a nonzero scalar. Then we have
+  \begin{equation}
+\delta(x^{2} - \alpha^{2}) = \frac{1}{2|\alpha|}\left[\delta(x+\alpha)+\delta(x-\alpha)\right].
+  \end{equation}
+\end{corollary}

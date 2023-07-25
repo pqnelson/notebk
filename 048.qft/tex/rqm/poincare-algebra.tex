@@ -1,0 +1,152 @@
+\section{Poincar\'e Algebra}
+
+\N{Big Idea}
+We study Lie groups by studying their Lie algebras (``infinitesimal
+symmetries near the identity''), and we want to find finite-dimensional
+unitary representations for the Poincar\'e group. It suffices for our
+purposes to study the Lie algebra for the Lorentz group (which can be
+extended to the Lie algebra for the Poincar\'e group by adjoining
+generators of translations --- i.e., the momentum and Hamiltonian
+operators). We want to find irreducible representations, since these
+correspond to ``elementary'' quantum systems.
+
+Wigner forwarded the interpretation that irreducible representations for
+the ``Poincar\'e group'' should be viewed as elementary
+particles.\index{Elementary Particle!As Irreducible Representation}
+
+\begin{definition}
+The subgroup of \define{Proper Orthochronous Lorentz Transformations}
+denoted either as $\ISO(3,1)$ or $\SO^{+}(3,1)$, consists of Lorentz
+transformations $\Lambda\in\O(3,1)$ such that
+\begin{enumerate}
+\item it is proper (``preserves orientation''): $\det(\Lambda)=+1$, and
+\item it is orthochronous: ${\Lambda^{0}}_{0}\geq+1$.
+\end{enumerate}
+\end{definition}
+\begin{exercise}
+Prove the identity transformation is a proper orthochronous Lorentz
+transformation. 
+\end{exercise}
+
+\N{Non-examples}
+There are two critical example:
+\begin{enumerate}
+\item The transformation of time reversal $T=\diag(-1,1,1,1)$ is not an
+  orthochronous Lorentz transformation (but it is a Lorentz transformation).
+\item Parity reversal $P=\diag(1,-1,-1,-1)$ is a Lorentz transformation
+  but it is not proper.
+\end{enumerate}
+Composing these two operators does not give us a proper orthochronous
+Lorentz transformation. But in four dimensions, the Lorentz group
+$\O(3,1)$ has four connected components, and applying $P$, $T$, $PT$ to
+the identity component gives us the other three. Therefore, we can work
+with an arbitrary proper orthochronous Lorentz transformation
+$\Lambda\in\ISO(3,1)$ then $P\Lambda$, $T\Lambda$, $PT\Lambda$ gives us
+arbitrary Lorentz transformations \emph{in four dimensions}.
+
+\N{Obtaining the Lorentz Lie Algebra}
+It's a common trick to parametrize a proper orthochronous Lorentz
+transformation $\Lambda\in\ISO(3,1)$ using 
+``angles'' [scalars], just as we would with rotations, as
+\begin{equation}
+{\Lambda^{\mu}}_{\nu} = [\exp\left(\frac{-\I}{2}\omega_{\kappa\lambda}M^{\kappa\lambda}\right)]{{}^{\mu}}_{\nu}
+\end{equation}
+where $\omega_{\kappa\lambda}=-\omega_{\lambda\kappa}$ are ``rotation
+angles'' (real constants parametrizing the symmetry) and
+$M^{\kappa\lambda}$ is an indexed family of matrices (i.e., fix a value
+of $\kappa$ and $\lambda$, and you get a $4\times4$ matrix). These $M^{\kappa\lambda}$ are
+generators of the Lie algebra for the Lorentz group. Explicitly
+\begin{equation}
+(M^{\kappa\lambda})_{\mu\nu} = \I(\delta^{\kappa}_{\mu}\delta^{\lambda}_{\nu}-\delta^{\kappa}_{\nu}\delta^{\lambda}_{\mu})
+\end{equation}
+Now the trick is that we can write the generators of the Lorentz Lie
+algebra using
+\begin{subequations}
+\begin{align}
+L^{i} &= \frac{1}{2}\epsilon^{ijk}M_{jk}\\
+\intertext{for spatial rotations, and}
+K^{i} &= M^{0i}%\\
+%% \intertext{for Lorentz boosts. We define}
+%% \vec{J}_{\pm} &= \frac{1}{2}(\vec{L}\pm\I\vec{K}).
+\end{align}
+\end{subequations}
+
+\N{Complexified Lorentz Lie Algebra}
+We are really interested in the irreducible complex linear
+representations of the complexification $\iso(3,1)_{\CC}$ of the Lie
+algebra $\iso(3,1)$ of the Lorentz group. This is because the Lorentz
+group is non-compact (which makes it impossible to obtain a
+finite-dimensional Unitary representation), so we change the goal to
+find holomorphic representations of the complexified Lie Algebra for the
+Lorentz group. This is precisely Weyl's Unitarian trick.
+
+We define
+\begin{equation}
+\vec{J}_{\pm} = \frac{1}{2}(\vec{L}\pm\I\vec{K}).
+\end{equation}
+The reader may verify the commutation relations become
+\begin{equation}
+[J^{i}_{\pm}, J^{j}_{\pm}] = \I\epsilon^{ijk}J^{k}_{\pm}.
+\end{equation}
+But now look, this is precisely two copies of the complexified Lie
+algebra $\su(2)_{\CC}$ (each copy is isomorphic to $\sl(2,\CC)$)
+parametrized by the ``$\pm$'' subscripts.
+
+Thus by the Unitarian trick, we can study representations of $\iso(3,1)$
+by means of representations for $\su(2)_{\CC}$. Specifically
+highest-weight representations of $\su(2)_{\CC}$.
+
+\M
+The punchline:
+\textit{Each irreducible representation of $\iso(3,1)$
+is characterized by a pair of half-integers $(j_{+}, j_{-})$.} We can
+interpret these irreducible representations as particles, summarized by
+the handy-dandy table:
+
+\begin{center}
+\begin{tabular}{c|c|c}
+  $(j_{+}, j_{-})$ & Name of Field & Dimension of Rep \\\hline
+  $(0, 0)$ &	Scalar  &	1\\
+$(1/2, 0)$ & 	Left-handed Weyl Spinor &	2\\
+$(0, 1/2)$ &	Right-handed Weyl Spinor &	2\\
+$(1, 0)$ &	(Imaginary) Self-dual 2-form &	3\\
+$(0, 1)$ &	(Imaginary) Anti-self-dual 2-form &	3\\
+$(1/2, 1/2)$ &	Vector (gauge field) &	4\\
+$(1/2, 1)$ & 	Left-Handed Rarita-Schwinger field &	6\\
+$(1, 1/2)$ &	Right-Handed Rarita-Schwinger field &	6\\
+$(1, 1)$ &	Graviton (spin-2 field) &	9
+\end{tabular}
+\end{center}
+
+Quantum Field Theory studies merely three such representations:
+\begin{itemize}
+\item $(0,0)$ the scalar particle,
+\item $(1/2,0)\oplus(0,1/2)$ Dirac fermionic particle, and
+\item $(1/2, 1/2)$ vector (gauge Boson) particles.
+\end{itemize}
+
+\N{Infinite-Dimensional Unitary Representations}
+Finite-dimensional representations have Lorentz transformations act on
+finite-dimensional constant vectors. If we want to have Lorentz
+transformations act on a multi-component field $\Phi_{a}(t,\vec{x})$,
+then we need a Unitary infinite-dimensional representation for the
+Lorentz group (or Poincar\'e group), something like:
+\begin{equation}
+\Phi_{a}\xrightarrow{\Lambda}\sum_{b}M_{ab}(\Lambda)\Phi_{b}
+\end{equation}
+where $M(\Lambda)$ treats the components of the field as components of a
+constant vector. This is close but incomplete, we can also transform the
+spacetime position:
+\begin{equation}
+\Phi_{a}(x)\xrightarrow{\Lambda}\sum_{b}M_{ab}(\Lambda)\Phi_{b}(\Lambda^{-1}x).
+\end{equation}
+As a ``smoke check'', we see that a scalar field is just a function on
+spacetime $\psi(x)$, and a representation of a group $G$ on function space
+gives
+\begin{equation}
+\forall g\in G, \rho(g)\psi(x)=\psi(g^{-1}\cdot x)
+\end{equation}
+where there's an ``obvious'' representation of $G$ on the domain of $\psi$.
+And behold: the Poincar\'e group acts in an obvious way on space-time!
+
+% https://sharif.edu/~sadooghi/QFT-I-96-97-2/LorentzPoincareMaciejko.pdf
