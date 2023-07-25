@@ -1,0 +1,199 @@
+\section{*Quantization of Free Relativistic Particle}\label{section:rqm:constrained-quantization-of-free-particle}
+
+\N{Warning/disclaimer/spoiler alert}
+The reader should first solve
+Exercise~\ref{xca:relativity:canonical-analysis-of-free-particle} before
+continuing with this section. You have been warned.
+
+\M It turns out quantizing the free relativistic particle will produce
+the Klein--Gordon equation, but this requires care because the free
+relativistic particle \emph{is} a constrained system. We will work
+through the constraint analysis, and perform some rudimentary Dirac
+quantization of the system. This is just another route to the same
+destination. 
+
+\N{Parameter Time}
+To be fully general, we can replace the proper time parametrization
+$x^{\mu}(\tau)$ with any other parametrization, but will keep the
+notation $\tau$ for the parameter of the trajectory. We refer to $\tau$
+as ``parameter time''.
+
+If we really need to use ``proper time'' in an equation, we will use $s/c$.
+But I may slip up and refer to $\tau$ as proper time (because old habits
+die hard).
+
+\N{Conjugate Momenta}
+We find
+\begin{calculation}
+  p_{\mu}
+  \step{definition of conjugate momenta}
+  \frac{\partial L}{\partial\dot{x}^{\mu}(\tau)}
+  \step{since $L=-m_{0}c\sqrt{-\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}}$}
+\frac{-m_{0}c}{2}\frac{(-\eta_{\alpha\beta})(\delta^{\alpha}_{\mu}\dot{x}^{\beta}+\dot{x}^{\alpha}\delta^{\beta}_{\mu})}{\sqrt{-\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}}}
+\step{index gymnastics and pulling the factor of $-1$ to the front}
+\frac{m_{0}c}{2}\frac{(\eta_{\mu\beta}\dot{x}^{\beta}+\dot{x}^{\alpha}\eta_{\alpha\mu})}{\sqrt{-\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}}}
+\step{more index gymnastics}
+\frac{m_{0}c}{2}\frac{(\dot{x}_{\mu}+\dot{x}_{\mu})}{\sqrt{-\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}}}
+\step{arithmetic}
+m_{0}c\frac{\dot{x}_{\mu}}{\sqrt{-\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}}}.
+\end{calculation}
+Thus
+\begin{equation}
+\boxed{p_{\mu} = m_{0}c\frac{\dot{x}_{\mu}}{\sqrt{-\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}}}.}
+\end{equation}
+
+\begin{exercise}
+Prove $p_{\mu}p^{\mu}+m_{0}^{2}c^{2}=0$.
+\end{exercise}
+
+\begin{exercise}
+Prove $\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}} = m_{0}c\dot{x}^{0}/\sqrt{-\dot{x}^{2}}$.
+And therefore
+\begin{equation}
+\sqrt{-\dot{x}^{2}} = \frac{m_{0}c\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}.
+\end{equation}
+\end{exercise}
+
+\begin{exercise}[IMPORTANT: DO THIS!!]\label{xca:rqm:quantize-free-particle:spatial-part-of-kinetic-term}
+Prove
+\begin{subequations}
+  \begin{align}
+    \sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}} &= \frac{m_{0}c\dot{x}^{0}}{\sqrt{-\dot{x}^{2}}}\\
+    \vec{p}\cdot\dot{\vec{x}} &= \frac{\vec{p}\cdot\vec{p}\dot{x}^{0}}{\sqrt{\vec{p}^{2}+c^{2}m_{0}^{2}}}
+  \end{align}
+and so
+\begin{equation}
+\sqrt{-\eta_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}}=\sqrt{-\dot{x}^{2}} = \frac{m_{0}c\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}.
+\end{equation}
+\end{subequations}
+[Hint: use solution to the previous exercise, and
+  $\dot{\vec{x}}=(m_{0}c/m_{0}c)(\sqrt{-\dot{x}^{2}}/\sqrt{-\dot{x}^{2}})\dot{\vec{x}}$
+and the definition of the conjugate momenta.]
+\end{exercise}
+
+\N{Canonical Hamiltonian}
+I will write
+$\dot{x}^{2}=\eta_{\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta}$.
+Then the naive Legendre transform of the Lagrangian is
+\begin{calculation}
+H_{\text{can}}
+\step{Legendre transform}
+p_{\mu}\dot{x}^{\mu} - L
+\step{plugging in $L=-m_{0}c\sqrt{-\dot{x}^{2}}$}
+p_{\mu}\dot{x}^{\mu} + m_{0}c\sqrt{-\dot{x}^{2}}
+\step{plugging in $p_{\mu}=m_{0}c\dot{x}_{\mu}/\sqrt{-\dot{x}^{2}}$}
+m_{0}c\frac{\dot{x}_{\mu}}{\sqrt{-\dot{x}^{2}}}\dot{x}^{\mu} + m_{0}c\sqrt{-\dot{x}^{2}}
+\step{since $\dot{x}_{\mu}\dot{x}^{\mu}=(-1)(-\dot{x}^{2})=(-1)(\sqrt{-\dot{x}^{2}})^{2}$}
+m_{0}c\frac{(-1)(\sqrt{-\dot{x}^{2}})^{2}}{\sqrt{-\dot{x}^{2}}}\dot{x}^{\mu} + m_{0}c\sqrt{-\dot{x}^{2}}
+\step{algebra}
+-m_{0}c\sqrt{-\dot{x}^{2}}+m_{0}c\sqrt{-\dot{x}^{2}}
+\step{more algebra}
+0.
+\end{calculation}
+Therefore
+\begin{equation}
+\boxed{H_{\text{can}} = 0.}
+\end{equation}
+This is a constraint.
+
+A more careful analysis shows that
+\begin{calculation}
+H_{\text{can}}
+\step{Legendre transform with spatial vectors identifier}
+-p^{0}\dot{x}^{0} + \vec{p}\cdot\dot{\vec{x}} - L
+\step{using Exercise~\ref{xca:rqm:quantize-free-particle:spatial-part-of-kinetic-term}}
+-p^{0}\dot{x}^{0} + \frac{\vec{p}\cdot\vec{p}\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}
+- L
+\step{unfolding the definition of $L$}
+-p^{0}\dot{x}^{0} + \frac{\vec{p}\cdot\vec{p}\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}
++ m_{0}c\sqrt{(\dot{x}^{0})^{2}- \dot{\vec{x}}\cdot\dot{\vec{x}}}
+\step{using Exercise~\ref{xca:rqm:quantize-free-particle:spatial-part-of-kinetic-term}}
+-p^{0}\dot{x}^{0} + \frac{\vec{p}\cdot\vec{p}\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}
++ \frac{m_{0}^{2}c^{2}\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}
+\step{collecting terms}
+-p^{0}\dot{x}^{0} + \frac{\vec{p}\cdot\vec{p}\dot{x}^{0} + m_{0}^{2}c^{2}\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}
+\step{factoring out $\dot{x}^{0}$}
+\dot{x}^{0}\left(-p^{0} + \frac{\vec{p}\cdot\vec{p} + m_{0}^{2}c^{2}}{\sqrt{\vec{p}\cdot\vec{p}+m_{0}^{2}c^{2}}}\right)
+\step{algebra}
+\dot{x}^{0}\left(-p^{0} + \sqrt{\vec{p}\cdot\vec{p}+c^{2}m_{0}^{2}}\right)
+\step[\approx]{imposed as a constraint}
+0.
+\end{calculation}
+Returning to the mass--shell condition
+$p_{\mu}p^{\mu}+m_{0}^{2}c^{2}\approx0$, the Hamiltonian tells us to use
+the positive branch for the squareroot.
+
+\N{Super-Hamiltonian}
+Continuing along with our analysis, we can write down the ``super
+Hamiltonian'' for the relativistic free particle as
+\begin{equation}
+H_{S} = \eta^{\mu\nu}p_{\mu}p_{\nu} + m_{0}^{2}c^{2}\approx 0,
+\end{equation}
+and the action becomes
+\begin{equation}
+S = \int (p_{\mu}\dot{x}^{\mu} - NH_{S})\,\D\tau,
+\end{equation}
+where $N$ is the Lagrange multiplier associated with the [Hamiltonian]
+constraint.
+
+\M
+We can determine the meaning of the Lagrange multiplier by using
+Hamilton's equation of motion for $x^{0}$ to give us
+\begin{equation}
+\dot{x}^{0} = \frac{\partial(NH_{S})}{\partial p_{0}} = -2Np_{0}.
+\end{equation}
+We then have
+\begin{calculation}
+N 
+\step{from the previous equation}
+\frac{-1}{2}\frac{\dot{x}^{0}}{p_{0}}
+\step{using $-p_{0}=p^{0}=\sqrt{\vec{p}\cdot\vec{p}+c^{2}m_{0}^{2}}$}
+\frac{1}{2}\frac{\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+c^{2}m_{0}^{2}}}
+\step{multiply top and bottom by $m_{0}c$}
+\frac{1}{2m_{0}c}\frac{m_{0}c\dot{x}^{0}}{\sqrt{\vec{p}\cdot\vec{p}+c^{2}m_{0}^{2}}}
+\step{using Exercise~\ref{xca:rqm:quantize-free-particle:spatial-part-of-kinetic-term}}
+\frac{1}{2m_{0}c}\sqrt{-\dot{x}^{2}}
+\step{since $\sqrt{-\dot{x}^{2}}=\D s/\D\tau$}
+\frac{1}{2m_{0}c}\frac{\D s}{\D\tau}.
+\end{calculation}
+This has the interpretation of being directly proportional to the rate
+of change of proper time $s/c$ with respect to the parameter time
+$\tau$.
+
+\begin{exercise}
+Prove:
+\begin{equation}
+N = \frac{\dot{x}}{2m_{0}c\gamma},
+\end{equation}
+where $\gamma$ is the standard Lorentz factor.
+\end{exercise}
+
+\N{Quantizing}
+We can then quantize to obtain the constraint operator
+\begin{equation}
+  \begin{split}
+\widehat{H}_{S} &= \eta^{\mu\nu}\widehat{p}_{\mu}\widehat{p}_{\nu}+m_{0}^{2}c^{2}\\
+&= (-\hbar^{2}\Box + m_{0}^{2}c^{2}).
+  \end{split}
+\end{equation}
+Here $\Box = -c^{-2}\partial_{t}^{2} + \nabla^{2}$ is the D'Alembertian
+operator.
+The physical states then live in the kernel of $\widehat{H}_{S}$, i.e.,
+satisfy the constraint equation:
+\begin{equation}
+\widehat{H}_{S}\mid\mbox{phys}\rangle = 
+(-\hbar^{2}\Box + m_{0}^{2}c^{2})\mid\mbox{phys}\rangle = 0.
+\end{equation}
+The astute reader will realize this is the Klein--Gordon equation for a
+scalar field.
+
+Also observe that the [classical] parameter time $\tau$ drops out of the
+quantum equations of motion because ``trajectories'' do not exist in the
+quantum setting.
+
+\N{Reparametrization Invariance}
+The system we have just analyzed is invariant under reparametrization
+$\tau\mapsto\alpha\tau+\beta$ for some positive $\alpha>0$ and
+real $\beta\in\RR$.
+This has been analyzed in the literature on quantum gravity, see, e.g.,
+Teitelboim~\cite{Teitelboim:1981ua}.

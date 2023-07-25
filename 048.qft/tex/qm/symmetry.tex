@@ -1,0 +1,282 @@
+\section{Symmetries in Quantum Mechanics}
+
+\M
+The basic idea of a symmetry in quantum mechanics is that we have a
+linear operator which leaves some ``structure'' invariant. For example,
+if $U$ is a unitary operator, then for any bra $\langle\phi|$ and ket
+$|\psi\rangle$, if
+\begin{equation}
+\langle\phi'|=\langle\phi|U^{\dagger},\quad\mbox{and}\quad
+|\psi'\rangle=U\mid\psi\rangle,
+\end{equation}
+then
+\begin{equation}
+\langle\phi'\mid\psi'\rangle = \langle\phi\mid\psi\rangle.
+\end{equation}
+The inner product is invariant under any unitary transformation of the
+state vectors.
+
+\subsection{Unitary Operators}
+
+\begin{definition}\label{defn:qm:symmetry:unitary-operator}\index{Unitary!Operator}\index{Operator!Unitary}
+Let $\mathcal{H}$ be a Hilbert space.
+We call a linear operator $\widehat{U}$ on $\mathcal{H}$ \define{Unitary}
+if
+\begin{enumerate}
+\item $\widehat{U}$ is invertible, and
+\item $\widehat{U}$ preserves all inner products, i.e.,
+  $H(\widehat{U}\psi,\widehat{U}\phi)=H(\psi,\phi)$ for all
+  $\psi,\phi\in\mathcal{H}$.
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+Prove or find a counter-example: if $\widehat{U}$ is a unitary operator
+on $\mathcal{H}$, then invertibility is logically equivalent to $\widehat{U}\widehat{U}^{\dagger}=\widehat{U}^{\dagger}\widehat{U}=\id$.
+\end{exercise}
+
+\begin{exercise}
+Prove or find a counter-example: unitary operators preserve the norm of
+any vector, i.e., $\|\widehat{U}\psi\|^{2}=\|\psi\|^{2}$ for any
+$\psi\in\mathcal{H}$.
+\end{exercise}
+
+\begin{theorem}
+The eigenvalues for a unitary operator are complex numbers of modulus one.
+\end{theorem}
+
+\begin{proof}
+Let $\widehat{U}\vec{u}=a\vec{u}$ be an eigenvector with eigenvalue $a$.
+Then
+\begin{calculation}
+\langle\vec{u},\vec{u}\rangle
+\step{unitary operators preserve the norm}
+\langle\widehat{U}\vec{u},\widehat{U}\vec{u}\rangle
+\step{since $\widehat{U}\vec{u}=a\vec{u}$}
+\langle a\vec{u},a\vec{u}\rangle
+\step{linearity of Mathematicians' inner product in first slot}
+a\langle \vec{u},a\vec{u}\rangle
+\step{antilinearity of Mathematicians' inner product in second slot}
+\overline{a}a\langle \vec{u},\vec{u}\rangle.
+\end{calculation}
+Since $\|\vec{u}\|\neq0$, it follows that $\overline{a}a=1$, hence the result.
+\end{proof}
+
+\begin{theorem}
+Eigenvectors (for a unitary operator) corresponding to different
+eigenvalues are orthogonal.
+\end{theorem}
+
+\begin{proof}
+Let $\widehat{U}\vec{u}_{1}=a_{1}\vec{u}_{1}$
+and $\widehat{U}\vec{u}_{2}=a_{2}\vec{u}_{2}$ with $a_{1}\neq a_{2}$.
+Then
+\begin{equation}\label{eq:qm:symmetry:pf-step:a2-star-a1-neq-1}
+\overline{a}_{1}a_{2}\neq1.
+\end{equation}
+We have
+\begin{calculation}
+\langle\vec{u}_{2},\vec{u}_{1}\rangle
+\step{unitarity preserves inner product}
+\langle\widehat{U}\vec{u}_{2},\widehat{U}\vec{u}_{1}\rangle
+\step{since $\widehat{U}\vec{u}_{2}=a_{2}\vec{u}_{2}$}
+\langle a_{2}\vec{u}_{2},\widehat{U}\vec{u}_{1}\rangle
+\step{since $\widehat{U}\vec{u}_{1}=a_{1}\vec{u}_{1}$}
+\langle a_{2}\vec{u}_{2},a_{1}\vec{u}_{1}\rangle
+\step{linearity in first slot of Mathematicians' inner product}
+a_{2}\langle\vec{u}_{2},a_{1}\vec{u}_{1}\rangle
+\step{anti-linearity in second slot of Mathematicians' inner product}
+\overline{a}_{1}a_{2}\langle\vec{u}_{2},\vec{u}_{1}\rangle
+\end{calculation}
+But since $\overline{a}_{1}a_{2}\neq1$, this forces us to conclude 
+$\langle\vec{u}_{2},\vec{u}_{1}\rangle=0$.
+\end{proof}
+
+\begin{theorem}
+If $\widehat{A}$ is a self-adjoint operator, 
+then
+\begin{equation}
+\exp(\I\widehat{A}) = \sum^{\infty}_{n=0}\frac{(\I\widehat{A})^{n}}{n!}
+\end{equation}
+is a unitary operator.
+\end{theorem}
+
+\begin{proof}
+  From Definition~\ref{defn:qm:symmetry:unitary-operator} of a unitary
+  operator, there are two claims we need to establish. Let us set
+  \begin{equation}
+L := \exp(\I\widehat{A}).
+  \end{equation}
+
+\textsc{Claim 1:} $\exp(\I\widehat{A})$ is invertible. Observe
+\begin{calculation}
+  L^{\dagger}
+\step{unfolding the definition}
+  \sum^{\infty}_{n=0}\frac{[(\I\widehat{A})^{n}]^{\dagger}}{n!}
+\step{swapping powers and daggers}
+  \sum^{\infty}_{n=0}\frac{[(\I\widehat{A})^{\dagger}]^{n}}{n!}
+\step{applying dagger}
+  \sum^{\infty}_{n=0}\frac{[-\I(\widehat{A}^{\dagger})]^{n}}{n!}
+\step{using $\widehat{A} = \widehat{A}^{\dagger}$ since $\widehat{A}$ is self-adjoint}
+  \sum^{\infty}_{n=0}\frac{[-\I(\widehat{A})]^{n}}{n!}
+\step{folding up the definition of operator exponentiation}
+  \exp(-\I\widehat{A}).
+\end{calculation}
+Then
+\begin{calculation}
+  LL^{\dagger}
+\step{unfolding definitions}
+  \exp(\I\widehat{A})\exp(-\I\widehat{A})
+\step{since we multiply exponentials of scalar multiples of the same operator}
+  \exp(\I\widehat{A}-\I\widehat{A})
+\step{since $\I\widehat{A}-\I\widehat{A}$ is equal to the zero operator}
+  \exp(\widehat{0})
+\step{expanding the operator exponential, keeping only the first term}
+  \id.
+\end{calculation}
+This implies $L^{\dagger}=L^{-1}$ and moreover $L$ is invertible.
+
+\textsc{Claim 2:} $\exp(\I\widehat{A})$ preserves inner products.
+We established $L^{\dagger}=L^{-1}$, then
+\begin{calculation}
+\langle L\psi, L\phi\rangle
+\step{defining property of dagger operation}
+\langle \psi, L^{\dagger}L\phi\rangle
+\step{since $L^{\dagger}=L^{-1}$}
+\langle \psi, L^{-1}L\phi\rangle
+\step{defining property of operator inverse}
+\langle \psi, \id\phi\rangle
+\step{defining property of identity operator}
+\langle \psi, \phi\rangle.
+\end{calculation}
+Hence $L$ preserves the inner product.
+\end{proof}
+
+\begin{remark}
+A very special role is played by one-parameter families of unitary operators
+$\exp(\I\lambda\widehat{A})$ where the parameter $\lambda\in I$
+($I\subset\RR$ is an open interval), and $\widehat{A}$ is self-adjoint.
+\end{remark}
+
+\begin{theorem}[Stone]
+Let $\{\widehat{U}(r)\mid r\in\RR\}$ be a collection of unitary operators
+labelled by a real number $r$. Suppose this one-parameter family of
+operators satisfies the following three conditions:
+\begin{enumerate}
+\item The matrix element $\langle\phi\mid\widehat{U}(r)\mid\psi\rangle$
+  is a continuous function of $r$ for all vectors $|\phi\rangle$, $|\psi\rangle\in\mathcal{H}$.
+\item $\widehat{U}(0)=\id$
+\item For all $r_{1}$, $r_{2}\in\RR$,
+  $\widehat{U}(r_{1})\widehat{U}(r_{2}) = \widehat{U}(r_{1}+r_{2})$.
+\end{enumerate}
+Then there exists a unique self-adjoint operator $\widehat{A}$ such that
+\begin{equation}
+\widehat{U}(r) = \exp(\I r\widehat{A})
+\end{equation}
+and, for all $|\psi\rangle\in\mathcal{H}$,
+\begin{equation}
+\I\widehat{A}\mid\psi\rangle
+=\lim_{r\to0}\frac{\widehat{U}(r)-\id}{r}\mid\psi\rangle
+\end{equation}
+where the right-hand side is interpreted as the strong convergence of vectors.
+\end{theorem}
+
+The proof is too involved and rather un-enlightening, but the curious
+reader may refer to Chapter VIII \S4 in Reed and
+Simon~\cite{Reed:1972mp}.
+
+\begin{exercise}
+Let $\widehat{A}$ be a self-adjoint operator on $\mathcal{H}$,
+let $\widehat{U}$ be a unitary operator on $\mathcal{H}$.
+Prove or find a counter-example: $\widehat{U}\widehat{A}\widehat{U}^{-1}$
+is a self-adjoint operator on $\mathcal{H}$.
+\end{exercise}
+
+\begin{example}
+Recall Taylor's theorem from calculus,
+\begin{equation}
+f(x + h) = \left(\sum^{\infty}_{n=0}h^{n}\frac{\D^{n}}{\D x^{n}}\right)f(x)
+= \exp\left(h\frac{\D}{\D x}\right)f(x).
+\end{equation}
+In quantum mechanics, this describes spatial translation $\vec{x}\mapsto\vec{x}+\vec{b}$ of a wave function
+\begin{equation}
+\exp(\I \vec{b}\cdot\widehat{\vec{p}}/\hbar)\psi(\vec{x},t) = \psi(\vec{x}+\vec{b},t).
+\end{equation}
+Similarly, time translation $t\mapsto t+\tau$ of a wave function
+\begin{equation}
+\exp(\I\tau\widehat{H}/\hbar)\psi(\vec{x},t)=\psi(\vec{x},t + \tau).
+\end{equation}
+Time translation turns out to be a crucially important operator in
+quantum theory.
+\end{example}
+
+\subsection{Role in Quantum Mechanics}
+
+\M
+We describe states in quantum mechanics using
+$|\psi\rangle\in\mathcal{H}$
+and observables by self-adjoint operators $\widehat{A}$.
+
+But observe, if $\widehat{U}$ is a unitary operator on $\mathcal{H}$,
+then $\widehat{U}\widehat{A}\widehat{U}^{-1}$ describes the same
+physical observable as $\widehat{A}$. Further, the state
+$\widehat{U}\mid\psi\rangle$ describes the same physical state as
+$|\psi\rangle\in\mathcal{H}$.
+In other words, the same physical predictions will be obtained if we
+conjugate observables by a unitary operator \emph{and} we apply unitary
+operator to the state vectors.
+
+\begin{definition}\index{Anti-Unitary!Operator}\index{Unitary!Anti-(---)}\index{Operator!Anti-Unitary}
+We call an operator $\widehat{A}$ on a Hilbert space $\mathcal{H}$
+\define{Anti-Unitary} if it satisfies all of the following:
+\begin{enumerate}
+\item Anti-linearity: for any $\alpha$, $\beta\in\CC$ and vectors
+  $|\psi\rangle$, $|\phi\rangle\in\mathcal{H}$, we have
+  \begin{equation}
+\widehat{A}(\alpha\mid\psi\rangle + \beta\mid\phi\rangle)
+=\overline{\alpha}\widehat{A}\mid\psi\rangle
++\overline{\beta}\widehat{A}\mid\phi\rangle.
+  \end{equation}
+\item For any vectors $\vec{\psi}$, $\vec{\phi}\in\mathcal{H}$, we have
+  (using the Mathematicians' inner product notation)
+$\langle\widehat{A}\vec{\psi},\widehat{A}\vec{\phi}\rangle=\langle\vec{\psi},\vec{\phi}\rangle$.
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}[{Isham~\cite{Isham:1995lq}}]
+Let $\widehat{A}$ be an anti-unitary operator on 
+the Hilbert space $\mathcal{H}$. Prove or find a counter-example: its
+square $\widehat{A}^{2}$ is a unitary operator on $\mathcal{H}$.
+\end{exercise}
+
+\begin{theorem}[Wigner]\index{Wigner's Theorem}\index{Symmetry!Quantum System}\index{Quantum!Symmetry}\label{thm:wigner's-theorem}
+Let $\psi\mapsto\psi'$ describe any mapping from a Hilbert space
+$\mathcal{H}$ to itself such that
+\begin{enumerate}
+\item it is invertible; and
+\item satisfies $|\langle\psi\mid\phi\rangle|=|\langle\psi'\mid\phi'\rangle|$
+for any $|\psi\rangle$, $|\phi\rangle\in\mathcal{H}$.
+\end{enumerate}
+Then there exists an operator $\widehat{U}\colon\mathcal{H}\to\mathcal{H}$
+(unique up to arbitrary phase factor) that is (i) either unitary or anti-unitary,
+and (ii) satisfies $|\psi'\rangle = \widehat{U}\mid\psi\rangle$ for
+every $|\psi\rangle\in\mathcal{H}$.
+\end{theorem}
+
+In other words, every symmetry of a quantum system is described either
+by a unitary linear operator \emph{or} an anti-unitary operator.
+
+\begin{remark}
+The anti-unitary symmetries describe discrete situations, like
+invariance under time reversal (which is a $\ZZ_{2}$ symmetry).
+For \emph{continuous} families of symmetries, we need unitary
+operators. This is why we are interested in \emph{Unitary Representations}
+of Lie groups in quantum theory.
+\end{remark}
+
+\begin{remark}
+For more details about Wigner's theorem, see:
+\S2.2 of Weinberg~\cite{Weinberg:1995mt},
+\S7.2 of Isham~\cite{Isham:1995lq},
+Freed~\cite{Freed:2011aa}.
+\end{remark}
