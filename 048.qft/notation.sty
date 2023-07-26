@@ -36,6 +36,7 @@
 \let\properSupset\supset
 \let\supset\supseteq
 
+\DeclareMathOperator\sgn{sgn}
 
 \DeclareMathOperator\aut{Aut}
 \DeclareMathOperator\id{id}
@@ -48,15 +49,16 @@
 
 %% group theory
 \def\dihedral#1{D_{#1}}
+\def\properNormalSubgroup{\trianglelefteq}
+\def\normalSubgroup{\mathrel{\lhd}}
+%% Lie Groups
 \DeclareMathOperator\Mat{Mat}
 \DeclareMathOperator\GL{GL}
 \DeclareMathOperator\SL{SL}
 \DeclareMathOperator\SO{SO}
 \DeclareMathOperator\SU{SU}
 \DeclareMathOperator\U{U}
-\def\properNormalSubgroup{\trianglelefteq}
-\def\normalSubgroup{\mathrel{\lhd}}
-%% Lie Groups
+\DeclareMathOperator\Spin{Spin}
 \def\ISO{\mathrm{ISO}}
 \def\O{\mathrm{O}}
 %% Lie Algebra
@@ -64,6 +66,7 @@
 \def\sl{\mathfrak{sl}}
 \def\su{\mathfrak{su}}
 \def\so{\mathfrak{so}}
+\def\spin{\mathfrak{spin}}
 
 %% Linear Algebra
 \DeclareMathOperator{\tr}{tr}

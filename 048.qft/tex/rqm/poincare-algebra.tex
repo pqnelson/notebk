@@ -14,6 +14,8 @@ Wigner forwarded the interpretation that irreducible representations for
 the ``Poincar\'e group'' should be viewed as elementary
 particles.\index{Elementary Particle!As Irreducible Representation}
 
+\subsection{Lorentz Algebra}
+
 \begin{definition}
 The subgroup of \define{Proper Orthochronous Lorentz Transformations}
 denoted either as $\ISO(3,1)$ or $\SO^{+}(3,1)$, consists of Lorentz
@@ -61,7 +63,7 @@ generators of the Lie algebra for the Lorentz group. Explicitly
 \end{equation}
 Now the trick is that we can write the generators of the Lorentz Lie
 algebra using
-\begin{subequations}
+\begin{subequations}\label{eq:rqm:poincare-algebra:rotations-and-boosts-generators}
 \begin{align}
 L^{i} &= \frac{1}{2}\epsilon^{ijk}M_{jk}\\
 \intertext{for spatial rotations, and}
@@ -70,6 +72,44 @@ K^{i} &= M^{0i}%\\
 %% \vec{J}_{\pm} &= \frac{1}{2}(\vec{L}\pm\I\vec{K}).
 \end{align}
 \end{subequations}
+
+\N{Commutation Relations}\label{chunk:rqm:poincare-algebra:lorentz-algebra:commutation-relations}
+We can obtain the commutation relations by considering an arbitrary
+Lorentz transformation $\Lambda\in\ISO(3,1)$ and an infinitesimal
+Lorentz transformation $1+\delta\omega$, then evaluating to first order
+in $\delta\omega$ gives us:
+\begin{subequations}
+\begin{align}
+  U(\Lambda,0)^{-1}U(1 + \delta\omega,0)U(\Lambda,0)
+  &= 1+U(\Lambda,0)^{-1}M^{\mu\nu}U(\Lambda,0)\delta\omega_{\mu\nu}\\
+  &= 1+{\Lambda^{\mu}}_{\rho}{\Lambda^{\nu}}_{\sigma}M^{\rho\sigma}\delta\omega_{\mu\nu}.
+\end{align}
+\end{subequations}
+Since $\delta\omega_{\mu\nu}$ is arbitrary (but antisymmetric), we have
+\begin{equation}
+U(\Lambda,0)^{-1}M^{\mu\nu}U(\Lambda,0)
+= {\Lambda^{\mu}}_{\rho}{\Lambda^{\nu}}_{\sigma}M^{\rho\sigma}.
+\end{equation}
+Now if we let $\Lambda$ be an infinitesimal Lorentz transformation, we
+arrive at
+\begin{equation}
+[M^{\mu\nu}, M^{\rho\sigma}]
+= (\eta^{\mu\sigma}M^{\nu\rho} - \eta^{\nu\sigma}M^{\mu\rho})
+- (\eta^{\mu\rho}M^{\nu\sigma} - \eta^{\nu\rho}M^{\mu\sigma}).
+\end{equation}
+This gives us the commutation relations in terms of rotations $L^{i}$
+and Lorentz boosts $K^{i}$ as
+\begin{subequations}
+\begin{align}
+[L^{i}, L^{j}] &= \I{\epsilon^{ij}}_{k}J^{k}\\
+[L^{i}, K^{j}] &= \I{\epsilon^{ij}}_{k}K^{k}\\
+[K^{i}, K^{j}] &= -\I{\epsilon^{ij}}_{k}J^{k}.
+\end{align}
+\end{subequations}
+
+\begin{exercise}
+Double check the calculations are correct. There may be a sign error.
+\end{exercise}
 
 \N{Complexified Lorentz Lie Algebra}
 We are really interested in the irreducible complex linear
@@ -150,3 +190,89 @@ where there's an ``obvious'' representation of $G$ on the domain of $\psi$.
 And behold: the Poincar\'e group acts in an obvious way on space-time!
 
 % https://sharif.edu/~sadooghi/QFT-I-96-97-2/LorentzPoincareMaciejko.pdf
+
+\subsection{Poincar\'e Algebra}
+
+\M We can adjoin the space-time translation generators to the algebra of
+Lorentz transformations. We see $H$ generates time translations and
+$P^{j}$ generates spatial translations.
+
+\M
+We know
+\begin{subequations}\label{eq:rqm:poincare-algebra:conjugation-of-elements}
+\begin{align}
+U(\Lambda,a)M^{\alpha\beta}U^{-1}(\Lambda,a) 
+&= {\Lambda_{\mu}}^{\alpha}{\Lambda_{\nu}}^{\beta}(M^{\mu\nu} - a^{\mu}P^{\nu} + a^{\nu}P^{\mu})\\
+U(\Lambda,a)P^{\alpha}U^{-1}(\Lambda,a) &= {\Lambda_{\beta}}^{\alpha}P^{\beta}.
+\end{align}
+\end{subequations}
+
+\N{Determining Commutation Relations}
+We now consider infinitesimal group elements
+${\Lambda_{\mu}}^{\nu}={\delta_{\mu}}^{\nu}+{\omega_{\mu}}^{\nu}$ and
+$a^{\mu}=\epsilon^{\mu}$ in Eq~\eqref{eq:rqm:poincare-algebra:conjugation-of-elements}.
+This gives us
+\begin{subequations}
+\begin{align}
+\I[\frac{1}{2}\omega_{\mu\nu}M^{\mu\nu}-\epsilon_{\mu}P^{\mu},M^{\rho\sigma}]
+&={\omega_{\mu}}^{\rho}M^{\mu\sigma} + {\omega_{\nu}}^{\sigma}M^{\rho\nu}
+-\epsilon^{\rho}P^{\sigma} + \epsilon^{\sigma}P^{\rho}\\
+\I[\frac{1}{2}\omega_{\mu\nu}M^{\mu\nu}-\epsilon_{\mu}P^{\mu},P^{\rho}]
+&={\omega_{\mu}}^{\rho}P^{\mu}.
+\end{align}
+\end{subequations}
+Equating coefficients of $\omega_{\mu\nu}$ and $\epsilon_{\mu}$ on both
+sides of these equations gives us the commutation rules
+\begin{subequations}
+\begin{align}
+\I[M^{\mu\nu},M^{\rho\sigma}] &= \eta^{\nu\rho}M^{\mu\sigma}
+- \eta^{\mu\rho}M^{\nu\sigma} - \eta^{\sigma\mu}M^{\rho\nu} + \eta^{\sigma\tau}M^{\rho\mu}\\
+\I[P^{\mu},M^{\rho\sigma}] &= \eta^{\mu\rho}P^{\sigma} - \eta^{\mu\sigma}P^{\rho}\\
+[P^{\mu},P^{\nu}] &= 0.
+\end{align}
+\end{subequations}
+This is the Lie algebra for the Poincar\'e group.
+
+\M
+We can rewrite the commutation relations using the generators for
+rotations $L^{i}$ and Lorentz boosts $K^{i}$ from
+Eq~\eqref{eq:rqm:poincare-algebra:rotations-and-boosts-generators}.
+We recall
+(\S\ref{chunk:rqm:poincare-algebra:lorentz-algebra:commutation-relations})
+the commutation rules for the Lorentz Lie algebra with these rules:
+\begin{subequations}
+\begin{align}
+[J^{i}, J^{j}] &= \I{\epsilon^{ij}}_{k}J^{k}\\
+[J^{i}, K^{j}] &= \I{\epsilon^{ij}}_{k}K^{k}\\
+[K^{i}, K^{j}] &= -\I{\epsilon^{ij}}_{k}J^{k}
+\end{align}
+\end{subequations}
+Now we add the generators $P^{j}$ for spatial translations and $H$ for
+temporal translations.
+\begin{subequations}
+\begin{align}
+[J^{i}, P^{j}] &= \I{\epsilon^{ij}}_{k}P^{k}\\
+[K^{i}, P^{j}] &= \I\delta^{ij}H\\
+[J^{i}, H] &= [P^{i}, H] = [H, H] = 0\\
+[K^{i}, H] &= \I P^{i},
+\end{align}
+\end{subequations}
+where the indices $i$, $j$, $k=1,2,3$.
+
+\begin{ddanger}
+For our purposes in quantum field theory, we will use the universal
+covering group for the Poincar\'e group. The universal covering group
+for the Lorentz group $\ISO(3,1)$ is the indefinite Spin group $\Spin(3,1)$.
+Since the Poincar\'e group is the semidirect product of translations
+$\RR^{3,1}$ with the Lorentz group $\ISO(3,1)$, the universal covering
+is the semidirect product with $\Spin(3,1)$. This is referred to as the
+\define{Poincar\'e Spin Group} or \emph{Poincar\'e Spinor Group} in the
+literature, though physicists seldom care about such sordid details.
+\end{ddanger}
+
+\N{References}
+A detailed discussion of the Poincar\'e and Lorentz groups (and their
+Lie algebras) may be found in Chapter 2 of
+Weinberg~\cite{Weinberg:1995mt}.
+An ``executive summary'' may be found in Srednicki~\cite{Srednicki:2007qs}.
+

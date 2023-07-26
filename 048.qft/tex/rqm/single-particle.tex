@@ -389,8 +389,43 @@ so its vertex is ``fuzzy'' rather than localized at a point. This is
 what led to Twistor theory.
 \end{remark}
 
+\begin{exercise}
+Recall the method of stationary phase approximates integrals
+$\int g(x)\exp(\I kf(x))\,\D x$ using critical points of $f$ as
+\begin{equation}
+\int_{\RR}g(x)\E^{\I kf(x)}\,\D x
+= \sum_{x_{0}\in\Sigma}g(x_{0})\E^{\I k f(x_{0}) + \sgn(f''(x_{0}))\I\pi/4}\left(
+\frac{2\pi}{k|f''(x_{0})|}
+\right)^{1/2} + o(k^{-1/2}).
+\end{equation}
+For $x^{2}\gg (ct)^{2}$, we can use the method of stationary phase to
+evaluate the integral
+\begin{equation*}
+I = \int^{\infty}_{0}k\sin(kx)\E^{-\I t\sqrt{k^{2} + \mu^{2}}}\,\D k,
+\end{equation*}
+where $\mu^{2} = \hbar^{-2}m_{0}^{2}c^{2}$. Well, you will do so, in
+this exercise.
+\begin{enumerate}
+\item Verify the phase function is $f(x)=kx - t\sqrt{k^{2} + \mu^{2}}$ up to
+  some constant $c$ somewhere.
+\item Prove the stationary point for the phase function is $k_{\text{crit}}=\I\mu x/\sqrt{x^{2}-t^{2}}$.
+\item Peskin and Schroeder assures us that, up to a rational function of
+  $x$ and $t$, $I\sim\exp(-\mu\sqrt{x^{2}-t^{2}})$. Is this true? What
+  is the full result of the method of stationary phase?
+\item Laplace's method states $\displaystyle\int^{b}_{a} h(x) \E^{M g(x)}\,\D x \approx \sqrt{\frac{2\pi}{M|g''(x_{0})|}} h(x_{0}) \E^{M g(x_{0})}$  as  $M\to\infty$,
+  is this applicable to our integral? If so, does it agree with our results?
+\end{enumerate}
+\end{exercise}
+
+\N{Puzzle}
+Can we preserve causality in relativistic quantum mechanics?
+Specifically, demanding the probability amplitude vanishes outside the
+lightcone. 
+
+
+
 \N{References}
 See \S2.5 of Weinberg~\cite{Weinberg:1995mt},
 Chapter 1 in Ticciati~\cite{Ticciati:1999qp}. For another computation of
-relativistic position being outside the light cone, see Chapter 1 of
+relativistic position being outside the light cone, see \S2.1 of
 Peskin and Schroeder~\cite{Peskin:1995ev}.
