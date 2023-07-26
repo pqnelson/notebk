@@ -298,8 +298,99 @@ Poincar\'e group. There are two claims you need to prove: (1) it's a
 representation, and (2) it's outputs are all unitary operators.
 \end{exercise}
 
+\subsection{Problems with Position, Faster-than-light}
 
+\N{Problem 1}
+From first principles, we should expect the position operator to not be
+well-defined. Why? Well consider the Compton wavelength $\lambda$ for
+the particle of rest mass $m_{0}$. If $\Delta x\ll\lambda$, then
+$\Delta p\gg m_{0}c$. This means the momentum would be so large it could
+create more particles of mass $m_{0}$. Since we do not witness this, we
+are forced to believe that $\Delta x$ cannot be less than the Compton wavelength.
+
+\N{Problem 2: Faster-than-light propagation}
+Suppose we have a relativistic position operator
+$\widehat{\vec{x}}$. Let $|\vec{x}\rangle$ be eigenvector for 
+$\widehat{\vec{x}}$. Then we pick the normalization of these kets such
+that
+\begin{equation}\label{eq:rqm:single-particle:problems:dot-product}
+\langle\vec{x}\mid\vec{p}\rangle = \exp(\I\vec{x}\cdot\vec{p}/\hbar).
+\end{equation}
+Consider a state $|\psi_{0}\rangle$ initially localized at the origin,
+we will want to know how it evolves over time. So
+\begin{subequations}
+\begin{equation}
+\psi(\vec{x},t=0) := \psi_{0}(\vec{x}) = (2\pi)^{3}\delta^{(3)}(\vec{x}),
+\end{equation}
+then its Fourier transform is:
+\begin{equation}
+\widetilde{\psi}_{0}(\vec{k}) = 1,
+\end{equation}
+and
+\begin{equation}
+|\psi_{0}\rangle = \int|\vec{k}\rangle\,\D^{3}\vec{k}.
+\end{equation}
+\end{subequations}
+The evolution of this state is given by
+\begin{calculation}
+\psi(\vec{x},t)
+\step{using position-space coordinate expansion}
+\langle\vec{x}\mid\E^{-\I\widehat{H}t/\hbar}\mid\psi_{0}\rangle
+\step{inverse Fourier transform it}
+\int\langle\vec{x}\mid\E^{-\I\widehat{H}t/\hbar}\mid\vec{k}\rangle\,\D^{3}\vec{k}
+\step{using Eigenvalues of Hamiltonian operator}
+\int\langle\vec{x}\mid\E^{-\I\omega(\vec{k})t}\mid\vec{k}\rangle\,\D^{3}\vec{k}
+\step{linearity}
+\int \E^{-\I\omega(\vec{k})t}\langle\vec{x}\mid\vec{k}\rangle\,\D^{3}\vec{k}
+\step{using $\vec{p}=\hbar\vec{k}$ and Eq~\eqref{eq:rqm:single-particle:problems:dot-product}}
+\int \E^{-\I\omega(\vec{k})t}\E^{\I\vec{k}\cdot\vec{x}}\,\D^{3}\vec{k}.
+\end{calculation}
+We can estimate $\psi(\vec{x},t)$ outside the light-cone, when
+$|\vec{x}|>ct$. Working in spherical coordinates, we have
+\begin{calculation}
+\iiint \E^{-\I\omega(\vec{k})t}\E^{\I\vec{k}\cdot\vec{x}}\,\D^{3}\vec{k}
+\step{expanding in spherical coordinates}
+\int^{\infty}_{0}\int^{2\pi}_{0}\int^{1}_{-1}k^{2}\E^{-\I t\sqrt{k^{2} + \hbar^{-2}m_{0}^{2}c^{2}}}\E^{\I
+kr\cos(\theta)}\,\D(\cos(\theta))\,\D\phi\D k
+\step{doing the $\theta$ integral}
+\int^{\infty}_{0}\int^{2\pi}_{0}\left.\frac{k^{2}\E^{-\I t\sqrt{k^{2} + \hbar^{-2}m_{0}^{2}c^{2}}}\E^{\I
+kr\cos(\theta)}}{\I k r}\right|^{\cos\theta=1}_{\cos\theta=-1}\,\D\phi\D k
+\step{evaluating the endpoints of the integral}
+\int^{\infty}_{0}\int^{2\pi}_{0}k^{2}\E^{-\I t\sqrt{k^{2} + \hbar^{-2}m_{0}^{2}c^{2}}}\frac{\E^{\I
+kr}-\E^{-\I kr}}{\I k r}\,\D\phi\D k
+\step{simplify the integrand}
+\frac{1}{\I r}\int^{\infty}_{0}\int^{2\pi}_{0}k\E^{-\I t\sqrt{k^{2} + \hbar^{-2}m_{0}^{2}c^{2}}}(\E^{\I
+kr}-\E^{-\I kr})\,\D\phi\D k
+\step{since the integrand is independent of $\phi$}
+\frac{2\pi}{\I r}\int^{\infty}_{0}k\E^{-\I t\sqrt{k^{2} + \hbar^{-2}m_{0}^{2}c^{2}}}(\E^{\I
+kr}-\E^{-\I kr})\,\D k
+\step{simple calculus}
+\frac{2\pi}{\I r}\int^{\infty}_{-\infty}k\E^{-\I t\sqrt{k^{2} + \hbar^{-2}m_{0}^{2}c^{2}}}\E^{\I
+kr}\,\D k
+\end{calculation}
+If we set $m_{0}=0$, then
+\begin{equation}
+\int k\E^{\I k(r - ct)}\D k = \E^{\I k(r - ct)}\left(\frac{1}{(r - ct)^2}
+- \frac{\I k}{r - ct}\right)\sim\I\E^{\I k(r-ct)}k
+\end{equation}
+which does not converge as $k\to\pm\infty$. Including the mass term does
+not improve the situation.
+
+To be clear, this means the probability amplitude for a relativistic
+particle to appear outside the future lightcone of its initial position
+is nonzero, which implies faster-than-light phenomena. This is exactly
+what we want to avoid.
+
+\begin{remark}
+Penrose argued that, really, the initial condition $|\psi_{0}\rangle$
+being localized at a point is unphysical. The quantum picture to have in
+mind is the light cone should be ``quantized'', including the vertex ---
+so its vertex is ``fuzzy'' rather than localized at a point. This is
+what led to Twistor theory.
+\end{remark}
 
 \N{References}
 See \S2.5 of Weinberg~\cite{Weinberg:1995mt},
-Chapter 1 in Ticciati~\cite{Ticciati:1999qp}.
+Chapter 1 in Ticciati~\cite{Ticciati:1999qp}. For another computation of
+relativistic position being outside the light cone, see Chapter 1 of
+Peskin and Schroeder~\cite{Peskin:1995ev}.
