@@ -1,0 +1,108 @@
+\section{Linear Chain}
+
+\N{Problem Statement}
+Consider $N\in\NN$ identical point-masses (each with rest mass $m$)
+each of which are connected to two neighboring point masses by identical
+massless springs with spring constant $k$ and equilibrium length $a$.
+The point-masses then form a line segment.
+
+We will take $N\to\infty$ limit in such a way that at any point-mass
+there are infinitely many point-masses in either direction.
+This specifically is to let us ignore the boundary conditions.
+
+What are the equations of motion for a point-mass in this chain? What is
+the Lagrangian for this system?
+
+Take the continuum limit where $a\to0$ while $a^{2}k/m$ is held
+constant. What happens to the equations of motion and the Lagrangian?
+
+\begin{exercise}
+What dimensions does $a^{2}k/m$ have?
+\end{exercise}
+
+\N{Coordinates}
+Since we have the point-masses form a one-dimensional system, we will
+write $x_{j}$ for the position of the point-mass with $j\in\ZZ$.
+
+\N{Free Body Diagram}
+Suppose we examine the free-body diagram for the point-mass. The only
+forces acting on a point-mass $x_{j}$ are the spring forces:
+\begin{center}
+\includegraphics{img/img.0}
+\end{center}
+
+\N{Equations of Motion}
+Then we see the force acting on $x_{j}$ is
+\begin{equation}
+\begin{split}
+  F_{j} &= -k(x_{j}-x_{j-1}-a) + k(x_{j+1}-x_{j}-a)\\
+  &= k(x_{j+1}-2x_{j}+x_{j}).
+\end{split}
+\end{equation}
+Using Newton's second Law,
+\begin{equation}
+m\ddot{x}_{j} = F_{j} = k(x_{j+1}-2x_{j}+x_{j}).
+\end{equation}
+We will rearrange this to:
+\begin{equation}\label{eq:classical-field-theory:linear-chain:newton-eom}
+\ddot{x}_{j} = \frac{k}{m}(x_{j+1}-2x_{j}+x_{j}).
+\end{equation}
+
+
+\N{Lagrangian}
+We can then write the Lagrangian for this system,
+\begin{equation}
+L = \sum_{j\in\ZZ}\frac{m}{2}\dot{x}^{2}_{j} - \frac{k}{2}(x_{j+1}-x_{j})^{2}.
+\end{equation}
+Since the sum is over all integers, the forces acting on $x_{j}$ come
+from the $j-1$ term and the $j$ term.
+
+\N{Continuum Limit}
+Now care must be taken, because as $a\to 0$ the index $j$ labeling
+particles will become a real number indicating the position of the
+particle. To avoid ambiguity, we will write $q_{j}(t)$ for the position
+of particle $j$.
+
+We observe as $a\to0$, we have $q_{j}(t)\to q(x,t)$
+\begin{equation}
+\frac{x_{j+1}-2x_{j}+x_{j-1}}{a^{2}}\xrightarrow{a\to0}\frac{\partial^{2}}{\partial x^{2}}q(x,t).
+\end{equation}
+Then the continuum limit of the equations of motion,
+Eq~\eqref{eq:classical-field-theory:linear-chain:newton-eom}, (first
+dividing through by $m$) is:
+\begin{equation}
+\ddot{x}_{j}\xrightarrow{a\to0}\frac{\partial^{2}}{\partial t^{2}}q(x,t),
+\quad\mbox{and}\quad\frac{ka^{2}}{m}\frac{x_{j+1}-2x_{j}+x_{j-1}}{a^{2}}
+\xrightarrow{a\to0}v^{2}
+\frac{\partial^{2}}{\partial x^{2}}q(x,t).
+\end{equation}
+Then equating both limits gives us:
+\begin{equation}
+\frac{\partial^{2}}{\partial t^{2}}q(x,t) = v^{2}
+\frac{\partial^{2}}{\partial x^{2}}q(x,t).
+\end{equation}
+This is precisely the wave equation for an elastic string.
+Here $v=\sqrt{a^{2}k/m}$ is the velocity of propagation.
+
+\begin{exercise}
+We have been working with one spatial dimension, assuming it is $\RR$.
+Suppose space is a circle $S^{1}$ and our linear chain forms a
+ring. Perform the continuum limit analysis for this situation.
+\end{exercise}
+
+\begin{exercise}
+If we took space to be a closed interval $[a,b]$ instead of $\RR$,
+then what boundary conditions do we need to impose for things to work
+out in the continuum limit?
+\end{exercise}
+
+\N{Canonical Analysis}
+We can perform the Legendre transform of the Lagrangian, first finding
+the conjugate momenta
+\begin{equation}
+p_{j} = \frac{\partial L}{\partial\dot{q}_{j}} = m\dot{q}_{j}.
+\end{equation}
+Then
+\begin{equation}
+H = \sum_{j\in\ZZ}\frac{p_{j}^{2}}{2m} + k(q_{j+1}-q_{j})^{2}.
+\end{equation}
