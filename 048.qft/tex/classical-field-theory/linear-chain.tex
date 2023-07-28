@@ -20,6 +20,17 @@ constant. What happens to the equations of motion and the Lagrangian?
 What dimensions does $a^{2}k/m$ have?
 \end{exercise}
 
+\N{Assumptions}
+We assume that the point-masses all have identical masses, otherwise the
+chain is not homogeneous. We similarly assume the springs connecting
+them are all identical and massless, otherwise it's not
+homogeneous. When we extend the chain from $n=1$ spatial dimensions to
+$n>1$ dimensions, we lose isotropy (i.e., there are ``preferred directions''
+and space is not rotationally invariant).
+These are important when we take the continuum $a\to0$ limit, so we
+recover a Poincar\'e invariant system (that is, the physical system is
+relativistic). 
+
 \N{Coordinates}
 Since we have the point-masses form a one-dimensional system, we will
 write $x_{j}$ for the position of the point-mass with $j\in\ZZ$.
@@ -51,7 +62,7 @@ We will rearrange this to:
 
 \N{Lagrangian}
 We can then write the Lagrangian for this system,
-\begin{equation}
+\begin{equation}\label{eq:classical-field-theory:linear-chain:lagrangian-with-point-masses}
 L = \sum_{j\in\ZZ}\frac{m}{2}\dot{x}^{2}_{j} - \frac{k}{2}(x_{j+1}-x_{j})^{2}.
 \end{equation}
 Since the sum is over all integers, the forces acting on $x_{j}$ come
@@ -82,7 +93,11 @@ Then equating both limits gives us:
 \frac{\partial^{2}}{\partial x^{2}}q(x,t).
 \end{equation}
 This is precisely the wave equation for an elastic string.
-Here $v=\sqrt{a^{2}k/m}$ is the velocity of propagation.
+Here
+\begin{equation}\label{eq:classical-field-theory:linear-chain:speed-of-propagation}
+v^{2} = \frac{a^{2}k}{m}
+\end{equation}
+is the velocity of propagation.
 
 \begin{exercise}
 We have been working with one spatial dimension, assuming it is $\RR$.
@@ -96,13 +111,529 @@ then what boundary conditions do we need to impose for things to work
 out in the continuum limit?
 \end{exercise}
 
-\N{Canonical Analysis}
+\subsection{Canonical Analysis}
+
+\N{Periodic Boundary Conditions}
+First, we will use periodic boundary conditions. This means that there
+will be $N\in\NN$ point masses such that
+\begin{equation}
+q_{N+1}(t) = q_{1}(t).
+\end{equation}
+Then we just change the sum of the Lagrangian to be $j=1,\dots,N$.
+
+\N{Legendre Transform}
 We can perform the Legendre transform of the Lagrangian, first finding
 the conjugate momenta
-\begin{equation}
+\begin{equation}\label{eq:classical-field-theory:linear-chain:momentum}
 p_{j} = \frac{\partial L}{\partial\dot{q}_{j}} = m\dot{q}_{j}.
 \end{equation}
 Then
 \begin{equation}
-H = \sum_{j\in\ZZ}\frac{p_{j}^{2}}{2m} + k(q_{j+1}-q_{j})^{2}.
+H = \sum^{N}_{j=1}\frac{p_{j}^{2}}{2m} + \frac{k}{2}(q_{j+1}-q_{j})^{2}.
 \end{equation}
+For us to extract more information, we will do a series expansion for
+$q_{j}(t)$ in powers of some nice family of basis functions, then
+determine $p_{j}(t)$ as a sum of these basis functions, and finally the
+Hamiltonian will be determined. This constitutes a long detour, but
+reflects a lot of the typical calculations we encounter in field theory. 
+
+\N{Normal Coordinates}
+In classical mechanics, the dynamics of a set of coupled oscillators is
+best studied by using \emph{normal coordinates}. The position
+coordinates $q_{j}(t)$ may be expanded with respect to a set of linearly
+independent ``basis functions'' $u_{j}^{k}$,
+\begin{equation}\label{eq:classical-field-theory:linear-chain:discrete-fourier-decomposition}
+q_{j}(t) = \sum_{k}a_{k}(t)u^{k}_{j},
+\end{equation}
+where the index $k$ counts the members of the basis set. The natural
+(and convenient) choice for basis is the harmonic functions
+\begin{equation}\label{eq:classical-field-theory:linear-chain:basis-harmonic-functions}
+u_{j}^{k} = \frac{1}{\sqrt{N}}\exp(\I kaj).
+\end{equation}
+We now recognize the decomposition Eq~\eqref{eq:classical-field-theory:linear-chain:discrete-fourier-decomposition}
+as a discrete Fourier decomposition.
+
+\begin{remark}
+The choice of $u_{j}^{k}$ makes it ``almost'' orthonormal. Its $L^{2}$-norm is
+\begin{equation}
+\|u_{j}^{k}\|_{L^{2}}^{2}=\frac{1}{N}\neq1,
+\end{equation}
+which will impact calculations later on. Physicists sweep this fact
+under the rug, hoping no one will notice, and later give it physical
+significance when certain divergences appear in the continuum limit. But
+this is just an artifact of a particular choice of basis functions which
+are not ``unit vectors'' with respect to the $L^{2}$-norm.
+\end{remark}
+
+\begin{ddanger}
+Physicists will work with a different inner product, one with respect to
+the $k$ indices rather than the one mathematicians would expect. This is
+especially confusing, because it's never announced (much less justified).
+The reader should be forewarned about this trickiness.
+\end{ddanger}
+
+\begin{exercise}
+What are the dimensions of the basis functions $u^{k}_{j}$? What are the
+dimensions for the coefficients $a_{k}(t)$?
+\end{exercise}
+
+\M The index $k$ has the dimension of inverse length, and physically
+corresponds to the \emph{wave number} of the ``plane wave'' $u^{k}_{j}$.
+The periodic boundary conditions restricts the range of $k$ since
+\begin{equation}
+u^{k}_{N+j}=u^{k}_{j},
+\end{equation}
+which implies
+\begin{equation}
+\exp(\I kaN) = 1.
+\end{equation}
+Therefore
+\begin{equation}\label{eq:classical-field-theory:linear-chain:wave-length-range}
+k = \frac{2\pi}{N a}\ell,
+\end{equation}
+where $\ell$ is an integer. 
+Periodicity then restricts the range of values for $\ell$ to lie in the 
+range
+\begin{equation}
+\frac{-N}{2}<\ell\leq\frac{N}{2}.
+\end{equation}
+Larger $\ell$ ``cycles back''.
+
+\M
+The dimension of the basis $\{u^{k}_{j}\}$ coincides the number of
+degrees of freedom $N$ of the system of oscillators.
+
+\N{Orthonormality and Completeness of Basis}
+We can see that the basis are orthonormal:
+\begin{equation}
+\sum^{N}_{j=1}\overline{u^{k'}_{j}}u^{k}_{j}=\delta_{k,k'}.
+\end{equation}
+Further, the basis is complete:
+\begin{equation}\label{eq:classical-field-theory:linear-chain:canonical-analysis:completeness-of-basis-functions}
+\sum_{k}\overline{u^{k}_{j'}}u^{k}_{j}=\delta_{j',j}.
+\end{equation}
+
+\begin{proof}[Proof (Orthonormality)]
+  Orthonormality follows from
+  \begin{equation}
+\sum^{N}_{j=1}\E^{2\pi\I(\ell-\ell')j/N}=N\delta_{\ell,\ell'}.
+  \end{equation}
+  When $\ell=\ell'$, the left-hand side reduces to $\sum^{N}_{j=1}1=N$,
+  and the result follows.
+
+  We just need to prove the result for $\ell\neq\ell'$. We see
+\begin{calculation}
+\sum^{N}_{j=1}\E^{2\pi\I(\ell-\ell')j/N}
+\step{law of powers}
+\sum^{N}_{j=1}(\E^{2\pi\I(\ell-\ell')/N})^{j}
+\step{finite geometric sum}
+\frac{1 - \E^{2\pi\I(\ell-\ell')N/N}}{1 - \E^{2\pi\I(\ell-\ell')/N}}
+\step{algebra}
+\frac{1 - \E^{2\pi\I(\ell-\ell')}}{1 - \E^{2\pi\I(\ell-\ell')/N}}.
+\end{calculation}
+We need to prove this vanishes. This requires us to prove (i) the
+denominator is nonzero, and (ii) the numerator vanishes. These claims
+are proven thus:
+\begin{enumerate}
+\item Since $\ell-\ell'\neq0$ and $|\ell-\ell'|<N$, it follows that
+  $(\ell-\ell')/N\notin\ZZ$. Therefore the denominator cannot be zero.
+\item Since $\ell$, $\ell'\in\NN$, it follows that $\ell-\ell'\in\ZZ$
+  and therefore $\exp(2\pi\I(\ell-\ell'))=1$.  It then follows the
+  numerator vanishes.
+\end{enumerate}
+Orthonormality follows immediately.
+\end{proof}
+
+\begin{proof}[Proof (Completeness)]
+The completeness property follows in a similar manner, by direct
+calculation
+\begin{calculation}
+\sum_{k}\overline{u^{k}_{j'}}u^{k}_{j}
+\step{unfolding the definition of $u^{k}_{j}$ from Eq~\eqref{eq:classical-field-theory:linear-chain:basis-harmonic-functions}}
+\sum_{k}\left(\frac{1}{\sqrt{N}}\E^{-\I kaj'}\right)\left(\frac{1}{\sqrt{N}}\E^{\I kaj}\right)
+\step{algebra}
+\frac{1}{N}\sum_{k}\E^{\I ka(j-j')}
+\step{since $k=\ell 2\pi/(N a)$ by Eq~\eqref{eq:classical-field-theory:linear-chain:wave-length-range}}
+\frac{1}{N}\sum^{N/2}_{\ell=-(N/2)+1}\E^{\I 2\pi(j-j')\ell/N}
+\step{reindexing $1\leq\ell\leq N$}
+\frac{1}{N}\E^{-\I\pi(j-j')}\sum^{N}_{\ell=1}\E^{\I 2\pi(j-j')\ell/N}
+\step{since $\sum^{N}_{\ell=1}\E^{\I 2\pi(j-j')\ell/N}=N\delta_{j,j'}$}
+\frac{1}{N}\E^{-\I\pi(j-j')}(N\delta_{j,j'})
+\step{algebra}
+\E^{-\I\pi(j-j')}\delta_{j,j'}
+\step{since $\E^{-\I\pi(j-j')}$ contributes to nonzero term when $j=j'$}
+\E^{-\I\pi(j-j)}\delta_{j,j'}
+\step{since $j-j=0$ and $\E^{0}=1$}
+\delta_{j,j'}.\qedhere
+\end{calculation}
+\end{proof}
+
+\N{Basis Under Conjugation}
+It follows from these calculations that these basis functions under
+complex conjugation behave like:
+\begin{equation}
+\overline{u^{k}_{j}} = u^{-k}_{j}.
+\end{equation}
+
+\N{Coefficients Reality Conditions}
+The coefficients $a_{k}(t)$ in the expansion in Eq~\eqref{eq:classical-field-theory:linear-chain:discrete-fourier-decomposition}
+must have some reality conditions so $\overline{q_{j}}=q_{j}$ the
+positions are real numbers. This means,
+\begin{equation}
+\overline{a_{k}(t)} = a_{-k}(t).
+\end{equation}
+
+\M
+The equations of motion, using our expansion in Eq~\eqref{eq:classical-field-theory:linear-chain:discrete-fourier-decomposition},
+gives us differential equations in terms of the coefficients
+$a_{k}(t)$:\footnote{This requires expanding both sides of the equations
+of motion, multiplying both sides by $\overline{u^{k}_{j}}$ and then
+summing over $j$. The orthonormality condition is invoked and the
+defining property of the Kronecker delta is used, which produces the equation.}
+\begin{equation}
+\ddot{a}_{k}(t) = \frac{k_{s}}{m}\sum_{k'}a_{k'}(t)\sum_{j}\overline{u^{k}_{j}}
+\bigl(u^{k'}_{j+1} -2u^{k'}_{j} + u^{k'}_{j-1}\bigr).
+\end{equation}
+Here we write $k_{s}$ to stress we work with the spring constant, not an
+index. 
+Observe the basis functions at different $j$ differ only by a phase
+factor
+\begin{equation}
+u^{k}_{j\pm1}=\E^{\pm\I ka}u^{k}_{j}.
+\end{equation}
+We use completeness of the basis functions from Eq~\eqref{eq:classical-field-theory:linear-chain:canonical-analysis:completeness-of-basis-functions}
+to simplify the sum over $k'$
+\begin{calculation}
+  \sum_{k'}a_{k}(t)\sum_{j}\overline{u^{k}_{j}}
+\bigl(u^{k'}_{j+1} -2u^{k}_{j} + u^{k'}_{j-1}\bigr)
+\step{using $u^{k'}_{j\pm1}=\E^{\pm\I k'a}u^{k'}_{j}$}
+  \sum_{k'}a_{k}(t)\sum_{j}\overline{u^{k}_{j}}
+\bigl(\E^{\I k'a}u^{k'}_{j} -2u^{k}_{j} + \E^{-\I k'a}u^{k'}_{j}\bigr)
+\step{distributivity}
+  \sum_{k'}a_{k}(t)\sum_{j}%\overline{u^{k}_{j}}
+\bigl(\E^{\I k'a}\overline{u^{k}_{j}}u^{k'}_{j} -2\overline{u^{k}_{j}}u^{k}_{j} + \E^{-\I k'a}\overline{u^{k}_{j}}u^{k'}_{j}\bigr)
+\step{summing over $j$, orthonormality}
+\sum_{k'}a_{k'}%\overline{u^{k}_{j}}
+\bigl(\E^{\I k'a}\delta_{k,k'} -2\delta_{k,k'} + \delta_{k,k'}\E^{-\I k'a}\bigr)
+\step{summing over $k'$}
+a_{k}\bigl(\E^{\I ka} -2 + \E^{-\I ka}\bigr)
+\end{calculation}
+This simplifies the equations of motion to
+\begin{equation}
+\ddot{a}_{k}(t) = \frac{k_{s}}{m}\bigl(\E^{\I ka}+\E^{-\I ka}-2\bigr)a_{k}(t).
+\end{equation}
+This is the differential equation of a harmonic oscillator with
+frequency
+\begin{equation}
+\omega_{k} = \sqrt{2\frac{k_{s}}{m}(1 - \cos(ka))}.
+\end{equation}
+So the equations of motion is $\ddot{a}_{k}(t)=-\omega_{k}^{2}a_{k}(t)$.
+
+Now after a long detour, we announce our grand achievement: we have
+changed the equations of motion to describe a system of \emph{uncoupled}
+simple harmonic oscillators.
+
+\begin{exercise}
+What are the dimensions to $\omega_{k}$? They \emph{should} be in units
+of frequency (``per unit time''). If the dimensions for $\omega_{k}$
+don't match our expectations, what went wrong? How can we remedy the
+situation?
+\end{exercise}
+
+\N{General Solution}
+The solution to the equations of motion may be written down as
+\begin{equation}
+a_{k}(t) = b_{k}\E^{-\I\omega_{k}t} + \overline{b_{-k}}\E^{+\I\omega_{k}t}.
+\end{equation}
+The general expansion for the coordinates
+\begin{equation}
+q_{j}(t) = \sum_{k}(b_{k}\E^{-\I\omega_{k}t} + \overline{b_{-k}}\E^{+\I\omega_{k}t})u^{k}_{j}.
+\end{equation}
+We can use distributivity, substitute $k\to-k$ in the second term, and
+we obtain
+\begin{equation}
+  \begin{split}
+q_{j}(t) &= \sum_{k}(b_{k}\E^{-\I\omega_{k}t}u^{k}_{j} +\overline{b_{k}}\E^{+\I\omega_{k}t}\overline{u^{k}_{j}})\\
+&=\frac{1}{\sqrt{N}}\sum_{k}\bigl(b_{k}\E^{-\I(\omega_{k}t-kan)}
++\overline{b_{k}}\E^{+\I(\omega_{k}t-kan)}\bigr).
+  \end{split}
+\end{equation}
+Observe, since the second term is the complex conjugate of the first
+term, the sum produces a real number.
+
+\N{Momentum}
+The conjugate momentum, from Eq~\eqref{eq:classical-field-theory:linear-chain:momentum},
+may be written down as a sum of basis functions
+\begin{equation}
+p_{j}(t) = m\sum_{k}(-\I\omega_{k})\bigl(b_{k}\E^{-\I\omega_{k}t}u^{k}_{j} - \overline{b_{k}}\E^{+\I\omega_{k}t}\overline{u^{k}_{j}}\bigr)
+\end{equation}
+
+\begin{exercise}
+Verify the Hamiltonian satisfies
+\begin{equation}
+H = \sum_{k}2m\omega_{k}^{2}\overline{b_{k}}b_{k}.
+\end{equation}
+Observe the Hamiltonian is a constant with respect to time.
+[Hint: this is just a straightforward calculation of the kinetic term
+  using the series expansion of momenta, and the potential term using
+  the series expansion of position, and adding them together. A trig
+  identity may be needed.]
+\end{exercise}
+
+\N{Poisson Bracket}
+The Poisson brackets between the normal coordinates $b_{k}$ and
+$\overline{b_{k'}}$ take the simple form
+\begin{subequations}
+\begin{equation}
+\{b_{k},\overline{b_{k'}}\}_{PB} = \frac{-\I}{2m\omega_{k}}\delta_{k,k'},
+\end{equation}
+\begin{equation}
+\{b_{k},b_{k'}\}_{PB} = \{\overline{b_{k}},\overline{b_{k'}}\}_{PB} = 0.
+\end{equation}
+\end{subequations}
+
+\begin{exercise}
+Verify this is, indeed, the Poisson bracket relations for the normal
+coordinates. [Hint: using the series expansion for $q_{j}(t)$ and
+  $p_{j}(t)$, write $b_{k}\sim\sum_{j} (??) [q_{j}(t)\pm(\omega_{k}m)^{-1}p_{j}(t)]$,
+where $(??)$ is some factor to be determined,
+then use the ``vanilla'' Poisson brackets.]
+\end{exercise}
+
+\N{References}
+Greiner~\cite{Greiner:1996zu} discusses the linear chain in quite a bit
+of detail, both classically and quantum mechanically. Care must be
+taken, he is a bit slick with explanations at times, and there are a few
+typos in his equations (which do not affect the results but will confuse
+the reader trying to reproduce the equations).
+
+\subsection{Continuum Limit}
+
+\M Let us consider the continuum limit for the Lagrangian and
+Hamiltonian expressions.
+We can cheat and realize the answer we're looking for should produce the
+equations of motion
+\begin{equation}
+\partial^{\mu}\partial_{\mu}q(\vec{x},t)=0.
+\end{equation}
+Then write down a Lagrangian which produces this equation of motion.
+But let's use that as a last resort.
+
+\M
+We can take the Lagrangian from Eq~\eqref{eq:classical-field-theory:linear-chain:lagrangian-with-point-masses},
+\begin{equation*}
+L = \sum_{j\in\ZZ}\frac{m}{2}\dot{x}^{2}_{j} - \frac{k}{2}(x_{j+1}-x_{j})^{2}.
+\end{equation*}
+The continuum limit will keep $k^{2}a$ constant, equal to $v^{2}m$.
+We have
+\begin{equation}
+\frac{k}{2}\frac{a^{2}}{a^{2}}(x_{j+1}-x_{j})^{2}
+=\frac{a^{2}k}{2}\left(\frac{x_{j+1}-x_{j}}{a}\right)^{2}\xrightarrow{a\to0}
+\frac{v^{2}m}{2}\left(\frac{\partial v(x,t)}{\partial x}\right)^{2}.
+\end{equation}
+The heuristic is that $\Delta x_{j}\approx a$.
+
+\N{Continuum Limit}
+As $a\to0$, we replace in one-dimension:
+\begin{equation}
+\sum_{j}(\dots)\to\int(\dots)\frac{\D x}{a}.
+\end{equation}
+In $n$ spatial dimensions
+\begin{equation}
+\sum_{j_{1},\dots,j_{n}}(\dots)\to\int(\dots)\frac{\D^{n} x}{a^{n}}.
+\end{equation}
+
+
+\N{Kinetic Term}
+The kinetic energy term
+\begin{equation}
+K = \sum_{j}\frac{1}{2}m\dot{q}^{2}_{j}.
+\end{equation}
+The continuum limit requires introducing the ``mass density''\marginnote{$\rho=m/a$} $\rho=m/a$
+so
+\begin{equation}
+K = \sum_{j}\frac{1}{2}a\rho\dot{q}^{2}_{j},
+\end{equation}
+then the continuum limit becomes
+\begin{equation}
+\sum_{j}\frac{1}{2}a\rho\dot{q}^{2}_{j}\xrightarrow{a\to0}\int\rho\dot{q}(x,t)^{2}\,\D x.
+\end{equation}
+Hence the continuum limit for the kinetic term is:
+\begin{equation}
+\boxed{K = \int\rho\dot{q}(x,t)^{2}\,\D x.}
+\end{equation}
+
+\N{Potential Term}
+We now have the potential term
+\begin{equation}
+V = \sum_{j}\frac{k}{2}(q_{j+1}-q_{j})^{2}.
+\end{equation}
+Observe that the continuum limit of the potential contribution summand is:
+\begin{equation}
+\frac{a^{2}}{a^{2}}\frac{m}{m}k(q_{j+1}-q_{j})^{2}
+=\frac{a^{2}k}{m}m\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}
+\xrightarrow{a\to0}
+v^{2}m\left(\frac{\partial q(x,t)}{\partial x}\right)^{2}.
+\end{equation}
+Then
+\begin{equation}
+\sum_{j}\frac{k}{2}(q_{j+1}-q_{j})^{2}\xrightarrow{a\to0}\int \frac{v^{2}\rho}{2}
+\left(\frac{\partial q(x,t)}{\partial x}\right)^{2}\,\D x.
+\end{equation}
+That is to say,
+\begin{equation}
+\boxed{V = \int \frac{v^{2}\rho}{2}\left(\frac{\partial q(x,t)}{\partial x}\right)^{2}\,\D x.}
+\end{equation}
+
+\M
+Combining results, we have the continuum limit for the Lagrangian give
+us
+\begin{equation}
+L = \int\rho\left[\frac{1}{2}\dot{q}^{2}-\frac{1}{2}v^{2}\left(\frac{\partial q(x,t)}{\partial x}\right)^{2}\right]\D x.
+\end{equation}
+
+\N{Re-Scaling Position}
+We want to re-scale $q(x,t)$ by some physical constants
+$q(x,t)\mapsto\varphi(x,t)$ so its physical dimension works out and our
+Lagrangian is
+\begin{equation}
+  \begin{split}
+L &= \int \rho v^{2}\partial^{\mu}q\partial_{\mu}q\,\D^{n}x\\
+&= \int \partial^{\mu}\varphi\partial_{\mu}\varphi\,\D^{n}x.
+  \end{split}
+\end{equation}
+Then
+\begin{equation}
+\mathsf{M}\mathsf{L}^{2}\mathsf{T}^{-2} = [L] = [\int \partial^{\mu}\varphi\partial_{\mu}\varphi\,\D^{n}x],
+\end{equation}
+and so in $n$ spatial dimensions, since $[\D^{n}x]=\mathsf{L}^{n}$,
+\begin{equation}
+[\partial^{\mu}\varphi\partial_{\mu}\varphi] = \mathsf{M}\mathsf{L}^{2-n}\mathsf{T}^{-2}.
+\end{equation}
+Then
+\begin{equation}
+[\varphi^{2}] = \mathsf{M}\mathsf{L}^{4-n}\mathsf{T}^{-2},
+\end{equation}
+and in particular
+\begin{equation}
+[\varphi] = \mathsf{M}^{1/2}\mathsf{L}^{2-(n/2)}\mathsf{T}^{-1}.
+\end{equation}
+Observe further
+\begin{equation}
+[\rho]=\mathsf{M}^{1}\mathsf{L}^{-n},\quad\mbox{and}\quad
+[v]=\mathsf{L}^{1}\mathsf{T}^{-1}.
+\end{equation}
+Dimensional analysis suggests our new variable should
+be:\marginnote{Change of variables $q\to\varphi$}
+\begin{equation}\label{eq:classical-field-theory:linear-chain:change-of-variables-to-varphi}
+\boxed{\varphi(x,t) := \sqrt{\rho}vq(x,t).}
+\end{equation}
+The Lagrangian under change of variable $q\to\varphi$ is then
+\begin{equation}
+L = \int\left(\frac{1}{v^{2}}\left(\frac{\partial\varphi(x,t)}{\partial t}\right)^{2}
+-\left(\frac{\partial\varphi(x,t)}{\partial x}\right)^{2}\right)\D x.
+\end{equation}
+
+\begin{exercise}
+Re-perform this analysis in $n=2$ spatial dimensions and verify
+everything works out all the same. Then try working it out in $n=3$
+spatial dimensions. 
+\end{exercise}
+
+\N{Field quantity}
+The change of variables in
+Eq~\eqref{eq:classical-field-theory:linear-chain:change-of-variables-to-varphi}
+carries over to $n$ spatial dimensions as
+\begin{equation}
+\varphi(\vec{x},t) := \sqrt{\rho}vq(\vec{x},t).
+\end{equation}
+This describes a so-called scalar field quantity $\varphi$.
+
+\N{Speed of Propagation}
+Following special relativity, we usually set the speed of propagation Eq~\eqref{eq:classical-field-theory:linear-chain:speed-of-propagation}
+to the speed of light, so
+\begin{equation}
+v^{2} = \frac{a^{2}k}{m} = c^{2}.
+\end{equation}
+This gives us $c^{2}m=a^{2}k$.
+
+\N{Lagrangian Density}
+It is useful to focus on the integrand of the Lagrangian, rather than
+the entire Lagrangian itself. The integrand is then called the
+\define{Lagrangian Density}, and written as $\mathcal{L}$. For us,
+\begin{equation}
+\mathcal{L} = -\frac{1}{2}\partial_{\mu}\varphi\partial^{\mu}\varphi.
+\end{equation}
+This is with Einstein summation convention. Note the negative sign, this
+is because
+\begin{equation}
+\partial_{\mu}\varphi\partial^{\mu}\varphi = -c^{-2}(\partial_{t}\varphi)^{2}
++(\nabla\varphi)\cdot(\nabla\varphi).
+\end{equation}
+This differs from the Lagrangian we derived before by precisely an
+overall sign.
+
+\N{Mass Term}
+We can add a mass term to the Lagrangian
+\begin{equation}
+\mathcal{L}=-\frac{1}{2}\partial_{\mu}\varphi\partial^{\mu}\varphi-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2}.
+\end{equation}
+We may sometimes use the notation
+\begin{equation}
+\mu = \frac{mc}{\hbar},
+\end{equation}
+which simplifies the mass term to $-\frac{1}{2}\mu^{2}\varphi^{2}$.
+
+\begin{exercise}
+If we return to the linear chain's Lagrangian, what term must be added
+to the potential energy $V_{\text{mass}}$ which will produce the mass term when
+we take the continuum limit? That is, such that $V_{\text{mass}}\xrightarrow{a\to0}-\frac{1}{2}\mu^{2}\varphi^{2}$? How should we interpret this term
+in the linear chain with [finite or countably many] point-masses?
+\end{exercise}
+
+\begin{exercise}
+What is the dimension of $\mu$? 
+If we worked in $n$ spatial dimensions, does the units of $\mu$ change?
+\end{exercise}
+
+\begin{exercise}
+Suppose we had $n=2$ spatial dimensions and the point-masses were
+constant along the $x$-direction but varied continuously along the
+$y$-direction. Prove this is not Lorentz-invariant.
+\end{exercise}
+
+\begin{exercise}
+Suppose we had $n=2$ spatial dimensions and the spring constants were
+identical along the $x$-direction but varied continuously along the
+$y$-direction. Prove this is not Lorentz-invariant.
+\end{exercise}
+
+
+\begin{exercise}
+Consider $n=2$ dimensions. Suppose we created a network with identical
+point-masses and identical [massless] springs using equilateral
+triangles instead of squares. Does this affect the continuum limit?
+What about other tilings of the plane?
+
+Is this still true in $n=3$? [Hint: the regular tetrahedron will not
+fill $\RR^{3}$, you need a different polyhedron.]
+
+If this is not true, how do we interpret this result?
+\end{exercise}
+
+\N{Cautionary Remark}\index{Field (Physics)!Section of Bundle}
+It is tempting to think of the scalar field $\varphi(\vec{x},t)$ as
+``just'' a smooth function $\varphi\colon\RR^{3,1}\to\RR$, and in flat
+spacetime we can make this identification. But it is misleading, because
+it is a partial truth. In reality we have a [real] line bundle over
+spacetime $\mathcal{M}=\RR^{3,1}$, and scalar fields are sections of
+this line bundle.
+
+From this perspective, we can change the manifold describing spacetime
+to an arbitrary Lorentzian manifold $\mathcal{M}$, then a field is just
+a section of a suitable bundle over spacetime $\mathcal{M}$.
+This is the correct way to view things, but horribly abstract to
+physicists (their eyes just glaze over when making these distinctions).
+
+For technical reasons, we want a locally trivializable fibre bundle over
+spacetime, which we will discuss later on.
