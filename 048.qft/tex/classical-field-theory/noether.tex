@@ -1,0 +1,284 @@
+\section{Noether's Theorem}
+
+\subsection{For Mechanics}
+
+\M
+Consider a mechanical system consisting of $N$ particles with positions
+$q^{i}(t)$ for $i=1,\dots,N$. We describe it by its action
+\begin{equation}
+\action[q^{i}(t)] = \int^{t_{2}}_{t_{1}}L(q^{i},\dot{q}^{i})\,\D t.
+\end{equation}
+Now we suppose the dynamics is invariant under
+\begin{equation}
+q^{i}(t)\to q^{i}(t)+\delta q^{i}(t)
+\end{equation}
+where
+\begin{equation}\label{eq:classical-field-theory:noether:epsilon-variation}
+\delta q^{i}(t) = \epsilon^{a}(t)F^{i}_{a}(q,\dot{q}) + \dot{\epsilon}^{a}
+G^{i}_{a}(q,\dot{q}),
+\end{equation}
+the $\epsilon^{a}$ are arbitrary functions of time (except possibly at
+the endpoints) and $a=1,\dots,n$.
+
+\M The action varies like:
+\begin{equation}
+\delta\action = \int^{t_{2}}_{t_{1}}L_{i}\,\delta q^{i}\,\D t
+  + \left.\frac{\partial L}{\partial\dot{q}^{i}}\delta q^{i}\right|^{t_{2}}_{t_{1}},
+\end{equation}
+where the ``Euler'' derivatives are
+\begin{equation}
+L_{i} := \frac{\partial L}{\partial q^{i}}
+- \frac{\D}{\D t}\frac{\partial L}{\partial\dot{q}^{i}}.
+\end{equation}
+The equations of motion are satisfied if and only if $L_{i}=0$ (these
+are the Euler--Lagrange equations).
+
+\N{Noether's Second Theorem}
+Now, the variation of the action using
+Eq~\eqref{eq:classical-field-theory:noether:epsilon-variation}
+gives us
+\begin{calculation}
+\delta\action
+\step{definition of variation of action}
+\int^{t_{2}}_{t_{1}}L_{i}\,\delta q^{i}\,\D t
+  + \left.\frac{\partial L}{\partial\dot{q}^{i}}\delta q^{i}\right|^{t_{2}}_{t_{1}}
+\step{unfolding $\delta q^{i}$}
+\int^{t_{2}}_{t_{1}}L_{i}\bigl(\epsilon^{a}(t)F^{i}_{a}(q,\dot{q}) + \dot{\epsilon}^{a} G^{i}_{a}(q,\dot{q})\bigr)\,\D t
+  + \left.\frac{\partial L}{\partial\dot{q}^{i}}\bigl(\epsilon^{a}(t)F^{i}_{a}(q,\dot{q}) + \dot{\epsilon}^{a} G^{i}_{a}(q,\dot{q})\bigr)\right|^{t_{2}}_{t_{1}}
+\step{integrate by parts to eliminate $\dot\epsilon^{a}$}
+\int^{t_{2}}_{t_{1}}\epsilon^{a}(t)\left(L_{i}F^{i}_{a}(q,\dot{q})
+- \frac{\D}{\D t}\bigl(L_{i} G^{i}_{a}(q,\dot{q})\bigr)\right)\D t
++ \left[\epsilon^{a}(t)L_{i}G^{i}_{a}
++ \frac{\partial L}{\partial\dot{q}^{i}}\bigl(\epsilon^{a}(t)F^{i}_{a}(q,\dot{q}) + \dot{\epsilon}^{a} G^{i}_{a}(q,\dot{q})\bigr)\right]^{t_{2}}_{t_{1}}
+\step{associativity applied to boundary terms}
+\int^{t_{2}}_{t_{1}}\epsilon^{a}(t)\left(L_{i}F^{i}_{a}(q,\dot{q})
+- \frac{\D}{\D t}\bigl(L_{i} G^{i}_{a}(q,\dot{q})\bigr)\right)\D t
++ \left[\epsilon^{a}(t)\left(L_{i}G^{i}_{a}
++\frac{\partial L}{\partial\dot{q}^{i}}F^{i}_{a}\right)
++ \dot{\epsilon}^{a}\frac{\partial L}{\partial\dot{q}^{i}}G^{i}_{a}(q,\dot{q})\right]^{t_{2}}_{t_{1}}
+\end{calculation}
+As usual, we ignore boundary terms, then invariance of the action (up to
+boundary terms) demands that:
+\begin{equation}
+\boxed{L_{i}F^{i}_{a}(q,\dot{q}) - \frac{\D}{\D t}\bigl(L_{i} G^{i}_{a}(q,\dot{q})\bigr) = 0.}
+\end{equation}
+These $n$ are identities are known as \define{Noether's Second Theorem}\index{Noether!Second theorem}
+(or the \emph{generalized Bianchi identities}\index{Bianchi identity!Generalized}).
+
+\N{Example, Noether's First Theorem}\index{Noether!First theorem}
+Consider the special case when
+\begin{equation}
+\epsilon^{a}(t) = \epsilon^{a} = \mbox{constant}.
+\end{equation}
+Then
+\begin{equation}
+\delta q^{i} = \epsilon^{a}F^{i}_{a}.
+\end{equation}
+We then have the variation of the action, under this variation,
+\begin{equation}
+\delta\action = \int^{t_{2}}_{t_{1}}\epsilon^{a}F^{i}_{a}L_{i}\,\D t + \left.\vphantom{\frac{1}{1}}\epsilon^{a}F^{i}_{a}p_{i}\right|^{t_{2}}_{t_{1}},
+\end{equation}
+where we introduce the canonical momentum $p_{i}$. Define
+\begin{equation}
+C_{a} := F^{i}_{a}p_{i},
+\end{equation}
+then invariance of the action \emph{including the boundary terms}
+leads to the condition
+\begin{equation}
+\left.\vphantom{\frac{1}{1}}F^{i}_{a}p_{i}-C_{a}\right|_{t_{2}}
+=
+\left.\vphantom{\frac{1}{1}}F^{i}_{a}p_{i}-C_{a}\right|_{t_{1}}.
+\end{equation}
+An invariance under a group with a finite number of parameters thus
+leads to \emph{conservation laws}. This is Noether's first theorem.
+
+\begin{remark}
+Noether ends the first section of her paper by stating (as translated by
+Traver), ``With these supplementary remarks, Theorem I comprises all
+theorems on first integrals known to mechanics etc., while Theorem II
+may be described as the utmost possible generalization of the `general
+theory of relativity' in group theory.''
+\end{remark}
+
+\begin{remark}
+More generally, when the general invariance under a group is
+parametrized by functions of time, this will lead to \emph{constraints}
+instead of conservation laws. This is what leads to the study of
+constrained Hamiltonian systems and underpins the canonical formalism of
+gauge theory.
+\end{remark}
+
+\subsection{For Fields}
+
+\M
+The results still hold, we just assume invariance under
+\begin{subequations}
+\begin{equation}
+\varphi^{A}(x)\to\varphi^{A}+\delta\varphi^{A}(x)
+\end{equation}
+with
+\begin{equation}
+\delta\varphi^{A}(x) = \epsilon^{A}(x)F^{A}_{a} + (\partial_{\mu}\epsilon^{a}(x))G^{A\mu}_{a},
+\end{equation}
+\end{subequations}
+and we now have arbitrary functions $\epsilon^{A}(x)$ of spacetime (not
+just time).
+
+\M
+The more common presentation of Noether's first theorem begins by
+supposing we have some infinitesimal symmetry transformation of the field
+\begin{equation}
+\varphi(x)\to\varphi'(x)=\varphi(x) + \alpha\,\Delta\varphi(x),
+\end{equation}
+where $\alpha$ is an infinitesimal quantity and $\Delta\varphi(x)$ is
+the change in the field. We will hope the Lagrangian density transforms
+like
+\begin{equation}
+\mathcal{L}(x)\to\mathcal{L}(x) + \alpha\partial_{\mu}\mathcal{J}^{\mu}(x)
+\end{equation}
+where $\mathcal{J}^{\mu}$ is ``something''. This is the same as adding
+some boundary contribution to the action, which will not affect the
+equations of motion.
+
+Now, if we plug in the infinitesimally transformed field into the
+Lagrangian
+\begin{equation}
+\mathcal{L}(\varphi + \alpha\,\Delta\varphi) = \mathcal{L} + \alpha\,\Delta\mathcal{L},
+\end{equation}
+where $\alpha\,\Delta\mathcal{L}$ may be found by Taylor expanding to
+first-order:
+\begin{calculation}
+\alpha\,\Delta\mathcal{L}
+\step{Taylor expansion to first order}
+\frac{\partial\mathcal{L}}{\partial\varphi}(\alpha\,\Delta\varphi)
++\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\partial_{\mu}(\alpha\,\Delta\varphi)
+\step{since $A\partial_{\mu}B=\partial_{\mu}(AB)-B\partial_{\mu}A$}
+\frac{\partial\mathcal{L}}{\partial\varphi}(\alpha\,\Delta\varphi)
++\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\alpha\,\Delta\varphi\right)
+-\left(\partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\right)(\alpha\,\Delta\varphi)
+\step{collecting terms, factoring out $\alpha$}
+\alpha\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\Delta\varphi\right)
++\alpha\left[\frac{\partial\mathcal{L}}{\partial\varphi}
+-\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\right)\right]\Delta\varphi
+\step{when the Euler--Lagrange equations hold}
+\alpha\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\Delta\varphi\right)
++\alpha\cdot0\cdot\Delta\varphi
+\step{multiplying the second term by zero makes it vanish}
+\alpha\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\Delta\varphi\right).
+\end{calculation}
+This is precisely the sort of thing we're looking for: we want
+$\alpha\,\Delta\mathcal{L}=\alpha\partial_{\mu}\mathcal{J}^{\mu}$. We
+then define the \define{Noether Current}\index{Noether!Current},
+\begin{equation}
+j^{\mu}(x) := \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\Delta\varphi-\mathcal{J}^{\mu}(x),
+\end{equation}
+and our demands for symmetry invariance amounts to the conservation of
+the Noether current:
+\begin{equation}
+\partial_{\mu}j^{\mu}(x) = 0.
+\end{equation}
+We see that this means
+\begin{equation}
+\partial_{\mu}j^{\mu}(x) = 0\iff\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}\Delta\varphi\right)=\partial_{\mu}\mathcal{J}^{\mu},
+\end{equation}
+and therefore the two terms are interchangeable, allowing us to recover
+our desired symmetry.
+
+\begin{remark}[Multiple fields]
+If the symmetry involves more than one field, then $j^{\mu}(x)$ is
+really the sum of these sort of terms (one term for each field).
+\end{remark}
+
+\N{Noether Charge}
+We can express the conservation law by sating that the quantity
+\begin{equation}
+Q := \int_{\RR^{3}}j^{0}\,\D^{3}x
+\end{equation}
+is a constant in time. This $Q$ is sometimes referred to as the
+``Noether Charge''\index{Noether!Charge} in the literature.
+
+\begin{example}[Canonical Stress--Energy]\label{ex:classical-field-theory:noether:canonical-stress-energy}
+Consider the situation when the symmetry is an infinitesimal translation
+in spacetime,
+\begin{equation}
+x^{\mu}\to x^{\mu} + a^{\mu},
+\end{equation}
+and the field transforms as\footnote{Remember, the scalar field
+transforms under a symmetry $g$ like
+$g\cdot\varphi(x)=\varphi(g^{-1}\cdot x)$.}:
+\begin{equation}
+\varphi(x)\to\varphi(x-a)=\varphi(x)-a^{\mu}\partial_{\mu}\varphi(x).
+\end{equation}
+The Lagrangian must transform like a scalar,
+\begin{equation}
+\mathcal{L}\to\mathcal{L}-a^{\mu}\partial_{\mu}\mathcal{L}
+=\mathcal{L} - \partial_{\mu}(a^{\mu}\mathcal{L}).
+\end{equation}
+Then $\Delta\mathcal{L}(x)=- \partial_{\mu}(a^{\mu}\mathcal{L})$
+allowing us to identify $\mathcal{J}^{\mu}(x)=-a^{\mu}\mathcal{L}(x)$.
+The conserved Noether current is then
+\begin{equation}
+\begin{split}
+j^{\mu}(x) &= \frac{\partial\mathcal{L}(x)}{\partial(\partial_{\mu}\varphi(x))}(-a^{\mu}\partial_{\mu}\varphi(x))
+- (-a^{\mu}\mathcal{L}(x))\\
+&=a_{\nu}\canonicalStressEnergy^{\mu\nu}.
+\end{split}
+\end{equation}
+This $\canonicalStressEnergy^{\mu\nu}$ is the
+\define{Canonical Stress-Energy Tensor}, not to be confused 
+with the stress-energy tensor appearing in the Einstein field equations.
+More generally, if we have a collection of fields $\varphi_{a}$ ($a=1,\dots,n$)
+we have (implicitly summing over $a$),
+\begin{subequations}
+\begin{align}
+\canonicalStressEnergy^{\mu\nu} &:= -\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi_{a})}\partial^{\nu}\varphi_{a}+\eta^{\mu\nu}\mathcal{L},\\
+\intertext{or, written as a rank-2 covariant tensor,}
+\canonicalStressEnergy_{\mu\nu} &:= -\frac{\partial\mathcal{L}}{\partial(\partial^{\mu}\varphi_{a})}\partial_{\nu}\varphi_{a}+\eta_{\mu\nu}\mathcal{L}.
+\end{align}
+\end{subequations}
+\end{example}
+
+\begin{exercise}
+Prove $\partial_{\mu}{\canonicalStressEnergy^{\mu}}_{\nu}=0$ for each $\nu$.
+\end{exercise}
+
+\begin{exercise}
+Prove or find a counter-example: $\canonicalStressEnergy_{\mu\nu}=\eta_{\mu\rho}{\canonicalStressEnergy^{\rho}}_{\nu}$
+is not symmetric. When will it be symmetric?
+\end{exercise}
+
+\begin{exercise}
+What are the 4 Noether charges for the canonical stress-energy tensor?
+How do we interpret them physically?
+\end{exercise}
+
+\begin{exercise}
+For the Scalar Field's Lagrangian from Eq~\eqref{eq:classical-field-theory:scalar-field:lagrangian},
+compute the canonical stress-energy tensor. What happens for arbitrary
+potential terms $V(\varphi)$?
+\end{exercise}
+
+\begin{exercise}
+The stress-energy tensor appearing in Einstein's field equation is
+obtained by (\S21.3 in Misner, Thorne, Wheeler~\cite{Misner:1973prb}):
+\begin{equation}
+\mbox{(RHS)}_{\mu\nu} = -2\frac{\partial\mathcal{L}_{\text{matter}}}{\partial g^{\mu\nu}}
++ g_{\mu\nu}\mathcal{L}_{\text{matter}}.
+\end{equation}
+In flat spacetime (i.e., when $g_{\mu\nu}=\eta_{\mu\nu}$), when does
+this differ from the canonical stress-energy tensor? When do they coincide?
+\end{exercise}
+
+\N{References}
+Noether's original paper~\cite{Noether1918:iv} may be worth reading,
+though the terminology of group theory may be archaic compared to
+today's vocabulary.
+The discussion of Noether's theorems is largely inspired from Chapter 3
+section 5 of Kiefer~\cite{Kiefer:2007ria},
+though we also rely on Peskin and Schroeder~\cite{Peskin:1995ev} for the
+discussion of Noether's first theorem and the canonical stress-energy
+tensor. See also Chapter 22 of Srednicki~\cite{Srednicki:2007qs}, but
+care must be taken: there is a sign error in his derivation of the
+canonical stress-energy tensor (which is corrected in our derivation).
+Sundermeyer~\cite{Sundermeyer:1982gv} is quite explicit in the
+adjustments necessary for Noether's theorem to work with fields.

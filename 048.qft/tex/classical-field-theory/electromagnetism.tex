@@ -1,0 +1,105 @@
+\section{Electromagnetism}
+
+\M
+We have reviewed in section~\ref{section:relativity:electromagnetism}
+the covariant formalism of electromagnetism. From the perspective of
+classical field theory, we now know the ``correct'' way to think of
+things is that the field quantity of interest is the 4-potential
+$A^{\mu}$ (\S\ref{chunk:relativity:electromagnetism:four-potential}).
+
+\N{Lagrangian Density}
+We recover Maxwell's equations using the Lagrangian
+\begin{equation}
+\mathcal{L} = \frac{-1}{4}F^{\alpha\beta}F_{\alpha\beta} = \frac{-1}{4}\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}F_{\alpha\beta}.
+\end{equation}
+If we work in curved spacetime, we need to multiply by the determinant
+of the metric tensor $\sqrt{-\det(g_{\mu\nu})}$, but we will ignore this
+factor.
+
+\N{Equations of Motion}
+We can now determine the equations of motion for the Lagrangian density.
+The Euler--Lagrange equations take the form
+\begin{equation}
+\partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}A_{\nu})}-\frac{\partial\mathcal{L}}{\partial A_{\nu}}=0.
+\end{equation}
+These will turn out to be:
+\begin{equation}
+\boxed{\partial_{\mu}F^{\mu\nu} = 0.}
+\end{equation}
+This is the source-free Maxwell's equations.
+
+\begin{proof}[Proof (slick)]
+We can compute the variation of the action directly, ignoring boundary terms,
+as
+\begin{calculation}
+\variation\mathcal{L}
+\step{unfolding the definition of the Lagrangian density}
+\variation\left(\frac{-1}{4}\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}F_{\alpha\beta}\right)
+\step{product rule and index gymnastics}
+\frac{-1}{4}\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}(2\,\variation F_{\alpha\beta})
+\step{unfolding the definition of field-strength tensor}
+\frac{-1}{2}\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}(\variation\partial_{\beta}A_{\alpha}-\variation\partial_{\beta}A_{\alpha})
+\step{index gymnastics, antisymmetry of field-strength tensor}
+-\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}\variation(\partial_{\alpha}A_{\beta})
+\step{integration by parts}
+\eta^{\alpha\mu}\eta^{\beta\nu}(\partial_{\alpha}F_{\mu\nu})\variation A_{\beta}
++\mbox{(boundary terms)}.
+\end{calculation}
+This vanishes when
+\begin{equation}
+\partial_{\mu}F^{\mu\nu} = 0,
+\end{equation}
+and this is the result from the Euler--Lagrange equations of motion.
+\end{proof}
+
+\M
+We can unfold the result of the Euler--Lagrange equations for
+electromagnetism, and find
+\begin{equation}
+\partial_{\mu}F^{\mu\nu}=0\iff g^{\alpha\gamma}\partial_{\gamma}F_{\alpha\beta}=0.
+\end{equation}
+Then
+\begin{calculation}
+  g^{\alpha\gamma}\partial_{\gamma}F_{\alpha\beta}
+\step{unfold definition of field-strength tensor}
+g^{\alpha\gamma}\partial_{\gamma}(\partial_{\alpha}A_{\beta}-\partial_{\beta}A_{\alpha})
+\step{distributivity, index gymnastics}
+\partial^{\alpha}\partial_{\alpha}A_{\beta}-\partial^{\alpha}\partial_{\beta}A_{\alpha}
+\step{equations of motion}
+0.
+\end{calculation}
+When we impose the gauge condition $\partial^{\alpha}A_{\alpha}=0$,
+we recover the familiar Maxwell equations as a wave equation
+$\Box A_{\beta}=0$.
+
+\N{Lagrangian coupled to matter}
+We can write down the Lagrangian density for electromagnetism coupled to
+some charged matter, recovering the Maxwell equations with some source
+as in
+Eq~\eqref{eq:relativity:electromagnetism:maxwell-for-electric-field}:
+\begin{equation}\label{eq:classical-field-theory:electromagnetism:lagrangian}
+\mathcal{L} = \frac{-1}{4}F^{\alpha\beta}F_{\alpha\beta}-4\pi J^{\mu}A_{\mu}.
+\end{equation}
+
+\begin{exercise}
+Recall (\S\ref{ex:classical-field-theory:noether:canonical-stress-energy})
+the notion of the canonical stress--energy tensor. Calculate
+$\canonicalStressEnergy_{\mu\nu}$ for the Lagrangian in Eq~\eqref{eq:classical-field-theory:electromagnetism:lagrangian}.
+
+[Hint: your answer should \emph{not} be symmetric --- that is, 
+$\canonicalStressEnergy_{\mu\nu}\neq\canonicalStressEnergy_{\nu\mu}$.]
+\end{exercise}
+
+\N{Heuristic regarding interactions}
+If we want to describe interactions between two fields, or a field and
+some matter, then we need to add a term to our Lagrangian of the form:
+\begin{equation}
+\mathcal{L}_{\text{interaction}}\sim\begin{pmatrix}\mbox{coupling}\\
+\mbox{constant}
+\end{pmatrix}\begin{pmatrix}\mbox{field}\\
+\mbox{quantity}
+\end{pmatrix}\begin{pmatrix}\mbox{matter}\\
+\mbox{terms}
+\end{pmatrix}.
+\end{equation}
+This is added to the potential term in the Lagrangian.

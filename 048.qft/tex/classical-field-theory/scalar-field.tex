@@ -1,0 +1,423 @@
+\section{Scalar Field}
+
+\M
+We have the Klein--Gordon field\index{Klein--Gordon!Field}
+be described by the Lagrangian in
+Eq~\eqref{eq:classical-field-theory:linear-chain:continuum-limit:mass-term:lagrangian}.
+More generally, since we could add an arbitrary potential term
+$V(\varphi)$, the Lagrangian looks like:
+\begin{equation}\label{eq:classical-field-theory:scalar-field:lagrangian}
+\begin{split}
+  \mathcal{L} &= -\frac{1}{2}\partial^{\mu}\varphi\partial_{\mu}\varphi
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2} - V(\varphi)\\
+&=\frac{1}{2}c^{-2}(\partial_{t}\varphi)^{2}-\frac{1}{2}(\nabla\varphi)^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2} - V(\varphi).
+\end{split}
+\end{equation}
+Our physical intuition should be that of a linear chain of
+point-particles connected by massless identical springs, as we have
+analyzed in the previous section.
+
+\begin{exercise}
+Can we interpret the $\frac{1}{2}(\nabla\varphi)^{2}$ term in the
+Lagrangian as a contribution to the potential? If so, what is its
+physical interpretation?
+\end{exercise}
+
+\begin{definition}\index{Klein--Gordon!Field}\index{Field!Scalar!Free}\index{Scalar Field!Free}
+When $V=0$ in the Lagrangian, we call the type of field a
+\define{Klein--Gordon Field} (or \emph{Free Scalar Field}).
+\end{definition}
+
+\begin{remark}
+We could have $V(\varphi) = a + b\varphi + c\varphi^{2}$ and reabsorb
+$a$, $b$, $c$ into the mass and elsewhere in the Lagrangian, producing
+an equivalent free scalar field. And physicists will be a little sloppy
+in their language, referring to such Lagrangians with
+nonzero-but-quadratic potentials as ``free''.
+\end{remark}
+
+\begin{definition}
+When $V(\varphi)\neq0$ (and specifically $V(\varphi)$ is not a constant,
+or a linear or quadratic polynomial), we say we have a
+\define{Self-Interacting Scalar Field}.
+\end{definition}
+
+\begin{definition}
+When we have a linear $\varphi$ term in the Lagrangian's potential term
+(something like $\sigma\varphi$), we refer to it as an
+\define{External Source}.
+\end{definition}
+
+\begin{remark}
+This terminology may seem bizarre at first, but it generalizes the
+4-current which we used to recover Maxwell's equations (\S\ref{chunk:relativity:electromagnetism:recovering-maxwell-equations}).
+The 4-current captured our intuition of coupling electromagnetism to
+matter (``charged particles''), and the external source couples the
+field to ``generic matter''.
+
+We will also find, however, that it's useful to stick in an external
+source into the Lagrangian for mathematical purposes. It's a
+mathematical trick where we will differentiate with respect to external
+sources to compute moments of integrals, then set the external source to
+zero. 
+\end{remark}
+
+\N{Goals}
+We will study the \emph{free} scalar field in this section. 
+
+\N{Variational Analysis}
+We consider a region $\mathcal{R}\subset\RR^{3,1}$, usually taken to be
+$\RR^{3}\times[t_{1},t_{2}]$ for some $t_{1}<t_{2}$. Now we will
+consider the action
+\begin{equation}
+\action[\varphi] = \int_{\mathcal{R}}\left(\frac{1}{2}c^{-2}(\partial_{t}\varphi)^{2}-\frac{1}{2}(\nabla\varphi)^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2}\right)\D^{3}\vec{x}\,\D t.
+\end{equation}
+As usual, we will try to find the critical points of the action, and
+argue these are the physical solutions to the equations of motion.
+
+Now, we take a variation of this action with respect to $\varphi$. This
+is done by writing
+\begin{equation}
+\varphi_{\lambda} = \varphi + \lambda\psi,
+\end{equation}
+where $\lambda$ is a real parameter, $\psi|_{\partial\mathcal{R}}=0$ is
+an (otherwise) arbitrary function. Physicists write
+\begin{equation}
+\delta\varphi = \lambda\psi,
+\end{equation}
+and pretend $\lambda$ is an infinitesimal quantity $\lambda^{2}\ll1$.
+Then expanding the integrand in the action to first-order in $\lambda\psi$,
+we demand the coefficient to $\lambda\psi$ vanish. We find,
+\begin{calculation}
+\action[\varphi_{\lambda}]
+\step{plugging in the definition of the action}
+\int_{\mathcal{R}}\left(\frac{1}{2}c^{-2}(\partial_{t}\varphi_{\lambda})^{2}-\frac{1}{2}(\nabla\varphi_{\lambda})^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi_{\lambda}^{2}\right)\D^{3}\vec{x}\,\D t
+\step{unfold the definition of $\varphi_{\lambda}$}
+\int_{\mathcal{R}}\left(\frac{1}{2}c^{-2}(\partial_{t}[\varphi + \lambda\psi])^{2}-\frac{1}{2}(\nabla[\varphi + \lambda\psi])^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}[\varphi + \lambda\psi]^{2}\right)\D^{3}\vec{x}\,\D t
+%% \step{expand}
+%% \int_{\mathcal{R}}\left(\frac{1}{2}c^{-2}
+%% (\partial_{t}\varphi)^{2}+c^{-2}\partial_{t}\varphi\partial_{t}\psi+\frac{1}{2}c^{-2}(\partial_{t}\psi)^{2}
+%% -\frac{1}{2}(\nabla\varphi)^{2}
+%% -(\nabla\varphi)\cdot(\nabla(\lambda\psi))
+%% -\frac{1}{2}(\nabla(\lambda\psi))\cdot(\nabla(\lambda\psi))
+%% -\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}[\varphi^{2} + 2\lambda\psi\varphi + \lambda^{2}\psi^{2}]\right)\D^{3}\vec{x}\,\D t
+\step{expanding and collecting coefficients of $\lambda$}
+\action[\varphi] + \int_{\mathcal{R}}\left(
+c^{-2}\partial_{t}\varphi\partial_{t}(\lambda\psi)
+-(\nabla\varphi)\cdot(\nabla(\lambda\psi))
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi\cdot(\lambda\psi)\right)\D^{3}\vec{x}\,\D t
++\action[\lambda\psi].
+\end{calculation}
+We write the first variation of the action as:
+\begin{equation}
+\delta\action[\varphi_{\lambda}] = \int_{\mathcal{R}}\left(
+c^{-2}\partial_{t}\varphi\partial_{t}(\lambda\psi)
+-(\nabla\varphi)\cdot(\nabla(\lambda\psi))
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi\cdot\lambda\psi\right)\D^{3}\vec{x}\,\D t.
+\end{equation}
+
+\N{Initial conditions}
+We need to specify the initial and final configuration for the scalar
+field, so for $\mathcal{R}=\mathcal{R}_{3}\times[t_{1},t_{2}]\subset\RR^{3,1}$,
+we need functions
+\begin{equation}
+\varphi_{1},\varphi_{2}\colon\mathcal{R}_{3}\to\RR,
+\end{equation}
+such that
+\begin{equation}
+\varphi|_{\mathcal{R}_{3}\times\{t_{1}\}}=\varphi_{1},\quad\mbox{and}\quad
+\varphi|_{\mathcal{R}_{3}\times\{t_{2}\}}=\varphi_{2}.
+\end{equation}
+
+\M
+We can integrate $\delta\action[\varphi_{\lambda}]$ by parts (with
+respect to time) to get
+\begin{equation}
+\delta\action[\varphi_{\lambda}] = \int_{\mathcal{R}}\left(
+-c^{-2}(\lambda\psi)\partial_{t}^{2}\varphi
+-(\nabla\varphi)\cdot(\nabla(\lambda\psi))
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi\cdot\lambda\psi\right)\D^{3}\vec{x}\,\D t.
+\end{equation}
+The boundary terms from this integration-by-parts vanishes since
+$\lambda\psi|^{t_{2}}_{t_{1}}=0$.
+
+\M
+When we have $\mathcal{R}=\RR^{3}\times[t_{1},t_{2}]$, we treat
+$\RR^{3}$ as a sphere with radius $r\to\infty$. Doing so allows us to
+use the divergence theorem to further rewrite the first variation of the
+action as, when $\vec{n}$ is the outward-pointing unit normal vector,
+\begin{equation}
+\begin{split}
+\delta\action[\varphi_{\lambda}] &= \int_{\mathcal{R}}\left(
+-c^{-2}(\lambda\psi)\partial_{t}^{2}\varphi
++(\lambda\psi)\nabla^{2}\varphi
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi\cdot\lambda\psi\right)\D^{3}\vec{x}\,\D t\\
+&\qquad-\int^{t_{2}}_{t_{1}}\int_{r\to\infty}(\lambda\psi)\vec{n}\cdot(\nabla\varphi)%
+\,\D A\,\D t,
+\end{split}
+\end{equation}
+where $\D A$ is the differential area for the sphere. (In $n+1$
+dimensions, $\D A\sim r^{n-2}\,\D r$.)
+We have implicitly used the fact that
+\begin{equation}
+(\nabla\varphi)\cdot\nabla(\lambda\psi)=\nabla\cdot((\nabla\varphi)\lambda\psi)
+-(\lambda\psi)\nabla^{2}\varphi,
+\end{equation}
+before using the divergence theorem.
+
+\N{Assumption on growth of field}
+We need to assume that, at a fixed time $t$, the scalar field $\varphi$
+(and therefore both $\varphi_{\lambda}$ and $\lambda\psi$) fall off as
+$r\to\infty$ sufficiently fast so as to make the boundary term in the
+first variation of the action $\delta\action$ vanishes. One possibility
+is to work with fields with compact support.
+
+The usual assumption physicists make is that, since the area eleement
+$\D A$ grows like $r^{2}$, the integrand must fall faster than $1/r^{2}$
+as $r\to\infty$ for the boundary term to vanish.
+
+More generally, in $n+1$ dimensional spacetime, $\D A$ grows like $r^{n-1}$,
+requiring the integrand to fall faster than $1/r^{n-1}$ as $r\to\infty$
+for the boundary terms to vanish.
+
+\M
+Now we see that the first variation of the action is just
+\begin{subequations}
+\begin{equation}
+\delta\action[\varphi] = \int_{\mathcal{R}}\left(
+-c^{-2}(\lambda\psi)\partial_{t}^{2}\varphi
++(\lambda\psi)\nabla^{2}\varphi
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi\cdot\lambda\psi\right)\D^{3}\vec{x}\,\D t,
+\end{equation}
+or factoring out the $\delta\varphi=\lambda\psi$,
+\begin{equation}
+\delta\action[\varphi] = \int_{\mathcal{R}}\left(
+-c^{-2}\partial_{t}^{2}\varphi
++\nabla^{2}\varphi
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi\right)\delta\varphi\,\D^{3}\vec{x}\,\D t.
+\end{equation}
+\end{subequations}
+Now we need to find the critical points of the action, which is to say,
+we demand $\delta\action[\varphi]=0$. This gives us a rather tricky
+differential-integral equation, but fortunately the fundamental lemma of
+variational calculus\marginnote{TODO: cite fundamental lemma of variational calculus} says the condition is exactly demanding the
+integrand's coefficient of $\delta\varphi$ vanishes, i.e.,
+\begin{equation}
+\boxed{-c^{-2}\partial_{t}^{2}\varphi
++\nabla^{2}\varphi
+-\frac{m^{2}c^{2}}{\hbar^{2}}\varphi=0.}
+\end{equation}
+Solving this differential equation gives us the critical point for the
+action.
+
+Usually we expedite this whole process of variational analysis, and just
+use the Euler--Lagrange equations.
+
+\begin{exercise}
+Re-perform this analysis with an arbitrary potential contribution
+$V(\varphi)$ and observe how the equations of motion change (i.e., what
+extra term will be added to the equations of motion, something involving
+$V'(\varphi)$ we expect).
+\end{exercise}
+
+\N{Equations of Motion}
+We can now derive the equations of motion using the Euler--Lagrange
+equations, which are:
+\begin{equation}
+c^{-2}\partial_{t}^{2}\varphi - \nabla^{2}\varphi + \frac{m^{2}c^{2}}{\hbar^{2}}\varphi+V'(\varphi)=0.
+\end{equation}
+Also note that $V(\varphi)$ is usually some polynomial in $\varphi$, and
+we can discard the terms lower than quadratic order (and absorb the
+quadratic term into the mass term).
+
+\begin{proof}
+  We have
+  \begin{subequations}
+  \begin{equation}
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}
+=-\partial^{\mu}\varphi,
+  \end{equation}
+  so the ``acceleration'' part of the equations of motion:
+  \begin{equation}
+\partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\varphi)}
+=-\partial_{\mu}\partial^{\mu}\varphi.
+  \end{equation}
+  Then the ``force'' part of the equations of motion
+\begin{equation}
+\frac{\partial\mathcal{L}}{\partial\varphi} = -\frac{m^{2}c^{2}}{\hbar^{2}}\varphi
+- V'(\varphi).
+\end{equation}
+Taken altogether, the equations of motion read:
+\begin{equation}
+-\partial_{\mu}\partial^{\mu}\varphi = -\frac{m^{2}c^{2}}{\hbar^{2}}\varphi
+- V'(\varphi).
+\end{equation}
+  \end{subequations}
+  Some gentle messaging yields the result.
+\end{proof}
+
+\N{Solutions}
+We can solve the equations of motion for the \emph{free} scalar field by
+taking its Fourier transform. We have
+\begin{equation}
+\varphi(t,\vec{x}) = \iint\E^{-\I(\omega t-\vec{k}\cdot\vec{x})}\widetilde{\varphi}(\omega,\vec{k})\frac{\D^{3}\vec{k}}{(2\pi\hbar)^{3}}\frac{\D\omega}{2\pi\hbar}
+\end{equation}
+where $\widetilde{\varphi}$ is the Fourier transform, $\omega=E/\hbar$,
+and $\vec{k}=\vec{p}/\hbar$.
+
+\begin{exercise}
+Explicitly work this out. I mean, it's \emph{obvious}, but you should
+check that it's \emph{true}.
+\end{exercise}
+
+\begin{exercise}
+Let us consider the Fourier transform in the spatial variables only for
+the scalar field,
+\begin{equation}
+\widetilde{\varphi}(\vec{k},t) = \int\E^{\I(\vec{k}\cdot\vec{x})}\varphi(\vec{x},t)\D^{3}\vec{x}.
+\end{equation}
+Prove or find a counter-example: the complex conjugate of the
+\emph{spatially} Fourier
+transformed scalar field $\widetilde{\varphi}(\vec{k},t)^{*}$
+satisfies $\widetilde{\varphi}(\vec{k},t)^{*}=\widetilde{\varphi}(-\vec{k},t)$.
+
+Also: do we need to include a factor of $(2\pi)^{-3/2}$ in the spatial Fourier
+transform, or will things work out fine as we presented it? 
+\end{exercise}
+
+\subsection{Aside: Variational Calculus}
+
+\M
+We will typically use some heuristics in physics when doing variational
+calculus, rather than working with the level of rigour anyone would hope
+for. Given some functional of the form
+\begin{equation}
+F[\varphi] = \int_{\mathcal{R}}f(\varphi(x), \partial_{\mu}\varphi(x))\,\D^{4}x,
+\end{equation}
+we consider its first variation with respect to $\varphi$ by pretending:
+\begin{enumerate}
+\item $\delta$ is a linear operator obeying the Leibniz product rule (i.e., it
+is a derivation), and
+\item variations commute with differentiation (e.g., $\delta(\partial_{\mu}\varphi)=\partial_{\mu}(\delta\varphi)$).
+\end{enumerate}
+So to be clear, in the integrand, the $\delta$ operator acts like:
+\begin{equation}
+\delta f(\varphi(x)) 
+= \frac{\partial f(\varphi)}{\partial\varphi}\delta\varphi.
+\end{equation}
+When there are also derivatives of $\varphi$, we have
+\begin{subequations}
+\begin{align}
+\delta f(\varphi(x),\partial_{\mu}\varphi) 
+&= \frac{\partial f(\varphi,\partial_{\mu}\varphi)}{\partial\varphi}\delta\varphi
++ \frac{\partial f(\varphi,\partial_{\mu}\varphi)}{\partial(\partial_{\mu}\varphi)}\delta(\partial_{\mu}\varphi)\\
+\intertext{or, commuting variation with partial derivatives in the second term,}
+\delta f(\varphi(x),\partial_{\mu}\varphi) &= \frac{\partial f(\varphi,\partial_{\mu}\varphi)}{\partial\varphi}\delta\varphi
++ \frac{\partial f(\varphi,\partial_{\mu}\varphi)}{\partial(\partial_{\mu}\varphi)}\partial_{\mu}(\delta\varphi)
+\end{align}
+\end{subequations}
+When computing these partial derivatives, we pretend
+\begin{equation}
+\frac{\partial(\partial_{\mu}\varphi)}{\partial\varphi}
+=0,\quad\mbox{and}\quad
+\frac{\partial\varphi}{\partial(\partial_{\mu}\varphi)}=0.
+\end{equation}
+
+Then we have
+\begin{equation}
+\delta F[\varphi] = \int\left(\frac{\partial f}{\partial\varphi}\delta\varphi
++\frac{\partial f}{\partial(\partial_{\mu}\varphi)}\delta(\partial_{\mu}\varphi)\right)\,\D^{4}x.
+\end{equation}
+We try to integrate by parts to rewrite the integrand as
+\begin{equation}
+\delta F[\varphi] = \begin{pmatrix}\mbox{boundary}\\\mbox{terms}
+\end{pmatrix}
++ \int\mbox{(something)}\delta\varphi\,\D^{4}x,
+\end{equation}
+then using the fundamental lemma of
+variational calculus to set $\mbox{(something)}=0$. For most problems in
+physics, we discard the boundary terms.\footnote{General Relativity is a
+notable example where boundary terms are important.} This will give us a
+differential equation whose solution is a critical point of the
+functional.
+
+\M
+For multiple fields $\varphi_{a}$ with $a=1,\dots,N$, we need to take
+the variation with respect to each of these fields. The first variation
+would require summing over $a$, giving us $N$ coefficients of
+$\delta\varphi_{a}$ (one for each $a$). We need each coefficient to
+separately vanish, giving us a system of $N$ equations.
+
+\M
+These heuristics aren't ``wrong'', they just sweep details under the
+rug. Specifically we would have
+$\varphi_{a}^{(\lambda)}=\varphi_{a}+\lambda_{a}\psi_{a}$ where
+$\psi_{a}$ are arbitrary functions which vanish at the initial and final
+time slices. Then for any functional $F[\varphi_{a}]$ we find its first
+variation as
+\begin{equation}
+\left.\frac{\D}{\D\lambda}F[\varphi^{(\lambda)}_{a}]\right|_{\lambda=0}=\delta
+F[\varphi_{a},\psi_{a}]=\int\sum_{a}\frac{\delta F}{\delta\varphi_{a}}\psi_{a}\,\D^{4}x,
+\end{equation}
+where we just abuse notation left and right, using
+$\delta F/\delta\varphi_{a}$ for the integrand, and sometimes writing
+$\delta\varphi_{a}$ instead of $\psi_{a}$, and so on.
+
+\begin{ddanger}
+The notation used here is horribly sloppy in the physics literature, and
+we have chosen to be consistent with that literature as much as possible.
+The notation for a functional derivative coincides with a variational
+derivative, which is horribly unfortunate. Some physicists try to relate
+the two, but it's not quite the same thing.
+\end{ddanger}
+
+\N{Conditions for a minimum}
+We recall from calculus in a single variable that not all critical
+points of a function are minima (sometimes they are maxima, or
+inflection points, or something else). This should caution us from being
+too optimistic about critical points of functionals: the critical points
+are \emph{candidates} for the minima, but we must check they are minima.
+
+In calculus, this involves examining the sign of
+$f''(x_{\text{crit}})$. When $f''(x_{\text{crit}})>0$, we have a
+[possibly local] minimum.
+
+For functionals, we need to examine the second variation $\delta^{2}F$
+at the critical point. Specifically, for variation $\varphi_{\text{crit}}+\lambda\psi$,
+we need
+\begin{equation}
+\delta^{2}F[\varphi_{\text{crit}}+\psi]\geq k\|\psi\|^{2}
+\end{equation}
+for all $\psi$ and some constant $k>0$. This is completely analogous to
+the situation in calculus. Here we have (Taylor expanding in $\lambda\psi$, integrating by parts,
+so the integrand is a Taylor polynomial in $\lambda\psi$):
+\begin{equation}
+F[\varphi+\lambda\psi] = F[\varphi] + \int\left(\frac{\delta F}{\delta\varphi}\lambda\psi
++\frac{\delta^{2} F}{\delta\varphi^{2}}\lambda^{2}\psi^{2} + \bigOh(\lambda^{3}\psi^{3})\right)\D^{n}x.
+\end{equation}
+Then we have 
+\begin{equation}
+\delta^{2}F[\varphi+\lambda\psi] = \int\frac{\delta^{2} F}{\delta\varphi^{2}}\lambda^{2}\psi^{2}\,\D^{n}x.
+\end{equation}
+This is the \define{Second Variation} of $F$.
+
+However, this is all rather tedious, and in practice physicists drop the
+``Mission Accomplished'' banner upon finding critical points for
+functionals.
+
+\begin{ddanger}
+Not all functionals have a second variation. We need it to be twice
+differentiable. For the functionals we care about in physics, which is
+just the integral of a Lagrangian, we can compute the second variation.
+\end{ddanger}
+
+\N{References}
+The quartic self-interacting scalar field (i.e., with
+$V(\varphi)=\lambda\varphi^{4}/4!$ where $\lambda$ is the coupling
+constant) has a few known exact solutions, which are presented in
+Frasca~\cite{Frasca:2009bc}. These are quite tricky, since it requires
+knowledge of Jacobi elliptical functions.

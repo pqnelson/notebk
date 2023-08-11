@@ -20,13 +20,20 @@ constant. What happens to the equations of motion and the Lagrangian?
 What dimensions does $a^{2}k/m$ have?
 \end{exercise}
 
-\N{Assumptions}
+\N{Assumptions} There are two critical assumptions we make before we
+proceed with our analysis:
+\begin{enumerate}
+\item 
 We assume that the point-masses all have identical masses, otherwise the
-chain is not homogeneous. We similarly assume the springs connecting
+chain is not homogeneous.
+\item We similarly assume the springs connecting
 them are all identical and massless, otherwise it's not
-homogeneous. When we extend the chain from $n=1$ spatial dimensions to
-$n>1$ dimensions, we lose isotropy (i.e., there are ``preferred directions''
+homogeneous.
+\end{enumerate}
+When we extend the chain from $n=1$ spatial dimensions to
+$n>1$ dimensions, if the springs are not all identical, then we lose isotropy (i.e., there are ``preferred directions''
 and space is not rotationally invariant).
+
 These are important when we take the continuum $a\to0$ limit, so we
 recover a Poincar\'e invariant system (that is, the physical system is
 relativistic). 
@@ -385,10 +392,10 @@ The Poisson brackets between the normal coordinates $b_{k}$ and
 $\overline{b_{k'}}$ take the simple form
 \begin{subequations}
 \begin{equation}
-\{b_{k},\overline{b_{k'}}\}_{PB} = \frac{-\I}{2m\omega_{k}}\delta_{k,k'},
+\PoissonBracket{b_{k}}{\overline{b_{k'}}}_{PB} = \frac{-\I}{2m\omega_{k}}\delta_{k,k'},
 \end{equation}
 \begin{equation}
-\{b_{k},b_{k'}\}_{PB} = \{\overline{b_{k}},\overline{b_{k'}}\}_{PB} = 0.
+\PoissonBracket{b_{k}}{b_{k'}}_{PB} = \PoissonBracket{\overline{b_{k}}}{\overline{b_{k'}}}_{PB} = 0.
 \end{equation}
 \end{subequations}
 
@@ -573,9 +580,16 @@ is because
 This differs from the Lagrangian we derived before by precisely an
 overall sign.
 
+We recover the usual Lagrangian by integrating over the spatial region $\mathcal{R}_{3}\subseteq\RR^{3}$:
+\begin{equation}
+L = \int_{\mathcal{R}_{3}}\mathcal{L}\,\D^{3}x.
+\end{equation}
+We can use the Euler-Lagrange equations with either the Lagrangian $L$
+or, with some modification, the Lagrangian density $\mathcal{L}$.
+
 \N{Mass Term}
 We can add a mass term to the Lagrangian
-\begin{equation}
+\begin{equation}\label{eq:classical-field-theory:linear-chain:continuum-limit:mass-term:lagrangian}
 \mathcal{L}=-\frac{1}{2}\partial_{\mu}\varphi\partial^{\mu}\varphi-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2}.
 \end{equation}
 We may sometimes use the notation
@@ -589,6 +603,12 @@ If we return to the linear chain's Lagrangian, what term must be added
 to the potential energy $V_{\text{mass}}$ which will produce the mass term when
 we take the continuum limit? That is, such that $V_{\text{mass}}\xrightarrow{a\to0}-\frac{1}{2}\mu^{2}\varphi^{2}$? How should we interpret this term
 in the linear chain with [finite or countably many] point-masses?
+
+Chaichian and Demichev~\cite{Chaichian:2001da} argue that we should
+interpret this term in the Linear Chain as being responsible for
+``changing the equilibrium position'' for the $j^{\text{th}}$
+point-mass. Does this make sense? Can we derive the mass term from this
+description? 
 \end{exercise}
 
 \begin{exercise}
@@ -621,7 +641,7 @@ fill $\RR^{3}$, you need a different polyhedron.]
 If this is not true, how do we interpret this result?
 \end{exercise}
 
-\N{Cautionary Remark}\index{Field (Physics)!Section of Bundle}
+\N{Cautionary Remark: What are Scalar Fields?}\index{Field!As section of bundle}
 It is tempting to think of the scalar field $\varphi(\vec{x},t)$ as
 ``just'' a smooth function $\varphi\colon\RR^{3,1}\to\RR$, and in flat
 spacetime we can make this identification. But it is misleading, because
