@@ -2,6 +2,7 @@
 \ProvidesPackage{macros}[2022/11/14 Collected style in one location]
 \newif\if@book
 \@ifclassloaded{book}{\@booktrue}{}
+\usepackage{epigraph}
 \usepackage{mathrsfs}
 \usepackage{fancyhdr}
 \usepackage{float}
@@ -42,6 +43,7 @@
 ]{hyperref}
 \usepackage{doi}
 
+\setlength{\epigraphwidth}{0.5\textwidth}
 
 %% Customizing list spacing
 % This is what amsart's parameters use; lines 253 and 960
@@ -76,7 +78,7 @@
 \@ifundefined{chapter}{}{
   \def\chapterfont{\sffamily\bfseries\LARGE} % \LARGE = magstep3
   \def\twelvess{\sffamily\large} % = cmss12
-  \renewcommand\chapter{\clearpage%\if@openright\cleardoublepage\else\clearpage\fi
+  \renewcommand\chapter{\clearpage\phantomsection%\if@openright\cleardoublepage\else\clearpage\fi
                       \thispagestyle{plain}%
                       \global\@topnum\z@
                       \@afterindentfalse

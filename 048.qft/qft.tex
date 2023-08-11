@@ -2,8 +2,11 @@
 \documentclass{report}
 \usepackage{danger}
 \usepackage{macros}
+\usepackage{makeidx}
 \usepackage{deriv}
 \usepackage{notation}
+
+\makeindex
 
 \pdfinfo{/CreationDate (D:20221120185323)}
 \title{Quantum Field Theory}
@@ -33,4 +36,8 @@ theory.
 \include{tex/math}
 \include{tex/bib}
 
+% TOC entry will give wrong page for index unless this phantomsection is
+% added; plus the hyperref link requires this.
+\phantomsection 
+\printindex
 \end{document}
