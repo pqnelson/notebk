@@ -1,4 +1,10 @@
+% TODO: I should probably make sure that leqno stuff works as expected.
+%       This may require something like:
+%           \newcommand{\leqnomode}{\tagsleft@true\let\veqno\@@leqno}
+%           \newcommand{\reqnomode}{\tagsleft@false\let\veqno\@@eqno}
+%       See, e.g., https://tex.stackexchange.com/a/212099
 \ProvidesPackage{deriv}[2022/10/26 Structured Derivations]
+\RequirePackage{amsmath}
 \newif\if@first@exp\@first@expfalse
 \newif\if@fleqn\@fleqnfalse
 \newif\if@leqno\@leqnofalse
@@ -89,17 +95,18 @@
 %%   \noindent$#1$\quad(#2)
 %%   \belowstepbreak\noindent\next@step\if@leqno\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
 
-\def\step@numbered@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
-  \noindent$#1$\quad(#2)
-  \belowstepbreak\noindent\if@leqno\next@step\step@number\fi\deriv@indent\(\displaystyle\@ignoretrue}
+\def\step@numbered@bracket[#1]#2{\]%\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
+  \noindent$#1$\quad(#2)%
+  %\belowstepbreak\noindent\if@leqno\next@step\step@number\fi\deriv@indent\(
+  \[\displaystyle\@ignoretrue}
 
 \def\step@numbered@nobracket#1{\step@numbered@bracket[\defaultrelation]{#1}}
 
 \def\step@numbered{\@ifnextchar[\step@numbered@bracket\step@numbered@nobracket}
 
-\def\step@no@number@bracket[#1]#2{\)\if@leqno\else{\if@first@exp{\global\@first@expfalse}\else{\next@step\hfill\step@number}\fi}\fi\abovestepbreak
+\def\step@no@number@bracket[#1]#2{\]%\abovestepbreak
   \global\@first@exptrue\noindent$#1$\quad(#2)
-\belowstepbreak\noindent\nonumber\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}
+\belowstepbreak\noindent\[\@ignoretrue}
 
 \def\step@no@number@unbracket#1{\step@no@number@bracket[\defaultrelation]{#1}}
 
@@ -117,12 +124,30 @@
 \newcommand\abovecalculationbreak{\par\ifdim\lastskip<\abovedisplayskip\removelastskip\penalty\predisplaypenalty\vspace\abovedisplayskip\fi}
 \newcommand\bewlowcalculationbreak{\par\ifdim\lastskip<\belowdisplayskip\removelastskip\penalty\postdisplaypenalty\vspace\belowdisplayskip\fi}
 
+% Preserve the displayskips, etc., for when we end our calculations.
+\newif\if@og@fleqn
+\if@fleqn\@og@fleqntrue\else@og@fleqnfalse\fi
+\def\reset@fleqn{\if@og@fleqn\global\@fleqntrue\else\global\@fleqnfalse\fi}
+
+\nnewlength{\@og@belowdisplayskip}{\belowdisplayskip}
+\nnewlength{\@og@abovedisplayskip}{\abovedisplayskip}
+\def\reset@displayskips{\setlength\abovedisplayskip{\@og@abovedisplayskip}%
+\setlength\belowdisplayskip{\@og@belowdisplayskip}}
+\nnewlength{\@delta@displayskip}{\@og@abovedisplayskip}
+\addtolength{\@delta@displayskip}{-\smallskipamount}
+
 % The "calculation" environment is where we do structured derivations in
 % the spirit of Dijkstra.
-\newenvironment{calculation}{\xdef\old@defaultrelation{\defaultrelation}\@first@exptrue%
+\newenvironment{calculation}{\@fleqntrue\@mathmargin\leftmargini minus\leftmargini\xdef\old@defaultrelation{\defaultrelation}\@first@exptrue%
   \gdef\nonumber{\global\@first@exptrue}\nonumber%
-  \abovecalculationbreak\noindent\if@leqno\phantom{\step@number}\fi\deriv@indent\(\displaystyle\@ignoretrue}%
-  {\)\if@leqno\else\if@first@exp\else\hfill\next@step\step@number\fi\fi\bewlowcalculationbreak\noindent\gdef\nonumber{\global\@eqnswfalse}\xdef\defaultrelation{\old@defaultrelation}\@ignoretrue}
+  \setlength\mathindent{\mathindent}%
+  \setlength\abovedisplayskip{\smallskipamount}%
+  \setlength\belowdisplayskip{\smallskipamount}%
+  \vspace\@delta@displayskip%
+  \[}%
+  {\reset@displayskips\]\vskip\@delta@displayskip%
+   \noindent\gdef\nonumber{\global\@eqnswfalse}\xdef\defaultrelation{\old@defaultrelation}\reset@fleqn\@ignoretrue}
 
+  
 
 \endinput
