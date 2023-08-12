@@ -435,6 +435,34 @@ steps in canonical analysis:
 These steps are, more or less, the same for fields, except we work with
 densities (intuitively describing each ``point mass'' in the linear chain). 
 
+\N{Time-slicing}
+The zeroeth step in the Hamiltonian formalism for field theory is to
+pick an \emph{arbitrary} time-slicing, usually
+\begin{equation}
+x^{0}=ct=\mbox{constant}.
+\end{equation}
+For flat spacetime, this suffices and is always possible. (Indeed, it's
+always possible, and is no worse than identifying $x^{0}$ as the
+time-component --- if you're fine with that, then there's no need to
+worry about possibly breaking Lorentz invariance, since the time-slicing
+is arbitrary.) We work with physical quantities on the same time-slice,
+and then the field equations tell us how the field and its conjugate
+momenta evolve in time.
+
+\begin{ddanger}
+In general relativity or in non-flat spacetime, we need to assume some
+additional things about spacetime when we want to do any sort of
+Hamiltonian analysis, namely that it's globally hyperbolic. Is this
+terrible? Well, if we want to work with spinors, then we also need
+globally hyperbolic spacetime \emph{and additional assumptions}. So if
+we want fermionic matter in curved spacetime, even if we're working with
+purely covariant Lagrangian formalisms, then we need something stronger
+than what we'd need to do the Hamiltonian analysis. We stress this,
+because na\"{i}ve physicists believe that the Hamiltonian formalism is
+irreperably tainted and explicitly destroys Lorentz invariance, which is
+amusingly wrong.
+\end{ddanger}
+
 \N{Conjugate Momenta Density}
 We define the conjugate momenta density by
 \begin{equation}
@@ -443,9 +471,9 @@ We define the conjugate momenta density by
 If there are $n$ fields $\varphi_{a}$ for $a=1,\dots,n$, then we have
 $n$ conjugate momenta:
 \begin{equation}
-\pi_{a}(\vec{x},t) := \frac{\partial\mathcal{L}}{\partial(\partial_{t}\varphi_{a})}(\vec{x},t).
+\pi_{a}(\vec{x},t) := \frac{\partial\mathcal{L}}{\partial(\partial_{t}\varphi^{a})}(\vec{x},t).
 \end{equation}
-Heuristically $\pi_{a}\sim\partial_{t}\varphi_{a}$, modulo some constants.
+Heuristically $\pi_{a}\sim\partial_{t}\varphi^{a}$, modulo some constants.
 
 \begin{ddanger}
 When we have a field enjoy some symmetry or gauge invariance, the
@@ -1062,6 +1090,49 @@ equations as:
 \end{subequations}
 This is true for any Hamiltonian which does not explicitly depend on
 time (which is the case for almost all field theories we encounter in physics).
+
+\N{Poisson Brackets}
+We recall, in mechanics, the Poisson brackets may be written using the
+Symplectic two-form for any functions $A$ and $B$ of the phase space
+variables as
+\begin{equation}
+\PB{A}{B} = \Omega^{IJ}\partial_{I}A\partial_{J}B
+\end{equation}
+where the derivatives range over $z^{I}$ for $I=1,\dots,2n$. We usually use Darboux's
+theorem to choose canonical coordinates $z^{i}=q^{i}$ and
+$z^{n+i}=p_{i}$, which gives us the familiar expression for Poisson
+brackets as:
+\begin{equation}
+\PB{A}{B} = \sum_{i}\frac{\partial A}{\partial q^{i}}\frac{\partial B}{\partial p_{i}}
+- \frac{\partial B}{\partial q^{i}}\frac{\partial A}{\partial p_{i}}.
+\end{equation}
+The familiar properties of the Poisson bracket derive from the fact that
+$\Omega$ is a two-form.
+
+Now, if we shift to the situation in field theory, we have $A$ and $B$
+become differentiable functionals on the phase space --- so they can be
+written in the initial data parametrization of $\Gamma$ as $A[\phi,\varpi]$
+and $B[\phi,\varpi]$. Then the Poisson bracket in this parametrization
+takes the form:
+\begin{equation}
+\PB{A}{B} = \int_{\RR^{3}}\left(
+\frac{\delta A}{\delta\phi(\vec{x})}\frac{\delta B}{\delta\varpi(\vec{x})}
+-\frac{\delta B}{\delta\phi(\vec{x})}\frac{\delta A}{\delta\varpi(\vec{x})}
+\right)\D^{3}x.
+\end{equation}
+The two critically important properties the Poisson bracket satisfies
+are the canonical commutation relations:
+\begin{equation}
+\PB{\phi^{a}(\vec{x})}{\varpi_{b}(\vec{y})}={\delta^{a}}_{b}\delta^{(n)}(\vec{x}-\vec{y}),
+\end{equation}
+and Hamilton's equations:
+\begin{equation}
+\partial_{t}\varphi^{a}(\vec{x},t)=\PB{\phi^{a}(\vec{x})}{H},\quad\mbox{and}\quad
+\partial_{t}\pi_{a}(\vec{x},t)=-\PB{\varpi_{a}(\vec{x})}{H}.
+\end{equation}
+The time-dependence enters by means of the Hamiltonian.
+
+
 
 \N{References}
 The discussion of Symplectic structure draws upon
