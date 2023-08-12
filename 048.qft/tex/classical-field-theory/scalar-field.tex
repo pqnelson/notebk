@@ -66,6 +66,11 @@ zero.
 \N{Goals}
 We will study the \emph{free} scalar field in this section. 
 
+\N{Abuse of Language}\index{Field!Equations}
+When working with fields, we will often use the terms ``field
+equations'' and ``equations of motion'' interchangeably. This is
+following the convention physicists adhere.
+
 \N{Variational Analysis}
 We consider a region $\mathcal{R}\subset\RR^{3,1}$, usually taken to be
 $\RR^{3}\times[t_{1},t_{2}]$ for some $t_{1}<t_{2}$. Now we will
@@ -604,8 +609,464 @@ and the Poisson brackets, prove the field analogue of the Hamilton equations:
 \end{equation}
 \end{exercise}
 
+\subsection{*Symplectic Structure}
+
+\M
+We can equip the set $\Gamma$ of solutions to the field equations with
+some extra geometric structure, like we do in Hamiltonian
+mechanics when working with a Lagrangian with explicit time dependence.
+Specifically we equip $\Gamma$ with some Symplectic structure $\Omega_{ab}$.
+We will define $(\Gamma,\Omega)$ as the phase space, and construct the
+Hamiltonian $H\colon\Gamma\to\RR$.
+
+\subsubsection*{Review of Symplectic Mechanics}
+
+\M % N{Review of Symplectic Mechanics}
+In mechanics, recall we have the configuration space describe the
+positions $q^{i}$. From the Lagrangian $L(q^{i},\dot{q}^{i})$, assuming
+it is ``sufficiently nice''\footnote{Specifically this means it is
+``regular'', i.e., its Hessian matrix with respect to velocities $\partial^{2}L/\partial\dot{q}^{i}\partial\dot{q}^{j}$
+is an invertible matrix. In other words, the Jacobian matrix for
+changing velocities into momenta $\partial p_{i}/\partial\dot{q}^{j}$ is
+invertible. This is not true for Electromagnetism, Yang--Mills, General
+Relativity, and any other system with gauge symmetries.}, we have the
+variational identity
+\begin{equation}
+\variation L = \mathcal{E}_{i}\,\variation q^{i} + \frac{\D}{\D t}\theta
+\end{equation}
+where $\mathcal{E}_{i}$ are the Euler--Lagrange equations for $q^{i}$,
+\begin{equation}
+\mathcal{E}_{i} = \frac{\partial L}{\partial q^{i}}
+-\frac{\D}{\D t}\frac{\partial L}{\partial\dot{q}^{i}},
+\end{equation}
+and then we have the ``boundary terms'' (arising from integration by parts),
+\begin{equation}\label{eq:classical-field-theory:hamiltonian:symplectic-form:theta}
+\theta = \frac{\partial L}{\partial\dot{q}^{i}}\delta q^{i}.
+\end{equation}
+Observe that $\theta$ is a function of $q^{i}$, $\dot{q}^{i}$, and
+linearly depends on $\delta q^{i}$.
+
+\M
+We then define $\Gamma$ to be the solutions to the Euler--Lagrange
+equations $\mathcal{E}_{i}=0$. The points of $\Gamma$ are solutions $q^{i}(t)$.
+Tangent vectors to $\Gamma$ at a point defined by the solution $q^{i}(t)$
+are formally taken as the variations $\variation q^{i}(t)$, which are
+solutions to the linear system of equations obtained by linearizing the
+Euler--Lagrange equations about the solution $q^{i}(t)$.
+
+\N{Symplectic Form}
+We can now assemble the Symplectic form on $\Gamma$ from $\theta$ in Eq~\eqref{eq:classical-field-theory:hamiltonian:symplectic-form:theta}.
+If we imagine $\theta$ as the value of a one-form $\Theta$ on a tangent
+vector $\variation q^{i}(t)$ to $\Gamma$,\marginnote{Symplectic Potential $\Theta$}\index{Symplectic!Potential}
+\begin{equation}
+\theta = \Theta(\variation q).
+\end{equation}
+Then the Symplectic two-form is constructed as\index{Symplectic!Form}
+\begin{equation}
+\Omega = \D\Theta.
+\end{equation}
+We usually call $\Theta$ the \define{Symplectic Potential}.
+In local coordinates, this acts on a pair of tangent vectors $\variation_{1}q^{i}(t)$
+and $\variation_{2}q^{i}(t)$ at the point of $\Gamma$ specified by
+$q^{i}(t)$ by
+\begin{equation}
+\begin{split}
+\Omega(\variation_{1}q^{i}(t),\variation_{2}q^{i}(t))
+&=\frac{\partial^{2}L}{\partial\dot{q}^{i}\partial q^{j}}(\variation_{1}q^{j}(t)\variation_{2}q^{i}(t)-\variation_{1}q^{i}(t)\variation_{2}q^{j}(t))\\
+&\qquad+\frac{\partial^{2}L}{\partial\dot{q}^{i}\partial\dot{q}^{j}}(\variation_{1}\dot{q}^{j}(t)\variation_{2}q^{i}(t)-\variation_{1}q^{i}(t)\variation_{2}\dot{q}^{j}(t)),
+\end{split}
+\end{equation}
+where we evaluate $q^{i}(t)$ and $\dot{q}^{i}(t)$ at the given solution,
+and all instances of $\variation q(t)$ are evaluated at solutions of the
+equations of motion linearized about $q(t)$.
+
+\begin{definition}
+Let $H\colon\Gamma\to\RR$ be the Hamiltonian on the Symplectic space $(\Gamma,\Omega)$.
+We define the \define{Hamiltonian Vector Field} as the vector field $X$
+on $\Gamma$ defined by
+\begin{equation}
+X = \Omega^{-1}(-,\D H).
+\end{equation}
+The integral curves of $X$ correspond to the time-translations of the solutions.
+\end{definition}
+
+\begin{theorem}
+Suppose we are working with a system whose Lagrangian is not explicitly
+time-dependent $L=L(q,\dot{q})$.
+Then canonical energy function,
+\begin{equation}
+E = \dot{q}^{i}\frac{\partial L}{\partial\dot{q}^{i}}-L,
+\end{equation}
+generates the time translations of points of $\Gamma$.
+\end{theorem}
+
+This will be exploited in field theory.
+
+\begin{proof}[Proof sketch]
+Our claim, our proof obligation, can be stated as:
+\begin{equation}
+\Omega(\variation q, X) = \D E(\variation q),
+\end{equation}
+where $\variation q$ is any solution to the linearized equations and $X$
+defines the linearized solution defined by infinitesimal time
+translation (this is where $L$ not explicitly depending on time is crucial):
+\begin{equation}
+X = \dot{q}^{i}.
+\end{equation}
+How to prove it?
+
+We compute the left-hand side of our goal,
+\begin{equation}\label{eq:classical-field-theory:scalar-field:symplectic-form:pf-step:lhs-of-pf-goal}
+\Omega(\variation q, X)
+= \frac{\partial^{2}L}{\partial\dot{q}^{i}\partial q^{j}}
+(\dot{q}^{i}\,\variation q^{j}-\dot{q}^{j}\,\variation q^{i})
++\frac{\partial^{2}L}{\partial\dot{q}^{i}\partial\dot{q}^{j}}
+(\dot{q}^{j}\,\variation\dot{q}^{i}-\ddot{q}^{i}\,\variation q^{j}).
+\end{equation}
+Compare this to the right-hand side of our goal, after some massaging,
+\begin{equation}
+\D E(\variation q)= \frac{\partial^{2}L}{\partial\dot{q}^{i}\partial q^{j}}\dot{q}^{i}\,\variation q^{j}
++\frac{\partial^{2}L}{\partial\dot{q}^{i}\partial\dot{q}^{j}}\dot{q}^{i}\,\variation\dot{q}^{j}
+-\frac{\partial L}{\partial q^{i}}\variation q^{i}.
+\end{equation}
+Now we work on the third term,
+\begin{calculation}
+-\frac{\partial L}{\partial q^{i}}\variation q^{i}
+\step{using the Euler--Lagrange equations}
+-\variation q^{i}\frac{\D}{\D t}\frac{\partial L}{\partial\dot{q}^{i}}
+\step{expand the total time derivative}
+-\variation q^{i}\left(\dot{q}^{j}\frac{\partial^{2} L}{\partial\dot{q}^{i}\partial q^{j}}
++\ddot{q}^{j}\frac{\partial^{2} L}{\partial\dot{q}^{i}\partial\dot{q}^{j}}\right).
+\end{calculation}
+When we plug this back into our manipulation of the right-hand side of
+our proof obligation,
+\begin{equation}
+\D E(\variation q)= \frac{\partial^{2}L}{\partial\dot{q}^{i}\partial q^{j}}\dot{q}^{i}\,\variation q^{j}
++\frac{\partial^{2}L}{\partial\dot{q}^{i}\partial\dot{q}^{j}}\dot{q}^{i}\,\variation\dot{q}^{j}
+-\variation q^{i}\left(\dot{q}^{j}\frac{\partial^{2} L}{\partial\dot{q}^{i}\partial q^{j}}
++\ddot{q}^{j}\frac{\partial^{2} L}{\partial\dot{q}^{i}\partial\dot{q}^{j}}\right).
+\end{equation}
+And look, after invoking distributivity, this is precisely our left-hand side of our proof obligation
+in Eq~\eqref{eq:classical-field-theory:scalar-field:symplectic-form:pf-step:lhs-of-pf-goal}.
+\end{proof}
+
+\M
+The familiar physics textbooks that even having passing discussions on
+this typically have an expedited discussion of all this. When the dust
+settles, we have the canonically conjugate momenta,
+\begin{equation}
+p_{i} = \frac{\partial L}{\partial\dot{q}^{i}},
+\end{equation}
+then we have
+\begin{equation}
+\Theta = p_{i}\,\D q^{i}\,\qquad\Omega=\D p_{i}\wedge\D q^{i}.
+\end{equation}
+This is usually passed over in silence, though.
+
+\begin{exercise}[{Torre~\cite{Torre:2022}}]
+  Recall the simple harmonic oscillator's Lagrangian
+  \begin{equation}
+L = \frac{1}{2}m\dot{q}^{2} - \frac{1}{2}m\omega^{2}q^{2}.
+  \end{equation}
+  Compute its Symplectic structure when we parametrize its space of
+  solutions by:
+  \begin{enumerate}
+  \item $q(t) = A\cos(\omega t) + B\sin(\omega T)$.
+  \item $q(t) = a\exp(-\I\omega t) + a^{*}\exp(\I\omega t)$ where
+    $a\in\CC$ and $a^{*}$ is its complex conjugate.
+  \end{enumerate}
+\end{exercise}
+
+\subsubsection*{Symplectic Formalism for Fields}
+
+\M
+Recall the Lagrangian density for a (possibly self-interacting) scalar field is:
+\begin{subequations}
+\begin{equation}
+\mathcal{L} = \frac{1}{2}\bigl((\partial_{t}\varphi)^{2} - (\nabla\varphi)^{2}
+-(\mu\varphi)^{2}\bigr) - V(\varphi),
+\end{equation}
+and the Lagrangian is,
+\begin{equation}
+L = \int_{\RR^{3}}\mathcal{L}\,\D^{3}x.
+\end{equation}
+We have shown the variational identity
+\begin{equation}
+\variation\mathcal{L} = \bigl(-\partial_{t}^{2}\varphi +
+\nabla^{2}\varphi - \mu^{2}\varphi - V'(\varphi)\bigr)\,\variation\varphi + \partial_{\mu}W^{\mu},
+\end{equation}
+where we can explicitly choose:
+\begin{equation}
+W^{0} = (\partial_{t}\varphi)\,\variation\varphi,\qquad W^{i}=-(\partial^{i}\varphi)\,\variation\varphi.
+\end{equation}
+\end{subequations}
+
+\N{Phase Space}
+We now let the phase space $\Gamma$ be a suitably nice\footnote{For
+example, smooth solutions with compactly supported initial data.} function space of
+solutions $\varphi$ to the Euler--Lagrange equations,
+\begin{equation}
+\partial_{\mu}\partial^{\mu}\varphi - \mu^{2}\varphi - V'(\varphi)=0.
+\end{equation}
+
+\N{Symplectic Potential}
+Assuming (as usual) the solutions vanish at spatial infinity, the
+variational identity for the Lagrangian evaluated on $\Gamma$ reads:
+\begin{equation}
+\variation L = \frac{\D}{\D t}\int_{\RR^{3}}W^{0}\,\D^{3}x.
+\end{equation}
+Then we define the Symplectic potential one-form $\Theta$ by its linear
+action on $\variation\varphi$ (a tangent vector to $\Gamma$):
+\begin{equation}
+\Theta(\variation\varphi) = \int_{\RR^{3}}W^{0}\,\D^{3}x =  \int_{\RR^{3}}(\partial_{t}\varphi)\,\variation\varphi\,\D^{3}x.
+\end{equation}
+
+\N{Symplectic Structure}
+We now have the Symplectic two-form evaluated on a pair of tangent
+vectors $\variation_{1}\varphi$, $\variation_{2}\varphi$ to the same
+solution $\varphi$ is given by
+\begin{equation}\label{eq:classical-field-theory:scalar-field:symplectic-structure:explicit-defn}
+\Omega(\variation_{1}\varphi, \variation_{2}\varphi)
+=\int_{\RR^{3}}\bigl((\partial_{t}\variation_{2}\varphi)\variation_{1}\varphi
+-(\partial_{t}\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x.
+\end{equation}
+There may be concerns that this requires a separate $\Omega$ for each
+moment of time $t$, i.e., we have \emph{infinitely many} $\Omega$
+instead of a [suitably] unique $\Omega$. However, this is not the case,
+since its derivative with respect to time vanishes.
+
+\begin{proposition}
+  We have
+  \begin{equation}
+\frac{\D}{\D t}\Omega(\variation_{1}\varphi, \variation_{2}\varphi)=0.
+  \end{equation}
+\end{proposition}
+
+\begin{proof}
+We can compute the time derivative directly,
+\begin{calculation}
+\frac{\D}{\D t}\Omega(\variation_{1}\varphi, \variation_{2}\varphi)
+\step{using Eq~\eqref{eq:classical-field-theory:scalar-field:symplectic-structure:explicit-defn}}
+\frac{\D}{\D t}\int_{\RR^{3}}\bigl((\partial_{t}\variation_{2}\varphi)\variation_{1}\varphi
+-(\partial_{t}\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x
+\step{sweep time derivative inside the integral}
+\int_{\RR^{3}}\bigl((\partial_{t}^{2}\variation_{2}\varphi)\variation_{1}\varphi
++(\partial_{t}\variation_{2}\varphi)(\partial_{t}\variation_{1}\varphi)
+-(\partial_{t}^{2}\variation_{1}\varphi)\variation_{2}\varphi
+-(\partial_{t}\variation_{1}\varphi)(\partial_{t}\variation_{2}\varphi)\bigr)\,\D^{3}x
+\step{subtract out equal terms}
+\int_{\RR^{3}}\bigl((\partial_{t}^{2}\variation_{2}\varphi)\variation_{1}\varphi
+-(\partial_{t}^{2}\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x.
+\end{calculation}
+That is,
+\begin{equation}\label{eq:classical-field-theory:scalar-field:symplectic-structure:explicit-defn:intermediate-proof-step}
+\frac{\D}{\D t}\Omega(\variation_{1}\varphi, \variation_{2}\varphi)
+=\int_{\RR^{3}}\bigl((\partial_{t}^{2}\variation_{2}\varphi)\variation_{1}\varphi
+-(\partial_{t}^{2}\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x.
+\end{equation}
+Now, the tangent vectors to $\Gamma$ each satisfy the linearization of
+the equations of motion about a solution $\varphi$:
+\begin{equation}
+\Box\variation\varphi - \mu^{2}\variation\varphi - V''(\varphi)\,\variation\varphi=0.
+\end{equation}
+This means that,
+\begin{equation}
+\partial_{t}^{2}\variation\varphi=\nabla^{2}\variation\varphi - (\mu^{2}+V''(\varphi))\,\variation\varphi.
+\end{equation}
+Returning to Eq~\eqref{eq:classical-field-theory:scalar-field:symplectic-structure:explicit-defn:intermediate-proof-step},
+we can continue manipulating the time derivative of the Symplectic structure,
+\begin{calculation}
+\frac{\D}{\D t}\Omega(\variation_{1}\varphi, \variation_{2}\varphi)
+\step{plugging in Eq~\eqref{eq:classical-field-theory:scalar-field:symplectic-structure:explicit-defn:intermediate-proof-step}}
+\int_{\RR^{3}}\bigl((\partial_{t}^{2}\variation_{2}\varphi)\variation_{1}\varphi
+-(\partial_{t}^{2}\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x
+\step{using the linearized solution to the linearized equations of motion}
+\int_{\RR^{3}}\bigl((\nabla^{2}\variation_{2}\varphi- (\mu^{2}+V''(\varphi))\,\variation_{2}\varphi)\variation_{1}\varphi
+-(\nabla^{2}\variation_{1}\varphi- (\mu^{2}+V''(\varphi))\,\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x
+\step{subtracting out equal terms}
+\int_{\RR^{3}}\bigl((\nabla^{2}\variation_{2}\varphi)\variation_{1}\varphi
+-(\nabla^{2}\variation_{1}\varphi)\variation_{2}\varphi\bigr)\,\D^{3}x
+\step{divergence theorem}
+\int_{\RR^{3}}\bigl((\nabla\variation_{2}\varphi)\cdot(\nabla\variation_{1}\varphi)
+-(\nabla\variation_{1}\varphi)\cdot(\nabla\variation_{2}\varphi)\bigr)\,\D^{3}x
++\mbox{(boundary terms)}
+\step{since linearized solutions vanish asymptotically}
+\int_{\RR^{3}}\bigl((\nabla\variation_{2}\varphi)\cdot(\nabla\variation_{1}\varphi)
+-(\nabla\variation_{1}\varphi)\cdot(\nabla\variation_{2}\varphi)\bigr)\,\D^{3}x
+\step{since the integrand is identically zero}
+0.
+\end{calculation}
+Hence the result.
+\end{proof}
+
+\N{Parametrizing Phase Space by Initial Data}
+We have implicitly assumed the phase space $\Gamma$ is suitably nice and
+has some obvious parametrization. Often it will be useful to suppose the
+solutions to the field equations are, in fact, solutions to well-posed
+initial value problems: for every pair of functions on $\RR^{3}$,
+$(\phi(\vec{x}),\varpi(\vec{x})$ there exists a unique solution $\varphi(t,\vec{x})$
+such that at a given initial time $t=t_{0}$ we have:
+\begin{equation}
+\varphi(t_{0},\vec{x})=\phi(\vec{x}),\qquad c^{2}\partial_{t}\varphi(t_{0},\vec{x})=\varpi(\vec{x}.
+\end{equation}
+Therefore, from this perspective, we may view a point of the phase space
+$\Gamma$ as ``just'' a pair of functions $(\phi,\varpi)$ on $\RR^{3}$.
+
+Using this particular parametrization of solutions, a tangent vector
+takes the form $(\variation\phi,\variation\varpi)$ to a point
+$(\phi,\varpi)$, and we have
+\begin{equation}
+\Theta(\variation\phi,\variation\varpi)=\int_{\RR^{3}}\varpi\,\variation\phi\,\D^{3}x,
+\end{equation}
+and
+\begin{equation}
+\Omega((\variation\phi_{1},\variation\varpi_{1}),\;
+(\variation\phi_{2},\variation\varpi_{2}))
+=\int_{\RR^{3}}(\variation_{2}\varpi\,\variation_{1}\phi-\variation_{1}\varpi\,\variation_{2}\phi)\,\D^{3}x.
+\end{equation}
+These should remind the reader of the formulas from mechanics
+$\Theta=p_{i}\,\D q^{i}$ and $\Omega=\D p_{i}\wedge\D q^{i}$.
+
+\begin{exercise}[{Torre~\cite{Torre:2022}}]
+Prove the Symplectic two-form is non-degenerate.
+[Hint: a 2-form $\Omega$ is non-degenerate if and only if
+for every $v$ we have $\Omega(u,v)=0$ imply $u=0$.]
+\end{exercise}
+
+\begin{ddanger}
+If we view the field as a mechanical system with infinitely many degrees
+of freedom labeled by the spatial point $\vec{x}$, then we can view the
+spatial integrals as continuous analogs to the various sums over dummy
+indices. For this reason, physicists often call the components of the
+initial data $\phi(\vec{x})$ the ``coordinate'' and $\varpi(\vec{x})$
+the ``momentum'' for the scalar field. Usually physicists will switch
+back and forth between the solutions $\varphi(t,\vec{x})$ with momenta
+$\pi(t,\vec{x})$ and the initial data $(\phi(\vec{x}),\varpi(\vec{x}))$
+without warning. Be warned! This especially happens when we consider a
+foliation of spacetime by spatial hypersurfaces $t=\mbox{constant}$.
+\end{ddanger}
+
+\begin{exercise}[{Torre~\cite{Torre:2022}}]
+For the Klein--Gordon equation $(\Box-\mu^{2})\varphi=0$, express the
+Symplectic structure on the space of solutions in terms of the Fourier
+parametrization
+\begin{equation}
+\varphi(t,\vec{x}) =
+\int_{\RR^{3}}\left(a_{\vec{k}}\E^{\I(\vec{k}\cdot\vec{r}-\omega_{\vec{k}}t)}
++ a_{\vec{k}}^{*}\E^{-\I(\vec{k}\cdot\vec{r}-\omega_{\vec{k}}t)}
+\right)\frac{\D^{3}k}{(2\pi)^{3/2}}.
+\end{equation}
+\end{exercise}
+
+\N{Hamilton's Equations}
+We can write down the Hamiltonian using our parametrization of $\Gamma$
+in terms of initial data:
+\begin{equation}
+H[\phi,\varpi] = \int_{\RR^{3}}\left(\frac{1}{2}\varpi^{2} + \frac{1}{2}\nabla\phi\cdot\nabla\phi
++\frac{1}{2}\mu^{2}\phi^{2}+V(\phi)\right)\D^{3}x,
+\end{equation}
+where $\nabla$ is the usual spatial gradient.
+
+The functional derivative can be determined using the Fre\'echet
+differential
+\begin{subequations}
+\begin{align}
+\variation H 
+&=\int_{\RR^{3}}\left(\frac{\delta H[\phi,\varpi]}{\delta\varpi(\vec{x})}\delta\varpi(\vec{x})+\frac{\delta H[\phi,\varpi]}{\delta\phi(\vec{x})}\delta\phi(\vec{x})\right)\D^{3}x\\
+&=\int_{\RR^{3}}\left(\varpi\,\delta\varpi
++\nabla\phi\cdot\nabla\delta\phi + \mu^{2}\phi\,\delta\phi + V'(\phi)\,\delta\phi\right)\D^{3}x.
+\end{align}
+We can integrate by parts in the terms with the gradients, using the
+fact $\phi$ vanishes at infinity suitably nicely, to give us
+\begin{equation}
+\variation H =\int_{\RR^{3}}\left(\varpi\,\delta\varpi
++(-\nabla^{2}\phi + \mu^{2}\phi + V'(\phi))\,\delta\phi\right)\D^{3}x.
+\end{equation}
+\end{subequations}
+This means in particular,
+\begin{subequations}
+\begin{align}
+\frac{\delta H}{\delta\varpi(\vec{x})} &= \varpi(\vec{x}),\\
+\intertext{and,}
+\frac{\delta H}{\delta\phi(\vec{x})} &= -\nabla^{2}\phi + \mu^{2}\phi + V'(\phi).
+\end{align}
+\end{subequations}
+Consequently, we see the field equations may be rewritten in the nifty
+form:
+\begin{subequations}
+\begin{align}
+\partial_{t}\phi &= \frac{\delta H}{\delta\varpi(\vec{x})}\\
+\intertext{and,}
+\partial_{t}\varpi &= -\frac{\delta H}{\delta\phi(\vec{x})}.
+\end{align}
+\end{subequations}
+The reader should recognize these equations as Hamilton's equations.
+
+\M
+The derivation of Hamilton's equations in general, for fields, is
+completely analogous to the situation for mechanics. We have the
+Hamiltonian obtained by the Legendre transform of the Lagrangian
+\begin{subequations}
+\begin{align}
+H &= \int_{\RR^{3}}\pi_{a}(\vec{x},t)\partial_{t}\varphi^{a}(\vec{x},t)\,\D^{3}x-L[\varphi^{a},\pi_{a}]\\
+&= \int_{\RR^{3}}\bigl(\pi_{a}(\vec{x},t)\partial_{t}\varphi^{a}(\vec{x},t)-\mathcal{L}(\varphi^{a},\pi_{a})\bigr)\,\D^{3}x\\
+&= \int_{\RR^{3}}\mathcal{H}(\varphi^{a},\pi_{a})\,\D^{3}x
+\end{align}
+\end{subequations}
+The action in canonical form is then
+\begin{subequations}
+\begin{align}
+\action &= \int^{t_{2}}_{t_{1}}\left(\int_{\RR^{3}}\pi_{a}(\vec{x},t)\partial_{t}\varphi^{a}(\vec{x},t)\,\D^{3}x-H\right)\,\D t\\
+&= \int^{t_{2}}_{t_{1}}\int_{\RR^{3}}\bigl(\pi_{a}(\vec{x},t)\partial_{t}\varphi^{a}(\vec{x},t)-\mathcal{H}(\varphi^{a},\pi_{a})\bigr)\,\D^{3}x\,\D t
+\end{align}
+\end{subequations}
+Stationary action then
+\begin{calculation}
+  \variation\action
+\step{using canonical form of action}
+\int^{t_{2}}_{t_{1}}\int_{\RR^{3}}\left(\partial_{t}\varphi^{a}(\vec{x},t)\,\variation\pi_{a}(\vec{x},t)
++\pi_{a}(\vec{x},t)\,\variation(\partial_{t}\varphi^{a}(\vec{x},t))
+-\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\varphi^{a}}\variation\varphi^{a}(\vec{x},t)
+-\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\pi_{a}}\variation\pi_{a}(\vec{x},t)
+\right)\,\D^{3}x\,\D t
+\step{using
+  $\variation(\partial_{t}\varphi)=\partial_{t}(\variation\varphi)$ then
+  integrate by parts, discarding boundary terms}
+\int^{t_{2}}_{t_{1}}\int_{\RR^{3}}\left(\partial_{t}\varphi^{a}(\vec{x},t)\variation\pi_{a}(\vec{x},t)
+-(\partial_{t}\pi_{a}(\vec{x},t))\,\variation\varphi^{a}(\vec{x},t)
+-\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\varphi^{a}}\variation\varphi^{a}(\vec{x},t)
+-\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\pi_{a}}\variation\pi_{a}(\vec{x},t)
+\right)\,\D^{3}x\,\D t
+\step{collecting terms}
+\int^{t_{2}}_{t_{1}}\int_{\RR^{3}}\left(
+\left(\partial_{t}\varphi^{a}(\vec{x},t)-\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\pi_{a}}\right)\variation\pi_{a}(\vec{x},t)
+-\left(\partial_{t}\pi_{a}(\vec{x},t)+\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\varphi^{a}}\right)\,\variation\varphi^{a}(\vec{x},t)
+\right)\,\D^{3}x\,\D t
+\end{calculation}
+The coefficients must vanish of $\variation\pi_{a}$ and
+$\variation\varphi^{a}$ must separately vanish for each index $a$,
+giving us Hamilton's equations:
+\begin{subequations}
+\begin{align}
+\partial_{t}\varphi^{a}(\vec{x},t)&=\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\pi_{a}}\\
+\partial_{t}\pi_{a}(\vec{x},t)&=-\frac{\partial\mathcal{H}(\varphi^{a},\pi_{a})}{\partial\varphi^{a}}.
+\end{align}
+\end{subequations}
+We can use identities of functional derivatives to obtain Hamilton's
+equations as:
+\begin{subequations}
+\begin{align}
+\partial_{t}\varphi^{a}(\vec{x},t)&=\frac{\delta H[\varphi^{a},\pi_{a}]}{\delta\pi_{a}(\vec{x},t)}\\
+\partial_{t}\pi_{a}(\vec{x},t)&=-\frac{\delta H[\varphi^{a},\pi_{a}]}{\delta\varphi_{a}(\vec{x},t)}.
+\end{align}
+\end{subequations}
+This is true for any Hamiltonian which does not explicitly depend on
+time (which is the case for almost all field theories we encounter in physics).
 
 \N{References}
+The discussion of Symplectic structure draws upon
+Torre~\cite{Torre:2022}, section 3.2 of Abraham and Marsden~\cite{Abraham:1978},
+and chapter 7 of Woodhouse~\cite{Woodhouse:1992de}.
 The quartic self-interacting scalar field (i.e., with
 $V(\varphi)=\lambda\varphi^{4}/4!$ where $\lambda$ is the coupling
 constant) has a few known exact solutions, which are presented in
