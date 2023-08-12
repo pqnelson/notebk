@@ -415,6 +415,196 @@ differentiable. For the functionals we care about in physics, which is
 just the integral of a Lagrangian, we can compute the second variation.
 \end{ddanger}
 
+\subsection{Hamiltonian Formalism}
+
+\M
+The Hamiltonian formalism for fields follows roughly the same plan,
+regardless of which Lagrangian we're working with. We recall the basic
+steps in canonical analysis:
+\begin{enumerate}
+\item Determine the conjugate momenta $p_{i}$ for the positions $q^{i}$
+\item Write the velocities in terms of the momenta $\dot{q}^{i}=\dot{q}^{i}(q,p)$
+\item Perform the Legendre transform to write the Hamiltonian $H=p_{i}\dot{q}^{i}-L(q^{j},\dot{q}^{j}(q,p))$.
+\item Transform the action or use the Poisson brackets.
+\end{enumerate}
+These steps are, more or less, the same for fields, except we work with
+densities (intuitively describing each ``point mass'' in the linear chain). 
+
+\N{Conjugate Momenta Density}
+We define the conjugate momenta density by
+\begin{equation}
+\pi(\vec{x},t) := \frac{\partial\mathcal{L}}{\partial(\partial_{t}\varphi)}(\vec{x},t).
+\end{equation}
+If there are $n$ fields $\varphi_{a}$ for $a=1,\dots,n$, then we have
+$n$ conjugate momenta:
+\begin{equation}
+\pi_{a}(\vec{x},t) := \frac{\partial\mathcal{L}}{\partial(\partial_{t}\varphi_{a})}(\vec{x},t).
+\end{equation}
+Heuristically $\pi_{a}\sim\partial_{t}\varphi_{a}$, modulo some constants.
+
+\begin{ddanger}
+When we have a field enjoy some symmetry or gauge invariance, the
+momenta densities may not be independent of each other. More generally,
+there may be some redundancies in the description of the phase space,
+and we need to impose some constraints. This happens in
+Electromagnetism, Yang--Mills theory, General Relativity, and any other
+fields with gauge symmetry. Whenever we have some field equations which
+do not involve the time derivatives of the field (e.g., the Gauss law in
+Electromagnetism), then we have some constraints.
+\end{ddanger}
+
+\begin{example}
+For the free scalar field (and self-interacting scalar fields), we have
+\begin{calculation}
+\pi(\vec{x},t)
+\step{definition of conjugate momenta density}
+\frac{\partial\mathcal{L}}{\partial(\partial_{t}\varphi)}(\vec{x},t)
+\step{using the definition of the Lagrangian density for scalar fields, Eq~\eqref{eq:classical-field-theory:scalar-field:lagrangian}}
+\frac{\partial}{\partial(\partial_{t}\varphi)}\left(\frac{1}{2}c^{-2}(\partial_{t}\varphi)^{2}-\frac{1}{2}(\nabla\varphi)^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2} - V(\varphi)\right)
+\step{linearity, plus only terms involving $\partial_{t}\varphi$ contribute}
+\frac{\partial}{\partial(\partial_{t}\varphi)}\left(\frac{1}{2}c^{-2}(\partial_{t}\varphi)^{2}\right)
++ 0
+\step{power rule for differentiation}
+c^{-2}\partial_{t}\varphi(\vec{x},t).
+\end{calculation}
+Hence for scalar fields
+\begin{equation}
+\boxed{\pi(\vec{x},t) = c^{-2}\partial_{t}\varphi(\vec{x},t).}
+\end{equation}
+\end{example}
+
+\M
+We can, for scalar fields, write the ``velocities'' in terms of momenta
+densities as:
+\begin{equation}
+\partial_{t}\varphi(\vec{x},t) = c^{2}\pi(\vec{x},t).
+\end{equation}
+
+\N{Legendre Transform}
+We obtain the Hamiltonian density for the scalar field by
+\begin{calculation}
+\mathcal{H}
+\step{Legendre transform}
+\pi(\vec{x},t)\partial_{t}\varphi(\vec{x},t) - \mathcal{L}
+\step{plug in definition of Lagrangian density, Eq~\eqref{eq:classical-field-theory:scalar-field:lagrangian}}
+\pi(\vec{x},t)\partial_{t}\varphi(\vec{x},t) - \left(\frac{1}{2}c^{-2}(\partial_{t}\varphi)^{2}-\frac{1}{2}(\nabla\varphi)^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2} - V(\varphi)\right)
+\step{plug in $\partial_{t}\varphi=c^{2}\pi$}
+c^{2}\pi(\vec{x},t)^{2} - \left(\frac{1}{2}c^{-2}(c^{2}\pi(\vec{x},t))^{2}-\frac{1}{2}(\nabla\varphi)^{2}
+-\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2} - V(\varphi)\right)
+\step{algebra}
+\frac{c^{2}}{2}\pi(\vec{x},t)^{2} -
++\frac{1}{2}(\nabla\varphi)^{2} +\frac{1}{2}\frac{m^{2}c^{2}}{\hbar^{2}}\varphi^{2} + V(\varphi).
+\end{calculation}
+This gives us the Hamiltonian density in terms of the canonical variables.
+
+\N{Poisson Bracket}\index{Poisson bracket}
+We will derive the Poisson bracket for fields in analogy to the
+heuristic motivation of functional differentiation (see
+Section~\ref{section:math:functional-derivatives}). If we had a large
+number of point-particles, we would have the Poisson bracket be
+\begin{equation}
+\PoissonBracket{A}{B}
+  = \sum_{i}\frac{\partial A}{\partial q^{i}}\frac{\partial B}{\partial p_{i}}
+- \frac{\partial B}{\partial q^{i}}\frac{\partial A}{\partial p_{i}}.
+\end{equation}
+Then for fields, we take ``the continuum limit'', giving us:
+\begin{equation}
+\PoissonBracket{A}{B}
+= \int\left(\frac{\delta A}{\delta\varphi(\vec{x}',t)}\frac{\delta B}{\delta\pi(\vec{x}',t)}
+-\frac{\delta B}{\delta\varphi(\vec{x}',t)}\frac{\delta A}{\delta\pi(\vec{x}',t)}\right)\D^{n}x'.
+\end{equation}
+Here the primed variables indicate we are using some ``fresh'' dummy
+variable. 
+For a finite collection of fields $\varphi^{a}(\vec{x},t)$ with
+conjugate momenta $\pi_{a}(\vec{x},t)$, the Poisson bracket:
+\begin{equation}
+\PoissonBracket{A}{B}
+= \int\sum_{a}\left(\frac{\delta A}{\delta\varphi^{a}(\vec{x}',t)}\frac{\delta B}{\delta\pi_{a}(\vec{x}',t)}
+-\frac{\delta B}{\delta\varphi^{a}(\vec{x}',t)}\frac{\delta A}{\delta\pi_{a}(\vec{x}',t)}\right)\D^{n}x'.
+\end{equation}
+As a quick consistency check, let us compute the Poisson bracket of a
+field with its conjugate momenta:
+\begin{calculation}
+\PB{\varphi(\vec{x},t)}{\pi(\vec{y},t)}
+\step{definition of Poisson bracket}
+\int\left(\frac{\delta\varphi(\vec{x},t)}{\delta\varphi(\vec{x}',t)}\frac{\delta\pi(\vec{y},t)}{\delta\pi(\vec{x}',t)}
+-\frac{\delta\pi(\vec{y},t)}{\delta\varphi(\vec{x}',t)}\frac{\delta\varphi(\vec{x},t)}{\delta\pi(\vec{x}',t)}\right)\D^{n}x'
+\step{since $\delta\varphi/\delta\pi=\delta\pi/\delta\varphi=0$}
+\int\left(\frac{\delta\varphi(\vec{x},t)}{\delta\varphi(\vec{x}',t)}\frac{\delta\pi(\vec{y},t)}{\delta\pi(\vec{x}',t)}\right)\D^{n}x'
+\step{since $\delta\varphi(\vec{x})/\delta\varphi(\vec{x}')=\delta^{(n)}(\vec{x}-\vec{x}')$
+by Example~\ref{ex:math:functional-derivative:delta-f-over-delta-f-is-delta-fun}}
+\int\left(\delta^{(n)}(\vec{x}-\vec{x}')\frac{\delta\pi(\vec{y},t)}{\delta\pi(\vec{x}',t)}\right)\D^{n}x'
+\step{since $\delta\pi(\vec{y})/\delta\pi(\vec{x}')=\delta^{(n)}(\vec{y}-\vec{x}')$
+by Example~\ref{ex:math:functional-derivative:delta-f-over-delta-f-is-delta-fun}}
+\int\left(\delta^{(n)}(\vec{x}-\vec{x}')\delta^{(n)}(\vec{y}-\vec{x'})\right)\D^{n}x'
+\step{defining property of delta function}
+\delta^{(n)}(\vec{x}-\vec{y}).
+\end{calculation}
+
+\begin{exercise}
+When we have $n$ fields, $\varphi_{a}$, show
+$\PB{\varphi^{a}(\vec{x},t)}{\pi_{b}(\vec{y},t)}=\delta^{a}_{b}\delta^{(n)}(\vec{x}-\vec{y})$.
+\end{exercise}
+
+\begin{exercise}
+Prove $\PB{AB}{C}=\PB{A}{C}B+A\PB{B}{C}$ and $\PB{A}{BC}=\PB{A}{B}C+B\PB{A}{C}$.
+\end{exercise}
+
+\begin{exercise}
+Prove $\PB{c_{1}A+c_{2}B}{C}=c_{1}\PB{A}{C}+c_{2}\PB{B}{C}$ for any
+constants $c_{1}$, $c_{2}$.
+\end{exercise}
+
+\begin{exercise}
+Prove $\PB{A}{B}=-\PB{B}{A}$.
+\end{exercise}
+
+
+\begin{exercise}[{Teitelboim~\cite{Teitelboim:1980hs}}]
+When there are $k$ fields $\varphi^{A}$ and their conjugate momenta
+$\pi_{A}$, letting $i$, $j=1,\dots,n$ be ``spatial'' indices and $A$,
+$B$, $C=1,\dots,k$ be the ``field'' indices, summing over any repeated index, compute:
+\begin{enumerate}
+\item $\PB{\varphi^{A}(\vec{x},t)}{a_{i}^{B}(\varphi^{C}(\vec{y},t))\pi_{B}(\vec{y},t)}$
+where $a_{i}^{B}(\varphi^{C}(\vec{y},t))$ is ``some sufficiently smooth function'' of the fields;
+\item $\PB{\pi_{A}(\vec{x},t)}{a_{i}^{B}(\varphi^{C}(\vec{y},t))\pi_{B}(\vec{y},t)}$
+\item $\PB{a_{i}^{B}(\varphi^{C}(\vec{x},t))\pi_{B}(\vec{x},t)}{~a_{i}^{B}(\varphi^{C}(\vec{y},t))\pi_{B}(\vec{y},t)}$
+\item $\PB{\varphi^{A}(\vec{x},t)}{b_{i}^{jB}(\varphi^{C}(\vec{y},t))\partial_{j}\pi_{B}(\vec{y},t)}$
+where $b_{i}^{jB}(\varphi^{C}(\vec{y},t))$ is ``some sufficiently smooth function'' of the fields;
+\item $\PB{\pi_{A}(\vec{x},t)}{b_{i}^{jB}(\varphi^{C}(\vec{y},t))\partial_{j}\pi_{B}(\vec{y},t)}$
+\item $\PB{b_{i}^{jB}(\varphi^{C}(\vec{x},t))\partial_{j}\pi_{B}(\vec{x},t)}{~b_{i}^{jB}(\varphi^{C}(\vec{y},t))\partial_{j}\pi_{B}(\vec{y},t)}$
+\item $\PB{a_{i}^{B}(\varphi^{C}(\vec{x},t))\pi_{B}(\vec{x},t)}{~b_{i}^{jB}(\varphi^{C}(\vec{y},t))\partial_{j}\pi_{B}(\vec{y},t)}$
+\end{enumerate}
+\end{exercise}
+
+\N{Hamilton's Equations}\index{Hamilton's equations}
+We can use the Poisson bracket to determine the equations of motion for
+the field and its conjugate momenta:
+\begin{subequations}\label{eq:classical-field-theory:scalar-field:poisson-bracket:eom}
+\begin{align}
+\partial_{t}\varphi(\vec{x},t) &= \PB{\varphi(\vec{x},t)}{H}\\
+\partial_{t}\pi(\vec{x},t)     &= \PB{\pi(\vec{x},t)}{H},
+\end{align}
+\end{subequations}
+where the Hamiltonian is just the integral of the Hamiltonian density
+over all space,
+\begin{equation}
+H = \int_{\RR^{3}}\mathcal{H}\bigl(\varphi(\vec{x}',t), \pi(\vec{x}',t)\bigr)\,\D^{3}x'.
+\end{equation}
+
+\begin{exercise}
+From Eq~\eqref{eq:classical-field-theory:scalar-field:poisson-bracket:eom}
+and the Poisson brackets, prove the field analogue of the Hamilton equations:
+\begin{equation}
+\partial_{t}\varphi(\vec{x},t) = \frac{\delta H}{\delta\varphi(\vec{x},t)},
+\quad\mbox{and}\quad
+\partial_{t}\pi(\vec{x},t) = -\frac{\delta H}{\delta\pi(\vec{x},t)}.
+\end{equation}
+\end{exercise}
+
+
 \N{References}
 The quartic self-interacting scalar field (i.e., with
 $V(\varphi)=\lambda\varphi^{4}/4!$ where $\lambda$ is the coupling

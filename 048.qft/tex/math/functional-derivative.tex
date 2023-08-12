@@ -1,0 +1,229 @@
+\section{Functional Derivatives}\label{section:math:functional-derivatives}
+
+\M
+The intuition physicists use is to work directly analogous to discrete
+indices. Just as we have
+\begin{subequations}
+\begin{equation}
+\frac{\partial}{\partial x_{i}}x_{j} = \delta_{ij}
+\end{equation}
+we expect functional derivatives to obey similarly (for functions of
+$n\in\NN$ variables),
+\begin{equation}
+\frac{\delta}{\delta f(x)}f(y)=\delta^{(n)}(x-y).
+\end{equation}
+\end{subequations}
+Likewise, if we had a dot product
+\begin{subequations}
+\begin{equation}
+x\cdot k = \sum_{j}x_{j}k_{j},
+\end{equation}
+this would correspond to the integral
+\begin{equation}
+\int f(x)k(y)\,\D^{n}y.
+\end{equation}
+Differentiation of the dot product
+\begin{equation}
+\frac{\partial}{\partial x_{i}}\sum_{j}x_{j}k_{j} = k_{i},
+\end{equation}
+corresponds to the analogous result,
+\begin{equation}
+\frac{\delta}{\delta f(x)}\int f(y)g(y)\,\D^{n}y = g(x).
+\end{equation}
+\end{subequations}
+When we try to take the functional derivative with respect to $f(x)$ of
+an integral involving the derivative of $f(x)$, we integrate by parts
+before doing anything (and discard the boundary terms).
+
+Physicists assume the functional derivative obeys the chain rule as well
+as the Leibniz product rule. This turns out to be related to the
+Fr\'echet derivative.
+
+\begin{definition}
+Let $F[\phi]$ be a functional, which is a mapping from a normed linear
+space of functions [Banach space] $M = \{\phi(x)\mid x\in\RR\}$ to the
+field of real or complex functions, $F\colon M\to\RR$ or $F\colon M\to\CC$.
+Then we define the \define{Fr\'echet derivative} of $F$ in the direction
+of $\lambda\in M$ to be the linear mapping $L\colon M\to\FF$ (where
+$\FF=\RR$ if $F$ is real-valued, and $\FF=\CC$ if $F$ is complex-valued)
+such that
+\begin{equation}
+F[\phi + \varepsilon\lambda]-F[\phi]=\varepsilon L[\phi,\lambda]
++o(\varepsilon).
+\end{equation}
+Physicists often write $\delta\phi$ instead of $\lambda$, and $\delta F$
+instead of $L$.
+\end{definition}
+
+\N{Notation}
+We write $\delta_{y}(x)=\delta(y-x)$.
+
+\N{Physicist's Functional Derivative}
+If we take $\delta\phi(x)=\varepsilon\delta_{y}(x)$, then
+\begin{calculation}
+\delta F[\phi]
+\step{definition of Fr\'echet derivative}
+F[\phi+\varepsilon\delta_{y}] - F[\phi]
+\step{in analogy to differential form}
+\int\frac{\delta F[\phi]}{\delta\phi(x)}\varepsilon\delta(y-x)\,\D x.
+\end{calculation}
+In the limit of vanishing $\varepsilon$, we obtain what physicists call
+the functional derivative:
+\begin{equation}
+\boxed{\frac{\delta F[\phi]}{\delta\phi(y)}=\lim_{\varepsilon\to0}\frac{F[\phi+\varepsilon\delta_{y}]-F[\phi]}{\varepsilon}.}
+\end{equation}
+We call this the \define{Physicist's Functional Derivative} and it is a
+generalized function.
+
+\begin{example}\label{ex:math:functional-derivative:delta-f-over-delta-f-is-delta-fun}
+  Let
+  \begin{equation}
+F[\phi] = \int \phi(y')\delta(y'-x)\,\D y' = \phi(x).
+  \end{equation}
+  Then
+  \begin{equation}
+\frac{\delta\phi(x)}{\delta\phi(y)}=\frac{\delta F[\phi]}{\delta\phi(y)}=\delta(y-x).
+  \end{equation}
+  The proof is by direct calculation:
+\begin{calculation}
+\frac{\delta F[\phi]}{\delta\phi(y)}
+\step{definition of physicist's functional derivative}
+\lim_{\varepsilon\to0}\frac{F[\phi + \varepsilon\delta_{y}]-F[\phi]}{\varepsilon}
+\step{unfolding definition of $F[-]$}
+\lim_{\varepsilon\to0}\frac{\int\bigl(\phi(y')+\varepsilon\delta(y-y')\bigr)\delta(y'-x)\,\D y' -\int \phi(y')\delta(y'-x)\,\D y'}{\varepsilon}
+\step{arithmetic in the numerator}
+\lim_{\varepsilon\to0}\frac{\varepsilon\int\delta(y-y')\delta(y'-x)\,\D y'}{\varepsilon}
+\step{algebra, taking the limit}
+\int\delta(y-y')\delta(y'-x)\,\D y'
+\step{defining property of the delta function}
+\delta(y-x).
+\end{calculation}
+\end{example}
+
+\begin{example}
+Let $\alpha\in\CC$ be nonzero $\alpha\neq0$.
+Then
+\begin{equation}
+\frac{\delta\phi(x)^{\alpha}}{\delta\phi(y)}=\delta(x-y)\alpha\phi(x)^{\alpha-1}.
+\end{equation}
+\begin{proof}
+  We begin by defining the functional
+  \begin{equation}
+F[\phi] = \int\phi(y')^{\alpha}\delta(y'-x)\,\D y'.
+  \end{equation}
+  Then by direct calculation, we find
+\begin{calculation}
+\frac{\delta F[\phi]}{\delta\phi(y)}
+\step{definition of physicist's functional derivative}
+\lim_{\varepsilon\to0}\frac{F[\phi + \varepsilon\delta_{y}]-F[\phi]}{\varepsilon}
+\step{unfolding definition of $F[-]$}
+\lim_{\varepsilon\to0}\frac{\int\bigl(\phi(y')+\varepsilon\delta(y-y')\bigr)^{\alpha}\delta(y'-x)\,\D y' -\int \phi(y')^{\alpha}\delta(y'-x)\,\D y'}{\varepsilon}
+\step{Taylor expand to first order in $\varepsilon$ in the first term}
+\lim_{\varepsilon\to0}\frac{\int\bigl(\phi(y')^{\alpha}+\alpha\varepsilon\delta(y-y')\phi(y')^{\alpha-1}+\bigOh(\varepsilon^{2})\bigr)\delta(y'-x)\,\D y' -\int \phi(y')^{\alpha}\delta(y'-x)\,\D y'}{\varepsilon}
+\step{arithmetic in the numerator, factoring out a power of $\varepsilon$}
+\lim_{\varepsilon\to0}\frac{\varepsilon\int\bigl(\delta(y-y')\alpha\phi(y')^{\alpha-1}+\bigOh(\varepsilon)\bigr)\delta(y'-x)\,\D y'}{\varepsilon}
+\step{algebra, taking the limit}
+\int\delta(y-y')\alpha\phi(y')^{\alpha-1}\delta(y'-x)\,\D y'
+\step{defining property of the delta function}
+\delta(y-x)\alpha\phi(y)^{\alpha-1}.\qedhere
+\end{calculation}
+\end{proof}
+\end{example}
+
+\begin{theorem}
+Let $f\colon\RR\to\RR$ be a sufficiently smooth function, $F[-]$ be a
+functional defined by
+\begin{subequations}
+\begin{equation}
+F[\phi] = \int f\bigl(\phi(x)\bigr)\,\D x.
+\end{equation}
+Then
+\begin{equation}
+\frac{\delta F[\phi]}{\delta\phi(y)} = f'\bigl(\phi(y)\bigr),
+\end{equation}
+where $f'$ is the first derivative of $f$.
+\end{subequations}
+\end{theorem}
+
+\begin{proof}
+We see that, Taylor expanding $F[\phi+\varepsilon\delta_{y}]$ to first
+order in $\varepsilon$,
+\begin{equation}
+F[\phi+\varepsilon\delta_{y}]=\int\left(f\bigl(\phi(x)\bigr)+\varepsilon\delta(x-y)f'\bigl(\phi(x)\bigr)+\bigOh(\varepsilon^{2})\right)\D x.
+\end{equation}
+Then
+\begin{equation}
+F[\phi+\varepsilon\delta_{y}]-F[\phi]=\int\left(\varepsilon\delta(x-y)f'\bigl(\phi(x)\bigr)+\bigOh(\varepsilon^{2})\right)\D x.
+\end{equation}
+Dividing both sides by $\varepsilon$ gives us
+\begin{equation}
+\frac{F[\phi+\varepsilon\delta_{y}]-F[\phi]}{\varepsilon}=\int\left(\delta(x-y)f'\bigl(\phi(x)\bigr)+\bigOh(\varepsilon)\right)\D x.
+\end{equation}
+Taking the $\varepsilon\to0$ limit gives us the physicist's functional derivative
+\begin{equation}
+\frac{\delta F[\phi]}{\delta\phi(y)}
+=\int\left(\delta(x-y)f'\bigl(\phi(x)\bigr)\right)\D x.
+\end{equation}
+Then invoking the defining property of the delta function produces the result.
+\end{proof}
+
+\begin{theorem}[Linearity]
+Let $F[-]$, $G[-]$ be functionals, $c_{1}$, $c_{2}$ be (real or complex)
+constants, then
+\begin{equation}
+\frac{\delta(c_{1}F[\phi]+c_{2}G[\phi])}{\delta\phi(x)}
+=c_{1}\frac{\delta F[\phi]}{\delta\phi(x)}
++c_{2}\frac{\delta G[\phi]}{\delta\phi(x)}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[Leibniz ``product'' rule]
+Let $F[\phi]=G[\phi]H[\phi]$ be the product of two functionals.
+Then
+\begin{equation}
+\frac{\delta F[\phi]}{\delta\phi(x)}
+=\frac{\delta G[\phi]}{\delta\phi(x)}
+H[\phi] + G[\phi]\frac{\delta H[\phi]}{\delta\phi(x)}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}
+[Function chain rule]
+Let $g$ be a sufficiently smooth function, $F[-]$ be a functional.
+Then
+\begin{equation}
+\frac{\delta F\bigl[g(\phi)\bigr]}{\delta\phi(y)}
+=\frac{\delta F\bigl[g(\phi)\bigr]}{\delta g\bigl(\phi(y)\bigr)}g'\bigl(\phi(y)\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{remark}
+The chain rule for functional differentiation holds, but it requires
+$F\colon U\to Y$ to be differentiable at $\phi\in U$, and $G\colon Y\to W$
+is differentiable at $\psi=F[\phi]$, then $G\circ F$ is differentiable
+at $\phi$. But since $Y$ is usually taken to be the complex or real
+numbers, this amounts to making $G$ ``just'' a function $G[-]=g(-)$, and we are
+considering $(G\circ F)[\phi] = g\bigl(F[\phi]\bigr)$. The chain rule
+would be
+\begin{equation}
+\frac{\delta g\bigl(F[\phi]\bigr)}{\delta\phi(x)} = g'\bigl(F[\phi]\bigr)
+\frac{\delta F[\phi]}{\delta\phi(x)},
+\end{equation}
+where $g'$ is the derivative of $g$.
+\end{remark}
+
+\N{Functional Taylor Series}
+We can perform something analogous to the Taylor series expansion for a
+functional using functional derivatives, writing
+\begin{equation}
+F[\phi + \psi] =\sum^{\infty}_{k=0}\frac{1}{k!}\int\frac{\delta^{k}F[\phi]}{\delta\phi(x_{1})\cdots\delta\phi(x_{k})}\psi(x_{1})\cdots\psi(x_{k})\,\D^{n}x_{1}\cdots\D^{n}x_{k}.
+\end{equation}
+This will prove important when working with the effective action of a
+quantum theory.
+
+\N{References}
+Peskin and Schroeder~\cite{Peskin:1995ev}, in chapter 9 section 2, give
+the heuristic presented initially as the defining axioms for the
+functional derivative. Greiner~\cite{Greiner:1996zu}, section 2.3, discusses
+functional derivatives in greater detail but is sloppy with his
+discussion of the chain-rule.
