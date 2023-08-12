@@ -167,6 +167,27 @@ Taking the $\varepsilon\to0$ limit gives us the physicist's functional derivativ
 Then invoking the defining property of the delta function produces the result.
 \end{proof}
 
+\begin{corollary}
+Suppose $F$ is a functional that eats in $N$ functions $\varphi^{A}$ on
+$n$-dimensional space, suppose $f$ is a sufficiently smooth function
+(real-valued or complex-valued) such that we have
+\begin{equation}
+F[\varphi^{A}] = \int f\bigl(\varphi^{A}(x')\bigr)\,\D^{n}x'
+ = \int f\bigl(\varphi^{1}(x'), \varphi^{2}(x'),\dots,\varphi^{N}(x')\bigr)\,\D^{n}x'.
+\end{equation}
+Then
+\begin{subequations}
+\begin{equation}
+\frac{\delta F[\varphi^{A}]}{\delta\varphi^{B}(x)} =
+\left.\frac{\partial f(\varphi^{A})}{\partial\varphi^{B}}\right|_{\varphi^{A}=\varphi^{A}(x)},
+\end{equation}
+and
+\begin{equation}
+\delta F[\varphi^{A}] = \int\left(\sum_{B}\left.\frac{\partial f(\varphi^{A})}{\partial\varphi^{B}}\right|_{\varphi^{A}=\varphi^{A}(x')}\delta\varphi^{B}(x')\right)\D^{n}x'.
+\end{equation}
+\end{subequations}
+\end{corollary}
+
 \begin{theorem}[Linearity]
 Let $F[-]$, $G[-]$ be functionals, $c_{1}$, $c_{2}$ be (real or complex)
 constants, then
