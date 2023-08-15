@@ -1,6 +1,6 @@
 \section{Dirac Delta Function}
 
-\begin{theorem}
+\begin{theorem}\label{thm:math:dirac-delta:single-dimension:alpha-x}
 For any non-zero scalar $\alpha\neq0$, we have
 \begin{equation}
 \delta(\alpha x) = \frac{\delta(x)}{|\alpha|}.
@@ -41,3 +41,33 @@ where the sum extends to all distinct (non-repeated) simple roots.
 \delta(x^{2} - \alpha^{2}) = \frac{1}{2|\alpha|}\left[\delta(x+\alpha)+\delta(x-\alpha)\right].
   \end{equation}
 \end{corollary}
+
+\begin{theorem}
+Formally, for any $\alpha$, $\displaystyle\delta(x-\alpha)=\frac{1}{2\pi}\int^{\infty}_{-\infty}\E^{\I k(x-\alpha)}\,\D k$.
+\end{theorem}
+
+This follows from Fourier analysis.
+
+\N{In higher dimensions}
+When we work in $n$-dimensions and $\vec{a}\in\RR^{n}$, we write
+\begin{equation}
+\delta^{(n)}(\vec{x}-\vec{a}) = \prod^{n}_{j=1}\delta(x_{j}-a_{j}).
+\end{equation}
+Then for sufficiently nice $f\colon\RR^{n}\to\RR$, we have
+\begin{equation}
+\int_{\RR^{n}}f(\vec{x})\delta^{(n)}(\vec{x}-\vec{a})\,\D^{n}x=f(\vec{a}).
+\end{equation}
+
+\begin{theorem}
+Let $\rho\colon\RR^{n}\to\RR^{n}$ be a reflection or rotation,
+then $\delta^{(n)}(\rho\vec{x})=\delta^{(n)}(\vec{x})$.
+\end{theorem}
+
+\begin{theorem}
+Let $\alpha\in\CC$ be nonzero $\alpha\neq0$.
+Then $\delta^{(n)}(\alpha\vec{x})=|\alpha|^{-n}\delta^{(n)}(\vec{x})$.
+\end{theorem}
+
+This follows from repeatedly applying
+Theorem~\ref{thm:math:dirac-delta:single-dimension:alpha-x}
+to $\delta^{(n)}$.

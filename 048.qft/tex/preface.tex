@@ -19,6 +19,7 @@ For mathematicians, the thing to bear in mind is Newton's words:
 examples are more important than theorems. There are three families of
 examples (scalar fields, spin-$1/2$ fields, and vector [gauge] fields).
 
+
 \N{``Suitably Nice''}
 There are a number of instances where I will describe a mathematical
 gadget as ``suitably nice''. By this, I mean it is sufficiently smooth,
@@ -26,6 +27,12 @@ or decays sufficiently fast, or some other property. When the property
 is relevant, I will say ``suppse $\langle$gadget$\rangle$ is suitably smooth''
 or something similar. Mathematicians will find these mentions useful
 reminders, physicists will find this an eccentricity.
+
+\N{Appendices}
+I've tried sticking the relevant results used (somewhere) in the text as
+an appendix. This can be a review of basic calculus results, or
+clarifying what physicists think they mean when they say ``Functional
+Derivative''. 
 
 \N{Conventions}
 Since I'm working with an eye towards quantum gravity, I use the
@@ -37,6 +44,23 @@ only to avoid mathematical difficulties in the $+---$ metric
 signature. But this is not really well motivated from the mathematical
 perspective, and causes needless complication. I prefer being an honest
 broker.
+
+\N{Integrals}
+I follow the mathematician's convention of writing an integral as
+\[\int(\mbox{integrand})\,\D x\tag\mbox{mathematician convention}\]
+as opposed to the physicist's convention
+\[\int\D x\,(\mbox{integrand}).\tag\mbox{physicist convention}\]
+This clearly indicates what the integrand \emph{is}, since the
+physicist's approach is rather ambiguous.
+
+This usually won't make a difference for the most part. When we get to
+fermionic fields and quantities, we have to take care because
+multiplication will not be commutative, so swapping the measure
+$\D^{n}x$ around like this may cost us a sign.
+
+I'm also trying to stick to the convention that primed integration
+variables are considered ``fresh'', in the sense that there will be no
+accidental variable capture.
 
 \N{Unit System}
 Most QFT texts also work in the geometrized units $\hbar=c=1$ which
