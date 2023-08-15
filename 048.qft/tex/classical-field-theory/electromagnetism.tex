@@ -103,3 +103,429 @@ some matter, then we need to add a term to our Lagrangian of the form:
 \end{pmatrix}.
 \end{equation}
 This is added to the potential term in the Lagrangian.
+
+\subsection{Hamiltonian Formalism}
+
+\M We will work through the calculations of the Symplectic two-form as a
+series of exercises, and show it is degenerate. This is a consequence of
+gauge symmetries. Then we will work through the Hamiltonian formalism
+with its phase space parametrized by initial conditions.
+
+\begin{exercise}
+Prove $\displaystyle\variation L = \int\bigl(\variation A_{\beta}\partial_{\alpha}F^{\alpha\beta}+\partial_{0}(-F^{0\beta}\,\variation A_{\beta})\bigr)\,\D^{3}x$.
+\end{exercise}
+
+\begin{exercise}
+  Prove the Symplectic potential is
+  \[ \Theta(\variation A) = \int F^{\beta0}\,\variation A_{\beta}\,\D^{3}x =\int F^{i0}\,\variation A_{i}\,\D^{3}x\]
+\end{exercise}
+
+\begin{exercise}
+Suppose $A^{\alpha}$ is a solution to the Maxwell's equations. Determine
+what the linearized Maxwell equations are for tangent ``vectors''
+$\variation A^{\beta}$ with base ``point'' $A^{\alpha}$.
+\end{exercise}
+
+\begin{exercise}[Symplectic form]
+We will compute the Symplectic two-form for electromagnetism, and verify
+it is degenerate when one of the fields is pure gauge.
+\begin{enumerate}
+\item Show the [naive] Symplectic two-form for electromagnetism $\Omega=\D\Theta$
+is
+\[\Omega(\variation_{1}A,\variation_{2}A) = \int\bigl((\partial_{t}\variation_{1}A^{i}-\partial^{i}\variation_{1}A_{t})\variation_{2}A_{i}-(\partial_{t}\variation_{2}A^{i}-\partial^{i}\variation_{2}A_{t})\variation_{1}A_{i}\bigr)\,\D^{3}x.\]
+\item Consider $\variation_{2}A_{t}=\partial_{t}\Lambda$ and
+  $\variation_{2}A_{i}=\partial_{i}\Lambda$ where $\Lambda$ is any
+  function with compact support. Show
+\[\int(\partial_{t}\variation_{1}A^{i}-\partial^{i}\variation_{1}A_{t})\variation_{2}A_{i}\,\D^{3}x=-\int\Lambda\partial_{i}(\partial_{t}\variation_{1}A^{i}-\partial^{i}\variation_{1}A_{t})\,\D^{3}x.\]
+\item Show (if you haven't already) the linearized Maxwell's equations
+  includes $\partial^{i}(\partial_{t}\variation A_{i}-\partial_{i}\variation A_{t})=0$.
+\item Comparing the last two steps in this exercise, show the integral
+  from step 2 vanishes, and this implies $\Omega(\variation_{1}A,\variation_{2}A) =0$
+ (i.e., $\Omega$ is degenerate).
+\end{enumerate}
+\end{exercise}
+
+\N{Initial Data}
+Assuming we have picked some time-slicing and we have some initial data
+\begin{equation}
+\phi:=-A_{t}(\vec{x},t=0),\quad\mbox{and}\quad Q_{i}:=A_{i}(\vec{x},t=0),
+\end{equation}
+we can find the canonically conjugate momentum to $Q_{i}$ as,
+\begin{subequations}
+\begin{align}
+P^{i} &= \frac{\partial\mathcal{L}}{\partial(\partial_{t}A_{i})}\\
+&=\partial_{t}A_{i}-\partial_{i}A_{t}\\
+&=\partial_{t}Q_{i}+\partial_{i}\phi.
+\end{align}
+\end{subequations}
+
+\begin{exercise}
+Verify that $\displaystyle\frac{\partial\mathcal{L}}{\partial(\partial_{t}A_{t})}=0$,
+and therefore the canonically conjugate momentum for $\phi$ vanishes.
+\end{exercise}
+
+\begin{exercise}
+Rewrite the Lagrangian as a functional of $Q_{i}$, $P^{i}$, and
+$\phi$. Try to write it in ``canonical form'', i.e., as
+\[ L[\phi, Q_{i}, P^{i}] = \int \bigl(P^{i}\partial_{t}Q^{i}-\mbox{(something)}\bigr)\,\D^{3}x.\]
+[Hint: integration by parts and the divergence theorem are your friends.]
+\end{exercise}
+
+\M
+The Lagrangian which you ought to obtain from the previous exercises
+should be:
+\begin{equation}\label{eq:classical-field-theory:electromagnetism:canonical-formalism:lagrangian}
+L =
+\int\left(P^{i}\partial_{t}Q_{i}-\left[\frac{1}{2}(P_{i}P^{i}+\frac{F_{ij}F^{ij}}{2}) + \phi\,\partial_{i}P^{i}\right]\right)\D^{3}x.
+\end{equation}
+Observe then that the equations of motion for $\phi$ are precisely
+Gauss's Law:
+\begin{equation}
+\partial_{i}P^{i} = 0.
+\end{equation}
+We interpret $\phi$ as a Lagrange multiplier.
+
+\begin{exercise}
+Using the Lagrangian you should have computed (or lifted from the
+previous chunk), prove the Euler--Lagrange equations:
+\begin{equation}
+\frac{\variation L}{\variation P^{i}}-\frac{\D}{\D t}\frac{\variation L}{\variation\partial_{t}P^{i}}=0,\quad
+\frac{\variation L}{\variation Q^{i}}-\frac{\D}{\D t}\frac{\variation L}{\variation\partial_{t}Q^{i}}=0,\quad
+\frac{\variation L}{\variation\phi}=0,
+\end{equation}
+are equivalent to the Maxwell equations.
+\end{exercise}
+
+\N{Hamiltonian}
+We find the Hamiltonian functional by inspection of
+Eq~\eqref{eq:classical-field-theory:electromagnetism:canonical-formalism:lagrangian}
+to be:
+\begin{equation}
+H = \int\left(\frac{1}{2}(P_{i}P^{i}+\frac{F_{ij}F^{ij}}{2}) + \phi\,\partial_{i}P^{i}\right)\D^{3}x.
+\end{equation}
+The first two terms coincide with our expectations, but the last term
+may be surprising.
+
+\begin{ddanger}
+When we have a constrained Hamiltonian system, we add the first-class
+constraints to the Hamiltonian. This is precisely what's going on with
+the Hamiltonian functional as we've written it down. This is studied
+thoroughly in Henneaux and Teitelboim~\cite{Henneaux:1992ig}.
+\end{ddanger}
+
+\begin{exercise}\index{Hamilton's equations}
+The reader can verify Hamilton's equations,
+\begin{subequations}
+\begin{align}
+\partial_{t}Q_{i} &= \frac{\delta H}{\delta P^{i}} = P_{i} - \partial_{i}\phi\\
+\partial_{t}P_{i} &= -\frac{\delta H}{\delta P^{i}} = \partial_{i}F^{ij}.
+\end{align}
+\end{subequations}
+\end{exercise}
+
+\begin{exercise}\index{Poisson bracket}
+Using the Poisson brackets,
+\begin{equation}
+\PB{M}{N} = \int\left(\frac{\delta M}{\delta Q_{i}(\vec{x}')}\frac{\delta N}{\delta P^{i}(\vec{x}')}
+-\frac{\delta N}{\delta Q_{i}(\vec{x}')}\frac{\delta M}{\delta P^{i}(\vec{x}')}\right)\D^{3}x',
+\end{equation}
+show the quantity
+\begin{equation}
+G = - \int\Lambda(\vec{x})\partial_{i}P^{i}\,\D^{3}x
+\end{equation}
+is the generating function for gauge transformations
+\begin{equation}
+\variation Q_{i}=\PB{Q_{i}}{G}=\partial_{i}\Lambda,\quad
+\variation P^{i}=\PB{P^{i}}{G}=0.
+\end{equation}
+\end{exercise}
+
+\subsection{Scalar Electrodynamics}
+
+\M
+One of the first models we study in quantum field theory is something
+called ``scalar electrodynamics''. This is obtained by taking a complex
+Scalar field and coupling it to Electromagnetism. Let us review the
+pertinent aspects of the complex Scalar field, then let us try to couple
+it to electromagnetism.
+
+\subsubsection{Complex Scalar Field}
+
+\M We take 2 real-valued scalar fields
+$\varphi_{1}$ and $\varphi_{2}$, then form the complex scalar
+field\footnote{This is an abuse of notation, similar to using $z$ and
+$\bar{z}$ in complex analysis as the independent coordinates of the
+Complex plane.} 
+\begin{equation}
+\varphi(x) = \frac{\varphi_{1}(x)+\I\varphi_{2}(x)}{\sqrt{2}},\quad\mbox{and}\quad
+\varphi^{*}(x) = \frac{\varphi_{1}(x)-\I\varphi_{2}(x)}{\sqrt{2}}.
+\end{equation}
+Then we couple the complex scalar field to electromagnetism.
+
+\N{Complex Scalar Field}\index{Scalar Field!Complex}
+The complex scalar field (also called the \emph{charged Klein--Gordon field})
+may be viewed as a mapping
+\begin{equation}
+\varphi\colon\RR^{3,1}\to\CC.
+\end{equation}
+The Lagrangian for the complex Scalar field is:
+\begin{equation}
+\mathcal{L}_{cs} = -(\eta^{\alpha\beta}\partial_{\alpha}\varphi\partial_{\beta}\varphi^{*}+\mu^{2}|\varphi|^{2}).
+\end{equation}
+
+\begin{exercise}
+Show the Euler--Lagrange equations give you the equations of motion
+\begin{subequations}
+\begin{align}
+\frac{\variation S}{\variation\varphi}=0 &\implies (\partial^{\alpha}\partial_{\alpha}+\mu^{2})\varphi^{*}=0,
+\intertext{and}  
+\frac{\variation S}{\variation\varphi^{*}}=0 &\implies (\partial^{\alpha}\partial_{\alpha}+\mu^{2})\varphi=0.
+\end{align}
+\end{subequations}
+\end{exercise}
+
+\N{Symmetries of Complex Scalar Field}
+We can use Noether's theorem to find that the complex scalar field
+admits a continuous symmetry:
+\begin{equation}
+\varphi_{\lambda}=\E^{\I\lambda}\varphi,\quad
+\varphi_{\lambda}^{*}=\E^{-\I\lambda}\varphi^{*},
+\end{equation}
+where $\lambda\in\RR$ is arbitrary. Since $\lambda$ is a constant, we
+see the kinetic term of the Lagrangian is invariant under this
+transformation. Similarly, we see $|\varphi|^{2}=\varphi^{*}\varphi$ is
+invariant under this transformation.
+
+\begin{remark}\index{Symmetry!Global}\index{Symmetry!Local}
+This is a ``global $\U(1)$'' symmetry. It's ``global'' because the
+parameter $\lambda$ is a real number independent of spacetime. (If
+$\lambda$ were a function of spacetime $\lambda=\lambda(\vec{x},t)$,
+then we would call it a ``local'' symmetry.) It's a $\U(1)$ symmetry
+because $\E^{\I\lambda}\in\U(1)$.
+
+Older literature use the term ``gauge transformation of the first kind''\index{Gauge!Transformation!Of the first kind}
+instead of ``global symmetry transformation''
+\end{remark}
+
+\begin{exercise}
+Use Noether's theorem to prove this is a continuous symmetry of the
+complex scalar field. Then determine the conserved current $j^{\beta}$
+for this symmetry.
+\end{exercise}
+\begin{exercise}
+Prove the Noether charge for the complex Scalar field is
+\begin{equation}
+Q = \I\int_{V}(\varphi^{*}\partial_{t}\varphi-\varphi\partial_{t}\varphi^{*})\,\D^{3}x.
+\end{equation}
+\end{exercise}
+
+\N{Sigma Models}\index{Sigma model@$\sigma$ Model}
+There is a way to generalize this construction from 2 real Scalar fields
+to $N$ real Scalar fields. This is a family of models called
+\define{Sigma models} where the scalar fields are components of a smooth
+function $\sigma\colon\RR^{3,1}\to\mathcal{M}$ where $\mathcal{M}$ is
+usually a Lie group. (There is no significance to the choice of $\sigma$
+for scalar fields, and Sigma models refer to this historic artifact of
+arbitrary notation.) Then the Lagrangian density for the massless case
+is:
+\begin{equation}
+\mathcal{L} = \frac{1}{2}\sum^{N}_{A,B=1}g_{AB}(\sigma)\partial^{\mu}\sigma^{A}\partial_{\mu}\sigma^{B},
+\end{equation}
+where $G_{AB}(\sigma)$ is the metric tensor on the field space $\mathcal{M}$,
+and $\partial_{\mu}$ are the derivatives on the underlying spacetime
+manifold $\RR^{3,1}$. When we include some self-interaction terms, we
+obtain a \emph{Nonlinear $\sigma$ Model}.
+
+When $\mathcal{M}=\CC^{2}$, for example, we can show the $\sigma$ model
+enjoys an $\SU(2)$ symmetry. Similarly, for $\mathcal{M}=\CC^{n}$, the
+$\sigma$ model enjoys an $\SU(n)$ symmetry. These models are useful as
+``prolegomenon'' to Yang--Mills theory for the Standard Model.
+
+\begin{remark}
+Sigma models were first introduced in \S\S5--6 of Gell-Mann and Levy~\cite{Gell-Mann:1960mvl}.
+Initially, $\sigma$ was ``just another scalar field'' in that paper. Later
+physicists adopted $\sigma$ as we have introduced it: as a familar of
+scalar fields.
+\end{remark}
+
+\subsubsection{Charged Scalar Field coupled to Electromagnetism}
+
+\M
+Now we can couple the complex Scalar field to Electromagnetism.
+The basic idea is we will form the Lagrangian density for scalar
+electrodynamics by adding the Lagrangian density for the complex Scalar
+field to the Lagrangian density for the Electromagnetic field, plus the
+4-current coupling the charged Scalar field to the Electromagnetic field:
+\begin{equation}
+\begin{split}
+\mathcal{L}_{sED}&=\mathcal{L}_{cs}+\mathcal{L}_{EM}+\mathcal{L}_{int}\\
+&=-(\eta^{\alpha\beta}\partial_{\alpha}\varphi\partial_{\beta}\varphi^{*}+\mu^{2}|\varphi|^{2})
+-\frac{1}{4}F^{\alpha\beta}F_{\alpha\beta}
++4\pi j^{\alpha}A_{\alpha}.
+\end{split}
+\end{equation}
+We just need to determine $j^{\alpha}$ in terms of the complex Scalar
+field $\varphi$.
+
+We know from Noether's theorem there is a conserved current for the
+$\U(1)$ Symmetry for the complex Scalar field,
+\begin{equation}
+j^{\alpha} = -\I\eta^{\alpha\beta}(\varphi^{*}\partial_{\beta}\varphi - \varphi\partial_{\beta}\varphi^{*}).
+\end{equation}
+There is some slight difficulties with the Lagrangian as we have written
+it: it is no longer gauge invariant under $A^{\mu}\to
+A^{\mu}+\partial^{\mu}\Lambda$.
+
+\N{Minimal coupling}
+The ``physically correct way'' to get a gauge-invariant Lagrangian which
+still gives the $j^{\alpha}A_{\alpha}$ coupling is rather unintuitive:
+we use a different differential operator than $\partial_{\mu}$ in the
+charged Scalar field's Lagrangian density.
+
+This is the so-called \define{Minimal Coupling}, where we replace
+\begin{subequations}
+\begin{equation}
+\partial_{\alpha}\varphi\to D_{\alpha}\varphi := (\partial_{\alpha}+\I qA_{\alpha})\varphi,
+\end{equation}
+and
+\begin{equation}
+\partial_{\alpha}\varphi^{*}\to D_{\alpha}\varphi^{*} := (\partial_{\alpha}-\I qA_{\alpha})\varphi^{*}.
+\end{equation}
+\end{subequations}
+Here $q$ is a parameter reflecting the coupling strength between the
+charged scalar field $\varphi$ and the Electromagnetic field. It's an
+example of a \emph{coupling constant}.\index{Coupling constant}
+Then we modify the complex Scalar field's Lagrangian density to use
+these gauge covariant derivatives,
+\begin{equation}\label{eq:classical-field-theory:electromagnetism:lagrangian-density-for-complex-scalar-field-using-gauge-covariant-derivatives}
+\mathcal{L}_{cs} = -\eta^{\alpha\beta}D_{\alpha}\varphi^{*}D_{\beta}\varphi-\mu^{2}|\varphi|^{2}.
+\end{equation}
+This Lagrangian density yields field equations which are the usual wave
+equations plus some modifications involving the electromagnetic
+potential.
+
+\begin{exercise}
+Compute the Euler--Lagrange equations for $\varphi$ and $\varphi^{*}$ using the Lagrangian density from Eq~\eqref{eq:classical-field-theory:electromagnetism:lagrangian-density-for-complex-scalar-field-using-gauge-covariant-derivatives}.
+\end{exercise}
+
+\M
+Now observe, under a gauge transformation of the electromagnetic
+4-potential
+\begin{subequations}
+\begin{equation}
+A_{\alpha}\to A_{\alpha}+\partial_{\alpha}\Lambda,
+\end{equation}
+for the gauge covariant derivatives of the complex Scalar field to
+remain invariant under these gauge transformations, we need:
+\begin{align}
+  \varphi&\to\E^{-\I q\Lambda}\varphi,\\
+  \intertext{and}
+  \varphi^{*}&\to\E^{\I q\Lambda}\varphi^{*}.
+\end{align}
+\end{subequations}
+The reader can verify that the gauge covariant derivatives of the
+complex Scalar field then transform as
+\begin{subequations}
+\begin{align}
+D_{\alpha}\varphi &\to\E^{-\I q\Lambda}D_{\alpha}\varphi,\\
+D_{\alpha}\varphi^{*} &\to\E^{\I q\Lambda}D_{\alpha}\varphi^{*}.
+\end{align}
+\end{subequations}
+We can see that the kinetic term for the modified complex Scalar
+Lagrangian density remains invariant under these transformations.
+
+\M
+Since the electromagnetic interaction with the complex Scalar fields are
+``swept into'' the gauge covariant derivatives, we can write the
+Lagrangian density for the scalar electrodynamic theory as:
+\begin{subequations}
+\begin{equation}
+\mathcal{L}_{sED} = \frac{-1}{4}F^{\alpha\beta}F_{\alpha\beta} - \eta^{\alpha\beta}D_{\alpha}\varphi^{*}D_{\beta}\varphi-\mu^{2}|\varphi|^{2}.
+\end{equation}
+When we expand the gauge covariant derivatives in this Lagrangian
+density, we have:
+\begin{equation}
+\mathcal{L}_{sED} = \frac{-1}{4}F^{\alpha\beta}F_{\alpha\beta} - \eta^{\alpha\beta}\partial_{\alpha}\varphi^{*}\partial_{\beta}\varphi-\mu^{2}|\varphi|^{2}
++\I q A^{\alpha}(\varphi^{*}\partial_{\alpha}\varphi-\varphi\partial_{\alpha}\varphi^{*}+\I q A_{\alpha}|\varphi|^{2}).
+\end{equation}
+\end{subequations}
+The Euler--Lagrange equations for the Electromagnetic 4-potential are
+\begin{equation}
+\partial_{\beta}F^{\alpha\beta}=-4\pi J^{\alpha},
+\end{equation}
+where the current is defined using the gauge covariant derivatives as
+\begin{equation}\label{eq:classical-field-theory:sed:charged-current}
+J^{\alpha} = -\frac{\I q}{4\pi}(\varphi^{*}D^{\alpha}\varphi-\varphi D^{\alpha}\varphi^{*}).
+\end{equation}
+This is rather magical, but we could derive the same results using
+Noether's first theorem for fields.
+
+\M
+We should mention that physicists look at
+Eq~\eqref{eq:classical-field-theory:sed:charged-current} and interpret
+it as telling us the electromagnetic charge for the complex scalar field
+cannot ``exist alone'' in the Scalar field. In an interacting system,
+the division between ``source fields'' and ``fields mediating interactions''
+is rather artificial and arbitrary. This is physically reasonable (even
+if a little surprising). Mathematically this feature emerges from
+demanding gauge invariance.
+
+The complex Scalar field is no longer uniquely defined in scalar
+electrodynamics: it is subject to a gauge transformation, just like the
+electromagnetic 4-potential.
+
+When we have such an interaction, if we want to compute (say) the
+electromagnetic field contained in a region $V$, we need a solution
+$(A,\varphi)$ of the coupled Maxwell--Scalar equations, then substitute
+it into:
+\begin{equation}
+Q = \frac{1}{4\pi}\int_{V}\I q(\varphi^{*}D_{0}\varphi-\varphi D_{0}\varphi^{*})\,\D^{3}x.
+\end{equation}
+This charge is conserved and gauge invariant.
+
+\begin{exercise}
+Prove the total electric charge $Q$ is conserved \emph{and} gauge invariant.
+\end{exercise}
+
+\begin{exercise}
+Suppose we had a Lagrangian for complex scalar fields coupled to
+electromagnetism of the form
+\begin{equation}
+\mathcal{L}=\mathcal{L}_{EM}-\frac{1}{2}[\varphi g^{\mu}D_{\mu}\varphi^{*}-\varphi^{*}g^{\mu}D_{\mu}\varphi]-\mu^{2}|\varphi|^{2},
+\end{equation}
+where $g^{\mu}$ is ``some [constant] vector'', and $D_{\mu}$ is the
+gauge covariant derivative.
+\begin{enumerate}
+\item How must $\varphi$ and $\varphi^{*}$ transform under gauge
+  transformations $A_{\alpha}\to A_{\alpha}+\partial_{\alpha}\Lambda$?
+\item How do the gauge covariant derivatives $D_{\alpha}\varphi$ and
+  $D_{\alpha}\varphi^{*}$ transform under gauge transformations?
+\end{enumerate}
+\end{exercise}
+
+\subsection{Chern--Simons Theory}
+
+\M
+In $2+1$ dimensions (instead of $3+1$ dimensions), we have a particular
+action which plays an important role in physics called the Chern--Simons
+action named after its discoverer Albert Schwarz:
+\begin{equation}
+\begin{split}
+  \action_{CS}[A] &= \frac{k}{4\pi}\int\epsilon^{\mu\nu\rho}A_{\mu}\partial_{\nu}A_{\rho}\,\D^{3}x\\
+&\mbox{``=''}\; \frac{k}{4\pi}\int(A\times\nabla)^{\rho} A_{\rho}\,\D^{3}x
+\end{split}
+\end{equation}
+where $A_{\mu}$ is a ``4''-potential for electromagnetism. Later we will
+generalize Electromagnetism to Yang--Mills theory, and the Chern--Simons
+theory will play an important role in something called the Quantum Hall
+effect. It also describes quantum gravity in $2+1$ dimensions.
+
+For a Yang--Mills field, however, we also have a term that looks like
+$A^{3}$ in the action. Such a term vanishes for commutative gauge groups
+like $\U(1)$ (i.e., like for Electromagnetism).
+
+\begin{exercise}
+From demanding stationary action $\variation\action_{CS}[A]/\variation A^{\mu}(x)=0$,
+determine the equations of motion for Chern--Simons theory for the
+electromagnetic field.
+\end{exercise}
