@@ -1,0 +1,301 @@
+\section{*Path Independence}
+
+\M Teitelboim showed in his PhD thesis and several follow-up articles~\cite{Hojman:1976vp,Teitelboim:1980hs} how
+we can use the canonical formalism coupled to the principle of ``path
+independence'' to derive General Relativity, Yang--Mills gauge theory,
+among other things. We also saw in passing
+(\S\ref{chunk:rqm:poincare-algebra:elementary-particles-irreps}) the
+only fields possible are Scalar fields, Vector fields, and (rank-2
+symmetric) Tensor fields.
+
+\N{Foliating Spacetime}
+We foliate spacetime by space-like hypersurfaces $\Sigma_{t}$ indexed by
+time $t$. We have the metric $h_{ij}$ on $\Sigma_{t}$ where $i$,
+$j=1,2,3$ are spatial indices.
+
+We stipulate that $h_{ij}$ has its canonically conjugate momenta density
+$p^{ij}$. 
+
+\N{Evolution}
+If we want to consider the time evolution of a function $F(h_{ij}(x), p^{k\ell})$
+from one spatial hypersurface $\Sigma_{t}$ to another $\Sigma_{t+\delta t}$
+be described using generators $\mathcal{H}_{i}(x)$ and $\mathcal{H}_{\bot}(x)$
+and the Poisson bracket
+\begin{equation}
+\begin{split}
+\dot{F}(h_{ij}(x),p^{k\ell}(x))
+&=\int\bigl(\PB{F}{\mathcal{H}_{\bot}(x')}N(x') + \PB{F}{\mathcal{H}_{i}(x')}N^{i}(x')\bigr)\,\D^{3}x'\\
+&=\int\PB{F}{\mathcal{H}_{\mu}(x')}N^{\mu}(x')\,\D^{3}x'.
+\end{split}
+\end{equation}
+If we want to consider spatial diffeomorphisms $F\to F + \variation F$
+along the same hypersurface $\Sigma_{t}$, then we use:
+\begin{equation}
+\variation F = -\int\PB{F}{\mathcal{H}_{i}(x')}\,\variation N^{i}(x')\,\D^{3}x'.
+\end{equation}
+
+
+\N{Fundamental Poisson Brackets}
+We generate the transformations desired by the Poisson brackets:
+\begin{subequations}
+\begin{align}
+\PB{\mathcal{H}_{\bot}(x)}{\mathcal{H}_{\bot}(x')} &= [h^{ij}(x)\mathcal{H}_{j}(x) + h^{ij}(x')\mathcal{H}_{j}(x')]\partial_{i}\delta(x,x')\\
+\PB{\mathcal{H}_{i}(x)}{\mathcal{H}_{\bot}(x')} &= \mathcal{H}_{\bot}(x)\partial_{i}\delta(x,x')\\
+\PB{\mathcal{H}_{i}(x)}{\mathcal{H}_{j}(x')} &= \mathcal{H}_{i}(x')\partial_{j}\delta(x,x')+\mathcal{H}_{j}(x)\partial_{i}\delta(x,x').
+\end{align}
+\end{subequations}
+The ``only'' generator of ``real'' dynamical interest is $\mathcal{H}_{\bot}$.
+The three $\mathcal{H}_{i}$ generate spatial diffeomorphisms, i.e.,
+displacements that lie on the same spatial hypersurface which amount to
+a change of spatial coordinates.
+
+\N{Gravitating and Matter Generators}
+We separate the generators $\mathcal{H}_{\bot}$ and $\mathcal{H}_{i}$
+into a sum of the ``gravitational part'' and the ``matter part''. We
+would have
+\begin{equation}
+\mathcal{H}_{\bot} = \mathcal{H}_{\bot}^{\text{grav}}[h_{ij},p^{k\ell}]
++ \mathcal{H}_{\bot}^{\text{mat}}[h_{ij},p^{k\ell},\mbox{matter canonical variables}].
+\end{equation}
+If $\mathcal{H}_{\bot}^{\text{mat}}$ did not depend on gravitational
+variables (the spatial metric and its conjugate momenta), then the
+Poisson bracket
+$\PB{\mathcal{H}_{\bot}^{\text{mat}}}{\mathcal{H}_{\bot}^{\text{mat}}}$
+cannot satisfy the desired relation (it'd be independent of $h_{ij}$,
+but it must involve $h^{ij}$).
+
+\M
+The general form of $\mathcal{H}_{i}$ meanwhile may be constrained by
+the following desired requirements:
+\begin{enumerate}
+\item It must be linear in the momenta in order to generate
+  transformations of the fields under coordinate transformations (and
+  not mix fields and momenta);
+\item It should contain the momenta only up to the first spatial
+  derivatives because it should generate first-order derivatives in the
+  fields (think ``Taylor expansion to first order'').
+\end{enumerate}
+Therefore we expect
+\begin{equation}
+\mathcal{H}_{i}={b_{i}}^{jB}(\phi^{C})\partial_{b}p^{B} + {a_{a}}^{B}(\phi^{C})p_{B},
+\end{equation}
+where $\phi^{A}$ is now a symbolic notation for \emph{all} fields
+\emph{including gravity}, and $p_{A}$ denotes the corresponding momenta.
+
+\N{Heuristic for $\mathcal{H}_{\bot}$}
+We stipulate that $\mathcal{H}_{\bot}$ is a quadratic polynomial in the
+momenta,
+\begin{equation}
+\mathcal{H}_{\bot}\sim M_{AB}(\phi^{C})p^{A}p^{B} + N_{A}(\phi^{C})p^{A} + V(\phi^{C}),
+\end{equation}
+then we just need to determine the coefficients $M_{AB}$, $N_{A}$, $V$.
+The calculations for the various fields appears in Section 6 of
+Teitelboim~\cite{Teitelboim:1980hs}. 
+
+\N{Spatial Diffeomorphism Requirements}
+We demand the existence of \emph{ultralocal solutions}, in the sense
+that a deformation localized at a point $\vec{x}_{0}$ must change the
+field only at $\vec{x}_{0}$, then we find
+\begin{equation}
+b^{ijB}=b^{jiB}.
+\end{equation}
+So under an infinitesimal coordinate transformation
+\begin{equation}
+x'^{i} = x^{i} - \variation N^{i}(x),
+\end{equation}
+we will demand a field quantity $\phi$ transforms as
+\begin{equation}
+\LieD_{\variation\vec{N}}\phi =
+-\int\PB{\phi}{\mathcal{H}_{i}(x')}\,\variation N^{i}(x')\,\D^{3}x',
+\end{equation}
+where $\LieD$ denotes the Lie derivative.\index{Lie derivative}
+This will then give us a way to find $\mathcal{H}_{i}(x')$.
+
+\N{Spatial Diffeomorphism Invariance of Scalar Fields}
+For Scalar fields $\phi(x)$, it must transform as
+\begin{equation}
+\variation\phi(x):=\phi'(x)-\phi(x)\weakEq\partial_{i}\phi\,\variation N^{i}=\LieD_{\variation\vec{N}}\phi.
+\end{equation}
+This is generated by
+\begin{equation}\label{eq:classical-field-theory:henneaux:scalar-field-momenta-constraints}
+\mathcal{H}_{i} = p_{\phi}\partial_{i}\phi,
+\end{equation}
+where $p_{\phi}$ is the conjugate momenta density for $\phi$.
+
+\begin{exercise}
+Show that Eq~\eqref{eq:classical-field-theory:henneaux:scalar-field-momenta-constraints}
+implies $b^{ij}=0=b^{ji}$. Therefore it satisfies ultralocality.
+\end{exercise}
+
+\begin{exercise}
+Verify Eq~\eqref{eq:classical-field-theory:henneaux:scalar-field-momenta-constraints}
+generates the correct transformations for $\phi$.
+\end{exercise}
+
+\N{For Vector Fields}
+The vector field $A_{i}(x)$ transforms as
+\begin{equation}
+\variation A_{i} = (\partial_{j}A_{i})\,\variation
+N^{j}+A_{j}\partial_{i}(\variation N^{j}) = (\LieD_{\variation\vec{N}}A)_{i},
+\end{equation}
+which is generated by
+\begin{equation}\label{eq:classical-field-theory:henneaux:vector-field-momenta-constraints}
+\mathcal{H}_{i} = -A_{i}\partial_{j}p^{j} + (\partial_{i}A_{j}-\partial_{j}A_{i})p^{j}.
+\end{equation}
+
+\begin{exercise}
+Verify Eq~\eqref{eq:classical-field-theory:henneaux:vector-field-momenta-constraints}
+generates $\variation A_{i}$.
+\end{exercise}
+
+\begin{exercise}[DO THIS]
+Show that Eq~\eqref{eq:classical-field-theory:henneaux:vector-field-momenta-constraints}
+implies ${{b_{i}}^{j}}_{C}=-A_{i}{\delta^{j}}_{C}$ and therefore the
+condition for ultralocality is not fulfilled for vector fields.
+\end{exercise}
+
+\N{Covariant Rank-2 Tensor}
+For a covariant rank-2 tensor (not necessarily symmetric) $t_{ij}$, we
+have
+\begin{equation}
+\variation t_{ij} = (\partial_{k}t_{ij})\variation N^{k}
++ t_{ik}\partial_{j}(\variation N^{k})
++ t_{jk}\partial_{i}(\variation N^{k})
+= (\LieD_{\variation\vec{N}}t)_{ij}.
+\end{equation}
+This is generated by
+\begin{equation}
+\mathcal{H}_{i} = p^{k\ell}\partial_{i}t_{k\ell}-\partial_{k}(t_{ij}p^{kj})-\partial_{j}(t_{ki}p^{kj}).
+\end{equation}
+In order for ultralocality to hold, we must have
+\begin{equation}
+t_{ij} = f(x)h_{ij}
+\end{equation}
+where $f(x)$ is an arbitrary function. That is to say, the tensor field
+must be proportional to the metric tensor. We can interpret this as
+another piece of evidence suggesting the ``only'' spin-2 field allowed
+is the gravitational field.\index{Spin!Uniqueness of (---)-2}
+
+\begin{exercise}[Fermions]
+We know that spin-$1/2$ fields $\psi$ have its Lie derivative be
+\begin{equation}
+\LieD_{X}\psi = X^{j}\partial_{i}\psi - \frac{1}{8}(\partial_{i}X_{j}-\partial_{j}X_{i})\gamma^{i}\gamma^{j}\psi = \variation\psi,
+\end{equation}
+where $\gamma^{i}$, $\gamma^{j}$ are the Dirac matrices; see
+Choquet-Bruhat and DeWitt-Morette~\cite{Choquet-Bruhat:2000amp2}.
+Can we do a similar analysis for $\psi$? (I honestly do not know!)
+Specifically:
+\begin{enumerate}
+\item Since we're dealing with
+  fermionic fields, how must we modify the spatial diffeomorphism
+  condition
+  $\variation\psi\sim-\int\PB{\psi}{\mathcal{H}_{i}(y)}\,\variation N^{i}(y)\,\D^{3}y$?
+  Does it suffice to use the Poisson \emph{super}-bracket?
+\item What $\mathcal{H}_{i}$ generates this? 
+\item Is this $\mathcal{H}_{i}$ ultralocal?
+\end{enumerate}
+\end{exercise}
+
+\N{Gauge Theory: Recovering Ultralocality for Vector Fields}
+We see that $\mathcal{H}_{i}$ is not ultralocal. It's caused by the
+presence of the $A_{i}\partial^{j}p_{j}$ term. So it's tempting to make
+the replacement
+\begin{equation}
+\mathcal{H}_{i}\to\widetilde{\mathcal{H}}_{i}
+:=\mathcal{H}_{i} + A_{i}\partial_{j}p^{j}
+=(\partial_{i}A_{j}-\partial_{j}A_{i})p^{j}.
+\end{equation}
+We see then that the Poisson bracket of this generator with itself is:
+\begin{equation}\label{eq:classical-field-theory:henneaux-pi:modified-vector-PB}
+\PB{\widetilde{\mathcal{H}}_{i}(x)}{\widetilde{\mathcal{H}}_{j}(y)}
+= \widetilde{\mathcal{H}}_{j}(x)\partial_{i}\delta(x,y)
++ \widetilde{\mathcal{H}}_{i}(y)\partial_{j}\delta(x,y)
+- F_{ij}(x)\partial_{k}p^{k}(x)\delta(x,y),
+\end{equation}
+where $F_{ij}=\partial_{i}A_{j}-\partial_{j}A_{i}$. This new term
+appearing in the right-hand side of
+Eq~\eqref{eq:classical-field-theory:henneaux-pi:modified-vector-PB} is
+harmless \emph{only} if it generates physically irrelevant
+transformations (``gauge transformations''). There are two ways this
+could happen: either $F_{ij}$ is constrained to vanish (which is too
+strong, this would imply $A_{i}=\partial_{i}\varphi$), or we demand
+$\partial_{i}p^{i}\weakEq0$ is a constraint. We therefore introduce the
+constraint
+\begin{equation}
+\mathcal{G}(x) := \frac{-1}{e}\partial_{i}p^{i}(x) =
+\frac{-1}{e}\partial_{i}E^{i}(x) = \frac{-1}{e}\nabla\cdot\vec{E}(x),
+\end{equation}
+where $e$ is the electric charge, and the momentum is just $\vec{E}$ the
+electric field. This constraint $\mathcal{G}\weakEq0$ is precisely
+\emph{Gauss's Law}.
+
+\begin{exercise}
+Prove $\widetilde{H}_{i}$ is gauge invariant. Hint: it suffices to prove
+the electric field is gauge invariant, and $F_{ij}$ is gauge invariant.
+\end{exercise}
+
+\begin{exercise}
+Show Gauss's Law generates the gauge transformations
+\begin{subequations}
+\begin{align}
+\variation A_{i}(x) &= \int\PB{A_{i}(x)}{\mathcal{G}(y)}\,\xi(y)\,\D^{3}y=\frac{1}{e}\partial_{i}\xi(x)\\
+\variation p^{i}(x) &= \int\PB{p^{i}(x)}{\mathcal{G}(y)}\,\xi(y)\,\D^{3}y=0.
+\end{align}
+\end{subequations}
+\end{exercise}
+
+\M
+Therefore we conclude that $A_{i}(x)$ transforms under
+$\widetilde{H}_{j}$ as a vector modulo a gauge transfromation.
+
+\N{Generalization to Yang--Mills}
+When we replace $A_{i}(x)$ with several fields $A_{i}^{a}(x)$ for $a=1$,
+\dots, $N$. We assume that:
+\begin{enumerate} 
+\item $A_{i}^{a}(x)$ does not mix with its momenta $p^{i}_{a}(x)$ under
+  a gauge transformation,
+\item the momenta should transform homogenously, and
+\item the gauge constraint (the non-Abelian version of Gauss's Law) is local.
+\end{enumerate}
+This forces us to,
+\begin{equation}
+\mathcal{G}_{i} = \frac{-1}{f}\partial_{i}{p_{a}}^{i} + {C_{ab}}^{c}A^{a}_{i}p^{i}_{c}\weakEq0,
+\end{equation}
+where $f$ and ${C_{ab}}^{c}$ are constants. If we demand the commutator
+of two gauge transformations yields another gauge transformation, then
+we find ${C_{ab}}^{c}$ are the structure constants of a Lie algebra. We
+have:
+\begin{equation}
+\PB{\mathcal{G}_{a}(x)}{\mathcal{G}_{b}(y)}={C_{ab}}^{c}\mathcal{G}_{c}(x)\delta(x,y),
+\end{equation}
+which precisely characterizes a Yang--Mills theory.
+
+\M
+If we split up $\mathcal{H}_{\bot}$ as a sum
+\begin{equation}
+\mathcal{H}_{\bot}=\mathcal{H}_{\bot}^{\text{grav}}+\mathcal{H}_{\bot}^{\text{YM}},
+\end{equation}
+and demanding the Yang--Mills part is independent of the gravitational
+momenta (so $\mathcal{H}_{\bot}^{\text{YM}}$ depends only ultralocally
+on the metric), then we find
+\begin{equation}
+\mathcal{H}_{\bot}^{\text{YM}} = \frac{1}{2\sqrt{h}}(h_{ij}\gamma^{ab}p^{i}_{a}p^{j}_{b}+h^{ij}\gamma_{ab}B^{a}_{i}B^{b}_{j}),
+\end{equation}
+where $\gamma_{ab}={C_{ac}}^{d}{C_{bd}}^{c}$ is the ``group metric''
+($\gamma^{ab}$ is its inverse), and
+$B^{a}_{i}=\frac{1}{2}\epsilon_{ijk}F^{ajk}$ are the non-Abelian
+``magnetic fields''. The non-Abelian field strength is given by:
+\begin{equation}
+F^{a}_{ij}=\partial_{i}A^{a}_{j} - \partial_{j}A^{a}_{i}
++f{C^{a}}_{bc}A^{b}_{i}A^{c}_{j}.
+\end{equation}
+The Hamiltonian corresponds to the action,
+\begin{equation}
+\action_{\text{YM}} = \frac{-1}{4}\int\gamma_{ab}F^{a}_{\mu\nu}F^{b\mu\nu}\sqrt{-g}\,\D^{4}x
+\end{equation}
+where $\sqrt{-g}$ is the determinant of the metric of spacetime.
+
+\M
+So the principle of path independent taken together with the demand that
+$\mathcal{H}_{\bot}$ be ultralocal in the momenta necessarily leads to
+the concept of gauge theories.

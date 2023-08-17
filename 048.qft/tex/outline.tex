@@ -49,6 +49,60 @@ Schroeder (chapter 4, section 2; see esp.\ Eq~(4.27)).
 We expand the LSZ formula perturbatively, and organize the terms using
 Feynman diagrams describing different interactions.
 
+% https://physics.stackexchange.com/a/510046
+% https://physics.stackexchange.com/a/15164
+\N{Propagator}
+For a particle with spin-$J$ and mass $m$, the propagator schematically
+look like\footnote{The denominator depends on the channel the scattering
+takes place, I think it could be $t-m^{2}$ in the $t$-channel.}
+\begin{equation}
+A_{J}(s,t) \sim \frac{s^{J}}{s-m^{2}}.
+\end{equation}
+This can be derived from representation theory, since any spin-$J$ field
+may be formed from tensoring $2J$ copies of a spinor
+\begin{equation}
+\phi^{\alpha_{1}\cdots\alpha_{2J}}\sim\psi^{\alpha_{1}}\otimes\cdots\otimes\psi^{\alpha_{2J}}
+\end{equation}
+in the sense that the representation $J$ is a subspace of the
+representation $(1/2)^{\otimes 2J}$:
+\begin{equation}
+\bigotimes^{2j} \frac12=j\oplus (j-1)\oplus\cdots
+\end{equation}
+from the usual rules of addition of angular momenta. Then the propagator
+reads:
+\begin{equation}
+\langle\phi^{\alpha_{1}\cdots\alpha_{2J}}\phi^{\alpha_{1}'\cdots\alpha_{2J}'}\rangle(p)
+=\frac{p^{\alpha_{1}\alpha_{1}'}\cdots p^{\alpha_{2J}\alpha_{2J}'}}{p^{2}-m^{2}}
++\mbox{permutations} + \mbox{subleading}.
+\end{equation}
+Here $p^{\alpha\alpha'}:=p^{\mu}\sigma^{\alpha\alpha'}_{\mu}$ gives us
+the terms in the numerator. The ``permutations'' term(s) are all the
+ways to pair up the indices, and ``subleading'' refers to terms where
+the Lorentz indices are provided by $\delta^{\alpha\alpha'}$ instead of
+momenta.
+This gives us:
+\begin{equation}
+\Delta\sim\frac{p^{2J}}{p^{2} - m^{2}} = \frac{s^{J}}{s - m^{2}}.
+\end{equation}
+
+\begin{remark}
+For $J=0,\frac{1}{2}$ the propagators shrink at large momentum, for
+$J=1$ the scattering amplitudes are constant in some directions, and for
+$J>1$ they grow.
+
+For $J=\frac{3}{2}$, we have the Rarita--Schwinger field propagator, and
+it grows like $\sqrt{s}$ at large energies. This leads to unphysical
+growth unless the field is coupled to a conserved current. The conserved
+current is precisely the Supersymmetry current (thanks to the
+Haag--Lopuszanski--Sohnius theorem). Therefore the number of gravitinos
+must be (less than or equal to) the number of supercharges.
+
+For $J=2$, by similar reasoning the field is coupled to a conserved
+current, and the only one available is the stress-energy tensor (and
+possibly the angular momentum tensor $S_{\mu\nu\sigma}$ which requires
+some careful analysis). This gives us the graviton and general relativity.
+\end{remark}
+
 \N{References, Recommended Reading}
 Thus far, a lot has to be discussed and derived. Folland~\cite{Folland:2008zz}
 spends the bulk of his book discussing carefully ``what physicists mean''

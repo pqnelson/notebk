@@ -75,6 +75,28 @@ the functional derivative:
 We call this the \define{Physicist's Functional Derivative} and it is a
 generalized function.
 
+%% \N{Caution: Variational Derivative}
+%% There is also a different derivative used by physicists called the
+%% ``variational derivative''. Confusingly, it uses almost identical
+%% syntax:
+%% \begin{subequations}
+%% \begin{equation}
+%% \mbox{Variational Derivative:}\qquad\frac{\variation F[\phi]}{\variation\phi}
+%% \end{equation}
+%% \begin{equation}
+%% \mbox{Functional Derivative:}\qquad\frac{\delta F[\phi]}{\delta\phi(x)}.
+%% \end{equation}
+%% Notice the different ``denominators'': functional derivatives explicitly
+%% ``include'' the point $x$.
+%% The two derivatives are related by:
+%% \begin{equation}
+%% \frac{\delta F[\phi]}{\delta\phi(x)}
+%% =\frac{\variation F[\phi]}{\variation\phi}(x).
+%% \end{equation}
+%% \end{subequations}
+%% For this reason, the principle of stationary action may be expressed by
+%% a functional derivative of the action.
+
 \begin{example}\label{ex:math:functional-derivative:delta-f-over-delta-f-is-delta-fun}
   Let
   \begin{equation}

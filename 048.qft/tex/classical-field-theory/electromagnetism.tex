@@ -529,3 +529,50 @@ From demanding stationary action $\variation\action_{CS}[A]/\variation A^{\mu}(x
 determine the equations of motion for Chern--Simons theory for the
 electromagnetic field.
 \end{exercise}
+
+\subsection{*Photon Mass}
+
+\M
+We could ostensibly add a mass term to the Maxwell Lagrangian density,
+giving us the Proca Lagrangian density:\index{Proca!Lagrangian}
+\begin{equation}
+\mathcal{L}_{\text{Proca}} = \frac{-1}{4}F^{\alpha\beta}F_{\alpha\beta}-\frac{1}{2}\frac{m_{\gamma}^{2}c^{2}}{\hbar^{2}}A_{\alpha}A^{\alpha},
+\end{equation}
+where $m_{\gamma}$ is the nonzero photon mass. It's useful to introduce
+\begin{equation}
+\mu = \frac{m_{\gamma}c}{\hbar},
+\end{equation}
+to simplify expressions (as we did in the case of the massive Scalar
+field). We could relax things further and allow $A^{\mu}$ to be
+complex-valued, in which case we have 
+\begin{equation}
+\mathcal{L}_{\CC\text{Proca}} = \frac{-1}{4}\overline{F^{\alpha\beta}}F_{\alpha\beta}-\frac{1}{2}\frac{m_{\gamma}^{2}c^{2}}{\hbar^{2}}\overline{A_{\alpha}}A^{\alpha},
+\end{equation}
+where $\overline{X}$ is the complex conjugate of $X$.
+
+\begin{exercise}
+Show, for nonzero mass, the Proca equations differ from the Maxwell
+equations in electrostatics, with its Gauss Law being $\nabla\cdot\vec{E}=4\pi\rho-\mu^{2}V$,
+and its electrodynamics equation, $\partial_{t}\vec{E}-\nabla\times\vec{B}=-4\pi\vec{j}+\mu^{2}\vec{A}$.
+Double check the signs and coefficients.
+\end{exercise}
+
+\begin{exercise}
+If $\mu\neq0$, is the Lagrangian density still invariant under gauge
+transformations $A^{\alpha}\to A^{\alpha}\pm\partial^{\alpha}\Lambda$?
+\end{exercise}
+
+\N{Experimental Bounds}\index{Mass!Photon!Bounds}\index{Photon!Mass!Bounds}
+Currently, the best experimental bounds on the photon mass $m_{\gamma}$,
+as reported by Goldhaber and Nieto~\cite[\S III.B.2]{Goldhaber:2008xy}, is:
+\begin{equation}
+m_{\gamma}\lesssim10^{-18}~\mathrm{eV}.
+\end{equation}
+This is determined using the solar wind magnetic field and a generous
+upper bound for the $\mu^{2}A^{2}$ contribution to energy calculations.
+
+\begin{remark}
+We could use Galactic scale data to improve the bounds to
+$m_{\gamma}\lesssim10^{-26}~\mathrm{eV}$. This is based on a review from
+2008, doubtless the bounds have improved since then.
+\end{remark}

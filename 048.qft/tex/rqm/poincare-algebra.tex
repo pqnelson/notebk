@@ -1,6 +1,11 @@
 \section{Poincar\'e Algebra}
 
 \N{Big Idea}
+We saw in Section~\ref{section:relativity:group-theoretic-description}
+how to ``implement'' special relativity using group
+theory. Specifically, we saw how the Poincar\'e group encodes special
+relativity. 
+
 We study Lie groups by studying their Lie algebras (``infinitesimal
 symmetries near the identity''), and we want to find finite-dimensional
 unitary representations for the Poincar\'e group. It suffices for our
@@ -136,7 +141,7 @@ Thus by the Unitarian trick, we can study representations of $\iso(3,1)$
 by means of representations for $\su(2)_{\CC}$. Specifically
 highest-weight representations of $\su(2)_{\CC}$.
 
-\M
+\M\label{chunk:rqm:poincare-algebra:elementary-particles-irreps}
 The punchline:
 \textit{Each irreducible representation of $\iso(3,1)$
 is characterized by a pair of half-integers $(j_{+}, j_{-})$.} We can
@@ -164,6 +169,16 @@ Quantum Field Theory studies merely three such representations:
 \item $(1/2,0)\oplus(0,1/2)$ Dirac fermionic particle, and
 \item $(1/2, 1/2)$ vector (gauge Boson) particles.
 \end{itemize}
+
+\begin{ddanger}\index{Spin!Higher than 2}
+There is also a ``no-go theorem'' which states there are no interacting
+fields of spin $J>2$. That is to say, the only forces we can expect in
+the universe are mediated by Scalars, Vector [gauge] bosons, and Spin-2
+bosons. There are additional theorems\index{Spin!Uniqueness of (---)-2} stating all Spin-2 forces couple
+to energy in exactly the same way, up to some scaling of the coupling
+constant --- that is to say, Spin-2 forces all are gravity up to choice
+of units.
+\end{ddanger}
 
 \N{Infinite-Dimensional Unitary Representations}
 Finite-dimensional representations have Lorentz transformations act on
@@ -266,8 +281,9 @@ for the Lorentz group $\ISO(3,1)$ is the indefinite Spin group $\Spin(3,1)$.
 Since the Poincar\'e group is the semidirect product of translations
 $\RR^{3,1}$ with the Lorentz group $\ISO(3,1)$, the universal covering
 is the semidirect product with $\Spin(3,1)$. This is referred to as the
-\define{Poincar\'e Spin Group} or \emph{Poincar\'e Spinor Group} in the
-literature, though physicists seldom care about such sordid details.
+\define{Poincar\'e Spin Group}\index{Poincar\'e!Spin group}\index{Group!Poincar\'e!Spin} or
+\emph{Poincar\'e Spinor Group} in the literature, though physicists
+seldom care about such sordid details. 
 \end{ddanger}
 
 \N{References}
