@@ -1,0 +1,288 @@
+% https://itp-www-beisert.ethz.ch/hs10/ppp1/PPP1_2.pdf
+\section{Scattering}
+
+\M
+The basic setup is that we have $n\in\NN$ incoming bodies which
+``collide'', and then $n'\in\NN$ outgoing bodies emerge from the
+interaction --- this is referred to as ``$n\to n'$ Scattering''.
+Usually $n=n'=2$.
+
+\begin{remark}
+In particle physics, it becomes conventional to write down the particle
+types as a sum. For example, Bhabha scattering between a position
+$\positron$ and an electron $\electron$ (they repel each other, no other
+outgoing particles are created) is denoted either
+$\positron+\electron\to\positron+\electron$ or more concisely as $\positron\electron\to\positron\electron$.
+\end{remark}
+
+\N{Conservation of Four-Momentum}
+In \emph{all scattering situations}, the sum of four-momenta of all the bodies
+is equal to a constant. Specifically, we would have the sum of all
+4-momenta \emph{before the collision} equal the sum of all 4-momenta
+\emph{after the collision},
+\begin{equation}
+\sum_{a}\vec{P}^{\text{(pre)}}_{a}
+=\sum_{a'}\vec{P}^{\text{(post)}}_{a'},
+\end{equation}
+where $a=1,\dots,n$ and $a'=1,\dots,n'$.
+
+\subsection{Particle Decay}
+
+\N{Decay}
+When we have $n=1$ and $n'>1$, this describes a particle decaying into
+several particles. Schematically, we draw this like:
+\begin{center}
+  \includegraphics{img/scattering.0}
+\end{center}
+
+For example, in the rest frame, the decaying particle's 4-momentum is
+given by
+\begin{equation}
+\vec{P} = \bigl(m_{0}\gamma(\vec{v})c, 0, 0, 0\bigr).
+\end{equation}
+The decay time (``lifetime'') is
+\begin{equation}
+(\Delta\tau)^{2} = \Delta t^{2}(1 - \vec{v}^{2}/c^{2})
+\end{equation}
+where $\Delta t$ is the lifetime relative to the laboratory frame:
+\begin{equation}
+\Delta t = \gamma\,\Delta\tau.
+\end{equation}
+Since $\gamma>1$, we see $\Delta t>\Delta\tau$.
+
+\begin{example}
+Pions (which consist of a quark and antiquark, one of them is up [or
+  anti-up] the other is down [or anti-down]) are unstable and decay.
+The positively charged pion $\pi^{+}$ (consisting of an up quark and
+anti-down quark) has a mean lifetime when decaying into a Muon and
+neutrino of:
+\begin{subequations}
+\begin{equation}
+\Delta\tau_{\pi^{+}\to\mu^{+}\nu_{\mu}}\approx 2.6033\times10^{-8}~\mathrm{s}.
+\end{equation}
+We know experimentally $m_{\pi^{\pm}}c^{2}\approx 140~\mathrm{MeV}$ is the
+rest mass for the charged pion. If (relative to the lab frame) the
+Pion's energy is $E_{\pi}=20\times10^{3}~\mathrm{MeV}$, then
+\begin{equation}
+\gamma = \frac{E_{\pi}}{m_{\pi}}\approx 142.8571\approx 143,
+\end{equation}
+and (relative to the lab frame) the 3-velocity of the Pion has a magnitude
+of approximately
+\begin{equation}
+\|\vec{v}\| = \frac{\sqrt{\gamma^{2}-1}}{\gamma}\approx\frac{12\sqrt{142}}{143}c\approx0.999975c.
+\end{equation}
+So relative to the lab frame, the particle lifetime is approximately
+$143\,\Delta\tau$ due to time-dilation. 
+\end{subequations}
+\end{example}
+
+\N{Energy of Resulting Particles from Decay}
+For $1\to2$ decay, we have the following conditions:
+\begin{enumerate}
+\item conservation of 4-momenta $p=p_{1}+p_{2}$ (which gives us 4 equations)
+\item the mass-shell conditions $p_{(0)}^{2}=-m_{0}^{2}c^{2}$,
+  $p_{(1)}^{2}=-m_{1}^{2}c^{2}$, $p_{(2)}^{2}=-m_{2}^{2}c^{2}$ where
+  $p_{(0)}=(m_{0}c,\vec{0})$,
+  $p_{(1)}=(\gamma(\vec{v}_{1})m_{1}c,\vec{p}_{1})$,
+  $p_{(2)}=(\gamma(\vec{v}_{2})m_{2}c,\vec{p}_{2})$.
+\end{enumerate}
+From these conditions we can compute
+$\eta_{\mu\nu}p^{\mu}_{(0)}p^{\nu}_{(i)}=m_{0}E_{(i)}$. Then we can
+write
+\begin{calculation}
+E_{i}
+\step{divide through by $m_{0}$}
+\frac{1}{m_{0}}\eta_{\mu\nu}p^{\mu}_{(0)}p^{\nu}_{(i)}
+\step{conservation of 4-momenta gives $p^{\mu}_{(0)}=p^{\mu}_{(1)}+p^{\mu}_{(2)}$}
+\frac{1}{m_{0}}\eta_{\mu\nu}(p^{\mu}_{(1)}p^{\nu}_{(i)} + p^{\mu}_{(2)}p^{\nu}_{(i)}).
+\end{calculation}
+We combine this relation for $E_{i}$ with
+\begin{calculation}
+  \eta_{\mu\nu}p^{\mu}_{(1)}p^{\nu}_{(2)}
+\step{definition of Minkowski-space dot product}
+p_{1}\cdot p_{2}
+\step{algebraic identity}
+\frac{1}{2}[(p_{1}+p_{2})^{2}-p_{1}^{2}-p_{2}^{2}]
+\step{mass-shell condition}
+\frac{1}{2}[m_{0}^{2} - m_{1}^{2} - m_{2}^{2}]c^{2}.
+\end{calculation}
+This gives us
+\begin{subequations}
+\begin{align}
+E_{1} &= \frac{1}{m_{0}}(p_{(1)}^{2} + p_{(1)}\cdot p_{(2)}) = \frac{1}{2m_{0}}[m_{0}^{2} + m_{1}^{2} - m_{2}^{2}]c^{2}\\
+E_{2} &= \frac{1}{2m_{0}}[m_{0}^{2} - m_{1}^{2} + m_{2}^{2}]c^{2}.
+\end{align}
+\end{subequations}
+
+\begin{exercise}
+Since $E=\sqrt{m_{0}^{2}c^{4}-c^{2}\|\vec{p}\|^{2}}$, and the spatial
+components of the 4-momenta satisfy $\vec{p}_{(1)}+\vec{p}_{(2)}=\vec{0}$,
+the show the absolute value of the three momenta satisfy:
+\begin{enumerate}
+\item $\|\vec{p}_{(1)}\|^{2} = \|\vec{p}_{(2)}\|^{2}$,
+\item $\|\vec{p}_{(1)}\|^{2} = \displaystyle\frac{1}{4m_{0}^{2}}\left(m_{0}^{4}-2m_{0}^{2}(m_{1}^{2}+m_{2}^{2})+(m_{1}^{2}-m_{2}^{2})^{2}\right)$
+\end{enumerate}
+This means, for $1\to2$ particle decay, only the direction of the
+spatial components of momenta for the resulting particles needs to be determined.
+\end{exercise}
+
+\subsection{$2\to 2$ Scattering}
+
+\M
+The other family of scattering events witnessed in nature (and in
+particle colliders) broadly is $2\to2$ scattering. We have particle $i$
+before the collision, and $i'$ after the collision. Schematically, we
+draw this as (with time moving ``from left to right''):
+\begin{center}
+  \includegraphics{img/scattering.1}
+\end{center}
+We have the mass-shell condition give us 4 constraints
+\begin{equation}
+p_{i}^{2} = -m_{i}^{2}c^{2}
+\end{equation}
+for $i=1,\dots,4$ and the conservation of momentum gives another 4
+equations
+\begin{equation}
+p^{\mu}_{1} + p^{\mu}_{2} = p^{\mu}_{3} + p^{\mu}_{4}.
+\end{equation}
+We have, so far, made no assumptions concerning the collision being
+inelastic or elastic.
+
+\N{Elastic Scattering Motivates new Parameters}
+When $m_{1}=m_{3}$ and $m_{2}=m_{4}$, elastic scattering simplifies and
+we can express everything in terms of the masses and the 6 invariants
+$p_{i}\cdot p_{j}$ for $i\neq j$. \emph{We will not assume elastic scattering},
+but the invariants are sufficiently useful that we can parametrize them
+in terms of 3 variables and the rest masses.
+
+\N{Mandelstam Variables}
+We have three kinematic variables which help parametrize the scattering
+process, called the \emph{Mandelstam variables}. They are, in our metric
+signature conventions (and writing it using primed versions of the
+momenta to stress their physical interpretation),
+\begin{subequations}
+\begin{align}
+s &:= -(p_{1} + p_{2})^{2}c^{2}\\
+t &:= -(p_{1} - p_{3})^{2}c^{2} = -(p_{1} - p_{1}')^{2}c^{2}\\
+u &:= -(p_{1} - p_{4})^{2}c^{2} = -(p_{1} - p_{2}')^{2}c^{2}.
+\end{align}
+\end{subequations}
+We interpret these quantities as:
+\begin{enumerate}
+\item $s$ is the square of the center-of-mass energy, and
+\item $t$ is the square of the 4-momentum transfer.
+\end{enumerate}
+
+\begin{exercise}
+Prove $s+t+u=\sum_{i}m_{i}^{2}c^{4}$. Does this require assuming the
+scattering is elastic?
+\end{exercise}
+
+\begin{exercise}
+  Prove:
+  \begin{enumerate}
+  \item $2p_{1}\cdot p_{2} = c^{-2}s - m_{1}^{2}c^{2} - m_{2}^{2}c^{2}$
+  \item $2p_{1}\cdot p_{3} = m_{1}^{2}c^{2} + m_{3}^{2}c^{2} - c^{-2}t$
+  \item $2p_{1}\cdot p_{4} = m_{1}^{2}c^{2} + m_{4}^{2}c^{2} - c^{-2}u$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{definition}
+The \define{Center-of-Mass Frame} is the reference frame defined by
+\begin{equation}
+\vec{p}_{1}+\vec{p}_{2} = 0 = \vec{p}_{3}+\vec{p}_{4}.
+\end{equation}
+This coincides with the usual definition in the nonrelativistic limit.
+\end{definition}
+
+\begin{definition}\label{defn:relativity:scattering:kallen-function}
+We define the \define{K\"{a}llen function} (or \emph{Triangle Function}):
+\begin{subequations}
+\begin{align}
+\lambda(a,b,c) &= a^{2}+b^{2}+c^{2}-2ab-2ac-2bc\\
+&=\left[a-(\sqrt{b}+\sqrt{c})^{2}\right]\left[a-(\sqrt{b}-\sqrt{c})^{2}\right]\\
+&=a^{2}-2a(b+c) + (b-c)^{2}.
+\end{align}
+\end{subequations}
+\end{definition}
+
+\begin{exercise}
+Prove $\lambda(a,b,c)$ is symmetric under swapping any of the arguments.
+\end{exercise}
+\begin{exercise}
+When $a\gg b$ and $a\gg c$, prove $\lambda(a,b,c)\to a^{2}$.
+\end{exercise}
+
+\begin{exercise}
+Let $a$, $b$, $c$ be the lengths of the three sides of an arbitrary
+triangle. Prove the area of the triangle $A$ satisfies
+$4A=\sqrt{-\lambda(a^{2},b^{2},c^{2})}$. [Hint: think about Heron's formula.]
+\end{exercise}
+
+
+\M
+In the center-of-mass frame, $2\to2$ scattering looks like:
+\begin{center}
+\includegraphics{img/scattering.2}
+\end{center}
+There is also, in this frame, an angle $\Theta$ relating the incoming
+particle $i$ to its outgoing trajectory $i\to i'$ is related by an angle
+$\Theta$. How do we determine an expression for $\Theta$ in terms
+of\dots well, anything?
+
+We know the dot product is precisely the magnitudes of the vectors
+multiplied by the cosine of the angle between them. Therefore, we expect
+\begin{equation}
+\vec{p}\cdot\vec{p}' = \|\vec{p}\|\cdot\|\vec{p}'\|\cos(\Theta),
+\end{equation}
+just by definition of the (spatial) dot product. This means
+\textbf{in the center of mass frame}:
+\begin{equation}
+\eta_{\mu\nu}(p_{1}^{\mu}p_{3}^{\nu})_{CM} = c^{-2}(E_{1}E_{3})_{CM} - 
+\|\vec{p}_{1}^{(CM)}\|\cdot\|\vec{p}_{3}^{(CM)}\|\cos(\Theta).
+\end{equation}
+We can also use the fact that
+\begin{equation}
+  t = -c^{2}(p_{1} - p_{3})^{2}
+  = c^{4}m_{1}^{2} + c^{4}m_{3}^{2} - 2\eta_{\mu\nu}p_{1}^{\mu}p_{3}^{\nu},
+\end{equation}
+and other relations of the Mandelstam variables, to express
+$\cos(\Theta)$ as a function of $s$, $t$, and the squared masses:
+\begin{equation}\label{eq:relativity:scattering:t-angle}
+\cos(\Theta) = \frac{s(t - u) + (m_{1}^{2} - m_{2}^{2})(m_{3}^{2} - m_{4}^{2})c^{8}}{\sqrt{\lambda(s,m_{1}^{2}c^{4},m_{2}^{2}c^{4})}\sqrt{\lambda(s,m_{3}^{2}c^{4},m_{4}^{2}c^{4})}}
+\end{equation}
+where we used the K\"{a}llen function (\S\ref{defn:relativity:scattering:kallen-function}).
+\emph{We have not assumed the scattering is elastic or inelastic}.
+
+\begin{exercise}
+Derive Eq~\eqref{eq:relativity:scattering:t-angle}.
+\end{exercise}
+
+\N{Channels}
+We have the usual $s$-channel describing scattering of the form $1+2\to 3+4$.
+However, we could swap $2$ and $3$ (interpreting them as
+anti-particles), interpreting the process as
+$1+\overline{3}\to\overline{2}+4$. This describes the \define{$t$-Channel}.
+Here $t$ is interpreted as the square of the center-of-mass energy, and
+$s$ is the momentum transfer squared.
+
+If we swapped $2$ with $4$, giving us a scattering process
+$1+\overline{4}\to3+\overline{2}$,
+then we have a scattering in the \define{$u$-Channel}. The $u$-Channel
+is just the $t$-Channel with the roles of particles 3 and 4 swapped.
+Here, in the $u$-Channel, the $u$ variables then equals to square of the
+center-of-mass energy.
+
+\begin{remark}
+When $(1,2)$ are identical particles, or when $(3,4)$ are identical
+particles, the $t$-channel scattering is indistinguishable from
+$u$-channel scattering. When $1=2$, we'd have $1+1\to3+4$
+$t$-channel correspond to $1+\overline{3}\to\overline{1}+4$,
+but its $u$-channel corresponds to $1+\overline{4}\to\overline{1}+3$.
+\end{remark}
+
+\N{References}
+See Rindler~\cite{Rindler:1991sr}. For the particulars of relativistic
+scattering, Hagedorn~\cite{Hagedorn:1963hdh}.
+
+\endinput

@@ -1,0 +1,303 @@
+\section{Electromagnetism}\label{section:relativity:electromagnetism}
+
+\N{Maxwell's Equations}\index{Maxwell Equations}
+Maxwell's equations which we learn in Physics 101 are, in Gaussian
+units, for statics:
+\begin{subequations}
+\begin{align}
+\nabla\cdot\vec{E} &= 4\pi\rho_{e}\\
+\nabla\cdot\vec{B} &= 0\\
+\intertext{and for dynamics:}
+-\frac{\partial\vec{E}}{\partial t} + c\nabla\times\vec{B} &= 4\pi\vec{j}\\
+\frac{\partial\vec{B}}{\partial t} + c\nabla\times\vec{E} &= 0.
+\end{align}
+\end{subequations}
+Here $\rho_{e}$ is the electric charge density, and $\vec{j}$ is
+the electric current density.
+The exact form of these equations depend on the units used. In SI units,
+the coefficients need to be altered:
+\begin{subequations}
+\begin{align}
+\nabla\cdot\vec{E} &= \frac{\rho_{e}}{\varepsilon_{0}}\\
+\nabla\cdot\vec{B} &= 0
+\end{align}
+\end{subequations}
+\begin{subequations}
+\begin{align}
+-\mu_{0}\varepsilon_{0}\frac{\partial\vec{E}}{\partial t} + \nabla\times\vec{B} &= \mu_{0}\vec{j}\\
+\frac{\partial\vec{B}}{\partial t} + \nabla\times\vec{E} &= 0,
+\end{align}
+\end{subequations}
+where $\varepsilon_{0}$ is the permittivity of free space, $\mu_{0}$ is
+the permeability of free space, and $c=1/\sqrt{\varepsilon_{0}\mu_{0}}$
+is the speed of light in a vacuum.
+
+\N{Potentials}
+It is common to introduce the electric potential $\varphi(\vec{x})$
+and magnetic potential $\vec{A}(\vec{x}, t)$. Then the electric field is
+taken to be:
+\begin{equation}
+\vec{E} = -\vec{\nabla}\varphi - \frac{\partial\vec{A}}{\partial t}.
+\end{equation}
+We call $\varphi$ the \define{Electric Potential} and $\vec{A}$ the
+\define{Magnetic Potential}.
+The magnetic field is,
+\begin{equation}
+\vec{B} = \nabla\times\vec{A}.
+\end{equation}
+
+\begin{remark}
+Any time-dependence the electric field enjoys may be traced back to the
+magnetic potential contribution.
+\end{remark}
+
+\N{Gauge Invariance}\index{Gauge!Invariance}
+These potentials are not unique. We could, for any function
+$\lambda(\vec{x},t)$, consider the potentials
+\begin{subequations}
+\begin{align}
+\varphi' &= \varphi - \frac{\partial\lambda}{\partial t}\\
+\vec{A}' &= \vec{A} + \vec{\nabla}\lambda.
+\end{align}
+\end{subequations}
+This arbitrariness is an example of a gauge symmetry, a redundancy
+describing the same physical conditions. We can eliminate this
+redundancy (a process called \define{Gauge-Fixing}) by adding an
+additional condition.
+
+\N{Lorenz Gauge}\index{Gauge!Condition!Lorenz}
+We impose the condition
+\begin{equation}
+\vec{\nabla}\cdot\vec{A} + \frac{1}{c}\frac{\partial\varphi}{\partial t}=0.
+\end{equation}
+This is the \emph{Lorenz Gauge} (note the lack of ``t'', because it is
+named after the Dutch physicist Ludvig Lorenz, not to be confused with
+the other Dutch physicist Hendrik Lorentz [of ``Lorentz transformation''
+fame]). Maxwell's equations
+simplify to 
+\begin{subequations}
+\begin{align}
+\nabla^{2}\varphi - \frac{1}{c^{2}}\frac{\partial^{2}\varphi}{\partial t^{2}}
+&= -\frac{\rho_{e}}{\varepsilon_{0}}\\
+\nabla^{2}\vec{A} - \frac{1}{c^{2}}\frac{\partial^{2}\vec{A}}{\partial t^{2}}
+&= -\mu_{0}\vec{j}.
+\end{align}
+\end{subequations}
+This makes manifest the wave structure of electric and magnetic fields,
+since these are wave equations.
+
+\begin{remark}
+There are other gauge choices, and the exact form of the equations
+depend on the gauge choice.
+\end{remark}
+
+\N{Four-Potential}\label{chunk:relativity:electromagnetism:four-potential}\index{4-Potential}\index{$A^{\mu}$}
+The first step towards describing electromagnetism in special relativity
+is to use four-vectors. The potentials together form a four-vector
+called the \define{Four-Potential} $A^{\mu} = (\varphi, \vec{A})$.
+Conventions vary, some authors take $A^{t}=c^{-1}\varphi$. This implies
+\begin{equation}
+A_{\mu} = (-\varphi, \vec{A}).
+\end{equation}
+
+\begin{remark}
+We can assemble a one-form called the Potential one-form
+$A = \eta_{\mu\nu}A^{\mu}\,\D x^{\nu}$.
+\end{remark}
+
+\N{Partial Derivatives}\label{chunk:relativity:partial-derivatives}
+We have, in our conventions,
+\begin{equation}
+\partial^{\mu} := (-c^{-1}\partial_{t}, \vec{\nabla}).
+\end{equation}
+Then, in Cartesian coordinates,
+\begin{equation}
+\partial_{\nu} = \eta_{\mu\nu}\partial^{\mu} = (c^{-1}\partial_{t}, \vec{\nabla}).
+\end{equation}
+
+\N{Field-Strength Tensor}\index{$F_{\mu\nu}$}\index{Field-Strength tensor}
+We can form the field-strength tensor from the four-potential as
+\begin{subequations}
+\begin{equation}
+F^{\mu\nu} := \partial^{\mu}A^{\nu} - \partial^{\nu}A^{\mu},
+\end{equation}
+or with indices downstairs
+\begin{equation}
+F_{\mu\nu} := \partial_{\mu}A_{\nu} - \partial_{\nu}A_{\mu}.
+\end{equation}
+\end{subequations}
+The field strength tensor's components are then
+\begin{subequations}
+\begin{align}
+F_{0j} &= \partial_{0}A_{j} - \partial_{j}A_{0}\\
+&= \partial_{t}A_{j} - \partial_{j}(-\varphi)\\
+&= -E_{j},
+\end{align}
+\end{subequations}
+and
+\begin{equation}
+F_{ij} = \partial_{i}A_{j} - \partial_{j}A_{i} = \begin{pmatrix}
+ 0     &  B_{z} & -B_{y}\\
+-B_{z} &  0     & B_{x}\\
+ B_{y} & -B_{x} & 0
+\end{pmatrix}
+\end{equation}
+(where $j$ indexes the columns, $i$ the rows). Then
+\begin{equation}
+F_{\mu\nu} = \begin{pmatrix}F_{00} & F_{0j}\\
+F_{i0} & F_{ij}
+\end{pmatrix} = \begin{pmatrix}
+ 0       & -E_{x}/c & -E_{y}/c & -E_{z}/c\\
+ E_{x}/c &  0       &  B_{z}   & -B_{y}\\
+ E_{y}/c & -B_{z}   &  0       &  B_{x}\\
+ E_{z}/c &  B_{y}   & -B_{x}   &  0
+\end{pmatrix}.
+\end{equation}
+
+\begin{exercise}
+Compute the components of $F^{\mu\nu}=\eta^{\alpha\mu}\eta^{\beta\nu}F_{\alpha\beta}$.
+\end{exercise}
+
+\begin{exercise}
+Expression $F_{\mu\nu}F^{\mu\nu}$ in terms of $\vec{E}$ and $\vec{B}$.
+\end{exercise}
+
+\N{Recovering Maxwell's Equations}\label{chunk:relativity:electromagnetism:recovering-maxwell-equations}
+We see that
+\begin{calculation}
+  \partial^{\nu}F_{0\nu}
+\step{since $F_{00}=0$}
+  \partial^{j}F_{0j}
+\step{since $F_{0j}=-E_{j}$}
+  -\partial^{j}E_{j}
+\step{by Gauss's Law}
+  -4\pi\rho_{e}.
+\end{calculation}
+This gives us the first of Maxwell's equations.
+We also see
+\begin{calculation}
+  \partial^{\nu}F_{i\nu}
+\step{breaking $\mu$ up into $(0,j$)}
+  \partial^{0}F_{i,t} + \partial^{j}F_{i,j}
+\step{since $F_{i,t} = E_{i}$ and $F_{i,j} = \epsilon_{ijk}B^{k}$}
+  \partial^{0}E_{i} + \partial^{j}\epsilon_{ijk}B^{k}
+\step{since $\partial^{0}=-c^{-1}\partial_{t}$ and
+    $\partial^{j}\epsilon_{ijk}B^{k} = (\nabla\times\vec{B})_{i}$}
+  \frac{-1}{c}\partial_{t}E_{i} + \partial^{j}\epsilon_{ijk}B^{k}
+\step{using Electrodynamic equation of motion}
+  4\pi J_{i}.
+\end{calculation}
+This motivates a 4-vector for the current density called the \define{Four-Current}:
+\begin{equation}
+J_{\mu} = (-\rho_{e}, \vec{j}).
+\end{equation}
+Therefore two of Maxwell's equations for the electric field (both
+electrostatics and electrodynamics) are encoded by
+\begin{equation}\label{eq:relativity:electromagnetism:maxwell-for-electric-field}
+\boxed{\partial^{\nu}F_{\mu\nu} = 4\pi J_{\mu}.}
+\end{equation}
+We just need to express the remaining equations using the field strength
+tensor.
+
+\N{Equations for Magnetism}
+Magnetodynamics may be written as
+\begin{equation}
+\partial_{t}\epsilon_{ijk}B^{k} + \partial_{i}E_{j} - \partial_{j}E_{i}
+= 0
+\end{equation}
+for \emph{any} $i$, $j$, $k=1,2,3$. Then
+\begin{calculation}
+0
+\step{Magnetodynamics equation}
+\partial_{t}\epsilon_{ijk}B^{k} + \partial_{i}E_{j} - \partial_{j}E_{i}
+\step{since $F_{ij} = \epsilon_{ijk}B^{k}$}
+\partial_{t}F_{ij} + \partial_{i}E_{j} - \partial_{j}E_{i}
+\step{since $E_{j}=F_{j0}$ and $-E_{i}=F_{0i}$}
+\partial_{t}F_{ij} + \partial_{i}F_{j0} + \partial_{j}F_{0i}.
+\end{calculation}
+This suggests more generally (replacing the spatial indices with
+4-indices and $t$ with another distinct index)
+\begin{equation}\label{eq:relativity:electromagnetism:guessed-magnetic-equations}
+0 \stackrel{???}{=} \partial_{\alpha}F_{\beta\gamma} + \partial_{\beta}F_{\gamma\alpha} + \partial_{\gamma}F_{\alpha\beta}.
+\end{equation}
+For $\alpha=0$, $\beta=i$, $\gamma=j$, this recovers Magnetodynamics.
+Does this recover the magnetostatic Maxwell equation?
+
+If any two indices are repeated (say $\alpha=\beta$), then $F_{\mu\nu}$
+being antisymmetric implies Eq~\eqref{eq:relativity:electromagnetism:guessed-magnetic-equations}
+holds trivially. Similarly, if $\alpha=\beta=\gamma$, then the equation
+holds. Therefore, the only remaining cases are spatial indices. We see
+\begin{calculation}
+\partial_{x}F_{yz} + \partial_{y}F_{zx} + \partial_{z}F_{xy}
+\step{since $F_{yz}=B_{x}$, $F_{zx}=B_{y}$, $F_{xy}=B_{z}$}
+\partial_{x}B_{x} + \partial_{y}B_{y} + \partial_{z}B_{z}
+\step{this is the divergence of the magnetic field}
+\nabla\cdot\vec{B}
+\step{by magnetostatics}
+0.
+\end{calculation}
+Permuting the indices will just multiply through by $-1$, which doesn't
+change the result. Therefore we conclude
+\begin{equation}
+\partial_{i}F_{jk} + \partial_{j}F_{ki} + \partial_{k}F_{ij} = 0,
+\end{equation}
+and moreover this encodes the magnetostatic Maxwell equation. Combining
+things together, we find the magnetic Maxwell equations are:
+\begin{equation}\label{eq:relativity:magnetic-eom}
+\boxed{\partial_{\alpha}F_{\beta\gamma} + \partial_{\beta}F_{\gamma\alpha} + \partial_{\gamma}F_{\alpha\beta}
+= 0.}
+\end{equation}
+
+\begin{exercise}
+Prove Eq~\eqref{eq:relativity:magnetic-eom} holds identically for $F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$,
+and therefore we don't need to worry about it when writing down a
+Lagrangian for the electromagnetic field.
+\end{exercise}
+
+\subsection{Lagrangian for the Electromagnetic Field}
+
+\begin{exercise}
+Prove $\displaystyle\frac{\partial \left(\partial_{\mu} A_{\nu}\right)}{\partial\left(\partial_{\rho} A_{\sigma}\right)}= \delta_{\mu}^{\rho} \delta_{\nu}^{\sigma}$.
+\end{exercise}
+
+\begin{exercise}
+Compute $\displaystyle\frac{\partial(F_{\alpha\beta}F^{\alpha\beta})}{\partial(\partial_{\mu}A_{\nu})}$.
+Remember: $F^{\alpha\beta} = \eta^{\alpha\rho}\eta^{\beta\sigma}F_{\rho\sigma}$.
+\end{exercise}
+
+\begin{exercise}
+Is it true or not that 
+$\displaystyle\frac{\partial(F_{\alpha\beta}F^{\alpha\beta})}{\partial(A_{\nu})}=0$?
+\end{exercise}
+
+\M
+Combining the results from these exercises, you can show the Lagrangian
+density for Electromagnetism is
+\begin{equation}\label{eq:relativity:lagrangian-for-em}
+\mathcal{L} = \frac{-1}{4}F_{\mu\nu}F^{\mu\nu} + A_{\mu}J^{\mu}.
+\end{equation}
+The Euler--Lagrange equations for this would be (summing over $\beta$):
+\begin{equation}
+\partial_{\beta}\left[\frac{\partial\mathcal{L}}{\partial(\partial_{\beta}A_{\alpha})}\right]
+-\frac{\partial\mathcal{L}}{\partial A_{\alpha}} = 0.
+\end{equation}
+This should recover $\partial_{\alpha}F^{\alpha\beta}=J^{\beta}$.
+
+\begin{exercise}
+Prove the Lagrangian density in Eq~\eqref{eq:relativity:lagrangian-for-em}
+is Lorentz invariant.
+\end{exercise}
+
+\begin{exercise}
+\begin{enumerate}
+\item Find the canonically conjugate momenta density $\pi_{i} = \partial\mathcal{L}/\partial(\partial_{t}A^{i})$.
+\item Rewrite $\mathcal{L}$ using $A^{i}$, $\pi_{j}$
+\item Compute the Hamiltonian density $\mathcal{H} = \pi_{i}\partial_{t}A^{i}-\mathcal{L}$.
+\end{enumerate}
+\noindent \textsc{Hint}: you should have a constrained system, since the
+Gauss law does not involve time derivatives. (Therefore we should expect
+to find a constraint equivalent to the Gauss law.)
+\end{exercise}
+
+\endinput
+

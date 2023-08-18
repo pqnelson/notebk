@@ -1,0 +1,590 @@
+\section{Kinematics}
+
+\N{Four-Vectors} Special relativity differs from Newtonian physics by
+working with 4-vectors. The usual vectors we encountered in physics
+$\vec{x}$ are 3-vectors in physical space. Now we will use 4-component
+vectors of the form $(t, \vec{x})$ or more generally using indices
+$(x^{0}, x^{1}, x^{2}, x^{3})$. We can write this using basis vectors
+\begin{subequations}
+\begin{align}
+  A &= (A^{0}, A^{1}, A^{2}, A^{3})\\
+&= A^{0}\vec{e}_{0} + A^{1}\vec{e}_{1} + A^{2}\vec{e}_{2} + A^{3}\vec{e}_{3}\\
+&= A^{0}\vec{e}_{0} + A^{i}\vec{e}_{i}\\
+&= A^{\mu}\vec{e}_{\mu}
+\end{align}
+\end{subequations}
+where $\vec{e}_{\mu}$ are basis vectors, we implicitly sum over repeated
+indices, $i = 1,2,3$, and $\mu=0,1,2,3$.
+
+The zeroth component is the time component, the remaining components are
+the spatial components.
+
+\begin{remark}
+When the components of the four-vector are upstairs $A^{\mu}$,
+these are \define{Contravariant} vectors.
+\end{remark}
+
+\N{Covectors}
+We can also consider ``covectors'' or ``dual vectors'' (which eat in a
+4-vector and produce a [real] number). These have components with
+downstairs indices $B_{\mu}\vec{f}^{\mu}$ where $\vec{f}^{\mu}$ are the
+co-basis covectors.
+
+\M
+Normally we can transform the components of a four-vector
+$\vec{A}=A^{\mu}\vec{e}_{\mu}$ into the components of a covector by
+using the metric $g_{\mu\nu}$ in the usual way:
+\begin{equation}
+A_{\nu}\vec{f}^{\nu} = (g_{\mu\nu}A^{\mu})\vec{f}^{\nu}.
+\end{equation}
+We can do the same, but for special relativity the metric is denoted
+$\eta_{\mu\nu}$.\marginpar{\footnotesize Minkowski metric $\eta_{\mu\nu}$}
+We call this the \define{Minkowski metric} and in Cartesian coordinates
+has components
+\begin{equation}
+\eta_{\mu\nu} = \begin{pmatrix}-1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}.
+\end{equation}
+This is the so-called \define{East-Coast Convention} (particle
+physicists multiply this by $-1$ and that's the \emph{West-coast convention}).
+
+\N{Magnitude of Four-Vectors}
+When $a^{\mu}$ is any four-vector, its magnitude is the scalar quantity
+given by:
+\begin{equation}
+\|a^{\mu}\|^{2} := \eta_{\mu\nu}a^{\mu}a^{\nu}.
+\end{equation}
+
+\begin{definition}
+The \define{Four-Position} is the four-vector with components
+\begin{equation*}
+x^{\mu} = (ct, x^{1}, x^{2}, x^{3}).
+\end{equation*}
+In Cartesian coordinates, $x^{\mu} = (ct, x, y, z)$.
+\end{definition}
+
+\N{Events}
+Events in spacetime are described using 4-position vectors. This is an
+idealization that events have no ``duration''. We could handle events
+with some duration by having one 4-position for the ``start'' and
+another 4-position for the ``end''.
+
+\begin{definition}
+When we have two 4-position vectors $\vec{A}_{1}=(ct_{1},\vec{r}_{1})$
+and $\vec{A}_{2}=(ct_{2},\vec{r}_{2})$, we define the
+\define{Displacement Four-Vector} as the four-vector
+\begin{equation*}
+\Delta\vec{A} = (c\,\Delta t,\Delta\vec{r}) = \vec{A}_{2} - \vec{A}_{1}.
+\end{equation*}
+For an \define{Infinitesimal Displacement Four-Vector} (or
+\emph{Differential Four-Position}), we write
+$\D\vec{A}$.
+\end{definition}
+
+\M
+Suppose we have two events in spacetime separated by an infinitesimal
+displacement 4-vector $\D x^{\mu}$. Special relativity demands the
+infinitesimal interval,
+\begin{equation}
+(\D s)^{2} := \eta_{\mu\nu}\,\D x^{\mu}\,\D x^{\nu} = -c^{2}(\D t)^{2} + (\D x)^{2} + (\D y)^{2} + (\D z)^{2},
+\end{equation}
+must be the same for all inertial observers. Here we use summation
+conventions where, when we have an index downstairs and upstairs, we sum
+over it (so in our equation, we sum over $\mu$ and $\nu$).
+
+\begin{definition} Let $a^{\mu}$ be a 4-vector.
+  \begin{enumerate}
+  \item If $\eta_{\mu\nu}a^{\mu}a^{\nu} < 0$, then we call $a^{\mu}$ \define{Time-like}.
+  \item If $\eta_{\mu\nu}a^{\mu}a^{\nu} = 0$, then we call $a^{\mu}$ \define{Light-like}.
+  \item If $\eta_{\mu\nu}a^{\mu}a^{\nu} > 0$, then we call $a^{\mu}$ \define{Space-like}.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+To see the motivation for these definitions, consider the trajectory of
+a photon moving along the $x$-axis in Cartesian coordinates. It would be
+$\vec{\gamma}(t)=(ct,ct,0,0)$ and its displacement from the origin would
+be always zero for any $t\in\RR$. Therefore, the displacement would be
+light-like.
+
+For time-like vectors, consider the displacement 4-vector
+$\vec{\alpha}(t)=(ct,0,0,0)$ which stays at the spatial origin. We see
+its magnitude is $-c^{2}t^{2}<0$.
+
+For space-like vectors, consider the displacement 4-vector
+$\vec{\beta}(t)=(0,ct,0,0)$. Its magnitude is $c^{2}t^{2}>0$.
+\end{remark}
+
+\begin{definition}[Minkowski spacetime]
+We write $\RR^{3,1}$ for \define{Minkowski Spacetime}, i.e., $\RR^{4}$
+equipped with the Minkowski metric $\eta$.
+\end{definition}
+
+\begin{remark}
+If we were using $+---$ signature conventions, Minkowski space would be
+$\RR^{1,3}$. 
+\end{remark}
+
+\subsection{Invariance of Differential Displacement}
+
+\M We have the obvious spatial rotations and spatial translations leave
+the differential displacement $\D s^{2}$ invariant, since this is a
+carry-over from Euclidean geometry. The more interesting case is the
+``rotation'' of time and space. We will restrict focus to $\RR^{1,1}$
+for simplicity, but the reasoning generalizes to $\RR^{n,1}$ by
+composing with rotations to make the ``direction of motion'' a spatial
+direction.
+
+%% \M Let us restrict focus to $\RR^{1,1}$ for simplicity. Suppose we
+%% change coordinates
+%% \begin{equation}
+%% \begin{pmatrix}c\,\D t'\\\D x'
+%% \end{pmatrix}
+%% = \begin{pmatrix}a & b\\k & d
+%% \end{pmatrix}
+%% \begin{pmatrix}c\,\D t\\\D x
+%% \end{pmatrix}.
+%% \end{equation}
+%% Then writing $(\D s)^{2}$ in the new coordinates:
+%% \begin{calculation}
+%%   (\D s)^{2}
+%% \step{by definition}
+%%   -c^{2}(\D t')^{2} + (\D x)^{2}
+%% \step{plugging in the values of $\D t'$ and $\D x'$}
+%%   -c^{2}(a\,\D t + b\,\D x)^{2} + (k\,\D t + d\,\D x)^{2}
+%% \step{expanding terms}
+%%   -c^{2}[a^{2}\,(\D t)^{2} + 2ab\,\D t\D x + b^{2}\,(\D x)^{2}]
+%%   +[k^{2}\,(\D t)^{2} + 2kd\,\D t\D x + d^{2}\,(\D x)^{2}]
+%% \step{collecting terms}
+%%   -(c^{2}a^{2} - k^{2})(\D t)^{2} - 2(c^{2}ab - kd)\,\D t\D x + (-c^{2}b^{2}+d^{2})(\D x)^{2}.
+%% \end{calculation}
+%% Comparing to $(\D s)^{2} = -(\D t)^{2} + (\D x)^{2}$, we have the
+%% conditions:
+%% \begin{subequations}
+%% \begin{align}
+%% (c^{2}a^{2} - k^{2}) &= 1\\
+%% (c^{2}ab - kd) &= 0\\
+%% (-c^{2}b^{2}+d^{2}) &= 1.
+%% \end{align}
+%% \end{subequations}
+
+%% \M
+%% Specifically, when changing from one inertial frame (at rest) to another
+%% (moving at speed $v$ in the $x$-direction relative to the first frame),
+%% we expect
+%% \begin{equation}
+%% x' = x - vt.
+%% \end{equation}
+%% There may be a relativistic correction, a factor $\alpha(v)$ such that
+%% for $v\ll c$ we have $\alpha(v)\approx 1$. Then we use
+%% \begin{equation}
+%% x' = \alpha(v)(x - vt).
+%% \end{equation}
+%% This gives us
+%% \begin{equation}
+%% \begin{pmatrix}c\,\D t'\\\D x'
+%% \end{pmatrix}
+%% = \begin{pmatrix}a & b\\-\alpha v & \alpha
+%% \end{pmatrix}
+%% \begin{pmatrix}c\,\D t\\\D x
+%% \end{pmatrix}.
+%% \end{equation}
+%% This lets us substitute $k=-\alpha(v)v/c$ and $d=\alpha(v)$. This gives us
+%% the system of equations
+%% \begin{subequations}
+%% \begin{align}
+%% (c^{2}a^{2} - v^{2}\alpha^{2}) &= c^{2}\\
+%% (c^{2}ab + \alpha^{2}v) &= 0\\
+%% (-c^{2}b^{2}+\alpha^{2}) &= 1.
+%% \end{align}
+%% \end{subequations}
+%% This is 3 equations in 3 unknowns, which has a solution.
+%% \begin{subequations}
+%% \begin{align}
+%% \alpha(v) &= \frac{-v/c}{\sqrt{1 - v^{2}/c^{2}}}\\
+%% \intertext{and}
+%% a = b &= \frac{1}{\sqrt{1 - v^{2}/c^{2}}}.
+%% \end{align}
+%% \end{subequations}
+
+\N{Problem statement}
+Given an inertial observer at rest, and another observer moving with
+constant speed $v$, how do the coordinate change from the observer at
+rest to the moving observer?
+
+\N{Desiderata}
+We want, for $v^{2}\ll c^{2}$, to recover Galilean transformations. That
+is, $x' \approx x - vt$ (where primed coordinates are those relative to
+the moving observer).
+
+\M Let me try this again. We consider an inertial reference frame moving
+with velocity $v$ in the $x$-direction relative to an inertial reference
+frame at rest. Then the new coordinates are
+\begin{subequations}
+\begin{align}
+ct' &= a_{11}ct + a_{12}x\\
+x' &= a_{22}(x - vt).
+\end{align}
+\end{subequations}
+This reduces to the familiar Galilean transformation for $v\ll c$, which
+we demand $a_{22}\approx 1$. Now, for an infinitesimal displacement, its
+components are
+\begin{subequations}
+\begin{align}
+c\,\D t' &= a_{11}c\,\D t + a_{12}\,\D x\\
+\D x' &= a_{22}(\D x - v\,\D t).
+\end{align}
+\end{subequations}
+Demanding the invariance of the infinitesimal displacement is the same
+as the condition:
+\begin{equation}
+-c^{2}(\D t')^{2} + (\D x')^{2} =-c^{2}(\D t)^{2} + (\D x)^{2}.
+\end{equation}
+Expanding the primed quantities gives us
+\begin{equation}
+-(a_{11}^{2}c^{2} - a_{22}^{2}v^{2})(\D t)^{2}
++ 2 (a_{22}^{2}v - a_{11}a_{12}c)\,\D x\,\D t
++ (a_{22}^{2} - a_{12}^{2})(\D x)^{2} =-c^{2}(\D t)^{2} + (\D x)^{2}.
+\end{equation}
+This gives us the system of 3 equations in 3 unknowns:
+\begin{subequations}
+\begin{align}
+-(a_{11}^{2}c^{2} - a_{22}^{2}v^{2}) &= -c^{2}\\
+2 (a_{22}^{2}v - a_{11}a_{12}c) &= 0\\
+(a_{22}^{2} - a_{12}^{2}) &= 1.
+\end{align}
+\end{subequations}
+We can solve this system:
+\begin{subequations}
+\begin{align}
+a_{11} = a_{22} &= \frac{1}{\sqrt{1 - v^{2}/c^{2}}}\\
+a_{12} &= \frac{-v/c}{\sqrt{1 - v^{2}/c^{2}}}.
+\end{align}
+\end{subequations}
+The standard notation is
+\begin{equation}
+\gamma(v) = \frac{1}{\sqrt{1 - v^{2}/c^{2}}}
+\end{equation}
+and
+\begin{equation}
+\beta(v) = \frac{v}{c}.
+\end{equation}
+Then our transformation is
+\begin{equation}
+\begin{pmatrix}ct'\\ x'
+\end{pmatrix}
+=\begin{pmatrix}\gamma & -\gamma\beta\\
+-\gamma\beta & \gamma
+\end{pmatrix}
+\begin{pmatrix}ct\\ x
+\end{pmatrix}.
+\end{equation}
+This transformation is called a \define{Lorentz Boost}.
+
+\M
+Observe when $\beta=1/2$ that
+\begin{equation}
+\gamma = \frac{2}{\sqrt{3}}\approx 1.1547.
+\end{equation}
+In other words, for an inertial observer moving half the speed of light,
+there is a deviation approximately 15\% from non-relativistic values.
+
+At the Large Hadron Collider, protons are accelerated to speeds of about
+$99.9999991\%$ the speed of light --- that is, $1-\beta\approx9\times10^{-9}$.
+This gives us $\gamma\approx7453$.
+
+\begin{definition}
+We call a velocity \define{Ultra-Relativistic} when $1-\beta\ll1$.
+\end{definition}
+
+\begin{remark}
+For ultra-relativistic velocities, we see that $1+\beta\approx2$, and
+therefore
+\begin{equation}
+\gamma = \frac{1}{\sqrt{(1 + \beta)(1 - \beta)}}
+\approx\frac{1}{\sqrt{2(1 - \beta)}}.
+\end{equation}
+Simple algebra gives us
+\begin{equation}
+1 - \beta\approx\frac{1}{2\gamma^{2}}.
+\end{equation}
+\end{remark}
+
+\begin{exercise}
+What is the error in the approximation
+$1-\beta\approx(2\gamma^{2})^{-1}$ for $\beta=9/10$? For $\gamma=2$? For $\beta=99/100$?
+\end{exercise}
+
+\begin{exercise}
+For $0\leq\beta\leq0.9$, find a linear approximation $L(\beta)$ for
+$\gamma(\beta)$ such that $L(0)=\gamma(0)$ and
+$L(0.9)=\gamma(0.9)$. What is the $L^{2}$-norm of the residual for this approximation?
+Is there a better linear approximation?
+\end{exercise}
+
+\subsection{Light Cones and Causality}
+
+\begin{definition}\label{defn:relativity:light-cone}
+Let $a^{\mu}$ be any event. We define the \define{Lightcone} for $a^{\mu}$
+to be the set of events light-like separated from $a^{\mu}$,
+\begin{equation}
+\mathscr{C} = \{\,b^{\mu}\in\RR^{3,1} \mid b^{\mu}~\mbox{is light-like separated from}~a^{\mu}\,\}.
+\end{equation}
+We can separate the light-cone in two: events in the future and events
+in the past, giving us the \define{Future Light Cone}
+\begin{equation}
+\mathscr{C}^{+} = \{\,b^{\mu}\in\mathscr{C} \mid b^{0} > a^{0}\,\},
+\end{equation}
+and the \define{Past Light Cone} consisting of events preceding $a^{\mu}$,
+\begin{equation}
+\mathscr{C}^{-} = \{\,b^{\mu}\in\mathscr{C} \mid b^{0} < a^{0}\,\}.
+\end{equation}
+We can take the \define{Closed Light Cone} to consist of all light-like
+separated events \emph{and} all time-like separated events, and denote
+it by
+\begin{equation}
+\overline{\mathscr{C}} = \{\,b^{\mu}\in\RR^{3,1} \mid \eta_{\mu\nu}(b^{\mu}-a^{\mu})(b^{\nu}-a^{\nu})\leq0\,\}.
+\end{equation}
+\end{definition}
+
+\M
+The only possible causal influences for an event $a^{\mu}$
+\emph{must lie within the past causal light cone} for the event, since
+nothing can travel faster than light. For this reason, we call any
+four-vector $b^{\mu}$ \define{Causal-like} if it is not space-like
+separated from $a^{\mu}$, i.e., if the displacement $b^{\mu} - a^{\mu}$
+four-vector is either time-like or light-like.
+
+\subsection{World Lines and Trajectories}
+
+\N{World lines}
+A curve $\gamma$ in spacetime is called a \define{World Line}
+if its tangent vector is future time-like at each point along the
+curve. More generally, we could weaken the condition, and allow tangent
+vectors to be causal-like.
+
+Particles move along world lines in special relativity.
+
+\M
+If we have a curve $\gamma$ in spacetime such that its tangent vector is
+space-like at each point along the curve, we call the curve
+\define{Space-like}.
+
+If we have a curve in spacetime such that its tangent vector is
+ligh-like at each point along the curve, we call the curve
+\define{Light-like}. 
+
+
+\N{Proper Time}\label{chunk:relativity:proper-time}
+The time between two events along a world line, according to the
+observer moving along the trajectory, is precisely the
+\define{Proper Time} and denoted $\tau$. For an infinitesimal
+displacement along the trajectory, the infinitesimal change in proper
+time is given by
+\begin{equation}
+c^{2}\,(\D\tau)^{2} = -(\D s)^{2}.
+\end{equation}
+The proper time interval along a trajectory is given by the integral
+\begin{equation}
+\Delta\tau = \int_{\gamma}\D\tau =
+\int_{\gamma}\frac{\sqrt{-\eta_{\mu\nu}\,\D x^{\mu}\,\D x^{\nu}}}{c}.
+\end{equation}
+
+\N{Parametrizing World Lines}
+We parametrize a world line by its proper time, and write it as
+$x^{\mu}(\tau)$. This gives us a smooth family of four-positions for a
+physical body.
+
+Care must be taken when working with world lines for photons (or other
+bodies moving at the speed of light), since $\D s = 0$ and therefore
+$\D\tau=0$. We need to work with an affine parameter $\lambda$, but
+physicists usually just reason along the lines of
+\begin{equation}
+(\D s)^{2} = 0 = -c^{2}\,(\D t)^{2} + (\D\vec{r})^{2}\implies c^{2}(\D t)^{2}=(\D\vec{r})^{2}.
+\end{equation}
+This is ``morally right'' but mathematically wrong.
+
+\begin{definition}
+Let $x^{\mu}(\tau)$ be a world line. We define its \define{Four-Velocity}
+as the four-vector
+\begin{equation*}
+U^{\mu}(\tau) = \frac{\D x^{\mu}(\tau)}{\D\tau}.
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+Whenever we are tempted to take the time derivative of a quantity, we
+really want to take the derivative with respect to \emph{proper time}.
+\end{remark}
+
+\N{Lorentz Factor}
+We have the familiar Newtonian 3-velocity given by
+\begin{equation}
+v^{i} = \frac{\D x^{i}}{\D t}.
+\end{equation}
+We can relate the coordinate time $x^{0}=ct$ with proper time $\tau$ by
+the \define{Lorentz Factor} (which is a function of the Newtonian 3-velocity),
+\begin{equation}
+  \begin{split}
+\gamma(\vec{v}) &= \frac{\D t}{\D\tau} = \left(1 - \frac{\eta_{ij}v^{i}v^{j}}{c^{2}}\right)^{-1/2}\\
+&=\frac{c}{\sqrt{-\eta_{\mu\nu}U^{\mu}U^{\nu}}}.
+  \end{split}
+\end{equation}
+This allows us to relate the familiar Newtonian 3-velocity
+to the four-velocity by
+\begin{equation}
+U^{\mu} = (c, \gamma(\vec{v})\vec{v}).
+\end{equation}
+
+\N{Four-Acceleration}
+We can define the four-acceleration analogous to how we defined the
+four-velocity as
+\begin{equation}
+A^{\mu} := \frac{\D U^{\mu}}{\D\tau}.
+\end{equation}
+
+\begin{definition}
+The \define{Instantaneous Rest Frame} is the frame in which the 3-speed vanishes $v=0$.
+\end{definition}
+
+\M
+In the instantaneous rest frame we have $v=0$ so $\gamma=1$. The
+four-velocity has components $V^{\mu}=(c,\vec{0})$ and the
+four-acceleration has components $A^{\mu}=(0,\vec{a})$. Then:
+\begin{enumerate}
+\item $\eta_{\mu\nu}A^{\mu}A^{\nu}=a^{2}$ where $a$ is the acceleration
+  measured in the instantaneous rest frame (that is, the acceleration
+  felt by the body);
+\item $\eta_{\mu\nu}U^{\mu}U^{\nu}=c^{2}$;
+\item $\eta_{\mu\nu}A^{\mu}U^{\nu}=0$ (which can be obtained by
+  differentiating the previous result with respect to $\tau$).
+\end{enumerate}
+
+\begin{exercise}
+Let $v$ be the Newtonian speed of an object, $v = |\D\vec{x}/\D t|$.
+Prove
+\begin{equation*}
+\frac{\D\gamma}{\D t} = \frac{\gamma^{3}v}{c^{2}}\frac{\D v}{\D t}.
+\end{equation*}
+\end{exercise}
+
+\begin{exercise}
+Let $X^{\mu}$ be the position 4-vector, $t$ be coordinate time. Prove
+the 4-acceleration may be written as:
+\begin{equation*}
+A^{\mu} = \gamma\frac{\D}{\D t}\left(\gamma\frac{\D}{\D t}X^{\mu}\right)
+\end{equation*}
+\end{exercise}
+
+\N{Constant Acceleration}
+Consider a particle moving along the $x$-axis with constant acceleration
+$a$ as measured in its rest frame at each point.
+
+Let $U^{\mu}=(c\dot{t},\dot{x},0,0)$ where $\dot{x}=\D x/\D\tau$ and
+$\dot{t}=\D t/\D\tau$. Then $A^{\mu}=(c\ddot{t},\ddot{x},0,0)$. We have
+\begin{subequations}
+\begin{align}
+-c^{2} &= \eta_{\mu\nu}U^{\mu}U^{\nu} = -c^{2}\dot{t}^{\,2} + \dot{x}^{2}\\
+\intertext{and}
+a^{2} &= \eta_{\mu\nu}A^{\mu}A^{\nu} = -c^{2}\ddot{t}^{\,2} + \ddot{x}^{2}.
+\end{align}
+\end{subequations}
+Differentiating the first equation gives us $c^{2}\dot{t}\ddot{t}=\dot{x}\ddot{x}$,
+then square both sides
+$c^{4}\dot{t}^{\,2}\ddot{t}^{\,2}=\dot{x}^{2}\ddot{x}^{2}$, and then
+we can eliminate $\dot{x}^{2}=c^{2}\dot{t}^{2}-c^{2}$ and
+$\ddot{x}^{\,2}=a^{2}+c^{2}\ddot{t}^{\,2}$ to give us
+\begin{equation}
+c^{4}\dot{t}^{\,2}\ddot{t}^{\,2}=(c^{2}\dot{t}^{\,2}-c^{2})(a^{2}+c^{2}\ddot{t}^{\,2}).
+\end{equation}
+We subtract $c^{2}\ddot{t}^{\,2}(\dot{t}^{\,2}-1)$ from both sides to
+obtain
+\begin{equation}
+c^{2}\ddot{t}^{\,2} = a^{2}(\dot{t}^{\,2} - 1)\implies\ddot{t}=\frac{a}{c}\sqrt{\dot{t}^{\,2} - 1}.
+\end{equation}
+We can solve this differential equation with the initial condition
+$t(\tau=0)=0$ and $x(\tau=0)=0$, first integrating to find
+\begin{equation}
+\dot{t} = \cosh(a\tau/c),
+\end{equation}
+then integrating again to find
+\begin{equation}
+t = \frac{c}{a}\sinh(a\tau/c).
+\end{equation}
+Then from $\dot{x}^{2} = c^{2}(\dot{t}^{\,2}-1)$ we find $\dot{x} = c\sqrt{\cosh^{2}(a\tau/c)-1}=c\sinh(a\tau/c)$
+which can be integrated to give us
+\begin{equation}
+x = \frac{c^{2}}{a}\cosh(a\tau/c).
+\end{equation}
+
+\begin{remark}
+  Observe that the magnitude of the spatial components for the
+  4-velocity (the ``Newtonian speed'') is:
+  \begin{equation}
+v(\tau) = \frac{\D x}{\D t} = \frac{\dot{x}}{\dot{t}} = c\tanh(a\tau/c)\leq c.
+  \end{equation}
+\end{remark}
+
+\N{Example}
+How do we interpret this? Well, if a space ship leaves a planet at
+constant acceleration, and the planet is at rest in the $(x,t)$
+coordinates at $x=c^{2}/a$ at $t=0$, then afer some proper time $\tau$
+has elapsed the space ship will be located at $x=(c^{2}/a)\cosh(a\tau/c)$.
+The time elapsed relative to a clock on the planet will read $t=(c/a)\sinh(a\tau/c)$
+where $\tau$ is the time elapsed relative to a clock on the space ship.
+For $a\approx g$ and $\tau\approx 10~\mbox{years}$, then $(c/a)=1.03092~\mbox{year}\approx 1~\mbox{year}$
+and
+\begin{equation}
+t\approx\frac{1}{2}\exp(10)~\mbox{years}\approx 11,000~\mbox{years}.
+\end{equation}
+Observe that
+\begin{equation}
+x\approx\frac{1}{2}\exp(10)~\mbox{light years}\approx11,000~\mbox{light years}.
+\end{equation}
+Thus, although only 10 years elapsed on the space ship moving at 1~g,
+relative to clocks on the planet which launched the space ship it would
+appear to have been 11,000 years. In Newtonian mechanics, the space ship
+would be about $50$ light years away (since $a\approx c~\mbox{year}^{-1}$).
+
+\begin{remark}
+This may seem counter-intuitive (and it is), but we should emphasize it
+is difficult to have a space ship move at a constant 1~g acceleration.
+Indeed, \emph{constant acceleration} is the bit belonging to science
+fiction (at the moment).
+\end{remark}
+
+\begin{exercise}
+In Robert Rath's \textit{The Infinite and the Divine}, a super-advanced
+species of aliens (who existed hundreds of millions of years ago)
+transferred their consciousness into robots. This problem concerns one
+of their spaceship's trajectory using their advanced technology.
+
+We are told the initial velocity of the spaceship is $1000$ leagues per
+hour, but after a decade [literally 10 years] the spaceship reaches a
+billion [$1.00\times10^{9}$] leagues per hour. Note: 1 league per hour
+is approximately 1.54333 meters per second.
+\begin{enumerate}
+\item Assume constant acceleration. Find the constant acceleration,
+  assuming the universe is Newtonian, and forces acting on the spaceship
+  are negligible.
+\item Using the solution to the previous problem, how far did the
+  spaceship travel? The story suggests it is the distance between
+  several stars. If there is 5 light years between stars in the galaxy,
+  is this reasonable? If not, how fast would the spaceship have to
+  travel?
+\item If we allow for special relativity to apply, then time dilation
+  presumably occurs. Suppose the ten years in our problem refers to the
+  proper time as measured by the ship's chronometer [clock]. Does this
+  affect the distance the ship travels? If so, how far does this ship
+  travel?
+\end{enumerate}
+\end{exercise}
+
+\N{References}
+For accelerated observers, Chapter 6 of Misner, Thorne, and
+Wheeler~\cite{Misner:1973prb} is quite good.
+
+\endinput

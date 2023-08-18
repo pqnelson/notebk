@@ -1,0 +1,142 @@
+\section{Dynamics}
+
+\M
+Often the dynamics of particles are omitted in discussions of special
+relativity, because things getting complicated conceptually.
+
+\begin{definition}
+Let $x^{\mu}(\tau)$ be the world line for a massive body.
+Then the \define{Rest Mass} (or \emph{invariant mass}) for the body is
+the mass $m_{0}$ as measured in its reference frame.
+\end{definition}
+
+\begin{remark}
+Some authors use a notion of \emph{relativistic mass}
+$m = \gamma(\vec{v})m_{0}$, which is mildly controversial. 
+\end{remark}
+
+\N{Four-Momentum}\label{chunk:relativity:four-momentum}
+For a massive particle of rest mass $m_{0}$, its \define{Four-Momentum}
+$\vec{P}$ is defined as the product of the rest mass and its
+four-velocity, i.e.,
+\begin{equation}
+\vec{P} := m_{0}\vec{U}.
+\end{equation}
+We can write out its explicit components
+\begin{equation}
+\vec{P} = m_{0}\gamma(\vec{v})(c, \vec{v}) = (E/c, \vec{p}).
+\end{equation}
+Here the total energy of the moving particle is given by
+\begin{equation}
+E = \gamma(\vec{v})m_{0}c^{2},
+\end{equation}
+and the total (relativistic) 3-momentum is
+\begin{equation}
+\vec{p} = m_{0}\gamma(\vec{v})\vec{v}.
+\end{equation}
+
+\N{Energy--Momentum Relation}\label{chunk:relativity:mass-shell-relation}
+We have the energy--momentum relation (or \define{Mass--Shell Relation})
+be
+\begin{equation}
+E^{2} = c^{2}\vec{p}\cdot\vec{p} + \bigl(m_{0}c^{2}\bigr)^{2}.
+\end{equation}
+Equivalently, we have this relation describe the magnitude of the
+four-momentum as a constant:
+\begin{equation}
+\eta_{\mu\nu}p^{\mu}p^{\nu} = -m_{0}^{2}c^{2}.
+\end{equation}
+
+\begin{ddanger}
+In special relativity, we can meaningfully talk about the Center-of-Mass
+reference frame for a system of particles. This is especially useful for
+scattering problems. However, if we tried to carry this notion over to
+General Relativity, then we run into problems because it is a nonlocal
+concept. 
+\end{ddanger}
+
+\begin{exercise}
+From the mass-shell relation and $\vec{P} = (E/c, \vec{p})$, deduce
+$E = \gamma(\vec{v})m_{0}c^{2}$ and 
+$\vec{p}\cdot\vec{p}=\pm(\gamma(\vec{v})^{2}-1)m_{0}^{2}c^{2}$.
+Determine the correct sign in that second relation.
+\end{exercise}
+
+\begin{exercise}
+Suppose we have two massive particles with four-momenta $\vec{P}_{1}$
+and $\vec{P}_{2}$ and relative speed $v$. Determine
+$\vec{P}_{1}\cdot\vec{P}_{2}=\eta_{\mu\nu}P^{\mu}_{(1)}P^{\nu}_{(2)}$ in
+terms of their rest mass $m_{01}$ and $m_{02}$ and relative speed $v$.
+Hint: if $\vec{P}_{1}=\vec{P}_{2}$ and $v=0$, then you should recover
+the mass--shell relation.
+\end{exercise}
+
+\N{Four-Force}
+We can define the four-force as the four-vector
+\begin{equation}
+\vec{F} = \frac{\D\vec{P}}{\D\tau}.
+\end{equation}
+As an immediate consequence of the mass--shell relation, we find
+\begin{equation}
+\vec{F}\cdot\vec{P} = \eta_{\mu\nu}F^{\mu}P^{\nu} = 0.
+\end{equation}
+
+\N{Lagrangian for Point-Particle}\label{chunk:relativity:lagrangian-for-point-particle}
+We can write the Lagrangian for a massive point-particle with rest mass
+$m_{0}$ as
+\begin{equation}
+L = -cm_{0}\sqrt{-\eta_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}} - V
+\end{equation}
+where $\dot{x}^{\mu} = \D x^{\mu}/\D\tau = U^{\mu}$, and $V$ is the potential
+energy term. The action is then 
+\begin{equation}
+I = \int L\,\D\tau.
+\end{equation}
+Varying the action with respect to $\delta x^{\mu}$ then gives us the
+equations of motion.
+
+For massless particles, care must be taken with the parametrization, as
+well as using its four-momentum to write
+\begin{equation}
+L = -c\sqrt{-\eta_{\mu\nu}P^{\mu}P^{\nu}} - V.
+\end{equation}
+We can use the relation (which holds for both massive and massless particles):
+\begin{equation}
+\frac{\D x^{\mu}}{\D t} = \frac{P^{\mu}}{P^{0}}.
+\end{equation}
+
+\begin{danger}
+This is the correct Lagrangian to work with, especially if we want to
+quantize it. There is some subtlety with it, which we should confess
+openly: it is a constrained system. To see this, compute the Hamiltonian
+for a free massive relativistic particle. It will vanish. This is
+because time is a coordinate (proper time is a parameter), and its
+conjugate momentum is ``the Hamiltonian''. So we end up with a
+constraint. 
+\end{danger}
+
+\begin{ddanger}
+Some authors insist that canonical mechanics for special relativistic
+systems ``breaks Lorentz invariance'', which is not really true. If
+you've picked $\mu=0$ to be the time component for four-vectors, then
+you've also ``broken Lorentz invariance'' just as much as canonical
+mechanics has. We can describe a Lorentz boost as a canonical
+transformation (which preserves Lorentz invariance as much as anything
+else). This is just offered as a lazy and sloppy justification for using
+the path integral formalism, which makes no coherent sense.
+\end{ddanger}
+
+\begin{exercise}\label{xca:relativity:canonical-analysis-of-free-particle}
+Work out the canonical analysis for the Lagrangian of a point-particle
+in special relativity. Recall, the steps are:
+\begin{enumerate}
+\item Find the conjugate momenta $p_{\mu}$ for $\dot{x}^{\mu}=\D x^{\mu}/\D\tau$
+\item Find any primary constraints
+\item Rewrite the Lagrangian in terms of $x^{\mu}$ and $p_{\mu}$
+\item Write the Hamiltonian $H = p_{\mu}\dot{x}^{\mu}-L$.
+\item Find if there are any first-class constraints.
+\item Write down the extended Hamiltonian (or total Hamiltonian).
+\end{enumerate}
+\end{exercise}
+
+\endinput
