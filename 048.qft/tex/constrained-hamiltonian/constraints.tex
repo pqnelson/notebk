@@ -1,0 +1,373 @@
+\section{Constraints}
+
+\M
+Recall we can write down the Euler--Lagrange equations for a mechanical
+system of point particles as:
+\begin{equation}
+\frac{\partial L}{\partial q^{i}} - \frac{\D}{\D t}\frac{\partial L}{\partial\dot{q}^{i}}=0,
+\end{equation}
+where $i=1,\dots,N$.
+We can expand the total time derivative as
+\begin{equation}
+\frac{\partial L}{\partial q^{i}}
+- \left(\ddot{q}^{j}\frac{\partial}{\partial\dot{q}^{j}}\frac{\partial L}{\partial\dot{q}^{i}}
++\dot{q}^{j}\frac{\partial}{\partial q^{j}}\frac{\partial L}{\partial\dot{q}^{i}}\right)=0.
+\end{equation}
+Therefore we can write this as:
+\begin{equation}
+\ddot{q}^{j}\frac{\partial}{\partial\dot{q}^{j}}\frac{\partial L}{\partial\dot{q}^{i}}
+=\frac{\partial L}{\partial q^{i}}
+-\dot{q}^{j}\frac{\partial}{\partial q^{j}}\frac{\partial L}{\partial\dot{q}^{i}}.
+\end{equation}
+If the matrix $\partial^{2}L/\partial\dot{q}^{i}\partial\dot{q}^{j}$ is
+invertible, then we can uniquely determine the accelerations as a
+function of positions and velocities.
+
+\M When this matrix is singular
+(i.e., non-invertible), what happens? Well, recall the definition of the
+canonically conjugate momenta:
+\begin{equation}
+p_{i} = \frac{\partial L}{\partial\dot{q}^{i}}.
+\end{equation}
+Its Jacobian matrix is
+\begin{equation}
+\frac{\partial p_{i}}{\partial\dot{q}^{j}} = \frac{\partial^{2} L}{\partial\dot{q}^{j}\partial\dot{q}^{i}}.
+\end{equation}
+When our desired matrix is not invertible, then it's logically
+equivalent to having the Jacobian for the canonically conjugate momenta
+being non-invertible. This means the momenta are not all independent of
+each other; instead we have some relations
+\begin{equation}
+\phi_{m}(q,p)=0
+\end{equation}
+for $m=1,\dots,M$.
+
+\begin{remark}
+We will assume that the $\phi_{m}$ are independent of each other.
+\end{remark}
+
+\begin{definition}
+The conditions $\phi_{m}(q,p)=0$ obtained from the definition of the
+conjugate momenta are called \define{Primary Constraints}.\index{Constraint!Primary|textbf}\index{Primary constraint|see{Constraint}}
+The submanifold defined by these equations in the phase space is called
+the \define{Primary Constraint Surface}.
+\end{definition}
+
+\begin{remark}
+If we permute/reindex the velocities so the first $N-M$ canonically
+conjugate momenta \emph{are} independent of each other, then the primary
+constraints will take the form:
+\[\phi_{m}=p_{N-M+m}-f_{m}(q^{i},p_{j'}),\]
+where $j'=1,\dots,N-M$ ranges over the independent momenta.
+\end{remark}
+
+\begin{remark}
+The word ``primary'' here refers to the fact that we obtained them from
+trying to obtain the canonically conjugate momenta. Later we will find
+``secondary'' constraints by demanding, roughly, $\PB{\phi_{m}}{H}=0$ on
+the constraint surface. This invokes the equations of motion on the
+primary constraints, which gives us ``secondary'' constraints if the
+Poisson bracket is nonzero.
+\end{remark}
+
+\N{Canonical Hamiltonian}
+The next step in the Hamiltonian analysis is to determine the
+Hamiltonian by means of the Legendre transform:
+\begin{equation}
+H = \dot{q}^{i}p_{i} - L.
+\end{equation}
+
+\begin{lemma}
+The canonical Hamiltonian $H$ has velocities $\dot{q}^{i}$ enter through
+the momenta $p_{i}(q,\dot{q})$ alone.
+\end{lemma}
+
+\begin{proof}
+We consider the change $\variation H$ induced by arbitrary independent
+variations of the positions and velocities
+\begin{calculation}
+\variation H
+\step{linearity of $\variation$}
+\variation(\dot{q}^{i}p_{i}) - \variation L
+\step{product rule}
+\dot{q}^{i}\,\variation p_{i} + p_{i}\,\variation\dot{q}^{i} - \variation L
+\step{expanding $\variation L$ using partial derivatives}
+\dot{q}^{i}\,\variation p_{i} + p_{i}\,\variation\dot{q}^{i} 
+- \variation\dot{q}^{i}\frac{\partial L}{\partial\dot{q}^{i}}
+- \variation q^{i}\frac{\partial L}{\partial q^{i}}
+\step{collecting coefficients of $\variation\dot{q}^{i}$}
+\dot{q}^{i}\,\variation p_{i} + \left(p_{i} 
+- \frac{\partial L}{\partial\dot{q}^{i}}\right)\variation\dot{q}^{i}
+- \variation q^{i}\frac{\partial L}{\partial q^{i}}
+\step{using the definition of the conjugate momentum}
+\dot{q}^{i}\,\variation p_{i} + 
+- \frac{\partial L}{\partial q^{i}}\variation q^{i}.
+\end{calculation}
+Hence
+\begin{equation}
+\variation H = 
+\dot{q}^{i}\,\variation p_{i} + 
+- \frac{\partial L}{\partial q^{i}}\variation q^{i},
+\end{equation}
+establishing the result, since $\variation p_{i}$ is not an independent
+variation but really is a combination of the $\variation q$'s and
+$\variation\dot{q}$'s (and therefore only through $\variation p_{i}$ can
+$\variation\dot{q}$ can enter into $\variation H$). 
+\end{proof}
+
+\N{Problem: Non-Uniqueness of Hamiltonian}
+We should observe that the momenta are not all independent of each
+other, so the variations $\variation p_{i}$ are not all independent of
+each other. Instead the $\variation p_{i}$ are restricted to preserve
+the primary constraints $\phi_{m} = 0$.
+
+We are forced to conclude the canonical Hamiltonian is well-defined only
+on the submanifold defined by the primary constraints, but can be
+extended arbitrarily off that manifold.
+
+It follows that the formalism should remain unchanged by the replacement
+\begin{equation}\label{eq:constrained-dynamics:constraints:hamiltonian-remains-unchanged-by-replacement}
+H\to H + c^{m}(q,p)\phi_{m}
+\end{equation}
+for arbitrary functions $c^{m}$.
+
+\begin{theorem}[{Henneaux and Teitelboim~\cite[Th1.2]{Henneaux:1992ig}}]
+If $\lambda_{i}\,\variation q^{i} + \mu^{i}\,\variation p_{i}=0$ for
+arbitrary variations $\variation q^{i}$, $\variation p_{i}$ tangent to
+the constraint surface, then we have
+\begin{subequations}
+\begin{align}
+\lambda_{i} &= u^{m}\frac{\partial\phi_{m}}{\partial q^{i}}\\
+\mu^{i} &= u^{m}\frac{\partial\phi_{m}}{\partial p_{i}}
+\end{align}
+\end{subequations}
+for some $u^{m}$. The equalities here are equalities on the constraint surface.
+\end{theorem}
+
+\M
+Working on Eq~\eqref{eq:constrained-dynamics:constraints:hamiltonian-remains-unchanged-by-replacement},
+we can rewrite it as:
+\begin{equation}
+\left(\frac{\partial H}{\partial q^{i}} + \frac{\partial L}{\partial q^{i}}\right)\variation q^{i}
++\left(\frac{\partial H}{\partial p_{i}} -\dot{q}^{i}\right)\variation p_{i}=0,
+\end{equation}
+from which we now apply our preceding theorem to
+find:\marginnote{Introduce $u^{m}$}
+\begin{subequations}
+\begin{align}
+\dot{q}^{i} &= \frac{\partial H}{\partial p_{i}} + u^{m}\frac{\partial\phi_{m}}{\partial p_{i}}\\
+\left.-\frac{\partial L}{\partial q^{i}}\right|_{\dot{q}}
+&=\left.\frac{\partial H}{\partial q^{i}}\right|_{p}+u^{m}\frac{\partial\phi_{m}}{\partial q^{i}}.
+\end{align}
+\end{subequations}
+The first of these equations allows us to recover the velocities
+$\dot{q}^{i}$ from knowing (1) the momenta $p_{i}$ (obeying the primary
+constraints $\phi_{m}=0$) and (2) the extra parameters $u^{m}$. These
+extra parameters can be thought of as coordinates on the surface of the
+inverse images of a given $p_{i}$.
+
+\N{Determining $u$'s}.
+If the constraints are independent, then the vectors
+$\partial\phi_{m}/\partial p_{i}$ are also independent on the constraint
+surface $\phi_{m}=0$ because of the regularity conditions. Hence no two
+different sets of the $u$'s can yield the same velocities. This means
+that the $u$'s can be expressed, in principle, as functions of the
+coordinates and velocities by solving the equations
+\begin{equation}
+\dot{q}^{i}
+= \frac{\partial H}{\partial p_{i}}\bigl(q,p(q,\dot{q})\bigr)
++ u^{m}(q,\dot{q})\frac{\partial\phi_{m}}{\partial p_{i}}\bigl(q,p(q,\dot{q})\bigr).
+\end{equation}
+
+% Exercise 1.1(a)
+
+\N{Equations of Motion using Poisson Bracket}\label{chunk:constrained-hamiltonian:constraint:initial-form-of-equations-of-motion-using-poisson-brackets}
+We have, for any phase-space function $F(q,p)$, its time derivative:
+\begin{equation}
+\dot{F} = \PB{F}{H} + u^{m}\PB{F}{\phi_{m}}.
+\end{equation}
+This is the usual Poisson bracket.
+
+\N{Consistency of Constraints}
+We will want the primary constraints be preserved in time
+$\dot{\phi}_{m}=0$, which can be expressed using the Poisson brackets as
+\begin{equation}
+\PB{\phi_{m}}{H} + u^{m'}\PB{\phi_{m}}{\phi_{m'}}=0.
+\end{equation}
+There are two possible consequences to this condition:
+\begin{enumerate}
+\item it reduces to a relation independent of the $u$'s (thus involving
+  only the $q$'s and $p$'s), or
+\item it may impose a restriction on the $u$'s.
+\end{enumerate}
+The first case, if the relation is independent of the primary
+constraints, then we have a \define{Secondary Constraint}.
+
+\M
+If there is a secondary constraint, call it $C(q,p)=0$ for illustration,
+then we must impose a new consistency condition
+\begin{equation}
+\PB{C}{H} + u^{m}\PB{C}{\phi_{m}}=0.
+\end{equation}
+As before, we must check whether this implies a new secondary constraint
+or whether it restricts the $u$'s. After this process is finished, we
+are left with a number of secondary constraints, which we denote
+by\marginnote{Secondary constraints $\phi_{k}$}
+\begin{equation}
+\phi_{k}=0
+\end{equation}
+for $k=M+1$, \dots, $M+K$ where $K$ is the total number of secondary
+constraints. 
+
+We then have all the constraints (primary and secondary) written as
+\begin{equation}
+\phi_{j} = 0,
+\end{equation}
+for $j=1$, \dots, $J=M+K$.
+
+\begin{remark}
+Some authors are painfully pedantic, calling ``secondary constraints''
+only those constraints emerging from the consistency of ``primary constraints''.
+The constraints emerging from the consistency of primary and secondary
+constraints are dubbed ``tertiary constraints''. Presumably demanding
+consistency of the primary, secondary, and tertiary constraints gives us
+quaternary constraints. We then end up with quinary, senary, septenary,
+octonary, nonary, denary constraints (and hopefully no more).
+
+However, as we will see soon, this division into primary, secondary,
+etc., constraints is not physically fundamental. There is another way to
+classify constraints due to Dirac.
+\end{remark}
+
+\begin{definition}
+Let $F$, $G$ be two phase space functions. Then we say $F$ and $G$ are
+\define{Weakly Equal} and write $F\weakEq G$ if and only if they
+coincide on the constraint manifold $\phi_{j}=0$. We refer to the symbol
+``$\weakEq$'' as the \emph{weak equality symbol}.
+
+If $F$, $G$ coincide \emph{everywhere} in the phase space, then we say
+$F$ and $G$ are \define{Strongly Equal} and indicate this as $F = G$
+with the usual equality symbol.
+\end{definition}
+
+\begin{theorem}[{Henneaux and Teitelboim~\cite[Th1.2]{Henneaux:1992ig}}]
+If $F$ and $G$ are two phase space functions, then
+\begin{equation}
+F\weakEq G\iff F-G = c^{j}(q,p)\phi_{j}.
+\end{equation}
+\end{theorem}
+
+\N{Re-phrasing Consistency Condition: Restricting $u^{m}$}
+We have a complete set of constraints $\phi_{j}\weakEq0$, and we want to
+study the restrictions on the Lagrange multipliers $u^{m}$. These
+restrictions are
+\begin{equation}
+\PB{\phi_{j}}{H} + u^{m}\PB{\phi_{j}}{\phi_{m}}\weakEq0,
+\end{equation}
+where we sum $m$ from $1$ to $M$, and $j$ is an index taking any value
+from $1$ to $J$. This describes a system of $J$ linear equations in the
+$M\leq J$ unknowns $u^{m}$ with coefficients which are functions of the
+$q$'s and $p$'s. These equations should have solutions, otherwise the
+Lagrangian description would be inconsistent.
+
+The general solution to our system of linear equations is of the form
+\begin{equation}
+u^{m} = U^{m} + V^{m}
+\end{equation}
+where $U^{m}$ is a particular solution of the inhomogeneous system of
+equations, and $V^{m}$ is the most general solution to the associated
+homogeneous system
+\begin{equation}
+V^{m}\PB{\phi_{j}}{\phi_{m}}\weakEq0.
+\end{equation}
+The most general $V^{m}$ is a linear combination of linearly independent
+solutions ${V_{a}}^{m}$ for $a=1$, \dots, $A$. The number $A$ of
+independent solutions is the same for all $q$, $p$ on the constraint
+surface, because we assumed the rank of $\PB{\phi_{j}}{\phi_{m}}$ is
+constant on the constraint surface.
+Then we can write
+\begin{equation}
+u^{m}\weakEq U^{m} + v^{a}{V_{a}}^{m},
+\end{equation}
+where the coefficients $v^{a}$ \emph{are totally arbitrary}.
+
+Hence we have separated $u^{m}$ into the part $U^{m}$ determined by the
+consistency conditions and separately the totally arbitrary part.
+
+\begin{definition}
+We define the \define{First-Class Hamiltonian} to be the function
+\begin{equation}
+H' := H + U^{m}\phi_{m}.
+\end{equation}
+\end{definition}
+
+\N{Equations of Motion}
+We can revisit the equations of motion (\S\ref{chunk:constrained-hamiltonian:constraint:initial-form-of-equations-of-motion-using-poisson-brackets})
+to write the time derivative of any phase space function $F$ as
+\begin{equation}
+\dot{F}\weakEq\PB{F}{H' + v^{a}\phi_{a}}
+\end{equation}
+where $\phi_{a} = {V_{a}}^{m}\phi_{m}$.
+
+To see this, we have used
+\begin{equation}
+\PB{F}{U^{m}\phi_{m}} = U^{m}\PB{F}{\phi_{m}}+\PB{F}{U^{m}}\phi_{m}
+\weakEq U^{m}\PB{F}{\phi_{m}},
+\end{equation}
+and similar manipulations for $\PB{F}{{V_{a}}^{m}\phi_{m}}\weakEq{V_{a}}^{m}\PB{F}{\phi_{m}}$.
+
+\begin{definition}
+We define the \define{Total Hamiltonian} $H_{T} = H' + v^{a}\phi_{a} = H + u^{m}\phi_{m}$.
+\end{definition}
+
+\begin{remark}
+The total Hamiltonian recovers the Lagrangian dynamics, but in terms of
+canonical variables.
+\end{remark}
+
+\M
+We can then describe the equations of motion using the total Hamiltonian
+as
+\begin{equation}
+\dot{F}\weakEq\PB{F}{H_{T}}.
+\end{equation}
+These equations are equivalent, by construction, to the original
+Lagrangian equations of motion.
+
+\begin{definition}[{Henneaux and Teitelboim~\cite[\S1.1.10]{Henneaux:1992ig}}]
+We call a phase-space function $F$ \define{First-Class} if its Poisson
+bracket with every constraint weakly
+vanishes: $\PB{F}{\phi_{j}}\weakEq0$ for every $j=1,\dots,J$.
+Otherwise, if $F$ is not first-class, we call it \define{Second-Class}.
+\end{definition}
+
+\M Observe that the total Hamiltonian is the sum of the first-class
+Hamiltonian $H'$ and the first-class primary constraints multiplied by
+arbitrary coefficients. This splitting of $H_{T}$ into $H'$ and
+$v^{a}\phi_{a}$ is not unique because $U^{m}$ appearing in this
+decomposition can be \emph{any solution} to a (possibly underdetermined)
+system of linear equations.
+
+\begin{theorem}
+If $F$ and $G$ are first-class functions on the phase space, then their
+Poisson bracket $\PB{F}{G}$ is also a first-class function.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The proof is a straightforward calculation, using
+$\PB{F}{\phi_{j}}={f_{j}}^{j'}\phi_{j'}$
+and
+$\PB{G}{\phi_{j}}={g_{j}}^{j'}\phi_{j'}$, then using the Jacobi identity
+to write $\PB{\PB{F}{G}}{\phi_{j}}=\PB{F}{\PB{G}{\phi_{j}}}-\PB{G}{\PB{F}{\phi_{j}}}$.
+This will turn out to be a linear combination of constraints, which
+proves the theorem.
+\end{proof}
+
+\N{Gauge Transformations}
+We can transform a function $F$ using an arbitrary variation of the
+arbitrary functions $\variation v^{a}=\overline{v}^{a}-v^{a}$ as
+\begin{equation}
+\variation F = \variation v^{a}\PB{F}{\phi_{a}}.
+\end{equation}
+These are precisely gauge transformations, i.e., transformations which
+do not change the physical state of the system.

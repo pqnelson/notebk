@@ -261,10 +261,11 @@ Derive Eq~\eqref{eq:relativity:scattering:t-angle}.
 \N{Channels}
 We have the usual $s$-channel describing scattering of the form $1+2\to 3+4$.
 However, we could swap $2$ and $3$ (interpreting them as
-anti-particles), interpreting the process as
-$1+\overline{3}\to\overline{2}+4$. This describes the \define{$t$-Channel}.
-Here $t$ is interpreted as the square of the center-of-mass energy, and
-$s$ is the momentum transfer squared.
+anti-particles, denoted by $\overline{2}$ and $\overline{3}$
+respectively), interpreting the process as
+$1+\overline{3}\to\overline{2}+4$. This describes the
+\define{$t$-Channel}. Here $t$ is interpreted as the square of the
+center-of-mass energy, and $s$ is the momentum transfer squared.
 
 If we swapped $2$ with $4$, giving us a scattering process
 $1+\overline{4}\to3+\overline{2}$,
@@ -281,8 +282,32 @@ $t$-channel correspond to $1+\overline{3}\to\overline{1}+4$,
 but its $u$-channel corresponds to $1+\overline{4}\to\overline{1}+3$.
 \end{remark}
 
+\subsection{Elastic Scattering}
+
+\begin{lemma}[Elastic Collision Lemma]
+In $2\to2$ scattering with initial momenta $p_{(1)}^{\mu}$, $p_{(2)}^{\mu}$
+and final momenta $p_{(1')}^{\mu}$, $p_{(2')}^{\mu}$, we have
+\begin{equation}
+\eta_{\mu\nu}p_{(1)}^{\mu}p_{(2)}^{\nu} = \eta_{\mu\nu}p_{(1')}^{\mu}p_{(2')}^{\nu}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+  From the conservation of 4-momenta, we have
+  \begin{equation}
+p_{(1)}^{\mu} + p_{(2)}^{\mu} = p_{(1')}^{\mu} + p_{(2')}^{\mu}.
+  \end{equation}
+  Taking the square of the norm of both sides gives us
+  \begin{equation}
+m_{1}^{2}c^{2} + 2\eta_{\mu\nu}p_{(1)}^{\mu}p_{(2)}^{\nu} + m_{2}^{2}c^{2}
+= m_{1}^{2}c^{2} + 2\eta_{\mu\nu}p_{(1')}^{\mu}p_{(2')}^{\nu} + m_{2}^{2}c^{2}.
+  \end{equation}
+  The result follows immediately.
+\end{proof}
+
+
 \N{References}
-See Rindler~\cite{Rindler:1991sr}. For the particulars of relativistic
-scattering, Hagedorn~\cite{Hagedorn:1963hdh}.
+See Chapter 5 of Rindler~\cite{Rindler:1991sr}. For the particulars of
+relativistic scattering, Hagedorn~\cite{Hagedorn:1963hdh}.
 
 \endinput

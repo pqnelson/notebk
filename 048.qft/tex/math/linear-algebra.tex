@@ -1,11 +1,89 @@
 \section{Linear Algebra}
 
+\begin{definition}
+Let $\mathcal{H}$ be a Hilbert space and
+Let $L\colon\mathcal{H}\to\mathcal{H}$ be a linear operator.
+Then the \define{Adjoint} of $L$ is a linear operator denoted
+$L^{\dagger}\colon\mathcal{H}\to\mathcal{H}$ defined by, for any
+$\vec{u}$, $\vec{v}\in\mathcal{H}$ we have
+\begin{equation}
+\langle L\vec{u},\vec{v}\rangle = \langle \vec{u},L^{\dagger}\vec{v}\rangle.
+\end{equation}
+\end{definition}
+
+\begin{definition}
+Let $\mathcal{H}$ be a Hilbert space and
+Let $L\colon\mathcal{H}\to\mathcal{H}$ be a linear operator.
+We call $L$ \define{Self-Adjoint} if
+\begin{equation}
+L^{\dagger} = L.
+\end{equation}
+\end{definition}
+
+
 \begin{theorem}
-Let $\mathcal{H}$ be a Hilbert space and $L\colon \mathcal{H}\to\mathcal{H}$
-be a self-adjoint operator. Then:
+Let $\mathcal{H}$ be a finite-dimensional Hilbert space and
+$L\colon \mathcal{H}\to\mathcal{H}$ be a self-adjoint operator. Then:
 \begin{enumerate}
 \item The eigenvalues of $L$ are all real;
 \item The eigenvectors of $L$ form a complete set;
 \item The normalized eigenvectors of $L$ are orthonormal.
 \end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof (Eigenvalues of $L$ are real)]
+Let $\vec{u}\in\mathcal{H}$ be an eigenvector for $L$ with eigenvalue
+$\lambda\in\CC\setminus\{0\}$. Then we have
+\begin{equation}
+  \begin{array}{ccc}
+    \langle L\vec{u},\vec{u}\rangle & = & \langle \vec{u},L\vec{u}\rangle\\
+= &  & =\\
+\lambda\langle\vec{u},\vec{u}\rangle & & \overline{\lambda}\langle\vec{u},\vec{u}\rangle
+  \end{array}
+\end{equation}
+since $L$ is self-adjoint, $L^{\dagger}=L$ which gives us the top line,
+and then linearity in the first slot (and anti-linearity in the second
+slot) of the inner product gives us the second line. This implies
+\begin{equation}
+\lambda=\overline{\lambda},
+\end{equation}
+hence $\lambda\in\RR$.
+\end{proof}
+
+\begin{proof}[Proof (Eigenvectors of $L$ are orthogonal)]
+Let $\vec{u}_{1}, \vec{u}_{2}\in\mathcal{H}$ be eigenvectors of $L$ with
+distinct eigenvalues $\lambda_{1}$, $\lambda_{2}$ respectively.
+Then
+\begin{equation}
+  \begin{array}{ccc}
+    \langle L\vec{u}_{1},\vec{u}_{2}\rangle & = & \langle \vec{u}_{1},L\vec{u}_{2}\rangle\\
+= &  & =\\
+\lambda_{1}\langle\vec{u}_{1},\vec{u}_{2}\rangle & & \overline{\lambda}_{2}\langle\vec{u}_{1},\vec{u}_{2}\rangle.
+  \end{array}
+\end{equation}
+Since the eigenvalues are real, $\lambda_{2}=\overline{\lambda}_{2}$,
+and since $\lambda_{1}\neq\lambda_{2}$, we must have
+\begin{equation}
+\langle\vec{u}_{1},\vec{u}_{2}\rangle=0.
+\end{equation}
+Further, if the eigenvectors $\vec{u}_{i}$ are unit vectors, then they
+form an orthonormal basis.
+\end{proof}
+
+\section{Unitary Operators}
+
+\begin{definition}
+Let $\mathcal{H}$ be a Hilbert space and
+let $L\colon\mathcal{H}\to\mathcal{H}$ be a linear operator.
+We call $L$ \define{Unitary} if
+\begin{enumerate}
+\item it is an isometry: $L^{\dagger}L=\id$
+\item it is a co-isometry: $LL^{\dagger}=\id$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Let $\mathcal{H}$ be a Hilbert space and
+let $U\colon\mathcal{H}\to\mathcal{H}$ be a unitary operator.
+Then $U$ is a bijection and $U^{-1}=U^{\dagger}$.
 \end{theorem}
