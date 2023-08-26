@@ -286,6 +286,163 @@ is the semidirect product with $\Spin(3,1)$. This is referred to as the
 seldom care about such sordid details. 
 \end{ddanger}
 
+\subsection{Single Particle States}
+
+\begin{problem}
+Classify all possible 1-particle states invariant under the (identity
+component of the) Poincar\'e group.
+\end{problem}
+
+\M
+Let us write $U(\Lambda,a)$ for the unitary representation of the
+transformation $x\to\Lambda x + a$ acting on the Hilbert space of a
+single relativistic quantum particle. 
+We can classify all states using eigenvectors of the 4-momentum
+operator.
+
+We write $\Psi_{p,\sigma}$ for the state with $p$ labeling the momentum eigenvalue,
+\begin{equation}
+\widehat{P}^{\mu}\Psi_{p,\sigma}=p^{\mu}\Psi_{p,\sigma},
+\end{equation}
+and $\sigma$ labeling all other degrees of freedom.
+
+\begin{remark}
+The $\sigma$ contains finitely many components, as this is the defining
+property of a ``single particle''. Several unbound particles could have
+$\sigma$ contain continuously many entries.
+\end{remark}
+
+\begin{remark}
+The distinction between ``elementary particle'' and ``composite particle''
+is meaningless here.
+\end{remark}
+
+\N{Translations}
+Under translations, we find
+\begin{equation}
+U(1, a)\Psi_{p,\sigma} = \E^{-\I p_{\mu}a^{\mu}}\Psi_{p,\sigma}.
+\end{equation}
+We need to see how these states transform under homogeneous Lorentz
+transformations. 
+
+\N{Boosts}
+We see how a homogeneous Lorentz transformation
+$U(\Lambda)=U(\Lambda,0)$ acts to produce a state with momentum
+eigenvalue $\Lambda p$:
+\begin{calculation}
+\widehat{P}^{\mu}U(\Lambda)\Psi_{p,\sigma}
+\step{multiplying on left by $1 = U(\Lambda)U(\Lambda)^{-1}$}
+[U(\Lambda)U(\Lambda)^{-1}]\widehat{P}^{\mu}U(\Lambda)\Psi_{p,\sigma}
+\step{associativity}
+U(\Lambda)[U(\Lambda)^{-1}\widehat{P}^{\mu}U(\Lambda)]\Psi_{p,\sigma}
+\step{Lorentz transformation of momentum operator}
+U(\Lambda)[{(\Lambda^{-1})_{\rho}}^{\mu}\widehat{P}^{\rho}]\Psi_{p,\sigma}
+\step{since the (linear combination of) eigenvalues are scalars, we pull
+  them in front}
+[{(\Lambda^{-1})_{\rho}}^{\mu}p^{\rho}]U(\Lambda)\Psi_{p,\sigma}
+\step{definition of inverse of Lorentz transformation}
+[{\Lambda^{\mu}}_{\rho}p^{\rho}]U(\Lambda)\Psi_{p,\sigma}
+\end{calculation}
+Therefore $U(\Lambda)\Psi_{p,\sigma}$ lives in the eigenspace of $\widehat{P}^{\mu}$,
+and therefore $\widehat{P}^{\mu}U(\Lambda)\Psi_{p,\sigma}$ is a linear
+combination of state vectors $\Psi_{p,\sigma'}$ (summing over $\sigma'$):
+\begin{equation}\label{eq:rqm:poincare-algebra:one-particle-states:rep-of-poincare-group}
+U(\Lambda)\Psi_{p,\sigma} = \sum_{\sigma'}C_{\sigma',\sigma}(\Lambda, p)\Psi_{\Lambda p,\sigma}.
+\end{equation}
+
+\N{Species of Particles}
+In general, we may use suitable linear combinations of $\Psi_{p,\sigma}$
+to choose the $\sigma$ labels in such a way that the matrix
+$C_{\sigma',\sigma}(\Lambda,p)$ is block-diagonal. This means that,
+within each block, we obtain a subrepresentation of the Poincar\'e group.
+It is natural to identify the states of a specific particle type with
+the components of a representation of the Poincar\'e group which is
+irreducible (in the sense that we cannot decompose it any further).
+
+\begin{problem}
+Our current problem can be re-phrased as studying the coefficients
+$C_{\sigma',\sigma}(\Lambda,p)$ in irreducible representations of the
+Poincar\'e group.
+\end{problem}
+
+\N{Trick: ``Physically Distinct'' Momenta}
+There is a trick we will use, namely we can use the proper orthochronous Lorentz
+boosts on a ``standard'' 4-momenta $k^{\mu}$ to obtain any arbitrary
+4-momentum $p^{\mu}$ for a given value of $\eta_{\mu\nu}p^{\mu}p^{\nu}$
+and sign of $p^{0}$. This cuts down the space of possible 1-particle
+states to these $k^{\mu}$, since they're related to the 1-particle
+states with 4-momentum $p^{\mu} = {L^{\mu}}_{\nu}(p)k^{\nu}$ by
+\begin{equation}
+\Psi_{p,\sigma} = N(p)U(L(p))\Psi_{k,\sigma},
+\end{equation}
+where $N(p)$ is just some normalization factor.
+
+Now we have a subspace of state vectors $\Psi_{k,\sigma}$ and we want to
+study the subgroup of Lorentz transformations preserving this subspace.
+
+\N{Notation}
+In this subsection, we will reserve $k^{\mu}$ for the ``standard momenta 4-vectors''.
+
+\begin{definition}
+Let $k^{\mu}$ be a standard momentum 4-vector. We define
+\define{Wigner's Little Group} to consist of the Poincar\'e transformations
+$W\in\O(3,1)$ such that ${W^{\mu}}_{\nu}k^{\nu}=k^{\mu}$, i.e., $W$
+stabilizes $k^{\mu}$.
+\end{definition}
+
+\begin{theorem}
+  For any element $W$ of Wigner's little group, we have
+  \begin{equation}
+U(W)\Psi_{k,\sigma} = \sum_{\sigma'}D(W)_{\sigma',\sigma}\Psi_{k,\sigma'}
+  \end{equation}
+  Moreover, the coefficients $D(W)_{\sigma',\sigma}$ give us a
+  representation of Wigner's little group.
+\end{theorem}
+
+\begin{corollary}
+Given an element of the Lorentz group $\Lambda\in\O(3,1)$ and some
+4-momentum $p^{\mu}$, we have a corresponding element of Wigner's little
+group given by
+\begin{equation}
+W(\Lambda,p) = L^{-1}(\Lambda p)\cdot\Lambda\cdot L(p).
+\end{equation}
+\end{corollary}
+
+\begin{corollary}
+Given an element of the Lorentz group $\Lambda\in\O(3,1)$ and some
+4-momentum $p^{\mu}$, we have $\Lambda$ act on the state vector
+$\Psi_{p,\sigma}$ by
+\begin{equation}
+U(\Lambda)\Psi_{p,\sigma} = \frac{N(P)}{N(\Lambda p)}\sum_{\sigma'}D_{\sigma',\sigma}(W(\Lambda, p))\Psi_{\Lambda p,\sigma'}.
+\end{equation}
+That is, aside from the normalization constant pulled in front of the
+sum, the coefficients $C_{\sigma',\sigma}$ from Eq~\eqref{eq:rqm:poincare-algebra:one-particle-states:rep-of-poincare-group} are determined by the
+coefficients $D_{\sigma',\sigma}$ of the representation of Wigner's
+little group.
+\end{corollary}
+
+\N{Possible One-Particle States}
+The possible one-particle states are determined by the standard momentum
+$k^{\mu}$, giving us the following 6 possibilities (where $M$ is some
+mass, and $\mu$ is some energy scale like 1 eV):
+\begin{center}
+\begin{tabular}{ll|l|c}
+    & Parameters & Standard Momentum $k^{\mu}$ & Little Group\\\hline
+(1*) & $p^{2}=-M^{2}<0$, $p^{0}>0$ & $(0,0,0,M)$ & $\SO(3)$\\
+(2) & $p^{2}=-M^{2}<0$, $p^{0}<0$ & $(0,0,0,-M)$ & $\SO(3)$\\
+(3*) & $p^{2}=0$, $p^{0}>0$ & $(0,0,\mu,\mu)$ & $\ISO(2)$\\
+(4) & $p^{2}=0$, $p^{0}<0$ & $(0,0,\mu,-\mu)$ & $\ISO(2)$\\
+(5) & $p^{2}=M^{2}>0$ & $(0,0,N,0)$ & $\SO(2,1)$\\
+(6) & $p^{\mu}=0$ & $(0,0,0,0)$ & $\SO(3,1)$
+\end{tabular}
+\end{center}
+The physically meaningful possibilities are options (1) and (3) (and
+possibly the vacuum state (6), but that doesn't really describe any particles).
+
+Our goal now is to study irreducible representations of Wigner's little
+group on these two cases --- the positive-definite mass case, and the
+massless case.
+
 \N{References}
 A detailed discussion of the Poincar\'e and Lorentz groups (and their
 Lie algebras) may be found in Chapter 2 of
