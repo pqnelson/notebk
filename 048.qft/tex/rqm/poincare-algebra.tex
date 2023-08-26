@@ -22,7 +22,7 @@ particles.\index{Elementary Particle!As Irreducible Representation}
 \subsection{Lorentz Algebra}
 
 \begin{definition}
-The subgroup of \define{Proper Orthochronous Lorentz Transformations}
+The subgroup of \define*{Proper Orthochronous Lorentz Transformations}\index{Lorentz transformation!Proper orthochronous}
 denoted either as $\ISO(3,1)$ or $\SO^{+}(3,1)$, consists of Lorentz
 transformations $\Lambda\in\O(3,1)$ such that
 \begin{enumerate}
@@ -281,7 +281,7 @@ for the Lorentz group $\ISO(3,1)$ is the indefinite Spin group $\Spin(3,1)$.
 Since the Poincar\'e group is the semidirect product of translations
 $\RR^{3,1}$ with the Lorentz group $\ISO(3,1)$, the universal covering
 is the semidirect product with $\Spin(3,1)$. This is referred to as the
-\define{Poincar\'e Spin Group}\index{Poincar\'e!Spin group}\index{Group!Poincar\'e!Spin} or
+\define*{Poincar\'e Spin Group}\index{Poincar\'e!Spin group}\index{Group!Poincar\'e!Spin} or
 \emph{Poincar\'e Spinor Group} in the literature, though physicists
 seldom care about such sordid details. 
 \end{ddanger}
@@ -385,7 +385,8 @@ In this subsection, we will reserve $k^{\mu}$ for the ``standard momenta 4-vecto
 
 \begin{definition}
 Let $k^{\mu}$ be a standard momentum 4-vector. We define
-\define{Wigner's Little Group} to consist of the Poincar\'e transformations
+\define*{Wigner's Little Group}\index{Wigner's little group|see{Group, Wigner's little}}\index{Group!Wigner's little}
+to consist of the Poincar\'e transformations
 $W\in\O(3,1)$ such that ${W^{\mu}}_{\nu}k^{\nu}=k^{\mu}$, i.e., $W$
 stabilizes $k^{\mu}$.
 \end{definition}
@@ -423,16 +424,16 @@ little group.
 
 \N{Possible One-Particle States}
 The possible one-particle states are determined by the standard momentum
-$k^{\mu}$, giving us the following 6 possibilities (where $M$ is some
+$k^{\mu}=(k^{0},\vec{k})$, giving us the following 6 possibilities (where $M$ is some
 mass, and $\mu$ is some energy scale like 1 eV):
 \begin{center}
 \begin{tabular}{ll|l|c}
     & Parameters & Standard Momentum $k^{\mu}$ & Little Group\\\hline
-(1*) & $p^{2}=-M^{2}<0$, $p^{0}>0$ & $(0,0,0,M)$ & $\SO(3)$\\
-(2) & $p^{2}=-M^{2}<0$, $p^{0}<0$ & $(0,0,0,-M)$ & $\SO(3)$\\
-(3*) & $p^{2}=0$, $p^{0}>0$ & $(0,0,\mu,\mu)$ & $\ISO(2)$\\
-(4) & $p^{2}=0$, $p^{0}<0$ & $(0,0,\mu,-\mu)$ & $\ISO(2)$\\
-(5) & $p^{2}=M^{2}>0$ & $(0,0,M,0)$ & $\SO(2,1)$\\
+(1*) & $p^{2}=-M^{2}<0$, $p^{0}>0$ & $(M,0,0,0)$ & $\SO(3)$\\
+(2) & $p^{2}=-M^{2}<0$, $p^{0}<0$ & $(-M,0,0,0)$ & $\SO(3)$\\
+(3*) & $p^{2}=0$, $p^{0}>0$ & $(\mu,\mu,0,0)$ & $\ISO(2)$\\
+(4) & $p^{2}=0$, $p^{0}<0$ & $(-\mu,\mu,0,0)$ & $\ISO(2)$\\
+(5) & $p^{2}=M^{2}>0$ & $(0,M,0,0)$ & $\SO(2,1)$\\
 (6) & $p^{\mu}=0$ & $(0,0,0,0)$ & $\SO(3,1)$
 \end{tabular}
 \end{center}
@@ -442,6 +443,9 @@ possibly the vacuum state (6), but that doesn't really describe any particles).
 Our goal now is to study irreducible representations of Wigner's little
 group on these two cases --- the positive-definite mass case, and the
 massless case.
+
+\subsection*{Massive Case}
+\subsection*{Massless Case}
 
 \N{References}
 A detailed discussion of the Poincar\'e and Lorentz groups (and their

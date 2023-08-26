@@ -169,7 +169,11 @@
 %% \appto\remark{\leftskip3pc}
 
 % For definitions, we \define{stuff}
-\newcommand\define[1]{{\upshape\bfseries``#1''}}
+% \newcommand\define[1]{{\upshape\bfseries``#1''}}
+
+\newcommand\define@star[1]{{\upshape\bfseries``#1''}}
+\newcommand\define@unstar[1]{\define@star{#1}\index{#1}}
+\def\define{\@ifstar\define@star\define@unstar}
 
 % arXiv links
 \def\arXiv{\@ifnextchar[{\@arXivWith}{\@arXivWithout}}
