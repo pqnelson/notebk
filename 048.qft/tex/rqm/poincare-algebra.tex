@@ -293,6 +293,13 @@ Classify all possible 1-particle states invariant under the (identity
 component of the) Poincar\'e group.
 \end{problem}
 
+\begin{remark}
+The hope is to obtain all possible 1-particle Hilbert spaces
+$\mathcal{H}$, so that we may construct the Fock space out of it. This
+is how quantum field theory works. But this requires classifying the
+possible Hilbert spaces $\mathcal{H}$ for 1-particle states.
+\end{remark}
+
 \M
 Let us write $U(\Lambda,a)$ for the unitary representation of the
 transformation $x\to\Lambda x + a$ acting on the Hilbert space of a
@@ -413,7 +420,7 @@ W(\Lambda,p) = L^{-1}(\Lambda p)\cdot\Lambda\cdot L(p).
 Given an element of the Lorentz group $\Lambda\in\O(3,1)$ and some
 4-momentum $p^{\mu}$, we have $\Lambda$ act on the state vector
 $\Psi_{p,\sigma}$ by
-\begin{equation}
+\begin{equation}\label{eq:rqm:poincare-algebra:one-particle-states:action-of-lorentz-transformation-on-state}
 U(\Lambda)\Psi_{p,\sigma} = \frac{N(P)}{N(\Lambda p)}\sum_{\sigma'}D_{\sigma',\sigma}(W(\Lambda, p))\Psi_{\Lambda p,\sigma'}.
 \end{equation}
 That is, aside from the normalization constant pulled in front of the
@@ -431,20 +438,87 @@ mass, and $\mu$ is some energy scale like 1 eV):
     & Parameters & Standard Momentum $k^{\mu}$ & Little Group\\\hline
 (1*) & $p^{2}=-M^{2}<0$, $p^{0}>0$ & $(M,0,0,0)$ & $\SO(3)$\\
 (2) & $p^{2}=-M^{2}<0$, $p^{0}<0$ & $(-M,0,0,0)$ & $\SO(3)$\\
-(3*) & $p^{2}=0$, $p^{0}>0$ & $(\mu,\mu,0,0)$ & $\ISO(2)$\\
-(4) & $p^{2}=0$, $p^{0}<0$ & $(-\mu,\mu,0,0)$ & $\ISO(2)$\\
-(5) & $p^{2}=M^{2}>0$ & $(0,M,0,0)$ & $\SO(2,1)$\\
+(3*) & $p^{2}=0$, $p^{0}>0$ & $(\mu,0,0,\mu)$ & $\ISO(2)$\\
+(4) & $p^{2}=0$, $p^{0}<0$ & $(-\mu,0,0,\mu)$ & $\ISO(2)$\\
+(5) & $p^{2}=M^{2}>0$ & $(0,0,0,M)$ & $\SO(2,1)$\\
 (6) & $p^{\mu}=0$ & $(0,0,0,0)$ & $\SO(3,1)$
 \end{tabular}
 \end{center}
 The physically meaningful possibilities are options (1) and (3) (and
 possibly the vacuum state (6), but that doesn't really describe any particles).
+We typically adopt the convention that the $z$-axis is the direction of motion.
 
 Our goal now is to study irreducible representations of Wigner's little
 group on these two cases --- the positive-definite mass case, and the
 massless case.
 
 \subsection*{Massive Case}
+
+\N{Unitary Representation}
+The unitary representation for $\SO(3)$ can be broken up into a direct
+sum of irreducible unitary representations $D^{(j)}_{\sigma',\sigma}(R)$
+of dimension $2j+1$ for $j=0,\frac{1}{2},1,\frac{3}{2},\dots$ (i.e.,
+$j\in\frac{1}{2}\NN_{0}$).
+
+\N{Infinitesimal rotations}
+The unitary representations for infinitesimal rotations
+$R_{ik}=\delta_{ik}+\Theta_{ik}$ with $\Theta_{ik}=-\Theta_{ki}$
+infinitesimal:
+\begin{subequations}
+\begin{align}
+D^{(j)}_{\sigma',\sigma}(1 + \Theta) &= \delta_{\sigma',\sigma} + \frac{\I}{2}\Theta_{ik}(J^{(j)}_{ik})_{\sigma',\sigma}\\
+(J^{(j)}_{23}\pm\I J^{(j)}_{31})_{\sigma',\sigma} &= (J^{(j)}_{1}\pm\I J^{(j)}_{2})_{\sigma',\sigma}\nonumber\\
+&= \delta_{\sigma',\sigma\pm1}\sqrt{(j\mp\sigma)(j\pm\sigma+1)}\\
+(J^{(j)}_{12})_{\sigma',\sigma} &= (J^{(j)}_{3})_{\sigma',\sigma} = \sigma\delta_{\sigma',\sigma},
+\end{align}
+\end{subequations}
+with $\sigma$ running over the values $j$, $j-1$, \dots, $-j$.
+
+\M
+For a particle of mass $M>0$ and spin $j$, Eq~\eqref{eq:rqm:poincare-algebra:one-particle-states:action-of-lorentz-transformation-on-state}
+becomes
+\begin{equation}
+U(\Lambda)\Psi_{p,\sigma}
+=\sqrt{\frac{(\Lambda p)^{0}}{p^{0}}}\sum_{\sigma'}D^{(j)}_{\sigma',\sigma}(W(\Lambda,p))
+\Psi_{\Lambda p,\sigma'}
+\end{equation}
+with the little-group element $W(\Lambda, p)$ (the Wigner rotation)
+given by
+\begin{equation*}
+W(\Lambda, p) = L^{-1}(\Lambda p)\Lambda L(p).
+\end{equation*}
+We can calculate this rotation by using the ``standard'' boost $L(p)$
+carrying the 4-momentum from $k^{\mu}=(M,\vec{0})$ to $p^{\mu}$. This is
+conveniently chosen as:
+\begin{subequations}
+\begin{align}
+{L^{i}}_{k}(p) &= {\delta^{i}}_{k} + (\gamma - 1)\widehat{p}_{i}\widehat{p}_{k}\\
+{L^{i}}_{0}(p) &= {L^{0}}_{i}(p) = \widehat{p}_{i}\sqrt{\gamma^{2}-1}\\
+{L^{0}}_{0}(p) &= \gamma
+\end{align}
+\end{subequations}
+where
+\begin{equation}
+\widehat{p}_{i}:=\frac{p_{i}}{\|\vec{p}\|},\quad\mbox{and}\quad
+\gamma:=\frac{\sqrt{\|\vec{p}\|^{2}+M^{2}}}{M}.
+\end{equation}
+
+\begin{exercise}
+Prove that ${L^{\mu}}_{\nu}(p)k^{\nu}=p^{\mu}$.
+\end{exercise}
+
+\begin{proposition}
+For any three-dimensional rotation $\mathcal{R}$, when the Lorentz
+transformation $\Lambda=\mathcal{R}$, the Wigner rotation $W(\mathcal{R},p)=\mathcal{R}$.
+\end{proposition}
+
+\N{Consequence}
+The states of a moving massive particle have the same transformation
+under rotations as in non-relativistic quantum mechanics. We can
+therefore use all the tools from non-relativistic quantum mechanics ---
+the spherical harmonics, Clebsch-Gordon coefficients, etc. --- to
+describe relativistic quantum mechanics for massive particles.
+
 \subsection*{Massless Case}
 
 \N{References}
