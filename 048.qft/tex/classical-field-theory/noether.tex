@@ -72,7 +72,7 @@ gives us
 \end{calculation}
 As usual, we ignore boundary terms, then invariance of the action (up to
 boundary terms) demands that:
-\begin{equation}
+\begin{equation}\label{eq:classical-field-theory:noether:second-theorem}
 \boxed{L_{i}F^{i}_{a}(q,\dot{q}) - \frac{\D}{\D t}\bigl(L_{i} G^{i}_{a}(q,\dot{q})\bigr) = 0.}
 \end{equation}
 These $n$ are identities are known as \define*{Noether's Second Theorem}\index{Noether!Second theorem}
@@ -131,11 +131,29 @@ The results still hold, we just assume invariance under
 \end{equation}
 with
 \begin{equation}
-\delta\varphi^{A}(x) = \epsilon^{A}(x)F^{A}_{a} + (\partial_{\mu}\epsilon^{a}(x))G^{A\mu}_{a},
+\delta\varphi^{A}(x) = \epsilon^{A}(x)F^{A}_{a}(x) + (\partial_{\mu}\epsilon^{a}(x))G^{A\mu}_{a}(\varphi,x),
 \end{equation}
 \end{subequations}
 and we now have arbitrary functions $\epsilon^{A}(x)$ of spacetime (not
 just time).
+
+\begin{exercise}[{Sundermeyer~\cite{Sundermeyer:1982gv}}]
+Let $L_{A} = (\partial\mathcal{L}/\partial\varphi^{A})-\partial_{\mu}(\partial\mathcal{L}/\partial(\partial_{\mu}\varphi^{A}))$.
+Prove the field theory version of Noether's second theorem Eq~\eqref{eq:classical-field-theory:noether:second-theorem}
+is
+\begin{subequations}
+\begin{equation}
+\epsilon^{a}\bigl(L_{A}F^{a}_{A} - \partial_{\mu}(L_{A}G^{A\mu}_{a})\bigr)=0.
+\end{equation}
+If further we consider $x^{\mu}\to x^{\mu}+\delta x^{\mu}$ with
+$\variation x^{\mu} = \epsilon^{a}(x)\xi_{a}^{\mu}(x)$, then
+\begin{equation}
+\epsilon^{a}\bigl(L_{A}F^{a}_{A} 
+- L_{A}(\partial_{\mu}\varphi^{A})\xi^{\mu}_{a}(x)
+- \partial_{\mu}(L_{A}G^{A\mu}_{a})\bigr)=0.
+\end{equation}
+\end{subequations}
+\end{exercise}
 
 \M
 The more common presentation of Noether's first theorem begins by

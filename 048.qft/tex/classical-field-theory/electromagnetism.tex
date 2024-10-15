@@ -28,6 +28,13 @@ These will turn out to be:
 \end{equation}
 This is the source-free Maxwell's equations.
 
+\begin{lemma}
+  The variation of the Lagrangian for electromagnetism is
+  \begin{equation}
+\variation\mathcal{L}_{EM} = -\eta^{\alpha\mu}F_{\mu\nu}\partial_{\alpha}(\variation A^{\nu}).
+  \end{equation}
+\end{lemma}
+
 \begin{proof}[Proof (slick)]
 We can compute the variation of the action directly, ignoring boundary terms,
 as
@@ -41,6 +48,23 @@ as
 \frac{-1}{2}\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}(\variation\partial_{\beta}A_{\alpha}-\variation\partial_{\beta}A_{\alpha})
 \step{index gymnastics, antisymmetry of field-strength tensor}
 -\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}\variation(\partial_{\alpha}A_{\beta})
+\step{since $\partial_{\alpha}(\variation A_{\beta}) = \variation(\partial_{\alpha}A_{\beta}$}
+-\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}\partial_{\alpha}(\variation A_{\beta})
+\step{index gymnastics}
+-\eta^{\alpha\mu}F_{\mu\nu}\partial_{\alpha}(\variation A^{\nu}).\qedhere
+\end{calculation}
+\end{proof}
+
+\begin{corollary}
+The action is stationary for electromagnetism when $\variation\mathcal{L}_{EM}=0$,
+which implies the equations of motion 
+$\partial_{\mu}F^{\mu\nu} = 0$ hold.
+\end{corollary}
+
+\begin{proof}
+We see
+\begin{calculation}
+-\eta^{\alpha\mu}\eta^{\beta\nu}F_{\mu\nu}\variation(\partial_{\alpha}A_{\beta})
 \step{integration by parts}
 \eta^{\alpha\mu}\eta^{\beta\nu}(\partial_{\alpha}F_{\mu\nu})\variation A_{\beta}
 +\mbox{(boundary terms)}.
@@ -52,25 +76,31 @@ This vanishes when
 and this is the result from the Euler--Lagrange equations of motion.
 \end{proof}
 
-\M
+
+
+\N{Derivation of Electromagnetic Waves}
 We can unfold the result of the Euler--Lagrange equations for
 electromagnetism, and find
 \begin{equation}
-\partial_{\mu}F^{\mu\nu}=0\iff g^{\alpha\gamma}\partial_{\gamma}F_{\alpha\beta}=0.
+\partial_{\mu}F^{\mu\nu}=0\iff \eta^{\alpha\gamma}\partial_{\gamma}F_{\alpha\beta}=0.
 \end{equation}
 Then
 \begin{calculation}
-  g^{\alpha\gamma}\partial_{\gamma}F_{\alpha\beta}
+  \eta^{\alpha\gamma}\partial_{\gamma}F_{\alpha\beta}
 \step{unfold definition of field-strength tensor}
-g^{\alpha\gamma}\partial_{\gamma}(\partial_{\alpha}A_{\beta}-\partial_{\beta}A_{\alpha})
+\eta^{\alpha\gamma}\partial_{\gamma}(\partial_{\alpha}A_{\beta}-\partial_{\beta}A_{\alpha})
 \step{distributivity, index gymnastics}
 \partial^{\alpha}\partial_{\alpha}A_{\beta}-\partial^{\alpha}\partial_{\beta}A_{\alpha}
 \step{equations of motion}
 0.
 \end{calculation}
 When we impose the gauge condition $\partial^{\alpha}A_{\alpha}=0$,
-we recover the familiar Maxwell equations as a wave equation
-$\Box A_{\beta}=0$.
+we recover the familiar Maxwell equations as a wave equation:
+\begin{equation}
+\boxed{\Box A_{\beta}=0\quad\mbox{provided }\partial^{\alpha}A_{\alpha}=0.}
+\end{equation}
+
+\subsection{Coupling to Matter}
 
 \N{Lagrangian coupled to matter}
 We can write down the Lagrangian density for electromagnetism coupled to
@@ -80,6 +110,8 @@ Eq~\eqref{eq:relativity:electromagnetism:maxwell-for-electric-field}:
 \begin{equation}\label{eq:classical-field-theory:electromagnetism:lagrangian}
 \mathcal{L} = \frac{-1}{4}F^{\alpha\beta}F_{\alpha\beta}-4\pi J^{\mu}A_{\mu}.
 \end{equation}
+The choice of $J^{\mu}$ cannot be arbitrary, as we shall see in this
+subsection. 
 
 \begin{exercise}
 Recall (\S\ref{ex:classical-field-theory:noether:canonical-stress-energy})
@@ -103,6 +135,42 @@ some matter, then we need to add a term to our Lagrangian of the form:
 \end{pmatrix}.
 \end{equation}
 This is added to the potential term in the Lagrangian.
+
+\N{Noether's Second Theorem}
+We can apply Noether's second theorem to our Lagrangian, using
+\begin{subequations}
+\begin{equation}
+A_{\mu}\to A_{\mu} + \partial_{\mu}\Lambda(x)
+\end{equation}
+where $\variation_{\lambda}A_{\mu}=\partial_{\mu}\Lambda(x)$ and $\Lambda$ is an
+arbitrary scalar field. The variation of the Lagrangian with respect to
+this particular variation of the 4-potential:
+\begin{equation}
+\variation\mathcal{L} = -F^{\mu\nu}(\partial_{\mu}\partial_{\nu}\Lambda)
+- 4\pi J^{\mu}(\partial_{\mu}\Lambda).
+\end{equation}
+We see the first term vanishes, because $F^{\mu\nu}$ is antisymmetric
+and $\partial_{\mu}\partial_{\nu}\Lambda$ is symmetric (so contracting
+them together vanishes). Hence
+\begin{equation}
+\variation\mathcal{L} = - 4\pi J^{\mu}(\partial_{\mu}\Lambda).
+\end{equation}
+Using $J\partial_{\mu}\Lambda=\partial_{\mu}(J\Lambda)-(\partial_{\mu}J)\Lambda$
+gives us
+\begin{equation}
+\variation\mathcal{L} = - 4\pi \partial_{\mu}(J^{\mu}\Lambda)
++ 4\pi (\partial_{\mu}J^{\mu})\Lambda.
+\end{equation}
+\end{subequations}
+The first term is a total derivative, contributing only boundary terms
+which we can discard. The second term must vanish (by Noether's second
+theorem), hence:
+\begin{equation}
+\boxed{\partial_{\mu}J^{\mu} = 0.}
+\end{equation}
+Therefore any matter coupled to the electromagnetic field must have its
+current vector be 4-divergence-free.
+
 
 \subsection{Hamiltonian Formalism}
 
