@@ -672,6 +672,99 @@ Stuff I should write about:
   using the Dirac delta function $\delta_{\vec{x}}$.
 \end{enumerate}
 
+\section{Random Facts to organize}
+
+\N{Pole-mass is physical mass}
+The ``pole mass'' is identified with the physical mass of a particle
+in quantum field theory. Matthew Schwartz's \textit{Quantum Field Theory and the Standard Model}
+(2013) mentions this in passing in \S18.3.1, for example.
+The basic idea on how we can see this may be studied in the
+interacting Hermitian scalar theory, by examining
+$\langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle$.
+
+\begin{proof}[Sketch of argument]
+  We write
+  \begin{equation}
+    \langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle
+    =\theta(x^{0})\langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle
+    +\theta(-x^{0})\langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle.
+  \end{equation}
+  Using the identity operator
+  \begin{equation}
+    1 = \mid0\rangle\langle0\mid + \int\mid p\rangle\langle p\mid\,\D\mu(p)
+    + \sum^{\infty}_{n=2}\frac{1}{n!}\mid p_{1},\dots,p_{n}\rangle_{\text{IN}}\langle
+p_{1},\dots,p_{n}\mid_{\text{IN}}\,\D\mu(p_{1})\cdots\D\mu(p_{n})
+  \end{equation}
+  where
+  \begin{equation}
+\D\mu(p) = \frac{\D^{3}p}{(2\pi)^{3}2p^{0}}\,\quad p^{0}=\sqrt{m^{2}_{\text{phys}}+\vec{p}^{2}}.
+  \end{equation}
+  Plugging this into the two-point function, we have
+  \begin{multline}
+    \langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle
+    =\theta(x^{0})\int|\langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle|^{2}\E^{-\I p\cdot x}\,\D\mu(p)+\\
+    +\theta(-x^{0})\int|\langle 0\mid \timeOrder\phi(x)\phi(0)\mid0\rangle|^{2}\E^{+\I p\cdot x}\,\D\mu(p)
+    +\begin{pmatrix}\mbox{contributions}\\
+    \mbox{from intermediate}\\
+    \mbox{states with } n\geq2
+    \end{pmatrix}
+  \end{multline}
+  NOTE: without loss of generality, we can assume
+  $\langle0\mid\phi(0)\mid0\rangle0$. In cases where this is not true,
+  then we can replace $\phi(x)\mapsto\phi(x)-\phi_{0}$ where
+  $\phi_{0}=\langle0\mid\phi(0)\mid0\rangle0$.
+
+  The matrix element $\langle0\mid\phi(0)\mid p\rangle$ is independent
+  of $p$ because of Lorentz invariance.
+  \begin{quotation}
+    \begin{proof}
+      The one-particle energy-momentum eigenstate
+      \begin{equation}
+        \mid p\rangle :=
+        \left|\sqrt{m_{\text{phys}}^{2}+\vec{p}^{2}},\vec{p}\right\rangle
+      \end{equation}
+      may be obtained by suitable Lorentz boost $U(L)$ acting on the state
+      $\mid m_{\text{phys}},\vec{0}\rangle$. Since
+      $U(L)\mid0\rangle=\mid0\rangle$ and
+      $U(L)^{-1}\phi(x)U(L)=\phi(L^{-1}x)$, we calculate
+      \begin{subequations}
+        \begin{align}
+\langle0\mid\phi(0)\mid p\rangle
+&= \langle0\mid\phi(0)U(L)\mid m_{\text{phys}},0\rangle\\
+\intertext{then using $\langle0\mid=\langle0\mid U(L)^{-1}$:}
+&= \langle0\mid U(L)^{-1}\phi(0)U(L)\mid m_{\text{phys}},0\rangle\\
+\intertext{then using $U(L)^{-1}\phi(x)U(L)=\phi(L^{-1}x)$:}
+&= \langle0\mid \phi(0)\mid m_{\text{phys}},0\rangle,
+        \end{align}
+      \end{subequations}
+      hence confirming this does not depend on $p$.
+    \end{proof}
+  \end{quotation}
+  Set $Z = |\langle0\mid\phi(0)\mid p\rangle|^{2}$, we obtain in $d$-dimensions:
+  \begin{subequations}
+    \begin{align}
+\langle0\mid\timeOrder\phi(x)\phi(0)\mid0\rangle
+&= Z\left(\theta(x^{0})\int\E^{-\I p\cdot x}\,\D\mu(p) + \theta(-x^{0})\int\E^{+\I p\cdot x}\,\D\mu(p)\right)\\
+&= \frac{Z}{\I}\int\frac{\E^{-\I k\cdot x}}{m_{\text{phys}}^{2} -
+  k^{2} + \I\varepsilon} \frac{\D^{d}k}{(2\pi)^{d}} + \cdots
+    \end{align}
+  \end{subequations}
+  where the ellipses represents the contributions from intermediate
+  states with $n\geq2$ particles.
+\end{proof}
+
+\N{Other notions of mass}
+There are other notions of mass.
+\begin{enumerate}
+\item Breit--Wigner mass: the Breit--Wigner parametrization of the
+  probability amplitude introduces a new parameter called the
+  ``Breit--Wigner mass''. It differs from the pole-mass. For details,
+  see the discussion in \S48.3.1 of the PDG (the 2019 review).\footnote{\url{https://pdg.lbl.gov/2019/reviews/rpp2019-rev-resonances.pdf}}
+\item Running Mass: roughly speaking, running mass is a ``running parameter''.
+  Recall that ``running parameters'' are used by humans to describe
+  nature, whereas the ``pole mass'' is independent of humans.
+\end{enumerate}
+
 % Zeidler, \textit{Quantum Field Theory III}, \S3.14.3 discusses highest
 % weight vectors and elementary particle physics.
 
